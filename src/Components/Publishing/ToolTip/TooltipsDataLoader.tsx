@@ -34,7 +34,6 @@ export class TooltipsDataLoader extends Component<Props> {
     const { artists: artistSlugs, genes: geneSlugs } = getArtsySlugsFromArticle(
       article
     )
-
     if (!shouldFetchData) {
       return children
     }
@@ -73,7 +72,7 @@ export class TooltipsDataLoader extends Component<Props> {
           }
           Object.keys(readyState.props || {}).forEach(key => {
             const col = readyState.props[key]
-            data[key] = keyBy(col, "id")
+            data[key] = keyBy(col, "slug")
           })
           return (
             <TooltipsContextProvider

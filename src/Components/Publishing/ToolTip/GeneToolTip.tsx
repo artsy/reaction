@@ -35,7 +35,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
   }
 
   render() {
-    const { description, href, id, _id, image, name } = this.props.gene
+    const { description, href, slug, internalID, image, name } = this.props.gene
     const { url } = image
     const {
       tooltipsData: { genes },
@@ -44,8 +44,8 @@ export class GeneToolTip extends React.Component<GeneProps> {
 
     const trackingData: FollowTrackingData = {
       contextModule: "tooltip",
-      entity_id: _id,
-      entity_slug: id,
+      entity_id: internalID,
+      entity_slug: slug,
       entity_type: "gene",
     }
 
@@ -64,7 +64,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
 
         <ToolTipFooter>
           <FollowGeneButton
-            gene={genes[id]}
+            gene={genes[slug]}
             trackingData={trackingData}
             onOpenAuthModal={onOpenAuthModal}
           />
