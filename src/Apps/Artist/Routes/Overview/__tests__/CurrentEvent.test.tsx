@@ -21,8 +21,8 @@ describe("CurrentEvent", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => CurrentEventFixture,
+      mockData: {
+        artist: CurrentEventFixture,
       } as CurrentEvent_Test_QueryRawResponse,
     })
   }

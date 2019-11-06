@@ -9,7 +9,9 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkDetails", () => {
-  const getWrapper = async (response = ArtworkDetailsFixture) => {
+  const getWrapper = async (
+    response: ArtworkDetails_Test_QueryRawResponse["artwork"] = ArtworkDetailsFixture
+  ) => {
     return await renderRelayTree({
       Component: ArtworkDetailsFragmentContainer,
       query: graphql`

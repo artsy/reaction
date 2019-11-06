@@ -37,11 +37,13 @@ interface Props extends SystemContextProps {
 const FollowArtistPopover: SFC<Props> = props => {
   const { artist: suggested, user } = props
   const { related } = suggested
-  const suggetionsCount = related.suggested.edges.length
+  const suggetionsCount = related.suggestedConnection.edges.length
   if (suggetionsCount === 0) return null
-  const excludeArtistIds = related.suggested.edges.map(({ node: { _id } }) => {
-    return _id
-  })
+  const excludeArtistIds = related.suggestedConnection.edges.map(
+    ({ node: { internalID } }) => {
+      return internalID
+    }
+  )
   return (
     <BorderedContainer>
       <Container>
@@ -59,14 +61,16 @@ const FollowArtistPopover: SFC<Props> = props => {
           <Provider
             inject={[new FollowArtistPopoverState({ excludeArtistIds })]}
           >
-            {related.suggested.edges.map(({ node: artist }, index) => {
-              return (
-                <React.Fragment key={artist.__id}>
-                  <FollowArtistPopoverRow user={user} artist={artist} />
-                  {index < suggetionsCount - 1 && <Separator />}
-                </React.Fragment>
-              )
-            })}
+            {related.suggestedConnection.edges.map(
+              ({ node: artist }, index) => {
+                return (
+                  <React.Fragment key={artist.id}>
+                    <FollowArtistPopoverRow user={user} artist={artist} />
+                    {index < suggetionsCount - 1 && <Separator />}
+                  </React.Fragment>
+                )
+              }
+            )}
           </Provider>
         </Flex>
       </Container>

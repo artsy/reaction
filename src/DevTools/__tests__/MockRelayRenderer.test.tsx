@@ -1,3 +1,5 @@
+import { MockRelayRendererFixturesBadQueryRawResponse } from "__generated__/MockRelayRendererFixturesBadQuery.graphql"
+import { MockRelayRendererFixturesQueryRawResponse } from "__generated__/MockRelayRendererFixturesQuery.graphql"
 import { renderUntil } from "DevTools/renderUntil"
 import { mount } from "enzyme"
 import * as React from "react"
@@ -24,15 +26,17 @@ describe("MockRelayRenderer", () => {
       <MockRelayRenderer
         Component={Artwork}
         query={query}
-        mockResolvers={{
-          Artwork: () => ({
-            title: "Mona Lisa",
-            image: {
-              url: "http://test/image.jpg",
+        mockData={
+          {
+            artwork: {
+              title: "Mona Lisa",
+              image: {
+                url: "http://test/image.jpg",
+              },
+              artist: null,
             },
-            artist: null,
-          }),
-        }}
+          } as MockRelayRendererFixturesQueryRawResponse
+        }
       />
     )
     expect(tree.html()).toEqual(
@@ -51,15 +55,17 @@ describe("MockRelayRenderer", () => {
       <MockRelayRenderer
         Component={Artwork}
         query={badQuery}
-        mockResolvers={{
-          Artwork: () => ({
-            title: "Mona Lisa",
-            image: {
-              url: "http://test/image.jpg",
+        mockData={
+          {
+            something_that_is_not_expected: {
+              title: "Mona Lisa",
+              image: {
+                url: "http://test/image.jpg",
+              },
+              artist: null,
             },
-            artist: null,
-          }),
-        }}
+          } as MockRelayRendererFixturesBadQueryRawResponse
+        }
       />
     )
     tree.setState({

@@ -33,9 +33,57 @@ export type routes_ConfirmBidQueryResponse = {
         readonly has_qualified_credit_cards: boolean | null;
     } | null;
 };
+export type routes_ConfirmBidQueryRawResponse = {
+    readonly artwork: ({
+        readonly internalID: string;
+        readonly date: string | null;
+        readonly title: string | null;
+        readonly imageUrl: string | null;
+        readonly artistNames: string | null;
+        readonly slug: string;
+        readonly saleArtwork: ({
+            readonly counts: ({
+                readonly bidderPositions: number | null;
+            }) | null;
+            readonly lotLabel: string | null;
+            readonly minimumNextBid: ({
+                readonly amount: string | null;
+                readonly cents: number | null;
+                readonly display: string | null;
+            }) | null;
+            readonly increments: ReadonlyArray<({
+                readonly cents: number | null;
+                readonly display: string | null;
+            }) | null> | null;
+            readonly internalID: string;
+            readonly slug: string;
+            readonly sale: ({
+                readonly registrationStatus: ({
+                    readonly internalID: string;
+                    readonly qualified_for_bidding: boolean | null;
+                    readonly id: string | null;
+                }) | null;
+                readonly internalID: string;
+                readonly slug: string;
+                readonly name: string | null;
+                readonly is_closed: boolean | null;
+                readonly is_registration_closed: boolean | null;
+                readonly id: string | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly id: string | null;
+    }) | null;
+    readonly me: ({
+        readonly internalID: string;
+        readonly has_qualified_credit_cards: boolean | null;
+        readonly id: string | null;
+    }) | null;
+};
 export type routes_ConfirmBidQuery = {
     readonly response: routes_ConfirmBidQueryResponse;
     readonly variables: routes_ConfirmBidQueryVariables;
+    readonly rawResponse: routes_ConfirmBidQueryRawResponse;
 };
 
 
@@ -483,5 +531,5 @@ return {
   }
 };
 })();
-(node as any).hash = '65b98892f65e6ae055143217738376b0';
+(node as any).hash = '54ce407e396be578882828d6bf416145';
 export default node;

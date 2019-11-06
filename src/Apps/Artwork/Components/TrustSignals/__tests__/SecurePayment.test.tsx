@@ -1,5 +1,8 @@
-import { SecurePaymentTestQueryRawResponse } from "__generated__/SecurePaymentTestQuery.graphql"
 import { SecurePayment_artwork } from "__generated__/SecurePayment_artwork.graphql"
+import {
+  SecurePaymentTestQueryRawResponse,
+  SecurePaymentTestQueryResponse,
+} from "__generated__/SecurePaymentTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -9,11 +12,11 @@ import { SecurePaymentFragmentContainer } from "../SecurePayment"
 jest.unmock("react-relay")
 
 const render = (
-  artwork: Omit<SecurePayment_artwork, " $refType">,
+  artwork: SecurePaymentTestQueryRawResponse["artwork"],
   extraProps?: Partial<ExtractProps<typeof SecurePaymentFragmentContainer>>
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: SecurePaymentTestQueryResponse) => (
       <SecurePaymentFragmentContainer
         artwork={{
           ...artwork,

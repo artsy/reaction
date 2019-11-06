@@ -13,7 +13,7 @@ jest.unmock("react-relay")
 describe("ArtworkImageBrowser", () => {
   const getWrapper = async (
     breakpoint: Breakpoint = "lg",
-    data = ArtworkImageBrowserFixture
+    data: ArtworkImageBrowser_Test_QueryRawResponse = ArtworkImageBrowserFixture
   ) => {
     return await renderRelayTree({
       Component: ArtworkImageBrowser,

@@ -1,5 +1,8 @@
 import { BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
-import { PricingContextTestQueryRawResponse } from "__generated__/PricingContextTestQuery.graphql"
+import {
+  PricingContextTestQueryRawResponse,
+  PricingContextTestQueryResponse,
+} from "__generated__/PricingContextTestQuery.graphql"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -62,14 +65,14 @@ const mockArtwork = {
 
 describe("PricingContext", () => {
   function getWrapper(
-    mockData: any = {
+    mockData: PricingContextTestQueryRawResponse = {
       artwork: {
         ...mockArtwork,
       },
     }
   ) {
     return renderRelayTree({
-      Component: (props: any) => (
+      Component: (props: PricingContextTestQueryResponse) => (
         <div>
           <PricingContextFragmentContainer {...props} />
         </div>

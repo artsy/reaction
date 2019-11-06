@@ -1,9 +1,11 @@
-import { OfferHistoryItemTestQueryRawResponse } from "__generated__/OfferHistoryItemTestQuery.graphql"
 import { Button, Collapse } from "@artsy/palette"
 import { OfferHistoryItem_order } from "__generated__/OfferHistoryItem_order.graphql"
 import {
+  OfferHistoryItemTestQueryRawResponse,
+  OfferHistoryItemTestQueryResponse,
+} from "__generated__/OfferHistoryItemTestQuery.graphql"
+import {
   Buyer,
-  mockResolver,
   Offers,
   OfferWithTotals,
   UntouchedOfferOrder,
@@ -21,15 +23,15 @@ const render = (
   extraComponentProps?: Partial<ExtractProps<typeof OfferHistoryItem>>
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: OfferHistoryItemTestQueryResponse) => (
       <OfferHistoryItem {...extraComponentProps} {...props} />
     ),
-    mockResolvers: mockResolver({
+    mockData: {
       ...UntouchedOfferOrder,
       buyer: Buyer,
       lastOffer: OfferWithTotals,
       ...extraOrderProps,
-    }) as OfferHistoryItemTestQueryRawResponse,
+    } as OfferHistoryItemTestQueryRawResponse,
     query: graphql`
       query OfferHistoryItemTestQuery @raw_response_type {
         order: commerceOrder(id: "foo") {

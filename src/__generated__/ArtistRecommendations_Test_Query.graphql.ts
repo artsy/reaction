@@ -8,9 +8,102 @@ export type ArtistRecommendations_Test_QueryResponse = {
         readonly " $fragmentRefs": FragmentRefs<"ArtistRecommendations_artist">;
     } | null;
 };
+export type ArtistRecommendations_Test_QueryRawResponse = {
+    readonly artist: ({
+        readonly slug: string;
+        readonly name: string | null;
+        readonly related: ({
+            readonly artistsConnection: ({
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly slug: string;
+                        readonly internalID: string;
+                        readonly name: string | null;
+                        readonly formatted_nationality_and_birthday: string | null;
+                        readonly href: string | null;
+                        readonly image: ({
+                            readonly cropped: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
+                        readonly artworks_connection: ({
+                            readonly edges: ReadonlyArray<({
+                                readonly node: ({
+                                    readonly id: string;
+                                    readonly image: ({
+                                        readonly aspect_ratio: number;
+                                        readonly url: string | null;
+                                    }) | null;
+                                    readonly href: string | null;
+                                    readonly title: string | null;
+                                    readonly date: string | null;
+                                    readonly sale_message: string | null;
+                                    readonly cultural_maker: string | null;
+                                    readonly artists: ReadonlyArray<({
+                                        readonly id: string;
+                                        readonly href: string | null;
+                                        readonly name: string | null;
+                                    }) | null> | null;
+                                    readonly collecting_institution: string | null;
+                                    readonly partner: ({
+                                        readonly name: string | null;
+                                        readonly href: string | null;
+                                        readonly id: string | null;
+                                        readonly type: string | null;
+                                    }) | null;
+                                    readonly sale: ({
+                                        readonly is_auction: boolean | null;
+                                        readonly is_closed: boolean | null;
+                                        readonly id: string | null;
+                                        readonly is_live_open: boolean | null;
+                                        readonly is_open: boolean | null;
+                                        readonly is_preview: boolean | null;
+                                        readonly display_timely_at: string | null;
+                                    }) | null;
+                                    readonly sale_artwork: ({
+                                        readonly counts: ({
+                                            readonly bidder_positions: number | null;
+                                        }) | null;
+                                        readonly highest_bid: ({
+                                            readonly display: string | null;
+                                        }) | null;
+                                        readonly opening_bid: ({
+                                            readonly display: string | null;
+                                        }) | null;
+                                        readonly id: string | null;
+                                    }) | null;
+                                    readonly is_inquireable: boolean | null;
+                                    readonly internalID: string;
+                                    readonly slug: string;
+                                    readonly is_saved: boolean | null;
+                                    readonly is_biddable: boolean | null;
+                                    readonly is_acquireable: boolean | null;
+                                    readonly is_offerable: boolean | null;
+                                }) | null;
+                            }) | null> | null;
+                        }) | null;
+                        readonly id: string;
+                        readonly is_followed: boolean | null;
+                        readonly counts: ({
+                            readonly follows: number | null;
+                        }) | null;
+                        readonly __typename: "Artist";
+                    }) | null;
+                    readonly cursor: string;
+                }) | null> | null;
+                readonly pageInfo: {
+                    readonly endCursor: string | null;
+                    readonly hasNextPage: boolean;
+                };
+            }) | null;
+        }) | null;
+        readonly id: string | null;
+    }) | null;
+};
 export type ArtistRecommendations_Test_Query = {
     readonly response: ArtistRecommendations_Test_QueryResponse;
     readonly variables: ArtistRecommendations_Test_QueryVariables;
+    readonly rawResponse: ArtistRecommendations_Test_QueryRawResponse;
 };
 
 
@@ -779,5 +872,5 @@ return {
   }
 };
 })();
-(node as any).hash = '69bb9cd8b80ae8198b01710e3cc02010';
+(node as any).hash = '4477ef176c5666ffa47770d0652f8320';
 export default node;

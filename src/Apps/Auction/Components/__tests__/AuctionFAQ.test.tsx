@@ -1,5 +1,5 @@
-import { AuctionFAQ_QueryRawResponse } from "__generated__/AuctionFAQ_Query.graphql"
 import { Sans, Toggle } from "@artsy/palette"
+import { AuctionFAQ_QueryRawResponse } from "__generated__/AuctionFAQ_Query.graphql"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 import { AuctionFAQFragmentContainer } from "../AuctionFAQ"
@@ -48,7 +48,9 @@ const viewerEmptyMockResponse = {
 }
 
 describe("AuctionFAQ", () => {
-  const getWrapper = async mockResponse => {
+  const getWrapper = async (
+    mockResponse: AuctionFAQ_QueryRawResponse["viewer"]
+  ) => {
     return await renderRelayTree({
       Component: AuctionFAQFragmentContainer,
       query: graphql`

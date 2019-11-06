@@ -7482,7 +7482,7 @@ found-scroll@^0.1.5:
     prop-types "^15.7.2"
     scroll-behavior "^0.9.10"
 
-found@^0.4:
+found@^0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/found/-/found-0.4.9.tgz#016f69026afa29290c09fb909f198b923a2878f3"
   integrity sha512-6MEtaqmkkvcX92S3HxSZnoHhEOntNAh+sQglrfsYLbqIhyibUy9Udgbitw8oujGd445spPgCyKkPO3mSTdVAfQ==
