@@ -82,7 +82,7 @@ export const BaseArtworkFilter: React.FC<{
   viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
   const { filtered_artworks } = viewer
-  const hasFilter = filtered_artworks && filtered_artworks.__id
+  const hasFilter = filtered_artworks && filtered_artworks.id
 
   // If there was an error fetching the filter,
   // we still want to render the rest of the page.
@@ -141,6 +141,7 @@ export const BaseArtworkFilter: React.FC<{
     const relayRefetchVariables = {
       ...filterContext.filters,
       ...relayVariables,
+      first: 30,
     }
 
     relay.refetch(relayRefetchVariables, null, error => {
@@ -292,6 +293,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int", defaultValue: 30 }
         ) {
         filtered_artworks: artworksConnection(
           acquireable: $acquireable
@@ -313,6 +315,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           size: 0
           sort: $sort
           width: $width
+          first: $first
         ) {
           id
           ...ArtworkFilterArtworkGrid2_filtered_artworks

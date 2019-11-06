@@ -52,11 +52,11 @@ export class NavigationTabs extends React.Component<Props> {
 
   renderTabs() {
     const {
-      artist: { id, statuses },
+      artist: { slug, statuses },
       mediator,
     } = this.props
 
-    const route = path => `/artist/${id}${path}`
+    const route = path => `/artist/${slug}${path}`
 
     return (
       <>

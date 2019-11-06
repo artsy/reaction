@@ -42,6 +42,7 @@ export const collectRoutes: RouteConfig[] = [
         filterArtworks: artworksConnection(
           aggregations: $aggregations
           sort: $sort
+          first: 30
         ) {
           ...SeoProductsForArtworks_artworks
         }

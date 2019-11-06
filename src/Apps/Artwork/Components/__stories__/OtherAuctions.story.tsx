@@ -17,12 +17,8 @@ const OtherAuctions = ({ size }: { size?: number }) => {
       query={graphql`
         query OtherAuctionsStoryQuery($size: Int!) {
           salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {
-            edges {
-              node {
-                # FIXME: Need to pluck just nodes and send as array.
-                ...OtherAuctions_sales
-              }
-            }
+            # FIXME: Need to pluck just nodes and send as array.
+            ...OtherAuctions_sales
           }
         }
       `}

@@ -5,6 +5,7 @@ import { FragmentRefs } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 export type Overview_artist = {
     readonly slug: string;
+    readonly id: string;
     readonly counts: {
         readonly partner_shows: number | null;
         readonly for_sale_artworks: number | null;
@@ -80,24 +81,31 @@ var v0 = {
 v1 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = [
+v3 = [
   (v0/*: any*/)
 ],
-v3 = {
+v4 = {
   "kind": "Variable",
   "name": "aggregations",
   "variableName": "aggregations"
 },
-v4 = {
+v5 = {
   "kind": "Variable",
   "name": "page",
   "variableName": "page"
 },
-v5 = {
+v6 = {
   "kind": "Variable",
   "name": "sort",
   "variableName": "sort"
@@ -235,6 +243,7 @@ return {
   ],
   "selections": [
     (v0/*: any*/),
+    (v1/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -347,7 +356,7 @@ return {
       "concreteType": "CurrentEvent",
       "plural": false,
       "selections": [
-        (v1/*: any*/)
+        (v2/*: any*/)
       ]
     },
     {
@@ -385,7 +394,7 @@ return {
                   "args": null,
                   "concreteType": "Gene",
                   "plural": false,
-                  "selections": (v2/*: any*/)
+                  "selections": (v3/*: any*/)
                 }
               ]
             }
@@ -424,13 +433,7 @@ return {
                   "concreteType": "Artist",
                   "plural": false,
                   "selections": [
-                    {
-                      "kind": "ScalarField",
-                      "alias": null,
-                      "name": "id",
-                      "args": null,
-                      "storageKey": null
-                    }
+                    (v1/*: any*/)
                   ]
                 }
               ]
@@ -518,7 +521,7 @@ return {
                       "args": null,
                       "concreteType": "PartnerCategory",
                       "plural": true,
-                      "selections": (v2/*: any*/)
+                      "selections": (v3/*: any*/)
                     }
                   ]
                 }
@@ -552,9 +555,19 @@ return {
       "name": "filterArtworksConnection",
       "storageKey": null,
       "args": [
-        (v3/*: any*/),
+        {
+          "kind": "Literal",
+          "name": "after",
+          "value": ""
+        },
         (v4/*: any*/),
-        (v5/*: any*/)
+        {
+          "kind": "Literal",
+          "name": "first",
+          "value": 30
+        },
+        (v5/*: any*/),
+        (v6/*: any*/)
       ],
       "concreteType": "FilterArtworksConnection",
       "plural": false,
@@ -584,7 +597,7 @@ return {
               "concreteType": "AggregationCount",
               "plural": true,
               "selections": [
-                (v1/*: any*/),
+                (v2/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -637,7 +650,7 @@ return {
           "name": "acquireable",
           "variableName": "acquireable"
         },
-        (v3/*: any*/),
+        (v4/*: any*/),
         {
           "kind": "Variable",
           "name": "artistID",
@@ -698,7 +711,7 @@ return {
           "name": "offerable",
           "variableName": "offerable"
         },
-        (v4/*: any*/),
+        (v5/*: any*/),
         {
           "kind": "Variable",
           "name": "partnerID",
@@ -709,7 +722,7 @@ return {
           "name": "priceRange",
           "variableName": "priceRange"
         },
-        (v5/*: any*/),
+        (v6/*: any*/),
         {
           "kind": "Variable",
           "name": "width",
@@ -720,5 +733,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6d19cee4a6166cab209b325683721f4d';
+(node as any).hash = '9dba1f7c4a8329dc61cc52930b363bcd';
 export default node;

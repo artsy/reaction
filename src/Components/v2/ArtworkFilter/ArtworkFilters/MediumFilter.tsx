@@ -29,7 +29,7 @@ export const MediumFilter: FC = () => {
               <Radio
                 key={index}
                 my={0.3}
-                value={medium.id.toLocaleLowerCase()}
+                value={medium.value.toLocaleLowerCase()}
                 label={medium.name}
               />
             )
@@ -42,47 +42,47 @@ export const MediumFilter: FC = () => {
 
 const hardcodedMediums = [
   {
-    id: "painting",
+    value: "painting",
     name: "Painting",
   },
   {
-    id: "photography",
+    value: "photography",
     name: "Photography",
   },
   {
-    id: "sculpture",
+    value: "sculpture",
     name: "Sculpture",
   },
   {
-    id: "prints",
+    value: "prints",
     name: "Prints",
   },
   {
-    id: "work-on-Paper",
+    value: "work-on-Paper",
     name: "Work on Paper",
   },
   {
-    id: "design",
+    value: "design",
     name: "Design",
   },
   {
-    id: "drawing",
+    value: "drawing",
     name: "Drawing",
   },
   {
-    id: "installation",
+    value: "installation",
     name: "Installation",
   },
   {
-    id: "film-slash-video",
+    value: "film-slash-video",
     name: "Film/Video",
   },
   {
-    id: "jewelry",
+    value: "jewelry",
     name: "Jewelry",
   },
   {
-    id: "performance-art",
+    value: "performance-art",
     name: "Performance Art",
   },
 ]
