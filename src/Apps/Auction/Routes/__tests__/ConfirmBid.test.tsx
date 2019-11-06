@@ -13,6 +13,7 @@ import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositi
 import { AnalyticsSchema } from "Artsy/Analytics"
 import { TrackingProp } from "react-tracking"
 import {
+  confirmBidBidderPositionQueryWithOutbid,
   confirmBidBidderPositionQueryWithPending,
   confirmBidBidderPositionQueryWithWinning,
   createBidderPositionFailed,
@@ -184,7 +185,47 @@ describe("Routes/ConfirmBid", () => {
       })
     })
 
-    it("send an error event to analytics if the mutation fails", async () => {
+    it("displays an error message when the mutation returns a GraphQL error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      env.mutations.useResultsOnce(createBidderPositionFailed)
+
+      await page.submitForm()
+
+      expect(page.text()).toContain("Sale Closed to Bids.")
+      expect(window.location.assign).not.toHaveBeenCalled()
+    })
+
+    it("displays an error message when the mutation throws a JS error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      env.mutations.mockNetworkFailureOnce()
+
+      await page.submitForm()
+
+      expect(window.location.assign).not.toHaveBeenCalled()
+      expect(page.text()).toContain(
+        "Please make sure your internet connection is active and try again"
+      )
+    })
+
+    it("displays an error message when polling receives a non-success status", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithOutbid
+      )
+
+      await page.submitForm()
+
+      expect(window.location.assign).not.toHaveBeenCalled()
+      expect(page.text()).toContain("Your bid wasn’t high enough.")
+    })
+
+    it("tracks an error when the mutation returns a GraphQL error", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
 
@@ -205,18 +246,61 @@ describe("Routes/ConfirmBid", () => {
         }
       )
 
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
       expect(mockPostEvent).toBeCalledWith({
         action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
-        error_messages: ["ConfirmBidCreateBidderPositionMutation failed"],
+        error_messages: ["Sale Closed to Bids"],
         auction_slug: "saleslug",
         artwork_slug: "artworkslug",
         bidder_id: "existing-bidder-id",
         sale_id: "saleid",
         user_id: "my-user-id",
       })
+    })
+
+    it("tracks an error when the mutation throws a JS error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      env.mutations.mockNetworkFailureOnce()
+
+      await page.submitForm()
+
       expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(window.location.assign).not.toHaveBeenCalled()
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["JavaScript error: failed to fetch"],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "existing-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+
+    it("tracks an error when polling receives a non-success status", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithOutbid
+      )
+
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["Your bid wasn’t high enough"],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "existing-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
     })
   })
 
@@ -310,6 +394,78 @@ describe("Routes/ConfirmBid", () => {
       expect(env.mutations.mockFetch).not.toBeCalled()
       expect(window.location.assign).not.toHaveBeenCalled()
       expect(page.text()).toContain("You must agree to the Conditions of Sale")
+    })
+
+    it("tracks an error without bidder id when the mutation returns a GraphQL error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithCreditCard,
+      })
+      env.mutations.useResultsOnce(createBidderPositionFailed)
+
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["Sale Closed to Bids"],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+
+    it("tracks an error without bidder id when the mutation throws a JS error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithCreditCard,
+      })
+      env.mutations.mockNetworkFailureOnce()
+
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["JavaScript error: failed to fetch"],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+
+    it("tracks an error with bidder id when polling receives a non-success status", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithCreditCard,
+      })
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithOutbid
+      )
+
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["Your bid wasn’t high enough"],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
     })
   })
 
