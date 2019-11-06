@@ -1,3 +1,4 @@
+import { MockRelayRendererFixturesQueryRawResponse } from "__generated__/MockRelayRendererFixturesQuery.graphql"
 import * as React from "react"
 import { renderRelayTree } from "../renderRelayTree"
 import { Artwork, query, renderToString } from "./MockRelayRendererFixtures"
@@ -9,8 +10,8 @@ describe("renderRelayTree", () => {
     const tree = await renderRelayTree({
       Component: Artwork,
       query,
-      mockResolvers: {
-        Artwork: () => ({
+      mockData: {
+        artwork: {
           title: "Mona Lisa",
           image: {
             url: "http://test/image.jpg",
@@ -18,11 +19,8 @@ describe("renderRelayTree", () => {
           artist: {
             id: "leonardo-da-vinci",
           },
-        }),
-        Artist: () => ({
-          name: "Leonardo da Vinci",
-        }),
-      },
+        },
+      } as MockRelayRendererFixturesQueryRawResponse,
     })
     expect(tree.html()).toEqual(
       renderToString(
@@ -61,14 +59,14 @@ describe("renderRelayTree", () => {
       renderUntil: wrapper => wrapper.find(".much-later").text().length > 0,
       Component: Artwork,
       query,
-      mockResolvers: {
-        Artwork: () => ({
+      mockData: {
+        artwork: {
           title: "Mona Lisa",
           image: {
             url: "http://test/image.jpg",
           },
-        }),
-      },
+        },
+      } as MockRelayRendererFixturesQueryRawResponse,
       wrapper: renderer => <Component>{renderer}</Component>,
     })
     expect(tree.find(".much-later").text()).toEqual("ohai")

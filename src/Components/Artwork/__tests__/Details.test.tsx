@@ -1,5 +1,5 @@
-import { Details_Test_QueryRawResponse } from "__generated__/Details_Test_Query.graphql"
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
+import { Details_Test_QueryRawResponse } from "__generated__/Details_Test_Query.graphql"
 import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
@@ -9,7 +9,9 @@ import { DetailsFragmentContainer } from "../Details"
 jest.unmock("react-relay")
 
 describe("Details", () => {
-  const getWrapper = async response => {
+  const getWrapper = async (
+    response: Details_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: props => (
         <DetailsFragmentContainer {...props as any} showSaleLine />
@@ -21,29 +23,36 @@ describe("Details", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
+      mockData: {
+        artwork: response,
       } as Details_Test_QueryRawResponse,
     })
   }
 
   describe("in sale", () => {
     it("shows 'bidding closed' message if in closed auction", async () => {
-      const data = cloneDeep(mutableArtwork)
+      // FIXME: These type failures should be fixed by creating a new object,
+      //        rather than mutating. E.g.
+      //
+      // const data = {
+      //   ...artworkInAuction,
+      //   sale: { ...artworkInAuction.sale, is_closed: true },
+      // }
+      const data = cloneDeep(artworkInAuction)
       data.sale.is_closed = true
       const wrapper = await getWrapper(data)
       expect(wrapper.html()).toContain("Bidding closed")
     })
 
     it("shows highest bid if sale open and highest bid", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
       expect(html).toContain("$2,600")
     })
 
     it("shows opening bid if sale open and no highest bid", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       data.sale_artwork.highest_bid.display = null
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
@@ -51,7 +60,7 @@ describe("Details", () => {
     })
 
     it("shows Contact for price if sale_message equals the same", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       data.sale.is_auction = false
       data.sale_message = "Contact For Price"
       const wrapper = await getWrapper(data)
@@ -60,7 +69,7 @@ describe("Details", () => {
     })
 
     it("shows sale message if sale open and no bids", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       data.sale_artwork.highest_bid.display = null
       data.sale_artwork.opening_bid.display = null
       data.sale.is_auction = false
@@ -70,7 +79,7 @@ describe("Details", () => {
     })
 
     it("shows the number of bids in the message if sale open and are bids", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       data.sale_artwork.counts.bidder_positions = 2
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
@@ -79,7 +88,7 @@ describe("Details", () => {
     })
 
     it("skips bid information in a closed show", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       data.sale_artwork.counts.bidder_positions = 2
       data.sale.is_closed = true
       const wrapper = await getWrapper(data)
@@ -88,7 +97,7 @@ describe("Details", () => {
     })
 
     it("skips showing bid information when there are no bidder positions", async () => {
-      const data = cloneDeep(mutableArtwork)
+      const data = cloneDeep(artworkInAuction)
       data.sale_artwork.counts.bidder_positions = 0
       const wrapper = await getWrapper(data)
       const html = wrapper.html()
@@ -97,7 +106,7 @@ describe("Details", () => {
   })
 })
 
-const artworkInAuction: Partial<Details_artwork> = {
+const artworkInAuction: Details_Test_QueryRawResponse["artwork"] = {
   artists: [
     {
       __id: "QXJ0aXN0OmdlcmhhcmQtcmljaHRlcg==",
@@ -125,6 +134,3 @@ const artworkInAuction: Partial<Details_artwork> = {
     counts: { bidder_positions: 0 },
   },
 }
-
-// https://github.com/facebook/relay/issues/2597
-const mutableArtwork = artworkInAuction as any

@@ -43,7 +43,10 @@ const simulateTyping = (wrapper: ReactWrapper, text: string) => {
   textArea.simulate("change")
 }
 
-const getWrapper = (viewer, breakpoint = "xl") => {
+const getWrapper = (
+  viewer: SearchBarTestQueryRawResponse["viewer"],
+  breakpoint = "xl"
+) => {
   return renderRelayTree({
     Component: SearchBar,
     query: graphql`

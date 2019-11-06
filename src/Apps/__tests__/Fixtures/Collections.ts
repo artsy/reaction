@@ -1,3 +1,5 @@
+import { CollectionsAppTestQueryRawResponse } from "__generated__/CollectionsAppTestQuery.graphql"
+
 export const CollectionsFixture = [
   {
     title: "KAWS: Companions",
@@ -256,7 +258,7 @@ export const CollectionsRailFixture = [
   },
 ]
 
-export const CategoriesFixture = [
+export const CategoriesFixture: CollectionsAppTestQueryRawResponse["categories"] = [
   {
     name: "Abstract Art",
     collections: [

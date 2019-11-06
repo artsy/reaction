@@ -1,5 +1,7 @@
-import { GenesTestQueryRawResponse } from "__generated__/GenesTestQuery.graphql"
-import { Genes_artist } from "__generated__/Genes_artist.graphql"
+import {
+  GenesTestQueryRawResponse,
+  GenesTestQueryResponse,
+} from "__generated__/GenesTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -9,11 +11,11 @@ import { GenesFragmentContainer as Genes } from "../Genes"
 jest.unmock("react-relay")
 
 const render = (
-  artist: Omit<Genes_artist, " $refType">,
+  artist: GenesTestQueryRawResponse["artist"],
   extraProps?: Partial<ExtractProps<typeof Genes>>
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: GenesTestQueryResponse) => (
       <Genes
         artist={{
           ...artist,

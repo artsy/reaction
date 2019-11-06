@@ -44,9 +44,76 @@ export type routes_OrderQueryResponse = {
         readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
     } | null;
 };
+export type routes_OrderQueryRawResponse = {
+    readonly me: ({
+        readonly name: string | null;
+        readonly id: string | null;
+    }) | null;
+    readonly order: ({
+        readonly __typename: "CommerceOfferOrder";
+        readonly internalID: string;
+        readonly mode: CommerceOrderModeEnum | null;
+        readonly state: CommerceOrderStateEnum;
+        readonly lastTransactionFailed: boolean | null;
+        readonly requestedFulfillment: ({
+            readonly __typename: string;
+        }) | null;
+        readonly lineItems: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly artwork: ({
+                        readonly slug: string;
+                        readonly id: string | null;
+                        readonly is_acquireable: boolean | null;
+                        readonly is_offerable: boolean | null;
+                    }) | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly creditCard: ({
+            readonly internalID: string;
+            readonly id: string | null;
+        }) | null;
+        readonly myLastOffer: ({
+            readonly internalID: string;
+            readonly createdAt: string;
+        }) | null;
+        readonly lastOffer: ({
+            readonly internalID: string;
+            readonly createdAt: string;
+        }) | null;
+        readonly awaitingResponseFrom: CommerceOrderParticipantEnum | null;
+    } | {
+        readonly __typename: string | null;
+        readonly internalID: string;
+        readonly mode: CommerceOrderModeEnum | null;
+        readonly state: CommerceOrderStateEnum;
+        readonly lastTransactionFailed: boolean | null;
+        readonly requestedFulfillment: ({
+            readonly __typename: string;
+        }) | null;
+        readonly lineItems: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly artwork: ({
+                        readonly slug: string;
+                        readonly id: string | null;
+                        readonly is_acquireable: boolean | null;
+                        readonly is_offerable: boolean | null;
+                    }) | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly creditCard: ({
+            readonly internalID: string;
+            readonly id: string | null;
+        }) | null;
+    }) | null;
+};
 export type routes_OrderQuery = {
     readonly response: routes_OrderQueryResponse;
     readonly variables: routes_OrderQueryVariables;
+    readonly rawResponse: routes_OrderQueryRawResponse;
 };
 
 
@@ -447,5 +514,5 @@ return {
   }
 };
 })();
-(node as any).hash = '9249b465ae12de4e4212d5f0f2062ac1';
+(node as any).hash = 'a2c250d484790ea3dd5b02bbe273c793';
 export default node;

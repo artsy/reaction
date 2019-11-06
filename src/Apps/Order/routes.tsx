@@ -39,7 +39,7 @@ export const routes: RouteConfig[] = [
     // TODO: Better support `@principalField` in Metaphysics.
     // This currently only works because of the `order` field alias.
     query: graphql`
-      query routes_OrderQuery($orderID: ID!) {
+      query routes_OrderQuery($orderID: ID!) @raw_response_type {
         me {
           name
         }

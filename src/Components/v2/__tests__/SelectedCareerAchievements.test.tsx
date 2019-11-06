@@ -11,7 +11,10 @@ jest.unmock("react-relay")
 describe("SelectedCareerAchievements", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = async (artistData, breakpoint: Breakpoint = "xl") => {
+  const getWrapper = async (
+    artistData: SelectedCareerAchievementsTestQueryRawResponse["artist"],
+    breakpoint: Breakpoint = "xl"
+  ) => {
     return await renderRelayTree({
       Component: SelectedCareerAchievements,
       query: graphql`

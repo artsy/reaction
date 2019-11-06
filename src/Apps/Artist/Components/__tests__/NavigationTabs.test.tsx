@@ -10,7 +10,10 @@ jest.unmock("react-relay")
 jest.mock("Components/v2/RouteTabs")
 
 describe("ArtistHeader", () => {
-  const getWrapper = async (response = NavigationTabsFixture, context = {}) => {
+  const getWrapper = async (
+    response: NavigationTabs_Test_QueryRawResponse["artist"] = NavigationTabsFixture,
+    context = {}
+  ) => {
     return await renderRelayTree({
       Component: ({ artist }: any) => {
         return (
@@ -26,8 +29,8 @@ describe("ArtistHeader", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => response,
+      mockData: {
+        artist: response,
       } as NavigationTabs_Test_QueryRawResponse,
     })
   }

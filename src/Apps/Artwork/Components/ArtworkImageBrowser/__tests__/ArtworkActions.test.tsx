@@ -1,5 +1,5 @@
-import { ArtworkActions_Test_QueryRawResponse } from "__generated__/ArtworkActions_Test_Query.graphql"
 import { Breakpoint } from "@artsy/palette"
+import { ArtworkActions_Test_QueryRawResponse } from "__generated__/ArtworkActions_Test_Query.graphql"
 import { ArtworkActionsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkActions.fixture"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
@@ -24,7 +24,9 @@ jest.unmock("react-relay")
 describe("ArtworkActions", () => {
   const getWrapper = async (
     breakpoint: Breakpoint = "lg",
-    data = ArtworkActionsFixture
+    data: ArtworkActions_Test_QueryRawResponse & {
+      user: User
+    } = ArtworkActionsFixture
   ) => {
     const { artwork, user } = data
     return await renderRelayTree({

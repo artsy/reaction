@@ -9,6 +9,7 @@ import React from "react"
 import { HeadProvider, Meta } from "react-head"
 import { OrderApp } from "../OrderApp"
 
+import { routes_OrderQueryRawResponse } from "__generated__/routes_OrderQuery.graphql"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
@@ -31,7 +32,7 @@ jest.mock("react-stripe-elements", () => ({
 
 describe("OrderApp routing redirects", () => {
   // FIXME: move to DevTools folder
-  async function render(url, mockData) {
+  async function render(url, mockData: routes_OrderQueryRawResponse) {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
     const store = new Store(source)

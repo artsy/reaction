@@ -21,8 +21,8 @@ describe("Genes", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => GenesFixture,
+      mockData: {
+        artist: GenesFixture,
       } as Genes_Test_QueryRawResponse,
     })
   }

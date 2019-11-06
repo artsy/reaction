@@ -1,6 +1,6 @@
-import { ArtworkGrid_Test_QueryRawResponse } from "__generated__/ArtworkGrid_Test_Query.graphql"
 import { ArtworkGrid_artist } from "__generated__/ArtworkGrid_artist.graphql"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
+import { ArtworkGrid_Test_QueryRawResponse } from "__generated__/ArtworkGrid_Test_Query.graphql"
 import { renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
@@ -108,7 +108,9 @@ describe("ArtworkGrid", () => {
     const getRelayWrapper = async ({
       artworks,
       ...componentProps
-    }: ArtworkGridProps) => {
+    }: Omit<ArtworkGridProps, "artworks"> & {
+      artworks: ArtworkGrid_Test_QueryRawResponse["artist"]["artworks_connection"]
+    }) => {
       return await renderRelayTree({
         Component: TestContainer,
         componentProps,

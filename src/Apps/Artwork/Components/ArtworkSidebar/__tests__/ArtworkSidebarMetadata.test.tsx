@@ -18,7 +18,9 @@ jest.unmock("react-relay")
 describe("ArtworkSidebarMetadata", () => {
   let wrapper = null
 
-  const getWrapper = async (response = FilledOutMetadataNoEditions) => {
+  const getWrapper = async (
+    response: ArtworkSidebarMetadata_Test_QueryRawResponse["artwork"] = FilledOutMetadataNoEditions
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarMetadataFragmentContainer,
       query: graphql`
@@ -28,8 +30,8 @@ describe("ArtworkSidebarMetadata", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
+      mockData: {
+        artwork: response,
       } as ArtworkSidebarMetadata_Test_QueryRawResponse,
     })
   }

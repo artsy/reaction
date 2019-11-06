@@ -13,7 +13,9 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkBanner", () => {
-  const getWrapper = async (response = ArtwrorkNoBannerFixture) => {
+  const getWrapper = async (
+    response: ArtworkBanner_Test_QueryRawResponse["artwork"] = ArtwrorkNoBannerFixture
+  ) => {
     return await renderRelayTree({
       Component: ArtworkBannerFragmentContainer,
       query: graphql`

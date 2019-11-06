@@ -1,5 +1,8 @@
-import { AuthenticityCertificateTestQueryRawResponse } from "__generated__/AuthenticityCertificateTestQuery.graphql"
 import { AuthenticityCertificate_artwork } from "__generated__/AuthenticityCertificate_artwork.graphql"
+import {
+  AuthenticityCertificateTestQueryRawResponse,
+  AuthenticityCertificateTestQueryResponse,
+} from "__generated__/AuthenticityCertificateTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -9,13 +12,13 @@ import { AuthenticityCertificateFragmentContainer } from "../AuthenticityCertifi
 jest.unmock("react-relay")
 
 const render = (
-  artwork: Omit<AuthenticityCertificate_artwork, " $refType">,
+  artwork: AuthenticityCertificateTestQueryRawResponse["artwork"],
   extraProps?: Partial<
     ExtractProps<typeof AuthenticityCertificateFragmentContainer>
   >
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: AuthenticityCertificateTestQueryResponse) => (
       <AuthenticityCertificateFragmentContainer
         artwork={{
           ...artwork,

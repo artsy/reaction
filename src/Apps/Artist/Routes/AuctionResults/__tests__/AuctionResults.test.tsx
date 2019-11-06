@@ -22,8 +22,8 @@ describe("AuctionResults", () => {
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => AuctionResultsFixture,
+      mockData: {
+        artist: AuctionResultsFixture,
       } as AuctionResults_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",
