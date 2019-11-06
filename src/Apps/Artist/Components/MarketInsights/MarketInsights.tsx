@@ -87,14 +87,18 @@ export const hasSections = ({
   auctionResults,
   collections,
 }: {
-  highlights: { partners?: { edges: ReadonlyArray<any> } }
+  highlights: { partnersConnection?: { edges: ReadonlyArray<any> } }
   auctionResults?: { edges: ReadonlyArray<any> }
   collections?: ReadonlyArray<any>
 }) => {
-  const { partners } = highlights
+  const { partnersConnection } = highlights
 
   // Is there a gallery representation section?
-  if (partners && partners.edges && partners.edges.length > 0) {
+  if (
+    partnersConnection &&
+    partnersConnection.edges &&
+    partnersConnection.edges.length > 0
+  ) {
     return true
   }
 
@@ -145,14 +149,18 @@ export class MarketInsights extends React.Component<Props, null> {
   // Assumption: these are mutually exclusive categories among a partner.
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
-    const { partners } = highlights
-    if (partners && partners.edges && partners.edges.length > 0) {
-      const highCategory = highestCategory(partners.edges)
+    const { partnersConnection } = highlights
+    if (
+      partnersConnection &&
+      partnersConnection.edges &&
+      partnersConnection.edges.length > 0
+    ) {
+      const highCategory = highestCategory(partnersConnection.edges)
       return (
         <div>
           {this.renderGalleryCategory(
             highCategory,
-            groupedByCategories(partners.edges)[highCategory].length
+            groupedByCategories(partnersConnection.edges)[highCategory].length
           )}
         </div>
       )
@@ -161,12 +169,13 @@ export class MarketInsights extends React.Component<Props, null> {
 
   renderAuctionHighlight() {
     if (
-      !this.props.artist.auctionResults ||
-      this.props.artist.auctionResults.edges.length < 1
+      !this.props.artist.auctionResultsConnection ||
+      this.props.artist.auctionResultsConnection.edges.length < 1
     ) {
       return null
     }
-    const topAuctionResult = this.props.artist.auctionResults.edges[0].node
+    const topAuctionResult = this.props.artist.auctionResultsConnection.edges[0]
+      .node
     return <div>{topAuctionResult.price_realized.display} auction record</div>
   }
 

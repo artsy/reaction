@@ -17,7 +17,7 @@ import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
 export const routes: RouteConfig[] = [
   {
-    path: "/artist/:artist_id",
+    path: "/artist/:artistID",
     Component: ArtistApp,
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {
@@ -101,7 +101,7 @@ export const routes: RouteConfig[] = [
       // and not get caught here.
       new Redirect({
         from: "*",
-        to: "/artist/:artist_id",
+        to: "/artist/:artistID",
       }) as any,
     ],
   },

@@ -37,12 +37,11 @@ const ArtworkFilterArtworkGrid: React.FC<
 
   const {
     columnCount,
-    filtered_artworks: { artworks },
+    filtered_artworks: {
+      pageCursors,
+      pageInfo: { hasNextPage },
+    },
   } = props
-
-  const {
-    pageInfo: { hasNextPage },
-  } = artworks
 
   /**
    * Load next page of artworks
@@ -64,7 +63,7 @@ const ArtworkFilterArtworkGrid: React.FC<
     <>
       <LoadingArea isLoading={props.isLoading}>
         <ArtworkGrid
-          artworks={artworks as any}
+          artworks={props.filtered_artworks as any}
           columnCount={columnCount}
           preloadImageCount={9}
           itemMargin={40}
@@ -83,8 +82,8 @@ const ArtworkFilterArtworkGrid: React.FC<
 
         <Box>
           <Pagination
-            hasNextPage={artworks.pageInfo.hasNextPage}
-            pageCursors={artworks.pageCursors as any}
+            hasNextPage={hasNextPage}
+            pageCursors={pageCursors as any}
             onClick={(_cursor, page) => loadPage(page)}
             onNext={() => loadNext()}
             scrollTo="#jump--artworkFilter"
@@ -99,11 +98,7 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
   ArtworkFilterArtworkGrid,
   {
     filtered_artworks: graphql`
-      fragment ArtworkFilterArtworkGrid2_filtered_artworks on FilterArtworksConnection
-        @argumentDefinitions(
-          first: { type: "Int", defaultValue: 30 }
-          after: { type: "String", defaultValue: "" }
-        ) {
+      fragment ArtworkFilterArtworkGrid2_filtered_artworks on FilterArtworksConnection {
         id
         aggregations {
           slice
@@ -132,12 +127,12 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
   graphql`
     query ArtworkFilterArtworkGrid2Query(
       $filteredArtworksNodeID: ID!
-      $first: Int!
-      $after: String
-    ) {
+    ) # $first: Int!
+    # $after: String
+    {
       filtered_artworks: node(id: $filteredArtworksNodeID) {
         ...ArtworkFilterArtworkGrid2_filtered_artworks
-          @arguments(first: $first, after: $after)
+        # @arguments(first: $first, after: $after)
       }
     }
   `

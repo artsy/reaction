@@ -82,7 +82,7 @@ export const BaseArtworkFilter: React.FC<{
   viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
   const { filtered_artworks } = viewer
-  const hasFilter = filtered_artworks && filtered_artworks.__id
+  const hasFilter = filtered_artworks && filtered_artworks.id
 
   // If there was an error fetching the filter,
   // we still want to render the rest of the page.

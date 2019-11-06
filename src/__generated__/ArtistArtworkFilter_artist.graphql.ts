@@ -225,6 +225,11 @@ const node: ReaderFragment = {
           "variableName": "acquireable"
         },
         {
+          "kind": "Literal",
+          "name": "after",
+          "value": ""
+        },
+        {
           "kind": "Variable",
           "name": "aggregations",
           "variableName": "aggregations"
@@ -248,6 +253,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "color",
           "variableName": "color"
+        },
+        {
+          "kind": "Literal",
+          "name": "first",
+          "value": 30
         },
         {
           "kind": "Variable",
@@ -300,11 +310,6 @@ const node: ReaderFragment = {
           "variableName": "priceRange"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0
-        },
-        {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort"
@@ -334,5 +339,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '178574b6e725b62d0c0f312e02c19983';
+(node as any).hash = '09d117cb871dd244de4b2a5ea74134d4';
 export default node;

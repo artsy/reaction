@@ -236,7 +236,7 @@ export const CVPaginationContainer = createPaginationContainer(
         ...fragmentVariables,
         count,
         cursor,
-        artistID: props.artist.id,
+        artistID: props.artist.slug,
       }
     },
     query: graphql`

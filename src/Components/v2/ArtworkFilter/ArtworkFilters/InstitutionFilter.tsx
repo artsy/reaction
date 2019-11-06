@@ -28,7 +28,7 @@ export const InstitutionFilter: FC = () => {
               <Radio
                 key={index}
                 my={0.3}
-                value={item.id.toLocaleLowerCase()}
+                value={item.value.toLocaleLowerCase()}
                 label={item.name}
               />
             )

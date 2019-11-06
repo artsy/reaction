@@ -34,9 +34,9 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
       price_guidance,
       slug,
       title,
-      artworks: { artworks_connection },
+      artworksConnection,
     } = this.props.collection
-    const artworks = artworks_connection.edges.map(({ node }) => node)
+    const artworks = artworksConnection.edges.map(({ node }) => node)
     const formattedTitle = (title && title.split(": ")[1]) || title
     const bgImages = compact(
       artworks.map(({ image }) => image && image.resized && image.resized.url)

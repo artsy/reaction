@@ -36,7 +36,7 @@ class AuctionResultsContainer extends Component<
   loadNext = () => {
     const {
       artist: {
-        auctionResults: {
+        auctionResultsConnection: {
           pageInfo: { hasNextPage, endCursor },
         },
       },
@@ -58,7 +58,7 @@ class AuctionResultsContainer extends Component<
       {
         first: PAGE_SIZE,
         after: null,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
         sort: this.props.sort,
@@ -79,7 +79,7 @@ class AuctionResultsContainer extends Component<
       {
         first: PAGE_SIZE,
         after: cursor,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
         sort: this.props.sort,
@@ -102,8 +102,9 @@ class AuctionResultsContainer extends Component<
   }
 
   render() {
-    const auctionResultsLength = this.props.artist.auctionResults.edges.length
-    const { totalCount } = this.props.artist.auctionResults
+    const auctionResultsLength = this.props.artist.auctionResultsConnection
+      .edges.length
+    const { totalCount } = this.props.artist.auctionResultsConnection
     return (
       <Subscribe to={[AuctionResultsState]}>
         {({ state }: AuctionResultsState) => {
@@ -128,7 +129,7 @@ class AuctionResultsContainer extends Component<
                   <Spacer mt={3} />
 
                   <LoadingArea isLoading={this.state.isLoading}>
-                    {this.props.artist.auctionResults.edges.map(
+                    {this.props.artist.auctionResultsConnection.edges.map(
                       ({ node }, index) => {
                         return (
                           <React.Fragment key={index}>
@@ -149,9 +150,12 @@ class AuctionResultsContainer extends Component<
                   <Box>
                     <Pagination
                       hasNextPage={
-                        this.props.artist.auctionResults.pageInfo.hasNextPage
+                        this.props.artist.auctionResultsConnection.pageInfo
+                          .hasNextPage
                       }
-                      pageCursors={this.props.artist.auctionResults.pageCursors}
+                      pageCursors={
+                        this.props.artist.auctionResultsConnection.pageCursors
+                      }
                       onClick={this.loadAfter}
                       onNext={this.loadNext}
                       scrollTo="#jumpto-ArtistHeader"

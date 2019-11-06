@@ -52,7 +52,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
       {
         first: PAGE_SIZE,
         after: cursor,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
         status: this.props.status,

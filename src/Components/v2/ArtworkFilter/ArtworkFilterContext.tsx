@@ -62,7 +62,7 @@ export type Aggregations = Array<{
     | "TOTAL"
   counts: Array<{
     count: number
-    id: string
+    value: string
     name: string
   }>
 }>
