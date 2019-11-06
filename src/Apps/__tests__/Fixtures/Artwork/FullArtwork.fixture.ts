@@ -1,6 +1,6 @@
 export const FullArtworkFixture = {
-  id: "andy-warhol-skull",
-  _id: "4d8b93ba4eb68a1b2c001c5b",
+  slug: "andy-warhol-skull",
+  internalID: "4d8b93ba4eb68a1b2c001c5b",
   is_acquireable: false,
   is_offerable: false,
   availability: "sold",
@@ -8,8 +8,8 @@ export const FullArtworkFixture = {
   is_in_auction: false,
   artists: [
     {
-      id: "andy-warhol",
-      _id: "4d8b92b34eb68a1b2c0003f4",
+      slug: "andy-warhol",
+      internalID: "4d8b92b34eb68a1b2c0003f4",
       name: "Andy Warhol",
       href: "/artist/andy-warhol",
       image: {
@@ -17,7 +17,7 @@ export const FullArtworkFixture = {
           url:
             "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=100&height=100&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FE-k-uLoQADM8AjadsSKHrA%2Flarge.jpg",
         },
-        __id: "andy-warhol",
+        id: "andy-warhol",
       },
       formatted_nationality_and_birthday: "American, 1928–1987",
       counts: { partner_shows: 663, follows: 154690 },
@@ -26,7 +26,7 @@ export const FullArtworkFixture = {
           partner: {
             __typename: "Partner",
             name: "Andy Warhol Museum",
-            __id: "UGFydG5lcjphbmR5LXdhcmhvbC1tdXNldW0=",
+            id: "UGFydG5lcjphbmR5LXdhcmhvbC1tdXNldW0=",
           },
           name: '"Andy Warhol: Revelation"',
           start_at: "2019",
@@ -35,17 +35,17 @@ export const FullArtworkFixture = {
               url:
                 "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSmFF0qr4mikrFNaug3IsBg%2Flarge.jpg",
             },
-            __id: null,
+            id: null,
           },
           city: "Pittsburgh",
-          __id:
+          id:
             "U2hvdzphbmR5LXdhcmhvbC1tdXNldW0tYW5keS13YXJob2wtcmV2ZWxhdGlvbg==",
         },
         {
           partner: {
             __typename: "Partner",
             name: "New York Academy of Art",
-            __id: "UGFydG5lcjpuZXcteW9yay1hY2FkZW15LW9mLWFydA==",
+            id: "UGFydG5lcjpuZXcteW9yay1hY2FkZW15LW9mLWFydA==",
           },
           name: "Andy Warhol: By Hand, Drawings 1950s-1980s",
           start_at: "2019",
@@ -54,17 +54,17 @@ export const FullArtworkFixture = {
               url:
                 "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FsxIHBhw00k6jAZnJmTt4Ww%2Flarge.jpg",
             },
-            __id: null,
+            id: null,
           },
           city: "New York ",
-          __id:
+          id:
             "U2hvdzpuZXcteW9yay1hY2FkZW15LW9mLWFydC1hbmR5LXdhcmhvbC1ieS1oYW5kLWRyYXdpbmdzLTE5NTBzLTE5ODBz",
         },
         {
           partner: {
             __typename: "Partner",
             name: "Whitney Museum of American Art",
-            __id: "UGFydG5lcjp3aGl0bmV5LW11c2V1bS1vZi1hbWVyaWNhbi1hcnQtMQ==",
+            id: "UGFydG5lcjp3aGl0bmV5LW11c2V1bS1vZi1hbWVyaWNhbi1hcnQtMQ==",
           },
           name: "Andy Warhol: From A to B and Back Again",
           start_at: "2018",
@@ -73,10 +73,10 @@ export const FullArtworkFixture = {
               url:
                 "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FqdSGWwHeMcScSAu3vKbyQQ%2Flarge.jpg",
             },
-            __id: null,
+            id: null,
           },
           city: "New York",
-          __id:
+          id:
             "U2hvdzp3aGl0bmV5LW11c2V1bS1vZi1hbWVyaWNhbi1hcnQtMS1hbmR5LXdhcmhvbC1mcm9tLWEtdG8tYi1hbmQtYmFjay1hZ2Fpbg==",
         },
       ],
@@ -93,53 +93,59 @@ export const FullArtworkFixture = {
             {
               node: {
                 __typename: "Partner",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 categories: [
-                  { id: "contemporary", __id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5" },
-                  { id: "established", __id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
-                  { id: "modern", __id: "Q2F0ZWdvcnk6bW9kZXJu" },
-                  { id: "painting", __id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
-                  { id: "blue-chip", __id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
-                ],
-              },
-              __id: "UGFydG5lckFydGlzdEVkZ2U6NTIwM2Y1NWU4N2E1M2ViOWZkMDAwMDcw",
-            },
-            {
-              node: {
-                __typename: "Partner",
-                __id: "UGFydG5lcjpnYWxlcmllLXRoYWRkYWV1cy1yb3BhYw==",
-                categories: [
-                  { id: "blue-chip", __id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
-                ],
-              },
-              __id: "UGFydG5lckFydGlzdEVkZ2U6NTU0YWI2MDg3NzZmNzI1MzQyMDYwMDAw",
-            },
-            {
-              node: {
-                __typename: "Partner",
-                __id: "UGFydG5lcjpza2Fyc3RlZHQtZ2FsbGVyeQ==",
-                categories: [
-                  { id: "blue-chip", __id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
-                ],
-              },
-              __id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNWE4Zjk4YjNiODFlNDQ4MDAwMDc1",
-            },
-            {
-              node: {
-                __typename: "Partner",
-                __id: "UGFydG5lcjphbnRvbi1rZXJuLWdhbGxlcnk=",
-                categories: [
-                  { id: "contemporary", __id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5" },
-                  { id: "established", __id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
-                  { id: "painting", __id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
-                  { id: "sculpture", __id: "Q2F0ZWdvcnk6c2N1bHB0dXJl" },
                   {
-                    id: "top-established",
-                    __id: "Q2F0ZWdvcnk6dG9wLWVzdGFibGlzaGVk",
+                    slug: "contemporary",
+                    id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5",
+                  },
+                  { slug: "established", id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
+                  { slug: "modern", id: "Q2F0ZWdvcnk6bW9kZXJu" },
+                  { slug: "painting", id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
+                  { slug: "blue-chip", id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
+                ],
+              },
+              id: "UGFydG5lckFydGlzdEVkZ2U6NTIwM2Y1NWU4N2E1M2ViOWZkMDAwMDcw",
+            },
+            {
+              node: {
+                __typename: "Partner",
+                id: "UGFydG5lcjpnYWxlcmllLXRoYWRkYWV1cy1yb3BhYw==",
+                categories: [
+                  { slug: "blue-chip", id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
+                ],
+              },
+              id: "UGFydG5lckFydGlzdEVkZ2U6NTU0YWI2MDg3NzZmNzI1MzQyMDYwMDAw",
+            },
+            {
+              node: {
+                __typename: "Partner",
+                id: "UGFydG5lcjpza2Fyc3RlZHQtZ2FsbGVyeQ==",
+                categories: [
+                  { slug: "blue-chip", id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
+                ],
+              },
+              id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNWE4Zjk4YjNiODFlNDQ4MDAwMDc1",
+            },
+            {
+              node: {
+                __typename: "Partner",
+                id: "UGFydG5lcjphbnRvbi1rZXJuLWdhbGxlcnk=",
+                categories: [
+                  {
+                    slug: "contemporary",
+                    id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5",
+                  },
+                  { slug: "established", id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
+                  { slug: "painting", id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
+                  { slug: "sculpture", id: "Q2F0ZWdvcnk6c2N1bHB0dXJl" },
+                  {
+                    slug: "top-established",
+                    id: "Q2F0ZWdvcnk6dG9wLWVzdGFibGlzaGVk",
                   },
                 ],
               },
-              __id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNThlZGQyNzViMjRjMzI3MDAwMWNj",
+              id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNThlZGQyNzViMjRjMzI3MDAwMWNj",
             },
           ],
         },
@@ -149,7 +155,7 @@ export const FullArtworkFixture = {
           {
             node: {
               __typename: "AuctionResult",
-              __id: "QXVjdGlvblJlc3VsdDoxMDkzOQ==",
+              id: "QXVjdGlvblJlc3VsdDoxMDkzOQ==",
               price_realized: { display: "$63m" },
               organization: "Christie's",
               sale_date: "2017",
@@ -161,7 +167,7 @@ export const FullArtworkFixture = {
         text:
           '<p>Obsessed with <a href="/collection/andy-warhol-celebrity-portraits">celebrity</a>, consumer culture, and mechanical (re)production, <a href="/gene/pop-art">Pop artist</a> Andy Warhol created some of the most iconic images of the 20th century. As famous for his quips as for his art—he variously mused that “art is what you can get away with” and “everyone will be famous for 15 minutes”—Warhol drew widely from popular culture and everyday subject matter, creating works like his <a href="/collection/andy-warhol-campbells-soup-can"><em>32 Campbell&#39;s Soup Cans</em></a> (1962), <a href="/collection/andy-warhol-brillo-boxes">Brillo pad box sculptures</a>, and portraits of <a href="/collection/andy-warhol-marilyn-monroe">Marilyn Monroe</a>, using the medium of silk-screen printmaking to achieve his characteristic hard edges and flat areas of color. Known for his cultivation of celebrity, Factory studio (a radical social and creative melting pot), and avant-garde films like <em>Chelsea Girls</em> (1966), Warhol was also a mentor to artists like <a href="/artist/keith-haring">Keith Haring</a> and <a href="/artist/jean-michel-basquiat">Jean-Michel Basquiat</a>. His Pop sensibility is now standard practice, taken up by major contemporary artists <a href="/artist/richard-prince">Richard Prince</a>, <a href="/artist/takashi-murakami">Takashi Murakami</a>, and <a href="/artist/jeff-koons">Jeff Koons</a>, among countless others.</p>\n',
       },
-      __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+      id: "QXJ0aXN0OmFuZHktd2FyaG9s",
       is_followed: false,
       related: { suggested: null },
       is_consignable: true,
@@ -169,7 +175,7 @@ export const FullArtworkFixture = {
   ],
   artist: {
     _id: "4d8b92b34eb68a1b2c0003f4",
-    id: "andy-warhol",
+    slug: "andy-warhol",
     name: "Andy Warhol",
     href: "/artist/andy-warhol",
     image: {
@@ -177,7 +183,7 @@ export const FullArtworkFixture = {
         url:
           "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=100&height=100&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FE-k-uLoQADM8AjadsSKHrA%2Flarge.jpg",
       },
-      __id: "andy-warhol",
+      id: "andy-warhol",
     },
     formatted_nationality_and_birthday: "American, 1928–1987",
     counts: { partner_shows: 663, follows: 154690 },
@@ -186,7 +192,7 @@ export const FullArtworkFixture = {
         partner: {
           __typename: "Partner",
           name: "Andy Warhol Museum",
-          __id: "UGFydG5lcjphbmR5LXdhcmhvbC1tdXNldW0=",
+          id: "UGFydG5lcjphbmR5LXdhcmhvbC1tdXNldW0=",
         },
         name: '"Andy Warhol: Revelation"',
         start_at: "2019",
@@ -195,17 +201,16 @@ export const FullArtworkFixture = {
             url:
               "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSmFF0qr4mikrFNaug3IsBg%2Flarge.jpg",
           },
-          __id: null,
+          id: null,
         },
         city: "Pittsburgh",
-        __id:
-          "U2hvdzphbmR5LXdhcmhvbC1tdXNldW0tYW5keS13YXJob2wtcmV2ZWxhdGlvbg==",
+        id: "U2hvdzphbmR5LXdhcmhvbC1tdXNldW0tYW5keS13YXJob2wtcmV2ZWxhdGlvbg==",
       },
       {
         partner: {
           __typename: "Partner",
           name: "New York Academy of Art",
-          __id: "UGFydG5lcjpuZXcteW9yay1hY2FkZW15LW9mLWFydA==",
+          id: "UGFydG5lcjpuZXcteW9yay1hY2FkZW15LW9mLWFydA==",
         },
         name: "Andy Warhol: By Hand, Drawings 1950s-1980s",
         start_at: "2019",
@@ -214,17 +219,17 @@ export const FullArtworkFixture = {
             url:
               "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FsxIHBhw00k6jAZnJmTt4Ww%2Flarge.jpg",
           },
-          __id: null,
+          id: null,
         },
         city: "New York ",
-        __id:
+        id:
           "U2hvdzpuZXcteW9yay1hY2FkZW15LW9mLWFydC1hbmR5LXdhcmhvbC1ieS1oYW5kLWRyYXdpbmdzLTE5NTBzLTE5ODBz",
       },
       {
         partner: {
           __typename: "Partner",
           name: "Whitney Museum of American Art",
-          __id: "UGFydG5lcjp3aGl0bmV5LW11c2V1bS1vZi1hbWVyaWNhbi1hcnQtMQ==",
+          id: "UGFydG5lcjp3aGl0bmV5LW11c2V1bS1vZi1hbWVyaWNhbi1hcnQtMQ==",
         },
         name: "Andy Warhol: From A to B and Back Again",
         start_at: "2018",
@@ -233,10 +238,10 @@ export const FullArtworkFixture = {
             url:
               "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FqdSGWwHeMcScSAu3vKbyQQ%2Flarge.jpg",
           },
-          __id: null,
+          id: null,
         },
         city: "New York",
-        __id:
+        id:
           "U2hvdzp3aGl0bmV5LW11c2V1bS1vZi1hbWVyaWNhbi1hcnQtMS1hbmR5LXdhcmhvbC1mcm9tLWEtdG8tYi1hbmQtYmFjay1hZ2Fpbg==",
       },
     ],
@@ -253,53 +258,53 @@ export const FullArtworkFixture = {
           {
             node: {
               __typename: "Partner",
-              __id: "UGFydG5lcjpnYWdvc2lhbg==",
+              id: "UGFydG5lcjpnYWdvc2lhbg==",
               categories: [
-                { id: "contemporary", __id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5" },
-                { id: "established", __id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
-                { id: "modern", __id: "Q2F0ZWdvcnk6bW9kZXJu" },
-                { id: "painting", __id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
-                { id: "blue-chip", __id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
+                { slug: "contemporary", id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5" },
+                { slug: "established", id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
+                { slug: "modern", id: "Q2F0ZWdvcnk6bW9kZXJu" },
+                { slug: "painting", id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
+                { slug: "blue-chip", id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
               ],
             },
-            __id: "UGFydG5lckFydGlzdEVkZ2U6NTIwM2Y1NWU4N2E1M2ViOWZkMDAwMDcw",
+            id: "UGFydG5lckFydGlzdEVkZ2U6NTIwM2Y1NWU4N2E1M2ViOWZkMDAwMDcw",
           },
           {
             node: {
               __typename: "Partner",
-              __id: "UGFydG5lcjpnYWxlcmllLXRoYWRkYWV1cy1yb3BhYw==",
+              id: "UGFydG5lcjpnYWxlcmllLXRoYWRkYWV1cy1yb3BhYw==",
               categories: [
-                { id: "blue-chip", __id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
+                { slug: "blue-chip", id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
               ],
             },
-            __id: "UGFydG5lckFydGlzdEVkZ2U6NTU0YWI2MDg3NzZmNzI1MzQyMDYwMDAw",
+            id: "UGFydG5lckFydGlzdEVkZ2U6NTU0YWI2MDg3NzZmNzI1MzQyMDYwMDAw",
           },
           {
             node: {
               __typename: "Partner",
-              __id: "UGFydG5lcjpza2Fyc3RlZHQtZ2FsbGVyeQ==",
+              id: "UGFydG5lcjpza2Fyc3RlZHQtZ2FsbGVyeQ==",
               categories: [
-                { id: "blue-chip", __id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
+                { slug: "blue-chip", id: "Q2F0ZWdvcnk6Ymx1ZS1jaGlw" },
               ],
             },
-            __id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNWE4Zjk4YjNiODFlNDQ4MDAwMDc1",
+            id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNWE4Zjk4YjNiODFlNDQ4MDAwMDc1",
           },
           {
             node: {
               __typename: "Partner",
-              __id: "UGFydG5lcjphbnRvbi1rZXJuLWdhbGxlcnk=",
+              id: "UGFydG5lcjphbnRvbi1rZXJuLWdhbGxlcnk=",
               categories: [
-                { id: "contemporary", __id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5" },
-                { id: "established", __id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
-                { id: "painting", __id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
-                { id: "sculpture", __id: "Q2F0ZWdvcnk6c2N1bHB0dXJl" },
+                { slug: "contemporary", id: "Q2F0ZWdvcnk6Y29udGVtcG9yYXJ5" },
+                { slug: "established", id: "Q2F0ZWdvcnk6ZXN0YWJsaXNoZWQ=" },
+                { slug: "painting", id: "Q2F0ZWdvcnk6cGFpbnRpbmc=" },
+                { slug: "sculpture", id: "Q2F0ZWdvcnk6c2N1bHB0dXJl" },
                 {
-                  id: "top-established",
-                  __id: "Q2F0ZWdvcnk6dG9wLWVzdGFibGlzaGVk",
+                  slug: "top-established",
+                  id: "Q2F0ZWdvcnk6dG9wLWVzdGFibGlzaGVk",
                 },
               ],
             },
-            __id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNThlZGQyNzViMjRjMzI3MDAwMWNj",
+            id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNThlZGQyNzViMjRjMzI3MDAwMWNj",
           },
         ],
       },
@@ -309,7 +314,7 @@ export const FullArtworkFixture = {
         {
           node: {
             __typename: "AuctionResult",
-            __id: "QXVjdGlvblJlc3VsdDoxMDkzOQ==",
+            id: "QXVjdGlvblJlc3VsdDoxMDkzOQ==",
             price_realized: { display: "$63m" },
             organization: "Christie's",
             sale_date: "2017",
@@ -321,7 +326,7 @@ export const FullArtworkFixture = {
       text:
         '<p>Obsessed with <a href="/collection/andy-warhol-celebrity-portraits">celebrity</a>, consumer culture, and mechanical (re)production, <a href="/gene/pop-art">Pop artist</a> Andy Warhol created some of the most iconic images of the 20th century. As famous for his quips as for his art—he variously mused that “art is what you can get away with” and “everyone will be famous for 15 minutes”—Warhol drew widely from popular culture and everyday subject matter, creating works like his <a href="/collection/andy-warhol-campbells-soup-can"><em>32 Campbell&#39;s Soup Cans</em></a> (1962), <a href="/collection/andy-warhol-brillo-boxes">Brillo pad box sculptures</a>, and portraits of <a href="/collection/andy-warhol-marilyn-monroe">Marilyn Monroe</a>, using the medium of silk-screen printmaking to achieve his characteristic hard edges and flat areas of color. Known for his cultivation of celebrity, Factory studio (a radical social and creative melting pot), and avant-garde films like <em>Chelsea Girls</em> (1966), Warhol was also a mentor to artists like <a href="/artist/keith-haring">Keith Haring</a> and <a href="/artist/jean-michel-basquiat">Jean-Michel Basquiat</a>. His Pop sensibility is now standard practice, taken up by major contemporary artists <a href="/artist/richard-prince">Richard Prince</a>, <a href="/artist/takashi-murakami">Takashi Murakami</a>, and <a href="/artist/jeff-koons">Jeff Koons</a>, among countless others.</p>\n',
     },
-    __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+    id: "QXJ0aXN0OmFuZHktd2FyaG9s",
     is_followed: false,
     related: {
       artists: {
@@ -330,17 +335,17 @@ export const FullArtworkFixture = {
           {
             node: {
               name: "Robert Indiana",
-              id: "robert-indiana",
+              slug: "robert-indiana",
               href: "/artist/robert-indiana",
               image: {
                 cropped: {
                   url:
                     "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=400&height=300&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FxPV7zLtiKJPPxRVJTEtHIA%2Flarge.jpg",
                 },
-                __id: "robert-indiana",
+                id: "robert-indiana",
               },
               formatted_nationality_and_birthday: "American, 1928–2018",
-              __id: "QXJ0aXN0OnJvYmVydC1pbmRpYW5h",
+              id: "QXJ0aXN0OnJvYmVydC1pbmRpYW5h",
               is_followed: false,
               counts: { follows: 22067 },
               __typename: "Artist",
@@ -350,17 +355,17 @@ export const FullArtworkFixture = {
           {
             node: {
               name: "Tom Wesselmann",
-              id: "tom-wesselmann",
+              slug: "tom-wesselmann",
               href: "/artist/tom-wesselmann",
               image: {
                 cropped: {
                   url:
                     "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=400&height=300&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F8smV519M1L352CTihrfW7A%2Flarge.jpg",
                 },
-                __id: "tom-wesselmann",
+                id: "tom-wesselmann",
               },
               formatted_nationality_and_birthday: "American, 1931–2004",
-              __id: "QXJ0aXN0OnRvbS13ZXNzZWxtYW5u",
+              id: "QXJ0aXN0OnRvbS13ZXNzZWxtYW5u",
               is_followed: false,
               counts: { follows: 46744 },
               __typename: "Artist",
@@ -370,17 +375,17 @@ export const FullArtworkFixture = {
           {
             node: {
               name: "James Rosenquist",
-              id: "james-rosenquist",
+              slug: "james-rosenquist",
               href: "/artist/james-rosenquist",
               image: {
                 cropped: {
                   url:
                     "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=400&height=300&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F3VUm07DpKQNQdA_QfCrPcA%2Flarge.jpg",
                 },
-                __id: "james-rosenquist",
+                id: "james-rosenquist",
               },
               formatted_nationality_and_birthday: "American, 1933–2017",
-              __id: "QXJ0aXN0OmphbWVzLXJvc2VucXVpc3Q=",
+              id: "QXJ0aXN0OmphbWVzLXJvc2VucXVpc3Q=",
               is_followed: false,
               counts: { follows: 21339 },
               __typename: "Artist",
@@ -390,17 +395,17 @@ export const FullArtworkFixture = {
           {
             node: {
               name: "Philip Hanson",
-              id: "philip-hanson",
+              slug: "philip-hanson",
               href: "/artist/philip-hanson",
               image: {
                 cropped: {
                   url:
                     "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=400&height=300&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FJj5IyLzAjXA-HeVzm0oE0Q%2Flarge.jpg",
                 },
-                __id: "philip-hanson",
+                id: "philip-hanson",
               },
               formatted_nationality_and_birthday: "American, b. 1943",
-              __id: "QXJ0aXN0OnBoaWxpcC1oYW5zb24=",
+              id: "QXJ0aXN0OnBoaWxpcC1oYW5zb24=",
               is_followed: false,
               counts: { follows: 1105 },
               __typename: "Artist",
@@ -411,14 +416,14 @@ export const FullArtworkFixture = {
       },
     },
   },
-  __id: "QXJ0d29yazphbmR5LXdhcmhvbC1za3VsbA==",
+  id: "QXJ0d29yazphbmR5LXdhcmhvbC1za3VsbA==",
   href: "/artwork/andy-warhol-skull",
   date: "1976",
   artist_names: "Andy Warhol",
   sale_message: null,
   partner: {
     name: "Gagosian",
-    __id: "UGFydG5lcjpnYWdvc2lhbg==",
+    id: "UGFydG5lcjpnYWdvc2lhbg==",
     type: "Gallery",
     profile: {
       image: {
@@ -426,15 +431,15 @@ export const FullArtworkFixture = {
           url:
             "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fit&width=320&height=239&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FAkEQ2ejn_1PXMJP0vMHTJw%2Fsquare.jpg",
         },
-        __id: "521eb510275b24b8030008b9",
+        id: "521eb510275b24b8030008b9",
       },
-      __id: "UHJvZmlsZTpnYWdvc2lhbi1nYWxsZXJ5",
-      id: "gagosian-gallery",
+      id: "UHJvZmlsZTpnYWdvc2lhbi1nYWxsZXJ5",
+      slug: "gagosian-gallery",
       is_followed: false,
       icon: {
         url:
           "https://d32dm0rphc51dk.cloudfront.net/872d6EhNkZcUmK_M1uwbGw/square140.png",
-        __id: "592873b87622dd5258177ae1",
+        id: "592873b87622dd5258177ae1",
       },
     },
     initials: "G",
@@ -442,52 +447,52 @@ export const FullArtworkFixture = {
     locations: [
       {
         city: "New York",
-        __id: "TG9jYXRpb246NGU0YWU2MzFjNDNkNGQwMDAxMDA1YmFj",
+        id: "TG9jYXRpb246NGU0YWU2MzFjNDNkNGQwMDAxMDA1YmFj",
       },
       {
         city: "New York",
-        __id: "TG9jYXRpb246NTc2YWYzY2FjYjRjMjc2NWRlMDAwOGQz",
+        id: "TG9jYXRpb246NTc2YWYzY2FjYjRjMjc2NWRlMDAwOGQz",
       },
       {
         city: "New York",
-        __id: "TG9jYXRpb246NTNmZTNkZTk3MjYxNjkxMjEwNDUwMjAw",
+        id: "TG9jYXRpb246NTNmZTNkZTk3MjYxNjkxMjEwNDUwMjAw",
       },
       {
         city: "New York",
-        __id: "TG9jYXRpb246NGU0YWU2NmZjNDNkNGQwMDAxMDA1YzU4",
+        id: "TG9jYXRpb246NGU0YWU2NmZjNDNkNGQwMDAxMDA1YzU4",
       },
       {
         city: "New York",
-        __id: "TG9jYXRpb246NGU0YWU1YTI3MjdlYmYwMDAxMDA0OTdi",
+        id: "TG9jYXRpb246NGU0YWU1YTI3MjdlYmYwMDAxMDA0OTdi",
       },
       {
         city: "Beverly Hills",
-        __id: "TG9jYXRpb246NTFkZjVlMDY4YjNiODE1YjYyMDAwMDEy",
+        id: "TG9jYXRpb246NTFkZjVlMDY4YjNiODE1YjYyMDAwMDEy",
       },
       {
         city: "San Francisco",
-        __id: "TG9jYXRpb246NTcyMTFjM2E5YzE4ZGIyNDEzMDAyM2E0",
+        id: "TG9jYXRpb246NTcyMTFjM2E5YzE4ZGIyNDEzMDAyM2E0",
       },
-      { city: "London", __id: "TG9jYXRpb246NTFkZjVlNGI4YjNiODFkZTQ1MDAwMDJj" },
-      { city: "London", __id: "TG9jYXRpb246NTY5ZmU3NjE2ZDkzMmQwMmJkMDAwMWU4" },
-      { city: "London", __id: "TG9jYXRpb246NTFkZjVlOTU4YjNiODE5MmZlMDAwMDI1" },
-      { city: "Paris", __id: "TG9jYXRpb246NTFkZjVlZDYyNzViMjQ5OTE1MDAwMDJl" },
+      { city: "London", id: "TG9jYXRpb246NTFkZjVlNGI4YjNiODFkZTQ1MDAwMDJj" },
+      { city: "London", id: "TG9jYXRpb246NTY5ZmU3NjE2ZDkzMmQwMmJkMDAwMWU4" },
+      { city: "London", id: "TG9jYXRpb246NTFkZjVlOTU4YjNiODE5MmZlMDAwMDI1" },
+      { city: "Paris", id: "TG9jYXRpb246NTFkZjVlZDYyNzViMjQ5OTE1MDAwMDJl" },
       {
         city: "Le Bourget",
-        __id: "TG9jYXRpb246NTFkZjVmMjA4YjNiODFkZTQ1MDAwMDJl",
+        id: "TG9jYXRpb246NTFkZjVmMjA4YjNiODFkZTQ1MDAwMDJl",
       },
-      { city: "Geneva", __id: "TG9jYXRpb246NTFlNzBkYjMyNzViMjRjMjRkMDAwMzdh" },
-      { city: "Basel", __id: "TG9jYXRpb246NWQwMDI1ZGY2ZTQ3YTkwMDEzYmI5Y2I2" },
-      { city: "Rome", __id: "TG9jYXRpb246NTFkZjVmNTcyNzViMjRjMWRhMDAwMDE2" },
-      { city: "Athens", __id: "TG9jYXRpb246NTFkZjVmOTY4YjNiODFmYjMzMDAwMDE3" },
+      { city: "Geneva", id: "TG9jYXRpb246NTFlNzBkYjMyNzViMjRjMjRkMDAwMzdh" },
+      { city: "Basel", id: "TG9jYXRpb246NWQwMDI1ZGY2ZTQ3YTkwMDEzYmI5Y2I2" },
+      { city: "Rome", id: "TG9jYXRpb246NTFkZjVmNTcyNzViMjRjMWRhMDAwMDE2" },
+      { city: "Athens", id: "TG9jYXRpb246NTFkZjVmOTY4YjNiODFmYjMzMDAwMDE3" },
       {
         city: "Central, Hong Kong",
-        __id: "TG9jYXRpb246NTFlNzBkY2Q4YjNiODExNzFkMDAwMzYx",
+        id: "TG9jYXRpb246NTFlNzBkY2Q4YjNiODExNzFkMDAwMzYx",
       },
     ],
     isVerifiedSeller: false,
     _id: "4d8b92c44eb68a1b2c0004cb",
-    id: "gagosian",
+    slug: "gagosian",
     is_default_profile_public: true,
   },
   image_rights:
@@ -500,7 +505,7 @@ export const FullArtworkFixture = {
       url:
         "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fit&width=640&height=560&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FvAYXuDl0rYz7QR0Jx4MK2Q%2Flarge.jpg",
     },
-    __id: "4e68f259528702000104c329",
+    id: "4e68f259528702000104c329",
   },
   meta: {
     title: "Andy Warhol | Skull (1976) | Artsy",
@@ -553,8 +558,8 @@ export const FullArtworkFixture = {
     {
       url:
         "https://d32dm0rphc51dk.cloudfront.net/vAYXuDl0rYz7QR0Jx4MK2Q/tall.jpg",
-      __id: "4e68f259528702000104c329",
       id: "4e68f259528702000104c329",
+      internalID: "4e68f259528702000104c329",
       uri:
         "https://d32dm0rphc51dk.cloudfront.net/vAYXuDl0rYz7QR0Jx4MK2Q/large.jpg",
       placeholder: {
@@ -579,12 +584,12 @@ export const FullArtworkFixture = {
   ],
   artworkMeta: { share: "Check out Andy Warhol, Skull (1976), From Gagosian" },
   image: {
-    id: "4e68f259528702000104c329",
+    internalID: "4e68f259528702000104c329",
     url:
       "https://d32dm0rphc51dk.cloudfront.net/vAYXuDl0rYz7QR0Jx4MK2Q/larger.jpg",
     height: 1050,
     width: 1198,
-    __id: "4e68f259528702000104c329",
+    id: "4e68f259528702000104c329",
   },
   is_downloadable: false,
   is_hangable: true,
@@ -598,12 +603,12 @@ export const FullArtworkFixture = {
         edges: [
           {
             node: {
-              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1mbG93ZXJzLWlpLWRvdC03Mi0zNA==",
-              id: "andy-warhol-flowers-ii-dot-72-34",
+              id: "QXJ0d29yazphbmR5LXdhcmhvbC1mbG93ZXJzLWlpLWRvdC03Mi0zNA==",
+              slug: "andy-warhol-flowers-ii-dot-72-34",
               href: "/artwork/andy-warhol-flowers-ii-dot-72-34",
               image: {
                 aspect_ratio: 1.01,
-                __id: "5daced11b6cf180012217966",
+                id: "5daced11b6cf180012217966",
                 placeholder: "99.48717948717949%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/16oCO4qKjR3Yb_MoE1fSfg/large.jpg",
@@ -616,7 +621,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -625,7 +630,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Zeit Contemporary Art",
                 href: "/zeit-contemporary-art",
-                __id: "UGFydG5lcjp6ZWl0LWNvbnRlbXBvcmFyeS1hcnQ=",
+                id: "UGFydG5lcjp6ZWl0LWNvbnRlbXBvcmFyeS1hcnQ=",
                 type: "Gallery",
               },
               sale: null,
@@ -639,12 +644,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1ndW4tNw==",
-              id: "andy-warhol-gun-7",
+              id: "QXJ0d29yazphbmR5LXdhcmhvbC1ndW4tNw==",
+              slug: "andy-warhol-gun-7",
               href: "/artwork/andy-warhol-gun-7",
               image: {
                 aspect_ratio: 1.33,
-                __id: "5da7af24f52b8c00129b959c",
+                id: "5da7af24f52b8c00129b959c",
                 placeholder: "75.45045045045045%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/JWCN6Tk3cPV4KmlPvNFxnQ/large.jpg",
@@ -657,7 +662,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -666,7 +671,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "ArtLife Gallery",
                 href: "/artlife-gallery",
-                __id: "UGFydG5lcjphcnRsaWZlLWdhbGxlcnk=",
+                id: "UGFydG5lcjphcnRsaWZlLWdhbGxlcnk=",
                 type: "Gallery",
               },
               sale: null,
@@ -680,12 +685,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1wYXJpcy1yZXZpZXctNQ==",
-              id: "andy-warhol-paris-review-5",
+              id: "QXJ0d29yazphbmR5LXdhcmhvbC1wYXJpcy1yZXZpZXctNQ==",
+              slug: "andy-warhol-paris-review-5",
               href: "/artwork/andy-warhol-paris-review-5",
               image: {
                 aspect_ratio: 0.75,
-                __id: "5da77a31db1582000f59e5ad",
+                id: "5da77a31db1582000f59e5ad",
                 placeholder: "133.51705132621424%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/O2Ws1hdogoNGtiK6DvJ7AA/large.jpg",
@@ -698,7 +703,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -707,7 +712,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "DANE FINE ART",
                 href: "/great-dane-auctions",
-                __id: "UGFydG5lcjpkYW5lLWZpbmUtYXJ0",
+                id: "UGFydG5lcjpkYW5lLWZpbmUtYXJ0",
                 type: "Gallery",
               },
               sale: null,
@@ -721,13 +726,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazphbmR5LXdhcmhvbC1xdWVlbi1iZWF0cml4LW9mLXRoZS1uZXRoZXJsYW5kcy0z",
-              id: "andy-warhol-queen-beatrix-of-the-netherlands-3",
+              slug: "andy-warhol-queen-beatrix-of-the-netherlands-3",
               href: "/artwork/andy-warhol-queen-beatrix-of-the-netherlands-3",
               image: {
                 aspect_ratio: 0.82,
-                __id: "5da77a301f40ca001294705e",
+                id: "5da77a301f40ca001294705e",
                 placeholder: "121.2632275132275%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/numH9n76Bq12ykC8iCCLYw/large.jpg",
@@ -741,7 +746,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -750,7 +755,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "DANE FINE ART",
                 href: "/great-dane-auctions",
-                __id: "UGFydG5lcjpkYW5lLWZpbmUtYXJ0",
+                id: "UGFydG5lcjpkYW5lLWZpbmUtYXJ0",
                 type: "Gallery",
               },
               sale: null,
@@ -764,12 +769,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1kaWFtb25kLWR1c3Qtc2hvZS0yNzg=",
-              id: "andy-warhol-diamond-dust-shoe-278",
+              id: "QXJ0d29yazphbmR5LXdhcmhvbC1kaWFtb25kLWR1c3Qtc2hvZS0yNzg=",
+              slug: "andy-warhol-diamond-dust-shoe-278",
               href: "/artwork/andy-warhol-diamond-dust-shoe-278",
               image: {
                 aspect_ratio: 0.76,
-                __id: "5da7771e5d8f29000eca0af5",
+                id: "5da7771e5d8f29000eca0af5",
                 placeholder: "131.06666666666666%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/ojyGYvzYrejT2qR1N0CvrQ/large.jpg",
@@ -782,7 +787,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -791,7 +796,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Robin Rile Fine Art",
                 href: "/robin-rile-fine-art",
-                __id: "UGFydG5lcjpyb2Jpbi1yaWxlLWZpbmUtYXJ0",
+                id: "UGFydG5lcjpyb2Jpbi1yaWxlLWZpbmUtYXJ0",
                 type: "Gallery",
               },
               sale: null,
@@ -805,12 +810,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazphbmR5LXdhcmhvbC1zaG9lLWFuZC1sZWctMw==",
-              id: "andy-warhol-shoe-and-leg-3",
+              id: "QXJ0d29yazphbmR5LXdhcmhvbC1zaG9lLWFuZC1sZWctMw==",
+              slug: "andy-warhol-shoe-and-leg-3",
               href: "/artwork/andy-warhol-shoe-and-leg-3",
               image: {
                 aspect_ratio: 0.75,
-                __id: "5da7615be84a64000e4fd837",
+                id: "5da7615be84a64000e4fd837",
                 placeholder: "133.12645461598137%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/uS4oJvxhRv-gusLN-sAKGg/large.jpg",
@@ -823,7 +828,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -832,7 +837,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Long-Sharp Gallery",
                 href: "/long-sharp-gallery",
-                __id: "UGFydG5lcjpsb25nLXNoYXJwLWdhbGxlcnk=",
+                id: "UGFydG5lcjpsb25nLXNoYXJwLWdhbGxlcnk=",
                 type: "Gallery",
               },
               sale: null,
@@ -846,13 +851,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazphbmR5LXdhcmhvbC1raXNzLWZyb20tc2V2ZW4tb2JqZWN0cy1pbi1hLWJveC0x",
-              id: "andy-warhol-kiss-from-seven-objects-in-a-box-1",
+              slug: "andy-warhol-kiss-from-seven-objects-in-a-box-1",
               href: "/artwork/andy-warhol-kiss-from-seven-objects-in-a-box-1",
               image: {
                 aspect_ratio: 1,
-                __id: "5da61f4d94f1420011d805da",
+                id: "5da61f4d94f1420011d805da",
                 placeholder: "100%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/r2v6B90UUlredpwmxZR6lQ/large.jpg",
@@ -866,7 +871,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -875,13 +880,13 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Freeman's",
                 href: "/auction/freemans",
-                __id: "UGFydG5lcjpmcmVlbWFucw==",
+                id: "UGFydG5lcjpmcmVlbWFucw==",
                 type: "Auction House",
               },
               sale: {
                 is_auction: true,
                 is_closed: false,
-                __id:
+                id:
                   "U2FsZTpmcmVlbWFucy10aGUtcm9iZXJ0LWotbW9ycmlzb24tY29sbGVjdGlvbg==",
                 is_live_open: false,
                 is_open: true,
@@ -892,10 +897,10 @@ export const FullArtworkFixture = {
                 counts: { bidder_positions: 1 },
                 highest_bid: {
                   display: "$1,500",
-                  __id: "5daa4864dfc90f0007875f45",
+                  id: "5daa4864dfc90f0007875f45",
                 },
                 opening_bid: { display: "$1,500" },
-                __id:
+                id:
                   "U2FsZUFydHdvcms6YW5keS13YXJob2wta2lzcy1mcm9tLXNldmVuLW9iamVjdHMtaW4tYS1ib3gtMQ==",
               },
               is_inquireable: true,
@@ -907,15 +912,15 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
-                "QXJ0d29yazphbmR5LXdhcmhvbC1tYW8tZnJvbS10aGUtbmV3LXlvcmstY29sbGVjdGlvbi1mb3Itc3RvY2tob2xtLTE=",
               id:
+                "QXJ0d29yazphbmR5LXdhcmhvbC1tYW8tZnJvbS10aGUtbmV3LXlvcmstY29sbGVjdGlvbi1mb3Itc3RvY2tob2xtLTE=",
+              slug:
                 "andy-warhol-mao-from-the-new-york-collection-for-stockholm-1",
               href:
                 "/artwork/andy-warhol-mao-from-the-new-york-collection-for-stockholm-1",
               image: {
                 aspect_ratio: 1,
-                __id: "5da61f2ef3f773000e4c2b70",
+                id: "5da61f2ef3f773000e4c2b70",
                 placeholder: "100%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/vy_kCySxoIoPmeFhGcFazA/large.jpg",
@@ -929,7 +934,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmFuZHktd2FyaG9s",
+                  id: "QXJ0aXN0OmFuZHktd2FyaG9s",
                   href: "/artist/andy-warhol",
                   name: "Andy Warhol",
                 },
@@ -938,13 +943,13 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Freeman's",
                 href: "/auction/freemans",
-                __id: "UGFydG5lcjpmcmVlbWFucw==",
+                id: "UGFydG5lcjpmcmVlbWFucw==",
                 type: "Auction House",
               },
               sale: {
                 is_auction: true,
                 is_closed: false,
-                __id:
+                id:
                   "U2FsZTpmcmVlbWFucy10aGUtcm9iZXJ0LWotbW9ycmlzb24tY29sbGVjdGlvbg==",
                 is_live_open: false,
                 is_open: true,
@@ -955,10 +960,10 @@ export const FullArtworkFixture = {
                 counts: { bidder_positions: 2 },
                 highest_bid: {
                   display: "$800",
-                  __id: "5da9272cdfc90f0007875f07",
+                  id: "5da9272cdfc90f0007875f07",
                 },
                 opening_bid: { display: "$750" },
-                __id:
+                id:
                   "U2FsZUFydHdvcms6YW5keS13YXJob2wtbWFvLWZyb20tdGhlLW5ldy15b3JrLWNvbGxlY3Rpb24tZm9yLXN0b2NraG9sbS0x",
               },
               is_inquireable: true,
@@ -980,14 +985,14 @@ export const FullArtworkFixture = {
         edges: [
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazpicmlhbi1iaWVsbWFubi1uYXRoYW4tdGVhaHVwb28tZnJlbmNoLXBvbHluZXNpYS0yMDEx",
-              id: "brian-bielmann-nathan-teahupoo-french-polynesia-2011",
+              slug: "brian-bielmann-nathan-teahupoo-french-polynesia-2011",
               href:
                 "/artwork/brian-bielmann-nathan-teahupoo-french-polynesia-2011",
               image: {
                 aspect_ratio: 1.25,
-                __id: "5d49bf95f182ed000dd61a73",
+                id: "5d49bf95f182ed000dd61a73",
                 placeholder: "79.92277992277992%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/h3xRuTvPQmcnY9g-0VY3OQ/large.jpg",
@@ -1001,7 +1006,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmJyaWFuLWJpZWxtYW5u",
+                  id: "QXJ0aXN0OmJyaWFuLWJpZWxtYW5u",
                   href: "/artist/brian-bielmann",
                   name: "Brian Bielmann",
                 },
@@ -1010,7 +1015,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1024,13 +1029,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazpqZWZmLWRpdmluZS1oZXJiaWUtbWFsaWJ1LWNhbGlmb3JuaWEtMTk4Mw==",
-              id: "jeff-divine-herbie-malibu-california-1983",
+              slug: "jeff-divine-herbie-malibu-california-1983",
               href: "/artwork/jeff-divine-herbie-malibu-california-1983",
               image: {
                 aspect_ratio: 1.25,
-                __id: "5d49be2f8611870012cc3209",
+                id: "5d49be2f8611870012cc3209",
                 placeholder: "79.97793712079427%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/z3HN8sosqIUSuK-62eBl1w/large.jpg",
@@ -1044,7 +1049,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmplZmYtZGl2aW5l",
+                  id: "QXJ0aXN0OmplZmYtZGl2aW5l",
                   href: "/artist/jeff-divine",
                   name: "Jeff Divine",
                 },
@@ -1053,7 +1058,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1067,15 +1072,15 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
-                "QXJ0d29yazpqZWZmLWRpdmluZS1oZXJiaWUtZmxldGNoZXItZ2VycnktbG9wZXotYW5kLWJhcnJ5LWthbmFpYXVwdW5pLXN1bnNldC1iZWFjaC1oYXdhaWktMTk3MQ==",
               id:
+                "QXJ0d29yazpqZWZmLWRpdmluZS1oZXJiaWUtZmxldGNoZXItZ2VycnktbG9wZXotYW5kLWJhcnJ5LWthbmFpYXVwdW5pLXN1bnNldC1iZWFjaC1oYXdhaWktMTk3MQ==",
+              slug:
                 "jeff-divine-herbie-fletcher-gerry-lopez-and-barry-kanaiaupuni-sunset-beach-hawaii-1971",
               href:
                 "/artwork/jeff-divine-herbie-fletcher-gerry-lopez-and-barry-kanaiaupuni-sunset-beach-hawaii-1971",
               image: {
                 aspect_ratio: 1.25,
-                __id: "5d49be34ca2b6c000d6c6ca7",
+                id: "5d49be34ca2b6c000d6c6ca7",
                 placeholder: "79.97793712079427%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/cCZDRpfs0iUaU9pp2yA8KA/large.jpg",
@@ -1090,7 +1095,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmplZmYtZGl2aW5l",
+                  id: "QXJ0aXN0OmplZmYtZGl2aW5l",
                   href: "/artist/jeff-divine",
                   name: "Jeff Divine",
                 },
@@ -1099,7 +1104,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1113,13 +1118,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazpoZXJiaWUtZmxldGNoZXItZ3JleXNvbi1zdXJmYm9hcmQtb2xsaWUtMTk5Mg==",
-              id: "herbie-fletcher-greyson-surfboard-ollie-1992",
+              slug: "herbie-fletcher-greyson-surfboard-ollie-1992",
               href: "/artwork/herbie-fletcher-greyson-surfboard-ollie-1992",
               image: {
                 aspect_ratio: 0.66,
-                __id: "5d4200278310d90011210dce",
+                id: "5d4200278310d90011210dce",
                 placeholder: "151.4829322887521%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/iCV2EfCsLdUh9JvsmKlkhQ/large.jpg",
@@ -1133,7 +1138,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmhlcmJpZS1mbGV0Y2hlcg==",
+                  id: "QXJ0aXN0OmhlcmJpZS1mbGV0Y2hlcg==",
                   href: "/artist/herbie-fletcher",
                   name: "Herbie Fletcher",
                 },
@@ -1142,7 +1147,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1156,13 +1161,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazp0b20tc2VydmFpcy1uYXRoYW4tbm9ydGgtc2hvcmUtaGF3YWlpLTE5ODg=",
-              id: "tom-servais-nathan-north-shore-hawaii-1988",
+              slug: "tom-servais-nathan-north-shore-hawaii-1988",
               href: "/artwork/tom-servais-nathan-north-shore-hawaii-1988",
               image: {
                 aspect_ratio: 1.46,
-                __id: "5d41f301fd08ec00121b5cc9",
+                id: "5d41f301fd08ec00121b5cc9",
                 placeholder: "68.375%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/wY_QjOSXdxaO7NLmlUTmtw/large.jpg",
@@ -1176,7 +1181,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OnRvbS1zZXJ2YWlz",
+                  id: "QXJ0aXN0OnRvbS1zZXJ2YWlz",
                   href: "/artist/tom-servais",
                   name: "Tom Servais",
                 },
@@ -1185,7 +1190,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1199,14 +1204,14 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazp0b20tc2VydmFpcy1jaHJpc3RpYW4tYW5kLW5hdGhhbi1ub3J0aC1zaG9yZS1oYXdhaWktMTk5MA==",
-              id: "tom-servais-christian-and-nathan-north-shore-hawaii-1990",
+              slug: "tom-servais-christian-and-nathan-north-shore-hawaii-1990",
               href:
                 "/artwork/tom-servais-christian-and-nathan-north-shore-hawaii-1990",
               image: {
                 aspect_ratio: 1.5,
-                __id: "5d41f306fcb9e5000d28333f",
+                id: "5d41f306fcb9e5000d28333f",
                 placeholder: "66.5%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/7yF87QvxhcsAH46X0nrlQw/large.jpg",
@@ -1220,7 +1225,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OnRvbS1zZXJ2YWlz",
+                  id: "QXJ0aXN0OnRvbS1zZXJ2YWlz",
                   href: "/artist/tom-servais",
                   name: "Tom Servais",
                 },
@@ -1229,7 +1234,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1243,12 +1248,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazpoZXJiaWUtZmxldGNoZXItd2FpbWVhLWd1bg==",
-              id: "herbie-fletcher-waimea-gun",
+              id: "QXJ0d29yazpoZXJiaWUtZmxldGNoZXItd2FpbWVhLWd1bg==",
+              slug: "herbie-fletcher-waimea-gun",
               href: "/artwork/herbie-fletcher-waimea-gun",
               image: {
                 aspect_ratio: 0.36,
-                __id: "5d41d724fcb9e5000d282cec",
+                id: "5d41d724fcb9e5000d282cec",
                 placeholder: "280.86522462562397%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/rFfxzJ8GA3f2pFe_deQZUA/large.jpg",
@@ -1261,7 +1266,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmhlcmJpZS1mbGV0Y2hlcg==",
+                  id: "QXJ0aXN0OmhlcmJpZS1mbGV0Y2hlcg==",
                   href: "/artist/herbie-fletcher",
                   name: "Herbie Fletcher",
                 },
@@ -1270,7 +1275,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1284,12 +1289,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazpoZXJiaWUtZmxldGNoZXItaG90LWN1cmwtYW5kLWFsYWlh",
-              id: "herbie-fletcher-hot-curl-and-alaia",
+              id: "QXJ0d29yazpoZXJiaWUtZmxldGNoZXItaG90LWN1cmwtYW5kLWFsYWlh",
+              slug: "herbie-fletcher-hot-curl-and-alaia",
               href: "/artwork/herbie-fletcher-hot-curl-and-alaia",
               image: {
                 aspect_ratio: 0.61,
-                __id: "5d41d728fcb9e5001192887c",
+                id: "5d41d728fcb9e5001192887c",
                 placeholder: "164.57142857142856%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/j9sC97Bt4cuHu-wBvxvspg/large.jpg",
@@ -1302,7 +1307,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmhlcmJpZS1mbGV0Y2hlcg==",
+                  id: "QXJ0aXN0OmhlcmJpZS1mbGV0Y2hlcg==",
                   href: "/artist/herbie-fletcher",
                   name: "Herbie Fletcher",
                 },
@@ -1311,7 +1316,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1335,12 +1340,12 @@ export const FullArtworkFixture = {
         edges: [
           {
             node: {
-              __id: "QXJ0d29yazpqaW0tZGluZS1ncmVhc2UtYm9uZS1hbmQtY29sb3I=",
-              id: "jim-dine-grease-bone-and-color",
+              id: "QXJ0d29yazpqaW0tZGluZS1ncmVhc2UtYm9uZS1hbmQtY29sb3I=",
+              slug: "jim-dine-grease-bone-and-color",
               href: "/artwork/jim-dine-grease-bone-and-color",
               image: {
                 aspect_ratio: 0.91,
-                __id: "57051d51cd530e65900004f3",
+                id: "57051d51cd530e65900004f3",
                 placeholder: "110.03861003861005%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/RMSBavzxDuAHYsWW1-cukA/large.jpg",
@@ -1353,7 +1358,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmppbS1kaW5l",
+                  id: "QXJ0aXN0OmppbS1kaW5l",
                   href: "/artist/jim-dine",
                   name: "Jim Dine",
                 },
@@ -1362,7 +1367,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Galerie de Bellefeuille",
                 href: "/galerie-de-bellefeuille",
-                __id: "UGFydG5lcjpnYWxlcmllLWRlLWJlbGxlZmV1aWxsZQ==",
+                id: "UGFydG5lcjpnYWxlcmllLWRlLWJlbGxlZmV1aWxsZQ==",
                 type: "Gallery",
               },
               sale: null,
@@ -1376,13 +1381,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazpyb3ktbGljaHRlbnN0ZWluLXN0aWxsLWxpZmUtd2l0aC1jb3dzLXNrdWxs",
-              id: "roy-lichtenstein-still-life-with-cows-skull",
+              slug: "roy-lichtenstein-still-life-with-cows-skull",
               href: "/artwork/roy-lichtenstein-still-life-with-cows-skull",
               image: {
                 aspect_ratio: 1.22,
-                __id: "5220cceaa09a671882000123",
+                id: "5220cceaa09a671882000123",
                 placeholder: "81.99088145896657%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/a_d1ziSj_lx3RcCRDUF9ow/large.jpg",
@@ -1396,7 +1401,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OnJveS1saWNodGVuc3RlaW4=",
+                  id: "QXJ0aXN0OnJveS1saWNodGVuc3RlaW4=",
                   href: "/artist/roy-lichtenstein",
                   name: "Roy Lichtenstein",
                 },
@@ -1405,7 +1410,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1419,12 +1424,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazpqb2huLXdlc2xleS0yLXBob25l",
-              id: "john-wesley-2-phone",
+              id: "QXJ0d29yazpqb2huLXdlc2xleS0yLXBob25l",
+              slug: "john-wesley-2-phone",
               href: "/artwork/john-wesley-2-phone",
               image: {
                 aspect_ratio: 1.21,
-                __id: "4f8b4866e9aa120001000018",
+                id: "4f8b4866e9aa120001000018",
                 placeholder: "82.31780167264037%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/58G85aUnWJTL3QsWm-cXDw/large.jpg",
@@ -1437,7 +1442,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmpvaG4td2VzbGV5LTI=",
+                  id: "QXJ0aXN0OmpvaG4td2VzbGV5LTI=",
                   href: "/artist/john-wesley-2",
                   name: "John Wesley",
                 },
@@ -1446,7 +1451,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "IKON Ltd. Contemporary Art",
                 href: "/ikon-ltd-contemporary-art",
-                __id: "UGFydG5lcjppa29uLWx0ZC1jb250ZW1wb3JhcnktYXJ0",
+                id: "UGFydG5lcjppa29uLWx0ZC1jb250ZW1wb3JhcnktYXJ0",
                 type: "Gallery",
               },
               sale: null,
@@ -1460,13 +1465,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazpkYW1pZW4taGlyc3QtZm9yLXRoZS1sb3ZlLW9mLWdvZC1mcm9udA==",
-              id: "damien-hirst-for-the-love-of-god-front",
+              slug: "damien-hirst-for-the-love-of-god-front",
               href: "/artwork/damien-hirst-for-the-love-of-god-front",
               image: {
                 aspect_ratio: 0.74,
-                __id: "549ddb967261693e2c620c00",
+                id: "549ddb967261693e2c620c00",
                 placeholder: "134.8747591522158%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/iNVK07fWayBfTajoOrGbbw/large.jpg",
@@ -1479,7 +1484,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmRhbWllbi1oaXJzdA==",
+                  id: "QXJ0aXN0OmRhbWllbi1oaXJzdA==",
                   href: "/artist/damien-hirst",
                   name: "Damien Hirst",
                 },
@@ -1488,7 +1493,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Kenneth A. Friedman & Co.",
                 href: "/kenneth-a-friedman-and-co",
-                __id: "UGFydG5lcjprZW5uZXRoLWEtZnJpZWRtYW4tYW5kLWNv",
+                id: "UGFydG5lcjprZW5uZXRoLWEtZnJpZWRtYW4tYW5kLWNv",
                 type: "Gallery",
               },
               sale: null,
@@ -1502,13 +1507,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazpkb25hbGQtYmFlY2hsZXItYWJzdHJhY3QtY29tcG9zaXRpb24td2l0aC1za3VsbA==",
-              id: "donald-baechler-abstract-composition-with-skull",
+              slug: "donald-baechler-abstract-composition-with-skull",
               href: "/artwork/donald-baechler-abstract-composition-with-skull",
               image: {
                 aspect_ratio: 1,
-                __id: "56041e84726169695b000630",
+                id: "56041e84726169695b000630",
                 placeholder: "100.24473813020069%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/9hX1cOC1LRxqQuwQJd7hUQ/large.jpg",
@@ -1522,7 +1527,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OmRvbmFsZC1iYWVjaGxlcg==",
+                  id: "QXJ0aXN0OmRvbmFsZC1iYWVjaGxlcg==",
                   href: "/artist/donald-baechler",
                   name: "Donald Baechler",
                 },
@@ -1531,7 +1536,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Pace Prints",
                 href: "/pace-prints",
-                __id: "UGFydG5lcjpwYWNlLXByaW50cw==",
+                id: "UGFydG5lcjpwYWNlLXByaW50cw==",
                 type: "Gallery",
               },
               sale: null,
@@ -1545,13 +1550,13 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id:
+              id:
                 "QXJ0d29yazp0YWthc2hpLW11cmFrYW1pLXRpbWUtY2Ftb3VmbGFnZS1tb3NzLWdyZWVu",
-              id: "takashi-murakami-time-camouflage-moss-green",
+              slug: "takashi-murakami-time-camouflage-moss-green",
               href: "/artwork/takashi-murakami-time-camouflage-moss-green",
               image: {
                 aspect_ratio: 1,
-                __id: "4e81033be3ce4a0001002f01",
+                id: "4e81033be3ce4a0001002f01",
                 placeholder: "99.74478945129732%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/7wuqPGg2xoCaVwNpr-Mgjw/large.jpg",
@@ -1565,7 +1570,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0OnRha2FzaGktbXVyYWthbWk=",
+                  id: "QXJ0aXN0OnRha2FzaGktbXVyYWthbWk=",
                   href: "/artist/takashi-murakami",
                   name: "Takashi Murakami",
                 },
@@ -1574,7 +1579,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Gagosian",
                 href: "/gagosian-gallery",
-                __id: "UGFydG5lcjpnYWdvc2lhbg==",
+                id: "UGFydG5lcjpnYWdvc2lhbg==",
                 type: "Gallery",
               },
               sale: null,
@@ -1588,12 +1593,12 @@ export const FullArtworkFixture = {
           },
           {
             node: {
-              __id: "QXJ0d29yazptYW8teWFuLW1hby15YW4tdW50aXRsZWQ=",
-              id: "mao-yan-mao-yan-untitled",
+              id: "QXJ0d29yazptYW8teWFuLW1hby15YW4tdW50aXRsZWQ=",
+              slug: "mao-yan-mao-yan-untitled",
               href: "/artwork/mao-yan-mao-yan-untitled",
               image: {
                 aspect_ratio: 4.59,
-                __id: "531171538b3b81797f0001b7",
+                id: "531171538b3b81797f0001b7",
                 placeholder: "21.798365122615802%",
                 url:
                   "https://d32dm0rphc51dk.cloudfront.net/oHVnTcNLVDBEPpOXA03YyA/large.jpg",
@@ -1606,7 +1611,7 @@ export const FullArtworkFixture = {
               cultural_maker: null,
               artists: [
                 {
-                  __id: "QXJ0aXN0Om1hby15YW4tbWFvLXlhbg==",
+                  id: "QXJ0aXN0Om1hby15YW4tbWFvLXlhbg==",
                   href: "/artist/mao-yan-mao-yan",
                   name: "Mao Yan 毛焰",
                 },
@@ -1615,7 +1620,7 @@ export const FullArtworkFixture = {
               partner: {
                 name: "Sifang Art Museum",
                 href: "/sifang-art-museum",
-                __id: "UGFydG5lcjpzaWZhbmctYXJ0LW11c2V1bQ==",
+                id: "UGFydG5lcjpzaWZhbmctYXJ0LW11c2V1bQ==",
                 type: "Institution",
               },
               sale: null,
@@ -1632,29 +1637,41 @@ export const FullArtworkFixture = {
     },
   ],
   layers: [
-    { name: "Most Similar", id: "main", __id: "QXJ0d29ya0xheWVyOm1haW4=" },
+    {
+      name: "Most Similar",
+      internalID: "main",
+      id: "QXJ0d29ya0xheWVyOm1haW4=",
+    },
     {
       name: "Single Object",
-      id: "single-object",
-      __id: "QXJ0d29ya0xheWVyOnNpbmdsZS1vYmplY3Q=",
+      internalID: "single-object",
+      id: "QXJ0d29ya0xheWVyOnNpbmdsZS1vYmplY3Q=",
     },
     {
       name: "Mortality",
-      id: "mortality",
-      __id: "QXJ0d29ya0xheWVyOm1vcnRhbGl0eQ==",
+      internalID: "mortality",
+      id: "QXJ0d29ya0xheWVyOm1vcnRhbGl0eQ==",
     },
-    { name: "Pop Art", id: "pop-art", __id: "QXJ0d29ya0xheWVyOnBvcC1hcnQ=" },
+    {
+      name: "Pop Art",
+      internalID: "pop-art",
+      id: "QXJ0d29ya0xheWVyOnBvcC1hcnQ=",
+    },
     {
       name: "Silkscreen",
-      id: "silkscreen-1",
-      __id: "QXJ0d29ya0xheWVyOnNpbGtzY3JlZW4tMQ==",
+      internalID: "silkscreen-1",
+      id: "QXJ0d29ya0xheWVyOnNpbGtzY3JlZW4tMQ==",
     },
     {
       name: "Figurative Painting",
-      id: "figurative-painting",
-      __id: "QXJ0d29ya0xheWVyOmZpZ3VyYXRpdmUtcGFpbnRpbmc=",
+      internalID: "figurative-painting",
+      id: "QXJ0d29ya0xheWVyOmZpZ3VyYXRpdmUtcGFpbnRpbmc=",
     },
-    { name: "For Sale", id: "for-sale", __id: "QXJ0d29ya0xheWVyOmZvci1zYWxl" },
+    {
+      name: "For Sale",
+      internalID: "for-sale",
+      id: "QXJ0d29ya0xheWVyOmZvci1zYWxl",
+    },
   ],
   layer: {
     name: "Most Similar",
@@ -1662,12 +1679,12 @@ export const FullArtworkFixture = {
       edges: [
         {
           node: {
-            __id: "QXJ0d29yazpqaW0tZGluZS1ncmVhc2UtYm9uZS1hbmQtY29sb3I=",
-            id: "jim-dine-grease-bone-and-color",
+            id: "QXJ0d29yazpqaW0tZGluZS1ncmVhc2UtYm9uZS1hbmQtY29sb3I=",
+            slug: "jim-dine-grease-bone-and-color",
             href: "/artwork/jim-dine-grease-bone-and-color",
             image: {
               aspect_ratio: 0.91,
-              __id: "57051d51cd530e65900004f3",
+              id: "57051d51cd530e65900004f3",
               placeholder: "110.03861003861005%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/RMSBavzxDuAHYsWW1-cukA/large.jpg",
@@ -1680,7 +1697,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0OmppbS1kaW5l",
+                id: "QXJ0aXN0OmppbS1kaW5l",
                 href: "/artist/jim-dine",
                 name: "Jim Dine",
               },
@@ -1689,7 +1706,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "Galerie de Bellefeuille",
               href: "/galerie-de-bellefeuille",
-              __id: "UGFydG5lcjpnYWxlcmllLWRlLWJlbGxlZmV1aWxsZQ==",
+              id: "UGFydG5lcjpnYWxlcmllLWRlLWJlbGxlZmV1aWxsZQ==",
               type: "Gallery",
             },
             sale: null,
@@ -1703,13 +1720,13 @@ export const FullArtworkFixture = {
         },
         {
           node: {
-            __id:
+            id:
               "QXJ0d29yazpyb3ktbGljaHRlbnN0ZWluLXN0aWxsLWxpZmUtd2l0aC1jb3dzLXNrdWxs",
-            id: "roy-lichtenstein-still-life-with-cows-skull",
+            slug: "roy-lichtenstein-still-life-with-cows-skull",
             href: "/artwork/roy-lichtenstein-still-life-with-cows-skull",
             image: {
               aspect_ratio: 1.22,
-              __id: "5220cceaa09a671882000123",
+              id: "5220cceaa09a671882000123",
               placeholder: "81.99088145896657%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/a_d1ziSj_lx3RcCRDUF9ow/large.jpg",
@@ -1723,7 +1740,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0OnJveS1saWNodGVuc3RlaW4=",
+                id: "QXJ0aXN0OnJveS1saWNodGVuc3RlaW4=",
                 href: "/artist/roy-lichtenstein",
                 name: "Roy Lichtenstein",
               },
@@ -1732,7 +1749,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "Gagosian",
               href: "/gagosian-gallery",
-              __id: "UGFydG5lcjpnYWdvc2lhbg==",
+              id: "UGFydG5lcjpnYWdvc2lhbg==",
               type: "Gallery",
             },
             sale: null,
@@ -1746,12 +1763,12 @@ export const FullArtworkFixture = {
         },
         {
           node: {
-            __id: "QXJ0d29yazpqb2huLXdlc2xleS0yLXBob25l",
-            id: "john-wesley-2-phone",
+            id: "QXJ0d29yazpqb2huLXdlc2xleS0yLXBob25l",
+            slug: "john-wesley-2-phone",
             href: "/artwork/john-wesley-2-phone",
             image: {
               aspect_ratio: 1.21,
-              __id: "4f8b4866e9aa120001000018",
+              id: "4f8b4866e9aa120001000018",
               placeholder: "82.31780167264037%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/58G85aUnWJTL3QsWm-cXDw/large.jpg",
@@ -1764,7 +1781,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0OmpvaG4td2VzbGV5LTI=",
+                id: "QXJ0aXN0OmpvaG4td2VzbGV5LTI=",
                 href: "/artist/john-wesley-2",
                 name: "John Wesley",
               },
@@ -1773,7 +1790,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "IKON Ltd. Contemporary Art",
               href: "/ikon-ltd-contemporary-art",
-              __id: "UGFydG5lcjppa29uLWx0ZC1jb250ZW1wb3JhcnktYXJ0",
+              id: "UGFydG5lcjppa29uLWx0ZC1jb250ZW1wb3JhcnktYXJ0",
               type: "Gallery",
             },
             sale: null,
@@ -1787,13 +1804,13 @@ export const FullArtworkFixture = {
         },
         {
           node: {
-            __id:
+            id:
               "QXJ0d29yazpkYW1pZW4taGlyc3QtZm9yLXRoZS1sb3ZlLW9mLWdvZC1mcm9udA==",
-            id: "damien-hirst-for-the-love-of-god-front",
+            slug: "damien-hirst-for-the-love-of-god-front",
             href: "/artwork/damien-hirst-for-the-love-of-god-front",
             image: {
               aspect_ratio: 0.74,
-              __id: "549ddb967261693e2c620c00",
+              id: "549ddb967261693e2c620c00",
               placeholder: "134.8747591522158%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/iNVK07fWayBfTajoOrGbbw/large.jpg",
@@ -1806,7 +1823,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0OmRhbWllbi1oaXJzdA==",
+                id: "QXJ0aXN0OmRhbWllbi1oaXJzdA==",
                 href: "/artist/damien-hirst",
                 name: "Damien Hirst",
               },
@@ -1815,7 +1832,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "Kenneth A. Friedman & Co.",
               href: "/kenneth-a-friedman-and-co",
-              __id: "UGFydG5lcjprZW5uZXRoLWEtZnJpZWRtYW4tYW5kLWNv",
+              id: "UGFydG5lcjprZW5uZXRoLWEtZnJpZWRtYW4tYW5kLWNv",
               type: "Gallery",
             },
             sale: null,
@@ -1829,13 +1846,13 @@ export const FullArtworkFixture = {
         },
         {
           node: {
-            __id:
+            id:
               "QXJ0d29yazpkb25hbGQtYmFlY2hsZXItYWJzdHJhY3QtY29tcG9zaXRpb24td2l0aC1za3VsbA==",
-            id: "donald-baechler-abstract-composition-with-skull",
+            slug: "donald-baechler-abstract-composition-with-skull",
             href: "/artwork/donald-baechler-abstract-composition-with-skull",
             image: {
               aspect_ratio: 1,
-              __id: "56041e84726169695b000630",
+              id: "56041e84726169695b000630",
               placeholder: "100.24473813020069%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/9hX1cOC1LRxqQuwQJd7hUQ/large.jpg",
@@ -1849,7 +1866,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0OmRvbmFsZC1iYWVjaGxlcg==",
+                id: "QXJ0aXN0OmRvbmFsZC1iYWVjaGxlcg==",
                 href: "/artist/donald-baechler",
                 name: "Donald Baechler",
               },
@@ -1858,7 +1875,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "Pace Prints",
               href: "/pace-prints",
-              __id: "UGFydG5lcjpwYWNlLXByaW50cw==",
+              id: "UGFydG5lcjpwYWNlLXByaW50cw==",
               type: "Gallery",
             },
             sale: null,
@@ -1872,13 +1889,13 @@ export const FullArtworkFixture = {
         },
         {
           node: {
-            __id:
+            id:
               "QXJ0d29yazp0YWthc2hpLW11cmFrYW1pLXRpbWUtY2Ftb3VmbGFnZS1tb3NzLWdyZWVu",
-            id: "takashi-murakami-time-camouflage-moss-green",
+            slug: "takashi-murakami-time-camouflage-moss-green",
             href: "/artwork/takashi-murakami-time-camouflage-moss-green",
             image: {
               aspect_ratio: 1,
-              __id: "4e81033be3ce4a0001002f01",
+              id: "4e81033be3ce4a0001002f01",
               placeholder: "99.74478945129732%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/7wuqPGg2xoCaVwNpr-Mgjw/large.jpg",
@@ -1892,7 +1909,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0OnRha2FzaGktbXVyYWthbWk=",
+                id: "QXJ0aXN0OnRha2FzaGktbXVyYWthbWk=",
                 href: "/artist/takashi-murakami",
                 name: "Takashi Murakami",
               },
@@ -1901,7 +1918,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "Gagosian",
               href: "/gagosian-gallery",
-              __id: "UGFydG5lcjpnYWdvc2lhbg==",
+              id: "UGFydG5lcjpnYWdvc2lhbg==",
               type: "Gallery",
             },
             sale: null,
@@ -1915,12 +1932,12 @@ export const FullArtworkFixture = {
         },
         {
           node: {
-            __id: "QXJ0d29yazptYW8teWFuLW1hby15YW4tdW50aXRsZWQ=",
-            id: "mao-yan-mao-yan-untitled",
+            id: "QXJ0d29yazptYW8teWFuLW1hby15YW4tdW50aXRsZWQ=",
+            slug: "mao-yan-mao-yan-untitled",
             href: "/artwork/mao-yan-mao-yan-untitled",
             image: {
               aspect_ratio: 4.59,
-              __id: "531171538b3b81797f0001b7",
+              id: "531171538b3b81797f0001b7",
               placeholder: "21.798365122615802%",
               url:
                 "https://d32dm0rphc51dk.cloudfront.net/oHVnTcNLVDBEPpOXA03YyA/large.jpg",
@@ -1933,7 +1950,7 @@ export const FullArtworkFixture = {
             cultural_maker: null,
             artists: [
               {
-                __id: "QXJ0aXN0Om1hby15YW4tbWFvLXlhbg==",
+                id: "QXJ0aXN0Om1hby15YW4tbWFvLXlhbg==",
                 href: "/artist/mao-yan-mao-yan",
                 name: "Mao Yan 毛焰",
               },
@@ -1942,7 +1959,7 @@ export const FullArtworkFixture = {
             partner: {
               name: "Sifang Art Museum",
               href: "/sifang-art-museum",
-              __id: "UGFydG5lcjpzaWZhbmctYXJ0LW11c2V1bQ==",
+              id: "UGFydG5lcjpzaWZhbmctYXJ0LW11c2V1bQ==",
               type: "Institution",
             },
             sale: null,
@@ -1956,7 +1973,7 @@ export const FullArtworkFixture = {
         },
       ],
     },
-    __id: "QXJ0d29ya0xheWVyOm1haW4=",
+    id: "QXJ0d29ya0xheWVyOm1haW4=",
   },
   priceCents: null,
   pricingContext: null,

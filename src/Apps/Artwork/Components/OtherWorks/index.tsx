@@ -58,7 +58,6 @@ export const OtherWorks = track()(
     const { context, contextGrids, sale } = props.artwork
     const gridsToShow = populatedGrids(contextGrids)
     const tracking = useTracking()
-
     return (
       <>
         {gridsToShow && gridsToShow.length > 0 && (

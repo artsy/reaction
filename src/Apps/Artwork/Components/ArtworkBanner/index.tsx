@@ -20,7 +20,6 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
     partner,
     sale,
   } = props.artwork
-
   // Auction
   if (artworkContextAuction && artworkContextAuction.__typename === "Sale") {
     const auctionImage = get(sale, s => s.is_auction && s.cover_image.url)

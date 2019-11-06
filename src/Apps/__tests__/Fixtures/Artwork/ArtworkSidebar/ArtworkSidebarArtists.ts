@@ -1,9 +1,9 @@
 export const SingleFollowedArtist = {
   artists: [
     {
-      __id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
-      _id: "artist_id",
-      id: "josef-albers",
+      id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
+      internalID: "artist_id",
+      slug: "josef-albers",
       name: "Josef Albers",
       href: "/artist/josef-albers",
       is_followed: false,
@@ -11,15 +11,15 @@ export const SingleFollowedArtist = {
       related: null,
     },
   ],
-  cultural_maker: null,
+  cultural_maker: "American 18th Century",
 }
 
 export const SingleNonFollowedArtist = {
   artists: [
     {
-      _id: "artist_id",
-      __id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
-      id: "josef-albers",
+      internalID: "artist_id",
+      id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
+      slug: "josef-albers",
       name: "Josef Albers",
       href: "/artist/josef-albers",
       is_followed: false,
@@ -27,15 +27,15 @@ export const SingleNonFollowedArtist = {
       related: null,
     },
   ],
-  cultural_maker: null,
+  cultural_maker: "American 18th Century",
 }
 
 export const MultipleArtists = {
   artists: [
     {
-      __id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
-      _id: "artist_0_id",
-      id: "josef-albers",
+      id: "QXJ0aXN0Ompvc2VmLWFsYmVycw==",
+      internalID: "artist_0_id",
+      slug: "josef-albers",
       name: "Josef Albers",
       href: "/artist/josef-albers",
       is_followed: false,
@@ -43,9 +43,9 @@ export const MultipleArtists = {
       related: null,
     },
     {
-      __id: "QXJ0aXN0OmVkLXJ1c2NoYQ==",
-      _id: "artist_1_id",
-      id: "ed-ruscha",
+      id: "QXJ0aXN0OmVkLXJ1c2NoYQ==",
+      internalID: "artist_1_id",
+      slug: "ed-ruscha",
       name: "Ed Ruscha",
       href: "/artist/ed-ruscha",
       is_followed: false,
@@ -53,7 +53,7 @@ export const MultipleArtists = {
       related: null,
     },
   ],
-  cultural_maker: null,
+  cultural_maker: "American 18th Century",
 }
 
 export const CulturalMakerWork = {

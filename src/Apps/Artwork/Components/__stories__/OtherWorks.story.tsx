@@ -51,7 +51,7 @@ storiesOf("Apps/Artwork/Components/OtherWorks", module)
   .add("Fair", () => {
     return (
       <Section title="Fair">
-        <OtherWorks artworkSlug="lucio-fontana-concetto-spaziale-attese-139" />
+        <OtherWorks artworkSlug="lucio-fontana-concetto-spaziale-attese-160" />
       </Section>
     )
   })
