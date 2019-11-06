@@ -53,9 +53,6 @@ describe("LinkWithTooltip", () => {
 
   let props
   let position
-  // const window = {
-  //   innerHeight: 800,
-  // }
 
   beforeEach(() => {
     context.onTriggerToolTip = jest.fn()
