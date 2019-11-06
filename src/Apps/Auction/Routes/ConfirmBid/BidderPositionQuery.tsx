@@ -28,6 +28,9 @@ export const bidderPositionQuery = (
         }
       }
     `,
-    variables
+    variables,
+    {
+      force: true,
+    }
   )
 }

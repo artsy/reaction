@@ -25,7 +25,6 @@ export type ConfirmBidCreateBidderPositionMutationResponse = {
             } | null;
             readonly status: string;
             readonly messageHeader: string | null;
-            readonly messageDescriptionMD: string | null;
         } | null;
     } | null;
 };
@@ -58,7 +57,6 @@ mutation ConfirmBidCreateBidderPositionMutation(
       }
       status
       messageHeader
-      messageDescriptionMD
     }
   }
 }
@@ -102,13 +100,6 @@ v4 = {
   "storageKey": null
 },
 v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "messageDescriptionMD",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -189,8 +180,7 @@ return {
                 ]
               },
               (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/)
+              (v4/*: any*/)
             ]
           }
         ]
@@ -258,21 +248,20 @@ return {
                             "plural": false,
                             "selections": [
                               (v2/*: any*/),
-                              (v6/*: any*/)
+                              (v5/*: any*/)
                             ]
                           },
-                          (v6/*: any*/)
+                          (v5/*: any*/)
                         ]
                       },
-                      (v6/*: any*/)
+                      (v5/*: any*/)
                     ]
                   },
-                  (v6/*: any*/)
+                  (v5/*: any*/)
                 ]
               },
               (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/)
+              (v4/*: any*/)
             ]
           }
         ]
@@ -283,10 +272,10 @@ return {
     "operationKind": "mutation",
     "name": "ConfirmBidCreateBidderPositionMutation",
     "id": null,
-    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        saleArtwork {\n          sale {\n            registrationStatus {\n              internalID\n              id\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n      status\n      messageHeader\n      messageDescriptionMD\n    }\n  }\n}\n",
+    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        saleArtwork {\n          sale {\n            registrationStatus {\n              internalID\n              id\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n      status\n      messageHeader\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'd78638aac3fa507d0dbbbd3b9e7f0987';
+(node as any).hash = '1ed3f093df63d0401ed964616a1597d6';
 export default node;

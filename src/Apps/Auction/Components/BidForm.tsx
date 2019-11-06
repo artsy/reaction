@@ -25,7 +25,7 @@ interface Props {
   showPricingTransparency?: boolean
 }
 
-interface FormValues {
+export interface FormValues {
   selectedBid: string
   agreeToTerms: boolean
 }
@@ -112,6 +112,7 @@ export const BidForm: React.FC<Props> = ({
           isSubmitting,
           setFieldValue,
           setFieldTouched,
+          status,
         }) => {
           return (
             <Form>
@@ -166,6 +167,12 @@ export const BidForm: React.FC<Props> = ({
                         )}
                       </Box>
                     </>
+                  )}
+
+                  {status && (
+                    <Sans textAlign="center" size="3" color="red100" mb={2}>
+                      {status}.
+                    </Sans>
                   )}
 
                   <Button
