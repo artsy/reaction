@@ -5,20 +5,26 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { Location } from "found"
+import { Match, withRouter } from "found"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { get } from "Utils/get"
 import { ZeroState } from "./ZeroState"
 
 interface ArtistArtworkFilterProps {
   artist: ArtistArtworkFilter_artist
   relay: RelayRefetchProp
   sidebarAggregations: Overview_artist["sidebarAggregations"]
-  location: Location
+  match: Match
 }
 
 const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
-  const { location, relay, artist, sidebarAggregations } = props
+  const {
+    match: { location },
+    relay,
+    artist,
+    sidebarAggregations,
+  } = props
   const tracking = useTracking()
   const { filtered_artworks } = artist
 
@@ -65,7 +71,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
 }
 
 export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
-  ArtistArtworkFilter,
+  withRouter(ArtistArtworkFilter),
   {
     artist: graphql`
       fragment ArtistArtworkFilter_artist on Artist
@@ -120,7 +126,8 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           page: $page
           partnerID: $partnerID
           priceRange: $priceRange
-          size: 0
+          first: 30
+          after: ""
           sort: $sort
           width: $width
         ) {

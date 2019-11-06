@@ -178,7 +178,7 @@
     "currency.js": "^1.2.1",
     "farce": "^0.2.6",
     "formik": "^1.5.8",
-    "found": "^0.3.14",
+    "found": "^0.4",
     "found-relay": "^0.5",
     "found-scroll": "^0.1.5",
     "history": "^4.6.1",

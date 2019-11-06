@@ -50,7 +50,7 @@ export class ArtistArticles extends Component<
       {
         first: PAGE_SIZE,
         after: cursor,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
       },

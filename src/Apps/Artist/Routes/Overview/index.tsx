@@ -239,6 +239,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...Genes_artist
         ...FollowArtistButton_artist
         slug
+        id
         counts {
           partner_shows: partnerShows
           for_sale_artworks: forSaleArtworks
