@@ -49,20 +49,20 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ Component, props }) => {
+    render: ({ Component, props, ...others }) => {
       if (Component && props) {
-        const { location, order } = props as any
+        const { match, order } = props as any
 
         if (order) {
           const redirect = getRedirect(
             redirects,
-            location.pathname.replace(/order(2|s)\/[^\/]+/, ""),
+            match.location.pathname.replace(/order(2|s)\/[^\/]+/, ""),
             { order }
           )
           if (redirect !== null) {
             if (process.env.NODE_ENV === "development") {
               console.error(
-                `Redirecting from ${location.pathname} to ${
+                `Redirecting from ${match.location.pathname} to ${
                   redirect.path
                 } because '${redirect.reason}'`
               )
