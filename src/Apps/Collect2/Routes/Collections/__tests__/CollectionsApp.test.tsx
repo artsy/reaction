@@ -20,13 +20,13 @@ describe("CollectionApp", () => {
         Component: CollectionsApp,
         query: graphql`
           query CollectionsAppTestQuery @raw_response_type {
-            categories: marketingCategories {
-              ...Collections_categories
+            marketingCategories {
+              ...Collections_marketingCategories
             }
           }
         `,
         mockData: {
-          categories: [
+          marketingCategories: [
             {
               name: "Modern",
               collections: [], // "Modern" exists to test sort order so no need to add collections
