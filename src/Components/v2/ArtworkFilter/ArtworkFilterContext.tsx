@@ -26,7 +26,7 @@ export const initialArtworkFilterState = {
 export interface ArtworkFilters {
   acquireable?: boolean
   artist_id?: string
-  at_auction?: boolean
+  atAuction?: boolean
   color?: string
   for_sale?: boolean
   height?: string
@@ -282,7 +282,7 @@ const artworkFilterReducer = (state, action) => {
       // Boolean filter types
       ;[
         "acquireable",
-        "at_auction",
+        "atAuction",
         "for_sale",
         "inquireable_only",
         "offerable",
@@ -331,7 +331,7 @@ const artworkFilterReducer = (state, action) => {
 
       ;[
         "acquireable",
-        "at_auction",
+        "atAuction",
         "color",
         "for_sale",
         "inquireable_only",
