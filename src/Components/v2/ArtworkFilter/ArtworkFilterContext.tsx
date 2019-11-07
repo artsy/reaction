@@ -9,7 +9,6 @@ import { rangeToTuple } from "./Utils/rangeToTuple"
  * Initial filter state
  */
 export const initialArtworkFilterState = {
-  attribution_class: [],
   major_periods: [],
   page: 1,
   sort: "-decayed_merch",
@@ -28,19 +27,23 @@ export interface ArtworkFilters {
   artist_id?: string
   atAuction?: boolean
   color?: string
-  for_sale?: boolean
+  forSale?: boolean
   height?: string
-  inquireable_only?: boolean
+  inquireableOnly?: boolean
   keyword?: string
-  major_periods?: string[]
+  majorPeriods?: string[]
   medium?: string
   offerable?: boolean
   page?: number
-  partner_id?: string
-  price_range?: string
+  partnerID?: string
+  priceRange?: string
   sort?: string
   term?: string
   width?: string
+}
+
+interface ArtworkFiltersState extends ArtworkFilters {
+  reset?: boolean
 }
 
 /**
@@ -98,11 +101,11 @@ interface ArtworkFilterContextProps {
 
   // Filter manipulation
   hasFilters: boolean
-  isDefaultValue: (name: string) => boolean
-  rangeToTuple: (name: string) => [number, number]
+  isDefaultValue: (name: keyof ArtworkFilters) => boolean
+  rangeToTuple: (name: keyof ArtworkFilters) => [number, number]
   resetFilters: () => void
-  setFilter: (name: string, value: any) => void
-  unsetFilter: (name: string) => void
+  setFilter: (name: keyof ArtworkFilters, value: any) => void
+  unsetFilter: (name: keyof ArtworkFilters) => void
 }
 
 /**
@@ -240,7 +243,13 @@ export const ArtworkFilterContextProvider: React.FC<
   )
 }
 
-const artworkFilterReducer = (state, action) => {
+const artworkFilterReducer = (
+  state: ArtworkFiltersState,
+  action: {
+    type: "SET" | "UNSET" | "RESET"
+    payload: { name: keyof ArtworkFilters; value?: any }
+  }
+): ArtworkFiltersState => {
   switch (action.type) {
     /**
      * Setting  and updating filters
@@ -248,16 +257,11 @@ const artworkFilterReducer = (state, action) => {
     case "SET": {
       const { name, value } = action.payload
 
-      let filterState = {}
+      let filterState: ArtworkFilters = {}
 
-      if (name === "attribution_class") {
+      if (name === "majorPeriods") {
         filterState = {
-          attribution_class: state.filters.attribution_class.concat(value),
-        }
-      }
-      if (name === "major_periods") {
-        filterState = {
-          major_periods: value ? [value] : [],
+          majorPeriods: value ? [value] : [],
         }
       }
       if (name === "page") {
@@ -265,30 +269,32 @@ const artworkFilterReducer = (state, action) => {
       }
 
       // String filter types
-      ;[
+      const stringFilterTypes: Array<keyof ArtworkFilters> = [
         "color",
         "height",
         "medium",
-        "partner_id",
-        "price_range",
+        "partnerID",
+        "priceRange",
         "sort",
         "width",
-      ].forEach(filter => {
+      ]
+      stringFilterTypes.forEach(filter => {
         if (name === filter) {
-          filterState[name] = value
+          filterState[name as any] = value
         }
       })
 
       // Boolean filter types
-      ;[
+      const booleanFilterTypes: Array<keyof ArtworkFilters> = [
         "acquireable",
         "atAuction",
-        "for_sale",
-        "inquireable_only",
+        "forSale",
+        "inquireableOnly",
         "offerable",
-      ].forEach(filter => {
+      ]
+      booleanFilterTypes.forEach(filter => {
         if (name === filter) {
-          filterState[name] = Boolean(value)
+          filterState[name as any] = Boolean(value)
         }
       })
 
@@ -304,18 +310,13 @@ const artworkFilterReducer = (state, action) => {
      * Unsetting a filter
      */
     case "UNSET": {
-      const { name } = action.payload
+      const { name } = action.payload as { name: keyof ArtworkFilters }
 
-      let filterState = {}
+      let filterState: ArtworkFilters = {}
 
-      if (name === "attribution_class") {
+      if (name === "majorPeriods") {
         filterState = {
-          attribution_class: [],
-        }
-      }
-      if (name === "major_periods") {
-        filterState = {
-          major_periods: [],
+          majorPeriods: [],
         }
       }
       if (name === "medium") {
@@ -329,17 +330,18 @@ const artworkFilterReducer = (state, action) => {
         }
       }
 
-      ;[
+      const filters: Array<keyof ArtworkFilters> = [
         "acquireable",
         "atAuction",
         "color",
-        "for_sale",
-        "inquireable_only",
+        "forSale",
+        "inquireableOnly",
         "offerable",
-        "partner_id",
-      ].forEach(filter => {
+        "partnerID",
+      ]
+      filters.forEach(filter => {
         if (name === filter) {
-          filterState[name] = null
+          filterState[name as any] = null
         }
       })
 

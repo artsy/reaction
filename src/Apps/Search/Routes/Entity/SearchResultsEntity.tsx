@@ -49,7 +49,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 
   loadNext = () => {
     const { viewer } = this.props
-    const { search: searchConnection } = viewer
+    const { searchConnection } = viewer
 
     const {
       pageInfo: { hasNextPage, endCursor },
@@ -95,9 +95,11 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
   renderItems() {
     const { viewer, location } = this.props
     const { term } = get(location, l => l.query)
-    const { search: searchConnection } = viewer
+    const { searchConnection } = viewer
 
-    const items = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const items = get(viewer, v => v.searchConnection.edges, []).map(
+      e => e.node
+    )
 
     return (
       <>
@@ -112,7 +114,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
                 entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={searchableItem._id}
+                id={searchableItem.internalID}
               />
               {index < items.length - 1 && <Separator />}
             </Box>
@@ -134,7 +136,9 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 
     const { term } = get(location, l => l.query)
 
-    const items = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const items = get(viewer, v => v.searchConnection.edges, []).map(
+      e => e.node
+    )
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {items.length === 0 ? (
