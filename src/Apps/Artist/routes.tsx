@@ -1,4 +1,7 @@
-import { initialArtworkFilterState } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import {
+  ArtworkFilters,
+  initialArtworkFilterState,
+} from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
 import { Redirect, RouteConfig } from "found"
 import { graphql } from "react-relay"
@@ -42,7 +45,7 @@ export const routes: RouteConfig[] = [
           }
 
           filterParams.hasFilter = Object.entries(filterStateFromUrl).some(
-            ([k, v]) => {
+            ([k, v]: [keyof ArtworkFilters, any]) => {
               return !isDefaultFilter(k, v)
             }
           )
