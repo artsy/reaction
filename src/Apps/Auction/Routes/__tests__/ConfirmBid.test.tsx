@@ -245,25 +245,27 @@ describe("Routes/ConfirmBid", () => {
         mockData: FixtureForUnregisteredUserWithCreditCard,
       })
 
-      // env.mutations.useResultsOnce(createBidderPositionSuccessful)
-      // mockBidderPositionQuery.mockResolvedValue(confirmBidBidderPositionQueryWithPending)
+      env.mutations.useResultsOnce(createBidderPositionSuccessful)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithPending
+      )
 
       await page.agreeToTerms()
-      // await page.submitForm()
+      await page.submitForm()
 
       // TODO: Uncomment once https://artsyproduct.atlassian.net/browse/AUCT-716 is fixed.
-      // expect(env.mutations.mockFetch).toHaveBeenCalledWith(
-      //   expect.objectContaining({
-      //     name: "ConfirmBidCreateBidderPositionMutation",
-      //   }),
-      //   {
-      //     input: {
-      //       artwork_id: "artworkslug",
-      //       max_bid_amount_cents: 5000000,
-      //       sale_id: "saleslug",
-      //     },
-      //   }
-      // )
+      expect(env.mutations.mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: "ConfirmBidCreateBidderPositionMutation",
+        }),
+        {
+          input: {
+            artwork_id: "artworkslug",
+            max_bid_amount_cents: 5000000,
+            sale_id: "saleslug",
+          },
+        }
+      )
     })
 
     it("displays an error when user did not agree to terms but tried to submit", async () => {
