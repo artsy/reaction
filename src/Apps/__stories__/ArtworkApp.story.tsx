@@ -124,3 +124,11 @@ storiesOf("Apps/Artwork", module)
       />
     )
   })
+  .add("Artwork with Price in Context", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/andy-warhol-marilyn-orange-lg"
+      />
+    )
+  })
