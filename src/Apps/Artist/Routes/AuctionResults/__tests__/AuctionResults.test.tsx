@@ -22,9 +22,7 @@ describe("AuctionResults", () => {
           }
         }
       `,
-      mockData: {
-        artist: AuctionResultsFixture,
-      } as AuctionResults_Test_QueryRawResponse,
+      mockData: AuctionResultsFixture as AuctionResults_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",
       },
@@ -79,7 +77,8 @@ describe("AuctionResults", () => {
       it("renders the proper modal content", () => {
         expect(modalWrapper.length).toBe(1)
         const html = modalWrapper.html()
-        const data = AuctionResultsFixture.auctionResults.edges[0].node
+        const data =
+          AuctionResultsFixture.artist.auctionResultsConnection.edges[0].node
         expect(html).toContain("Lot description")
         expect(html).toContain(data.title)
         expect(html).toContain(data.dimension_text)

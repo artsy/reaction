@@ -5,13 +5,12 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { Match, withRouter } from "found"
+import { Match, RouterState, withRouter } from "found"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { get } from "Utils/get"
 import { ZeroState } from "./ZeroState"
 
-interface ArtistArtworkFilterProps {
+interface ArtistArtworkFilterProps extends RouterState {
   artist: ArtistArtworkFilter_artist
   relay: RelayRefetchProp
   sidebarAggregations: Overview_artist["sidebarAggregations"]
