@@ -10,14 +10,14 @@ export function registerRedirect({
   me,
   sale,
 }: routes_RegisterQueryResponse): Redirect | null {
-  if (me.has_qualified_credit_cards) {
+  if (me.hasQualifiedCreditCards) {
     return {
       path: registrationFlowPath(sale),
       reason: "user already has a qualified credit card",
     }
-  } else if (!sale.is_auction) {
+  } else if (!sale.isAuction) {
     return {
-      path: `/sale/${sale.id}`,
+      path: `/sale/${sale.slug}`,
       reason: "sale must be an auction",
     }
   } else if (!isRegisterable(sale)) {
@@ -52,19 +52,19 @@ export function confirmBidRedirect(
     }
   }
 
-  if (!registrationStatus && sale.is_registration_closed) {
+  if (!registrationStatus && sale.isRegistrationClosed) {
     return {
       path: artworkPath(sale, artwork),
       reason: "user is not registered, registration closed",
     }
   }
-  if (registrationStatus && !registrationStatus.qualified_for_bidding) {
+  if (registrationStatus && !registrationStatus.qualifiedForBidding) {
     return {
       path: confirmRegistrationPath(sale),
       reason: "user is not qualified for bidding",
     }
   }
-  if (sale.is_closed) {
+  if (sale.isClosed) {
     return {
       path: artworkPath(sale, artwork),
       reason: "sale is closed",
@@ -73,24 +73,26 @@ export function confirmBidRedirect(
   return null
 }
 
-const auctionPath = (sale: { id: string }): string => `/auction/${sale.id}`
-const registrationFlowPath = (sale: { id: string }): string =>
+const auctionPath = (sale: { slug: string }): string => `/auction/${sale.slug}`
+const registrationFlowPath = (sale: { slug: string }): string =>
   auctionPath(sale) + "/registration-flow"
-const confirmRegistrationPath = (sale: { id: string }): string =>
+const confirmRegistrationPath = (sale: { slug: string }): string =>
   auctionPath(sale) + "/confirm-registration"
-const artworkPath = (sale: { id: string }, artwork: { id: string }): string =>
-  auctionPath(sale) + `/artwork/${artwork.id}`
+const artworkPath = (
+  sale: { slug: string },
+  artwork: { slug: string }
+): string => auctionPath(sale) + `/artwork/${artwork.slug}`
 
 function isRegisterable(sale: {
-  is_preview: boolean
-  is_open: boolean
-  is_registration_closed: boolean
+  isPreview: boolean
+  isOpen: boolean
+  isRegistrationClosed: boolean
 }): boolean {
-  return (sale.is_preview || sale.is_open) && !sale.is_registration_closed
+  return (sale.isPreview || sale.isOpen) && !sale.isRegistrationClosed
 }
 
 function userRegisteredToBid(sale: {
-  registrationStatus: { qualified_for_bidding: boolean }
+  registrationStatus: { qualifiedForBidding: boolean }
 }): boolean {
   return !!sale.registrationStatus
 }

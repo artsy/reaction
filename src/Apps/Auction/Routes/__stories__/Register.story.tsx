@@ -7,7 +7,7 @@ storiesOf("Apps/Auction/Routes", module).add("Register", () => {
   return (
     <MockRouter
       routes={auctionRoutes}
-      initialRoute="/auction-registration/shared-live-mocktion-k8s"
+      initialRoute="/auction-registration/devon-repro-auct-726"
     />
   )
 })

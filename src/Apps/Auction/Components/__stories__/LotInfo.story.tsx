@@ -10,7 +10,7 @@ storiesOf("Apps/Auction/Components", module).add("LotInfo", () => {
         relay={null as any}
         artwork={{
           " $refType": null as any,
-          _id: "artworkid",
+          internalID: "artworkid",
           date: "1938/1939",
           imageUrl:
             "https://d32dm0rphc51dk.cloudfront.net/7oGWacsWm7L5NS6gSVp-KA/square.jpg",
