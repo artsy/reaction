@@ -11,17 +11,17 @@ export interface DeFragedRegisterQueryResponse {
 
 export const RegisterQueryResponseFixture: DeFragedRegisterQueryResponse = {
   me: {
-    has_qualified_credit_cards: false,
-    id: "userid",
+    hasQualifiedCreditCards: false,
+    internalID: "userid",
   },
   sale: {
-    is_auction: true,
-    id: "an-example-auction-sale",
-    is_registration_closed: false,
-    is_open: true,
-    is_preview: false,
+    isAuction: true,
+    slug: "an-example-auction-sale",
+    isRegistrationClosed: false,
+    isOpen: true,
+    isPreview: false,
     registrationStatus: null,
-    _id: "id123",
+    internalID: "id123",
     status: "open",
   },
 }

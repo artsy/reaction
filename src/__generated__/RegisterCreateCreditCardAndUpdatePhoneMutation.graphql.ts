@@ -40,7 +40,7 @@ export type RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
         readonly creditCardOrError: {
             readonly creditCardEdge?: {
                 readonly node: {
-                    readonly last_digits: string;
+                    readonly lastDigits: string;
                 } | null;
             } | null;
             readonly mutationError?: {
@@ -75,7 +75,7 @@ mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
       ... on CreditCardMutationSuccess {
         creditCardEdge {
           node {
-            last_digits: lastDigits
+            lastDigits
             id
           }
         }
@@ -130,7 +130,7 @@ v3 = [
 ],
 v4 = {
   "kind": "ScalarField",
-  "alias": "last_digits",
+  "alias": null,
   "name": "lastDigits",
   "args": null,
   "storageKey": null
@@ -361,10 +361,10 @@ return {
     "operationKind": "mutation",
     "name": "RegisterCreateCreditCardAndUpdatePhoneMutation",
     "id": null,
-    "text": "mutation RegisterCreateCreditCardAndUpdatePhoneMutation(\n  $creditCardInput: CreditCardInput!\n  $profileInput: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $profileInput) {\n    user {\n      internalID\n      id\n    }\n  }\n  createCreditCard(input: $creditCardInput) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            last_digits: lastDigits\n            id\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation RegisterCreateCreditCardAndUpdatePhoneMutation(\n  $creditCardInput: CreditCardInput!\n  $profileInput: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $profileInput) {\n    user {\n      internalID\n      id\n    }\n  }\n  createCreditCard(input: $creditCardInput) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            lastDigits\n            id\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '55a6a9c59f4d601c1b3ba2bf52fd5992';
+(node as any).hash = 'db9648ef9be0bfbc407720b6417d0472';
 export default node;
