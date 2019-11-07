@@ -62,7 +62,9 @@ export class SearchApp extends React.Component<Props> {
     return (
       <>
         <Row>
-          <Col>{/*<RecentlyViewed />*/}</Col>
+          <Col>
+            <RecentlyViewed />
+          </Col>
         </Row>
 
         <Separator mt={6} mb={3} />
