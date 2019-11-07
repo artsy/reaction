@@ -1,21 +1,21 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type Collections_categories = ReadonlyArray<{
+export type Collections_marketingCategories = ReadonlyArray<{
     readonly name: string;
     readonly collections: ReadonlyArray<{
         readonly slug: string;
         readonly headerImage: string | null;
         readonly title: string;
     }>;
-    readonly " $refType": "Collections_categories";
+    readonly " $refType": "Collections_marketingCategories";
 }>;
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "Collections_categories",
+  "name": "Collections_marketingCategories",
   "type": "MarketingCollectionCategory",
   "metadata": {
     "plural": true
@@ -63,5 +63,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '66eb3896886d261bafe79247912bf6b9';
+(node as any).hash = '76554c57a5339cf4a60df12cdee4be57';
 export default node;

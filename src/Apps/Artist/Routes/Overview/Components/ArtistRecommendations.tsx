@@ -30,9 +30,11 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
   const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
   const { name } = artist
-  const relatedArtists = get(artist, a => a.related.artists.edges, []).map(
-    edge => <RecommendedArtist artist={edge.node} key={edge.node.id} />
-  )
+  const relatedArtists = get(
+    artist,
+    a => a.related.artistsConnection.edges,
+    []
+  ).map(edge => <RecommendedArtist artist={edge.node} key={edge.node.slug} />)
 
   const fetchData = () => {
     if (!relay.hasMore() || relay.isLoading()) {
@@ -111,7 +113,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artist.related.artists
+      return props.artist.related.artistsConnection
     },
     getFragmentVariables(prevVars, count) {
       return {
@@ -128,7 +130,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         ...fragmentVariables,
         count,
         cursor,
-        artistID: props.artist.id,
+        artistID: props.artist.slug,
       }
     },
     query: graphql`

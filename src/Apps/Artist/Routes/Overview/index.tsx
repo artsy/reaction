@@ -62,7 +62,8 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
 
     const isClient = typeof window !== "undefined"
     const showRecommendations =
-      isClient && get(artist, a => a.related.artists.edges.length, 0) > 0
+      isClient &&
+      get(artist, a => a.related.artistsConnection.edges.length, 0) > 0
     return (
       <>
         <Row>
@@ -118,7 +119,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
 
         {!hideMainOverviewSection && <Spacer mb={4} />}
 
-        <Box>{<ArtistCollectionsRail artistID={artist._id} />}</Box>
+        <Box>{<ArtistCollectionsRail artistID={artist.internalID} />}</Box>
 
         <Row>
           <Col>
@@ -126,7 +127,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
 
             <ArtworkFilter
               artist={artist}
-              location={location}
               sidebarAggregations={sidebarAggregations}
             />
           </Col>
@@ -136,7 +136,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
           <Row>
             <Col>
               <Separator mt={6} mb={4} />
-              <ArtistRecommendations artistID={artist._id} />
+              <ArtistRecommendations artistID={artist.internalID} />
             </Col>
           </Row>
         )}
@@ -238,6 +238,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...Genes_artist
         ...FollowArtistButton_artist
         slug
+        id
         counts {
           partner_shows: partnerShows
           for_sale_artworks: forSaleArtworks
@@ -298,6 +299,8 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           sort: $sort
           page: $page
           aggregations: $aggregations
+          first: 30
+          after: ""
         ) {
           aggregations {
             slice

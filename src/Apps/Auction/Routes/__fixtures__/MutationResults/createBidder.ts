@@ -3,7 +3,7 @@ import { RegisterCreateBidderMutationResponse } from "__generated__/RegisterCrea
 export const createBidderSuccessful: RegisterCreateBidderMutationResponse = {
   createBidder: {
     bidder: {
-      id: "example-bidder-id",
+      internalID: "example-bidder-id",
     },
   },
 }

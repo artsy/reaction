@@ -1,4 +1,3 @@
-import { CV_Test_QueryRawResponse } from "__generated__/CV_Test_Query.graphql"
 import { CVFixture } from "Apps/__tests__/Fixtures/Artist/Routes/CV"
 import { CVRouteFragmentContainer as CVRoute } from "Apps/Artist/Routes/CV"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -23,11 +22,9 @@ describe("CV Route", () => {
           }
         }
       `,
-      mockData: {
-        viewer: CVFixture,
-      } as CV_Test_QueryRawResponse,
+      mockData: CVFixture,
       variables: {
-        artist_id: "pablo-picasso",
+        artistID: "pablo-picasso",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
@@ -75,7 +72,7 @@ describe("CV Route", () => {
       const getShowAt = index => wrapper.find("ShowEntry").at(index)
       expect(getShowAt(0).text()).toContain("Picasso Prints,  Wada Garou Tokyo")
       expect(getShowAt(10).text()).toContain(
-        "It's only about Ceramics,  BAILLY GALLERY"
+        "2018 Larsen Art Auction,  Larsen Gallery, Scottsdale"
       )
     })
 

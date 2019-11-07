@@ -44,20 +44,7 @@ return {
   "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
   "type": "FilterArtworksConnection",
   "metadata": null,
-  "argumentDefinitions": [
-    {
-      "kind": "LocalArgument",
-      "name": "first",
-      "type": "Int",
-      "defaultValue": 30
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "after",
-      "type": "String",
-      "defaultValue": ""
-    }
-  ],
+  "argumentDefinitions": [],
   "selections": [
     (v0/*: any*/),
     {
@@ -182,5 +169,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cc5db9bf56b6494abd623170feac003b';
+(node as any).hash = '3b186cfca981d2185ec31f15f09ca8f2';
 export default node;

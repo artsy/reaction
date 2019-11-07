@@ -22,9 +22,7 @@ describe("Articles Route", () => {
           }
         }
       `,
-      mockData: {
-        artist: ArticlesFixture,
-      } as Articles_Test_QueryRawResponse,
+      mockData: ArticlesFixture as Articles_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",
       },

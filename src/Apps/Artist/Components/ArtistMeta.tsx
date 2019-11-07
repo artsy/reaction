@@ -193,7 +193,7 @@ export class ArtistMeta extends Component<Props> {
     return (
       <>
         <Title>{artist.meta.title}</Title>
-        <Link rel="canonical" href={`${sd.APP_URL}/artist/${artist.id}`} />
+        <Link rel="canonical" href={`${sd.APP_URL}/artist/${artist.slug}`} />
         <Meta property="og:title" content={artist.meta.title} />
         <Meta name="description" content={artist.meta.description} />
         <Meta property="og:description" content={artist.meta.description} />
@@ -201,7 +201,7 @@ export class ArtistMeta extends Component<Props> {
           property="twitter:description"
           content={artist.meta.description}
         />
-        <Meta property="og:url" href={`${sd.APP_URL}/artist/${artist.id}`} />
+        <Meta property="og:url" href={`${sd.APP_URL}/artist/${artist.slug}`} />
         <Meta property="og:type" href={`${sd.FACEBOOK_APP_NAMESPACE}:artist`} />
         {artist.alternate_names && (
           <Meta

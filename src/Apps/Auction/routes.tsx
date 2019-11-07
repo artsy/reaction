@@ -20,42 +20,48 @@ export const routes: RouteConfig[] = [
     Component: ConfirmBidRouteFragmentContainer,
     render: ({ Component, props }) => {
       if (Component && props) {
-        const { artwork, me, location } = props as any
+        const { artwork, me, match } = props as any
         if (!artwork) {
           return <ErrorPage code={404} />
         }
-        handleRedirect(confirmBidRedirect({ artwork, me }, location), location)
+        handleRedirect(
+          confirmBidRedirect({ artwork, me }, match.location),
+          match.location
+        )
         return <Component {...props} />
       }
     },
     query: graphql`
-      query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!)
-        @raw_response_type {
+      query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!) {
         artwork(id: $artworkID) {
           ...LotInfo_artwork
+          id
           internalID
           slug
-          saleArtwork: saleArtwork(saleID: $saleID) {
+          saleArtwork(saleID: $saleID) {
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
+            id
             internalID
             slug
             sale {
+              id
               registrationStatus {
                 internalID
-                qualified_for_bidding: qualifiedForBidding
+                qualifiedForBidding
               }
               internalID
               slug
               name
-              is_closed: isClosed
-              is_registration_closed: isRegistrationClosed
+              isClosed
+              isRegistrationClosed
             }
           }
         }
         me {
+          id
           internalID
-          has_qualified_credit_cards: hasQualifiedCreditCards
+          hasQualifiedCreditCards
         }
       }
     `,
@@ -65,33 +71,33 @@ export const routes: RouteConfig[] = [
     Component: RegisterRouteFragmentContainer,
     render: ({ Component, props }) => {
       if (Component && props) {
-        const { location, sale, me } = props as any
+        const { match, sale, me } = props as any
 
         if (!sale) {
           return <ErrorPage code={404} />
         }
 
-        handleRedirect(registerRedirect({ sale, me }), location)
+        handleRedirect(registerRedirect({ sale, me }), match.location)
 
         return <Component {...props} />
       }
     },
     query: graphql`
-      query routes_RegisterQuery($saleID: String!) @raw_response_type {
+      query routes_RegisterQuery($saleID: String!) {
         sale(id: $saleID) @principalField {
           slug
-          is_auction: isAuction
-          is_registration_closed: isRegistrationClosed
-          is_preview: isPreview
-          is_open: isOpen
-          is_auction: isAuction
+          isAuction
+          isRegistrationClosed
+          isPreview
+          isOpen
+          isAuction
           registrationStatus {
-            qualified_for_bidding: qualifiedForBidding
+            qualifiedForBidding
           }
           ...Register_sale
         }
         me {
-          has_qualified_credit_cards: hasQualifiedCreditCards
+          hasQualifiedCreditCards
           ...Register_me
         }
       }

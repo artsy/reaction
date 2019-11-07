@@ -23,7 +23,7 @@ export const CollectionDefaultHeader: FC<CollectionDefaultHeaderProps> = ({
   collection_id,
   collection_slug,
 }) => {
-  const { hits: artworks } = headerArtworks
+  const { edges: artworks } = headerArtworks
 
   if (!artworks) {
     return null
@@ -109,7 +109,7 @@ export const getHeaderArtworks = (
    * width of the viewport.
    */
   while (shouldAppendDuplicateArtworksToHeader) {
-    for (const artwork of artworksArray) {
+    for (const { node: artwork } of artworksArray) {
       if (artworkWidths > headerWidth) {
         headerArtworks.push(artwork)
         shouldAppendDuplicateArtworksToHeader = false
@@ -130,19 +130,21 @@ export const CollectionDefaultHeaderFragmentContainer = createFragmentContainer(
   {
     headerArtworks: graphql`
       fragment DefaultHeader_headerArtworks on FilterArtworksConnection {
-        hits {
-          href
-          slug
-          image {
-            small: resized(height: 160) {
-              url
-              width
-              height
-            }
-            large: resized(height: 220) {
-              url
-              width
-              height
+        edges {
+          node {
+            href
+            slug
+            image {
+              small: resized(height: 160) {
+                url
+                width
+                height
+              }
+              large: resized(height: 220) {
+                url
+                width
+                height
+              }
             }
           }
         }
@@ -166,11 +168,11 @@ const HeaderArtworks = styled(Flex)`
   bottom: 0;
 
   & a:first-child > img {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   & a:last-child > img {
-    margin-left: 0px;
+    margin-left: 0;
   }
 `
 const HeaderImage = styled(Image)`

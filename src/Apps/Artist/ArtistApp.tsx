@@ -24,8 +24,8 @@ export interface ArtistAppProps {
 
 @track<ArtistAppProps>(props => ({
   context_page: Schema.PageName.ArtistPage,
-  context_page_owner_id: props.artist._id,
-  context_page_owner_slug: props.artist.id,
+  context_page_owner_id: props.artist.internalID,
+  context_page_owner_slug: props.artist.slug,
   context_page_owner_type: Schema.OwnerType.Artist,
 }))
 export class ArtistApp extends React.Component<ArtistAppProps> {

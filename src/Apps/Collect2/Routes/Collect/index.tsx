@@ -1,5 +1,5 @@
 import { Box, Separator, Serif, Spacer } from "@artsy/palette"
-import { Location, Router } from "found"
+import { Match, Router } from "found"
 import React from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -22,7 +22,7 @@ import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
 export interface CollectAppProps {
-  location: Location
+  match: Match
   router: Router
   marketingHubCollections: Collect_marketingHubCollections
   viewer: collectRoutes_ArtworkFilterQueryResponse["viewer"]
@@ -35,7 +35,11 @@ export interface CollectAppProps {
 export const CollectApp = track({
   context_page: Schema.PageName.CollectPage,
 })((props: CollectAppProps) => {
-  const { params, viewer, location } = props
+  const {
+    params,
+    viewer,
+    match: { location },
+  } = props
   const medium = params && params.medium
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
   const { trackEvent } = useTracking()

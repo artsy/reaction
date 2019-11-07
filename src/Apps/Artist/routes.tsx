@@ -1,4 +1,7 @@
-import { initialArtworkFilterState } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+import {
+  ArtworkFilters,
+  initialArtworkFilterState,
+} from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
 import { Redirect, RouteConfig } from "found"
 import { graphql } from "react-relay"
@@ -17,7 +20,7 @@ import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
 export const routes: RouteConfig[] = [
   {
-    path: "/artist/:artist_id",
+    path: "/artist/:artistID",
     Component: ArtistApp,
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) {
@@ -42,7 +45,7 @@ export const routes: RouteConfig[] = [
           }
 
           filterParams.hasFilter = Object.entries(filterStateFromUrl).some(
-            ([k, v]) => {
+            ([k, v]: [keyof ArtworkFilters, any]) => {
               return !isDefaultFilter(k, v)
             }
           )
@@ -101,7 +104,7 @@ export const routes: RouteConfig[] = [
       // and not get caught here.
       new Redirect({
         from: "*",
-        to: "/artist/:artist_id",
+        to: "/artist/:artistID",
       }) as any,
     ],
   },

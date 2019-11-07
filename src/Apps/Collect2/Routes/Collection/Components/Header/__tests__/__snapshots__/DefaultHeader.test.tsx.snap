@@ -19,7 +19,7 @@ exports[`default header component renders a snapshot 1`] = `
     }
   >
     <div
-      className="sc-bwzfXH DefaultHeader__HeaderArtworks-ermo8a-1 ixXvKG"
+      className="sc-bwzfXH DefaultHeader__HeaderArtworks-ermo8a-1 cHAhNe"
     >
       <a
         href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"

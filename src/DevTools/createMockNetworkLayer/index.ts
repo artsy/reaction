@@ -146,7 +146,9 @@ export const createMockFetchQuery = ({
 
 const checkLeafType = (value: unknown, info: GraphQLResolveInfo) => {
   const returnType = info.returnType
+
   if (value === null && isNullableType(returnType)) return value
+
   if (isLeafType(returnType)) {
     try {
       returnType.parseValue(value)

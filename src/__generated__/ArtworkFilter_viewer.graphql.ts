@@ -125,6 +125,12 @@ const node: ReaderFragment = {
       "name": "width",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "first",
+      "type": "Int",
+      "defaultValue": 30
     }
   ],
   "selections": [
@@ -163,6 +169,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "color",
           "variableName": "color"
+        },
+        {
+          "kind": "Variable",
+          "name": "first",
+          "variableName": "first"
         },
         {
           "kind": "Variable",
@@ -215,11 +226,6 @@ const node: ReaderFragment = {
           "variableName": "priceRange"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0
-        },
-        {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort"
@@ -249,5 +255,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'f28c0e2748a882143d35388b5610ffc9';
+(node as any).hash = '56d07aeddc1ae29b870c2b9dc7346e23';
 export default node;

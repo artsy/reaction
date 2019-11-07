@@ -5,7 +5,9 @@ import { createMediaStyle } from "Utils/Responsive"
 const req = require.context("../", true, /\.story\.tsx$/)
 
 function loadStories() {
-  req.keys().forEach(filename => req(filename))
+  req.keys().forEach(filename => {
+    return req(filename)
+  })
 }
 
 // Add RRM styles to Storybooks head

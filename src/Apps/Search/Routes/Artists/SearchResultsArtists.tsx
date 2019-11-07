@@ -47,7 +47,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
 
   loadNext = () => {
     const { viewer } = this.props
-    const { search: searchConnection } = viewer
+    const { searchConnection } = viewer
 
     const {
       pageInfo: { hasNextPage, endCursor },
@@ -93,9 +93,11 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
   renderArtists() {
     const { viewer, location } = this.props
     const { term } = get(location, l => l.query)
-    const { search: searchConnection } = viewer
+    const { searchConnection } = viewer
 
-    const artists = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const artists = get(viewer, v => v.searchConnection.edges, []).map(
+      e => e.node
+    )
 
     return (
       <>
@@ -110,7 +112,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
                 href={artist.href}
                 index={index}
                 term={term}
-                id={artist._id}
+                id={artist.internalID}
               />
               {index < artists.length - 1 && <Separator />}
             </Box>
@@ -131,7 +133,9 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
     const { viewer, location } = this.props
     const { term } = get(location, l => l.query)
 
-    const artists = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const artists = get(viewer, v => v.searchConnection.edges, []).map(
+      e => e.node
+    )
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {artists.length === 0 ? (
