@@ -48,12 +48,12 @@ export class UserSettingsPayments extends React.Component<
 }
 
 export interface CreditCardType {
-  __id: string
   id: string
+  internalID: string
   brand: string
-  last_digits: string
-  expiration_month: number
-  expiration_year: number
+  lastDigits: string
+  expirationMonth: number
+  expirationYear: number
   __typename: string
 }
 
@@ -62,9 +62,9 @@ graphql`
     id
     internalID
     brand
-    last_digits: lastDigits
-    expiration_year: expirationYear
-    expiration_month: expirationMonth
+    lastDigits
+    expirationYear
+    expirationMonth
     __typename
   }
 `

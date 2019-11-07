@@ -32,9 +32,9 @@ fragment UserSettingsPayments_me on Me {
         id
         internalID
         brand
-        last_digits: lastDigits
-        expiration_year: expirationYear
-        expiration_month: expirationMonth
+        lastDigits
+        expirationYear
+        expirationMonth
         __typename
       }
       cursor
@@ -150,21 +150,21 @@ return {
                       },
                       {
                         "kind": "ScalarField",
-                        "alias": "last_digits",
+                        "alias": null,
                         "name": "lastDigits",
                         "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
-                        "alias": "expiration_year",
+                        "alias": null,
                         "name": "expirationYear",
                         "args": null,
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
-                        "alias": "expiration_month",
+                        "alias": null,
                         "name": "expirationMonth",
                         "args": null,
                         "storageKey": null
@@ -231,7 +231,7 @@ return {
     "operationKind": "query",
     "name": "UserSettingsPaymentsQuery",
     "id": null,
-    "text": "query UserSettingsPaymentsQuery {\n  me {\n    ...UserSettingsPayments_me\n    id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  id\n  internalID\n  creditCards(first: 100) {\n    edges {\n      node {\n        id\n        internalID\n        brand\n        last_digits: lastDigits\n        expiration_year: expirationYear\n        expiration_month: expirationMonth\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+    "text": "query UserSettingsPaymentsQuery {\n  me {\n    ...UserSettingsPayments_me\n    id\n  }\n}\n\nfragment UserSettingsPayments_me on Me {\n  id\n  internalID\n  creditCards(first: 100) {\n    edges {\n      node {\n        id\n        internalID\n        brand\n        lastDigits\n        expirationYear\n        expirationMonth\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

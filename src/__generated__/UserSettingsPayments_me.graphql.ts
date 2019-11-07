@@ -10,9 +10,9 @@ export type UserSettingsPayments_me = {
                 readonly id: string;
                 readonly internalID: string;
                 readonly brand: string;
-                readonly last_digits: string;
-                readonly expiration_year: number;
-                readonly expiration_month: number;
+                readonly lastDigits: string;
+                readonly expirationYear: number;
+                readonly expirationMonth: number;
                 readonly __typename: string;
             } | null;
         } | null> | null;
@@ -95,21 +95,21 @@ return {
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": "last_digits",
+                  "alias": null,
                   "name": "lastDigits",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": "expiration_year",
+                  "alias": null,
                   "name": "expirationYear",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": "expiration_month",
+                  "alias": null,
                   "name": "expirationMonth",
                   "args": null,
                   "storageKey": null

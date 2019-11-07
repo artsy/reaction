@@ -5,9 +5,9 @@ export type UserSettingsPaymentsCreditCard = {
     readonly id: string;
     readonly internalID: string;
     readonly brand: string;
-    readonly last_digits: string;
-    readonly expiration_year: number;
-    readonly expiration_month: number;
+    readonly lastDigits: string;
+    readonly expirationYear: number;
+    readonly expirationMonth: number;
     readonly __typename: "CreditCard";
     readonly " $refType": "UserSettingsPaymentsCreditCard";
 };
@@ -44,21 +44,21 @@ const node: ReaderFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": "last_digits",
+      "alias": null,
       "name": "lastDigits",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": "expiration_year",
+      "alias": null,
       "name": "expirationYear",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": "expiration_month",
+      "alias": null,
       "name": "expirationMonth",
       "args": null,
       "storageKey": null
@@ -72,5 +72,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '3da77002887ae150680ac270f984cfba';
+(node as any).hash = 'e9f97eecca2ad74a3adc1a32b5adc428';
 export default node;
