@@ -17,6 +17,7 @@ import {
   confirmBidBidderPositionQueryWithWinning,
   createBidderPositionFailed,
   createBidderPositionSuccessful,
+  createBidderPositionSuccessfulAndBidder,
 } from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
@@ -169,11 +170,11 @@ describe("Routes/ConfirmBid", () => {
           context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
           auction_slug: "saleslug",
           artwork_slug: "artworkslug",
-          bidder_id: "bidderid",
+          bidder_id: "existing-bidder-id",
           bidder_position_id: "winning-bidder-position-id-from-polling",
           sale_id: "saleid",
           user_id: "my-user-id",
-          order_id: "bidderid",
+          order_id: "existing-bidder-id",
           products: [
             {
               product_id: "artworkid",
@@ -213,7 +214,7 @@ describe("Routes/ConfirmBid", () => {
         error_messages: ["ConfirmBidCreateBidderPositionMutation failed"],
         auction_slug: "saleslug",
         artwork_slug: "artworkslug",
-        bidder_id: "bidderid",
+        bidder_id: "existing-bidder-id",
         sale_id: "saleid",
         user_id: "my-user-id",
       })
@@ -245,7 +246,7 @@ describe("Routes/ConfirmBid", () => {
         mockData: FixtureForUnregisteredUserWithCreditCard,
       })
 
-      env.mutations.useResultsOnce(createBidderPositionSuccessful)
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
       mockBidderPositionQuery.mockResolvedValue(
         confirmBidBidderPositionQueryWithPending
       )
@@ -266,6 +267,41 @@ describe("Routes/ConfirmBid", () => {
           },
         }
       )
+    })
+
+    xit("tracks a success event to Segment including Criteo info", async done => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithWinning
+      )
+
+      await page.submitForm()
+
+      setTimeout(() => {
+        // TODO: What's up with it being called 2 times?
+        expect(mockPostEvent).toHaveBeenCalledTimes(1)
+        expect(mockPostEvent).toHaveBeenCalledWith({
+          action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+          context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+          auction_slug: "saleslug",
+          artwork_slug: "artworkslug",
+          bidder_id: "new-bidder-id",
+          bidder_position_id: "winning-bidder-position-id-from-polling",
+          sale_id: "saleid",
+          user_id: "my-user-id",
+          order_id: "new-bidder-id",
+          products: [
+            {
+              product_id: "artworkid",
+              quantity: 1,
+              price: 50000,
+            },
+          ],
+        })
+        done()
+      }, 1001)
     })
 
     it("displays an error when user did not agree to terms but tried to submit", async () => {

@@ -15,6 +15,13 @@ export type ConfirmBidCreateBidderPositionMutationResponse = {
         readonly result: ({
             readonly position: ({
                 readonly id: string;
+                readonly sale_artwork: ({
+                    readonly sale: ({
+                        readonly registrationStatus: ({
+                            readonly id: string;
+                        }) | null;
+                    }) | null;
+                }) | null;
             }) | null;
             readonly status: string;
             readonly message_header: string | null;
@@ -37,6 +44,16 @@ mutation ConfirmBidCreateBidderPositionMutation(
     result {
       position {
         id
+        sale_artwork {
+          sale {
+            registrationStatus {
+              id
+              __id
+            }
+            __id
+          }
+          __id
+        }
         __id
       }
       status
@@ -56,7 +73,21 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = [
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__id",
+  "args": null,
+  "storageKey": null
+},
+v3 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -91,20 +122,45 @@ v1 = [
             "concreteType": "BidderPosition",
             "plural": false,
             "selections": [
+              v1,
               {
-                "kind": "ScalarField",
+                "kind": "LinkedField",
                 "alias": null,
-                "name": "id",
+                "name": "sale_artwork",
+                "storageKey": null,
                 "args": null,
-                "storageKey": null
+                "concreteType": "SaleArtwork",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "sale",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Sale",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "registrationStatus",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Bidder",
+                        "plural": false,
+                        "selections": [
+                          v1,
+                          v2
+                        ]
+                      },
+                      v2
+                    ]
+                  },
+                  v2
+                ]
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__id",
-                "args": null,
-                "storageKey": null
-              }
+              v2
             ]
           },
           {
@@ -138,7 +194,7 @@ return {
   "operationKind": "mutation",
   "name": "ConfirmBidCreateBidderPositionMutation",
   "id": null,
-  "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        id\n        __id\n      }\n      status\n      message_header\n      message_description_md\n    }\n  }\n}\n",
+  "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        id\n        sale_artwork {\n          sale {\n            registrationStatus {\n              id\n              __id\n            }\n            __id\n          }\n          __id\n        }\n        __id\n      }\n      status\n      message_header\n      message_description_md\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -146,15 +202,15 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": v3
   },
   "operation": {
     "kind": "Operation",
     "name": "ConfirmBidCreateBidderPositionMutation",
     "argumentDefinitions": v0,
-    "selections": v1
+    "selections": v3
   }
 };
 })();
-(node as any).hash = '6c893ea6050f8571b02181c2d660da78';
+(node as any).hash = '5302f9a91840d5cc3e0dad780fbcba5e';
 export default node;
