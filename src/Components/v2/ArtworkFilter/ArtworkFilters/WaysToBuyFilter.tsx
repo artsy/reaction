@@ -43,7 +43,7 @@ export const WaysToBuyFilter: FC = () => {
           !filterContext.isDefaultValue("price_range")
       ),
       name: "Bid",
-      state: "at_auction",
+      state: "atAuction",
     },
     {
       disabled: isDisabled(filterContext.counts.for_sale_artworks),
