@@ -18,9 +18,9 @@ describe("SearchResultsArtworks", () => {
   }
 
   const props = {
-    location: { query: { term: "andy" } },
+    match: { location: { query: { term: "andy" } } },
     viewer: {
-      search: {
+      searchConnection: {
         edges: [
           {
             node: {
@@ -42,9 +42,9 @@ describe("SearchResultsArtworks", () => {
   }
 
   const emptyResults = {
-    location: { query: { term: "andy" } },
+    match: { location: { query: { term: "andy" } } },
     viewer: {
-      search: {
+      searchConnection: {
         edges: [],
         pageInfo: {
           hasNextPage: true,
@@ -57,8 +57,8 @@ describe("SearchResultsArtworks", () => {
   }
 
   it("renders artworks contents", () => {
-    const wrapper = getWrapper(props) as any
-    const html = wrapper.html()
+    const wrapper = getWrapper(props).find("GenericSearchResultItem")
+    const html = wrapper.text()
     expect(html).toContain("Catty Artist")
   })
 

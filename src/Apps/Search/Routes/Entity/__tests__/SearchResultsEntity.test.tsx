@@ -18,9 +18,9 @@ describe("SearchResultsEntity", () => {
   }
 
   const props = {
-    location: { query: { term: "andy" } },
+    match: { location: { query: { term: "andy" } } },
     viewer: {
-      search: {
+      searchConnection: {
         edges: [
           {
             node: {
@@ -45,9 +45,9 @@ describe("SearchResultsEntity", () => {
   }
 
   const emptyResults = {
-    location: { query: { term: "andy" } },
+    match: { location: { query: { term: "andy" } } },
     viewer: {
-      search: {
+      searchConnection: {
         edges: [],
         pageInfo: {
           hasNextPage: true,
