@@ -3,7 +3,7 @@ import { RegisterCreateCreditCardAndUpdatePhoneMutationResponse } from "__genera
 export const createCreditCardAndUpdatePhoneSuccessful: RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
   updateMyUserProfile: {
     user: {
-      id: "example-user-id",
+      internalID: "example-user-id",
     },
   },
   createCreditCard: {
@@ -20,7 +20,7 @@ export const createCreditCardAndUpdatePhoneSuccessful: RegisterCreateCreditCardA
 export const createCreditCardAndUpdatePhoneFailed: RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
   updateMyUserProfile: {
     user: {
-      id: "example-user-id",
+      internalID: "example-user-id",
     },
   },
   createCreditCard: {

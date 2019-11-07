@@ -1,4 +1,4 @@
-import { ConfirmBidValidTestQueryRawResponse } from "__generated__/ConfirmBidValidTestQuery.graphql"
+import { ConfirmBidValidTestQueryResponse } from "__generated__/ConfirmBidValidTestQuery.graphql"
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import React from "react"
@@ -48,12 +48,12 @@ const setupTestEnv = ({
       />
     ),
     query: graphql`
-      query ConfirmBidValidTestQuery @raw_response_type {
+      query ConfirmBidValidTestQuery {
         artwork(id: "artwork-id") {
           ...LotInfo_artwork
           internalID
           slug
-          saleArtwork: saleArtwork(saleID: "example-auction-id") {
+          saleArtwork(saleID: "example-auction-id") {
             ...LotInfo_saleArtwork
             ...BidForm_saleArtwork
             internalID
@@ -61,23 +61,23 @@ const setupTestEnv = ({
             sale {
               registrationStatus {
                 internalID
-                qualified_for_bidding: qualifiedForBidding
+                qualifiedForBidding
               }
               internalID
               slug
               name
-              is_closed: isClosed
-              is_registration_closed: isRegistrationClosed
+              isClosed
+              isRegistrationClosed
             }
           }
         }
         me {
           internalID
-          has_qualified_credit_cards: hasQualifiedCreditCards
+          hasQualifiedCreditCards
         }
       }
     `,
-    defaultData: ConfirmBidQueryResponseFixture as ConfirmBidValidTestQueryRawResponse,
+    defaultData: ConfirmBidQueryResponseFixture as ConfirmBidValidTestQueryResponse,
     defaultMutationResults: {
       createBidderPosition: {},
     },
@@ -118,8 +118,8 @@ describe("Routes/ConfirmBid", () => {
 
     expect(window.location.assign).toHaveBeenCalledWith(
       `https://example.com/auction/${
-        ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.id
-      }/artwork/${ConfirmBidQueryResponseFixture.artwork.id}`
+        ConfirmBidQueryResponseFixture.artwork.saleArtwork.sale.slug
+      }/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
     )
   })
 

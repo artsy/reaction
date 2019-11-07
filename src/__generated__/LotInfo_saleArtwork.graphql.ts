@@ -82,5 +82,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '63b064c2ebb6bd882a64156300b78631';
+(node as any).hash = 'd63876e2627bde421ea90ea82620a1f1';
 export default node;
