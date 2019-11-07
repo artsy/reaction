@@ -15,6 +15,13 @@ export type ConfirmBidCreateBidderPositionMutationResponse = {
         readonly result: {
             readonly position: {
                 readonly internalID: string;
+                readonly saleArtwork: {
+                    readonly sale: {
+                        readonly registrationStatus: {
+                            readonly internalID: string;
+                        } | null;
+                    } | null;
+                } | null;
             } | null;
             readonly status: string;
             readonly messageHeader: string | null;
@@ -37,6 +44,16 @@ mutation ConfirmBidCreateBidderPositionMutation(
     result {
       position {
         internalID
+        saleArtwork {
+          sale {
+            registrationStatus {
+              internalID
+              id
+            }
+            id
+          }
+          id
+        }
         id
       }
       status
@@ -90,6 +107,13 @@ v5 = {
   "name": "messageDescriptionMD",
   "args": null,
   "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
@@ -127,7 +151,41 @@ return {
                 "concreteType": "BidderPosition",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/)
+                  (v2/*: any*/),
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "saleArtwork",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "SaleArtwork",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "sale",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sale",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "registrationStatus",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Bidder",
+                            "plural": false,
+                            "selections": [
+                              (v2/*: any*/)
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 ]
               },
               (v3/*: any*/),
@@ -173,12 +231,43 @@ return {
                 "selections": [
                   (v2/*: any*/),
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "id",
+                    "name": "saleArtwork",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
-                  }
+                    "concreteType": "SaleArtwork",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "sale",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sale",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "registrationStatus",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Bidder",
+                            "plural": false,
+                            "selections": [
+                              (v2/*: any*/),
+                              (v6/*: any*/)
+                            ]
+                          },
+                          (v6/*: any*/)
+                        ]
+                      },
+                      (v6/*: any*/)
+                    ]
+                  },
+                  (v6/*: any*/)
                 ]
               },
               (v3/*: any*/),
@@ -194,10 +283,10 @@ return {
     "operationKind": "mutation",
     "name": "ConfirmBidCreateBidderPositionMutation",
     "id": null,
-    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        id\n      }\n      status\n      messageHeader\n      messageDescriptionMD\n    }\n  }\n}\n",
+    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        saleArtwork {\n          sale {\n            registrationStatus {\n              internalID\n              id\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n      status\n      messageHeader\n      messageDescriptionMD\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '221ace778bd3446ce1d9695869417e38';
+(node as any).hash = 'd78638aac3fa507d0dbbbd3b9e7f0987';
 export default node;

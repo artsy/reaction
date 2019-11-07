@@ -6,6 +6,33 @@ export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutat
     result: {
       position: {
         internalID: "positionid",
+        saleArtwork: {
+          sale: {
+            registrationStatus: {
+              internalID: "existing-bidder-id",
+            },
+          },
+        },
+      },
+      status: "SUCCESS",
+      messageHeader: null,
+      messageDescriptionMD: null,
+    },
+  },
+}
+
+export const createBidderPositionSuccessfulAndBidder: ConfirmBidCreateBidderPositionMutationResponse = {
+  createBidderPosition: {
+    result: {
+      position: {
+        internalID: "positionid",
+        saleArtwork: {
+          sale: {
+            registrationStatus: {
+              internalID: "new-bidder-id",
+            },
+          },
+        },
       },
       status: "SUCCESS",
       messageHeader: null,

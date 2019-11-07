@@ -39,7 +39,7 @@ export const ConfirmBidQueryResponseFixture: routes_ConfirmBidQueryRawResponse =
         isRegistrationClosed: false,
         registrationStatus: {
           id: "opaque-bidderid",
-          internalID: "bidderid",
+          internalID: "existing-bidder-id",
           qualifiedForBidding: true,
         },
       },

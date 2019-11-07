@@ -68,6 +68,13 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
                 result {
                   position {
                     internalID
+                    saleArtwork {
+                      sale {
+                        registrationStatus {
+                          internalID
+                        }
+                      }
+                    }
                   }
                   status
                   messageHeader
@@ -142,21 +149,30 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     values: { selectedBid: number },
     actions: FormikActions<object>
   ) {
-    const bidderId = sale.registrationStatus.internalID
     const selectedBid = Number(values.selectedBid)
+    const possibleExistingBidderId: string | null = sale.registrationStatus
+      ? sale.registrationStatus.internalID
+      : null
 
     createBidderPosition(selectedBid)
       .then((data: ConfirmBidCreateBidderPositionMutationResponse) => {
         if (data.createBidderPosition.result.status !== "SUCCESS") {
-          trackConfirmBidFailed(bidderId, [
+          trackConfirmBidFailed(possibleExistingBidderId, [
             "ConfirmBidCreateBidderPositionMutation failed",
           ])
         } else {
-          verifyBidderPosition({ data, bidderId, selectedBid })
+          const bidderIdFromMutation =
+            data.createBidderPosition.result.position.saleArtwork.sale
+              .registrationStatus.internalID
+          verifyBidderPosition({
+            data,
+            bidderId: bidderIdFromMutation,
+            selectedBid,
+          })
         }
       })
       .catch(error => {
-        handleMutationError(actions, error, bidderId)
+        handleMutationError(actions, error, possibleExistingBidderId)
         actions.setSubmitting(false)
       })
   }
