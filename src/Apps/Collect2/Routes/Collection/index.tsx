@@ -120,6 +120,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 viewer={viewer}
                 relayVariables={{
                   slug: viewer.slug,
+                  first: 30,
                 }}
               />
             </ArtworkFilterContextProvider>
@@ -185,6 +186,7 @@ export const CollectionAppQuery = graphql`
           priceRange: $priceRange
           sort: $sort
           width: $width
+          first: 30
         )
     }
   }
@@ -210,6 +212,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int" }
         ) {
         category
         credit
@@ -234,6 +237,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           aggregations: $aggregations
           includeMediumFilterInAggregation: true
           size: 20
+          first: 20
           sort: "-decayed_merch"
         ) {
           ...Header_artworks
@@ -260,7 +264,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           offerable: $offerable
           page: $page
           priceRange: $priceRange
-          size: 0
+          first: $first
           sort: $sort
           width: $width
         ) {
