@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
-import { Collections_categories } from "__generated__/Collections_categories.graphql"
+import { Collections_marketingCategories } from "__generated__/Collections_marketingCategories.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
@@ -11,7 +11,7 @@ import { data as sd } from "sharify"
 import { CollectionEntity, CollectionsGrid } from "./Components/CollectionsGrid"
 
 interface CollectionsAppProps {
-  categories: Collections_categories
+  marketingCategories: Collections_marketingCategories
   router: Router
 }
 
@@ -23,7 +23,7 @@ const isServer = typeof window === "undefined"
 
 export class CollectionsApp extends Component<CollectionsAppProps> {
   render() {
-    const { categories, router } = this.props
+    const { marketingCategories, router } = this.props
 
     return (
       <>
@@ -54,8 +54,8 @@ export class CollectionsApp extends Component<CollectionsAppProps> {
                 </Sans>
               </Box>
             </Flex>
-            {categories &&
-              [...categories] // creates a new array since the sort function modifies the array.
+            {marketingCategories &&
+              [...marketingCategories] // creates a new array since the sort function modifies the array.
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((category, index) => {
                   return (
@@ -105,8 +105,8 @@ const CategoryItem = props => {
 export const CollectionsAppFragmentContainer = createFragmentContainer(
   CollectionsApp,
   {
-    categories: graphql`
-      fragment Collections_categories on MarketingCollectionCategory
+    marketingCategories: graphql`
+      fragment Collections_marketingCategories on MarketingCollectionCategory
         @relay(plural: true) {
         name
         collections {

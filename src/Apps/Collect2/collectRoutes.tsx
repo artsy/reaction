@@ -78,8 +78,8 @@ export const collectRoutes: RouteConfig[] = [
     fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
-        categories: marketingCategories @principalField {
-          ...Collections_categories
+        marketingCategories @principalField {
+          ...Collections_marketingCategories
         }
       }
     `,
