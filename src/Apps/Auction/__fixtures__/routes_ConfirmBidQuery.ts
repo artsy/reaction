@@ -16,14 +16,14 @@ export interface ConfirmBidQueryResponse
 
 export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
   me: {
-    id: "my-user-id",
-    has_qualified_credit_cards: false,
+    internalID: "my-user-id",
+    hasQualifiedCreditCards: false,
   },
   artwork: {
     " $fragmentRefs": null as never,
     " $refType": null as never,
-    _id: "artworkid",
-    id: "artworkslug",
+    internalID: "artworkid",
+    slug: "artworkslug",
     date: "may 4",
     title: "artworkid",
     imageUrl: "artworkid",
@@ -31,8 +31,8 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
     saleArtwork: {
       " $fragmentRefs": null as never,
       " $refType": null as never,
-      _id: "saleArtworkid",
-      id: "saleArtworkslug",
+      internalID: "saleArtworkid",
+      slug: "saleArtworkslug",
       counts: { bidderPositions: 3 },
       increments: [
         { cents: 5000000, display: "$50,000" },
@@ -46,14 +46,14 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
         display: "$50,000USD",
       },
       sale: {
-        _id: "saleid",
-        id: "saleslug",
+        internalID: "saleid",
+        slug: "saleslug",
         name: "Art Sale 2019",
-        is_closed: false,
-        is_registration_closed: false,
+        isClosed: false,
+        isRegistrationClosed: false,
         registrationStatus: {
-          id: "bidderid",
-          qualified_for_bidding: true,
+          internalID: "bidderid",
+          qualifiedForBidding: true,
         },
       },
     },

@@ -40,10 +40,10 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
 
   const commonProperties = {
-    auction_slug: sale.id,
+    auction_slug: sale.slug,
     auction_state: sale.status,
-    sale_id: sale._id,
-    user_id: me.id,
+    sale_id: sale.internalID,
+    user_id: me.internalID,
   }
 
   function trackRegistrationFailed(errors: string[]) {
@@ -82,7 +82,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
           }
         `,
         variables: {
-          input: { sale_id: sale.id },
+          input: { saleID: sale.internalID },
         },
       })
     })
@@ -125,7 +125,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
                   ... on CreditCardMutationSuccess {
                     creditCardEdge {
                       node {
-                        last_digits: lastDigits
+                        lastDigits
                       }
                     }
                   }
@@ -172,10 +172,10 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {
-            trackRegistrationSuccess(data.createBidder.bidder.id)
+            trackRegistrationSuccess(data.createBidder.bidder.internalID)
 
             window.location.assign(
-              `${sd.APP_URL}/auction/${sale.id}/confirm-registration`
+              `${sd.APP_URL}/auction/${sale.slug}/confirm-registration`
             )
           })
           .catch(error => {

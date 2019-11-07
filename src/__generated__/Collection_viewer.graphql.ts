@@ -137,6 +137,12 @@ return {
       "name": "width",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "first",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -262,6 +268,11 @@ return {
         (v0/*: any*/),
         {
           "kind": "Literal",
+          "name": "first",
+          "value": 20
+        },
+        {
+          "kind": "Literal",
           "name": "includeMediumFilterInAggregation",
           "value": true
         },
@@ -365,6 +376,11 @@ return {
         },
         {
           "kind": "Variable",
+          "name": "first",
+          "variableName": "first"
+        },
+        {
+          "kind": "Variable",
           "name": "forSale",
           "variableName": "forSale"
         },
@@ -404,11 +420,6 @@ return {
           "variableName": "priceRange"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0
-        },
-        {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort"
@@ -439,5 +450,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '4b4ad22b82de093c2236787e68b4a163';
+(node as any).hash = '7142c35726f584d631e7afcd95be7eb9';
 export default node;

@@ -34,7 +34,7 @@ storiesOf("Apps/Collect/Collection", module)
     return (
       <MockRouter
         routes={collectRoutes}
-        initialRoute="/collection/street-art-now"
+        initialRoute="/collection/contemporary"
       />
     )
   })

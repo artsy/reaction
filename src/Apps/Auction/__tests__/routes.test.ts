@@ -4,10 +4,7 @@ import {
   ConfirmBidQueryResponse,
   ConfirmBidQueryResponseFixture,
 } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
-import {
-  DeFragedRegisterQueryResponse,
-  RegisterQueryResponseFixture,
-} from "Apps/Auction/__fixtures__/routes_RegisterQuery"
+import { RegisterQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_RegisterQuery"
 import { routes } from "Apps/Auction/routes"
 import deepMerge from "deepmerge"
 import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
@@ -57,8 +54,8 @@ describe("Auction/routes", () => {
     it("does not redirect if the user is qualified to bid in the sale, the sale is open, and the artwork is biddable", async () => {
       const fixture = mockConfirmBidResolver()
       const { redirect, status } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
+          fixture.artwork.slug
         }`,
         fixture
       )
@@ -71,19 +68,19 @@ describe("Auction/routes", () => {
       const fixture = mockConfirmBidResolver({
         artwork: {
           saleArtwork: {
-            sale: { registrationStatus: { qualified_for_bidding: false } },
+            sale: { registrationStatus: { qualifiedForBidding: false } },
           },
         },
       })
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
+          fixture.artwork.slug
         }`,
         fixture
       )
 
       expect(redirect.url).toBe(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/confirm-registration`
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/confirm-registration`
       )
     })
 
@@ -92,20 +89,20 @@ describe("Auction/routes", () => {
         artwork: {
           saleArtwork: {
             sale: {
-              is_closed: true,
+              isClosed: true,
             },
           },
         },
       })
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
+          fixture.artwork.slug
         }`,
         fixture
       )
       expect(redirect.url).toBe(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/artwork/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/artwork/${
+          fixture.artwork.slug
         }`
       )
     })
@@ -116,8 +113,8 @@ describe("Auction/routes", () => {
       })
 
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
+          fixture.artwork.slug
         }`,
         fixture
       )
@@ -132,20 +129,20 @@ describe("Auction/routes", () => {
           saleArtwork: {
             sale: {
               registrationStatus: null,
-              is_registration_closed: true,
+              isRegistrationClosed: true,
             },
           },
         },
       })
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
+          fixture.artwork.slug
         }`,
         fixture
       )
       expect(redirect.url).toBe(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/artwork/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/artwork/${
+          fixture.artwork.slug
         }`
       )
     })
@@ -156,14 +153,14 @@ describe("Auction/routes", () => {
           saleArtwork: {
             sale: {
               registrationStatus: null,
-              is_registration_closed: false,
+              isRegistrationClosed: false,
             },
           },
         },
       })
       const { redirect, status } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.id}/bid/${
-          fixture.artwork.id
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
+          fixture.artwork.slug
         }`,
         fixture
       )
@@ -176,7 +173,7 @@ describe("Auction/routes", () => {
   describe("Register: /auction-registration/:saleId", () => {
     it("does not redirect if a sale is found", async () => {
       const { redirect, status } = await render(
-        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        `/auction-registration/${RegisterQueryResponseFixture.sale.slug}`,
         mockRegisterResolver(RegisterQueryResponseFixture)
       )
 
@@ -186,7 +183,7 @@ describe("Auction/routes", () => {
 
     it("also responds to auction-registration2 route", async () => {
       const { status } = await render(
-        `/auction-registration2/${RegisterQueryResponseFixture.sale.id}`,
+        `/auction-registration2/${RegisterQueryResponseFixture.sale.slug}`,
         mockRegisterResolver(RegisterQueryResponseFixture)
       )
 
@@ -195,54 +192,56 @@ describe("Auction/routes", () => {
 
     it("redirects to the auction registration modal if the user has a qualified credit card", async () => {
       const { redirect } = await render(
-        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        `/auction-registration/${RegisterQueryResponseFixture.sale.slug}`,
         mockRegisterResolver({
           ...RegisterQueryResponseFixture,
           me: {
             ...RegisterQueryResponseFixture.me,
-            has_qualified_credit_cards: true,
+            hasQualifiedCreditCards: true,
           },
         })
       )
 
       expect(redirect.url).toBe(
-        `/auction/${RegisterQueryResponseFixture.sale.id}/registration-flow`
+        `/auction/${RegisterQueryResponseFixture.sale.slug}/registration-flow`
       )
     })
 
     it("redirects back to the auction if the registration window has closed", async () => {
       const { redirect } = await render(
-        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        `/auction-registration/${RegisterQueryResponseFixture.sale.slug}`,
         mockRegisterResolver({
           ...RegisterQueryResponseFixture,
           sale: {
             ...RegisterQueryResponseFixture.sale,
-            is_registration_closed: true,
+            isRegistrationClosed: true,
           },
         })
       )
 
       expect(redirect.url).toBe(
-        `/auction/${RegisterQueryResponseFixture.sale.id}`
+        `/auction/${RegisterQueryResponseFixture.sale.slug}`
       )
     })
 
     it("redirects to the auction confirm registration route if bidder has already registered", async () => {
       const { redirect } = await render(
-        `/auction-registration/${RegisterQueryResponseFixture.sale.id}`,
+        `/auction-registration/${RegisterQueryResponseFixture.sale.slug}`,
         mockRegisterResolver({
           ...RegisterQueryResponseFixture,
           sale: {
             ...RegisterQueryResponseFixture.sale,
             registrationStatus: {
-              qualified_for_bidding: true,
+              qualifiedForBidding: true,
             },
           },
         })
       )
 
       expect(redirect.url).toBe(
-        `/auction/${RegisterQueryResponseFixture.sale.id}/confirm-registration`
+        `/auction/${
+          RegisterQueryResponseFixture.sale.slug
+        }/confirm-registration`
       )
     })
   })

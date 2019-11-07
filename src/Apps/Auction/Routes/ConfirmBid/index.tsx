@@ -71,9 +71,9 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           `,
           variables: {
             input: {
-              sale_id: sale.id,
-              artwork_id: artwork.id,
-              max_bid_amount_cents: maxBidAmountCents,
+              saleID: sale.internalID,
+              artworkID: artwork.internalID,
+              maxBidAmountCents,
             },
           },
         }
@@ -123,7 +123,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
       order_id: bidderId,
       products: [
         {
-          product_id: artwork._id,
+          product_id: artwork.internalID,
           quantity: 1,
           price: selectedBidAmountCents / 100,
         },
@@ -135,7 +135,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     values: { selectedBid: number },
     actions: FormikActions<object>
   ) {
-    const bidderId = sale.registrationStatus.id
+    const bidderId = sale.registrationStatus.internalID
 
     createBidderPosition(Number(values.selectedBid))
       .then((data: ConfirmBidCreateBidderPositionMutationResponse) => {
@@ -144,10 +144,11 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
             "ConfirmBidCreateBidderPositionMutation failed",
           ])
         } else {
-          const positionId = data.createBidderPosition.result.position.id
+          const positionId =
+            data.createBidderPosition.result.position.internalID
           trackConfirmBidSuccess(positionId, bidderId, values.selectedBid)
           window.location.assign(
-            `${sd.APP_URL}/auction/${sale.id}/artwork/${artwork.id}`
+            `${sd.APP_URL}/auction/${sale.slug}/artwork/${artwork.slug}`
           )
         }
       })
@@ -189,10 +190,10 @@ const getInitialSelectedBid = (location: Location): string | undefined => {
 const TrackingWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   const Component = track<ConfirmBidProps>(p => ({
     context_page: Schema.PageName.AuctionConfirmBidPage,
-    auction_slug: p.artwork.saleArtwork.sale.id,
-    artwork_slug: p.artwork.id,
-    sale_id: p.artwork.saleArtwork.sale._id,
-    user_id: p.me.id,
+    auction_slug: p.artwork.saleArtwork.sale.slug,
+    artwork_slug: p.artwork.slug,
+    sale_id: p.artwork.saleArtwork.sale.internalID,
+    user_id: p.me.internalID,
   }))(ConfirmBidRoute)
 
   return <Component {...props} />
