@@ -17,6 +17,7 @@ import {
   confirmBidBidderPositionQueryWithWinning,
   createBidderPositionFailed,
   createBidderPositionSuccessful,
+  createBidderPositionSuccessfulAndBidder,
 } from "../__fixtures__/MutationResults/createBidderPosition"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
@@ -152,7 +153,7 @@ describe("Routes/ConfirmBid", () => {
       }, 1001)
     })
 
-    it("tracks a success event to Segment including Criteo info", async done => {
+    it("tracks a success event to Segment including Criteo info", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
       env.mutations.useResultsOnce(createBidderPositionSuccessful)
@@ -162,28 +163,25 @@ describe("Routes/ConfirmBid", () => {
 
       await page.submitForm()
 
-      setTimeout(() => {
-        expect(mockPostEvent).toHaveBeenCalledTimes(1)
-        expect(mockPostEvent).toHaveBeenCalledWith({
-          action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
-          context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
-          auction_slug: "saleslug",
-          artwork_slug: "artworkslug",
-          bidder_id: "bidderid",
-          bidder_position_id: "winning-bidder-position-id-from-polling",
-          sale_id: "saleid",
-          user_id: "my-user-id",
-          order_id: "bidderid",
-          products: [
-            {
-              product_id: "artworkid",
-              quantity: 1,
-              price: 50000,
-            },
-          ],
-        })
-        done()
-      }, 1001)
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "existing-bidder-id",
+        bidder_position_id: "winning-bidder-position-id-from-polling",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+        order_id: "existing-bidder-id",
+        products: [
+          {
+            product_id: "artworkid",
+            quantity: 1,
+            price: 50000,
+          },
+        ],
+      })
     })
 
     it("send an error event to analytics if the mutation fails", async () => {
@@ -213,7 +211,7 @@ describe("Routes/ConfirmBid", () => {
         error_messages: ["ConfirmBidCreateBidderPositionMutation failed"],
         auction_slug: "saleslug",
         artwork_slug: "artworkslug",
-        bidder_id: "bidderid",
+        bidder_id: "existing-bidder-id",
         sale_id: "saleid",
         user_id: "my-user-id",
       })
@@ -245,25 +243,60 @@ describe("Routes/ConfirmBid", () => {
         mockData: FixtureForUnregisteredUserWithCreditCard,
       })
 
-      // env.mutations.useResultsOnce(createBidderPositionSuccessful)
-      // mockBidderPositionQuery.mockResolvedValue(confirmBidBidderPositionQueryWithPending)
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithWinning
+      )
 
       await page.agreeToTerms()
-      // await page.submitForm()
+      await page.submitForm()
 
-      // TODO: Uncomment once https://artsyproduct.atlassian.net/browse/AUCT-716 is fixed.
-      // expect(env.mutations.mockFetch).toHaveBeenCalledWith(
-      //   expect.objectContaining({
-      //     name: "ConfirmBidCreateBidderPositionMutation",
-      //   }),
-      //   {
-      //     input: {
-      //       artwork_id: "artworkslug",
-      //       max_bid_amount_cents: 5000000,
-      //       sale_id: "saleslug",
-      //     },
-      //   }
-      // )
+      expect(env.mutations.mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: "ConfirmBidCreateBidderPositionMutation",
+        }),
+        {
+          input: {
+            artwork_id: "artworkslug",
+            max_bid_amount_cents: 5000000,
+            sale_id: "saleslug",
+          },
+        }
+      )
+    })
+
+    it("tracks a success event to Segment including Criteo info", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithCreditCard,
+      })
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithWinning
+      )
+
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        bidder_position_id: "winning-bidder-position-id-from-polling",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+        order_id: "new-bidder-id",
+        products: [
+          {
+            product_id: "artworkid",
+            quantity: 1,
+            price: 50000,
+          },
+        ],
+      })
     })
 
     it("displays an error when user did not agree to terms but tried to submit", async () => {

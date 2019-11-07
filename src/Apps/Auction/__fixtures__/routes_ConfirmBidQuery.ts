@@ -53,7 +53,7 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
         is_closed: false,
         is_registration_closed: false,
         registrationStatus: {
-          id: "bidderid",
+          id: "existing-bidder-id",
           qualified_for_bidding: true,
           qualifiedForBidding: true,
         },
