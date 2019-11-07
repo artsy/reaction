@@ -312,7 +312,6 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           page: $page
           partnerID: $partnerID
           priceRange: $priceRange
-          size: 0
           sort: $sort
           width: $width
           first: $first

@@ -1,6 +1,6 @@
 import { Box } from "@artsy/palette"
 import { AnalyticsSchema, useTracking } from "Artsy/Analytics"
-import { Location, RouterState, withRouter } from "found"
+import { RouterState, withRouter } from "found"
 import React from "react"
 
 import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"

@@ -5,7 +5,7 @@ import { MAX_PRICE, MIN_PRICE } from "../Utils/rangeToTuple"
 
 export const PriceRangeFilter: FC = () => {
   const filterContext = useArtworkFilterContext()
-  const [initialMin, initialMax] = filterContext.rangeToTuple("price_range")
+  const [initialMin, initialMax] = filterContext.rangeToTuple("priceRange")
 
   return (
     <Toggle label="Price" expanded>
@@ -22,7 +22,7 @@ export const PriceRangeFilter: FC = () => {
             const minStr = min === MIN_PRICE ? "*" : min
             const maxStr = max === MAX_PRICE ? "*" : max
 
-            filterContext.setFilter("price_range", `${minStr}-${maxStr}`)
+            filterContext.setFilter("priceRange", `${minStr}-${maxStr}`)
           }}
         />
       </Flex>

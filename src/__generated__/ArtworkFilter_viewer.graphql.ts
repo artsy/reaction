@@ -226,11 +226,6 @@ const node: ReaderFragment = {
           "variableName": "priceRange"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0
-        },
-        {
           "kind": "Variable",
           "name": "sort",
           "variableName": "sort"
@@ -260,5 +255,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '08f1b2560d5d5c37b0bfeac34eabf8a4';
+(node as any).hash = '56d07aeddc1ae29b870c2b9dc7346e23';
 export default node;

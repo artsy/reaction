@@ -40,7 +40,7 @@ export const WaysToBuyFilter: FC = () => {
     {
       disabled: isDisabled(
         filterContext.counts.auction_artworks ||
-          !filterContext.isDefaultValue("price_range")
+          !filterContext.isDefaultValue("priceRange")
       ),
       name: "Bid",
       state: "atAuction",
@@ -48,7 +48,7 @@ export const WaysToBuyFilter: FC = () => {
     {
       disabled: isDisabled(filterContext.counts.for_sale_artworks),
       name: "Inquire",
-      state: "inquireable_only",
+      state: "inquireableOnly",
     },
   ]
 
