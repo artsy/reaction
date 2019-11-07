@@ -153,7 +153,7 @@ describe("Routes/ConfirmBid", () => {
       }, 1001)
     })
 
-    it("tracks a success event to Segment including Criteo info", async done => {
+    it("tracks a success event to Segment including Criteo info", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
       env.mutations.useResultsOnce(createBidderPositionSuccessful)
@@ -163,28 +163,25 @@ describe("Routes/ConfirmBid", () => {
 
       await page.submitForm()
 
-      setTimeout(() => {
-        expect(mockPostEvent).toHaveBeenCalledTimes(1)
-        expect(mockPostEvent).toHaveBeenCalledWith({
-          action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
-          context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
-          auction_slug: "saleslug",
-          artwork_slug: "artworkslug",
-          bidder_id: "existing-bidder-id",
-          bidder_position_id: "winning-bidder-position-id-from-polling",
-          sale_id: "saleid",
-          user_id: "my-user-id",
-          order_id: "existing-bidder-id",
-          products: [
-            {
-              product_id: "artworkid",
-              quantity: 1,
-              price: 50000,
-            },
-          ],
-        })
-        done()
-      }, 1001)
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "existing-bidder-id",
+        bidder_position_id: "winning-bidder-position-id-from-polling",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+        order_id: "existing-bidder-id",
+        products: [
+          {
+            product_id: "artworkid",
+            quantity: 1,
+            price: 50000,
+          },
+        ],
+      })
     })
 
     it("send an error event to analytics if the mutation fails", async () => {
@@ -248,13 +245,12 @@ describe("Routes/ConfirmBid", () => {
 
       env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
       mockBidderPositionQuery.mockResolvedValue(
-        confirmBidBidderPositionQueryWithPending
+        confirmBidBidderPositionQueryWithWinning
       )
 
       await page.agreeToTerms()
       await page.submitForm()
 
-      // TODO: Uncomment once https://artsyproduct.atlassian.net/browse/AUCT-716 is fixed.
       expect(env.mutations.mockFetch).toHaveBeenCalledWith(
         expect.objectContaining({
           name: "ConfirmBidCreateBidderPositionMutation",
@@ -269,39 +265,38 @@ describe("Routes/ConfirmBid", () => {
       )
     })
 
-    xit("tracks a success event to Segment including Criteo info", async done => {
+    it("tracks a success event to Segment including Criteo info", async () => {
       const env = setupTestEnv()
-      const page = await env.buildPage()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithCreditCard,
+      })
       env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
       mockBidderPositionQuery.mockResolvedValue(
         confirmBidBidderPositionQueryWithWinning
       )
 
+      await page.agreeToTerms()
       await page.submitForm()
 
-      setTimeout(() => {
-        // TODO: What's up with it being called 2 times?
-        expect(mockPostEvent).toHaveBeenCalledTimes(1)
-        expect(mockPostEvent).toHaveBeenCalledWith({
-          action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
-          context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
-          auction_slug: "saleslug",
-          artwork_slug: "artworkslug",
-          bidder_id: "new-bidder-id",
-          bidder_position_id: "winning-bidder-position-id-from-polling",
-          sale_id: "saleid",
-          user_id: "my-user-id",
-          order_id: "new-bidder-id",
-          products: [
-            {
-              product_id: "artworkid",
-              quantity: 1,
-              price: 50000,
-            },
-          ],
-        })
-        done()
-      }, 1001)
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        bidder_position_id: "winning-bidder-position-id-from-polling",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+        order_id: "new-bidder-id",
+        products: [
+          {
+            product_id: "artworkid",
+            quantity: 1,
+            price: 50000,
+          },
+        ],
+      })
     })
 
     it("displays an error when user did not agree to terms but tried to submit", async () => {
