@@ -1,10 +1,16 @@
-export const ClosedAuctionArtwork = {
-  _id: "artwork_from_closed_auction",
+import { ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarCurrentBidInfo_Test_Query.graphql"
+
+export const ClosedAuctionArtwork: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "artwork_from_closed_auction",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
     is_closed: true,
     is_live_open: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: true,
     reserve_message: "This work has a reserve",
     reserve_status: "reserve_not_met",
@@ -18,13 +24,17 @@ export const ClosedAuctionArtwork = {
   myLotStanding: null,
 }
 
-export const AuctionPreview = {
-  _id: "artwork_from_auction_preview",
+export const AuctionPreview: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "artwork_from_auction_preview",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
     is_closed: false,
     is_live_open: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",
@@ -38,13 +48,17 @@ export const AuctionPreview = {
   myLotStanding: null,
 }
 
-export const AuctionPreviewNoStartingBid = {
-  _id: "artwork_from_auction_preview",
+export const AuctionPreviewNoStartingBid: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "artwork_from_auction_preview",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
     is_closed: false,
     is_live_open: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",
@@ -56,13 +70,17 @@ export const AuctionPreviewNoStartingBid = {
   myLotStanding: null,
 }
 
-export const OpenAuctionNoReserveNoBids = {
-  _id: "open_auction_no_reserve_no_bids",
+export const OpenAuctionNoReserveNoBids: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_no_reserve_no_bids",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
     is_closed: false,
     is_live_open: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",
@@ -76,14 +94,17 @@ export const OpenAuctionNoReserveNoBids = {
   myLotStanding: null,
 }
 
-export const OpenAuctionNoReserveWithBids = {
-  _id: "artwork_from_open_auction",
-
+export const OpenAuctionNoReserveWithBids: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "artwork_from_open_auction",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
     is_closed: false,
     is_live_open: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",
@@ -97,13 +118,17 @@ export const OpenAuctionNoReserveWithBids = {
   myLotStanding: null,
 }
 
-export const OpenAuctionReserveNoBids = {
-  _id: "open_auction_reserve_no_bids",
+export const OpenAuctionReserveNoBids: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_reserve_no_bids",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
     is_closed: false,
     is_live_open: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: true,
     reserve_message: "This work has a reserve",
     reserve_status: "reserve_not_met",
@@ -117,13 +142,17 @@ export const OpenAuctionReserveNoBids = {
   myLotStanding: null,
 }
 
-export const OpenAuctionReserveNotMetWithBids = {
-  _id: "open_auction_reserve_not_met_with_bids",
+export const OpenAuctionReserveNotMetWithBids: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_reserve_not_met_with_bids",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
     is_closed: false,
     is_live_open: false,
+    is_with_buyers_premium: false,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: true,
     reserve_message: "Reserve not met",
     reserve_status: "reserve_not_met",
@@ -137,14 +166,17 @@ export const OpenAuctionReserveNotMetWithBids = {
   myLotStanding: null,
 }
 
-export const OpenAuctionReserveMetWithBids = {
-  _id: "open_auction_reserve_met_with_bids",
+export const OpenAuctionReserveMetWithBids: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_reserve_met_with_bids",
   sale: {
+    id: "salessale",
+    internalID: "asdf1234",
     is_closed: false,
     is_live_open: false,
     is_with_buyers_premium: true,
   },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: true,
     reserve_message: "Reserve met",
     reserve_status: "reserve_met",
@@ -158,48 +190,56 @@ export const OpenAuctionReserveMetWithBids = {
   myLotStanding: null,
 }
 
-export const OpenAuctionReserveNotMetIncreasingOwnBid = {
-  _id: "open_auction_reserve_not_met_increading_own_bid",
+export const OpenAuctionReserveNotMetIncreasingOwnBid: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_reserve_not_met_increading_own_bid",
   ...OpenAuctionReserveNotMetWithBids,
   myLotStanding: [
     {
       most_recent_bid: {
-        is_winning: false,
+        id: "bidbid",
         max_bid: { display: "$15,000" },
       },
       active_bid: {
+        id: "activebid",
         is_winning: true,
       },
     },
   ],
 }
 
-export const OpenAuctionReserveMetWithMyWinningBid = {
-  _id: "open_auction_reserve_met_my_winning_bid",
+export const OpenAuctionReserveMetWithMyWinningBid: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_reserve_met_my_winning_bid",
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      most_recent_bid: { is_winning: true, max_bid: { display: "$15,000" } },
-      active_bid: { is_winning: true },
+      most_recent_bid: { id: "bidbid", max_bid: { display: "$15,000" } },
+      active_bid: { id: "activebid", is_winning: true },
     },
   ],
 }
 
-export const OpenAuctionReserveMetWithMyLosingBid = {
-  _id: "open_auction_reserve_met_my_losing_bid",
+export const OpenAuctionReserveMetWithMyLosingBid: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "open_auction_reserve_met_my_losing_bid",
   ...OpenAuctionReserveMetWithBids,
   myLotStanding: [
     {
-      most_recent_bid: { is_winning: false, max_bid: { display: "$400" } },
+      most_recent_bid: { id: "bidbid", max_bid: { display: "$400" } },
       active_bid: null,
     },
   ],
 }
 
-export const LiveAuctionInProgress = {
-  _id: "artwork_from_live_auction",
-  sale: { is_closed: false, is_live_open: true },
+export const LiveAuctionInProgress: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"] = {
+  id: "artwork_from_live_auction",
+  sale: {
+    id: "salessale",
+    internalID: "asdf1234",
+    is_with_buyers_premium: false,
+    is_closed: false,
+    is_live_open: true,
+  },
   sale_artwork: {
+    id: "salearwtork124",
     is_with_reserve: false,
     reserve_message: null,
     reserve_status: "no_reserve",

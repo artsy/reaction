@@ -79,7 +79,9 @@ export class PricingContext extends React.Component<PricingContextProps> {
     }
 
     const priceCents =
-      artwork.listPrice.maxPrice.minor || artwork.listPrice.minPrice.minor
+      artwork.listPrice.__typename === "PriceRange"
+        ? artwork.listPrice.maxPrice.minor || artwork.listPrice.minPrice.minor
+        : artwork.listPrice.minor
 
     const artworkFallsBeforeFirstBin =
       priceCents < artwork.pricingContext.bins[0].minPriceCents
@@ -164,6 +166,7 @@ export const PricingContextFragmentContainer = createFragmentContainer(
       fragment PricingContext_artwork on Artwork {
         # FIXME: Does this need to support exact prices?
         listPrice {
+          __typename
           ... on PriceRange {
             maxPrice {
               minor
@@ -171,6 +174,9 @@ export const PricingContextFragmentContainer = createFragmentContainer(
             minPrice {
               minor
             }
+          }
+          ... on Money {
+            minor
           }
         }
         artists {

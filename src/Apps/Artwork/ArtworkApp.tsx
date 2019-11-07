@@ -183,9 +183,7 @@ export class ArtworkApp extends React.Component<Props> {
           {typeof window !== "undefined" && (
             <LazyLoadComponent threshold={1000}>
               <Row>
-                <Col>
-                  <RecentlyViewed />
-                </Col>
+                <Col>{/*<RecentlyViewed />*/}</Col>
               </Row>
             </LazyLoadComponent>
           )}

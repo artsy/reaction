@@ -3,7 +3,7 @@ export const OrderWithSuccess = {
     orderOrError: {
       __typename: "CommerceOrderWithMutationSuccess",
       order: {
-        id: "orderId",
+        internalID: "orderId",
         mode: "BUY",
       },
     },
@@ -27,7 +27,7 @@ export const OfferOrderWithSuccess = {
     orderOrError: {
       __typename: "OrderWithMutationSuccess",
       order: {
-        id: "orderId",
+        internalID: "orderId",
         mode: "OFFER",
       },
     },

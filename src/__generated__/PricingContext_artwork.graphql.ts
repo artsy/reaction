@@ -4,14 +4,22 @@ import { ReaderFragment } from "relay-runtime";
 export type AnalyticsPricingContextCategoryEnum = "ARCHITECTURE" | "BOOKS_AND_PORTFOLIOS" | "DESIGN_DECORATIVE_ART" | "DRAWING_COLLAGE_OTHER_WORK_ON_PAPER" | "FASHION" | "INSTALLATION" | "JEWELRY" | "MIXED_MEDIA" | "OTHER" | "PAINTING" | "PERFORMANCE" | "PHOTOGRAPHY" | "POSTERS" | "PRINT" | "SCULPTURE" | "SOUND" | "TEXTILE" | "VIDEO_FILM_ANIMATION" | "WORK_ON_PAPER" | "%future added value";
 export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" | "%future added value";
 export type PricingContext_artwork = {
-    readonly listPrice: {
-        readonly maxPrice?: {
+    readonly listPrice: ({
+        readonly __typename: "PriceRange";
+        readonly maxPrice: {
             readonly minor: number;
         } | null;
-        readonly minPrice?: {
+        readonly minPrice: {
             readonly minor: number;
         } | null;
-    } | null;
+    } | {
+        readonly __typename: "Money";
+        readonly minor: number;
+    } | {
+        /*This will never be '%other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    }) | null;
     readonly artists: ReadonlyArray<{
         readonly slug: string;
     } | null> | null;
@@ -69,6 +77,13 @@ return {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "InlineFragment",
           "type": "PriceRange",
           "selections": [
@@ -93,6 +108,11 @@ return {
               "selections": (v0/*: any*/)
             }
           ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Money",
+          "selections": (v0/*: any*/)
         }
       ]
     },
@@ -201,5 +221,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e8a766304c461d6e0254735f3d3ffa4f';
+(node as any).hash = '5bed9e56daed01d03014005a648b39f3';
 export default node;
