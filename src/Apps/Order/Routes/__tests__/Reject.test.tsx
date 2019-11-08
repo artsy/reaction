@@ -28,6 +28,7 @@ const testOrder: RejectTestQueryRawResponse["order"] = {
     .toString(),
   lastOffer: {
     internalID: "last-offer-id",
+    id: "last-offer-id",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
       .toString(),

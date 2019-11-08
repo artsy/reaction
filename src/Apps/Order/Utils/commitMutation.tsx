@@ -4,7 +4,13 @@ import {
   commitMutation as relayCommitMutation,
   GraphQLTaggedNode,
 } from "react-relay"
-import { Environment, OperationBase } from "relay-runtime"
+import { Environment } from "relay-runtime"
+
+interface OperationBase {
+  variables: object
+  response: object
+  rawResponse?: object
+}
 
 export type CommitMutation = <MutationType extends OperationBase>(args: {
   mutation: GraphQLTaggedNode

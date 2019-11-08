@@ -127,21 +127,24 @@ class PaymentPickerTestPage extends RootTestPage {
   }
 }
 
+const defaultData: PaymentPickerTestQueryRawResponse = {
+  me: {
+    id: "my-id",
+    creditCards: {
+      edges: [],
+    },
+  },
+  order: {
+    ...BuyOrderWithShippingDetails,
+    creditCard: null,
+  },
+}
+
 describe("PaymentPickerFragmentContainer", () => {
   const env = createTestEnv({
     Component: injectCommitMutation(PaymentPickerFragmentContainer as any),
     TestPage: PaymentPickerTestPage,
-    defaultData: {
-      me: {
-        creditCards: {
-          edges: [],
-        },
-      },
-      order: {
-        ...BuyOrderWithShippingDetails,
-        creditCard: null,
-      },
-    } as PaymentPickerTestQueryRawResponse,
+    defaultData,
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
     },

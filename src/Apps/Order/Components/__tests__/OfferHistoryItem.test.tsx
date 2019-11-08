@@ -1,11 +1,9 @@
 import { Button, Collapse } from "@artsy/palette"
-import { OfferHistoryItem_order } from "__generated__/OfferHistoryItem_order.graphql"
 import {
   OfferHistoryItemTestQueryRawResponse,
   OfferHistoryItemTestQueryResponse,
 } from "__generated__/OfferHistoryItemTestQuery.graphql"
 import {
-  Buyer,
   Offers,
   OfferWithTotals,
   UntouchedOfferOrder,
