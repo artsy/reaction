@@ -68,10 +68,13 @@ export class PaymentPicker extends React.Component<
 
   private getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
     if (this.props.order.creditCard) {
-      return { type: "existing", id: this.props.order.creditCard.id }
+      return { type: "existing", id: this.props.order.creditCard.internalID }
     } else {
       return this.props.me.creditCards.edges.length
-        ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
+        ? {
+            type: "existing",
+            id: this.props.me.creditCards.edges[0].node.internalID,
+          }
         : { type: "new" }
     }
   }
@@ -157,7 +160,10 @@ export class PaymentPicker extends React.Component<
         error: creditCardOrError.mutationError.message,
       }
     } else
-      return { type: "success", creditCardId: creditCardOrError.creditCard.id }
+      return {
+        type: "success",
+        creditCardId: creditCardOrError.creditCard.internalID,
+      }
   }
 
   @track((props: PaymentPickerProps, state, args) => {
@@ -218,7 +224,7 @@ export class PaymentPicker extends React.Component<
     // only add the unsaved card to the cards array if it exists and is not already there
     if (
       orderCard != null &&
-      !creditCardsArray.some(card => card.id === orderCard.id)
+      !creditCardsArray.some(card => card.internalID === orderCard.internalID)
     ) {
       creditCardsArray.unshift(orderCard)
     }
@@ -247,9 +253,9 @@ export class PaymentPicker extends React.Component<
             >
               {creditCardsArray
                 .map(e => {
-                  const { id, ...creditCardProps } = e
+                  const { internalID, ...creditCardProps } = e
                   return (
-                    <BorderedRadio value={id} key={id}>
+                    <BorderedRadio value={internalID} key={internalID}>
                       <CreditCardDetails
                         responsive={false}
                         {...creditCardProps}

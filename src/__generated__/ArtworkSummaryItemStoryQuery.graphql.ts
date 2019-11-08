@@ -20,6 +20,7 @@ query ArtworkSummaryItemStoryQuery {
   order: commerceOrder(id: "foo") {
     __typename
     ...ArtworkSummaryItem_order
+    id
   }
 }
 
@@ -51,6 +52,7 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
           }
           id
         }
+        id
       }
     }
   }
@@ -248,13 +250,15 @@ return {
                           },
                           (v2/*: any*/)
                         ]
-                      }
+                      },
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
-          }
+          },
+          (v2/*: any*/)
         ]
       }
     ]
@@ -263,7 +267,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkSummaryItemStoryQuery",
     "id": null,
-    "text": "query ArtworkSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query ArtworkSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    id\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

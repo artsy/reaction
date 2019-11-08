@@ -1,45 +1,15 @@
-import { Location, RouteConfig, Router } from "found"
 import { DateTime } from "luxon"
 import { graphql } from "react-relay"
 import { get } from "Utils/get"
 import { RedirectPredicate, RedirectRecord } from "./getRedirect"
-import { OrderApp } from "./OrderApp"
 
 import { redirects_order } from "__generated__/redirects_order.graphql"
-
-const LEAVE_MESSAGING =
-  "Are you sure you want to refresh? Your changes will not be saved."
 
 interface OrderQuery {
   order: redirects_order
 }
 
 type OrderPredicate = RedirectPredicate<OrderQuery>
-
-export const confirmRouteExit = (
-  newLocation: Location,
-  oldLocation: Location,
-  router: Router
-) => {
-  // Refresh -- On refresh newLocation is null
-  if (!newLocation || newLocation.pathname === oldLocation.pathname) {
-    // Most browsers will ignore this and supply their own messaging for refresh
-    return LEAVE_MESSAGING
-  }
-
-  // Attempting to navigate to another route in the orders app
-  const match = router.matcher.match(newLocation)
-  if (match) {
-    // FIXME: Need to update found types: https://github.com/4Catalyzer/found/blob/master/src/Matcher.js#L27
-    // @ts-ignore
-    const matchedRoutes: RouteConfig[] | null = router.matcher.getRoutes(match)
-    if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
-      return undefined
-    }
-  }
-
-  return LEAVE_MESSAGING
-}
 
 const goToStatusIf = (
   pred: (order: redirects_order) => boolean,

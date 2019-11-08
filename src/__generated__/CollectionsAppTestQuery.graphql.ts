@@ -15,6 +15,7 @@ export type CollectionsAppTestQueryRawResponse = {
             readonly slug: string;
             readonly headerImage: string | null;
             readonly title: string;
+            readonly id: string | null;
         }>;
     }>;
 };
@@ -39,6 +40,7 @@ fragment Collections_categories on MarketingCollectionCategory {
     slug
     headerImage
     title
+    id
   }
 }
 */
@@ -120,6 +122,13 @@ const node: ConcreteRequest = {
                 "name": "title",
                 "args": null,
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
               }
             ]
           }
@@ -131,7 +140,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "CollectionsAppTestQuery",
     "id": null,
-    "text": "query CollectionsAppTestQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n  }\n}\n",
+    "text": "query CollectionsAppTestQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

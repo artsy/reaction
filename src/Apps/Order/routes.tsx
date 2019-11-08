@@ -1,5 +1,5 @@
 import { getRedirect } from "Apps/Order/getRedirect"
-import { confirmRouteExit, redirects } from "Apps/Order/redirects"
+import { redirects } from "Apps/Order/redirects"
 import { Redirect, RedirectException, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
@@ -49,8 +49,13 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ Component, props, ...others }) => {
-      if (Component && props) {
+    render: ({ Component, props, resolving }) => {
+      if (!(Component && props)) {
+        return null
+      }
+      // resolving is true only if this render results from a query initiated by
+      // found-relay
+      if (resolving) {
         const { match, order } = props as any
 
         if (order) {
@@ -70,15 +75,15 @@ export const routes: RouteConfig[] = [
             throw new RedirectException(redirect.path)
           }
         }
-
-        return <Component {...props} />
       }
+
+      return <Component {...props} />
     },
     children: [
       {
         path: "respond",
         Component: RespondRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_RespondQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -93,7 +98,7 @@ export const routes: RouteConfig[] = [
       {
         path: "offer",
         Component: OfferRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_OfferQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -108,7 +113,7 @@ export const routes: RouteConfig[] = [
       {
         path: "shipping",
         Component: ShippingRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_ShippingQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -123,7 +128,7 @@ export const routes: RouteConfig[] = [
       {
         path: "payment",
         Component: PaymentRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_PaymentQuery($orderID: ID!) {
             me {
@@ -141,7 +146,7 @@ export const routes: RouteConfig[] = [
       {
         path: "payment/new",
         Component: NewPaymentRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_NewPaymentQuery($orderID: ID!) {
             me {
@@ -159,7 +164,7 @@ export const routes: RouteConfig[] = [
       {
         path: "review/counter",
         Component: CounterRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_CounterQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -174,7 +179,7 @@ export const routes: RouteConfig[] = [
       {
         path: "review",
         Component: ReviewRoute,
-        onTransition: confirmRouteExit,
+        shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_ReviewQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {

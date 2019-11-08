@@ -28,6 +28,7 @@ fragment Collections_categories on MarketingCollectionCategory {
     slug
     headerImage
     title
+    id
   }
 }
 */
@@ -109,6 +110,13 @@ const node: ConcreteRequest = {
                 "name": "title",
                 "args": null,
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
               }
             ]
           }
@@ -120,7 +128,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "collectRoutes_MarketingCollectionsAppQuery",
     "id": null,
-    "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n  }\n}\n",
+    "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

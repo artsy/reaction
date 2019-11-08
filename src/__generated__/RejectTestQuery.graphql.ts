@@ -29,6 +29,7 @@ export type RejectTestQueryRawResponse = {
                             }) | null;
                         }) | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -40,9 +41,11 @@ export type RejectTestQueryRawResponse = {
             readonly __typename: string | null;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
         readonly lastOffer: ({
             readonly internalID: string;
             readonly createdAt: string;
+            readonly id: string | null;
         }) | null;
     } | {
         readonly __typename: string | null;
@@ -64,6 +67,7 @@ export type RejectTestQueryRawResponse = {
                             }) | null;
                         }) | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -75,6 +79,7 @@ export type RejectTestQueryRawResponse = {
             readonly __typename: string | null;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type RejectTestQuery = {
@@ -90,6 +95,7 @@ query RejectTestQuery {
   order: commerceOrder(id: "unused") {
     __typename
     ...Reject_order
+    id
   }
 }
 
@@ -103,6 +109,7 @@ fragment Reject_order on CommerceOrder {
           slug
           id
         }
+        id
       }
     }
   }
@@ -110,6 +117,7 @@ fragment Reject_order on CommerceOrder {
     lastOffer {
       internalID
       createdAt
+      id
     }
   }
   ...ArtworkSummaryItem_order
@@ -143,6 +151,7 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
           }
           id
         }
+        id
       }
     }
   }
@@ -336,7 +345,8 @@ return {
                             ]
                           }
                         ]
-                      }
+                      },
+                      (v3/*: any*/)
                     ]
                   }
                 ]
@@ -369,6 +379,7 @@ return {
               }
             ]
           },
+          (v3/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -389,7 +400,8 @@ return {
                     "name": "createdAt",
                     "args": null,
                     "storageKey": null
-                  }
+                  },
+                  (v3/*: any*/)
                 ]
               }
             ]
@@ -402,7 +414,7 @@ return {
     "operationKind": "query",
     "name": "RejectTestQuery",
     "id": null,
-    "text": "query RejectTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Reject_order\n  }\n}\n\nfragment Reject_order on CommerceOrder {\n  internalID\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      createdAt\n    }\n  }\n  ...ArtworkSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query RejectTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Reject_order\n    id\n  }\n}\n\nfragment Reject_order on CommerceOrder {\n  internalID\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      createdAt\n      id\n    }\n  }\n  ...ArtworkSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -13,6 +13,7 @@ export type OfferHistoryItemTestQueryRawResponse = {
     readonly order: ({
         readonly __typename: "CommerceOfferOrder";
         readonly totalListPrice: string | null;
+        readonly id: string | null;
         readonly offers: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
@@ -20,6 +21,7 @@ export type OfferHistoryItemTestQueryRawResponse = {
                     readonly amount: string | null;
                     readonly createdAt: string;
                     readonly fromParticipant: CommerceOrderParticipantEnum | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -30,10 +32,12 @@ export type OfferHistoryItemTestQueryRawResponse = {
             readonly shippingTotal: string | null;
             readonly taxTotal: string | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
     } | {
         readonly __typename: string | null;
         readonly totalListPrice: string | null;
+        readonly id: string | null;
     }) | null;
 };
 export type OfferHistoryItemTestQuery = {
@@ -49,6 +53,7 @@ query OfferHistoryItemTestQuery {
   order: commerceOrder(id: "foo") {
     __typename
     ...OfferHistoryItem_order
+    id
   }
 }
 
@@ -61,6 +66,7 @@ fragment OfferHistoryItem_order on CommerceOrder {
           amount(precision: 2)
           createdAt(format: "MMM D")
           fromParticipant
+          id
         }
       }
     }
@@ -71,6 +77,7 @@ fragment OfferHistoryItem_order on CommerceOrder {
       shippingTotal(precision: 2)
       taxTotal(precision: 2)
       note
+      id
     }
   }
   totalListPrice(precision: 2)
@@ -95,18 +102,25 @@ v1 = [
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "internalID",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "amount",
   "args": (v1/*: any*/),
   "storageKey": "amount(precision:2)"
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "fromParticipant",
@@ -168,6 +182,7 @@ return {
             "args": (v1/*: any*/),
             "storageKey": "totalListPrice(precision:2)"
           },
+          (v2/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -199,8 +214,8 @@ return {
                         "concreteType": "CommerceOffer",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/),
                           (v3/*: any*/),
+                          (v4/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -214,7 +229,8 @@ return {
                             ],
                             "storageKey": "createdAt(format:\"MMM D\")"
                           },
-                          (v4/*: any*/)
+                          (v5/*: any*/),
+                          (v2/*: any*/)
                         ]
                       }
                     ]
@@ -230,9 +246,9 @@ return {
                 "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/),
-                  (v4/*: any*/),
                   (v3/*: any*/),
+                  (v5/*: any*/),
+                  (v4/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -253,7 +269,8 @@ return {
                     "name": "note",
                     "args": null,
                     "storageKey": null
-                  }
+                  },
+                  (v2/*: any*/)
                 ]
               }
             ]
@@ -266,7 +283,7 @@ return {
     "operationKind": "query",
     "name": "OfferHistoryItemTestQuery",
     "id": null,
-    "text": "query OfferHistoryItemTestQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n  }\n}\n\nfragment OfferHistoryItem_order on CommerceOrder {\n  ... on CommerceOfferOrder {\n    offers {\n      edges {\n        node {\n          internalID\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n        }\n      }\n    }\n    lastOffer {\n      internalID\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n    }\n  }\n  totalListPrice(precision: 2)\n}\n",
+    "text": "query OfferHistoryItemTestQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...OfferHistoryItem_order\n    id\n  }\n}\n\nfragment OfferHistoryItem_order on CommerceOrder {\n  ... on CommerceOfferOrder {\n    offers {\n      edges {\n        node {\n          internalID\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          id\n        }\n      }\n    }\n    lastOffer {\n      internalID\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n      id\n    }\n  }\n  totalListPrice(precision: 2)\n}\n",
     "metadata": {}
   }
 };

@@ -187,6 +187,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             orderOrError {
               ... on CommerceOrderWithMutationSuccess {
                 order {
+                  id
                   creditCard {
                     internalID
                     name
