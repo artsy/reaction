@@ -1,7 +1,7 @@
 export const ArtworkRelatedArtistsFixture = {
   href: "/artist/roy-lichtenstein",
   related: {
-    artists: {
+    artistsConnection: {
       edges: [
         {
           node: {

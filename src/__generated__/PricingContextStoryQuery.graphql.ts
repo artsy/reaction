@@ -34,6 +34,9 @@ fragment PricingContext_artwork on Artwork {
         minor
       }
     }
+    ... on Money {
+      minor
+    }
   }
   artists {
     slug
@@ -170,6 +173,11 @@ return {
                     "selections": (v1/*: any*/)
                   }
                 ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "Money",
+                "selections": (v1/*: any*/)
               }
             ]
           },
@@ -285,7 +293,7 @@ return {
     "operationKind": "query",
     "name": "PricingContextStoryQuery",
     "id": null,
-    "text": "query PricingContextStoryQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPrice {\n        minor\n      }\n      minPrice {\n        minor\n      }\n    }\n  }\n  artists {\n    slug\n    id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n}\n",
+    "text": "query PricingContextStoryQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPrice {\n        minor\n      }\n      minPrice {\n        minor\n      }\n    }\n    ... on Money {\n      minor\n    }\n  }\n  artists {\n    slug\n    id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -78,7 +78,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
-        artworkId: this.props.artwork._id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 
@@ -91,7 +91,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
-        artworkId: this.props.artwork._id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 

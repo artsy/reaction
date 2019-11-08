@@ -21,7 +21,10 @@ export type PricingContextTestQueryRawResponse = {
                 readonly minor: number;
             }) | null;
         } | {
-            readonly __typename: string | null;
+            readonly __typename: "Money";
+            readonly minor: number;
+        } | {
+            readonly __typename: string;
         }) | null;
         readonly artists: ReadonlyArray<({
             readonly slug: string;
@@ -71,6 +74,9 @@ fragment PricingContext_artwork on Artwork {
       minPrice {
         minor
       }
+    }
+    ... on Money {
+      minor
     }
   }
   artists {
@@ -208,6 +214,11 @@ return {
                     "selections": (v1/*: any*/)
                   }
                 ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "Money",
+                "selections": (v1/*: any*/)
               }
             ]
           },
@@ -323,7 +334,7 @@ return {
     "operationKind": "query",
     "name": "PricingContextTestQuery",
     "id": null,
-    "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPrice {\n        minor\n      }\n      minPrice {\n        minor\n      }\n    }\n  }\n  artists {\n    slug\n    id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n}\n",
+    "text": "query PricingContextTestQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPrice {\n        minor\n      }\n      minPrice {\n        minor\n      }\n    }\n    ... on Money {\n      minor\n    }\n  }\n  artists {\n    slug\n    id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

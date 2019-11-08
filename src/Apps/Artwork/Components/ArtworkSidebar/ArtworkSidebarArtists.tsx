@@ -48,8 +48,8 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
             modelName: Schema.OwnerType.Artist,
             context_module: Schema.ContextModule.Sidebar,
             context_page: "Artwork page",
-            entity_id: artist._id,
-            entity_slug: artist.id,
+            entity_id: artist.internalID,
+            entity_slug: artist.slug,
           }}
           onOpenAuthModal={() => this.handleOpenAuth(mediator, artist)}
           triggerSuggestions
@@ -69,7 +69,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     } = this.props
     return artists.map((artist, index) => {
       return (
-        <React.Fragment key={artist.__id}>
+        <React.Fragment key={artist.id}>
           {this.renderArtistName(artist)}
           {index !== artists.length - 1 && ", "}
         </React.Fragment>

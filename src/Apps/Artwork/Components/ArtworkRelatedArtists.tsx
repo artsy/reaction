@@ -33,7 +33,7 @@ export const ArtworkRelatedArtists: React.FC<
     artwork: { artist },
     relay,
   } = props
-  if (hideGrid(artist.related.artists)) {
+  if (hideGrid(artist.related.artistsConnection)) {
     return null
   }
 
@@ -58,7 +58,7 @@ export const ArtworkRelatedArtists: React.FC<
         </Serif>
       </Flex>
       <Flex flexWrap="wrap" mr={-2} width="100%">
-        {artist.related.artists.edges.map(({ node }, index) => {
+        {artist.related.artistsConnection.edges.map(({ node }, index) => {
           return (
             <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
               <ArtistCard
@@ -136,7 +136,7 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artwork.artist.related.artists
+      return props.artwork.artist.related.artistsConnection
     },
     getFragmentVariables(prevVars, count) {
       return {
@@ -149,7 +149,7 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
         ...fragmentVariables,
         count,
         cursor,
-        artworkID: props.artwork.id,
+        artworkID: props.artwork.slug,
       }
     },
     query: graphql`

@@ -857,10 +857,10 @@ export const AllAdditionalDetailsPresent = {
   literature: "Some literature info goes here",
   exhibition_history: "And the work was so excibited!",
   articles: [],
-  artworkContextAuction: { __typename: "ArtworkContextPartnerShow" },
-  artworkContextFair: { __typename: "ArtworkContextPartnerShow" },
+  artworkContextAuction: { __typename: "Show" },
+  artworkContextFair: { __typename: "Show" },
   artworkContextPartnerShow: {
-    __typename: "ArtworkContextPartnerShow",
+    __typename: "Show",
     name: "Marcel Barbeau : Jours d’envol",
     href: "/show/galerie-deste-marcel-barbeau-jours-denvol",
     type: "Show",

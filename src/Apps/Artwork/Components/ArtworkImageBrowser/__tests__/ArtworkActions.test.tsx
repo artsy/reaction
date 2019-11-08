@@ -41,7 +41,7 @@ describe("ArtworkActions", () => {
       `,
       mockData: { artwork } as ArtworkActions_Test_QueryRawResponse,
       variables: {
-        artwork_id: "matt-z-and-percy-still-life",
+        artworkID: "matt-z-and-percy-still-life",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>

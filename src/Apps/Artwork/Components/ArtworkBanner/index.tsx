@@ -20,12 +20,8 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
     partner,
     sale,
   } = props.artwork
-
   // Auction
-  if (
-    artworkContextAuction &&
-    artworkContextAuction.__typename === "ArtworkContextAuction"
-  ) {
+  if (artworkContextAuction && artworkContextAuction.__typename === "Sale") {
     const auctionImage = get(sale, s => s.is_auction && s.cover_image.url)
     return (
       <Banner
@@ -43,10 +39,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
   }
 
   // Fair
-  if (
-    artworkContextFair &&
-    artworkContextFair.__typename === "ArtworkContextFair"
-  ) {
+  if (artworkContextFair && artworkContextFair.__typename === "Fair") {
     const fairImage = get(artworkContextFair, c => c.profile.icon.img.url)
     const initials = get(artworkContextFair, c => c.profile.initials)
     return (
@@ -64,7 +57,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
   // Partner Show
   if (
     artworkContextPartnerShow &&
-    artworkContextPartnerShow.__typename === "ArtworkContextPartnerShow"
+    artworkContextPartnerShow.__typename === "Show"
   ) {
     const showImage = get(artworkContextPartnerShow, c => c.thumbnail.img.url)
     let showLine = "In current show"

@@ -27,7 +27,7 @@ describe("ArtworkImageBrowser", () => {
       `,
       mockData: data as ArtworkImageBrowser_Test_QueryRawResponse,
       variables: {
-        artwork_id: "matt-z-and-percy-still-life",
+        artworkID: "matt-z-and-percy-still-life",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>

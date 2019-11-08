@@ -42,14 +42,14 @@ export class ArtworkSidebarBidAction extends React.Component<
 
   redirectToRegister = () => {
     const { sale } = this.props.artwork
-    window.location.href = `${sd.APP_URL}/auction-registration/${sale.id}`
+    window.location.href = `${sd.APP_URL}/auction-registration/${sale.slug}`
   }
 
   @track((props: ArtworkSidebarBidActionProps) => ({
-    artwork_slug: props.artwork.id,
+    artwork_slug: props.artwork.slug,
     products: [
       {
-        product_id: props.artwork._id,
+        product_id: props.artwork.internalID,
         quantity: 1,
         price:
           props.artwork.myLotStanding &&
@@ -57,16 +57,16 @@ export class ArtworkSidebarBidAction extends React.Component<
           props.artwork.myLotStanding[0].most_recent_bid.max_bid.cents / 100,
       },
     ],
-    auction_slug: props.artwork.sale.id,
+    auction_slug: props.artwork.sale.slug,
     context_page: Schema.PageName.ArtworkPage,
     action_type: Schema.ActionType.ClickedBid,
   }))
   redirectToBid(firstIncrement: number) {
-    const { id, sale } = this.props.artwork
+    const { slug, sale } = this.props.artwork
     const bid = this.state.selectedMaxBidCents || firstIncrement
     window.location.href = `${sd.APP_URL}/auction/${
-      sale.id
-    }/bid/${id}?bid=${bid}`
+      sale.slug
+    }/bid/${slug}?bid=${bid}`
   }
 
   @track({
@@ -77,8 +77,8 @@ export class ArtworkSidebarBidAction extends React.Component<
     action_type: Schema.ActionType.Click,
   })
   redirectToLiveBidding(user) {
-    const { id } = this.props.artwork.sale
-    const liveUrl = `${sd.PREDICTION_URL}/${id}`
+    const { slug } = this.props.artwork.sale
+    const liveUrl = `${sd.PREDICTION_URL}/${slug}`
     if (user) {
       window.location.href = `${liveUrl}/login`
     } else {

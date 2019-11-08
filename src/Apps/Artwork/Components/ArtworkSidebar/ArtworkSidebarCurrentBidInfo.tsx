@@ -28,7 +28,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
     mediator &&
       mediator.trigger &&
       mediator.trigger("openAuctionBuyerPremium", {
-        auctionId: artwork.sale._id,
+        auctionId: artwork.sale.internalID,
       })
   }
 
