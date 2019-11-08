@@ -72,6 +72,8 @@ if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
           // suppresses for now. Remove once we upgrade to React 16.9.
           // @see https://github.com/facebook/react/issues/14769
           if (
+            args[0] &&
+            args[0].includes &&
             !args[0].includes(
               "Warning: An update to %s inside a test was not wrapped in act"
             )
