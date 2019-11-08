@@ -58,10 +58,9 @@ describe("OrderApp routing redirects", () => {
 
   it("does not redirect to the status route if the order is pending", async () => {
     const { redirect } = await render(
-      "/orders/1234/shipping",
+      "/orders/2939023/shipping",
       mockResolver({
         ...BuyOrderPickup,
-        internalID: "1234",
         state: "PENDING",
       })
     )
@@ -70,22 +69,20 @@ describe("OrderApp routing redirects", () => {
 
   it("redirects to the status route if the order is not pending", async () => {
     const res = await render(
-      "/orders/1234/shipping",
+      "/orders/2939023/shipping",
       mockResolver({
         ...BuyOrderPickup,
-        internalID: "1234",
         state: "SUBMITTED",
       })
     )
-    expect(res.redirect.url).toBe("/orders/1234/status")
+    expect(res.redirect.url).toBe("/orders/2939023/status")
   })
 
   it("redirects to the artwork page if the order is abandoned", async () => {
     const { redirect } = await render(
-      "/orders/1234/shipping",
+      "/orders/2939023/shipping",
       mockResolver({
         ...BuyOrderPickup,
-        internalID: "1234",
         state: "ABANDONED",
         lineItems: {
           edges: [
@@ -109,10 +106,9 @@ describe("OrderApp routing redirects", () => {
 
   it("redirects to the home page if the order is abandoned and has no ID", async () => {
     const { redirect } = await render(
-      "/orders/1234/shipping",
+      "/orders/2939023/shipping",
       mockResolver({
         ...BuyOrderPickup,
-        internalID: "1234",
         state: "ABANDONED",
         lineItems: null,
       })
@@ -122,10 +118,9 @@ describe("OrderApp routing redirects", () => {
 
   it("stays on the shipping route if no shipping option is set", async () => {
     const { redirect } = await render(
-      "/orders/1234/shipping",
+      "/orders/2939023/shipping",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: null,
       })
@@ -135,23 +130,21 @@ describe("OrderApp routing redirects", () => {
 
   it("redirects to the shipping route from the payment route if no shipping option was set", async () => {
     const { redirect } = await render(
-      "/orders/1234/payment",
+      "/orders/2939023/payment",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: null,
       })
     )
-    expect(redirect.url).toBe("/orders/1234/shipping")
+    expect(redirect.url).toBe("/orders/2939023/shipping")
   })
 
   it("stays on the payment route if there is shipping but no payment info", async () => {
     const { redirect } = await render(
-      "/orders/1234/payment",
+      "/orders/2939023/payment",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: {
           __typename: "CommerceShip",
@@ -164,24 +157,22 @@ describe("OrderApp routing redirects", () => {
 
   it("redirects to the shipping route from the review route if no shipping option was set", async () => {
     const { redirect } = await render(
-      "/orders/1234/review",
+      "/orders/2939023/review",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: null,
         creditCard: null,
       })
     )
-    expect(redirect.url).toBe("/orders/1234/shipping")
+    expect(redirect.url).toBe("/orders/2939023/shipping")
   })
 
   it("redirects to the payment route from the review route if no credit card is set", async () => {
     const { redirect } = await render(
-      "/orders/1234/review",
+      "/orders/2939023/review",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: {
           __typename: "CommerceShip",
@@ -189,22 +180,21 @@ describe("OrderApp routing redirects", () => {
         creditCard: null,
       })
     )
-    expect(redirect.url).toBe("/orders/1234/payment")
+    expect(redirect.url).toBe("/orders/2939023/payment")
   })
 
   it("stays on the review route if there are payment and shipping options set", async () => {
     const { redirect } = await render(
-      "/orders/1234/review",
+      "/orders/2939023/review",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: {
           __typename: "CommerceShip",
         },
         creditCard: {
           id: "",
-          internalID: "12345",
+          internalID: "29390235",
         },
       })
     )
@@ -213,10 +203,9 @@ describe("OrderApp routing redirects", () => {
 
   it("redirects from the status route to the review route if the order is pending", async () => {
     const { redirect } = await render(
-      "/orders/1234/status",
+      "/orders/2939023/status",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "PENDING",
         requestedFulfillment: {
           __typename: "CommerceShip",
@@ -227,22 +216,21 @@ describe("OrderApp routing redirects", () => {
         },
       })
     )
-    expect(redirect.url).toBe("/orders/1234/review")
+    expect(redirect.url).toBe("/orders/2939023/review")
   })
 
   it("stays on the status page if the order is submitted", async () => {
     const { redirect } = await render(
-      "/orders/1234/status",
+      "/orders/2939023/status",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
         state: "SUBMITTED",
         requestedFulfillment: {
           __typename: "CommerceShip",
         },
         creditCard: {
           id: "",
-          internalID: "12345",
+          internalID: "29390235",
         },
       })
     )
@@ -251,10 +239,10 @@ describe("OrderApp routing redirects", () => {
 
   it("stays on the offer route if the order is an offer order", async () => {
     const { redirect } = await render(
-      "/orders/1234/offer",
+      "/orders/2939023/offer",
       mockResolver({
         ...UntouchedOfferOrder,
-        internalID: "1234",
+
         requestedFulfillment: null,
       })
     )
@@ -263,59 +251,59 @@ describe("OrderApp routing redirects", () => {
 
   it("redirects from the offer route to the shipping route if the order is not an offer order", async () => {
     const { redirect } = await render(
-      "/orders/1234/offer",
+      "/orders/2939023/offer",
       mockResolver({
         ...UntouchedBuyOrder,
-        internalID: "1234",
+
         requestedFulfillment: null,
       })
     )
-    expect(redirect.url).toBe("/orders/1234/shipping")
+    expect(redirect.url).toBe("/orders/2939023/shipping")
   })
 
   it("redirects from the offer route to the status route if the order is not pending", async () => {
     const { redirect } = await render(
-      "/orders/1234/offer",
+      "/orders/2939023/offer",
       mockResolver({
         ...BuyOrderWithShippingDetails,
-        internalID: "1234",
+
         state: "SUBMITTED",
       })
     )
-    expect(redirect.url).toBe("/orders/1234/status")
+    expect(redirect.url).toBe("/orders/2939023/status")
   })
 
   it("redirects from the respond route to the status route if not offer order", async () => {
     const { redirect } = await render(
-      "/orders/1234/respond",
+      "/orders/2939023/respond",
       mockResolver({
         ...BuyOrderWithShippingDetails,
-        internalID: "1234",
+
         state: "SUBMITTED",
       })
     )
-    expect(redirect.url).toBe("/orders/1234/status")
+    expect(redirect.url).toBe("/orders/2939023/status")
   })
 
   it("redirects from the respond route to the status route if order is not submitted", async () => {
     const { redirect } = await render(
-      "/orders/1234/respond",
+      "/orders/2939023/respond",
       mockResolver({
         ...OfferOrderWithShippingDetails,
-        internalID: "1234",
+
         state: "PENDING",
         awaitingResponseFrom: "BUYER",
       })
     )
-    expect(redirect.url).toBe("/orders/1234/status")
+    expect(redirect.url).toBe("/orders/2939023/status")
   })
 
   it("Stays on the respond page if all the appropriate conditions are met", async () => {
     const { redirect } = await render(
-      "/orders/1234/respond",
+      "/orders/2939023/respond",
       mockResolver({
         ...OfferOrderWithShippingDetails,
-        internalID: "1234",
+
         state: "SUBMITTED",
         awaitingResponseFrom: "BUYER",
       })
@@ -325,21 +313,21 @@ describe("OrderApp routing redirects", () => {
 
   it("Redirects from the status route to the respond route if awaiting buyer response", async () => {
     const { redirect } = await render(
-      "/orders/1234/status",
+      "/orders/2939023/status",
       mockResolver({
         ...OfferOrderWithShippingDetails,
-        internalID: "1234",
+
         state: "SUBMITTED",
         awaitingResponseFrom: "BUYER",
       })
     )
-    expect(redirect.url).toBe("/orders/1234/respond")
+    expect(redirect.url).toBe("/orders/2939023/respond")
   })
 
   describe("visiting the /review/counter page", () => {
     const counterOfferOrder: routes_OrderQueryRawResponse["order"] = {
       ...OfferOrderWithShippingDetails,
-      id: "1234",
+      id: "2939023",
       state: "SUBMITTED",
       lastOffer: {
         ...OfferWithTotals,
@@ -358,7 +346,7 @@ describe("OrderApp routing redirects", () => {
     } as const
     it("stays on the /review/counter page if all conditions are met", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/2939023/review/counter",
         mockResolver(counterOfferOrder)
       )
       expect(redirect).toBe(undefined)
@@ -366,40 +354,40 @@ describe("OrderApp routing redirects", () => {
     // goToStatusIfNotOfferOrder,
     it("redirects to /status if not an offer order", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/2939023/review/counter",
         mockResolver({
           ...counterOfferOrder,
           mode: "BUY",
         })
       )
-      expect(redirect.url).toBe("/orders/1234/status")
+      expect(redirect.url).toBe("/orders/2939023/status")
     })
     // goToStatusIfNotAwaitingBuyerResponse,
     it("redirects to /status if not awaiting a buyer response", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/2939023/review/counter",
         mockResolver({
           ...counterOfferOrder,
           awaitingResponseFrom: "SELLER",
         })
       )
-      expect(redirect.url).toBe("/orders/1234/status")
+      expect(redirect.url).toBe("/orders/2939023/status")
     })
     // goToStatusIfOrderIsNotSubmitted,
     it("redirects to /status if order is not submitted", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/2939023/review/counter",
         mockResolver({
           ...counterOfferOrder,
           state: "PENDING",
         })
       )
-      expect(redirect.url).toBe("/orders/1234/status")
+      expect(redirect.url).toBe("/orders/2939023/status")
     })
     // goToRespondIfMyLastOfferIsNotMostRecentOffer,
     it("redirects to /respond if myLastOffer is not more recent than lastOffer", async () => {
       const { redirect } = await render(
-        "/orders/1234/review/counter",
+        "/orders/2939023/review/counter",
         mockResolver({
           ...counterOfferOrder,
           myLastOffer: {
@@ -410,14 +398,14 @@ describe("OrderApp routing redirects", () => {
           },
         })
       )
-      expect(redirect.url).toBe("/orders/1234/respond")
+      expect(redirect.url).toBe("/orders/2939023/respond")
     })
   })
 
   describe("visiting the /payment/new page", () => {
     const counterOfferOrder: routes_OrderQueryRawResponse["order"] = {
       ...OfferOrderWithShippingDetails,
-      internalID: "1234",
+
       state: "SUBMITTED",
       lastOffer: {
         ...OfferWithTotals,
@@ -437,7 +425,7 @@ describe("OrderApp routing redirects", () => {
     } as const
     it("stays on the /payment/new page if all conditions are met", async () => {
       const { redirect } = await render(
-        "/orders/1234/payment/new",
+        "/orders/2939023/payment/new",
         mockResolver(counterOfferOrder)
       )
       expect(redirect).toBe(undefined)
@@ -445,35 +433,35 @@ describe("OrderApp routing redirects", () => {
     // goToStatusIfNotOfferOrder,
     it("redirects to /status if not an offer order", async () => {
       const { redirect } = await render(
-        "/orders/1234/payment/new",
+        "/orders/2939023/payment/new",
         mockResolver({
           ...counterOfferOrder,
           mode: "BUY",
         })
       )
-      expect(redirect.url).toBe("/orders/1234/status")
+      expect(redirect.url).toBe("/orders/2939023/status")
     })
     // goToStatusIfOrderIsNotSubmitted,
     it("redirects to /status if order is not submitted", async () => {
       const { redirect } = await render(
-        "/orders/1234/payment/new",
+        "/orders/2939023/payment/new",
         mockResolver({
           ...counterOfferOrder,
           state: "PENDING",
         })
       )
-      expect(redirect.url).toBe("/orders/1234/status")
+      expect(redirect.url).toBe("/orders/2939023/status")
     })
 
     it("redirects to /status if order does not have a failing last transaction", async () => {
       const { redirect } = await render(
-        "/orders/1234/payment/new",
+        "/orders/2939023/payment/new",
         mockResolver({
           ...counterOfferOrder,
           lastTransactionFailed: false,
         })
       )
-      expect(redirect.url).toBe("/orders/1234/status")
+      expect(redirect.url).toBe("/orders/2939023/status")
     })
   })
 })
