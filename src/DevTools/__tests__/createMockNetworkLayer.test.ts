@@ -97,15 +97,6 @@ describe("createMockNetworkLayer", () => {
       })
       expect(data.artwork.title).toEqual(null)
     })
-
-    it("converts undefined to null", async () => {
-      const data = await fetchArtworkQueryWithResolvers({
-        mockData: {
-          artwork: { title: undefined, id: "null" },
-        },
-      })
-      expect(data.artwork.title).toEqual(null)
-    })
   })
 
   it("complains with a helpful error when selected field is not present", async () => {
@@ -175,7 +166,7 @@ describe("createMockNetworkLayer", () => {
     expect(data.artwork).toBeNull()
   })
 
-  it.only("uses data provided with an aliased name", async () => {
+  it("uses data provided with an aliased name", async () => {
     const data = await _fetchQueryWithResolvers<
       createMockNetworkLayerTestAliasQuery
     >(
@@ -246,7 +237,9 @@ describe("createMockNetworkLayer", () => {
         }
       `
     )
-    expect(data.artist.forSaleArtworks).toEqual([{ id: "for-sale-work" }])
+    expect(data.artist.forSaleArtworks.edges[0].node).toEqual({
+      id: "for-sale-work",
+    })
   })
 
   describe("mutations", () => {
@@ -287,6 +280,7 @@ describe("createMockNetworkLayer", () => {
               order: {
                 __typename: "CommerceOfferOrder",
                 id: "my-order",
+                internalID: "my-order",
                 state: "ABANDONED",
               },
             },
@@ -315,6 +309,7 @@ describe("createMockNetworkLayer", () => {
               order: {
                 __typename: "CommerceBuyOrder",
                 id: "my-order",
+                internalID: "my-order",
                 state: "ABANDONED",
               },
             },
@@ -343,6 +338,7 @@ describe("createMockNetworkLayer", () => {
               orderOrError: {
                 order: {
                   id: "my-order",
+                  internalID: "my-order",
                   state: "ABANDONED",
                 },
               },
@@ -371,6 +367,7 @@ describe("createMockNetworkLayer", () => {
             orderOrError: {
               order: {
                 id: "my-order",
+                internalID: "my-order",
                 state: "ABANDONED",
                 myLastOffer: {},
               },
@@ -401,6 +398,7 @@ describe("createMockNetworkLayer", () => {
                 order: {
                   __typename: "CommerceOfferOrder",
                   id: "my-order",
+                  internalID: "my-order",
                   state: "ABANDONED",
                 },
               },
