@@ -20,6 +20,15 @@ export interface Props extends RouterState {
   viewer: SearchApp_viewer
 }
 
+const TotalResults: React.SFC<{ count: number; term: string }> = ({
+  count,
+  term,
+}) => (
+  <Serif size="5">
+    {count.toLocaleString()} Result{count > 1 ? "s" : ""} for "{term}"
+  </Serif>
+)
+
 @track({
   context_page: Schema.PageName.SearchPage,
 })
@@ -39,9 +48,7 @@ export class SearchApp extends React.Component<Props> {
         <Spacer mb={4} />
         <Row>
           <Col>
-            <Serif size="5">
-              {count.toLocaleString()} Result{count > 1 ? "s" : ""} for "{term}"
-            </Serif>
+            <TotalResults count={count} term={term} />
             <Spacer mb={4} />
             <span id="jumpto--searchResultTabs" />
             <NavigationTabs

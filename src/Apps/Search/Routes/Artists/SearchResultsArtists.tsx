@@ -4,16 +4,15 @@ import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchRes
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
-import { Location } from "found"
+import { RouterState, withRouter } from "found"
 import qs from "qs"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
 
-export interface Props {
+export interface Props extends RouterState {
   viewer: SearchResultsArtists_viewer
   relay: RelayRefetchProp
-  location: Location
 }
 
 interface State extends LoadingAreaState {
@@ -23,14 +22,16 @@ interface State extends LoadingAreaState {
 const PAGE_SIZE = 10
 
 export class SearchResultsArtistsRoute extends React.Component<Props, State> {
-  state = {
+  state: State = {
     isLoading: false,
     page: null,
   }
 
   constructor(props) {
     super(props)
-    const { location } = this.props
+    const {
+      match: { location },
+    } = this.props
     const { page } = get(location, l => l.query)
 
     this.state = { isLoading: false, page: (page && parseInt(page, 10)) || 1 }
@@ -77,7 +78,9 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
           console.error(error)
         }
 
-        const { location } = this.props
+        const {
+          match: { location },
+        } = this.props
         const { term } = get(location, l => l.query)
         const urlParams = qs.stringify({
           term,
@@ -91,7 +94,10 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
   }
 
   renderArtists() {
-    const { viewer, location } = this.props
+    const {
+      viewer,
+      match: { location },
+    } = this.props
     const { term } = get(location, l => l.query)
     const { searchConnection } = viewer
 
@@ -130,7 +136,10 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
   }
 
   render() {
-    const { viewer, location } = this.props
+    const {
+      viewer,
+      match: { location },
+    } = this.props
     const { term } = get(location, l => l.query)
 
     const artists = get(viewer, v => v.searchConnection.edges, []).map(
@@ -151,7 +160,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
 }
 
 export const SearchResultsArtistsRouteFragmentContainer = createRefetchContainer(
-  SearchResultsArtistsRoute,
+  withRouter(SearchResultsArtistsRoute) as React.ComponentType<Props>,
   {
     viewer: graphql`
       fragment SearchResultsArtists_viewer on Viewer
