@@ -235,10 +235,10 @@ describe("PaymentPickerFragmentContainer", () => {
             city: "London",
             state: "Whitechapel",
             country: "UK",
-            postal_code: "E1 8PY",
-            expiration_month: 12,
-            expiration_year: 2022,
-            last_digits: "1234",
+            postalCode: "E1 8PY",
+            expirationMonth: 12,
+            expirationYear: 2022,
+            lastDigits: "1234",
             brand: "Visa",
           },
         },
@@ -369,16 +369,16 @@ describe("PaymentPickerFragmentContainer", () => {
       {
         internalID: "card-id-1",
         brand: "MasterCard",
-        last_digits: "1234",
-        expiration_month: 1,
-        expiration_year: 2018,
+        lastDigits: "1234",
+        expirationMonth: 1,
+        expirationYear: 2018,
       },
       {
         internalID: "card-id-2",
         brand: "Visa",
-        last_digits: "2345",
-        expiration_month: 1,
-        expiration_year: 2019,
+        lastDigits: "2345",
+        expirationMonth: 1,
+        expirationYear: 2019,
       },
     ]
 
@@ -391,11 +391,11 @@ describe("PaymentPickerFragmentContainer", () => {
       city: "New York",
       state: "NY",
       country: "USA",
-      postal_code: "90210",
+      postalCode: "90210",
       brand: "Visa",
-      last_digits: "2345",
-      expiration_month: 1,
-      expiration_year: 2019,
+      lastDigits: "2345",
+      expirationMonth: 1,
+      expirationYear: 2019,
     }
 
     const unsavedOrderCard = {
@@ -407,11 +407,11 @@ describe("PaymentPickerFragmentContainer", () => {
       city: "New York",
       state: "NY",
       country: "USA",
-      postal_code: "90210",
+      postalCode: "90210",
       brand: "Visa",
-      last_digits: "6789",
-      expiration_month: 12,
-      expiration_year: 2022,
+      lastDigits: "6789",
+      expirationMonth: 12,
+      expirationYear: 2022,
     }
 
     const orderWithoutCard = {
@@ -582,7 +582,7 @@ describe("PaymentPickerFragmentContainer", () => {
   describe("saving a card", () => {
     it("by default saves new cards", async () => {
       createTokenMock.mockReturnValue(
-        Promise.resolve({ token: { id: "tokenId" } })
+        Promise.resolve({ token: { id: "tokenId", postalCode: "1324" } })
       )
       const page = await env.buildPage()
       expect(page.saveCardCheckbox.props().selected).toBe(true)
