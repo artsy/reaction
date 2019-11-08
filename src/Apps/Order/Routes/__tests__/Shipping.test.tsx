@@ -49,6 +49,7 @@ const fillAddressForm = (component: any, address: Address) => {
 const testOrder: ShippingTestQueryRawResponse["order"] = {
   ...UntouchedBuyOrder,
   internalID: "1234",
+  id: "1234",
 }
 
 class ShippingTestPage extends OrderAppTestPage {

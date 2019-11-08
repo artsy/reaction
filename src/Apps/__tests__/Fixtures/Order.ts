@@ -55,6 +55,7 @@ export const UntouchedOrder = {
     edges: [
       {
         node: {
+          id: "line-item-node-id",
           artwork: {
             id: "02393",
             internalID: "artworkId",
@@ -97,6 +98,7 @@ export const UntouchedOrder = {
             edges: [
               {
                 node: {
+                  id: "fullfillment-id",
                   courier: "UPS",
                   trackingId: "AP234345634",
                   estimatedDelivery: "Friday, August 6",
@@ -176,7 +178,8 @@ export const OfferOrderWithOffers = {
   lastOffer: OfferWithTotals,
   myLastOffer: {
     ...OfferWithTotals,
-    internalID: "my-last-offer-id",
+    internalID: "my-last-offer-id-no-note",
+    id: "my-last-offer-id-no-note",
     fromParticipant: "BUYER",
     note: null,
   },
@@ -187,7 +190,8 @@ export const OfferOrderWithOffersAndNote = {
   lastOffer: OfferWithTotals,
   myLastOffer: {
     ...OfferWithTotals,
-    internalID: "my-last-offer-id",
+    internalID: "my-last-offer-id-with-note",
+    id: "my-last-offer-id-with-note",
     fromParticipant: "BUYER",
     note: "This is a note!",
   },

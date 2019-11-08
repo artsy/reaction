@@ -1,6 +1,5 @@
 import { CounterTestQueryRawResponse } from "__generated__/CounterTestQuery.graphql"
 import {
-  Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
@@ -33,6 +32,7 @@ const testOrder: CounterTestQueryRawResponse["order"] = {
   lastOffer: {
     ...OfferWithTotals,
     internalID: "lastOffer",
+    id: "lastOffer",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
       .toString(),
@@ -41,6 +41,7 @@ const testOrder: CounterTestQueryRawResponse["order"] = {
   myLastOffer: {
     ...OfferWithTotals,
     internalID: "myLastOffer",
+    id: "myLastOffer",
     amount: "$your.offer",
     fromParticipant: "BUYER",
   },
