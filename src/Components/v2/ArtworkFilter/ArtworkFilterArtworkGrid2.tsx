@@ -1,7 +1,13 @@
 import { Box, Spacer } from "@artsy/palette"
 import { isEmpty } from "lodash"
 import React, { useEffect } from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import {
+  createFragmentContainer,
+  createRefetchContainer,
+  graphql,
+  RelayProp,
+  RelayRefetchProp,
+} from "react-relay"
 
 import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
 import { useSystemContext } from "Artsy"
@@ -15,7 +21,7 @@ interface ArtworkFilterArtworkGridProps {
   columnCount: number[]
   filtered_artworks: ArtworkFilterArtworkGrid2_filtered_artworks
   isLoading?: boolean
-  relay: RelayRefetchProp
+  relay: RelayProp
 }
 
 const ArtworkFilterArtworkGrid: React.FC<
@@ -63,7 +69,7 @@ const ArtworkFilterArtworkGrid: React.FC<
     <>
       <LoadingArea isLoading={props.isLoading}>
         <ArtworkGrid
-          artworks={props.filtered_artworks as any}
+          artworks={props.filtered_artworks}
           columnCount={columnCount}
           preloadImageCount={9}
           itemMargin={40}
@@ -83,7 +89,7 @@ const ArtworkFilterArtworkGrid: React.FC<
         <Box>
           <Pagination
             hasNextPage={hasNextPage}
-            pageCursors={pageCursors as any}
+            pageCursors={pageCursors}
             onClick={(_cursor, page) => loadPage(page)}
             onNext={() => loadNext()}
             scrollTo="#jump--artworkFilter"
@@ -94,7 +100,7 @@ const ArtworkFilterArtworkGrid: React.FC<
   )
 }
 
-export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
+export const ArtworkFilterArtworkGridRefetchContainer = createFragmentContainer(
   ArtworkFilterArtworkGrid,
   {
     filtered_artworks: graphql`
@@ -123,17 +129,5 @@ export const ArtworkFilterArtworkGridRefetchContainer = createRefetchContainer(
         ...ArtworkGrid_artworks
       }
     `,
-  },
-  graphql`
-    query ArtworkFilterArtworkGrid2Query(
-      $filteredArtworksNodeID: ID!
-    ) # $first: Int!
-    # $after: String
-    {
-      filtered_artworks: node(id: $filteredArtworksNodeID) {
-        ...ArtworkFilterArtworkGrid2_filtered_artworks
-        # @arguments(first: $first, after: $after)
-      }
-    }
-  `
+  }
 )

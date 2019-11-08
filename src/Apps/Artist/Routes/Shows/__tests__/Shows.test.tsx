@@ -1,4 +1,3 @@
-import { Shows_Test_QueryRawResponse } from "__generated__/Shows_Test_Query.graphql"
 import { ShowsRouteFragmentContainer as ShowsRoute } from "Apps/Artist/Routes/Shows"
 import { MockBoot, renderRelayTree } from "DevTools"
 
@@ -23,9 +22,9 @@ describe("Shows Route", () => {
           }
         }
       `,
-      mockData: { viewer: ShowsFixture } as Shows_Test_QueryRawResponse,
+      mockData: ShowsFixture,
       variables: {
-        artist_id: "pablo-picasso",
+        artistID: "pablo-picasso",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>

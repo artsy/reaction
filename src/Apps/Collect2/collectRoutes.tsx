@@ -42,6 +42,7 @@ export const collectRoutes: RouteConfig[] = [
         filterArtworks: artworksConnection(
           aggregations: $aggregations
           sort: $sort
+          first: 30
         ) {
           ...SeoProductsForArtworks_artworks
         }
@@ -77,8 +78,8 @@ export const collectRoutes: RouteConfig[] = [
     fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
-        categories: marketingCategories @principalField {
-          ...Collections_categories
+        marketingCategories @principalField {
+          ...Collections_marketingCategories
         }
       }
     `,

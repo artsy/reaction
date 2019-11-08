@@ -9,16 +9,16 @@ export const MAX_WIDTH = 120
 
 export const rangeToTuple: (
   state: ArtworkFilters,
-  range: string
+  range: keyof ArtworkFilters
 ) => [number, number] = (state, range) => {
   let minStr: string
   let maxStr: string
   let min: number
   let max: number
 
-  if (range === "price_range") {
-    ;[minStr, maxStr] = state.price_range
-      ? state.price_range.split("-")
+  if (range === "priceRange") {
+    ;[minStr, maxStr] = state.priceRange
+      ? state.priceRange.split("-")
       : ["*", "*"]
     min = minStr === "*" ? MIN_PRICE : Number(minStr)
     max = maxStr === "*" ? MAX_PRICE : Number(maxStr)

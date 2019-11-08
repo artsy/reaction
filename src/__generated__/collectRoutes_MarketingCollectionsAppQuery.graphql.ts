@@ -4,8 +4,8 @@ import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type collectRoutes_MarketingCollectionsAppQueryVariables = {};
 export type collectRoutes_MarketingCollectionsAppQueryResponse = {
-    readonly categories: ReadonlyArray<{
-        readonly " $fragmentRefs": FragmentRefs<"Collections_categories">;
+    readonly marketingCategories: ReadonlyArray<{
+        readonly " $fragmentRefs": FragmentRefs<"Collections_marketingCategories">;
     }>;
 };
 export type collectRoutes_MarketingCollectionsAppQuery = {
@@ -17,12 +17,12 @@ export type collectRoutes_MarketingCollectionsAppQuery = {
 
 /*
 query collectRoutes_MarketingCollectionsAppQuery {
-  categories: marketingCategories @principalField {
-    ...Collections_categories
+  marketingCategories @principalField {
+    ...Collections_marketingCategories
   }
 }
 
-fragment Collections_categories on MarketingCollectionCategory {
+fragment Collections_marketingCategories on MarketingCollectionCategory {
   name
   collections {
     slug
@@ -44,7 +44,7 @@ const node: ConcreteRequest = {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "categories",
+        "alias": null,
         "name": "marketingCategories",
         "storageKey": null,
         "args": null,
@@ -53,7 +53,7 @@ const node: ConcreteRequest = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Collections_categories",
+            "name": "Collections_marketingCategories",
             "args": null
           }
         ]
@@ -67,7 +67,7 @@ const node: ConcreteRequest = {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "categories",
+        "alias": null,
         "name": "marketingCategories",
         "storageKey": null,
         "args": null,
@@ -128,9 +128,9 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "collectRoutes_MarketingCollectionsAppQuery",
     "id": null,
-    "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
+    "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  marketingCategories @principalField {\n    ...Collections_marketingCategories\n  }\n}\n\nfragment Collections_marketingCategories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
-(node as any).hash = '81db5fa0b5f99948b02522c13d2f9278';
+(node as any).hash = 'fef524f8337c800a5308955689bca0b6';
 export default node;

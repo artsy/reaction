@@ -22,14 +22,12 @@ interface SeoProductsProps {
 
 export class SeoProducts extends React.Component<SeoProductsProps> {
   render() {
-    const {
-      artworks: { artworks_connection },
-    } = this.props
+    const { artworks } = this.props
 
     // here the filtering is necessary so we can re-use the artwork list shown in the page (could include
     // non-acquireable artworks) without making an extra request. Also, seller image is a required field
     // so excluding those that don't have `partner.profile.icon.url`.
-    const artworksForSeoProduct = artworks_connection!.edges!.filter(edge => {
+    const artworksForSeoProduct = artworks.edges.filter(edge => {
       return get(edge, e => {
         return e!.node!.is_acquireable && e!.node!.partner!.profile!.icon!.url
       })
@@ -44,7 +42,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
           image,
           is_price_range,
           partner,
-          price,
+          listPrice: { display },
         } = node
         const location = partner && partner.locations && partner.locations[0]
         const artistsName = artists
@@ -57,7 +55,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
 
         return (
           <Product
-            key={node.__id}
+            key={node.id}
             data={{
               name: node.title,
               image: image && image.url,
@@ -75,12 +73,12 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
                     offers: {
                       "@type": "Offer",
                       price: !is_price_range
-                        ? formatCurrency(price)
+                        ? formatCurrency(display)
                         : {
                             minPrice:
-                              price && formatCurrency(price.split("-")[0]),
+                              display && formatCurrency(display.split("-")[0]),
                             maxPrice:
-                              price && formatCurrency(price.split("-")[1]),
+                              display && formatCurrency(display.split("-")[1]),
                           },
                       priceCurrency: node.price_currency,
                       availability: availability && AVAILABILITY[availability],
@@ -114,11 +112,7 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
 
 export const SeoProductsForArtworks = createFragmentContainer(SeoProducts, {
   artworks: graphql`
-    fragment SeoProductsForArtworks_artworks on FilterArtworksConnection
-      @argumentDefinitions(
-        first: { type: "Int", defaultValue: 30 }
-        after: { type: "String", defaultValue: "" }
-      ) {
+    fragment SeoProductsForArtworks_artworks on FilterArtworksConnection {
       edges {
         node {
           id

@@ -9,7 +9,7 @@ import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
-import { Location } from "found"
+import { Match } from "found"
 import { HttpError } from "found"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
@@ -28,7 +28,7 @@ import { TrackingProp } from "react-tracking"
 
 interface CollectionAppProps extends SystemContextProps {
   viewer: Collection_viewer
-  location: Location
+  match: Match
   relay: RelayRefetchProp
   tracking: TrackingProp
 }
@@ -36,7 +36,7 @@ interface CollectionAppProps extends SystemContextProps {
 @track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
   context_page_owner_slug: props.viewer && props.viewer.slug,
-  context_page_owner_id: props.viewer && props.viewer.id,
+  context_page_owner_id: props.viewer && props.viewer.slug,
 }))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
@@ -50,8 +50,12 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   render() {
-    const { viewer, location, relay } = this.props
-    const { title, slug, headerImage, description, artworks } = viewer
+    const {
+      viewer,
+      match: { location },
+      relay,
+    } = this.props
+    const { title, slug, headerImage, description, artworksConnection } = viewer
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
     const metadataDescription = description
@@ -77,10 +81,12 @@ export class CollectionApp extends Component<CollectionAppProps> {
               { path: `/collection/${slug}`, name: title },
             ]}
           />
-          {artworks && <SeoProductsForArtworks artworks={artworks} />}
+          {artworksConnection && (
+            <SeoProductsForArtworks artworks={artworksConnection} />
+          )}
           <CollectionHeader
             collection={viewer as any}
-            artworks={artworks as any}
+            artworks={artworksConnection as any}
           />
           {showCollectionHubs && (
             <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
@@ -98,8 +104,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                viewer.artworks
-                  .aggregations as SharedArtworkFilterContextProps["aggregations"]
+                artworksConnection.aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
               onFilterClick={(key, value, filterState) => {
@@ -115,6 +120,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 viewer={viewer}
                 relayVariables={{
                   slug: viewer.slug,
+                  first: 30,
                 }}
               />
             </ArtworkFilterContextProvider>
@@ -180,6 +186,7 @@ export const CollectionAppQuery = graphql`
           priceRange: $priceRange
           sort: $sort
           width: $width
+          first: 30
         )
     }
   }
@@ -205,6 +212,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int" }
         ) {
         category
         credit
@@ -229,6 +237,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           aggregations: $aggregations
           includeMediumFilterInAggregation: true
           size: 20
+          first: 20
           sort: "-decayed_merch"
         ) {
           ...Header_artworks
@@ -255,7 +264,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           offerable: $offerable
           page: $page
           priceRange: $priceRange
-          size: 0
+          first: $first
           sort: $sort
           width: $width
         ) {

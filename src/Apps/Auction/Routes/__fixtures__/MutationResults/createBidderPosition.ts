@@ -4,7 +4,7 @@ export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutat
   createBidderPosition: {
     result: {
       position: {
-        id: "positionid",
+        internalID: "positionid",
       },
       status: "SUCCESS",
       message_header: null,

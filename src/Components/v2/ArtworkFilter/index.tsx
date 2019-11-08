@@ -141,6 +141,7 @@ export const BaseArtworkFilter: React.FC<{
     const relayRefetchVariables = {
       ...filterContext.filters,
       ...relayVariables,
+      first: 30,
     }
 
     relay.refetch(relayRefetchVariables, null, error => {
@@ -292,6 +293,7 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int", defaultValue: 30 }
         ) {
         filtered_artworks: artworksConnection(
           acquireable: $acquireable
@@ -310,9 +312,9 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
           page: $page
           partnerID: $partnerID
           priceRange: $priceRange
-          size: 0
           sort: $sort
           width: $width
+          first: $first
         ) {
           id
           ...ArtworkFilterArtworkGrid2_filtered_artworks

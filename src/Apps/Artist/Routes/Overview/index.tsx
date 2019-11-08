@@ -127,7 +127,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
 
             <ArtworkFilter
               artist={artist}
-              location={location}
               sidebarAggregations={sidebarAggregations}
             />
           </Col>

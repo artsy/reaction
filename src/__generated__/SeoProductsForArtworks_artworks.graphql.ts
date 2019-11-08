@@ -94,20 +94,7 @@ return {
   "name": "SeoProductsForArtworks_artworks",
   "type": "FilterArtworksConnection",
   "metadata": null,
-  "argumentDefinitions": [
-    {
-      "kind": "LocalArgument",
-      "name": "first",
-      "type": "Int",
-      "defaultValue": 30
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "after",
-      "type": "String",
-      "defaultValue": ""
-    }
-  ],
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
@@ -364,5 +351,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'be8b8165448b8ed4580cd9af0db41326';
+(node as any).hash = 'bf1928b2d602d6355d690f999cf23cac';
 export default node;
