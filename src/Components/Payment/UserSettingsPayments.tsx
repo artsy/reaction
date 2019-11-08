@@ -1,5 +1,6 @@
 import { Box, Serif, Theme } from "@artsy/palette"
 import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
+import { UserSettingsPaymentsCreditCard } from "__generated__/UserSettingsPaymentsCreditCard.graphql"
 import { UserSettingsPaymentsQuery } from "__generated__/UserSettingsPaymentsQuery.graphql"
 import { SystemContext, SystemContextProps } from "Artsy"
 import { get } from "Utils/get"
@@ -31,7 +32,7 @@ export class UserSettingsPayments extends React.Component<
           {creditCards && creditCards.length ? (
             <Box maxWidth={542}>
               <SavedCreditCards
-                creditCards={creditCards as any}
+                creditCards={creditCards as UserSettingsPaymentsCreditCard[]}
                 relay={this.props.relay}
                 me={this.props.me}
               />
@@ -47,15 +48,7 @@ export class UserSettingsPayments extends React.Component<
   }
 }
 
-export interface CreditCardType {
-  id: string
-  internalID: string
-  brand: string
-  lastDigits: string
-  expirationMonth: number
-  expirationYear: number
-  __typename: string
-}
+export type CreditCardType = UserSettingsPaymentsCreditCard
 
 graphql`
   fragment UserSettingsPaymentsCreditCard on CreditCard {
@@ -106,9 +99,7 @@ export const UserSettingsPaymentsQueryRenderer = () => {
           }
         }
       `}
-      render={renderWithLoadProgress(
-        UserSettingsPaymentsFragmentContainer as any
-      )}
+      render={renderWithLoadProgress(UserSettingsPaymentsFragmentContainer)}
     />
   )
 }

@@ -7,9 +7,9 @@ export type PaymentPicker_me = {
             readonly node: {
                 readonly internalID: string;
                 readonly brand: string;
-                readonly last_digits: string;
-                readonly expiration_month: number;
-                readonly expiration_year: number;
+                readonly lastDigits: string;
+                readonly expirationMonth: number;
+                readonly expirationYear: number;
             } | null;
         } | null> | null;
     } | null;
@@ -74,21 +74,21 @@ const node: ReaderFragment = {
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": "last_digits",
+                  "alias": null,
                   "name": "lastDigits",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": "expiration_month",
+                  "alias": null,
                   "name": "expirationMonth",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": "expiration_year",
+                  "alias": null,
                   "name": "expirationYear",
                   "args": null,
                   "storageKey": null
@@ -101,5 +101,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '812bac99aa7e091dcb1f19c41f5e5937';
+(node as any).hash = '7c560989a1629a7d702ebca42324ab84';
 export default node;
