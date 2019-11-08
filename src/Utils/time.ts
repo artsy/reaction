@@ -1,4 +1,4 @@
-import { timeQueryResponse } from "__generated__/timeQuery.graphql"
+import { timeQuery } from "__generated__/timeQuery.graphql"
 import { graphql } from "react-relay"
 import { Environment, fetchQuery } from "relay-runtime"
 
@@ -20,7 +20,7 @@ export async function getOffsetBetweenGravityClock(
   `
 
   const fetchSystemTime = () => {
-    return fetchQuery<timeQueryResponse>(
+    return fetchQuery<timeQuery>(
       relayEnvironment,
       query,
       {},

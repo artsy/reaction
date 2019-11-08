@@ -28,6 +28,7 @@ query SuggestedGenesQuery {
 }
 
 fragment SuggestedGenes_suggested_genes on Gene {
+  id
   slug
   internalID
   name
@@ -103,6 +104,13 @@ const node: ConcreteRequest = {
               {
                 "kind": "ScalarField",
                 "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
                 "name": "slug",
                 "args": null,
                 "storageKey": null
@@ -160,13 +168,6 @@ const node: ConcreteRequest = {
                     ]
                   }
                 ]
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
               }
             ]
           }
@@ -178,7 +179,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "SuggestedGenesQuery",
     "id": null,
-    "text": "query SuggestedGenesQuery {\n  highlights {\n    suggested_genes: broadCollectingGenes {\n      ...SuggestedGenes_suggested_genes\n      id\n    }\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  slug\n  internalID\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n}\n",
+    "text": "query SuggestedGenesQuery {\n  highlights {\n    suggested_genes: broadCollectingGenes {\n      ...SuggestedGenes_suggested_genes\n      id\n    }\n  }\n}\n\nfragment SuggestedGenes_suggested_genes on Gene {\n  id\n  slug\n  internalID\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

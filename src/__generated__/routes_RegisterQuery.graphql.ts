@@ -22,9 +22,31 @@ export type routes_RegisterQueryResponse = {
         readonly " $fragmentRefs": FragmentRefs<"Register_me">;
     } | null;
 };
+export type routes_RegisterQueryRawResponse = {
+    readonly sale: ({
+        readonly slug: string;
+        readonly isAuction: boolean | null;
+        readonly isRegistrationClosed: boolean | null;
+        readonly isPreview: boolean | null;
+        readonly isOpen: boolean | null;
+        readonly registrationStatus: ({
+            readonly qualifiedForBidding: boolean | null;
+            readonly id: string | null;
+        }) | null;
+        readonly internalID: string;
+        readonly status: string | null;
+        readonly id: string | null;
+    }) | null;
+    readonly me: ({
+        readonly hasQualifiedCreditCards: boolean | null;
+        readonly internalID: string;
+        readonly id: string | null;
+    }) | null;
+};
 export type routes_RegisterQuery = {
     readonly response: routes_RegisterQueryResponse;
     readonly variables: routes_RegisterQueryVariables;
+    readonly rawResponse: routes_RegisterQueryRawResponse;
 };
 
 
@@ -272,5 +294,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'a3833cffa71e570f6ecf177801250cb0';
+(node as any).hash = '4cf0f6d1be51ade065f55eae961f8bbf';
 export default node;

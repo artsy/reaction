@@ -32,12 +32,13 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
 
   renderAuctionHighlight() {
     if (
-      !this.props.artist.auctionResults ||
-      this.props.artist.auctionResults.edges.length < 1
+      !this.props.artist.auctionResultsConnection ||
+      this.props.artist.auctionResultsConnection.edges.length < 1
     ) {
       return null
     }
-    const topAuctionResult = this.props.artist.auctionResults.edges[0].node
+    const topAuctionResult = this.props.artist.auctionResultsConnection.edges[0]
+      .node
     const display = `${topAuctionResult.price_realized.display}, ${
       topAuctionResult.organization
     }, ${topAuctionResult.sale_date}`
@@ -54,9 +55,13 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
   }
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
-    const { partners } = highlights
-    if (partners && partners.edges && partners.edges.length > 0) {
-      const highCategory = highestCategory(partners.edges)
+    const { partnersConnection } = highlights
+    if (
+      partnersConnection &&
+      partnersConnection.edges &&
+      partnersConnection.edges.length > 0
+    ) {
+      const highCategory = highestCategory(partnersConnection.edges)
       return (
         <TextWrap>
           <Sans size="2" weight="medium" display="inline" mr={1}>

@@ -21,11 +21,14 @@ export const updateUrl = (state: ArtworkFilters) => {
 }
 
 export const removeDefaultValues = (state: ArtworkFilters) => {
-  return Object.entries(state).reduce((acc, [key, value]) => {
-    if (isDefaultFilter(key, value)) {
-      return acc
-    } else {
-      return { ...acc, [key]: value }
-    }
-  }, {})
+  return Object.entries(state).reduce(
+    (acc, [key, value]: [keyof ArtworkFilters, any]) => {
+      if (isDefaultFilter(key, value)) {
+        return acc
+      } else {
+        return { ...acc, [key]: value }
+      }
+    },
+    {}
+  )
 }

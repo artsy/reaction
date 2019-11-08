@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 export type FollowGeneButton_gene = {
     readonly id: string;
-    readonly slug: string;
+    readonly internalID: string;
     readonly is_followed: boolean | null;
     readonly " $refType": "FollowGeneButton_gene";
 };
@@ -27,7 +27,7 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -40,5 +40,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'e771524a20d62a99e58286bd97c71bd1';
+(node as any).hash = '27bbf9c0d8426586f13fe1dacb54b489';
 export default node;

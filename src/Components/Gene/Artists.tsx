@@ -133,7 +133,7 @@ export class Artists extends React.Component<Props, State> {
     const artists = this.props.gene.artists
 
     const artistRows = artists.edges.map(edge => {
-      return <ArtistRow artist={edge.node} key={edge.node.__id} />
+      return <ArtistRow artist={edge.node} key={edge.node.id} />
     })
 
     const loadMoreButton = (
@@ -224,7 +224,7 @@ export default createPaginationContainer(
         ...fragmentVariables,
         count,
         cursor,
-        geneNodeID: props.gene.__id,
+        geneNodeID: props.gene.id,
       }
     },
     query: graphql`

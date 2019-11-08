@@ -141,7 +141,7 @@ export class SearchBar extends Component<Props, State> {
           this.reportPerformanceMeasurement(performanceStart)
         }
         const { viewer } = this.props
-        const edges = get(viewer, v => v.search.edges, [])
+        const edges = get(viewer, v => v.searchConnection.edges, [])
         this.trackSearch(term, edges.length > 0)
       }
     )
@@ -249,7 +249,10 @@ export class SearchBar extends Component<Props, State> {
   }
 
   renderSuggestionsContainer = ({ containerProps, children, query }) => {
-    const noResults = get(this.props, p => p.viewer.search.edges.length === 0)
+    const noResults = get(
+      this.props,
+      p => p.viewer.searchConnection.edges.length === 0
+    )
     const { focused } = this.state
 
     if (noResults || !focused || !query) {
@@ -337,7 +340,7 @@ export class SearchBar extends Component<Props, State> {
       },
     }
 
-    const edges = get(viewer, v => v.search.edges, [])
+    const edges = get(viewer, v => v.searchConnection.edges, [])
     const suggestions = [firstSuggestionPlaceholder, ...edges]
 
     return (

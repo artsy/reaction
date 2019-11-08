@@ -4,8 +4,8 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type FollowArtistButton_artist = {
     readonly id: string;
+    readonly internalID: string;
     readonly name: string | null;
-    readonly slug: string;
     readonly is_followed: boolean | null;
     readonly counts: {
         readonly follows: number | null;
@@ -40,14 +40,14 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "name",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "name",
       "args": null,
       "storageKey": null
     },
@@ -90,5 +90,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '569ebd896a225db137b24605c8bb5aa8';
+(node as any).hash = '560d15156b37402c50ee7572d14c9eca';
 export default node;

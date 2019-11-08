@@ -66,7 +66,6 @@ export class FollowButton extends React.Component<Props, null> {
     const { artist, user, relay } = this.props
     if (user && user.id) {
       commitMutation<FollowArtistMutation>(relay.environment, {
-        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowArtistMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
@@ -79,7 +78,7 @@ export class FollowButton extends React.Component<Props, null> {
         `,
         variables: {
           input: {
-            artist_id: artist.id,
+            artistID: artist.internalID,
             unfollow: artist.is_followed,
           },
         },
@@ -87,7 +86,7 @@ export class FollowButton extends React.Component<Props, null> {
         optimisticResponse: {
           followArtist: {
             artist: {
-              __id: artist.__id,
+              id: artist.id,
               is_followed: !artist.is_followed,
             },
           },
@@ -125,7 +124,7 @@ export default createFragmentContainer(Artsy.withSystemContext(FollowButton), {
   artist: graphql`
     fragment Follow_artist on Artist {
       id
-      slug
+      internalID
       is_followed: isFollowed
     }
   `,

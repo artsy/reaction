@@ -10,7 +10,7 @@ export const createCreditCardAndUpdatePhoneSuccessful: RegisterCreateCreditCardA
     creditCardOrError: {
       creditCardEdge: {
         node: {
-          last_digits: "4242",
+          lastDigits: "4242",
         },
       },
     },

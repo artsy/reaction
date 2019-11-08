@@ -18,7 +18,7 @@ const OtherAuctions = ({ size }: { size?: number }) => {
         query OtherAuctionsStoryQuery($size: Int!) {
           salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {
             # FIXME: Need to pluck just nodes and send as array.
-            ...OtherAuctions_sales
+            ...OtherAuctions_salesConnection
           }
         }
       `}

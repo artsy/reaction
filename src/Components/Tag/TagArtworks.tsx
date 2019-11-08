@@ -1,10 +1,6 @@
 import { TagArtworks_tag } from "__generated__/TagArtworks_tag.graphql"
 import * as React from "react"
-import {
-  createFragmentContainer,
-  graphql,
-  RelayPaginationProp,
-} from "react-relay"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import styled from "styled-components"
 import Dropdown from "../ArtworkFilter/Dropdown"
 import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
@@ -21,7 +17,7 @@ interface Filters {
 }
 
 interface Props extends Filters {
-  relay: RelayPaginationProp
+  relay: RelayProp
   tag: TagArtworks_tag
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
@@ -101,7 +97,7 @@ export class TagArtworks extends React.Component<Props, null> {
           />
         </SubFilterBar>
         <TagArtworksContent
-          tagID={this.props.tag.id}
+          tagID={this.props.tag.slug}
           filtered_artworks={this.props.tag.filtered_artworks}
         />
       </div>

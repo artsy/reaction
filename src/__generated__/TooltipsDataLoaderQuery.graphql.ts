@@ -100,8 +100,8 @@ fragment MarketDataSummary_artist on Artist {
 
 fragment FollowArtistButton_artist on Artist {
   id
+  internalID
   name
-  slug
   is_followed: isFollowed
   counts {
     follows
@@ -121,7 +121,7 @@ fragment GeneToolTip_gene on Gene {
 
 fragment FollowGeneButton_gene on Gene {
   id
-  slug
+  internalID
   is_followed: isFollowed
 }
 */
@@ -605,7 +605,7 @@ return {
     "operationKind": "query",
     "name": "TooltipsDataLoaderQuery",
     "id": null,
-    "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    slug\n    internalID\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    id\n  }\n  genes(slugs: $geneSlugs) {\n    slug\n    internalID\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  slug\n  internalID\n  formatted_nationality_and_birthday: formattedNationalityAndBirthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  genes {\n    name\n    id\n  }\n}\n\nfragment MarketDataSummary_artist on Artist {\n  internalID\n  collections\n  highlights {\n    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized: priceRealized {\n          display(format: \"0a\")\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  name\n  slug\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  slug\n  internalID\n  image {\n    url(version: \"tall\")\n  }\n  name\n}\n\nfragment FollowGeneButton_gene on Gene {\n  id\n  slug\n  is_followed: isFollowed\n}\n",
+    "text": "query TooltipsDataLoaderQuery(\n  $artistSlugs: [String!]\n  $geneSlugs: [String!]\n) {\n  artists(slugs: $artistSlugs) {\n    slug\n    internalID\n    ...ArtistToolTip_artist\n    ...MarketDataSummary_artist\n    ...FollowArtistButton_artist\n    id\n  }\n  genes(slugs: $geneSlugs) {\n    slug\n    internalID\n    ...GeneToolTip_gene\n    ...FollowGeneButton_gene\n    id\n  }\n}\n\nfragment ArtistToolTip_artist on Artist {\n  name\n  slug\n  internalID\n  formatted_nationality_and_birthday: formattedNationalityAndBirthday\n  href\n  blurb\n  carousel {\n    images {\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  genes {\n    name\n    id\n  }\n}\n\nfragment MarketDataSummary_artist on Artist {\n  internalID\n  collections\n  highlights {\n    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized: priceRealized {\n          display(format: \"0a\")\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n\nfragment GeneToolTip_gene on Gene {\n  description\n  href\n  slug\n  internalID\n  image {\n    url(version: \"tall\")\n  }\n  name\n}\n\nfragment FollowGeneButton_gene on Gene {\n  id\n  internalID\n  is_followed: isFollowed\n}\n",
     "metadata": {}
   }
 };

@@ -28,21 +28,13 @@ query PopularArtistsQuery {
 }
 
 fragment PopularArtists_popular_artists on Artist {
-  related {
-    artistsConnection {
-      edges {
-        node {
-          slug
-          internalID
-          id
-          name
-          image {
-            cropped(width: 100, height: 100) {
-              url
-            }
-          }
-        }
-      }
+  slug
+  internalID
+  id
+  name
+  image {
+    cropped(width: 100, height: 100) {
+      url
     }
   }
 }
@@ -55,14 +47,7 @@ var v0 = [
     "name": "excludeFollowedArtists",
     "value": true
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -125,112 +110,73 @@ return {
             "plural": true,
             "selections": [
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "slug",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "internalID",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "name",
+                "args": null,
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "related",
+                "name": "image",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "ArtistRelatedData",
+                "concreteType": "Image",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "artistsConnection",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "ArtistConnection",
+                    "name": "cropped",
+                    "storageKey": "cropped(height:100,width:100)",
+                    "args": [
+                      {
+                        "kind": "Literal",
+                        "name": "height",
+                        "value": 100
+                      },
+                      {
+                        "kind": "Literal",
+                        "name": "width",
+                        "value": 100
+                      }
+                    ],
+                    "concreteType": "CroppedImageUrl",
                     "plural": false,
                     "selections": [
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
-                        "name": "edges",
-                        "storageKey": null,
+                        "name": "url",
                         "args": null,
-                        "concreteType": "ArtistEdge",
-                        "plural": true,
-                        "selections": [
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "node",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Artist",
-                            "plural": false,
-                            "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "slug",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "internalID",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              (v1/*: any*/),
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "name",
-                                "args": null,
-                                "storageKey": null
-                              },
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "name": "image",
-                                "storageKey": null,
-                                "args": null,
-                                "concreteType": "Image",
-                                "plural": false,
-                                "selections": [
-                                  {
-                                    "kind": "LinkedField",
-                                    "alias": null,
-                                    "name": "cropped",
-                                    "storageKey": "cropped(height:100,width:100)",
-                                    "args": [
-                                      {
-                                        "kind": "Literal",
-                                        "name": "height",
-                                        "value": 100
-                                      },
-                                      {
-                                        "kind": "Literal",
-                                        "name": "width",
-                                        "value": 100
-                                      }
-                                    ],
-                                    "concreteType": "CroppedImageUrl",
-                                    "plural": false,
-                                    "selections": [
-                                      {
-                                        "kind": "ScalarField",
-                                        "alias": null,
-                                        "name": "url",
-                                        "args": null,
-                                        "storageKey": null
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
+                        "storageKey": null
                       }
                     ]
                   }
                 ]
-              },
-              (v1/*: any*/)
+              }
             ]
           }
         ]
@@ -241,7 +187,7 @@ return {
     "operationKind": "query",
     "name": "PopularArtistsQuery",
     "id": null,
-    "text": "query PopularArtistsQuery {\n  highlights {\n    popular_artists: popularArtists(excludeFollowedArtists: true) {\n      ...PopularArtists_popular_artists\n      id\n    }\n  }\n}\n\nfragment PopularArtists_popular_artists on Artist {\n  related {\n    artistsConnection {\n      edges {\n        node {\n          slug\n          internalID\n          id\n          name\n          image {\n            cropped(width: 100, height: 100) {\n              url\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query PopularArtistsQuery {\n  highlights {\n    popular_artists: popularArtists(excludeFollowedArtists: true) {\n      ...PopularArtists_popular_artists\n      id\n    }\n  }\n}\n\nfragment PopularArtists_popular_artists on Artist {\n  slug\n  internalID\n  id\n  name\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

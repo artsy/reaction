@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 export type Follow_artist = {
     readonly id: string;
-    readonly slug: string;
+    readonly internalID: string;
     readonly is_followed: boolean | null;
     readonly " $refType": "Follow_artist";
 };
@@ -27,7 +27,7 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -40,5 +40,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '222ffbc9318fa671f86c1b8664e1be9e';
+(node as any).hash = 'c7b928728d570118c90e6f32626ecefc';
 export default node;

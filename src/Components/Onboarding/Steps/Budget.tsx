@@ -73,8 +73,8 @@ export class BudgetComponent extends React.Component<
         `,
         variables: {
           input: {
-            price_range_min: -1,
-            price_range_max: priceRangeMax,
+            priceRangeMin: -1,
+            priceRangeMax,
           },
         },
       }

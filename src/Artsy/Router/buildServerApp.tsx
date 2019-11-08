@@ -5,7 +5,11 @@ import { ServerStyleSheet } from "styled-components"
 
 import { Resolver } from "found-relay"
 import createRender from "found/lib/createRender"
-import { getFarceResult } from "found/lib/server"
+import {
+  FarceElementResult,
+  FarceRedirectResult,
+  getFarceResult,
+} from "found/lib/server"
 import qs from "qs"
 
 import createQueryMiddleware from "farce/lib/createQueryMiddleware"
@@ -66,7 +70,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           renderError: RenderError,
         })
 
-        const { redirect, status, element } = await trace(
+        const farceResults = await trace(
           "buildServerApp.farceResults",
           getFarceResult({
             url,
@@ -78,87 +82,86 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
           })
         )
 
-        if (redirect) {
-          resolve({ redirect })
-          return
-        }
+        if (isRedirect(farceResults)) {
+          resolve({ redirect: farceResults.redirect })
+        } else {
+          /**
+           * An array that gets passed to `react-head`'s provider that will collect the header
+           * tags that are rendered by the App. `headTags` is _mutated_ when it's passed to the App. Beware.
+           **/
+          const headTags = [<style type="text/css">{MediaStyle}</style>]
+          const matchingMediaQueries = userAgent && matchingMediaQueriesForUserAgent(userAgent) // prettier-ignore
 
-        /**
-         * An array that gets passed to `react-head`'s provider that will collect the header
-         * tags that are rendered by the App. `headTags` is _mutated_ when it's passed to the App. Beware.
-         **/
-        const headTags = [<style type="text/css">{MediaStyle}</style>]
-        const matchingMediaQueries = userAgent && matchingMediaQueriesForUserAgent(userAgent) // prettier-ignore
-
-        const ServerApp = ({ tags = [] }) => {
-          return (
-            <Boot
-              context={context}
-              user={user}
-              headTags={tags}
-              onlyMatchMediaQueries={matchingMediaQueries}
-              relayEnvironment={relayEnvironment}
-              routes={routes}
-            >
-              {element}
-            </Boot>
-          )
-        }
-
-        const { relayData: _relayData, styleTags, bodyHTML } = await trace(
-          "buildServerApp.fetch",
-          (async () => {
-            const sheet = new ServerStyleSheet()
-
-            // Render tree again, but this time with Relay data being available.
-            const html = ReactDOMServer.renderToString(
-              sheet.collectStyles(<ServerApp tags={headTags} />)
+          const ServerApp = ({ tags = [] }) => {
+            return (
+              <Boot
+                context={context}
+                user={user}
+                headTags={tags}
+                onlyMatchMediaQueries={matchingMediaQueries}
+                relayEnvironment={relayEnvironment}
+                routes={routes}
+              >
+                {farceResults.element}
+              </Boot>
             )
+          }
 
-            // Get serializable Relay data for rehydration on the client
-            const data = await relayEnvironment.relaySSRMiddleware.getCache()
+          const { relayData: _relayData, styleTags, bodyHTML } = await trace(
+            "buildServerApp.fetch",
+            (async () => {
+              const sheet = new ServerStyleSheet()
 
-            // Extract CSS styleTags to inject for SSR pass
-            const tags = sheet.getStyleTags()
+              // Render tree again, but this time with Relay data being available.
+              const html = ReactDOMServer.renderToString(
+                sheet.collectStyles(<ServerApp tags={headTags} />)
+              )
 
-            return {
-              relayData: data,
-              styleTags: tags,
-              bodyHTML: html,
-            }
-          })()
-        )
+              // Get serializable Relay data for rehydration on the client
+              const data = await relayEnvironment.relaySSRMiddleware.getCache()
 
-        // Strip response of problematic data structures
-        const relayData = cleanRelayData(_relayData)
+              // Extract CSS styleTags to inject for SSR pass
+              const tags = sheet.getStyleTags()
 
-        // Build up script tags to inject into head
-        const scripts = []
-        scripts.push(`
+              return {
+                relayData: data,
+                styleTags: tags,
+                bodyHTML: html,
+              }
+            })()
+          )
+
+          // Strip response of problematic data structures
+          const relayData = cleanRelayData(_relayData)
+
+          // Build up script tags to inject into head
+          const scripts = []
+          scripts.push(`
           <script>
             var __RELAY_BOOTSTRAP__ = ${serializeRelayData(relayData)};
           </script>
         `)
 
-        const result = {
-          bodyHTML,
-          status,
-          headTags,
-          styleTags,
-          scripts: scripts.join("\n"),
-        }
+          const result = {
+            bodyHTML,
+            status: farceResults.status,
+            headTags,
+            styleTags,
+            scripts: scripts.join("\n"),
+          }
 
-        // Only exporting this for testing purposes, don't go around using this
-        // elsewhere, we’re serious.
-        if (typeof jest !== "undefined") {
-          Object.defineProperty(
-            result,
-            __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
-            { value: ServerApp }
-          )
-        }
+          // Only exporting this for testing purposes, don't go around using this
+          // elsewhere, we’re serious.
+          if (typeof jest !== "undefined") {
+            Object.defineProperty(
+              result,
+              __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
+              { value: ServerApp }
+            )
+          }
 
-        resolve(result)
+          resolve(result)
+        }
       } catch (error) {
         logger.error(error)
         reject(error)
@@ -169,6 +172,12 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
 
 export const __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__ =
   typeof jest !== "undefined" ? Symbol() : null
+
+function isRedirect(
+  farceResult: FarceElementResult | FarceRedirectResult
+): farceResult is FarceRedirectResult {
+  return farceResult.hasOwnProperty("redirect")
+}
 
 /**
  * FIXME: Relay SSR middleware is passing a _res object across which

@@ -1,9 +1,5 @@
 import * as React from "react"
-import {
-  createFragmentContainer,
-  graphql,
-  RelayPaginationProp,
-} from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
 import { ButtonState } from "../Buttons/Default"
@@ -28,7 +24,6 @@ interface Filters {
 }
 
 interface Props extends Filters {
-  relay: RelayPaginationProp
   gene: GeneArtworks_gene
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
@@ -133,7 +128,7 @@ export class GeneArtworks extends React.Component<Props, null> {
           />
         </SubFilterBar>
         <GeneArtworksContent
-          geneID={this.props.gene.id}
+          geneID={this.props.gene.slug}
           filtered_artworks={this.props.gene.filtered_artworks}
         />
       </div>

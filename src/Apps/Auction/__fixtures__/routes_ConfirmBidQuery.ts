@@ -1,27 +1,13 @@
-import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
-import { LotInfo_artwork } from "__generated__/LotInfo_artwork.graphql"
-import { LotInfo_saleArtwork } from "__generated__/LotInfo_saleArtwork.graphql"
-import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
+import { routes_ConfirmBidQueryRawResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 
-// This complicated type is needed in order to include nested/masked relay queries
-export interface ConfirmBidQueryResponse
-  extends routes_ConfirmBidQueryResponse {
-  artwork: routes_ConfirmBidQueryResponse["artwork"] &
-    LotInfo_artwork & {
-      saleArtwork: routes_ConfirmBidQueryResponse["artwork"]["saleArtwork"] &
-        LotInfo_saleArtwork &
-        BidForm_saleArtwork
-    }
-}
-
-export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
+export const ConfirmBidQueryResponseFixture: routes_ConfirmBidQueryRawResponse = {
   me: {
+    id: "opaque-my-user-id",
     internalID: "my-user-id",
     hasQualifiedCreditCards: false,
   },
   artwork: {
-    " $fragmentRefs": null as never,
-    " $refType": null as never,
+    id: "opaque-artworkid",
     internalID: "artworkid",
     slug: "artworkslug",
     date: "may 4",
@@ -29,8 +15,7 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
     imageUrl: "artworkid",
     artistNames: "artworkid",
     saleArtwork: {
-      " $fragmentRefs": null as never,
-      " $refType": null as never,
+      id: "opaque-saleArtworkid",
       internalID: "saleArtworkid",
       slug: "saleArtworkslug",
       counts: { bidderPositions: 3 },
@@ -46,12 +31,14 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
         display: "$50,000USD",
       },
       sale: {
+        id: "opaque-saleid",
         internalID: "saleid",
         slug: "saleslug",
         name: "Art Sale 2019",
         isClosed: false,
         isRegistrationClosed: false,
         registrationStatus: {
+          id: "opaque-bidderid",
           internalID: "bidderid",
           qualifiedForBidding: true,
         },
