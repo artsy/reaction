@@ -19,6 +19,7 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { MockBoot } from "DevTools"
 import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
+import { FarceRedirectResult } from "found/lib/server"
 import { DateTime } from "luxon"
 import { Environment, RecordSource, Store } from "relay-runtime"
 
@@ -31,7 +32,10 @@ jest.mock("react-stripe-elements", () => ({
 
 describe("OrderApp routing redirects", () => {
   // FIXME: move to DevTools folder
-  async function render(url, mockData: routes_OrderQueryRawResponse) {
+  async function render(
+    url: string,
+    mockData: routes_OrderQueryRawResponse
+  ): Promise<FarceRedirectResult> {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
     const store = new Store(source)
@@ -44,7 +48,7 @@ describe("OrderApp routing redirects", () => {
       render: () => <div>hello</div>,
     })
 
-    return result
+    return result as FarceRedirectResult
   }
 
   const mockResolver = (data: routes_OrderQueryRawResponse["order"]) => ({
@@ -87,6 +91,7 @@ describe("OrderApp routing redirects", () => {
           edges: [
             {
               node: {
+                id: "node id",
                 artwork: {
                   id: "artwork-id",
                   slug: "artwork-id",
@@ -332,18 +337,20 @@ describe("OrderApp routing redirects", () => {
   })
 
   describe("visiting the /review/counter page", () => {
-    const counterOfferOrder = {
+    const counterOfferOrder: routes_OrderQueryRawResponse["order"] = {
       ...OfferOrderWithShippingDetails,
-      internalID: "1234",
+      id: "1234",
       state: "SUBMITTED",
       lastOffer: {
         ...OfferWithTotals,
+        id: "last-offer",
         internalID: "last-offer",
         createdAt: DateTime.local()
           .minus({ days: 1 })
           .toString(),
       },
       myLastOffer: {
+        id: "my-last-offer",
         internalID: "my-last-offer",
         createdAt: DateTime.local().toString(),
       },
@@ -408,19 +415,21 @@ describe("OrderApp routing redirects", () => {
   })
 
   describe("visiting the /payment/new page", () => {
-    const counterOfferOrder = {
+    const counterOfferOrder: routes_OrderQueryRawResponse["order"] = {
       ...OfferOrderWithShippingDetails,
       internalID: "1234",
       state: "SUBMITTED",
       lastOffer: {
         ...OfferWithTotals,
         internalID: "last-offer",
+        id: "last-offer",
         createdAt: DateTime.local()
           .minus({ days: 1 })
           .toString(),
       },
       myLastOffer: {
         internalID: "my-last-offer",
+        id: "my-last-offer",
         createdAt: DateTime.local().toString(),
       },
       awaitingResponseFrom: "BUYER",

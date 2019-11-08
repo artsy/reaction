@@ -64,7 +64,7 @@ storiesOf("Apps/Order/Components", module).add(
               __typename: "CommerceOfferOrder",
               mode: "OFFER",
               myLastOffer: {
-                id: "2345",
+                internalID: "2345",
                 amount: "$102489",
                 amountCents: 102489,
                 shippingTotal: "$200",
@@ -86,7 +86,7 @@ storiesOf("Apps/Order/Components", module).add(
                 __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 myLastOffer: {
-                  id: "2345",
+                  internalID: "2345",
                   amount: "$102489",
                   amountCents: 102489,
                   shippingTotal: "$200",
@@ -110,7 +110,7 @@ storiesOf("Apps/Order/Components", module).add(
                 __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 lastOffer: {
-                  id: "2345",
+                  internalID: "2345",
                   amount: "$102489",
                   amountCents: 102489,
                   shippingTotal: "$200",
@@ -134,7 +134,7 @@ storiesOf("Apps/Order/Components", module).add(
                 __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 lastOffer: {
-                  id: "2345",
+                  internalID: "2345",
                   amount: "$102489",
                   amountCents: 102489,
                   shippingTotal: "$200",
@@ -158,7 +158,7 @@ storiesOf("Apps/Order/Components", module).add(
                 __typename: "CommerceOfferOrder",
                 mode: "OFFER",
                 lastOffer: {
-                  id: "2345",
+                  internalID: "2345",
                   amount: "$102",
                   amountCents: 102489,
                   shippingTotal: "$200",
@@ -171,7 +171,7 @@ storiesOf("Apps/Order/Components", module).add(
                   note: "This is a note!",
                 },
                 myLastOffer: {
-                  id: "23456",
+                  internalID: "23456",
                   amount: "$100",
                   amountCents: 102489,
                   shippingTotal: "$200",
