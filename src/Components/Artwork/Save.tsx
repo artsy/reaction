@@ -62,13 +62,13 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
   trackSave = () => {
     const {
       tracking,
-      artwork: { is_saved, id, _id },
+      artwork: { is_saved, slug, internalID },
     } = this.props
     const trackingData: SaveTrackingProps = this.props.trackingData || {}
     const action = is_saved ? "Removed Artwork" : "Saved Artwork"
     const entityInfo = {
-      entity_slug: id,
-      entity_id: _id,
+      entity_slug: slug,
+      entity_id: internalID,
     }
 
     if (tracking) {

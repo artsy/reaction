@@ -5,6 +5,8 @@ export type ArtistSearchResults_viewer = {
     readonly searchConnection: {
         readonly edges: ReadonlyArray<{
             readonly node: {
+                readonly id?: string;
+                readonly slug?: string;
                 readonly internalID?: string;
                 readonly displayLabel?: string | null;
                 readonly imageUrl?: string | null;
@@ -81,6 +83,20 @@ const node: ReaderFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "slug",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "internalID",
                       "args": null,
                       "storageKey": null
@@ -109,5 +125,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'abca0797fe1d8146680ff1b62d267567';
+(node as any).hash = 'd6c4b99412cf4117f60a06e5297f433d';
 export default node;

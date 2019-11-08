@@ -72,8 +72,8 @@ fragment ArtistHeader_artist on Artist {
 
 fragment FollowArtistButton_artist on Artist {
   id
+  internalID
   name
-  slug
   is_followed: isFollowed
   counts {
     follows
@@ -272,7 +272,7 @@ return {
     "operationKind": "query",
     "name": "ArtistHeader_Test_Query",
     "id": null,
-    "text": "query ArtistHeader_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtistHeader_artist\n    id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  internalID\n  slug\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  name\n  slug\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n",
+    "text": "query ArtistHeader_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtistHeader_artist\n    id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  internalID\n  slug\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n",
     "metadata": {}
   }
 };

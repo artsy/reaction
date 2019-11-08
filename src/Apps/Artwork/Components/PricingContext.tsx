@@ -81,7 +81,9 @@ export class PricingContext extends React.Component<PricingContextProps> {
     const priceCents =
       artwork.listPrice.__typename === "PriceRange"
         ? artwork.listPrice.maxPrice.minor || artwork.listPrice.minPrice.minor
-        : artwork.listPrice.minor
+        : artwork.listPrice.__typename === "Money"
+        ? artwork.listPrice.minor
+        : 0
 
     const artworkFallsBeforeFirstBin =
       priceCents < artwork.pricingContext.bins[0].minPriceCents

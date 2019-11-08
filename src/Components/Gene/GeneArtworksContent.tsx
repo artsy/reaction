@@ -90,6 +90,7 @@ export default createPaginationContainer(
   GeneArtworksContent,
   {
     filtered_artworks: graphql`
+      # FIXME: Make connection work again!
       fragment GeneArtworksContent_filtered_artworks on FilterArtworksConnection
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }

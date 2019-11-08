@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 export type FollowProfileButton_profile = {
     readonly id: string;
-    readonly slug: string;
+    readonly internalID: string;
     readonly is_followed: boolean | null;
     readonly " $refType": "FollowProfileButton_profile";
 };
@@ -27,7 +27,7 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "slug",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -40,5 +40,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '1a39019c6ce24400ef796489391f9b3a';
+(node as any).hash = '377ae8b366b06be26ad5ce795bb56144';
 export default node;

@@ -32,6 +32,8 @@ fragment ArtistSearchResults_viewer on Viewer {
       node {
         __typename
         ... on SearchableItem {
+          id
+          slug
           internalID
           displayLabel
           imageUrl
@@ -161,6 +163,13 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
+                            "name": "slug",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
                             "name": "internalID",
                             "args": null,
                             "storageKey": null
@@ -195,7 +204,7 @@ return {
     "operationKind": "query",
     "name": "ArtistSearchResultsQuery",
     "id": null,
-    "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  searchConnection(query: $term, mode: AUTOSUGGEST, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          internalID\n          displayLabel\n          imageUrl\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  searchConnection(query: $term, mode: AUTOSUGGEST, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          slug\n          internalID\n          displayLabel\n          imageUrl\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

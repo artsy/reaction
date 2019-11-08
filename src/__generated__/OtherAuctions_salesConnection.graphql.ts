@@ -2,20 +2,20 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type OtherAuctions_sales = {
+export type OtherAuctions_salesConnection = {
     readonly edges: ReadonlyArray<{
         readonly node: {
             readonly " $fragmentRefs": FragmentRefs<"AuctionCard_sale">;
         } | null;
     } | null> | null;
-    readonly " $refType": "OtherAuctions_sales";
+    readonly " $refType": "OtherAuctions_salesConnection";
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "OtherAuctions_sales",
+  "name": "OtherAuctions_salesConnection",
   "type": "SaleConnection",
   "metadata": null,
   "argumentDefinitions": [],
@@ -49,5 +49,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '200315e464d82a2fd268e73a0713d541';
+(node as any).hash = 'c2907770ffe0232df7c5a03b3a42b7d9';
 export default node;

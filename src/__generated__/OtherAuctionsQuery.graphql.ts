@@ -4,11 +4,12 @@ import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type SaleSorts = "CREATED_AT_ASC" | "CREATED_AT_DESC" | "ELIGIBLE_SALE_ARTWORKS_COUNT_ASC" | "ELIGIBLE_SALE_ARTWORKS_COUNT_DESC" | "END_AT_ASC" | "END_AT_DESC" | "NAME_ASC" | "NAME_DESC" | "START_AT_ASC" | "START_AT_DESC" | "TIMELY_AT_NAME_ASC" | "TIMELY_AT_NAME_DESC" | "_ID_ASC" | "_ID_DESC" | "%future added value";
 export type OtherAuctionsQueryVariables = {
+    first?: number | null;
     sort?: SaleSorts | null;
 };
 export type OtherAuctionsQueryResponse = {
     readonly salesConnection: {
-        readonly " $fragmentRefs": FragmentRefs<"OtherAuctions_sales">;
+        readonly " $fragmentRefs": FragmentRefs<"OtherAuctions_salesConnection">;
     } | null;
 };
 export type OtherAuctionsQuery = {
@@ -20,14 +21,15 @@ export type OtherAuctionsQuery = {
 
 /*
 query OtherAuctionsQuery(
+  $first: Int
   $sort: SaleSorts
 ) {
-  salesConnection(sort: $sort) {
-    ...OtherAuctions_sales
+  salesConnection(first: $first, sort: $sort) {
+    ...OtherAuctions_salesConnection
   }
 }
 
-fragment OtherAuctions_sales on SaleConnection {
+fragment OtherAuctions_salesConnection on SaleConnection {
   edges {
     node {
       ...AuctionCard_sale
@@ -69,12 +71,23 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
     "name": "sort",
     "type": "SaleSorts",
     "defaultValue": null
   }
 ],
 v1 = [
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "first"
+  },
   {
     "kind": "Variable",
     "name": "sort",
@@ -115,7 +128,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "OtherAuctions_sales",
+            "name": "OtherAuctions_salesConnection",
             "args": null
           }
         ]
@@ -317,10 +330,10 @@ return {
     "operationKind": "query",
     "name": "OtherAuctionsQuery",
     "id": null,
-    "text": "query OtherAuctionsQuery(\n  $sort: SaleSorts\n) {\n  salesConnection(sort: $sort) {\n    ...OtherAuctions_sales\n  }\n}\n\nfragment OtherAuctions_sales on SaleConnection {\n  edges {\n    node {\n      ...AuctionCard_sale\n      id\n    }\n  }\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n",
+    "text": "query OtherAuctionsQuery(\n  $first: Int\n  $sort: SaleSorts\n) {\n  salesConnection(first: $first, sort: $sort) {\n    ...OtherAuctions_salesConnection\n  }\n}\n\nfragment OtherAuctions_salesConnection on SaleConnection {\n  edges {\n    node {\n      ...AuctionCard_sale\n      id\n    }\n  }\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '5d222fcc05a81f1fe2bc9f34d6d07c23';
+(node as any).hash = 'e49b60e9fc1f386bd115695786f8b97d';
 export default node;

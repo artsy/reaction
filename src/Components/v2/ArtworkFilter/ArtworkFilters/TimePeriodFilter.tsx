@@ -24,7 +24,7 @@ export const TimePeriodFilter: FC<TimePeriodFilterProps> = ({
 
   const selectedPeriod = get(
     filterContext.filters,
-    f => f.major_periods[0] || ""
+    f => f.majorPeriods[0] || ""
   )
 
   return (
@@ -34,7 +34,7 @@ export const TimePeriodFilter: FC<TimePeriodFilterProps> = ({
           deselectable
           defaultValue={selectedPeriod}
           onSelect={selectedOption => {
-            filterContext.setFilter("major_periods", selectedOption)
+            filterContext.setFilter("majorPeriods", selectedOption)
           }}
         >
           {periods.map((timePeriod, index) => {

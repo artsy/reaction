@@ -47,10 +47,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
     this.props.onSelected(slice, value)
   }
 
-  getSelectedName(id) {
+  getSelectedName(value) {
     const selectedCount = find(
       this.props.aggregation.counts,
-      count => count.id === id
+      count => count.value === value
     )
     return selectedCount ? selectedCount.name : null
   }
@@ -62,7 +62,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
     const navItems = this.props.aggregation.counts.map(count => {
       return (
-        <NavItem key={count.id} onClick={() => this.onSelect(slice, count.id)}>
+        <NavItem
+          key={count.value}
+          onClick={() => this.onSelect(slice, count.value)}
+        >
           <span>{count.name}</span>
           <NavItemCount>
             &nbsp;(

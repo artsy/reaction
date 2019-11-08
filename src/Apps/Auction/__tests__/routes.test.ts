@@ -1,9 +1,6 @@
 import { routes_ConfirmBidQueryRawResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { routes_RegisterQueryRawResponse } from "__generated__/routes_RegisterQuery.graphql"
-import {
-  ConfirmBidQueryResponse,
-  ConfirmBidQueryResponseFixture,
-} from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
+import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
 import { RegisterQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_RegisterQuery"
 import { routes } from "Apps/Auction/routes"
 import deepMerge from "deepmerge"
@@ -39,10 +36,10 @@ describe("Auction/routes", () => {
   const mockConfirmBidResolver = (
     data: DeepPartial<routes_ConfirmBidQueryRawResponse> = {}
   ): routes_ConfirmBidQueryRawResponse =>
-    deepMerge<ConfirmBidQueryResponse, DeepPartial<ConfirmBidQueryResponse>>(
-      ConfirmBidQueryResponseFixture,
-      data
-    )
+    deepMerge<
+      routes_ConfirmBidQueryRawResponse,
+      DeepPartial<routes_ConfirmBidQueryRawResponse>
+    >(ConfirmBidQueryResponseFixture, data)
 
   it("renders the Auction FAQ view", async () => {
     const { status } = await render("/auction-faq", {})

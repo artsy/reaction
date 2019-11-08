@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
 
+import { ArtworkGridQuery } from "__generated__/ArtworkGridQuery.graphql"
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
 import ArtworkGrid from "../ArtworkGrid"
 
@@ -10,7 +11,7 @@ export function ArtworkGridExample(props: {
   columnCount?: number
 }) {
   return (
-    <RootQueryRenderer
+    <RootQueryRenderer<ArtworkGridQuery>
       query={graphql`
         query ArtworkGridQuery($artistID: String!) {
           artist(id: $artistID) {
@@ -24,7 +25,7 @@ export function ArtworkGridExample(props: {
       render={readyState => {
         return (
           readyState.props && (
-            <ArtworkGrid {...readyState.props.artist as any} {...props} />
+            <ArtworkGrid {...readyState.props.artist} {...props} />
           )
         )
       }}

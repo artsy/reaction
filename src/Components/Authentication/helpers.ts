@@ -1,4 +1,4 @@
-import { helpersEmailQueryResponse } from "__generated__/helpersEmailQuery.graphql"
+import { helpersEmailQuery } from "__generated__/helpersEmailQuery.graphql"
 import { graphql } from "react-relay"
 import { fetchQuery } from "relay-runtime"
 
@@ -52,7 +52,7 @@ export const checkEmail = ({
       }
     }
   `
-  return fetchQuery<helpersEmailQueryResponse>(relayEnvironment, query, {
+  return fetchQuery<helpersEmailQuery>(relayEnvironment, query, {
     email: values.email,
   }).then((data: any) => {
     if (data.user && data.user.userAlreadyExists) {

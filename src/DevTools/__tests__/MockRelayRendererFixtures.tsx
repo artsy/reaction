@@ -29,7 +29,7 @@ export const Artwork = createFragmentContainer(
       <img src={props.artwork.image.url} />
       <Metadata artworkMetadata={props.artwork} />
       {props.artwork.artist && (
-        <ArtistQueryRenderer id={props.artwork.artist.id} />
+        <ArtistQueryRenderer id={props.artwork.artist.slug} />
       )}
     </div>
   ),

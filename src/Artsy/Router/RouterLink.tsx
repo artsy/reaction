@@ -1,4 +1,4 @@
-import { Link, LinkProps } from "found"
+import { Link, LinkProps, LinkPropsSimple } from "found"
 import { pick } from "lodash"
 import PropTypes from "prop-types"
 import React from "react"
@@ -49,8 +49,8 @@ export const RouterLink: React.FC<LinkProps> = (
     return (
       <a
         href={to as string}
-        className={props.className}
-        style={props.style}
+        className={(props as LinkPropsSimple).className}
+        style={(props as LinkPropsSimple).style}
         {...props}
       >
         {children}

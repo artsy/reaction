@@ -1,6 +1,9 @@
 import { Spinner, SpinnerProps } from "@artsy/palette"
 import React from "react"
-import { ReadyState, RelayContainer } from "react-relay"
+import {
+  Container as RelayContainer,
+  QueryRendererReadyState,
+} from "react-relay"
 import styled from "styled-components"
 import createLogger from "Utils/logger"
 
@@ -67,7 +70,7 @@ const handleError = error => {
 }
 
 export type LoadProgressRenderer<P> = (
-  readyState: ReadyState<P>
+  readyState: QueryRendererReadyState<P>
 ) => React.ReactElement<RelayContainer<P>> | null
 
 export function renderWithLoadProgress<P>(

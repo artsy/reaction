@@ -6,6 +6,7 @@ export type GeneSearchResults_viewer = {
         readonly edges: ReadonlyArray<{
             readonly node: {
                 readonly name?: string | null;
+                readonly id?: string;
                 readonly slug?: string;
                 readonly internalID?: string;
                 readonly image?: {
@@ -93,6 +94,13 @@ const node: ReaderFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "slug",
                       "args": null,
                       "storageKey": null
@@ -154,5 +162,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'a1cb0052e60dfcfc789ac56ef28a8c87';
+(node as any).hash = '87a366c563b27a6b122d374b15ad6c54';
 export default node;

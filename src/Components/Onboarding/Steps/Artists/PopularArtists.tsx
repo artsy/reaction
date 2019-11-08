@@ -21,17 +21,7 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-interface Artist {
-  id: string | null
-  _id: string | null
-  __id: string | null
-  name: string | null
-  image: {
-    cropped: {
-      url: string | null
-    }
-  } | null
-}
+type Artist = PopularArtists_popular_artists[number]
 
 export interface RelayProps {
   tracking?: TrackingProp
@@ -52,7 +42,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
   constructor(props: Props, context: any) {
     super(props, context)
     this.excludedArtistIds = new Set(
-      this.props.popular_artists.artists.filter(Boolean).map(item => item._id)
+      this.props.popular_artists.filter(Boolean).map(item => item.internalID)
     )
   }
 
@@ -62,25 +52,26 @@ class PopularArtistsContent extends React.Component<Props, null> {
     data: PopularArtistsFollowArtistMutationResponse
   ): void {
     const suggestedArtistEdge =
-      data.followArtist.artist.related.suggested.edges[0]
-    const popularArtist = data.followArtist.popular_artists.artists[0]
+      data.followArtist.artist.related.suggestedConnection.edges[0]
+    const popularArtist = data.followArtist.popular_artists[0]
     const artistToSuggest = store.get(
-      ((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id
+      ((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).id
     )
-    this.excludedArtistIds.add(artistToSuggest.getValue("_id"))
+    this.excludedArtistIds.add(artistToSuggest.getValue("internalID") as string)
 
     const popularArtistsRootField = store
       .get("client:root")
-      .getLinkedRecord("popular_artists", { exclude_followed_artists: true })
+      .getLinkedRecords("popular_artists", { exclude_followed_artists: true })
 
     const updatedPopularArtists = popularArtistsRootField
-      .getLinkedRecords("artists")
       .filter(Boolean)
       .map(artistItem =>
-        artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
+        artistItem.getDataID() === artist.id ? artistToSuggest : artistItem
       )
 
-    popularArtistsRootField.setLinkedRecords(updatedPopularArtists, "artists")
+    store
+      .get("client:root")
+      .setLinkedRecords(updatedPopularArtists, "popular_artists")
 
     this.followCount += 1
 
@@ -88,8 +79,8 @@ class PopularArtistsContent extends React.Component<Props, null> {
 
     this.props.tracking.trackEvent({
       action: "Followed Artist",
-      entity_id: artist._id,
-      entity_slug: artist.id,
+      entity_id: artist.internalID,
+      entity_slug: artist.slug,
       context_module: "onboarding recommended",
     })
   }
@@ -110,21 +101,13 @@ class PopularArtistsContent extends React.Component<Props, null> {
                 excludeFollowedArtists: true
                 excludeArtistIDs: $excludedArtistIds
               ) {
-                related {
-                  artistsConnection {
-                    edges {
-                      node {
-                        slug
-                        internalID
-                        id
-                        name
-                        image {
-                          cropped(width: 100, height: 100) {
-                            url
-                          }
-                        }
-                      }
-                    }
+                slug
+                internalID
+                id
+                name
+                image {
+                  cropped(width: 100, height: 100) {
+                    url
                   }
                 }
               }
@@ -157,7 +140,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
         `,
         variables: {
           input: {
-            artist_id: artist.id,
+            artistID: artist.internalID,
             unfollow: false,
           },
           excludedArtistIds: Array.from(this.excludedArtistIds),
@@ -168,7 +151,7 @@ class PopularArtistsContent extends React.Component<Props, null> {
   }
 
   render() {
-    const artistItems = this.props.popular_artists.artists
+    const artistItems = this.props.popular_artists
       .filter(Boolean)
       .map((artist, index) => {
         const imageUrl = get(artist, a => a.image.cropped.url)
@@ -201,21 +184,13 @@ const PopularArtistContentContainer = createFragmentContainer(
   {
     popular_artists: graphql`
       fragment PopularArtists_popular_artists on Artist @relay(plural: true) {
-        related {
-          artistsConnection {
-            edges {
-              node {
-                slug
-                internalID
-                id
-                name
-                image {
-                  cropped(width: 100, height: 100) {
-                    url
-                  }
-                }
-              }
-            }
+        slug
+        internalID
+        id
+        name
+        image {
+          cropped(width: 100, height: 100) {
+            url
           }
         }
       }
@@ -244,7 +219,7 @@ const PopularArtistsComponent: React.SFC<SystemContextProps & FollowProps> = ({
         if (props) {
           return (
             <PopularArtistContentContainer
-              popular_artists={props.popular_artists}
+              popular_artists={props.highlights.popular_artists}
               updateFollowCount={updateFollowCount}
             />
           )

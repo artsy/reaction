@@ -66,14 +66,14 @@ export class FollowProfileButton extends React.Component<Props> {
         `,
         variables: {
           input: {
-            profile_id: profile.id,
+            profileID: profile.internalID,
             unfollow: profile.is_followed,
           },
         },
         optimisticResponse: {
           followProfile: {
             profile: {
-              __id: profile.__id,
+              id: profile.id,
               is_followed: !profile.is_followed,
             },
           },
@@ -113,7 +113,7 @@ export const FollowProfileButtonFragmentContainer = track({})(
     profile: graphql`
       fragment FollowProfileButton_profile on Profile {
         id
-        slug
+        internalID
         is_followed: isFollowed
       }
     `,

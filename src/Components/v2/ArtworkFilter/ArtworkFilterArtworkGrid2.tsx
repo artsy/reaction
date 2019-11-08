@@ -1,13 +1,7 @@
 import { Box, Spacer } from "@artsy/palette"
 import { isEmpty } from "lodash"
 import React, { useEffect } from "react"
-import {
-  createFragmentContainer,
-  createRefetchContainer,
-  graphql,
-  RelayProp,
-  RelayRefetchProp,
-} from "react-relay"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 
 import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
 import { useSystemContext } from "Artsy"

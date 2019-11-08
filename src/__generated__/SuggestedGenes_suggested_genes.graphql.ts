@@ -2,6 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type SuggestedGenes_suggested_genes = ReadonlyArray<{
+    readonly id: string;
     readonly slug: string;
     readonly internalID: string;
     readonly name: string | null;
@@ -24,6 +25,13 @@ const node: ReaderFragment = {
   },
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -87,5 +95,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '3e28c61f569f8c7251477f84f3bd576d';
+(node as any).hash = '5ed7e11fb2d04a9c8d275c8e203aeda1';
 export default node;

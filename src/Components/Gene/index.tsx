@@ -164,7 +164,6 @@ class GeneContents extends React.Component<Props, State> {
             $geneID: String!
             $medium: String
             $priceRange: String
-            # $sort: String
             $forSale: Boolean
             $dimensionRange: String
           ) {
@@ -182,10 +181,11 @@ class GeneContents extends React.Component<Props, State> {
         variables={{
           geneID,
           medium,
-          price_range,
-          sort,
-          for_sale,
-          dimension_range,
+          priceRange: price_range,
+          // FIXME: Sorting is broken
+          // sort,
+          forSale: for_sale,
+          dimensionRange: dimension_range,
         }}
         render={({ props }) => {
           if (props) {

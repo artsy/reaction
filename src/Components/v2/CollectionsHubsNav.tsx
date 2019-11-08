@@ -30,7 +30,7 @@ export const CollectionsHubsNav: FC<CollectionsHubsNavProps> = props => {
           src={resize(hub.thumbnail, { width: 357, height: 175 })}
           ratio={[0.49]}
           title={<Serif size="4t">{hub.title}</Serif>}
-          key={hub.id}
+          key={hub.slug}
           onClick={() => {
             trackEvent({
               action_type: Schema.ActionType.Click,
@@ -52,7 +52,9 @@ export const CollectionsHubsNavFragmentContainer = createFragmentContainer(
     marketingHubCollections: graphql`
       fragment CollectionsHubsNav_marketingHubCollections on MarketingCollection
         @relay(plural: true) {
-        slug
+        # TODO: Need to add this field back to the MP schema. Even if it's not a
+        #       Node ID /yet/, it can still be used for relay store purposes.
+        # id
         slug
         title
         thumbnail

@@ -9,7 +9,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
@@ -75,7 +74,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           }
         `,
         variables: {
-          input: { artist_id: artistID, unfollow: false },
+          input: { artistID, unfollow: false },
           excludeArtistIds,
         },
         optimisticUpdater: () => {
@@ -84,7 +83,9 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           })
         },
         updater: (_store, data) => {
-          const { node } = data.followArtist.artist.related.suggested.edges[0]
+          const {
+            node,
+          } = data.followArtist.artist.related.suggestedConnection.edges[0]
 
           // Add slight delay to make UX seem a bit nicer
           this.setState(
@@ -101,7 +102,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             }
           )
 
-          excludeArtistIdsState.addArtist(node._id)
+          excludeArtistIdsState.addArtist(node.internalID)
         },
       })
     }
@@ -112,7 +113,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const { swappedArtist } = this.state
     const artist = swappedArtist || originalArtist
     const imageUrl = get(artist, a => a.image.cropped.url)
-    const { _id: artistID } = artist
+    const { internalID: artistID } = artist
     const key = `avatar-${artistID}`
     return (
       <Flex alignItems="center" mb={1} mt={1}>
