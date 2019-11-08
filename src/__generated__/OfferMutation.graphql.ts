@@ -61,8 +61,10 @@ mutation OfferMutation(
               internalID
               amountCents
               note
+              id
             }
           }
+          id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -129,38 +131,20 @@ v6 = {
   "storageKey": null
 },
 v7 = {
-  "kind": "InlineFragment",
-  "type": "CommerceOfferOrder",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "myLastOffer",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CommerceOffer",
-      "plural": false,
-      "selections": [
-        (v3/*: any*/),
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "amountCents",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "note",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "amountCents",
+  "args": null,
+  "storageKey": null
 },
 v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "note",
+  "args": null,
+  "storageKey": null
+},
+v9 = {
   "kind": "InlineFragment",
   "type": "CommerceOrderWithMutationFailure",
   "selections": [
@@ -197,6 +181,13 @@ v8 = {
       ]
     }
   ]
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
@@ -243,12 +234,31 @@ return {
                       (v4/*: any*/),
                       (v5/*: any*/),
                       (v6/*: any*/),
-                      (v7/*: any*/)
+                      {
+                        "kind": "InlineFragment",
+                        "type": "CommerceOfferOrder",
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "myLastOffer",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "CommerceOffer",
+                            "plural": false,
+                            "selections": [
+                              (v3/*: any*/),
+                              (v7/*: any*/),
+                              (v8/*: any*/)
+                            ]
+                          }
+                        ]
+                      }
                     ]
                   }
                 ]
               },
-              (v8/*: any*/)
+              (v9/*: any*/)
             ]
           }
         ]
@@ -298,12 +308,33 @@ return {
                       (v4/*: any*/),
                       (v5/*: any*/),
                       (v6/*: any*/),
-                      (v7/*: any*/)
+                      (v10/*: any*/),
+                      {
+                        "kind": "InlineFragment",
+                        "type": "CommerceOfferOrder",
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "myLastOffer",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "CommerceOffer",
+                            "plural": false,
+                            "selections": [
+                              (v3/*: any*/),
+                              (v7/*: any*/),
+                              (v8/*: any*/),
+                              (v10/*: any*/)
+                            ]
+                          }
+                        ]
+                      }
                     ]
                   }
                 ]
               },
-              (v8/*: any*/)
+              (v9/*: any*/)
             ]
           }
         ]
@@ -314,7 +345,7 @@ return {
     "operationKind": "mutation",
     "name": "OfferMutation",
     "id": null,
-    "text": "mutation OfferMutation(\n  $input: CommerceAddInitialOfferToOrderInput!\n) {\n  commerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on CommerceOfferOrder {\n            myLastOffer {\n              internalID\n              amountCents\n              note\n            }\n          }\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation OfferMutation(\n  $input: CommerceAddInitialOfferToOrderInput!\n) {\n  commerceAddInitialOfferToOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          mode\n          totalListPrice\n          totalListPriceCents\n          ... on CommerceOfferOrder {\n            myLastOffer {\n              internalID\n              amountCents\n              note\n              id\n            }\n          }\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -56,12 +56,14 @@ export type StatusQueryRawResponse = {
                         }) | null;
                         readonly id: string | null;
                     }) | null;
+                    readonly id: string | null;
                     readonly fulfillments: ({
                         readonly edges: ReadonlyArray<({
                             readonly node: ({
                                 readonly courier: string;
                                 readonly trackingId: string | null;
                                 readonly estimatedDelivery: string | null;
+                                readonly id: string | null;
                             }) | null;
                         }) | null> | null;
                     }) | null;
@@ -82,6 +84,7 @@ export type StatusQueryRawResponse = {
             readonly expiration_month: number;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
         readonly lastOffer: ({
             readonly internalID: string;
             readonly amount: string | null;
@@ -94,6 +97,7 @@ export type StatusQueryRawResponse = {
             readonly buyerTotalCents: number | null;
             readonly fromParticipant: CommerceOrderParticipantEnum | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
         readonly myLastOffer: ({
             readonly internalID: string;
@@ -107,6 +111,7 @@ export type StatusQueryRawResponse = {
             readonly buyerTotalCents: number | null;
             readonly fromParticipant: CommerceOrderParticipantEnum | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
     } | {
         readonly __typename: string;
@@ -152,12 +157,14 @@ export type StatusQueryRawResponse = {
                         }) | null;
                         readonly id: string | null;
                     }) | null;
+                    readonly id: string | null;
                     readonly fulfillments: ({
                         readonly edges: ReadonlyArray<({
                             readonly node: ({
                                 readonly courier: string;
                                 readonly trackingId: string | null;
                                 readonly estimatedDelivery: string | null;
+                                readonly id: string | null;
                             }) | null;
                         }) | null> | null;
                     }) | null;
@@ -178,6 +185,7 @@ export type StatusQueryRawResponse = {
             readonly expiration_month: number;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type StatusQuery = {
@@ -193,6 +201,7 @@ query StatusQuery {
   order: commerceOrder(id: "42") {
     __typename
     ...Status_order
+    id
   }
 }
 
@@ -226,9 +235,11 @@ fragment Status_order on CommerceOrder {
               courier
               trackingId
               estimatedDelivery(format: "MMM Do, YYYY")
+              id
             }
           }
         }
+        id
       }
     }
   }
@@ -241,6 +252,7 @@ fragment Status_order on CommerceOrder {
       shippingTotalCents
       taxTotal(precision: 2)
       taxTotalCents
+      id
     }
   }
 }
@@ -273,6 +285,7 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
           }
           id
         }
+        id
       }
     }
   }
@@ -301,6 +314,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
     myLastOffer {
       internalID
@@ -314,6 +328,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
   }
 }
@@ -331,6 +346,7 @@ fragment ShippingSummaryItem_order on CommerceOrder {
           shippingOrigin
           id
         }
+        id
       }
     }
   }
@@ -477,7 +493,8 @@ v11 = [
     "name": "note",
     "args": null,
     "storageKey": null
-  }
+  },
+  (v4/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -753,6 +770,7 @@ return {
                           (v4/*: any*/)
                         ]
                       },
+                      (v4/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -806,7 +824,8 @@ return {
                                       }
                                     ],
                                     "storageKey": "estimatedDelivery(format:\"MMM Do, YYYY\")"
-                                  }
+                                  },
+                                  (v4/*: any*/)
                                 ]
                               }
                             ]
@@ -878,6 +897,7 @@ return {
               (v4/*: any*/)
             ]
           },
+          (v4/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -912,7 +932,7 @@ return {
     "operationKind": "query",
     "name": "StatusQuery",
     "id": null,
-    "text": "query StatusQuery {\n  order: commerceOrder(id: \"42\") {\n    __typename\n    ...Status_order\n  }\n}\n\nfragment Status_order on CommerceOrder {\n  __typename\n  internalID\n  code\n  state\n  mode\n  stateReason\n  stateExpiresAt(format: \"MMM D\")\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      __typename\n    }\n    ... on CommercePickup {\n      __typename\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  lineItems {\n    edges {\n      node {\n        fulfillments {\n          edges {\n            node {\n              courier\n              trackingId\n              estimatedDelivery(format: \"MMM Do, YYYY\")\n            }\n          }\n        }\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    last_digits: lastDigits\n    expiration_year: expirationYear\n    expiration_month: expirationMonth\n    id\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+    "text": "query StatusQuery {\n  order: commerceOrder(id: \"42\") {\n    __typename\n    ...Status_order\n    id\n  }\n}\n\nfragment Status_order on CommerceOrder {\n  __typename\n  internalID\n  code\n  state\n  mode\n  stateReason\n  stateExpiresAt(format: \"MMM D\")\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      __typename\n    }\n    ... on CommercePickup {\n      __typename\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  lineItems {\n    edges {\n      node {\n        fulfillments {\n          edges {\n            node {\n              courier\n              trackingId\n              estimatedDelivery(format: \"MMM Do, YYYY\")\n              id\n            }\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      id\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    last_digits: lastDigits\n    expiration_year: expirationYear\n    expiration_month: expirationMonth\n    id\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
     "metadata": {}
   }
 };

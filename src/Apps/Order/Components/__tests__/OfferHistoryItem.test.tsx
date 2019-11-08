@@ -18,8 +18,13 @@ import { OfferHistoryItemFragmentContainer as OfferHistoryItem } from "../OfferH
 
 jest.unmock("react-relay")
 
+const order: OfferHistoryItemTestQueryRawResponse["order"] = {
+  ...UntouchedOfferOrder,
+  lastOffer: OfferWithTotals,
+}
+
 const render = (
-  extraOrderProps?: Partial<OfferHistoryItem_order>,
+  extraOrderProps?: Partial<typeof order>,
   extraComponentProps?: Partial<ExtractProps<typeof OfferHistoryItem>>
 ) =>
   renderRelayTree({
@@ -27,11 +32,11 @@ const render = (
       <OfferHistoryItem {...extraComponentProps} {...props} />
     ),
     mockData: {
-      ...UntouchedOfferOrder,
-      buyer: Buyer,
-      lastOffer: OfferWithTotals,
-      ...extraOrderProps,
-    } as OfferHistoryItemTestQueryRawResponse,
+      order: {
+        ...order,
+        ...extraOrderProps,
+      },
+    },
     query: graphql`
       query OfferHistoryItemTestQuery @raw_response_type {
         order: commerceOrder(id: "foo") {
@@ -58,13 +63,13 @@ describe("OfferHistoryItem", () => {
   })
 
   it("does show the 'show offer history' button if there are other offers", async () => {
-    const offerHistory = await render({ offers: { edges: Offers as any } })
+    const offerHistory = await render({ offers: { edges: Offers } })
 
     expect(offerHistory.find(Button)).toHaveLength(1)
   })
 
   it("shows the other offers if you click the button", async () => {
-    const offerHistory = await render({ offers: { edges: Offers as any } })
+    const offerHistory = await render({ offers: { edges: Offers } })
 
     const button = offerHistory.find(Button)
     expect(button).toHaveLength(1)
@@ -87,6 +92,7 @@ describe("OfferHistoryItem", () => {
     const offerHistory = await render({
       lastOffer: {
         ...OfferWithTotals,
+        id: "buyer-last-offer",
         fromParticipant: "BUYER",
       } as any,
     })

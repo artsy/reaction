@@ -24,6 +24,7 @@ query routes_RespondQuery(
   order: commerceOrder(id: $orderID) {
     __typename
     ...Respond_order
+    id
   }
 }
 
@@ -44,6 +45,7 @@ fragment Respond_order on CommerceOrder {
           slug
           id
         }
+        id
       }
     }
   }
@@ -52,9 +54,11 @@ fragment Respond_order on CommerceOrder {
       createdAt
       internalID
       note
+      id
     }
     myLastOffer {
       createdAt
+      id
     }
   }
   ...TransactionDetailsSummaryItem_order
@@ -87,6 +91,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
     myLastOffer {
       internalID
@@ -100,6 +105,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
   }
 }
@@ -132,6 +138,7 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
           }
           id
         }
+        id
       }
     }
   }
@@ -150,6 +157,7 @@ fragment ShippingSummaryItem_order on CommerceOrder {
           shippingOrigin
           id
         }
+        id
       }
     }
   }
@@ -174,6 +182,7 @@ fragment OfferHistoryItem_order on CommerceOrder {
           amount(precision: 2)
           createdAt(format: "MMM D")
           fromParticipant
+          id
         }
       }
     }
@@ -184,6 +193,7 @@ fragment OfferHistoryItem_order on CommerceOrder {
       shippingTotal(precision: 2)
       taxTotal(precision: 2)
       note
+      id
     }
   }
   totalListPrice(precision: 2)
@@ -535,7 +545,8 @@ return {
                             ]
                           }
                         ]
-                      }
+                      },
+                      (v4/*: any*/)
                     ]
                   }
                 ]
@@ -676,6 +687,7 @@ return {
               (v4/*: any*/)
             ]
           },
+          (v4/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -692,6 +704,7 @@ return {
                   (v12/*: any*/),
                   (v2/*: any*/),
                   (v13/*: any*/),
+                  (v4/*: any*/),
                   (v14/*: any*/),
                   (v15/*: any*/),
                   (v6/*: any*/),
@@ -713,6 +726,7 @@ return {
                 "plural": false,
                 "selections": [
                   (v12/*: any*/),
+                  (v4/*: any*/),
                   (v2/*: any*/),
                   (v14/*: any*/),
                   (v15/*: any*/),
@@ -768,7 +782,8 @@ return {
                             ],
                             "storageKey": "createdAt(format:\"MMM D\")"
                           },
-                          (v17/*: any*/)
+                          (v17/*: any*/),
+                          (v4/*: any*/)
                         ]
                       }
                     ]
@@ -785,7 +800,7 @@ return {
     "operationKind": "query",
     "name": "routes_RespondQuery",
     "id": null,
-    "text": "query routes_RespondQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Respond_order\n  }\n}\n\nfragment Respond_order on CommerceOrder {\n  internalID\n  mode\n  state\n  currencyCode\n  itemsTotal(precision: 2)\n  itemsTotalCents\n  totalListPrice(precision: 2)\n  totalListPriceCents\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      createdAt\n      internalID\n      note\n    }\n    myLastOffer {\n      createdAt\n    }\n  }\n  ...TransactionDetailsSummaryItem_order\n  ...ArtworkSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferHistoryItem_order\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    last_digits: lastDigits\n    expiration_year: expirationYear\n    expiration_month: expirationMonth\n    id\n  }\n}\n\nfragment OfferHistoryItem_order on CommerceOrder {\n  ... on CommerceOfferOrder {\n    offers {\n      edges {\n        node {\n          internalID\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n        }\n      }\n    }\n    lastOffer {\n      internalID\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n    }\n  }\n  totalListPrice(precision: 2)\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+    "text": "query routes_RespondQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Respond_order\n    id\n  }\n}\n\nfragment Respond_order on CommerceOrder {\n  internalID\n  mode\n  state\n  currencyCode\n  itemsTotal(precision: 2)\n  itemsTotalCents\n  totalListPrice(precision: 2)\n  totalListPriceCents\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      createdAt\n      internalID\n      note\n      id\n    }\n    myLastOffer {\n      createdAt\n      id\n    }\n  }\n  ...TransactionDetailsSummaryItem_order\n  ...ArtworkSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferHistoryItem_order\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    last_digits: lastDigits\n    expiration_year: expirationYear\n    expiration_month: expirationMonth\n    id\n  }\n}\n\nfragment OfferHistoryItem_order on CommerceOrder {\n  ... on CommerceOfferOrder {\n    offers {\n      edges {\n        node {\n          internalID\n          amount(precision: 2)\n          createdAt(format: \"MMM D\")\n          fromParticipant\n          id\n        }\n      }\n    }\n    lastOffer {\n      internalID\n      fromParticipant\n      amount(precision: 2)\n      shippingTotal(precision: 2)\n      taxTotal(precision: 2)\n      note\n      id\n    }\n  }\n  totalListPrice(precision: 2)\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
     "metadata": {}
   }
 };

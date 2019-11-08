@@ -19,6 +19,7 @@ export type CollectionsHubsHomepageNavQuery = {
 query CollectionsHubsHomepageNavQuery {
   marketingHubCollections {
     ...CollectionsHubsHomepageNav_marketingHubCollections
+    id
   }
 }
 
@@ -90,6 +91,13 @@ const node: ConcreteRequest = {
             "name": "thumbnail",
             "args": null,
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
           }
         ]
       }
@@ -99,7 +107,7 @@ const node: ConcreteRequest = {
     "operationKind": "query",
     "name": "CollectionsHubsHomepageNavQuery",
     "id": null,
-    "text": "query CollectionsHubsHomepageNavQuery {\n  marketingHubCollections {\n    ...CollectionsHubsHomepageNav_marketingHubCollections\n  }\n}\n\nfragment CollectionsHubsHomepageNav_marketingHubCollections on MarketingCollection {\n  slug\n  title\n  thumbnail\n}\n",
+    "text": "query CollectionsHubsHomepageNavQuery {\n  marketingHubCollections {\n    ...CollectionsHubsHomepageNav_marketingHubCollections\n    id\n  }\n}\n\nfragment CollectionsHubsHomepageNav_marketingHubCollections on MarketingCollection {\n  slug\n  title\n  thumbnail\n}\n",
     "metadata": {}
   }
 };

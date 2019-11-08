@@ -20,6 +20,7 @@ query ShippingSummaryItemStoryQuery {
   order: commerceOrder(id: "foo") {
     __typename
     ...ShippingSummaryItem_order
+    id
   }
 }
 
@@ -36,6 +37,7 @@ fragment ShippingSummaryItem_order on CommerceOrder {
           shippingOrigin
           id
         }
+        id
       }
     }
   }
@@ -65,6 +67,13 @@ v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -234,21 +243,17 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "id",
-                            "args": null,
-                            "storageKey": null
-                          }
+                          (v2/*: any*/)
                         ]
-                      }
+                      },
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
-          }
+          },
+          (v2/*: any*/)
         ]
       }
     ]
@@ -257,7 +262,7 @@ return {
     "operationKind": "query",
     "name": "ShippingSummaryItemStoryQuery",
     "id": null,
-    "text": "query ShippingSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+    "text": "query ShippingSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    id\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
     "metadata": {}
   }
 };

@@ -71,9 +71,11 @@ export type PaymentPickerTestQueryRawResponse = {
                         readonly slug: string;
                         readonly id: string | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type PaymentPickerTestQuery = {
@@ -93,6 +95,7 @@ query PaymentPickerTestQuery {
   order: commerceOrder(id: "unused") {
     __typename
     ...PaymentPicker_order
+    id
   }
 }
 
@@ -152,6 +155,7 @@ fragment PaymentPicker_order on CommerceOrder {
           slug
           id
         }
+        id
       }
     }
   }
@@ -516,13 +520,15 @@ return {
                           },
                           (v6/*: any*/)
                         ]
-                      }
+                      },
+                      (v6/*: any*/)
                     ]
                   }
                 ]
               }
             ]
-          }
+          },
+          (v6/*: any*/)
         ]
       }
     ]
@@ -531,7 +537,7 @@ return {
     "operationKind": "query",
     "name": "PaymentPickerTestQuery",
     "id": null,
-    "text": "query PaymentPickerTestQuery {\n  me {\n    ...PaymentPicker_me\n    id\n  }\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...PaymentPicker_order\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        last_digits: lastDigits\n        expiration_month: expirationMonth\n        expiration_year: expirationYear\n        id\n      }\n    }\n  }\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code: postalCode\n    expiration_month: expirationMonth\n    expiration_year: expirationYear\n    last_digits: lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query PaymentPickerTestQuery {\n  me {\n    ...PaymentPicker_me\n    id\n  }\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...PaymentPicker_order\n    id\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        last_digits: lastDigits\n        expiration_month: expirationMonth\n        expiration_year: expirationYear\n        id\n      }\n    }\n  }\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code: postalCode\n    expiration_month: expirationMonth\n    expiration_year: expirationYear\n    last_digits: lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

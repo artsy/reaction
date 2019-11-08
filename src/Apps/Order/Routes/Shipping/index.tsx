@@ -163,7 +163,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     try {
       const orderOrError = (await this.setShipping({
         input: {
-          id: this.props.order.id,
+          id: this.props.order.internalID,
           fulfillmentType: shippingOption,
           shipping: address,
         },
@@ -174,7 +174,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/payment`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/payment`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()

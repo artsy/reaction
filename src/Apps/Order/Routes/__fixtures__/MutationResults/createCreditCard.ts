@@ -2,7 +2,7 @@ export const creatingCreditCardSuccess = {
   createCreditCard: {
     creditCardOrError: {
       creditCard: {
-        id: "gravityCreditCardId",
+        internalID: "gravityCreditCardId",
         name: "Artsy UK Ltd",
         street1: "14 Gower's Walk",
         street2: "Suite 2.5, The Loom",

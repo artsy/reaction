@@ -40,6 +40,7 @@ mutation createTestEnvOrderMutation(
         order {
           __typename
           internalID
+          id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -196,7 +197,14 @@ return {
                     "plural": false,
                     "selections": [
                       (v4/*: any*/),
-                      (v2/*: any*/)
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
@@ -212,7 +220,7 @@ return {
     "operationKind": "mutation",
     "name": "createTestEnvOrderMutation",
     "id": null,
-    "text": "mutation createTestEnvOrderMutation(\n  $input: CommerceCreateOrderWithArtworkInput!\n) {\n  commerceCreateOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          internalID\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation createTestEnvOrderMutation(\n  $input: CommerceCreateOrderWithArtworkInput!\n) {\n  commerceCreateOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          internalID\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

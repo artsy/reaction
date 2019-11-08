@@ -48,6 +48,7 @@ export type ShippingTestQueryRawResponse = {
                             }) | null;
                         }) | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -67,6 +68,7 @@ export type ShippingTestQueryRawResponse = {
         readonly itemsTotal: string | null;
         readonly totalListPrice: string | null;
         readonly buyerTotal: string | null;
+        readonly id: string | null;
         readonly lastOffer: ({
             readonly internalID: string;
             readonly amount: string | null;
@@ -79,6 +81,7 @@ export type ShippingTestQueryRawResponse = {
             readonly buyerTotalCents: number | null;
             readonly fromParticipant: CommerceOrderParticipantEnum | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
         readonly myLastOffer: ({
             readonly internalID: string;
@@ -92,6 +95,7 @@ export type ShippingTestQueryRawResponse = {
             readonly buyerTotalCents: number | null;
             readonly fromParticipant: CommerceOrderParticipantEnum | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
     } | {
         readonly internalID: string;
@@ -129,6 +133,7 @@ export type ShippingTestQueryRawResponse = {
                             }) | null;
                         }) | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -148,6 +153,7 @@ export type ShippingTestQueryRawResponse = {
         readonly itemsTotal: string | null;
         readonly totalListPrice: string | null;
         readonly buyerTotal: string | null;
+        readonly id: string | null;
     }) | null;
 };
 export type ShippingTestQuery = {
@@ -163,6 +169,7 @@ query ShippingTestQuery {
   order: commerceOrder(id: "unused") {
     __typename
     ...Shipping_order
+    id
   }
 }
 
@@ -193,6 +200,7 @@ fragment Shipping_order on CommerceOrder {
           shippingCountry
           id
         }
+        id
       }
     }
   }
@@ -228,6 +236,7 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
           }
           id
         }
+        id
       }
     }
   }
@@ -256,6 +265,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
     myLastOffer {
       internalID
@@ -269,6 +279,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
   }
 }
@@ -393,7 +404,8 @@ v11 = [
     "name": "note",
     "args": null,
     "storageKey": null
-  }
+  },
+  (v4/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -648,7 +660,8 @@ return {
                             ]
                           }
                         ]
-                      }
+                      },
+                      (v4/*: any*/)
                     ]
                   }
                 ]
@@ -695,6 +708,7 @@ return {
             "storageKey": "totalListPrice(precision:2)"
           },
           (v10/*: any*/),
+          (v4/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -729,7 +743,7 @@ return {
     "operationKind": "query",
     "name": "ShippingTestQuery",
     "id": null,
-    "text": "query ShippingTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Shipping_order\n  }\n}\n\nfragment Shipping_order on CommerceOrder {\n  internalID\n  mode\n  state\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n      phoneNumber\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          pickup_available: pickupAvailable\n          onlyShipsDomestically\n          shippingCountry\n          id\n        }\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n  }\n}\n",
+    "text": "query ShippingTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Shipping_order\n    id\n  }\n}\n\nfragment Shipping_order on CommerceOrder {\n  internalID\n  mode\n  state\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n      phoneNumber\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          pickup_available: pickupAvailable\n          onlyShipsDomestically\n          shippingCountry\n          id\n        }\n        id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

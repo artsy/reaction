@@ -31,7 +31,10 @@ import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
-const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
+const testOrder: ReviewTestQueryRawResponse["order"] = {
+  ...BuyOrderWithShippingDetails,
+  internalID: "1234",
+}
 
 class ReviewTestPage extends OrderAppTestPage {
   get offerSummary() {
@@ -56,7 +59,7 @@ describe("Review", () => {
     Component: ReviewFragmentContainer,
     defaultData: {
       order: testOrder,
-    } as ReviewTestQueryRawResponse,
+    },
     defaultMutationResults: {
       ...submitOrderSuccess,
       ...submitOfferOrderSuccess,
@@ -175,7 +178,7 @@ describe("Review", () => {
         mockData: {
           order: {
             ...OfferOrderWithShippingDetails,
-            id: "offer-order-id",
+            internalID: "offer-order-id",
           },
         },
       })

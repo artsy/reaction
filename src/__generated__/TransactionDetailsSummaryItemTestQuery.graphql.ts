@@ -21,6 +21,7 @@ export type TransactionDetailsSummaryItemTestQueryRawResponse = {
         readonly itemsTotal: string | null;
         readonly totalListPrice: string | null;
         readonly buyerTotal: string | null;
+        readonly id: string | null;
         readonly lastOffer: ({
             readonly internalID: string;
             readonly amount: string | null;
@@ -33,6 +34,7 @@ export type TransactionDetailsSummaryItemTestQueryRawResponse = {
             readonly buyerTotalCents: number | null;
             readonly fromParticipant: CommerceOrderParticipantEnum | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
         readonly myLastOffer: ({
             readonly internalID: string;
@@ -46,6 +48,7 @@ export type TransactionDetailsSummaryItemTestQueryRawResponse = {
             readonly buyerTotalCents: number | null;
             readonly fromParticipant: CommerceOrderParticipantEnum | null;
             readonly note: string | null;
+            readonly id: string | null;
         }) | null;
     } | {
         readonly __typename: string;
@@ -57,6 +60,7 @@ export type TransactionDetailsSummaryItemTestQueryRawResponse = {
         readonly itemsTotal: string | null;
         readonly totalListPrice: string | null;
         readonly buyerTotal: string | null;
+        readonly id: string | null;
     }) | null;
 };
 export type TransactionDetailsSummaryItemTestQuery = {
@@ -72,6 +76,7 @@ query TransactionDetailsSummaryItemTestQuery {
   order: commerceOrder(id: "whatevs") {
     __typename
     ...TransactionDetailsSummaryItem_order
+    id
   }
 }
 
@@ -98,6 +103,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
     myLastOffer {
       internalID
@@ -111,6 +117,7 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       buyerTotalCents
       fromParticipant
       note
+      id
     }
   }
 }
@@ -166,7 +173,14 @@ v6 = {
   "args": (v1/*: any*/),
   "storageKey": "buyerTotal(precision:2)"
 },
-v7 = [
+v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v8 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -213,7 +227,8 @@ v7 = [
     "name": "note",
     "args": null,
     "storageKey": null
-  }
+  },
+  (v7/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -289,6 +304,7 @@ return {
             "storageKey": "totalListPrice(precision:2)"
           },
           (v6/*: any*/),
+          (v7/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -301,7 +317,7 @@ return {
                 "args": null,
                 "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": (v7/*: any*/)
+                "selections": (v8/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -311,7 +327,7 @@ return {
                 "args": null,
                 "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": (v7/*: any*/)
+                "selections": (v8/*: any*/)
               }
             ]
           }
@@ -323,7 +339,7 @@ return {
     "operationKind": "query",
     "name": "TransactionDetailsSummaryItemTestQuery",
     "id": null,
-    "text": "query TransactionDetailsSummaryItemTestQuery {\n  order: commerceOrder(id: \"whatevs\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n    }\n  }\n}\n",
+    "text": "query TransactionDetailsSummaryItemTestQuery {\n  order: commerceOrder(id: \"whatevs\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

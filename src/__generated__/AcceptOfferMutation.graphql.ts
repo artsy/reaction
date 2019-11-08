@@ -47,6 +47,7 @@ mutation AcceptOfferMutation(
           ... on CommerceOfferOrder {
             awaitingResponseFrom
           }
+          id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -236,6 +237,13 @@ return {
                     "selections": [
                       (v2/*: any*/),
                       (v3/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      },
                       (v4/*: any*/)
                     ]
                   }
@@ -252,7 +260,7 @@ return {
     "operationKind": "mutation",
     "name": "AcceptOfferMutation",
     "id": null,
-    "text": "mutation AcceptOfferMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation AcceptOfferMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

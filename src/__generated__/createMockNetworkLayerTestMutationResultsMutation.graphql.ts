@@ -50,6 +50,7 @@ mutation createMockNetworkLayerTestMutationResultsMutation(
           __typename
           internalID
           state
+          id
         }
       }
     }
@@ -225,7 +226,14 @@ return {
                     "selections": [
                       (v5/*: any*/),
                       (v3/*: any*/),
-                      (v4/*: any*/)
+                      (v4/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
@@ -240,7 +248,7 @@ return {
     "operationKind": "mutation",
     "name": "createMockNetworkLayerTestMutationResultsMutation",
     "id": null,
-    "text": "mutation createMockNetworkLayerTestMutationResultsMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          internalID\n          state\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation createMockNetworkLayerTestMutationResultsMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          internalID\n          state\n          id\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

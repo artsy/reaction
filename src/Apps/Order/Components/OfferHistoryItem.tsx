@@ -14,7 +14,7 @@ const OfferHistoryItem: React.SFC<
   } & StepSummaryItemProps
 > = ({ order: { totalListPrice, lastOffer, offers }, ...others }) => {
   const previousOffers = offers.edges.filter(
-    ({ node: { id } }) => id !== lastOffer.id
+    ({ node: { internalID } }) => internalID !== lastOffer.internalID
   )
 
   return (
@@ -58,7 +58,7 @@ const OfferHistoryItem: React.SFC<
                 Offer history
               </Serif>
               {previousOffers.map(({ node: offer }) => (
-                <Row key={offer.id}>
+                <Row key={offer.internalID}>
                   <Serif size={["2", "3"]} color="black60">
                     {offer.fromParticipant === "BUYER" ? "You" : "Seller"}
                     {` (${offer.createdAt})`}

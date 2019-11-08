@@ -1,6 +1,5 @@
 import { CounterTestQueryRawResponse } from "__generated__/CounterTestQuery.graphql"
 import {
-  Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
@@ -25,13 +24,14 @@ jest.unmock("react-relay")
 
 const realSetInterval = global.setInterval
 
-const testOrder = {
+const testOrder: CounterTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
     .toString(),
   lastOffer: {
     ...OfferWithTotals,
+    internalID: "lastOffer",
     id: "lastOffer",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
@@ -40,15 +40,12 @@ const testOrder = {
   },
   myLastOffer: {
     ...OfferWithTotals,
+    internalID: "myLastOffer",
     id: "myLastOffer",
-    createdAt: DateTime.fromISO(NOW)
-      .minus({ days: 1 })
-      .toString(),
     amount: "$your.offer",
     fromParticipant: "BUYER",
   },
   offers: { edges: Offers },
-  buyer: Buyer,
 }
 
 describe("Submit Pending Counter Offer", () => {
@@ -157,7 +154,7 @@ describe("Submit Pending Counter Offer", () => {
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 

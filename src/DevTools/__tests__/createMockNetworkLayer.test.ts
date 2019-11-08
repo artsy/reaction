@@ -83,7 +83,7 @@ describe("createMockNetworkLayer", () => {
     it("returns the data if present", async () => {
       const data = await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { title: "Untitled", __id: "untitled" },
+          artwork: { title: "Untitled", id: "untitled" },
         },
       })
       expect(data.artwork.title).toEqual("Untitled")
@@ -92,16 +92,7 @@ describe("createMockNetworkLayer", () => {
     it("returns null for nullable fields which are given as null", async () => {
       const data = await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { title: null, __id: "null" },
-        },
-      })
-      expect(data.artwork.title).toEqual(null)
-    })
-
-    it("converts undefined to null", async () => {
-      const data = await fetchArtworkQueryWithResolvers({
-        mockData: {
-          artwork: { title: undefined, __id: "null" },
+          artwork: { title: null, id: "null" },
         },
       })
       expect(data.artwork.title).toEqual(null)
@@ -112,7 +103,7 @@ describe("createMockNetworkLayer", () => {
     try {
       await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { __id: "blah" },
+          artwork: { id: "blah" },
         },
       })
     } catch (e) {
@@ -128,7 +119,7 @@ describe("createMockNetworkLayer", () => {
     try {
       await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { __id: "blah", title: 32 },
+          artwork: { id: "blah", title: 32 },
         },
       })
     } catch (e) {
@@ -141,7 +132,7 @@ describe("createMockNetworkLayer", () => {
     try {
       await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { __id: "blah", title: [] },
+          artwork: { id: "blah", title: [] },
         },
       })
     } catch (e) {
@@ -182,9 +173,11 @@ describe("createMockNetworkLayer", () => {
       {
         mockData: {
           artist: {
-            forSaleArtworks: [{ __id: "for-sale-work" }],
-            notForSaleArtworks: [{ __id: "no-for-sale-work" }],
-            __id: "id",
+            forSaleArtworks: { edges: [{ node: { id: "for-sale-work" } }] },
+            notForSaleArtworks: {
+              edges: [{ node: { id: "no-for-sale-work" } }],
+            },
+            id: "id",
           },
         },
       },
@@ -209,10 +202,12 @@ describe("createMockNetworkLayer", () => {
         }
       `
     )
-    expect(data.artist.forSaleArtworks).toEqual([{ __id: "for-sale-work" }])
-    expect(data.artist.notForSaleArtworks).toEqual([
-      { __id: "no-for-sale-work" },
-    ])
+    expect(data.artist.forSaleArtworks.edges[0].node).toEqual({
+      id: "for-sale-work",
+    })
+    expect(data.artist.notForSaleArtworks.edges[0].node).toEqual({
+      id: "no-for-sale-work",
+    })
   })
 
   it("uses the alias over the default name if both are present", async () => {
@@ -222,9 +217,9 @@ describe("createMockNetworkLayer", () => {
       {
         mockData: {
           artist: {
-            forSaleArtworks: [{ __id: "for-sale-work" }],
-            artworks: [{ __id: "no-for-sale-work" }],
-            __id: "id",
+            forSaleArtworks: { edges: [{ node: { id: "for-sale-work" } }] },
+            artworks: { edges: [{ node: { id: "no-for-sale-work" } }] },
+            id: "id",
           },
         },
       },
@@ -242,7 +237,9 @@ describe("createMockNetworkLayer", () => {
         }
       `
     )
-    expect(data.artist.forSaleArtworks).toEqual([{ __id: "for-sale-work" }])
+    expect(data.artist.forSaleArtworks.edges[0].node).toEqual({
+      id: "for-sale-work",
+    })
   })
 
   describe("mutations", () => {
@@ -283,6 +280,7 @@ describe("createMockNetworkLayer", () => {
               order: {
                 __typename: "CommerceOfferOrder",
                 id: "my-order",
+                internalID: "my-order",
                 state: "ABANDONED",
               },
             },
@@ -311,6 +309,7 @@ describe("createMockNetworkLayer", () => {
               order: {
                 __typename: "CommerceBuyOrder",
                 id: "my-order",
+                internalID: "my-order",
                 state: "ABANDONED",
               },
             },
@@ -339,6 +338,7 @@ describe("createMockNetworkLayer", () => {
               orderOrError: {
                 order: {
                   id: "my-order",
+                  internalID: "my-order",
                   state: "ABANDONED",
                 },
               },
@@ -367,6 +367,7 @@ describe("createMockNetworkLayer", () => {
             orderOrError: {
               order: {
                 id: "my-order",
+                internalID: "my-order",
                 state: "ABANDONED",
                 myLastOffer: {},
               },
@@ -397,6 +398,7 @@ describe("createMockNetworkLayer", () => {
                 order: {
                   __typename: "CommerceOfferOrder",
                   id: "my-order",
+                  internalID: "my-order",
                   state: "ABANDONED",
                 },
               },

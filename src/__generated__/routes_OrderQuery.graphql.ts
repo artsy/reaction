@@ -67,6 +67,7 @@ export type routes_OrderQueryRawResponse = {
                         readonly is_acquireable: boolean | null;
                         readonly is_offerable: boolean | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -74,13 +75,16 @@ export type routes_OrderQueryRawResponse = {
             readonly internalID: string;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
         readonly myLastOffer: ({
             readonly internalID: string;
             readonly createdAt: string;
+            readonly id: string | null;
         }) | null;
         readonly lastOffer: ({
             readonly internalID: string;
             readonly createdAt: string;
+            readonly id: string | null;
         }) | null;
         readonly awaitingResponseFrom: CommerceOrderParticipantEnum | null;
     } | {
@@ -101,6 +105,7 @@ export type routes_OrderQueryRawResponse = {
                         readonly is_acquireable: boolean | null;
                         readonly is_offerable: boolean | null;
                     }) | null;
+                    readonly id: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -108,6 +113,7 @@ export type routes_OrderQueryRawResponse = {
             readonly internalID: string;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type routes_OrderQuery = {
@@ -136,10 +142,12 @@ query routes_OrderQuery(
       myLastOffer {
         internalID
         createdAt
+        id
       }
       lastOffer {
         internalID
         createdAt
+        id
       }
       awaitingResponseFrom
     }
@@ -155,6 +163,7 @@ query routes_OrderQuery(
             is_acquireable: isAcquireable
             is_offerable: isOfferable
           }
+          id
         }
       }
     }
@@ -162,6 +171,7 @@ query routes_OrderQuery(
       internalID
       id
     }
+    id
   }
 }
 */
@@ -257,56 +267,36 @@ v11 = {
   "args": null,
   "storageKey": null
 },
-v12 = [
-  (v3/*: any*/),
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "createdAt",
-    "args": null,
-    "storageKey": null
-  }
-],
-v13 = {
-  "kind": "InlineFragment",
-  "type": "CommerceOfferOrder",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "myLastOffer",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CommerceOffer",
-      "plural": false,
-      "selections": (v12/*: any*/)
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "lastOffer",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CommerceOffer",
-      "plural": false,
-      "selections": (v12/*: any*/)
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "awaitingResponseFrom",
-      "args": null,
-      "storageKey": null
-    }
-  ]
+v12 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "createdAt",
+  "args": null,
+  "storageKey": null
 },
+v13 = [
+  (v3/*: any*/),
+  (v12/*: any*/)
+],
 v14 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "awaitingResponseFrom",
+  "args": null,
+  "storageKey": null
+},
+v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v16 = [
+  (v3/*: any*/),
+  (v12/*: any*/),
+  (v15/*: any*/)
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -401,7 +391,33 @@ return {
               (v3/*: any*/)
             ]
           },
-          (v13/*: any*/)
+          {
+            "kind": "InlineFragment",
+            "type": "CommerceOfferOrder",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "myLastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommerceOffer",
+                "plural": false,
+                "selections": (v13/*: any*/)
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "lastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommerceOffer",
+                "plural": false,
+                "selections": (v13/*: any*/)
+              },
+              (v14/*: any*/)
+            ]
+          }
         ]
       }
     ]
@@ -421,7 +437,7 @@ return {
         "plural": false,
         "selections": [
           (v1/*: any*/),
-          (v14/*: any*/)
+          (v15/*: any*/)
         ]
       },
       {
@@ -476,11 +492,12 @@ return {
                         "plural": false,
                         "selections": [
                           (v9/*: any*/),
-                          (v14/*: any*/),
+                          (v15/*: any*/),
                           (v10/*: any*/),
                           (v11/*: any*/)
                         ]
-                      }
+                      },
+                      (v15/*: any*/)
                     ]
                   }
                 ]
@@ -497,10 +514,37 @@ return {
             "plural": false,
             "selections": [
               (v3/*: any*/),
-              (v14/*: any*/)
+              (v15/*: any*/)
             ]
           },
-          (v13/*: any*/)
+          (v15/*: any*/),
+          {
+            "kind": "InlineFragment",
+            "type": "CommerceOfferOrder",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "myLastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommerceOffer",
+                "plural": false,
+                "selections": (v16/*: any*/)
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "lastOffer",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommerceOffer",
+                "plural": false,
+                "selections": (v16/*: any*/)
+              },
+              (v14/*: any*/)
+            ]
+          }
         ]
       }
     ]
@@ -509,7 +553,7 @@ return {
     "operationKind": "query",
     "name": "routes_OrderQuery",
     "id": null,
-    "text": "query routes_OrderQuery(\n  $orderID: ID!\n) {\n  me {\n    name\n    id\n  }\n  order: commerceOrder(id: $orderID) @principalField {\n    __typename\n    internalID\n    mode\n    state\n    lastTransactionFailed\n    ... on CommerceOfferOrder {\n      myLastOffer {\n        internalID\n        createdAt\n      }\n      lastOffer {\n        internalID\n        createdAt\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            slug\n            id\n            is_acquireable: isAcquireable\n            is_offerable: isOfferable\n          }\n        }\n      }\n    }\n    creditCard {\n      internalID\n      id\n    }\n  }\n}\n",
+    "text": "query routes_OrderQuery(\n  $orderID: ID!\n) {\n  me {\n    name\n    id\n  }\n  order: commerceOrder(id: $orderID) @principalField {\n    __typename\n    internalID\n    mode\n    state\n    lastTransactionFailed\n    ... on CommerceOfferOrder {\n      myLastOffer {\n        internalID\n        createdAt\n        id\n      }\n      lastOffer {\n        internalID\n        createdAt\n        id\n      }\n      awaitingResponseFrom\n    }\n    requestedFulfillment {\n      __typename\n    }\n    lineItems {\n      edges {\n        node {\n          artwork {\n            slug\n            id\n            is_acquireable: isAcquireable\n            is_offerable: isOfferable\n          }\n          id\n        }\n      }\n    }\n    creditCard {\n      internalID\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

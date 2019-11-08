@@ -27,6 +27,7 @@ query ArtistCollectionsRailQuery(
 ) {
   collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {
     ...ArtistCollectionsRail_collections
+    id
   }
 }
 
@@ -282,7 +283,8 @@ return {
               },
               (v3/*: any*/)
             ]
-          }
+          },
+          (v3/*: any*/)
         ]
       }
     ]
@@ -291,7 +293,7 @@ return {
     "operationKind": "query",
     "name": "ArtistCollectionsRailQuery",
     "id": null,
-    "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance: priceGuidance\n  artworksConnection(first: 3, aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    edges {\n      node {\n        artist {\n          name\n          id\n        }\n        title\n        image {\n          resized(width: 262) {\n            url\n          }\n        }\n        id\n      }\n    }\n    id\n  }\n}\n",
+    "text": "query ArtistCollectionsRailQuery(\n  $isFeaturedArtistContent: Boolean\n  $size: Int\n  $artistID: String\n) {\n  collections: marketingCollections(isFeaturedArtistContent: $isFeaturedArtistContent, size: $size, artistID: $artistID) {\n    ...ArtistCollectionsRail_collections\n    id\n  }\n}\n\nfragment ArtistCollectionsRail_collections on MarketingCollection {\n  ...ArtistCollectionEntity_collection\n}\n\nfragment ArtistCollectionEntity_collection on MarketingCollection {\n  headerImage\n  slug\n  title\n  price_guidance: priceGuidance\n  artworksConnection(first: 3, aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    edges {\n      node {\n        artist {\n          name\n          id\n        }\n        title\n        image {\n          resized(width: 262) {\n            url\n          }\n        }\n        id\n      }\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

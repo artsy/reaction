@@ -33,6 +33,7 @@ export const mockResolver = (
 })
 
 export const UntouchedOrder = {
+  internalID: "2939023",
   id: "2939023",
   code: "abcdefg",
   state: "PENDING",
@@ -54,9 +55,11 @@ export const UntouchedOrder = {
     edges: [
       {
         node: {
+          id: "line-item-node-id",
           artwork: {
-            id: "artworkId",
-            _id: "11111111",
+            id: "02393",
+            internalID: "artworkId",
+            slug: "artworkId",
             pickup_available: true,
             artist_names: "Lisa Breslow",
             title: "Gramercy Park South",
@@ -65,8 +68,8 @@ export const UntouchedOrder = {
             medium: "Oil and pencil on panel",
             onlyShipsDomestically: false,
             shippingCountry: "US",
-            is_acquireable: true,
-            is_offerable: false,
+            is_acquireable: true as boolean,
+            is_offerable: false as boolean,
             dimensions: {
               in: "36 × 36 in",
               cm: "91.4 × 91.4 cm",
@@ -74,7 +77,9 @@ export const UntouchedOrder = {
             edition_sets: [],
             artists: [
               {
-                id: "artistId",
+                internalID: "artistId",
+                slug: "artistId",
+                id: "239084092",
               },
             ],
             attribution_class: null,
@@ -93,6 +98,7 @@ export const UntouchedOrder = {
             edges: [
               {
                 node: {
+                  id: "fullfillment-id",
                   courier: "UPS",
                   trackingId: "AP234345634",
                   estimatedDelivery: "Friday, August 6",
@@ -107,6 +113,7 @@ export const UntouchedOrder = {
   },
   sellerDetails: {
     __typename: "Partner",
+    id: "partner-node-id",
     name: "Kathryn Markel Fine Arts",
     locations: [
       {
@@ -116,26 +123,27 @@ export const UntouchedOrder = {
       },
     ],
   },
-}
+} as const
 
 export const UntouchedBuyOrder = {
   ...UntouchedOrder,
   __typename: "CommerceBuyOrder",
   mode: "BUY",
-}
+} as const
 
 export const TaxTotals = {
   taxTotal: "$120",
   taxTotalCents: 12000,
-}
+} as const
 
 export const ShippingTotals = {
   shippingTotal: "$200",
   shippingTotalCents: 20000,
-}
+} as const
 
 export const OfferWithTotals = {
   id: "myoffer-id",
+  internalID: "myoffer-id",
   amount: "$14,000",
   amountCents: 1400000,
   currencyCode: "USD",
@@ -146,7 +154,7 @@ export const OfferWithTotals = {
   buyerTotal: "$14,320",
   buyerTotalCents: 1432000,
   note: "Another note!",
-}
+} as const
 
 export const UntouchedOfferOrder = {
   ...UntouchedOrder,
@@ -163,29 +171,31 @@ export const UntouchedOfferOrder = {
   offers: {
     edges: [{ node: OfferWithTotals }],
   },
-}
+} as const
 
 export const OfferOrderWithOffers = {
   ...UntouchedOfferOrder,
   lastOffer: OfferWithTotals,
   myLastOffer: {
     ...OfferWithTotals,
-    id: "my-last-offer-id",
+    internalID: "my-last-offer-id-no-note",
+    id: "my-last-offer-id-no-note",
     fromParticipant: "BUYER",
     note: null,
   },
-}
+} as const
 
 export const OfferOrderWithOffersAndNote = {
   ...UntouchedOfferOrder,
   lastOffer: OfferWithTotals,
   myLastOffer: {
     ...OfferWithTotals,
-    id: "my-last-offer-id",
+    internalID: "my-last-offer-id-with-note",
+    id: "my-last-offer-id-with-note",
     fromParticipant: "BUYER",
     note: "This is a note!",
   },
-}
+} as const
 
 export const ShippingDetails = {
   buyerPhoneNumber: "120938120983",
@@ -201,10 +211,12 @@ export const ShippingDetails = {
     country: "US",
     phoneNumber: "120938120983",
   },
-}
+} as const
 
 export const PaymentDetails = {
   creditCard: {
+    id: "relay-node-id",
+    internalID: "gravity-credit-card-id",
     name: "Dr. Collector",
     street1: "1 Art st",
     street2: null,
@@ -217,25 +229,25 @@ export const PaymentDetails = {
     expiration_month: 3,
     expiration_year: 21,
   },
-}
+} as const
 
 export const BuyOrderWithShippingDetails = {
   ...UntouchedBuyOrder,
   ...ShippingDetails,
   ...PaymentDetails,
-}
+} as const
 
 export const OfferOrderWithShippingDetails = {
   ...OfferOrderWithOffers,
   ...ShippingDetails,
   ...PaymentDetails,
-}
+} as const
 
 export const OfferOrderWithShippingDetailsAndNote = {
   ...OfferOrderWithOffersAndNote,
   ...ShippingDetails,
   ...PaymentDetails,
-}
+} as const
 
 export const BuyOrderPickup = {
   ...UntouchedBuyOrder,
@@ -244,7 +256,7 @@ export const BuyOrderPickup = {
     __typename: "CommercePickup",
     fulfillmentType: "PICKUP",
   },
-}
+} as const
 
 export const OfferOrderPickup = {
   ...OfferOrderWithOffers,
@@ -253,22 +265,25 @@ export const OfferOrderPickup = {
     __typename: "CommercePickup",
     fulfillmentType: "PICKUP",
   },
-}
+} as const
 
 export const Buyer = {
   __typename: "User",
-  id: "buyer",
-}
+  id: "buyer-node-id",
+  internalID: "buyer",
+} as const
 
 export const Seller = {
   __typename: "Partner",
-  id: "seller",
-}
+  id: "seller-node-id",
+  internalID: "seller",
+} as const
 
 export const Offers = [
   {
     node: {
       id: OfferWithTotals.id,
+      internalID: OfferWithTotals.internalID,
       currencyCode: "USD",
       fromParticipant: OfferWithTotals.fromParticipant,
       amount: OfferWithTotals.amount,
@@ -278,6 +293,7 @@ export const Offers = [
   {
     node: {
       id: "0",
+      internalID: "0",
       currencyCode: "USD",
       fromParticipant: "BUYER",
       amount: "$1,200.00",
@@ -287,6 +303,7 @@ export const Offers = [
   {
     node: {
       id: "1",
+      internalID: "1",
       currencyCode: "USD",
       fromParticipant: "SELLER",
       amount: "$1,500.00",
@@ -296,10 +313,11 @@ export const Offers = [
   {
     node: {
       id: "2",
+      internalID: "2",
       currencyCode: "USD",
       fromParticipant: "BUYER",
       amount: "$1,100.00",
       createdAt: "Apr 5",
     },
   },
-]
+] as const
