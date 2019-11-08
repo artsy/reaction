@@ -21,9 +21,9 @@ export type PaymentTestQueryRawResponse = {
                 readonly node: ({
                     readonly internalID: string;
                     readonly brand: string;
-                    readonly last_digits: string;
-                    readonly expiration_month: number;
-                    readonly expiration_year: number;
+                    readonly lastDigits: string;
+                    readonly expirationMonth: number;
+                    readonly expirationYear: number;
                     readonly id: string | null;
                 }) | null;
             }) | null> | null;
@@ -62,10 +62,10 @@ export type PaymentTestQueryRawResponse = {
             readonly city: string | null;
             readonly state: string | null;
             readonly country: string | null;
-            readonly postal_code: string | null;
-            readonly expiration_month: number;
-            readonly expiration_year: number;
-            readonly last_digits: string;
+            readonly postalCode: string | null;
+            readonly expirationMonth: number;
+            readonly expirationYear: number;
+            readonly lastDigits: string;
             readonly brand: string;
             readonly id: string | null;
         }) | null;
@@ -161,10 +161,10 @@ export type PaymentTestQueryRawResponse = {
             readonly city: string | null;
             readonly state: string | null;
             readonly country: string | null;
-            readonly postal_code: string | null;
-            readonly expiration_month: number;
-            readonly expiration_year: number;
-            readonly last_digits: string;
+            readonly postalCode: string | null;
+            readonly expirationMonth: number;
+            readonly expirationYear: number;
+            readonly lastDigits: string;
             readonly brand: string;
             readonly id: string | null;
         }) | null;
@@ -258,10 +258,10 @@ fragment PaymentPicker_order on CommerceOrder {
     city
     state
     country
-    postal_code: postalCode
-    expiration_month: expirationMonth
-    expiration_year: expirationYear
-    last_digits: lastDigits
+    postalCode
+    expirationMonth
+    expirationYear
+    lastDigits
     brand
     id
   }
@@ -375,9 +375,9 @@ fragment PaymentPicker_me on Me {
       node {
         internalID
         brand
-        last_digits: lastDigits
-        expiration_month: expirationMonth
-        expiration_year: expirationYear
+        lastDigits
+        expirationMonth
+        expirationYear
         id
       }
     }
@@ -409,21 +409,21 @@ v2 = {
 },
 v3 = {
   "kind": "ScalarField",
-  "alias": "last_digits",
+  "alias": null,
   "name": "lastDigits",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "expiration_month",
+  "alias": null,
   "name": "expirationMonth",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": "expiration_year",
+  "alias": null,
   "name": "expirationYear",
   "args": null,
   "storageKey": null
@@ -466,59 +466,66 @@ v10 = {
 v11 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "postalCode",
+  "args": null,
+  "storageKey": null
+},
+v12 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v12 = [
+v13 = [
   {
     "kind": "Literal",
     "name": "precision",
     "value": 2
   }
 ],
-v13 = {
+v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": (v12/*: any*/),
+  "args": (v13/*: any*/),
   "storageKey": "shippingTotal(precision:2)"
 },
-v14 = {
+v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v15 = {
+v16 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": (v12/*: any*/),
+  "args": (v13/*: any*/),
   "storageKey": "taxTotal(precision:2)"
 },
-v16 = {
+v17 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotalCents",
   "args": null,
   "storageKey": null
 },
-v17 = {
+v18 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": (v12/*: any*/),
+  "args": (v13/*: any*/),
   "storageKey": "buyerTotal(precision:2)"
 },
-v18 = [
+v19 = [
   (v1/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
     "name": "amount",
-    "args": (v12/*: any*/),
+    "args": (v13/*: any*/),
     "storageKey": "amount(precision:2)"
   },
   {
@@ -528,11 +535,11 @@ v18 = [
     "args": null,
     "storageKey": null
   },
-  (v13/*: any*/),
   (v14/*: any*/),
   (v15/*: any*/),
   (v16/*: any*/),
   (v17/*: any*/),
+  (v18/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -823,13 +830,7 @@ return {
               (v9/*: any*/),
               (v7/*: any*/),
               (v10/*: any*/),
-              {
-                "kind": "ScalarField",
-                "alias": "postal_code",
-                "name": "postalCode",
-                "args": null,
-                "storageKey": null
-              },
+              (v11/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
               (v3/*: any*/),
@@ -846,7 +847,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              (v11/*: any*/),
+              (v12/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceShip",
@@ -875,13 +876,7 @@ return {
                     "storageKey": null
                   },
                   (v10/*: any*/),
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "postalCode",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v11/*: any*/)
                 ]
               },
               {
@@ -908,7 +903,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              (v11/*: any*/),
+              (v12/*: any*/),
               (v6/*: any*/),
               {
                 "kind": "InlineFragment",
@@ -919,26 +914,26 @@ return {
               }
             ]
           },
-          (v11/*: any*/),
-          (v13/*: any*/),
+          (v12/*: any*/),
           (v14/*: any*/),
           (v15/*: any*/),
           (v16/*: any*/),
+          (v17/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": (v12/*: any*/),
+            "args": (v13/*: any*/),
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": (v12/*: any*/),
+            "args": (v13/*: any*/),
             "storageKey": "totalListPrice(precision:2)"
           },
-          (v17/*: any*/),
+          (v18/*: any*/),
           (v6/*: any*/),
           {
             "kind": "InlineFragment",
@@ -952,7 +947,7 @@ return {
                 "args": null,
                 "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": (v18/*: any*/)
+                "selections": (v19/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -962,7 +957,7 @@ return {
                 "args": null,
                 "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": (v18/*: any*/)
+                "selections": (v19/*: any*/)
               }
             ]
           }
@@ -974,7 +969,7 @@ return {
     "operationKind": "query",
     "name": "PaymentTestQuery",
     "id": null,
-    "text": "query PaymentTestQuery {\n  me {\n    ...Payment_me\n    id\n  }\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Payment_order\n    id\n  }\n}\n\nfragment Payment_me on Me {\n  ...PaymentPicker_me\n}\n\nfragment Payment_order on CommerceOrder {\n  internalID\n  mode\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n  ...PaymentPicker_order\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code: postalCode\n    expiration_month: expirationMonth\n    expiration_year: expirationYear\n    last_digits: lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        last_digits: lastDigits\n        expiration_month: expirationMonth\n        expiration_year: expirationYear\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query PaymentTestQuery {\n  me {\n    ...Payment_me\n    id\n  }\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Payment_order\n    id\n  }\n}\n\nfragment Payment_me on Me {\n  ...PaymentPicker_me\n}\n\nfragment Payment_order on CommerceOrder {\n  internalID\n  mode\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n  ...PaymentPicker_order\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postalCode\n    expirationMonth\n    expirationYear\n    lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        lastDigits\n        expirationMonth\n        expirationYear\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

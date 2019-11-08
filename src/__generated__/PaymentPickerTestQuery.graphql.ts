@@ -20,9 +20,9 @@ export type PaymentPickerTestQueryRawResponse = {
                 readonly node: ({
                     readonly internalID: string;
                     readonly brand: string;
-                    readonly last_digits: string;
-                    readonly expiration_month: number;
-                    readonly expiration_year: number;
+                    readonly lastDigits: string;
+                    readonly expirationMonth: number;
+                    readonly expirationYear: number;
                     readonly id: string | null;
                 }) | null;
             }) | null> | null;
@@ -42,10 +42,10 @@ export type PaymentPickerTestQueryRawResponse = {
             readonly city: string | null;
             readonly state: string | null;
             readonly country: string | null;
-            readonly postal_code: string | null;
-            readonly expiration_month: number;
-            readonly expiration_year: number;
-            readonly last_digits: string;
+            readonly postalCode: string | null;
+            readonly expirationMonth: number;
+            readonly expirationYear: number;
+            readonly lastDigits: string;
             readonly brand: string;
             readonly id: string | null;
         }) | null;
@@ -105,9 +105,9 @@ fragment PaymentPicker_me on Me {
       node {
         internalID
         brand
-        last_digits: lastDigits
-        expiration_month: expirationMonth
-        expiration_year: expirationYear
+        lastDigits
+        expirationMonth
+        expirationYear
         id
       }
     }
@@ -126,10 +126,10 @@ fragment PaymentPicker_order on CommerceOrder {
     city
     state
     country
-    postal_code: postalCode
-    expiration_month: expirationMonth
-    expiration_year: expirationYear
-    last_digits: lastDigits
+    postalCode
+    expirationMonth
+    expirationYear
+    lastDigits
     brand
     id
   }
@@ -186,21 +186,21 @@ v2 = {
 },
 v3 = {
   "kind": "ScalarField",
-  "alias": "last_digits",
+  "alias": null,
   "name": "lastDigits",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "expiration_month",
+  "alias": null,
   "name": "expirationMonth",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": "expiration_year",
+  "alias": null,
   "name": "expirationYear",
   "args": null,
   "storageKey": null
@@ -244,6 +244,13 @@ v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "country",
+  "args": null,
+  "storageKey": null
+},
+v12 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "postalCode",
   "args": null,
   "storageKey": null
 };
@@ -399,13 +406,7 @@ return {
               (v10/*: any*/),
               (v8/*: any*/),
               (v11/*: any*/),
-              {
-                "kind": "ScalarField",
-                "alias": "postal_code",
-                "name": "postalCode",
-                "args": null,
-                "storageKey": null
-              },
+              (v12/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
               (v3/*: any*/),
@@ -451,13 +452,7 @@ return {
                     "storageKey": null
                   },
                   (v11/*: any*/),
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "postalCode",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v12/*: any*/)
                 ]
               },
               {
@@ -537,7 +532,7 @@ return {
     "operationKind": "query",
     "name": "PaymentPickerTestQuery",
     "id": null,
-    "text": "query PaymentPickerTestQuery {\n  me {\n    ...PaymentPicker_me\n    id\n  }\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...PaymentPicker_order\n    id\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        last_digits: lastDigits\n        expiration_month: expirationMonth\n        expiration_year: expirationYear\n        id\n      }\n    }\n  }\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postal_code: postalCode\n    expiration_month: expirationMonth\n    expiration_year: expirationYear\n    last_digits: lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query PaymentPickerTestQuery {\n  me {\n    ...PaymentPicker_me\n    id\n  }\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...PaymentPicker_order\n    id\n  }\n}\n\nfragment PaymentPicker_me on Me {\n  creditCards(first: 100) {\n    edges {\n      node {\n        internalID\n        brand\n        lastDigits\n        expirationMonth\n        expirationYear\n        id\n      }\n    }\n  }\n}\n\nfragment PaymentPicker_order on CommerceOrder {\n  internalID\n  mode\n  state\n  creditCard {\n    internalID\n    name\n    street1\n    street2\n    city\n    state\n    country\n    postalCode\n    expirationMonth\n    expirationYear\n    lastDigits\n    brand\n    id\n  }\n  requestedFulfillment {\n    __typename\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n    }\n    ... on CommercePickup {\n      fulfillmentType\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

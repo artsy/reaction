@@ -1,16 +1,19 @@
 import { BorderBox, Flex, Sans, Spinner } from "@artsy/palette"
-import { SavedCreditCardsDeleteCreditCardMutation } from "__generated__/SavedCreditCardsDeleteCreditCardMutation.graphql"
+import {
+  SavedCreditCardsDeleteCreditCardMutation,
+  SavedCreditCardsDeleteCreditCardMutationResponse,
+} from "__generated__/SavedCreditCardsDeleteCreditCardMutation.graphql"
 import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
 import { CreditCardDetails } from "Apps/Order/Components/CreditCardDetails"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { SFC } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
-import { ConnectionHandler } from "relay-runtime"
+import { ConnectionHandler, RecordSourceSelectorProxy } from "relay-runtime"
 import styled from "styled-components"
 import { CreditCardType } from "./UserSettingsPayments"
 
 interface SavedCreditCardsProps {
-  creditCards: [CreditCardType]
+  creditCards: CreditCardType[]
   me: UserSettingsPayments_me
   relay?: RelayProp
 }
@@ -44,14 +47,7 @@ export class CreditCard extends React.Component<
                   <Spinner />
                 </SpinnerContainer>
               ) : (
-                <RemoveLink
-                  onClick={() =>
-                    this.deleteCreditCard(
-                      this.props.me,
-                      this.props.creditCard.id
-                    )
-                  }
-                >
+                <RemoveLink onClick={() => this.deleteCreditCard()}>
                   Remove
                 </RemoveLink>
               )}
@@ -71,7 +67,7 @@ export class CreditCard extends React.Component<
     this.setState({ isErrorModalOpen: false })
   }
 
-  private deleteCreditCard(me, id) {
+  private deleteCreditCard() {
     this.setState({ isCommittingMutation: true }, () => {
       commitMutation<SavedCreditCardsDeleteCreditCardMutation>(
         this.props.relay.environment,
@@ -88,7 +84,6 @@ export class CreditCard extends React.Component<
             }
           },
           onError: this.onMutationError.bind(this),
-          // TODO: Inputs to the mutation might have changed case of the keys!
           mutation: graphql`
             mutation SavedCreditCardsDeleteCreditCardMutation(
               $input: DeleteCreditCardInput!
@@ -113,15 +108,20 @@ export class CreditCard extends React.Component<
             }
           `,
           variables: {
-            input: { id },
+            input: { id: this.props.creditCard.id },
           },
-          updater: (store, data) => this.onCreditCardDeleted(store, me, data),
+          updater: (store, data) => this.onCreditCardDeleted(store, data),
         }
       )
     })
   }
 
-  private onCreditCardDeleted(store, me, data) {
+  private onCreditCardDeleted(
+    store: RecordSourceSelectorProxy<
+      SavedCreditCardsDeleteCreditCardMutationResponse
+    >,
+    data: SavedCreditCardsDeleteCreditCardMutationResponse
+  ) {
     const {
       deleteCreditCard: { creditCardOrError },
     } = data
@@ -133,8 +133,8 @@ export class CreditCard extends React.Component<
         "creditCardOrError"
       )
       const creditCardEdge = creditCardOrErrorEdge.getLinkedRecord("creditCard")
-      const creditCardId = creditCardEdge.getValue("__id")
-      const meStore = store.get(me.__id)
+      const creditCardId = creditCardEdge.getValue("id")
+      const meStore = store.get(this.props.me.id)
       const connection = ConnectionHandler.getConnection(
         meStore,
         "UserSettingsPayments_creditCards"
@@ -151,6 +151,7 @@ export class CreditCard extends React.Component<
 
 export const RemoveLink = styled.div`
   text-align: right;
+
   &:hover {
     cursor: pointer;
   }

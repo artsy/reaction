@@ -15,10 +15,10 @@ export type PaymentPicker_order = {
         readonly city: string | null;
         readonly state: string | null;
         readonly country: string | null;
-        readonly postal_code: string | null;
-        readonly expiration_month: number;
-        readonly expiration_year: number;
-        readonly last_digits: string;
+        readonly postalCode: string | null;
+        readonly expirationMonth: number;
+        readonly expirationYear: number;
+        readonly lastDigits: string;
         readonly brand: string;
     } | null;
     readonly requestedFulfillment: ({
@@ -87,6 +87,13 @@ v4 = {
   "name": "country",
   "args": null,
   "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "postalCode",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -132,30 +139,24 @@ return {
         (v3/*: any*/),
         (v1/*: any*/),
         (v4/*: any*/),
+        (v5/*: any*/),
         {
           "kind": "ScalarField",
-          "alias": "postal_code",
-          "name": "postalCode",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "expiration_month",
+          "alias": null,
           "name": "expirationMonth",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": "expiration_year",
+          "alias": null,
           "name": "expirationYear",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": "last_digits",
+          "alias": null,
           "name": "lastDigits",
           "args": null,
           "storageKey": null
@@ -213,13 +214,7 @@ return {
               "storageKey": null
             },
             (v4/*: any*/),
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "postalCode",
-              "args": null,
-              "storageKey": null
-            }
+            (v5/*: any*/)
           ]
         },
         {
@@ -291,5 +286,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2d9534397c708c45a3eb205dcf7e95c8';
+(node as any).hash = '2ed0c0b6e0b58ac0b9708f897f46ac51';
 export default node;

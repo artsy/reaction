@@ -17,9 +17,9 @@ export type PaymentFormCreateCreditCardMutationResponse = {
                     readonly id: string;
                     readonly internalID: string;
                     readonly brand: string;
-                    readonly last_digits: string;
-                    readonly expiration_year: number;
-                    readonly expiration_month: number;
+                    readonly lastDigits: string;
+                    readonly expirationYear: number;
+                    readonly expirationMonth: number;
                     readonly __typename: string;
                 } | null;
             } | null;
@@ -51,9 +51,9 @@ mutation PaymentFormCreateCreditCardMutation(
             id
             internalID
             brand
-            last_digits: lastDigits
-            expiration_year: expirationYear
-            expiration_month: expirationMonth
+            lastDigits
+            expirationYear
+            expirationMonth
             __typename
           }
         }
@@ -138,21 +138,21 @@ v3 = {
             },
             {
               "kind": "ScalarField",
-              "alias": "last_digits",
+              "alias": null,
               "name": "lastDigits",
               "args": null,
               "storageKey": null
             },
             {
               "kind": "ScalarField",
-              "alias": "expiration_year",
+              "alias": null,
               "name": "expirationYear",
               "args": null,
               "storageKey": null
             },
             {
               "kind": "ScalarField",
-              "alias": "expiration_month",
+              "alias": null,
               "name": "expirationMonth",
               "args": null,
               "storageKey": null
@@ -273,7 +273,7 @@ return {
     "operationKind": "mutation",
     "name": "PaymentFormCreateCreditCardMutation",
     "id": null,
-    "text": "mutation PaymentFormCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            id\n            internalID\n            brand\n            last_digits: lastDigits\n            expiration_year: expirationYear\n            expiration_month: expirationMonth\n            __typename\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation PaymentFormCreateCreditCardMutation(\n  $input: CreditCardInput!\n) {\n  createCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCardEdge {\n          node {\n            id\n            internalID\n            brand\n            lastDigits\n            expirationYear\n            expirationMonth\n            __typename\n          }\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
