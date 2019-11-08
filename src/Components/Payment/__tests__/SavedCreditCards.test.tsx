@@ -31,15 +31,15 @@ describe("SavedCreditCards", () => {
       creditCards: [
         {
           brand: "Visa",
-          last_digits: "1224",
-          expiration_year: "2020",
-          expiration_month: "05",
+          lastDigits: "1224",
+          expirationYear: "2020",
+          expirationMonth: "05",
         },
         {
           brand: "Visa",
-          last_digits: "2345",
-          expiration_year: "2024",
-          expiration_month: "07",
+          lastDigits: "2345",
+          expirationYear: "2024",
+          expirationMonth: "07",
         },
       ],
       relay: { environment: {} } as RelayProp,

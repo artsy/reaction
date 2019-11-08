@@ -151,6 +151,7 @@ export class CreditCard extends React.Component<
 
 export const RemoveLink = styled.div`
   text-align: right;
+
   &:hover {
     cursor: pointer;
   }
