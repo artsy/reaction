@@ -4,9 +4,9 @@ import { ReaderFragment } from "relay-runtime";
 export type CreditCardSummaryItem_order = {
     readonly creditCard: {
         readonly brand: string;
-        readonly last_digits: string;
-        readonly expiration_year: number;
-        readonly expiration_month: number;
+        readonly lastDigits: string;
+        readonly expirationYear: number;
+        readonly expirationMonth: number;
     } | null;
     readonly " $refType": "CreditCardSummaryItem_order";
 };
@@ -38,21 +38,21 @@ const node: ReaderFragment = {
         },
         {
           "kind": "ScalarField",
-          "alias": "last_digits",
+          "alias": null,
           "name": "lastDigits",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": "expiration_year",
+          "alias": null,
           "name": "expirationYear",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": "expiration_month",
+          "alias": null,
           "name": "expirationMonth",
           "args": null,
           "storageKey": null
@@ -61,5 +61,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'd6b34c4ffb33135f2769b0b5c1d63c35';
+(node as any).hash = 'a92d2e7b3be6db434a54e7812b352637';
 export default node;
