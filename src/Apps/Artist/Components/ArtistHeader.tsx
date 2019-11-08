@@ -49,8 +49,8 @@ const carouselSlideTrack: Track<null, null, [Image]> = track
       context_module: "Header",
       // TODO: Old schema for the Follow button
       modelName: "artist",
-      entity_slug: props.artist.id,
-      entity_id: props.artist._id,
+      entity_slug: props.artist.slug,
+      entity_id: props.artist.internalID,
     } as Schema.ContextModule & Schema.Old)
 )
 export class ArtistHeader extends Component<Props> {

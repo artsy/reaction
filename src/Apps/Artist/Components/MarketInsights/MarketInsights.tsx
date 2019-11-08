@@ -66,7 +66,7 @@ const groupedByCategories = edges => {
     let category
     Object.keys(Categories).forEach(key => {
       partner.categories.forEach(partnerCategory => {
-        if (partnerCategory.id === key) {
+        if (partnerCategory.slug === key) {
           category = key
         }
       })

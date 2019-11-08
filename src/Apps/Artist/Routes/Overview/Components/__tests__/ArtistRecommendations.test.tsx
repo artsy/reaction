@@ -98,7 +98,7 @@ const defaultArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
@@ -108,12 +108,13 @@ const defaultArtist = {
   },
   id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
   internalID: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-}
+} as ArtistRecommendations_Test_QueryRawResponse["artist"]
 
 const pagedArtist = {
   name: "Juan Gris",
+  slug: "juan-gris",
   related: {
-    artists: {
+    artistsConnection: {
       pageInfo: {
         hasNextPage: true,
         endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
@@ -122,7 +123,7 @@ const pagedArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
@@ -130,7 +131,7 @@ const pagedArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
@@ -138,7 +139,7 @@ const pagedArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
@@ -147,5 +148,5 @@ const pagedArtist = {
     },
   },
   id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-}
+  internalID: "QXJ0aXN0Omp1YW4tZ3Jpcw",
+} as ArtistRecommendations_Test_QueryRawResponse["artist"]
