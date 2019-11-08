@@ -34,6 +34,7 @@ export const mockResolver = (
 
 export const UntouchedOrder = {
   internalID: "2939023",
+  id: "2939023",
   code: "abcdefg",
   state: "PENDING",
   stateReason: null,
@@ -139,6 +140,7 @@ export const ShippingTotals = {
 } as const
 
 export const OfferWithTotals = {
+  id: "myoffer-id",
   internalID: "myoffer-id",
   amount: "$14,000",
   amountCents: 1400000,
@@ -276,6 +278,7 @@ export const Seller = {
 export const Offers = [
   {
     node: {
+      id: OfferWithTotals.id,
       internalID: OfferWithTotals.internalID,
       currencyCode: "USD",
       fromParticipant: OfferWithTotals.fromParticipant,
@@ -285,6 +288,7 @@ export const Offers = [
   },
   {
     node: {
+      id: "0",
       internalID: "0",
       currencyCode: "USD",
       fromParticipant: "BUYER",
@@ -294,6 +298,7 @@ export const Offers = [
   },
   {
     node: {
+      id: "1",
       internalID: "1",
       currencyCode: "USD",
       fromParticipant: "SELLER",
@@ -303,6 +308,7 @@ export const Offers = [
   },
   {
     node: {
+      id: "2",
       internalID: "2",
       currencyCode: "USD",
       fromParticipant: "BUYER",
