@@ -250,7 +250,7 @@ export const CollectionsRailFixture = [
   },
 ]
 
-export const CategoriesFixture: CollectionsAppTestQueryRawResponse["categories"] = [
+export const CategoriesFixture: CollectionsAppTestQueryRawResponse["marketingCategories"] = [
   {
     name: "Abstract Art",
     collections: [

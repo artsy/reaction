@@ -40,13 +40,28 @@ describe("Genes", () => {
   describe("when having less than 8 genes", () => {
     it("renders all genes", async () => {
       const component = await render({
+        id: "pablo-picasso",
         related: {
           genes: {
             edges: [
-              { node: { name: "Classic", href: "/gene/classic" } },
-              { node: { name: "Modern", href: "/gene/modern" } },
-              { node: { name: "Postmodern", href: "/gene/postmodern" } },
-              { node: { name: "Contemporary", href: "/gene/contemporary" } },
+              {
+                node: { id: "classic", name: "Classic", href: "/gene/classic" },
+              },
+              { node: { id: "modern", name: "Modern", href: "/gene/modern" } },
+              {
+                node: {
+                  id: "postmodern",
+                  name: "Postmodern",
+                  href: "/gene/postmodern",
+                },
+              },
+              {
+                node: {
+                  id: "contemporary",
+                  name: "Contemporary",
+                  href: "/gene/contemporary",
+                },
+              },
             ],
           },
         },
@@ -58,28 +73,59 @@ describe("Genes", () => {
   describe("when having more than 8 genes", () => {
     it("renders first 8 genes and more button", async () => {
       const component = await render({
+        id: "pablo-picasso",
         related: {
           genes: {
             edges: [
-              { node: { name: "Classic", href: "/gene/classic" } },
-              { node: { name: "Modern", href: "/gene/modern" } },
               {
-                node: { name: "Modern revival", href: "/gene/modern-revival" },
+                node: { id: "classic", name: "Classic", href: "/gene/classic" },
               },
-              {
-                node: { name: "Pre postmodern", href: "/gene/pre-postmodern" },
-              },
-              { node: { name: "Postmodern", href: "/gene/postmodern" } },
+              { node: { id: "modern", name: "Modern", href: "/gene/modern" } },
               {
                 node: {
+                  id: "modern-revival",
+                  name: "Modern revival",
+                  href: "/gene/modern-revival",
+                },
+              },
+              {
+                node: {
+                  id: "pre-postmodern",
+                  name: "Pre postmodern",
+                  href: "/gene/pre-postmodern",
+                },
+              },
+              {
+                node: {
+                  id: "postmodern",
+                  name: "Postmodern",
+                  href: "/gene/postmodern",
+                },
+              },
+              {
+                node: {
+                  id: "post-postmodern",
                   name: "Post postmodern",
                   href: "/gene/post-postmodern",
                 },
               },
-              { node: { name: "Hyper modern", href: "/gene/hypermodern" } },
-              { node: { name: "Contemporary", href: "/gene/contemporary" } },
               {
                 node: {
+                  id: "hyper-modern",
+                  name: "Hyper modern",
+                  href: "/gene/hypermodern",
+                },
+              },
+              {
+                node: {
+                  id: "contemporary",
+                  name: "Contemporary",
+                  href: "/gene/contemporary",
+                },
+              },
+              {
+                node: {
+                  id: "post-contmporary",
                   name: "Post contemporary",
                   href: "/gene/post-contemporary",
                 },

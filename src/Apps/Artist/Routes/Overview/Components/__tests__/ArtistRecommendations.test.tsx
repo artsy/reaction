@@ -30,9 +30,11 @@ describe("ArtistRecommendations", () => {
               }
             }
           `}
-          mockData={{
-            artist: artistData,
-          }}
+          mockData={
+            {
+              artist: artistData,
+            } as ArtistRecommendations_Test_QueryRawResponse
+          }
         />
       </MockBoot>
     )
@@ -41,7 +43,7 @@ describe("ArtistRecommendations", () => {
   it("Doesn`t explode when there are no recommended artists", async () => {
     const request = {
       ...defaultArtist,
-      related: { artists: null },
+      related: { artistsConnection: null },
     }
 
     const wrapper = await getWrapper(request)
@@ -78,12 +80,16 @@ const artistFields = {
   artworks_connection: null,
   is_followed: false,
   counts: null,
+  slug: "",
+  internalID: "",
+  __typename: "Artist",
 }
 
 const defaultArtist = {
   name: "Juan Gris",
+  slug: "juan-gris",
   related: {
-    artists: {
+    artistsConnection: {
       pageInfo: {
         hasNextPage: false,
         endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
@@ -101,7 +107,7 @@ const defaultArtist = {
     },
   },
   id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
+  internalID: "QXJ0aXN0Omp1YW4tZ3Jpcw",
 }
 
 const pagedArtist = {
