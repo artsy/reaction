@@ -15,7 +15,7 @@ jest.mock("sharify", () => ({
 describe("Meta", () => {
   const artist: ArtistMeta_artist = {
     " $refType": null,
-    id: "claes-oldenburg",
+    slug: "claes-oldenburg",
     name: "Claes Oldenburg",
     nationality: "Swedish",
     birthday: "1929",

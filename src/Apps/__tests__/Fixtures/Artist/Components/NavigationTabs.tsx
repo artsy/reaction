@@ -1,5 +1,8 @@
+import { NavigationTabs_Test_QueryRawResponse } from "__generated__/NavigationTabs_Test_Query.graphql"
+
 export const NavigationTabsFixture = {
-  id: "andy-warhol",
+  id: "blah",
+  slug: "andy-warhol",
   statuses: {
     shows: true,
     artists: true,
@@ -7,4 +10,4 @@ export const NavigationTabsFixture = {
     cv: true,
     auction_lots: true,
   },
-}
+} as NavigationTabs_Test_QueryRawResponse["artist"]

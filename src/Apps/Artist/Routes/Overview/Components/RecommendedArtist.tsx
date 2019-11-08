@@ -74,8 +74,8 @@ const RecommendedArtist: FC<
             trackingData={{
               modelName: Schema.OwnerType.Artist,
               context_module: Schema.ContextModule.RecommendedArtists,
-              entity_id: artist._id,
-              entity_slug: artist.id,
+              entity_id: artist.internalID,
+              entity_slug: artist.slug,
             }}
             onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
             render={({ is_followed }) => {

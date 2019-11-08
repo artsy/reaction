@@ -1,6 +1,8 @@
+import { ArtistHeader_Test_QueryRawResponse } from "__generated__/ArtistHeader_Test_Query.graphql"
+
 export const ArtistHeaderFixture = {
-  _id: "4d8b92884eb68a1b2c0001d8",
-  id: "cecily-brown",
+  internalID: "4d8b92884eb68a1b2c0001d8",
+  slug: "cecily-brown",
   name: "Cecily Brown",
   nationality: "British",
   years: "born 1969",
@@ -18,7 +20,7 @@ export const ArtistHeaderFixture = {
       },
     ],
   },
-  __id: "QXJ0aXN0OmNlY2lseS1icm93bg==",
+  id: "QXJ0aXN0OmNlY2lseS1icm93bg==",
   is_followed: true,
   statuses: {
     shows: true,
@@ -27,4 +29,4 @@ export const ArtistHeaderFixture = {
     cv: true,
     auction_lots: true,
   },
-}
+} as ArtistHeader_Test_QueryRawResponse["artist"]

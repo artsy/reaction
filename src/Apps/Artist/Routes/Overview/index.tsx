@@ -11,7 +11,6 @@ import {
   SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
 } from "Components/v2"
 
-import { Location } from "found"
 import React from "react"
 import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 import { TrackingProp } from "react-tracking"
@@ -22,7 +21,6 @@ import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/Curr
 
 export interface OverviewRouteProps {
   artist: Overview_artist
-  location?: Location
   relay?: RelayRefetchProp
   tracking?: TrackingProp
 }
@@ -44,7 +42,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
       return null
     }
 
-    const { artist, location } = this.props
+    const { artist } = this.props
     const { sidebarAggregations } = artist
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
