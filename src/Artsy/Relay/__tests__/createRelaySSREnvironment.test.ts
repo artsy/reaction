@@ -1,11 +1,11 @@
-import RelayQueryResponseCache from "relay-runtime/lib/RelayQueryResponseCache"
+import { QueryResponseCache } from "relay-runtime"
 import { hydrateCacheFromSSR } from "../createRelaySSREnvironment"
 
 describe("#hydrateCacheFromSSR", () => {
-  const relayResponseCache = new RelayQueryResponseCache({
+  const relayResponseCache = (new QueryResponseCache({
     size: 250,
     ttl: 1000,
-  })
+  }) as any) as { _responses: Map<any, any> }
 
   it("does not update cache if no ssr data", () => {
     window.__RELAY_BOOTSTRAP__ = null

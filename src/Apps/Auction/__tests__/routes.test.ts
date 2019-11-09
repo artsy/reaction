@@ -7,23 +7,29 @@ import deepMerge from "deepmerge"
 import { createMockNetworkLayer2 } from "DevTools/createMockNetworkLayer"
 import { createRender } from "found"
 import { Resolver } from "found-relay"
+import { FarceElementResult, FarceRedirectResult } from "found/lib/server"
 import getFarceResult from "found/lib/server/getFarceResult"
 import { Environment, RecordSource, Store } from "relay-runtime"
 import { DeepPartial } from "Utils/typeSupport"
 
 describe("Auction/routes", () => {
-  async function render(url, mockData: routes_ConfirmBidQueryRawResponse) {
+  async function render(
+    url,
+    mockData:
+      | routes_ConfirmBidQueryRawResponse
+      | routes_RegisterQueryRawResponse
+  ) {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
     const store = new Store(source)
     const environment = new Environment({ network, store })
 
-    return await getFarceResult({
+    return (await getFarceResult({
       url,
       routeConfig: routes,
       resolver: new Resolver(environment),
       render: createRender({}),
-    })
+    })) as Partial<FarceRedirectResult & FarceElementResult>
   }
 
   const mockRegisterResolver = (
@@ -42,7 +48,7 @@ describe("Auction/routes", () => {
     >(ConfirmBidQueryResponseFixture, data)
 
   it("renders the Auction FAQ view", async () => {
-    const { status } = await render("/auction-faq", {})
+    const { status } = await render("/auction-faq", {} as any)
 
     expect(status).toBe(200)
   })
@@ -229,6 +235,7 @@ describe("Auction/routes", () => {
           sale: {
             ...RegisterQueryResponseFixture.sale,
             registrationStatus: {
+              ...RegisterQueryResponseFixture.sale.registrationStatus,
               qualifiedForBidding: true,
             },
           },

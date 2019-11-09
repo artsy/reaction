@@ -12,7 +12,9 @@ describe("ArtworkSidebarClassification", () => {
 
   const getWrapper = async (
     response: ArtworkSidebarClassification_Test_QueryRawResponse["artwork"] = {
+      id: "opaque-artwork-id",
       attribution_class: {
+        id: "opaque-attribution-class-id",
         short_description: "This is a unique work",
       },
     }
@@ -72,7 +74,10 @@ describe("ArtworkSidebarClassification", () => {
 
   describe("for artwork without classification", () => {
     beforeAll(async () => {
-      wrapper = await getWrapper({ attribution_class: null })
+      wrapper = await getWrapper({
+        id: "opaque-artwork-id",
+        attribution_class: null,
+      })
     })
 
     it("does not render anything", () => {

@@ -1,5 +1,4 @@
 import { Serif } from "@artsy/palette"
-import { OtherWorks_artwork$ref } from "__generated__/OtherWorks_artwork.graphql"
 import { mount, shallow } from "enzyme"
 import React from "react"
 import { Header } from "../OtherWorks/Header"
@@ -21,7 +20,7 @@ describe("OtherWorks", () => {
       layer: {
         artworksConnection: null,
       },
-      " $fragmentRefs": null as OtherWorks_artwork$ref,
+      " $fragmentRefs": null,
     }
   })
 

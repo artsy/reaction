@@ -14,24 +14,20 @@ import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
 jest.unmock("react-relay")
 
-const searchResults = {
-  search: {
+const searchResults: SearchBarTestQueryRawResponse["viewer"] = {
+  searchConnection: {
     edges: [
       {
         node: {
+          __typename: "SearchableItem",
           displayLabel: "Percy Z",
           href: "/cat/percy-z",
           displayType: "Cat",
-          id: "percy-z",
+          slug: "percy-z",
+          id: "opaque-searchable-item-id",
         },
       },
     ],
-  },
-
-  filter_artworks: {
-    artworks_connection: {
-      edges: [],
-    },
   },
 }
 

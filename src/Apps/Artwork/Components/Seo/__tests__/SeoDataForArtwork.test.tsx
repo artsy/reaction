@@ -149,7 +149,7 @@ describe("SeoDataForArtwork", () => {
           ...SeoDataForArtworkFixture,
           is_price_range: false,
           is_price_hidden: false,
-          price: undefined,
+          listPrice: null,
         })
 
         expect(getProductData(wrapper).offers.price).toEqual("sale message")
@@ -160,7 +160,7 @@ describe("SeoDataForArtwork", () => {
           ...SeoDataForArtworkFixture,
           is_price_range: true,
           is_price_hidden: false,
-          price: "$1,234 - 2,345",
+          listPrice: { display: "$1,234 - 2,345" },
         })
 
         const offers = getProductData(wrapper).offers

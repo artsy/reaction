@@ -2,7 +2,6 @@ import { ArtworkDetails_Test_QueryRawResponse } from "__generated__/ArtworkDetai
 import { ArtworkDetailsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkDetails"
 import { ArtworkDetailsFragmentContainer } from "Apps/Artwork/Components/ArtworkDetails"
 import { MockBoot, renderRelayTree } from "DevTools"
-import { cloneDeep } from "lodash"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -29,13 +28,14 @@ describe("ArtworkDetails", () => {
 
   describe("ArtworkDetails for a gallery artwork that is missing some fields", () => {
     it("renders additional info with just what is present", async () => {
-      const data = cloneDeep(ArtworkDetailsFixture)
-      data.series = null
-      data.publisher = null
-      data.manufacturer = null
-      data.image_rights = null
-      data.framed = null
-      wrapper = await getWrapper(data)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        series: null,
+        publisher: null,
+        manufacturer: null,
+        image_rights: null,
+        framed: null,
+      })
       expect(wrapper.html()).toContain("Signature")
       expect(wrapper.html()).toContain("Condition")
       expect(wrapper.html()).toContain("Certificate of authenticity")
@@ -89,25 +89,42 @@ describe("ArtworkDetails", () => {
     })
 
     it("displays partner Initials when profile is present but icon is not", async () => {
-      const noIconProfile = cloneDeep(ArtworkDetailsFixture)
-      noIconProfile.partner.profile.icon = null
-      wrapper = await getWrapper(noIconProfile)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        partner: {
+          ...ArtworkDetailsFixture.partner,
+          profile: {
+            ...ArtworkDetailsFixture.partner.profile,
+            icon: null,
+          },
+        },
+      })
       expect(wrapper.find("img").length).toBe(0)
       expect(wrapper.html()).toContain("S9")
     })
 
     it("does not display partner Icon if artwork is from benefit auction", async () => {
-      const benefitArtwork = cloneDeep(ArtworkDetailsFixture)
-      benefitArtwork.sale = { isBenefit: true, isGalleryAuction: false }
-      wrapper = await getWrapper(benefitArtwork)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        sale: {
+          id: "opaque-sale-id",
+          isBenefit: true,
+          isGalleryAuction: false,
+        },
+      })
       expect(wrapper.find("img").length).toBe(0)
       expect(wrapper.html()).not.toContain("S9")
     })
 
     it("does not display partner Icon if artwork is from gallery auction", async () => {
-      const benefitArtwork = cloneDeep(ArtworkDetailsFixture)
-      benefitArtwork.sale = { isBenefit: false, isGalleryAuction: true }
-      wrapper = await getWrapper(benefitArtwork)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        sale: {
+          id: "opaque-sale-id",
+          isBenefit: false,
+          isGalleryAuction: true,
+        },
+      })
       expect(wrapper.find("img").length).toBe(0)
       expect(wrapper.html()).not.toContain("S9")
     })
@@ -120,10 +137,14 @@ describe("ArtworkDetails", () => {
     })
 
     it("does not display avatar when profile is not available and no initials for partner", async () => {
-      const noIconNoInitials = cloneDeep(ArtworkDetailsFixture)
-      noIconNoInitials.partner.profile = null
-      noIconNoInitials.partner.initials = null
-      wrapper = await getWrapper(noIconNoInitials)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        partner: {
+          ...ArtworkDetailsFixture.partner,
+          profile: null,
+          initials: null,
+        },
+      })
       expect(wrapper.find("img").length).toBe(0)
       // This checks that Avatar div is not rendered.
       expect(wrapper.find("EntityHeader").children.length).toBe(1)
@@ -135,23 +156,32 @@ describe("ArtworkDetails", () => {
     })
 
     it("renders partner follow button for regular partner with profile", async () => {
-      const data = cloneDeep(ArtworkDetailsFixture)
-      data.partner.type = "NOT Auction House"
-      wrapper = await getWrapper(data)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        partner: {
+          ...ArtworkDetailsFixture.partner,
+          type: "NOT Auction House",
+        },
+      })
       expect(wrapper.html()).toContain("Following")
     })
 
     it("does not render partner follow button if artwork is from an auction partner", async () => {
-      const data = cloneDeep(ArtworkDetailsFixture)
-      data.partner.type = "Auction House"
-      wrapper = await getWrapper(data)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        partner: {
+          ...ArtworkDetailsFixture.partner,
+          type: "Auction House",
+        },
+      })
       expect(wrapper.html()).not.toContain("Following")
     })
 
     it("works without a partner", async () => {
-      const data = cloneDeep(ArtworkDetailsFixture)
-      data.partner = null
-      wrapper = await getWrapper(data)
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        partner: null,
+      })
       expect(wrapper).toBeTruthy()
     })
   })

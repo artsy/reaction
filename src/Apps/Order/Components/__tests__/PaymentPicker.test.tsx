@@ -369,16 +369,16 @@ describe("PaymentPickerFragmentContainer", () => {
       {
         internalID: "card-id-1",
         brand: "MasterCard",
-        last_digits: "1234",
-        expiration_month: 1,
-        expiration_year: 2018,
+        lastDigits: "1234",
+        expirationMonth: 1,
+        expirationYear: 2018,
       },
       {
         internalID: "card-id-2",
         brand: "Visa",
-        last_digits: "2345",
-        expiration_month: 1,
-        expiration_year: 2019,
+        lastDigits: "2345",
+        expirationMonth: 1,
+        expirationYear: 2019,
       },
     ]
 

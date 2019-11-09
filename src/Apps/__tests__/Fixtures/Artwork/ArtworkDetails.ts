@@ -23,6 +23,7 @@ export const ArtworkDetailsFixture: ArtworkDetails_Test_QueryRawResponse["artwor
     ],
     profile: {
       id: "sdfsdf",
+      internalID: "profile-id",
       slug: "profile",
       is_followed: true,
       icon: { url: "https://profile_url" },

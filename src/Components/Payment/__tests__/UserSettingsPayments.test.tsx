@@ -27,6 +27,7 @@ const mockMe: UserSettingsPayments_me = {
 }
 
 const mockCard: CreditCardType = {
+  " $refType": null,
   id: "abc123",
   internalID: "123",
   lastDigits: "3456",

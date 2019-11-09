@@ -1,4 +1,3 @@
-import { VerifiedSeller_artwork } from "__generated__/VerifiedSeller_artwork.graphql"
 import {
   VerifiedSellerTestQueryRawResponse,
   VerifiedSellerTestQueryResponse,
@@ -42,7 +41,9 @@ const partnerName = "partner-name"
 describe("VerifiedSeller", () => {
   it("Doesn't render when the partner is a verified seller", async () => {
     const component = await render({
+      id: "opaque-seller-id",
       partner: {
+        id: "opaque-partner-id",
         name: partnerName,
         isVerifiedSeller: false,
       },
@@ -53,7 +54,9 @@ describe("VerifiedSeller", () => {
 
   it("Doesn't render when the artwork is biddable", async () => {
     const component = await render({
+      id: "opaque-seller-id",
       partner: {
+        id: "opaque-partner-id",
         name: partnerName,
         isVerifiedSeller: true,
       },
@@ -64,7 +67,9 @@ describe("VerifiedSeller", () => {
 
   it("Renders when the partner is a verified seller, but the work is not biddable", async () => {
     const component = await render({
+      id: "opaque-seller-id",
       partner: {
+        id: "opaque-partner-id",
         name: partnerName,
         isVerifiedSeller: true,
       },

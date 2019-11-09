@@ -1,4 +1,3 @@
-import { SecurePayment_artwork } from "__generated__/SecurePayment_artwork.graphql"
 import {
   SecurePaymentTestQueryRawResponse,
   SecurePaymentTestQueryResponse,
@@ -40,6 +39,7 @@ const render = (
 describe("SecurePayment", () => {
   it("Doesn't render when work is neither acquireable nor offerable", async () => {
     const component = await render({
+      id: "opaque-payment-id",
       is_acquireable: false,
       is_offerable: false,
     })
@@ -48,6 +48,7 @@ describe("SecurePayment", () => {
 
   it("Renders when the artwork is acquireable", async () => {
     const component = await render({
+      id: "opaque-payment-id",
       is_acquireable: true,
       is_offerable: false,
     })
@@ -56,6 +57,7 @@ describe("SecurePayment", () => {
 
   it("Renders when the artwork is offerable", async () => {
     const component = await render({
+      id: "opaque-payment-id",
       is_acquireable: false,
       is_offerable: true,
     })

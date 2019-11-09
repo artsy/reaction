@@ -223,11 +223,11 @@ export const PaymentDetails = {
     city: "New York",
     state: "NY",
     country: "USA",
-    postal_code: "90210",
+    postalCode: "90210",
     brand: "Visa",
-    last_digits: "4444",
-    expiration_month: 3,
-    expiration_year: 21,
+    lastDigits: "4444",
+    expirationMonth: 3,
+    expirationYear: 21,
   },
 } as const
 
