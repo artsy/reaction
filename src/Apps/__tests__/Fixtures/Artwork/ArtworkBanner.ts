@@ -2,9 +2,7 @@ import { ArtworkBanner_Test_QueryRawResponse } from "__generated__/ArtworkBanner
 
 export const ArtworkNoBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id: "richard-anuszkiewicz-lino-yellow-318",
-  artworkContextAuction: null,
-  artworkContextFair: null,
-  artworkContextPartnerShow: null,
+  context: null,
   partner: {
     id: "opaque-partner-id",
     // type: "Auction House",
@@ -14,9 +12,10 @@ export const ArtworkNoBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwor
   },
   sale: null,
 }
+
 export const ArtworkAuctionBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id: "richard-anuszkiewicz-lino-yellow-318",
-  artworkContextAuction: {
+  context: {
     __typename: "Sale",
     id: "opaque-sale-id",
     name: "Doyle: Post-War & Contemporary Art",
@@ -27,8 +26,6 @@ export const ArtworkAuctionBannerFixture: ArtworkBanner_Test_QueryRawResponse["a
     // live_start_at: "2018-11-07T19:00:00+00:00",
     // live_url_if_open: null,
   },
-  artworkContextFair: null,
-  artworkContextPartnerShow: null,
   partner: {
     id: "opaque-partner-id",
     // type: "Auction House",
@@ -51,7 +48,7 @@ export const ArtworkAuctionBannerFixture: ArtworkBanner_Test_QueryRawResponse["a
 
 export const ArtworkBenefitAuctionBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id: "richard-anuszkiewicz-lino-yellow-318",
-  artworkContextAuction: {
+  context: {
     __typename: "Sale",
     id: "opaque-sale-id",
     name: "BFAMI: Live Benefit Auction 2019",
@@ -62,8 +59,6 @@ export const ArtworkBenefitAuctionBannerFixture: ArtworkBanner_Test_QueryRawResp
     // live_start_at: "2019-01-29T21:35:00+00:00",
     // live_url_if_open: null,
   },
-  artworkContextFair: null,
-  artworkContextPartnerShow: null,
   partner: {
     id: "opaque-partner-id",
     // type: "Auction House",
@@ -85,8 +80,7 @@ export const ArtworkBenefitAuctionBannerFixture: ArtworkBanner_Test_QueryRawResp
 
 export const ArtworkFairBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id: "raqib-shaw-the-garden-of-earthly-delights-xiv",
-  artworkContextAuction: null,
-  artworkContextFair: {
+  context: {
     __typename: "Fair",
     id: "opaque-fair-id",
     name: "West Bund Art & Design 2018",
@@ -105,7 +99,6 @@ export const ArtworkFairBannerFixture: ArtworkBanner_Test_QueryRawResponse["artw
       },
     },
   },
-  artworkContextPartnerShow: null,
   partner: {
     id: "opaque-partner-id",
     // type: "Gallery",
@@ -124,9 +117,7 @@ export const ArtworkFairBannerFixture: ArtworkBanner_Test_QueryRawResponse["artw
 
 export const ArtworkUpcomingShowBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id: "claudia-giraudo-affinita-verde-amarillo",
-  artworkContextAuction: null,
-  artworkContextFair: null,
-  artworkContextPartnerShow: {
+  context: {
     __typename: "Show",
     id: "opaque-show-id",
     name: "Claudia Giraudo | The age of innocence",
@@ -158,9 +149,7 @@ export const ArtworkUpcomingShowBannerFixture: ArtworkBanner_Test_QueryRawRespon
 
 export const ArtworkCurrentShowBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id: "marcel-barbeau-diamants-larmes",
-  artworkContextAuction: null,
-  artworkContextFair: null,
-  artworkContextPartnerShow: {
+  context: {
     __typename: "Show",
     id: "opaque-show-id",
     // name: "Marcel Barbeau : Jours d’envol",
@@ -193,9 +182,7 @@ export const ArtworkCurrentShowBannerFixture: ArtworkBanner_Test_QueryRawRespons
 export const ArtworkPastShowBannerFixture: ArtworkBanner_Test_QueryRawResponse["artwork"] = {
   id:
     "julio-le-parc-la-longue-marche-etape-n-degrees-6-the-long-march-step-n-degrees-6",
-  artworkContextAuction: null,
-  artworkContextFair: null,
-  artworkContextPartnerShow: {
+  context: {
     __typename: "Show",
     id: "opaque-show-id",
     name: "Julio Le Parc: Form into Action",

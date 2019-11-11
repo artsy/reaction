@@ -14,7 +14,7 @@ jest.unmock("react-relay")
 
 describe("ArtworkBanner", () => {
   const getWrapper = async (
-    response: ArtworkBanner_Test_QueryRawResponse["artwork"] = ArtworkNoBannerFixture
+    response: ArtworkBanner_Test_QueryRawResponse["artwork"]
   ) => {
     return await renderRelayTree({
       Component: ArtworkBannerFragmentContainer,
@@ -33,7 +33,7 @@ describe("ArtworkBanner", () => {
 
   describe("ArtworkBanner for artwork with no banner", () => {
     beforeAll(async () => {
-      wrapper = await getWrapper()
+      wrapper = await getWrapper(ArtworkNoBannerFixture)
     })
     it("renders nothing", () => {
       const html = wrapper.html()
