@@ -9,7 +9,7 @@ export type ArtistRecommendations_artist = {
         readonly artistsConnection: {
             readonly edges: ReadonlyArray<{
                 readonly node: {
-                    readonly slug: string;
+                    readonly id: string;
                     readonly " $fragmentRefs": FragmentRefs<"RecommendedArtist_artist">;
                 } | null;
             } | null> | null;
@@ -20,15 +20,7 @@ export type ArtistRecommendations_artist = {
 
 
 
-const node: ReaderFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "slug",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistRecommendations_artist",
   "type": "Artist",
@@ -66,7 +58,13 @@ return {
     }
   ],
   "selections": [
-    (v0/*: any*/),
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -116,7 +114,13 @@ return {
                   "concreteType": "Artist",
                   "plural": false,
                   "selections": [
-                    (v0/*: any*/),
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -171,6 +175,5 @@ return {
     }
   ]
 };
-})();
-(node as any).hash = '768efb45a18855c15e57d0b22936a3e9';
+(node as any).hash = '28c5c9e84af1e253ea6b6e3e8a1a93ab';
 export default node;

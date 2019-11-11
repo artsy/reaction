@@ -171,7 +171,7 @@ export const ArtistOverviewQuery = graphql`
     $priceRange: String
     $sort: String
     $width: String
-  ) {
+  ) @raw_response_type {
     artist(id: $artistID) {
       ...Overview_artist
         @arguments(

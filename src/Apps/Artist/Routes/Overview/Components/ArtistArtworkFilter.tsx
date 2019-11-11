@@ -10,20 +10,15 @@ import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ZeroState } from "./ZeroState"
 
-interface ArtistArtworkFilterProps extends RouterState {
+interface ArtistArtworkFilterProps {
   artist: ArtistArtworkFilter_artist
   relay: RelayRefetchProp
   sidebarAggregations: Overview_artist["sidebarAggregations"]
-  match: Match
+  match?: Match
 }
 
 const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
-  const {
-    match: { location },
-    relay,
-    artist,
-    sidebarAggregations,
-  } = props
+  const { match, relay, artist, sidebarAggregations } = props
   const tracking = useTracking()
   const { filtered_artworks } = artist
 
@@ -35,7 +30,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
 
   return (
     <ArtworkFilterContextProvider
-      filters={location.query}
+      filters={match && match.location.query}
       sortOptions={[
         { value: "-decayed_merch", text: "Default" },
         { value: "-partner_updated_at", text: "Recently updated" },
@@ -70,7 +65,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
 }
 
 export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
-  withRouter(ArtistArtworkFilter),
+  withRouter<ArtistArtworkFilterProps & RouterState>(ArtistArtworkFilter),
   {
     artist: graphql`
       fragment ArtistArtworkFilter_artist on Artist
