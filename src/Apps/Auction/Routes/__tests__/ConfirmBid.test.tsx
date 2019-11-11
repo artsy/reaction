@@ -109,9 +109,9 @@ describe("Routes/ConfirmBid", () => {
       }),
       {
         input: {
-          artwork_id: "artworkslug",
-          max_bid_amount_cents: 5000000,
-          sale_id: "saleslug",
+          artworkID: "artworkid",
+          maxBidAmountCents: 5000000,
+          saleID: "saleid",
         },
       }
     )
@@ -167,9 +167,9 @@ describe("Routes/ConfirmBid", () => {
       }),
       {
         input: {
-          artwork_id: "artworkslug",
-          max_bid_amount_cents: 5000000,
-          sale_id: "saleslug",
+          artworkID: "artworkid",
+          maxBidAmountCents: 5000000,
+          saleID: "saleid",
         },
       }
     )
