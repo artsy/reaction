@@ -3,8 +3,8 @@ import {
   ArtworkAuctionBannerFixture,
   ArtworkBenefitAuctionBannerFixture,
   ArtworkFairBannerFixture,
+  ArtworkNoBannerFixture,
   ArtworkUpcomingShowBannerFixture,
-  ArtwrorkNoBannerFixture,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkBanner"
 import { ArtworkBannerFragmentContainer } from "Apps/Artwork/Components/ArtworkBanner"
 import { renderRelayTree } from "DevTools"
@@ -14,7 +14,7 @@ jest.unmock("react-relay")
 
 describe("ArtworkBanner", () => {
   const getWrapper = async (
-    response: ArtworkBanner_Test_QueryRawResponse["artwork"] = ArtwrorkNoBannerFixture
+    response: ArtworkBanner_Test_QueryRawResponse["artwork"] = ArtworkNoBannerFixture
   ) => {
     return await renderRelayTree({
       Component: ArtworkBannerFragmentContainer,

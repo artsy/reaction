@@ -31,7 +31,10 @@ describe("ArtistBio", () => {
         }
       `,
       mockData: {
-        bio: { biography_blurb },
+        bio: {
+          id: "unused",
+          biography_blurb,
+        },
       } as ArtistBioTestQueryRawResponse,
     })
   }

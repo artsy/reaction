@@ -1,4 +1,3 @@
-import { AuthenticityCertificate_artwork } from "__generated__/AuthenticityCertificate_artwork.graphql"
 import {
   AuthenticityCertificateTestQueryRawResponse,
   AuthenticityCertificateTestQueryResponse,
@@ -42,6 +41,7 @@ const render = (
 describe("AuthenticityCertificate", () => {
   it("Doesn't render when there's no certificate of authenticity", async () => {
     const component = await render({
+      id: "opaque-cert-id",
       hasCertificateOfAuthenticity: false,
       is_biddable: false,
     })
@@ -50,6 +50,7 @@ describe("AuthenticityCertificate", () => {
 
   it("Doesn't render when the artwork is biddable", async () => {
     const component = await render({
+      id: "opaque-cert-id",
       hasCertificateOfAuthenticity: true,
       is_biddable: true,
     })
@@ -58,6 +59,7 @@ describe("AuthenticityCertificate", () => {
 
   it("Renders when there's a certificate of authenticity, but the work is not biddable", async () => {
     const component = await render({
+      id: "opaque-cert-id",
       hasCertificateOfAuthenticity: true,
       is_biddable: false,
     })

@@ -1,5 +1,5 @@
-import { FollowArtistPopover_Test_QueryRawResponse } from "__generated__/FollowArtistPopover_Test_Query.graphql"
 import { Breakpoint } from "@artsy/palette"
+import { FollowArtistPopover_Test_QueryRawResponse } from "__generated__/FollowArtistPopover_Test_Query.graphql"
 import { SingleNonFollowedArtist } from "Apps/__tests__/Fixtures/Artists"
 import { FollowArtistPopoverFragmentContainer as FollowArtistPopover } from "Components/v2/FollowArtistPopover"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -12,8 +12,8 @@ jest.unmock("react-relay")
 describe("Follow Artist Popover", () => {
   let wrapper: ReactWrapper
 
-  const artistNode = {
-    _id: "mongo-id",
+  const artistNode: FollowArtistPopover_Test_QueryRawResponse["artist"]["related"]["suggestedConnection"]["edges"][number]["node"] = {
+    internalID: "mongo-id",
     image: {
       cropped: {
         url: "/path/to/image.jpg",
@@ -22,10 +22,11 @@ describe("Follow Artist Popover", () => {
     ...SingleNonFollowedArtist[0],
   }
 
-  const artistResponse = {
+  const artistResponse: FollowArtistPopover_Test_QueryRawResponse = {
     artist: {
+      id: "opaque-artist-id",
       related: {
-        suggested: {
+        suggestedConnection: {
           edges: [{ node: artistNode }],
         },
       },

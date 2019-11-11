@@ -1,4 +1,4 @@
-import { ConfirmBidValidTestQueryResponse } from "__generated__/ConfirmBidValidTestQuery.graphql"
+import { ConfirmBidValidTestQueryRawResponse } from "__generated__/ConfirmBidValidTestQuery.graphql"
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import React from "react"
@@ -48,7 +48,7 @@ const setupTestEnv = ({
       />
     ),
     query: graphql`
-      query ConfirmBidValidTestQuery {
+      query ConfirmBidValidTestQuery @raw_response_type {
         artwork(id: "artwork-id") {
           ...LotInfo_artwork
           internalID
@@ -77,7 +77,7 @@ const setupTestEnv = ({
         }
       }
     `,
-    defaultData: ConfirmBidQueryResponseFixture as ConfirmBidValidTestQueryResponse,
+    defaultData: ConfirmBidQueryResponseFixture as ConfirmBidValidTestQueryRawResponse,
     defaultMutationResults: {
       createBidderPosition: {},
     },

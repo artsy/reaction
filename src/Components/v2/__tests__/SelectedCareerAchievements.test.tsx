@@ -48,10 +48,10 @@ describe("SelectedCareerAchievements", () => {
   it("renders selected career achievements if no auction results or partner highlights", async () => {
     wrapper = await getWrapper({
       ...ArtistFixture,
-      auctionResults: null,
+      auctionResultsConnection: null,
       highlights: {
         ...ArtistFixture.highlights,
-        partners: null,
+        partnersConnection: null,
       },
     })
     const text = wrapper.text()
@@ -68,10 +68,10 @@ describe("SelectedCareerAchievements", () => {
   it("doesn't render selected career achievements if no auction results, partner highlights, or insights", async () => {
     wrapper = await getWrapper({
       ...ArtistFixture,
-      auctionResults: null,
+      auctionResultsConnection: null,
       highlights: {
         ...ArtistFixture.highlights,
-        partners: null,
+        partnersConnection: null,
       },
       insights: [],
     })
@@ -83,10 +83,10 @@ describe("SelectedCareerAchievements", () => {
   it("doesn't render selected career achievements if no auction results or partner highlights and insights is null", async () => {
     wrapper = await getWrapper({
       ...ArtistFixture,
-      auctionResults: null,
+      auctionResultsConnection: null,
       highlights: {
         ...ArtistFixture.highlights,
-        partners: null,
+        partnersConnection: null,
       },
       insights: null,
     })

@@ -11,9 +11,22 @@ export type RegisterValidTestQueryResponse = {
         readonly " $fragmentRefs": FragmentRefs<"Register_me">;
     } | null;
 };
+export type RegisterValidTestQueryRawResponse = {
+    readonly sale: ({
+        readonly slug: string;
+        readonly internalID: string;
+        readonly status: string | null;
+        readonly id: string | null;
+    }) | null;
+    readonly me: ({
+        readonly internalID: string;
+        readonly id: string | null;
+    }) | null;
+};
 export type RegisterValidTestQuery = {
     readonly response: RegisterValidTestQueryResponse;
     readonly variables: RegisterValidTestQueryVariables;
+    readonly rawResponse: RegisterValidTestQueryRawResponse;
 };
 
 
@@ -162,5 +175,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'e09da6584348e9a59dfbc0da8831f992';
+(node as any).hash = 'a4c265e5981c01e987b8ac249f776df2';
 export default node;

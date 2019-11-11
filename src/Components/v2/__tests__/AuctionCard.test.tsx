@@ -137,7 +137,7 @@ describe("AuctionCard", () => {
       isGalleryAuction: false,
       end_at: "",
       href: "",
-      id: "",
+      slug: "",
       is_live_open: false,
       is_preview: false,
       live_start_at: "",
@@ -150,6 +150,7 @@ describe("AuctionCard", () => {
         name: "",
       },
     }
+
     it("handles preview sales", () => {
       expect(
         upcomingLabel(
@@ -224,7 +225,7 @@ describe("AuctionCard", () => {
           upcomingLabel(
             {
               ...sale,
-              registrationStatus: { id: "" },
+              registrationStatus: { internalID: "" },
               live_start_at: now()
                 .plus({ days: 1 })
                 .toISO(),

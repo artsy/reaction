@@ -7,20 +7,20 @@ import { rangeToTuple } from "../rangeToTuple"
 describe("rangeToTuple", () => {
   const artworkFilterState: ArtworkFilters = {
     ...initialArtworkFilterState,
-    price_range: "100-200",
+    priceRange: "100-200",
     height: "300-400",
     width: "500-600",
   }
 
   it("returns a tuple for range values", () => {
-    expect(rangeToTuple(artworkFilterState, "price_range")).toEqual([100, 200])
+    expect(rangeToTuple(artworkFilterState, "priceRange")).toEqual([100, 200])
     expect(rangeToTuple(artworkFilterState, "height")).toEqual([300, 400])
     expect(rangeToTuple(artworkFilterState, "width")).toEqual([500, 600])
   })
 
   it("returns a min and max price", () => {
     expect(
-      rangeToTuple({ ...artworkFilterState, price_range: "*-*" }, "price_range")
+      rangeToTuple({ ...artworkFilterState, priceRange: "*-*" }, "priceRange")
     ).toEqual([50, 50000])
   })
 

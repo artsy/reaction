@@ -8,8 +8,8 @@ import { rangeToTuple } from "./Utils/rangeToTuple"
 /**
  * Initial filter state
  */
-export const initialArtworkFilterState = {
-  major_periods: [],
+export const initialArtworkFilterState: ArtworkFilters = {
+  majorPeriods: [],
   page: 1,
   sort: "-decayed_merch",
 

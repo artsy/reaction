@@ -244,8 +244,8 @@ export const ArtworkSingleEditionHiddenAvailability = {
   shippingOrigin: null,
   edition_sets: [
     {
-      id: "5bfd7208773e1e6a1baa3b61",
       id: "RWRpdGlvblNldDo1YmZkNzIwODc3M2UxZTZhMWJhYTNiNjE=",
+      internalID: "5bfd7208773e1e6a1baa3b61",
       is_acquireable: false,
       is_offerable: false,
       sale_message: null,

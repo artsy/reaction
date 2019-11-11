@@ -30,9 +30,57 @@ export type ConfirmBidValidTestQueryResponse = {
         readonly hasQualifiedCreditCards: boolean | null;
     } | null;
 };
+export type ConfirmBidValidTestQueryRawResponse = {
+    readonly artwork: ({
+        readonly internalID: string;
+        readonly date: string | null;
+        readonly title: string | null;
+        readonly imageUrl: string | null;
+        readonly artistNames: string | null;
+        readonly slug: string;
+        readonly saleArtwork: ({
+            readonly counts: ({
+                readonly bidderPositions: number | null;
+            }) | null;
+            readonly lotLabel: string | null;
+            readonly minimumNextBid: ({
+                readonly amount: string | null;
+                readonly cents: number | null;
+                readonly display: string | null;
+            }) | null;
+            readonly increments: ReadonlyArray<({
+                readonly cents: number | null;
+                readonly display: string | null;
+            }) | null> | null;
+            readonly internalID: string;
+            readonly slug: string;
+            readonly sale: ({
+                readonly registrationStatus: ({
+                    readonly internalID: string;
+                    readonly qualifiedForBidding: boolean | null;
+                    readonly id: string | null;
+                }) | null;
+                readonly internalID: string;
+                readonly slug: string;
+                readonly name: string | null;
+                readonly isClosed: boolean | null;
+                readonly isRegistrationClosed: boolean | null;
+                readonly id: string | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly id: string | null;
+    }) | null;
+    readonly me: ({
+        readonly internalID: string;
+        readonly hasQualifiedCreditCards: boolean | null;
+        readonly id: string | null;
+    }) | null;
+};
 export type ConfirmBidValidTestQuery = {
     readonly response: ConfirmBidValidTestQueryResponse;
     readonly variables: ConfirmBidValidTestQueryVariables;
+    readonly rawResponse: ConfirmBidValidTestQueryRawResponse;
 };
 
 
@@ -463,5 +511,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'c02e72ce8a056ccff4e7889dd7a7f87e';
+(node as any).hash = 'dd99a91dec5bf720e9913f28b9c3a287';
 export default node;
