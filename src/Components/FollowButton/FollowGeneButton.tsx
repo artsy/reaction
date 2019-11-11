@@ -40,7 +40,6 @@ export class FollowGeneButton extends React.Component<Props> {
 
     if (user && user.id) {
       commitMutation<FollowGeneButtonMutation>(relay.environment, {
-        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
             followGene(input: $input) {

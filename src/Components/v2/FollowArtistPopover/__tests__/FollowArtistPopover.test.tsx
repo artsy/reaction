@@ -12,22 +12,24 @@ jest.unmock("react-relay")
 describe("Follow Artist Popover", () => {
   let wrapper: ReactWrapper
 
-  const artistNode: FollowArtistPopover_Test_QueryRawResponse["artist"]["related"]["suggestedConnection"]["edges"][number]["node"] = {
-    internalID: "mongo-id",
-    image: {
-      cropped: {
-        url: "/path/to/image.jpg",
-      },
-    },
-    ...SingleNonFollowedArtist[0],
-  }
-
   const artistResponse: FollowArtistPopover_Test_QueryRawResponse = {
     artist: {
       id: "opaque-artist-id",
       related: {
         suggestedConnection: {
-          edges: [{ node: artistNode }],
+          edges: [
+            {
+              node: {
+                internalID: "mongo-id",
+                image: {
+                  cropped: {
+                    url: "/path/to/image.jpg",
+                  },
+                },
+                ...SingleNonFollowedArtist[0],
+              },
+            },
+          ],
         },
       },
     },
@@ -46,7 +48,7 @@ describe("Follow Artist Popover", () => {
       `,
       mockData: artistResponse as FollowArtistPopover_Test_QueryRawResponse,
       variables: {
-        artist_id: "percy-z",
+        artistID: "percy-z",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>

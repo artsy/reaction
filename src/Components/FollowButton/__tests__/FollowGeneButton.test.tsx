@@ -25,7 +25,7 @@ describe("FollowGeneButton", () => {
   let testProps
   beforeEach(() => {
     testProps = {
-      gene: { id: "modernism", __id: "1234", is_followed: false },
+      gene: { internalID: "modernism", id: "1234", is_followed: false },
       onOpenAuthModal: jest.fn(),
       tracking: { trackEvent: jest.fn() },
     }
@@ -65,7 +65,7 @@ describe("FollowGeneButton", () => {
       component.find(FollowButtonDeprecated).simulate("click")
       const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
-      expect(mutation.gene_id).toBe("modernism")
+      expect(mutation.geneID).toBe("modernism")
     })
 
     it("Unfollows an gene if current user", () => {
@@ -74,7 +74,7 @@ describe("FollowGeneButton", () => {
       component.find(FollowButtonDeprecated).simulate("click")
       const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
-      expect(mutation.gene_id).toBe("modernism")
+      expect(mutation.geneID).toBe("modernism")
     })
 
     it("Tracks follow click when following", () => {

@@ -76,6 +76,9 @@ if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
             args[0].includes &&
             !args[0].includes(
               "Warning: An update to %s inside a test was not wrapped in act"
+            ) &&
+            !args[0].includes(
+              "Warning: RelayResponseNormalizer: Payload did not contain a value for field `id: id`. Check that you are parsing with the same query that was used to fetch the payload."
             )
           ) {
             done.fail(logToError(type, args, handler))

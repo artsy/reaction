@@ -55,6 +55,8 @@ export const NotificationsBadge: React.FC<{
           return null
         }
 
+        const displayCount = count >= 100 ? "99+" : count.toLocaleString()
+
         // Update the notification bad with the count, and store it in a cookie
         // so that subsequent page views don't need a fetch in order to render
         // the badge.
@@ -65,17 +67,14 @@ export const NotificationsBadge: React.FC<{
           if (count !== cachedNotificationCount) {
             // In force, when a request is made to `/notifications` endpoint,
             // sd.NOTIFICATIONS_COUNT is populated by this cookie.
-            cookie.set(
-              "notification-count",
-              count >= 100 ? "99+" : count.toLocaleString()
-            )
+            cookie.set("notification-count", displayCount)
           }
         }
 
         return (
           <Box>
             <CircularCount
-              count={count.toLocaleString()}
+              count={displayCount}
               rawCount={totalUnread}
               hover={hover}
             />

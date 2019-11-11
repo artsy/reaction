@@ -2,13 +2,14 @@ import { mount } from "enzyme"
 import React from "react"
 import { act } from "react-dom/test-utils"
 import {
+  ArtworkFilterContextProps,
   ArtworkFilterContextProvider,
   useArtworkFilterContext,
 } from "../../ArtworkFilterContext"
 import { PriceRangeFilter } from "../PriceRangeFilter"
 
 describe("PriceRangeFilter", () => {
-  let context
+  let context: ArtworkFilterContextProps
 
   const getWrapper = () => {
     return mount(
@@ -32,7 +33,7 @@ describe("PriceRangeFilter", () => {
         .props.onAfterChange([20, 100])
 
       setTimeout(() => {
-        expect(context.filters.price_range).toEqual("20-100")
+        expect(context.filters.priceRange).toEqual("20-100")
         done()
       }, 0)
     })

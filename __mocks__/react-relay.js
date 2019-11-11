@@ -2,10 +2,17 @@
 // Should be used in tests as a replacement for `react-storybooks-relay-container`
 //
 var React = require.requireActual("react")
-var Relay = require.requireActual("react-relay")
+
+const graphql = (strings, ...keys) => {
+  const lastIndex = strings.length - 1
+  return (
+    strings.slice(0, lastIndex).reduce((p, s, i) => p + s + keys[i], "") +
+    strings[lastIndex]
+  )
+}
 
 module.exports = {
-  graphql: Relay.graphql,
+  graphql,
   commitMutation: jest.fn(),
   QueryRenderer: props => React.createElement("div", {}),
   createFragmentContainer: component => component,

@@ -127,12 +127,10 @@ describe("ArtworkGrid", () => {
       })
     }
 
-    let props
+    let props: Parameters<typeof getRelayWrapper>[0]
 
     beforeEach(() => {
-      props = {
-        artworks: cloneDeep(ArtworkGridFixture),
-      }
+      props = { artworks: cloneDeep(ArtworkGridFixture) }
     })
 
     it("Renders artworks if present", async () => {
@@ -142,17 +140,20 @@ describe("ArtworkGrid", () => {
     })
 
     it("Renders empty message if no artworks", async () => {
-      props.artworks.edges = []
-      const wrapper = await getRelayWrapper(props)
+      const wrapper = await getRelayWrapper({
+        artworks: { ...props.artworks, edges: [] },
+      })
       expect(wrapper.find(ArtworkGridEmptyState).exists()).toBeTruthy()
     })
 
     it("Can call onClearFilters from empty message", async () => {
-      props.artworks.edges = []
-      props.onClearFilters = jest.fn()
-      const wrapper = await getRelayWrapper(props)
+      const onClearFilters = jest.fn()
+      const wrapper = await getRelayWrapper({
+        onClearFilters,
+        artworks: { ...props.artworks, edges: [] },
+      })
       wrapper.find("a").simulate("click")
-      expect(props.onClearFilters).toBeCalled()
+      expect(onClearFilters).toBeCalled()
     })
 
     it("#componentDidMount sets state.interval if props.onLoadMore", async () => {
@@ -183,7 +184,7 @@ describe("ArtworkGrid", () => {
         .find(ArtworkGridContainer)
         .instance() as ArtworkGridContainer
       const artworks = wrapper.sectionedArtworksForAllBreakpoints(
-        props.artworks,
+        (props.artworks as any) as ArtworkGrid_artworks,
         [2, 2, 2, 3]
       )
       expect(artworks[0].length).toBe(2)
