@@ -1,7 +1,7 @@
-import { createTestEnvQueryRawResponse } from "__generated__/createTestEnvQuery.graphql"
 import { createTestEnv_artwork } from "__generated__/createTestEnv_artwork.graphql"
 import { createTestEnvCreditCardMutation } from "__generated__/createTestEnvCreditCardMutation.graphql"
 import { createTestEnvOrderMutation } from "__generated__/createTestEnvOrderMutation.graphql"
+import { createTestEnvQueryRawResponse } from "__generated__/createTestEnvQuery.graphql"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 import React from "react"
@@ -43,7 +43,7 @@ const orderSuccess = {
       __typename: "CommerceOrderWithMutationSuccess",
       order: {
         __typename: "CommerceBuyOrder",
-        id: "order-id",
+        internalID: "order-id",
       },
     },
   },

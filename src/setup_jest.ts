@@ -79,7 +79,8 @@ if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
             ) &&
             !args[0].includes(
               "Warning: RelayResponseNormalizer: Payload did not contain a value for field `id: id`. Check that you are parsing with the same query that was used to fetch the payload."
-            )
+            ) &&
+            !/Warning: Received.+?for a non-boolean attribute/.test(args[0])
           ) {
             done.fail(logToError(type, args, handler))
           }

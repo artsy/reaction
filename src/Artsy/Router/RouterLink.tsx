@@ -1,7 +1,6 @@
-import { Link, LinkProps, LinkPropsSimple } from "found"
+import { Link, LinkProps, LinkPropsSimple, RouterContext } from "found"
 import { pick } from "lodash"
-import PropTypes from "prop-types"
-import React from "react"
+import React, { useContext } from "react"
 
 /**
  * Wrapper component around found's <Link> component with a fallback to a normal
@@ -14,11 +13,8 @@ import React from "react"
  * `
  */
 
-export const RouterLink: React.FC<LinkProps> = (
-  { to, children, ...props },
-  context
-) => {
-  const isRouterContext = Boolean(context.router)
+export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
+  const isRouterContext = !!useContext(RouterContext)
 
   // Only pass found-router specific props across, props that conform to the
   // link API found here: https://github.com/4Catalyzer/found#links
@@ -57,12 +53,4 @@ export const RouterLink: React.FC<LinkProps> = (
       </a>
     )
   }
-}
-
-/**
- * FIXME: Upgrade to Found v.4: https://github.com/4Catalyzer/found/releases/tag/v0.4.0,
- * which supports React 14.3 context style.
- */
-RouterLink.contextTypes = {
-  router: PropTypes.any,
 }

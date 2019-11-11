@@ -69,7 +69,8 @@ const ArtistQueryRenderer = (props: { id: string }) => (
           environment={relayEnvironment}
           variables={props}
           query={graphql`
-            query MockRelayRendererFixturesArtistQuery($id: String!) {
+            query MockRelayRendererFixturesArtistQuery($id: String!)
+              @raw_response_type {
               artist(id: $id) {
                 ...MockRelayRendererFixtures_artist
               }

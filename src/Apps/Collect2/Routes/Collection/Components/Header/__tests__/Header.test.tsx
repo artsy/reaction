@@ -18,6 +18,7 @@ jest.mock("sharify", () => ({
 
 jest.mock("found", () => ({
   Link: props => <div>{props.children}</div>,
+  RouterContext: jest.requireActual("found").RouterContext,
 }))
 
 jest.mock("Artsy/Analytics/useTracking", () => {
