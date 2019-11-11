@@ -62,10 +62,10 @@ describe("Details", () => {
     it("shows Contact for price if sale_message equals the same", async () => {
       const data = {
         ...artworkInAuction,
+        sale_message: "Contact For Price",
         sale: {
           ...artworkInAuction.sale,
           is_auction: false,
-          sale_message: "Contact For Price",
         },
       }
       const wrapper = await getWrapper(data)

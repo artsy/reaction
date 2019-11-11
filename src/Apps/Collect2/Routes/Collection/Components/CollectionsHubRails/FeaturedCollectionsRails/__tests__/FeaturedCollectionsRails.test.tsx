@@ -15,6 +15,7 @@ jest.mock("Artsy/Analytics/useTracking")
 
 jest.mock("found", () => ({
   Link: ({ children, ...props }) => <div {...props}>{children}</div>,
+  RouterContext: jest.requireActual("found").RouterContext,
 }))
 
 describe("FeaturedCollectionsRails", () => {

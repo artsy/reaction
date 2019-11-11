@@ -1,5 +1,5 @@
 diff --git a/node_modules/found/lib/index.d.ts b/node_modules/found/lib/index.d.ts
-index 02cc90c..a0fec94 100644
+index 02cc90c..b3706dd 100644
 --- a/node_modules/found/lib/index.d.ts
 +++ b/node_modules/found/lib/index.d.ts
 @@ -111,6 +111,10 @@ declare module 'found' {
@@ -26,3 +26,12 @@ index 02cc90c..a0fec94 100644
    }
  
    /**
+@@ -438,6 +448,8 @@ declare module 'found' {
+ 
+   function useRouter(): RouterState;
+   
++  const RouterContext: React.Context<any>;
++
+   function withRouter<Props extends RouterState>(
+     Component: React.ComponentType<Props>,
+   ): React.ComponentType<Omit<Props, keyof RouterState>>;

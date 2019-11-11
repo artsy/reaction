@@ -42,21 +42,12 @@ fragment ArtworkBanner_artwork on Artwork {
     }
     id
   }
-  artworkContextAuction: context {
+  context {
     __typename
     ... on Sale {
       name
       href
     }
-    ... on Node {
-      id
-    }
-    ... on Fair {
-      id
-    }
-  }
-  artworkContextFair: context {
-    __typename
     ... on Fair {
       name
       href
@@ -71,12 +62,6 @@ fragment ArtworkBanner_artwork on Artwork {
       }
       id
     }
-    ... on Node {
-      id
-    }
-  }
-  artworkContextPartnerShow: context {
-    __typename
     ... on Show {
       name
       href
@@ -88,9 +73,6 @@ fragment ArtworkBanner_artwork on Artwork {
       }
     }
     ... on Node {
-      id
-    }
-    ... on Fair {
       id
     }
   }
@@ -142,18 +124,11 @@ v5 = {
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v8 = [
+v7 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -295,42 +270,35 @@ return {
           },
           {
             "kind": "LinkedField",
-            "alias": "artworkContextAuction",
+            "alias": null,
             "name": "context",
             "storageKey": null,
             "args": null,
             "concreteType": null,
             "plural": false,
             "selections": [
-              (v6/*: any*/),
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__typename",
+                "args": null,
+                "storageKey": null
+              },
               (v4/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Sale",
                 "selections": [
                   (v2/*: any*/),
-                  (v7/*: any*/)
+                  (v6/*: any*/)
                 ]
-              }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": "artworkContextFair",
-            "name": "context",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              (v6/*: any*/),
-              (v4/*: any*/),
+              },
               {
                 "kind": "InlineFragment",
                 "type": "Fair",
                 "selections": [
                   (v2/*: any*/),
-                  (v7/*: any*/),
+                  (v6/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -349,32 +317,19 @@ return {
                         "args": null,
                         "concreteType": "Image",
                         "plural": false,
-                        "selections": (v8/*: any*/)
+                        "selections": (v7/*: any*/)
                       },
                       (v4/*: any*/)
                     ]
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": "artworkContextPartnerShow",
-            "name": "context",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              (v6/*: any*/),
-              (v4/*: any*/),
+              },
               {
                 "kind": "InlineFragment",
                 "type": "Show",
                 "selections": [
                   (v2/*: any*/),
-                  (v7/*: any*/),
+                  (v6/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -390,7 +345,7 @@ return {
                     "args": null,
                     "concreteType": "Image",
                     "plural": false,
-                    "selections": (v8/*: any*/)
+                    "selections": (v7/*: any*/)
                   }
                 ]
               }
@@ -405,7 +360,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkBannerQuery",
     "id": null,
-    "text": "query ArtworkBannerQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkBanner_artwork\n    id\n  }\n}\n\nfragment ArtworkBanner_artwork on Artwork {\n  partner {\n    name\n    initials\n    id\n  }\n  sale {\n    is_auction: isAuction\n    isBenefit\n    isGalleryAuction\n    cover_image: coverImage {\n      url(version: \"square\")\n    }\n    id\n  }\n  artworkContextAuction: context {\n    __typename\n    ... on Sale {\n      name\n      href\n    }\n    ... on Node {\n      id\n    }\n    ... on Fair {\n      id\n    }\n  }\n  artworkContextFair: context {\n    __typename\n    ... on Fair {\n      name\n      href\n      profile {\n        initials\n        icon {\n          img: resized(width: 70, height: 70, version: \"square\") {\n            url\n          }\n        }\n        id\n      }\n      id\n    }\n    ... on Node {\n      id\n    }\n  }\n  artworkContextPartnerShow: context {\n    __typename\n    ... on Show {\n      name\n      href\n      status\n      thumbnail: coverImage {\n        img: resized(width: 70, height: 70, version: \"square\") {\n          url\n        }\n      }\n    }\n    ... on Node {\n      id\n    }\n    ... on Fair {\n      id\n    }\n  }\n}\n",
+    "text": "query ArtworkBannerQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkBanner_artwork\n    id\n  }\n}\n\nfragment ArtworkBanner_artwork on Artwork {\n  partner {\n    name\n    initials\n    id\n  }\n  sale {\n    is_auction: isAuction\n    isBenefit\n    isGalleryAuction\n    cover_image: coverImage {\n      url(version: \"square\")\n    }\n    id\n  }\n  context {\n    __typename\n    ... on Sale {\n      name\n      href\n    }\n    ... on Fair {\n      name\n      href\n      profile {\n        initials\n        icon {\n          img: resized(width: 70, height: 70, version: \"square\") {\n            url\n          }\n        }\n        id\n      }\n      id\n    }\n    ... on Show {\n      name\n      href\n      status\n      thumbnail: coverImage {\n        img: resized(width: 70, height: 70, version: \"square\") {\n          url\n        }\n      }\n    }\n    ... on Node {\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

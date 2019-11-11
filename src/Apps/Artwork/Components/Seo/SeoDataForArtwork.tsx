@@ -124,17 +124,20 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
   }
 )
 
-const displayPrice = artwork => {
+const displayPrice = (artwork: SeoDataForArtwork_artwork) => {
   const {
     is_price_hidden,
     is_price_range,
-    price,
+    listPrice,
     sale_message,
     price_currency,
   } = artwork
 
-  if (is_price_range && !is_price_hidden && price) {
-    return buildPriceSpecification(price_currency, splitPriceRange(price))
+  if (is_price_range && !is_price_hidden && listPrice) {
+    return buildPriceSpecification(
+      price_currency,
+      splitPriceRange(listPrice.display)
+    )
   }
 
   if (sale_message && sale_message.includes("-")) {

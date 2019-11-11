@@ -14,16 +14,11 @@ export type ArtworkBanner_artwork = {
             readonly url: string | null;
         } | null;
     } | null;
-    readonly artworkContextAuction: ({
+    readonly context: ({
         readonly __typename: "Sale";
         readonly name: string | null;
         readonly href: string | null;
     } | {
-        /*This will never be '%other', but we need some
-        value in case none of the concrete values match.*/
-        readonly __typename: "%other";
-    }) | null;
-    readonly artworkContextFair: ({
         readonly __typename: "Fair";
         readonly name: string | null;
         readonly href: string | null;
@@ -36,11 +31,6 @@ export type ArtworkBanner_artwork = {
             } | null;
         } | null;
     } | {
-        /*This will never be '%other', but we need some
-        value in case none of the concrete values match.*/
-        readonly __typename: "%other";
-    }) | null;
-    readonly artworkContextPartnerShow: ({
         readonly __typename: "Show";
         readonly name: string | null;
         readonly href: string | null;
@@ -83,18 +73,11 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = [
+v4 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -200,40 +183,34 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": "artworkContextAuction",
+      "alias": null,
       "name": "context",
       "storageKey": null,
       "args": null,
       "concreteType": null,
       "plural": false,
       "selections": [
-        (v3/*: any*/),
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "InlineFragment",
           "type": "Sale",
           "selections": [
             (v0/*: any*/),
-            (v4/*: any*/)
+            (v3/*: any*/)
           ]
-        }
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": "artworkContextFair",
-      "name": "context",
-      "storageKey": null,
-      "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
-        (v3/*: any*/),
+        },
         {
           "kind": "InlineFragment",
           "type": "Fair",
           "selections": [
             (v0/*: any*/),
-            (v4/*: any*/),
+            (v3/*: any*/),
             {
               "kind": "LinkedField",
               "alias": null,
@@ -252,30 +229,18 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": (v5/*: any*/)
+                  "selections": (v4/*: any*/)
                 }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": "artworkContextPartnerShow",
-      "name": "context",
-      "storageKey": null,
-      "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
-        (v3/*: any*/),
+        },
         {
           "kind": "InlineFragment",
           "type": "Show",
           "selections": [
             (v0/*: any*/),
-            (v4/*: any*/),
+            (v3/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
@@ -291,7 +256,7 @@ return {
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": (v5/*: any*/)
+              "selections": (v4/*: any*/)
             }
           ]
         }
@@ -300,5 +265,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f067efc6b658c4c5e36b3e5c8db24e2d';
+(node as any).hash = '6f615caa1957f1bdfb662387e2e3cc46';
 export default node;

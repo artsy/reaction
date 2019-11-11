@@ -11,6 +11,7 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 jest.mock("found", () => ({
   Link: () => <div />,
+  RouterContext: jest.requireActual("found").RouterContext,
 }))
 
 describe("CollectionApp", () => {

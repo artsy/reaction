@@ -13,72 +13,68 @@ export interface ArtworkBannerProps {
 }
 
 export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
-  const {
-    artworkContextAuction,
-    artworkContextFair,
-    artworkContextPartnerShow,
-    partner,
-    sale,
-  } = props.artwork
-  // Auction
-  if (artworkContextAuction && artworkContextAuction.__typename === "Sale") {
-    const auctionImage = get(sale, s => s.is_auction && s.cover_image.url)
-    return (
-      <Banner
-        imageUrl={auctionImage}
-        initials={partner.initials}
-        meta="In auction"
-        name={artworkContextAuction.name}
-        // Do not display partner name for benefit or gallery auctions
-        subHeadline={
-          sale.isBenefit || sale.isGalleryAuction ? null : partner.name
-        }
-        href={artworkContextAuction.href}
-      />
-    )
+  const { context, partner, sale } = props.artwork
+
+  if (!context) {
+    return null
   }
 
-  // Fair
-  if (artworkContextFair && artworkContextFair.__typename === "Fair") {
-    const fairImage = get(artworkContextFair, c => c.profile.icon.img.url)
-    const initials = get(artworkContextFair, c => c.profile.initials)
-    return (
-      <Banner
-        imageUrl={fairImage}
-        initials={initials}
-        meta="At fair"
-        name={artworkContextFair.name}
-        subHeadline={partner.name}
-        href={artworkContextFair.href}
-      />
-    )
-  }
-
-  // Partner Show
-  if (
-    artworkContextPartnerShow &&
-    artworkContextPartnerShow.__typename === "Show"
-  ) {
-    const showImage = get(artworkContextPartnerShow, c => c.thumbnail.img.url)
-    let showLine = "In current show"
-    if (artworkContextPartnerShow.status === "upcoming") {
-      showLine = "In upcoming show"
-    } else if (artworkContextPartnerShow.status === "closed") {
-      showLine = "In past show"
+  switch (context.__typename) {
+    case "Sale": {
+      const auctionImage = get(sale, s => s.is_auction && s.cover_image.url)
+      return (
+        <Banner
+          imageUrl={auctionImage}
+          initials={partner.initials}
+          meta="In auction"
+          name={context.name}
+          // Do not display partner name for benefit or gallery auctions
+          subHeadline={
+            sale.isBenefit || sale.isGalleryAuction ? null : partner.name
+          }
+          href={context.href}
+        />
+      )
     }
-    return (
-      <Banner
-        imageUrl={showImage}
-        initials={partner.initials}
-        meta={showLine}
-        name={artworkContextPartnerShow.name}
-        subHeadline={partner.name}
-        href={artworkContextPartnerShow.href}
-      />
-    )
+    case "Fair": {
+      const fairImage = get(context, c => c.profile.icon.img.url)
+      const initials = get(context, c => c.profile.initials)
+      return (
+        <Banner
+          imageUrl={fairImage}
+          initials={initials}
+          meta="At fair"
+          name={context.name}
+          subHeadline={partner.name}
+          href={context.href}
+        />
+      )
+    }
+    case "Show": {
+      const showImage = get(context, c => c.thumbnail.img.url)
+      let showLine = "In current show"
+      if (context.status === "upcoming") {
+        showLine = "In upcoming show"
+      } else if (context.status === "closed") {
+        showLine = "In past show"
+      }
+      return (
+        <Banner
+          imageUrl={showImage}
+          initials={partner.initials}
+          meta={showLine}
+          name={context.name}
+          subHeadline={partner.name}
+          href={context.href}
+        />
+      )
+    }
+    default: {
+      return null
+    }
   }
-  return null
 }
+
 export const ArtworkBannerFragmentContainer = createFragmentContainer(
   ArtworkBanner,
   {
@@ -96,19 +92,12 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
             url(version: "square")
           }
         }
-        # FIXME: There is a bug in the Relay transformer used before generating Flow types, and thus also our TS type
-        #        generator, that leads to a union selection _with_ a __typename selection being normalized incorrectly.
-        #        What ends up happening is that _only_ the common selection is being omitted from the second fragment,
-        #        i.e. in this case the fair and partnerShow selections are missing name and href.
-        artworkContextAuction: context {
+        context {
           __typename
           ... on Sale {
             name
             href
           }
-        }
-        artworkContextFair: context {
-          __typename
           ... on Fair {
             name
             href
@@ -121,9 +110,6 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
               }
             }
           }
-        }
-        artworkContextPartnerShow: context {
-          __typename
           ... on Show {
             name
             href
@@ -139,6 +125,7 @@ export const ArtworkBannerFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
 export const ArtworkBannerQueryRenderer = ({
   artworkID,
 }: {

@@ -34,7 +34,7 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
     artist,
     a => a.related.artistsConnection.edges,
     []
-  ).map(edge => <RecommendedArtist artist={edge.node} key={edge.node.slug} />)
+  ).map(edge => <RecommendedArtist artist={edge.node} key={edge.node.id} />)
 
   const fetchData = () => {
     if (!relay.hasMore() || relay.isLoading()) {
@@ -101,7 +101,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
           ) @connection(key: "ArtistRecommendations_artistsConnection") {
             edges {
               node {
-                slug
+                id
                 ...RecommendedArtist_artist
               }
             }

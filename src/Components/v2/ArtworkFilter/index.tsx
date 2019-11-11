@@ -242,7 +242,7 @@ export const ArtworkQueryFilter = graphql`
     $sort: String
     $keyword: String
     $width: String
-  ) {
+  ) @raw_response_type {
     viewer {
       ...ArtworkFilter_viewer
         @arguments(

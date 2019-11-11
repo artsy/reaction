@@ -10,9 +10,16 @@ export type MockRelayRendererFixturesArtistQueryResponse = {
         readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artist">;
     } | null;
 };
+export type MockRelayRendererFixturesArtistQueryRawResponse = {
+    readonly artist: ({
+        readonly name: string | null;
+        readonly id: string | null;
+    }) | null;
+};
 export type MockRelayRendererFixturesArtistQuery = {
     readonly response: MockRelayRendererFixturesArtistQueryResponse;
     readonly variables: MockRelayRendererFixturesArtistQueryVariables;
+    readonly rawResponse: MockRelayRendererFixturesArtistQueryRawResponse;
 };
 
 
@@ -116,5 +123,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'aabded82722f7ed4c4f873a3d0b315be';
+(node as any).hash = '8c4a637a093bfbe6fe9591999d35c879';
 export default node;

@@ -112,7 +112,6 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
             (async () => {
               const sheet = new ServerStyleSheet()
 
-              // Render tree again, but this time with Relay data being available.
               const html = ReactDOMServer.renderToString(
                 sheet.collectStyles(<ServerApp tags={headTags} />)
               )

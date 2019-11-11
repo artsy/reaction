@@ -78,7 +78,7 @@ interface Counts {
   has_make_offer_artworks?: boolean
 }
 
-interface ArtworkFilterContextProps {
+export interface ArtworkFilterContextProps {
   filters?: ArtworkFilters
 
   // Components

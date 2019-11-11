@@ -278,50 +278,50 @@ export const CategoriesFixture: CollectionsAppTestQueryRawResponse["marketingCat
     name: "Street Art",
     collections: [
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-street-art-now",
         headerImage: "http://files.artsy.net/images/streetartnow.png",
         slug: "street-art-now",
         title: "Street Art Now",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-banksy-girl-with-balloon",
         headerImage: "http://files.artsy.net/images/streetartnow.png",
         slug: "banksy-girl-with-balloon",
         title: "Banksy: Girl with Balloon",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-shepard-fairey-barack-obama",
         headerImage: "http://files.artsy.net/images/shepardfaireyobama.png",
         slug: "shepard-fairey-barack-obama",
         title: "Shepard Fairey: Barack Obama",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-banksy-rats",
         headerImage: "http://files.artsy.net/images/banksyrat.png",
         slug: "banksy-rats",
         title: "Banksy: Rats",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-banksy-dismaland",
         headerImage: "http://files.artsy.net/images/banksydismaland.png",
         slug: "banksy-dismaland",
         title: "Banksy: Dismaland",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-jean-michel-basquiat-crowns",
         headerImage:
           "http://files.artsy.net/images/jeanmichelbasquiatcrowns.png",
         slug: "jean-michel-basquiat-crowns",
         title: "Jean-Michel Basquiat: Crowns",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-keith-haring-pop-shop",
         headerImage: "http://files.artsy.net/images/popshopkeithharing.png",
         slug: "keith-haring-pop-shop",
         title: "Keith Haring: Pop Shop",
       },
       {
-        id: "opaque-collection-id",
+        id: "opaque-collection-id-shepard-fairey-we-the-people",
         headerImage:
           "http://files.artsy.net/images/shepardfaireywethepeople.png",
         slug: "shepard-fairey-we-the-people",
