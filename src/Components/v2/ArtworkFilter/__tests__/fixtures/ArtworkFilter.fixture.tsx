@@ -3,7 +3,7 @@ import { ArtworkFilterQueryRawResponse } from "__generated__/ArtworkFilterQuery.
 export const ArtworkFilterFixture: ArtworkFilterQueryRawResponse = {
   viewer: {
     filtered_artworks: {
-      slug:
+      id:
         "RmlsdGVyQXJ0d29ya3M6eyJhZ2dyZWdhdGlvbnMiOlsidG90YWwiXSwia2V5d29yZCI6ImFuZHkgd2FyaG9sIn0=",
       aggregations: [],
       pageInfo: { hasNextPage: true, endCursor: "YXJyYXljb25uZWN0aW9uOjI5" },
