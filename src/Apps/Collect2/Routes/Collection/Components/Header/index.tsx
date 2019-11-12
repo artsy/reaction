@@ -24,29 +24,15 @@ import {
 } from "@artsy/palette"
 
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
+import { Header_collection } from "__generated__/Header_collection.graphql"
 import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Link } from "found"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { FeaturedArtists } from "./FeaturedArtists"
 
-// TODO: Update query interface when we know the schema
 export interface Props {
-  collection: {
-    artist_ids?: string[]
-    category: string
-    credit?: string
-    description?: string
-    gene_ids?: string[]
-    headerImage: string
-    major_periods?: string[]
-    medium?: string
-    slug: string
-    title: string
-    query: any
-    id: string
-    featuredArtistExclusionIds?: string[]
-  }
+  collection: Header_collection
   artworks: Header_artworks
 }
 
@@ -60,25 +46,25 @@ const handleOpenAuth = (mediator, artist) => {
 
 export const getFeaturedArtists = (
   artistsCount: number,
-  collection,
-  merchandisableArtists
-) => {
-  if (collection.query.artist_ids.length > 0) {
+  collection: Header_collection,
+  merchandisableArtists: Header_artworks["merchandisableArtists"]
+): Header_artworks["merchandisableArtists"] => {
+  if (collection.query.artistIDs.length > 0) {
     return filter(merchandisableArtists, artist =>
-      collection.query.artist_ids.includes(artist._id)
+      collection.query.artistIDs.includes(artist.internalID)
     )
   }
 
   if (merchandisableArtists.length > 0) {
     const filteredArtistsIds = merchandisableArtists.filter(artist => {
-      return !collection.featuredArtistExclusionIds.includes(artist._id)
+      return !collection.featuredArtistExclusionIds.includes(artist.internalID)
     })
     return take(filteredArtistsIds, artistsCount)
   }
 }
 
 export const featuredArtistsEntityCollection: (
-  artists: any[],
+  artists: Header_artworks["merchandisableArtists"],
   mediator: any,
   user: any
 ) => JSX.Element[] = (artists, mediator, user) => {
@@ -94,7 +80,7 @@ export const featuredArtistsEntityCollection: (
               ? `${artist.nationality}, b. ${artist.birthday}`
               : undefined
           }
-          href={`/artist/${artist.id}`}
+          href={`/artist/${artist.slug}`}
           FollowButton={
             <FollowArtistButton
               artist={artist}
@@ -103,8 +89,8 @@ export const featuredArtistsEntityCollection: (
                 modelName: AnalyticsSchema.OwnerType.Artist,
                 context_module:
                   AnalyticsSchema.ContextModule.CollectionDescription,
-                entity_id: artist._id,
-                entity_slug: artist.id,
+                entity_id: artist.internalID,
+                entity_slug: artist.slug,
               }}
               onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
               render={({ is_followed }) => {
@@ -162,8 +148,7 @@ const defaultHeaderImageHeight = {
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useSystemContext()
   const hasMultipleArtists =
-    artworks.merchandisable_artists &&
-    artworks.merchandisable_artists.length > 1
+    artworks.merchandisableArtists && artworks.merchandisableArtists.length > 1
 
   const htmlUnsafeDescription = collection.description && (
     <span dangerouslySetInnerHTML={{ __html: collection.description }} />
@@ -185,7 +170,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
           getFeaturedArtists(
             artistsCount,
             collection,
-            artworks.merchandisable_artists
+            artworks.merchandisableArtists
           ),
           mediator,
           user
@@ -224,7 +209,7 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                   </CollectionSingleImageHeader>
                 ) : (
                   <CollectionDefaultHeader
-                    headerArtworks={artworks as any}
+                    headerArtworks={artworks}
                     defaultHeaderImageHeight={defaultHeaderImageHeight[size]}
                     collection_id={collection.id}
                     collection_slug={collection.slug}
@@ -356,10 +341,25 @@ const ExtendedSerif = styled(Serif)`
 export const CollectionFilterFragmentContainer = createFragmentContainer(
   CollectionHeader,
   {
+    collection: graphql`
+      fragment Header_collection on MarketingCollection {
+        category
+        credit
+        description
+        featuredArtistExclusionIds
+        headerImage
+        id
+        query {
+          artistIDs
+        }
+        slug
+        title
+      }
+    `,
     artworks: graphql`
       fragment Header_artworks on FilterArtworksConnection {
         ...DefaultHeader_headerArtworks
-        merchandisable_artists: merchandisableArtists {
+        merchandisableArtists {
           slug
           internalID
           name

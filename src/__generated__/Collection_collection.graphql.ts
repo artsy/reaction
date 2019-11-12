@@ -3,16 +3,12 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-export type Collection_viewer = {
-    readonly category: string;
-    readonly credit: string | null;
+export type Collection_collection = {
     readonly description: string | null;
     readonly headerImage: string | null;
     readonly slug: string;
     readonly title: string;
-    readonly featuredArtistExclusionIds: ReadonlyArray<string> | null;
     readonly query: {
-        readonly artist_ids: ReadonlyArray<string> | null;
         readonly artist_id: string | null;
         readonly gene_id: string | null;
     };
@@ -37,7 +33,8 @@ export type Collection_viewer = {
         readonly id: string;
         readonly " $fragmentRefs": FragmentRefs<"ArtworkFilterArtworkGrid2_filtered_artworks">;
     } | null;
-    readonly " $refType": "Collection_viewer";
+    readonly " $fragmentRefs": FragmentRefs<"Header_collection">;
+    readonly " $refType": "Collection_collection";
 };
 
 
@@ -50,7 +47,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "Collection_viewer",
+  "name": "Collection_collection",
   "type": "MarketingCollection",
   "metadata": null,
   "argumentDefinitions": [
@@ -149,20 +146,6 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "category",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "credit",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "description",
       "args": null,
       "storageKey": null
@@ -189,13 +172,6 @@ return {
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "featuredArtistExclusionIds",
-      "args": null,
-      "storageKey": null
-    },
-    {
       "kind": "LinkedField",
       "alias": null,
       "name": "query",
@@ -204,13 +180,6 @@ return {
       "concreteType": "MarketingCollectionQuery",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": "artist_ids",
-          "name": "artistIDs",
-          "args": null,
-          "storageKey": null
-        },
         {
           "kind": "ScalarField",
           "alias": "artist_id",
@@ -446,9 +415,14 @@ return {
           "args": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "Header_collection",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = '7142c35726f584d631e7afcd95be7eb9';
+(node as any).hash = '3fc32052507e4edee4b54630c0cd7129';
 export default node;

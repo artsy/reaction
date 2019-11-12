@@ -1,5 +1,5 @@
 import { Box, Separator } from "@artsy/palette"
-import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
+import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -27,7 +27,7 @@ import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { TrackingProp } from "react-tracking"
 
 interface CollectionAppProps extends SystemContextProps {
-  viewer: Collection_viewer
+  collection: Collection_collection
   match: Match
   relay: RelayRefetchProp
   tracking: TrackingProp
@@ -35,8 +35,8 @@ interface CollectionAppProps extends SystemContextProps {
 
 @track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
-  context_page_owner_slug: props.viewer && props.viewer.slug,
-  context_page_owner_id: props.viewer && props.viewer.slug,
+  context_page_owner_slug: props.collection && props.collection.slug,
+  context_page_owner_id: props.collection && props.collection.slug,
 }))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
@@ -46,16 +46,22 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   UNSAFE_componentWillMount() {
-    this.collectionNotFound(this.props.viewer)
+    this.collectionNotFound(this.props.collection)
   }
 
   render() {
     const {
-      viewer,
+      collection,
       match: { location },
       relay,
     } = this.props
-    const { title, slug, headerImage, description, artworksConnection } = viewer
+    const {
+      title,
+      slug,
+      headerImage,
+      description,
+      artworksConnection,
+    } = collection
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
     const metadataDescription = description
@@ -63,7 +69,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
-    const showCollectionHubs = viewer.linkedCollections.length > 0
+    const showCollectionHubs = collection.linkedCollections.length > 0
 
     return (
       <AppContainer>
@@ -85,11 +91,13 @@ export class CollectionApp extends Component<CollectionAppProps> {
             <SeoProductsForArtworks artworks={artworksConnection} />
           )}
           <CollectionHeader
-            collection={viewer as any}
-            artworks={artworksConnection as any}
+            collection={collection}
+            artworks={artworksConnection}
           />
           {showCollectionHubs && (
-            <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
+            <CollectionsHubRails
+              linkedCollections={collection.linkedCollections}
+            />
           )}
           <Box>
             <ArtworkFilterContextProvider
@@ -117,21 +125,21 @@ export class CollectionApp extends Component<CollectionAppProps> {
             >
               <BaseArtworkFilter
                 relay={relay}
-                viewer={viewer}
+                viewer={collection}
                 relayVariables={{
-                  slug: viewer.slug,
+                  slug: collection.slug,
                   first: 30,
                 }}
               />
             </ArtworkFilterContextProvider>
           </Box>
-          {viewer.linkedCollections.length === 0 && (
+          {collection.linkedCollections.length === 0 && (
             <>
               <Separator mt={6} mb={3} />
               <Box mt="3">
                 <RelatedCollectionsRail
-                  collections={viewer.relatedCollections}
-                  title={viewer.title}
+                  collections={collection.relatedCollections}
+                  title={collection.title}
                 />
               </Box>
             </>
@@ -169,8 +177,8 @@ export const CollectionAppQuery = graphql`
     $slug: String!
     $width: String
   ) {
-    viewer: marketingCollection(slug: $slug) {
-      ...Collection_viewer
+    collection: marketingCollection(slug: $slug) {
+      ...Collection_collection
         @arguments(
           acquireable: $acquireable
           aggregations: $aggregations
@@ -195,8 +203,8 @@ export const CollectionAppQuery = graphql`
 export const CollectionRefetchContainer = createRefetchContainer(
   withSystemContext(CollectionApp),
   {
-    viewer: graphql`
-      fragment Collection_viewer on MarketingCollection
+    collection: graphql`
+      fragment Collection_collection on MarketingCollection
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
@@ -214,16 +222,12 @@ export const CollectionRefetchContainer = createRefetchContainer(
           width: { type: "String" }
           first: { type: "Int" }
         ) {
-        category
-        credit
+        ...Header_collection
         description
         headerImage
         slug
-        slug
         title
-        featuredArtistExclusionIds
         query {
-          artist_ids: artistIDs
           artist_id: artistID
           gene_id: geneID
         }

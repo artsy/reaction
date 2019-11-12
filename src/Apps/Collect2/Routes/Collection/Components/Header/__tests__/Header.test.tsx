@@ -30,26 +30,24 @@ jest.mock("Artsy/Analytics/useTracking", () => {
 })
 
 describe("collections header", () => {
-  let props: Props
-  beforeEach(() => {
-    props = {
-      artworks: collectionHeaderArtworks,
-      collection: {
-        id: "abcdefg1234",
-        title: "KAWS: Toys",
-        category: "Collectible Sculptures",
-        slug: "kaws-toys",
-        headerImage:
-          "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
-        query: {
-          gene_id: null,
-          artist_id: null,
-          artist_ids: ["4e934002e340fa0001005336"],
-        },
-        featuredArtistExclusionIds: [],
+  const props: Props = {
+    artworks: collectionHeaderArtworks,
+    collection: {
+      " $refType": null,
+      id: "abcdefg1234",
+      title: "KAWS: Toys",
+      credit: null,
+      description: null,
+      category: "Collectible Sculptures",
+      slug: "kaws-toys",
+      headerImage:
+        "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
+      query: {
+        artistIDs: ["4e934002e340fa0001005336"],
       },
-    }
-  })
+      featuredArtistExclusionIds: [],
+    },
+  }
 
   function mountComponent(
     theProps: Props,
@@ -63,9 +61,14 @@ describe("collections header", () => {
   }
 
   it("renders the default collections header when there is no header image", () => {
-    props.collection.headerImage = ""
-    props.artworks = defaultCollectionHeaderArtworks as any
-    const component = mountComponent(props)
+    const component = mountComponent({
+      ...props,
+      artworks: defaultCollectionHeaderArtworks as any,
+      collection: {
+        ...props.collection,
+        headerImage: "",
+      },
+    })
 
     const defaultHeader = component.find("CollectionDefaultHeader")
     const singleImageHeader = component.find("CollectionSingleImageHeader")
@@ -75,24 +78,29 @@ describe("collections header", () => {
   })
 
   describe("getFeaturedArtists", () => {
-    it("returns the queried artists when there is explicit artist_ids", () => {
+    it("returns the queried artists when there is explicit artistIDs", () => {
       const { collection, artworks } = props
       const results = getFeaturedArtists(
         9,
         collection,
-        artworks.merchandisable_artists
+        artworks.merchandisableArtists
       )
 
       expect(results!.length).toEqual(1)
     })
 
-    it("returns merchandisable artists when there is no explicit artist_ids", () => {
-      props.collection.query.artist_ids = []
+    it("returns merchandisable artists when there is no explicit artistIDs", () => {
       const { collection, artworks } = props
       const results = getFeaturedArtists(
         9,
-        collection,
-        artworks.merchandisable_artists
+        {
+          ...collection,
+          query: {
+            ...collection.query,
+            artistIDs: [],
+          },
+        },
+        artworks.merchandisableArtists
       )
 
       expect(results!.length).toEqual(4)
@@ -104,15 +112,13 @@ describe("collections header", () => {
       const results = getFeaturedArtists(
         9,
         collection,
-        artworks.merchandisable_artists
+        artworks.merchandisableArtists
       )
 
       expect(results.length).toBe(1)
       const artist = results[0]
 
       expect(artist).toMatchObject({
-        id: "kaws",
-        _id: "4e934002e340fa0001005336",
         name: "KAWS",
         imageUrl:
           "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
@@ -127,14 +133,19 @@ describe("collections header", () => {
         "4f5f64c23b555230ac0003ae",
         "58fe85ee275b2450a0fd2b51",
       ]
-      props.collection.featuredArtistExclusionIds = excludedIds
-      props.collection.query.artist_ids = []
       const { collection, artworks } = props
       const results = getFeaturedArtists(
         9,
-        collection,
-        artworks.merchandisable_artists
-      ) as Header_artworks["merchandisable_artists"]
+        {
+          ...collection,
+          featuredArtistExclusionIds: excludedIds,
+          query: {
+            ...collection.query,
+            artistIDs: [],
+          },
+        },
+        artworks.merchandisableArtists
+      )
 
       const artistIds = results.map(artist => artist.slug)
       expect(artistIds).toEqual(expect.not.arrayContaining(excludedIds))
@@ -143,17 +154,25 @@ describe("collections header", () => {
 
   describe("collection meta data", () => {
     it("renders the title", () => {
-      props.collection.title = "Scooby Doo"
-
-      const component = mountComponent(props)
+      const component = mountComponent({
+        ...props,
+        collection: {
+          ...props.collection,
+          title: "Scooby Doo",
+        },
+      })
 
       expect(component.find("h1").text()).toContain("Scooby Doo")
     })
 
     it("renders breadcrumb category", () => {
-      props.collection.category = "Nachos"
-
-      const component = mountComponent(props)
+      const component = mountComponent({
+        ...props,
+        collection: {
+          ...props.collection,
+          category: "Nachos",
+        },
+      })
 
       expect(component.text()).toContain("All works")
       expect(component.text()).toContain("Nachos")
@@ -162,9 +181,13 @@ describe("collections header", () => {
     describe("description", () => {
       describe("smaller screen", () => {
         it("renders truncated description if description exists", () => {
-          props.collection.description = "some description"
-
-          const component = mountComponent(props)
+          const component = mountComponent({
+            ...props,
+            collection: {
+              ...props.collection,
+              description: "some description",
+            },
+          })
 
           const readMore = component.find("ReadMore")
           expect(readMore.length).toEqual(1)
@@ -172,9 +195,13 @@ describe("collections header", () => {
         })
 
         it("renders truncation with no text if description does not exist", () => {
-          props.collection.description = undefined
-
-          const component = mountComponent(props)
+          const component = mountComponent({
+            ...props,
+            collection: {
+              ...props.collection,
+              description: undefined,
+            },
+          })
 
           const readMore = component.find("ReadMore")
           expect(readMore!.length).toEqual(1)
@@ -184,9 +211,16 @@ describe("collections header", () => {
 
       describe("larger screen", () => {
         it("renders description untruncated if description exists", () => {
-          props.collection.description = "some description"
-
-          const component = mountComponent(props, "lg")
+          const component = mountComponent(
+            {
+              ...props,
+              collection: {
+                ...props.collection,
+                description: "some description",
+              },
+            },
+            "lg"
+          )
 
           expect(component.find("ReadMore").length).toEqual(0)
           expect(component.text()).toContain("some description")
@@ -194,9 +228,13 @@ describe("collections header", () => {
       })
 
       it("renders a formatted string description", () => {
-        props.collection.description = "<i>your description</i>"
-
-        const component = mountComponent(props)
+        const component = mountComponent({
+          ...props,
+          collection: {
+            ...props.collection,
+            description: "<i>your description</i>",
+          },
+        })
 
         expect(component.html()).toContain("<i>your description</i>")
       })
@@ -205,12 +243,19 @@ describe("collections header", () => {
 
   describe("collection header featured artists rail", () => {
     it("renders featured artists when featured artists exist", () => {
-      props.collection.query = {
-        gene_id: null,
-        artist_id: null,
-        artist_ids: [],
-      }
-      const component = mountComponent(props, "lg")
+      const component = mountComponent(
+        {
+          ...props,
+          collection: {
+            ...props.collection,
+            query: {
+              ...props.collection.query,
+              artistIDs: [],
+            },
+          },
+        },
+        "lg"
+      )
       const entityHeaders = component.find(EntityHeader)
 
       expect(component.text()).toContain("Featured Artists")
@@ -218,22 +263,26 @@ describe("collections header", () => {
     })
 
     it("does not render featured artists when they don't exist", () => {
-      props.artworks = {
-        " $refType": null,
-        " $fragmentRefs": null,
-        merchandisable_artists: [],
-      } as any
-      const component = mountComponent(props, "lg")
+      const component = mountComponent(
+        {
+          ...props,
+          artworks: {
+            ...props.artworks,
+            merchandisableArtists: [],
+          },
+        },
+        "lg"
+      )
       const entities = component.find(EntityHeader)
 
       expect(component.text()).not.toContain("Featured Artists")
       expect(entities.length).toEqual(0)
     })
 
-    function anArtist() {
+    function anArtist(): Header_artworks["merchandisableArtists"][number] {
       return {
-        id: "medicom-toy-slash-china",
-        _id: "5b9821af86c8aa21d364dde5",
+        slug: "medicom-toy-slash-china",
+        internalID: "5b9821af86c8aa21d364dde5",
         name: "Medicom Toy/China",
         imageUrl:
           "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
@@ -247,11 +296,19 @@ describe("collections header", () => {
       const overrideData = jest.spyOn(sharify, "data", "get")
       overrideData.mockReturnValueOnce({ IS_MOBILE: true } as any)
 
-      props.collection.query = {
-        artist_ids: [],
-      }
-
-      const component = mountComponent(props, "xs")
+      const component = mountComponent(
+        {
+          ...props,
+          collection: {
+            ...props.collection,
+            query: {
+              ...props.collection.query,
+              artistIDs: [],
+            },
+          },
+        },
+        "xs"
+      )
       const entityHeaders = component.find(EntityHeader)
 
       expect(component.text()).toContain("Featured Artists")
@@ -259,22 +316,29 @@ describe("collections header", () => {
     })
 
     it("shows 3 featured artists at small breakpoint when not filtered by artist ids", () => {
-      props.collection.query = {
-        artist_ids: [],
-      }
-      props.artworks = {
-        " $refType": null,
-        " $fragmentRefs": null,
-        merchandisable_artists: [
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-        ],
-      } as any
-
-      const component = mountComponent(props, "sm")
+      const component = mountComponent(
+        {
+          ...props,
+          artworks: {
+            ...props.artworks,
+            merchandisableArtists: [
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+            ],
+          },
+          collection: {
+            ...props.collection,
+            query: {
+              ...props.collection.query,
+              artistIDs: [],
+            },
+          },
+        },
+        "sm"
+      )
       const entityHeaders = component.find(EntityHeader)
 
       expect(component.text()).toContain("Featured Artists")
@@ -282,24 +346,31 @@ describe("collections header", () => {
     })
 
     it("shows 5 featured artists at medium breakpoint when not filtered by artist ids", () => {
-      props.collection.query = {
-        artist_ids: [],
-      }
-      props.artworks = {
-        " $refType": null,
-        " $fragmentRefs": null,
-        merchandisable_artists: [
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-        ],
-      } as any
-
-      const component = mountComponent(props, "md")
+      const component = mountComponent(
+        {
+          ...props,
+          artworks: {
+            ...props.artworks,
+            merchandisableArtists: [
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+            ],
+          },
+          collection: {
+            ...props.collection,
+            query: {
+              ...props.collection.query,
+              artistIDs: [],
+            },
+          },
+        },
+        "md"
+      )
       const entityHeaders = component.find(EntityHeader)
 
       expect(component.text()).toContain("Featured Artists")
@@ -307,26 +378,33 @@ describe("collections header", () => {
     })
 
     it("shows 7 featured artists at large breakpoint when not filtered by artist ids", () => {
-      props.collection.query = {
-        artist_ids: [],
-      }
-      props.artworks = {
-        " $refType": null,
-        " $fragmentRefs": null,
-        merchandisable_artists: [
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-        ],
-      } as any
-
-      const component = mountComponent(props, "lg")
+      const component = mountComponent(
+        {
+          ...props,
+          artworks: {
+            ...props.artworks,
+            merchandisableArtists: [
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+            ],
+          },
+          collection: {
+            ...props.collection,
+            query: {
+              ...props.collection.query,
+              artistIDs: [],
+            },
+          },
+        },
+        "lg"
+      )
       const entityHeaders = component.find(EntityHeader)
 
       expect(component.text()).toContain("Featured Artists")
@@ -334,23 +412,30 @@ describe("collections header", () => {
     })
 
     it("shows all featured artists after clicking 'show more'", () => {
-      props.collection.query = {
-        artist_ids: [],
-      }
-      props.artworks = {
-        " $refType": null,
-        " $fragmentRefs": null,
-        merchandisable_artists: [
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-          anArtist(),
-        ],
-      } as any
-
-      const component = mountComponent(props, "xs")
+      const component = mountComponent(
+        {
+          ...props,
+          artworks: {
+            ...props.artworks,
+            merchandisableArtists: [
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+              anArtist(),
+            ],
+          },
+          collection: {
+            ...props.collection,
+            query: {
+              ...props.collection.query,
+              artistIDs: [],
+            },
+          },
+        },
+        "xs"
+      )
       const entityHeaders = component.find(EntityHeader)
 
       expect(entityHeaders.length).toEqual(4) // 4 = 3 artists + 1 "View More"

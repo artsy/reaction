@@ -1,10 +1,13 @@
-export const collectionHeaderArtworks = {
+import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
+import { Header_artworks } from "__generated__/Header_artworks.graphql"
+
+export const collectionHeaderArtworks: Header_artworks = {
   " $refType": null,
   " $fragmentRefs": null,
-  merchandisable_artists: [
+  merchandisableArtists: [
     {
-      id: "kaws",
-      _id: "4e934002e340fa0001005336",
+      slug: "kaws",
+      internalID: "4e934002e340fa0001005336",
       name: "KAWS",
       imageUrl:
         "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
@@ -13,8 +16,8 @@ export const collectionHeaderArtworks = {
       " $fragmentRefs": null,
     },
     {
-      id: "robert-lazzarini",
-      _id: "4f5f64c23b555230ac0003ae",
+      slug: "robert-lazzarini",
+      internalID: "4f5f64c23b555230ac0003ae",
       name: "Robert Lazzarini",
       imageUrl:
         "https://d32dm0rphc51dk.cloudfront.net/1npk1i_Xua5q8Hv0YOq_3g/square.jpg",
@@ -23,8 +26,8 @@ export const collectionHeaderArtworks = {
       " $fragmentRefs": null,
     },
     {
-      id: "medicom",
-      _id: "58fe85ee275b2450a0fd2b51",
+      slug: "medicom",
+      internalID: "58fe85ee275b2450a0fd2b51",
       name: "Medicom",
       imageUrl:
         "https://d32dm0rphc51dk.cloudfront.net/jUMOidRmCQ0RyynXM_sFzQ/square.jpg",
@@ -33,8 +36,8 @@ export const collectionHeaderArtworks = {
       " $fragmentRefs": null,
     },
     {
-      id: "medicom-toy-slash-china",
-      _id: "5b9821af86c8aa21d364dde5",
+      slug: "medicom-toy-slash-china",
+      internalID: "5b9821af86c8aa21d364dde5",
       name: "Medicom Toy/China",
       imageUrl:
         "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
@@ -43,10 +46,13 @@ export const collectionHeaderArtworks = {
       " $fragmentRefs": null,
     },
   ],
-} as any
+}
 
-export const defaultCollectionHeaderArtworks = {
-  " $refType": null,
+export const defaultCollectionHeaderArtworks: Header_artworks &
+  DefaultHeader_headerArtworks = {
+  " $refType": null as never,
+  " $fragmentRefs": null as never,
+  merchandisableArtists: null,
   edges: [
     {
       node: {
@@ -65,10 +71,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 220,
             height: 220,
           },
-          __id: "556e274272616943ba410500",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWFuZC1kYXVnaHRlci13aXRoLWNoaWxkcmVu",
       },
     },
     {
@@ -88,10 +91,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 219,
             height: 220,
           },
-          __id: "556e270e72616978256c0500",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWZlZWRpbmctYmlyZA==",
       },
     },
     {
@@ -113,10 +113,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 220,
             height: 220,
           },
-          __id: "56efcd9f139b21568b00293c",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLW1hbi1yZWFkaW5nLW5ld3NwYXBlci1hbmQta2l0Y2hlbi10YWJsZS1zZXJpZXMtYm9vaw==",
       },
     },
     {
@@ -136,10 +133,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 213,
             height: 220,
           },
-          __id: "556e26be7261692b8c230300",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLXN0YW5kaW5n",
       },
     },
     {
@@ -161,10 +155,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 218,
             height: 220,
           },
-          __id: "59e83bfb139b2175e05e4377",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWFuZC1kYXVnaHRlci13aXRoLW1ha2V1cC1mcm9tLWtpdGNoZW4tdGFibGUtc2VyaWVzLTE=",
       },
     },
     {
@@ -184,10 +175,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 220,
             height: 220,
           },
-          __id: "5b36523f1a1e8613a03d3d7c",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLWJydXNoaW5nLWhhaXI=",
       },
     },
     {
@@ -208,10 +196,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 217,
             height: 220,
           },
-          __id: "5ce6941defd93e1fe9ee17df",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLW1hbi1zbW9raW5nLWZyb20ta2l0Y2hlbi10YWJsZS1zZXJpZXM=",
       },
     },
     {
@@ -232,10 +217,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 223,
             height: 220,
           },
-          __id: "522789fe8b3b8142870004be",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLWZyb20tdGhlLWtpdGNoZW4tdGFibGUtc2VyaWVz",
       },
     },
     {
@@ -257,10 +239,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 219,
             height: 220,
           },
-          __id: "5b97f15a86c8aa4032386cf2",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLXdvbWFuLWFuZC1waG9uZS1mcm9tLXRoZS1zZXJpZXMtdGhlLWtpdGNoZW4tdGFibGU=",
       },
     },
     {
@@ -280,10 +259,7 @@ export const defaultCollectionHeaderArtworks = {
             width: 222,
             height: 220,
           },
-          __id: "54f77f9872616962f8590300",
         },
-        __id:
-          "QXJ0d29yazpjYXJyaWUtbWFlLXdlZW1zLXVudGl0bGVkLWZyb20ta2l0Y2hlbi10YWJsZS1zZXJpZXM=",
       },
     },
   ],
