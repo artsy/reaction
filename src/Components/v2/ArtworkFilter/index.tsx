@@ -35,7 +35,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
-import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
+import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 /**
@@ -79,7 +79,10 @@ export const ArtworkFilter: React.FC<
 export const BaseArtworkFilter: React.FC<{
   relay: RelayRefetchProp
   relayVariables?: object
-  viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
+  viewer:
+    | ArtworkFilter_viewer
+    | Collection_collection
+    | ArtistArtworkFilter_artist
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
   const { filtered_artworks } = viewer
   const hasFilter = filtered_artworks && filtered_artworks.id
