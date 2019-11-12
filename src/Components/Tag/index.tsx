@@ -7,9 +7,9 @@ import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRen
 import TagArtworks from "./TagArtworks"
 
 export interface Filters {
-  for_sale: boolean
-  dimension_range: string
-  price_range: string
+  forSale: boolean
+  dimensionRange: string
+  priceRange: string
   medium: string
 }
 
@@ -34,28 +34,23 @@ export interface State extends Filters {
 class TagContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const {
-      for_sale,
-      price_range,
-      dimension_range,
-      medium,
-    } = this.props.filters
+    const { forSale, priceRange, dimensionRange, medium } = this.props.filters
     this.state = {
-      for_sale: for_sale || null,
+      forSale: forSale || null,
       medium: medium || "*",
-      price_range: price_range || "*",
-      dimension_range: dimension_range || "*",
+      priceRange: priceRange || "*",
+      dimensionRange: dimensionRange || "*",
       sort: this.props.sort || "-partner_updated_at",
     }
   }
 
   handleStateChange = () => {
-    const { for_sale, medium, price_range, dimension_range, sort } = this.state
+    const { forSale, medium, priceRange, dimensionRange, sort } = this.state
     const filters = {
-      for_sale,
+      forSale,
       medium,
-      price_range,
-      dimension_range,
+      priceRange,
+      dimensionRange,
     }
     this.props.onStateChange({ filters, sort })
   }
@@ -63,11 +58,18 @@ class TagContents extends React.Component<Props, State> {
   // Because `for_sale` is a proper filter of its own, but
   // we include its aggregation as part of `price_range`, we
   // have to handle it specially.
-  onDropdownSelect(slice: string, value: string) {
+  onDropdownSelect(slice: string, value: string | boolean) {
     let filter = slice.toLowerCase()
     if (filter === "price_range" && value === "*-*") {
       filter = "for_sale"
-      value = "true"
+      value = true
+    }
+
+    if (filter === "price_range") {
+      filter = "priceRange"
+    }
+    if (filter === "dimension_range") {
+      filter = "dimensionRange"
     }
     this.setState(
       ({
@@ -78,10 +80,10 @@ class TagContents extends React.Component<Props, State> {
   }
 
   onForSaleToggleSelect() {
-    const forSale = this.state.for_sale ? null : true
+    const forSale = this.state.forSale ? null : true
     this.setState(
       {
-        for_sale: forSale,
+        forSale,
       },
       this.handleStateChange
     )
@@ -98,7 +100,7 @@ class TagContents extends React.Component<Props, State> {
 
   render() {
     const { tagID, relayEnvironment } = this.props
-    const { for_sale, medium, price_range, dimension_range, sort } = this.state
+    const { forSale, medium, priceRange, dimensionRange, sort } = this.state
     return (
       <QueryRenderer<TagContentsArtworksQuery>
         environment={relayEnvironment}
@@ -107,7 +109,7 @@ class TagContents extends React.Component<Props, State> {
             $tagID: String!
             $medium: String
             $priceRange: String
-            # $sort: String
+            $sort: String
             $forSale: Boolean
             $dimensionRange: String
           ) {
@@ -118,6 +120,7 @@ class TagContents extends React.Component<Props, State> {
                   medium: $medium
                   priceRange: $priceRange
                   dimensionRange: $dimensionRange
+                  sort: $sort
                 )
             }
           }
@@ -130,10 +133,10 @@ class TagContents extends React.Component<Props, State> {
                 onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
                 onSortSelected={this.onSortSelect.bind(this)}
                 sort={sort}
-                for_sale={for_sale}
+                forSale={forSale}
                 medium={medium}
-                price_range={price_range}
-                dimension_range={dimension_range}
+                priceRange={priceRange}
+                dimensionRange={dimensionRange}
                 tag={props.tag}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
               />

@@ -110,13 +110,19 @@ export class GeneArtworks extends React.Component<Props, State> {
   }
 
   renderDropdown() {
+    const getSelected = slice => {
+      if (slice === "price_range") return "priceRange"
+      if (slice === "dimension_range") return "dimensionRange"
+      return slice
+    }
     return this.props.gene.filtered_artworks.aggregations.map(aggregation => {
       return (
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
           selected={
-            aggregation.slice && this.props[aggregation.slice.toLowerCase()]
+            aggregation.slice &&
+            this.props[getSelected(aggregation.slice.toLowerCase())]
           }
           onSelected={this.props.onDropdownSelected}
         />
