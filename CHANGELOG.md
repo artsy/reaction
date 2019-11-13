@@ -1,3 +1,48 @@
+# v22.0.0 (Wed Nov 13 2019)
+
+#### 💥  Breaking Change
+
+- Metaphysics v2 migration [#2972](https://github.com/artsy/reaction/pull/2972) ([@alloy](https://github.com/alloy) [@ashkan18](https://github.com/ashkan18) [@ds300](https://github.com/ds300) [@dblandin](https://github.com/dblandin) [@sweir27](https://github.com/sweir27))
+
+#### 🐛  Bug Fix
+
+- @alloy => Artist app tests for v2 [#2993](https://github.com/artsy/reaction/pull/2993) ([@ashkan18](https://github.com/ashkan18))
+- @sweir27 => [v2] Use correct id for edition set in BNMO mutations [#3005](https://github.com/artsy/reaction/pull/3005) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Fix Collection featured artist header [#3003](https://github.com/artsy/reaction/pull/3003) ([@alloy](https://github.com/alloy))
+- [MP v2] Make test suite green [#3002](https://github.com/artsy/reaction/pull/3002) ([@alloy](https://github.com/alloy))
+- [MP v2] Make type-checker green [#3001](https://github.com/artsy/reaction/pull/3001) ([@alloy](https://github.com/alloy))
+- MP v2 migration Order app [#2999](https://github.com/artsy/reaction/pull/2999) ([@ashkan18](https://github.com/ashkan18))
+- PLATFORM-1962: Migrate Payment “app” [#2992](https://github.com/artsy/reaction/pull/2992) ([@ashkan18](https://github.com/ashkan18) [@alloy](https://github.com/alloy))
+- [MP v2] Fix all non-test related type errors [#2997](https://github.com/artsy/reaction/pull/2997) ([@alloy](https://github.com/alloy))
+- Fix type errors in order app v2 [#2998](https://github.com/artsy/reaction/pull/2998) ([@ds300](https://github.com/ds300))
+- @alloy => [v2] Finish artist app [#2996](https://github.com/artsy/reaction/pull/2996) ([@ashkan18](https://github.com/ashkan18))
+- Order app v2 pt1 [#2995](https://github.com/artsy/reaction/pull/2995) ([@ds300](https://github.com/ds300))
+- [WIP] MP v2 migration artwork app [#2987](https://github.com/artsy/reaction/pull/2987) ([@ashkan18](https://github.com/ashkan18) [@sweir27](https://github.com/sweir27))
+- [MP v2] Finish Search migration [#2991](https://github.com/artsy/reaction/pull/2991) ([@alloy](https://github.com/alloy))
+- @alloy => [v2] Gene and Tag pagination fixes [#3004](https://github.com/artsy/reaction/pull/3004) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Migrate Search app's artworks tab [#2983](https://github.com/artsy/reaction/pull/2983) ([@alloy](https://github.com/alloy))
+- Collections tests pass [#2989](https://github.com/artsy/reaction/pull/2989) ([@ashkan18](https://github.com/ashkan18))
+- @xtina-starr => [WIP] [v2] Get collect rendering [#2984](https://github.com/artsy/reaction/pull/2984) ([@ashkan18](https://github.com/ashkan18))
+- Migrate Auction app to Metaphysics V2 [#2988](https://github.com/artsy/reaction/pull/2988) ([@dblandin](https://github.com/dblandin))
+- [v2] migrate /collection/:id [#2986](https://github.com/artsy/reaction/pull/2986) ([@ashkan18](https://github.com/ashkan18))
+- @alloy => V2 artist app [#2976](https://github.com/artsy/reaction/pull/2976) ([@ashkan18](https://github.com/ashkan18))
+- [v2] Migrate Editorial to MPv2 [#2982](https://github.com/artsy/reaction/pull/2982) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Migrate WorksForYou app [#2981](https://github.com/artsy/reaction/pull/2981) ([@alloy](https://github.com/alloy))
+- Re-enable storybooks [#2978](https://github.com/artsy/reaction/pull/2978) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Remove mock resolvers and add more typings to tests [#2977](https://github.com/artsy/reaction/pull/2977) ([@alloy](https://github.com/alloy) [@ds300](https://github.com/ds300))
+- @alloy => [v2] Get storybooks working [#2975](https://github.com/artsy/reaction/pull/2975) ([@ashkan18](https://github.com/ashkan18))
+- @alloy => Resolves relay compiler errors [#2974](https://github.com/artsy/reaction/pull/2974) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 5
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v21.17.11 (Mon Nov 04 2019)
 
 #### 🐛  Bug Fix
