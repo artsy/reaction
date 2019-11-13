@@ -24,7 +24,6 @@ storiesOf("Components/Pages/Gene/Contents", module)
       <div>
         <SystemContextProvider>
           <Contents
-            sort="-year"
             filters={{ for_sale: true }}
             geneID="animals"
             mode="artworks"

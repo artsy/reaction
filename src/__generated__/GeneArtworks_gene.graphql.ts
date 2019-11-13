@@ -14,21 +14,50 @@ export type GeneArtworks_gene = {
             } | null> | null;
             readonly " $fragmentRefs": FragmentRefs<"Dropdown_aggregation">;
         } | null> | null;
+        readonly id: string;
+        readonly pageInfo: {
+            readonly hasNextPage: boolean;
+            readonly endCursor: string | null;
+        };
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly id: string;
+            } | null;
+        } | null> | null;
         readonly facet: {
             readonly " $fragmentRefs": FragmentRefs<"Headline_facet">;
         } | null;
-        readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks" | "GeneArtworksContent_filtered_artworks">;
+        readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks" | "ArtworkGrid_artworks">;
     } | null;
     readonly " $refType": "GeneArtworks_gene";
 };
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "GeneArtworks_gene",
   "type": "Gene",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": "count",
+        "cursor": "cursor",
+        "direction": "forward",
+        "path": [
+          "filtered_artworks"
+        ]
+      }
+    ]
+  },
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
@@ -64,6 +93,24 @@ const node: ReaderFragment = {
       "name": "dimensionRange",
       "type": "String",
       "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "count",
+      "type": "Int",
+      "defaultValue": 10
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "cursor",
+      "type": "String",
+      "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
     }
   ],
   "selections": [
@@ -77,7 +124,7 @@ const node: ReaderFragment = {
     {
       "kind": "LinkedField",
       "alias": "filtered_artworks",
-      "name": "filterArtworksConnection",
+      "name": "__GeneArtworks_filtered_artworks_connection",
       "storageKey": null,
       "args": [
         {
@@ -111,9 +158,9 @@ const node: ReaderFragment = {
           "variableName": "priceRange"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort"
         }
       ],
       "concreteType": "FilterArtworksConnection",
@@ -167,6 +214,69 @@ const node: ReaderFragment = {
             }
           ]
         },
+        (v0/*: any*/),
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageInfo",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "endCursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "FilterArtworksEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Artwork",
+              "plural": false,
+              "selections": [
+                (v0/*: any*/),
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "__typename",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "cursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -190,12 +300,13 @@ const node: ReaderFragment = {
         },
         {
           "kind": "FragmentSpread",
-          "name": "GeneArtworksContent_filtered_artworks",
+          "name": "ArtworkGrid_artworks",
           "args": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '4a790b68677796b68fb1a921b3074bba';
+})();
+(node as any).hash = 'b01d2dade7bee09c755965c23ca51464';
 export default node;
