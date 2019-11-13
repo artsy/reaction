@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { BidForm_me$ref } from "./BidForm_me.graphql";
 import { BidForm_saleArtwork$ref } from "./BidForm_saleArtwork.graphql";
+import { ConfirmBid_me$ref } from "./ConfirmBid_me.graphql";
 import { LotInfo_artwork$ref } from "./LotInfo_artwork.graphql";
 import { LotInfo_saleArtwork$ref } from "./LotInfo_saleArtwork.graphql";
 export type ConfirmBidValidTestQueryVariables = {};
@@ -30,8 +30,7 @@ export type ConfirmBidValidTestQueryResponse = {
     }) | null;
     readonly me: ({
         readonly id: string;
-        readonly has_qualified_credit_cards: boolean | null;
-        readonly " $fragmentRefs": BidForm_me$ref;
+        readonly " $fragmentRefs": ConfirmBid_me$ref;
     }) | null;
 };
 export type ConfirmBidValidTestQuery = {
@@ -70,9 +69,8 @@ query ConfirmBidValidTestQuery {
     __id
   }
   me {
-    ...BidForm_me
     id
-    has_qualified_credit_cards
+    ...ConfirmBid_me
     __id
   }
 }
@@ -114,6 +112,13 @@ fragment BidForm_saleArtwork on SaleArtwork {
     }
     __id
   }
+  __id
+}
+
+fragment ConfirmBid_me on Me {
+  id
+  hasQualifiedCreditCards: has_qualified_credit_cards
+  ...BidForm_me
   __id
 }
 
@@ -192,18 +197,11 @@ v8 = {
 v9 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "has_qualified_credit_cards",
-  "args": null,
-  "storageKey": null
-},
-v10 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "cents",
   "args": null,
   "storageKey": null
 },
-v11 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
@@ -215,7 +213,7 @@ return {
   "operationKind": "query",
   "name": "ConfirmBidValidTestQuery",
   "id": null,
-  "text": "query ConfirmBidValidTestQuery {\n  artwork(id: \"artwork-id\") {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: \"example-auction-id\") {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          id\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    ...BidForm_me\n    id\n    has_qualified_credit_cards\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  sale {\n    registrationStatus {\n      qualifiedForBidding: qualified_for_bidding\n      __id\n    }\n    __id\n  }\n  __id\n}\n\nfragment BidForm_me on Me {\n  hasQualifiedCreditCards: has_qualified_credit_cards\n  __id\n}\n",
+  "text": "query ConfirmBidValidTestQuery {\n  artwork(id: \"artwork-id\") {\n    ...LotInfo_artwork\n    _id\n    id\n    saleArtwork: sale_artwork(sale_id: \"example-auction-id\") {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      _id\n      id\n      sale {\n        registrationStatus {\n          id\n          qualified_for_bidding\n          __id\n        }\n        _id\n        id\n        name\n        is_closed\n        is_registration_closed\n        __id\n      }\n      __id\n    }\n    __id\n  }\n  me {\n    id\n    ...ConfirmBid_me\n    __id\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  _id\n  date\n  title\n  imageUrl\n  artistNames: artist_names\n  __id\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions: bidder_positions\n  }\n  lotLabel: lot_label\n  minimumNextBid: minimum_next_bid {\n    amount\n    cents\n    display\n  }\n  __id\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid: minimum_next_bid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n  sale {\n    registrationStatus {\n      qualifiedForBidding: qualified_for_bidding\n      __id\n    }\n    __id\n  }\n  __id\n}\n\nfragment ConfirmBid_me on Me {\n  id\n  hasQualifiedCreditCards: has_qualified_credit_cards\n  ...BidForm_me\n  __id\n}\n\nfragment BidForm_me on Me {\n  hasQualifiedCreditCards: has_qualified_credit_cards\n  __id\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -307,13 +305,12 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "FragmentSpread",
-            "name": "BidForm_me",
+            "name": "ConfirmBid_me",
             "args": null
           },
-          v2,
-          v9,
           v5
         ]
       }
@@ -414,8 +411,8 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v10,
-                  v11
+                  v9,
+                  v10
                 ]
               },
               v5,
@@ -435,8 +432,8 @@ return {
                 "concreteType": "BidIncrementsFormatted",
                 "plural": true,
                 "selections": [
-                  v10,
-                  v11
+                  v9,
+                  v10
                 ]
               },
               {
@@ -492,6 +489,7 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
+          v2,
           {
             "kind": "ScalarField",
             "alias": "hasQualifiedCreditCards",
@@ -499,14 +497,12 @@ return {
             "args": null,
             "storageKey": null
           },
-          v5,
-          v2,
-          v9
+          v5
         ]
       }
     ]
   }
 };
 })();
-(node as any).hash = 'ad6e68f098a2b2396f392475bbf96e5e';
+(node as any).hash = '6b7c8ac1bbc520f7ead854f71bdb77a2';
 export default node;

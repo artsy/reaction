@@ -1,5 +1,6 @@
 import { Box, Separator, Serif } from "@artsy/palette"
 import { BidderPositionQueryResponse } from "__generated__/BidderPositionQuery.graphql"
+import { ConfirmBid_me } from "__generated__/ConfirmBid_me.graphql"
 import {
   ConfirmBidCreateBidderPositionMutation,
   ConfirmBidCreateBidderPositionMutationResponse,
@@ -7,10 +8,12 @@ import {
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import {
   BidFormFragmentContainer as BidForm,
+  determineDisplayRequirements,
   FormValues,
 } from "Apps/Auction/Components/BidForm"
 import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/LotInfo"
 import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
+import { createCreditCardAndUpdatePhone } from "Apps/Auction/Routes/Register"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
@@ -18,7 +21,7 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { FormikActions } from "formik"
 import qs from "qs"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Title } from "react-head"
 import {
   commitMutation,
@@ -26,6 +29,12 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import {
+  Elements,
+  injectStripe,
+  ReactStripeElements,
+  StripeProvider,
+} from "react-stripe-elements"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -34,9 +43,9 @@ const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
 
 type BidFormActions = FormikActions<FormValues>
 
-interface ConfirmBidProps {
+interface ConfirmBidProps extends ReactStripeElements.InjectedStripeProps {
   artwork: routes_ConfirmBidQueryResponse["artwork"]
-  me: routes_ConfirmBidQueryResponse["me"]
+  me: ConfirmBid_me
   relay: RelayProp
   location: Location
 }
@@ -46,11 +55,15 @@ const MAX_POLL_ATTEMPTS = 20
 export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   let pollCount = 0
 
-  const { artwork, me, relay } = props
+  const { artwork, me, relay, stripe } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
   const { environment } = relay
   const { trackEvent } = useTracking()
+  const { requiresPaymentInformation } = determineDisplayRequirements(
+    (sale as any).registrationStatus,
+    me as any
+  )
 
   function createBidderPosition(maxBidAmountCents: number) {
     return new Promise<ConfirmBidCreateBidderPositionMutationResponse>(
@@ -129,10 +142,45 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     })
   }
 
-  function handleSubmit(values: FormValues, actions: BidFormActions) {
+  const createTokenFromAddress = async (address: stripe.TokenOptions) => {
+    const { error, token } = await stripe.createToken(address)
+
+    if (error) {
+      throw new Error(`Stripe error: ${error.message || error.decline_code}`)
+    } else {
+      return token
+    }
+  }
+
+  async function handleSubmit(values: FormValues, actions: BidFormActions) {
     const selectedBid = Number(values.selectedBid)
     const possibleExistingBidderId: string | null =
       sale.registrationStatus && sale.registrationStatus.id
+
+    if (requiresPaymentInformation) {
+      try {
+        const { address } = values
+        const stripeAddress = {
+          name: address.name,
+          address_line1: address.addressLine1,
+          address_line2: address.addressLine2,
+          address_country: address.country,
+          address_city: address.city,
+          address_state: address.region,
+          address_zip: address.postalCode,
+        }
+
+        const token = await createTokenFromAddress(stripeAddress)
+        await createCreditCardAndUpdatePhone(
+          environment,
+          address.phoneNumber,
+          token.id
+        )
+      } catch (error) {
+        onJsError(actions, error, possibleExistingBidderId)
+        return
+      }
+    }
 
     createBidderPosition(selectedBid)
       .then(data =>
@@ -235,7 +283,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           showPricingTransparency={false}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
-          me={me}
+          me={me as any}
         />
       </Box>
     </AppContainer>
@@ -250,6 +298,40 @@ const getInitialSelectedBid = (location: Location): string | undefined => {
   )
 }
 
+const StripeInjectedConfirmBidRoute = injectStripe(ConfirmBidRoute)
+
+export const StripeWrappedConfirmBidRoute: React.FC<
+  ConfirmBidProps
+> = props => {
+  const [stripe, setStripe] = useState(null)
+
+  function setupStripe() {
+    setStripe(window.Stripe(sd.STRIPE_PUBLISHABLE_KEY))
+  }
+
+  useEffect(() => {
+    if (window.Stripe) {
+      setStripe(window.Stripe(sd.STRIPE_PUBLISHABLE_KEY))
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", setupStripe)
+
+      return () => {
+        document
+          .querySelector("#stripe-js")
+          .removeEventListener("load", setupStripe)
+      }
+    }
+  }, [])
+
+  return (
+    <StripeProvider stripe={stripe}>
+      <Elements>
+        <StripeInjectedConfirmBidRoute {...props} />
+      </Elements>
+    </StripeProvider>
+  )
+}
+
 const TrackingWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   const Component = track<ConfirmBidProps>(p => ({
     context_page: Schema.PageName.AuctionConfirmBidPage,
@@ -257,12 +339,20 @@ const TrackingWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     artwork_slug: p.artwork.id,
     sale_id: p.artwork.saleArtwork.sale._id,
     user_id: p.me.id,
-  }))(ConfirmBidRoute)
+  }))(StripeWrappedConfirmBidRoute)
 
   return <Component {...props} />
 }
 
 export const ConfirmBidRouteFragmentContainer = createFragmentContainer(
   trackPageViewWrapper(TrackingWrappedConfirmBidRoute),
-  {}
+  {
+    me: graphql`
+      fragment ConfirmBid_me on Me {
+        id
+        hasQualifiedCreditCards: has_qualified_credit_cards
+        ...BidForm_me
+      }
+    `,
+  }
 )

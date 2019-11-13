@@ -17,6 +17,9 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Yup from "yup"
 
+import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
+import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+
 interface Props {
   initialSelectedBid?: string
   me: BidForm_me
@@ -26,8 +29,10 @@ interface Props {
 }
 
 export interface FormValues {
-  selectedBid: string
+  address?: Address
   agreeToTerms: boolean
+  creditCard?: string
+  selectedBid: string
 }
 
 const validationSchemaForRegisteredUsers = Yup.object().shape({
@@ -63,7 +68,7 @@ const getSelectedBid = ({
   return selectedIncrement.value
 }
 
-const determineDisplayRequirements = (
+export const determineDisplayRequirements = (
   bidder: BidForm_saleArtwork["sale"]["registrationStatus"],
   me: BidForm_me
 ) => {
@@ -88,10 +93,10 @@ export const BidForm: React.FC<Props> = ({
   ).map(inc => ({ value: inc.cents.toString(), text: inc.display }))
 
   const selectedBid = getSelectedBid({ initialSelectedBid, displayIncrements })
-  const { requiresCheckbox } = determineDisplayRequirements(
-    saleArtwork.sale.registrationStatus,
-    me
-  )
+  const {
+    requiresCheckbox,
+    requiresPaymentInformation,
+  } = determineDisplayRequirements(saleArtwork.sale.registrationStatus, me)
   const validationSchema = requiresCheckbox
     ? validationSchemaForUnregisteredUsersWithCreditCard
     : validationSchemaForRegisteredUsers
@@ -102,6 +107,16 @@ export const BidForm: React.FC<Props> = ({
         initialValues={{
           selectedBid,
           agreeToTerms: false,
+          address: {
+            name: "",
+            country: "",
+            postalCode: "",
+            addressLine1: "",
+            addressLine2: "",
+            city: "",
+            region: "",
+            phoneNumber: "",
+          },
         }}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
@@ -136,6 +151,48 @@ export const BidForm: React.FC<Props> = ({
                   )}
                   {showPricingTransparency && <PricingTransparency />}
                 </Flex>
+
+                {requiresPaymentInformation && (
+                  <Box>
+                    <Separator mb={3} />
+
+                    <Serif size="4" color="black100">
+                      Please enter your credit card information below. The name
+                      on your Artsy account must match the name on the card, and
+                      a valid credit card is required in order to bid.
+                    </Serif>
+                    <Serif size="4" mt={2} color="black100">
+                      Registration is free. Artsy will never charge this card
+                      without your permission, and you are not required to use
+                      this card to pay if you win.
+                    </Serif>
+
+                    <Serif
+                      mt={4}
+                      mb={2}
+                      size="4t"
+                      weight="semibold"
+                      color="black100"
+                    >
+                      Card Information
+                    </Serif>
+
+                    <CreditCardInput
+                      error={{ message: errors.creditCard } as stripe.Error}
+                    />
+
+                    <Box mt={2}>
+                      <AddressForm
+                        value={values.address}
+                        onChange={address => setFieldValue("address", address)}
+                        errors={errors.address}
+                        touched={touched.address}
+                        billing
+                        showPhoneNumberInput
+                      />
+                    </Box>
+                  </Box>
+                )}
 
                 <Flex
                   pb={3}

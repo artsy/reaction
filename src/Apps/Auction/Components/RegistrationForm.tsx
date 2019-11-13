@@ -230,6 +230,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
         Registration is free. Artsy will never charge this card without your
         permission, and you are not required to use this card to pay if you win.
       </Serif>
+
       <Box mt={2}>
         <Formik
           initialValues={initialValues}
