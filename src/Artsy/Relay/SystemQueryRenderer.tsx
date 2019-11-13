@@ -1,14 +1,14 @@
 import React from "react"
 import { QueryRenderer, QueryRendererProps } from "react-relay"
-import { OperationBase, OperationDefaults } from "relay-runtime"
+import { OperationType } from "relay-runtime"
 
 interface SystemQueryRendererState {
   isMounted: boolean
 }
 
 export class SystemQueryRenderer<
-  T extends OperationBase = OperationDefaults
-> extends React.Component<QueryRendererProps, SystemQueryRendererState> {
+  T extends OperationType
+> extends React.Component<QueryRendererProps<T>, SystemQueryRendererState> {
   state = {
     isMounted: false,
   }

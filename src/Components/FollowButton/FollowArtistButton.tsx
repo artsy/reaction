@@ -5,7 +5,6 @@ import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Comp
 import { extend } from "lodash"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { FollowButton } from "./Button"
@@ -103,8 +102,8 @@ export class FollowArtistButton extends React.Component<Props, State> {
         mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
             artist {
-              __id
-              is_followed
+              id
+              is_followed: isFollowed
               counts {
                 follows
               }
@@ -114,21 +113,21 @@ export class FollowArtistButton extends React.Component<Props, State> {
       `,
       variables: {
         input: {
-          artist_id: artist.id,
+          artistID: artist.internalID,
           unfollow: artist.is_followed,
         },
       },
       optimisticResponse: {
         followArtist: {
           artist: {
-            __id: artist.__id,
+            id: artist.id,
             is_followed: !artist.is_followed,
             counts: { follows: newFollowCount },
           },
         },
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
-        const artistProxy = store.get(data.followArtist.artist.__id)
+      updater: (store, data) => {
+        const artistProxy = store.get(data.followArtist.artist.id)
 
         artistProxy
           .getLinkedRecord("counts")
@@ -195,10 +194,10 @@ export const FollowArtistButtonFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           showFollowSuggestions: { type: "Boolean", defaultValue: false }
         ) {
-        __id
-        name
         id
-        is_followed
+        internalID
+        name
+        is_followed: isFollowed
         counts {
           follows
         }

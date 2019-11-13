@@ -22,12 +22,12 @@ export const ArtistSeriesEntity: React.FC<ArtistSeriesEntityProps> = ({
 }) => {
   const {
     headerImage,
-    artworks: { artworks_connection },
+    artworksConnection,
     price_guidance,
     slug,
     title,
   } = member
-  const artworks = artworks_connection.edges.map(({ node }) => node)
+  const artworks = artworksConnection.edges.map(({ node }) => node)
   const bgImages = artworks.map(({ image }) => image && image.url)
   const imageSize =
     bgImages!.length === 1 ? 221 : bgImages!.length === 2 ? 109 : 72
@@ -156,19 +156,20 @@ export const ArtistSeriesRailContainer = createFragmentContainer(
         headerImage
         thumbnail
         title
-        price_guidance
-
-        artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
-          artworks_connection(first: 3) {
-            edges {
-              node {
-                artist {
-                  name
-                }
-                title
-                image {
-                  url(version: "small")
-                }
+        price_guidance: priceGuidance
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              artist {
+                name
+              }
+              title
+              image {
+                url(version: "small")
               }
             }
           }

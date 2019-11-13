@@ -4,29 +4,19 @@ import {
   withSystemContext,
 } from "Artsy"
 import React from "react"
-import { GraphQLTaggedNode, ReadyState } from "react-relay"
-import { CacheConfig, RerunParam, Variables } from "relay-runtime"
+import { QueryRendererPropsBase } from "react-relay"
+import { OperationType } from "relay-runtime"
 import { SystemQueryRenderer } from "./SystemQueryRenderer"
 
-/**
- * A copy of the upstream interface, minus the `environment` field.
- */
-interface QueryRendererProps {
-  cacheConfig?: CacheConfig
-  query: GraphQLTaggedNode
-  variables: Variables
-  rerunParamExperimental?: RerunParam
-  render(readyState: ReadyState): React.ReactElement<any> | undefined | null
+type Props<T extends OperationType> = SystemContextProps &
+  Omit<QueryRendererPropsBase<T>, "environment">
+
+class Renderer<T extends OperationType> extends React.Component<Props<T>> {
+  redner() {
+    const { user, relayEnvironment, children, ...props } = this.props
+    return <SystemQueryRenderer {...props} environment={relayEnvironment} />
+  }
 }
-
-type Props = SystemContextProps & QueryRendererProps
-
-const Renderer: React.SFC<Props> = ({
-  user,
-  relayEnvironment,
-  children,
-  ...props
-}) => <SystemQueryRenderer {...props} environment={relayEnvironment} />
 
 const RendererWithContext = withSystemContext(Renderer)
 
@@ -36,12 +26,15 @@ const RendererWithContext = withSystemContext(Renderer)
  *
  * We’ll need to see if it makes sense to use this as an entry point to render component trees from Reaction in Force.
  */
-export const RootQueryRenderer: React.SFC<Props> = ({
-  user,
-  children,
-  ...props
-}) => (
-  <SystemContextProvider user={user}>
-    <RendererWithContext {...props} />
-  </SystemContextProvider>
-)
+export class RootQueryRenderer<T extends OperationType> extends React.Component<
+  Props<T>
+> {
+  render() {
+    const { user, children, ...props } = this.props
+    return (
+      <SystemContextProvider user={user}>
+        <RendererWithContext {...props} />
+      </SystemContextProvider>
+    )
+  }
+}

@@ -1,45 +1,52 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Collections_categories$ref } from "./Collections_categories.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type CollectionsAppTestQueryVariables = {};
 export type CollectionsAppTestQueryResponse = {
-    readonly categories: ReadonlyArray<{
-        readonly " $fragmentRefs": Collections_categories$ref;
+    readonly marketingCategories: ReadonlyArray<{
+        readonly " $fragmentRefs": FragmentRefs<"Collections_marketingCategories">;
+    }>;
+};
+export type CollectionsAppTestQueryRawResponse = {
+    readonly marketingCategories: ReadonlyArray<{
+        readonly name: string;
+        readonly collections: ReadonlyArray<{
+            readonly slug: string;
+            readonly headerImage: string | null;
+            readonly title: string;
+            readonly id: string | null;
+        }>;
     }>;
 };
 export type CollectionsAppTestQuery = {
     readonly response: CollectionsAppTestQueryResponse;
     readonly variables: CollectionsAppTestQueryVariables;
+    readonly rawResponse: CollectionsAppTestQueryRawResponse;
 };
 
 
 
 /*
 query CollectionsAppTestQuery {
-  categories: marketingCategories {
-    ...Collections_categories
+  marketingCategories {
+    ...Collections_marketingCategories
   }
 }
 
-fragment Collections_categories on MarketingCollectionCategory {
+fragment Collections_marketingCategories on MarketingCollectionCategory {
   name
   collections {
     slug
     headerImage
     title
-    __id: id
+    id
   }
 }
 */
 
 const node: ConcreteRequest = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "CollectionsAppTestQuery",
-  "id": null,
-  "text": "query CollectionsAppTestQuery {\n  categories: marketingCategories {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CollectionsAppTestQuery",
@@ -49,7 +56,7 @@ const node: ConcreteRequest = {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "categories",
+        "alias": null,
         "name": "marketingCategories",
         "storageKey": null,
         "args": null,
@@ -58,7 +65,7 @@ const node: ConcreteRequest = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Collections_categories",
+            "name": "Collections_marketingCategories",
             "args": null
           }
         ]
@@ -72,7 +79,7 @@ const node: ConcreteRequest = {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "categories",
+        "alias": null,
         "name": "marketingCategories",
         "storageKey": null,
         "args": null,
@@ -118,7 +125,7 @@ const node: ConcreteRequest = {
               },
               {
                 "kind": "ScalarField",
-                "alias": "__id",
+                "alias": null,
                 "name": "id",
                 "args": null,
                 "storageKey": null
@@ -128,7 +135,14 @@ const node: ConcreteRequest = {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "CollectionsAppTestQuery",
+    "id": null,
+    "text": "query CollectionsAppTestQuery {\n  marketingCategories {\n    ...Collections_marketingCategories\n  }\n}\n\nfragment Collections_marketingCategories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
-(node as any).hash = 'b9fcfe6e95aed4b8149c3d1cbb9f8cd9';
+(node as any).hash = '050582dc3697c03c390f4940c8479191';
 export default node;

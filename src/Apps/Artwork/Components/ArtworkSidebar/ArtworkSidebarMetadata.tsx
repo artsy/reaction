@@ -41,12 +41,12 @@ export const ArtworkSidebarMetadataFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment ArtworkSidebarMetadata_artwork on Artwork {
-        is_biddable
-        edition_sets {
+        is_biddable: isBiddable
+        edition_sets: editionSets {
           __typename
         }
-        sale_artwork {
-          lot_label
+        sale_artwork: saleArtwork {
+          lot_label: lotLabel
         }
         ...ArtworkSidebarTitleInfo_artwork
         ...ArtworkSidebarSizeInfo_piece

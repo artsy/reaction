@@ -5,7 +5,7 @@ import { isEmpty } from "lodash"
 import { version as ReactionVersion } from "package.json"
 import RelayClientSSR from "react-relay-network-modern-ssr/node8/client"
 import RelayServerSSR from "react-relay-network-modern-ssr/node8/server"
-import { Environment, RecordSource, RelayNetwork, Store } from "relay-runtime"
+import { Environment, INetwork, RecordSource, Store } from "relay-runtime"
 import { data as sd } from "sharify"
 
 import {
@@ -27,9 +27,9 @@ const isDevelopment =
 // Only log on the client during development
 const loggingEnabled = isDevelopment && !isServer
 
-const METAPHYSICS_ENDPOINT = isServer
-  ? process.env.METAPHYSICS_ENDPOINT
-  : sd.METAPHYSICS_ENDPOINT
+const METAPHYSICS_ENDPOINT = `${
+  isServer ? process.env.METAPHYSICS_ENDPOINT : sd.METAPHYSICS_ENDPOINT
+}/v2`
 
 const USER_AGENT = `Reaction/${ReactionVersion}`
 
@@ -37,7 +37,7 @@ interface Config {
   cache?: object
   user?: User
   checkStatus?: boolean
-  relayNetwork?: RelayNetwork
+  relayNetwork?: INetwork
   userAgent?: string
 }
 

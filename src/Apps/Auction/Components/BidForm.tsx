@@ -152,7 +152,7 @@ export const BidForm: React.FC<Props> = ({
 export const BidFormFragmentContainer = createFragmentContainer(BidForm, {
   saleArtwork: graphql`
     fragment BidForm_saleArtwork on SaleArtwork {
-      minimumNextBid: minimum_next_bid {
+      minimumNextBid: minimumNextBid {
         cents
       }
       increments(useMyMaxBid: true) {

@@ -16,7 +16,7 @@ describe("default collections header artworks", () => {
   }
 
   it("duplicates header artworks when the quantity of artworks in collection are small in a large viewport", () => {
-    const artworks = defaultCollectionHeaderArtworks.hits.slice(0, 3)
+    const artworks = defaultCollectionHeaderArtworks.edges.slice(0, 3)
     const headerArtworks = getHeaderArtworks(artworks, 1275, false)
 
     expect(hasDuplicateArtworks(headerArtworks, artworks)).toBeTruthy()
@@ -25,7 +25,7 @@ describe("default collections header artworks", () => {
   })
 
   it("duplicates header artworks when the quantity of artworks in collection are small in a small viewport", () => {
-    const artworks = defaultCollectionHeaderArtworks.hits.slice(0, 2)
+    const artworks = defaultCollectionHeaderArtworks.edges.slice(0, 2)
     const headerArtworks = getHeaderArtworks(artworks, 375, true)
 
     expect(hasDuplicateArtworks(headerArtworks, artworks)).toBeTruthy()
@@ -34,8 +34,8 @@ describe("default collections header artworks", () => {
   })
 
   it("returns only the number of artworks necessary to fill the header", () => {
-    const artworks = defaultCollectionHeaderArtworks.hits
-    const headerArtworks = getHeaderArtworks(artworks, 675, false)
+    const artworks = defaultCollectionHeaderArtworks.edges
+    const headerArtworks = getHeaderArtworks(artworks as any, 675, false)
 
     expect(headerArtworks.length).toBeLessThan(artworks.length)
     expect(headerArtworks).toHaveLength(4)

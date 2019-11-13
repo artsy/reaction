@@ -1,4 +1,5 @@
 import { BorderedRadio, Button } from "@artsy/palette"
+import { RespondTestQueryRawResponse } from "__generated__/RespondTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -101,12 +102,12 @@ describe("The respond page", () => {
           unix: 222,
         },
       },
-    },
+    } as RespondTestQueryRawResponse,
     defaultMutationResults: {
       ...buyerCounterOfferSuccess,
     },
     query: graphql`
-      query RespondTestQuery {
+      query RespondTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Respond_order
         }
@@ -235,7 +236,7 @@ describe("The respond page", () => {
       await page.clickSubmit()
 
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/accept`
+        `/orders/${testOrder.internalID}/review/accept`
       )
     })
 
@@ -244,7 +245,7 @@ describe("The respond page", () => {
       await page.clickSubmit()
 
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/decline`
+        `/orders/${testOrder.internalID}/review/decline`
       )
     })
 

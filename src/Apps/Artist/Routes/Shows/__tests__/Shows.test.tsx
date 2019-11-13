@@ -16,15 +16,15 @@ describe("Shows Route", () => {
     return await renderRelayTree({
       Component: ShowsRoute,
       query: graphql`
-        query Shows_Test_Query($artist_id: String!) {
+        query Shows_Test_Query($artistID: String!) @raw_response_type {
           viewer {
             ...Shows_viewer
           }
         }
       `,
-      mockData: { viewer: ShowsFixture },
+      mockData: ShowsFixture,
       variables: {
-        artist_id: "pablo-picasso",
+        artistID: "pablo-picasso",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>

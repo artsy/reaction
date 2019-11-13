@@ -30,7 +30,7 @@ describe("MediumFilter", () => {
           counts: [
             {
               name: "Foo Medium",
-              id: "foo-medium",
+              value: "foo-medium",
             },
           ],
         },

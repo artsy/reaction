@@ -29,13 +29,13 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
 
   render() {
     const {
-      artworks: { artworks_connection },
+      artworksConnection,
       headerImage,
       price_guidance,
       slug,
       title,
     } = this.props.collection
-    const artworks = artworks_connection.edges.map(({ node }) => node)
+    const artworks = artworksConnection.edges.map(({ node }) => node)
     const bgImages = compact(
       artworks.map(({ image }) => image && image.resized && image.resized.url)
     )
@@ -97,6 +97,7 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
+
     ${CollectionTitle} {
       text-decoration: underline;
     }
@@ -143,19 +144,21 @@ export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
         headerImage
         slug
         title
-        price_guidance
-        artworks(aggregations: [TOTAL], sort: "-decayed_merch") {
-          artworks_connection(first: 3) {
-            edges {
-              node {
-                artist {
-                  name
-                }
-                title
-                image {
-                  resized(width: 262) {
-                    url
-                  }
+        price_guidance: priceGuidance
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              artist {
+                name
+              }
+              title
+              image {
+                resized(width: 262) {
+                  url
                 }
               }
             }

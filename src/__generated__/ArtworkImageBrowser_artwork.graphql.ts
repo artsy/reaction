@@ -1,55 +1,46 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkActions_artwork$ref } from "./ArtworkActions_artwork.graphql";
-declare const _ArtworkImageBrowser_artwork$ref: unique symbol;
-export type ArtworkImageBrowser_artwork$ref = typeof _ArtworkImageBrowser_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkImageBrowser_artwork = {
     readonly image_alt: string | null;
-    readonly image: ({
-        readonly id: string | null;
-    }) | null;
-    readonly images: ReadonlyArray<({
-        readonly id: string | null;
+    readonly image: {
+        readonly internalID: string | null;
+    } | null;
+    readonly images: ReadonlyArray<{
+        readonly internalID: string | null;
         readonly uri: string | null;
-        readonly placeholder: ({
+        readonly placeholder: {
             readonly url: string | null;
-        }) | null;
+        } | null;
         readonly aspectRatio: number;
         readonly is_zoomable: boolean | null;
         readonly is_default: boolean | null;
-        readonly deepZoom: ({
-            readonly Image: ({
+        readonly deepZoom: {
+            readonly Image: {
                 readonly xmlns: string | null;
                 readonly Url: string | null;
                 readonly Format: string | null;
                 readonly TileSize: number | null;
                 readonly Overlap: number | null;
-                readonly Size: ({
+                readonly Size: {
                     readonly Width: number | null;
                     readonly Height: number | null;
-                }) | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
-    readonly " $fragmentRefs": ArtworkActions_artwork$ref;
-    readonly " $refType": ArtworkImageBrowser_artwork$ref;
+                } | null;
+            } | null;
+        } | null;
+    } | null> | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkActions_artwork">;
+    readonly " $refType": "ArtworkImageBrowser_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 };
@@ -63,14 +54,9 @@ return {
     {
       "kind": "ScalarField",
       "alias": "image_alt",
-      "name": "to_s",
+      "name": "formattedMetadata",
       "args": null,
       "storageKey": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkActions_artwork",
-      "args": null
     },
     {
       "kind": "LinkedField",
@@ -81,8 +67,7 @@ return {
       "concreteType": "Image",
       "plural": false,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/)
       ]
     },
     {
@@ -94,7 +79,7 @@ return {
       "concreteType": "Image",
       "plural": true,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": "uri",
@@ -105,8 +90,7 @@ return {
               "name": "version",
               "value": [
                 "large"
-              ],
-              "type": "[String]"
+              ]
             }
           ],
           "storageKey": "url(version:[\"large\"])"
@@ -120,20 +104,17 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 30,
-              "type": "Int"
+              "value": 30
             },
             {
               "kind": "Literal",
               "name": "version",
-              "value": "small",
-              "type": "[String]"
+              "value": "small"
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 30,
-              "type": "Int"
+              "value": 30
             }
           ],
           "concreteType": "ResizedImageUrl",
@@ -150,29 +131,29 @@ return {
         },
         {
           "kind": "ScalarField",
-          "alias": "aspectRatio",
-          "name": "aspect_ratio",
+          "alias": null,
+          "name": "aspectRatio",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_zoomable",
+          "alias": "is_zoomable",
+          "name": "isZoomable",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_default",
+          "alias": "is_default",
+          "name": "isDefault",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "LinkedField",
-          "alias": "deepZoom",
-          "name": "deep_zoom",
+          "alias": null,
+          "name": "deepZoom",
           "storageKey": null,
           "args": null,
           "concreteType": "DeepZoom",
@@ -250,19 +231,16 @@ return {
               ]
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtworkActions_artwork",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = '51377fc143d191b4dfefcfc5914e1f36';
+(node as any).hash = '20fbbc2e9bc8fb1c04cab4d72db8d396';
 export default node;

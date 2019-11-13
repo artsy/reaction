@@ -6,9 +6,9 @@ import { CreditCardDetails } from "../CreditCardDetails"
 
 const creditCard = {
   brand: "Visa",
-  last_digits: "4444",
-  expiration_month: 3,
-  expiration_year: 21,
+  lastDigits: "4444",
+  expirationMonth: 3,
+  expirationYear: 21,
 }
 
 storiesOf("Apps/Order/Components", module).add("Credit card details", () => (

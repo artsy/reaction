@@ -4,16 +4,15 @@ import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchRes
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
-import { Location } from "found"
+import { RouterState, withRouter } from "found"
 import qs from "qs"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
 
-export interface Props {
+export interface Props extends RouterState {
   viewer: SearchResultsEntity_viewer
   relay: RelayRefetchProp
-  location: Location
   entities: string[]
   tab: string
 }
@@ -32,7 +31,9 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 
   constructor(props) {
     super(props)
-    const { location } = this.props
+    const {
+      match: { location },
+    } = this.props
     const { page } = get(location, l => l.query)
 
     this.state = { isLoading: false, page: (page && parseInt(page, 10)) || 1 }
@@ -49,7 +50,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 
   loadNext = () => {
     const { viewer } = this.props
-    const { search: searchConnection } = viewer
+    const { searchConnection } = viewer
 
     const {
       pageInfo: { hasNextPage, endCursor },
@@ -79,7 +80,10 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
           console.error(error)
         }
 
-        const { location, tab } = this.props
+        const {
+          match: { location },
+          tab,
+        } = this.props
         const { term } = get(location, l => l.query)
         const urlParams = qs.stringify({
           term,
@@ -93,11 +97,16 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
   }
 
   renderItems() {
-    const { viewer, location } = this.props
+    const {
+      viewer,
+      match: { location },
+    } = this.props
     const { term } = get(location, l => l.query)
-    const { search: searchConnection } = viewer
+    const { searchConnection } = viewer
 
-    const items = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const items = get(viewer, v => v.searchConnection.edges, []).map(
+      e => e.node
+    )
 
     return (
       <>
@@ -112,7 +121,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
                 entityType={searchableItem.displayType}
                 index={index}
                 term={term}
-                id={searchableItem._id}
+                id={searchableItem.internalID}
               />
               {index < items.length - 1 && <Separator />}
             </Box>
@@ -130,11 +139,16 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
   }
 
   render() {
-    const { viewer, location } = this.props
+    const {
+      viewer,
+      match: { location },
+    } = this.props
 
     const { term } = get(location, l => l.query)
 
-    const items = get(viewer, v => v.search.edges, []).map(e => e.node)
+    const items = get(viewer, v => v.searchConnection.edges, []).map(
+      e => e.node
+    )
     return (
       <LoadingArea isLoading={this.state.isLoading}>
         {items.length === 0 ? (
@@ -150,7 +164,7 @@ export class SearchResultsEntityRoute extends React.Component<Props, State> {
 }
 
 export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
-  SearchResultsEntityRoute,
+  withRouter(SearchResultsEntityRoute) as React.ComponentType<Props>,
   {
     viewer: graphql`
       fragment SearchResultsEntity_viewer on Viewer
@@ -163,7 +177,7 @@ export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
           page: { type: "Int" }
           entities: { type: "[SearchEntity]" }
         ) {
-        search(
+        searchConnection(
           query: $term
           first: $first
           after: $after
@@ -185,7 +199,7 @@ export const SearchResultsEntityRouteFragmentContainer = createRefetchContainer(
                 description
                 displayLabel
                 href
-                _id
+                internalID
                 imageUrl
                 displayType
               }

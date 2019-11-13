@@ -1,6 +1,7 @@
 import { createTestEnv_artwork } from "__generated__/createTestEnv_artwork.graphql"
 import { createTestEnvCreditCardMutation } from "__generated__/createTestEnvCreditCardMutation.graphql"
 import { createTestEnvOrderMutation } from "__generated__/createTestEnvOrderMutation.graphql"
+import { createTestEnvQueryRawResponse } from "__generated__/createTestEnvQuery.graphql"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 import React from "react"
@@ -13,26 +14,28 @@ import {
 
 jest.unmock("react-relay")
 
-const orderMutation = graphql`
-  mutation createTestEnvOrderMutation(
-    $input: CommerceCreateOrderWithArtworkInput!
-  ) {
-    commerceCreateOrderWithArtwork(input: $input) {
-      orderOrError {
-        ... on CommerceOrderWithMutationSuccess {
-          order {
-            id
+const orderMutation =
+  // TODO: Inputs to the mutation might have changed case of the keys!
+  graphql`
+    mutation createTestEnvOrderMutation(
+      $input: CommerceCreateOrderWithArtworkInput!
+    ) {
+      commerceCreateOrderWithArtwork(input: $input) {
+        orderOrError {
+          ... on CommerceOrderWithMutationSuccess {
+            order {
+              internalID
+            }
           }
-        }
-        ... on CommerceOrderWithMutationFailure {
-          error {
-            type
+          ... on CommerceOrderWithMutationFailure {
+            error {
+              type
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
 const orderSuccess = {
   commerceCreateOrderWithArtwork: {
@@ -40,7 +43,7 @@ const orderSuccess = {
       __typename: "CommerceOrderWithMutationSuccess",
       order: {
         __typename: "CommerceBuyOrder",
-        id: "order-id",
+        internalID: "order-id",
       },
     },
   },
@@ -57,25 +60,26 @@ const orderFailure = {
   },
 }
 
-const creditCardMutation = graphql`
-  mutation createTestEnvCreditCardMutation($input: CreditCardInput!) {
-    createCreditCard: createCreditCard(input: $input) {
-      creditCardOrError {
-        ... on CreditCardMutationSuccess {
-          creditCard {
-            brand
+const creditCardMutation =
+  // TODO: Inputs to the mutation might have changed case of the keys!
+  graphql`
+    mutation createTestEnvCreditCardMutation($input: CreditCardInput!) {
+      createCreditCard: createCreditCard(input: $input) {
+        creditCardOrError {
+          ... on CreditCardMutationSuccess {
+            creditCard {
+              brand
+            }
           }
-        }
-
-        ... on CreditCardMutationFailure {
-          mutationError {
-            type
+          ... on CreditCardMutationFailure {
+            mutationError {
+              type
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
 const creditCardSuccess = {
   createCreditCard: {
@@ -187,13 +191,13 @@ describe("test envs", () => {
         title: "Test Artwork",
         artist: { name: "David Sheldrick" },
       },
-    },
+    } as createTestEnvQueryRawResponse,
     defaultMutationResults: {
       ...orderSuccess,
       ...creditCardSuccess,
     },
     query: graphql`
-      query createTestEnvQuery {
+      query createTestEnvQuery @raw_response_type {
         artwork(id: "unused") {
           ...createTestEnv_artwork
         }

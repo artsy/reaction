@@ -69,8 +69,7 @@ describe("ArtworkFilter", () => {
 
       expect(onFilterClick).toHaveBeenCalledWith("acquireable", true, {
         acquireable: true,
-        attribution_class: [],
-        major_periods: [],
+        majorPeriods: [],
         page: 1,
         sort: "-decayed_merch",
       })
@@ -102,8 +101,7 @@ describe("ArtworkFilter", () => {
 
       expect(onChange).toHaveBeenCalledWith({
         acquireable: true,
-        attribution_class: [],
-        major_periods: [],
+        majorPeriods: [],
         page: 1,
         sort: "-decayed_merch",
       })
@@ -131,10 +129,9 @@ describe("ArtworkFilter", () => {
         .simulate("change")
 
       expect(onChange).toHaveBeenCalledWith({
-        major_periods: [],
+        majorPeriods: [],
         page: 1,
         sort: "-partner_updated_at",
-        attribution_class: [],
       })
     })
 
@@ -154,8 +151,7 @@ describe("ArtworkFilter", () => {
         changed: { acquireable: true },
         current: {
           acquireable: true,
-          attribution_class: [],
-          major_periods: [],
+          majorPeriods: [],
           page: 1,
           sort: "-decayed_merch",
         },

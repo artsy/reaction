@@ -1,22 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _NavigationTabs_artist$ref: unique symbol;
-export type NavigationTabs_artist$ref = typeof _NavigationTabs_artist$ref;
+import { ReaderFragment } from "relay-runtime";
 export type NavigationTabs_artist = {
-    readonly id: string;
-    readonly statuses: ({
+    readonly slug: string;
+    readonly statuses: {
         readonly shows: boolean | null;
         readonly articles: boolean | null;
         readonly cv: boolean | null;
         readonly auction_lots: boolean | null;
-    }) | null;
-    readonly " $refType": NavigationTabs_artist$ref;
+    } | null;
+    readonly " $refType": "NavigationTabs_artist";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "NavigationTabs_artist",
   "type": "Artist",
@@ -26,7 +24,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -61,29 +59,21 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "minShowCount",
-              "value": 0,
-              "type": "Int"
+              "value": 0
             }
           ],
           "storageKey": "cv(minShowCount:0)"
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "auction_lots",
+          "alias": "auction_lots",
+          "name": "auctionLots",
           "args": null,
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = '943c43bf6ae1bb2fec555493cb9191d1';
+(node as any).hash = '963b8d999eb92e36906122e099b53d06';
 export default node;

@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchApp_viewer$ref } from "./SearchApp_viewer.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type routes_SearchResultsTopLevelQueryVariables = {
-    readonly term: string;
+    term: string;
 };
 export type routes_SearchResultsTopLevelQueryResponse = {
-    readonly viewer: ({
-        readonly " $fragmentRefs": SearchApp_viewer$ref;
-    }) | null;
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"SearchApp_viewer">;
+    } | null;
 };
 export type routes_SearchResultsTopLevelQuery = {
     readonly response: routes_SearchResultsTopLevelQueryResponse;
@@ -27,13 +27,12 @@ query routes_SearchResultsTopLevelQuery(
 }
 
 fragment SearchApp_viewer_4hh6ED on Viewer {
-  search(query: $term, first: 1, aggregations: [TYPE]) {
+  searchConnection(query: $term, first: 1, aggregations: [TYPE]) {
     aggregations {
       slice
       counts {
         count
         name
-        __id
       }
     }
     ...NavigationTabs_searchableConnection
@@ -41,21 +40,21 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
       node {
         __typename
         ... on SearchableItem {
-          id
+          slug
           displayLabel
           displayType
         }
         ... on Node {
-          __id
+          id
         }
       }
     }
   }
-  filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
+  artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {
     counts {
       total
     }
-    __id
+    id
   }
 }
 
@@ -65,7 +64,6 @@ fragment NavigationTabs_searchableConnection on SearchableConnection {
     counts {
       count
       name
-      __id
     }
   }
 }
@@ -83,28 +81,23 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_SearchResultsTopLevelQuery",
-  "id": null,
-  "text": "query routes_SearchResultsTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  search(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n        __id\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n  filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    __id\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n      __id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_SearchResultsTopLevelQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -117,8 +110,7 @@ return {
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": null
+                "variableName": "term"
               }
             ]
           }
@@ -129,7 +121,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_SearchResultsTopLevelQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -143,7 +135,7 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "search",
+            "name": "searchConnection",
             "storageKey": null,
             "args": [
               {
@@ -151,20 +143,17 @@ return {
                 "name": "aggregations",
                 "value": [
                   "TYPE"
-                ],
-                "type": "[SearchAggregation]"
+                ]
               },
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 1,
-                "type": "Int"
+                "value": 1
               },
               {
                 "kind": "Variable",
                 "name": "query",
-                "variableName": "term",
-                "type": "String!"
+                "variableName": "term"
               }
             ],
             "concreteType": "SearchableConnection",
@@ -208,8 +197,7 @@ return {
                         "name": "name",
                         "args": null,
                         "storageKey": null
-                      },
-                      v1
+                      }
                     ]
                   }
                 ]
@@ -239,7 +227,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v1,
+                      (v1/*: any*/),
                       {
                         "kind": "InlineFragment",
                         "type": "SearchableItem",
@@ -247,7 +235,7 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "id",
+                            "name": "slug",
                             "args": null,
                             "storageKey": null
                           },
@@ -276,7 +264,7 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "filter_artworks",
+            "name": "artworksConnection",
             "storageKey": null,
             "args": [
               {
@@ -284,23 +272,20 @@ return {
                 "name": "aggregations",
                 "value": [
                   "TOTAL"
-                ],
-                "type": "[ArtworkAggregation]"
+                ]
               },
               {
                 "kind": "Variable",
                 "name": "keyword",
-                "variableName": "term",
-                "type": "String"
+                "variableName": "term"
               },
               {
                 "kind": "Literal",
                 "name": "size",
-                "value": 0,
-                "type": "Int"
+                "value": 0
               }
             ],
-            "concreteType": "FilterArtworks",
+            "concreteType": "FilterArtworksConnection",
             "plural": false,
             "selections": [
               {
@@ -321,21 +306,19 @@ return {
                   }
                 ]
               },
-              v1
+              (v1/*: any*/)
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_SearchResultsTopLevelQuery",
+    "id": null,
+    "text": "query routes_SearchResultsTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  searchConnection(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          slug\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n  artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    id\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

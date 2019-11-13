@@ -1,22 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _UserSettingsPaymentsCreditCard$ref: unique symbol;
-export type UserSettingsPaymentsCreditCard$ref = typeof _UserSettingsPaymentsCreditCard$ref;
+import { ReaderFragment } from "relay-runtime";
 export type UserSettingsPaymentsCreditCard = {
-    readonly __id: string;
     readonly id: string;
+    readonly internalID: string;
     readonly brand: string;
-    readonly last_digits: string;
-    readonly expiration_year: number;
-    readonly expiration_month: number;
+    readonly lastDigits: string;
+    readonly expirationYear: number;
+    readonly expirationMonth: number;
     readonly __typename: "CreditCard";
-    readonly " $refType": UserSettingsPaymentsCreditCard$ref;
+    readonly " $refType": "UserSettingsPaymentsCreditCard";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "UserSettingsPaymentsCreditCard",
   "type": "CreditCard",
@@ -26,14 +24,14 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "id",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -47,21 +45,21 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "last_digits",
+      "name": "lastDigits",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "expiration_year",
+      "name": "expirationYear",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "expiration_month",
+      "name": "expirationMonth",
       "args": null,
       "storageKey": null
     },
@@ -74,5 +72,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1863425d7a32a3efc69f0f7df7032585';
+(node as any).hash = 'e9f97eecca2ad74a3adc1a32b5adc428';
 export default node;

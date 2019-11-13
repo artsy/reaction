@@ -1,40 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { CVItem_artist$ref } from "./CVItem_artist.graphql";
-declare const _CV_viewer$ref: unique symbol;
-export type CV_viewer$ref = typeof _CV_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CV_viewer = {
-    readonly artist_soloShows: ({
-        readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
-    readonly artist_groupShows: ({
-        readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
-    readonly artist_fairBooths: ({
-        readonly " $fragmentRefs": CVItem_artist$ref;
-    }) | null;
-    readonly " $refType": CV_viewer$ref;
+    readonly artist_soloShows: {
+        readonly " $fragmentRefs": FragmentRefs<"CVItem_artist">;
+    } | null;
+    readonly artist_groupShows: {
+        readonly " $fragmentRefs": FragmentRefs<"CVItem_artist">;
+    } | null;
+    readonly artist_fairBooths: {
+        readonly " $fragmentRefs": FragmentRefs<"CVItem_artist">;
+    } | null;
+    readonly " $refType": "CV_viewer";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artist_id",
-    "type": "String!"
+    "variableName": "artistID"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "CV_viewer",
@@ -43,31 +33,31 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "soloShows_at_a_fair",
+      "name": "soloShowsAtAFair",
       "type": "Boolean",
       "defaultValue": false
     },
     {
       "kind": "LocalArgument",
-      "name": "soloShows_solo_show",
+      "name": "soloShowsSoloShow",
       "type": "Boolean",
       "defaultValue": true
     },
     {
       "kind": "LocalArgument",
-      "name": "groupShows_at_a_fair",
+      "name": "groupShowsAtAFair",
       "type": "Boolean",
       "defaultValue": false
     },
     {
       "kind": "LocalArgument",
-      "name": "fairBooths_at_a_fair",
+      "name": "fairBoothsAtAFair",
       "type": "Boolean",
       "defaultValue": true
     },
     {
       "kind": "RootArgument",
-      "name": "artist_id",
+      "name": "artistID",
       "type": "String!"
     }
   ],
@@ -77,7 +67,7 @@ return {
       "alias": "artist_soloShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -87,19 +77,16 @@ return {
           "args": [
             {
               "kind": "Variable",
-              "name": "at_a_fair",
-              "variableName": "soloShows_at_a_fair",
-              "type": null
+              "name": "atAFair",
+              "variableName": "soloShowsAtAFair"
             },
             {
               "kind": "Variable",
-              "name": "solo_show",
-              "variableName": "soloShows_solo_show",
-              "type": null
+              "name": "soloShow",
+              "variableName": "soloShowsSoloShow"
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -107,7 +94,7 @@ return {
       "alias": "artist_groupShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -117,13 +104,11 @@ return {
           "args": [
             {
               "kind": "Variable",
-              "name": "at_a_fair",
-              "variableName": "groupShows_at_a_fair",
-              "type": null
+              "name": "atAFair",
+              "variableName": "groupShowsAtAFair"
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -131,7 +116,7 @@ return {
       "alias": "artist_fairBooths",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -141,17 +126,15 @@ return {
           "args": [
             {
               "kind": "Variable",
-              "name": "at_a_fair",
-              "variableName": "fairBooths_at_a_fair",
-              "type": null
+              "name": "atAFair",
+              "variableName": "fairBoothsAtAFair"
             }
           ]
-        },
-        v1
+        }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '036c65ba9f26e5eba899202fe6b96832';
+(node as any).hash = '95af52644c864123ab8658ddcc4912f4';
 export default node;

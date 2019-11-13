@@ -1,3 +1,5 @@
+import { CollectionsAppTestQueryRawResponse } from "__generated__/CollectionsAppTestQuery.graphql"
+
 export const CollectionsFixture = [
   {
     title: "KAWS: Companions",
@@ -42,53 +44,51 @@ export const CollectionsRailFixture = [
     headerImage: "http://files.artsy.net/images/jasperjohnsflag.png",
     title: "Jasper Johns: Flags",
     price_guidance: 1000,
-    artworks: {
-      artworks_connection: {
-        edges: [
-          {
-            node: {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                },
+    artworksConnection: {
+      edges: [
+        {
+          node: {
+            artist: {
+              name: "Jasper Johns",
+            },
+            title: "Flag",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag (Moratorium)",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Jasper Johns",
+            },
+            title: "Flag (Moratorium)",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag I",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Jasper Johns",
+            },
+            title: "Flag I",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
               },
             },
           },
-        ],
-      },
+        },
+      ],
     },
   },
   {
@@ -96,53 +96,51 @@ export const CollectionsRailFixture = [
     headerImage: "http://files.artsy.net/images/banksygirlwithballoon.png",
     title: "Street Art Now",
     price_guidance: 200,
-    artworks: {
-      artworks_connection: {
-        edges: [
-          {
-            node: {
-              artist: {
-                name: "Alec Monopoly",
-              },
-              title: "Community Chest: Go To Jail",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/DSa-4s-zRJEwW6mZRgDoxQ/small.jpg",
-                },
+    artworksConnection: {
+      edges: [
+        {
+          node: {
+            artist: {
+              name: "Alec Monopoly",
+            },
+            title: "Community Chest: Go To Jail",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/DSa-4s-zRJEwW6mZRgDoxQ/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Alec Monopoly",
-              },
-              title: "DJ Monopoly",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/L0wx7i69h96MUFq9EgOpBQ/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Alec Monopoly",
+            },
+            title: "DJ Monopoly",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/L0wx7i69h96MUFq9EgOpBQ/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Keith Haring",
-              },
-              title: "Keith Haring 1982 Dolphin lithograph",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/ZZodXz8Y7v7h0VWlQnZQCw/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Keith Haring",
+            },
+            title: "Keith Haring 1982 Dolphin lithograph",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/ZZodXz8Y7v7h0VWlQnZQCw/small.jpg",
               },
             },
           },
-        ],
-      },
+        },
+      ],
     },
   },
   {
@@ -151,53 +149,51 @@ export const CollectionsRailFixture = [
       "http://files.artsy.net/images/contemporarylimitededition2.png",
     title: "Contemporary Limited Editions",
     price_guidance: 1000,
-    artworks: {
-      artworks_connection: {
-        edges: [
-          {
-            node: {
-              artist: {
-                name: "Kiki Smith",
-              },
-              title: "Untitled",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/VzteQ4joB2Iwjek9kPUrGg/small.jpg",
-                },
+    artworksConnection: {
+      edges: [
+        {
+          node: {
+            artist: {
+              name: "Kiki Smith",
+            },
+            title: "Untitled",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/VzteQ4joB2Iwjek9kPUrGg/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Gerhard Richter",
-              },
-              title: "P8",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/ZN_qyzZgvHz-DRMFW-Wrcw/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Gerhard Richter",
+            },
+            title: "P8",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/ZN_qyzZgvHz-DRMFW-Wrcw/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Robert Longo",
-              },
-              title: "Monsters",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/0vJm9FeXzxzZJpBC-A-4ig/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Robert Longo",
+            },
+            title: "Monsters",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/0vJm9FeXzxzZJpBC-A-4ig/small.jpg",
               },
             },
           },
-        ],
-      },
+        },
+      ],
     },
   },
   {
@@ -205,62 +201,61 @@ export const CollectionsRailFixture = [
     headerImage: "http://files.artsy.net/images/timelessmodernprints.png",
     title: "Timeless Modern Prints",
     price_guidance: 2500,
-    artworks: {
-      artworks_connection: {
-        edges: [
-          {
-            node: {
-              artist: {
-                name: "Joan Miró",
-              },
-              title: "Migratory Bird I",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/_67k2lYpopsd-UK6LOD61g/small.jpg",
-                },
+    artworksConnection: {
+      edges: [
+        {
+          node: {
+            artist: {
+              name: "Joan Miró",
+            },
+            title: "Migratory Bird I",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/_67k2lYpopsd-UK6LOD61g/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Pablo Picasso",
-              },
-              title: "Bacchanale",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/mepJj80_m4NiWUJviymyBw/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Pablo Picasso",
+            },
+            title: "Bacchanale",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/mepJj80_m4NiWUJviymyBw/small.jpg",
               },
             },
           },
-          {
-            node: {
-              artist: {
-                name: "Josef Albers",
-              },
-              title: "Mitered Squares-Apricot ",
-              image: {
-                resized: {
-                  url:
-                    "https://d32dm0rphc51dk.cloudfront.net/CbgUJdNK5lWvhKzziYgx7w/small.jpg",
-                },
+        },
+        {
+          node: {
+            artist: {
+              name: "Josef Albers",
+            },
+            title: "Mitered Squares-Apricot ",
+            image: {
+              resized: {
+                url:
+                  "https://d32dm0rphc51dk.cloudfront.net/CbgUJdNK5lWvhKzziYgx7w/small.jpg",
               },
             },
           },
-        ],
-      },
+        },
+      ],
     },
   },
 ]
 
-export const CategoriesFixture = [
+export const CategoriesFixture: CollectionsAppTestQueryRawResponse["marketingCategories"] = [
   {
     name: "Abstract Art",
     collections: [
       {
+        id: "opaque-collection-id",
         headerImage: "http://files.artsy.net/images/minimalistprints.png",
         slug: "minimalist-prints",
         title: "Minimalist Prints",
@@ -271,6 +266,7 @@ export const CategoriesFixture = [
     name: "Contemporary Art",
     collections: [
       {
+        id: "opaque-collection-id",
         headerImage:
           "http://files.artsy.net/images/contemporarylimitededition2.png",
         slug: "contemporary-limited-editions",
@@ -282,42 +278,50 @@ export const CategoriesFixture = [
     name: "Street Art",
     collections: [
       {
+        id: "opaque-collection-id-street-art-now",
         headerImage: "http://files.artsy.net/images/streetartnow.png",
         slug: "street-art-now",
         title: "Street Art Now",
       },
       {
+        id: "opaque-collection-id-banksy-girl-with-balloon",
         headerImage: "http://files.artsy.net/images/streetartnow.png",
         slug: "banksy-girl-with-balloon",
         title: "Banksy: Girl with Balloon",
       },
       {
+        id: "opaque-collection-id-shepard-fairey-barack-obama",
         headerImage: "http://files.artsy.net/images/shepardfaireyobama.png",
         slug: "shepard-fairey-barack-obama",
         title: "Shepard Fairey: Barack Obama",
       },
       {
+        id: "opaque-collection-id-banksy-rats",
         headerImage: "http://files.artsy.net/images/banksyrat.png",
         slug: "banksy-rats",
         title: "Banksy: Rats",
       },
       {
+        id: "opaque-collection-id-banksy-dismaland",
         headerImage: "http://files.artsy.net/images/banksydismaland.png",
         slug: "banksy-dismaland",
         title: "Banksy: Dismaland",
       },
       {
+        id: "opaque-collection-id-jean-michel-basquiat-crowns",
         headerImage:
           "http://files.artsy.net/images/jeanmichelbasquiatcrowns.png",
         slug: "jean-michel-basquiat-crowns",
         title: "Jean-Michel Basquiat: Crowns",
       },
       {
+        id: "opaque-collection-id-keith-haring-pop-shop",
         headerImage: "http://files.artsy.net/images/popshopkeithharing.png",
         slug: "keith-haring-pop-shop",
         title: "Keith Haring: Pop Shop",
       },
       {
+        id: "opaque-collection-id-shepard-fairey-we-the-people",
         headerImage:
           "http://files.artsy.net/images/shepardfaireywethepeople.png",
         slug: "shepard-fairey-we-the-people",
@@ -338,47 +342,45 @@ export const CollectionsHubLinkedCollections = {
           slug: "Many-Flags",
           title: "Flags unique collections",
           price_guidance: 1000,
-          artworks: {
-            artworks_connection: {
-              edges: [
-                {
-                  node: {
-                    artist: {
-                      // null
-                    },
-                    title: "A great flag from Jasper",
-                    image: {
-                      url:
-                        "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                    },
+          artworksConnection: {
+            edges: [
+              {
+                node: {
+                  artist: {
+                    // null
+                  },
+                  title: "A great flag from Jasper",
+                  image: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
                   },
                 },
-                {
-                  node: {
-                    artist: {
-                      name: "Jasper Johns",
-                    },
-                    title: "Back to 2046",
-                    image: {
-                      url:
-                        "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                    },
+              },
+              {
+                node: {
+                  artist: {
+                    name: "Jasper Johns",
+                  },
+                  title: "Back to 2046",
+                  image: {
+                    url:
+                      "https://d32dm0rp11hc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
                   },
                 },
-                {
-                  node: {
-                    artist: {
-                      name: "Andy Warhol",
-                    },
-                    title: "An Apple",
-                    image: {
-                      url:
-                        "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                    },
+              },
+              {
+                node: {
+                  artist: {
+                    name: "Andy Warhol",
+                  },
+                  title: "An Apple",
+                  image: {
+                    url:
+                      "https://d32142dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
                   },
                 },
-              ],
-            },
+              },
+            ],
           },
         },
       ],

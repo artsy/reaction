@@ -118,8 +118,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                           modelName: Schema.OwnerType.Partner,
                           context_module:
                             Schema.ContextModule.AboutTheWorkPartner,
-                          entity_id: partner._id,
-                          entity_slug: partner.id,
+                          entity_id: partner.internalID,
+                          entity_slug: partner.slug,
                         }}
                         onOpenAuthModal={() =>
                           this.handleOpenAuth(mediator, partner)
@@ -169,14 +169,14 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   {
     artwork: graphql`
       fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-        additional_information(format: HTML)
+        additional_information: additionalInformation(format: HTML)
         sale {
           isBenefit
           isGalleryAuction
         }
         partner {
-          _id
-          id
+          internalID
+          slug
           type
           href
           name
@@ -184,10 +184,10 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           locations {
             city
           }
-          is_default_profile_public
+          is_default_profile_public: isDefaultProfilePublic
           profile {
             ...FollowProfileButton_profile
-            id
+            slug
             icon {
               url(version: "square140")
             }

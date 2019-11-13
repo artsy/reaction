@@ -1,21 +1,17 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistHeader_artist$ref } from "./ArtistHeader_artist.graphql";
-import { ArtistMeta_artist$ref } from "./ArtistMeta_artist.graphql";
-import { NavigationTabs_artist$ref } from "./NavigationTabs_artist.graphql";
-declare const _ArtistApp_artist$ref: unique symbol;
-export type ArtistApp_artist$ref = typeof _ArtistApp_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistApp_artist = {
-    readonly _id: string;
-    readonly id: string;
-    readonly " $fragmentRefs": ArtistMeta_artist$ref & ArtistHeader_artist$ref & NavigationTabs_artist$ref;
-    readonly " $refType": ArtistApp_artist$ref;
+    readonly internalID: string;
+    readonly slug: string;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistMeta_artist" | "ArtistHeader_artist" | "NavigationTabs_artist">;
+    readonly " $refType": "ArtistApp_artist";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistApp_artist",
   "type": "Artist",
@@ -25,14 +21,14 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -50,15 +46,8 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "NavigationTabs_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'c180840c9d6e8a5c232f176429425255';
+(node as any).hash = 'ff32bca043da8f7b376beac38b1a3c93';
 export default node;

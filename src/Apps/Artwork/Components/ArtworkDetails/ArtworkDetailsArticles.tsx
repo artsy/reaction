@@ -51,13 +51,13 @@ export const ArtworkDetailsArticlesFragmentContainer = createFragmentContainer(
             name
           }
           href
-          published_at(format: "MMM Do, YYYY")
-          thumbnail_image {
+          published_at: publishedAt(format: "MMM Do, YYYY")
+          thumbnail_image: thumbnailImage {
             resized(width: 300) {
               url
             }
           }
-          thumbnail_title
+          thumbnail_title: thumbnailTitle
         }
       }
     `,

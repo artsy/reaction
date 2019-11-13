@@ -1,3 +1,4 @@
+import { Articles_Test_QueryRawResponse } from "__generated__/Articles_Test_Query.graphql"
 import { ArticlesFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ArticlesFixture"
 import { ArticlesRouteFragmentContainer as ArticlesRoute } from "Apps/Artist/Routes/Articles"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -15,15 +16,13 @@ describe("Articles Route", () => {
     return await renderRelayTree({
       Component: ArticlesRoute,
       query: graphql`
-        query Articles_Test_Query($artistID: String!) {
+        query Articles_Test_Query($artistID: String!) @raw_response_type {
           artist(id: $artistID) {
             ...Articles_artist
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => ArticlesFixture,
-      },
+      mockData: ArticlesFixture as Articles_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",
       },

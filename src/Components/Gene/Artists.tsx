@@ -133,7 +133,7 @@ export class Artists extends React.Component<Props, State> {
     const artists = this.props.gene.artists
 
     const artistRows = artists.edges.map(edge => {
-      return <ArtistRow artist={edge.node} key={edge.node.__id} />
+      return <ArtistRow artist={edge.node} key={edge.node.id} />
     })
 
     const loadMoreButton = (
@@ -179,23 +179,23 @@ export default createPaginationContainer(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String", defaultValue: "" }
         ) {
-        __id
-        artists: artists_connection(first: $count, after: $cursor)
+        id
+        artists: artistsConnection(first: $count, after: $cursor)
           @connection(key: "Artists_artists") {
           pageInfo {
             hasNextPage
           }
           edges {
             node {
-              __id
+              id
               ...ArtistRow_artist
             }
           }
         }
-        filter_aggregations: filtered_artworks(
+        filter_aggregations: filterArtworksConnection(
           aggregations: $aggregations
           size: 0
-          include_medium_filter_in_aggregation: true
+          includeMediumFilterInAggregation: true
         ) {
           ...TotalCount_filter_artworks
           aggregations {
@@ -224,7 +224,7 @@ export default createPaginationContainer(
         ...fragmentVariables,
         count,
         cursor,
-        geneNodeID: props.gene.__id,
+        geneNodeID: props.gene.id,
       }
     },
     query: graphql`
@@ -234,7 +234,7 @@ export default createPaginationContainer(
         $cursor: String
         $aggregations: [ArtworkAggregation]
       ) {
-        node(__id: $geneNodeID) {
+        node(id: $geneNodeID) {
           ...Artists_gene
             @arguments(
               count: $count

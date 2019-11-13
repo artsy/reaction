@@ -1,16 +1,91 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkDetails_artwork$ref } from "./ArtworkDetails_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkDetails_Test_QueryVariables = {};
 export type ArtworkDetails_Test_QueryResponse = {
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkDetails_artwork">;
+    } | null;
+};
+export type ArtworkDetails_Test_QueryRawResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkDetails_artwork$ref;
+        readonly description: string | null;
+        readonly additional_information: string | null;
+        readonly sale: ({
+            readonly isBenefit: boolean | null;
+            readonly isGalleryAuction: boolean | null;
+            readonly id: string | null;
+        }) | null;
+        readonly partner: ({
+            readonly internalID: string;
+            readonly slug: string;
+            readonly type: string | null;
+            readonly href: string | null;
+            readonly name: string | null;
+            readonly initials: string | null;
+            readonly locations: ReadonlyArray<({
+                readonly city: string | null;
+                readonly id: string | null;
+            }) | null> | null;
+            readonly is_default_profile_public: boolean | null;
+            readonly profile: ({
+                readonly id: string;
+                readonly internalID: string;
+                readonly is_followed: boolean | null;
+                readonly slug: string;
+                readonly icon: ({
+                    readonly url: string | null;
+                }) | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly series: string | null;
+        readonly publisher: string | null;
+        readonly manufacturer: string | null;
+        readonly image_rights: string | null;
+        readonly framed: ({
+            readonly label: string | null;
+            readonly details: string | null;
+        }) | null;
+        readonly signatureInfo: ({
+            readonly label: string | null;
+            readonly details: string | null;
+        }) | null;
+        readonly conditionDescription: ({
+            readonly label: string | null;
+            readonly details: string | null;
+        }) | null;
+        readonly certificateOfAuthenticity: ({
+            readonly label: string | null;
+            readonly details: string | null;
+        }) | null;
+        readonly articles: ReadonlyArray<({
+            readonly author: ({
+                readonly name: string | null;
+                readonly id: string | null;
+            }) | null;
+            readonly href: string | null;
+            readonly published_at: string | null;
+            readonly thumbnail_image: ({
+                readonly resized: ({
+                    readonly url: string | null;
+                }) | null;
+            }) | null;
+            readonly thumbnail_title: string | null;
+            readonly id: string | null;
+            readonly slug: string | null;
+        }) | null> | null;
+        readonly literature: string | null;
+        readonly exhibition_history: string | null;
+        readonly provenance: string | null;
+        readonly id: string | null;
     }) | null;
 };
 export type ArtworkDetails_Test_Query = {
     readonly response: ArtworkDetails_Test_QueryResponse;
     readonly variables: ArtworkDetails_Test_QueryVariables;
+    readonly rawResponse: ArtworkDetails_Test_QueryRawResponse;
 };
 
 
@@ -19,7 +94,7 @@ export type ArtworkDetails_Test_Query = {
 query ArtworkDetails_Test_Query {
   artwork(id: "richard-prince-untitled-fashion") {
     ...ArtworkDetails_artwork
-    __id
+    id
   }
 }
 
@@ -29,58 +104,54 @@ fragment ArtworkDetails_artwork on Artwork {
   ...ArtworkDetailsAdditionalInfo_artwork
   ...ArtworkDetailsArticles_artwork
   articles(size: 10) {
+    slug
     id
-    __id
   }
   literature(format: HTML)
-  exhibition_history(format: HTML)
+  exhibition_history: exhibitionHistory(format: HTML)
   provenance(format: HTML)
-  __id
 }
 
 fragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {
   description(format: HTML)
-  __id
 }
 
 fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-  additional_information(format: HTML)
+  additional_information: additionalInformation(format: HTML)
   sale {
     isBenefit
     isGalleryAuction
-    __id
+    id
   }
   partner {
-    _id
-    id
+    internalID
+    slug
     type
     href
     name
     initials
     locations {
       city
-      __id
+      id
     }
-    is_default_profile_public
+    is_default_profile_public: isDefaultProfilePublic
     profile {
       ...FollowProfileButton_profile
-      id
+      slug
       icon {
         url(version: "square140")
-        __id: id
       }
-      __id
+      id
     }
-    __id
+    id
   }
-  __id
 }
 
 fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
   series
   publisher
   manufacturer
-  image_rights
+  image_rights: imageRights
   framed {
     label
     details
@@ -97,33 +168,30 @@ fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
     label
     details
   }
-  __id
 }
 
 fragment ArtworkDetailsArticles_artwork on Artwork {
   articles(size: 10) {
     author {
       name
-      __id
+      id
     }
     href
-    published_at(format: "MMM Do, YYYY")
-    thumbnail_image {
+    published_at: publishedAt(format: "MMM Do, YYYY")
+    thumbnail_image: thumbnailImage {
       resized(width: 300) {
         url
       }
-      __id: id
     }
-    thumbnail_title
-    __id
+    thumbnail_title: thumbnailTitle
+    id
   }
-  __id
 }
 
 fragment FollowProfileButton_profile on Profile {
-  __id
   id
-  is_followed
+  internalID
+  is_followed: isFollowed
 }
 */
 
@@ -132,50 +200,48 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "richard-prince-untitled-fashion",
-    "type": "String!"
+    "value": "richard-prince-untitled-fashion"
   }
 ],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Literal",
     "name": "format",
-    "value": "HTML",
-    "type": "Format"
+    "value": "HTML"
   }
 ],
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "href",
+  "name": "slug",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "name",
   "args": null,
   "storageKey": null
 },
@@ -197,11 +263,6 @@ v7 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkDetails_Test_Query",
-  "id": null,
-  "text": "query ArtworkDetails_Test_Query {\n  artwork(id: \"richard-prince-untitled-fashion\") {\n    ...ArtworkDetails_artwork\n    __id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    id\n    __id\n  }\n  literature(format: HTML)\n  exhibition_history(format: HTML)\n  provenance(format: HTML)\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description(format: HTML)\n  __id\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information(format: HTML)\n  sale {\n    isBenefit\n    isGalleryAuction\n    __id\n  }\n  partner {\n    _id\n    id\n    type\n    href\n    name\n    initials\n    locations {\n      city\n      __id\n    }\n    is_default_profile_public\n    profile {\n      ...FollowProfileButton_profile\n      id\n      icon {\n        url(version: \"square140\")\n        __id: id\n      }\n      __id\n    }\n    __id\n  }\n  __id\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  image_rights\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n  __id\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      __id\n    }\n    href\n    published_at(format: \"MMM Do, YYYY\")\n    thumbnail_image {\n      resized(width: 300) {\n        url\n      }\n      __id: id\n    }\n    thumbnail_title\n    __id\n  }\n  __id\n}\n\nfragment FollowProfileButton_profile on Profile {\n  __id\n  id\n  is_followed\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkDetails_Test_Query",
@@ -214,7 +275,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"richard-prince-untitled-fashion\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -222,8 +283,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkDetails_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -238,30 +298,23 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"richard-prince-untitled-fashion\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "image_rights",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
             "name": "description",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "description(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "additional_information",
-            "args": v2,
-            "storageKey": "additional_information(format:\"HTML\")"
+            "alias": "additional_information",
+            "name": "additionalInformation",
+            "args": (v1/*: any*/),
+            "storageKey": "additionalInformation(format:\"HTML\")"
           },
           {
             "kind": "LinkedField",
@@ -286,7 +339,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v2/*: any*/)
             ]
           },
           {
@@ -298,14 +351,8 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "_id",
-                "args": null,
-                "storageKey": null
-              },
-              v3,
+              (v3/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -313,8 +360,8 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v4,
-              v5,
+              (v5/*: any*/),
+              (v6/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -338,13 +385,13 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1
+                  (v2/*: any*/)
                 ]
               },
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "is_default_profile_public",
+                "alias": "is_default_profile_public",
+                "name": "isDefaultProfilePublic",
                 "args": null,
                 "storageKey": null
               },
@@ -357,15 +404,16 @@ return {
                 "concreteType": "Profile",
                 "plural": false,
                 "selections": [
-                  v1,
-                  v3,
+                  (v2/*: any*/),
+                  (v3/*: any*/),
                   {
                     "kind": "ScalarField",
-                    "alias": null,
-                    "name": "is_followed",
+                    "alias": "is_followed",
+                    "name": "isFollowed",
                     "args": null,
                     "storageKey": null
                   },
+                  (v4/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -383,18 +431,16 @@ return {
                           {
                             "kind": "Literal",
                             "name": "version",
-                            "value": "square140",
-                            "type": "[String]"
+                            "value": "square140"
                           }
                         ],
                         "storageKey": "url(version:\"square140\")"
-                      },
-                      v6
+                      }
                     ]
                   }
                 ]
               },
-              v1
+              (v2/*: any*/)
             ]
           },
           {
@@ -418,7 +464,13 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1,
+          {
+            "kind": "ScalarField",
+            "alias": "image_rights",
+            "name": "imageRights",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -427,7 +479,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v7/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -437,7 +489,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v7/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -447,7 +499,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v7/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -457,7 +509,7 @@ return {
             "args": null,
             "concreteType": "ArtworkInfoRow",
             "plural": false,
-            "selections": v7
+            "selections": (v7/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -468,8 +520,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "size",
-                "value": 10,
-                "type": "Int"
+                "value": 10
               }
             ],
             "concreteType": "Article",
@@ -484,29 +535,28 @@ return {
                 "concreteType": "Author",
                 "plural": false,
                 "selections": [
-                  v5,
-                  v1
+                  (v6/*: any*/),
+                  (v2/*: any*/)
                 ]
               },
-              v4,
+              (v5/*: any*/),
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "published_at",
+                "alias": "published_at",
+                "name": "publishedAt",
                 "args": [
                   {
                     "kind": "Literal",
                     "name": "format",
-                    "value": "MMM Do, YYYY",
-                    "type": "String"
+                    "value": "MMM Do, YYYY"
                   }
                 ],
-                "storageKey": "published_at(format:\"MMM Do, YYYY\")"
+                "storageKey": "publishedAt(format:\"MMM Do, YYYY\")"
               },
               {
                 "kind": "LinkedField",
-                "alias": null,
-                "name": "thumbnail_image",
+                "alias": "thumbnail_image",
+                "name": "thumbnailImage",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Image",
@@ -521,8 +571,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "width",
-                        "value": 300,
-                        "type": "Int"
+                        "value": 300
                       }
                     ],
                     "concreteType": "ResizedImageUrl",
@@ -536,47 +585,54 @@ return {
                         "storageKey": null
                       }
                     ]
-                  },
-                  v6
+                  }
                 ]
               },
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "thumbnail_title",
+                "alias": "thumbnail_title",
+                "name": "thumbnailTitle",
                 "args": null,
                 "storageKey": null
               },
-              v1,
-              v3
+              (v2/*: any*/),
+              (v4/*: any*/)
             ]
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "literature",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "literature(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "exhibition_history",
-            "args": v2,
-            "storageKey": "exhibition_history(format:\"HTML\")"
+            "alias": "exhibition_history",
+            "name": "exhibitionHistory",
+            "args": (v1/*: any*/),
+            "storageKey": "exhibitionHistory(format:\"HTML\")"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "provenance",
-            "args": v2,
+            "args": (v1/*: any*/),
             "storageKey": "provenance(format:\"HTML\")"
-          }
+          },
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkDetails_Test_Query",
+    "id": null,
+    "text": "query ArtworkDetails_Test_Query {\n  artwork(id: \"richard-prince-untitled-fashion\") {\n    ...ArtworkDetails_artwork\n    id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    slug\n    id\n  }\n  literature(format: HTML)\n  exhibition_history: exhibitionHistory(format: HTML)\n  provenance(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information: additionalInformation(format: HTML)\n  sale {\n    isBenefit\n    isGalleryAuction\n    id\n  }\n  partner {\n    internalID\n    slug\n    type\n    href\n    name\n    initials\n    locations {\n      city\n      id\n    }\n    is_default_profile_public: isDefaultProfilePublic\n    profile {\n      ...FollowProfileButton_profile\n      slug\n      icon {\n        url(version: \"square140\")\n      }\n      id\n    }\n    id\n  }\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  image_rights: imageRights\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      id\n    }\n    href\n    published_at: publishedAt(format: \"MMM Do, YYYY\")\n    thumbnail_image: thumbnailImage {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title: thumbnailTitle\n    id\n  }\n}\n\nfragment FollowProfileButton_profile on Profile {\n  id\n  internalID\n  is_followed: isFollowed\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '47b762aa1966b2d44edfe7bdeee831bf';
+(node as any).hash = 'd9a220a4e762bbbe23e9f7526b41775f';
 export default node;

@@ -106,7 +106,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     return (
       <div
         className={`${className} ${trackableClassName}`}
-        data-id={artwork._id}
+        data-id={artwork.internalID}
         style={style}
       >
         <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
@@ -163,13 +163,13 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
 export default createFragmentContainer(withSystemContext(ArtworkGridItem), {
   artwork: graphql`
     fragment GridItem_artwork on Artwork {
-      _id
+      internalID
       title
-      image_title
+      image_title: imageTitle
       image {
         placeholder
         url(version: "large")
-        aspect_ratio
+        aspect_ratio: aspectRatio
       }
       href
       ...Metadata_artwork

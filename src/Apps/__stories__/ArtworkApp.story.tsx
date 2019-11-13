@@ -120,7 +120,15 @@ storiesOf("Apps/Artwork", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/brooklyn-nets-courtside-seats"
+        initialRoute="/artwork/mayumi-lake-in-front-of-my-back-number-25055"
+      />
+    )
+  })
+  .add("Artwork with Price in Context", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/andy-warhol-marilyn-orange-lg"
       />
     )
   })

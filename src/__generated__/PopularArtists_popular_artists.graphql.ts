@@ -1,113 +1,91 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _PopularArtists_popular_artists$ref: unique symbol;
-export type PopularArtists_popular_artists$ref = typeof _PopularArtists_popular_artists$ref;
-export type PopularArtists_popular_artists = {
-    readonly artists: ReadonlyArray<({
-        readonly id: string;
-        readonly _id: string;
-        readonly __id: string;
-        readonly name: string | null;
-        readonly image: ({
-            readonly cropped: ({
-                readonly url: string | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
-    readonly " $refType": PopularArtists_popular_artists$ref;
-};
+import { ReaderFragment } from "relay-runtime";
+export type PopularArtists_popular_artists = ReadonlyArray<{
+    readonly slug: string;
+    readonly internalID: string;
+    readonly id: string;
+    readonly name: string | null;
+    readonly image: {
+        readonly cropped: {
+            readonly url: string | null;
+        } | null;
+    } | null;
+    readonly " $refType": "PopularArtists_popular_artists";
+}>;
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "PopularArtists_popular_artists",
-  "type": "PopularArtists",
-  "metadata": null,
+  "type": "Artist",
+  "metadata": {
+    "plural": true
+  },
   "argumentDefinitions": [],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
-      "name": "artists",
+      "name": "image",
       "storageKey": null,
       "args": null,
-      "concreteType": "Artist",
-      "plural": true,
+      "concreteType": "Image",
+      "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "_id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
-        },
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "image",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Image",
+          "name": "cropped",
+          "storageKey": "cropped(height:100,width:100)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "height",
+              "value": 100
+            },
+            {
+              "kind": "Literal",
+              "name": "width",
+              "value": 100
+            }
+          ],
+          "concreteType": "CroppedImageUrl",
           "plural": false,
           "selections": [
             {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "cropped",
-              "storageKey": "cropped(height:100,width:100)",
-              "args": [
-                {
-                  "kind": "Literal",
-                  "name": "height",
-                  "value": 100,
-                  "type": "Int!"
-                },
-                {
-                  "kind": "Literal",
-                  "name": "width",
-                  "value": 100,
-                  "type": "Int!"
-                }
-              ],
-              "concreteType": "CroppedImageUrl",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "url",
-                  "args": null,
-                  "storageKey": null
-                }
-              ]
-            },
-            {
               "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
+              "alias": null,
+              "name": "url",
               "args": null,
               "storageKey": null
             }
@@ -117,5 +95,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '1c49138ba6baf7973c1aa1e59f1f0825';
+(node as any).hash = '3d46c81e197d7d6f1f6a27595f5291b6';
 export default node;

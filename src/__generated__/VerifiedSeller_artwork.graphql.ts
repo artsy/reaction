@@ -1,28 +1,18 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _VerifiedSeller_artwork$ref: unique symbol;
-export type VerifiedSeller_artwork$ref = typeof _VerifiedSeller_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type VerifiedSeller_artwork = {
     readonly is_biddable: boolean | null;
-    readonly partner: ({
+    readonly partner: {
         readonly isVerifiedSeller: boolean | null;
         readonly name: string | null;
-    }) | null;
-    readonly " $refType": VerifiedSeller_artwork$ref;
+    } | null;
+    readonly " $refType": "VerifiedSeller_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "VerifiedSeller_artwork",
   "type": "Artwork",
@@ -31,8 +21,8 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_biddable",
+      "alias": "is_biddable",
+      "name": "isBiddable",
       "args": null,
       "storageKey": null
     },
@@ -58,13 +48,10 @@ return {
           "name": "name",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '5037e65d788b7be2400c0a017b8257e6';
+(node as any).hash = '2efbba0f7a6a9470dc169125c7b5fdc9';
 export default node;

@@ -1,31 +1,21 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { MockRelayRendererFixtures_artworkMetadata$ref } from "./MockRelayRendererFixtures_artworkMetadata.graphql";
-declare const _MockRelayRendererFixtures_artwork$ref: unique symbol;
-export type MockRelayRendererFixtures_artwork$ref = typeof _MockRelayRendererFixtures_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type MockRelayRendererFixtures_artwork = {
-    readonly image: ({
+    readonly image: {
         readonly url: string | null;
-    }) | null;
-    readonly artist: ({
-        readonly id: string;
-    }) | null;
-    readonly " $fragmentRefs": MockRelayRendererFixtures_artworkMetadata$ref;
-    readonly " $refType": MockRelayRendererFixtures_artwork$ref;
+    } | null;
+    readonly artist: {
+        readonly slug: string;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artworkMetadata">;
+    readonly " $refType": "MockRelayRendererFixtures_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "MockRelayRendererFixtures_artwork",
   "type": "Artwork",
@@ -47,13 +37,6 @@ return {
           "name": "url",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -69,21 +52,18 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "slug",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "FragmentSpread",
       "name": "MockRelayRendererFixtures_artworkMetadata",
       "args": null
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'decbf11fdffcceb6e5fae04292842cb1';
+(node as any).hash = '35b0d2a11cf28fcc477de58eac475015';
 export default node;

@@ -1,4 +1,7 @@
-import { SecurePayment_artwork } from "__generated__/SecurePayment_artwork.graphql"
+import {
+  SecurePaymentTestQueryRawResponse,
+  SecurePaymentTestQueryResponse,
+} from "__generated__/SecurePaymentTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -8,11 +11,11 @@ import { SecurePaymentFragmentContainer } from "../SecurePayment"
 jest.unmock("react-relay")
 
 const render = (
-  artwork: Omit<SecurePayment_artwork, " $refType">,
+  artwork: SecurePaymentTestQueryRawResponse["artwork"],
   extraProps?: Partial<ExtractProps<typeof SecurePaymentFragmentContainer>>
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: SecurePaymentTestQueryResponse) => (
       <SecurePaymentFragmentContainer
         artwork={{
           ...artwork,
@@ -23,9 +26,9 @@ const render = (
     ),
     mockData: {
       artwork,
-    },
+    } as SecurePaymentTestQueryRawResponse,
     query: graphql`
-      query SecurePaymentTestQuery {
+      query SecurePaymentTestQuery @raw_response_type {
         artwork(id: "whatevs") {
           ...SecurePayment_artwork
         }
@@ -36,6 +39,7 @@ const render = (
 describe("SecurePayment", () => {
   it("Doesn't render when work is neither acquireable nor offerable", async () => {
     const component = await render({
+      id: "opaque-payment-id",
       is_acquireable: false,
       is_offerable: false,
     })
@@ -44,6 +48,7 @@ describe("SecurePayment", () => {
 
   it("Renders when the artwork is acquireable", async () => {
     const component = await render({
+      id: "opaque-payment-id",
       is_acquireable: true,
       is_offerable: false,
     })
@@ -52,6 +57,7 @@ describe("SecurePayment", () => {
 
   it("Renders when the artwork is offerable", async () => {
     const component = await render({
+      id: "opaque-payment-id",
       is_acquireable: false,
       is_offerable: true,
     })

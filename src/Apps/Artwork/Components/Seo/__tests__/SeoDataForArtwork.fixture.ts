@@ -1,12 +1,12 @@
-import { SeoDataForArtwork_artwork } from "__generated__/SeoDataForArtwork_artwork.graphql"
+import { SeoDataForArtwork_Test_QueryRawResponse } from "__generated__/SeoDataForArtwork_Test_Query.graphql"
 
-export const SeoDataForArtworkFixture: SeoDataForArtwork_artwork = {
-  " $refType": undefined,
+export const SeoDataForArtworkFixture: SeoDataForArtwork_Test_QueryRawResponse["artwork"] = {
+  id: "opaque-artwork-id",
   href: "/artwork/an-artwork",
   date: "1950",
   is_price_hidden: false,
   is_price_range: false,
-  price: "",
+  listPrice: null,
   price_currency: "USD",
   sale_message: "sale message",
   meta_image: {
@@ -21,9 +21,11 @@ export const SeoDataForArtworkFixture: SeoDataForArtwork_artwork = {
     description: "artwork description",
   },
   partner: {
+    id: "opaque-partner-id",
     name: "Wright",
     type: "Auction House",
     profile: {
+      id: "opaque-profile-id",
       image: {
         resized: {
           url: "partner-image",

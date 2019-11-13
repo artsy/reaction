@@ -4,7 +4,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
-import { Location, RouteConfig, Router } from "found"
+import { Match, RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { graphql } from "react-relay"
@@ -22,7 +22,7 @@ declare global {
   }
 }
 
-const findRoute = (routes, routeIndices) => {
+const findCurrentRoute = ({ routes, routeIndices }: Match) => {
   let currentRoute = routes[routeIndices[0]]
   routeIndices.slice(1).forEach(routeIndex => {
     currentRoute = currentRoute.children[routeIndex]
@@ -30,14 +30,10 @@ const findRoute = (routes, routeIndices) => {
   return currentRoute
 }
 
-export interface OrderAppProps {
+export interface OrderAppProps extends RouterState {
   params: {
     orderID: string
   }
-  location: Location
-  routeIndices: number[]
-  routes: RouteConfig[]
-  router: Router
   order: OrderApp_order
 }
 
@@ -45,7 +41,7 @@ interface OrderAppState {
   stripe: stripe.Stripe
 }
 
-export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
+class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   mediator: Mediator | null = null
   state = { stripe: null }
   removeTransitionHook: () => void
@@ -91,13 +87,13 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   onTransition = newLocation => {
-    const { routes, routeIndices, location: oldLocation, router } = this.props
-    const route = findRoute(routes, routeIndices)
-
-    if (route.onTransition) {
-      return route.onTransition(newLocation, oldLocation, router)
+    if (newLocation === null) {
+      // leaving the order page, closing, or refreshing
+      const route = findCurrentRoute(this.props.match)
+      if (route.shouldWarnBeforeLeaving) {
+        return "Are you sure you want to leave? Your changes will not be saved."
+      }
     }
-
     return true
   }
 
@@ -110,7 +106,7 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     } else {
       artworkId = get(
         this.props,
-        props => order.lineItems.edges[0].node.artwork.id
+        props => order.lineItems.edges[0].node.artwork.slug
       )
     }
 
@@ -149,6 +145,10 @@ export class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 }
 
+const OrderAppWithRouter = withRouter(OrderApp)
+
+export { OrderAppWithRouter as OrderApp }
+
 const SafeAreaContainer = styled(Box)`
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
@@ -162,9 +162,9 @@ graphql`
       edges {
         node {
           artwork {
-            id
-            is_acquireable
-            is_offerable
+            slug
+            is_acquireable: isAcquireable
+            is_offerable: isOfferable
           }
         }
       }

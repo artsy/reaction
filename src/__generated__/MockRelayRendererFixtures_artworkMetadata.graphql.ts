@@ -1,16 +1,14 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _MockRelayRendererFixtures_artworkMetadata$ref: unique symbol;
-export type MockRelayRendererFixtures_artworkMetadata$ref = typeof _MockRelayRendererFixtures_artworkMetadata$ref;
+import { ReaderFragment } from "relay-runtime";
 export type MockRelayRendererFixtures_artworkMetadata = {
     readonly title: string | null;
-    readonly " $refType": MockRelayRendererFixtures_artworkMetadata$ref;
+    readonly " $refType": "MockRelayRendererFixtures_artworkMetadata";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "MockRelayRendererFixtures_artworkMetadata",
   "type": "Artwork",
@@ -21,13 +19,6 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
       "args": null,
       "storageKey": null
     }

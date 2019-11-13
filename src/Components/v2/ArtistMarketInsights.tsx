@@ -32,12 +32,13 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
 
   renderAuctionHighlight() {
     if (
-      !this.props.artist.auctionResults ||
-      this.props.artist.auctionResults.edges.length < 1
+      !this.props.artist.auctionResultsConnection ||
+      this.props.artist.auctionResultsConnection.edges.length < 1
     ) {
       return null
     }
-    const topAuctionResult = this.props.artist.auctionResults.edges[0].node
+    const topAuctionResult = this.props.artist.auctionResultsConnection.edges[0]
+      .node
     const display = `${topAuctionResult.price_realized.display}, ${
       topAuctionResult.organization
     }, ${topAuctionResult.sale_date}`
@@ -54,9 +55,13 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
   }
   renderGalleryRepresentation() {
     const { highlights } = this.props.artist
-    const { partners } = highlights
-    if (partners && partners.edges && partners.edges.length > 0) {
-      const highCategory = highestCategory(partners.edges)
+    const { partnersConnection } = highlights
+    if (
+      partnersConnection &&
+      partnersConnection.edges &&
+      partnersConnection.edges.length > 0
+    ) {
+      const highCategory = highestCategory(partnersConnection.edges)
       return (
         <TextWrap>
           <Sans size="2" weight="medium" display="inline" mr={1}>
@@ -127,40 +132,40 @@ export const ArtistMarketInsightsFragmentContainer = createFragmentContainer(
     artist: graphql`
       fragment ArtistMarketInsights_artist on Artist
         @argumentDefinitions(
-          partner_category: {
+          partnerCategory: {
             type: "[String]"
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
         ) {
         collections
         highlights {
-          partners(
+          partnersConnection(
             first: 10
-            display_on_partner_profile: true
-            represented_by: true
-            partner_category: $partner_category
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
           ) {
             edges {
               node {
                 categories {
-                  id
+                  slug
                 }
               }
             }
           }
         }
-        auctionResults(
+        auctionResultsConnection(
           recordsTrusted: true
           first: 1
           sort: PRICE_AND_DATE_DESC
         ) {
           edges {
             node {
-              price_realized {
+              price_realized: priceRealized {
                 display(format: "0a")
               }
               organization
-              sale_date(format: "YYYY")
+              sale_date: saleDate(format: "YYYY")
             }
           }
         }

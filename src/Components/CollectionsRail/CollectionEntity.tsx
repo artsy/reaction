@@ -85,8 +85,8 @@ export const CollectionEntityFragmentContainer = createFragmentContainer(
         slug
         headerImage
         title
-        price_guidance
-        show_on_editorial
+        price_guidance: priceGuidance
+        show_on_editorial: showOnEditorial
       }
     `,
   }

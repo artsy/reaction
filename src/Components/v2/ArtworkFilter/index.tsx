@@ -35,7 +35,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
-import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
+import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
 /**
@@ -79,10 +79,13 @@ export const ArtworkFilter: React.FC<
 export const BaseArtworkFilter: React.FC<{
   relay: RelayRefetchProp
   relayVariables?: object
-  viewer: ArtworkFilter_viewer | Collection_viewer | ArtistArtworkFilter_artist
+  viewer:
+    | ArtworkFilter_viewer
+    | Collection_collection
+    | ArtistArtworkFilter_artist
 }> = ({ relay, viewer, relayVariables = {}, ...props }) => {
   const { filtered_artworks } = viewer
-  const hasFilter = filtered_artworks && filtered_artworks.__id
+  const hasFilter = filtered_artworks && filtered_artworks.id
 
   // If there was an error fetching the filter,
   // we still want to render the rest of the page.
@@ -141,6 +144,7 @@ export const BaseArtworkFilter: React.FC<{
     const relayRefetchVariables = {
       ...filterContext.filters,
       ...relayVariables,
+      first: 30,
     }
 
     relay.refetch(relayRefetchVariables, null, error => {
@@ -225,42 +229,42 @@ export const ArtworkQueryFilter = graphql`
   query ArtworkFilterQuery(
     $acquireable: Boolean
     $aggregations: [ArtworkAggregation] = [TOTAL]
-    $artist_id: String
-    $at_auction: Boolean
-    $attribution_class: [String]
+    $artistID: String
+    $atAuction: Boolean
+    $attributionClass: [String]
     $color: String
-    $for_sale: Boolean
+    $forSale: Boolean
     $height: String
-    $inquireable_only: Boolean
-    $major_periods: [String]
+    $inquireableOnly: Boolean
+    $majorPeriods: [String]
     $medium: String
     $offerable: Boolean
     $page: Int
-    $partner_id: ID
-    $price_range: String
+    $partnerID: ID
+    $priceRange: String
     $sort: String
     $keyword: String
     $width: String
-  ) {
+  ) @raw_response_type {
     viewer {
       ...ArtworkFilter_viewer
         @arguments(
           acquireable: $acquireable
           aggregations: $aggregations
-          artist_id: $artist_id
-          at_auction: $at_auction
-          attribution_class: $attribution_class
+          artistID: $artistID
+          atAuction: $atAuction
+          attributionClass: $attributionClass
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
+          inquireableOnly: $inquireableOnly
           keyword: $keyword
-          major_periods: $major_periods
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          partner_id: $partner_id
-          price_range: $price_range
+          partnerID: $partnerID
+          priceRange: $priceRange
           sort: $sort
           width: $width
         )
@@ -276,45 +280,46 @@ export const ArtworkFilterRefetchContainer = createRefetchContainer(
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
-          artist_id: { type: "String" }
-          at_auction: { type: "Boolean" }
-          attribution_class: { type: "[String]" }
+          artistID: { type: "String" }
+          atAuction: { type: "Boolean" }
+          attributionClass: { type: "[String]" }
           color: { type: "String" }
-          for_sale: { type: "Boolean" }
+          forSale: { type: "Boolean" }
           height: { type: "String" }
-          inquireable_only: { type: "Boolean" }
+          inquireableOnly: { type: "Boolean" }
           keyword: { type: "String" }
-          major_periods: { type: "[String]" }
+          majorPeriods: { type: "[String]" }
           medium: { type: "String" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          partner_id: { type: "ID" }
-          price_range: { type: "String" }
+          partnerID: { type: "ID" }
+          priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int", defaultValue: 30 }
         ) {
-        filtered_artworks: filter_artworks(
+        filtered_artworks: artworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations
-          artist_id: $artist_id
-          at_auction: $at_auction
-          attribution_class: $attribution_class
+          artistID: $artistID
+          atAuction: $atAuction
+          attributionClass: $attributionClass
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
+          inquireableOnly: $inquireableOnly
           keyword: $keyword
-          major_periods: $major_periods
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          partner_id: $partner_id
-          price_range: $price_range
-          size: 0
+          partnerID: $partnerID
+          priceRange: $priceRange
           sort: $sort
           width: $width
+          first: $first
         ) {
-          __id
+          id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }

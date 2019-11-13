@@ -92,16 +92,17 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
 
   render() {
     const { artist } = this.props
-    const { biography_blurb, image, id, _id } = this.props.artist
+    const { biography_blurb, image, slug, internalID } = this.props.artist
     const showArtistBio = !!biography_blurb.text
     const imageUrl = get(this.props, p => image.cropped.url)
     const showArtistInsightsButton =
       (artist.exhibition_highlights &&
         artist.exhibition_highlights.length >= MIN_EXHIBITIONS) ||
-      (artist.auctionResults && artist.auctionResults.edges.length > 0) ||
+      (artist.auctionResultsConnection &&
+        artist.auctionResultsConnection.edges.length > 0) ||
       (artist.collections && artist.collections.length > 0) ||
-      (artist.highlights.partners &&
-        artist.highlights.partners.edges.length > 0)
+      (artist.highlights.partnersConnection &&
+        artist.highlights.partnersConnection.edges.length > 0)
     const buttonText = this.state.showArtistInsights
       ? "Hide artist insights"
       : "Show artist insights"
@@ -123,8 +124,8 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                     trackingData={{
                       modelName: Schema.OwnerType.Artist,
                       context_module: Schema.ContextModule.Biography,
-                      entity_id: _id,
-                      entity_slug: id,
+                      entity_id: internalID,
+                      entity_slug: slug,
                     }}
                     onOpenAuthModal={() =>
                       this.handleOpenAuth(mediator, this.props.artist)
@@ -183,12 +184,14 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                   Container={Container}
                 />
                 <SelectedExhibitions
-                  artistID={this.props.artist.id}
+                  artistID={this.props.artist.internalID}
                   border={false}
                   totalExhibitions={this.props.artist.counts.partner_shows}
                   exhibitions={this.props.artist.exhibition_highlights}
                   ViewAllLink={
-                    <a href={`${sd.APP_URL}/artist/${this.props.artist.id}/cv`}>
+                    <a
+                      href={`${sd.APP_URL}/artist/${this.props.artist.slug}/cv`}
+                    >
                       View all
                     </a>
                   }
@@ -209,13 +212,13 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
   artist: graphql`
     fragment ArtistInfo_artist on Artist
       @argumentDefinitions(
-        partner_category: {
+        partnerCategory: {
           type: "[String]"
           defaultValue: ["blue-chip", "top-established", "top-emerging"]
         }
       ) {
-      _id
-      id
+      internalID
+      slug
       name
       href
       image {
@@ -223,20 +226,20 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
           url
         }
       }
-      formatted_nationality_and_birthday
+      formatted_nationality_and_birthday: formattedNationalityAndBirthday
       counts {
-        partner_shows
+        partner_shows: partnerShows
       }
-      exhibition_highlights(size: 3) {
+      exhibition_highlights: exhibitionHighlights(size: 3) {
         ...SelectedExhibitions_exhibitions
       }
       collections
       highlights {
-        partners(
+        partnersConnection(
           first: 10
-          display_on_partner_profile: true
-          represented_by: true
-          partner_category: $partner_category
+          displayOnPartnerProfile: true
+          representedBy: true
+          partnerCategory: $partnerCategory
         ) {
           edges {
             node {
@@ -245,7 +248,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
           }
         }
       }
-      auctionResults(
+      auctionResultsConnection(
         recordsTrusted: true
         first: 1
         sort: PRICE_AND_DATE_DESC
@@ -259,11 +262,9 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
       ...ArtistBio_bio
       ...ArtistMarketInsights_artist
       ...FollowArtistButton_artist
-
       # The below data is only used to determine whether a section
       # should be rendered
-
-      biography_blurb(format: HTML, partner_bio: true) {
+      biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
         text
       }
     }

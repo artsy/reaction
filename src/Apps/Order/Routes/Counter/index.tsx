@@ -48,6 +48,7 @@ export class CounterRoute extends Component<CounterProps> {
   submitPendingOffer(variables: CounterSubmitMutation["variables"]) {
     return this.props.commitMutation<CounterSubmitMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation CounterSubmitMutation(
           $input: CommerceSubmitPendingOfferInput!
@@ -82,7 +83,7 @@ export class CounterRoute extends Component<CounterProps> {
         commerceSubmitPendingOffer: { orderOrError },
       } = await this.submitPendingOffer({
         input: {
-          offerId: this.props.order.myLastOffer.id,
+          offerId: this.props.order.myLastOffer.internalID,
         },
       })
 
@@ -112,15 +113,15 @@ export class CounterRoute extends Component<CounterProps> {
 
   @track<CounterProps>(props => ({
     action_type: Schema.ActionType.SubmittedCounterOffer,
-    order_id: props.order.id,
+    order_id: props.order.internalID,
   }))
   onSuccessfulSubmit() {
-    this.props.router.push(`/orders/${this.props.order.id}/status`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/status`)
   }
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   render() {
@@ -216,7 +217,7 @@ export const CounterFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Counter_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         itemsTotal(precision: 2)
@@ -227,14 +228,14 @@ export const CounterFragmentContainer = createFragmentContainer(
             createdAt
           }
           myLastOffer {
-            id
+            internalID
           }
         }
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

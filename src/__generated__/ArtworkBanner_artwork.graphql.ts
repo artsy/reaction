@@ -1,68 +1,56 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkBanner_artwork$ref: unique symbol;
-export type ArtworkBanner_artwork$ref = typeof _ArtworkBanner_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkBanner_artwork = {
-    readonly partner: ({
+    readonly partner: {
         readonly name: string | null;
         readonly initials: string | null;
-    }) | null;
-    readonly sale: ({
+    } | null;
+    readonly sale: {
         readonly is_auction: boolean | null;
         readonly isBenefit: boolean | null;
         readonly isGalleryAuction: boolean | null;
-        readonly cover_image: ({
+        readonly cover_image: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
-    readonly artworkContextAuction: ({
-        readonly __typename: "ArtworkContextAuction";
+        } | null;
+    } | null;
+    readonly context: ({
+        readonly __typename: "Sale";
         readonly name: string | null;
         readonly href: string | null;
     } | {
-        /*This will never be '% other', but we need some
-        value in case none of the concrete values match.*/
-        readonly __typename: "%other";
-    }) | null;
-    readonly artworkContextFair: ({
-        readonly __typename: "ArtworkContextFair";
+        readonly __typename: "Fair";
         readonly name: string | null;
         readonly href: string | null;
-        readonly profile: ({
+        readonly profile: {
             readonly initials: string | null;
-            readonly icon: ({
-                readonly img: ({
+            readonly icon: {
+                readonly img: {
                     readonly url: string | null;
-                }) | null;
-            }) | null;
-        }) | null;
+                } | null;
+            } | null;
+        } | null;
     } | {
-        /*This will never be '% other', but we need some
-        value in case none of the concrete values match.*/
-        readonly __typename: "%other";
-    }) | null;
-    readonly artworkContextPartnerShow: ({
-        readonly __typename: "ArtworkContextPartnerShow";
+        readonly __typename: "Show";
         readonly name: string | null;
         readonly href: string | null;
         readonly status: string | null;
-        readonly thumbnail: ({
-            readonly img: ({
+        readonly thumbnail: {
+            readonly img: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
     } | {
-        /*This will never be '% other', but we need some
+        /*This will never be '%other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
-    readonly " $refType": ArtworkBanner_artwork$ref;
+    readonly " $refType": "ArtworkBanner_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -78,40 +66,18 @@ v1 = {
   "storageKey": null
 },
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "Literal",
   "name": "version",
-  "value": "square",
-  "type": "[String]"
+  "value": "square"
 },
-v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v7 = [
+v4 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -121,15 +87,13 @@ v7 = [
       {
         "kind": "Literal",
         "name": "height",
-        "value": 70,
-        "type": "Int"
+        "value": 70
       },
-      v3,
+      (v2/*: any*/),
       {
         "kind": "Literal",
         "name": "width",
-        "value": 70,
-        "type": "Int"
+        "value": 70
       }
     ],
     "concreteType": "ResizedImageUrl",
@@ -143,8 +107,7 @@ v7 = [
         "storageKey": null
       }
     ]
-  },
-  v4
+  }
 ];
 return {
   "kind": "Fragment",
@@ -162,9 +125,8 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
-        v1,
-        v2
+        (v0/*: any*/),
+        (v1/*: any*/)
       ]
     },
     {
@@ -178,8 +140,8 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_auction",
+          "alias": "is_auction",
+          "name": "isAuction",
           "args": null,
           "storageKey": null
         },
@@ -199,8 +161,8 @@ return {
         },
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "cover_image",
+          "alias": "cover_image",
+          "name": "coverImage",
           "storageKey": null,
           "args": null,
           "concreteType": "Image",
@@ -211,54 +173,44 @@ return {
               "alias": null,
               "name": "url",
               "args": [
-                v3
+                (v2/*: any*/)
               ],
               "storageKey": "url(version:\"square\")"
-            },
-            v4
-          ]
-        },
-        v2
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": "artworkContextAuction",
-      "name": "context",
-      "storageKey": null,
-      "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
-        v5,
-        v2,
-        {
-          "kind": "InlineFragment",
-          "type": "ArtworkContextAuction",
-          "selections": [
-            v0,
-            v6
+            }
           ]
         }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": "artworkContextFair",
+      "alias": null,
       "name": "context",
       "storageKey": null,
       "args": null,
       "concreteType": null,
       "plural": false,
       "selections": [
-        v5,
-        v2,
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
         {
           "kind": "InlineFragment",
-          "type": "ArtworkContextFair",
+          "type": "Sale",
           "selections": [
-            v0,
-            v6,
+            (v0/*: any*/),
+            (v3/*: any*/)
+          ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Fair",
+          "selections": [
+            (v0/*: any*/),
+            (v3/*: any*/),
             {
               "kind": "LinkedField",
               "alias": null,
@@ -268,7 +220,7 @@ return {
               "concreteType": "Profile",
               "plural": false,
               "selections": [
-                v1,
+                (v1/*: any*/),
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -277,32 +229,18 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": v7
-                },
-                v2
+                  "selections": (v4/*: any*/)
+                }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "kind": "LinkedField",
-      "alias": "artworkContextPartnerShow",
-      "name": "context",
-      "storageKey": null,
-      "args": null,
-      "concreteType": null,
-      "plural": false,
-      "selections": [
-        v5,
-        v2,
+        },
         {
           "kind": "InlineFragment",
-          "type": "ArtworkContextPartnerShow",
+          "type": "Show",
           "selections": [
-            v0,
-            v6,
+            (v0/*: any*/),
+            (v3/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
@@ -313,20 +251,19 @@ return {
             {
               "kind": "LinkedField",
               "alias": "thumbnail",
-              "name": "cover_image",
+              "name": "coverImage",
               "storageKey": null,
               "args": null,
               "concreteType": "Image",
               "plural": false,
-              "selections": v7
+              "selections": (v4/*: any*/)
             }
           ]
         }
       ]
-    },
-    v2
+    }
   ]
 };
 })();
-(node as any).hash = '844cbaa515bdcdb004d87d2a42b1ee2e';
+(node as any).hash = '6f615caa1957f1bdfb662387e2e3cc46';
 export default node;

@@ -6,22 +6,22 @@ export type DeleteCreditCardInput = {
     readonly clientMutationId?: string | null;
 };
 export type SavedCreditCardsDeleteCreditCardMutationVariables = {
-    readonly input: DeleteCreditCardInput;
+    input: DeleteCreditCardInput;
 };
 export type SavedCreditCardsDeleteCreditCardMutationResponse = {
-    readonly deleteCreditCard: ({
-        readonly creditCardOrError: ({
-            readonly creditCard?: ({
+    readonly deleteCreditCard: {
+        readonly creditCardOrError: {
+            readonly creditCard?: {
+                readonly internalID: string;
                 readonly id: string;
-                readonly __id: string;
-            }) | null;
-            readonly mutationError?: ({
+            } | null;
+            readonly mutationError?: {
                 readonly type: string | null;
                 readonly message: string | null;
                 readonly detail: string | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            } | null;
+        } | null;
+    } | null;
 };
 export type SavedCreditCardsDeleteCreditCardMutation = {
     readonly response: SavedCreditCardsDeleteCreditCardMutationResponse;
@@ -39,8 +39,8 @@ mutation SavedCreditCardsDeleteCreditCardMutation(
       __typename
       ... on CreditCardMutationSuccess {
         creditCard {
+          internalID
           id
-          __id
         }
       }
       ... on CreditCardMutationFailure {
@@ -68,11 +68,41 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "DeleteCreditCardInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "InlineFragment",
+  "type": "CreditCardMutationSuccess",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "creditCard",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CreditCard",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "internalID",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v3 = {
   "kind": "InlineFragment",
   "type": "CreditCardMutationFailure",
   "selections": [
@@ -109,58 +139,22 @@ v2 = {
       ]
     }
   ]
-},
-v3 = {
-  "kind": "InlineFragment",
-  "type": "CreditCardMutationSuccess",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "creditCard",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CreditCard",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "SavedCreditCardsDeleteCreditCardMutation",
-  "id": null,
-  "text": "mutation SavedCreditCardsDeleteCreditCardMutation(\n  $input: DeleteCreditCardInput!\n) {\n  deleteCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          id\n          __id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SavedCreditCardsDeleteCreditCardMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "deleteCreditCard",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "DeleteCreditCardPayload",
         "plural": false,
         "selections": [
@@ -173,8 +167,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
-              v3
+              (v2/*: any*/),
+              (v3/*: any*/)
             ]
           }
         ]
@@ -184,14 +178,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "SavedCreditCardsDeleteCreditCardMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "deleteCreditCard",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "DeleteCreditCardPayload",
         "plural": false,
         "selections": [
@@ -211,15 +205,22 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2,
-              v3
+              (v2/*: any*/),
+              (v3/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "SavedCreditCardsDeleteCreditCardMutation",
+    "id": null,
+    "text": "mutation SavedCreditCardsDeleteCreditCardMutation(\n  $input: DeleteCreditCardInput!\n) {\n  deleteCreditCard(input: $input) {\n    creditCardOrError {\n      __typename\n      ... on CreditCardMutationSuccess {\n        creditCard {\n          internalID\n          id\n        }\n      }\n      ... on CreditCardMutationFailure {\n        mutationError {\n          type\n          message\n          detail\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'fdbb2e721cfef50fc61b817332812582';
+(node as any).hash = 'ce7bea3afbfaef2fde581717df94613f';
 export default node;

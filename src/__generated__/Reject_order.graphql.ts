@@ -1,43 +1,34 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-declare const _Reject_order$ref: unique symbol;
-export type Reject_order$ref = typeof _Reject_order$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Reject_order = {
-    readonly id: string;
+    readonly internalID: string;
     readonly stateExpiresAt: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
-        readonly id: string;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
+        readonly internalID: string;
         readonly createdAt: string;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref;
-    readonly " $refType": Reject_order$ref;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order">;
+    readonly " $refType": "Reject_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 };
@@ -48,7 +39,7 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -92,29 +83,21 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "__id",
+                      "name": "slug",
                       "args": null,
                       "storageKey": null
                     }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
         }
       ]
     },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkSummaryItem_order",
-      "args": null
-    },
-    v1,
     {
       "kind": "InlineFragment",
       "type": "CommerceOfferOrder",
@@ -128,21 +111,25 @@ return {
           "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
-            v0,
+            (v0/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "createdAt",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkSummaryItem_order",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = '3204ebb55e786cd9e746bfd799fbb708';
+(node as any).hash = 'def98f0fc0af3d3644b54bd8113de8c3';
 export default node;

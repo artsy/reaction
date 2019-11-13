@@ -1,47 +1,37 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { NavigationTabs_searchableConnection$ref } from "./NavigationTabs_searchableConnection.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type SearchAggregation = "TYPE" | "%future added value";
-declare const _SearchApp_viewer$ref: unique symbol;
-export type SearchApp_viewer$ref = typeof _SearchApp_viewer$ref;
 export type SearchApp_viewer = {
-    readonly search: ({
-        readonly aggregations: ReadonlyArray<({
+    readonly searchConnection: {
+        readonly aggregations: ReadonlyArray<{
             readonly slice: SearchAggregation | null;
-            readonly counts: ReadonlyArray<({
-                readonly count: number | null;
-                readonly name: string | null;
-            }) | null> | null;
-        }) | null> | null;
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly id?: string;
+            readonly counts: ReadonlyArray<{
+                readonly count: number;
+                readonly name: string;
+            } | null> | null;
+        } | null> | null;
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly slug?: string;
                 readonly displayLabel?: string | null;
                 readonly displayType?: string | null;
-            }) | null;
-        }) | null> | null;
-        readonly " $fragmentRefs": NavigationTabs_searchableConnection$ref;
-    }) | null;
-    readonly filter_artworks: ({
-        readonly counts: ({
-            readonly total: any | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": SearchApp_viewer$ref;
+            } | null;
+        } | null> | null;
+        readonly " $fragmentRefs": FragmentRefs<"NavigationTabs_searchableConnection">;
+    } | null;
+    readonly artworksConnection: {
+        readonly counts: {
+            readonly total: number | null;
+        } | null;
+    } | null;
+    readonly " $refType": "SearchApp_viewer";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchApp_viewer",
   "type": "Viewer",
@@ -58,7 +48,7 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "search",
+      "name": "searchConnection",
       "storageKey": null,
       "args": [
         {
@@ -66,20 +56,17 @@ return {
           "name": "aggregations",
           "value": [
             "TYPE"
-          ],
-          "type": "[SearchAggregation]"
+          ]
         },
         {
           "kind": "Literal",
           "name": "first",
-          "value": 1,
-          "type": "Int"
+          "value": 1
         },
         {
           "kind": "Variable",
           "name": "query",
-          "variableName": "term",
-          "type": "String!"
+          "variableName": "term"
         }
       ],
       "concreteType": "SearchableConnection",
@@ -123,16 +110,10 @@ return {
                   "name": "name",
                   "args": null,
                   "storageKey": null
-                },
-                v0
+                }
               ]
             }
           ]
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "NavigationTabs_searchableConnection",
-          "args": null
         },
         {
           "kind": "LinkedField",
@@ -152,7 +133,6 @@ return {
               "concreteType": null,
               "plural": false,
               "selections": [
-                v0,
                 {
                   "kind": "InlineFragment",
                   "type": "SearchableItem",
@@ -160,7 +140,7 @@ return {
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "id",
+                      "name": "slug",
                       "args": null,
                       "storageKey": null
                     },
@@ -183,13 +163,18 @@ return {
               ]
             }
           ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "NavigationTabs_searchableConnection",
+          "args": null
         }
       ]
     },
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "filter_artworks",
+      "name": "artworksConnection",
       "storageKey": null,
       "args": [
         {
@@ -197,23 +182,20 @@ return {
           "name": "aggregations",
           "value": [
             "TOTAL"
-          ],
-          "type": "[ArtworkAggregation]"
+          ]
         },
         {
           "kind": "Variable",
           "name": "keyword",
-          "variableName": "term",
-          "type": "String"
+          "variableName": "term"
         },
         {
           "kind": "Literal",
           "name": "size",
-          "value": 0,
-          "type": "Int"
+          "value": 0
         }
       ],
-      "concreteType": "FilterArtworks",
+      "concreteType": "FilterArtworksConnection",
       "plural": false,
       "selections": [
         {
@@ -233,12 +215,10 @@ return {
               "storageKey": null
             }
           ]
-        },
-        v0
+        }
       ]
     }
   ]
 };
-})();
-(node as any).hash = '671536b76e6625d241658d8cf32d9d68';
+(node as any).hash = '35e201abf8d672d14777050f0cca8a84';
 export default node;

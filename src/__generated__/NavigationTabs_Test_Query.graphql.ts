@@ -1,16 +1,29 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { NavigationTabs_artist$ref } from "./NavigationTabs_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type NavigationTabs_Test_QueryVariables = {};
 export type NavigationTabs_Test_QueryResponse = {
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"NavigationTabs_artist">;
+    } | null;
+};
+export type NavigationTabs_Test_QueryRawResponse = {
     readonly artist: ({
-        readonly " $fragmentRefs": NavigationTabs_artist$ref;
+        readonly slug: string;
+        readonly statuses: ({
+            readonly shows: boolean | null;
+            readonly articles: boolean | null;
+            readonly cv: boolean | null;
+            readonly auction_lots: boolean | null;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type NavigationTabs_Test_Query = {
     readonly response: NavigationTabs_Test_QueryResponse;
     readonly variables: NavigationTabs_Test_QueryVariables;
+    readonly rawResponse: NavigationTabs_Test_QueryRawResponse;
 };
 
 
@@ -19,19 +32,18 @@ export type NavigationTabs_Test_Query = {
 query NavigationTabs_Test_Query {
   artist(id: "pablo-picasso") {
     ...NavigationTabs_artist
-    __id
+    id
   }
 }
 
 fragment NavigationTabs_artist on Artist {
-  id
+  slug
   statuses {
     shows
     articles
     cv(minShowCount: 0)
-    auction_lots
+    auction_lots: auctionLots
   }
-  __id
 }
 */
 
@@ -40,24 +52,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "NavigationTabs_Test_Query",
-  "id": null,
-  "text": "query NavigationTabs_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...NavigationTabs_artist\n    __id\n  }\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "NavigationTabs_Test_Query",
@@ -70,7 +69,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -78,8 +77,7 @@ return {
             "kind": "FragmentSpread",
             "name": "NavigationTabs_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -94,14 +92,14 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "id",
+            "name": "slug",
             "args": null,
             "storageKey": null
           },
@@ -136,27 +134,39 @@ return {
                   {
                     "kind": "Literal",
                     "name": "minShowCount",
-                    "value": 0,
-                    "type": "Int"
+                    "value": 0
                   }
                 ],
                 "storageKey": "cv(minShowCount:0)"
               },
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "auction_lots",
+                "alias": "auction_lots",
+                "name": "auctionLots",
                 "args": null,
                 "storageKey": null
               }
             ]
           },
-          v1
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "NavigationTabs_Test_Query",
+    "id": null,
+    "text": "query NavigationTabs_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...NavigationTabs_artist\n    id\n  }\n}\n\nfragment NavigationTabs_artist on Artist {\n  slug\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots: auctionLots\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'a8d7c581d9b550be3c81d4aeafc5b53e';
+(node as any).hash = '69fd01c45ad1df3f4f5afc14102aefe5';
 export default node;

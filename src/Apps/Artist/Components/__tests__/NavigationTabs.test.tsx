@@ -1,3 +1,4 @@
+import { NavigationTabs_Test_QueryRawResponse } from "__generated__/NavigationTabs_Test_Query.graphql"
 import { NavigationTabsFixture } from "Apps/__tests__/Fixtures/Artist/Components/NavigationTabs"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { SystemContextProvider } from "Artsy"
@@ -9,7 +10,10 @@ jest.unmock("react-relay")
 jest.mock("Components/v2/RouteTabs")
 
 describe("ArtistHeader", () => {
-  const getWrapper = async (response = NavigationTabsFixture, context = {}) => {
+  const getWrapper = async (
+    response: NavigationTabs_Test_QueryRawResponse["artist"] = NavigationTabsFixture,
+    context = {}
+  ) => {
     return await renderRelayTree({
       Component: ({ artist }: any) => {
         return (
@@ -19,15 +23,15 @@ describe("ArtistHeader", () => {
         )
       },
       query: graphql`
-        query NavigationTabs_Test_Query {
+        query NavigationTabs_Test_Query @raw_response_type {
           artist(id: "pablo-picasso") {
             ...NavigationTabs_artist
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => response,
-      },
+      mockData: {
+        artist: response,
+      } as NavigationTabs_Test_QueryRawResponse,
     })
   }
 

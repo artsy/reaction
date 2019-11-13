@@ -95,7 +95,7 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
         series
         publisher
         manufacturer
-        image_rights
+        image_rights: imageRights
         framed {
           label
           details

@@ -1,12 +1,12 @@
+import {
+  ArtistBioTestQueryRawResponse,
+  ArtistBioTestQueryResponse,
+} from "__generated__/ArtistBioTestQuery.graphql"
 import React from "react"
 
-import { ArtistBio_bio } from "__generated__/ArtistBio_bio.graphql"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
-import {
-  ArtistBioFragmentContainer as ArtistBio,
-  ArtistBioProps,
-} from "../ArtistBio"
+import { ArtistBioFragmentContainer as ArtistBio } from "../ArtistBio"
 
 jest.unmock("react-relay")
 
@@ -16,23 +16,26 @@ describe("ArtistBio", () => {
     credit: "",
   }
 
-  const getWrapper = (props: Partial<ArtistBioProps> = {}) => {
+  const getWrapper = () => {
     return renderRelayTree({
-      Component: ({ bio }: any) => (
+      Component: ({ bio }: ArtistBioTestQueryResponse) => (
         <MockBoot breakpoint="xl">
-          <ArtistBio bio={bio} {...props} />
+          <ArtistBio bio={bio} />
         </MockBoot>
       ),
       query: graphql`
-        query ArtistBioTestQuery {
+        query ArtistBioTestQuery @raw_response_type {
           bio: artist(id: "unused") {
             ...ArtistBio_bio
           }
         }
       `,
-      mockResolvers: {
-        Artist: (): Omit<ArtistBio_bio, " $refType"> => ({ biography_blurb }),
-      },
+      mockData: {
+        bio: {
+          id: "unused",
+          biography_blurb,
+        },
+      } as ArtistBioTestQueryRawResponse,
     })
   }
 

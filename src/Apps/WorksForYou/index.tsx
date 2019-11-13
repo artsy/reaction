@@ -51,7 +51,7 @@ export class WorksForYou extends Component<Props> {
                       viewer {
                         ...WorksForYouFeed_viewer
                           @skip(if: $includeSelectedArtist)
-                          @arguments(for_sale: $forSale)
+                          @arguments(forSale: $forSale)
                         ...WorksForYouArtistFeed_viewer
                           @include(if: $includeSelectedArtist)
                           @arguments(artistID: $artistID, filter: $filter)

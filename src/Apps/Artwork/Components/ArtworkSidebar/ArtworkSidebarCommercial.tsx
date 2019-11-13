@@ -119,7 +119,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
     const editionSetsFragment = editionSets.map((editionSet, index) => {
       return (
-        <React.Fragment key={editionSet.__id}>
+        <React.Fragment key={editionSet.id}>
           <Box py={3}>
             {this.renderEditionSet(editionSet, includeSelectOption)}
           </Box>
@@ -147,13 +147,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     context_module: Schema.ContextModule.Sidebar,
     action_type: Schema.ActionType.ClickedContactGallery,
     subject: Schema.Subject.ContactGallery,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
   }))
   handleInquiry() {
     get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
-        artworkId: this.props.artwork.id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 
@@ -161,13 +161,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     action_type: Schema.ActionType.ClickedBuyNow,
     flow: Schema.Flow.BuyNow,
     type: Schema.Type.Button,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
     products: [
       {
-        product_id: props.artwork._id,
+        product_id: props.artwork.internalID,
         quantity: 1,
-        price: currency(props.artwork.price).value,
+        price: currency(props.artwork.listPrice.display).value,
       },
     ],
   }))
@@ -179,6 +179,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           commitMutation<ArtworkSidebarCommercialOrderMutation>(
             this.props.relay.environment,
             {
+              // TODO: Inputs to the mutation might have changed case of the keys!
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOrderMutation(
                   $input: CommerceCreateOrderWithArtworkInput!
@@ -188,7 +189,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
-                          id
+                          internalID
                           mode
                         }
                       }
@@ -205,10 +206,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               `,
               variables: {
                 input: {
-                  artworkId: this.props.artwork._id,
+                  artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
-                    state => state.selectedEditionSet.id
+                    state => state.selectedEditionSet.internalID
                   ),
                 },
               },
@@ -227,7 +228,9 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                         )
                       )
                     } else {
-                      window.location.assign(`/orders/${orderOrError.order.id}`)
+                      window.location.assign(
+                        `/orders/${orderOrError.order.internalID}`
+                      )
                     }
                   }
                 )
@@ -249,8 +252,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     action_type: Schema.ActionType.ClickedMakeOffer,
     flow: Schema.Flow.MakeOffer,
     type: Schema.Type.Button,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
   }))
   handleCreateOfferOrder() {
     const { user, mediator } = this.props
@@ -260,6 +263,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
             this.props.relay.environment,
             {
+              // TODO: Inputs to the mutation might have changed case of the keys!
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOfferOrderMutation(
                   $input: CommerceCreateOfferOrderWithArtworkInput!
@@ -269,7 +273,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
-                          id
+                          internalID
                           mode
                         }
                       }
@@ -286,10 +290,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               `,
               variables: {
                 input: {
-                  artworkId: this.props.artwork._id,
+                  artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
-                    state => state.selectedEditionSet.id
+                    state => state.selectedEditionSet.internalID
                   ),
                 },
               },
@@ -309,7 +313,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       )
                     } else {
                       window.location.assign(
-                        `/orders/${orderOrError.order.id}/offer`
+                        `/orders/${orderOrError.order.internalID}/offer`
                       )
                     }
                   }
@@ -462,23 +466,30 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
   {
     artwork: graphql`
       fragment ArtworkSidebarCommercial_artwork on Artwork {
-        id
-        _id
-        is_for_sale
-        is_acquireable
-        is_inquireable
-        is_offerable
-        price
+        slug
+        internalID
+        is_for_sale: isForSale
+        is_acquireable: isAcquireable
+        is_inquireable: isInquireable
+        is_offerable: isOfferable
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
         priceIncludesTaxDisplay
-        sale_message
+        sale_message: saleMessage
         shippingInfo
         shippingOrigin
-        edition_sets {
+        edition_sets: editionSets {
+          internalID
           id
-          __id
-          is_acquireable
-          is_offerable
-          sale_message
+          is_acquireable: isAcquireable
+          is_offerable: isOfferable
+          sale_message: saleMessage
           ...ArtworkSidebarSizeInfo_piece
         }
       }

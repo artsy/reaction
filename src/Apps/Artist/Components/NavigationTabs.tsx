@@ -52,11 +52,11 @@ export class NavigationTabs extends React.Component<Props> {
 
   renderTabs() {
     const {
-      artist: { id, statuses },
+      artist: { slug, statuses },
       mediator,
     } = this.props
 
-    const route = path => `/artist/${id}${path}`
+    const route = path => `/artist/${slug}${path}`
 
     return (
       <>
@@ -95,12 +95,12 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment NavigationTabs_artist on Artist {
-        id
+        slug
         statuses {
           shows
           articles
           cv(minShowCount: 0)
-          auction_lots
+          auction_lots: auctionLots
         }
       }
     `,

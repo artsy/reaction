@@ -1,25 +1,132 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CV_viewer$ref } from "./CV_viewer.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type CV_Test_QueryVariables = {
-    readonly artist_id: string;
+    artistID: string;
 };
 export type CV_Test_QueryResponse = {
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"CV_viewer">;
+    } | null;
+};
+export type CV_Test_QueryRawResponse = {
     readonly viewer: ({
-        readonly " $fragmentRefs": CV_viewer$ref;
+        readonly artist_soloShows: ({
+            readonly slug: string;
+            readonly showsConnection: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                    readonly endCursor: string | null;
+                };
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly id: string;
+                        readonly partner: ({
+                            readonly __typename: "ExternalPartner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: "Partner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                            readonly href: string | null;
+                        } | {
+                            readonly __typename: string | null;
+                            readonly id: string | null;
+                        }) | null;
+                        readonly name: string | null;
+                        readonly start_at: string | null;
+                        readonly city: string | null;
+                        readonly href: string | null;
+                        readonly __typename: "Show";
+                    }) | null;
+                    readonly cursor: string;
+                }) | null> | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly artist_groupShows: ({
+            readonly slug: string;
+            readonly showsConnection: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                    readonly endCursor: string | null;
+                };
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly id: string;
+                        readonly partner: ({
+                            readonly __typename: "ExternalPartner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: "Partner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                            readonly href: string | null;
+                        } | {
+                            readonly __typename: string | null;
+                            readonly id: string | null;
+                        }) | null;
+                        readonly name: string | null;
+                        readonly start_at: string | null;
+                        readonly city: string | null;
+                        readonly href: string | null;
+                        readonly __typename: "Show";
+                    }) | null;
+                    readonly cursor: string;
+                }) | null> | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
+        readonly artist_fairBooths: ({
+            readonly slug: string;
+            readonly showsConnection: ({
+                readonly pageInfo: {
+                    readonly hasNextPage: boolean;
+                    readonly endCursor: string | null;
+                };
+                readonly edges: ReadonlyArray<({
+                    readonly node: ({
+                        readonly id: string;
+                        readonly partner: ({
+                            readonly __typename: "ExternalPartner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                        } | {
+                            readonly __typename: "Partner";
+                            readonly id: string | null;
+                            readonly name: string | null;
+                            readonly href: string | null;
+                        } | {
+                            readonly __typename: string | null;
+                            readonly id: string | null;
+                        }) | null;
+                        readonly name: string | null;
+                        readonly start_at: string | null;
+                        readonly city: string | null;
+                        readonly href: string | null;
+                        readonly __typename: "Show";
+                    }) | null;
+                    readonly cursor: string;
+                }) | null> | null;
+            }) | null;
+            readonly id: string | null;
+        }) | null;
     }) | null;
 };
 export type CV_Test_Query = {
     readonly response: CV_Test_QueryResponse;
     readonly variables: CV_Test_QueryVariables;
+    readonly rawResponse: CV_Test_QueryRawResponse;
 };
 
 
 
 /*
 query CV_Test_Query(
-  $artist_id: String!
+  $artistID: String!
 ) {
   viewer {
     ...CV_viewer
@@ -27,46 +134,46 @@ query CV_Test_Query(
 }
 
 fragment CV_viewer on Viewer {
-  artist_soloShows: artist(id: $artist_id) {
-    ...CVItem_artist_3NSfvL
-    __id
+  artist_soloShows: artist(id: $artistID) {
+    ...CVItem_artist_ieWPx
+    id
   }
-  artist_groupShows: artist(id: $artist_id) {
-    ...CVItem_artist_3yzB0w
-    __id
+  artist_groupShows: artist(id: $artistID) {
+    ...CVItem_artist_4DszuY
+    id
   }
-  artist_fairBooths: artist(id: $artist_id) {
-    ...CVItem_artist_37CQKT
-    __id
+  artist_fairBooths: artist(id: $artistID) {
+    ...CVItem_artist_47e96d
+    id
   }
 }
 
-fragment CVItem_artist_3NSfvL on Artist {
-  id
-  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {
+fragment CVItem_artist_ieWPx on Artist {
+  slug
+  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: true, isReference: true, visibleToPublic: false) {
     pageInfo {
       hasNextPage
       endCursor
     }
     edges {
       node {
-        __id
+        id
         partner {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
             href
           }
           ... on Node {
-            __id
+            id
           }
         }
         name
-        start_at(format: "YYYY")
+        start_at: startAt(format: "YYYY")
         city
         href
         __typename
@@ -74,35 +181,34 @@ fragment CVItem_artist_3NSfvL on Artist {
       cursor
     }
   }
-  __id
 }
 
-fragment CVItem_artist_3yzB0w on Artist {
-  id
-  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {
+fragment CVItem_artist_4DszuY on Artist {
+  slug
+  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: false, isReference: true, visibleToPublic: false) {
     pageInfo {
       hasNextPage
       endCursor
     }
     edges {
       node {
-        __id
+        id
         partner {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
             href
           }
           ... on Node {
-            __id
+            id
           }
         }
         name
-        start_at(format: "YYYY")
+        start_at: startAt(format: "YYYY")
         city
         href
         __typename
@@ -110,35 +216,34 @@ fragment CVItem_artist_3yzB0w on Artist {
       cursor
     }
   }
-  __id
 }
 
-fragment CVItem_artist_37CQKT on Artist {
-  id
-  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {
+fragment CVItem_artist_47e96d on Artist {
+  slug
+  showsConnection(first: 10, sort: START_AT_DESC, atAFair: true, soloShow: false, isReference: true, visibleToPublic: false) {
     pageInfo {
       hasNextPage
       endCursor
     }
     edges {
       node {
-        __id
+        id
         partner {
           __typename
           ... on ExternalPartner {
             name
-            __id
+            id
           }
           ... on Partner {
             name
             href
           }
           ... on Node {
-            __id
+            id
           }
         }
         name
-        start_at(format: "YYYY")
+        start_at: startAt(format: "YYYY")
         city
         href
         __typename
@@ -146,7 +251,6 @@ fragment CVItem_artist_37CQKT on Artist {
       cursor
     }
   }
-  __id
 }
 */
 
@@ -154,7 +258,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artist_id",
+    "name": "artistID",
     "type": "String!",
     "defaultValue": null
   }
@@ -163,76 +267,82 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artist_id",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "slug",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "Literal",
+  "name": "atAFair",
+  "value": false
+},
+v4 = {
+  "kind": "Literal",
+  "name": "first",
+  "value": 10
+},
+v5 = {
+  "kind": "Literal",
+  "name": "isReference",
+  "value": true
+},
+v6 = {
+  "kind": "Literal",
+  "name": "sort",
+  "value": "START_AT_DESC"
+},
+v7 = {
+  "kind": "Literal",
+  "name": "visibleToPublic",
+  "value": false
+},
+v8 = [
+  (v3/*: any*/),
+  (v4/*: any*/),
+  (v5/*: any*/),
+  {
+    "kind": "Literal",
+    "name": "soloShow",
+    "value": true
+  },
+  (v6/*: any*/),
+  (v7/*: any*/)
+],
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "Literal",
-  "name": "at_a_fair",
-  "value": false,
-  "type": "Boolean"
-},
-v4 = {
-  "kind": "Literal",
-  "name": "first",
-  "value": 10,
-  "type": "Int"
-},
-v5 = {
-  "kind": "Literal",
-  "name": "is_reference",
-  "value": true,
-  "type": "Boolean"
-},
-v6 = {
-  "kind": "Literal",
-  "name": "sort",
-  "value": "START_AT_DESC",
-  "type": "PartnerShowSorts"
-},
-v7 = {
-  "kind": "Literal",
-  "name": "visible_to_public",
-  "value": false,
-  "type": "Boolean"
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v11 = {
+v12 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v12 = [
+v13 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -276,7 +386,7 @@ v12 = [
         "concreteType": "Show",
         "plural": false,
         "selections": [
-          v8,
+          (v9/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -286,39 +396,38 @@ v12 = [
             "concreteType": null,
             "plural": false,
             "selections": [
-              v9,
-              v8,
-              {
-                "kind": "InlineFragment",
-                "type": "Partner",
-                "selections": [
-                  v10,
-                  v11
-                ]
-              },
+              (v10/*: any*/),
+              (v9/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "ExternalPartner",
                 "selections": [
-                  v10
+                  (v11/*: any*/)
+                ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "Partner",
+                "selections": [
+                  (v11/*: any*/),
+                  (v12/*: any*/)
                 ]
               }
             ]
           },
-          v10,
+          (v11/*: any*/),
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "start_at",
+            "alias": "start_at",
+            "name": "startAt",
             "args": [
               {
                 "kind": "Literal",
                 "name": "format",
-                "value": "YYYY",
-                "type": "String"
+                "value": "YYYY"
               }
             ],
-            "storageKey": "start_at(format:\"YYYY\")"
+            "storageKey": "startAt(format:\"YYYY\")"
           },
           {
             "kind": "ScalarField",
@@ -327,8 +436,8 @@ v12 = [
             "args": null,
             "storageKey": null
           },
-          v11,
-          v9
+          (v12/*: any*/),
+          (v10/*: any*/)
         ]
       },
       {
@@ -341,30 +450,51 @@ v12 = [
     ]
   }
 ],
-v13 = {
+v14 = [
+  "sort",
+  "atAFair",
+  "soloShow",
+  "isReference",
+  "visibleToPublic"
+],
+v15 = {
   "kind": "Literal",
-  "name": "solo_show",
-  "value": false,
-  "type": "Boolean"
-};
+  "name": "soloShow",
+  "value": false
+},
+v16 = [
+  (v3/*: any*/),
+  (v4/*: any*/),
+  (v5/*: any*/),
+  (v15/*: any*/),
+  (v6/*: any*/),
+  (v7/*: any*/)
+],
+v17 = [
+  {
+    "kind": "Literal",
+    "name": "atAFair",
+    "value": true
+  },
+  (v4/*: any*/),
+  (v5/*: any*/),
+  (v15/*: any*/),
+  (v6/*: any*/),
+  (v7/*: any*/)
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "CV_Test_Query",
-  "id": null,
-  "text": "query CV_Test_Query(\n  $artist_id: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artist_id) {\n    ...CVItem_artist_3NSfvL\n    __id\n  }\n  artist_groupShows: artist(id: $artist_id) {\n    ...CVItem_artist_3yzB0w\n    __id\n  }\n  artist_fairBooths: artist(id: $artist_id) {\n    ...CVItem_artist_37CQKT\n    __id\n  }\n}\n\nfragment CVItem_artist_3NSfvL on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: true, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_3yzB0w on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: false, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n\nfragment CVItem_artist_37CQKT on Artist {\n  id\n  showsConnection(first: 10, sort: START_AT_DESC, at_a_fair: true, solo_show: false, is_reference: true, visible_to_public: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        __id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            __id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            __id\n          }\n        }\n        name\n        start_at(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CV_Test_Query",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -382,7 +512,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "CV_Test_Query",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -398,61 +528,31 @@ return {
             "alias": "artist_soloShows",
             "name": "artist",
             "storageKey": null,
-            "args": v1,
+            "args": (v1/*: any*/),
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
-                "storageKey": "showsConnection(at_a_fair:false,first:10,is_reference:true,solo_show:true,sort:\"START_AT_DESC\",visible_to_public:false)",
-                "args": [
-                  v3,
-                  v4,
-                  v5,
-                  {
-                    "kind": "Literal",
-                    "name": "solo_show",
-                    "value": true,
-                    "type": "Boolean"
-                  },
-                  v6,
-                  v7
-                ],
+                "storageKey": "showsConnection(atAFair:false,first:10,isReference:true,soloShow:true,sort:\"START_AT_DESC\",visibleToPublic:false)",
+                "args": (v8/*: any*/),
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v12
+                "selections": (v13/*: any*/)
               },
               {
                 "kind": "LinkedHandle",
                 "alias": null,
                 "name": "showsConnection",
-                "args": [
-                  v3,
-                  v4,
-                  v5,
-                  {
-                    "kind": "Literal",
-                    "name": "solo_show",
-                    "value": true,
-                    "type": "Boolean"
-                  },
-                  v6,
-                  v7
-                ],
+                "args": (v8/*: any*/),
                 "handle": "connection",
                 "key": "Artist_showsConnection",
-                "filters": [
-                  "sort",
-                  "at_a_fair",
-                  "solo_show",
-                  "is_reference",
-                  "visible_to_public"
-                ]
+                "filters": (v14/*: any*/)
               },
-              v8
+              (v9/*: any*/)
             ]
           },
           {
@@ -460,51 +560,31 @@ return {
             "alias": "artist_groupShows",
             "name": "artist",
             "storageKey": null,
-            "args": v1,
+            "args": (v1/*: any*/),
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
-                "storageKey": "showsConnection(at_a_fair:false,first:10,is_reference:true,solo_show:false,sort:\"START_AT_DESC\",visible_to_public:false)",
-                "args": [
-                  v3,
-                  v4,
-                  v5,
-                  v13,
-                  v6,
-                  v7
-                ],
+                "storageKey": "showsConnection(atAFair:false,first:10,isReference:true,soloShow:false,sort:\"START_AT_DESC\",visibleToPublic:false)",
+                "args": (v16/*: any*/),
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v12
+                "selections": (v13/*: any*/)
               },
               {
                 "kind": "LinkedHandle",
                 "alias": null,
                 "name": "showsConnection",
-                "args": [
-                  v3,
-                  v4,
-                  v5,
-                  v13,
-                  v6,
-                  v7
-                ],
+                "args": (v16/*: any*/),
                 "handle": "connection",
                 "key": "Artist_showsConnection",
-                "filters": [
-                  "sort",
-                  "at_a_fair",
-                  "solo_show",
-                  "is_reference",
-                  "visible_to_public"
-                ]
+                "filters": (v14/*: any*/)
               },
-              v8
+              (v9/*: any*/)
             ]
           },
           {
@@ -512,77 +592,45 @@ return {
             "alias": "artist_fairBooths",
             "name": "artist",
             "storageKey": null,
-            "args": v1,
+            "args": (v1/*: any*/),
             "concreteType": "Artist",
             "plural": false,
             "selections": [
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "showsConnection",
-                "storageKey": "showsConnection(at_a_fair:true,first:10,is_reference:true,solo_show:false,sort:\"START_AT_DESC\",visible_to_public:false)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "at_a_fair",
-                    "value": true,
-                    "type": "Boolean"
-                  },
-                  v4,
-                  v5,
-                  v13,
-                  v6,
-                  v7
-                ],
+                "storageKey": "showsConnection(atAFair:true,first:10,isReference:true,soloShow:false,sort:\"START_AT_DESC\",visibleToPublic:false)",
+                "args": (v17/*: any*/),
                 "concreteType": "ShowConnection",
                 "plural": false,
-                "selections": v12
+                "selections": (v13/*: any*/)
               },
               {
                 "kind": "LinkedHandle",
                 "alias": null,
                 "name": "showsConnection",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "at_a_fair",
-                    "value": true,
-                    "type": "Boolean"
-                  },
-                  v4,
-                  v5,
-                  v13,
-                  v6,
-                  v7
-                ],
+                "args": (v17/*: any*/),
                 "handle": "connection",
                 "key": "Artist_showsConnection",
-                "filters": [
-                  "sort",
-                  "at_a_fair",
-                  "solo_show",
-                  "is_reference",
-                  "visible_to_public"
-                ]
+                "filters": (v14/*: any*/)
               },
-              v8
+              (v9/*: any*/)
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "CV_Test_Query",
+    "id": null,
+    "text": "query CV_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artistID) {\n    ...CVItem_artist_ieWPx\n    id\n  }\n  artist_groupShows: artist(id: $artistID) {\n    ...CVItem_artist_4DszuY\n    id\n  }\n  artist_fairBooths: artist(id: $artistID) {\n    ...CVItem_artist_47e96d\n    id\n  }\n}\n\nfragment CVItem_artist_ieWPx on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: true, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CVItem_artist_4DszuY on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: false, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CVItem_artist_47e96d on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: true, soloShow: false, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '3c779381767cbf93dc425bfcd33803a1';
+(node as any).hash = '59a4a171f8c5aa6dfe021e6ce7fa91b7';
 export default node;

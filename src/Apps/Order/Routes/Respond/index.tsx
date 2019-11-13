@@ -73,7 +73,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   @track<RespondProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.FocusedOnOfferInput,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -82,7 +82,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   @track<RespondProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferTooLow,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -97,7 +97,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   @track<RespondProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -120,12 +120,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     } = this.state
 
     if (responseOption === "ACCEPT") {
-      this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/review/accept`
+      )
       return
     }
 
     if (responseOption === "DECLINE") {
-      this.props.router.push(`/orders/${this.props.order.id}/review/decline`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/review/decline`
+      )
       return
     }
 
@@ -156,7 +160,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     try {
       const orderOrError = (await this.createCounterOffer({
         input: {
-          offerId: this.props.order.lastOffer.id,
+          offerId: this.props.order.lastOffer.internalID,
           amountCents: this.state.offerValue * 100,
           note: this.state.offerNoteValue && this.state.offerNoteValue.value,
         },
@@ -166,7 +170,9 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/review/counter`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/review/counter`
+      )
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -176,6 +182,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   createCounterOffer(variables: RespondCounterOfferMutation["variables"]) {
     return this.props.commitMutation<RespondCounterOfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation RespondCounterOfferMutation(
           $input: CommerceBuyerCounterOfferInput!
@@ -204,7 +211,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   render() {
     const { order, isCommittingMutation } = this.props
 
-    const artworkId = order.lineItems.edges[0].node.artwork.id
+    const artworkId = order.lineItems.edges[0].node.artwork.slug
 
     return (
       <>
@@ -342,7 +349,7 @@ export const RespondFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Respond_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         currencyCode
@@ -355,7 +362,7 @@ export const RespondFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
@@ -363,7 +370,7 @@ export const RespondFragmentContainer = createFragmentContainer(
         ... on CommerceOfferOrder {
           lastOffer {
             createdAt
-            id
+            internalID
             note
           }
           myLastOffer {

@@ -33,7 +33,10 @@ export const RouteTabs = styled(TabsContainer)`
   }
 `
 
-export const RouteTab: React.FC<LinkProps> = ({ children, ...props }) => {
+export const RouteTab: React.FC<Omit<LinkProps, "ref">> = ({
+  children,
+  ...props
+}) => {
   return (
     <Link {...props} activeClassName="active">
       <Sans size="3t" weight="medium">

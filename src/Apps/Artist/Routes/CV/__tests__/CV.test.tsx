@@ -16,20 +16,15 @@ describe("CV Route", () => {
     return await renderRelayTree({
       Component: CVRoute,
       query: graphql`
-        query CV_Test_Query($artist_id: String!) {
+        query CV_Test_Query($artistID: String!) @raw_response_type {
           viewer {
             ...CV_viewer
           }
         }
       `,
-      mockResolvers: {
-        Viewer: () => CVFixture,
-        Artist: () => CVFixture.artist_soloShows,
-        Show: () => CVFixture.artist_soloShows.showsConnection.edges[0].node,
-        ShowConnection: () => CVFixture.artist_soloShows.showsConnection,
-      },
+      mockData: CVFixture,
       variables: {
-        artist_id: "pablo-picasso",
+        artistID: "pablo-picasso",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
@@ -77,7 +72,7 @@ describe("CV Route", () => {
       const getShowAt = index => wrapper.find("ShowEntry").at(index)
       expect(getShowAt(0).text()).toContain("Picasso Prints,  Wada Garou Tokyo")
       expect(getShowAt(10).text()).toContain(
-        "It's only about Ceramics,  BAILLY GALLERY"
+        "2018 Larsen Art Auction,  Larsen Gallery, Scottsdale"
       )
     })
 

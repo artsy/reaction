@@ -1,4 +1,7 @@
-import { AuthenticityCertificate_artwork } from "__generated__/AuthenticityCertificate_artwork.graphql"
+import {
+  AuthenticityCertificateTestQueryRawResponse,
+  AuthenticityCertificateTestQueryResponse,
+} from "__generated__/AuthenticityCertificateTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -8,13 +11,13 @@ import { AuthenticityCertificateFragmentContainer } from "../AuthenticityCertifi
 jest.unmock("react-relay")
 
 const render = (
-  artwork: Omit<AuthenticityCertificate_artwork, " $refType">,
+  artwork: AuthenticityCertificateTestQueryRawResponse["artwork"],
   extraProps?: Partial<
     ExtractProps<typeof AuthenticityCertificateFragmentContainer>
   >
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: AuthenticityCertificateTestQueryResponse) => (
       <AuthenticityCertificateFragmentContainer
         artwork={{
           ...artwork,
@@ -25,9 +28,9 @@ const render = (
     ),
     mockData: {
       artwork,
-    },
+    } as AuthenticityCertificateTestQueryRawResponse,
     query: graphql`
-      query AuthenticityCertificateTestQuery {
+      query AuthenticityCertificateTestQuery @raw_response_type {
         artwork(id: "whatevs") {
           ...AuthenticityCertificate_artwork
         }
@@ -38,6 +41,7 @@ const render = (
 describe("AuthenticityCertificate", () => {
   it("Doesn't render when there's no certificate of authenticity", async () => {
     const component = await render({
+      id: "opaque-cert-id",
       hasCertificateOfAuthenticity: false,
       is_biddable: false,
     })
@@ -46,6 +50,7 @@ describe("AuthenticityCertificate", () => {
 
   it("Doesn't render when the artwork is biddable", async () => {
     const component = await render({
+      id: "opaque-cert-id",
       hasCertificateOfAuthenticity: true,
       is_biddable: true,
     })
@@ -54,6 +59,7 @@ describe("AuthenticityCertificate", () => {
 
   it("Renders when there's a certificate of authenticity, but the work is not biddable", async () => {
     const component = await render({
+      id: "opaque-cert-id",
       hasCertificateOfAuthenticity: true,
       is_biddable: false,
     })

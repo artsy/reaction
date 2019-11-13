@@ -35,13 +35,11 @@ describe("ArtistCollectionEntity", () => {
       ...props,
       collection: {
         ...collection,
-        artworks: {
-          artworks_connection: {
-            edges: [
-              props.collection.artworks.artworks_connection.edges[0],
-              props.collection.artworks.artworks_connection.edges[1],
-            ],
-          },
+        artworksConnection: {
+          edges: [
+            props.collection.artworksConnection.edges[0],
+            props.collection.artworksConnection.edges[1],
+          ],
         },
       },
     }
@@ -63,20 +61,17 @@ describe("ArtistCollectionEntity", () => {
       ...props,
       collection: {
         ...collection,
-        artworks: {
-          artworks_connection: {
-            edges: [
-              {
-                node: {
-                  ...props.collection.artworks.artworks_connection.edges[0]
-                    .node,
-                  image: null,
-                },
+        artworksConnection: {
+          edges: [
+            {
+              node: {
+                ...props.collection.artworksConnection.edges[0].node,
+                image: null,
               },
-              props.collection.artworks.artworks_connection.edges[1],
-              props.collection.artworks.artworks_connection.edges[2],
-            ],
-          },
+            },
+            props.collection.artworksConnection.edges[1],
+            props.collection.artworksConnection.edges[2],
+          ],
         },
       },
     }
@@ -98,8 +93,8 @@ describe("ArtistCollectionEntity", () => {
       ...props,
       collection: {
         ...collection,
-        artworks: {
-          artworks_connection: { edges: [] },
+        artworksConnection: {
+          edges: [],
         },
       },
     }

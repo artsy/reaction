@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Reject_order$ref } from "./Reject_order.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type routes_RejectQueryVariables = {
-    readonly orderID: string;
+    orderID: string;
 };
 export type routes_RejectQueryResponse = {
-    readonly order: ({
-        readonly " $fragmentRefs": Reject_order$ref;
-    }) | null;
+    readonly order: {
+        readonly " $fragmentRefs": FragmentRefs<"Reject_order">;
+    } | null;
 };
 export type routes_RejectQuery = {
     readonly response: routes_RejectQueryResponse;
@@ -24,33 +24,32 @@ query routes_RejectQuery(
   order: commerceOrder(id: $orderID) {
     __typename
     ...Reject_order
-    __id: id
+    id
   }
 }
 
 fragment Reject_order on CommerceOrder {
-  id
+  internalID
   stateExpiresAt
   lineItems {
     edges {
       node {
         artwork {
+          slug
           id
-          __id
         }
-        __id: id
+        id
       }
     }
   }
   ... on CommerceOfferOrder {
     lastOffer {
-      id
+      internalID
       createdAt
-      __id: id
+      id
     }
   }
   ...ArtworkSummaryItem_order
-  __id: id
 }
 
 fragment ArtworkSummaryItem_order on CommerceOrder {
@@ -60,17 +59,17 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
       name
     }
     ... on Node {
-      __id
+      id
     }
     ... on User {
-      __id
+      id
     }
   }
   lineItems {
     edges {
       node {
         artwork {
-          artist_names
+          artist_names: artistNames
           title
           date
           shippingOrigin
@@ -78,15 +77,13 @@ fragment ArtworkSummaryItem_order on CommerceOrder {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
-            __id: id
           }
-          __id
+          id
         }
-        __id: id
+        id
       }
     }
   }
-  __id: id
 }
 */
 
@@ -103,21 +100,20 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "orderID",
-    "type": "ID"
+    "variableName": "orderID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
+  "alias": null,
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
@@ -127,34 +123,22 @@ v4 = {
   "name": "id",
   "args": null,
   "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_RejectQuery",
-  "id": null,
-  "text": "query routes_RejectQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    __id: id\n  }\n}\n\nfragment Reject_order on CommerceOrder {\n  id\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      id\n      createdAt\n      __id: id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  __id: id\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id: id\n      }\n    }\n  }\n  __id: id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_RejectQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "commerceOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -162,8 +146,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Reject_order",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -171,19 +154,19 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_RejectQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "order",
         "name": "commerceOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v3,
-          v4,
+          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -227,12 +210,18 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v4,
-                          v5,
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "artist_names",
+                            "name": "slug",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          (v4/*: any*/),
+                          {
+                            "kind": "ScalarField",
+                            "alias": "artist_names",
+                            "name": "artistNames",
                             "args": null,
                             "storageKey": null
                           },
@@ -275,8 +264,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -290,13 +278,12 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              v2
+                              }
                             ]
                           }
                         ]
                       },
-                      v2
+                      (v4/*: any*/)
                     ]
                   }
                 ]
@@ -312,8 +299,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
-              v5,
+              (v2/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -329,7 +316,7 @@ return {
               }
             ]
           },
-          v2,
+          (v4/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "CommerceOfferOrder",
@@ -343,7 +330,7 @@ return {
                 "concreteType": "CommerceOffer",
                 "plural": false,
                 "selections": [
-                  v4,
+                  (v3/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -351,7 +338,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2
+                  (v4/*: any*/)
                 ]
               }
             ]
@@ -359,6 +346,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_RejectQuery",
+    "id": null,
+    "text": "query routes_RejectQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Reject_order\n    id\n  }\n}\n\nfragment Reject_order on CommerceOrder {\n  internalID\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      createdAt\n      id\n    }\n  }\n  ...ArtworkSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { OtherAuctions_sales$ref } from "./OtherAuctions_sales.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type OtherAuctionsStoryQueryVariables = {
-    readonly size: number;
+    size: number;
 };
 export type OtherAuctionsStoryQueryResponse = {
-    readonly sales: ReadonlyArray<({
-        readonly " $fragmentRefs": OtherAuctions_sales$ref;
-    }) | null> | null;
+    readonly salesConnection: {
+        readonly " $fragmentRefs": FragmentRefs<"OtherAuctions_salesConnection">;
+    } | null;
 };
 export type OtherAuctionsStoryQuery = {
     readonly response: OtherAuctionsStoryQueryResponse;
@@ -21,45 +21,46 @@ export type OtherAuctionsStoryQuery = {
 query OtherAuctionsStoryQuery(
   $size: Int!
 ) {
-  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
-    ...OtherAuctions_sales
-    __id
+  salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {
+    ...OtherAuctions_salesConnection
   }
 }
 
-fragment OtherAuctions_sales on Sale {
-  ...AuctionCard_sale
-  __id
+fragment OtherAuctions_salesConnection on SaleConnection {
+  edges {
+    node {
+      ...AuctionCard_sale
+      id
+    }
+  }
 }
 
 fragment AuctionCard_sale on Sale {
-  cover_image {
+  cover_image: coverImage {
     cropped(width: 200, height: 180) {
       url
     }
-    __id: id
   }
   isBenefit
   isGalleryAuction
-  end_at
+  end_at: endAt
   href
-  id
-  is_live_open
-  is_preview
-  live_start_at
+  slug
+  is_live_open: isLiveOpen
+  is_preview: isPreview
+  live_start_at: liveStartAt
   registrationStatus {
+    internalID
     id
-    __id
   }
-  is_registration_closed
+  is_registration_closed: isRegistrationClosed
   name
-  start_at
-  is_closed
+  start_at: startAt
+  is_closed: isClosed
   partner {
     name
-    __id
+    id
   }
-  __id
 }
 */
 
@@ -75,32 +76,23 @@ var v0 = [
 v1 = [
   {
     "kind": "Variable",
-    "name": "size",
-    "variableName": "size",
-    "type": "Int"
+    "name": "first",
+    "variableName": "size"
   },
   {
     "kind": "Literal",
     "name": "sort",
-    "value": "TIMELY_AT_NAME_ASC",
-    "type": "SaleSorts"
+    "value": "TIMELY_AT_NAME_ASC"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
@@ -109,33 +101,27 @@ v4 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "OtherAuctionsStoryQuery",
-  "id": null,
-  "text": "query OtherAuctionsStoryQuery(\n  $size: Int!\n) {\n  sales(size: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_sales\n    __id\n  }\n}\n\nfragment OtherAuctions_sales on Sale {\n  ...AuctionCard_sale\n  __id\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image {\n    cropped(width: 200, height: 180) {\n      url\n    }\n    __id: id\n  }\n  isBenefit\n  isGalleryAuction\n  end_at\n  href\n  id\n  is_live_open\n  is_preview\n  live_start_at\n  registrationStatus {\n    id\n    __id\n  }\n  is_registration_closed\n  name\n  start_at\n  is_closed\n  partner {\n    name\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "OtherAuctionsStoryQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "sales",
+        "name": "salesConnection",
         "storageKey": null,
-        "args": v1,
-        "concreteType": "Sale",
-        "plural": true,
+        "args": (v1/*: any*/),
+        "concreteType": "SaleConnection",
+        "plural": false,
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "OtherAuctions_sales",
+            "name": "OtherAuctions_salesConnection",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -143,170 +129,202 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "OtherAuctionsStoryQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "sales",
+        "name": "salesConnection",
         "storageKey": null,
-        "args": v1,
-        "concreteType": "Sale",
-        "plural": true,
+        "args": (v1/*: any*/),
+        "concreteType": "SaleConnection",
+        "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "live_start_at",
-            "args": null,
-            "storageKey": null
-          },
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "cover_image",
+            "name": "edges",
             "storageKey": null,
             "args": null,
-            "concreteType": "Image",
-            "plural": false,
+            "concreteType": "SaleEdge",
+            "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "cropped",
-                "storageKey": "cropped(height:180,width:200)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "height",
-                    "value": 180,
-                    "type": "Int!"
-                  },
-                  {
-                    "kind": "Literal",
-                    "name": "width",
-                    "value": 200,
-                    "type": "Int!"
-                  }
-                ],
-                "concreteType": "CroppedImageUrl",
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Sale",
                 "plural": false,
                 "selections": [
                   {
+                    "kind": "LinkedField",
+                    "alias": "cover_image",
+                    "name": "coverImage",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Image",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "cropped",
+                        "storageKey": "cropped(height:180,width:200)",
+                        "args": [
+                          {
+                            "kind": "Literal",
+                            "name": "height",
+                            "value": 180
+                          },
+                          {
+                            "kind": "Literal",
+                            "name": "width",
+                            "value": 200
+                          }
+                        ],
+                        "concreteType": "CroppedImageUrl",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "url",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "url",
+                    "name": "isBenefit",
                     "args": null,
                     "storageKey": null
-                  }
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "isGalleryAuction",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "end_at",
+                    "name": "endAt",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "href",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "slug",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "is_live_open",
+                    "name": "isLiveOpen",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "is_preview",
+                    "name": "isPreview",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "live_start_at",
+                    "name": "liveStartAt",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "registrationStatus",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Bidder",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "internalID",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      (v2/*: any*/)
+                    ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "is_registration_closed",
+                    "name": "isRegistrationClosed",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  (v3/*: any*/),
+                  {
+                    "kind": "ScalarField",
+                    "alias": "start_at",
+                    "name": "startAt",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "is_closed",
+                    "name": "isClosed",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "partner",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Partner",
+                    "plural": false,
+                    "selections": [
+                      (v3/*: any*/),
+                      (v2/*: any*/)
+                    ]
+                  },
+                  (v2/*: any*/)
                 ]
-              },
-              {
-                "kind": "ScalarField",
-                "alias": "__id",
-                "name": "id",
-                "args": null,
-                "storageKey": null
               }
             ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "isGalleryAuction",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "end_at",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "href",
-            "args": null,
-            "storageKey": null
-          },
-          v3,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_live_open",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_preview",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "isBenefit",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "registrationStatus",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Bidder",
-            "plural": false,
-            "selections": [
-              v3,
-              v2
-            ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_registration_closed",
-            "args": null,
-            "storageKey": null
-          },
-          v4,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "start_at",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "is_closed",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "partner",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "Partner",
-            "plural": false,
-            "selections": [
-              v4,
-              v2
-            ]
-          },
-          v2
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "OtherAuctionsStoryQuery",
+    "id": null,
+    "text": "query OtherAuctionsStoryQuery(\n  $size: Int!\n) {\n  salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_salesConnection\n  }\n}\n\nfragment OtherAuctions_salesConnection on SaleConnection {\n  edges {\n    node {\n      ...AuctionCard_sale\n      id\n    }\n  }\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '786aba336603d5d42d7951471629aaed';
+(node as any).hash = 'e362c2a29ae8efdbb94fb8ff4043691e';
 export default node;

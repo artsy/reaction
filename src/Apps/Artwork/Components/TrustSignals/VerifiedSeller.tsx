@@ -33,7 +33,7 @@ export const VerifiedSellerFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment VerifiedSeller_artwork on Artwork {
-        is_biddable
+        is_biddable: isBiddable
         partner {
           isVerifiedSeller
           name

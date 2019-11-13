@@ -1,3 +1,4 @@
+import { RejectTestQueryRawResponse } from "__generated__/RejectTestQuery.graphql"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { StepSummaryItem } from "Components/v2"
@@ -20,12 +21,14 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 jest.unmock("react-relay")
 const realSetInterval = global.setInterval
 
-const testOrder = {
+const testOrder: RejectTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
     .toString(),
   lastOffer: {
+    internalID: "last-offer-id",
+    id: "last-offer-id",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
       .toString(),
@@ -36,7 +39,7 @@ describe("Buyer rejects seller offer", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: RejectFragmentContainer,
     query: graphql`
-      query RejectTestQuery {
+      query RejectTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Reject_order
         }
@@ -96,7 +99,7 @@ describe("Buyer rejects seller offer", () => {
     it("Shows a change link that takes the user back to the respond page", () => {
       page.root.find("StepSummaryItem a").simulate("click")
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/respond`
+        `/orders/${testOrder.internalID}/respond`
       )
     })
   })
@@ -115,7 +118,7 @@ describe("Buyer rejects seller offer", () => {
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 

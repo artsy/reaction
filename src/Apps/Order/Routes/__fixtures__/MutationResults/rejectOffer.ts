@@ -2,7 +2,7 @@ export const rejectOfferSuccess = {
   commerceBuyerRejectOffer: {
     orderOrError: {
       order: {
-        id: "1234",
+        internalID: "1234",
         awaitingResponseFrom: null,
       },
     },

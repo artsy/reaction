@@ -33,23 +33,20 @@ export const CVRouteFragmentContainer = createFragmentContainer(CVRoute, {
   viewer: graphql`
     fragment CV_viewer on Viewer
       @argumentDefinitions(
-        soloShows_at_a_fair: { type: "Boolean", defaultValue: false }
-        soloShows_solo_show: { type: "Boolean", defaultValue: true }
-        groupShows_at_a_fair: { type: "Boolean", defaultValue: false }
-        fairBooths_at_a_fair: { type: "Boolean", defaultValue: true }
+        soloShowsAtAFair: { type: "Boolean", defaultValue: false }
+        soloShowsSoloShow: { type: "Boolean", defaultValue: true }
+        groupShowsAtAFair: { type: "Boolean", defaultValue: false }
+        fairBoothsAtAFair: { type: "Boolean", defaultValue: true }
       ) {
-      artist_soloShows: artist(id: $artist_id) {
+      artist_soloShows: artist(id: $artistID) {
         ...CVItem_artist
-          @arguments(
-            at_a_fair: $soloShows_at_a_fair
-            solo_show: $soloShows_solo_show
-          )
+          @arguments(atAFair: $soloShowsAtAFair, soloShow: $soloShowsSoloShow)
       }
-      artist_groupShows: artist(id: $artist_id) {
-        ...CVItem_artist @arguments(at_a_fair: $groupShows_at_a_fair)
+      artist_groupShows: artist(id: $artistID) {
+        ...CVItem_artist @arguments(atAFair: $groupShowsAtAFair)
       }
-      artist_fairBooths: artist(id: $artist_id) {
-        ...CVItem_artist @arguments(at_a_fair: $fairBooths_at_a_fair)
+      artist_fairBooths: artist(id: $artistID) {
+        ...CVItem_artist @arguments(atAFair: $fairBoothsAtAFair)
       }
     }
   `,

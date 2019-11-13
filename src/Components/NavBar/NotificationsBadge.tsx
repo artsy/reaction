@@ -1,9 +1,9 @@
 import { Box, color, Flex, Sans } from "@artsy/palette"
+import { NotificationsMenuQueryResponse } from "__generated__/NotificationsMenuQuery.graphql"
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import cookie from "cookies-js"
 import React, { useContext, useEffect } from "react"
-import { ReadyState } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -20,7 +20,13 @@ export const NotificationsBadge: React.FC<{
   const isClient = typeof window !== "undefined"
   return isClient ? (
     <NotificationsQueryRenderer
-      render={({ error, props }: ReadyState) => {
+      render={({
+        error,
+        props,
+      }: {
+        error?: Error
+        props?: NotificationsMenuQueryResponse
+      }) => {
         // If there's an error hide the badge
         if (error) {
           logger.error(error)
@@ -41,13 +47,15 @@ export const NotificationsBadge: React.FC<{
           0
         )
 
-        let count = totalUnread
+        const count = totalUnread
 
         // User has no notifications; clear the cookie
         if (count === 0) {
           cookie.expire("notification-count")
           return null
         }
+
+        const displayCount = count >= 100 ? "99+" : count.toLocaleString()
 
         // Update the notification bad with the count, and store it in a cookie
         // so that subsequent page views don't need a fetch in order to render
@@ -57,19 +65,19 @@ export const NotificationsBadge: React.FC<{
             cookie.get("notification-count")
           )
           if (count !== cachedNotificationCount) {
-            if (count >= 100) {
-              count = "99+"
-            }
-
             // In force, when a request is made to `/notifications` endpoint,
             // sd.NOTIFICATIONS_COUNT is populated by this cookie.
-            cookie.set("notification-count", count)
+            cookie.set("notification-count", displayCount)
           }
         }
 
         return (
           <Box>
-            <CircularCount count={count} rawCount={totalUnread} hover={hover} />
+            <CircularCount
+              count={displayCount}
+              rawCount={totalUnread}
+              hover={hover}
+            />
           </Box>
         )
       }}

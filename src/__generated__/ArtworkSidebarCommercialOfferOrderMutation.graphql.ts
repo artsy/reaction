@@ -10,14 +10,14 @@ export type CommerceCreateOfferOrderWithArtworkInput = {
     readonly quantity?: number | null;
 };
 export type ArtworkSidebarCommercialOfferOrderMutationVariables = {
-    readonly input: CommerceCreateOfferOrderWithArtworkInput;
+    input: CommerceCreateOfferOrderWithArtworkInput;
 };
 export type ArtworkSidebarCommercialOfferOrderMutationResponse = {
-    readonly commerceCreateOfferOrderWithArtwork: ({
+    readonly commerceCreateOfferOrderWithArtwork: {
         readonly orderOrError: {
             readonly __typename: "CommerceOrderWithMutationSuccess";
             readonly order?: {
-                readonly id: string;
+                readonly internalID: string;
                 readonly mode: CommerceOrderModeEnum | null;
             };
             readonly error?: {
@@ -26,7 +26,7 @@ export type ArtworkSidebarCommercialOfferOrderMutationResponse = {
                 readonly data: string | null;
             };
         };
-    }) | null;
+    } | null;
 };
 export type ArtworkSidebarCommercialOfferOrderMutation = {
     readonly response: ArtworkSidebarCommercialOfferOrderMutationResponse;
@@ -46,9 +46,9 @@ mutation ArtworkSidebarCommercialOfferOrderMutation(
         __typename
         order {
           __typename
-          id
+          internalID
           mode
-          __id: id
+          id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -76,11 +76,31 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceCreateOfferOrderWithArtworkInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "mode",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
   "kind": "InlineFragment",
   "type": "CommerceOrderWithMutationFailure",
   "selections": [
@@ -117,55 +137,22 @@ v2 = {
       ]
     }
   ]
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "mode",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ArtworkSidebarCommercialOfferOrderMutation",
-  "id": null,
-  "text": "mutation ArtworkSidebarCommercialOfferOrderMutation(\n  $input: CommerceCreateOfferOrderWithArtworkInput!\n) {\n  commerceCreateOfferOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          mode\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarCommercialOfferOrderMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceCreateOfferOrderWithArtwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceCreateOfferOrderWithArtworkPayload",
         "plural": false,
         "selections": [
@@ -178,12 +165,11 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -193,13 +179,13 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v4,
-                      v5,
-                      v6
+                      (v3/*: any*/),
+                      (v4/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v5/*: any*/)
             ]
           }
         ]
@@ -209,14 +195,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtworkSidebarCommercialOfferOrderMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceCreateOfferOrderWithArtwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceCreateOfferOrderWithArtworkPayload",
         "plural": false,
         "selections": [
@@ -229,13 +215,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -245,21 +230,35 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4,
-                      v5,
-                      v6
+                      (v2/*: any*/),
+                      (v3/*: any*/),
+                      (v4/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
-              }
+              },
+              (v5/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "ArtworkSidebarCommercialOfferOrderMutation",
+    "id": null,
+    "text": "mutation ArtworkSidebarCommercialOfferOrderMutation(\n  $input: CommerceCreateOfferOrderWithArtworkInput!\n) {\n  commerceCreateOfferOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          mode\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '04da30893fac573be0833f0485eb2eac';
+(node as any).hash = 'b39e011749a3f0d4078607d26478ca3e';
 export default node;

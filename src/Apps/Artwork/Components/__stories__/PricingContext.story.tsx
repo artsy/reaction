@@ -1,5 +1,5 @@
 import { Flex } from "@artsy/palette"
-import { PricingContext_artwork } from "__generated__/PricingContext_artwork.graphql"
+import { PricingContextStoryQueryRawResponse } from "__generated__/PricingContextStoryQuery.graphql"
 import { MockRelayRenderer } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -10,14 +10,14 @@ import { PricingContextFragmentContainer } from "../PricingContext"
 const MockPricingContext = ({
   artwork,
 }: {
-  artwork: PricingContext_artwork
+  artwork: PricingContextStoryQueryRawResponse["artwork"]
 }) => {
   return (
     <MockRelayRenderer
       Component={PricingContextFragmentContainer}
       mockData={{ artwork }}
       query={graphql`
-        query PricingContextStoryQuery {
+        query PricingContextStoryQuery @raw_response_type {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
@@ -27,13 +27,18 @@ const MockPricingContext = ({
   )
 }
 
-const mockArtwork: PricingContext_artwork = {
-  " $refType": null,
-  artists: [{ id: "alex-katz" }],
+const mockArtwork: PricingContextStoryQueryRawResponse["artwork"] = {
+  id: "opaque-artwork-id",
+  artists: [{ id: "opaque-artist-id", slug: "alex-katz" }],
   category: "Sculpture",
-  priceCents: {
-    min: 284243,
-    max: 284244,
+  listPrice: {
+    __typename: "PriceRange",
+    minPrice: {
+      minor: 284243,
+    },
+    maxPrice: {
+      minor: 284243,
+    },
   },
   pricingContext: {
     bins: [
@@ -209,7 +214,14 @@ storiesOf("Apps/Artwork/Components", module)
         <Section title="Pricing Context">
           <Flex width="100%" maxWidth="600px" flexDirection="column">
             <MockPricingContext
-              artwork={{ ...mockArtwork, priceCents: { min: 1000, max: 1000 } }}
+              artwork={{
+                ...mockArtwork,
+                listPrice: {
+                  __typename: "PriceRange",
+                  minPrice: { minor: 1000 },
+                  maxPrice: { minor: 1000 },
+                },
+              }}
             />
           </Flex>
         </Section>
@@ -225,7 +237,11 @@ storiesOf("Apps/Artwork/Components", module)
             <MockPricingContext
               artwork={{
                 ...mockArtwork,
-                priceCents: { min: 10000000, max: 10000000 },
+                listPrice: {
+                  __typename: "PriceRange",
+                  minPrice: { minor: 10000000 },
+                  maxPrice: { minor: 10000000 },
+                },
               }}
             />
           </Flex>

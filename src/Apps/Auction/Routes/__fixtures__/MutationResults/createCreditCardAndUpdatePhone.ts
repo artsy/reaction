@@ -3,14 +3,14 @@ import { RegisterCreateCreditCardAndUpdatePhoneMutationResponse } from "__genera
 export const createCreditCardAndUpdatePhoneSuccessful: RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
   updateMyUserProfile: {
     user: {
-      id: "example-user-id",
+      internalID: "example-user-id",
     },
   },
   createCreditCard: {
     creditCardOrError: {
       creditCardEdge: {
         node: {
-          last_digits: "4242",
+          lastDigits: "4242",
         },
       },
     },
@@ -20,7 +20,7 @@ export const createCreditCardAndUpdatePhoneSuccessful: RegisterCreateCreditCardA
 export const createCreditCardAndUpdatePhoneFailed: RegisterCreateCreditCardAndUpdatePhoneMutationResponse = {
   updateMyUserProfile: {
     user: {
-      id: "example-user-id",
+      internalID: "example-user-id",
     },
   },
   createCreditCard: {

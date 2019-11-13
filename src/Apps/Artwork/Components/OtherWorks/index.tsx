@@ -27,9 +27,9 @@ const populatedGrids = (grids: OtherWorks_artwork["contextGrids"]) => {
   if (grids && grids.length > 0) {
     return grids.filter(grid => {
       return (
-        grid.artworks &&
-        grid.artworks.edges &&
-        grid.artworks.edges.length > 0 &&
+        grid.artworksConnection &&
+        grid.artworksConnection.edges &&
+        grid.artworksConnection.edges.length > 0 &&
         grid.__typename !== "RelatedArtworkGrid"
       )
     })
@@ -58,7 +58,6 @@ export const OtherWorks = track()(
     const { context, contextGrids, sale } = props.artwork
     const gridsToShow = populatedGrids(contextGrids)
     const tracking = useTracking()
-
     return (
       <>
         {gridsToShow && gridsToShow.length > 0 && (
@@ -67,7 +66,7 @@ export const OtherWorks = track()(
               <React.Fragment key={`Grid-${index}`}>
                 <Header title={grid.title} buttonHref={grid.ctaHref} />
                 <ArtworkGrid
-                  artworks={grid.artworks}
+                  artworks={grid.artworksConnection}
                   columnCount={[2, 3, 4]}
                   preloadImageCount={0}
                   mediator={props.mediator}
@@ -112,23 +111,20 @@ export const OtherWorksFragmentContainer = createFragmentContainer<{
         title
         ctaTitle
         ctaHref
-        artworks(first: 8) {
+        artworksConnection(first: 8) {
           ...ArtworkGrid_artworks
-
           edges {
             node {
-              id
+              slug
             }
           }
         }
       }
-
       ...RelatedWorksArtworkGrid_artwork
-
-      id
-      _id
+      slug
+      internalID
       sale {
-        is_closed
+        is_closed: isClosed
       }
       context {
         __typename

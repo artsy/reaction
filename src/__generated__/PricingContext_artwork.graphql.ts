@@ -1,20 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type AnalyticsPricingContextCategoryEnum = "ARCHITECTURE" | "BOOKS_AND_PORTFOLIOS" | "DESIGN_DECORATIVE_ART" | "DRAWING_COLLAGE_OTHER_WORK_ON_PAPER" | "FASHION" | "INSTALLATION" | "JEWELRY" | "MIXED_MEDIA" | "OTHER" | "PAINTING" | "PERFORMANCE" | "PHOTOGRAPHY" | "POSTERS" | "PRINT" | "SCULPTURE" | "SOUND" | "TEXTILE" | "VIDEO_FILM_ANIMATION" | "WORK_ON_PAPER" | "%future added value";
 export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" | "%future added value";
-declare const _PricingContext_artwork$ref: unique symbol;
-export type PricingContext_artwork$ref = typeof _PricingContext_artwork$ref;
 export type PricingContext_artwork = {
-    readonly priceCents: ({
-        readonly min: number | null;
-        readonly max: number | null;
+    readonly listPrice: ({
+        readonly __typename: "PriceRange";
+        readonly maxPrice: {
+            readonly minor: number;
+        } | null;
+        readonly minPrice: {
+            readonly minor: number;
+        } | null;
+    } | {
+        readonly __typename: "Money";
+        readonly minor: number;
+    } | {
+        /*This will never be '%other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
     }) | null;
-    readonly artists: ReadonlyArray<({
-        readonly id: string;
-    }) | null> | null;
+    readonly artists: ReadonlyArray<{
+        readonly slug: string;
+    } | null> | null;
     readonly category: string | null;
-    readonly pricingContext: ({
+    readonly pricingContext: {
         readonly appliedFiltersDisplay: string | null;
         readonly appliedFilters: {
             readonly dimension: AnalyticsPricingContextDimensionEnum | null;
@@ -27,20 +37,22 @@ export type PricingContext_artwork = {
             readonly minPriceCents: number;
             readonly numArtworks: number;
         }>;
-    }) | null;
-    readonly " $refType": PricingContext_artwork$ref;
+    } | null;
+    readonly " $refType": "PricingContext_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
+const node: ReaderFragment = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "minor",
+    "args": null,
+    "storageKey": null
+  }
+],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
@@ -58,25 +70,49 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "priceCents",
+      "name": "listPrice",
       "storageKey": null,
       "args": null,
-      "concreteType": "PriceCents",
+      "concreteType": null,
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "min",
+          "name": "__typename",
           "args": null,
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "max",
-          "args": null,
-          "storageKey": null
+          "kind": "InlineFragment",
+          "type": "PriceRange",
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "maxPrice",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Money",
+              "plural": false,
+              "selections": (v0/*: any*/)
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "minPrice",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Money",
+              "plural": false,
+              "selections": (v0/*: any*/)
+            }
+          ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Money",
+          "selections": (v0/*: any*/)
         }
       ]
     },
@@ -92,14 +128,13 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "id",
+          "name": "slug",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
-    v1,
+    (v1/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -132,7 +167,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            v1
+            (v1/*: any*/)
           ]
         },
         {
@@ -182,10 +217,9 @@ return {
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
 })();
-(node as any).hash = '0c7039a17ab5c85339f54ad2d644ca83';
+(node as any).hash = '5bed9e56daed01d03014005a648b39f3';
 export default node;

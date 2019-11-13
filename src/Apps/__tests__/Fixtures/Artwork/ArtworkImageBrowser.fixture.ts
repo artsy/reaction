@@ -1,18 +1,19 @@
+import { ArtworkImageBrowser_Test_QueryRawResponse } from "__generated__/ArtworkImageBrowser_Test_Query.graphql"
 import { ArtworkActionsFixture } from "./ArtworkActions.fixture"
 
-export const ArtworkImageBrowserFixture = {
+export const ArtworkImageBrowserFixture: ArtworkImageBrowser_Test_QueryRawResponse = {
   artwork: {
     ...ArtworkActionsFixture.artwork,
     title: "LENIN FS II.402",
     image_alt: "Andy Warhol, ‘LENIN FS II.402’, 1987, Gallery Art",
-    image_title: "Andy Warhol, ‘LENIN FS II.402’, 1987",
     href: "/artwork/andy-warhol-lenin-fs-ii-dot-402-1",
-    __id: "QXJ0d29yazphbmR5LXdhcmhvbC1sZW5pbi1mcy1paS1kb3QtNDAyLTE=",
-    id: "andy-warhol-lenin-fs-ii-dot-402-1",
+    id: "QXJ0d29yazphbmR5LXdhcmhvbC1sZW5pbi1mcy1paS1kb3QtNDAyLTE=",
+    slug: "andy-warhol-lenin-fs-ii-dot-402-1",
     is_saved: false,
     images: [
       {
-        id: "5ba674c17cc3c01fe843281a",
+        internalID: "5ba674c17cc3c01fe843281a",
+        uri: "hmm",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/xqsNp6x9eJVhM6pnqL_daQ/larger.jpg",
         placeholder: {
@@ -35,7 +36,8 @@ export const ArtworkImageBrowserFixture = {
         },
       },
       {
-        id: "5ba67628068a02634b44f101",
+        internalID: "5ba67628068a02634b44f101",
+        uri: "hmmmm",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/Hywp9kybFtHZnghRm4diWw/larger.jpg",
         placeholder: {
@@ -58,7 +60,8 @@ export const ArtworkImageBrowserFixture = {
         },
       },
       {
-        id: "5ba676248126a07fc1601799",
+        internalID: "5ba676248126a07fc1601799",
+        uri: "hmmmm",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/okxS9YRwv5B7mlU9g2Wifw/larger.jpg",
         placeholder: {
@@ -81,7 +84,8 @@ export const ArtworkImageBrowserFixture = {
         },
       },
       {
-        id: "5ba67624d7e8867fc2aa12d2",
+        internalID: "5ba67624d7e8867fc2aa12d2",
+        uri: "oof",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/556ER3g_ki0pyOEZO0k0ag/larger.jpg",
         placeholder: {

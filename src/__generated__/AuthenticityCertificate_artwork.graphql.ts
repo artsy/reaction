@@ -1,17 +1,15 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _AuthenticityCertificate_artwork$ref: unique symbol;
-export type AuthenticityCertificate_artwork$ref = typeof _AuthenticityCertificate_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type AuthenticityCertificate_artwork = {
     readonly hasCertificateOfAuthenticity: boolean | null;
     readonly is_biddable: boolean | null;
-    readonly " $refType": AuthenticityCertificate_artwork$ref;
+    readonly " $refType": "AuthenticityCertificate_artwork";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "AuthenticityCertificate_artwork",
   "type": "Artwork",
@@ -27,19 +25,12 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_biddable",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
+      "alias": "is_biddable",
+      "name": "isBiddable",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '80912d790965a940931e0e426a0fd89b';
+(node as any).hash = '39bc344c746b3df84f3c897873593c9b';
 export default node;

@@ -320,7 +320,7 @@ export const StatusFragmentContainer = createFragmentContainer(
     order: graphql`
       fragment Status_order on CommerceOrder {
         __typename
-        id
+        internalID
         code
         state
         mode
@@ -355,7 +355,7 @@ export const StatusFragmentContainer = createFragmentContainer(
         }
         ... on CommerceOfferOrder {
           myLastOffer {
-            id
+            internalID
             amount(precision: 2)
             amountCents
             shippingTotal(precision: 2)

@@ -59,13 +59,13 @@ class Badge extends React.Component<BadgeProps> {
 export default createFragmentContainer(Badge, {
   artwork: graphql`
     fragment Badge_artwork on Artwork {
-      is_biddable
-      is_acquireable
-      is_offerable
+      is_biddable: isBiddable
+      is_acquireable: isAcquireable
+      is_offerable: isOfferable
       href
       sale {
-        is_preview
-        display_timely_at
+        is_preview: isPreview
+        display_timely_at: displayTimelyAt
       }
     }
   `,

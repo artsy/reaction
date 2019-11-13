@@ -1,4 +1,5 @@
 import { Breakpoint } from "@artsy/palette"
+import { FollowArtistPopover_Test_QueryRawResponse } from "__generated__/FollowArtistPopover_Test_Query.graphql"
 import { SingleNonFollowedArtist } from "Apps/__tests__/Fixtures/Artists"
 import { FollowArtistPopoverFragmentContainer as FollowArtistPopover } from "Components/v2/FollowArtistPopover"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -11,21 +12,24 @@ jest.unmock("react-relay")
 describe("Follow Artist Popover", () => {
   let wrapper: ReactWrapper
 
-  const artistNode = {
-    _id: "mongo-id",
-    image: {
-      cropped: {
-        url: "/path/to/image.jpg",
-      },
-    },
-    ...SingleNonFollowedArtist[0],
-  }
-
-  const artistResponse = {
+  const artistResponse: FollowArtistPopover_Test_QueryRawResponse = {
     artist: {
+      id: "opaque-artist-id",
       related: {
-        suggested: {
-          edges: [{ node: artistNode }],
+        suggestedConnection: {
+          edges: [
+            {
+              node: {
+                internalID: "mongo-id",
+                image: {
+                  cropped: {
+                    url: "/path/to/image.jpg",
+                  },
+                },
+                ...SingleNonFollowedArtist[0],
+              },
+            },
+          ],
         },
       },
     },
@@ -35,15 +39,16 @@ describe("Follow Artist Popover", () => {
     return await renderRelayTree({
       Component: FollowArtistPopover,
       query: graphql`
-        query FollowArtistPopover_Test_Query($artist_id: String!) {
-          artist(id: $artist_id) {
+        query FollowArtistPopover_Test_Query($artistID: String!)
+          @raw_response_type {
+          artist(id: $artistID) {
             ...FollowArtistPopover_artist
           }
         }
       `,
-      mockData: artistResponse,
+      mockData: artistResponse as FollowArtistPopover_Test_QueryRawResponse,
       variables: {
-        artist_id: "percy-z",
+        artistID: "percy-z",
       },
       wrapper: children => (
         <MockBoot breakpoint={breakpoint}>{children}</MockBoot>

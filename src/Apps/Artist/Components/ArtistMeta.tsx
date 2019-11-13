@@ -193,7 +193,7 @@ export class ArtistMeta extends Component<Props> {
     return (
       <>
         <Title>{artist.meta.title}</Title>
-        <Link rel="canonical" href={`${sd.APP_URL}/artist/${artist.id}`} />
+        <Link rel="canonical" href={`${sd.APP_URL}/artist/${artist.slug}`} />
         <Meta property="og:title" content={artist.meta.title} />
         <Meta name="description" content={artist.meta.description} />
         <Meta property="og:description" content={artist.meta.description} />
@@ -201,7 +201,7 @@ export class ArtistMeta extends Component<Props> {
           property="twitter:description"
           content={artist.meta.description}
         />
-        <Meta property="og:url" href={`${sd.APP_URL}/artist/${artist.id}`} />
+        <Meta property="og:url" href={`${sd.APP_URL}/artist/${artist.slug}`} />
         <Meta property="og:type" href={`${sd.FACEBOOK_APP_NAMESPACE}:artist`} />
         {artist.alternate_names && (
           <Meta
@@ -230,7 +230,7 @@ export class ArtistMeta extends Component<Props> {
 export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
   artist: graphql`
     fragment ArtistMeta_artist on Artist {
-      id
+      slug
       name
       nationality
       birthday
@@ -241,7 +241,7 @@ export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
         title
         description
       }
-      alternate_names
+      alternate_names: alternateNames
       image {
         versions
         large: url(version: "large")
@@ -251,14 +251,18 @@ export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
         artworks
       }
       blurb
-      artworks_connection(first: 10, filter: IS_FOR_SALE, published: true) {
+      artworks_connection: artworksConnection(
+        first: 10
+        filter: IS_FOR_SALE
+        published: true
+      ) {
         edges {
           node {
             title
             date
             description
             category
-            price_currency
+            price_currency: priceCurrency
             listPrice {
               __typename
               ... on PriceRange {

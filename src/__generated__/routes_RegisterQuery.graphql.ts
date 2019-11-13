@@ -1,31 +1,52 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Register_me$ref } from "./Register_me.graphql";
-import { Register_sale$ref } from "./Register_sale.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type routes_RegisterQueryVariables = {
-    readonly saleID: string;
+    saleID: string;
 };
 export type routes_RegisterQueryResponse = {
+    readonly sale: {
+        readonly slug: string;
+        readonly isAuction: boolean | null;
+        readonly isRegistrationClosed: boolean | null;
+        readonly isPreview: boolean | null;
+        readonly isOpen: boolean | null;
+        readonly registrationStatus: {
+            readonly qualifiedForBidding: boolean | null;
+        } | null;
+        readonly " $fragmentRefs": FragmentRefs<"Register_sale">;
+    } | null;
+    readonly me: {
+        readonly hasQualifiedCreditCards: boolean | null;
+        readonly " $fragmentRefs": FragmentRefs<"Register_me">;
+    } | null;
+};
+export type routes_RegisterQueryRawResponse = {
     readonly sale: ({
-        readonly id: string;
-        readonly is_auction: boolean | null;
-        readonly is_registration_closed: boolean | null;
-        readonly is_preview: boolean | null;
-        readonly is_open: boolean | null;
+        readonly slug: string;
+        readonly isAuction: boolean | null;
+        readonly isRegistrationClosed: boolean | null;
+        readonly isPreview: boolean | null;
+        readonly isOpen: boolean | null;
         readonly registrationStatus: ({
-            readonly qualified_for_bidding: boolean | null;
+            readonly qualifiedForBidding: boolean | null;
+            readonly id: string | null;
         }) | null;
-        readonly " $fragmentRefs": Register_sale$ref;
+        readonly internalID: string;
+        readonly status: string | null;
+        readonly id: string | null;
     }) | null;
     readonly me: ({
-        readonly has_qualified_credit_cards: boolean | null;
-        readonly " $fragmentRefs": Register_me$ref;
+        readonly hasQualifiedCreditCards: boolean | null;
+        readonly internalID: string;
+        readonly id: string | null;
     }) | null;
 };
 export type routes_RegisterQuery = {
     readonly response: routes_RegisterQueryResponse;
     readonly variables: routes_RegisterQueryVariables;
+    readonly rawResponse: routes_RegisterQueryRawResponse;
 };
 
 
@@ -35,35 +56,33 @@ query routes_RegisterQuery(
   $saleID: String!
 ) {
   sale(id: $saleID) @principalField {
-    id
-    is_auction
-    is_registration_closed
-    is_preview
-    is_open
+    slug
+    isAuction
+    isRegistrationClosed
+    isPreview
+    isOpen
     registrationStatus {
-      qualified_for_bidding
-      __id
+      qualifiedForBidding
+      id
     }
     ...Register_sale
-    __id
+    id
   }
   me {
-    has_qualified_credit_cards
+    hasQualifiedCreditCards
     ...Register_me
-    __id
+    id
   }
 }
 
 fragment Register_sale on Sale {
-  id
-  _id
+  slug
+  internalID
   status
-  __id
 }
 
 fragment Register_me on Me {
-  id
-  __id
+  internalID
 }
 */
 
@@ -80,113 +99,112 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "saleID",
-    "type": "String!"
+    "variableName": "saleID"
   }
 ],
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "is_auction",
+  "name": "isAuction",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "is_registration_closed",
+  "name": "isRegistrationClosed",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "is_preview",
+  "name": "isPreview",
   "args": null,
   "storageKey": null
 },
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "is_open",
+  "name": "isOpen",
   "args": null,
   "storageKey": null
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "qualifiedForBidding",
   "args": null,
   "storageKey": null
 },
 v8 = {
-  "kind": "LinkedField",
+  "kind": "ScalarField",
   "alias": null,
-  "name": "registrationStatus",
-  "storageKey": null,
+  "name": "hasQualifiedCreditCards",
   "args": null,
-  "concreteType": "Bidder",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "qualified_for_bidding",
-      "args": null,
-      "storageKey": null
-    },
-    v7
-  ]
+  "storageKey": null
 },
 v9 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "has_qualified_credit_cards",
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_RegisterQuery",
-  "id": null,
-  "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) @principalField {\n    id\n    is_auction\n    is_registration_closed\n    is_preview\n    is_open\n    registrationStatus {\n      qualified_for_bidding\n      __id\n    }\n    ...Register_sale\n    __id\n  }\n  me {\n    has_qualified_credit_cards\n    ...Register_me\n    __id\n  }\n}\n\nfragment Register_sale on Sale {\n  id\n  _id\n  status\n  __id\n}\n\nfragment Register_me on Me {\n  id\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_RegisterQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "sale",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Sale",
         "plural": false,
         "selections": [
-          v2,
-          v3,
-          v4,
-          v5,
-          v6,
-          v8,
+          (v2/*: any*/),
+          (v3/*: any*/),
+          (v4/*: any*/),
+          (v5/*: any*/),
+          (v6/*: any*/),
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "registrationStatus",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Bidder",
+            "plural": false,
+            "selections": [
+              (v7/*: any*/)
+            ]
+          },
           {
             "kind": "FragmentSpread",
             "name": "Register_sale",
             "args": null
-          },
-          v7
+          }
         ]
       },
       {
@@ -198,13 +216,12 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          v9,
+          (v8/*: any*/),
           {
             "kind": "FragmentSpread",
             "name": "Register_me",
             "args": null
-          },
-          v7
+          }
         ]
       }
     ]
@@ -212,30 +229,36 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_RegisterQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "sale",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Sale",
         "plural": false,
         "selections": [
-          v2,
-          v3,
-          v4,
-          v5,
-          v6,
-          v8,
+          (v2/*: any*/),
+          (v3/*: any*/),
+          (v4/*: any*/),
+          (v5/*: any*/),
+          (v6/*: any*/),
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "_id",
+            "name": "registrationStatus",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "Bidder",
+            "plural": false,
+            "selections": [
+              (v7/*: any*/),
+              (v9/*: any*/)
+            ]
           },
+          (v10/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -243,7 +266,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v7
+          (v9/*: any*/)
         ]
       },
       {
@@ -255,14 +278,21 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          v9,
-          v2,
-          v7
+          (v8/*: any*/),
+          (v10/*: any*/),
+          (v9/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_RegisterQuery",
+    "id": null,
+    "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) @principalField {\n    slug\n    isAuction\n    isRegistrationClosed\n    isPreview\n    isOpen\n    registrationStatus {\n      qualifiedForBidding\n      id\n    }\n    ...Register_sale\n    id\n  }\n  me {\n    hasQualifiedCreditCards\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n\nfragment Register_me on Me {\n  internalID\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '8d974f73f8bdb31b5616a8c45ce626be';
+(node as any).hash = '4cf0f6d1be51ade065f55eae961f8bbf';
 export default node;

@@ -44,8 +44,8 @@ export const SecurePaymentFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment SecurePayment_artwork on Artwork {
-        is_acquireable
-        is_offerable
+        is_acquireable: isAcquireable
+        is_offerable: isOfferable
       }
     `,
   }

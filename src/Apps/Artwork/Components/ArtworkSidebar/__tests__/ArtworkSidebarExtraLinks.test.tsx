@@ -1,3 +1,4 @@
+import { ArtworkSidebarExtraLinks_Test_QueryRawResponse } from "__generated__/ArtworkSidebarExtraLinks_Test_Query.graphql"
 import {
   AcquireableArtworkWithOneConsignableArtist,
   InquireableArtworkWithMultipleConsignableArtists,
@@ -13,19 +14,21 @@ jest.unmock("react-relay")
 describe("ArtworkSidebarExtraLinks", () => {
   let wrapper = null
 
-  const getWrapper = async (response = {}) => {
+  const getWrapper = async (
+    response: ArtworkSidebarExtraLinks_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarExtraLinksFragmentContainer,
       query: graphql`
-        query ArtworkSidebarExtraLinks_Test_Query {
+        query ArtworkSidebarExtraLinks_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarExtraLinks_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarExtraLinks_Test_QueryRawResponse,
     })
   }
 

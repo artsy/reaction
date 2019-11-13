@@ -1,30 +1,35 @@
-export const ArtworkDetailsFixture = {
+import { ArtworkDetails_Test_QueryRawResponse } from "__generated__/ArtworkDetails_Test_Query.graphql"
+
+export const ArtworkDetailsFixture: ArtworkDetails_Test_QueryRawResponse["artwork"] = {
   id: "richard-prince-untitled-fashion",
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
   additional_information: "<p>Here is some addition info for this work</p>\n",
   partner: {
     id: "salon-94",
-    _id: "4e259f0a9441930001006a25",
+    internalID: "4e259f0a9441930001006a25",
+    slug: "salon-94",
     href: "/salon-94",
     is_default_profile_public: true,
     type: "Gallery",
     name: "Salon 94",
     initials: "S9",
     locations: [
-      { city: "New York" },
-      { city: "Kharkov" },
-      { city: "New York" },
-      { city: "Paris" },
-      { city: "Berlin" },
-      { city: "" },
+      { id: "asdf1", city: "New York" },
+      { id: "asdf2", city: "Kharkov" },
+      { id: "asdf3", city: "New York" },
+      { id: "asdf4", city: "Paris" },
+      { id: "asdf5", city: "Berlin" },
+      { id: "asdf6", city: "" },
     ],
     profile: {
-      __id: "profile",
+      id: "sdfsdf",
+      internalID: "profile-id",
+      slug: "profile",
       is_followed: true,
       icon: { url: "https://profile_url" },
     },
   },
-  framed: { label: "Framed", details: null },
+  framed: { label: "Framed", details: "" },
   signatureInfo: {
     label: "Signed",
     details: "Hand-signed by the artist, stamped by artist’s estate.",
@@ -45,8 +50,10 @@ export const ArtworkDetailsFixture = {
   image_rights: "Courtesy of Chiswick Auctions",
   articles: [
     {
-      author: { name: "Artsy Editorial" },
+      author: { id: "asdfsdf", name: "Artsy Editorial" },
       href: "/article/artsy-editorial-the-most-iconic-artists-of-the-1980s",
+      id: "sfds",
+      slug: "article1",
       published_at: "Aug 17th, 2015",
       thumbnail_image: {
         resized: {

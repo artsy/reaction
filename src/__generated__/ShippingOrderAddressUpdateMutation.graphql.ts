@@ -20,14 +20,14 @@ export type CommerceShippingAttributes = {
     readonly region?: string | null;
 };
 export type ShippingOrderAddressUpdateMutationVariables = {
-    readonly input: CommerceSetShippingInput;
+    input: CommerceSetShippingInput;
 };
 export type ShippingOrderAddressUpdateMutationResponse = {
-    readonly commerceSetShipping: ({
+    readonly commerceSetShipping: {
         readonly orderOrError: {
             readonly __typename: "CommerceOrderWithMutationSuccess";
             readonly order?: {
-                readonly id: string;
+                readonly internalID: string;
                 readonly state: CommerceOrderStateEnum;
                 readonly requestedFulfillment: ({
                     readonly __typename: "CommerceShip";
@@ -40,7 +40,7 @@ export type ShippingOrderAddressUpdateMutationResponse = {
                     readonly postalCode: string | null;
                     readonly phoneNumber: string | null;
                 } | {
-                    /*This will never be '% other', but we need some
+                    /*This will never be '%other', but we need some
                     value in case none of the concrete values match.*/
                     readonly __typename: "%other";
                 }) | null;
@@ -51,7 +51,7 @@ export type ShippingOrderAddressUpdateMutationResponse = {
                 readonly data: string | null;
             };
         };
-    }) | null;
+    } | null;
 };
 export type ShippingOrderAddressUpdateMutation = {
     readonly response: ShippingOrderAddressUpdateMutationResponse;
@@ -71,7 +71,7 @@ mutation ShippingOrderAddressUpdateMutation(
         __typename
         order {
           __typename
-          id
+          internalID
           state
           requestedFulfillment {
             __typename
@@ -86,7 +86,7 @@ mutation ShippingOrderAddressUpdateMutation(
               phoneNumber
             }
           }
-          __id: id
+          id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -114,70 +114,31 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceSetShippingInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
-  "kind": "InlineFragment",
-  "type": "CommerceOrderWithMutationFailure",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "error",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CommerceApplicationError",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "type",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "code",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "data",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "state",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v5 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "requestedFulfillment",
@@ -186,7 +147,7 @@ v6 = {
   "concreteType": null,
   "plural": false,
   "selections": [
-    v3,
+    (v2/*: any*/),
     {
       "kind": "InlineFragment",
       "type": "CommerceShip",
@@ -251,33 +212,59 @@ v6 = {
     }
   ]
 },
-v7 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
+v6 = {
+  "kind": "InlineFragment",
+  "type": "CommerceOrderWithMutationFailure",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "error",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CommerceApplicationError",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "type",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "data",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ShippingOrderAddressUpdateMutation",
-  "id": null,
-  "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: CommerceSetShippingInput!\n) {\n  commerceSetShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          state\n          requestedFulfillment {\n            __typename\n            ... on CommerceShip {\n              name\n              addressLine1\n              addressLine2\n              city\n              region\n              country\n              postalCode\n              phoneNumber\n            }\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ShippingOrderAddressUpdateMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceSetShipping",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceSetShippingPayload",
         "plural": false,
         "selections": [
@@ -290,12 +277,11 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -305,14 +291,14 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v4,
-                      v5,
-                      v6,
-                      v7
+                      (v3/*: any*/),
+                      (v4/*: any*/),
+                      (v5/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v6/*: any*/)
             ]
           }
         ]
@@ -322,14 +308,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ShippingOrderAddressUpdateMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceSetShipping",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceSetShippingPayload",
         "plural": false,
         "selections": [
@@ -342,13 +328,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -358,22 +343,36 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4,
-                      v5,
-                      v6,
-                      v7
+                      (v2/*: any*/),
+                      (v3/*: any*/),
+                      (v4/*: any*/),
+                      (v5/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
-              }
+              },
+              (v6/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "ShippingOrderAddressUpdateMutation",
+    "id": null,
+    "text": "mutation ShippingOrderAddressUpdateMutation(\n  $input: CommerceSetShippingInput!\n) {\n  commerceSetShipping(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          state\n          requestedFulfillment {\n            __typename\n            ... on CommerceShip {\n              name\n              addressLine1\n              addressLine2\n              city\n              region\n              country\n              postalCode\n              phoneNumber\n            }\n          }\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '1bfae43b7ea5c08293230ffc1b06e0fc';
+(node as any).hash = 'b01b849a4040a3d42a3535fdc70caeef';
 export default node;

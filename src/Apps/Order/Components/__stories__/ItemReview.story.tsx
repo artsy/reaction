@@ -56,14 +56,14 @@ storiesOf("Apps/Order/Components", module).add("ItemReview", () => {
                 },
                 edition_sets: [
                   {
-                    id: "ed-1",
+                    internalID: "ed-1",
                     dimensions: {
                       in: "96 × 79 in",
                       cm: "243.8 × 200.7 cm",
                     },
                   },
                   {
-                    id: "ed-2",
+                    internalID: "ed-2",
                     dimensions: {
                       in: "24 × 24 in",
                       cm: "10 × 10 cm",

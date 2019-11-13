@@ -1,18 +1,16 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _OtherCollectionEntity_member$ref: unique symbol;
-export type OtherCollectionEntity_member$ref = typeof _OtherCollectionEntity_member$ref;
+import { ReaderFragment } from "relay-runtime";
 export type OtherCollectionEntity_member = {
     readonly slug: string;
     readonly thumbnail: string | null;
     readonly title: string;
-    readonly " $refType": OtherCollectionEntity_member$ref;
+    readonly " $refType": "OtherCollectionEntity_member";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "OtherCollectionEntity_member",
   "type": "MarketingCollection",
@@ -37,13 +35,6 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "title",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
       "args": null,
       "storageKey": null
     }

@@ -200,8 +200,8 @@ export const SelectedExhibitionFragmentContainer = createFragmentContainer(
           }
         }
         name
-        start_at(format: "YYYY")
-        cover_image {
+        start_at: startAt(format: "YYYY")
+        cover_image: coverImage {
           cropped(width: 800, height: 600) {
             url
           }

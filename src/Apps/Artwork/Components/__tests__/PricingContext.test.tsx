@@ -1,4 +1,8 @@
 import { BarChart, Link, QuestionCircleIcon } from "@artsy/palette"
+import {
+  PricingContextTestQueryRawResponse,
+  PricingContextTestQueryResponse,
+} from "__generated__/PricingContextTestQuery.graphql"
 import { mockTracking } from "Artsy/Analytics"
 import { renderRelayTree } from "DevTools"
 import { mount } from "enzyme"
@@ -13,15 +17,17 @@ import {
 jest.unmock("react-tracking")
 jest.unmock("react-relay")
 
-const mockPricingContext = {
+const mockPricingContext: PricingContextTestQueryRawResponse["artwork"]["pricingContext"] = {
   appliedFiltersDisplay: "Price ranges of small mocks by David Sheldrick",
-  filterDescription: `deprecated field`,
-  appliedFilters: { category: "PAINTING", dimension: "SMALL" },
+  appliedFilters: {
+    category: "PAINTING",
+    dimension: "SMALL",
+  },
   bins: [
     {
       maxPrice: "$88",
       maxPriceCents: 8855,
-      minPrice: null,
+      minPrice: "$9",
       minPriceCents: 900,
       numArtworks: 67,
     },
@@ -49,33 +55,34 @@ const mockPricingContext = {
   ],
 }
 
-const mockArtwork = {
-  artists: [{ id: "artist-id" }],
+const mockArtwork: PricingContextTestQueryRawResponse["artwork"] = {
+  artists: [{ id: "asfwef", slug: "andy-warhol" }],
   category: "Photography",
-  pricingContext: mockPricingContext,
-  priceCents: {
-    min: 23455,
-    max: null,
+  id: "abc124",
+  listPrice: {
+    __typename: "Money",
+    minor: 23455,
   },
+  pricingContext: mockPricingContext,
 }
 
 describe("PricingContext", () => {
   function getWrapper(
-    mockData: any = {
+    mockData: PricingContextTestQueryRawResponse = {
       artwork: {
         ...mockArtwork,
       },
     }
   ) {
     return renderRelayTree({
-      Component: (props: any) => (
+      Component: (props: PricingContextTestQueryResponse) => (
         <div>
           <PricingContextFragmentContainer {...props} />
         </div>
       ),
-      mockData,
+      mockData: mockData as PricingContextTestQueryRawResponse,
       query: graphql`
-        query PricingContextTestQuery {
+        query PricingContextTestQuery @raw_response_type {
           artwork(id: "unused") {
             ...PricingContext_artwork
           }
@@ -146,9 +153,14 @@ describe("PricingContext", () => {
     const wrapper = await getWrapper({
       artwork: {
         ...mockArtwork,
-        priceCents: {
-          min: 15500,
-          max: 25500,
+        listPrice: {
+          __typename: "PriceRange",
+          minPrice: {
+            minor: 15500,
+          },
+          maxPrice: {
+            minor: 25500,
+          },
         },
       },
     })
@@ -181,9 +193,14 @@ describe("PricingContext", () => {
             },
           ],
         },
-        priceCents: {
-          min: 15500,
-          max: 15500,
+        listPrice: {
+          __typename: "PriceRange",
+          minPrice: {
+            minor: 15500,
+          },
+          maxPrice: {
+            minor: 15500,
+          },
         },
       },
     })
@@ -219,9 +236,14 @@ Object {
             },
           ],
         },
-        priceCents: {
-          min: 32721,
-          max: 32721,
+        listPrice: {
+          __typename: "PriceRange",
+          minPrice: {
+            minor: 32721,
+          },
+          maxPrice: {
+            minor: 32721,
+          },
         },
       },
     })

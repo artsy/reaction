@@ -1,10 +1,14 @@
-import { MockBoot } from "DevTools"
-import { mount } from "enzyme"
-import React from "react"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { graphql } from "react-relay"
 
+import { SeoDataForArtwork_Test_QueryRawResponse } from "__generated__/SeoDataForArtwork_Test_Query.graphql"
 import { CreativeWork } from "Components/v2/Seo/CreativeWork"
 import { Product } from "Components/v2/Seo/Product"
-import { AVAILABILITY, SeoDataForArtwork } from "../SeoDataForArtwork"
+import React from "react"
+import {
+  AVAILABILITY,
+  SeoDataForArtworkFragmentContainer,
+} from "../SeoDataForArtwork"
 import { SeoDataForArtworkFixture } from "./SeoDataForArtwork.fixture"
 
 jest.unmock("react-relay")
@@ -15,12 +19,21 @@ jest.mock("sharify", () => ({
 }))
 
 describe("SeoDataForArtwork", () => {
-  const getWrapper = async (artwork = SeoDataForArtworkFixture) => {
-    return mount(
-      <MockBoot>
-        <SeoDataForArtwork artwork={artwork} />
-      </MockBoot>
-    )
+  const getWrapper = async (
+    artwork: SeoDataForArtwork_Test_QueryRawResponse["artwork"]
+  ) => {
+    return await renderRelayTree({
+      Component: SeoDataForArtworkFragmentContainer,
+      wrapper: renderer => <MockBoot>{renderer}</MockBoot>,
+      query: graphql`
+        query SeoDataForArtwork_Test_Query @raw_response_type {
+          artwork(id: "richard-anuszkiewicz-lino-yellow-318") {
+            ...SeoDataForArtwork_artwork
+          }
+        }
+      `,
+      mockData: { artwork } as SeoDataForArtwork_Test_QueryRawResponse,
+    })
   }
 
   const getProductData = wrapper =>
@@ -68,7 +81,7 @@ describe("SeoDataForArtwork", () => {
     })
 
     it("Renders a Product for a non-institution ", async () => {
-      const wrapper = await getWrapper()
+      const wrapper = await getWrapper(SeoDataForArtworkFixture)
 
       expect(wrapper.find(Product).length).toEqual(1)
 
@@ -149,7 +162,7 @@ describe("SeoDataForArtwork", () => {
           ...SeoDataForArtworkFixture,
           is_price_range: false,
           is_price_hidden: false,
-          price: undefined,
+          listPrice: null,
         })
 
         expect(getProductData(wrapper).offers.price).toEqual("sale message")
@@ -160,7 +173,7 @@ describe("SeoDataForArtwork", () => {
           ...SeoDataForArtworkFixture,
           is_price_range: true,
           is_price_hidden: false,
-          price: "$1,234 - 2,345",
+          listPrice: { __typename: "PriceRange", display: "$1,234 - 2,345" },
         })
 
         const offers = getProductData(wrapper).offers

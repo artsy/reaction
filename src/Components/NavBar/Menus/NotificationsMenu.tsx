@@ -127,7 +127,7 @@ export const NotificationsQueryRenderer: React.FC<{
         query NotificationsMenuQuery {
           me {
             followsAndSaves {
-              notifications: bundledArtworksByArtist(
+              notifications: bundledArtworksByArtistConnection(
                 sort: PUBLISHED_AT_DESC
                 first: 10
               ) @connection(key: "WorksForYou_notifications") {
@@ -136,7 +136,7 @@ export const NotificationsQueryRenderer: React.FC<{
                     href
                     summary
                     artists
-                    published_at(format: "MMM DD")
+                    published_at: publishedAt(format: "MMM DD")
                     image {
                       resized(height: 40, width: 40) {
                         url

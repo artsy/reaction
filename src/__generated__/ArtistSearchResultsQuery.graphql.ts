@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtistSearchResults_viewer$ref } from "./ArtistSearchResults_viewer.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistSearchResultsQueryVariables = {
-    readonly term: string;
+    term: string;
 };
 export type ArtistSearchResultsQueryResponse = {
-    readonly viewer: ({
-        readonly " $fragmentRefs": ArtistSearchResults_viewer$ref;
-    }) | null;
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistSearchResults_viewer">;
+    } | null;
 };
 export type ArtistSearchResultsQuery = {
     readonly response: ArtistSearchResultsQueryResponse;
@@ -27,16 +27,21 @@ query ArtistSearchResultsQuery(
 }
 
 fragment ArtistSearchResults_viewer on Viewer {
-  match_artist(term: $term) {
-    id
-    _id
-    __id
-    name
-    image {
-      cropped(width: 100, height: 100) {
-        url
+  searchConnection(query: $term, mode: AUTOSUGGEST, entities: [ARTIST]) {
+    edges {
+      node {
+        __typename
+        ... on SearchableItem {
+          id
+          slug
+          internalID
+          displayLabel
+          imageUrl
+        }
+        ... on Node {
+          id
+        }
       }
-      __id: id
     }
   }
 }
@@ -53,22 +58,17 @@ var v0 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistSearchResultsQuery",
-  "id": null,
-  "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  match_artist(term: $term) {\n    id\n    _id\n    __id\n    name\n    image {\n      cropped(width: 100, height: 100) {\n        url\n      }\n      __id: id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistSearchResultsQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -86,7 +86,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtistSearchResultsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -100,110 +100,112 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "match_artist",
+            "name": "searchConnection",
             "storageKey": null,
             "args": [
               {
+                "kind": "Literal",
+                "name": "entities",
+                "value": [
+                  "ARTIST"
+                ]
+              },
+              {
+                "kind": "Literal",
+                "name": "mode",
+                "value": "AUTOSUGGEST"
+              },
+              {
                 "kind": "Variable",
-                "name": "term",
-                "variableName": "term",
-                "type": "String!"
+                "name": "query",
+                "variableName": "term"
               }
             ],
-            "concreteType": "Artist",
-            "plural": true,
+            "concreteType": "SearchableConnection",
+            "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "id",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "_id",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__id",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              },
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "image",
+                "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Image",
-                "plural": false,
+                "concreteType": "SearchableEdge",
+                "plural": true,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "cropped",
-                    "storageKey": "cropped(height:100,width:100)",
-                    "args": [
-                      {
-                        "kind": "Literal",
-                        "name": "height",
-                        "value": 100,
-                        "type": "Int!"
-                      },
-                      {
-                        "kind": "Literal",
-                        "name": "width",
-                        "value": 100,
-                        "type": "Int!"
-                      }
-                    ],
-                    "concreteType": "CroppedImageUrl",
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "url",
+                        "name": "__typename",
                         "args": null,
                         "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "InlineFragment",
+                        "type": "SearchableItem",
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "slug",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "internalID",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "displayLabel",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "imageUrl",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
                       }
                     ]
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": "__id",
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
                   }
                 ]
               }
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistSearchResultsQuery",
+    "id": null,
+    "text": "query ArtistSearchResultsQuery(\n  $term: String!\n) {\n  viewer {\n    ...ArtistSearchResults_viewer\n  }\n}\n\nfragment ArtistSearchResults_viewer on Viewer {\n  searchConnection(query: $term, mode: AUTOSUGGEST, entities: [ARTIST]) {\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          id\n          slug\n          internalID\n          displayLabel\n          imageUrl\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

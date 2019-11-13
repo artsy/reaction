@@ -92,7 +92,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
       const orderOrError = (await this.setOrderPayment({
         input: {
           creditCardId: result.creditCardId,
-          id: this.props.order.id,
+          id: this.props.order.internalID,
         },
       })).commerceSetPayment.orderOrError
 
@@ -100,7 +100,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/review`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/review`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -178,6 +178,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   setOrderPayment(variables: PaymentRouteSetOrderPaymentMutation["variables"]) {
     return this.props.commitMutation<PaymentRouteSetOrderPaymentMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation PaymentRouteSetOrderPaymentMutation(
           $input: CommerceSetPaymentInput!
@@ -186,15 +187,16 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
             orderOrError {
               ... on CommerceOrderWithMutationSuccess {
                 order {
+                  id
                   creditCard {
-                    id
+                    internalID
                     name
                     street1
                     street2
                     city
                     state
                     country
-                    postal_code
+                    postal_code: postalCode
                   }
                 }
               }
@@ -223,13 +225,13 @@ export const PaymentFragmentContainer = createFragmentContainer(
     `,
     order: graphql`
       fragment Payment_order on CommerceOrder {
-        id
+        internalID
         mode
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

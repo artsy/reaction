@@ -1,23 +1,21 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Collections_categories$ref: unique symbol;
-export type Collections_categories$ref = typeof _Collections_categories$ref;
-export type Collections_categories = ReadonlyArray<{
+import { ReaderFragment } from "relay-runtime";
+export type Collections_marketingCategories = ReadonlyArray<{
     readonly name: string;
     readonly collections: ReadonlyArray<{
         readonly slug: string;
         readonly headerImage: string | null;
         readonly title: string;
     }>;
-    readonly " $refType": Collections_categories$ref;
+    readonly " $refType": "Collections_marketingCategories";
 }>;
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "Collections_categories",
+  "name": "Collections_marketingCategories",
   "type": "MarketingCollectionCategory",
   "metadata": {
     "plural": true
@@ -60,17 +58,10 @@ const node: ConcreteFragment = {
           "name": "title",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '66eb3896886d261bafe79247912bf6b9';
+(node as any).hash = '76554c57a5339cf4a60df12cdee4be57';
 export default node;

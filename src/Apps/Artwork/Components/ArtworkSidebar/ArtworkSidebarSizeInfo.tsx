@@ -40,7 +40,7 @@ export const ArtworkSidebarSizeInfoFragmentContainer = createFragmentContainer(
           in
           cm
         }
-        edition_of
+        edition_of: editionOf
       }
     `,
   }

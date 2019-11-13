@@ -1,12 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkSidebarArtists_artwork$ref } from "./ArtworkSidebarArtists_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarArtistsStoryQueryVariables = {};
 export type ArtworkSidebarArtistsStoryQueryResponse = {
-    readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkSidebarArtists_artwork$ref;
-    }) | null;
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarArtists_artwork">;
+    } | null;
 };
 export type ArtworkSidebarArtistsStoryQuery = {
     readonly response: ArtworkSidebarArtistsStoryQueryResponse;
@@ -19,28 +19,27 @@ export type ArtworkSidebarArtistsStoryQuery = {
 query ArtworkSidebarArtistsStoryQuery {
   artwork(id: "unused") {
     ...ArtworkSidebarArtists_artwork
-    __id
+    id
   }
 }
 
 fragment ArtworkSidebarArtists_artwork on Artwork {
-  cultural_maker
+  cultural_maker: culturalMaker
   artists {
-    __id
-    _id
     id
+    internalID
+    slug
     name
     href
     ...FollowArtistButton_artist_2eN9lh
   }
-  __id
 }
 
 fragment FollowArtistButton_artist_2eN9lh on Artist {
-  __id
-  name
   id
-  is_followed
+  internalID
+  name
+  is_followed: isFollowed
   counts {
     follows
   }
@@ -49,29 +48,26 @@ fragment FollowArtistButton_artist_2eN9lh on Artist {
 
 fragment FollowArtistPopover_artist on Artist {
   related {
-    suggested(first: 3, exclude_followed_artists: true) {
+    suggestedConnection(first: 3, excludeFollowedArtists: true) {
       edges {
         node {
-          __id
-          _id
+          id
+          internalID
           ...FollowArtistPopoverRow_artist
         }
       }
     }
   }
-  __id
 }
 
 fragment FollowArtistPopoverRow_artist on Artist {
-  _id
+  internalID
   name
   image {
     cropped(width: 45, height: 45) {
       url
     }
-    __id: id
   }
-  __id
 }
 */
 
@@ -80,21 +76,20 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "_id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
@@ -107,11 +102,6 @@ v3 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarArtistsStoryQuery",
-  "id": null,
-  "text": "query ArtworkSidebarArtistsStoryQuery {\n  artwork(id: \"unused\") {\n    ...ArtworkSidebarArtists_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarArtists_artwork on Artwork {\n  cultural_maker\n  artists {\n    __id\n    _id\n    id\n    name\n    href\n    ...FollowArtistButton_artist_2eN9lh\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist_2eN9lh on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_artist\n}\n\nfragment FollowArtistPopover_artist on Artist {\n  related {\n    suggested(first: 3, exclude_followed_artists: true) {\n      edges {\n        node {\n          __id\n          _id\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n  __id\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  _id\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n    __id: id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarArtistsStoryQuery",
@@ -124,7 +114,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -132,8 +122,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarArtists_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -148,14 +137,14 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "cultural_maker",
+            "alias": "cultural_maker",
+            "name": "culturalMaker",
             "args": null,
             "storageKey": null
           },
@@ -168,16 +157,16 @@ return {
             "concreteType": "Artist",
             "plural": true,
             "selections": [
-              v1,
-              v2,
+              (v1/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "id",
+                "name": "slug",
                 "args": null,
                 "storageKey": null
               },
-              v3,
+              (v3/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -187,8 +176,8 @@ return {
               },
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "is_followed",
+                "alias": "is_followed",
+                "name": "isFollowed",
                 "args": null,
                 "storageKey": null
               },
@@ -222,20 +211,18 @@ return {
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "suggested",
-                    "storageKey": "suggested(exclude_followed_artists:true,first:3)",
+                    "name": "suggestedConnection",
+                    "storageKey": "suggestedConnection(excludeFollowedArtists:true,first:3)",
                     "args": [
                       {
                         "kind": "Literal",
-                        "name": "exclude_followed_artists",
-                        "value": true,
-                        "type": "Boolean"
+                        "name": "excludeFollowedArtists",
+                        "value": true
                       },
                       {
                         "kind": "Literal",
                         "name": "first",
-                        "value": 3,
-                        "type": "Int"
+                        "value": 3
                       }
                     ],
                     "concreteType": "ArtistConnection",
@@ -259,9 +246,9 @@ return {
                             "concreteType": "Artist",
                             "plural": false,
                             "selections": [
-                              v1,
-                              v2,
-                              v3,
+                              (v1/*: any*/),
+                              (v2/*: any*/),
+                              (v3/*: any*/),
                               {
                                 "kind": "LinkedField",
                                 "alias": null,
@@ -280,14 +267,12 @@ return {
                                       {
                                         "kind": "Literal",
                                         "name": "height",
-                                        "value": 45,
-                                        "type": "Int!"
+                                        "value": 45
                                       },
                                       {
                                         "kind": "Literal",
                                         "name": "width",
-                                        "value": 45,
-                                        "type": "Int!"
+                                        "value": 45
                                       }
                                     ],
                                     "concreteType": "CroppedImageUrl",
@@ -301,13 +286,6 @@ return {
                                         "storageKey": null
                                       }
                                     ]
-                                  },
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": "__id",
-                                    "name": "id",
-                                    "args": null,
-                                    "storageKey": null
                                   }
                                 ]
                               }
@@ -321,10 +299,17 @@ return {
               }
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarArtistsStoryQuery",
+    "id": null,
+    "text": "query ArtworkSidebarArtistsStoryQuery {\n  artwork(id: \"unused\") {\n    ...ArtworkSidebarArtists_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarArtists_artwork on Artwork {\n  cultural_maker: culturalMaker\n  artists {\n    id\n    internalID\n    slug\n    name\n    href\n    ...FollowArtistButton_artist_2eN9lh\n  }\n}\n\nfragment FollowArtistButton_artist_2eN9lh on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_artist\n}\n\nfragment FollowArtistPopover_artist on Artist {\n  related {\n    suggestedConnection(first: 3, excludeFollowedArtists: true) {\n      edges {\n        node {\n          id\n          internalID\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  internalID\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

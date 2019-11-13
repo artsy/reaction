@@ -19,7 +19,7 @@ describe("OverviewRoute", () => {
     function getWrapper(artistData, user: User = {}) {
       return mount(
         <SystemContextProvider user={user}>
-          <OverviewRoute artist={artistData} location={{} as any} />
+          <OverviewRoute artist={artistData} />
         </SystemContextProvider>
       )
     }

@@ -8,19 +8,19 @@ export type CommerceCreateOrderWithArtworkInput = {
     readonly quantity?: number | null;
 };
 export type createTestEnvOrderMutationVariables = {
-    readonly input: CommerceCreateOrderWithArtworkInput;
+    input: CommerceCreateOrderWithArtworkInput;
 };
 export type createTestEnvOrderMutationResponse = {
-    readonly commerceCreateOrderWithArtwork: ({
+    readonly commerceCreateOrderWithArtwork: {
         readonly orderOrError: {
             readonly order?: {
-                readonly id: string;
+                readonly internalID: string;
             };
             readonly error?: {
                 readonly type: string;
             };
         };
-    }) | null;
+    } | null;
 };
 export type createTestEnvOrderMutation = {
     readonly response: createTestEnvOrderMutationResponse;
@@ -39,8 +39,8 @@ mutation createTestEnvOrderMutation(
       ... on CommerceOrderWithMutationSuccess {
         order {
           __typename
+          internalID
           id
-          __id: id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -66,11 +66,17 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceCreateOrderWithArtworkInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "InlineFragment",
   "type": "CommerceOrderWithMutationFailure",
   "selections": [
@@ -94,21 +100,7 @@ v2 = {
     }
   ]
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
 v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -117,24 +109,19 @@ v5 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "createTestEnvOrderMutation",
-  "id": null,
-  "text": "mutation createTestEnvOrderMutation(\n  $input: CommerceCreateOrderWithArtworkInput!\n) {\n  commerceCreateOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createTestEnvOrderMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceCreateOrderWithArtwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceCreateOrderWithArtworkPayload",
         "plural": false,
         "selections": [
@@ -147,7 +134,6 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -161,12 +147,12 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4
+                      (v2/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/)
             ]
           }
         ]
@@ -176,14 +162,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "createTestEnvOrderMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceCreateOrderWithArtwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceCreateOrderWithArtworkPayload",
         "plural": false,
         "selections": [
@@ -196,8 +182,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
-              v2,
+              (v4/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -211,20 +196,34 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v5,
-                      v3,
-                      v4
+                      (v4/*: any*/),
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "createTestEnvOrderMutation",
+    "id": null,
+    "text": "mutation createTestEnvOrderMutation(\n  $input: CommerceCreateOrderWithArtworkInput!\n) {\n  commerceCreateOrderWithArtwork(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          internalID\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '82ac309100879cf4d1a056ffa3cfe5c3';
+(node as any).hash = 'cdf960352134f20fd9667d17292b6e97';
 export default node;

@@ -1,24 +1,22 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FollowArtistPopover_artist$ref } from "./FollowArtistPopover_artist.graphql";
-declare const _FollowArtistButton_artist$ref: unique symbol;
-export type FollowArtistButton_artist$ref = typeof _FollowArtistButton_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type FollowArtistButton_artist = {
-    readonly __id: string;
-    readonly name: string | null;
     readonly id: string;
+    readonly internalID: string;
+    readonly name: string | null;
     readonly is_followed: boolean | null;
-    readonly counts: ({
-        readonly follows: any | null;
-    }) | null;
-    readonly " $fragmentRefs": FollowArtistPopover_artist$ref;
-    readonly " $refType": FollowArtistButton_artist$ref;
+    readonly counts: {
+        readonly follows: number | null;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"FollowArtistPopover_artist">;
+    readonly " $refType": "FollowArtistButton_artist";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistButton_artist",
   "type": "Artist",
@@ -35,7 +33,14 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
+      "name": "id",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -48,15 +53,8 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "is_followed",
+      "alias": "is_followed",
+      "name": "isFollowed",
       "args": null,
       "storageKey": null
     },
@@ -92,5 +90,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'a4fcc153d1a5105f48b549ecf97fa9f1';
+(node as any).hash = '560d15156b37402c50ee7572d14c9eca';
 export default node;

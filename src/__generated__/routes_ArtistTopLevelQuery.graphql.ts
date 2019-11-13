@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtistApp_artist$ref } from "./ArtistApp_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type routes_ArtistTopLevelQueryVariables = {
-    readonly artist_id: string;
+    artistID: string;
 };
 export type routes_ArtistTopLevelQueryResponse = {
-    readonly artist: ({
-        readonly " $fragmentRefs": ArtistApp_artist$ref;
-    }) | null;
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistApp_artist">;
+    } | null;
 };
 export type routes_ArtistTopLevelQuery = {
     readonly response: routes_ArtistTopLevelQueryResponse;
@@ -19,25 +19,24 @@ export type routes_ArtistTopLevelQuery = {
 
 /*
 query routes_ArtistTopLevelQuery(
-  $artist_id: String!
+  $artistID: String!
 ) {
-  artist(id: $artist_id) @principalField {
+  artist(id: $artistID) @principalField {
     ...ArtistApp_artist
-    __id
+    id
   }
 }
 
 fragment ArtistApp_artist on Artist {
-  _id
-  id
+  internalID
+  slug
   ...ArtistMeta_artist
   ...ArtistHeader_artist
   ...NavigationTabs_artist
-  __id
 }
 
 fragment ArtistMeta_artist on Artist {
-  id
+  slug
   name
   nationality
   birthday
@@ -48,25 +47,24 @@ fragment ArtistMeta_artist on Artist {
     title
     description
   }
-  alternate_names
+  alternate_names: alternateNames
   image {
     versions
     large: url(version: "large")
     square: url(version: "square")
-    __id: id
   }
   counts {
     artworks
   }
   blurb
-  artworks_connection(first: 10, filter: IS_FOR_SALE, published: true) {
+  artworks_connection: artworksConnection(first: 10, filter: IS_FOR_SALE, published: true) {
     edges {
       node {
         title
         date
         description
         category
-        price_currency
+        price_currency: priceCurrency
         listPrice {
           __typename
           ... on PriceRange {
@@ -88,7 +86,6 @@ fragment ArtistMeta_artist on Artist {
         image {
           small: url(version: "small")
           large: url(version: "large")
-          __id: id
         }
         partner {
           name
@@ -97,22 +94,20 @@ fragment ArtistMeta_artist on Artist {
             image {
               small: url(version: "small")
               large: url(version: "large")
-              __id: id
             }
-            __id
+            id
           }
-          __id
+          id
         }
-        __id
+        id
       }
     }
   }
-  __id
 }
 
 fragment ArtistHeader_artist on Artist {
-  _id
-  id
+  internalID
+  slug
   name
   nationality
   years
@@ -127,29 +122,26 @@ fragment ArtistHeader_artist on Artist {
         width
         height
       }
-      __id: id
     }
   }
   ...FollowArtistButton_artist
-  __id
 }
 
 fragment NavigationTabs_artist on Artist {
-  id
+  slug
   statuses {
     shows
     articles
     cv(minShowCount: 0)
-    auction_lots
+    auction_lots: auctionLots
   }
-  __id
 }
 
 fragment FollowArtistButton_artist on Artist {
-  __id
-  name
   id
-  is_followed
+  internalID
+  name
+  is_followed: isFollowed
   counts {
     follows
   }
@@ -160,7 +152,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "artist_id",
+    "name": "artistID",
     "type": "String!",
     "defaultValue": null
   }
@@ -169,46 +161,38 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artist_id",
-    "type": "String!"
+    "variableName": "artistID"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "title",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "description",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v6 = {
   "kind": "ScalarField",
   "alias": "large",
   "name": "url",
@@ -216,28 +200,20 @@ v7 = {
     {
       "kind": "Literal",
       "name": "version",
-      "value": "large",
-      "type": "[String]"
+      "value": "large"
     }
   ],
   "storageKey": "url(version:\"large\")"
 },
-v8 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v9 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "major",
   "args": null,
   "storageKey": null
 },
-v10 = [
-  v9,
+v8 = [
+  (v7/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -246,7 +222,7 @@ v10 = [
     "storageKey": null
   }
 ],
-v11 = {
+v9 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "image",
@@ -263,36 +239,36 @@ v11 = {
         {
           "kind": "Literal",
           "name": "version",
-          "value": "small",
-          "type": "[String]"
+          "value": "small"
         }
       ],
       "storageKey": "url(version:\"small\")"
     },
-    v7,
-    v8
+    (v6/*: any*/)
   ]
+},
+v10 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routes_ArtistTopLevelQuery",
-  "id": null,
-  "text": "query routes_ArtistTopLevelQuery(\n  $artist_id: String!\n) {\n  artist(id: $artist_id) @principalField {\n    ...ArtistApp_artist\n    __id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  _id\n  id\n  ...ArtistMeta_artist\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n  __id\n}\n\nfragment ArtistMeta_artist on Artist {\n  id\n  name\n  nationality\n  birthday\n  deathday\n  gender\n  href\n  meta {\n    title\n    description\n  }\n  alternate_names\n  image {\n    versions\n    large: url(version: \"large\")\n    square: url(version: \"square\")\n    __id: id\n  }\n  counts {\n    artworks\n  }\n  blurb\n  artworks_connection(first: 10, filter: IS_FOR_SALE, published: true) {\n    edges {\n      node {\n        title\n        date\n        description\n        category\n        price_currency\n        listPrice {\n          __typename\n          ... on PriceRange {\n            minPrice {\n              major\n            }\n            maxPrice {\n              major\n              currencyCode\n            }\n          }\n          ... on Money {\n            major\n            currencyCode\n          }\n        }\n        availability\n        href\n        image {\n          small: url(version: \"small\")\n          large: url(version: \"large\")\n          __id: id\n        }\n        partner {\n          name\n          href\n          profile {\n            image {\n              small: url(version: \"small\")\n              large: url(version: \"large\")\n              __id: id\n            }\n            __id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment ArtistHeader_artist on Artist {\n  _id\n  id\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n      __id: id\n    }\n  }\n  ...FollowArtistButton_artist\n  __id\n}\n\nfragment NavigationTabs_artist on Artist {\n  id\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots\n  }\n  __id\n}\n\nfragment FollowArtistButton_artist on Artist {\n  __id\n  name\n  id\n  is_followed\n  counts {\n    follows\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routes_ArtistTopLevelQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -300,8 +276,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistApp_artist",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -309,32 +284,32 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_ArtistTopLevelQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "alternate_names",
+            "name": "internalID",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "_id",
+            "name": "slug",
             "args": null,
             "storageKey": null
           },
-          v3,
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -363,7 +338,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v4,
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -373,14 +348,14 @@ return {
             "concreteType": "ArtistMeta",
             "plural": false,
             "selections": [
-              v5,
-              v6
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
+            "alias": "alternate_names",
+            "name": "alternateNames",
             "args": null,
             "storageKey": null
           },
@@ -400,7 +375,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v7,
+              (v6/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": "square",
@@ -409,13 +384,11 @@ return {
                   {
                     "kind": "Literal",
                     "name": "version",
-                    "value": "square",
-                    "type": "[String]"
+                    "value": "square"
                   }
                 ],
                 "storageKey": "url(version:\"square\")"
-              },
-              v8
+              }
             ]
           },
           {
@@ -452,27 +425,24 @@ return {
           },
           {
             "kind": "LinkedField",
-            "alias": null,
-            "name": "artworks_connection",
-            "storageKey": "artworks_connection(filter:\"IS_FOR_SALE\",first:10,published:true)",
+            "alias": "artworks_connection",
+            "name": "artworksConnection",
+            "storageKey": "artworksConnection(filter:\"IS_FOR_SALE\",first:10,published:true)",
             "args": [
               {
                 "kind": "Literal",
                 "name": "filter",
-                "value": "IS_FOR_SALE",
-                "type": "[ArtistArtworksFilters]"
+                "value": "IS_FOR_SALE"
               },
               {
                 "kind": "Literal",
                 "name": "first",
-                "value": 10,
-                "type": "Int"
+                "value": 10
               },
               {
                 "kind": "Literal",
                 "name": "published",
-                "value": true,
-                "type": "Boolean"
+                "value": true
               }
             ],
             "concreteType": "ArtworkConnection",
@@ -496,6 +466,29 @@ return {
                     "concreteType": "Artwork",
                     "plural": false,
                     "selections": [
+                      (v4/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "date",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      (v5/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "category",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": "price_currency",
+                        "name": "priceCurrency",
+                        "args": null,
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -514,11 +507,6 @@ return {
                           },
                           {
                             "kind": "InlineFragment",
-                            "type": "Money",
-                            "selections": v10
-                          },
-                          {
-                            "kind": "InlineFragment",
                             "type": "PriceRange",
                             "selections": [
                               {
@@ -530,7 +518,7 @@ return {
                                 "concreteType": "Money",
                                 "plural": false,
                                 "selections": [
-                                  v9
+                                  (v7/*: any*/)
                                 ]
                               },
                               {
@@ -541,34 +529,16 @@ return {
                                 "args": null,
                                 "concreteType": "Money",
                                 "plural": false,
-                                "selections": v10
+                                "selections": (v8/*: any*/)
                               }
                             ]
+                          },
+                          {
+                            "kind": "InlineFragment",
+                            "type": "Money",
+                            "selections": (v8/*: any*/)
                           }
                         ]
-                      },
-                      v5,
-                      v6,
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "category",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "price_currency",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "date",
-                        "args": null,
-                        "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
@@ -577,8 +547,8 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      v4,
-                      v11,
+                      (v3/*: any*/),
+                      (v9/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -588,8 +558,8 @@ return {
                         "concreteType": "Partner",
                         "plural": false,
                         "selections": [
-                          v3,
-                          v4,
+                          (v2/*: any*/),
+                          (v3/*: any*/),
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -599,21 +569,20 @@ return {
                             "concreteType": "Profile",
                             "plural": false,
                             "selections": [
-                              v11,
-                              v2
+                              (v9/*: any*/),
+                              (v10/*: any*/)
                             ]
                           },
-                          v2
+                          (v10/*: any*/)
                         ]
                       },
-                      v2
+                      (v10/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -639,7 +608,7 @@ return {
                 "concreteType": "Image",
                 "plural": true,
                 "selections": [
-                  v4,
+                  (v3/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -649,8 +618,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "height",
-                        "value": 200,
-                        "type": "Int"
+                        "value": 200
                       }
                     ],
                     "concreteType": "ResizedImageUrl",
@@ -678,16 +646,16 @@ return {
                         "storageKey": null
                       }
                     ]
-                  },
-                  v8
+                  }
                 ]
               }
             ]
           },
+          (v10/*: any*/),
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_followed",
+            "alias": "is_followed",
+            "name": "isFollowed",
             "args": null,
             "storageKey": null
           },
@@ -722,16 +690,15 @@ return {
                   {
                     "kind": "Literal",
                     "name": "minShowCount",
-                    "value": 0,
-                    "type": "Int"
+                    "value": 0
                   }
                 ],
                 "storageKey": "cv(minShowCount:0)"
               },
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "auction_lots",
+                "alias": "auction_lots",
+                "name": "auctionLots",
                 "args": null,
                 "storageKey": null
               }
@@ -740,8 +707,15 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "routes_ArtistTopLevelQuery",
+    "id": null,
+    "text": "query routes_ArtistTopLevelQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) @principalField {\n    ...ArtistApp_artist\n    id\n  }\n}\n\nfragment ArtistApp_artist on Artist {\n  internalID\n  slug\n  ...ArtistMeta_artist\n  ...ArtistHeader_artist\n  ...NavigationTabs_artist\n}\n\nfragment ArtistMeta_artist on Artist {\n  slug\n  name\n  nationality\n  birthday\n  deathday\n  gender\n  href\n  meta {\n    title\n    description\n  }\n  alternate_names: alternateNames\n  image {\n    versions\n    large: url(version: \"large\")\n    square: url(version: \"square\")\n  }\n  counts {\n    artworks\n  }\n  blurb\n  artworks_connection: artworksConnection(first: 10, filter: IS_FOR_SALE, published: true) {\n    edges {\n      node {\n        title\n        date\n        description\n        category\n        price_currency: priceCurrency\n        listPrice {\n          __typename\n          ... on PriceRange {\n            minPrice {\n              major\n            }\n            maxPrice {\n              major\n              currencyCode\n            }\n          }\n          ... on Money {\n            major\n            currencyCode\n          }\n        }\n        availability\n        href\n        image {\n          small: url(version: \"small\")\n          large: url(version: \"large\")\n        }\n        partner {\n          name\n          href\n          profile {\n            image {\n              small: url(version: \"small\")\n              large: url(version: \"large\")\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  internalID\n  slug\n  name\n  nationality\n  years\n  counts {\n    follows\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment NavigationTabs_artist on Artist {\n  slug\n  statuses {\n    shows\n    articles\n    cv(minShowCount: 0)\n    auction_lots: auctionLots\n  }\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '457b31c97881104086337d7b2ea87270';
+(node as any).hash = 'f832fab34a63627613675e2a93bce9ec';
 export default node;

@@ -1,4 +1,5 @@
 import { BorderedRadio, Checkbox } from "@artsy/palette"
+import { PaymentTestQueryRawResponse } from "__generated__/PaymentTestQuery.graphql"
 
 import {
   BuyOrderWithShippingDetails,
@@ -35,7 +36,10 @@ jest.mock(
   }
 )
 
-const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
+const testOrder: PaymentTestQueryRawResponse["order"] = {
+  ...BuyOrderWithShippingDetails,
+  internalID: "1234",
+}
 
 describe("Payment", () => {
   const { buildPage, mutations, routes } = createTestEnv({
@@ -48,7 +52,7 @@ describe("Payment", () => {
       ...settingOrderPaymentSuccess,
     },
     query: graphql`
-      query PaymentTestQuery {
+      query PaymentTestQuery @raw_response_type {
         me {
           ...Payment_me
         }

@@ -1,4 +1,7 @@
-import { Genes_artist } from "__generated__/Genes_artist.graphql"
+import {
+  GenesTestQueryRawResponse,
+  GenesTestQueryResponse,
+} from "__generated__/GenesTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -8,11 +11,11 @@ import { GenesFragmentContainer as Genes } from "../Genes"
 jest.unmock("react-relay")
 
 const render = (
-  artist: Omit<Genes_artist, " $refType">,
+  artist: GenesTestQueryRawResponse["artist"],
   extraProps?: Partial<ExtractProps<typeof Genes>>
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: GenesTestQueryResponse) => (
       <Genes
         artist={{
           ...artist,
@@ -23,9 +26,9 @@ const render = (
     ),
     mockData: {
       artist,
-    },
+    } as GenesTestQueryRawResponse,
     query: graphql`
-      query GenesTestQuery {
+      query GenesTestQuery @raw_response_type {
         artist(id: "whatevs") {
           ...Genes_artist
         }
@@ -37,13 +40,28 @@ describe("Genes", () => {
   describe("when having less than 8 genes", () => {
     it("renders all genes", async () => {
       const component = await render({
+        id: "pablo-picasso",
         related: {
           genes: {
             edges: [
-              { node: { name: "Classic", href: "/gene/classic" } },
-              { node: { name: "Modern", href: "/gene/modern" } },
-              { node: { name: "Postmodern", href: "/gene/postmodern" } },
-              { node: { name: "Contemporary", href: "/gene/contemporary" } },
+              {
+                node: { id: "classic", name: "Classic", href: "/gene/classic" },
+              },
+              { node: { id: "modern", name: "Modern", href: "/gene/modern" } },
+              {
+                node: {
+                  id: "postmodern",
+                  name: "Postmodern",
+                  href: "/gene/postmodern",
+                },
+              },
+              {
+                node: {
+                  id: "contemporary",
+                  name: "Contemporary",
+                  href: "/gene/contemporary",
+                },
+              },
             ],
           },
         },
@@ -55,28 +73,59 @@ describe("Genes", () => {
   describe("when having more than 8 genes", () => {
     it("renders first 8 genes and more button", async () => {
       const component = await render({
+        id: "pablo-picasso",
         related: {
           genes: {
             edges: [
-              { node: { name: "Classic", href: "/gene/classic" } },
-              { node: { name: "Modern", href: "/gene/modern" } },
               {
-                node: { name: "Modern revival", href: "/gene/modern-revival" },
+                node: { id: "classic", name: "Classic", href: "/gene/classic" },
               },
-              {
-                node: { name: "Pre postmodern", href: "/gene/pre-postmodern" },
-              },
-              { node: { name: "Postmodern", href: "/gene/postmodern" } },
+              { node: { id: "modern", name: "Modern", href: "/gene/modern" } },
               {
                 node: {
+                  id: "modern-revival",
+                  name: "Modern revival",
+                  href: "/gene/modern-revival",
+                },
+              },
+              {
+                node: {
+                  id: "pre-postmodern",
+                  name: "Pre postmodern",
+                  href: "/gene/pre-postmodern",
+                },
+              },
+              {
+                node: {
+                  id: "postmodern",
+                  name: "Postmodern",
+                  href: "/gene/postmodern",
+                },
+              },
+              {
+                node: {
+                  id: "post-postmodern",
                   name: "Post postmodern",
                   href: "/gene/post-postmodern",
                 },
               },
-              { node: { name: "Hyper modern", href: "/gene/hypermodern" } },
-              { node: { name: "Contemporary", href: "/gene/contemporary" } },
               {
                 node: {
+                  id: "hyper-modern",
+                  name: "Hyper modern",
+                  href: "/gene/hypermodern",
+                },
+              },
+              {
+                node: {
+                  id: "contemporary",
+                  name: "Contemporary",
+                  href: "/gene/contemporary",
+                },
+              },
+              {
+                node: {
+                  id: "post-contmporary",
                   name: "Post contemporary",
                   href: "/gene/post-contemporary",
                 },

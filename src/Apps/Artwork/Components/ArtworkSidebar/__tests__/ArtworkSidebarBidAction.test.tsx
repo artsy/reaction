@@ -1,3 +1,4 @@
+import { ArtworkSidebarBidAction_Test_QueryRawResponse } from "__generated__/ArtworkSidebarBidAction_Test_Query.graphql"
 import {
   ArtworkFromAuctionPreview,
   ArtworkFromClosedAuction,
@@ -20,19 +21,21 @@ jest.unmock("react-relay")
 const merge: (...args: object[]) => any = _merge
 
 describe("ArtworkSidebarBidAction", () => {
-  const getWrapper = async response => {
+  const getWrapper = async (
+    response: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarBidActionFragmentContainer,
       query: graphql`
-        query ArtworkSidebarBidAction_Test_Query {
+        query ArtworkSidebarBidAction_Test_Query @raw_response_type {
           artwork(id: "auction_artwork") {
             ...ArtworkSidebarBidAction_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarBidAction_Test_QueryRawResponse,
     })
   }
 

@@ -85,7 +85,7 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
   {
     artwork: graphql`
       fragment ArtworkSidebar_artwork on Artwork {
-        is_in_auction
+        is_in_auction: isInAuction
         ...ArtworkSidebarArtists_artwork
         ...ArtworkSidebarMetadata_artwork
         ...ArtworkSidebarAuctionPartnerInfo_artwork
@@ -98,7 +98,7 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
         ...VerifiedSeller_artwork
         ...AuthenticityCertificate_artwork
         sale {
-          is_closed
+          is_closed: isClosed
           ...AuctionTimer_sale
         }
       }

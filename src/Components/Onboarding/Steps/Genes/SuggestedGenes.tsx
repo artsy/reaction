@@ -37,7 +37,7 @@ class SuggestedGenesContent extends React.Component<Props> {
   constructor(props: Props, context: any) {
     super(props, context)
     this.excludedGeneIds = new Set(
-      this.props.suggested_genes.map(item => item._id)
+      this.props.suggested_genes.map(item => item.internalID)
     )
   }
 
@@ -47,9 +47,9 @@ class SuggestedGenesContent extends React.Component<Props> {
     data: SuggestedGenesFollowGeneMutationResponse
   ): void {
     const suggestedGene = store.get(
-      data.followGene.gene.similar.edges[0].node.__id
+      data.followGene.gene.similar.edges[0].node.id
     )
-    this.excludedGeneIds.add(suggestedGene.getValue("_id"))
+    this.excludedGeneIds.add(suggestedGene.getValue("internalID") as string)
 
     const suggestedGenesRootField = store.get("client:root")
     const suggestedGenes = suggestedGenesRootField.getLinkedRecords(
@@ -70,18 +70,19 @@ class SuggestedGenesContent extends React.Component<Props> {
 
     this.props.tracking.trackEvent({
       action: "Followed Gene",
-      entity_id: gene._id,
-      entity_slug: gene.id,
+      entity_id: gene.internalID,
+      entity_slug: gene.slug,
       context_module: "onboarding recommended",
     })
   }
 
   followedGene(gene: Gene) {
-    this.excludedGeneIds.add(gene._id)
+    this.excludedGeneIds.add(gene.internalID)
 
     commitMutation<SuggestedGenesFollowGeneMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation SuggestedGenesFollowGeneMutation(
             $input: FollowGeneInput!
@@ -89,12 +90,12 @@ class SuggestedGenesContent extends React.Component<Props> {
           ) {
             followGene(input: $input) {
               gene {
-                similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
+                similar(first: 1, excludeGeneIDs: $excludedGeneIds) {
                   edges {
                     node {
+                      slug
+                      internalID
                       id
-                      _id
-                      __id
                       name
                       image {
                         cropped(width: 100, height: 100) {
@@ -110,7 +111,7 @@ class SuggestedGenesContent extends React.Component<Props> {
         `,
         variables: {
           input: {
-            gene_id: gene.id,
+            geneID: gene.internalID,
           },
           excludedGeneIds: Array.from(this.excludedGeneIds),
         },
@@ -132,8 +133,8 @@ class SuggestedGenesContent extends React.Component<Props> {
               href="#"
               item={item}
               key={item.id}
-              id={item.id}
-              _id={item._id}
+              id={item.slug}
+              _id={item.internalID}
               name={item.name}
               image_url={imageUrl}
               onClick={() => this.followedGene(item)}
@@ -151,7 +152,8 @@ const SuggestedGenesContainer = createFragmentContainer(SuggestedGenesContent, {
   suggested_genes: graphql`
     fragment SuggestedGenes_suggested_genes on Gene @relay(plural: true) {
       id
-      _id
+      slug
+      internalID
       name
       image {
         cropped(width: 100, height: 100) {
@@ -171,8 +173,10 @@ const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
       environment={relayEnvironment}
       query={graphql`
         query SuggestedGenesQuery {
-          suggested_genes {
-            ...SuggestedGenes_suggested_genes
+          highlights {
+            suggested_genes: broadCollectingGenes {
+              ...SuggestedGenes_suggested_genes
+            }
           }
         }
       `}
@@ -181,7 +185,7 @@ const SuggestedGenesComponent: React.SFC<SystemContextProps & FollowProps> = ({
         if (props) {
           return (
             <SuggestedGenesContainer
-              suggested_genes={props.suggested_genes}
+              suggested_genes={props.highlights.suggested_genes}
               updateFollowCount={updateFollowCount}
             />
           )

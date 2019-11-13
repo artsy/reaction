@@ -1,3 +1,4 @@
+import { AuctionResults_Test_QueryRawResponse } from "__generated__/AuctionResults_Test_Query.graphql"
 import { AuctionResultsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/AuctionResultsFixture"
 import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "Apps/Artist/Routes/AuctionResults"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -15,15 +16,13 @@ describe("AuctionResults", () => {
     return await renderRelayTree({
       Component: AuctionResultsRoute,
       query: graphql`
-        query AuctionResults_Test_Query($artistID: String!) {
+        query AuctionResults_Test_Query($artistID: String!) @raw_response_type {
           artist(id: $artistID) {
             ...AuctionResults_artist
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => AuctionResultsFixture,
-      },
+      mockData: AuctionResultsFixture as AuctionResults_Test_QueryRawResponse,
       variables: {
         artistID: "pablo-picasso",
       },
@@ -78,7 +77,8 @@ describe("AuctionResults", () => {
       it("renders the proper modal content", () => {
         expect(modalWrapper.length).toBe(1)
         const html = modalWrapper.html()
-        const data = AuctionResultsFixture.auctionResults.edges[0].node
+        const data =
+          AuctionResultsFixture.artist.auctionResultsConnection.edges[0].node
         expect(html).toContain("Lot description")
         expect(html).toContain(data.title)
         expect(html).toContain(data.dimension_text)

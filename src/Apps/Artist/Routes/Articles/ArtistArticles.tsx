@@ -50,7 +50,7 @@ export class ArtistArticles extends Component<
       {
         first: PAGE_SIZE,
         after: cursor,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
       },
@@ -131,14 +131,14 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           after: { type: "String" }
           before: { type: "String" }
         ) {
-        id
+        slug
         articlesConnection(
           first: $first
           after: $after
           before: $before
           last: $last
           sort: PUBLISHED_AT_DESC
-          in_editorial_feed: true
+          inEditorialFeed: true
         ) {
           pageInfo {
             hasNextPage
@@ -150,12 +150,12 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           edges {
             node {
               href
-              thumbnail_title
+              thumbnail_title: thumbnailTitle
               author {
                 name
               }
-              published_at(format: "MMM Do, YYYY")
-              thumbnail_image {
+              published_at: publishedAt(format: "MMM Do, YYYY")
+              thumbnail_image: thumbnailImage {
                 resized(width: 300) {
                   url
                 }

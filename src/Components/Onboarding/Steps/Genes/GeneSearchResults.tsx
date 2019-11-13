@@ -23,7 +23,7 @@ import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-type Gene = GeneSearchResults_viewer["match_gene"][0]
+type Gene = GeneSearchResults_viewer["match_gene"]["edges"][number]["node"]
 
 interface ContainerProps extends FollowProps {
   term: string
@@ -51,7 +51,7 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
   constructor(props: Props, context: any) {
     super(props, context)
     this.excludedGeneIds = new Set(
-      this.props.viewer.match_gene.map(item => item._id)
+      this.props.viewer.match_gene.edges.map(({ node }) => node.internalID)
     )
   }
 
@@ -61,9 +61,9 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
     data: GeneSearchResultsFollowGeneMutationResponse
   ): void {
     const suggestedGene = store.get(
-      data.followGene.gene.similar.edges[0].node.__id
+      data.followGene.gene.similar.edges[0].node.id
     )
-    this.excludedGeneIds.add(suggestedGene.getValue("_id"))
+    this.excludedGeneIds.add(suggestedGene.getValue("internalID") as string)
 
     const suggestedGenesRootField = store.get("client:root:viewer")
     const suggestedGenes = suggestedGenesRootField.getLinkedRecords(
@@ -86,18 +86,19 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
 
     this.props.tracking.trackEvent({
       action: "Followed Gene",
-      entity_id: gene._id,
-      entity_slug: gene.id,
+      entity_id: gene.internalID,
+      entity_slug: gene.slug,
       context_module: "onboarding search",
     })
   }
 
   followedGene(gene: Gene) {
-    this.excludedGeneIds.add(gene._id)
+    this.excludedGeneIds.add(gene.internalID)
 
     commitMutation<GeneSearchResultsFollowGeneMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation GeneSearchResultsFollowGeneMutation(
             $input: FollowGeneInput!
@@ -105,12 +106,12 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
           ) {
             followGene(input: $input) {
               gene {
-                similar(first: 1, exclude_gene_ids: $excludedGeneIds) {
+                similar(first: 1, excludeGeneIDs: $excludedGeneIds) {
                   edges {
                     node {
+                      slug
+                      internalID
                       id
-                      _id
-                      __id
                       name
                       image {
                         cropped(width: 100, height: 100) {
@@ -126,7 +127,7 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
         `,
         variables: {
           input: {
-            gene_id: gene.id,
+            geneID: gene.internalID,
           },
           excludedGeneIds: Array.from(this.excludedGeneIds),
         },
@@ -136,27 +137,29 @@ class GeneSearchResultsContent extends React.Component<Props, null> {
   }
 
   render() {
-    const items = this.props.viewer.match_gene.map((item, index) => {
-      const imageUrl = get(item, i => i.image.cropped.url)
-      return (
-        <LinkContainer key={`gene-search-results-${index}`}>
-          <ReplaceTransition
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={400}
-          >
-            <ItemLink
-              href="#"
-              item={item}
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              image_url={imageUrl}
-              onClick={() => this.followedGene(item)}
-            />
-          </ReplaceTransition>
-        </LinkContainer>
-      )
-    })
+    const items = this.props.viewer.match_gene.edges.map(
+      ({ node: item }, index) => {
+        const imageUrl = get(item, i => i.image.cropped.url)
+        return (
+          <LinkContainer key={`gene-search-results-${index}`}>
+            <ReplaceTransition
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={400}
+            >
+              <ItemLink
+                href="#"
+                item={item}
+                key={item.id}
+                id={item.slug}
+                name={item.name}
+                image_url={imageUrl}
+                onClick={() => this.followedGene(item)}
+              />
+            </ReplaceTransition>
+          </LinkContainer>
+        )
+      }
+    )
 
     if (items.length < 1) {
       return <NoResultsContainer>No Results Found</NoResultsContainer>
@@ -171,13 +174,24 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
   {
     viewer: graphql`
       fragment GeneSearchResults_viewer on Viewer {
-        match_gene(term: $term) {
-          name
-          id
-          _id
-          image {
-            cropped(width: 100, height: 100) {
-              url
+        match_gene: searchConnection(
+          query: $term
+          mode: AUTOSUGGEST
+          entities: [GENE]
+        ) {
+          edges {
+            node {
+              ... on Gene {
+                name
+                id
+                slug
+                internalID
+                image {
+                  cropped(width: 100, height: 100) {
+                    url
+                  }
+                }
+              }
             }
           }
         }

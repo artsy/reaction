@@ -1,3 +1,4 @@
+import { ArtworkSidebarPartnerInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarPartnerInfo_Test_Query.graphql"
 import { ArtworkFromPartnerWithLocations } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import { ArtworkSidebarPartnerInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import { renderRelayTree } from "DevTools"
@@ -6,19 +7,21 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarPartnerInfo", () => {
-  const getWrapper = async response => {
+  const getWrapper = async (
+    response: ArtworkSidebarPartnerInfo_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarPartnerInfoFragmentContainer,
       query: graphql`
-        query ArtworkSidebarPartnerInfo_Test_Query {
+        query ArtworkSidebarPartnerInfo_Test_Query @raw_response_type {
           artwork(id: "artwork_from_partner_with_locations") {
             ...ArtworkSidebarPartnerInfo_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarPartnerInfo_Test_QueryRawResponse,
     })
   }
 

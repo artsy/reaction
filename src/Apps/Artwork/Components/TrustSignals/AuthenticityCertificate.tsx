@@ -32,7 +32,7 @@ export const AuthenticityCertificateFragmentContainer = createFragmentContainer(
     artwork: graphql`
       fragment AuthenticityCertificate_artwork on Artwork {
         hasCertificateOfAuthenticity
-        is_biddable
+        is_biddable: isBiddable
       }
     `,
   }

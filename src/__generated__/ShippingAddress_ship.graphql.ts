@@ -1,8 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ShippingAddress_ship$ref: unique symbol;
-export type ShippingAddress_ship$ref = typeof _ShippingAddress_ship$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ShippingAddress_ship = {
     readonly name: string | null;
     readonly addressLine1: string | null;
@@ -12,12 +10,12 @@ export type ShippingAddress_ship = {
     readonly region: string | null;
     readonly country: string | null;
     readonly phoneNumber: string | null;
-    readonly " $refType": ShippingAddress_ship$ref;
+    readonly " $refType": "ShippingAddress_ship";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ShippingAddress_ship",
   "type": "CommerceShip",

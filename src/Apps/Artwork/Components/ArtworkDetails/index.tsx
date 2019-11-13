@@ -97,10 +97,10 @@ export const ArtworkDetailsFragmentContainer = createFragmentContainer(
         ...ArtworkDetailsAdditionalInfo_artwork
         ...ArtworkDetailsArticles_artwork
         articles(size: 10) {
-          id
+          slug
         }
         literature(format: HTML)
-        exhibition_history(format: HTML)
+        exhibition_history: exhibitionHistory(format: HTML)
         provenance(format: HTML)
       }
     `,

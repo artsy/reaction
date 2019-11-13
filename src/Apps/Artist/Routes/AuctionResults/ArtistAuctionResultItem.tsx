@@ -244,7 +244,7 @@ export const AuctionResultItemFragmentContainer = createFragmentContainer(
     auctionResult: graphql`
       fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
         title
-        dimension_text
+        dimension_text: dimensionText
         organization
         images {
           thumbnail {
@@ -252,11 +252,11 @@ export const AuctionResultItemFragmentContainer = createFragmentContainer(
           }
         }
         description
-        date_text
-        sale_date_text
-        price_realized {
+        date_text: dateText
+        sale_date_text: saleDateText
+        price_realized: priceRealized {
           display
-          cents_usd
+          cents_usd: centsUSD
         }
         estimate {
           display

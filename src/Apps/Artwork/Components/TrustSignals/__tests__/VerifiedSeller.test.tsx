@@ -1,4 +1,7 @@
-import { VerifiedSeller_artwork } from "__generated__/VerifiedSeller_artwork.graphql"
+import {
+  VerifiedSellerTestQueryRawResponse,
+  VerifiedSellerTestQueryResponse,
+} from "__generated__/VerifiedSellerTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -8,11 +11,11 @@ import { VerifiedSellerFragmentContainer } from "../VerifiedSeller"
 jest.unmock("react-relay")
 
 const render = (
-  artwork: Omit<VerifiedSeller_artwork, " $refType">,
+  artwork: VerifiedSellerTestQueryRawResponse["artwork"],
   extraProps?: Partial<ExtractProps<typeof VerifiedSellerFragmentContainer>>
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: VerifiedSellerTestQueryResponse) => (
       <VerifiedSellerFragmentContainer
         artwork={{
           ...artwork,
@@ -23,9 +26,9 @@ const render = (
     ),
     mockData: {
       artwork,
-    },
+    } as VerifiedSellerTestQueryRawResponse,
     query: graphql`
-      query VerifiedSellerTestQuery {
+      query VerifiedSellerTestQuery @raw_response_type {
         artwork(id: "whatevs") {
           ...VerifiedSeller_artwork
         }
@@ -38,7 +41,9 @@ const partnerName = "partner-name"
 describe("VerifiedSeller", () => {
   it("Doesn't render when the partner is a verified seller", async () => {
     const component = await render({
+      id: "opaque-seller-id",
       partner: {
+        id: "opaque-partner-id",
         name: partnerName,
         isVerifiedSeller: false,
       },
@@ -49,7 +54,9 @@ describe("VerifiedSeller", () => {
 
   it("Doesn't render when the artwork is biddable", async () => {
     const component = await render({
+      id: "opaque-seller-id",
       partner: {
+        id: "opaque-partner-id",
         name: partnerName,
         isVerifiedSeller: true,
       },
@@ -60,7 +67,9 @@ describe("VerifiedSeller", () => {
 
   it("Renders when the partner is a verified seller, but the work is not biddable", async () => {
     const component = await render({
+      id: "opaque-seller-id",
       partner: {
+        id: "opaque-partner-id",
         name: partnerName,
         isVerifiedSeller: true,
       },

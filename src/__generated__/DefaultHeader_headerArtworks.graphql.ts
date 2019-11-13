@@ -1,31 +1,31 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _DefaultHeader_headerArtworks$ref: unique symbol;
-export type DefaultHeader_headerArtworks$ref = typeof _DefaultHeader_headerArtworks$ref;
+import { ReaderFragment } from "relay-runtime";
 export type DefaultHeader_headerArtworks = {
-    readonly hits: ReadonlyArray<({
-        readonly href: string | null;
-        readonly id: string;
-        readonly image: ({
-            readonly small: ({
-                readonly url: string | null;
-                readonly width: number | null;
-                readonly height: number | null;
-            }) | null;
-            readonly large: ({
-                readonly url: string | null;
-                readonly width: number | null;
-                readonly height: number | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
-    readonly " $refType": DefaultHeader_headerArtworks$ref;
+    readonly edges: ReadonlyArray<{
+        readonly node: {
+            readonly href: string | null;
+            readonly slug: string;
+            readonly image: {
+                readonly small: {
+                    readonly url: string | null;
+                    readonly width: number | null;
+                    readonly height: number | null;
+                } | null;
+                readonly large: {
+                    readonly url: string | null;
+                    readonly width: number | null;
+                    readonly height: number | null;
+                } | null;
+            } | null;
+        } | null;
+    } | null> | null;
+    readonly " $refType": "DefaultHeader_headerArtworks";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "ScalarField",
@@ -48,102 +48,95 @@ var v0 = [
     "args": null,
     "storageKey": null
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "DefaultHeader_headerArtworks",
-  "type": "FilterArtworks",
+  "type": "FilterArtworksConnection",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "hits",
+      "name": "edges",
       "storageKey": null,
       "args": null,
-      "concreteType": "Artwork",
+      "concreteType": "FilterArtworksEdge",
       "plural": true,
       "selections": [
         {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "href",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        {
           "kind": "LinkedField",
           "alias": null,
-          "name": "image",
+          "name": "node",
           "storageKey": null,
           "args": null,
-          "concreteType": "Image",
+          "concreteType": "Artwork",
           "plural": false,
           "selections": [
             {
-              "kind": "LinkedField",
-              "alias": "small",
-              "name": "resized",
-              "storageKey": "resized(height:160)",
-              "args": [
-                {
-                  "kind": "Literal",
-                  "name": "height",
-                  "value": 160,
-                  "type": "Int"
-                }
-              ],
-              "concreteType": "ResizedImageUrl",
-              "plural": false,
-              "selections": v0
-            },
-            {
-              "kind": "LinkedField",
-              "alias": "large",
-              "name": "resized",
-              "storageKey": "resized(height:220)",
-              "args": [
-                {
-                  "kind": "Literal",
-                  "name": "height",
-                  "value": 220,
-                  "type": "Int"
-                }
-              ],
-              "concreteType": "ResizedImageUrl",
-              "plural": false,
-              "selections": v0
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "href",
+              "args": null,
+              "storageKey": null
             },
             {
               "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
+              "alias": null,
+              "name": "slug",
               "args": null,
               "storageKey": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "image",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Image",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": "small",
+                  "name": "resized",
+                  "storageKey": "resized(height:160)",
+                  "args": [
+                    {
+                      "kind": "Literal",
+                      "name": "height",
+                      "value": 160
+                    }
+                  ],
+                  "concreteType": "ResizedImageUrl",
+                  "plural": false,
+                  "selections": (v0/*: any*/)
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": "large",
+                  "name": "resized",
+                  "storageKey": "resized(height:220)",
+                  "args": [
+                    {
+                      "kind": "Literal",
+                      "name": "height",
+                      "value": 220
+                    }
+                  ],
+                  "concreteType": "ResizedImageUrl",
+                  "plural": false,
+                  "selections": (v0/*: any*/)
+                }
+              ]
             }
           ]
-        },
-        v1
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = '91384b79f54832378562f301bc78bbf9';
+(node as any).hash = 'd5258ca33092fbec3897b772161363c1';
 export default node;

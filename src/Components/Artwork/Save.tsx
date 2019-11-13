@@ -62,13 +62,13 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
   trackSave = () => {
     const {
       tracking,
-      artwork: { is_saved, id, _id },
+      artwork: { is_saved, slug, internalID },
     } = this.props
     const trackingData: SaveTrackingProps = this.props.trackingData || {}
     const action = is_saved ? "Removed Artwork" : "Saved Artwork"
     const entityInfo = {
-      entity_slug: id,
-      entity_id: _id,
+      entity_slug: slug,
+      entity_id: internalID,
     }
 
     if (tracking) {
@@ -82,28 +82,29 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
 
     if (environment && user && user.id) {
       commitMutation<SaveArtworkMutation>(environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
-                __id
                 id
-                is_saved
+                slug
+                is_saved: isSaved
               }
             }
           }
         `,
         variables: {
           input: {
-            artwork_id: artwork.id,
+            artworkID: artwork.internalID,
             remove: this.isSaved,
           },
         },
         optimisticResponse: {
           saveArtwork: {
             artwork: {
-              __id: artwork.__id,
               id: artwork.id,
+              slug: artwork.slug,
               is_saved: !this.isSaved,
             },
           },
@@ -226,10 +227,10 @@ export const Container = styled.div`
 export default createFragmentContainer(Artsy.withSystemContext(SaveButton), {
   artwork: graphql`
     fragment Save_artwork on Artwork {
-      __id
-      _id
       id
-      is_saved
+      internalID
+      slug
+      is_saved: isSaved
       title
     }
   `,

@@ -9,7 +9,6 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import { Subscribe } from "unstated"
 import { get } from "Utils/get"
@@ -46,6 +45,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     } = excludeArtistIdsState
     if (user && user.id) {
       commitMutation<FollowArtistPopoverRowMutation>(relay.environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowArtistPopoverRowMutation(
             $input: FollowArtistInput!
@@ -53,17 +53,17 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           ) {
             followArtist(input: $input) {
               artist {
-                __id
+                id
                 related {
-                  suggested(
+                  suggestedConnection(
                     first: 1
-                    exclude_followed_artists: true
-                    exclude_artist_ids: $excludeArtistIds
+                    excludeFollowedArtists: true
+                    excludeArtistIDs: $excludeArtistIds
                   ) {
                     edges {
                       node {
-                        __id
-                        _id
+                        id
+                        internalID
                         ...FollowArtistPopoverRow_artist @relay(mask: false)
                       }
                     }
@@ -74,7 +74,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
           }
         `,
         variables: {
-          input: { artist_id: artistID, unfollow: false },
+          input: { artistID, unfollow: false },
           excludeArtistIds,
         },
         optimisticUpdater: () => {
@@ -82,8 +82,10 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             followed: true,
           })
         },
-        updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
-          const { node } = data.followArtist.artist.related.suggested.edges[0]
+        updater: (_store, data) => {
+          const {
+            node,
+          } = data.followArtist.artist.related.suggestedConnection.edges[0]
 
           // Add slight delay to make UX seem a bit nicer
           this.setState(
@@ -93,14 +95,14 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
             () => {
               setTimeout(() => {
                 this.setState({
-                  swappedArtist: node,
+                  swappedArtist: (node as unknown) as FollowArtistPopoverRow_artist,
                   followed: false,
                 })
               }, 500)
             }
           )
 
-          excludeArtistIdsState.addArtist(node._id)
+          excludeArtistIdsState.addArtist(node.internalID)
         },
       })
     }
@@ -111,7 +113,7 @@ class FollowArtistPopoverRow extends React.Component<Props, State> {
     const { swappedArtist } = this.state
     const artist = swappedArtist || originalArtist
     const imageUrl = get(artist, a => a.image.cropped.url)
-    const { _id: artistID } = artist
+    const { internalID: artistID } = artist
     const key = `avatar-${artistID}`
     return (
       <Flex alignItems="center" mb={1} mt={1}>
@@ -152,7 +154,7 @@ export const FollowArtistPopoverRowFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment FollowArtistPopoverRow_artist on Artist {
-        _id
+        internalID
         name
         image {
           cropped(width: 45, height: 45) {

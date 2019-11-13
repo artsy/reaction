@@ -1,3 +1,4 @@
+import { ArtistHeader_Test_QueryRawResponse } from "__generated__/ArtistHeader_Test_Query.graphql"
 import { ArtistHeaderFixture } from "Apps/__tests__/Fixtures/Artist/Components/ArtistHeader"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "Apps/Artist/Components/ArtistHeader"
 import { renderRelayTree } from "DevTools"
@@ -6,19 +7,21 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtistHeader", () => {
-  const getWrapper = async (response = ArtistHeaderFixture) => {
+  const getWrapper = async (
+    response: ArtistHeader_Test_QueryRawResponse["artist"] = ArtistHeaderFixture
+  ) => {
     return await renderRelayTree({
       Component: ArtistHeader,
       query: graphql`
-        query ArtistHeader_Test_Query {
+        query ArtistHeader_Test_Query @raw_response_type {
           artist(id: "pablo-picasso") {
             ...ArtistHeader_artist
           }
         }
       `,
-      mockResolvers: {
-        Artist: () => response,
-      },
+      mockData: {
+        artist: response,
+      } as ArtistHeader_Test_QueryRawResponse,
     })
   }
 

@@ -40,10 +40,10 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
 
   const commonProperties = {
-    auction_slug: sale.id,
+    auction_slug: sale.slug,
     auction_state: sale.status,
-    sale_id: sale._id,
-    user_id: me.id,
+    sale_id: sale.internalID,
+    user_id: me.internalID,
   }
 
   function trackRegistrationFailed(errors: string[]) {
@@ -71,17 +71,18 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         onError: error => {
           reject(error)
         },
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation RegisterCreateBidderMutation($input: CreateBidderInput!) {
             createBidder(input: $input) {
               bidder {
-                id
+                internalID
               }
             }
           }
         `,
         variables: {
-          input: { sale_id: sale.id },
+          input: { saleID: sale.internalID },
         },
       })
     })
@@ -108,6 +109,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
             }
           },
           onError: reject,
+          // TODO: Inputs to the mutation might have changed case of the keys!
           mutation: graphql`
             mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
               $creditCardInput: CreditCardInput!
@@ -115,16 +117,15 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
             ) {
               updateMyUserProfile(input: $profileInput) {
                 user {
-                  id
+                  internalID
                 }
               }
-
               createCreditCard(input: $creditCardInput) {
                 creditCardOrError {
                   ... on CreditCardMutationSuccess {
                     creditCardEdge {
                       node {
-                        last_digits
+                        lastDigits
                       }
                     }
                   }
@@ -171,10 +172,10 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {
-            trackRegistrationSuccess(data.createBidder.bidder.id)
+            trackRegistrationSuccess(data.createBidder.bidder.internalID)
 
             window.location.assign(
-              `${sd.APP_URL}/auction/${sale.id}/confirm-registration`
+              `${sd.APP_URL}/auction/${sale.slug}/confirm-registration`
             )
           })
           .catch(error => {
@@ -215,14 +216,14 @@ export const RegisterRouteFragmentContainer = createFragmentContainer(
   {
     sale: graphql`
       fragment Register_sale on Sale {
-        id
-        _id
+        slug
+        internalID
         status
       }
     `,
     me: graphql`
       fragment Register_me on Me {
-        id
+        internalID
       }
     `,
   }

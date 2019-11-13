@@ -55,12 +55,12 @@ export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentC
         partner {
           name
         }
-        sale_artwork {
+        sale_artwork: saleArtwork {
           estimate
         }
         sale {
-          _id
-          is_closed
+          internalID
+          is_closed: isClosed
         }
       }
     `,

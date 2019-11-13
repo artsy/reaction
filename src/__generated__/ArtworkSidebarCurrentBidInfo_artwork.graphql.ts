@@ -1,50 +1,41 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarCurrentBidInfo_artwork$ref: unique symbol;
-export type ArtworkSidebarCurrentBidInfo_artwork$ref = typeof _ArtworkSidebarCurrentBidInfo_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkSidebarCurrentBidInfo_artwork = {
-    readonly sale: ({
+    readonly sale: {
         readonly is_closed: boolean | null;
         readonly is_live_open: boolean | null;
-        readonly _id: string;
+        readonly internalID: string;
         readonly is_with_buyers_premium: boolean | null;
-    }) | null;
-    readonly sale_artwork: ({
+    } | null;
+    readonly sale_artwork: {
         readonly is_with_reserve: boolean | null;
         readonly reserve_message: string | null;
         readonly reserve_status: string | null;
-        readonly current_bid: ({
+        readonly current_bid: {
             readonly display: string | null;
-        }) | null;
-        readonly counts: ({
-            readonly bidder_positions: any | null;
-        }) | null;
-    }) | null;
+        } | null;
+        readonly counts: {
+            readonly bidder_positions: number | null;
+        } | null;
+    } | null;
     readonly myLotStanding: ReadonlyArray<{
-        readonly active_bid: ({
+        readonly active_bid: {
             readonly is_winning: boolean | null;
-        }) | null;
-        readonly most_recent_bid: ({
-            readonly max_bid: ({
+        } | null;
+        readonly most_recent_bid: {
+            readonly max_bid: {
                 readonly display: string | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
     }> | null;
-    readonly " $refType": ArtworkSidebarCurrentBidInfo_artwork$ref;
+    readonly " $refType": "ArtworkSidebarCurrentBidInfo_artwork";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+const node: ReaderFragment = (function(){
+var v0 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -71,39 +62,38 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_closed",
+          "alias": "is_closed",
+          "name": "isClosed",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": "is_live_open",
+          "name": "isLiveOpen",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "is_live_open",
+          "name": "internalID",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "_id",
+          "alias": "is_with_buyers_premium",
+          "name": "isWithBuyersPremium",
           "args": null,
           "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "is_with_buyers_premium",
-          "args": null,
-          "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "sale_artwork",
+      "alias": "sale_artwork",
+      "name": "saleArtwork",
       "storageKey": null,
       "args": null,
       "concreteType": "SaleArtwork",
@@ -111,34 +101,34 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_with_reserve",
+          "alias": "is_with_reserve",
+          "name": "isWithReserve",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "reserve_message",
+          "alias": "reserve_message",
+          "name": "reserveMessage",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "reserve_status",
+          "alias": "reserve_status",
+          "name": "reserveStatus",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "current_bid",
+          "alias": "current_bid",
+          "name": "currentBid",
           "storageKey": null,
           "args": null,
           "concreteType": "SaleArtworkCurrentBid",
           "plural": false,
-          "selections": v1
+          "selections": (v0/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -151,14 +141,13 @@ return {
           "selections": [
             {
               "kind": "ScalarField",
-              "alias": null,
-              "name": "bidder_positions",
+              "alias": "bidder_positions",
+              "name": "bidderPositions",
               "args": null,
               "storageKey": null
             }
           ]
-        },
-        v0
+        }
       ]
     },
     {
@@ -170,8 +159,7 @@ return {
         {
           "kind": "Literal",
           "name": "live",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "LotStanding",
@@ -179,8 +167,8 @@ return {
       "selections": [
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "active_bid",
+          "alias": "active_bid",
+          "name": "activeBid",
           "storageKey": null,
           "args": null,
           "concreteType": "BidderPosition",
@@ -188,18 +176,17 @@ return {
           "selections": [
             {
               "kind": "ScalarField",
-              "alias": null,
-              "name": "is_winning",
+              "alias": "is_winning",
+              "name": "isWinning",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
         },
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "most_recent_bid",
+          "alias": "most_recent_bid",
+          "name": "mostRecentBid",
           "storageKey": null,
           "args": null,
           "concreteType": "BidderPosition",
@@ -207,22 +194,20 @@ return {
           "selections": [
             {
               "kind": "LinkedField",
-              "alias": null,
-              "name": "max_bid",
+              "alias": "max_bid",
+              "name": "maxBid",
               "storageKey": null,
               "args": null,
               "concreteType": "BidderPositionMaxBid",
               "plural": false,
-              "selections": v1
-            },
-            v0
+              "selections": (v0/*: any*/)
+            }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
 })();
-(node as any).hash = '2340260c6f73d83e3c607cec9fd8a0b1';
+(node as any).hash = '683ff598c60c16fd85ebe10e5225e24d';
 export default node;

@@ -74,8 +74,8 @@ const RecommendedArtist: FC<
             trackingData={{
               modelName: Schema.OwnerType.Artist,
               context_module: Schema.ContextModule.RecommendedArtists,
-              entity_id: artist._id,
-              entity_slug: artist.id,
+              entity_id: artist.internalID,
+              entity_slug: artist.slug,
             }}
             onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
             render={({ is_followed }) => {
@@ -149,26 +149,26 @@ export const RecommendedArtistFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment RecommendedArtist_artist on Artist {
-        id
-        _id
+        slug
+        internalID
         name
-        formatted_nationality_and_birthday
+        formatted_nationality_and_birthday: formattedNationalityAndBirthday
         href
         image {
           cropped(width: 100, height: 100) {
             url
           }
         }
-        artworks_connection(
+        artworks_connection: artworksConnection(
           first: 20
           sort: PUBLISHED_AT_DESC
           filter: IS_FOR_SALE
         ) {
           edges {
             node {
-              __id
+              id
               image {
-                aspect_ratio
+                aspect_ratio: aspectRatio
               }
               ...FillwidthItem_artwork
             }

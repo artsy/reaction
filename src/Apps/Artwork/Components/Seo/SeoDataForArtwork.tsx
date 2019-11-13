@@ -75,11 +75,18 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
       fragment SeoDataForArtwork_artwork on Artwork {
         href
         date
-        is_price_hidden
-        is_price_range
-        price
-        price_currency
-        sale_message
+        is_price_hidden: isPriceHidden
+        is_price_range: isPriceRange
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
+        price_currency: priceCurrency
+        sale_message: saleMessage
         meta_image: image {
           resized(
             width: 640
@@ -106,7 +113,7 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
             }
           }
         }
-        artist_names
+        artist_names: artistNames
         availability
         category
         dimensions {
@@ -117,17 +124,20 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
   }
 )
 
-const displayPrice = artwork => {
+const displayPrice = (artwork: SeoDataForArtwork_artwork) => {
   const {
     is_price_hidden,
     is_price_range,
-    price,
+    listPrice,
     sale_message,
     price_currency,
   } = artwork
 
-  if (is_price_range && !is_price_hidden && price) {
-    return buildPriceSpecification(price_currency, splitPriceRange(price))
+  if (is_price_range && !is_price_hidden && listPrice) {
+    return buildPriceSpecification(
+      price_currency,
+      splitPriceRange(listPrice.display)
+    )
   }
 
   if (sale_message && sale_message.includes("-")) {

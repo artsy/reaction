@@ -47,20 +47,20 @@ export const LotInfo: React.FC<Props> = ({ artwork, saleArtwork }) => {
 export const LotInfoFragmentContainer = createFragmentContainer(LotInfo, {
   artwork: graphql`
     fragment LotInfo_artwork on Artwork {
-      _id
+      internalID
       date
       title
       imageUrl
-      artistNames: artist_names
+      artistNames
     }
   `,
   saleArtwork: graphql`
     fragment LotInfo_saleArtwork on SaleArtwork {
       counts {
-        bidderPositions: bidder_positions
+        bidderPositions
       }
-      lotLabel: lot_label
-      minimumNextBid: minimum_next_bid {
+      lotLabel
+      minimumNextBid {
         amount
         cents
         display

@@ -1,16 +1,38 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { CurrentEvent_artist$ref } from "./CurrentEvent_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type CurrentEvent_Test_QueryVariables = {};
 export type CurrentEvent_Test_QueryResponse = {
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"CurrentEvent_artist">;
+    } | null;
+};
+export type CurrentEvent_Test_QueryRawResponse = {
     readonly artist: ({
-        readonly " $fragmentRefs": CurrentEvent_artist$ref;
+        readonly currentEvent: ({
+            readonly event: {
+                readonly __typename: string;
+                readonly id: string | null;
+            };
+            readonly image: ({
+                readonly resized: ({
+                    readonly url: string | null;
+                }) | null;
+            }) | null;
+            readonly name: string | null;
+            readonly status: string | null;
+            readonly details: string | null;
+            readonly partner: string | null;
+            readonly href: string | null;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type CurrentEvent_Test_Query = {
     readonly response: CurrentEvent_Test_QueryResponse;
     readonly variables: CurrentEvent_Test_QueryVariables;
+    readonly rawResponse: CurrentEvent_Test_QueryRawResponse;
 };
 
 
@@ -19,7 +41,7 @@ export type CurrentEvent_Test_Query = {
 query CurrentEvent_Test_Query {
   artist(id: "pablo-picasso") {
     ...CurrentEvent_artist
-    __id
+    id
   }
 }
 
@@ -28,14 +50,13 @@ fragment CurrentEvent_artist on Artist {
     event {
       __typename
       ... on Node {
-        __id
+        id
       }
     }
     image {
       resized(width: 300) {
         url
       }
-      __id: id
     }
     name
     status
@@ -43,7 +64,6 @@ fragment CurrentEvent_artist on Artist {
     partner
     href
   }
-  __id
 }
 */
 
@@ -52,24 +72,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso",
-    "type": "String!"
+    "value": "pablo-picasso"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "CurrentEvent_Test_Query",
-  "id": null,
-  "text": "query CurrentEvent_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...CurrentEvent_artist\n    __id\n  }\n}\n\nfragment CurrentEvent_artist on Artist {\n  currentEvent {\n    event {\n      __typename\n      ... on Node {\n        __id\n      }\n    }\n    image {\n      resized(width: 300) {\n        url\n      }\n      __id: id\n    }\n    name\n    status\n    details\n    partner\n    href\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CurrentEvent_Test_Query",
@@ -82,7 +96,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -90,8 +104,7 @@ return {
             "kind": "FragmentSpread",
             "name": "CurrentEvent_artist",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -106,7 +119,7 @@ return {
         "alias": null,
         "name": "artist",
         "storageKey": "artist(id:\"pablo-picasso\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -135,7 +148,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v1
+                  (v1/*: any*/)
                 ]
               },
               {
@@ -156,8 +169,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "width",
-                        "value": 300,
-                        "type": "Int"
+                        "value": 300
                       }
                     ],
                     "concreteType": "ResizedImageUrl",
@@ -171,13 +183,6 @@ return {
                         "storageKey": null
                       }
                     ]
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": "__id",
-                    "name": "id",
-                    "args": null,
-                    "storageKey": null
                   }
                 ]
               },
@@ -218,12 +223,19 @@ return {
               }
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "CurrentEvent_Test_Query",
+    "id": null,
+    "text": "query CurrentEvent_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...CurrentEvent_artist\n    id\n  }\n}\n\nfragment CurrentEvent_artist on Artist {\n  currentEvent {\n    event {\n      __typename\n      ... on Node {\n        id\n      }\n    }\n    image {\n      resized(width: 300) {\n        url\n      }\n    }\n    name\n    status\n    details\n    partner\n    href\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '0f6c5579f3061a152bce3c8ae43a3fa7';
+(node as any).hash = '66158d06a67fe4f3db5a8b86baaf36ed';
 export default node;

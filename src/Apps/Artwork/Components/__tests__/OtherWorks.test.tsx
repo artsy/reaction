@@ -1,5 +1,4 @@
 import { Serif } from "@artsy/palette"
-import { OtherWorks_artwork$ref } from "__generated__/OtherWorks_artwork.graphql"
 import { mount, shallow } from "enzyme"
 import React from "react"
 import { Header } from "../OtherWorks/Header"
@@ -15,13 +14,13 @@ describe("OtherWorks", () => {
         __typename: "ArtworkContextPartnerShow",
       },
       sale: null,
-      id: "artwork1",
-      _id: "asdbsd",
+      internalID: "artwork1",
+      gravityID: "asdbsd",
       layers: [],
       layer: {
         artworksConnection: null,
       },
-      " $fragmentRefs": null as OtherWorks_artwork$ref,
+      " $fragmentRefs": null,
     }
   })
 
@@ -43,11 +42,11 @@ describe("OtherWorks", () => {
         title: "Other works by Andy Warhol",
         ctaTitle: "View all works by Andy Warhol",
         ctaHref: "/artist/andy-warhol",
-        artworks: {
+        artworksConnection: {
           edges: [
             {
               node: {
-                id: "artwork1",
+                internalID: "artwork1",
               },
             },
           ],
@@ -66,14 +65,14 @@ describe("OtherWorks", () => {
         title: "Other works by Andy Warhol",
         ctaTitle: "View all works by Andy Warhol",
         ctaHref: "/artist/andy-warhol",
-        artworks: { edges: [{ node: { id: "artwork1" } }] },
+        artworksConnection: { edges: [{ node: { internalID: "artwork1" } }] },
       },
       {
         __typename: "PartnerArtworkGrid",
         title: "Other works from Gagosian Gallery",
         ctaTitle: "View all works from Gagosian Gallery",
         ctaHref: "/gagosian-gallery",
-        artworks: { edges: [{ node: { id: "artwork1" } }] },
+        artworksConnection: { edges: [{ node: { internalID: "artwork1" } }] },
       },
     ]
     const component = mount(<OtherWorks artwork={genericOtherWorksData} />)
@@ -99,12 +98,12 @@ describe("OtherWorks", () => {
         title: "Other works by Andy Warhol",
         ctaTitle: "View all works by Andy Warhol",
         ctaHref: "/artist/andy-warhol",
-        artworks: { edges: [{ node: { id: "artwork1" } }] },
+        artworksConnection: { edges: [{ node: { internalID: "artwork1" } }] },
       },
       {
         __typename: "RelatedArtworkGrid",
         title: "Related works",
-        artworks: { edges: [{ node: { id: "artwork1" } }] },
+        artworksConnection: { edges: [{ node: { internalID: "artwork1" } }] },
       },
     ]
     const component = mount(<OtherWorks artwork={genericOtherWorksData} />)
@@ -119,21 +118,21 @@ describe("OtherWorks", () => {
         title: "Other works by Andy Warhol",
         ctaTitle: "View all works by Andy Warhol",
         ctaHref: "/artist/andy-warhol",
-        artworks: { edges: [{ node: { id: "artwork1" } }] },
+        artworksConnection: { edges: [{ node: { internalID: "artwork1" } }] },
       },
       {
         __typename: "PartnerArtworkGrid",
         title: "Other works from Gagosian Gallery",
         ctaTitle: "View all works from Gagosian Gallery",
         ctaHref: "/gagosian-gallery",
-        artworks: null,
+        artworksConnection: null,
       },
       {
         __typename: "ShowArtworkGrid",
         title: "Other works from Gagosian Gallery at Art Basel 2019",
         ctaTitle: "View all works from the booth",
         ctaHref: "/show/gagosian-gallery-at-art-basel-2019",
-        artworks: { edges: [] },
+        artworksConnection: { edges: [] },
       },
     ]
     const component = mount(<OtherWorks artwork={genericOtherWorksData} />)

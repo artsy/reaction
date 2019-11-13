@@ -11,7 +11,7 @@ export const GalleryFilter: FC = () => {
     return null
   }
 
-  const selectedGallery = filterContext.filters.partner_id
+  const selectedGallery = filterContext.filters.partnerID
 
   return (
     <Toggle label="Gallery">
@@ -20,7 +20,7 @@ export const GalleryFilter: FC = () => {
           deselectable
           defaultValue={selectedGallery}
           onSelect={selectedOption => {
-            filterContext.setFilter("partner_id", selectedOption)
+            filterContext.setFilter("partnerID", selectedOption)
           }}
         >
           {sortBy(items.counts, ["name"]).map((item, index) => {
@@ -28,7 +28,7 @@ export const GalleryFilter: FC = () => {
               <Radio
                 key={index}
                 my={0.3}
-                value={item.id.toLocaleLowerCase()}
+                value={item.value.toLocaleLowerCase()}
                 label={item.name}
               />
             )

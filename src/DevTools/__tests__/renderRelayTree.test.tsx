@@ -1,3 +1,5 @@
+import { MockRelayRendererFixturesArtistQueryRawResponse } from "__generated__/MockRelayRendererFixturesArtistQuery.graphql"
+import { MockRelayRendererFixturesQueryRawResponse } from "__generated__/MockRelayRendererFixturesQuery.graphql"
 import * as React from "react"
 import { renderRelayTree } from "../renderRelayTree"
 import { Artwork, query, renderToString } from "./MockRelayRendererFixtures"
@@ -6,23 +8,28 @@ jest.unmock("react-relay")
 
 describe("renderRelayTree", () => {
   it("resolves a promise once the full tree (including nested query renderers) has been rendered", async () => {
+    const mockData: MockRelayRendererFixturesQueryRawResponse &
+      MockRelayRendererFixturesArtistQueryRawResponse = {
+      artwork: {
+        id: "opaque-artwork-id",
+        title: "Mona Lisa",
+        image: {
+          url: "http://test/image.jpg",
+        },
+        artist: {
+          id: "opaque-artist-id",
+          slug: "leonardo-da-vinci",
+        },
+      },
+      artist: {
+        id: "opaque-artist-id",
+        name: "Leonardo da Vinci",
+      },
+    }
     const tree = await renderRelayTree({
       Component: Artwork,
       query,
-      mockResolvers: {
-        Artwork: () => ({
-          title: "Mona Lisa",
-          image: {
-            url: "http://test/image.jpg",
-          },
-          artist: {
-            id: "leonardo-da-vinci",
-          },
-        }),
-        Artist: () => ({
-          name: "Leonardo da Vinci",
-        }),
-      },
+      mockData,
     })
     expect(tree.html()).toEqual(
       renderToString(
@@ -57,18 +64,22 @@ describe("renderRelayTree", () => {
       }
     }
 
+    const mockData: MockRelayRendererFixturesQueryRawResponse = {
+      artwork: {
+        id: "opaque-artwork-id",
+        title: "Mona Lisa",
+        image: {
+          url: "http://test/image.jpg",
+        },
+        artist: null,
+      },
+    }
+
     const tree = await renderRelayTree({
       renderUntil: wrapper => wrapper.find(".much-later").text().length > 0,
       Component: Artwork,
       query,
-      mockResolvers: {
-        Artwork: () => ({
-          title: "Mona Lisa",
-          image: {
-            url: "http://test/image.jpg",
-          },
-        }),
-      },
+      mockData,
       wrapper: renderer => <Component>{renderer}</Component>,
     })
     expect(tree.find(".much-later").text()).toEqual("ohai")

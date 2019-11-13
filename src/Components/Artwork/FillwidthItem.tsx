@@ -169,7 +169,7 @@ export default createFragmentContainer(FillwidthItem, {
     fragment FillwidthItem_artwork on Artwork {
       image {
         url(version: "large")
-        aspect_ratio
+        aspect_ratio: aspectRatio
       }
       href
       ...Metadata_artwork

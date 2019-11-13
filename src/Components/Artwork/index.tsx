@@ -123,10 +123,10 @@ export class Artwork extends React.Component<ArtworkProps, ArtworkState> {
 export default createFragmentContainer(Artwork, {
   artwork: graphql`
     fragment Artwork_artwork on Artwork {
-      id
+      slug
       image {
         url(version: "large")
-        aspect_ratio
+        aspect_ratio: aspectRatio
       }
       ...Metadata_artwork
     }

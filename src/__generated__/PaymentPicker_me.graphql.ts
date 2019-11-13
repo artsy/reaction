@@ -1,34 +1,24 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _PaymentPicker_me$ref: unique symbol;
-export type PaymentPicker_me$ref = typeof _PaymentPicker_me$ref;
+import { ReaderFragment } from "relay-runtime";
 export type PaymentPicker_me = {
-    readonly creditCards: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly id: string;
+    readonly creditCards: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly internalID: string;
                 readonly brand: string;
-                readonly last_digits: string;
-                readonly expiration_month: number;
-                readonly expiration_year: number;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": PaymentPicker_me$ref;
+                readonly lastDigits: string;
+                readonly expirationMonth: number;
+                readonly expirationYear: number;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "PaymentPicker_me";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "PaymentPicker_me",
   "type": "Me",
@@ -44,8 +34,7 @@ return {
         {
           "kind": "Literal",
           "name": "first",
-          "value": 100,
-          "type": "Int"
+          "value": 100
         }
       ],
       "concreteType": "CreditCardConnection",
@@ -72,7 +61,7 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "id",
+                  "name": "internalID",
                   "args": null,
                   "storageKey": null
                 },
@@ -86,34 +75,31 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "last_digits",
+                  "name": "lastDigits",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "expiration_month",
+                  "name": "expirationMonth",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "expiration_year",
+                  "name": "expirationYear",
                   "args": null,
                   "storageKey": null
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'f9e6c519e41c5ce091e0ee36b1632f01';
+(node as any).hash = '7c560989a1629a7d702ebca42324ab84';
 export default node;

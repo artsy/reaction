@@ -1,50 +1,33 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSummaryItem_order$ref: unique symbol;
-export type ArtworkSummaryItem_order$ref = typeof _ArtworkSummaryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkSummaryItem_order = {
-    readonly sellerDetails: ({
+    readonly sellerDetails: {
         readonly name?: string | null;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    } | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly artist_names: string | null;
                     readonly title: string | null;
                     readonly date: string | null;
                     readonly shippingOrigin: string | null;
-                    readonly image: ({
-                        readonly resized_ArtworkSummaryItem: ({
+                    readonly image: {
+                        readonly resized_ArtworkSummaryItem: {
                             readonly url: string | null;
-                        }) | null;
-                    }) | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtworkSummaryItem_order$ref;
+                        } | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtworkSummaryItem_order";
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSummaryItem_order",
   "type": "CommerceOrder",
@@ -60,7 +43,6 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "InlineFragment",
           "type": "Partner",
@@ -114,8 +96,8 @@ return {
                   "selections": [
                     {
                       "kind": "ScalarField",
-                      "alias": null,
-                      "name": "artist_names",
+                      "alias": "artist_names",
+                      "name": "artistNames",
                       "args": null,
                       "storageKey": null
                     },
@@ -158,8 +140,7 @@ return {
                             {
                               "kind": "Literal",
                               "name": "width",
-                              "value": 55,
-                              "type": "Int"
+                              "value": 55
                             }
                           ],
                           "concreteType": "ResizedImageUrl",
@@ -173,23 +154,18 @@ return {
                               "storageKey": null
                             }
                           ]
-                        },
-                        v1
+                        }
                       ]
-                    },
-                    v0
+                    }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v1
+    }
   ]
 };
-})();
-(node as any).hash = '9365a78287c9fd680d1a724ad3c1fa49';
+(node as any).hash = 'ef1e5063c36ba2a92e3abe4d4b9b16b9';
 export default node;

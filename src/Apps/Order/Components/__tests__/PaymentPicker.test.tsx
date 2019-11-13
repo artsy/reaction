@@ -1,5 +1,6 @@
 import { BorderedRadio, Checkbox, Collapse, Link } from "@artsy/palette"
 import { PaymentPicker_me } from "__generated__/PaymentPicker_me.graphql"
+import { PaymentPickerTestQueryRawResponse } from "__generated__/PaymentPickerTestQuery.graphql"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
@@ -126,26 +127,29 @@ class PaymentPickerTestPage extends RootTestPage {
   }
 }
 
-describe(PaymentPickerFragmentContainer, () => {
+const defaultData: PaymentPickerTestQueryRawResponse = {
+  me: {
+    id: "my-id",
+    creditCards: {
+      edges: [],
+    },
+  },
+  order: {
+    ...BuyOrderWithShippingDetails,
+    creditCard: null,
+  },
+}
+
+describe("PaymentPickerFragmentContainer", () => {
   const env = createTestEnv({
     Component: injectCommitMutation(PaymentPickerFragmentContainer as any),
     TestPage: PaymentPickerTestPage,
-    defaultData: {
-      me: {
-        creditCards: {
-          edges: [],
-        },
-      },
-      order: {
-        ...BuyOrderWithShippingDetails,
-        creditCard: null,
-      },
-    },
+    defaultData,
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
     },
     query: graphql`
-      query PaymentPickerTestQuery {
+      query PaymentPickerTestQuery @raw_response_type {
         me {
           ...PaymentPicker_me
         }
@@ -224,16 +228,17 @@ describe(PaymentPickerFragmentContainer, () => {
           ...BuyOrderPickup,
           id: "1234",
           creditCard: {
+            internalID: "credit-card-id",
             name: "Artsy UK Ltd",
             street1: "14 Gower's Walk",
             street2: "Suite 2.5, The Loom",
             city: "London",
             state: "Whitechapel",
             country: "UK",
-            postal_code: "E1 8PY",
-            expiration_month: 12,
-            expiration_year: 2022,
-            last_digits: "1234",
+            postalCode: "E1 8PY",
+            expirationMonth: 12,
+            expirationYear: 2022,
+            lastDigits: "1234",
             brand: "Visa",
           },
         },
@@ -362,49 +367,51 @@ describe(PaymentPickerFragmentContainer, () => {
   describe("when the user has existing credit cards", () => {
     const cards: Array<PaymentPicker_me["creditCards"]["edges"][0]["node"]> = [
       {
-        id: "card-id-1",
+        internalID: "card-id-1",
         brand: "MasterCard",
-        last_digits: "1234",
-        expiration_month: 1,
-        expiration_year: 2018,
+        lastDigits: "1234",
+        expirationMonth: 1,
+        expirationYear: 2018,
       },
       {
-        id: "card-id-2",
+        internalID: "card-id-2",
         brand: "Visa",
-        last_digits: "2345",
-        expiration_month: 1,
-        expiration_year: 2019,
+        lastDigits: "2345",
+        expirationMonth: 1,
+        expirationYear: 2019,
       },
     ]
 
     const orderCard = {
       id: "card-id-2",
+      internalID: "card-id-2",
       name: "Chareth Cutestory",
       street1: "1 Art st",
       street2: null,
       city: "New York",
       state: "NY",
       country: "USA",
-      postal_code: "90210",
+      postalCode: "90210",
       brand: "Visa",
-      last_digits: "2345",
-      expiration_month: 1,
-      expiration_year: 2019,
+      lastDigits: "2345",
+      expirationMonth: 1,
+      expirationYear: 2019,
     }
 
     const unsavedOrderCard = {
       id: "card-id-3",
+      internalID: "card-id-3",
       name: "Chareth Cutestory",
       street1: "101 Art st",
       street2: null,
       city: "New York",
       state: "NY",
       country: "USA",
-      postal_code: "90210",
+      postalCode: "90210",
       brand: "Visa",
-      last_digits: "6789",
-      expiration_month: 12,
-      expiration_year: 2022,
+      lastDigits: "6789",
+      expirationMonth: 12,
+      expirationYear: 2022,
     }
 
     const orderWithoutCard = {
@@ -575,7 +582,7 @@ describe(PaymentPickerFragmentContainer, () => {
   describe("saving a card", () => {
     it("by default saves new cards", async () => {
       createTokenMock.mockReturnValue(
-        Promise.resolve({ token: { id: "tokenId" } })
+        Promise.resolve({ token: { id: "tokenId", postalCode: "1324" } })
       )
       const page = await env.buildPage()
       expect(page.saveCardCheckbox.props().selected).toBe(true)

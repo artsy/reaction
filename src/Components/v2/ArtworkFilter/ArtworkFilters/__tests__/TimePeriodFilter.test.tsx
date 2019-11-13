@@ -30,7 +30,7 @@ describe("TimePeriodFilter", () => {
           counts: [
             {
               name: "Late 19th Century",
-              id: "foo-period",
+              value: "foo-period",
             },
           ],
         },
@@ -51,7 +51,7 @@ describe("TimePeriodFilter", () => {
       .simulate("click")
 
     setTimeout(() => {
-      expect(context.filters.major_periods).toEqual(["2010"])
+      expect(context.filters.majorPeriods).toEqual(["2010"])
       done()
     }, 0)
   })

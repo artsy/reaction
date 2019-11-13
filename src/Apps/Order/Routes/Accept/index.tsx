@@ -46,8 +46,9 @@ export class Accept extends Component<AcceptProps> {
   acceptOffer() {
     return this.props.commitMutation<AcceptOfferMutation>({
       variables: {
-        input: { offerId: this.props.order.lastOffer.id },
+        input: { offerId: this.props.order.lastOffer.internalID },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation AcceptOfferMutation($input: CommerceBuyerAcceptOfferInput!) {
           commerceBuyerAcceptOffer(input: $input) {
@@ -55,7 +56,7 @@ export class Accept extends Component<AcceptProps> {
               ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
@@ -85,7 +86,7 @@ export class Accept extends Component<AcceptProps> {
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -134,19 +135,21 @@ export class Accept extends Component<AcceptProps> {
       confirmButtonText: "Use new card",
     })
     if (confirmed) {
-      this.props.router.push(`/orders/${this.props.order.id}/payment/new`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/payment/new`
+      )
     }
   }
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   artistId() {
     return get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artists[0].id
+      o => o.lineItems.edges[0].node.artwork.artists[0].slug
     )
   }
 
@@ -258,15 +261,15 @@ export const AcceptFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Accept_order on CommerceOrder {
-        id
+        internalID
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
                 artists {
-                  id
+                  slug
                 }
               }
             }
@@ -274,7 +277,7 @@ export const AcceptFragmentContainer = createFragmentContainer(
         }
         ... on CommerceOfferOrder {
           lastOffer {
-            id
+            internalID
             createdAt
           }
         }

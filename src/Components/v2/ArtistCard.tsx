@@ -149,14 +149,14 @@ export const ArtistCardFragmentContainer = createFragmentContainer(ArtistCard, {
   artist: graphql`
     fragment ArtistCard_artist on Artist {
       name
-      id
+      slug
       href
       image {
         cropped(width: 400, height: 300) {
           url
         }
       }
-      formatted_nationality_and_birthday
+      formatted_nationality_and_birthday: formattedNationalityAndBirthday
       ...FollowArtistButton_artist
     }
   `,

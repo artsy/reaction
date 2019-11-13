@@ -1,4 +1,5 @@
 import { Message } from "@artsy/palette"
+import { StatusQueryRawResponse } from "__generated__/StatusQuery.graphql"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
@@ -32,7 +33,13 @@ class StatusTestPage extends OrderAppTestPage {
   }
 }
 
-const testOrder = {
+type UnionToIntersection<U> = (U extends any
+  ? (k: U) => void
+  : never) extends ((k: infer I) => void)
+  ? I
+  : never
+
+const testOrder: UnionToIntersection<StatusQueryRawResponse["order"]> = {
   ...OfferOrderWithShippingDetailsAndNote,
   ...PaymentDetails,
   state: "SUBMITTED",
@@ -42,7 +49,7 @@ describe("Status", () => {
   const env = createTestEnv({
     Component: StatusFragmentContainer,
     query: graphql`
-      query StatusQuery {
+      query StatusQuery @raw_response_type {
         order: commerceOrder(id: "42") {
           ...Status_order
         }
@@ -77,16 +84,6 @@ describe("Status", () => {
         expect(page.text()).toContain(
           "The seller will respond to your offer by Jan 15"
         )
-        page.expectMessage()
-      })
-
-      it("should not warn the user about having the artwork bought while artwork is not available for buy now", async () => {
-        const page = await buildPageWithOrder(
-          produce(testOrder, order => {
-            order.lineItems.edges[0].node.artwork.is_acquireable = false
-          })
-        )
-        expect(page.text()).not.toContain("or buy now at list price")
         page.expectMessage()
       })
 

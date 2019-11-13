@@ -26,8 +26,8 @@ describe("FollowArtistButton", () => {
   beforeEach(() => {
     testProps = {
       artist: {
-        id: "damon-zucconi",
-        __id: "1234",
+        internalID: "damon-zucconi",
+        id: "1234",
         is_followed: false,
         counts: { follows: 99 },
       },
@@ -69,7 +69,7 @@ describe("FollowArtistButton", () => {
       component.find(FollowButtonDeprecated).simulate("click")
       const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
-      expect(mutation.artist_id).toBe("damon-zucconi")
+      expect(mutation.artistID).toBe("damon-zucconi")
       expect(mutation.unfollow).toBe(false)
     })
 
@@ -79,7 +79,7 @@ describe("FollowArtistButton", () => {
       component.find(FollowButtonDeprecated).simulate("click")
       const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
-      expect(mutation.artist_id).toBe("damon-zucconi")
+      expect(mutation.artistID).toBe("damon-zucconi")
       expect(mutation.unfollow).toBe(true)
     })
 

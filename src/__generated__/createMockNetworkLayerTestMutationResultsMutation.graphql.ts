@@ -7,10 +7,10 @@ export type CommerceBuyerAcceptOfferInput = {
     readonly offerId: string;
 };
 export type createMockNetworkLayerTestMutationResultsMutationVariables = {
-    readonly input: CommerceBuyerAcceptOfferInput;
+    input: CommerceBuyerAcceptOfferInput;
 };
 export type createMockNetworkLayerTestMutationResultsMutationResponse = {
-    readonly commerceBuyerAcceptOffer: ({
+    readonly commerceBuyerAcceptOffer: {
         readonly orderOrError: {
             readonly error?: {
                 readonly type: string;
@@ -18,11 +18,11 @@ export type createMockNetworkLayerTestMutationResultsMutationResponse = {
                 readonly data: string | null;
             };
             readonly order?: {
-                readonly id: string;
+                readonly internalID: string;
                 readonly state: CommerceOrderStateEnum;
             };
         };
-    }) | null;
+    } | null;
 };
 export type createMockNetworkLayerTestMutationResultsMutation = {
     readonly response: createMockNetworkLayerTestMutationResultsMutationResponse;
@@ -48,9 +48,9 @@ mutation createMockNetworkLayerTestMutationResultsMutation(
       ... on CommerceOrderWithMutationSuccess {
         order {
           __typename
-          id
+          internalID
           state
-          __id: id
+          id
         }
       }
     }
@@ -71,32 +71,10 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceBuyerAcceptOfferInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "state",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
   "kind": "InlineFragment",
   "type": "CommerceOrderWithMutationFailure",
   "selections": [
@@ -134,7 +112,21 @@ v5 = {
     }
   ]
 },
-v6 = {
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -143,24 +135,19 @@ v6 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "createMockNetworkLayerTestMutationResultsMutation",
-  "id": null,
-  "text": "mutation createMockNetworkLayerTestMutationResultsMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          id\n          state\n          __id: id\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createMockNetworkLayerTestMutationResultsMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceBuyerAcceptOffer",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceBuyerAcceptOfferPayload",
         "plural": false,
         "selections": [
@@ -173,6 +160,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -186,14 +174,12 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v2,
-                      v3,
-                      v4
+                      (v3/*: any*/),
+                      (v4/*: any*/)
                     ]
                   }
                 ]
-              },
-              v5
+              }
             ]
           }
         ]
@@ -203,14 +189,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "createMockNetworkLayerTestMutationResultsMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceBuyerAcceptOffer",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceBuyerAcceptOfferPayload",
         "plural": false,
         "selections": [
@@ -223,7 +209,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
+              (v5/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -237,22 +224,34 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v6,
-                      v2,
-                      v3,
-                      v4
+                      (v5/*: any*/),
+                      (v3/*: any*/),
+                      (v4/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
-              },
-              v5
+              }
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "createMockNetworkLayerTestMutationResultsMutation",
+    "id": null,
+    "text": "mutation createMockNetworkLayerTestMutationResultsMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          internalID\n          state\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '2f4a85ff7c5813007e0b365f29b02e0c';
+(node as any).hash = 'dcfa0d5642e51295d881dcd55a1c3515';
 export default node;

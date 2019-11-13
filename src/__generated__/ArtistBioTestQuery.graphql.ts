@@ -1,16 +1,25 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistBioTestQueryVariables = {};
 export type ArtistBioTestQueryResponse = {
+    readonly bio: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio">;
+    } | null;
+};
+export type ArtistBioTestQueryRawResponse = {
     readonly bio: ({
-        readonly " $fragmentRefs": ArtistBio_bio$ref;
+        readonly biography_blurb: ({
+            readonly text: string | null;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type ArtistBioTestQuery = {
     readonly response: ArtistBioTestQueryResponse;
     readonly variables: ArtistBioTestQueryVariables;
+    readonly rawResponse: ArtistBioTestQueryRawResponse;
 };
 
 
@@ -19,15 +28,14 @@ export type ArtistBioTestQuery = {
 query ArtistBioTestQuery {
   bio: artist(id: "unused") {
     ...ArtistBio_bio
-    __id
+    id
   }
 }
 
 fragment ArtistBio_bio on Artist {
-  biography_blurb(format: HTML, partner_bio: true) {
+  biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
     text
   }
-  __id
 }
 */
 
@@ -36,24 +44,11 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistBioTestQuery",
-  "id": null,
-  "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    __id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb(format: HTML, partner_bio: true) {\n    text\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistBioTestQuery",
@@ -66,7 +61,7 @@ return {
         "alias": "bio",
         "name": "artist",
         "storageKey": "artist(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -74,8 +69,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtistBio_bio",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -90,27 +84,25 @@ return {
         "alias": "bio",
         "name": "artist",
         "storageKey": "artist(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
-            "alias": null,
-            "name": "biography_blurb",
-            "storageKey": "biography_blurb(format:\"HTML\",partner_bio:true)",
+            "alias": "biography_blurb",
+            "name": "biographyBlurb",
+            "storageKey": "biographyBlurb(format:\"HTML\",partnerBio:true)",
             "args": [
               {
                 "kind": "Literal",
                 "name": "format",
-                "value": "HTML",
-                "type": "Format"
+                "value": "HTML"
               },
               {
                 "kind": "Literal",
-                "name": "partner_bio",
-                "value": true,
-                "type": "Boolean"
+                "name": "partnerBio",
+                "value": true
               }
             ],
             "concreteType": "ArtistBlurb",
@@ -125,12 +117,25 @@ return {
               }
             ]
           },
-          v1
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistBioTestQuery",
+    "id": null,
+    "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {\n    text\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'f7fadd31b3f1d6d3ef89cd1911a4b0be';
+(node as any).hash = 'b0bfe8de06ea988344d1c91d36e66bfd';
 export default node;

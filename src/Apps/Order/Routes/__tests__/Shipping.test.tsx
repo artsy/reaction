@@ -1,3 +1,4 @@
+import { ShippingTestQueryRawResponse } from "__generated__/ShippingTestQuery.graphql"
 import { cloneDeep } from "lodash"
 
 import { RadioGroup } from "@artsy/palette"
@@ -45,7 +46,11 @@ const fillAddressForm = (component: any, address: Address) => {
   fillCountrySelect(component, address.country)
 }
 
-const testOrder = { ...UntouchedBuyOrder, id: "1234" }
+const testOrder: ShippingTestQueryRawResponse["order"] = {
+  ...UntouchedBuyOrder,
+  internalID: "1234",
+  id: "1234",
+}
 
 class ShippingTestPage extends OrderAppTestPage {
   async selectPickupOption() {
@@ -64,7 +69,7 @@ describe("Shipping", () => {
       ...settingOrderShipmentSuccess,
     },
     query: graphql`
-      query ShippingTestQuery {
+      query ShippingTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Shipping_order
         }

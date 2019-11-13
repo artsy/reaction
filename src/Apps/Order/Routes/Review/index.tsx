@@ -71,10 +71,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
       props.order.mode === "BUY"
         ? Schema.ActionType.SubmittedOrder
         : Schema.ActionType.SubmittedOffer,
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     products: [
       {
-        product_id: props.order.lineItems.edges[0].node.artwork._id,
+        product_id: props.order.lineItems.edges[0].node.artwork.internalID,
         quantity: 1,
         price: props.order.itemsTotal,
       },
@@ -128,7 +128,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
             }
           })
       } else {
-        this.props.router.push(`/orders/${this.props.order.id}/status`)
+        this.props.router.push(`/orders/${this.props.order.internalID}/status`)
       }
     } catch (error) {
       logger.error(error)
@@ -140,9 +140,10 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     return this.props.commitMutation<ReviewSubmitOrderMutation>({
       variables: {
         input: {
-          id: this.props.order.id,
+          id: this.props.order.internalID,
         },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ReviewSubmitOrderMutation($input: CommerceSubmitOrderInput!) {
           commerceSubmitOrder(input: $input) {
@@ -175,10 +176,11 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
     return this.props.commitMutation<ReviewSubmitOfferOrderMutation>({
       variables: {
         input: {
-          offerId: this.props.order.myLastOffer.id,
+          offerId: this.props.order.myLastOffer.internalID,
           confirmedSetupIntentId: setupIntentId,
         },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ReviewSubmitOfferOrderMutation(
           $input: CommerceSubmitOrderWithOfferInput!
@@ -288,14 +290,14 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   artistId() {
     return get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artists[0].id
+      o => o.lineItems.edges[0].node.artwork.artists[0].slug
     )
   }
 
   routeToArtworkPage() {
     const artworkId = get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.id
+      o => o.lineItems.edges[0].node.artwork.slug
     )
     // Don't confirm whether or not you want to leave the page
     this.props.route.onTransition = () => null
@@ -311,15 +313,15 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
   }
 
   onChangeOffer = () => {
-    this.props.router.push(`/orders/${this.props.order.id}/offer`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/offer`)
   }
 
   onChangePayment = () => {
-    this.props.router.push(`/orders/${this.props.order.id}/payment`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/payment`)
   }
 
   onChangeShipping = () => {
-    this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/shipping`)
   }
 
   render() {
@@ -412,7 +414,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Review_order on CommerceOrder {
-        id
+        internalID
         mode
         itemsTotal(precision: 2)
         lineItems {
@@ -420,10 +422,10 @@ export const ReviewFragmentContainer = createFragmentContainer(
             node {
               ...ItemReview_lineItem
               artwork {
-                id
-                _id
+                slug
+                internalID
                 artists {
-                  id
+                  slug
                 }
               }
             }
@@ -431,7 +433,7 @@ export const ReviewFragmentContainer = createFragmentContainer(
         }
         ... on CommerceOfferOrder {
           myLastOffer {
-            id
+            internalID
           }
         }
         ...ArtworkSummaryItem_order

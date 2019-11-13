@@ -115,7 +115,7 @@ export class ArtworkGridContainer extends React.Component<
         artworkComponents.push(
           <GridItem
             artwork={artwork}
-            key={artwork.__id}
+            key={artwork.id}
             mediator={this.props.mediator}
             lazyLoad={i + j >= preloadImageCount}
             onClick={() => {
@@ -128,7 +128,7 @@ export class ArtworkGridContainer extends React.Component<
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
         if (j < sectionedArtworks[i].length - 1) {
           artworkComponents.push(
-            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />
+            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.id} />
           )
         }
       }
@@ -216,14 +216,14 @@ const InnerContainer = styled(Flex)`
 
 export default createFragmentContainer(ArtworkGrid, {
   artworks: graphql`
-    fragment ArtworkGrid_artworks on ArtworkConnection {
+    fragment ArtworkGrid_artworks on ArtworkConnectionInterface {
       edges {
         node {
-          __id
           id
+          slug
           href
           image {
-            aspect_ratio
+            aspect_ratio: aspectRatio
           }
           ...GridItem_artwork
         }
@@ -243,7 +243,7 @@ function areSectionedArtworksEqual(current: any, previous: any) {
     const previousEdges = (previous as ArtworkGrid_artworks).edges
     return (
       currentEdges.length === previousEdges.length &&
-      currentEdges.every((e, i) => e.node.__id === previousEdges[i].node.__id)
+      currentEdges.every((e, i) => e.node.id === previousEdges[i].node.id)
     )
   }
 }

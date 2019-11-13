@@ -1,8 +1,12 @@
-export const defaultArtist = {
+import { OverviewQueryRawResponse } from "__generated__/OverviewQuery.graphql"
+
+export const defaultArtist: OverviewQueryRawResponse["artist"] = {
   is_consignable: true,
-  __fragments: null,
-  id: "juan-gris",
+  id: "opaque-artist-id",
+  slug: "juan-gris",
+  name: "Juan Gris",
   counts: {
+    follows: 42,
     partner_shows: 11,
     for_sale_artworks: 20,
     ecommerce_artworks: 30,
@@ -12,9 +16,16 @@ export const defaultArtist = {
   },
   is_followed: true,
   sidebarAggregations: {
+    id: "opaque-sidebar-aggregations",
     aggregations: [],
   },
-  filtered_artworks: {},
+  filtered_artworks: {
+    id: "opaque-filtered-artworks-id",
+    aggregations: [],
+    edges: [],
+    pageCursors: null,
+    pageInfo: null,
+  },
   href: "/artist/juan-gris",
   biography_blurb: {
     text:
@@ -27,39 +38,43 @@ export const defaultArtist = {
       edges: [
         {
           node: {
-            id: "cubism",
+            id: "opaque-gene-id",
+            slug: "cubism",
+            name: "Cubism",
             href: "/gene/cubism",
           },
         },
       ],
     },
-    artists: null,
+    artistsConnection: null,
   },
-  _id: "4d8b928e4eb68a1b2c000222",
+  internalID: "4d8b928e4eb68a1b2c000222",
   collections: [
     "Tate",
     "Museum of Modern Art (MoMA)",
     "National Gallery of Art, Washington, D.C.",
   ],
   highlights: {
-    partners: {
+    partnersConnection: {
       edges: [],
     },
   },
   insights: [],
-  " $fragmentRefs": null,
-  " $refType": null,
+  auctionResultsConnection: null,
+  // __fragments: null,
+  // " $fragmentRefs": null,
+  // " $refType": null,
 }
 
-export const artistWithRelatedArtists = {
+export const artistWithRelatedArtists: OverviewQueryRawResponse["artist"] = {
   ...defaultArtist,
   related: {
     ...defaultArtist.related,
-    artists: {
+    artistsConnection: {
       edges: [
         {
           node: {
-            __id: "123",
+            id: "123",
           },
         },
       ],

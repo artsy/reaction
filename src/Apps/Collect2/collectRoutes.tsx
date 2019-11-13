@@ -19,19 +19,19 @@ export const collectRoutes: RouteConfig[] = [
       query collectRoutes_ArtworkFilterQuery(
         $acquireable: Boolean
         $aggregations: [ArtworkAggregation] = [TOTAL]
-        $artist_id: String
-        $at_auction: Boolean
-        $attribution_class: [String]
+        $artistID: String
+        $atAuction: Boolean
+        $attributionClass: [String]
         $color: String
-        $for_sale: Boolean
+        $forSale: Boolean
         $height: String
-        $inquireable_only: Boolean
-        $major_periods: [String]
+        $inquireableOnly: Boolean
+        $majorPeriods: [String]
         $medium: String
         $offerable: Boolean
         $page: Int
-        $partner_id: ID
-        $price_range: String
+        $partnerID: ID
+        $priceRange: String
         $sort: String
         $keyword: String
         $width: String
@@ -39,33 +39,32 @@ export const collectRoutes: RouteConfig[] = [
         marketingHubCollections {
           ...Collect_marketingHubCollections
         }
-
-        filterArtworks: filter_artworks(
+        filterArtworks: artworksConnection(
           aggregations: $aggregations
           sort: $sort
+          first: 30
         ) {
           ...SeoProductsForArtworks_artworks
         }
-
         viewer {
           ...ArtworkFilter_viewer
             @arguments(
               acquireable: $acquireable
               aggregations: $aggregations
-              artist_id: $artist_id
-              at_auction: $at_auction
-              attribution_class: $attribution_class
+              artistID: $artistID
+              atAuction: $atAuction
+              attributionClass: $attributionClass
               color: $color
-              for_sale: $for_sale
+              forSale: $forSale
               height: $height
-              inquireable_only: $inquireable_only
+              inquireableOnly: $inquireableOnly
               keyword: $keyword
-              major_periods: $major_periods
+              majorPeriods: $majorPeriods
               medium: $medium
               offerable: $offerable
               page: $page
-              partner_id: $partner_id
-              price_range: $price_range
+              partnerID: $partnerID
+              priceRange: $priceRange
               sort: $sort
               width: $width
             )
@@ -79,8 +78,8 @@ export const collectRoutes: RouteConfig[] = [
     fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
-        categories: marketingCategories @principalField {
-          ...Collections_categories
+        marketingCategories @principalField {
+          ...Collections_marketingCategories
         }
       }
     `,

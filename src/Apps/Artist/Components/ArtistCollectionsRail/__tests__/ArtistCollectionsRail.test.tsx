@@ -73,53 +73,51 @@ describe("CollectionsRail", () => {
         headerImage: "http://files.artsy.net/images/jasperjohnsflag.png",
         title: "Jasper Johns: Flags Part 2",
         price_guidance: 1000,
-        artworks: {
-          artworks_connection: {
-            edges: [
-              {
-                node: {
-                  artist: {
-                    name: "Jasper Johns",
-                  },
-                  title: "Flag",
-                  image: {
-                    resized: {
-                      url:
-                        "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
-                    },
+        artworksConnection: {
+          edges: [
+            {
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag",
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
                   },
                 },
               },
-              {
-                node: {
-                  artist: {
-                    name: "Jasper Johns",
-                  },
-                  title: "Flag (Moratorium)",
-                  image: {
-                    resized: {
-                      url:
-                        "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
-                    },
+            },
+            {
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag (Moratorium)",
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
                   },
                 },
               },
-              {
-                node: {
-                  artist: {
-                    name: "Jasper Johns",
-                  },
-                  title: "Flag I",
-                  image: {
-                    resized: {
-                      url:
-                        "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
-                    },
+            },
+            {
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag I",
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
                   },
                 },
               },
-            ],
-          },
+            },
+          ],
         },
       })
       const updatedCollections = { collections: collectionsCopy }

@@ -60,7 +60,7 @@ export const ItemReview: React.SFC<ItemReviewProps> = ({
       {editionSetId &&
         edition_sets &&
         dimensionsDisplay(
-          edition_sets.find(e => e.id === editionSetId).dimensions
+          edition_sets.find(e => e.internalID === editionSetId).dimensions
         )}
       {!editionSetId &&
         artworkDimensions &&
@@ -81,7 +81,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
   lineItem: graphql`
     fragment ItemReview_lineItem on CommerceLineItem {
       artwork {
-        artist_names
+        artist_names: artistNames
         title
         date
         medium
@@ -89,7 +89,7 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
           in
           cm
         }
-        attribution_class {
+        attribution_class: attributionClass {
           shortDescription
         }
         image {
@@ -97,8 +97,8 @@ export const ItemReviewFragmentContainer = createFragmentContainer(ItemReview, {
             url
           }
         }
-        edition_sets {
-          id
+        edition_sets: editionSets {
+          internalID
           dimensions {
             in
             cm

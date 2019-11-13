@@ -30,9 +30,11 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
   const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
   const { name } = artist
-  const relatedArtists = get(artist, a => a.related.artists.edges, []).map(
-    edge => <RecommendedArtist artist={edge.node} key={edge.node.id} />
-  )
+  const relatedArtists = get(
+    artist,
+    a => a.related.artistsConnection.edges,
+    []
+  ).map(edge => <RecommendedArtist artist={edge.node} key={edge.node.id} />)
 
   const fetchData = () => {
     if (!relay.hasMore() || relay.isLoading()) {
@@ -87,16 +89,16 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 3 }
           cursor: { type: "String", defaultValue: "" }
-          min_forsale_artworks: { type: "Int", defaultValue: 7 }
+          minForsaleArtworks: { type: "Int", defaultValue: 7 }
         ) {
-        id
+        slug
         name
         related {
-          artists(
+          artistsConnection(
             first: $count
             after: $cursor
-            min_forsale_artworks: $min_forsale_artworks
-          ) @connection(key: "ArtistRecommendations_artists") {
+            minForsaleArtworks: $minForsaleArtworks
+          ) @connection(key: "ArtistRecommendations_artistsConnection") {
             edges {
               node {
                 id
@@ -111,7 +113,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artist.related.artists
+      return props.artist.related.artistsConnection
     },
     getFragmentVariables(prevVars, count) {
       return {
@@ -128,7 +130,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         ...fragmentVariables,
         count,
         cursor,
-        artistID: props.artist.id,
+        artistID: props.artist.slug,
       }
     },
     query: graphql`

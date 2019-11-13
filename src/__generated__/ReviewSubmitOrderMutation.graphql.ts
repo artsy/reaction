@@ -7,10 +7,10 @@ export type CommerceSubmitOrderInput = {
     readonly id: string;
 };
 export type ReviewSubmitOrderMutationVariables = {
-    readonly input: CommerceSubmitOrderInput;
+    input: CommerceSubmitOrderInput;
 };
 export type ReviewSubmitOrderMutationResponse = {
-    readonly commerceSubmitOrder: ({
+    readonly commerceSubmitOrder: {
         readonly orderOrError: {
             readonly order?: {
                 readonly state: CommerceOrderStateEnum;
@@ -24,7 +24,7 @@ export type ReviewSubmitOrderMutationResponse = {
                 readonly data: string | null;
             };
         };
-    }) | null;
+    } | null;
 };
 export type ReviewSubmitOrderMutation = {
     readonly response: ReviewSubmitOrderMutationResponse;
@@ -44,7 +44,7 @@ mutation ReviewSubmitOrderMutation(
         order {
           __typename
           state
-          __id: id
+          id
         }
       }
       ... on CommerceOrderRequiresAction {
@@ -77,11 +77,41 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceSubmitOrderInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "InlineFragment",
+  "type": "CommerceOrderRequiresAction",
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "actionData",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CommerceOrderActionData",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "clientSecret",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+},
+v4 = {
   "kind": "InlineFragment",
   "type": "CommerceOrderWithMutationFailure",
   "selections": [
@@ -119,45 +149,7 @@ v2 = {
     }
   ]
 },
-v3 = {
-  "kind": "InlineFragment",
-  "type": "CommerceOrderRequiresAction",
-  "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "actionData",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "CommerceOrderActionData",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "clientSecret",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    }
-  ]
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "state",
-  "args": null,
-  "storageKey": null
-},
 v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -166,24 +158,19 @@ v6 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "ReviewSubmitOrderMutation",
-  "id": null,
-  "text": "mutation ReviewSubmitOrderMutation(\n  $input: CommerceSubmitOrderInput!\n) {\n  commerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          __id: id\n        }\n      }\n      ... on CommerceOrderRequiresAction {\n        actionData {\n          clientSecret\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ReviewSubmitOrderMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceSubmitOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceSubmitOrderPayload",
         "plural": false,
         "selections": [
@@ -196,8 +183,6 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
-              v3,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -211,12 +196,13 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v4,
-                      v5
+                      (v2/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/),
+              (v4/*: any*/)
             ]
           }
         ]
@@ -226,14 +212,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ReviewSubmitOrderMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceSubmitOrder",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceSubmitOrderPayload",
         "plural": false,
         "selections": [
@@ -246,9 +232,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
-              v2,
-              v3,
+              (v5/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
@@ -262,18 +246,33 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v6,
-                      v4,
-                      v5
+                      (v5/*: any*/),
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      }
                     ]
                   }
                 ]
-              }
+              },
+              (v3/*: any*/),
+              (v4/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "ReviewSubmitOrderMutation",
+    "id": null,
+    "text": "mutation ReviewSubmitOrderMutation(\n  $input: CommerceSubmitOrderInput!\n) {\n  commerceSubmitOrder(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          id\n        }\n      }\n      ... on CommerceOrderRequiresAction {\n        actionData {\n          clientSecret\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

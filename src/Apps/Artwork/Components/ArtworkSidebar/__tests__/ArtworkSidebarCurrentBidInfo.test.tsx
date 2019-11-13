@@ -1,4 +1,5 @@
 import { LosingBidIcon, WinningBidIcon } from "@artsy/palette"
+import { ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarCurrentBidInfo_Test_Query.graphql"
 import {
   AuctionPreview,
   AuctionPreviewNoStartingBid,
@@ -20,19 +21,21 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarCurrentBidInfo", () => {
-  const getWrapper = async response => {
+  const getWrapper = async (
+    response: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarCurrentBidInfoFragmentContainer,
       query: graphql`
-        query ArtworkSidebarCurrentBidInfo_Test_Query {
+        query ArtworkSidebarCurrentBidInfo_Test_Query @raw_response_type {
           artwork(id: "auction_artwork_estimate_premium") {
             ...ArtworkSidebarCurrentBidInfo_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse,
     })
   }
 

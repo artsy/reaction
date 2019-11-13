@@ -11,7 +11,7 @@ export const InstitutionFilter: FC = () => {
     return null
   }
 
-  const selectedItem = filterContext.filters.partner_id
+  const selectedItem = filterContext.filters.partnerID
 
   return (
     <Toggle label="Institution">
@@ -20,7 +20,7 @@ export const InstitutionFilter: FC = () => {
           deselectable
           defaultValue={selectedItem}
           onSelect={selectedOption => {
-            filterContext.setFilter("partner_id", selectedOption)
+            filterContext.setFilter("partnerID", selectedOption)
           }}
         >
           {sortBy(items.counts, ["name"]).map((item, index) => {
@@ -28,7 +28,7 @@ export const InstitutionFilter: FC = () => {
               <Radio
                 key={index}
                 my={0.3}
-                value={item.id.toLocaleLowerCase()}
+                value={item.value.toLocaleLowerCase()}
                 label={item.name}
               />
             )

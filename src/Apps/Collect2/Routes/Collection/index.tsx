@@ -1,5 +1,5 @@
 import { Box, Separator } from "@artsy/palette"
-import { Collection_viewer } from "__generated__/Collection_viewer.graphql"
+import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -9,7 +9,7 @@ import { SystemContextProps, withSystemContext } from "Artsy/SystemContext"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { RelatedCollectionsRailFragmentContainer as RelatedCollectionsRail } from "Components/RelatedCollectionsRail/RelatedCollectionsRail"
 import { BreadCrumbList } from "Components/v2/Seo"
-import { Location } from "found"
+import { Match } from "found"
 import { HttpError } from "found"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
@@ -27,16 +27,16 @@ import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { TrackingProp } from "react-tracking"
 
 interface CollectionAppProps extends SystemContextProps {
-  viewer: Collection_viewer
-  location: Location
+  collection: Collection_collection
+  match: Match
   relay: RelayRefetchProp
   tracking: TrackingProp
 }
 
 @track<CollectionAppProps>(props => ({
   context_module: Schema.ContextModule.CollectionDescription,
-  context_page_owner_slug: props.viewer && props.viewer.slug,
-  context_page_owner_id: props.viewer && props.viewer.id,
+  context_page_owner_slug: props.collection && props.collection.slug,
+  context_page_owner_id: props.collection && props.collection.slug,
 }))
 export class CollectionApp extends Component<CollectionAppProps> {
   collectionNotFound = collection => {
@@ -46,12 +46,22 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 
   UNSAFE_componentWillMount() {
-    this.collectionNotFound(this.props.viewer)
+    this.collectionNotFound(this.props.collection)
   }
 
   render() {
-    const { viewer, location, relay } = this.props
-    const { title, slug, headerImage, description, artworks } = viewer
+    const {
+      collection,
+      match: { location },
+      relay,
+    } = this.props
+    const {
+      title,
+      slug,
+      headerImage,
+      description,
+      artworksConnection,
+    } = collection
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
     const metadataDescription = description
@@ -59,7 +69,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
         truncate(description, 158).text
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
-    const showCollectionHubs = viewer.linkedCollections.length > 0
+    const showCollectionHubs = collection.linkedCollections.length > 0
 
     return (
       <AppContainer>
@@ -77,13 +87,17 @@ export class CollectionApp extends Component<CollectionAppProps> {
               { path: `/collection/${slug}`, name: title },
             ]}
           />
-          {artworks && <SeoProductsForArtworks artworks={artworks} />}
+          {artworksConnection && (
+            <SeoProductsForArtworks artworks={artworksConnection} />
+          )}
           <CollectionHeader
-            collection={viewer as any}
-            artworks={artworks as any}
+            collection={collection}
+            artworks={artworksConnection}
           />
           {showCollectionHubs && (
-            <CollectionsHubRails linkedCollections={viewer.linkedCollections} />
+            <CollectionsHubRails
+              linkedCollections={collection.linkedCollections}
+            />
           )}
           <Box>
             <ArtworkFilterContextProvider
@@ -98,8 +112,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 { value: "year", text: "Artwork year (asc.)" },
               ]}
               aggregations={
-                viewer.artworks
-                  .aggregations as SharedArtworkFilterContextProps["aggregations"]
+                artworksConnection.aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
               onFilterClick={(key, value, filterState) => {
@@ -112,20 +125,21 @@ export class CollectionApp extends Component<CollectionAppProps> {
             >
               <BaseArtworkFilter
                 relay={relay}
-                viewer={viewer}
+                viewer={collection}
                 relayVariables={{
-                  slug: viewer.slug,
+                  slug: collection.slug,
+                  first: 30,
                 }}
               />
             </ArtworkFilterContextProvider>
           </Box>
-          {viewer.linkedCollections.length === 0 && (
+          {collection.linkedCollections.length === 0 && (
             <>
               <Separator mt={6} mb={3} />
               <Box mt="3">
                 <RelatedCollectionsRail
-                  collections={viewer.relatedCollections}
-                  title={viewer.title}
+                  collections={collection.relatedCollections}
+                  title={collection.title}
                 />
               </Box>
             </>
@@ -149,37 +163,38 @@ export const CollectionAppQuery = graphql`
       MAJOR_PERIOD
       TOTAL
     ]
-    $at_auction: Boolean
+    $atAuction: Boolean
     $color: String
-    $for_sale: Boolean
+    $forSale: Boolean
     $height: String
-    $inquireable_only: Boolean
-    $major_periods: [String]
+    $inquireableOnly: Boolean
+    $majorPeriods: [String]
     $medium: String
     $offerable: Boolean
     $page: Int
-    $price_range: String
+    $priceRange: String
     $sort: String
     $slug: String!
     $width: String
   ) {
-    viewer: marketingCollection(slug: $slug) {
-      ...Collection_viewer
+    collection: marketingCollection(slug: $slug) {
+      ...Collection_collection
         @arguments(
           acquireable: $acquireable
           aggregations: $aggregations
-          at_auction: $at_auction
+          atAuction: $atAuction
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
-          major_periods: $major_periods
+          inquireableOnly: $inquireableOnly
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          price_range: $price_range
+          priceRange: $priceRange
           sort: $sort
           width: $width
+          first: 30
         )
     }
   }
@@ -188,84 +203,76 @@ export const CollectionAppQuery = graphql`
 export const CollectionRefetchContainer = createRefetchContainer(
   withSystemContext(CollectionApp),
   {
-    viewer: graphql`
-      fragment Collection_viewer on MarketingCollection
+    collection: graphql`
+      fragment Collection_collection on MarketingCollection
         @argumentDefinitions(
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
-          at_auction: { type: "Boolean" }
+          atAuction: { type: "Boolean" }
           color: { type: "String" }
-          for_sale: { type: "Boolean" }
+          forSale: { type: "Boolean" }
           height: { type: "String" }
-          inquireable_only: { type: "Boolean" }
-          major_periods: { type: "[String]" }
+          inquireableOnly: { type: "Boolean" }
+          majorPeriods: { type: "[String]" }
           medium: { type: "String", defaultValue: "*" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          price_range: { type: "String" }
+          priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int" }
         ) {
-        category
-        credit
+        ...Header_collection
         description
         headerImage
-        id
         slug
         title
-        featuredArtistExclusionIds
-
         query {
-          artist_ids
-          artist_id
-          gene_id
+          artist_id: artistID
+          gene_id: geneID
         }
-
         relatedCollections {
           ...RelatedCollectionsRail_collections
         }
-
         linkedCollections {
           ...CollectionsHubRails_linkedCollections
         }
-
-        artworks(
+        artworksConnection(
           aggregations: $aggregations
-          include_medium_filter_in_aggregation: true
+          includeMediumFilterInAggregation: true
           size: 20
+          first: 20
           sort: "-decayed_merch"
         ) {
           ...Header_artworks
           ...SeoProductsForArtworks_artworks
-
           aggregations {
             slice
             counts {
-              id
+              value
               name
               count
             }
           }
         }
-
-        filtered_artworks: artworks(
+        filtered_artworks: artworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations
-          at_auction: $at_auction
+          atAuction: $atAuction
           color: $color
-          for_sale: $for_sale
+          forSale: $forSale
           height: $height
-          inquireable_only: $inquireable_only
-          major_periods: $major_periods
+          inquireableOnly: $inquireableOnly
+          majorPeriods: $majorPeriods
           medium: $medium
           offerable: $offerable
           page: $page
-          price_range: $price_range
-          size: 0
+          priceRange: $priceRange
+          first: $first
           sort: $sort
           width: $width
         ) {
-          __id
+          id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }

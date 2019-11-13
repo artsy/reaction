@@ -1,3 +1,4 @@
+import { AcceptTestQueryRawResponse } from "__generated__/AcceptTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -50,7 +51,7 @@ describe("Accept seller offer", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: AcceptFragmentContainer,
     query: graphql`
-      query AcceptTestQuery {
+      query AcceptTestQuery @raw_response_type {
         order: commerceOrder(id: "") {
           ...Accept_order
         }
@@ -63,7 +64,7 @@ describe("Accept seller offer", () => {
           unix: 222,
         },
       },
-    },
+    } as AcceptTestQueryRawResponse,
     defaultMutationResults: {
       ...acceptOfferSuccess,
     },
@@ -157,7 +158,7 @@ describe("Accept seller offer", () => {
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 
@@ -179,7 +180,7 @@ describe("Accept seller offer", () => {
         "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card."
       )
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/payment/new`
+        `/orders/${testOrder.internalID}/payment/new`
       )
     })
 
@@ -191,7 +192,7 @@ describe("Accept seller offer", () => {
         "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again."
       )
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/payment/new`
+        `/orders/${testOrder.internalID}/payment/new`
       )
     })
 
@@ -202,7 +203,7 @@ describe("Accept seller offer", () => {
         "Not available",
         "Sorry, the work is no longer available."
       )
-      const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+      const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].slug
       expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
     })
   })

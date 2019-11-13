@@ -15,7 +15,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
       <Spacer mb={-1} />
 
       <Shows
-        sort="end_at_asc"
+        sort="END_AT_ASC"
         status="running"
         artist={viewer.artist_currentShows}
         scrollTo="#jumpto-ArtistHeader"
@@ -26,7 +26,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
       <span id="jumpto-Shows-Upcoming" />
 
       <Shows
-        sort="start_at_asc"
+        sort="START_AT_ASC"
         status="upcoming"
         artist={viewer.artist_upcomingShows}
         scrollTo="#jumpto-Shows-Upcoming"
@@ -37,7 +37,7 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
       <span id="jumpto-Shows-Past" />
 
       <Shows
-        sort="end_at_desc"
+        sort="END_AT_DESC"
         status="closed"
         artist={viewer.artist_pastShows}
         scrollTo="#jumpto-Shows-Past"
@@ -52,24 +52,21 @@ export const ShowsRouteFragmentContainer = createFragmentContainer(ShowsRoute, {
     fragment Shows_viewer on Viewer
       @argumentDefinitions(
         currentShowsStatus: { type: "String", defaultValue: "running" }
-        currentShowsSort: { type: "PartnerShowSorts", defaultValue: END_AT_ASC }
+        currentShowsSort: { type: "ShowSorts", defaultValue: END_AT_ASC }
         upcomingShowsStatus: { type: "String", defaultValue: "upcoming" }
-        upcomingShowsSort: {
-          type: "PartnerShowSorts"
-          defaultValue: START_AT_ASC
-        }
+        upcomingShowsSort: { type: "ShowSorts", defaultValue: START_AT_ASC }
         pastShowsStatus: { type: "String", defaultValue: "closed" }
-        pastShowsSort: { type: "PartnerShowSorts", defaultValue: END_AT_DESC }
+        pastShowsSort: { type: "ShowSorts", defaultValue: END_AT_DESC }
       ) {
-      artist_currentShows: artist(id: $artist_id) {
+      artist_currentShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $currentShowsSort, status: $currentShowsStatus)
       }
-      artist_upcomingShows: artist(id: $artist_id) {
+      artist_upcomingShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $upcomingShowsSort, status: $upcomingShowsStatus)
       }
-      artist_pastShows: artist(id: $artist_id) {
+      artist_pastShows: artist(id: $artistID) {
         ...ArtistShows_artist
           @arguments(sort: $pastShowsSort, status: $pastShowsStatus)
       }

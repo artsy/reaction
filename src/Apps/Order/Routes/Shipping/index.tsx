@@ -105,6 +105,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   setShipping(variables: ShippingOrderAddressUpdateMutation["variables"]) {
     return this.props.commitMutation<ShippingOrderAddressUpdateMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ShippingOrderAddressUpdateMutation(
           $input: CommerceSetShippingInput!
@@ -114,7 +115,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
               ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   state
                   requestedFulfillment {
                     __typename
@@ -162,7 +163,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     try {
       const orderOrError = (await this.setShipping({
         input: {
-          id: this.props.order.id,
+          id: this.props.order.internalID,
           fulfillmentType: shippingOption,
           shipping: address,
         },
@@ -173,7 +174,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/payment`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/payment`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -384,7 +385,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
   {
     order: graphql`
       fragment Shipping_order on CommerceOrder {
-        id
+        internalID
         mode
         state
         requestedFulfillment {
@@ -404,8 +405,8 @@ export const ShippingFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
-                pickup_available
+                slug
+                pickup_available: pickupAvailable
                 onlyShipsDomestically
                 shippingCountry
               }

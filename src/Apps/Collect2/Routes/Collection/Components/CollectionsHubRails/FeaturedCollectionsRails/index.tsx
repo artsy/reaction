@@ -160,11 +160,11 @@ export const FeaturedCollectionsRailsContainer = createFragmentContainer(
         groupType
         name
         members {
-          id
+          slug
           slug
           title
           description
-          price_guidance
+          price_guidance: priceGuidance
           thumbnail
         }
       }

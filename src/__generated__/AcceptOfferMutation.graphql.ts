@@ -7,14 +7,14 @@ export type CommerceBuyerAcceptOfferInput = {
     readonly offerId: string;
 };
 export type AcceptOfferMutationVariables = {
-    readonly input: CommerceBuyerAcceptOfferInput;
+    input: CommerceBuyerAcceptOfferInput;
 };
 export type AcceptOfferMutationResponse = {
-    readonly commerceBuyerAcceptOffer: ({
+    readonly commerceBuyerAcceptOffer: {
         readonly orderOrError: {
             readonly __typename: "CommerceOrderWithMutationSuccess";
             readonly order?: {
-                readonly id: string;
+                readonly internalID: string;
                 readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
             };
             readonly error?: {
@@ -23,7 +23,7 @@ export type AcceptOfferMutationResponse = {
                 readonly data: string | null;
             };
         };
-    }) | null;
+    } | null;
 };
 export type AcceptOfferMutation = {
     readonly response: AcceptOfferMutationResponse;
@@ -43,11 +43,11 @@ mutation AcceptOfferMutation(
         __typename
         order {
           __typename
-          id
+          internalID
           ... on CommerceOfferOrder {
             awaitingResponseFrom
           }
-          __id: id
+          id
         }
       }
       ... on CommerceOrderWithMutationFailure {
@@ -75,11 +75,37 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "CommerceBuyerAcceptOfferInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "InlineFragment",
+  "type": "CommerceOfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v5 = {
   "kind": "InlineFragment",
   "type": "CommerceOrderWithMutationFailure",
   "selections": [
@@ -116,61 +142,22 @@ v2 = {
       ]
     }
   ]
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "InlineFragment",
-  "type": "CommerceOfferOrder",
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "awaitingResponseFrom",
-      "args": null,
-      "storageKey": null
-    }
-  ]
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "AcceptOfferMutation",
-  "id": null,
-  "text": "mutation AcceptOfferMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          id\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          __id: id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "AcceptOfferMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceBuyerAcceptOffer",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceBuyerAcceptOfferPayload",
         "plural": false,
         "selections": [
@@ -183,12 +170,11 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -198,13 +184,13 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v4,
-                      v5,
-                      v6
+                      (v3/*: any*/),
+                      (v4/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v5/*: any*/)
             ]
           }
         ]
@@ -214,14 +200,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "AcceptOfferMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "commerceBuyerAcceptOffer",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "CommerceBuyerAcceptOfferPayload",
         "plural": false,
         "selections": [
@@ -234,13 +220,12 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v3,
-              v2,
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
-                  v3,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -250,21 +235,35 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4,
-                      v5,
-                      v6
+                      (v2/*: any*/),
+                      (v3/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      (v4/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v5/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "AcceptOfferMutation",
+    "id": null,
+    "text": "mutation AcceptOfferMutation(\n  $input: CommerceBuyerAcceptOfferInput!\n) {\n  commerceBuyerAcceptOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        __typename\n        order {\n          __typename\n          internalID\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '340d46f4243b3decb0fafc4064a9d805';
+(node as any).hash = 'a72db42fb4cf493527dad1d4d6aa1cdc';
 export default node;

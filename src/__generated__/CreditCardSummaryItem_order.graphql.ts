@@ -1,21 +1,19 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _CreditCardSummaryItem_order$ref: unique symbol;
-export type CreditCardSummaryItem_order$ref = typeof _CreditCardSummaryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
 export type CreditCardSummaryItem_order = {
-    readonly creditCard: ({
+    readonly creditCard: {
         readonly brand: string;
-        readonly last_digits: string;
-        readonly expiration_year: number;
-        readonly expiration_month: number;
-    }) | null;
-    readonly " $refType": CreditCardSummaryItem_order$ref;
+        readonly lastDigits: string;
+        readonly expirationYear: number;
+        readonly expirationMonth: number;
+    } | null;
+    readonly " $refType": "CreditCardSummaryItem_order";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CreditCardSummaryItem_order",
   "type": "CommerceOrder",
@@ -41,41 +39,27 @@ const node: ConcreteFragment = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "last_digits",
+          "name": "lastDigits",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "expiration_year",
+          "name": "expirationYear",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "expiration_month",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
+          "name": "expirationMonth",
           "args": null,
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "__id",
-      "name": "id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = '281587f1020c8ac58c8d214993f3c581';
+(node as any).hash = 'a92d2e7b3be6db434a54e7812b352637';
 export default node;

@@ -1,41 +1,39 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _UserSettingsPayments_me$ref: unique symbol;
-export type UserSettingsPayments_me$ref = typeof _UserSettingsPayments_me$ref;
+import { ReaderFragment } from "relay-runtime";
 export type UserSettingsPayments_me = {
-    readonly __id: string;
     readonly id: string;
-    readonly creditCards: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly __id: string;
+    readonly internalID: string;
+    readonly creditCards: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly id: string;
+                readonly internalID: string;
                 readonly brand: string;
-                readonly last_digits: string;
-                readonly expiration_year: number;
-                readonly expiration_month: number;
+                readonly lastDigits: string;
+                readonly expirationYear: number;
+                readonly expirationMonth: number;
                 readonly __typename: string;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": UserSettingsPayments_me$ref;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "UserSettingsPayments_me";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 };
@@ -57,8 +55,8 @@ return {
   },
   "argumentDefinitions": [],
   "selections": [
-    v0,
-    v1,
+    (v0/*: any*/),
+    (v1/*: any*/),
     {
       "kind": "LinkedField",
       "alias": "creditCards",
@@ -86,8 +84,8 @@ return {
               "concreteType": "CreditCard",
               "plural": false,
               "selections": [
-                v0,
-                v1,
+                (v0/*: any*/),
+                (v1/*: any*/),
                 {
                   "kind": "ScalarField",
                   "alias": null,
@@ -98,21 +96,21 @@ return {
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "last_digits",
+                  "name": "lastDigits",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "expiration_year",
+                  "name": "expirationYear",
                   "args": null,
                   "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
                   "alias": null,
-                  "name": "expiration_month",
+                  "name": "expirationMonth",
                   "args": null,
                   "storageKey": null
                 },
@@ -164,5 +162,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '7f6b3cc640e79e84d066e0424e95aa7e';
+(node as any).hash = 'fb1e0b6f4ace5339acfc650f9b020b42';
 export default node;

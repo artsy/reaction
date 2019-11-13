@@ -1,22 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _FollowArtistPopoverRow_artist$ref: unique symbol;
-export type FollowArtistPopoverRow_artist$ref = typeof _FollowArtistPopoverRow_artist$ref;
+import { ReaderFragment } from "relay-runtime";
 export type FollowArtistPopoverRow_artist = {
-    readonly _id: string;
+    readonly internalID: string;
     readonly name: string | null;
-    readonly image: ({
-        readonly cropped: ({
+    readonly image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": FollowArtistPopoverRow_artist$ref;
+        } | null;
+    } | null;
+    readonly " $refType": "FollowArtistPopoverRow_artist";
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistPopoverRow_artist",
   "type": "Artist",
@@ -26,7 +24,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -55,14 +53,12 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 45,
-              "type": "Int!"
+              "value": 45
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 45,
-              "type": "Int!"
+              "value": 45
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -76,24 +72,10 @@ const node: ConcreteFragment = {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = '19a1f04c0c344e48b118ba6835c53d5a';
+(node as any).hash = 'd84437134bc4bd985ba4e09cb554e080';
 export default node;

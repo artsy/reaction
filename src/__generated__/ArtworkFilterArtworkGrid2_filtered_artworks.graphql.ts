@@ -1,70 +1,52 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _ArtworkFilterArtworkGrid2_filtered_artworks$ref: unique symbol;
-export type ArtworkFilterArtworkGrid2_filtered_artworks$ref = typeof _ArtworkFilterArtworkGrid2_filtered_artworks$ref;
 export type ArtworkFilterArtworkGrid2_filtered_artworks = {
-    readonly __id: string;
-    readonly aggregations: ReadonlyArray<({
+    readonly id: string;
+    readonly aggregations: ReadonlyArray<{
         readonly slice: ArtworkAggregation | null;
-        readonly counts: ReadonlyArray<({
+        readonly counts: ReadonlyArray<{
+            readonly value: string;
+            readonly name: string;
+            readonly count: number;
+        } | null> | null;
+    } | null> | null;
+    readonly pageInfo: {
+        readonly hasNextPage: boolean;
+        readonly endCursor: string | null;
+    };
+    readonly pageCursors: {
+        readonly " $fragmentRefs": FragmentRefs<"Pagination_pageCursors">;
+    };
+    readonly edges: ReadonlyArray<{
+        readonly node: {
             readonly id: string;
-            readonly name: string | null;
-            readonly count: number | null;
-        }) | null> | null;
-    }) | null> | null;
-    readonly artworks: ({
-        readonly pageInfo: {
-            readonly hasNextPage: boolean;
-            readonly endCursor: string | null;
-        };
-        readonly pageCursors: ({
-            readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly __id: string;
-            }) | null;
-        }) | null> | null;
-        readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-    }) | null;
-    readonly " $refType": ArtworkFilterArtworkGrid2_filtered_artworks$ref;
+        } | null;
+    } | null> | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
+    readonly " $refType": "ArtworkFilterArtworkGrid2_filtered_artworks";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "ArtworkFilterArtworkGrid2_filtered_artworks",
-  "type": "FilterArtworks",
+  "type": "FilterArtworksConnection",
   "metadata": null,
-  "argumentDefinitions": [
-    {
-      "kind": "LocalArgument",
-      "name": "first",
-      "type": "Int",
-      "defaultValue": 30
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "after",
-      "type": "String",
-      "defaultValue": ""
-    }
-  ],
+  "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -93,7 +75,7 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "id",
+              "name": "value",
               "args": null,
               "storageKey": null
             },
@@ -110,107 +92,82 @@ return {
               "name": "count",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
         }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": "artworks",
-      "name": "artworks_connection",
+      "alias": null,
+      "name": "pageInfo",
       "storageKey": null,
-      "args": [
+      "args": null,
+      "concreteType": "PageInfo",
+      "plural": false,
+      "selections": [
         {
-          "kind": "Variable",
-          "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "hasNextPage",
+          "args": null,
+          "storageKey": null
         },
         {
-          "kind": "Variable",
-          "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "endCursor",
+          "args": null,
+          "storageKey": null
         }
-      ],
-      "concreteType": "ArtworkConnection",
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "pageCursors",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "PageCursors",
       "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "Pagination_pageCursors",
+          "args": null
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "edges",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "FilterArtworksEdge",
+      "plural": true,
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "pageInfo",
+          "name": "node",
           "storageKey": null,
           "args": null,
-          "concreteType": "PageInfo",
+          "concreteType": "Artwork",
           "plural": false,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "hasNextPage",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "endCursor",
-              "args": null,
-              "storageKey": null
-            }
+            (v0/*: any*/)
           ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "pageCursors",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "PageCursors",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "Pagination_pageCursors",
-              "args": null
-            }
-          ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "edges",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "ArtworkEdge",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "node",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Artwork",
-              "plural": false,
-              "selections": [
-                v0
-              ]
-            }
-          ]
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "ArtworkGrid_artworks",
-          "args": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtworkGrid_artworks",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = 'a4bd893a278d6f5768ed5964137f09e1';
+(node as any).hash = '3b186cfca981d2185ec31f15f09ca8f2';
 export default node;

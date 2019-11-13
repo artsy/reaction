@@ -2,8 +2,7 @@ import { color, Sans, Spacer } from "@artsy/palette"
 import { Details_artwork } from "__generated__/Details_artwork.graphql"
 import { SystemContextConsumer } from "Artsy"
 import React from "react"
-// @ts-ignore
-import { ComponentRef, createFragmentContainer, graphql } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import TextLink from "../TextLink"
@@ -43,7 +42,7 @@ export class Details extends React.Component<Props, null> {
           return acc.concat([
             ", ",
             includeLinks
-              ? this.link(artist.name, artist.href, artist.__id + "-" + index)
+              ? this.link(artist.name, artist.href, artist.id + "-" + index)
               : artist.name,
           ])
         }, [])
@@ -208,42 +207,39 @@ export class Details extends React.Component<Props, null> {
   }
 }
 
-export const DetailsFragmentContainer = createFragmentContainer<Props>(
-  Details,
-  {
-    artwork: graphql`
-      fragment Details_artwork on Artwork {
+export const DetailsFragmentContainer = createFragmentContainer(Details, {
+  artwork: graphql`
+    fragment Details_artwork on Artwork {
+      href
+      title
+      date
+      sale_message: saleMessage
+      cultural_maker: culturalMaker
+      artists(shallow: true) {
+        id
         href
-        title
-        date
-        sale_message
-        cultural_maker
-        artists(shallow: true) {
-          __id
-          href
-          name
+        name
+      }
+      collecting_institution: collectingInstitution
+      partner(shallow: true) {
+        name
+        href
+      }
+      sale {
+        is_auction: isAuction
+        is_closed: isClosed
+      }
+      sale_artwork: saleArtwork {
+        counts {
+          bidder_positions: bidderPositions
         }
-        collecting_institution
-        partner(shallow: true) {
-          name
-          href
+        highest_bid: highestBid {
+          display
         }
-        sale {
-          is_auction
-          is_closed
-        }
-        sale_artwork {
-          counts {
-            bidder_positions
-          }
-          highest_bid {
-            display
-          }
-          opening_bid {
-            display
-          }
+        opening_bid: openingBid {
+          display
         }
       }
-    `,
-  }
-)
+    }
+  `,
+})

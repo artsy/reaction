@@ -1,33 +1,31 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtistMeta_artist$ref: unique symbol;
-export type ArtistMeta_artist$ref = typeof _ArtistMeta_artist$ref;
+import { ReaderFragment } from "relay-runtime";
 export type ArtistMeta_artist = {
-    readonly id: string;
+    readonly slug: string;
     readonly name: string | null;
     readonly nationality: string | null;
     readonly birthday: string | null;
     readonly deathday: string | null;
     readonly gender: string | null;
     readonly href: string | null;
-    readonly meta: ({
+    readonly meta: {
         readonly title: string | null;
         readonly description: string | null;
-    }) | null;
+    } | null;
     readonly alternate_names: ReadonlyArray<string | null> | null;
-    readonly image: ({
+    readonly image: {
         readonly versions: ReadonlyArray<string | null> | null;
         readonly large: string | null;
         readonly square: string | null;
-    }) | null;
-    readonly counts: ({
-        readonly artworks: any | null;
-    }) | null;
+    } | null;
+    readonly counts: {
+        readonly artworks: number | null;
+    } | null;
     readonly blurb: string | null;
-    readonly artworks_connection: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+    readonly artworks_connection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly title: string | null;
                 readonly date: string | null;
                 readonly description: string | null;
@@ -35,72 +33,72 @@ export type ArtistMeta_artist = {
                 readonly price_currency: string | null;
                 readonly listPrice: ({
                     readonly __typename: "PriceRange";
-                    readonly minPrice: ({
+                    readonly minPrice: {
                         readonly major: number;
-                    }) | null;
-                    readonly maxPrice: ({
+                    } | null;
+                    readonly maxPrice: {
                         readonly major: number;
                         readonly currencyCode: string;
-                    }) | null;
+                    } | null;
                 } | {
                     readonly __typename: "Money";
                     readonly major: number;
                     readonly currencyCode: string;
                 } | {
-                    /*This will never be '% other', but we need some
+                    /*This will never be '%other', but we need some
                     value in case none of the concrete values match.*/
                     readonly __typename: "%other";
                 }) | null;
                 readonly availability: string | null;
                 readonly href: string | null;
-                readonly image: ({
+                readonly image: {
                     readonly small: string | null;
                     readonly large: string | null;
-                }) | null;
-                readonly partner: ({
+                } | null;
+                readonly partner: {
                     readonly name: string | null;
                     readonly href: string | null;
-                    readonly profile: ({
-                        readonly image: ({
+                    readonly profile: {
+                        readonly image: {
                             readonly small: string | null;
                             readonly large: string | null;
-                        }) | null;
-                    }) | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtistMeta_artist$ref;
+                        } | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtistMeta_artist";
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "title",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "description",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "href",
+  "name": "title",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "description",
   "args": null,
   "storageKey": null
 },
@@ -112,28 +110,20 @@ v4 = {
     {
       "kind": "Literal",
       "name": "version",
-      "value": "large",
-      "type": "[String]"
+      "value": "large"
     }
   ],
   "storageKey": "url(version:\"large\")"
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": "__id",
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
   "alias": null,
   "name": "major",
   "args": null,
   "storageKey": null
 },
-v7 = [
-  v6,
+v6 = [
+  (v5/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -142,7 +132,7 @@ v7 = [
     "storageKey": null
   }
 ],
-v8 = {
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "image",
@@ -159,22 +149,13 @@ v8 = {
         {
           "kind": "Literal",
           "name": "version",
-          "value": "small",
-          "type": "[String]"
+          "value": "small"
         }
       ],
       "storageKey": "url(version:\"small\")"
     },
-    v4,
-    v5
+    (v4/*: any*/)
   ]
-},
-v9 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
 };
 return {
   "kind": "Fragment",
@@ -184,25 +165,13 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "meta",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "ArtistMeta",
-      "plural": false,
-      "selections": [
-        v0,
-        v1
-      ]
-    },
-    {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -231,12 +200,24 @@ return {
       "args": null,
       "storageKey": null
     },
-    v2,
-    v3,
+    (v1/*: any*/),
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "meta",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistMeta",
+      "plural": false,
+      "selections": [
+        (v2/*: any*/),
+        (v3/*: any*/)
+      ]
+    },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "alternate_names",
+      "alias": "alternate_names",
+      "name": "alternateNames",
       "args": null,
       "storageKey": null
     },
@@ -256,7 +237,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v4,
+        (v4/*: any*/),
         {
           "kind": "ScalarField",
           "alias": "square",
@@ -265,13 +246,11 @@ return {
             {
               "kind": "Literal",
               "name": "version",
-              "value": "square",
-              "type": "[String]"
+              "value": "square"
             }
           ],
           "storageKey": "url(version:\"square\")"
-        },
-        v5
+        }
       ]
     },
     {
@@ -301,27 +280,24 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "artworks_connection",
-      "storageKey": "artworks_connection(filter:\"IS_FOR_SALE\",first:10,published:true)",
+      "alias": "artworks_connection",
+      "name": "artworksConnection",
+      "storageKey": "artworksConnection(filter:\"IS_FOR_SALE\",first:10,published:true)",
       "args": [
         {
           "kind": "Literal",
           "name": "filter",
-          "value": "IS_FOR_SALE",
-          "type": "[ArtistArtworksFilters]"
+          "value": "IS_FOR_SALE"
         },
         {
           "kind": "Literal",
           "name": "first",
-          "value": 10,
-          "type": "Int"
+          "value": 10
         },
         {
           "kind": "Literal",
           "name": "published",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -345,6 +321,29 @@ return {
               "concreteType": "Artwork",
               "plural": false,
               "selections": [
+                (v2/*: any*/),
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "date",
+                  "args": null,
+                  "storageKey": null
+                },
+                (v3/*: any*/),
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "category",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": "price_currency",
+                  "name": "priceCurrency",
+                  "args": null,
+                  "storageKey": null
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -363,11 +362,6 @@ return {
                     },
                     {
                       "kind": "InlineFragment",
-                      "type": "Money",
-                      "selections": v7
-                    },
-                    {
-                      "kind": "InlineFragment",
                       "type": "PriceRange",
                       "selections": [
                         {
@@ -379,7 +373,7 @@ return {
                           "concreteType": "Money",
                           "plural": false,
                           "selections": [
-                            v6
+                            (v5/*: any*/)
                           ]
                         },
                         {
@@ -390,34 +384,16 @@ return {
                           "args": null,
                           "concreteType": "Money",
                           "plural": false,
-                          "selections": v7
+                          "selections": (v6/*: any*/)
                         }
                       ]
+                    },
+                    {
+                      "kind": "InlineFragment",
+                      "type": "Money",
+                      "selections": (v6/*: any*/)
                     }
                   ]
-                },
-                v0,
-                v1,
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "category",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "price_currency",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "date",
-                  "args": null,
-                  "storageKey": null
                 },
                 {
                   "kind": "ScalarField",
@@ -426,8 +402,8 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v2,
-                v8,
+                (v1/*: any*/),
+                (v7/*: any*/),
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -437,8 +413,8 @@ return {
                   "concreteType": "Partner",
                   "plural": false,
                   "selections": [
-                    v3,
-                    v2,
+                    (v0/*: any*/),
+                    (v1/*: any*/),
                     {
                       "kind": "LinkedField",
                       "alias": null,
@@ -448,23 +424,19 @@ return {
                       "concreteType": "Profile",
                       "plural": false,
                       "selections": [
-                        v8,
-                        v9
+                        (v7/*: any*/)
                       ]
-                    },
-                    v9
+                    }
                   ]
-                },
-                v9
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v9
+    }
   ]
 };
 })();
-(node as any).hash = 'd39c9878d26bce0520f066843a619884';
+(node as any).hash = '61fd906cad15ffde99e3d32638becb41';
 export default node;

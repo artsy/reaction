@@ -1,11 +1,11 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Collections_categories$ref } from "./Collections_categories.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type collectRoutes_MarketingCollectionsAppQueryVariables = {};
 export type collectRoutes_MarketingCollectionsAppQueryResponse = {
-    readonly categories: ReadonlyArray<{
-        readonly " $fragmentRefs": Collections_categories$ref;
+    readonly marketingCategories: ReadonlyArray<{
+        readonly " $fragmentRefs": FragmentRefs<"Collections_marketingCategories">;
     }>;
 };
 export type collectRoutes_MarketingCollectionsAppQuery = {
@@ -17,29 +17,24 @@ export type collectRoutes_MarketingCollectionsAppQuery = {
 
 /*
 query collectRoutes_MarketingCollectionsAppQuery {
-  categories: marketingCategories @principalField {
-    ...Collections_categories
+  marketingCategories @principalField {
+    ...Collections_marketingCategories
   }
 }
 
-fragment Collections_categories on MarketingCollectionCategory {
+fragment Collections_marketingCategories on MarketingCollectionCategory {
   name
   collections {
     slug
     headerImage
     title
-    __id: id
+    id
   }
 }
 */
 
 const node: ConcreteRequest = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "collectRoutes_MarketingCollectionsAppQuery",
-  "id": null,
-  "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  categories: marketingCategories @principalField {\n    ...Collections_categories\n  }\n}\n\nfragment Collections_categories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    __id: id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "collectRoutes_MarketingCollectionsAppQuery",
@@ -49,7 +44,7 @@ const node: ConcreteRequest = {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "categories",
+        "alias": null,
         "name": "marketingCategories",
         "storageKey": null,
         "args": null,
@@ -58,7 +53,7 @@ const node: ConcreteRequest = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Collections_categories",
+            "name": "Collections_marketingCategories",
             "args": null
           }
         ]
@@ -72,7 +67,7 @@ const node: ConcreteRequest = {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "categories",
+        "alias": null,
         "name": "marketingCategories",
         "storageKey": null,
         "args": null,
@@ -118,7 +113,7 @@ const node: ConcreteRequest = {
               },
               {
                 "kind": "ScalarField",
-                "alias": "__id",
+                "alias": null,
                 "name": "id",
                 "args": null,
                 "storageKey": null
@@ -128,7 +123,14 @@ const node: ConcreteRequest = {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "collectRoutes_MarketingCollectionsAppQuery",
+    "id": null,
+    "text": "query collectRoutes_MarketingCollectionsAppQuery {\n  marketingCategories @principalField {\n    ...Collections_marketingCategories\n  }\n}\n\nfragment Collections_marketingCategories on MarketingCollectionCategory {\n  name\n  collections {\n    slug\n    headerImage\n    title\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
-(node as any).hash = '81db5fa0b5f99948b02522c13d2f9278';
+(node as any).hash = 'fef524f8337c800a5308955689bca0b6';
 export default node;

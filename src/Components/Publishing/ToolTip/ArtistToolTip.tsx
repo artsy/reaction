@@ -50,8 +50,8 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       carousel,
       formatted_nationality_and_birthday,
       href,
-      id,
-      _id,
+      slug,
+      internalID,
       name,
     } = artist
     const {
@@ -64,8 +64,8 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
 
     const trackingData: FollowTrackingData = {
       contextModule: "intext tooltip",
-      entity_id: _id,
-      entity_slug: id,
+      entity_id: internalID,
+      entity_slug: slug,
       entity_type: "artist",
     }
 
@@ -90,7 +90,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
               )}
             </TitleDate>
             <FollowArtistButton
-              artist={artists[id]}
+              artist={artists[slug]}
               trackingData={trackingData}
               onOpenAuthModal={onOpenAuthModal}
             />
@@ -164,9 +164,9 @@ export const ArtistTooltipContainer = track({})(
     artist: graphql`
       fragment ArtistToolTip_artist on Artist {
         name
-        id
-        _id
-        formatted_nationality_and_birthday
+        slug
+        internalID
+        formatted_nationality_and_birthday: formattedNationalityAndBirthday
         href
         blurb
         carousel {

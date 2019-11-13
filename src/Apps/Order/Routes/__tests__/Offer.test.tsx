@@ -1,3 +1,4 @@
+import { OfferTestQueryRawResponse } from "__generated__/OfferTestQuery.graphql"
 import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
@@ -25,7 +26,10 @@ const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
 jest.mock("Apps/Order/Utils/trackPageView")
 
-const testOrder = { ...UntouchedOfferOrder, id: "1234" }
+const testOrder: OfferTestQueryRawResponse["order"] = {
+  ...UntouchedOfferOrder,
+  internalID: "1234",
+}
 
 describe("Offer InitialMutation", () => {
   const { buildPage, mutations, routes } = createTestEnv({
@@ -38,7 +42,7 @@ describe("Offer InitialMutation", () => {
     },
     TestPage: OrderAppTestPage,
     query: graphql`
-      query OfferTestQuery {
+      query OfferTestQuery @raw_response_type {
         order: commerceOrder(id: "unused") {
           ...Offer_order
         }

@@ -5,9 +5,9 @@ describe("hasFilters", () => {
     expect(
       hasFilters({
         height: "*-*",
-        major_periods: [],
+        majorPeriods: [],
         page: 1,
-        price_range: "*-*",
+        priceRange: "*-*",
         sort: "-decayed_merch",
         width: "*-*",
       })
@@ -19,9 +19,9 @@ describe("hasFilters", () => {
       hasFilters({
         acquireable: true,
         height: "*-*",
-        major_periods: [],
+        majorPeriods: [],
         page: 1,
-        price_range: "*-*",
+        priceRange: "*-*",
         sort: "-decayed_merch",
         width: "*-*",
       })

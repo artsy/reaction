@@ -23,7 +23,9 @@ export class ArtworkImageBrowserContainer extends React.Component<
       return null
     }
 
-    const defaultImageIndex = images.findIndex(e => e.id === image.id)
+    const defaultImageIndex = images.findIndex(
+      e => e.internalID === image.internalID
+    )
     return (
       <>
         <ArtworkImageBrowser
@@ -47,21 +49,21 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
 >(ArtworkImageBrowserContainer, {
   artwork: graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
-      image_alt: to_s
+      image_alt: formattedMetadata
       ...ArtworkActions_artwork
       image {
-        id
+        internalID
       }
       images {
-        id
+        internalID
         uri: url(version: ["large"])
         placeholder: resized(width: 30, height: 30, version: "small") {
           url
         }
-        aspectRatio: aspect_ratio
-        is_zoomable
-        is_default
-        deepZoom: deep_zoom {
+        aspectRatio: aspectRatio
+        is_zoomable: isZoomable
+        is_default: isDefault
+        deepZoom: deepZoom {
           Image {
             xmlns
             Url

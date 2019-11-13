@@ -1,5 +1,8 @@
 import {
-  mockResolver,
+  TransactionDetailsSummaryItemTestQueryRawResponse,
+  TransactionDetailsSummaryItemTestQueryResponse,
+} from "__generated__/TransactionDetailsSummaryItemTestQuery.graphql"
+import {
   OfferOrderWithOffers,
   OfferWithTotals,
   UntouchedBuyOrder,
@@ -12,44 +15,42 @@ import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDe
 
 jest.unmock("react-relay")
 
-const transactionSummaryBuyOrder = {
+const transactionSummaryBuyOrder: TransactionDetailsSummaryItemTestQueryRawResponse["order"] = {
   ...UntouchedBuyOrder,
   shippingTotal: "$12.00",
-  shippingTotalCents: "1200",
+  shippingTotalCents: 1200,
   taxTotal: "$3.25",
-  taxTotalCents: "325",
+  taxTotalCents: 325,
   itemsTotal: "$200.00",
   buyerTotal: "$215.25",
 }
 
-const transactionSummaryOfferOrder = {
+const transactionSummaryOfferOrder: TransactionDetailsSummaryItemTestQueryRawResponse["order"] = {
   ...OfferOrderWithOffers,
   shippingTotal: "$12.00",
-  shippingTotalCents: "1200",
+  shippingTotalCents: 1200,
   taxTotal: "$3.25",
-  taxTotalCents: "325",
+  taxTotalCents: 325,
   itemsTotal: "$200.00",
   buyerTotal: "$215.25",
 }
 
 const render = (
-  order,
+  order: TransactionDetailsSummaryItemTestQueryRawResponse["order"],
   extraProps?: Partial<
     ExtractProps<typeof TransactionDetailsSummaryItemFragmentContainer>
   >
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: TransactionDetailsSummaryItemTestQueryResponse) => (
       <TransactionDetailsSummaryItemFragmentContainer
         {...props}
         {...extraProps}
       />
     ),
-    mockResolvers: mockResolver({
-      ...order,
-    }),
+    mockData: { order },
     query: graphql`
-      query TransactionDetailsSummaryItemTestQuery {
+      query TransactionDetailsSummaryItemTestQuery @raw_response_type {
         order: commerceOrder(id: "whatevs") {
           ...TransactionDetailsSummaryItem_order
         }
@@ -168,6 +169,7 @@ describe("TransactionDetailsSummaryItem", () => {
           ...transactionSummaryOfferOrder,
           lastOffer: {
             ...OfferWithTotals,
+            id: "seller-offer-id",
             amount: "£405.00",
             fromParticipant: "SELLER",
           },
@@ -186,6 +188,7 @@ describe("TransactionDetailsSummaryItem", () => {
           ...transactionSummaryOfferOrder,
           lastOffer: {
             ...OfferWithTotals,
+            id: "seller-offer-id",
             amount: "£405.00",
             fromParticipant: "SELLER",
           },

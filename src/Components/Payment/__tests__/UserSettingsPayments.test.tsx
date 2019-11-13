@@ -21,25 +21,26 @@ jest.mock("react-stripe-elements", () => ({
 
 const mockMe: UserSettingsPayments_me = {
   " $refType": null,
-  id: "1234",
-  __id: "abcd1234",
+  internalID: "1234",
+  id: "abcd1234",
   creditCards: { edges: [] },
 }
 
 const mockCard: CreditCardType = {
-  __id: "abc123",
-  id: "123",
-  last_digits: "3456",
-  expiration_month: 2,
-  expiration_year: 2040,
+  " $refType": null,
+  id: "abc123",
+  internalID: "123",
+  lastDigits: "3456",
+  expirationMonth: 2,
+  expirationYear: 2040,
   brand: "Visa",
   __typename: "CreditCard",
 }
 
 const mockMeWithCards: UserSettingsPayments_me = {
   " $refType": null,
-  id: "1234",
-  __id: "abcd1234",
+  internalID: "1234",
+  id: "abcd1234",
   creditCards: {
     edges: [{ node: { ...mockCard } }, { node: { ...mockCard } }],
   },

@@ -180,28 +180,28 @@ export const CVPaginationContainer = createPaginationContainer(
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
-          sort: { type: "PartnerShowSorts", defaultValue: START_AT_DESC }
-          at_a_fair: { type: "Boolean", defaultValue: false }
-          solo_show: { type: "Boolean", defaultValue: false }
-          is_reference: { type: "Boolean", defaultValue: true }
-          visible_to_public: { type: "Boolean", defaultValue: false }
+          sort: { type: "ShowSorts", defaultValue: START_AT_DESC }
+          atAFair: { type: "Boolean", defaultValue: false }
+          soloShow: { type: "Boolean", defaultValue: false }
+          isReference: { type: "Boolean", defaultValue: true }
+          visibleToPublic: { type: "Boolean", defaultValue: false }
         ) {
-        id
+        slug
         showsConnection(
           first: $count
           after: $cursor
           sort: $sort
-          at_a_fair: $at_a_fair
-          solo_show: $solo_show
-          is_reference: $is_reference
-          visible_to_public: $visible_to_public
+          atAFair: $atAFair
+          soloShow: $soloShow
+          isReference: $isReference
+          visibleToPublic: $visibleToPublic
         ) @connection(key: "Artist_showsConnection") {
           pageInfo {
             hasNextPage
           }
           edges {
             node {
-              __id
+              id
               partner {
                 ... on ExternalPartner {
                   name
@@ -212,7 +212,7 @@ export const CVPaginationContainer = createPaginationContainer(
                 }
               }
               name
-              start_at(format: "YYYY")
+              start_at: startAt(format: "YYYY")
               city
               href
             }
@@ -236,7 +236,7 @@ export const CVPaginationContainer = createPaginationContainer(
         ...fragmentVariables,
         count,
         cursor,
-        artistID: props.artist.id,
+        artistID: props.artist.slug,
       }
     },
     query: graphql`
@@ -244,11 +244,11 @@ export const CVPaginationContainer = createPaginationContainer(
         $count: Int
         $cursor: String
         $artistID: String!
-        $sort: PartnerShowSorts
-        $at_a_fair: Boolean
-        $solo_show: Boolean
-        $is_reference: Boolean
-        $visible_to_public: Boolean
+        $sort: ShowSorts
+        $atAFair: Boolean
+        $soloShow: Boolean
+        $isReference: Boolean
+        $visibleToPublic: Boolean
       ) {
         artist(id: $artistID) {
           ...CVItem_artist
@@ -256,10 +256,10 @@ export const CVPaginationContainer = createPaginationContainer(
               sort: $sort
               count: $count
               cursor: $cursor
-              at_a_fair: $at_a_fair
-              solo_show: $solo_show
-              is_reference: $is_reference
-              visible_to_public: $visible_to_public
+              atAFair: $atAFair
+              soloShow: $soloShow
+              isReference: $isReference
+              visibleToPublic: $visibleToPublic
             )
         }
       }

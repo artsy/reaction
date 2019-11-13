@@ -1,3 +1,4 @@
+import { RegisterValidTestQueryRawResponse } from "__generated__/RegisterValidTestQuery.graphql"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -57,17 +58,16 @@ const setupTestEnv = () => {
     TestPage: RegisterTestPage,
     Component: RegisterRouteFragmentContainer,
     query: graphql`
-      query RegisterValidTestQuery {
+      query RegisterValidTestQuery @raw_response_type {
         sale(id: "example-auction-id") {
           ...Register_sale
         }
-
         me {
           ...Register_me
         }
       }
     `,
-    defaultData: RegisterQueryResponseFixture,
+    defaultData: RegisterQueryResponseFixture as RegisterValidTestQueryRawResponse,
     defaultMutationResults: {
       createCreditCard: {},
       createBidder: {},
@@ -100,7 +100,7 @@ describe("Routes/Register ", () => {
     expect(mockPostEvent).toBeCalledWith({
       action_type: Schema.ActionType.RegistrationSubmitFailed,
       context_page: Schema.PageName.AuctionRegistrationPage,
-      auction_slug: RegisterQueryResponseFixture.sale.id,
+      auction_slug: RegisterQueryResponseFixture.sale.slug,
       auction_state: RegisterQueryResponseFixture.sale.status,
       error_messages: [
         "You must agree to the Conditions of Sale",
@@ -111,8 +111,8 @@ describe("Routes/Register ", () => {
         "Postal code is required",
         "Telephone is required",
       ],
-      sale_id: RegisterQueryResponseFixture.sale._id,
-      user_id: RegisterQueryResponseFixture.me.id,
+      sale_id: RegisterQueryResponseFixture.sale.internalID,
+      user_id: RegisterQueryResponseFixture.me.internalID,
     })
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
 
@@ -135,17 +135,17 @@ describe("Routes/Register ", () => {
     expect(mockPostEvent).toBeCalledWith({
       action_type: Schema.ActionType.RegistrationSubmitted,
       context_page: Schema.PageName.AuctionRegistrationPage,
-      auction_slug: RegisterQueryResponseFixture.sale.id,
+      auction_slug: RegisterQueryResponseFixture.sale.slug,
       auction_state: RegisterQueryResponseFixture.sale.status,
-      bidder_id: createBidderSuccessful.createBidder.bidder.id,
-      sale_id: RegisterQueryResponseFixture.sale._id,
-      user_id: RegisterQueryResponseFixture.me.id,
+      bidder_id: createBidderSuccessful.createBidder.bidder.internalID,
+      sale_id: RegisterQueryResponseFixture.sale.internalID,
+      user_id: RegisterQueryResponseFixture.me.internalID,
     })
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
 
     expect(window.location.assign).toHaveBeenCalledWith(
       `https://example.com/auction/${
-        RegisterQueryResponseFixture.sale.id
+        RegisterQueryResponseFixture.sale.slug
       }/confirm-registration`
     )
   })
@@ -172,11 +172,11 @@ describe("Routes/Register ", () => {
     expect(mockPostEvent).toBeCalledWith({
       action_type: Schema.ActionType.RegistrationSubmitFailed,
       context_page: Schema.PageName.AuctionRegistrationPage,
-      auction_slug: RegisterQueryResponseFixture.sale.id,
+      auction_slug: RegisterQueryResponseFixture.sale.slug,
       auction_state: RegisterQueryResponseFixture.sale.status,
       error_messages: ["The `createCreditCard` mutation failed."],
-      sale_id: RegisterQueryResponseFixture.sale._id,
-      user_id: RegisterQueryResponseFixture.me.id,
+      sale_id: RegisterQueryResponseFixture.sale.internalID,
+      user_id: RegisterQueryResponseFixture.me.internalID,
     })
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
 

@@ -50,13 +50,13 @@ export class ArtworkApp extends React.Component<Props> {
   trackProductView() {
     const {
       tracking,
-      artwork: { is_acquireable, is_in_auction, _id },
+      artwork: { is_acquireable, is_in_auction, internalID },
     } = this.props
 
     if (is_acquireable || is_in_auction) {
       const trackingData = {
         action_type: Schema.ActionType.ViewedProduct,
-        product_id: _id,
+        product_id: internalID,
       }
       if (tracking) tracking.trackEvent(trackingData)
     }
@@ -76,7 +76,7 @@ export class ArtworkApp extends React.Component<Props> {
 
   trackPageview() {
     const {
-      artwork: { price, availability, is_offerable, is_acquireable },
+      artwork: { listPrice, availability, is_offerable, is_acquireable },
     } = this.props
 
     // Pageview
@@ -85,7 +85,7 @@ export class ArtworkApp extends React.Component<Props> {
       acquireable: is_acquireable,
       offerable: is_offerable,
       availability,
-      price_listed: !!price,
+      price_listed: !!listPrice,
     }
 
     if (typeof window.analytics !== "undefined") {
@@ -121,7 +121,6 @@ export class ArtworkApp extends React.Component<Props> {
 
   render() {
     const { artwork } = this.props
-
     return (
       <AppContainer>
         <HorizontalPadding>
@@ -211,15 +210,25 @@ export class ArtworkApp extends React.Component<Props> {
 export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
   artwork: graphql`
     fragment ArtworkApp_artwork on Artwork {
-      id
-      _id
-      is_acquireable
-      is_offerable
+      slug
+      internalID
+      is_acquireable: isAcquireable
+      is_offerable: isOfferable
       availability
-      price
-      is_in_auction
+      # FIXME: The props in the component need to update to reflect
+      # the new structure for price.
+      listPrice {
+        ... on PriceRange {
+          display
+        }
+        ... on Money {
+          display
+        }
+      }
+      is_in_auction: isInAuction
       artists {
         id
+        slug
         ...ArtistInfo_artist
       }
       artist {
