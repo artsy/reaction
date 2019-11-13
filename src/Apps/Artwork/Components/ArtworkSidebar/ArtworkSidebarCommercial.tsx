@@ -209,7 +209,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                   artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
-                    state => state.selectedEditionSet.id
+                    state => state.selectedEditionSet.internalID
                   ),
                 },
               },
@@ -293,7 +293,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                   artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
-                    state => state.selectedEditionSet.id
+                    state => state.selectedEditionSet.internalID
                   ),
                 },
               },
