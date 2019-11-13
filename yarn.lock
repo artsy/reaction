@@ -16250,10 +16250,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
 
-vscode-apollo-relay@1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/vscode-apollo-relay/-/vscode-apollo-relay-1.4.3.tgz#fb3a778c44d077b305964b3b41aef9e7f21e904f"
-  integrity sha512-U9ZXGEtRYpkr/wt60E65olUxxjXGibtAqDEdRg08/5RlNyKt4fyN1Luq35up3aHdMPC7ht9/KhElwUBbf967ww==
+vscode-apollo-relay@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/vscode-apollo-relay/-/vscode-apollo-relay-1.5.0.tgz#cd427a49093c3c055ef0f0028bd46deb1e225fc0"
+  integrity sha512-NWOEEmB0s1PZgIntLlpHPuRA95TPvVJfw4bSePphr+rY0e+4XvuvVvxe+EE/9BirM8G2cGY1UM4yukWpP778Qg==
 
 vscode-css-languageservice@^3.0.12:
   version "3.0.12"
