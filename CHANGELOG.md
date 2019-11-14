@@ -1,3 +1,15 @@
+# v22.0.4 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- [Payment] Fix CC removal by using internalID [#3012](https://github.com/artsy/reaction/pull/3012) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v22.0.3 (Thu Nov 14 2019)
 
 #### 🐛  Bug Fix
