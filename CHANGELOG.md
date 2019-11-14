@@ -1,3 +1,15 @@
+# v22.0.2 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- @eessex => [v2] Correct title for medium-based collect pages [#3009](https://github.com/artsy/reaction/pull/3009) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v22.0.1 (Thu Nov 14 2019)
 
 #### 🐛  Bug Fix
