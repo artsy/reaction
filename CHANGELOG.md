@@ -1,3 +1,15 @@
+# v22.0.3 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure user agent gets passed from SSR Relay Environment [#3010](https://github.com/artsy/reaction/pull/3010) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v22.0.2 (Thu Nov 14 2019)
 
 #### 🐛  Bug Fix
