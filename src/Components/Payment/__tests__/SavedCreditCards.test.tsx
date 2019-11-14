@@ -30,12 +30,14 @@ describe("SavedCreditCards", () => {
       me: { id: "1234" },
       creditCards: [
         {
+          internalID: "cc-db-id-1224",
           brand: "Visa",
           lastDigits: "1224",
           expirationYear: "2020",
           expirationMonth: "05",
         },
         {
+          internalID: "cc-db-id-2345",
           brand: "Visa",
           lastDigits: "2345",
           expirationYear: "2024",
@@ -76,6 +78,17 @@ describe("SavedCreditCards", () => {
       .first()
       .find(RemoveLink)
       .simulate("click")
+
+    expect(mutationMock).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        variables: {
+          input: {
+            id: "cc-db-id-1224",
+          },
+        },
+      })
+    )
 
     expect(
       creditCardsWrapper

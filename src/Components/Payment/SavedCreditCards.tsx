@@ -108,7 +108,7 @@ export class CreditCard extends React.Component<
             }
           `,
           variables: {
-            input: { id: this.props.creditCard.id },
+            input: { id: this.props.creditCard.internalID },
           },
           updater: (store, data) => this.onCreditCardDeleted(store, data),
         }
