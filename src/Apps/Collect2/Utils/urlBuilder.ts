@@ -1,5 +1,8 @@
 import { ArtworkFilters } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
-import { removeDefaultValues } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+import {
+  paramsToSnakeCase,
+  removeDefaultValues,
+} from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import qs from "qs"
 
 export const buildUrlForCollectApp = (state: ArtworkFilters): string => {
@@ -16,5 +19,5 @@ const buildCollectUrlFragmentFromState = (state: ArtworkFilters): string => {
     return emptyOrSpecificMedium
   }
 
-  return `${emptyOrSpecificMedium}?${qs.stringify(params)}`
+  return `${emptyOrSpecificMedium}?${qs.stringify(paramsToSnakeCase(params))}`
 }

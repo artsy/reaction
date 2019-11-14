@@ -1,10 +1,28 @@
 import { ArtworkFilters } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
+import { camelCase, snakeCase } from "lodash"
 import qs from "qs"
+
+// Utility method to convert keys of a hash into snake case.
+export const paramsToSnakeCase = params => {
+  return Object.entries(params).reduce((acc, [field, value]) => {
+    return { ...acc, [snakeCase(field)]: value }
+  }, {})
+}
+
+// Utility method to convert keys of a hash into camel case.
+// It will fully capitalize an `_id` suffix as well.
+export const paramsToCamelCase = params => {
+  return Object.entries(params).reduce((acc, [field, value]) => {
+    const camelCasedField = camelCase(field).replace(/Id$/, "ID")
+    return { ...acc, [camelCasedField]: value }
+  }, {})
+}
 
 export const buildUrl = (state: ArtworkFilters): string => {
   const params = removeDefaultValues(state)
-  const queryString = qs.stringify(params)
+
+  const queryString = qs.stringify(paramsToSnakeCase(params))
   const url = queryString
     ? `${window.location.pathname}?${queryString}`
     : window.location.pathname

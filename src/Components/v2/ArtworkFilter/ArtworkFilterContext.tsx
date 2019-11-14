@@ -4,6 +4,7 @@ import useDeepCompareEffect from "use-deep-compare-effect"
 import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
+import { paramsToCamelCase } from "./Utils/urlBuilder"
 
 /**
  * Initial filter state
@@ -160,7 +161,7 @@ export const ArtworkFilterContextProvider: React.FC<
 }) => {
   const initialFilterState = {
     ...initialArtworkFilterState,
-    ...filters,
+    ...paramsToCamelCase(filters),
   }
 
   const [artworkFilterState, dispatch] = useReducer(
