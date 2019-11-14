@@ -112,7 +112,7 @@ describe("ArtworkFilterContext", () => {
         },
       })
       expect(context.filters.acquireable).toEqual(true)
-      expect(context.filters.at_auction).toEqual(true)
+      expect(context.filters.atAuction).toEqual(true)
 
       act(() => {
         context.resetFilters()

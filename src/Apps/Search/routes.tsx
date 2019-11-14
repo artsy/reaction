@@ -8,11 +8,12 @@ import { SearchResultsEntityRouteFragmentContainer as SearchResultsEntityRoute }
 
 import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
 import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter"
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
 const prepareVariables = (_params, { location }) => {
   return {
-    ...location.query,
+    ...paramsToCamelCase(location.query),
     keyword: location.query.term,
   }
 }

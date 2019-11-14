@@ -4,6 +4,7 @@ import { graphql } from "react-relay"
 import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
 
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import {
   CollectionAppQuery,
   CollectionRefetchContainer as CollectionApp,
@@ -106,7 +107,7 @@ function initializeVariablesWithFilterState(params, props) {
 
   const state = {
     sort: "-decayed_merch",
-    ...initialFilterState,
+    ...paramsToCamelCase(initialFilterState),
     ...params,
   }
 

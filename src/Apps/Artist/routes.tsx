@@ -3,6 +3,7 @@ import {
   initialArtworkFilterState,
 } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { Redirect, RouteConfig } from "found"
 import { graphql } from "react-relay"
 import { ArtistAppFragmentContainer as ArtistApp } from "./ArtistApp"
@@ -38,13 +39,14 @@ export const routes: RouteConfig[] = [
           // FIXME: The initial render includes `location` in props, but subsequent
           // renders (such as tabbing back to this route in your browser) will not.
           const filterStateFromUrl = props.location ? props.location.query : {}
+
           const filterParams = {
             ...initialArtworkFilterState,
-            ...filterStateFromUrl,
+            ...paramsToCamelCase(filterStateFromUrl),
             ...params,
           }
 
-          filterParams.hasFilter = Object.entries(filterStateFromUrl).some(
+          filterParams.hasFilter = Object.entries(filterParams).some(
             ([k, v]: [keyof ArtworkFilters, any]) => {
               return !isDefaultFilter(k, v)
             }
