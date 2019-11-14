@@ -91,6 +91,26 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
+"@babel/core@7.7.2":
+  version "7.7.2"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.7.2.tgz#ea5b99693bcfc058116f42fa1dd54da412b29d91"
+  integrity sha512-eeD7VEZKfhK1KUXGiyPFettgF3m513f8FoBSWiQ1xTvl1RAopLs42Wp9+Ze911I6H0N9lNqJMDgoZT7gHsipeQ==
+  dependencies:
+    "@babel/code-frame" "^7.5.5"
+    "@babel/generator" "^7.7.2"
+    "@babel/helpers" "^7.7.0"
+    "@babel/parser" "^7.7.2"
+    "@babel/template" "^7.7.0"
+    "@babel/traverse" "^7.7.2"
+    "@babel/types" "^7.7.2"
+    convert-source-map "^1.7.0"
+    debug "^4.1.0"
+    json5 "^2.1.0"
+    lodash "^4.17.13"
+    resolve "^1.3.2"
+    semver "^5.4.1"
+    source-map "^0.5.0"
+
 "@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.4.5":
   version "7.4.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.4.5.tgz#081f97e8ffca65a9b4b0fdc7e274e703f000c06a"
@@ -127,26 +147,6 @@
     debug "^4.1.0"
     json5 "^2.1.0"
     lodash "^4.17.11"
-    resolve "^1.3.2"
-    semver "^5.4.1"
-    source-map "^0.5.0"
-
-"@babel/core@^7.7.2":
-  version "7.7.2"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.7.2.tgz#ea5b99693bcfc058116f42fa1dd54da412b29d91"
-  integrity sha512-eeD7VEZKfhK1KUXGiyPFettgF3m513f8FoBSWiQ1xTvl1RAopLs42Wp9+Ze911I6H0N9lNqJMDgoZT7gHsipeQ==
-  dependencies:
-    "@babel/code-frame" "^7.5.5"
-    "@babel/generator" "^7.7.2"
-    "@babel/helpers" "^7.7.0"
-    "@babel/parser" "^7.7.2"
-    "@babel/template" "^7.7.0"
-    "@babel/traverse" "^7.7.2"
-    "@babel/types" "^7.7.2"
-    convert-source-map "^1.7.0"
-    debug "^4.1.0"
-    json5 "^2.1.0"
-    lodash "^4.17.13"
     resolve "^1.3.2"
     semver "^5.4.1"
     source-map "^0.5.0"
@@ -1524,7 +1524,7 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.3.2"
 
-"@babel/preset-typescript@^7.7.2":
+"@babel/preset-typescript@7.7.2":
   version "7.7.2"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.7.2.tgz#f71c8bba2ae02f11b29dbf7d6a35f47bbe011632"
   integrity sha512-1B4HthAelaLGfNRyrWqJtBEjXX1ulThCrLQ5B2VOtEAznWFIFXFJahgXImqppy66lx/Oh+cOSCQdJzZqh2Jh5g==
@@ -2930,7 +2930,7 @@
     "@types/react" "*"
     "@types/react-transition-group" "*"
 
-"@types/react-relay@< 7":
+"@types/react-relay@6.0.2":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-6.0.2.tgz#96accd6814987bc00c2d690f102e5737c5fb3783"
   integrity sha512-Mr136B9p+reUsTFWu30JD8RfDIWTl5yiIAqn/l72WkTjEWwl5j/t3o7o8HGchqn1SCHC6eaJ6Dg3gvhMayfcKw==
@@ -2991,7 +2991,7 @@
     graphql "^14.5.3"
     typescript "^3.0.0"
 
-"@types/relay-compiler@<7":
+"@types/relay-compiler@6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@types/relay-compiler/-/relay-compiler-6.0.1.tgz#c33dace63e70d33ecf932bfe6abe911b71c9839c"
   integrity sha512-to0ntZAGmgQanFpBQHOuvpULJFATD5z7We+H2gM7QPNzK/0P4jScweBmTGKSd8idnFfemPdXbVNEfKL9Mjd26g==
@@ -2999,14 +2999,14 @@
     "@types/relay-runtime" "*"
     graphql "^14.5.3"
 
-"@types/relay-config@<7":
+"@types/relay-config@6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@types/relay-config/-/relay-config-6.0.0.tgz#eedd2d021774f852254c4fd878cd53ee02777e41"
   integrity sha512-cdYLavCAMrRxuHE67zQlWZjm9du6VBJ0KE6afMmuHa351Gv+mUwTZgPWooOwkhQSl/QdS5YHSgWZVFzr83A7Dw==
   dependencies:
     "@types/relay-compiler" "*"
 
-"@types/relay-runtime@*", "@types/relay-runtime@< 7":
+"@types/relay-runtime@*", "@types/relay-runtime@6.0.9":
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-6.0.9.tgz#261b1575e5a256fd9474a6cc078981c08597b03c"
   integrity sha512-VyfieDPYEwq86PDgqWwHMluWtD+hUp8qsdcRn0ef39hfVRXE7VK9QHB/2mTyW/OkBqO7ZnUA7hejPDEdhkoSDA==
@@ -4108,7 +4108,7 @@ babel-plugin-react-docgen@^3.0.0:
     react-docgen "^4.1.0"
     recast "^0.14.7"
 
-"babel-plugin-relay@< 7":
+babel-plugin-relay@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-relay/-/babel-plugin-relay-6.0.0.tgz#c4df194f36de47ff4eebef7000b0cd355c243faf"
   integrity sha512-PUMfsG2RXrJc0tLCwTP49vgC394n92cf7cF2zPpGOM133ohm16cJWQuCOXA/MNX4j7BdYNFD4OOLxFmwIxlq8w==
@@ -13645,7 +13645,7 @@ relateurl@0.2.x:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-"relay-compiler-language-typescript@< 10":
+relay-compiler-language-typescript@9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-9.0.1.tgz#59e2c4e6951099045540be5fccd38149a63ffc6a"
   integrity sha512-ekbGcS3UNI29yDtXSUJzxnf6ngBTB6CxI2BHPRdZFTuYrG/m4TRvGOi9vPGEraq14ypB/dGRAglt70nCDduxBA==
@@ -13653,7 +13653,7 @@ relateurl@0.2.x:
     immutable "^4.0.0-rc.12"
     invariant "^2.2.4"
 
-relay-compiler@<7:
+relay-compiler@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-6.0.0.tgz#a70ecb39b59dea507261aeda704c071326d69d5e"
   integrity sha512-8K8cCwrOTqu3usF8GXQ+JEgxcTxJ5qVFqfNpfMYrRpMraXrBmykcLRpj38p2MxtcjyqkE2ZnUe5huW5/469obA==
@@ -13675,7 +13675,7 @@ relay-compiler@<7:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-"relay-config@< 7":
+relay-config@6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/relay-config/-/relay-config-6.0.0.tgz#9edd76b1208f2f0c8fe0ab2fd6b0749cac912ce5"
   integrity sha512-GBJviiK0U0APnrJf5RQu8HaNdRSN7MkCR3Ccgod0vOBbrQScHyzKqcuefkgr1lZxP85JuC6WC5FJn94nrUiE4Q==
