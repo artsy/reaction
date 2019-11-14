@@ -1,3 +1,20 @@
+# v22.0.1 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [v2] Strictly support and generate snake case filter params in URLs [#3008](https://github.com/artsy/reaction/pull/3008) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3006](https://github.com/artsy/reaction/pull/3006) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v22.0.0 (Wed Nov 13 2019)
 
 #### 💥  Breaking Change
