@@ -11,7 +11,7 @@ export function getMetadataForMedium(medium) {
       title = "Photography"
       mediumDescription = "140,000 photographs"
       break
-    case "sculptures":
+    case "sculpture":
       title = "Sculptures"
       mediumDescription = "90,000 sculptures"
       break

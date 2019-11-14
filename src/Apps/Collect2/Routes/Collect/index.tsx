@@ -27,18 +27,14 @@ export interface CollectAppProps {
   marketingHubCollections: Collect_marketingHubCollections
   viewer: collectRoutes_ArtworkFilterQueryResponse["viewer"]
   filterArtworks: collectRoutes_ArtworkFilterQueryResponse["filterArtworks"]
-  params?: {
-    medium: string
-  }
 }
 
 export const CollectApp = track({
   context_page: Schema.PageName.CollectPage,
 })((props: CollectAppProps) => {
   const {
-    params,
     viewer,
-    match: { location },
+    match: { location, params },
   } = props
   const medium = params && params.medium
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
