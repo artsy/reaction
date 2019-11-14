@@ -55,7 +55,7 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
       try {
         const { context = {}, routes = [], url, userAgent } = config
         const user = getUser(context.user)
-        const relayEnvironment = context.relayEnvironment || createRelaySSREnvironment({ user }) // prettier-ignore
+        const relayEnvironment = context.relayEnvironment || createRelaySSREnvironment({ user, userAgent }) // prettier-ignore
         const historyMiddlewares = [
           createQueryMiddleware({
             parse: queryStringParsing,
