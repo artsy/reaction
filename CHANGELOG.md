@@ -1,3 +1,15 @@
+# v22.0.7 (Fri Nov 15 2019)
+
+#### 🐛  Bug Fix
+
+- PaymentForm __id -> id [#3014](https://github.com/artsy/reaction/pull/3014) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
 # v22.0.6 (Fri Nov 15 2019)
 
 #### 🐛  Bug Fix
