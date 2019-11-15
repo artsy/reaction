@@ -5,6 +5,7 @@ import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+import { get } from "Utils/get"
 
 interface Props {
   artist: ArtistMeta_artist
@@ -105,14 +106,16 @@ export const offerAttributes = (artwork: ArtworkNode) => {
   if (!artwork.listPrice) return null
   switch (artwork.listPrice.__typename) {
     case "PriceRange":
-      if (!artwork.listPrice.minPrice || !artwork.listPrice.maxPrice) {
+      // lowPrice is required for AggregateOffer type
+      if (!artwork.listPrice.minPrice) {
         return null
       }
+      const highPrice = get(artwork.listPrice, price => price.maxPrice.major)
       return {
         "@type": "AggregateOffer",
         lowPrice: artwork.listPrice.minPrice.major,
-        highPrice: artwork.listPrice.maxPrice.major,
-        priceCurrency: artwork.listPrice.maxPrice.currencyCode,
+        highPrice,
+        priceCurrency: artwork.listPrice.minPrice.currencyCode,
       }
     case "Money":
       return {
@@ -268,10 +271,10 @@ export const ArtistMetaFragmentContainer = createFragmentContainer(ArtistMeta, {
               ... on PriceRange {
                 minPrice {
                   major
+                  currencyCode
                 }
                 maxPrice {
                   major
-                  currencyCode
                 }
               }
               ... on Money {

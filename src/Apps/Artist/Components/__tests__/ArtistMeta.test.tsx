@@ -269,10 +269,10 @@ describe("Meta", () => {
           __typename: "PriceRange",
           maxPrice: {
             major: 1000,
-            currencyCode: "USD",
           },
           minPrice: {
             major: 100,
+            currencyCode: "USD",
           },
         } as const,
       })
@@ -282,6 +282,42 @@ describe("Meta", () => {
         offers: {
           "@type": "AggregateOffer",
           highPrice: 1000,
+          lowPrice: 100,
+        },
+      })
+    })
+
+    it("#productFromArtistArtwork doesn't include a product if price range doesn't have low bound", () => {
+      const modifiedArtist = artistWithArtworkOverrides({
+        listPrice: {
+          __typename: "PriceRange",
+          maxPrice: {
+            major: 1000,
+          },
+          minPrice: null,
+        } as const,
+      })
+      const artwork = modifiedArtist.artworks_connection.edges[0].node
+      const json = productAttributes(modifiedArtist, artwork)
+      expect(json).toBeFalsy()
+    })
+
+    it("#productFromArtistArtwork with a price range includes an AggregateOffer and low bound if price range only has low bound", () => {
+      const modifiedArtist = artistWithArtworkOverrides({
+        listPrice: {
+          __typename: "PriceRange",
+          minPrice: {
+            major: 100,
+            currencyCode: "USD",
+          },
+          maxPrice: null,
+        } as const,
+      })
+      const artwork = modifiedArtist.artworks_connection.edges[0].node
+      const json = productAttributes(modifiedArtist, artwork)
+      expect(json).toMatchObject({
+        offers: {
+          "@type": "AggregateOffer",
           lowPrice: 100,
         },
       })
