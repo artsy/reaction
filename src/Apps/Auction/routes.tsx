@@ -54,6 +54,7 @@ export const routes: RouteConfig[] = [
         }
         me {
           ...ConfirmBid_me
+          has_qualified_credit_cards
         }
       }
     `,
