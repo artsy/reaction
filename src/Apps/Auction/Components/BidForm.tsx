@@ -35,6 +35,14 @@ export interface FormValues {
   selectedBid: string
 }
 
+Yup.addMethod(Yup.string, "present", function(message) {
+  return this.test("test-present", message, value => {
+    return this.trim()
+      .required(message)
+      .isValid(value)
+  })
+})
+
 const validationSchemaForRegisteredUsers = Yup.object().shape({
   selectedBid: Yup.string().required(),
 })
@@ -46,6 +54,25 @@ const validationSchemaForUnregisteredUsersWithCreditCard = Yup.object().shape({
     "You must agree to the Conditions of Sale"
   ),
 })
+
+const validationSchemaForUnregisteredUsersWithoutCreditCard = Yup.object().shape(
+  {
+    selectedBid: Yup.string().required(),
+    address: Yup.object({
+      name: Yup.string().present("Name is required"),
+      addressLine1: Yup.string().present("Address is required"),
+      country: Yup.string().present("Country is required"),
+      city: Yup.string().present("City is required"),
+      region: Yup.string().present("State is required"),
+      postalCode: Yup.string().present("Postal code is required"),
+      phoneNumber: Yup.string().present("Telephone is required"),
+    }),
+    agreeToTerms: Yup.bool().oneOf(
+      [true],
+      "You must agree to the Conditions of Sale"
+    ),
+  }
+)
 
 const getSelectedBid = ({
   initialSelectedBid,
@@ -98,7 +125,9 @@ export const BidForm: React.FC<Props> = ({
     requiresPaymentInformation,
   } = determineDisplayRequirements(saleArtwork.sale.registrationStatus, me)
   const validationSchema = requiresCheckbox
-    ? validationSchemaForUnregisteredUsersWithCreditCard
+    ? requiresPaymentInformation
+      ? validationSchemaForUnregisteredUsersWithoutCreditCard
+      : validationSchemaForUnregisteredUsersWithCreditCard
     : validationSchemaForRegisteredUsers
 
   return (

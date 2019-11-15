@@ -44,6 +44,7 @@ import {
 import { stripeTokenResponse } from "../__fixtures__/Stripe"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
+import { ValidFormValues } from "./Utils/RegisterTestPage"
 
 jest.unmock("react-relay")
 jest.unmock("react-tracking")
@@ -572,6 +573,26 @@ describe("Routes/ConfirmBid", () => {
           ConfirmBidQueryResponseFixture.artwork.id
         }`
       )
+    })
+
+    it("displays an error when user did not add his/her address", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue(stripeTokenResponse)
+
+      const address = Object.assign({}, ValidFormValues)
+      address.phoneNumber = "    "
+
+      await page.fillAddressForm(address)
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(page.text()).toMatch("Telephone is required")
+      expect(env.mutations.mockFetch).not.toBeCalled()
+      expect(window.location.assign).not.toHaveBeenCalled()
     })
 
     it("displays an error when Stripe returns an error", async () => {
