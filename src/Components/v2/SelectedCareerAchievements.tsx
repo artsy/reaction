@@ -122,7 +122,7 @@ export class SelectedCareerAchievements extends React.Component<
               Selected career achievements
             </Sans>
             <Flex
-              flexDirection="row"
+              flexDirection="column"
               flexWrap="wrap"
               justifyContent="space-between"
             >

@@ -17,7 +17,6 @@ import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
 import { ArtistArtworkFilterRefetchContainer as ArtworkFilter } from "./Components/ArtistArtworkFilter"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "./Components/ArtistRecommendations"
-import { CurrentEventFragmentContainer as CurrentEvent } from "./Components/CurrentEvent"
 
 export interface OverviewRouteProps {
   artist: Overview_artist
@@ -47,16 +46,9 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biography_blurb.text)
-    const showCurrentEvent = Boolean(artist.currentEvent)
     const showConsignable = Boolean(artist.is_consignable)
     const hideMainOverviewSection =
-      !showArtistInsights &&
-      !showArtistBio &&
-      !showCurrentEvent &&
-      !showConsignable
-
-    // TODO: Hide right column if missing current event. Waiting on feedback
-    const colNum = 9 // artist.currentEvent ? 9 : 12
+      !showArtistInsights && !showArtistBio && !showConsignable
 
     const isClient = typeof window !== "undefined"
     const showRecommendations =
@@ -65,7 +57,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
     return (
       <>
         <Row>
-          <Col sm={colNum}>
+          <Col sm={8}>
             <>
               {showArtistBio && (
                 <>
@@ -97,19 +89,13 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                   </Sans>
                 </>
               )}
-              {showArtistInsights && (
-                <>
-                  <Spacer mb={2} />
-                  <SelectedCareerAchievements artist={artist} />
-                </>
-              )}
             </>
           </Col>
 
-          {showCurrentEvent && (
-            <Col sm={3}>
+          {showArtistInsights && (
+            <Col sm={4}>
               <Box pl={2}>
-                <CurrentEvent artist={artist} />
+                <SelectedCareerAchievements artist={artist} />
               </Box>
             </Col>
           )}
