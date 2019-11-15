@@ -1,3 +1,15 @@
+# v22.0.6 (Fri Nov 15 2019)
+
+#### 🐛  Bug Fix
+
+- Moved artist insights to the right PURCHASE-1608 [#2967](https://github.com/artsy/reaction/pull/2967) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v22.0.5 (Fri Nov 15 2019)
 
 #### 🐛  Bug Fix
