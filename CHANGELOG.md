@@ -1,3 +1,15 @@
+# v22.0.5 (Fri Nov 15 2019)
+
+#### 🐛  Bug Fix
+
+- [schema] Sync with latest removal [#3013](https://github.com/artsy/reaction/pull/3013) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v22.0.4 (Thu Nov 14 2019)
 
 #### 🐛  Bug Fix
