@@ -1,6 +1,5 @@
 import { Breakpoint } from "@artsy/palette"
 import { FollowArtistPopover_Test_QueryRawResponse } from "__generated__/FollowArtistPopover_Test_Query.graphql"
-import { SingleNonFollowedArtist } from "Apps/__tests__/Fixtures/Artists"
 import { FollowArtistPopoverFragmentContainer as FollowArtistPopover } from "Components/v2/FollowArtistPopover"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
@@ -20,13 +19,14 @@ describe("Follow Artist Popover", () => {
           edges: [
             {
               node: {
+                id: "francesca-dimattio",
+                name: "Francesca DiMattio",
                 internalID: "mongo-id",
                 image: {
                   cropped: {
                     url: "/path/to/image.jpg",
                   },
                 },
-                ...SingleNonFollowedArtist[0],
               },
             },
           ],

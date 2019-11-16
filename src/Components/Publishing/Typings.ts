@@ -142,7 +142,7 @@ export interface ImageData {
   caption?: string
   credit?: string
   date?: string
-  height?: number
+  height: number
   id?: string
   index?: number
   image?: string
@@ -152,7 +152,7 @@ export interface ImageData {
   url?: string
   partner?: GravityEntity
   slug?: string
-  width?: number
+  width: number
 }
 
 export interface GravityEntity {

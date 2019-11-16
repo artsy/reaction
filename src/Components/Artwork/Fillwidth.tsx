@@ -4,7 +4,9 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../Utils/fillwidth"
+import fillwidthDimensions, {
+  FillWidthItemDimensions,
+} from "../../Utils/fillwidth"
 import FillwidthItem from "./FillwidthItem"
 
 interface Props extends React.HTMLAttributes<FillwidthContainer> {
@@ -15,14 +17,18 @@ interface Props extends React.HTMLAttributes<FillwidthContainer> {
 }
 
 class FillwidthContainer extends React.Component<Props, null> {
-  renderArtwork(artwork, dimensions, i) {
+  renderArtwork(
+    artwork: Fillwidth_artworks["edges"][number]["node"],
+    dimensions: FillWidthItemDimensions[],
+    i: number
+  ) {
     const { gutter } = this.props
-    const artworkSize = find(dimensions, ["__id", artwork.__id])
+    const artworkSize = find(dimensions, ["id", artwork.id])
 
     return (
       <FillwidthItem
         artwork={artwork}
-        key={"artwork--" + artwork.__id}
+        key={"artwork--" + artwork.id}
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}
         width={artworkSize.width}

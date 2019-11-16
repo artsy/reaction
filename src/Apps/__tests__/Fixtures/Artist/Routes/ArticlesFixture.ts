@@ -1,9 +1,9 @@
 import { Articles_Test_QueryRawResponse } from "__generated__/Articles_Test_Query.graphql"
 
-export const ArticlesFixture = {
+export const ArticlesFixture: Articles_Test_QueryRawResponse = {
   artist: {
+    id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
     slug: "pablo-picasso",
-    id: "blah",
     articlesConnection: {
       pageInfo: { hasNextPage: true, endCursor: "YXJyYXljb25uZWN0aW9uOjk=" },
       pageCursors: {
@@ -25,7 +25,7 @@ export const ArticlesFixture = {
               "What the U.S.–China Trade War Means for the Art Market",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjVhYmJmYzZlY2I0YzI3MTczNzcyOWE1YQ==",
+              id: "QXV0aG9yOjVhYmJmYzZlY2I0YzI3MTczNzcyOWE1YQ==",
             },
             published_at: "Jul 23rd, 2018",
             thumbnail_image: {
@@ -62,7 +62,7 @@ export const ArticlesFixture = {
             thumbnail_title: "Why 2018 Could Be Picasso’s Billion Dollar Year",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU4Yjk5NjM4YTA5YTY3MzJjZWUwNGFiMw==",
+              id: "QXV0aG9yOjU4Yjk5NjM4YTA5YTY3MzJjZWUwNGFiMw==",
             },
             published_at: "Apr 10th, 2018",
             thumbnail_image: {
@@ -71,7 +71,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F8VtjX1i3z4kT-Nbw_lBdbQ%252Fcustom-Custom_Size___Picasso%252C%2BLe%2BRepos%2B%25281932%2529%2B%25281%2529.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1YWNiZDM3ZjVmMDFmMDAwMmU3YzM4Mzg=",
+            id: "QXJ0aWNsZTo1YWNiZDM3ZjVmMDFmMDAwMmU3YzM4Mzg=",
           },
         },
         {
@@ -82,7 +82,7 @@ export const ArticlesFixture = {
               "A £112.7 Million Picasso Spending Spree Buoys Big Sales at Christie’s and Sotheby’s in London",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Mar 1st, 2018",
             thumbnail_image: {
@@ -91,7 +91,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAXNlAM9edEcFLSh932x4GA%252FCMD_6770.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1YTk3MzI1M2M1M2RkODAwMjk4ODY4MDY=",
+            id: "QXJ0aWNsZTo1YTk3MzI1M2M1M2RkODAwMjk4ODY4MDY=",
           },
         },
         {
@@ -102,7 +102,7 @@ export const ArticlesFixture = {
               "Hidden Details Uncovered beneath Surface of Blue Period Picasso",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Feb 20th, 2018",
             thumbnail_image: {
@@ -111,7 +111,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPCRy4AOwb6tU02iHJldQBQ%252Fxrf-set-up-with-people-la-misereuse-accroupie.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1YThjNDcwMTkwZjVlZjAwMjlkZDc1YjA=",
+            id: "QXJ0aWNsZTo1YThjNDcwMTkwZjVlZjAwMjlkZDc1YjA=",
           },
         },
         {
@@ -122,7 +122,7 @@ export const ArticlesFixture = {
               "13 Famous Artist Couples’ Massive Gender Pay Gaps",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Dec 29th, 2017",
             thumbnail_image: {
@@ -131,7 +131,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAHDPB6uTw16QzZ2FAyW-ag%252Fpicasso%2Bcouple.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1YTNkNTY2MTA2NzMxMTAwMzMyYmI5OGQ=",
+            id: "QXJ0aWNsZTo1YTNkNTY2MTA2NzMxMTAwMzMyYmI5OGQ=",
           },
         },
         {
@@ -142,7 +142,7 @@ export const ArticlesFixture = {
               "We Asked an Expert to Interpret Famous Artists’ Handwriting",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Dec 21st, 2017",
             thumbnail_image: {
@@ -151,7 +151,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FnHaY68AdX7Y-mmVoJzhk_w%252Fgeorgia%2Bhandwriting.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1YTM5NzBhNzcyMDM1OTAwMWYzNjAwYjU=",
+            id: "QXJ0aWNsZTo1YTM5NzBhNzcyMDM1OTAwMWYzNjAwYjU=",
           },
         },
         {
@@ -162,7 +162,7 @@ export const ArticlesFixture = {
               "The Emotional Turmoil behind Picasso’s Blue Period",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Dec 13th, 2017",
             thumbnail_image: {
@@ -171,7 +171,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FSCqsGjpeTT4wy-33OLKUkA%252Fpicasso%2Bblue%2Bthumb.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1YTJlYjUyNmUyOWM3MzAwMWYxOTkxMTA=",
+            id: "QXJ0aWNsZTo1YTJlYjUyNmUyOWM3MzAwMWYxOTkxMTA=",
           },
         },
         {
@@ -180,7 +180,7 @@ export const ArticlesFixture = {
             thumbnail_title: "When Picasso Almost Invented Abstract Painting",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Oct 27th, 2017",
             thumbnail_image: {
@@ -189,7 +189,7 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjLgdIxwTR61feM3qCOQ7XQ%252Fpicasso%2Bthumb.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1OWYwZDYzZDdkZTRiMDAwMWRjYmFkNDg=",
+            id: "QXJ0aWNsZTo1OWYwZDYzZDdkZTRiMDAwMWRjYmFkNDg=",
           },
         },
         {
@@ -200,7 +200,7 @@ export const ArticlesFixture = {
               "From Jean-Michel Basquiat to Georgia O’Keeffe, 8 Artists Who Are Style Icons",
             author: {
               name: "Artsy Editorial",
-              __id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
+              id: "QXV0aG9yOjU5OGI1NDRkMmE4OTNhNTk1YzQxYzRkMQ==",
             },
             published_at: "Oct 18th, 2017",
             thumbnail_image: {
@@ -209,11 +209,10 @@ export const ArticlesFixture = {
                   "https://d7hftxdivxxvm.cloudfront.net?resize_to=width&width=300&quality=80&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjplLkTPL-P0BY4Zw6QF6WA%252Fstyle%2Bthumb.jpg",
               },
             },
-            __id: "QXJ0aWNsZTo1OWU2M2Y5YTRhNzZlMzAwMWQyNTY1OTg=",
+            id: "QXJ0aWNsZTo1OWU2M2Y5YTRhNzZlMzAwMWQyNTY1OTg=",
           },
         },
       ],
     },
-    __id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
   },
-} as Articles_Test_QueryRawResponse
+}

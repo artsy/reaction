@@ -50,7 +50,7 @@ const NotificationMenuFixture = {
                     "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=40&height=40&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FkCJVZo7bcqVrjnQ22QHhvg%2Flarge.jpg",
                 },
               },
-              __id:
+              id:
                 "Rm9sbG93ZWRBcnRpc3RzQXJ0d29ya3NHcm91cDo1Y2NiNzU3Y2Y5M2JmNjFmOWYxYjcyMDQ=",
               __typename: "FollowedArtistsArtworksGroup",
             },
@@ -68,7 +68,7 @@ const NotificationMenuFixture = {
                     "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=40&height=27&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fi3rCA3IaKE-cLBnc-U5swQ%2Flarge.jpg",
                 },
               },
-              __id:
+              id:
                 "Rm9sbG93ZWRBcnRpc3RzQXJ0d29ya3NHcm91cDo1Y2NiNjRmZWQ3ZjI2YjU5MTJlNWJlODc=",
               __typename: "FollowedArtistsArtworksGroup",
             },
@@ -86,7 +86,7 @@ const NotificationMenuFixture = {
                     "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=40&height=40&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjLg7Y6inxaSUpVS9kYHwcg%2Flarge.jpg",
                 },
               },
-              __id:
+              id:
                 "Rm9sbG93ZWRBcnRpc3RzQXJ0d29ya3NHcm91cDo1YjBmMTFkN2IyMDJhMzRkZmY3MjE2MWI=",
               __typename: "FollowedArtistsArtworksGroup",
             },
@@ -104,7 +104,7 @@ const NotificationMenuFixture = {
                     "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=39&height=40&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FTLj5ypujA8_sBmcjWw6cRw%2Flarge.jpg",
                 },
               },
-              __id:
+              id:
                 "Rm9sbG93ZWRBcnRpc3RzQXJ0d29ya3NHcm91cDo1Y2NiMjUzNjljZGQ4MDY0YzE3MWQ1Mzk=",
               __typename: "FollowedArtistsArtworksGroup",
             },
@@ -114,6 +114,6 @@ const NotificationMenuFixture = {
         pageInfo: { endCursor: "YXJyYXljb25uZWN0aW9uOjk=", hasNextPage: true },
       },
     },
-    __id: "TWU6NTg4MjhiMWU5YzE4ZGIzMGYzMDAyZmJh",
+    id: "TWU6NTg4MjhiMWU5YzE4ZGIzMGYzMDAyZmJh",
   },
 }

@@ -76,7 +76,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
             <Images href={href} onClick={this.trackClick}>
               {images.map((img, i) => (
                 <div key={i}>
-                  <img src={img.__id} />
+                  <img src={img.id} />
                 </div>
               ))}
             </Images>

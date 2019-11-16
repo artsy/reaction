@@ -1,5 +1,5 @@
 const PartnerWithLocations = {
-  __id: "UGFydG5lcjpnYWdvc2lhbg==",
+  id: "UGFydG5lcjpnYWdvc2lhbg==",
   name: "Gagosian",
   href: "/gagosian-gallery",
   locations: [
@@ -22,19 +22,19 @@ const PartnerWithLocations = {
   ],
 }
 export const ArtworkFromPartnerWithLocations = {
-  _id: "artwork_from_partner_with_locations",
+  internalID: "artwork_from_partner_with_locations",
   collecting_institution: null,
   partner: PartnerWithLocations,
 }
 
 const PartnerWithoutLocations = {
-  __id: "UGFydG5lcjpnYWxlcmllLWtyb25zYmVpbg==",
+  id: "UGFydG5lcjpnYWxlcmllLWtyb25zYmVpbg==",
   name: "Galerie Kronsbein",
   href: "/galerie-kronsbein",
   locations: [],
 }
 export const ArtworkFromPartnerWithoutLocations = {
-  __id: "artwork_from_partner_without_locations",
+  id: "artwork_from_partner_without_locations",
   collecting_institution: null,
   partner: PartnerWithoutLocations,
 }
