@@ -102,14 +102,6 @@ fragment ArtworkActions_artwork on Artwork {
   }
 }
 
-fragment Save_artwork on Artwork {
-  id
-  internalID
-  slug
-  is_saved: isSaved
-  title
-}
-
 fragment ArtworkSharePanel_artwork on Artwork {
   href
   images {
@@ -118,6 +110,14 @@ fragment ArtworkSharePanel_artwork on Artwork {
   artworkMeta: meta {
     share
   }
+}
+
+fragment Save_artwork on Artwork {
+  id
+  internalID
+  slug
+  is_saved: isSaved
+  title
 }
 */
 
@@ -403,7 +403,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkActions_Test_Query",
     "id": null,
-    "text": "query ArtworkActions_Test_Query(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkActions_artwork\n    id\n  }\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  artists {\n    name\n    id\n  }\n  date\n  dimensions {\n    cm\n  }\n  href\n  slug\n  image {\n    internalID\n    url(version: \"larger\")\n    height\n    width\n  }\n  is_downloadable: isDownloadable\n  is_hangable: isHangable\n  partner {\n    slug\n    id\n  }\n  title\n  sale {\n    is_closed: isClosed\n    is_auction: isAuction\n    id\n  }\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n  }\n  artworkMeta: meta {\n    share\n  }\n}\n",
+    "text": "query ArtworkActions_Test_Query(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkActions_artwork\n    id\n  }\n}\n\nfragment ArtworkActions_artwork on Artwork {\n  ...Save_artwork\n  ...ArtworkSharePanel_artwork\n  artists {\n    name\n    id\n  }\n  date\n  dimensions {\n    cm\n  }\n  href\n  slug\n  image {\n    internalID\n    url(version: \"larger\")\n    height\n    width\n  }\n  is_downloadable: isDownloadable\n  is_hangable: isHangable\n  partner {\n    slug\n    id\n  }\n  title\n  sale {\n    is_closed: isClosed\n    is_auction: isAuction\n    id\n  }\n}\n\nfragment ArtworkSharePanel_artwork on Artwork {\n  href\n  images {\n    url\n  }\n  artworkMeta: meta {\n    share\n  }\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
     "metadata": {}
   }
 };

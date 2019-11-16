@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type NavigationTabs_artist = {
     readonly slug: string;
     readonly statuses: {
@@ -10,6 +11,11 @@ export type NavigationTabs_artist = {
         readonly auction_lots: boolean | null;
     } | null;
     readonly " $refType": "NavigationTabs_artist";
+};
+export type NavigationTabs_artist$data = NavigationTabs_artist;
+export type NavigationTabs_artist$key = {
+    readonly " $data"?: NavigationTabs_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"NavigationTabs_artist">;
 };
 
 

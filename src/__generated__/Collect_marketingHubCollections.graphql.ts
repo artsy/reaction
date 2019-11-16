@@ -6,6 +6,11 @@ export type Collect_marketingHubCollections = ReadonlyArray<{
     readonly " $fragmentRefs": FragmentRefs<"CollectionsHubsNav_marketingHubCollections">;
     readonly " $refType": "Collect_marketingHubCollections";
 }>;
+export type Collect_marketingHubCollections$data = Collect_marketingHubCollections;
+export type Collect_marketingHubCollections$key = ReadonlyArray<{
+    readonly " $data"?: Collect_marketingHubCollections$data;
+    readonly " $fragmentRefs": FragmentRefs<"Collect_marketingHubCollections">;
+}>;
 
 
 

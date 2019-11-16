@@ -133,24 +133,9 @@ query CV_Test_Query(
   }
 }
 
-fragment CV_viewer on Viewer {
-  artist_soloShows: artist(id: $artistID) {
-    ...CVItem_artist_ieWPx
-    id
-  }
-  artist_groupShows: artist(id: $artistID) {
-    ...CVItem_artist_4DszuY
-    id
-  }
-  artist_fairBooths: artist(id: $artistID) {
-    ...CVItem_artist_47e96d
-    id
-  }
-}
-
-fragment CVItem_artist_ieWPx on Artist {
+fragment CVItem_artist_47e96d on Artist {
   slug
-  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: true, isReference: true, visibleToPublic: false) {
+  showsConnection(first: 10, sort: START_AT_DESC, atAFair: true, soloShow: false, isReference: true, visibleToPublic: false) {
     pageInfo {
       hasNextPage
       endCursor
@@ -218,9 +203,9 @@ fragment CVItem_artist_4DszuY on Artist {
   }
 }
 
-fragment CVItem_artist_47e96d on Artist {
+fragment CVItem_artist_ieWPx on Artist {
   slug
-  showsConnection(first: 10, sort: START_AT_DESC, atAFair: true, soloShow: false, isReference: true, visibleToPublic: false) {
+  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: true, isReference: true, visibleToPublic: false) {
     pageInfo {
       hasNextPage
       endCursor
@@ -250,6 +235,21 @@ fragment CVItem_artist_47e96d on Artist {
       }
       cursor
     }
+  }
+}
+
+fragment CV_viewer on Viewer {
+  artist_soloShows: artist(id: $artistID) {
+    ...CVItem_artist_ieWPx
+    id
+  }
+  artist_groupShows: artist(id: $artistID) {
+    ...CVItem_artist_4DszuY
+    id
+  }
+  artist_fairBooths: artist(id: $artistID) {
+    ...CVItem_artist_47e96d
+    id
   }
 }
 */
@@ -627,7 +627,7 @@ return {
     "operationKind": "query",
     "name": "CV_Test_Query",
     "id": null,
-    "text": "query CV_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artistID) {\n    ...CVItem_artist_ieWPx\n    id\n  }\n  artist_groupShows: artist(id: $artistID) {\n    ...CVItem_artist_4DszuY\n    id\n  }\n  artist_fairBooths: artist(id: $artistID) {\n    ...CVItem_artist_47e96d\n    id\n  }\n}\n\nfragment CVItem_artist_ieWPx on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: true, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CVItem_artist_4DszuY on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: false, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CVItem_artist_47e96d on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: true, soloShow: false, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n",
+    "text": "query CV_Test_Query(\n  $artistID: String!\n) {\n  viewer {\n    ...CV_viewer\n  }\n}\n\nfragment CVItem_artist_47e96d on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: true, soloShow: false, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CVItem_artist_4DszuY on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: false, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CVItem_artist_ieWPx on Artist {\n  slug\n  showsConnection(first: 10, sort: START_AT_DESC, atAFair: false, soloShow: true, isReference: true, visibleToPublic: false) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    edges {\n      node {\n        id\n        partner {\n          __typename\n          ... on ExternalPartner {\n            name\n            id\n          }\n          ... on Partner {\n            name\n            href\n          }\n          ... on Node {\n            id\n          }\n        }\n        name\n        start_at: startAt(format: \"YYYY\")\n        city\n        href\n        __typename\n      }\n      cursor\n    }\n  }\n}\n\nfragment CV_viewer on Viewer {\n  artist_soloShows: artist(id: $artistID) {\n    ...CVItem_artist_ieWPx\n    id\n  }\n  artist_groupShows: artist(id: $artistID) {\n    ...CVItem_artist_4DszuY\n    id\n  }\n  artist_fairBooths: artist(id: $artistID) {\n    ...CVItem_artist_47e96d\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

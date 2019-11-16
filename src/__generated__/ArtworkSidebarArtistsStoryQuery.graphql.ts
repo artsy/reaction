@@ -46,6 +46,16 @@ fragment FollowArtistButton_artist_2eN9lh on Artist {
   ...FollowArtistPopover_artist
 }
 
+fragment FollowArtistPopoverRow_artist on Artist {
+  internalID
+  name
+  image {
+    cropped(width: 45, height: 45) {
+      url
+    }
+  }
+}
+
 fragment FollowArtistPopover_artist on Artist {
   related {
     suggestedConnection(first: 3, excludeFollowedArtists: true) {
@@ -56,16 +66,6 @@ fragment FollowArtistPopover_artist on Artist {
           ...FollowArtistPopoverRow_artist
         }
       }
-    }
-  }
-}
-
-fragment FollowArtistPopoverRow_artist on Artist {
-  internalID
-  name
-  image {
-    cropped(width: 45, height: 45) {
-      url
     }
   }
 }
@@ -308,7 +308,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkSidebarArtistsStoryQuery",
     "id": null,
-    "text": "query ArtworkSidebarArtistsStoryQuery {\n  artwork(id: \"unused\") {\n    ...ArtworkSidebarArtists_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarArtists_artwork on Artwork {\n  cultural_maker: culturalMaker\n  artists {\n    id\n    internalID\n    slug\n    name\n    href\n    ...FollowArtistButton_artist_2eN9lh\n  }\n}\n\nfragment FollowArtistButton_artist_2eN9lh on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_artist\n}\n\nfragment FollowArtistPopover_artist on Artist {\n  related {\n    suggestedConnection(first: 3, excludeFollowedArtists: true) {\n      edges {\n        node {\n          id\n          internalID\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  internalID\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n",
+    "text": "query ArtworkSidebarArtistsStoryQuery {\n  artwork(id: \"unused\") {\n    ...ArtworkSidebarArtists_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarArtists_artwork on Artwork {\n  cultural_maker: culturalMaker\n  artists {\n    id\n    internalID\n    slug\n    name\n    href\n    ...FollowArtistButton_artist_2eN9lh\n  }\n}\n\nfragment FollowArtistButton_artist_2eN9lh on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n  ...FollowArtistPopover_artist\n}\n\nfragment FollowArtistPopoverRow_artist on Artist {\n  internalID\n  name\n  image {\n    cropped(width: 45, height: 45) {\n      url\n    }\n  }\n}\n\nfragment FollowArtistPopover_artist on Artist {\n  related {\n    suggestedConnection(first: 3, excludeFollowedArtists: true) {\n      edges {\n        node {\n          id\n          internalID\n          ...FollowArtistPopoverRow_artist\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

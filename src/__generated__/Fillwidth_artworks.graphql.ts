@@ -14,6 +14,11 @@ export type Fillwidth_artworks = {
     } | null> | null;
     readonly " $refType": "Fillwidth_artworks";
 };
+export type Fillwidth_artworks$data = Fillwidth_artworks;
+export type Fillwidth_artworks$key = {
+    readonly " $data"?: Fillwidth_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"Fillwidth_artworks">;
+};
 
 
 

@@ -11,6 +11,11 @@ export type FillwidthItem_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"Metadata_artwork" | "Save_artwork" | "Badge_artwork">;
     readonly " $refType": "FillwidthItem_artwork";
 };
+export type FillwidthItem_artwork$data = FillwidthItem_artwork;
+export type FillwidthItem_artwork$key = {
+    readonly " $data"?: FillwidthItem_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"FillwidthItem_artwork">;
+};
 
 
 

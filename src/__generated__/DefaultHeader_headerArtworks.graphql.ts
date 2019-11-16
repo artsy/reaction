@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type DefaultHeader_headerArtworks = {
     readonly edges: ReadonlyArray<{
         readonly node: {
@@ -21,6 +22,11 @@ export type DefaultHeader_headerArtworks = {
         } | null;
     } | null> | null;
     readonly " $refType": "DefaultHeader_headerArtworks";
+};
+export type DefaultHeader_headerArtworks$data = DefaultHeader_headerArtworks;
+export type DefaultHeader_headerArtworks$key = {
+    readonly " $data"?: DefaultHeader_headerArtworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"DefaultHeader_headerArtworks">;
 };
 
 

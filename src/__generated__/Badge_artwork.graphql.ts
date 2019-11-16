@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Badge_artwork = {
     readonly is_biddable: boolean | null;
     readonly is_acquireable: boolean | null;
@@ -11,6 +12,11 @@ export type Badge_artwork = {
         readonly display_timely_at: string | null;
     } | null;
     readonly " $refType": "Badge_artwork";
+};
+export type Badge_artwork$data = Badge_artwork;
+export type Badge_artwork$key = {
+    readonly " $data"?: Badge_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"Badge_artwork">;
 };
 
 

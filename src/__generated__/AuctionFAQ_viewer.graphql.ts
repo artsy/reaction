@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type AuctionFAQ_viewer = {
     readonly bidding: {
         readonly content: string | null;
@@ -18,6 +19,11 @@ export type AuctionFAQ_viewer = {
         readonly content: string | null;
     } | null;
     readonly " $refType": "AuctionFAQ_viewer";
+};
+export type AuctionFAQ_viewer$data = AuctionFAQ_viewer;
+export type AuctionFAQ_viewer$key = {
+    readonly " $data"?: AuctionFAQ_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"AuctionFAQ_viewer">;
 };
 
 

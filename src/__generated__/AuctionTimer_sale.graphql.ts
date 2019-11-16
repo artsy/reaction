@@ -1,10 +1,16 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type AuctionTimer_sale = {
     readonly live_start_at: string | null;
     readonly end_at: string | null;
     readonly " $refType": "AuctionTimer_sale";
+};
+export type AuctionTimer_sale$data = AuctionTimer_sale;
+export type AuctionTimer_sale$key = {
+    readonly " $data"?: AuctionTimer_sale$data;
+    readonly " $fragmentRefs": FragmentRefs<"AuctionTimer_sale">;
 };
 
 

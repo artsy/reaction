@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type PaymentPicker_me = {
     readonly creditCards: {
         readonly edges: ReadonlyArray<{
@@ -14,6 +15,11 @@ export type PaymentPicker_me = {
         } | null> | null;
     } | null;
     readonly " $refType": "PaymentPicker_me";
+};
+export type PaymentPicker_me$data = PaymentPicker_me;
+export type PaymentPicker_me$key = {
+    readonly " $data"?: PaymentPicker_me$data;
+    readonly " $fragmentRefs": FragmentRefs<"PaymentPicker_me">;
 };
 
 

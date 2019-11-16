@@ -75,14 +75,14 @@ query routes_RegisterQuery(
   }
 }
 
+fragment Register_me on Me {
+  internalID
+}
+
 fragment Register_sale on Sale {
   slug
   internalID
   status
-}
-
-fragment Register_me on Me {
-  internalID
 }
 */
 
@@ -289,7 +289,7 @@ return {
     "operationKind": "query",
     "name": "routes_RegisterQuery",
     "id": null,
-    "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) @principalField {\n    slug\n    isAuction\n    isRegistrationClosed\n    isPreview\n    isOpen\n    registrationStatus {\n      qualifiedForBidding\n      id\n    }\n    ...Register_sale\n    id\n  }\n  me {\n    hasQualifiedCreditCards\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n\nfragment Register_me on Me {\n  internalID\n}\n",
+    "text": "query routes_RegisterQuery(\n  $saleID: String!\n) {\n  sale(id: $saleID) @principalField {\n    slug\n    isAuction\n    isRegistrationClosed\n    isPreview\n    isOpen\n    registrationStatus {\n      qualifiedForBidding\n      id\n    }\n    ...Register_sale\n    id\n  }\n  me {\n    hasQualifiedCreditCards\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_me on Me {\n  internalID\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n",
     "metadata": {}
   }
 };

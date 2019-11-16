@@ -15,6 +15,11 @@ export type Header_artworks = {
     readonly " $fragmentRefs": FragmentRefs<"DefaultHeader_headerArtworks">;
     readonly " $refType": "Header_artworks";
 };
+export type Header_artworks$data = Header_artworks;
+export type Header_artworks$key = {
+    readonly " $data"?: Header_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"Header_artworks">;
+};
 
 
 

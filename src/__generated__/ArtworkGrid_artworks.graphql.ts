@@ -16,6 +16,11 @@ export type ArtworkGrid_artworks = {
     } | null> | null;
     readonly " $refType": "ArtworkGrid_artworks";
 };
+export type ArtworkGrid_artworks$data = ArtworkGrid_artworks;
+export type ArtworkGrid_artworks$key = {
+    readonly " $data"?: ArtworkGrid_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
+};
 
 
 

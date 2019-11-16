@@ -14,6 +14,11 @@ export type CV_viewer = {
     } | null;
     readonly " $refType": "CV_viewer";
 };
+export type CV_viewer$data = CV_viewer;
+export type CV_viewer$key = {
+    readonly " $data"?: CV_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"CV_viewer">;
+};
 
 
 

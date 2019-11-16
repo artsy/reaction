@@ -12,6 +12,11 @@ export type ArtworkDetails_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"ArtworkDetailsAboutTheWorkFromArtsy_artwork" | "ArtworkDetailsAboutTheWorkFromPartner_artwork" | "ArtworkDetailsAdditionalInfo_artwork" | "ArtworkDetailsArticles_artwork">;
     readonly " $refType": "ArtworkDetails_artwork";
 };
+export type ArtworkDetails_artwork$data = ArtworkDetails_artwork;
+export type ArtworkDetails_artwork$key = {
+    readonly " $data"?: ArtworkDetails_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkDetails_artwork">;
+};
 
 
 

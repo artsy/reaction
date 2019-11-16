@@ -1,11 +1,17 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type TotalCount_filter_artworks = {
     readonly counts: {
         readonly total: number | null;
     } | null;
     readonly " $refType": "TotalCount_filter_artworks";
+};
+export type TotalCount_filter_artworks$data = TotalCount_filter_artworks;
+export type TotalCount_filter_artworks$key = {
+    readonly " $data"?: TotalCount_filter_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks">;
 };
 
 

@@ -1,11 +1,17 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarClassification_artwork = {
     readonly attribution_class: {
         readonly short_description: string | null;
     } | null;
     readonly " $refType": "ArtworkSidebarClassification_artwork";
+};
+export type ArtworkSidebarClassification_artwork$data = ArtworkSidebarClassification_artwork;
+export type ArtworkSidebarClassification_artwork$key = {
+    readonly " $data"?: ArtworkSidebarClassification_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarClassification_artwork">;
 };
 
 

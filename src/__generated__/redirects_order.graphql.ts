@@ -4,6 +4,7 @@ import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type redirects_order = {
     readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
@@ -34,6 +35,11 @@ export type redirects_order = {
     } | null;
     readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
     readonly " $refType": "redirects_order";
+};
+export type redirects_order$data = redirects_order;
+export type redirects_order$key = {
+    readonly " $data"?: redirects_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"redirects_order">;
 };
 
 

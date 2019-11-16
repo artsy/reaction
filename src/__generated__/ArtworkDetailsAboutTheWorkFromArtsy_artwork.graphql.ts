@@ -1,9 +1,15 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkDetailsAboutTheWorkFromArtsy_artwork = {
     readonly description: string | null;
     readonly " $refType": "ArtworkDetailsAboutTheWorkFromArtsy_artwork";
+};
+export type ArtworkDetailsAboutTheWorkFromArtsy_artwork$data = ArtworkDetailsAboutTheWorkFromArtsy_artwork;
+export type ArtworkDetailsAboutTheWorkFromArtsy_artwork$key = {
+    readonly " $data"?: ArtworkDetailsAboutTheWorkFromArtsy_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkDetailsAboutTheWorkFromArtsy_artwork">;
 };
 
 

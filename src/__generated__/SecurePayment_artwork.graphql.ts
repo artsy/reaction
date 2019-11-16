@@ -1,10 +1,16 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type SecurePayment_artwork = {
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
     readonly " $refType": "SecurePayment_artwork";
+};
+export type SecurePayment_artwork$data = SecurePayment_artwork;
+export type SecurePayment_artwork$key = {
+    readonly " $data"?: SecurePayment_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"SecurePayment_artwork">;
 };
 
 

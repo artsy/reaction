@@ -130,6 +130,16 @@ query routes_ConfirmBidQuery(
   }
 }
 
+fragment BidForm_saleArtwork on SaleArtwork {
+  minimumNextBid {
+    cents
+  }
+  increments(useMyMaxBid: true) {
+    cents
+    display
+  }
+}
+
 fragment LotInfo_artwork on Artwork {
   internalID
   date
@@ -145,16 +155,6 @@ fragment LotInfo_saleArtwork on SaleArtwork {
   lotLabel
   minimumNextBid {
     amount
-    cents
-    display
-  }
-}
-
-fragment BidForm_saleArtwork on SaleArtwork {
-  minimumNextBid {
-    cents
-  }
-  increments(useMyMaxBid: true) {
     cents
     display
   }
@@ -521,7 +521,7 @@ return {
     "operationKind": "query",
     "name": "routes_ConfirmBidQuery",
     "id": null,
-    "text": "query routes_ConfirmBidQuery(\n  $saleID: String!\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...LotInfo_artwork\n    id\n    internalID\n    slug\n    saleArtwork(saleID: $saleID) {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      id\n      internalID\n      slug\n      sale {\n        id\n        registrationStatus {\n          internalID\n          qualifiedForBidding\n          id\n        }\n        internalID\n        slug\n        name\n        isClosed\n        isRegistrationClosed\n      }\n    }\n  }\n  me {\n    id\n    internalID\n    hasQualifiedCreditCards\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  internalID\n  date\n  title\n  imageUrl\n  artistNames\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions\n  }\n  lotLabel\n  minimumNextBid {\n    amount\n    cents\n    display\n  }\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n}\n",
+    "text": "query routes_ConfirmBidQuery(\n  $saleID: String!\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...LotInfo_artwork\n    id\n    internalID\n    slug\n    saleArtwork(saleID: $saleID) {\n      ...LotInfo_saleArtwork\n      ...BidForm_saleArtwork\n      id\n      internalID\n      slug\n      sale {\n        id\n        registrationStatus {\n          internalID\n          qualifiedForBidding\n          id\n        }\n        internalID\n        slug\n        name\n        isClosed\n        isRegistrationClosed\n      }\n    }\n  }\n  me {\n    id\n    internalID\n    hasQualifiedCreditCards\n  }\n}\n\nfragment BidForm_saleArtwork on SaleArtwork {\n  minimumNextBid {\n    cents\n  }\n  increments(useMyMaxBid: true) {\n    cents\n    display\n  }\n}\n\nfragment LotInfo_artwork on Artwork {\n  internalID\n  date\n  title\n  imageUrl\n  artistNames\n}\n\nfragment LotInfo_saleArtwork on SaleArtwork {\n  counts {\n    bidderPositions\n  }\n  lotLabel\n  minimumNextBid {\n    amount\n    cents\n    display\n  }\n}\n",
     "metadata": {}
   }
 };

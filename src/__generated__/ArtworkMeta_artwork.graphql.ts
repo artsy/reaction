@@ -39,6 +39,11 @@ export type ArtworkMeta_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"SeoDataForArtwork_artwork">;
     readonly " $refType": "ArtworkMeta_artwork";
 };
+export type ArtworkMeta_artwork$data = ArtworkMeta_artwork;
+export type ArtworkMeta_artwork$key = {
+    readonly " $data"?: ArtworkMeta_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkMeta_artwork">;
+};
 
 
 

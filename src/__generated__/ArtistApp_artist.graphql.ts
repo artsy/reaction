@@ -8,6 +8,11 @@ export type ArtistApp_artist = {
     readonly " $fragmentRefs": FragmentRefs<"ArtistMeta_artist" | "ArtistHeader_artist" | "NavigationTabs_artist">;
     readonly " $refType": "ArtistApp_artist";
 };
+export type ArtistApp_artist$data = ArtistApp_artist;
+export type ArtistApp_artist$key = {
+    readonly " $data"?: ArtistApp_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistApp_artist">;
+};
 
 
 

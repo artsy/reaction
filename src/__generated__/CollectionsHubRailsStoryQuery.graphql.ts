@@ -31,44 +31,6 @@ query CollectionsHubRailsStoryQuery(
   }
 }
 
-fragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {
-  groupType
-  ...FeaturedCollectionsRails_collectionGroup
-  ...OtherCollectionsRail_collectionGroup
-  ...ArtistSeriesRail_collectionGroup
-}
-
-fragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {
-  groupType
-  name
-  members {
-    slug
-    title
-    description
-    price_guidance: priceGuidance
-    thumbnail
-    id
-  }
-}
-
-fragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {
-  groupType
-  name
-  members {
-    ...OtherCollectionEntity_member
-    id
-  }
-}
-
-fragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {
-  groupType
-  name
-  members {
-    ...ArtistSeriesEntity_member
-    id
-  }
-}
-
 fragment ArtistSeriesEntity_member on MarketingCollection {
   slug
   headerImage
@@ -93,10 +55,48 @@ fragment ArtistSeriesEntity_member on MarketingCollection {
   }
 }
 
+fragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {
+  groupType
+  name
+  members {
+    ...ArtistSeriesEntity_member
+    id
+  }
+}
+
+fragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {
+  groupType
+  ...FeaturedCollectionsRails_collectionGroup
+  ...OtherCollectionsRail_collectionGroup
+  ...ArtistSeriesRail_collectionGroup
+}
+
+fragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {
+  groupType
+  name
+  members {
+    slug
+    title
+    description
+    price_guidance: priceGuidance
+    thumbnail
+    id
+  }
+}
+
 fragment OtherCollectionEntity_member on MarketingCollection {
   slug
   thumbnail
   title
+}
+
+fragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {
+  groupType
+  name
+  members {
+    ...OtherCollectionEntity_member
+    id
+  }
 }
 */
 
@@ -356,7 +356,7 @@ return {
     "operationKind": "query",
     "name": "CollectionsHubRailsStoryQuery",
     "id": null,
-    "text": "query CollectionsHubRailsStoryQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    linkedCollections {\n      ...CollectionsHubRails_linkedCollections\n    }\n    id\n  }\n}\n\nfragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {\n  groupType\n  ...FeaturedCollectionsRails_collectionGroup\n  ...OtherCollectionsRail_collectionGroup\n  ...ArtistSeriesRail_collectionGroup\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    slug\n    title\n    description\n    price_guidance: priceGuidance\n    thumbnail\n    id\n  }\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    id\n  }\n}\n\nfragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...ArtistSeriesEntity_member\n    id\n  }\n}\n\nfragment ArtistSeriesEntity_member on MarketingCollection {\n  slug\n  headerImage\n  thumbnail\n  title\n  price_guidance: priceGuidance\n  artworksConnection(first: 3, aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    edges {\n      node {\n        artist {\n          name\n          id\n        }\n        title\n        image {\n          url(version: \"small\")\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n}\n",
+    "text": "query CollectionsHubRailsStoryQuery(\n  $collectionID: String!\n) {\n  marketingCollection(slug: $collectionID) {\n    linkedCollections {\n      ...CollectionsHubRails_linkedCollections\n    }\n    id\n  }\n}\n\nfragment ArtistSeriesEntity_member on MarketingCollection {\n  slug\n  headerImage\n  thumbnail\n  title\n  price_guidance: priceGuidance\n  artworksConnection(first: 3, aggregations: [TOTAL], sort: \"-decayed_merch\") {\n    edges {\n      node {\n        artist {\n          name\n          id\n        }\n        title\n        image {\n          url(version: \"small\")\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment ArtistSeriesRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...ArtistSeriesEntity_member\n    id\n  }\n}\n\nfragment CollectionsHubRails_linkedCollections on MarketingCollectionGroup {\n  groupType\n  ...FeaturedCollectionsRails_collectionGroup\n  ...OtherCollectionsRail_collectionGroup\n  ...ArtistSeriesRail_collectionGroup\n}\n\nfragment FeaturedCollectionsRails_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    slug\n    title\n    description\n    price_guidance: priceGuidance\n    thumbnail\n    id\n  }\n}\n\nfragment OtherCollectionEntity_member on MarketingCollection {\n  slug\n  thumbnail\n  title\n}\n\nfragment OtherCollectionsRail_collectionGroup on MarketingCollectionGroup {\n  groupType\n  name\n  members {\n    ...OtherCollectionEntity_member\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

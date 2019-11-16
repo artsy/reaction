@@ -26,6 +26,11 @@ export type ArtworkSidebarCommercial_artwork = {
     } | null> | null;
     readonly " $refType": "ArtworkSidebarCommercial_artwork";
 };
+export type ArtworkSidebarCommercial_artwork$data = ArtworkSidebarCommercial_artwork;
+export type ArtworkSidebarCommercial_artwork$key = {
+    readonly " $data"?: ArtworkSidebarCommercial_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarCommercial_artwork">;
+};
 
 
 

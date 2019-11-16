@@ -1,11 +1,17 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Register_sale = {
     readonly slug: string;
     readonly internalID: string;
     readonly status: string | null;
     readonly " $refType": "Register_sale";
+};
+export type Register_sale$data = Register_sale;
+export type Register_sale$key = {
+    readonly " $data"?: Register_sale$data;
+    readonly " $fragmentRefs": FragmentRefs<"Register_sale">;
 };
 
 

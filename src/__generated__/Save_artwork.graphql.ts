@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Save_artwork = {
     readonly id: string;
     readonly internalID: string;
@@ -8,6 +9,11 @@ export type Save_artwork = {
     readonly is_saved: boolean | null;
     readonly title: string | null;
     readonly " $refType": "Save_artwork";
+};
+export type Save_artwork$data = Save_artwork;
+export type Save_artwork$key = {
+    readonly " $data"?: Save_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"Save_artwork">;
 };
 
 

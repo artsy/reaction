@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CreditCardSummaryItem_order = {
     readonly creditCard: {
         readonly brand: string;
@@ -9,6 +10,11 @@ export type CreditCardSummaryItem_order = {
         readonly expirationMonth: number;
     } | null;
     readonly " $refType": "CreditCardSummaryItem_order";
+};
+export type CreditCardSummaryItem_order$data = CreditCardSummaryItem_order;
+export type CreditCardSummaryItem_order$key = {
+    readonly " $data"?: CreditCardSummaryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"CreditCardSummaryItem_order">;
 };
 
 

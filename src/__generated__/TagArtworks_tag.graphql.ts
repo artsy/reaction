@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type TagArtworks_tag = {
     readonly slug: string;
     readonly filtered_artworks: {
@@ -30,6 +30,11 @@ export type TagArtworks_tag = {
         readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks" | "ArtworkGrid_artworks">;
     } | null;
     readonly " $refType": "TagArtworks_tag";
+};
+export type TagArtworks_tag$data = TagArtworks_tag;
+export type TagArtworks_tag$key = {
+    readonly " $data"?: TagArtworks_tag$data;
+    readonly " $fragmentRefs": FragmentRefs<"TagArtworks_tag">;
 };
 
 

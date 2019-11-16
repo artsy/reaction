@@ -17,6 +17,11 @@ export type ArtistRecommendations_artist = {
     } | null;
     readonly " $refType": "ArtistRecommendations_artist";
 };
+export type ArtistRecommendations_artist$data = ArtistRecommendations_artist;
+export type ArtistRecommendations_artist$key = {
+    readonly " $data"?: ArtistRecommendations_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistRecommendations_artist">;
+};
 
 
 

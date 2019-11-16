@@ -6,6 +6,11 @@ export type Articles_artist = {
     readonly " $fragmentRefs": FragmentRefs<"ArtistArticles_artist">;
     readonly " $refType": "Articles_artist";
 };
+export type Articles_artist$data = Articles_artist;
+export type Articles_artist$key = {
+    readonly " $data"?: Articles_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"Articles_artist">;
+};
 
 
 

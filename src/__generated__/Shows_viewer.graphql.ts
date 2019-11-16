@@ -14,6 +14,11 @@ export type Shows_viewer = {
     } | null;
     readonly " $refType": "Shows_viewer";
 };
+export type Shows_viewer$data = Shows_viewer;
+export type Shows_viewer$key = {
+    readonly " $data"?: Shows_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"Shows_viewer">;
+};
 
 
 

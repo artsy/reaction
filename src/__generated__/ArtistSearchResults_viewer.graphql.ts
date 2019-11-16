@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistSearchResults_viewer = {
     readonly searchConnection: {
         readonly edges: ReadonlyArray<{
@@ -14,6 +15,11 @@ export type ArtistSearchResults_viewer = {
         } | null> | null;
     } | null;
     readonly " $refType": "ArtistSearchResults_viewer";
+};
+export type ArtistSearchResults_viewer$data = ArtistSearchResults_viewer;
+export type ArtistSearchResults_viewer$key = {
+    readonly " $data"?: ArtistSearchResults_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistSearchResults_viewer">;
 };
 
 
