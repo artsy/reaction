@@ -3,7 +3,9 @@ import { find } from "lodash"
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../../Utils/fillwidth"
+import fillwidthDimensions, {
+  FillWidthItemDimensions,
+} from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { ArticleLayout, SectionLayout } from "../Typings"
@@ -33,7 +35,7 @@ class ImageCollectionComponent extends React.PureComponent<
     },
   }
 
-  renderImages(dimensions) {
+  renderImages(dimensions: FillWidthItemDimensions[]) {
     const {
       articleLayout,
       color,
@@ -51,7 +53,7 @@ class ImageCollectionComponent extends React.PureComponent<
       if (width <= 600 || dimensions.length === 1) {
         imageSize = {}
       } else {
-        imageSize = find(dimensions, ["__id", url])
+        imageSize = find(dimensions, ["id", url])
       }
 
       const slideshowIndex =
