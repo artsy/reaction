@@ -95,10 +95,10 @@ export const createMockFetchQuery = ({
         )
       }
 
-      if (info.fieldName === "__id" || info.fieldName === "id") {
-        // if relay is looking for `__id` but we only supplied `id`
-        if ("id" in source) {
-          return source.id
+      if (info.fieldName === "id" || info.fieldName === "internalID") {
+        // if relay is looking for `id` but we only supplied `internalID`
+        if ("internalID" in source) {
+          return source.internalID
         }
 
         // relay is looking for an id to denormalize the fixture in the store
