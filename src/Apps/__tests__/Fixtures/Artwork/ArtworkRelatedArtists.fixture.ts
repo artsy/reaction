@@ -8,7 +8,7 @@ export const ArtworkRelatedArtistsFixture = {
             __fragments: {
               ArtistCard_artist: {},
             },
-            __id: "QXJ0aXN0OmphbWVzLXJvc2VucXVpc3Q=",
+            id: "QXJ0aXN0OmphbWVzLXJvc2VucXVpc3Q=",
             " $fragmentRefs": null,
           },
         },
@@ -17,7 +17,7 @@ export const ArtworkRelatedArtistsFixture = {
             __fragments: {
               ArtistCard_artist: {},
             },
-            __id: "QXJ0aXN0OnRvbS13ZXNzZWxtYW5u",
+            id: "QXJ0aXN0OnRvbS13ZXNzZWxtYW5u",
             " $fragmentRefs": null,
           },
         },
@@ -26,7 +26,7 @@ export const ArtworkRelatedArtistsFixture = {
             __fragments: {
               ArtistCard_artist: {},
             },
-            __id: "QXJ0aXN0OmppbS1udXR0",
+            id: "QXJ0aXN0OmppbS1udXR0",
             " $fragmentRefs": null,
           },
         },
@@ -35,12 +35,12 @@ export const ArtworkRelatedArtistsFixture = {
             __fragments: {
               ArtistCard_artist: {},
             },
-            __id: "QXJ0aXN0OnBoaWxpcC1oYW5zb24=",
+            id: "QXJ0aXN0OnBoaWxpcC1oYW5zb24=",
             " $fragmentRefs": null,
           },
         },
       ],
     },
   },
-  __id: "QXJ0aXN0OnJveS1saWNodGVuc3RlaW4=",
+  id: "QXJ0aXN0OnJveS1saWNodGVuc3RlaW4=",
 }

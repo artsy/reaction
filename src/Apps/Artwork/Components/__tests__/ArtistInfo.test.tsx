@@ -1,11 +1,19 @@
 import { ArtistInfoFixture } from "Apps/__tests__/Fixtures/Artwork/ArtistInfo"
 import { mockTracking } from "Artsy/Analytics"
 import { mount } from "enzyme"
-import { cloneDeep } from "lodash"
 import React from "react"
+import { graphql } from "react-relay"
 import { ArtistInfo } from "../ArtistInfo"
 
 jest.unmock("react-tracking")
+
+graphql`
+  query ArtistInfo_Test_Query @raw_response_type {
+    artist(id: "banksy") {
+      ...ArtistInfo_artist
+    }
+  }
+`
 
 describe("ArtistInfo", () => {
   const getWrapper = props => {
@@ -38,45 +46,70 @@ describe("ArtistInfo", () => {
 
   describe("ArtistInfo for artwork with incomplete artist info", () => {
     it("Hides 'Show artist insights' button if no market insights or selected exhibitions data", async () => {
-      const artist = cloneDeep(ArtistInfoFixture)
-      artist.highlights.partners = null
-      artist.collections = null
-      artist.auctionResults = null
-      artist.exhibition_highlights = null
+      const artist = {
+        ...ArtistInfoFixture,
+        highlights: {
+          ...ArtistInfoFixture.highlights,
+          partnersConnection: null,
+        },
+        collections: null,
+        auctionResultsConnection: null,
+        exhibition_highlights: null,
+      }
       const component = getWrapper({ artist })
       expect(component.find("Button").length).toBe(0)
     })
 
     it("Hides 'Show artist insights' button if exhibition count does not meet minimum", async () => {
-      const artist = cloneDeep(ArtistInfoFixture)
-      artist.highlights.partners = null
-      artist.collections = null
-      artist.auctionResults = null
-      artist.exhibition_highlights.length = 1
+      const artist = {
+        ...ArtistInfoFixture,
+        highlights: {
+          ...ArtistInfoFixture.highlights,
+          partnersConnection: null,
+        },
+        collections: null,
+        auctionResultsConnection: null,
+        exhibition_highlights: {
+          ...ArtistInfoFixture.exhibition_highlights,
+          length: 1,
+        },
+      }
       const component = getWrapper({ artist })
       expect(component.find("Button").length).toBe(0)
     })
 
     it("hides ArtistBio if no data", async () => {
-      const artist = cloneDeep(ArtistInfoFixture)
-      artist.biography_blurb.text = null
+      const artist = {
+        ...ArtistInfoFixture,
+        biography_blurb: {
+          ...ArtistInfoFixture.biography_blurb,
+          text: null,
+        },
+      }
       const component = getWrapper({ artist })
       expect(component.find("ArtistBio").length).toBe(0)
     })
 
     it("hides MarketInsights if no data", async () => {
-      const artist = cloneDeep(ArtistInfoFixture)
-      artist.highlights.partners = null
-      artist.collections = null
-      artist.auctionResults = null
+      const artist = {
+        ...ArtistInfoFixture,
+        highlights: {
+          ...ArtistInfoFixture.highlights,
+          partnersConnection: null,
+        },
+        collections: null,
+        auctionResultsConnection: null,
+      }
       const component = getWrapper({ artist })
       component.find("Button").simulate("click")
       expect(component.find("MarketInsights").html()).toBe(null)
     })
 
     it("hides SelectedExhibitions if no data", async () => {
-      const artist = cloneDeep(ArtistInfoFixture)
-      artist.exhibition_highlights = []
+      const artist = {
+        ...ArtistInfoFixture,
+        exhibition_highlights: [],
+      }
       const component = getWrapper({ artist })
       component.find("Button").simulate("click")
       expect(component.find("SelectedExhibitions").html()).toBe(null)

@@ -1,8 +1,8 @@
 import { AuctionResults_Test_QueryRawResponse } from "__generated__/AuctionResults_Test_Query.graphql"
 
-export const AuctionResultsFixture = {
+export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
   artist: {
-    id: "blah",
+    id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
     slug: "pablo-picasso",
     auctionResultsConnection: {
       pageInfo: { hasNextPage: true, endCursor: "YXJyYXljb25uZWN0aW9uOjk=" },
@@ -60,7 +60,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 11, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$4,000,000 - 6,000,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDc3Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDc3Nw==",
           },
         },
         {
@@ -80,7 +80,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 11, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$500,000 - 700,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDc1Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDc1Nw==",
           },
         },
         {
@@ -100,7 +100,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$3,500 - 4,500" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDY4Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDY4Nw==",
           },
         },
         {
@@ -120,7 +120,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$6,000 - 8,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDY3Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDY3Nw==",
           },
         },
         {
@@ -140,7 +140,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$2,500 - 3,500" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDY2Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDY2Nw==",
           },
         },
         {
@@ -160,7 +160,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$18,000 - 25,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDY1Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDY1Nw==",
           },
         },
         {
@@ -180,7 +180,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$10,000 - 15,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDY0Nw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDY0Nw==",
           },
         },
         {
@@ -200,7 +200,7 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$7,000 - 10,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDYzNw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDYzNw==",
           },
         },
         {
@@ -220,11 +220,10 @@ export const AuctionResultsFixture = {
             sale_date_text: "Nov 07, 2018 - Nov 13, 2018",
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$7,000 - 10,000" },
-            __id: "QXVjdGlvblJlc3VsdDoyNDYyNw==",
+            id: "QXVjdGlvblJlc3VsdDoyNDYyNw==",
           },
         },
       ],
     },
-    __id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
   },
-} as AuctionResults_Test_QueryRawResponse
+}

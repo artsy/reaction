@@ -18,7 +18,7 @@ describe("Artwork", () => {
       },
       artists: [
         {
-          __id: "mikael-olson",
+          id: "mikael-olson",
           name: "Mikael Olson",
         },
       ],
