@@ -1,3 +1,15 @@
+# v22.0.8 (Sat Nov 16 2019)
+
+#### 🐛  Bug Fix
+
+- [MP v2] Remove left-over `__id` usage [#3016](https://github.com/artsy/reaction/pull/3016) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
 # v22.0.7 (Fri Nov 15 2019)
 
 #### 🐛  Bug Fix
