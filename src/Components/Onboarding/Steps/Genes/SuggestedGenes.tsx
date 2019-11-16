@@ -134,7 +134,6 @@ class SuggestedGenesContent extends React.Component<Props> {
               item={item}
               key={item.id}
               id={item.slug}
-              _id={item.internalID}
               name={item.name}
               image_url={imageUrl}
               onClick={() => this.followedGene(item)}
