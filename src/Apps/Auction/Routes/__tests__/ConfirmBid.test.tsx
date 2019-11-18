@@ -1,7 +1,28 @@
 import { ConfirmBidValidTestQueryRawResponse } from "__generated__/ConfirmBidValidTestQuery.graphql"
+import {
+  createCreditCardAndUpdatePhoneFailed,
+  createCreditCardAndUpdatePhoneSuccessful,
+} from "../__fixtures__/MutationResults/createCreditCardAndUpdatePhone"
+
 jest.mock("Apps/Auction/Routes/ConfirmBid/BidderPositionQuery", () => ({
   bidderPositionQuery: jest.fn(),
 }))
+
+jest.mock("react-stripe-elements", () => {
+  const stripeMock = {
+    createToken: jest.fn(),
+  }
+
+  return {
+    Elements: ({ children }) => children,
+    StripeProvider: ({ children }) => children,
+    CardElement: ({ onReady, hidePostalCode, ...props }) => <div {...props} />,
+    __stripeMock: stripeMock,
+    injectStripe: Component => props => (
+      <Component stripe={stripeMock} {...props} />
+    ),
+  }
+})
 
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
@@ -21,8 +42,10 @@ import {
   createBidderPositionSuccessful,
   createBidderPositionSuccessfulAndBidder,
 } from "../__fixtures__/MutationResults/createBidderPosition"
+import { stripeTokenResponse } from "../__fixtures__/Stripe"
 import { ConfirmBidRouteFragmentContainer } from "../ConfirmBid"
 import { ConfirmBidTestPage } from "./Utils/ConfirmBidTestPage"
+import { ValidFormValues } from "./Utils/RegisterTestPage"
 
 jest.unmock("react-relay")
 jest.unmock("react-tracking")
@@ -31,6 +54,8 @@ jest.mock("Utils/Events", () => ({
 }))
 const mockBidderPositionQuery = bidderPositionQuery as jest.Mock
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
+const createTokenMock = require("react-stripe-elements").__stripeMock
+  .createToken as jest.Mock
 
 jest.mock("sharify", () => ({
   data: {
@@ -84,19 +109,25 @@ const setupTestEnv = ({
         me {
           internalID
           hasQualifiedCreditCards
-          ...BidForm_me
+          ...ConfirmBid_me
         }
       }
     `,
     defaultData: ConfirmBidQueryResponseFixture as ConfirmBidValidTestQueryRawResponse,
     defaultMutationResults: {
       createBidderPosition: {},
+      createCreditCard: {},
+      updateMyUserProfile: {},
     },
   })
 }
 
 describe("Routes/ConfirmBid", () => {
   beforeEach(() => {
+    // @ts-ignore
+    // tslint:disable-next-line:no-empty
+    window.Stripe = () => {}
+
     window.location.assign = jest.fn()
     window.location.search = ""
   })
@@ -464,6 +495,166 @@ describe("Routes/ConfirmBid", () => {
         auction_slug: "saleslug",
         artwork_slug: "artworkslug",
         bidder_id: "new-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+  })
+
+  describe("for unregistered users without credit cards", () => {
+    const FixtureForUnregisteredUserWithoutCreditCard = deepMerge(
+      ConfirmBidQueryResponseFixture,
+      {
+        me: {
+          hasQualifiedCreditCards: false,
+        },
+        artwork: {
+          saleArtwork: {
+            sale: {
+              registrationStatus: null,
+            },
+          },
+        },
+      }
+    )
+
+    it("allows the user to place a bid after agreeing to terms", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue(stripeTokenResponse)
+      env.mutations.useResultsOnce(createCreditCardAndUpdatePhoneSuccessful)
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithWinning
+      )
+
+      await page.fillFormWithValidValues()
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(createTokenMock).toHaveBeenCalledWith({
+        address_city: "New York",
+        address_country: "United States",
+        address_line1: "123 Example Street",
+        address_line2: "Apt 1",
+        address_state: "NY",
+        address_zip: "10012",
+        name: "Example Name",
+      })
+      expect(env.mutations.mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: "RegisterCreateCreditCardAndUpdatePhoneMutation",
+        }),
+        {
+          creditCardInput: { token: "tok_abcabcabcabcabcabcabc" },
+          profileInput: { phone: "+1 555 212 7878" },
+        }
+      )
+      expect(env.mutations.mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: "ConfirmBidCreateBidderPositionMutation",
+        }),
+        {
+          input: {
+            artworkID: "artworkid",
+            maxBidAmountCents: 5000000,
+            saleID: "saleid",
+          },
+        }
+      )
+
+      expect(mockBidderPositionQuery).toHaveBeenCalledTimes(1)
+      expect(mockBidderPositionQuery.mock.calls[0][1]).toEqual({
+        bidderPositionID: "positionid",
+      })
+      expect(window.location.assign).toHaveBeenCalledWith(
+        `https://example.com/artwork/${
+          ConfirmBidQueryResponseFixture.artwork.slug
+        }`
+      )
+    })
+
+    it("displays an error when user did not add his/her address", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue(stripeTokenResponse)
+
+      const address = Object.assign({}, ValidFormValues)
+      address.phoneNumber = "    "
+
+      await page.fillAddressForm(address)
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(page.text()).toMatch("Telephone is required")
+      expect(env.mutations.mockFetch).not.toBeCalled()
+      expect(window.location.assign).not.toHaveBeenCalled()
+    })
+
+    it("displays an error when Stripe returns an error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue({ error: { message: "Card inlivad" } })
+
+      await page.fillFormWithValidValues()
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(window.location.assign).not.toHaveBeenCalled()
+      expect(page.text()).toContain(
+        "Please make sure your internet connection is active and try again"
+      )
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["JavaScript error: Stripe error: Card inlivad"],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+
+    it("displays an error when CreateCreditCardAndUpdatePhoneMutation returns an error", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue(stripeTokenResponse)
+      env.mutations.useResultsOnce(createCreditCardAndUpdatePhoneFailed)
+
+      await page.fillFormWithValidValues()
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(window.location.assign).not.toHaveBeenCalled()
+      expect(page.text()).toContain(
+        "Please make sure your internet connection is active and try again"
+      )
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toBeCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: [
+          "JavaScript error: The `createCreditCard` mutation failed.",
+        ],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
         sale_id: "saleid",
         user_id: "my-user-id",
       })

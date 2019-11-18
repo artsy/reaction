@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
+import { CreditCardInstructions } from "Apps/Auction/Components/CreditCardInstructions"
 import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
@@ -221,15 +222,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
 
   return (
     <Box maxWidth={550}>
-      <Serif size="4" color="black100">
-        Please enter your credit card information below. The name on your Artsy
-        account must match the name on the card, and a valid credit card is
-        required in order to bid.
-      </Serif>
-      <Serif size="4" mt={2} color="black100">
-        Registration is free. Artsy will never charge this card without your
-        permission, and you are not required to use this card to pay if you win.
-      </Serif>
+      <CreditCardInstructions />
+
       <Box mt={2}>
         <Formik
           initialValues={initialValues}

@@ -17,6 +17,10 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Yup from "yup"
 
+import { CreditCardInstructions } from "Apps/Auction/Components/CreditCardInstructions"
+import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
+import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+
 interface Props {
   initialSelectedBid?: string
   me: BidForm_me
@@ -26,9 +30,19 @@ interface Props {
 }
 
 export interface FormValues {
-  selectedBid: string
+  address?: Address
   agreeToTerms: boolean
+  creditCard?: string
+  selectedBid: string
 }
+
+Yup.addMethod(Yup.string, "present", function(message) {
+  return this.test("test-present", message, value => {
+    return this.trim()
+      .required(message)
+      .isValid(value)
+  })
+})
 
 const validationSchemaForRegisteredUsers = Yup.object().shape({
   selectedBid: Yup.string().required(),
@@ -41,6 +55,25 @@ const validationSchemaForUnregisteredUsersWithCreditCard = Yup.object().shape({
     "You must agree to the Conditions of Sale"
   ),
 })
+
+const validationSchemaForUnregisteredUsersWithoutCreditCard = Yup.object().shape(
+  {
+    selectedBid: Yup.string().required(),
+    address: Yup.object({
+      name: Yup.string().present("Name is required"),
+      addressLine1: Yup.string().present("Address is required"),
+      country: Yup.string().present("Country is required"),
+      city: Yup.string().present("City is required"),
+      region: Yup.string().present("State is required"),
+      postalCode: Yup.string().present("Postal code is required"),
+      phoneNumber: Yup.string().present("Telephone is required"),
+    }),
+    agreeToTerms: Yup.bool().oneOf(
+      [true],
+      "You must agree to the Conditions of Sale"
+    ),
+  }
+)
 
 const getSelectedBid = ({
   initialSelectedBid,
@@ -63,7 +96,7 @@ const getSelectedBid = ({
   return selectedIncrement.value
 }
 
-const determineDisplayRequirements = (
+export const determineDisplayRequirements = (
   bidder: BidForm_saleArtwork["sale"]["registrationStatus"],
   me: BidForm_me
 ) => {
@@ -88,12 +121,14 @@ export const BidForm: React.FC<Props> = ({
   ).map(inc => ({ value: inc.cents.toString(), text: inc.display }))
 
   const selectedBid = getSelectedBid({ initialSelectedBid, displayIncrements })
-  const { requiresCheckbox } = determineDisplayRequirements(
-    saleArtwork.sale.registrationStatus,
-    me
-  )
+  const {
+    requiresCheckbox,
+    requiresPaymentInformation,
+  } = determineDisplayRequirements(saleArtwork.sale.registrationStatus, me)
   const validationSchema = requiresCheckbox
-    ? validationSchemaForUnregisteredUsersWithCreditCard
+    ? requiresPaymentInformation
+      ? validationSchemaForUnregisteredUsersWithoutCreditCard
+      : validationSchemaForUnregisteredUsersWithCreditCard
     : validationSchemaForRegisteredUsers
 
   return (
@@ -102,6 +137,16 @@ export const BidForm: React.FC<Props> = ({
         initialValues={{
           selectedBid,
           agreeToTerms: false,
+          address: {
+            name: "",
+            country: "",
+            postalCode: "",
+            addressLine1: "",
+            addressLine2: "",
+            city: "",
+            region: "",
+            phoneNumber: "",
+          },
         }}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
@@ -136,6 +181,38 @@ export const BidForm: React.FC<Props> = ({
                   )}
                   {showPricingTransparency && <PricingTransparency />}
                 </Flex>
+
+                {requiresPaymentInformation && (
+                  <Box>
+                    <Separator mb={3} />
+                    <CreditCardInstructions />
+
+                    <Serif
+                      mt={4}
+                      mb={2}
+                      size="4t"
+                      weight="semibold"
+                      color="black100"
+                    >
+                      Card Information
+                    </Serif>
+
+                    <CreditCardInput
+                      error={{ message: errors.creditCard } as stripe.Error}
+                    />
+
+                    <Box mt={2}>
+                      <AddressForm
+                        value={values.address}
+                        onChange={address => setFieldValue("address", address)}
+                        errors={errors.address}
+                        touched={touched.address}
+                        billing
+                        showPhoneNumberInput
+                      />
+                    </Box>
+                  </Box>
+                )}
 
                 <Flex
                   pb={3}
