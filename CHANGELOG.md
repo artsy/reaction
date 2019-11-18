@@ -1,3 +1,20 @@
+# v22.1.0 (Mon Nov 18 2019)
+
+#### 🚀  Enhancement
+
+- Upgrade to relay v7 [#3017](https://github.com/artsy/reaction/pull/3017) ([@alloy](https://github.com/alloy))
+
+#### 🐛  Bug Fix
+
+- Track ad impressions and clicks on 3rd party served ads [#2964](https://github.com/artsy/reaction/pull/2964) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v22.0.8 (Sat Nov 16 2019)
 
 #### 🐛  Bug Fix
