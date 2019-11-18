@@ -20,6 +20,7 @@ export const ConfirmBidQueryResponseFixture: ConfirmBidQueryResponse = {
   me: {
     id: "my-user-id",
     hasQualifiedCreditCards: true,
+    has_qualified_credit_cards: true,
     " $fragmentRefs": null as never,
     " $refType": null as never,
   },
