@@ -132,6 +132,7 @@ export class VideoLayout extends Component<Props, State> {
             isSponsored ? "sponsorfeature" : "video"
           )}
           isSeries
+          articleSlug={article.slug}
         />
       </VideoLayoutContainer>
     )

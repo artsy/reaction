@@ -1,7 +1,9 @@
 import { Box, color, Flex, FlexProps, Sans } from "@artsy/palette"
+import * as AnalyticsSchema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
-import React, { SFC, useState } from "react"
+import React, { SFC, useEffect, useState } from "react"
 import { Bling as GPT } from "react-gpt"
 import styled from "styled-components"
 
@@ -16,6 +18,7 @@ export interface DisplayAdProps extends FlexProps {
   }
   isSeries?: boolean
   isStandard?: boolean
+  articleSlug: string
 }
 
 export interface DisplayAdContainerProps extends FlexProps {
@@ -28,10 +31,39 @@ export interface DisplayAdContainerProps extends FlexProps {
 GPT.syncCorrelator(true)
 
 export const DisplayAd: SFC<DisplayAdProps> = props => {
-  const { adDimension, adUnit, targetingData, ...otherProps } = props
+  const {
+    adDimension,
+    adUnit,
+    targetingData,
+    articleSlug,
+    ...otherProps
+  } = props
   const [width, height] = adDimension.split("x").map(a => parseInt(a))
   const [isAdEmpty, setAdEmpty] = useState(null)
   const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
+  const { trackEvent } = useTracking()
+
+  useEffect(() => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Impression,
+      context_page: AnalyticsSchema.PageName.ArticlePage,
+      context_module: AnalyticsSchema.ContextModule.AdServer,
+      context_page_owner_id: props.targetingData.post_id,
+      context_page_owner_slug: props.articleSlug,
+      context_page_owner_type: AnalyticsSchema.OwnerType.Article,
+    })
+  }, [])
+
+  const onClickAd = () => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_page: AnalyticsSchema.PageName.ArticlePage,
+      context_module: AnalyticsSchema.ContextModule.AdServer,
+      context_page_owner_id: props.targetingData.post_id,
+      context_page_owner_slug: props.articleSlug,
+      context_page_owner_type: AnalyticsSchema.OwnerType.Article,
+    })
+  }
 
   const ad = (
     <GPT
@@ -51,6 +83,7 @@ export const DisplayAd: SFC<DisplayAdProps> = props => {
 
   return (
     <DisplayAdContainer
+      onClick={onClickAd}
       flexDirection="column"
       pt={isMobileLeaderboardAd ? 2 : 4}
       pb={isMobileLeaderboardAd ? 2 : 1}

@@ -81,6 +81,7 @@ export class StandardLayout extends React.Component<
             : AdDimension.Desktop_RightRail1
         }
         targetingData={targetingData(article, "article")}
+        articleSlug={article.slug}
       />
     )
   }
@@ -104,6 +105,7 @@ export class StandardLayout extends React.Component<
         }
         adDimension={adDimension}
         targetingData={targetingData(article, "article")}
+        articleSlug={article.slug}
       />
     )
   }

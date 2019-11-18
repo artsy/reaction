@@ -318,6 +318,7 @@ export class Sections extends Component<Props, State> {
                 article,
                 isSponsored ? "sponsorfeature" : "feature"
               )}
+              articleSlug={article.slug}
             />
           </AdWrapper>
         )

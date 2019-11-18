@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import {
   FeatureArticle,
   StandardArticle,
@@ -24,6 +25,18 @@ jest.mock(
 jest.mock("Components/Publishing/ToolTip/TooltipsDataLoader", () => ({
   TooltipsData: props => props.children,
 }))
+
+jest.mock("Artsy/Analytics/useTracking")
+
+const trackEvent = jest.fn()
+
+beforeEach(() => {
+  ;(useTracking as jest.Mock).mockImplementation(() => {
+    return {
+      trackEvent,
+    }
+  })
+})
 
 it("indexes and titles images", () => {
   const props = {

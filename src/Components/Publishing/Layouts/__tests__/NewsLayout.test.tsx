@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { NewsArticle } from "Components/Publishing/Fixtures/Articles"
 import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
@@ -17,6 +18,7 @@ global.fetch = jest.fn(() =>
     json: () => Promise.resolve({}),
   })
 )
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("News Layout", () => {
   const dateNow = Date.now
@@ -128,12 +130,18 @@ describe("News Layout with display ads", () => {
   const getWrapper = (passedProps = props) => {
     return mount(<NewsLayout {...passedProps} />)
   }
+  const trackEvent = jest.fn()
 
   beforeEach(() => {
     props = {
       shouldAdRender: true,
       article: NewsArticle,
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   it("renders the news layout properly with display ads", () => {
