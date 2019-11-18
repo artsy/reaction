@@ -81,7 +81,14 @@ describe("SeoDataForArtwork", () => {
     })
 
     it("Renders a Product for a non-institution ", async () => {
-      const wrapper = await getWrapper(SeoDataForArtworkFixture)
+      const wrapper = await getWrapper({
+        ...SeoDataForArtworkFixture,
+        listPrice: {
+          __typename: "Money",
+          major: 1000,
+          currencyCode: "USD",
+        },
+      })
 
       expect(wrapper.find(Product).length).toEqual(1)
 
@@ -98,7 +105,7 @@ describe("SeoDataForArtwork", () => {
         offers: {
           "@type": "Offer",
           availability: "https://schema.org/InStock",
-          price: "sale message",
+          price: 1000,
           priceCurrency: "USD",
           seller: {
             "@type": "ArtGallery",
@@ -117,6 +124,11 @@ describe("SeoDataForArtwork", () => {
       it("Renders InStock when 'for sale'", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
+          listPrice: {
+            __typename: "Money",
+            major: 1000,
+            currencyCode: "USD",
+          },
           availability: "for sale",
         })
 
@@ -128,6 +140,11 @@ describe("SeoDataForArtwork", () => {
       it("Renders OutOfStock when not 'for sale'", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
+          listPrice: {
+            __typename: "Money",
+            major: 1000,
+            currencyCode: "USD",
+          },
           availability: "sold",
         })
 
@@ -138,77 +155,123 @@ describe("SeoDataForArtwork", () => {
     })
 
     describe("Artwork price", () => {
-      it("Renders sale_message when the price range is hidden", async () => {
+      it("Doesn't render offer when price is hidden", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
           is_price_range: true,
           is_price_hidden: true,
         })
 
-        expect(getProductData(wrapper).offers.price).toEqual("sale message")
+        expect(getProductData(wrapper).offers).toBeFalsy()
       })
 
-      it("Renders sale_message when not a price range", async () => {
-        const wrapper = await getWrapper({
-          ...SeoDataForArtworkFixture,
-          is_price_range: false,
-        })
-
-        expect(getProductData(wrapper).offers.price).toEqual("sale message")
-      })
-
-      it("Renders sale_message when price range & not hidden, but there's no price", async () => {
+      it("Renders AggregateOffer when price range", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
           is_price_range: false,
           is_price_hidden: false,
-          listPrice: null,
+          listPrice: {
+            __typename: "PriceRange",
+            maxPrice: {
+              major: 1000,
+            },
+            minPrice: {
+              major: 100,
+              currencyCode: "USD",
+            },
+          },
         })
 
-        expect(getProductData(wrapper).offers.price).toEqual("sale message")
-      })
-
-      it("Renders price specification when price range, not hidden, and price range exists", async () => {
-        const wrapper = await getWrapper({
-          ...SeoDataForArtworkFixture,
-          is_price_range: true,
-          is_price_hidden: false,
-          listPrice: { __typename: "PriceRange", display: "$1,234 - 2,345" },
-        })
-
-        const offers = getProductData(wrapper).offers
-        expect(offers.price).toBeUndefined()
-        expect(offers.priceCurrency).toBeUndefined()
-        expect(offers.priceSpecification).toBeDefined()
-        expect(offers.priceSpecification).toEqual({
-          "@type": "PriceSpecification",
-          minPrice: "1,234",
-          maxPrice: "2,345",
+        expect(getProductData(wrapper).offers).toEqual({
+          "@type": "AggregateOffer",
+          lowPrice: 100,
+          highPrice: 1000,
           priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "ArtGallery",
+            image: "partner-image",
+            name: "Wright",
+          },
         })
       })
 
-      it("Renders price specification when sale_message is actually a price range", async () => {
+      it("Renders AggregateOffer when price range with low and high bounds", async () => {
         const wrapper = await getWrapper({
           ...SeoDataForArtworkFixture,
           is_price_range: false,
           is_price_hidden: false,
-          sale_message: "$1,234 - 2,345",
+          listPrice: {
+            __typename: "PriceRange",
+            maxPrice: {
+              major: 1000,
+            },
+            minPrice: {
+              major: 100,
+              currencyCode: "USD",
+            },
+          },
         })
 
-        const offers = getProductData(wrapper).offers
-        expect(offers.price).toBeUndefined()
-        expect(offers.priceCurrency).toBeUndefined()
-        expect(offers.priceSpecification).toBeDefined()
-        expect(offers.priceSpecification).toEqual({
-          "@type": "PriceSpecification",
-          minPrice: "1,234",
-          maxPrice: "2,345",
+        expect(getProductData(wrapper).offers).toEqual({
+          "@type": "AggregateOffer",
+          lowPrice: 100,
+          highPrice: 1000,
           priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "ArtGallery",
+            image: "partner-image",
+            name: "Wright",
+          },
         })
+      })
+
+      it("Renders AggregateOffer when price range only with low bound", async () => {
+        const wrapper = await getWrapper({
+          ...SeoDataForArtworkFixture,
+          is_price_range: false,
+          is_price_hidden: false,
+          listPrice: {
+            __typename: "PriceRange",
+            minPrice: {
+              major: 100,
+              currencyCode: "USD",
+            },
+            maxPrice: null,
+          },
+        })
+
+        expect(getProductData(wrapper).offers).toEqual({
+          "@type": "AggregateOffer",
+          lowPrice: 100,
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          seller: {
+            "@type": "ArtGallery",
+            image: "partner-image",
+            name: "Wright",
+          },
+        })
+      })
+
+      it("Doesn't render offer when price range and no low bound", async () => {
+        const wrapper = await getWrapper({
+          ...SeoDataForArtworkFixture,
+          is_price_range: false,
+          is_price_hidden: false,
+          listPrice: {
+            __typename: "PriceRange",
+            minPrice: null,
+            maxPrice: {
+              major: 1000,
+            },
+          },
+        })
+
+        expect(getProductData(wrapper).offers).toBeFalsy()
       })
     })
-
     describe("Artwork dimensions", () => {
       it("renders no dimensions when dimensions aren't parseable", async () => {
         const wrapper = await getWrapper({

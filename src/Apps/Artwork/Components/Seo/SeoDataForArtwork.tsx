@@ -43,19 +43,11 @@ export const SeoDataForArtwork: React.FC<SeoDataForArtworkProps> = ({
     return <CreativeWork data={artworkMetaData} />
   }
 
+  const offers = offerAttributes(artwork)
   const ecommerceData = {
     category: artwork.category,
     productionDate: artwork.date,
-    offers: {
-      "@type": "Offer",
-      ...displayPrice(artwork),
-      availability: AVAILABILITY[artwork.availability],
-      seller: {
-        "@type": "ArtGallery",
-        name: get(artwork, a => a.partner.name),
-        image: get(artwork, a => a.partner.profile.image.resized.url),
-      },
-    },
+    offers,
   }
 
   return (
@@ -78,15 +70,21 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
         is_price_hidden: isPriceHidden
         is_price_range: isPriceRange
         listPrice {
+          __typename
           ... on PriceRange {
-            display
+            minPrice {
+              major
+              currencyCode
+            }
+            maxPrice {
+              major
+            }
           }
           ... on Money {
-            display
+            major
+            currencyCode
           }
         }
-        price_currency: priceCurrency
-        sale_message: saleMessage
         meta_image: image {
           resized(
             width: 640
@@ -124,53 +122,39 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
   }
 )
 
-const displayPrice = (artwork: SeoDataForArtwork_artwork) => {
-  const {
-    is_price_hidden,
-    is_price_range,
-    listPrice,
-    sale_message,
-    price_currency,
-  } = artwork
-
-  if (is_price_range && !is_price_hidden && listPrice) {
-    return buildPriceSpecification(
-      price_currency,
-      splitPriceRange(listPrice.display)
-    )
+export const offerAttributes = (artwork: SeoDataForArtwork_artwork) => {
+  if (!artwork.listPrice || artwork.is_price_hidden) return null
+  const seller = {
+    "@type": "ArtGallery",
+    name: get(artwork, a => a.partner.name),
+    image: get(artwork, a => a.partner.profile.image.resized.url),
   }
-
-  if (sale_message && sale_message.includes("-")) {
-    return buildPriceSpecification(
-      price_currency,
-      splitPriceRange(sale_message)
-    )
-  }
-
-  return {
-    price: sale_message,
-    priceCurrency: price_currency,
-  }
-}
-
-const splitPriceRange = (priceRange: string) => {
-  const minAndMaxPrice = priceRange.split("-")
-  return {
-    minPrice: trim(minAndMaxPrice[0]).replace("$", ""),
-    maxPrice: trim(minAndMaxPrice[1]),
-  }
-}
-
-const buildPriceSpecification = (
-  price_currency: string,
-  priceRange: { minPrice: string; maxPrice: string }
-) => {
-  return {
-    priceSpecification: {
-      "@type": "PriceSpecification",
-      priceCurrency: price_currency,
-      ...priceRange,
-    },
+  const availability = AVAILABILITY[artwork.availability]
+  switch (artwork.listPrice.__typename) {
+    case "PriceRange":
+      // lowPrice is required for AggregateOffer type
+      if (!artwork.listPrice.minPrice) {
+        return null
+      }
+      const highPrice = get(artwork.listPrice, price => price.maxPrice.major)
+      return {
+        "@type": "AggregateOffer",
+        lowPrice: artwork.listPrice.minPrice.major,
+        highPrice,
+        priceCurrency: artwork.listPrice.minPrice.currencyCode,
+        availability,
+        seller,
+      }
+    case "Money":
+      return {
+        "@type": "Offer",
+        price: artwork.listPrice.major,
+        priceCurrency: artwork.listPrice.currencyCode,
+        availability,
+        seller,
+      }
+    default:
+      return null
   }
 }
 

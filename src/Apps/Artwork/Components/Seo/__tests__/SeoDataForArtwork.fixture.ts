@@ -7,8 +7,6 @@ export const SeoDataForArtworkFixture: SeoDataForArtwork_Test_QueryRawResponse["
   is_price_hidden: false,
   is_price_range: false,
   listPrice: null,
-  price_currency: "USD",
-  sale_message: "sale message",
   meta_image: {
     resized: {
       width: 640,
