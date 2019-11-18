@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Header_collection = {
     readonly category: string;
     readonly credit: string | null;
@@ -14,6 +15,11 @@ export type Header_collection = {
     readonly slug: string;
     readonly title: string;
     readonly " $refType": "Header_collection";
+};
+export type Header_collection$data = Header_collection;
+export type Header_collection$key = {
+    readonly " $data"?: Header_collection$data;
+    readonly " $fragmentRefs": FragmentRefs<"Header_collection">;
 };
 
 

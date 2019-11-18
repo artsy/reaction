@@ -2,6 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type OfferHistoryItem_order = {
     readonly totalListPrice: string | null;
     readonly offers?: {
@@ -23,6 +24,11 @@ export type OfferHistoryItem_order = {
         readonly note: string | null;
     } | null;
     readonly " $refType": "OfferHistoryItem_order";
+};
+export type OfferHistoryItem_order$data = OfferHistoryItem_order;
+export type OfferHistoryItem_order$key = {
+    readonly " $data"?: OfferHistoryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"OfferHistoryItem_order">;
 };
 
 

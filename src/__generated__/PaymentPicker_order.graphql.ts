@@ -3,6 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type PaymentPicker_order = {
     readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
@@ -48,6 +49,11 @@ export type PaymentPicker_order = {
         } | null> | null;
     } | null;
     readonly " $refType": "PaymentPicker_order";
+};
+export type PaymentPicker_order$data = PaymentPicker_order;
+export type PaymentPicker_order$key = {
+    readonly " $data"?: PaymentPicker_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"PaymentPicker_order">;
 };
 
 

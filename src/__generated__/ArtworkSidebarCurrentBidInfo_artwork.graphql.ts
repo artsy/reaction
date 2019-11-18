@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarCurrentBidInfo_artwork = {
     readonly sale: {
         readonly is_closed: boolean | null;
@@ -30,6 +31,11 @@ export type ArtworkSidebarCurrentBidInfo_artwork = {
         } | null;
     }> | null;
     readonly " $refType": "ArtworkSidebarCurrentBidInfo_artwork";
+};
+export type ArtworkSidebarCurrentBidInfo_artwork$data = ArtworkSidebarCurrentBidInfo_artwork;
+export type ArtworkSidebarCurrentBidInfo_artwork$key = {
+    readonly " $data"?: ArtworkSidebarCurrentBidInfo_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarCurrentBidInfo_artwork">;
 };
 
 

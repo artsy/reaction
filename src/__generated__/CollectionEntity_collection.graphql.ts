@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CollectionEntity_collection = {
     readonly slug: string;
     readonly headerImage: string | null;
@@ -8,6 +9,11 @@ export type CollectionEntity_collection = {
     readonly price_guidance: number | null;
     readonly show_on_editorial: boolean;
     readonly " $refType": "CollectionEntity_collection";
+};
+export type CollectionEntity_collection$data = CollectionEntity_collection;
+export type CollectionEntity_collection$key = {
+    readonly " $data"?: CollectionEntity_collection$data;
+    readonly " $fragmentRefs": FragmentRefs<"CollectionEntity_collection">;
 };
 
 

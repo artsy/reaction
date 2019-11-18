@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type RelatedCollectionEntity_collection = {
     readonly headerImage: string | null;
     readonly slug: string;
@@ -22,6 +23,11 @@ export type RelatedCollectionEntity_collection = {
         } | null> | null;
     } | null;
     readonly " $refType": "RelatedCollectionEntity_collection";
+};
+export type RelatedCollectionEntity_collection$data = RelatedCollectionEntity_collection;
+export type RelatedCollectionEntity_collection$key = {
+    readonly " $data"?: RelatedCollectionEntity_collection$data;
+    readonly " $fragmentRefs": FragmentRefs<"RelatedCollectionEntity_collection">;
 };
 
 

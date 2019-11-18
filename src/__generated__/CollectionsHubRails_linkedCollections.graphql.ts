@@ -1,12 +1,17 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type MarketingGroupTypes = "ArtistSeries" | "FeaturedCollections" | "OtherCollections" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type CollectionsHubRails_linkedCollections = ReadonlyArray<{
     readonly groupType: MarketingGroupTypes;
     readonly " $fragmentRefs": FragmentRefs<"FeaturedCollectionsRails_collectionGroup" | "OtherCollectionsRail_collectionGroup" | "ArtistSeriesRail_collectionGroup">;
     readonly " $refType": "CollectionsHubRails_linkedCollections";
+}>;
+export type CollectionsHubRails_linkedCollections$data = CollectionsHubRails_linkedCollections;
+export type CollectionsHubRails_linkedCollections$key = ReadonlyArray<{
+    readonly " $data"?: CollectionsHubRails_linkedCollections$data;
+    readonly " $fragmentRefs": FragmentRefs<"CollectionsHubRails_linkedCollections">;
 }>;
 
 

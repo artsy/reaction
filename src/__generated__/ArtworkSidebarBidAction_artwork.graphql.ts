@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarBidAction_artwork = {
     readonly myLotStanding: ReadonlyArray<{
         readonly most_recent_bid: {
@@ -29,6 +30,11 @@ export type ArtworkSidebarBidAction_artwork = {
         } | null> | null;
     } | null;
     readonly " $refType": "ArtworkSidebarBidAction_artwork";
+};
+export type ArtworkSidebarBidAction_artwork$data = ArtworkSidebarBidAction_artwork;
+export type ArtworkSidebarBidAction_artwork$key = {
+    readonly " $data"?: ArtworkSidebarBidAction_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarBidAction_artwork">;
 };
 
 

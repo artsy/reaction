@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CVItem_artist = {
     readonly slug: string;
     readonly showsConnection: {
@@ -22,6 +23,11 @@ export type CVItem_artist = {
         } | null> | null;
     } | null;
     readonly " $refType": "CVItem_artist";
+};
+export type CVItem_artist$data = CVItem_artist;
+export type CVItem_artist$key = {
+    readonly " $data"?: CVItem_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"CVItem_artist">;
 };
 
 

@@ -31,16 +31,16 @@ query CollectionsRailQuery(
   }
 }
 
-fragment CollectionsRail_collections on MarketingCollection {
-  ...CollectionEntity_collection
-}
-
 fragment CollectionEntity_collection on MarketingCollection {
   slug
   headerImage
   title
   price_guidance: priceGuidance
   show_on_editorial: showOnEditorial
+}
+
+fragment CollectionsRail_collections on MarketingCollection {
+  ...CollectionEntity_collection
 }
 */
 
@@ -173,7 +173,7 @@ return {
     "operationKind": "query",
     "name": "CollectionsRailQuery",
     "id": null,
-    "text": "query CollectionsRailQuery(\n  $showOnEditorial: Boolean\n  $size: Int\n  $randomizationSeed: String\n) {\n  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomizationSeed: $randomizationSeed) {\n    ...CollectionsRail_collections\n    id\n  }\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance: priceGuidance\n  show_on_editorial: showOnEditorial\n}\n",
+    "text": "query CollectionsRailQuery(\n  $showOnEditorial: Boolean\n  $size: Int\n  $randomizationSeed: String\n) {\n  collections: marketingCollections(showOnEditorial: $showOnEditorial, size: $size, randomizationSeed: $randomizationSeed) {\n    ...CollectionsRail_collections\n    id\n  }\n}\n\nfragment CollectionEntity_collection on MarketingCollection {\n  slug\n  headerImage\n  title\n  price_guidance: priceGuidance\n  show_on_editorial: showOnEditorial\n}\n\nfragment CollectionsRail_collections on MarketingCollection {\n  ...CollectionEntity_collection\n}\n",
     "metadata": {}
   }
 };

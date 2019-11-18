@@ -152,7 +152,6 @@ export const ArtistOverviewQuery = graphql`
     $medium: String
     $offerable: Boolean
     $page: Int
-    $partnerCategory: [String]
     $partnerID: ID
     $priceRange: String
     $sort: String

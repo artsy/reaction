@@ -31,6 +31,11 @@ export type ArtistShows_artist = {
     } | null;
     readonly " $refType": "ArtistShows_artist";
 };
+export type ArtistShows_artist$data = ArtistShows_artist;
+export type ArtistShows_artist$key = {
+    readonly " $data"?: ArtistShows_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistShows_artist">;
+};
 
 
 

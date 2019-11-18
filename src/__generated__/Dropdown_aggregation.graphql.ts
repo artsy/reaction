@@ -2,6 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type Dropdown_aggregation = {
     readonly slice: ArtworkAggregation | null;
     readonly counts: ReadonlyArray<{
@@ -10,6 +11,11 @@ export type Dropdown_aggregation = {
         readonly count: number;
     } | null> | null;
     readonly " $refType": "Dropdown_aggregation";
+};
+export type Dropdown_aggregation$data = Dropdown_aggregation;
+export type Dropdown_aggregation$key = {
+    readonly " $data"?: Dropdown_aggregation$data;
+    readonly " $fragmentRefs": FragmentRefs<"Dropdown_aggregation">;
 };
 
 

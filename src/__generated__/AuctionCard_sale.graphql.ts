@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type AuctionCard_sale = {
     readonly cover_image: {
         readonly cropped: {
@@ -26,6 +27,11 @@ export type AuctionCard_sale = {
         readonly name: string | null;
     } | null;
     readonly " $refType": "AuctionCard_sale";
+};
+export type AuctionCard_sale$data = AuctionCard_sale;
+export type AuctionCard_sale$key = {
+    readonly " $data"?: AuctionCard_sale$data;
+    readonly " $fragmentRefs": FragmentRefs<"AuctionCard_sale">;
 };
 
 

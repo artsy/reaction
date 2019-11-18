@@ -8,6 +8,11 @@ export type ArtworkGrid_artist = {
     } | null;
     readonly " $refType": "ArtworkGrid_artist";
 };
+export type ArtworkGrid_artist$data = ArtworkGrid_artist;
+export type ArtworkGrid_artist$key = {
+    readonly " $data"?: ArtworkGrid_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artist">;
+};
 
 
 

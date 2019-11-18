@@ -1,11 +1,17 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistBio_bio = {
     readonly biography_blurb: {
         readonly text: string | null;
     } | null;
     readonly " $refType": "ArtistBio_bio";
+};
+export type ArtistBio_bio$data = ArtistBio_bio;
+export type ArtistBio_bio$key = {
+    readonly " $data"?: ArtistBio_bio$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio">;
 };
 
 

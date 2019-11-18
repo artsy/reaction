@@ -1,11 +1,17 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarTitleInfo_artwork = {
     readonly title: string | null;
     readonly date: string | null;
     readonly medium: string | null;
     readonly " $refType": "ArtworkSidebarTitleInfo_artwork";
+};
+export type ArtworkSidebarTitleInfo_artwork$data = ArtworkSidebarTitleInfo_artwork;
+export type ArtworkSidebarTitleInfo_artwork$key = {
+    readonly " $data"?: ArtworkSidebarTitleInfo_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarTitleInfo_artwork">;
 };
 
 

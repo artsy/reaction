@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSummaryItem_order = {
     readonly sellerDetails: {
         readonly name?: string | null;
@@ -23,6 +24,11 @@ export type ArtworkSummaryItem_order = {
         } | null> | null;
     } | null;
     readonly " $refType": "ArtworkSummaryItem_order";
+};
+export type ArtworkSummaryItem_order$data = ArtworkSummaryItem_order;
+export type ArtworkSummaryItem_order$key = {
+    readonly " $data"?: ArtworkSummaryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order">;
 };
 
 

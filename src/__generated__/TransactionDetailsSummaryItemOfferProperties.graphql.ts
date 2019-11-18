@@ -2,6 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type TransactionDetailsSummaryItemOfferProperties = {
     readonly internalID: string;
     readonly amount: string | null;
@@ -15,6 +16,11 @@ export type TransactionDetailsSummaryItemOfferProperties = {
     readonly fromParticipant: CommerceOrderParticipantEnum | null;
     readonly note: string | null;
     readonly " $refType": "TransactionDetailsSummaryItemOfferProperties";
+};
+export type TransactionDetailsSummaryItemOfferProperties$data = TransactionDetailsSummaryItemOfferProperties;
+export type TransactionDetailsSummaryItemOfferProperties$key = {
+    readonly " $data"?: TransactionDetailsSummaryItemOfferProperties$data;
+    readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItemOfferProperties">;
 };
 
 

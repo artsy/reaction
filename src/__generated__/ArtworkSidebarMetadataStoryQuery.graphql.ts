@@ -23,6 +23,13 @@ query ArtworkSidebarMetadataStoryQuery {
   }
 }
 
+fragment ArtworkSidebarClassification_artwork on Artwork {
+  attribution_class: attributionClass {
+    short_description: shortDescription
+    id
+  }
+}
+
 fragment ArtworkSidebarMetadata_artwork on Artwork {
   is_biddable: isBiddable
   edition_sets: editionSets {
@@ -38,12 +45,6 @@ fragment ArtworkSidebarMetadata_artwork on Artwork {
   ...ArtworkSidebarClassification_artwork
 }
 
-fragment ArtworkSidebarTitleInfo_artwork on Artwork {
-  title
-  date
-  medium
-}
-
 fragment ArtworkSidebarSizeInfo_piece on Sellable {
   dimensions {
     in
@@ -52,11 +53,10 @@ fragment ArtworkSidebarSizeInfo_piece on Sellable {
   edition_of: editionOf
 }
 
-fragment ArtworkSidebarClassification_artwork on Artwork {
-  attribution_class: attributionClass {
-    short_description: shortDescription
-    id
-  }
+fragment ArtworkSidebarTitleInfo_artwork on Artwork {
+  title
+  date
+  medium
 }
 */
 
@@ -242,7 +242,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkSidebarMetadataStoryQuery",
     "id": null,
-    "text": "query ArtworkSidebarMetadataStoryQuery {\n  artwork(id: \"unused\") {\n    ...ArtworkSidebarMetadata_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarMetadata_artwork on Artwork {\n  is_biddable: isBiddable\n  edition_sets: editionSets {\n    __typename\n    id\n  }\n  sale_artwork: saleArtwork {\n    lot_label: lotLabel\n    id\n  }\n  ...ArtworkSidebarTitleInfo_artwork\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n}\n\nfragment ArtworkSidebarTitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of: editionOf\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class: attributionClass {\n    short_description: shortDescription\n    id\n  }\n}\n",
+    "text": "query ArtworkSidebarMetadataStoryQuery {\n  artwork(id: \"unused\") {\n    ...ArtworkSidebarMetadata_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarClassification_artwork on Artwork {\n  attribution_class: attributionClass {\n    short_description: shortDescription\n    id\n  }\n}\n\nfragment ArtworkSidebarMetadata_artwork on Artwork {\n  is_biddable: isBiddable\n  edition_sets: editionSets {\n    __typename\n    id\n  }\n  sale_artwork: saleArtwork {\n    lot_label: lotLabel\n    id\n  }\n  ...ArtworkSidebarTitleInfo_artwork\n  ...ArtworkSidebarSizeInfo_piece\n  ...ArtworkSidebarClassification_artwork\n}\n\nfragment ArtworkSidebarSizeInfo_piece on Sellable {\n  dimensions {\n    in\n    cm\n  }\n  edition_of: editionOf\n}\n\nfragment ArtworkSidebarTitleInfo_artwork on Artwork {\n  title\n  date\n  medium\n}\n",
     "metadata": {}
   }
 };

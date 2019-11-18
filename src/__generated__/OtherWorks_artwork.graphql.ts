@@ -28,6 +28,11 @@ export type OtherWorks_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"RelatedWorksArtworkGrid_artwork">;
     readonly " $refType": "OtherWorks_artwork";
 };
+export type OtherWorks_artwork$data = OtherWorks_artwork;
+export type OtherWorks_artwork$key = {
+    readonly " $data"?: OtherWorks_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"OtherWorks_artwork">;
+};
 
 
 

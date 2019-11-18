@@ -24,6 +24,11 @@ export type ArtistHeader_artist = {
     readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
     readonly " $refType": "ArtistHeader_artist";
 };
+export type ArtistHeader_artist$data = ArtistHeader_artist;
+export type ArtistHeader_artist$key = {
+    readonly " $data"?: ArtistHeader_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistHeader_artist">;
+};
 
 
 

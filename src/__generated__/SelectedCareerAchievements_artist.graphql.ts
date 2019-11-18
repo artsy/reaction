@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type SelectedCareerAchievements_artist = {
     readonly highlights: {
         readonly partnersConnection: {
@@ -30,6 +31,11 @@ export type SelectedCareerAchievements_artist = {
         } | null> | null;
     } | null;
     readonly " $refType": "SelectedCareerAchievements_artist";
+};
+export type SelectedCareerAchievements_artist$data = SelectedCareerAchievements_artist;
+export type SelectedCareerAchievements_artist$key = {
+    readonly " $data"?: SelectedCareerAchievements_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"SelectedCareerAchievements_artist">;
 };
 
 

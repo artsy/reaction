@@ -24,6 +24,17 @@ query ShippingSummaryItemStoryQuery {
   }
 }
 
+fragment ShippingAddress_ship on CommerceShip {
+  name
+  addressLine1
+  addressLine2
+  city
+  postalCode
+  region
+  country
+  phoneNumber
+}
+
 fragment ShippingSummaryItem_order on CommerceOrder {
   state
   requestedFulfillment {
@@ -41,17 +52,6 @@ fragment ShippingSummaryItem_order on CommerceOrder {
       }
     }
   }
-}
-
-fragment ShippingAddress_ship on CommerceShip {
-  name
-  addressLine1
-  addressLine2
-  city
-  postalCode
-  region
-  country
-  phoneNumber
 }
 */
 
@@ -262,7 +262,7 @@ return {
     "operationKind": "query",
     "name": "ShippingSummaryItemStoryQuery",
     "id": null,
-    "text": "query ShippingSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    id\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+    "text": "query ShippingSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ShippingSummaryItem_order\n    id\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

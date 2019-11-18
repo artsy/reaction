@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ItemReview_lineItem = {
     readonly artwork: {
         readonly artist_names: string | null;
@@ -29,6 +30,11 @@ export type ItemReview_lineItem = {
     } | null;
     readonly editionSetId: string | null;
     readonly " $refType": "ItemReview_lineItem";
+};
+export type ItemReview_lineItem$data = ItemReview_lineItem;
+export type ItemReview_lineItem$key = {
+    readonly " $data"?: ItemReview_lineItem$data;
+    readonly " $fragmentRefs": FragmentRefs<"ItemReview_lineItem">;
 };
 
 

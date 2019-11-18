@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type VerifiedSeller_artwork = {
     readonly is_biddable: boolean | null;
     readonly partner: {
@@ -8,6 +9,11 @@ export type VerifiedSeller_artwork = {
         readonly name: string | null;
     } | null;
     readonly " $refType": "VerifiedSeller_artwork";
+};
+export type VerifiedSeller_artwork$data = VerifiedSeller_artwork;
+export type VerifiedSeller_artwork$key = {
+    readonly " $data"?: VerifiedSeller_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"VerifiedSeller_artwork">;
 };
 
 

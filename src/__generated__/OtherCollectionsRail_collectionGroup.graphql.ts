@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type MarketingGroupTypes = "ArtistSeries" | "FeaturedCollections" | "OtherCollections" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type OtherCollectionsRail_collectionGroup = {
     readonly groupType: MarketingGroupTypes;
     readonly name: string;
@@ -10,6 +10,11 @@ export type OtherCollectionsRail_collectionGroup = {
         readonly " $fragmentRefs": FragmentRefs<"OtherCollectionEntity_member">;
     }>;
     readonly " $refType": "OtherCollectionsRail_collectionGroup";
+};
+export type OtherCollectionsRail_collectionGroup$data = OtherCollectionsRail_collectionGroup;
+export type OtherCollectionsRail_collectionGroup$key = {
+    readonly " $data"?: OtherCollectionsRail_collectionGroup$data;
+    readonly " $fragmentRefs": FragmentRefs<"OtherCollectionsRail_collectionGroup">;
 };
 
 

@@ -11,6 +11,11 @@ export type Artwork_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"Metadata_artwork">;
     readonly " $refType": "Artwork_artwork";
 };
+export type Artwork_artwork$data = Artwork_artwork;
+export type Artwork_artwork$key = {
+    readonly " $data"?: Artwork_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"Artwork_artwork">;
+};
 
 
 

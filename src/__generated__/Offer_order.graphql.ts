@@ -1,9 +1,9 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type Offer_order = {
     readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
@@ -22,6 +22,11 @@ export type Offer_order = {
     } | null;
     readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order">;
     readonly " $refType": "Offer_order";
+};
+export type Offer_order$data = Offer_order;
+export type Offer_order$key = {
+    readonly " $data"?: Offer_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"Offer_order">;
 };
 
 

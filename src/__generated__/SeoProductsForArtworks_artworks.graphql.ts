@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type SeoProductsForArtworks_artworks = {
     readonly edges: ReadonlyArray<{
         readonly node: {
@@ -46,6 +47,11 @@ export type SeoProductsForArtworks_artworks = {
         } | null;
     } | null> | null;
     readonly " $refType": "SeoProductsForArtworks_artworks";
+};
+export type SeoProductsForArtworks_artworks$data = SeoProductsForArtworks_artworks;
+export type SeoProductsForArtworks_artworks$key = {
+    readonly " $data"?: SeoProductsForArtworks_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"SeoProductsForArtworks_artworks">;
 };
 
 

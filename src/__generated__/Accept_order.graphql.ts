@@ -24,6 +24,11 @@ export type Accept_order = {
     readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItem_order" | "ArtworkSummaryItem_order" | "ShippingSummaryItem_order" | "CreditCardSummaryItem_order">;
     readonly " $refType": "Accept_order";
 };
+export type Accept_order$data = Accept_order;
+export type Accept_order$key = {
+    readonly " $data"?: Accept_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"Accept_order">;
+};
 
 
 

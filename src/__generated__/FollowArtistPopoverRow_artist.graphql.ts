@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type FollowArtistPopoverRow_artist = {
     readonly internalID: string;
     readonly name: string | null;
@@ -10,6 +11,11 @@ export type FollowArtistPopoverRow_artist = {
         } | null;
     } | null;
     readonly " $refType": "FollowArtistPopoverRow_artist";
+};
+export type FollowArtistPopoverRow_artist$data = FollowArtistPopoverRow_artist;
+export type FollowArtistPopoverRow_artist$key = {
+    readonly " $data"?: FollowArtistPopoverRow_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"FollowArtistPopoverRow_artist">;
 };
 
 

@@ -28,20 +28,31 @@ query routes_ReviewQuery(
   }
 }
 
-fragment Review_order on CommerceOrder {
-  internalID
-  mode
-  itemsTotal(precision: 2)
+fragment ArtworkSummaryItem_order on CommerceOrder {
+  sellerDetails {
+    __typename
+    ... on Partner {
+      name
+    }
+    ... on Node {
+      id
+    }
+    ... on User {
+      id
+    }
+  }
   lineItems {
     edges {
       node {
-        ...ItemReview_lineItem
         artwork {
-          slug
-          internalID
-          artists {
-            slug
-            id
+          artist_names: artistNames
+          title
+          date
+          shippingOrigin
+          image {
+            resized_ArtworkSummaryItem: resized(width: 55) {
+              url
+            }
           }
           id
         }
@@ -49,17 +60,16 @@ fragment Review_order on CommerceOrder {
       }
     }
   }
-  ... on CommerceOfferOrder {
-    myLastOffer {
-      internalID
-      id
-    }
+}
+
+fragment CreditCardSummaryItem_order on CommerceOrder {
+  creditCard {
+    brand
+    lastDigits
+    expirationYear
+    expirationMonth
+    id
   }
-  ...ArtworkSummaryItem_order
-  ...TransactionDetailsSummaryItem_order
-  ...ShippingSummaryItem_order
-  ...CreditCardSummaryItem_order
-  ...OfferSummaryItem_order
 }
 
 fragment ItemReview_lineItem on CommerceLineItem {
@@ -94,32 +104,73 @@ fragment ItemReview_lineItem on CommerceLineItem {
   editionSetId
 }
 
-fragment ArtworkSummaryItem_order on CommerceOrder {
-  sellerDetails {
+fragment OfferSummaryItem_order on CommerceOrder {
+  totalListPrice(precision: 2)
+  ... on CommerceOfferOrder {
+    myLastOffer {
+      amount(precision: 2)
+      note
+      id
+    }
+  }
+}
+
+fragment Review_order on CommerceOrder {
+  internalID
+  mode
+  itemsTotal(precision: 2)
+  lineItems {
+    edges {
+      node {
+        ...ItemReview_lineItem
+        artwork {
+          slug
+          internalID
+          artists {
+            slug
+            id
+          }
+          id
+        }
+        id
+      }
+    }
+  }
+  ... on CommerceOfferOrder {
+    myLastOffer {
+      internalID
+      id
+    }
+  }
+  ...ArtworkSummaryItem_order
+  ...TransactionDetailsSummaryItem_order
+  ...ShippingSummaryItem_order
+  ...CreditCardSummaryItem_order
+  ...OfferSummaryItem_order
+}
+
+fragment ShippingAddress_ship on CommerceShip {
+  name
+  addressLine1
+  addressLine2
+  city
+  postalCode
+  region
+  country
+  phoneNumber
+}
+
+fragment ShippingSummaryItem_order on CommerceOrder {
+  state
+  requestedFulfillment {
     __typename
-    ... on Partner {
-      name
-    }
-    ... on Node {
-      id
-    }
-    ... on User {
-      id
-    }
+    ...ShippingAddress_ship
   }
   lineItems {
     edges {
       node {
         artwork {
-          artist_names: artistNames
-          title
-          date
           shippingOrigin
-          image {
-            resized_ArtworkSummaryItem: resized(width: 55) {
-              url
-            }
-          }
           id
         }
         id
@@ -168,57 +219,6 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       id
     }
   }
-}
-
-fragment ShippingSummaryItem_order on CommerceOrder {
-  state
-  requestedFulfillment {
-    __typename
-    ...ShippingAddress_ship
-  }
-  lineItems {
-    edges {
-      node {
-        artwork {
-          shippingOrigin
-          id
-        }
-        id
-      }
-    }
-  }
-}
-
-fragment CreditCardSummaryItem_order on CommerceOrder {
-  creditCard {
-    brand
-    lastDigits
-    expirationYear
-    expirationMonth
-    id
-  }
-}
-
-fragment OfferSummaryItem_order on CommerceOrder {
-  totalListPrice(precision: 2)
-  ... on CommerceOfferOrder {
-    myLastOffer {
-      amount(precision: 2)
-      note
-      id
-    }
-  }
-}
-
-fragment ShippingAddress_ship on CommerceShip {
-  name
-  addressLine1
-  addressLine2
-  city
-  postalCode
-  region
-  country
-  phoneNumber
 }
 */
 
@@ -829,7 +829,7 @@ return {
     "operationKind": "query",
     "name": "routes_ReviewQuery",
     "id": null,
-    "text": "query routes_ReviewQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Review_order\n    id\n  }\n}\n\nfragment Review_order on CommerceOrder {\n  internalID\n  mode\n  itemsTotal(precision: 2)\n  lineItems {\n    edges {\n      node {\n        ...ItemReview_lineItem\n        artwork {\n          slug\n          internalID\n          artists {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    myLastOffer {\n      internalID\n      id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferSummaryItem_order\n}\n\nfragment ItemReview_lineItem on CommerceLineItem {\n  artwork {\n    artist_names: artistNames\n    title\n    date\n    medium\n    dimensions {\n      in\n      cm\n    }\n    attribution_class: attributionClass {\n      shortDescription\n      id\n    }\n    image {\n      resized(width: 185) {\n        url\n      }\n    }\n    edition_sets: editionSets {\n      internalID\n      dimensions {\n        in\n        cm\n      }\n      id\n    }\n    id\n  }\n  editionSetId\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    lastDigits\n    expirationYear\n    expirationMonth\n    id\n  }\n}\n\nfragment OfferSummaryItem_order on CommerceOrder {\n  totalListPrice(precision: 2)\n  ... on CommerceOfferOrder {\n    myLastOffer {\n      amount(precision: 2)\n      note\n      id\n    }\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
+    "text": "query routes_ReviewQuery(\n  $orderID: ID!\n) {\n  order: commerceOrder(id: $orderID) {\n    __typename\n    ...Review_order\n    id\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    lastDigits\n    expirationYear\n    expirationMonth\n    id\n  }\n}\n\nfragment ItemReview_lineItem on CommerceLineItem {\n  artwork {\n    artist_names: artistNames\n    title\n    date\n    medium\n    dimensions {\n      in\n      cm\n    }\n    attribution_class: attributionClass {\n      shortDescription\n      id\n    }\n    image {\n      resized(width: 185) {\n        url\n      }\n    }\n    edition_sets: editionSets {\n      internalID\n      dimensions {\n        in\n        cm\n      }\n      id\n    }\n    id\n  }\n  editionSetId\n}\n\nfragment OfferSummaryItem_order on CommerceOrder {\n  totalListPrice(precision: 2)\n  ... on CommerceOfferOrder {\n    myLastOffer {\n      amount(precision: 2)\n      note\n      id\n    }\n  }\n}\n\nfragment Review_order on CommerceOrder {\n  internalID\n  mode\n  itemsTotal(precision: 2)\n  lineItems {\n    edges {\n      node {\n        ...ItemReview_lineItem\n        artwork {\n          slug\n          internalID\n          artists {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    myLastOffer {\n      internalID\n      id\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n  ...OfferSummaryItem_order\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -41,56 +41,6 @@ query GeneArtworksPaginationQuery(
   }
 }
 
-fragment GeneArtworks_gene_1QTmdc on Gene {
-  slug
-  filtered_artworks: filterArtworksConnection(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], forSale: $forSale, medium: $medium, priceRange: $priceRange, dimensionRange: $dimensionRange, includeMediumFilterInAggregation: true, first: $count, after: $cursor, sort: $sort) {
-    ...TotalCount_filter_artworks
-    aggregations {
-      slice
-      counts {
-        name
-        value
-      }
-      ...Dropdown_aggregation
-    }
-    id
-    pageInfo {
-      hasNextPage
-      endCursor
-    }
-    ...ArtworkGrid_artworks
-    edges {
-      node {
-        id
-        __typename
-      }
-      cursor
-    }
-    facet {
-      __typename
-      ...Headline_facet
-      ... on Node {
-        id
-      }
-    }
-  }
-}
-
-fragment TotalCount_filter_artworks on FilterArtworksConnection {
-  counts {
-    total
-  }
-}
-
-fragment Dropdown_aggregation on ArtworksAggregationResults {
-  slice
-  counts {
-    name
-    value
-    count
-  }
-}
-
 fragment ArtworkGrid_artworks on ArtworkConnectionInterface {
   edges {
     __typename
@@ -109,44 +59,6 @@ fragment ArtworkGrid_artworks on ArtworkConnectionInterface {
   }
 }
 
-fragment Headline_facet on ArtworkFilterFacet {
-  ... on Tag {
-    name
-  }
-  ... on Gene {
-    name
-  }
-}
-
-fragment GridItem_artwork on Artwork {
-  internalID
-  title
-  image_title: imageTitle
-  image {
-    placeholder
-    url(version: "large")
-    aspect_ratio: aspectRatio
-  }
-  href
-  ...Metadata_artwork
-  ...Save_artwork
-  ...Badge_artwork
-}
-
-fragment Metadata_artwork on Artwork {
-  ...Details_artwork
-  ...Contact_artwork
-  href
-}
-
-fragment Save_artwork on Artwork {
-  id
-  internalID
-  slug
-  is_saved: isSaved
-  title
-}
-
 fragment Badge_artwork on Artwork {
   is_biddable: isBiddable
   is_acquireable: isAcquireable
@@ -155,6 +67,34 @@ fragment Badge_artwork on Artwork {
   sale {
     is_preview: isPreview
     display_timely_at: displayTimelyAt
+    id
+  }
+}
+
+fragment Contact_artwork on Artwork {
+  href
+  is_inquireable: isInquireable
+  sale {
+    is_auction: isAuction
+    is_live_open: isLiveOpen
+    is_open: isOpen
+    is_closed: isClosed
+    id
+  }
+  partner(shallow: true) {
+    type
+    id
+  }
+  sale_artwork: saleArtwork {
+    highest_bid: highestBid {
+      display
+    }
+    opening_bid: openingBid {
+      display
+    }
+    counts {
+      bidder_positions: bidderPositions
+    }
     id
   }
 }
@@ -195,31 +135,91 @@ fragment Details_artwork on Artwork {
   }
 }
 
-fragment Contact_artwork on Artwork {
+fragment Dropdown_aggregation on ArtworksAggregationResults {
+  slice
+  counts {
+    name
+    value
+    count
+  }
+}
+
+fragment GeneArtworks_gene_1QTmdc on Gene {
+  slug
+  filtered_artworks: filterArtworksConnection(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], forSale: $forSale, medium: $medium, priceRange: $priceRange, dimensionRange: $dimensionRange, includeMediumFilterInAggregation: true, first: $count, after: $cursor, sort: $sort) {
+    ...TotalCount_filter_artworks
+    aggregations {
+      slice
+      counts {
+        name
+        value
+      }
+      ...Dropdown_aggregation
+    }
+    id
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    ...ArtworkGrid_artworks
+    edges {
+      node {
+        id
+        __typename
+      }
+      cursor
+    }
+    facet {
+      __typename
+      ...Headline_facet
+      ... on Node {
+        id
+      }
+    }
+  }
+}
+
+fragment GridItem_artwork on Artwork {
+  internalID
+  title
+  image_title: imageTitle
+  image {
+    placeholder
+    url(version: "large")
+    aspect_ratio: aspectRatio
+  }
   href
-  is_inquireable: isInquireable
-  sale {
-    is_auction: isAuction
-    is_live_open: isLiveOpen
-    is_open: isOpen
-    is_closed: isClosed
-    id
+  ...Metadata_artwork
+  ...Save_artwork
+  ...Badge_artwork
+}
+
+fragment Headline_facet on ArtworkFilterFacet {
+  ... on Tag {
+    name
   }
-  partner(shallow: true) {
-    type
-    id
+  ... on Gene {
+    name
   }
-  sale_artwork: saleArtwork {
-    highest_bid: highestBid {
-      display
-    }
-    opening_bid: openingBid {
-      display
-    }
-    counts {
-      bidder_positions: bidderPositions
-    }
-    id
+}
+
+fragment Metadata_artwork on Artwork {
+  ...Details_artwork
+  ...Contact_artwork
+  href
+}
+
+fragment Save_artwork on Artwork {
+  id
+  internalID
+  slug
+  is_saved: isSaved
+  title
+}
+
+fragment TotalCount_filter_artworks on FilterArtworksConnection {
+  counts {
+    total
   }
 }
 */
@@ -895,7 +895,7 @@ return {
     "operationKind": "query",
     "name": "GeneArtworksPaginationQuery",
     "id": null,
-    "text": "query GeneArtworksPaginationQuery(\n  $geneID: String!\n  $count: Int!\n  $cursor: String\n  $sort: String\n  $priceRange: String\n  $dimensionRange: String\n  $medium: String\n  $forSale: Boolean\n) {\n  gene(id: $geneID) {\n    ...GeneArtworks_gene_1QTmdc\n    id\n  }\n}\n\nfragment GeneArtworks_gene_1QTmdc on Gene {\n  slug\n  filtered_artworks: filterArtworksConnection(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], forSale: $forSale, medium: $medium, priceRange: $priceRange, dimensionRange: $dimensionRange, includeMediumFilterInAggregation: true, first: $count, after: $cursor, sort: $sort) {\n    ...TotalCount_filter_artworks\n    aggregations {\n      slice\n      counts {\n        name\n        value\n      }\n      ...Dropdown_aggregation\n    }\n    id\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        id\n        __typename\n      }\n      cursor\n    }\n    facet {\n      __typename\n      ...Headline_facet\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment TotalCount_filter_artworks on FilterArtworksConnection {\n  counts {\n    total\n  }\n}\n\nfragment Dropdown_aggregation on ArtworksAggregationResults {\n  slice\n  counts {\n    name\n    value\n    count\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnectionInterface {\n  edges {\n    __typename\n    node {\n      id\n      slug\n      href\n      image {\n        aspect_ratio: aspectRatio\n      }\n      ...GridItem_artwork\n    }\n    ... on Node {\n      id\n    }\n  }\n}\n\nfragment Headline_facet on ArtworkFilterFacet {\n  ... on Tag {\n    name\n  }\n  ... on Gene {\n    name\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  internalID\n  title\n  image_title: imageTitle\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n",
+    "text": "query GeneArtworksPaginationQuery(\n  $geneID: String!\n  $count: Int!\n  $cursor: String\n  $sort: String\n  $priceRange: String\n  $dimensionRange: String\n  $medium: String\n  $forSale: Boolean\n) {\n  gene(id: $geneID) {\n    ...GeneArtworks_gene_1QTmdc\n    id\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnectionInterface {\n  edges {\n    __typename\n    node {\n      id\n      slug\n      href\n      image {\n        aspect_ratio: aspectRatio\n      }\n      ...GridItem_artwork\n    }\n    ... on Node {\n      id\n    }\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment Dropdown_aggregation on ArtworksAggregationResults {\n  slice\n  counts {\n    name\n    value\n    count\n  }\n}\n\nfragment GeneArtworks_gene_1QTmdc on Gene {\n  slug\n  filtered_artworks: filterArtworksConnection(aggregations: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE], forSale: $forSale, medium: $medium, priceRange: $priceRange, dimensionRange: $dimensionRange, includeMediumFilterInAggregation: true, first: $count, after: $cursor, sort: $sort) {\n    ...TotalCount_filter_artworks\n    aggregations {\n      slice\n      counts {\n        name\n        value\n      }\n      ...Dropdown_aggregation\n    }\n    id\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        id\n        __typename\n      }\n      cursor\n    }\n    facet {\n      __typename\n      ...Headline_facet\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  internalID\n  title\n  image_title: imageTitle\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Headline_facet on ArtworkFilterFacet {\n  ... on Tag {\n    name\n  }\n  ... on Gene {\n    name\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n\nfragment TotalCount_filter_artworks on FilterArtworksConnection {\n  counts {\n    total\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -1,9 +1,15 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Headline_facet = {
     readonly name?: string | null;
     readonly " $refType": "Headline_facet";
+};
+export type Headline_facet$data = Headline_facet;
+export type Headline_facet$key = {
+    readonly " $data"?: Headline_facet$data;
+    readonly " $fragmentRefs": FragmentRefs<"Headline_facet">;
 };
 
 
