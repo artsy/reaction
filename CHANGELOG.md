@@ -1,3 +1,16 @@
+# v22.2.0 (Tue Nov 19 2019)
+
+#### 🚀  Enhancement
+
+- Meta: Merge recent auctions team product work into master [#3022](https://github.com/artsy/reaction/pull/3022) ([@yuki24](https://github.com/yuki24) [@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v22.1.0 (Mon Nov 18 2019)
 
 #### 🚀  Enhancement
