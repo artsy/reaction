@@ -1,4 +1,4 @@
-import { CloseIcon, Link, Modal } from "@artsy/palette"
+import { CloseIcon, Link } from "@artsy/palette"
 import {
   AuthenticityCertificateTestQueryRawResponse,
   AuthenticityCertificateTestQueryResponse,
@@ -8,7 +8,6 @@ import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
 import { ExtractProps } from "Utils/ExtractProps"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 import {
   AuthenticityCertificate,
   AuthenticityCertificateFragmentContainer,
