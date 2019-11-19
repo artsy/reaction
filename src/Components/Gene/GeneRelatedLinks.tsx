@@ -23,10 +23,10 @@ export const GeneRelatedLinks: React.FC<GeneRelatedLinksQueryResponse> = ({
           {gene.similar.edges.map(({ node: similarGene }, index) => {
             const separator = index < gene.similar.edges.length - 1 ? ", " : ""
             return (
-              <>
+              <React.Fragment key={similarGene.name}>
                 <a href={similarGene.href}>{similarGene.name}</a>
                 {separator}
-              </>
+              </React.Fragment>
             )
           })}
         </div>
@@ -37,10 +37,10 @@ export const GeneRelatedLinks: React.FC<GeneRelatedLinksQueryResponse> = ({
           {gene.artists.edges.map(({ node: artist }, index) => {
             const separator = index < gene.similar.edges.length - 1 ? ", " : ""
             return (
-              <>
+              <React.Fragment key={artist.name}>
                 <a href={artist.href}>{artist.name}</a>
                 {separator}
-              </>
+              </React.Fragment>
             )
           })}
         </div>
