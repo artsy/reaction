@@ -35,34 +35,31 @@ export const routes: RouteConfig[] = [
       query routes_ConfirmBidQuery($saleID: String!, $artworkID: String!)
         @raw_response_type {
         artwork(id: $artworkID) {
-          ...LotInfo_artwork
-          id
           internalID
           slug
           saleArtwork(saleID: $saleID) {
-            ...LotInfo_saleArtwork
-            ...BidForm_saleArtwork
-            id
             internalID
             slug
             sale {
-              id
-              registrationStatus {
-                internalID
-                qualifiedForBidding
-              }
               internalID
               slug
               name
               isClosed
               isRegistrationClosed
+              registrationStatus {
+                internalID
+                qualifiedForBidding
+              }
             }
+            ...LotInfo_saleArtwork
+            ...BidForm_saleArtwork
           }
+          ...LotInfo_artwork
         }
         me {
-          id
           internalID
           hasQualifiedCreditCards
+          ...ConfirmBid_me
         }
       }
     `,

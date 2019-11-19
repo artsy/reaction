@@ -15,10 +15,16 @@ export type ConfirmBidCreateBidderPositionMutationResponse = {
         readonly result: {
             readonly position: {
                 readonly internalID: string;
+                readonly saleArtwork: {
+                    readonly sale: {
+                        readonly registrationStatus: {
+                            readonly internalID: string;
+                        } | null;
+                    } | null;
+                } | null;
             } | null;
             readonly status: string;
-            readonly message_header: string | null;
-            readonly message_description_md: string | null;
+            readonly messageHeader: string | null;
         } | null;
     } | null;
 };
@@ -37,11 +43,20 @@ mutation ConfirmBidCreateBidderPositionMutation(
     result {
       position {
         internalID
+        saleArtwork {
+          sale {
+            registrationStatus {
+              internalID
+              id
+            }
+            id
+          }
+          id
+        }
         id
       }
       status
-      message_header: messageHeader
-      message_description_md: messageDescriptionMD
+      messageHeader
     }
   }
 }
@@ -79,15 +94,15 @@ v3 = {
 },
 v4 = {
   "kind": "ScalarField",
-  "alias": "message_header",
+  "alias": null,
   "name": "messageHeader",
   "args": null,
   "storageKey": null
 },
 v5 = {
   "kind": "ScalarField",
-  "alias": "message_description_md",
-  "name": "messageDescriptionMD",
+  "alias": null,
+  "name": "id",
   "args": null,
   "storageKey": null
 };
@@ -127,12 +142,45 @@ return {
                 "concreteType": "BidderPosition",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/)
+                  (v2/*: any*/),
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "saleArtwork",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "SaleArtwork",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "sale",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sale",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "registrationStatus",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Bidder",
+                            "plural": false,
+                            "selections": [
+                              (v2/*: any*/)
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
                 ]
               },
               (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/)
+              (v4/*: any*/)
             ]
           }
         ]
@@ -173,17 +221,47 @@ return {
                 "selections": [
                   (v2/*: any*/),
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "id",
+                    "name": "saleArtwork",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
-                  }
+                    "concreteType": "SaleArtwork",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "sale",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sale",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "registrationStatus",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Bidder",
+                            "plural": false,
+                            "selections": [
+                              (v2/*: any*/),
+                              (v5/*: any*/)
+                            ]
+                          },
+                          (v5/*: any*/)
+                        ]
+                      },
+                      (v5/*: any*/)
+                    ]
+                  },
+                  (v5/*: any*/)
                 ]
               },
               (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/)
+              (v4/*: any*/)
             ]
           }
         ]
@@ -194,10 +272,10 @@ return {
     "operationKind": "mutation",
     "name": "ConfirmBidCreateBidderPositionMutation",
     "id": null,
-    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        id\n      }\n      status\n      message_header: messageHeader\n      message_description_md: messageDescriptionMD\n    }\n  }\n}\n",
+    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        saleArtwork {\n          sale {\n            registrationStatus {\n              internalID\n              id\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n      status\n      messageHeader\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '5a8747e92cb3ca78c7dac7a73739afa4';
+(node as any).hash = '1ed3f093df63d0401ed964616a1597d6';
 export default node;

@@ -36,6 +36,68 @@ interface RegisterProps {
   tracking: TrackingProp
 }
 
+// TODO: Extract.
+export function createCreditCardAndUpdatePhone(relayEnvironment, phone, token) {
+  return new Promise(async (resolve, reject) => {
+    commitMutation<RegisterCreateCreditCardAndUpdatePhoneMutation>(
+      relayEnvironment,
+      {
+        onCompleted: (data, errors) => {
+          const {
+            createCreditCard: { creditCardOrError },
+          } = data
+
+          if (creditCardOrError.creditCardEdge) {
+            resolve()
+          } else {
+            if (errors) {
+              reject(errors)
+            } else {
+              reject(creditCardOrError.mutationError)
+            }
+          }
+        },
+        onError: reject,
+        mutation: graphql`
+          mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
+            $creditCardInput: CreditCardInput!
+            $profileInput: UpdateMyProfileInput!
+          ) {
+            updateMyUserProfile(input: $profileInput) {
+              user {
+                internalID
+              }
+            }
+
+            createCreditCard(input: $creditCardInput) {
+              creditCardOrError {
+                ... on CreditCardMutationSuccess {
+                  creditCardEdge {
+                    node {
+                      lastDigits
+                    }
+                  }
+                }
+                ... on CreditCardMutationFailure {
+                  mutationError {
+                    type
+                    message
+                    detail
+                  }
+                }
+              }
+            }
+          }
+        `,
+        variables: {
+          creditCardInput: { token },
+          profileInput: { phone },
+        },
+      }
+    )
+  })
+}
+
 export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
 
@@ -88,67 +150,6 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
     })
   }
 
-  function createCreditCardAndUpdatePhone(phone, token) {
-    return new Promise(async (resolve, reject) => {
-      commitMutation<RegisterCreateCreditCardAndUpdatePhoneMutation>(
-        relay.environment,
-        {
-          onCompleted: (data, errors) => {
-            const {
-              createCreditCard: { creditCardOrError },
-            } = data
-
-            if (creditCardOrError.creditCardEdge) {
-              resolve()
-            } else {
-              if (errors) {
-                reject(errors)
-              } else {
-                reject(creditCardOrError.mutationError)
-              }
-            }
-          },
-          onError: reject,
-          // TODO: Inputs to the mutation might have changed case of the keys!
-          mutation: graphql`
-            mutation RegisterCreateCreditCardAndUpdatePhoneMutation(
-              $creditCardInput: CreditCardInput!
-              $profileInput: UpdateMyProfileInput!
-            ) {
-              updateMyUserProfile(input: $profileInput) {
-                user {
-                  internalID
-                }
-              }
-              createCreditCard(input: $creditCardInput) {
-                creditCardOrError {
-                  ... on CreditCardMutationSuccess {
-                    creditCardEdge {
-                      node {
-                        lastDigits
-                      }
-                    }
-                  }
-                  ... on CreditCardMutationFailure {
-                    mutationError {
-                      type
-                      message
-                      detail
-                    }
-                  }
-                }
-              }
-            }
-          `,
-          variables: {
-            creditCardInput: { token },
-            profileInput: { phone },
-          },
-        }
-      )
-    })
-  }
-
   function handleMutationError(actions: FormikActions<object>, error: Error) {
     logger.error(error)
 
@@ -168,7 +169,11 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
   }
 
   function handleSubmit(actions: FormikActions<object>, result: FormResult) {
-    createCreditCardAndUpdatePhone(result.phoneNumber, result.token.id)
+    createCreditCardAndUpdatePhone(
+      relay.environment,
+      result.phoneNumber,
+      result.token.id
+    )
       .then(() => {
         createBidder()
           .then((data: RegisterCreateBidderMutationResponse) => {

@@ -1,3 +1,4 @@
+import { BidderPositionQueryResponse } from "__generated__/BidderPositionQuery.graphql"
 import { ConfirmBidCreateBidderPositionMutationResponse } from "__generated__/ConfirmBidCreateBidderPositionMutation.graphql"
 
 export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutationResponse = {
@@ -5,10 +6,35 @@ export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutat
     result: {
       position: {
         internalID: "positionid",
+        saleArtwork: {
+          sale: {
+            registrationStatus: {
+              internalID: "existing-bidder-id",
+            },
+          },
+        },
       },
       status: "SUCCESS",
-      message_header: null,
-      message_description_md: null,
+      messageHeader: null,
+    },
+  },
+}
+
+export const createBidderPositionSuccessfulAndBidder: ConfirmBidCreateBidderPositionMutationResponse = {
+  createBidderPosition: {
+    result: {
+      position: {
+        internalID: "positionid",
+        saleArtwork: {
+          sale: {
+            registrationStatus: {
+              internalID: "new-bidder-id",
+            },
+          },
+        },
+      },
+      status: "SUCCESS",
+      messageHeader: null,
     },
   },
 }
@@ -18,8 +44,46 @@ export const createBidderPositionFailed: ConfirmBidCreateBidderPositionMutationR
     result: {
       position: null,
       status: "FAILED",
-      message_header: "The `createBidderPosition` mutation failed.",
-      message_description_md: null,
+      messageHeader: "Sale Closed to Bids",
+    },
+  },
+}
+
+export const confirmBidBidderPositionQueryWithWinning: BidderPositionQueryResponse = {
+  me: {
+    bidderPosition: {
+      status: "WINNING",
+      messageHeader: null,
+      position: {
+        internalID: "winning-bidder-position-id-from-polling",
+        suggestedNextBid: null,
+      },
+    },
+  },
+}
+
+export const confirmBidBidderPositionQueryWithPending: BidderPositionQueryResponse = {
+  me: {
+    bidderPosition: {
+      status: "PENDING",
+      messageHeader: null,
+      position: {
+        internalID: "pending-bidder-position-id-from-polling",
+        suggestedNextBid: null,
+      },
+    },
+  },
+}
+
+export const confirmBidBidderPositionQueryWithOutbid: BidderPositionQueryResponse = {
+  me: {
+    bidderPosition: {
+      status: "OUTBID",
+      messageHeader: "Your bid wasn’t high enough",
+      position: {
+        internalID: "pending-bidder-position-id-from-polling",
+        suggestedNextBid: null,
+      },
     },
   },
 }

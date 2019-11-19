@@ -4,7 +4,7 @@ export const ConfirmBidQueryResponseFixture: routes_ConfirmBidQueryRawResponse =
   me: {
     id: "opaque-my-user-id",
     internalID: "my-user-id",
-    hasQualifiedCreditCards: false,
+    hasQualifiedCreditCards: true,
   },
   artwork: {
     id: "opaque-artworkid",
@@ -39,7 +39,7 @@ export const ConfirmBidQueryResponseFixture: routes_ConfirmBidQueryRawResponse =
         isRegistrationClosed: false,
         registrationStatus: {
           id: "opaque-bidderid",
-          internalID: "bidderid",
+          internalID: "existing-bidder-id",
           qualifiedForBidding: true,
         },
       },
