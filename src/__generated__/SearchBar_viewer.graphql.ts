@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type SearchBar_viewer = {
     readonly searchConnection?: {
         readonly edges: ReadonlyArray<{
@@ -14,11 +13,6 @@ export type SearchBar_viewer = {
         } | null> | null;
     } | null;
     readonly " $refType": "SearchBar_viewer";
-};
-export type SearchBar_viewer$data = SearchBar_viewer;
-export type SearchBar_viewer$key = {
-    readonly " $data"?: SearchBar_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"SearchBar_viewer">;
 };
 
 

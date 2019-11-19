@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type NewPayment_order = {
     readonly internalID: string;
     readonly mode: CommerceOrderModeEnum | null;
@@ -26,11 +26,6 @@ export type NewPayment_order = {
     } | null;
     readonly " $fragmentRefs": FragmentRefs<"PaymentPicker_order" | "ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order">;
     readonly " $refType": "NewPayment_order";
-};
-export type NewPayment_order$data = NewPayment_order;
-export type NewPayment_order$key = {
-    readonly " $data"?: NewPayment_order$data;
-    readonly " $fragmentRefs": FragmentRefs<"NewPayment_order">;
 };
 
 

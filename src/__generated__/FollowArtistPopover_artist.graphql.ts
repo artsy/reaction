@@ -16,11 +16,6 @@ export type FollowArtistPopover_artist = {
     } | null;
     readonly " $refType": "FollowArtistPopover_artist";
 };
-export type FollowArtistPopover_artist$data = FollowArtistPopover_artist;
-export type FollowArtistPopover_artist$key = {
-    readonly " $data"?: FollowArtistPopover_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"FollowArtistPopover_artist">;
-};
 
 
 

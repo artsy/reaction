@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type SearchAggregation = "TYPE" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
+export type SearchAggregation = "TYPE" | "%future added value";
 export type SearchApp_viewer = {
     readonly searchConnection: {
         readonly aggregations: ReadonlyArray<{
@@ -27,11 +27,6 @@ export type SearchApp_viewer = {
         } | null;
     } | null;
     readonly " $refType": "SearchApp_viewer";
-};
-export type SearchApp_viewer$data = SearchApp_viewer;
-export type SearchApp_viewer$key = {
-    readonly " $data"?: SearchApp_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"SearchApp_viewer">;
 };
 
 

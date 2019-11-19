@@ -27,6 +27,20 @@ query ArtworkDetailsQuery(
   }
 }
 
+fragment ArtworkDetails_artwork on Artwork {
+  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
+  ...ArtworkDetailsAboutTheWorkFromPartner_artwork
+  ...ArtworkDetailsAdditionalInfo_artwork
+  ...ArtworkDetailsArticles_artwork
+  articles(size: 10) {
+    slug
+    id
+  }
+  literature(format: HTML)
+  exhibition_history: exhibitionHistory(format: HTML)
+  provenance(format: HTML)
+}
+
 fragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {
   description(format: HTML)
 }
@@ -101,20 +115,6 @@ fragment ArtworkDetailsArticles_artwork on Artwork {
     thumbnail_title: thumbnailTitle
     id
   }
-}
-
-fragment ArtworkDetails_artwork on Artwork {
-  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork
-  ...ArtworkDetailsAboutTheWorkFromPartner_artwork
-  ...ArtworkDetailsAdditionalInfo_artwork
-  ...ArtworkDetailsArticles_artwork
-  articles(size: 10) {
-    slug
-    id
-  }
-  literature(format: HTML)
-  exhibition_history: exhibitionHistory(format: HTML)
-  provenance(format: HTML)
 }
 
 fragment FollowProfileButton_profile on Profile {
@@ -566,7 +566,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkDetailsQuery",
     "id": null,
-    "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    id\n  }\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information: additionalInformation(format: HTML)\n  sale {\n    isBenefit\n    isGalleryAuction\n    id\n  }\n  partner {\n    internalID\n    slug\n    type\n    href\n    name\n    initials\n    locations {\n      city\n      id\n    }\n    is_default_profile_public: isDefaultProfilePublic\n    profile {\n      ...FollowProfileButton_profile\n      slug\n      icon {\n        url(version: \"square140\")\n      }\n      id\n    }\n    id\n  }\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  image_rights: imageRights\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      id\n    }\n    href\n    published_at: publishedAt(format: \"MMM Do, YYYY\")\n    thumbnail_image: thumbnailImage {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title: thumbnailTitle\n    id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    slug\n    id\n  }\n  literature(format: HTML)\n  exhibition_history: exhibitionHistory(format: HTML)\n  provenance(format: HTML)\n}\n\nfragment FollowProfileButton_profile on Profile {\n  id\n  internalID\n  is_followed: isFollowed\n}\n",
+    "text": "query ArtworkDetailsQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkDetails_artwork\n    id\n  }\n}\n\nfragment ArtworkDetails_artwork on Artwork {\n  ...ArtworkDetailsAboutTheWorkFromArtsy_artwork\n  ...ArtworkDetailsAboutTheWorkFromPartner_artwork\n  ...ArtworkDetailsAdditionalInfo_artwork\n  ...ArtworkDetailsArticles_artwork\n  articles(size: 10) {\n    slug\n    id\n  }\n  literature(format: HTML)\n  exhibition_history: exhibitionHistory(format: HTML)\n  provenance(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromArtsy_artwork on Artwork {\n  description(format: HTML)\n}\n\nfragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {\n  additional_information: additionalInformation(format: HTML)\n  sale {\n    isBenefit\n    isGalleryAuction\n    id\n  }\n  partner {\n    internalID\n    slug\n    type\n    href\n    name\n    initials\n    locations {\n      city\n      id\n    }\n    is_default_profile_public: isDefaultProfilePublic\n    profile {\n      ...FollowProfileButton_profile\n      slug\n      icon {\n        url(version: \"square140\")\n      }\n      id\n    }\n    id\n  }\n}\n\nfragment ArtworkDetailsAdditionalInfo_artwork on Artwork {\n  series\n  publisher\n  manufacturer\n  image_rights: imageRights\n  framed {\n    label\n    details\n  }\n  signatureInfo {\n    label\n    details\n  }\n  conditionDescription {\n    label\n    details\n  }\n  certificateOfAuthenticity {\n    label\n    details\n  }\n}\n\nfragment ArtworkDetailsArticles_artwork on Artwork {\n  articles(size: 10) {\n    author {\n      name\n      id\n    }\n    href\n    published_at: publishedAt(format: \"MMM Do, YYYY\")\n    thumbnail_image: thumbnailImage {\n      resized(width: 300) {\n        url\n      }\n    }\n    thumbnail_title: thumbnailTitle\n    id\n  }\n}\n\nfragment FollowProfileButton_profile on Profile {\n  id\n  internalID\n  is_followed: isFollowed\n}\n",
     "metadata": {}
   }
 };

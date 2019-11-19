@@ -31,11 +31,6 @@ export type ArtworkActions_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"Save_artwork" | "ArtworkSharePanel_artwork">;
     readonly " $refType": "ArtworkActions_artwork";
 };
-export type ArtworkActions_artwork$data = ArtworkActions_artwork;
-export type ArtworkActions_artwork$key = {
-    readonly " $data"?: ArtworkActions_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkActions_artwork">;
-};
 
 
 

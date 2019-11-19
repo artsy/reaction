@@ -27,11 +27,6 @@ export type RecommendedArtist_artist = {
     readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
     readonly " $refType": "RecommendedArtist_artist";
 };
-export type RecommendedArtist_artist$data = RecommendedArtist_artist;
-export type RecommendedArtist_artist$key = {
-    readonly " $data"?: RecommendedArtist_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"RecommendedArtist_artist">;
-};
 
 
 

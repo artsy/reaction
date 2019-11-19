@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type Collections_marketingCategories = ReadonlyArray<{
     readonly name: string;
     readonly collections: ReadonlyArray<{
@@ -10,11 +9,6 @@ export type Collections_marketingCategories = ReadonlyArray<{
         readonly title: string;
     }>;
     readonly " $refType": "Collections_marketingCategories";
-}>;
-export type Collections_marketingCategories$data = Collections_marketingCategories;
-export type Collections_marketingCategories$key = ReadonlyArray<{
-    readonly " $data"?: Collections_marketingCategories$data;
-    readonly " $fragmentRefs": FragmentRefs<"Collections_marketingCategories">;
 }>;
 
 

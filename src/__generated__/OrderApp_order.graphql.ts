@@ -2,7 +2,6 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
-import { FragmentRefs } from "relay-runtime";
 export type OrderApp_order = {
     readonly mode: CommerceOrderModeEnum | null;
     readonly lineItems: {
@@ -17,11 +16,6 @@ export type OrderApp_order = {
         } | null> | null;
     } | null;
     readonly " $refType": "OrderApp_order";
-};
-export type OrderApp_order$data = OrderApp_order;
-export type OrderApp_order$key = {
-    readonly " $data"?: OrderApp_order$data;
-    readonly " $fragmentRefs": FragmentRefs<"OrderApp_order">;
 };
 
 

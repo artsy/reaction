@@ -6,11 +6,6 @@ export type NewPayment_me = {
     readonly " $fragmentRefs": FragmentRefs<"PaymentPicker_me">;
     readonly " $refType": "NewPayment_me";
 };
-export type NewPayment_me$data = NewPayment_me;
-export type NewPayment_me$key = {
-    readonly " $data"?: NewPayment_me$data;
-    readonly " $fragmentRefs": FragmentRefs<"NewPayment_me">;
-};
 
 
 

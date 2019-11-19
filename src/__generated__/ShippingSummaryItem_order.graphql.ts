@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 export type ShippingSummaryItem_order = {
     readonly state: CommerceOrderStateEnum;
     readonly requestedFulfillment: {
@@ -19,11 +19,6 @@ export type ShippingSummaryItem_order = {
         } | null> | null;
     } | null;
     readonly " $refType": "ShippingSummaryItem_order";
-};
-export type ShippingSummaryItem_order$data = ShippingSummaryItem_order;
-export type ShippingSummaryItem_order$key = {
-    readonly " $data"?: ShippingSummaryItem_order$data;
-    readonly " $fragmentRefs": FragmentRefs<"ShippingSummaryItem_order">;
 };
 
 

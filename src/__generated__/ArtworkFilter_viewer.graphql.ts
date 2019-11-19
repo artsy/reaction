@@ -9,11 +9,6 @@ export type ArtworkFilter_viewer = {
     } | null;
     readonly " $refType": "ArtworkFilter_viewer";
 };
-export type ArtworkFilter_viewer$data = ArtworkFilter_viewer;
-export type ArtworkFilter_viewer$key = {
-    readonly " $data"?: ArtworkFilter_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkFilter_viewer">;
-};
 
 
 

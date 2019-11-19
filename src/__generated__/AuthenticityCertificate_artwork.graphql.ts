@@ -1,16 +1,10 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type AuthenticityCertificate_artwork = {
     readonly hasCertificateOfAuthenticity: boolean | null;
     readonly is_biddable: boolean | null;
     readonly " $refType": "AuthenticityCertificate_artwork";
-};
-export type AuthenticityCertificate_artwork$data = AuthenticityCertificate_artwork;
-export type AuthenticityCertificate_artwork$key = {
-    readonly " $data"?: AuthenticityCertificate_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"AuthenticityCertificate_artwork">;
 };
 
 

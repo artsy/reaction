@@ -31,28 +31,6 @@ query routes_SearchResultsEntityQuery(
   }
 }
 
-fragment Pagination_pageCursors on PageCursors {
-  around {
-    cursor
-    page
-    isCurrent
-  }
-  first {
-    cursor
-    page
-    isCurrent
-  }
-  last {
-    cursor
-    page
-    isCurrent
-  }
-  previous {
-    cursor
-    page
-  }
-}
-
 fragment SearchResultsEntity_viewer_1qCJIT on Viewer {
   searchConnection(query: $term, first: 10, page: $page, entities: $entities) @principalField {
     pageInfo {
@@ -78,6 +56,28 @@ fragment SearchResultsEntity_viewer_1qCJIT on Viewer {
         }
       }
     }
+  }
+}
+
+fragment Pagination_pageCursors on PageCursors {
+  around {
+    cursor
+    page
+    isCurrent
+  }
+  first {
+    cursor
+    page
+    isCurrent
+  }
+  last {
+    cursor
+    page
+    isCurrent
+  }
+  previous {
+    cursor
+    page
   }
 }
 */
@@ -382,7 +382,7 @@ return {
     "operationKind": "query",
     "name": "routes_SearchResultsEntityQuery",
     "id": null,
-    "text": "query routes_SearchResultsEntityQuery(\n  $term: String!\n  $entities: [SearchEntity]\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsEntity_viewer_1qCJIT\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment SearchResultsEntity_viewer_1qCJIT on Viewer {\n  searchConnection(query: $term, first: 10, page: $page, entities: $entities) @principalField {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          internalID\n          imageUrl\n          displayType\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query routes_SearchResultsEntityQuery(\n  $term: String!\n  $entities: [SearchEntity]\n  $page: Int\n) {\n  viewer {\n    ...SearchResultsEntity_viewer_1qCJIT\n  }\n}\n\nfragment SearchResultsEntity_viewer_1qCJIT on Viewer {\n  searchConnection(query: $term, first: 10, page: $page, entities: $entities) @principalField {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          internalID\n          imageUrl\n          displayType\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
     "metadata": {}
   }
 };

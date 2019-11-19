@@ -1,17 +1,11 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type CollectionsHubsNav_marketingHubCollections = ReadonlyArray<{
     readonly slug: string;
     readonly title: string;
     readonly thumbnail: string | null;
     readonly " $refType": "CollectionsHubsNav_marketingHubCollections";
-}>;
-export type CollectionsHubsNav_marketingHubCollections$data = CollectionsHubsNav_marketingHubCollections;
-export type CollectionsHubsNav_marketingHubCollections$key = ReadonlyArray<{
-    readonly " $data"?: CollectionsHubsNav_marketingHubCollections$data;
-    readonly " $fragmentRefs": FragmentRefs<"CollectionsHubsNav_marketingHubCollections">;
 }>;
 
 

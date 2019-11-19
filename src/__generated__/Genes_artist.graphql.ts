@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type Genes_artist = {
     readonly related: {
         readonly genes: {
@@ -14,11 +13,6 @@ export type Genes_artist = {
         } | null;
     } | null;
     readonly " $refType": "Genes_artist";
-};
-export type Genes_artist$data = Genes_artist;
-export type Genes_artist$key = {
-    readonly " $data"?: Genes_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"Genes_artist">;
 };
 
 

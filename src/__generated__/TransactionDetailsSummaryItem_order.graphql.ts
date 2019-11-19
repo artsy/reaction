@@ -3,7 +3,6 @@
 import { ReaderFragment } from "relay-runtime";
 export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
-import { FragmentRefs } from "relay-runtime";
 export type TransactionDetailsSummaryItem_order = {
     readonly __typename: string;
     readonly mode: CommerceOrderModeEnum | null;
@@ -41,11 +40,6 @@ export type TransactionDetailsSummaryItem_order = {
         readonly note: string | null;
     } | null;
     readonly " $refType": "TransactionDetailsSummaryItem_order";
-};
-export type TransactionDetailsSummaryItem_order$data = TransactionDetailsSummaryItem_order;
-export type TransactionDetailsSummaryItem_order$key = {
-    readonly " $data"?: TransactionDetailsSummaryItem_order$data;
-    readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItem_order">;
 };
 
 

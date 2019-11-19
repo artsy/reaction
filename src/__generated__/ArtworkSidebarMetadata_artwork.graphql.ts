@@ -13,11 +13,6 @@ export type ArtworkSidebarMetadata_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarTitleInfo_artwork" | "ArtworkSidebarSizeInfo_piece" | "ArtworkSidebarClassification_artwork">;
     readonly " $refType": "ArtworkSidebarMetadata_artwork";
 };
-export type ArtworkSidebarMetadata_artwork$data = ArtworkSidebarMetadata_artwork;
-export type ArtworkSidebarMetadata_artwork$key = {
-    readonly " $data"?: ArtworkSidebarMetadata_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarMetadata_artwork">;
-};
 
 
 

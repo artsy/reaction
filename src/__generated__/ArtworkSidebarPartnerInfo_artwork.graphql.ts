@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarPartnerInfo_artwork = {
     readonly partner: {
         readonly name: string | null;
@@ -11,11 +10,6 @@ export type ArtworkSidebarPartnerInfo_artwork = {
         } | null> | null;
     } | null;
     readonly " $refType": "ArtworkSidebarPartnerInfo_artwork";
-};
-export type ArtworkSidebarPartnerInfo_artwork$data = ArtworkSidebarPartnerInfo_artwork;
-export type ArtworkSidebarPartnerInfo_artwork$key = {
-    readonly " $data"?: ArtworkSidebarPartnerInfo_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarPartnerInfo_artwork">;
 };
 
 

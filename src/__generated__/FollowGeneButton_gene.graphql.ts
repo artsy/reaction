@@ -1,17 +1,11 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type FollowGeneButton_gene = {
     readonly id: string;
     readonly internalID: string;
     readonly is_followed: boolean | null;
     readonly " $refType": "FollowGeneButton_gene";
-};
-export type FollowGeneButton_gene$data = FollowGeneButton_gene;
-export type FollowGeneButton_gene$key = {
-    readonly " $data"?: FollowGeneButton_gene$data;
-    readonly " $fragmentRefs": FragmentRefs<"FollowGeneButton_gene">;
 };
 
 

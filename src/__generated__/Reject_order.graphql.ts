@@ -21,11 +21,6 @@ export type Reject_order = {
     readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order">;
     readonly " $refType": "Reject_order";
 };
-export type Reject_order$data = Reject_order;
-export type Reject_order$key = {
-    readonly " $data"?: Reject_order$data;
-    readonly " $fragmentRefs": FragmentRefs<"Reject_order">;
-};
 
 
 

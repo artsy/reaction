@@ -18,11 +18,6 @@ export type ArtistArtworkFilter_artist = {
     } | null;
     readonly " $refType": "ArtistArtworkFilter_artist";
 };
-export type ArtistArtworkFilter_artist$data = ArtistArtworkFilter_artist;
-export type ArtistArtworkFilter_artist$key = {
-    readonly " $data"?: ArtistArtworkFilter_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistArtworkFilter_artist">;
-};
 
 
 

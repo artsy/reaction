@@ -24,11 +24,6 @@ export type SearchResultsEntity_viewer = {
     } | null;
     readonly " $refType": "SearchResultsEntity_viewer";
 };
-export type SearchResultsEntity_viewer$data = SearchResultsEntity_viewer;
-export type SearchResultsEntity_viewer$key = {
-    readonly " $data"?: SearchResultsEntity_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"SearchResultsEntity_viewer">;
-};
 
 
 

@@ -11,11 +11,6 @@ export type ArtworkSidebar_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarArtists_artwork" | "ArtworkSidebarMetadata_artwork" | "ArtworkSidebarAuctionPartnerInfo_artwork" | "ArtworkSidebarCurrentBidInfo_artwork" | "ArtworkSidebarBidAction_artwork" | "ArtworkSidebarCommercial_artwork" | "ArtworkSidebarPartnerInfo_artwork" | "ArtworkSidebarExtraLinks_artwork" | "SecurePayment_artwork" | "VerifiedSeller_artwork" | "AuthenticityCertificate_artwork">;
     readonly " $refType": "ArtworkSidebar_artwork";
 };
-export type ArtworkSidebar_artwork$data = ArtworkSidebar_artwork;
-export type ArtworkSidebar_artwork$key = {
-    readonly " $data"?: ArtworkSidebar_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebar_artwork">;
-};
 
 
 

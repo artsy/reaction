@@ -15,11 +15,6 @@ export type GridItem_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"Metadata_artwork" | "Save_artwork" | "Badge_artwork">;
     readonly " $refType": "GridItem_artwork";
 };
-export type GridItem_artwork$data = GridItem_artwork;
-export type GridItem_artwork$key = {
-    readonly " $data"?: GridItem_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"GridItem_artwork">;
-};
 
 
 

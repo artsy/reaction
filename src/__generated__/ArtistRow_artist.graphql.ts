@@ -11,11 +11,6 @@ export type ArtistRow_artist = {
     readonly " $fragmentRefs": FragmentRefs<"Follow_artist">;
     readonly " $refType": "ArtistRow_artist";
 };
-export type ArtistRow_artist$data = ArtistRow_artist;
-export type ArtistRow_artist$key = {
-    readonly " $data"?: ArtistRow_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistRow_artist">;
-};
 
 
 

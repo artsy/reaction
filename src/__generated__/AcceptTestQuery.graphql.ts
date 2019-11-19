@@ -223,80 +223,6 @@ fragment Accept_order on CommerceOrder {
   ...CreditCardSummaryItem_order
 }
 
-fragment ArtworkSummaryItem_order on CommerceOrder {
-  sellerDetails {
-    __typename
-    ... on Partner {
-      name
-    }
-    ... on Node {
-      id
-    }
-    ... on User {
-      id
-    }
-  }
-  lineItems {
-    edges {
-      node {
-        artwork {
-          artist_names: artistNames
-          title
-          date
-          shippingOrigin
-          image {
-            resized_ArtworkSummaryItem: resized(width: 55) {
-              url
-            }
-          }
-          id
-        }
-        id
-      }
-    }
-  }
-}
-
-fragment CreditCardSummaryItem_order on CommerceOrder {
-  creditCard {
-    brand
-    lastDigits
-    expirationYear
-    expirationMonth
-    id
-  }
-}
-
-fragment ShippingAddress_ship on CommerceShip {
-  name
-  addressLine1
-  addressLine2
-  city
-  postalCode
-  region
-  country
-  phoneNumber
-}
-
-fragment ShippingSummaryItem_order on CommerceOrder {
-  state
-  requestedFulfillment {
-    __typename
-    ...ShippingAddress_ship
-  }
-  lineItems {
-    edges {
-      node {
-        artwork {
-          shippingOrigin
-          id
-        }
-        id
-      }
-    }
-  }
-}
-
 fragment TransactionDetailsSummaryItem_order on CommerceOrder {
   __typename
   mode
@@ -337,6 +263,80 @@ fragment TransactionDetailsSummaryItem_order on CommerceOrder {
       id
     }
   }
+}
+
+fragment ArtworkSummaryItem_order on CommerceOrder {
+  sellerDetails {
+    __typename
+    ... on Partner {
+      name
+    }
+    ... on Node {
+      id
+    }
+    ... on User {
+      id
+    }
+  }
+  lineItems {
+    edges {
+      node {
+        artwork {
+          artist_names: artistNames
+          title
+          date
+          shippingOrigin
+          image {
+            resized_ArtworkSummaryItem: resized(width: 55) {
+              url
+            }
+          }
+          id
+        }
+        id
+      }
+    }
+  }
+}
+
+fragment ShippingSummaryItem_order on CommerceOrder {
+  state
+  requestedFulfillment {
+    __typename
+    ...ShippingAddress_ship
+  }
+  lineItems {
+    edges {
+      node {
+        artwork {
+          shippingOrigin
+          id
+        }
+        id
+      }
+    }
+  }
+}
+
+fragment CreditCardSummaryItem_order on CommerceOrder {
+  creditCard {
+    brand
+    lastDigits
+    expirationYear
+    expirationMonth
+    id
+  }
+}
+
+fragment ShippingAddress_ship on CommerceShip {
+  name
+  addressLine1
+  addressLine2
+  city
+  postalCode
+  region
+  country
+  phoneNumber
 }
 */
 
@@ -862,7 +862,7 @@ return {
     "operationKind": "query",
     "name": "AcceptTestQuery",
     "id": null,
-    "text": "query AcceptTestQuery {\n  order: commerceOrder(id: \"\") {\n    __typename\n    ...Accept_order\n    id\n  }\n}\n\nfragment Accept_order on CommerceOrder {\n  internalID\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          artists {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      createdAt\n      id\n    }\n  }\n  ...TransactionDetailsSummaryItem_order\n  ...ArtworkSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    lastDigits\n    expirationYear\n    expirationMonth\n    id\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n",
+    "text": "query AcceptTestQuery {\n  order: commerceOrder(id: \"\") {\n    __typename\n    ...Accept_order\n    id\n  }\n}\n\nfragment Accept_order on CommerceOrder {\n  internalID\n  stateExpiresAt\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          artists {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      createdAt\n      id\n    }\n  }\n  ...TransactionDetailsSummaryItem_order\n  ...ArtworkSummaryItem_order\n  ...ShippingSummaryItem_order\n  ...CreditCardSummaryItem_order\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment ShippingSummaryItem_order on CommerceOrder {\n  state\n  requestedFulfillment {\n    __typename\n    ...ShippingAddress_ship\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          shippingOrigin\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment CreditCardSummaryItem_order on CommerceOrder {\n  creditCard {\n    brand\n    lastDigits\n    expirationYear\n    expirationMonth\n    id\n  }\n}\n\nfragment ShippingAddress_ship on CommerceShip {\n  name\n  addressLine1\n  addressLine2\n  city\n  postalCode\n  region\n  country\n  phoneNumber\n}\n",
     "metadata": {}
   }
 };

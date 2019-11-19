@@ -12,11 +12,6 @@ export type MockRelayRendererFixtures_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artworkMetadata">;
     readonly " $refType": "MockRelayRendererFixtures_artwork";
 };
-export type MockRelayRendererFixtures_artwork$data = MockRelayRendererFixtures_artwork;
-export type MockRelayRendererFixtures_artwork$key = {
-    readonly " $data"?: MockRelayRendererFixtures_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artwork">;
-};
 
 
 

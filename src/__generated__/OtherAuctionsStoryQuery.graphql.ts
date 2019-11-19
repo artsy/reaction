@@ -26,6 +26,15 @@ query OtherAuctionsStoryQuery(
   }
 }
 
+fragment OtherAuctions_salesConnection on SaleConnection {
+  edges {
+    node {
+      ...AuctionCard_sale
+      id
+    }
+  }
+}
+
 fragment AuctionCard_sale on Sale {
   cover_image: coverImage {
     cropped(width: 200, height: 180) {
@@ -51,15 +60,6 @@ fragment AuctionCard_sale on Sale {
   partner {
     name
     id
-  }
-}
-
-fragment OtherAuctions_salesConnection on SaleConnection {
-  edges {
-    node {
-      ...AuctionCard_sale
-      id
-    }
   }
 }
 */
@@ -321,7 +321,7 @@ return {
     "operationKind": "query",
     "name": "OtherAuctionsStoryQuery",
     "id": null,
-    "text": "query OtherAuctionsStoryQuery(\n  $size: Int!\n) {\n  salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_salesConnection\n  }\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n\nfragment OtherAuctions_salesConnection on SaleConnection {\n  edges {\n    node {\n      ...AuctionCard_sale\n      id\n    }\n  }\n}\n",
+    "text": "query OtherAuctionsStoryQuery(\n  $size: Int!\n) {\n  salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {\n    ...OtherAuctions_salesConnection\n  }\n}\n\nfragment OtherAuctions_salesConnection on SaleConnection {\n  edges {\n    node {\n      ...AuctionCard_sale\n      id\n    }\n  }\n}\n\nfragment AuctionCard_sale on Sale {\n  cover_image: coverImage {\n    cropped(width: 200, height: 180) {\n      url\n    }\n  }\n  isBenefit\n  isGalleryAuction\n  end_at: endAt\n  href\n  slug\n  is_live_open: isLiveOpen\n  is_preview: isPreview\n  live_start_at: liveStartAt\n  registrationStatus {\n    internalID\n    id\n  }\n  is_registration_closed: isRegistrationClosed\n  name\n  start_at: startAt\n  is_closed: isClosed\n  partner {\n    name\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

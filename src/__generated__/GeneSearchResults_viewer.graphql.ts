@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type GeneSearchResults_viewer = {
     readonly match_gene: {
         readonly edges: ReadonlyArray<{
@@ -19,11 +18,6 @@ export type GeneSearchResults_viewer = {
         } | null> | null;
     } | null;
     readonly " $refType": "GeneSearchResults_viewer";
-};
-export type GeneSearchResults_viewer$data = GeneSearchResults_viewer;
-export type GeneSearchResults_viewer$key = {
-    readonly " $data"?: GeneSearchResults_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"GeneSearchResults_viewer">;
 };
 
 

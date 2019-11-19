@@ -6,11 +6,6 @@ export type InquiryArtwork_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"Artwork_artwork">;
     readonly " $refType": "InquiryArtwork_artwork";
 };
-export type InquiryArtwork_artwork$data = InquiryArtwork_artwork;
-export type InquiryArtwork_artwork$key = {
-    readonly " $data"?: InquiryArtwork_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"InquiryArtwork_artwork">;
-};
 
 
 

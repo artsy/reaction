@@ -18,11 +18,6 @@ export type RecentlyViewed_me = {
     } | null;
     readonly " $refType": "RecentlyViewed_me";
 };
-export type RecentlyViewed_me$data = RecentlyViewed_me;
-export type RecentlyViewed_me$key = {
-    readonly " $data"?: RecentlyViewed_me$data;
-    readonly " $fragmentRefs": FragmentRefs<"RecentlyViewed_me">;
-};
 
 
 

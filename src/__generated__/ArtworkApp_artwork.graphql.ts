@@ -23,11 +23,6 @@ export type ArtworkApp_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"ArtworkRelatedArtists_artwork" | "ArtworkMeta_artwork" | "ArtworkBanner_artwork" | "ArtworkSidebar_artwork" | "ArtworkDetails_artwork" | "ArtworkImageBrowser_artwork" | "OtherWorks_artwork" | "PricingContext_artwork">;
     readonly " $refType": "ArtworkApp_artwork";
 };
-export type ArtworkApp_artwork$data = ArtworkApp_artwork;
-export type ArtworkApp_artwork$key = {
-    readonly " $data"?: ArtworkApp_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkApp_artwork">;
-};
 
 
 

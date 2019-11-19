@@ -27,25 +27,8 @@ query routes_AuctionResultsQuery(
   }
 }
 
-fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
-  title
-  dimension_text: dimensionText
-  organization
-  images {
-    thumbnail {
-      url
-    }
-  }
-  description
-  date_text: dateText
-  sale_date_text: saleDateText
-  price_realized: priceRealized {
-    display
-    cents_usd: centsUSD
-  }
-  estimate {
-    display
-  }
+fragment AuctionResults_artist on Artist {
+  ...ArtistAuctionResults_artist
 }
 
 fragment ArtistAuctionResults_artist on Artist {
@@ -68,10 +51,6 @@ fragment ArtistAuctionResults_artist on Artist {
   }
 }
 
-fragment AuctionResults_artist on Artist {
-  ...ArtistAuctionResults_artist
-}
-
 fragment Pagination_pageCursors on PageCursors {
   around {
     cursor
@@ -91,6 +70,27 @@ fragment Pagination_pageCursors on PageCursors {
   previous {
     cursor
     page
+  }
+}
+
+fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
+  title
+  dimension_text: dimensionText
+  organization
+  images {
+    thumbnail {
+      url
+    }
+  }
+  description
+  date_text: dateText
+  sale_date_text: saleDateText
+  price_realized: priceRealized {
+    display
+    cents_usd: centsUSD
+  }
+  estimate {
+    display
   }
 }
 */
@@ -440,7 +440,7 @@ return {
     "operationKind": "query",
     "name": "routes_AuctionResultsQuery",
     "id": null,
-    "text": "query routes_AuctionResultsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    id\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text: dimensionText\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text: dateText\n  sale_date_text: saleDateText\n  price_realized: priceRealized {\n    display\n    cents_usd: centsUSD\n  }\n  estimate {\n    display\n  }\n}\n\nfragment ArtistAuctionResults_artist on Artist {\n  slug\n  auctionResultsConnection(first: 10, sort: DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...ArtistAuctionResults_artist\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+    "text": "query routes_AuctionResultsQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...AuctionResults_artist\n    id\n  }\n}\n\nfragment AuctionResults_artist on Artist {\n  ...ArtistAuctionResults_artist\n}\n\nfragment ArtistAuctionResults_artist on Artist {\n  slug\n  auctionResultsConnection(first: 10, sort: DATE_DESC) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text: dimensionText\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  description\n  date_text: dateText\n  sale_date_text: saleDateText\n  price_realized: priceRealized {\n    display\n    cents_usd: centsUSD\n  }\n  estimate {\n    display\n  }\n}\n",
     "metadata": {}
   }
 };

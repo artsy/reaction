@@ -33,11 +33,6 @@ export type ArtworkImageBrowser_artwork = {
     readonly " $fragmentRefs": FragmentRefs<"ArtworkActions_artwork">;
     readonly " $refType": "ArtworkImageBrowser_artwork";
 };
-export type ArtworkImageBrowser_artwork$data = ArtworkImageBrowser_artwork;
-export type ArtworkImageBrowser_artwork$key = {
-    readonly " $data"?: ArtworkImageBrowser_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkImageBrowser_artwork">;
-};
 
 
 

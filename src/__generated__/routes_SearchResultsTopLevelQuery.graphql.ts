@@ -26,16 +26,6 @@ query routes_SearchResultsTopLevelQuery(
   }
 }
 
-fragment NavigationTabs_searchableConnection on SearchableConnection {
-  aggregations {
-    slice
-    counts {
-      count
-      name
-    }
-  }
-}
-
 fragment SearchApp_viewer_4hh6ED on Viewer {
   searchConnection(query: $term, first: 1, aggregations: [TYPE]) {
     aggregations {
@@ -65,6 +55,16 @@ fragment SearchApp_viewer_4hh6ED on Viewer {
       total
     }
     id
+  }
+}
+
+fragment NavigationTabs_searchableConnection on SearchableConnection {
+  aggregations {
+    slice
+    counts {
+      count
+      name
+    }
   }
 }
 */
@@ -317,7 +317,7 @@ return {
     "operationKind": "query",
     "name": "routes_SearchResultsTopLevelQuery",
     "id": null,
-    "text": "query routes_SearchResultsTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n    }\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  searchConnection(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          slug\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n  artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    id\n  }\n}\n",
+    "text": "query routes_SearchResultsTopLevelQuery(\n  $term: String!\n) {\n  viewer {\n    ...SearchApp_viewer_4hh6ED\n  }\n}\n\nfragment SearchApp_viewer_4hh6ED on Viewer {\n  searchConnection(query: $term, first: 1, aggregations: [TYPE]) {\n    aggregations {\n      slice\n      counts {\n        count\n        name\n      }\n    }\n    ...NavigationTabs_searchableConnection\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          slug\n          displayLabel\n          displayType\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n  artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {\n    counts {\n      total\n    }\n    id\n  }\n}\n\nfragment NavigationTabs_searchableConnection on SearchableConnection {\n  aggregations {\n    slice\n    counts {\n      count\n      name\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

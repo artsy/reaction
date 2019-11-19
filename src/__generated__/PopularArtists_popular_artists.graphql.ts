@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type PopularArtists_popular_artists = ReadonlyArray<{
     readonly slug: string;
     readonly internalID: string;
@@ -13,11 +12,6 @@ export type PopularArtists_popular_artists = ReadonlyArray<{
         } | null;
     } | null;
     readonly " $refType": "PopularArtists_popular_artists";
-}>;
-export type PopularArtists_popular_artists$data = PopularArtists_popular_artists;
-export type PopularArtists_popular_artists$key = ReadonlyArray<{
-    readonly " $data"?: PopularArtists_popular_artists$data;
-    readonly " $fragmentRefs": FragmentRefs<"PopularArtists_popular_artists">;
 }>;
 
 

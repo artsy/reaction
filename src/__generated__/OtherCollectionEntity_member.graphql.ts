@@ -1,17 +1,11 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type OtherCollectionEntity_member = {
     readonly slug: string;
     readonly thumbnail: string | null;
     readonly title: string;
     readonly " $refType": "OtherCollectionEntity_member";
-};
-export type OtherCollectionEntity_member$data = OtherCollectionEntity_member;
-export type OtherCollectionEntity_member$key = {
-    readonly " $data"?: OtherCollectionEntity_member$data;
-    readonly " $fragmentRefs": FragmentRefs<"OtherCollectionEntity_member">;
 };
 
 

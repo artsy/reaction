@@ -23,11 +23,6 @@ export type SearchResultsArtists_viewer = {
     } | null;
     readonly " $refType": "SearchResultsArtists_viewer";
 };
-export type SearchResultsArtists_viewer$data = SearchResultsArtists_viewer;
-export type SearchResultsArtists_viewer$key = {
-    readonly " $data"?: SearchResultsArtists_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"SearchResultsArtists_viewer">;
-};
 
 
 

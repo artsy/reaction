@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type MarketInsights_artist = {
     readonly internalID: string;
     readonly collections: ReadonlyArray<string | null> | null;
@@ -26,11 +25,6 @@ export type MarketInsights_artist = {
         } | null> | null;
     } | null;
     readonly " $refType": "MarketInsights_artist";
-};
-export type MarketInsights_artist$data = MarketInsights_artist;
-export type MarketInsights_artist$key = {
-    readonly " $data"?: MarketInsights_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"MarketInsights_artist">;
 };
 
 

@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type OfferSummaryItem_order = {
     readonly totalListPrice: string | null;
     readonly myLastOffer?: {
@@ -9,11 +8,6 @@ export type OfferSummaryItem_order = {
         readonly note: string | null;
     } | null;
     readonly " $refType": "OfferSummaryItem_order";
-};
-export type OfferSummaryItem_order$data = OfferSummaryItem_order;
-export type OfferSummaryItem_order$key = {
-    readonly " $data"?: OfferSummaryItem_order$data;
-    readonly " $fragmentRefs": FragmentRefs<"OfferSummaryItem_order">;
 };
 
 

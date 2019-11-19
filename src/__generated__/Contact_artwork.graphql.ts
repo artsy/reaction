@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type Contact_artwork = {
     readonly href: string | null;
     readonly is_inquireable: boolean | null;
@@ -26,11 +25,6 @@ export type Contact_artwork = {
         } | null;
     } | null;
     readonly " $refType": "Contact_artwork";
-};
-export type Contact_artwork$data = Contact_artwork;
-export type Contact_artwork$key = {
-    readonly " $data"?: Contact_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"Contact_artwork">;
 };
 
 

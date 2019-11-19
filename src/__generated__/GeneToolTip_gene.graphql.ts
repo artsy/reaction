@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type GeneToolTip_gene = {
     readonly description: string | null;
     readonly href: string | null;
@@ -12,11 +11,6 @@ export type GeneToolTip_gene = {
     } | null;
     readonly name: string | null;
     readonly " $refType": "GeneToolTip_gene";
-};
-export type GeneToolTip_gene$data = GeneToolTip_gene;
-export type GeneToolTip_gene$key = {
-    readonly " $data"?: GeneToolTip_gene$data;
-    readonly " $fragmentRefs": FragmentRefs<"GeneToolTip_gene">;
 };
 
 

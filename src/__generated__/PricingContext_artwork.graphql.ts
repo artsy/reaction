@@ -3,7 +3,6 @@
 import { ReaderFragment } from "relay-runtime";
 export type AnalyticsPricingContextCategoryEnum = "ARCHITECTURE" | "BOOKS_AND_PORTFOLIOS" | "DESIGN_DECORATIVE_ART" | "DRAWING_COLLAGE_OTHER_WORK_ON_PAPER" | "FASHION" | "INSTALLATION" | "JEWELRY" | "MIXED_MEDIA" | "OTHER" | "PAINTING" | "PERFORMANCE" | "PHOTOGRAPHY" | "POSTERS" | "PRINT" | "SCULPTURE" | "SOUND" | "TEXTILE" | "VIDEO_FILM_ANIMATION" | "WORK_ON_PAPER" | "%future added value";
 export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" | "%future added value";
-import { FragmentRefs } from "relay-runtime";
 export type PricingContext_artwork = {
     readonly listPrice: ({
         readonly __typename: "PriceRange";
@@ -40,11 +39,6 @@ export type PricingContext_artwork = {
         }>;
     } | null;
     readonly " $refType": "PricingContext_artwork";
-};
-export type PricingContext_artwork$data = PricingContext_artwork;
-export type PricingContext_artwork$key = {
-    readonly " $data"?: PricingContext_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"PricingContext_artwork">;
 };
 
 

@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type UserSettingsPaymentsCreditCard = {
     readonly id: string;
     readonly internalID: string;
@@ -11,11 +10,6 @@ export type UserSettingsPaymentsCreditCard = {
     readonly expirationMonth: number;
     readonly __typename: "CreditCard";
     readonly " $refType": "UserSettingsPaymentsCreditCard";
-};
-export type UserSettingsPaymentsCreditCard$data = UserSettingsPaymentsCreditCard;
-export type UserSettingsPaymentsCreditCard$key = {
-    readonly " $data"?: UserSettingsPaymentsCreditCard$data;
-    readonly " $fragmentRefs": FragmentRefs<"UserSettingsPaymentsCreditCard">;
 };
 
 

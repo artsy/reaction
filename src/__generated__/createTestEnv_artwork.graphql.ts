@@ -1,18 +1,12 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type createTestEnv_artwork = {
     readonly title: string | null;
     readonly artist: {
         readonly name: string | null;
     } | null;
     readonly " $refType": "createTestEnv_artwork";
-};
-export type createTestEnv_artwork$data = createTestEnv_artwork;
-export type createTestEnv_artwork$key = {
-    readonly " $data"?: createTestEnv_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"createTestEnv_artwork">;
 };
 
 

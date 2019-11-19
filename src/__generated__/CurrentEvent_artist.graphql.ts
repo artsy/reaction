@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type CurrentEvent_artist = {
     readonly currentEvent: {
         readonly event: {
@@ -19,11 +18,6 @@ export type CurrentEvent_artist = {
         readonly href: string | null;
     } | null;
     readonly " $refType": "CurrentEvent_artist";
-};
-export type CurrentEvent_artist$data = CurrentEvent_artist;
-export type CurrentEvent_artist$key = {
-    readonly " $data"?: CurrentEvent_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"CurrentEvent_artist">;
 };
 
 

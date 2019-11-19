@@ -42,11 +42,6 @@ export type ArtistInfo_artist = {
     readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio" | "ArtistMarketInsights_artist" | "FollowArtistButton_artist">;
     readonly " $refType": "ArtistInfo_artist";
 };
-export type ArtistInfo_artist$data = ArtistInfo_artist;
-export type ArtistInfo_artist$key = {
-    readonly " $data"?: ArtistInfo_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistInfo_artist">;
-};
 
 
 

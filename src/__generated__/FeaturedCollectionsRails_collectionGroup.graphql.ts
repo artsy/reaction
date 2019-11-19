@@ -2,7 +2,6 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type MarketingGroupTypes = "ArtistSeries" | "FeaturedCollections" | "OtherCollections" | "%future added value";
-import { FragmentRefs } from "relay-runtime";
 export type FeaturedCollectionsRails_collectionGroup = {
     readonly groupType: MarketingGroupTypes;
     readonly name: string;
@@ -14,11 +13,6 @@ export type FeaturedCollectionsRails_collectionGroup = {
         readonly thumbnail: string | null;
     }>;
     readonly " $refType": "FeaturedCollectionsRails_collectionGroup";
-};
-export type FeaturedCollectionsRails_collectionGroup$data = FeaturedCollectionsRails_collectionGroup;
-export type FeaturedCollectionsRails_collectionGroup$key = {
-    readonly " $data"?: FeaturedCollectionsRails_collectionGroup$data;
-    readonly " $fragmentRefs": FragmentRefs<"FeaturedCollectionsRails_collectionGroup">;
 };
 
 

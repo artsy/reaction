@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type UserSettingsPayments_me = {
     readonly id: string;
     readonly internalID: string;
@@ -19,11 +18,6 @@ export type UserSettingsPayments_me = {
         } | null> | null;
     } | null;
     readonly " $refType": "UserSettingsPayments_me";
-};
-export type UserSettingsPayments_me$data = UserSettingsPayments_me;
-export type UserSettingsPayments_me$key = {
-    readonly " $data"?: UserSettingsPayments_me$data;
-    readonly " $fragmentRefs": FragmentRefs<"UserSettingsPayments_me">;
 };
 
 

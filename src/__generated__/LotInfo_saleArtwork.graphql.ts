@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type LotInfo_saleArtwork = {
     readonly counts: {
         readonly bidderPositions: number | null;
@@ -13,11 +12,6 @@ export type LotInfo_saleArtwork = {
         readonly display: string | null;
     } | null;
     readonly " $refType": "LotInfo_saleArtwork";
-};
-export type LotInfo_saleArtwork$data = LotInfo_saleArtwork;
-export type LotInfo_saleArtwork$key = {
-    readonly " $data"?: LotInfo_saleArtwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"LotInfo_saleArtwork">;
 };
 
 

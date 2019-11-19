@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type SuggestedGenes_suggested_genes = ReadonlyArray<{
     readonly id: string;
     readonly slug: string;
@@ -13,11 +12,6 @@ export type SuggestedGenes_suggested_genes = ReadonlyArray<{
         } | null;
     } | null;
     readonly " $refType": "SuggestedGenes_suggested_genes";
-}>;
-export type SuggestedGenes_suggested_genes$data = SuggestedGenes_suggested_genes;
-export type SuggestedGenes_suggested_genes$key = ReadonlyArray<{
-    readonly " $data"?: SuggestedGenes_suggested_genes$data;
-    readonly " $fragmentRefs": FragmentRefs<"SuggestedGenes_suggested_genes">;
 }>;
 
 

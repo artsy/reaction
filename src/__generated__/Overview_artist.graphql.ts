@@ -1,8 +1,8 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
+export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
 export type Overview_artist = {
     readonly slug: string;
     readonly id: string;
@@ -66,11 +66,6 @@ export type Overview_artist = {
     } | null;
     readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio" | "CurrentEvent_artist" | "MarketInsights_artist" | "SelectedCareerAchievements_artist" | "Genes_artist" | "FollowArtistButton_artist" | "ArtistArtworkFilter_artist">;
     readonly " $refType": "Overview_artist";
-};
-export type Overview_artist$data = Overview_artist;
-export type Overview_artist$key = {
-    readonly " $data"?: Overview_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"Overview_artist">;
 };
 
 

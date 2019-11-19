@@ -2,7 +2,6 @@
 
 import { ReaderFragment } from "relay-runtime";
 export type SearchAggregation = "TYPE" | "%future added value";
-import { FragmentRefs } from "relay-runtime";
 export type NavigationTabs_searchableConnection = {
     readonly aggregations: ReadonlyArray<{
         readonly slice: SearchAggregation | null;
@@ -12,11 +11,6 @@ export type NavigationTabs_searchableConnection = {
         } | null> | null;
     } | null> | null;
     readonly " $refType": "NavigationTabs_searchableConnection";
-};
-export type NavigationTabs_searchableConnection$data = NavigationTabs_searchableConnection;
-export type NavigationTabs_searchableConnection$key = {
-    readonly " $data"?: NavigationTabs_searchableConnection$data;
-    readonly " $fragmentRefs": FragmentRefs<"NavigationTabs_searchableConnection">;
 };
 
 

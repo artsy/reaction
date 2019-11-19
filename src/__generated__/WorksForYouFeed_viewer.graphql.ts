@@ -32,11 +32,6 @@ export type WorksForYouFeed_viewer = {
     } | null;
     readonly " $refType": "WorksForYouFeed_viewer";
 };
-export type WorksForYouFeed_viewer$data = WorksForYouFeed_viewer;
-export type WorksForYouFeed_viewer$key = {
-    readonly " $data"?: WorksForYouFeed_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"WorksForYouFeed_viewer">;
-};
 
 
 

@@ -1,17 +1,11 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type Follow_artist = {
     readonly id: string;
     readonly internalID: string;
     readonly is_followed: boolean | null;
     readonly " $refType": "Follow_artist";
-};
-export type Follow_artist$data = Follow_artist;
-export type Follow_artist$key = {
-    readonly " $data"?: Follow_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"Follow_artist">;
 };
 
 

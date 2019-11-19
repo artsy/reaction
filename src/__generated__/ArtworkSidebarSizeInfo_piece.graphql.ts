@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarSizeInfo_piece = {
     readonly dimensions: {
         readonly in: string | null;
@@ -9,11 +8,6 @@ export type ArtworkSidebarSizeInfo_piece = {
     } | null;
     readonly edition_of: string | null;
     readonly " $refType": "ArtworkSidebarSizeInfo_piece";
-};
-export type ArtworkSidebarSizeInfo_piece$data = ArtworkSidebarSizeInfo_piece;
-export type ArtworkSidebarSizeInfo_piece$key = {
-    readonly " $data"?: ArtworkSidebarSizeInfo_piece$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarSizeInfo_piece">;
 };
 
 

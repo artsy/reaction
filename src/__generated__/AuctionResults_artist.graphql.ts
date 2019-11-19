@@ -6,11 +6,6 @@ export type AuctionResults_artist = {
     readonly " $fragmentRefs": FragmentRefs<"ArtistAuctionResults_artist">;
     readonly " $refType": "AuctionResults_artist";
 };
-export type AuctionResults_artist$data = AuctionResults_artist;
-export type AuctionResults_artist$key = {
-    readonly " $data"?: AuctionResults_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"AuctionResults_artist">;
-};
 
 
 

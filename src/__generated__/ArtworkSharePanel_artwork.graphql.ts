@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type ArtworkSharePanel_artwork = {
     readonly href: string | null;
     readonly images: ReadonlyArray<{
@@ -11,11 +10,6 @@ export type ArtworkSharePanel_artwork = {
         readonly share: string | null;
     } | null;
     readonly " $refType": "ArtworkSharePanel_artwork";
-};
-export type ArtworkSharePanel_artwork$data = ArtworkSharePanel_artwork;
-export type ArtworkSharePanel_artwork$key = {
-    readonly " $data"?: ArtworkSharePanel_artwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtworkSharePanel_artwork">;
 };
 
 

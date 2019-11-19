@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type BidForm_saleArtwork = {
     readonly minimumNextBid: {
         readonly cents: number | null;
@@ -11,11 +10,6 @@ export type BidForm_saleArtwork = {
         readonly display: string | null;
     } | null> | null;
     readonly " $refType": "BidForm_saleArtwork";
-};
-export type BidForm_saleArtwork$data = BidForm_saleArtwork;
-export type BidForm_saleArtwork$key = {
-    readonly " $data"?: BidForm_saleArtwork$data;
-    readonly " $fragmentRefs": FragmentRefs<"BidForm_saleArtwork">;
 };
 
 

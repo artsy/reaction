@@ -52,6 +52,66 @@ fragment ArtistRecommendations_artist_1G22uz on Artist {
   }
 }
 
+fragment RecommendedArtist_artist on Artist {
+  slug
+  internalID
+  name
+  formatted_nationality_and_birthday: formattedNationalityAndBirthday
+  href
+  image {
+    cropped(width: 100, height: 100) {
+      url
+    }
+  }
+  artworks_connection: artworksConnection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {
+    edges {
+      node {
+        id
+        image {
+          aspect_ratio: aspectRatio
+        }
+        ...FillwidthItem_artwork
+      }
+    }
+  }
+  ...FollowArtistButton_artist
+}
+
+fragment FillwidthItem_artwork on Artwork {
+  image {
+    url(version: "large")
+    aspect_ratio: aspectRatio
+  }
+  href
+  ...Metadata_artwork
+  ...Save_artwork
+  ...Badge_artwork
+}
+
+fragment FollowArtistButton_artist on Artist {
+  id
+  internalID
+  name
+  is_followed: isFollowed
+  counts {
+    follows
+  }
+}
+
+fragment Metadata_artwork on Artwork {
+  ...Details_artwork
+  ...Contact_artwork
+  href
+}
+
+fragment Save_artwork on Artwork {
+  id
+  internalID
+  slug
+  is_saved: isSaved
+  title
+}
+
 fragment Badge_artwork on Artwork {
   is_biddable: isBiddable
   is_acquireable: isAcquireable
@@ -60,34 +120,6 @@ fragment Badge_artwork on Artwork {
   sale {
     is_preview: isPreview
     display_timely_at: displayTimelyAt
-    id
-  }
-}
-
-fragment Contact_artwork on Artwork {
-  href
-  is_inquireable: isInquireable
-  sale {
-    is_auction: isAuction
-    is_live_open: isLiveOpen
-    is_open: isOpen
-    is_closed: isClosed
-    id
-  }
-  partner(shallow: true) {
-    type
-    id
-  }
-  sale_artwork: saleArtwork {
-    highest_bid: highestBid {
-      display
-    }
-    opening_bid: openingBid {
-      display
-    }
-    counts {
-      bidder_positions: bidderPositions
-    }
     id
   }
 }
@@ -128,64 +160,32 @@ fragment Details_artwork on Artwork {
   }
 }
 
-fragment FillwidthItem_artwork on Artwork {
-  image {
-    url(version: "large")
-    aspect_ratio: aspectRatio
+fragment Contact_artwork on Artwork {
+  href
+  is_inquireable: isInquireable
+  sale {
+    is_auction: isAuction
+    is_live_open: isLiveOpen
+    is_open: isOpen
+    is_closed: isClosed
+    id
   }
-  href
-  ...Metadata_artwork
-  ...Save_artwork
-  ...Badge_artwork
-}
-
-fragment FollowArtistButton_artist on Artist {
-  id
-  internalID
-  name
-  is_followed: isFollowed
-  counts {
-    follows
+  partner(shallow: true) {
+    type
+    id
   }
-}
-
-fragment Metadata_artwork on Artwork {
-  ...Details_artwork
-  ...Contact_artwork
-  href
-}
-
-fragment RecommendedArtist_artist on Artist {
-  slug
-  internalID
-  name
-  formatted_nationality_and_birthday: formattedNationalityAndBirthday
-  href
-  image {
-    cropped(width: 100, height: 100) {
-      url
+  sale_artwork: saleArtwork {
+    highest_bid: highestBid {
+      display
     }
-  }
-  artworks_connection: artworksConnection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {
-    edges {
-      node {
-        id
-        image {
-          aspect_ratio: aspectRatio
-        }
-        ...FillwidthItem_artwork
-      }
+    opening_bid: openingBid {
+      display
     }
+    counts {
+      bidder_positions: bidderPositions
+    }
+    id
   }
-  ...FollowArtistButton_artist
-}
-
-fragment Save_artwork on Artwork {
-  id
-  internalID
-  slug
-  is_saved: isSaved
-  title
 }
 */
 
@@ -812,7 +812,7 @@ return {
     "operationKind": "query",
     "name": "ArtistRecommendationsPaginationQuery",
     "id": null,
-    "text": "query ArtistRecommendationsPaginationQuery(\n  $count: Int!\n  $cursor: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist_1G22uz\n    id\n  }\n}\n\nfragment ArtistRecommendations_artist_1G22uz on Artist {\n  slug\n  name\n  related {\n    artistsConnection(first: $count, after: $cursor, minForsaleArtworks: 7) {\n      edges {\n        node {\n          id\n          ...RecommendedArtist_artist\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment RecommendedArtist_artist on Artist {\n  slug\n  internalID\n  name\n  formatted_nationality_and_birthday: formattedNationalityAndBirthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection: artworksConnection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {\n    edges {\n      node {\n        id\n        image {\n          aspect_ratio: aspectRatio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
+    "text": "query ArtistRecommendationsPaginationQuery(\n  $count: Int!\n  $cursor: String\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistRecommendations_artist_1G22uz\n    id\n  }\n}\n\nfragment ArtistRecommendations_artist_1G22uz on Artist {\n  slug\n  name\n  related {\n    artistsConnection(first: $count, after: $cursor, minForsaleArtworks: 7) {\n      edges {\n        node {\n          id\n          ...RecommendedArtist_artist\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment RecommendedArtist_artist on Artist {\n  slug\n  internalID\n  name\n  formatted_nationality_and_birthday: formattedNationalityAndBirthday\n  href\n  image {\n    cropped(width: 100, height: 100) {\n      url\n    }\n  }\n  artworks_connection: artworksConnection(first: 20, sort: PUBLISHED_AT_DESC, filter: IS_FOR_SALE) {\n    edges {\n      node {\n        id\n        image {\n          aspect_ratio: aspectRatio\n        }\n        ...FillwidthItem_artwork\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -10,11 +10,6 @@ export type OtherAuctions_salesConnection = {
     } | null> | null;
     readonly " $refType": "OtherAuctions_salesConnection";
 };
-export type OtherAuctions_salesConnection$data = OtherAuctions_salesConnection;
-export type OtherAuctions_salesConnection$key = {
-    readonly " $data"?: OtherAuctions_salesConnection$data;
-    readonly " $fragmentRefs": FragmentRefs<"OtherAuctions_salesConnection">;
-};
 
 
 

@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type ShippingAddress_ship = {
     readonly name: string | null;
     readonly addressLine1: string | null;
@@ -12,11 +11,6 @@ export type ShippingAddress_ship = {
     readonly country: string | null;
     readonly phoneNumber: string | null;
     readonly " $refType": "ShippingAddress_ship";
-};
-export type ShippingAddress_ship$data = ShippingAddress_ship;
-export type ShippingAddress_ship$key = {
-    readonly " $data"?: ShippingAddress_ship$data;
-    readonly " $fragmentRefs": FragmentRefs<"ShippingAddress_ship">;
 };
 
 

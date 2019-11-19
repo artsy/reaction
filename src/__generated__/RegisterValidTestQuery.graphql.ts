@@ -43,14 +43,14 @@ query RegisterValidTestQuery {
   }
 }
 
-fragment Register_me on Me {
-  internalID
-}
-
 fragment Register_sale on Sale {
   slug
   internalID
   status
+}
+
+fragment Register_me on Me {
+  internalID
 }
 */
 
@@ -170,7 +170,7 @@ return {
     "operationKind": "query",
     "name": "RegisterValidTestQuery",
     "id": null,
-    "text": "query RegisterValidTestQuery {\n  sale(id: \"example-auction-id\") {\n    ...Register_sale\n    id\n  }\n  me {\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_me on Me {\n  internalID\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n",
+    "text": "query RegisterValidTestQuery {\n  sale(id: \"example-auction-id\") {\n    ...Register_sale\n    id\n  }\n  me {\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n\nfragment Register_me on Me {\n  internalID\n}\n",
     "metadata": {}
   }
 };

@@ -6,11 +6,6 @@ export type RelatedCollectionsRail_collections = ReadonlyArray<{
     readonly " $fragmentRefs": FragmentRefs<"RelatedCollectionEntity_collection">;
     readonly " $refType": "RelatedCollectionsRail_collections";
 }>;
-export type RelatedCollectionsRail_collections$data = RelatedCollectionsRail_collections;
-export type RelatedCollectionsRail_collections$key = ReadonlyArray<{
-    readonly " $data"?: RelatedCollectionsRail_collections$data;
-    readonly " $fragmentRefs": FragmentRefs<"RelatedCollectionsRail_collections">;
-}>;
 
 
 

@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type Pagination_pageCursors = {
     readonly around: ReadonlyArray<{
         readonly cursor: string;
@@ -23,11 +22,6 @@ export type Pagination_pageCursors = {
         readonly page: number;
     } | null;
     readonly " $refType": "Pagination_pageCursors";
-};
-export type Pagination_pageCursors$data = Pagination_pageCursors;
-export type Pagination_pageCursors$key = {
-    readonly " $data"?: Pagination_pageCursors$data;
-    readonly " $fragmentRefs": FragmentRefs<"Pagination_pageCursors">;
 };
 
 

@@ -1,7 +1,6 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
-import { FragmentRefs } from "relay-runtime";
 export type ArtistAuctionResultItem_auctionResult = {
     readonly title: string | null;
     readonly dimension_text: string | null;
@@ -22,11 +21,6 @@ export type ArtistAuctionResultItem_auctionResult = {
         readonly display: string | null;
     } | null;
     readonly " $refType": "ArtistAuctionResultItem_auctionResult";
-};
-export type ArtistAuctionResultItem_auctionResult$data = ArtistAuctionResultItem_auctionResult;
-export type ArtistAuctionResultItem_auctionResult$key = {
-    readonly " $data"?: ArtistAuctionResultItem_auctionResult$data;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistAuctionResultItem_auctionResult">;
 };
 
 
