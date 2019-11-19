@@ -91,22 +91,6 @@ describe("AuthenticityCertificate", () => {
 
     expect(component.find(Link).length).toBe(1)
 
-    // return new Promise(resolve => {
-    //   component
-    //     .find(Link)
-    //     .at(0)
-    //     .simulate("click")
-    //   setTimeout(() => {
-    //     expect(component.text()).toContain(
-    //       "A certificate of authenticity (COA) is a signed document from an authoritative source that verifies the artwork’s authenticity."
-    //     )
-    //     resolve()
-    //   })
-    // })
-    // component
-    //   .find(Link)
-    //   .at(0)
-    //   .simulate("click")
     setTimeout(() => {
       component
         .find(Link)
@@ -115,18 +99,10 @@ describe("AuthenticityCertificate", () => {
       expect(component.text()).toContain(
         "A certificate of authenticity (COA) is a signed document from an authoritative source that verifies the artwork’s authenticity."
       )
-      // resolve()
     })
-    // await flushPromiseQueue()
   })
 
   it("Click on modal close button closes modal", async () => {
-    // const component = await render({
-    //   id: "opaque-cert-id",
-    //   hasCertificateOfAuthenticity: true,
-    //   is_biddable: false,
-    // })
-
     const component = mount(
       <AuthenticityCertificate
         artwork={{
@@ -142,17 +118,6 @@ describe("AuthenticityCertificate", () => {
       .at(0)
       .simulate("click")
 
-    // component.renderUntil(n => {
-    //   return n.html().search("A certificate of authenticity (COA)") > 0
-    // })
-    // component
-    //   .find(CloseIcon)
-    //   .at(0)
-    //   .simulate("click")
-
-    // expect(component.text()).not.toContain(
-    //   "A certificate of authenticity (COA) is a signed document from an authoritative source that verifies the artwork’s authenticity."
-    // )
     setTimeout(() => {
       expect(component.text()).toContain(
         "A certificate of authenticity (COA) is a signed document from an authoritative source that verifies the artwork’s authenticity."
