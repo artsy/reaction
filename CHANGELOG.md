@@ -1,3 +1,15 @@
+# v22.2.2 (Wed Nov 20 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Bank Transfer Experiment [#3024](https://github.com/artsy/reaction/pull/3024) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v22.2.1 (Wed Nov 20 2019)
 
 #### 🐛  Bug Fix
