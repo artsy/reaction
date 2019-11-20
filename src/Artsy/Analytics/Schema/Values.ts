@@ -354,11 +354,6 @@ export enum ContextModule {
   ArtistCollectionsRail = "ArtistCollectionsRail",
 
   /**
-   * NSO 'bank transfer experiment
-   */
-  BankTransferExperiment = "BankTransferExperiment",
-
-  /**
    * Ad Server
    */
   AdServer = "AdServer",
