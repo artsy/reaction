@@ -16,15 +16,20 @@ export type SeoDataForArtwork_Test_QueryRawResponse = {
         readonly is_price_range: boolean | null;
         readonly listPrice: ({
             readonly __typename: "PriceRange";
-            readonly display: string | null;
+            readonly minPrice: ({
+                readonly major: number;
+                readonly currencyCode: string;
+            }) | null;
+            readonly maxPrice: ({
+                readonly major: number;
+            }) | null;
         } | {
             readonly __typename: "Money";
-            readonly display: string | null;
+            readonly major: number;
+            readonly currencyCode: string;
         } | {
-            readonly __typename: string | null;
+            readonly __typename: string;
         }) | null;
-        readonly price_currency: string | null;
-        readonly sale_message: string | null;
         readonly meta_image: ({
             readonly resized: ({
                 readonly width: number | null;
@@ -82,14 +87,19 @@ fragment SeoDataForArtwork_artwork on Artwork {
   listPrice {
     __typename
     ... on PriceRange {
-      display
+      minPrice {
+        major
+        currencyCode
+      }
+      maxPrice {
+        major
+      }
     }
     ... on Money {
-      display
+      major
+      currencyCode
     }
   }
-  price_currency: priceCurrency
-  sale_message: saleMessage
   meta_image: image {
     resized(width: 640, height: 640, version: ["large", "medium", "tall"]) {
       width
@@ -131,23 +141,31 @@ var v0 = [
     "value": "richard-anuszkiewicz-lino-yellow-318"
   }
 ],
-v1 = [
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "major",
+  "args": null,
+  "storageKey": null
+},
+v2 = [
+  (v1/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "display",
+    "name": "currencyCode",
     "args": null,
     "storageKey": null
   }
 ],
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "url",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -242,28 +260,37 @@ return {
               {
                 "kind": "InlineFragment",
                 "type": "PriceRange",
-                "selections": (v1/*: any*/)
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "minPrice",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Money",
+                    "plural": false,
+                    "selections": (v2/*: any*/)
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "maxPrice",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Money",
+                    "plural": false,
+                    "selections": [
+                      (v1/*: any*/)
+                    ]
+                  }
+                ]
               },
               {
                 "kind": "InlineFragment",
                 "type": "Money",
-                "selections": (v1/*: any*/)
+                "selections": (v2/*: any*/)
               }
             ]
-          },
-          {
-            "kind": "ScalarField",
-            "alias": "price_currency",
-            "name": "priceCurrency",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": "sale_message",
-            "name": "saleMessage",
-            "args": null,
-            "storageKey": null
           },
           {
             "kind": "LinkedField",
@@ -317,7 +344,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v2/*: any*/)
+                  (v3/*: any*/)
                 ]
               }
             ]
@@ -421,15 +448,15 @@ return {
                         "concreteType": "ResizedImageUrl",
                         "plural": false,
                         "selections": [
-                          (v2/*: any*/)
+                          (v3/*: any*/)
                         ]
                       }
                     ]
                   },
-                  (v3/*: any*/)
+                  (v4/*: any*/)
                 ]
               },
-              (v3/*: any*/)
+              (v4/*: any*/)
             ]
           },
           {
@@ -471,7 +498,7 @@ return {
               }
             ]
           },
-          (v3/*: any*/)
+          (v4/*: any*/)
         ]
       }
     ]
@@ -480,7 +507,7 @@ return {
     "operationKind": "query",
     "name": "SeoDataForArtwork_Test_Query",
     "id": null,
-    "text": "query SeoDataForArtwork_Test_Query {\n  artwork(id: \"richard-anuszkiewicz-lino-yellow-318\") {\n    ...SeoDataForArtwork_artwork\n    id\n  }\n}\n\nfragment SeoDataForArtwork_artwork on Artwork {\n  href\n  date\n  is_price_hidden: isPriceHidden\n  is_price_range: isPriceRange\n  listPrice {\n    __typename\n    ... on PriceRange {\n      display\n    }\n    ... on Money {\n      display\n    }\n  }\n  price_currency: priceCurrency\n  sale_message: saleMessage\n  meta_image: image {\n    resized(width: 640, height: 640, version: [\"large\", \"medium\", \"tall\"]) {\n      width\n      height\n      url\n    }\n  }\n  meta {\n    title\n    description(limit: 155)\n  }\n  partner {\n    name\n    type\n    profile {\n      image {\n        resized(width: 320, height: 320, version: [\"medium\"]) {\n          url\n        }\n      }\n      id\n    }\n    id\n  }\n  artist_names: artistNames\n  availability\n  category\n  dimensions {\n    in\n  }\n}\n",
+    "text": "query SeoDataForArtwork_Test_Query {\n  artwork(id: \"richard-anuszkiewicz-lino-yellow-318\") {\n    ...SeoDataForArtwork_artwork\n    id\n  }\n}\n\nfragment SeoDataForArtwork_artwork on Artwork {\n  href\n  date\n  is_price_hidden: isPriceHidden\n  is_price_range: isPriceRange\n  listPrice {\n    __typename\n    ... on PriceRange {\n      minPrice {\n        major\n        currencyCode\n      }\n      maxPrice {\n        major\n      }\n    }\n    ... on Money {\n      major\n      currencyCode\n    }\n  }\n  meta_image: image {\n    resized(width: 640, height: 640, version: [\"large\", \"medium\", \"tall\"]) {\n      width\n      height\n      url\n    }\n  }\n  meta {\n    title\n    description(limit: 155)\n  }\n  partner {\n    name\n    type\n    profile {\n      image {\n        resized(width: 320, height: 320, version: [\"medium\"]) {\n          url\n        }\n      }\n      id\n    }\n    id\n  }\n  artist_names: artistNames\n  availability\n  category\n  dimensions {\n    in\n  }\n}\n",
     "metadata": {}
   }
 };

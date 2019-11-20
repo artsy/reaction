@@ -7,11 +7,24 @@ export type SeoDataForArtwork_artwork = {
     readonly date: string | null;
     readonly is_price_hidden: boolean | null;
     readonly is_price_range: boolean | null;
-    readonly listPrice: {
-        readonly display?: string | null;
-    } | null;
-    readonly price_currency: string | null;
-    readonly sale_message: string | null;
+    readonly listPrice: ({
+        readonly __typename: "PriceRange";
+        readonly minPrice: {
+            readonly major: number;
+            readonly currencyCode: string;
+        } | null;
+        readonly maxPrice: {
+            readonly major: number;
+        } | null;
+    } | {
+        readonly __typename: "Money";
+        readonly major: number;
+        readonly currencyCode: string;
+    } | {
+        /*This will never be '%other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    }) | null;
     readonly meta_image: {
         readonly resized: {
             readonly width: number | null;
@@ -51,16 +64,24 @@ export type SeoDataForArtwork_artwork$key = {
 
 
 const node: ReaderFragment = (function(){
-var v0 = [
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "major",
+  "args": null,
+  "storageKey": null
+},
+v1 = [
+  (v0/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "display",
+    "name": "currencyCode",
     "args": null,
     "storageKey": null
   }
 ],
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "url",
@@ -112,30 +133,46 @@ return {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "InlineFragment",
           "type": "PriceRange",
-          "selections": (v0/*: any*/)
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "minPrice",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Money",
+              "plural": false,
+              "selections": (v1/*: any*/)
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "maxPrice",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Money",
+              "plural": false,
+              "selections": [
+                (v0/*: any*/)
+              ]
+            }
+          ]
         },
         {
           "kind": "InlineFragment",
           "type": "Money",
-          "selections": (v0/*: any*/)
+          "selections": (v1/*: any*/)
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "price_currency",
-      "name": "priceCurrency",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": "sale_message",
-      "name": "saleMessage",
-      "args": null,
-      "storageKey": null
     },
     {
       "kind": "LinkedField",
@@ -189,7 +226,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            (v1/*: any*/)
+            (v2/*: any*/)
           ]
         }
       ]
@@ -293,7 +330,7 @@ return {
                   "concreteType": "ResizedImageUrl",
                   "plural": false,
                   "selections": [
-                    (v1/*: any*/)
+                    (v2/*: any*/)
                   ]
                 }
               ]
@@ -344,5 +381,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bf908f30905da041a9fdf754551a232b';
+(node as any).hash = 'dffd7ec8e9259daca70604dfb2fc7d41';
 export default node;
