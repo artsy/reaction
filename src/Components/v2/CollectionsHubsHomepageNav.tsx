@@ -14,16 +14,10 @@ interface CollectionsHubsHomepageNavProps {
 }
 
 export const CollectionsHubsHomepageNav = track(
-  {
-    context_page: AnalyticsSchema.PageName.HomePage,
-    context_module: AnalyticsSchema.ContextModule.CollectionHubEntryPoint,
-    subject: AnalyticsSchema.Subject.FeaturedCategories,
-    action_type: AnalyticsSchema.ActionType.Impression,
-  },
+  {},
   { dispatch: data => Events.postEvent(data) }
 )((props: CollectionsHubsHomepageNavProps) => {
   const { trackEvent } = useTracking()
-  trackEvent({})
   return (
     <CSSGrid
       as="aside"
