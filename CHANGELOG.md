@@ -1,3 +1,20 @@
+# v22.2.1 (Wed Nov 20 2019)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1610] Allow offer metadata for artworks with min-price [#3015](https://github.com/artsy/reaction/pull/3015) ([@sepans](https://github.com/sepans))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.6.3 to v3.7.2 [#3023](https://github.com/artsy/reaction/pull/3023) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v22.2.0 (Tue Nov 19 2019)
 
 #### 🚀  Enhancement
