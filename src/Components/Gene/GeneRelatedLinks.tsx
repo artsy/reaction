@@ -17,34 +17,40 @@ export const GeneRelatedLinks: React.FC<GeneRelatedLinksQueryResponse> = ({
 }) => {
   return (
     <>
-      <Box className="related-genes related-links bisected-header-cell-section is-fade-in">
-        <h2>Related Categories</h2>
-        <div className="related-genes-links">
-          {gene.similar.edges.map(({ node: similarGene }, index) => {
-            const separator = index < gene.similar.edges.length - 1 ? ", " : ""
-            return (
-              <React.Fragment key={similarGene.name}>
-                <a href={similarGene.href}>{similarGene.name}</a>
-                {separator}
-              </React.Fragment>
-            )
-          })}
-        </div>
-      </Box>
-      <Box className="related-artists related-links bisected-header-cell-section is-fade-in">
-        <h2>Related Artists</h2>
-        <div className="artists">
-          {gene.artists.edges.map(({ node: artist }, index) => {
-            const separator = index < gene.similar.edges.length - 1 ? ", " : ""
-            return (
-              <React.Fragment key={artist.name}>
-                <a href={artist.href}>{artist.name}</a>
-                {separator}
-              </React.Fragment>
-            )
-          })}
-        </div>
-      </Box>
+      {gene.similar && (
+        <Box className="related-genes related-links bisected-header-cell-section is-fade-in">
+          <h2>Related Categories</h2>
+          <div className="related-genes-links">
+            {gene.similar.edges.map(({ node: similarGene }, index) => {
+              const separator =
+                index < gene.similar.edges.length - 1 ? ", " : ""
+              return (
+                <React.Fragment key={similarGene.name}>
+                  <a href={similarGene.href}>{similarGene.name}</a>
+                  {separator}
+                </React.Fragment>
+              )
+            })}
+          </div>
+        </Box>
+      )}
+      {gene.artists && (
+        <Box className="related-artists related-links bisected-header-cell-section is-fade-in">
+          <h2>Related Artists</h2>
+          <div className="artists">
+            {gene.artists.edges.map(({ node: artist }, index) => {
+              const separator =
+                index < gene.similar.edges.length - 1 ? ", " : ""
+              return (
+                <React.Fragment key={artist.name}>
+                  <a href={artist.href}>{artist.name}</a>
+                  {separator}
+                </React.Fragment>
+              )
+            })}
+          </div>
+        </Box>
+      )}
     </>
   )
 }
