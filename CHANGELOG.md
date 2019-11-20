@@ -1,3 +1,15 @@
+# v22.2.3 (Wed Nov 20 2019)
+
+#### 🐛  Bug Fix
+
+- Artwork `aggregateOffer` metadata [#3019](https://github.com/artsy/reaction/pull/3019) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v22.2.2 (Wed Nov 20 2019)
 
 #### 🐛  Bug Fix
