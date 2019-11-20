@@ -36,10 +36,10 @@ export type ArtistMeta_artist = {
                     readonly __typename: "PriceRange";
                     readonly minPrice: {
                         readonly major: number;
+                        readonly currencyCode: string;
                     } | null;
                     readonly maxPrice: {
                         readonly major: number;
-                        readonly currencyCode: string;
                     } | null;
                 } | {
                     readonly __typename: "Money";
@@ -378,9 +378,7 @@ return {
                           "args": null,
                           "concreteType": "Money",
                           "plural": false,
-                          "selections": [
-                            (v5/*: any*/)
-                          ]
+                          "selections": (v6/*: any*/)
                         },
                         {
                           "kind": "LinkedField",
@@ -390,7 +388,9 @@ return {
                           "args": null,
                           "concreteType": "Money",
                           "plural": false,
-                          "selections": (v6/*: any*/)
+                          "selections": [
+                            (v5/*: any*/)
+                          ]
                         }
                       ]
                     },
@@ -444,5 +444,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '61fd906cad15ffde99e3d32638becb41';
+(node as any).hash = '658c024a253ef42394b3e4d3317b78d2';
 export default node;
