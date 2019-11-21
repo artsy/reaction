@@ -9,8 +9,8 @@ import { storiesOf } from "storybook/storiesOf"
  * The `bid` query param, if present, must match the cents in an available increment on the artwork.
  */
 
-const auctionId = "phillips-editions-and-works-on-paper-5"
-const artworkId = "jean-dubuffet-lenfle-chic-i-the-inflated-snob-i"
+const auctionId = "seoul-auction-31st-hong-kong-sale"
+const artworkId = "yoshitomo-nara-untitled-65"
 const confirmBidRoute = `/auction/${auctionId}/bid2/${artworkId}`
 
 storiesOf("Apps/Auction/Routes/Confirm Bid", module)

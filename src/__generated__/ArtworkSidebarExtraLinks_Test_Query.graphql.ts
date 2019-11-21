@@ -21,6 +21,11 @@ export type ArtworkSidebarExtraLinks_Test_QueryRawResponse = {
         }) | null> | null;
         readonly sale: ({
             readonly is_closed: boolean | null;
+            readonly is_benefit: boolean | null;
+            readonly partner: ({
+                readonly name: string | null;
+                readonly id: string | null;
+            }) | null;
             readonly id: string | null;
         }) | null;
         readonly id: string | null;
@@ -54,6 +59,11 @@ fragment ArtworkSidebarExtraLinks_artwork on Artwork {
   }
   sale {
     is_closed: isClosed
+    is_benefit: isBenefit
+    partner {
+      name
+      id
+    }
     id
   }
 }
@@ -185,6 +195,32 @@ return {
                 "args": null,
                 "storageKey": null
               },
+              {
+                "kind": "ScalarField",
+                "alias": "is_benefit",
+                "name": "isBenefit",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "partner",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Partner",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "name",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  (v1/*: any*/)
+                ]
+              },
               (v1/*: any*/)
             ]
           },
@@ -197,7 +233,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkSidebarExtraLinks_Test_Query",
     "id": null,
-    "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  internalID\n  is_in_auction: isInAuction\n  is_for_sale: isForSale\n  is_acquireable: isAcquireable\n  is_inquireable: isInquireable\n  artists {\n    is_consignable: isConsignable\n    id\n  }\n  sale {\n    is_closed: isClosed\n    id\n  }\n}\n",
+    "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  internalID\n  is_in_auction: isInAuction\n  is_for_sale: isForSale\n  is_acquireable: isAcquireable\n  is_inquireable: isInquireable\n  artists {\n    is_consignable: isConsignable\n    id\n  }\n  sale {\n    is_closed: isClosed\n    is_benefit: isBenefit\n    partner {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
