@@ -1,3 +1,15 @@
+# v22.2.4 (Thu Nov 21 2019)
+
+#### 🐛  Bug Fix
+
+- Do not include seller in structured data when no partner profile image [#3026](https://github.com/artsy/reaction/pull/3026) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v22.2.3 (Wed Nov 20 2019)
 
 #### 🐛  Bug Fix
