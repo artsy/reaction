@@ -394,8 +394,17 @@ describe("Routes/ConfirmBid", () => {
       await page.agreeToTerms()
       await page.submitForm()
 
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toHaveBeenCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledTimes(2)
+      expect(mockPostEvent.mock.calls[0][0]).toEqual({
+        action_type: AnalyticsSchema.ActionType.RegistrationSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+      expect(mockPostEvent.mock.calls[1][0]).toEqual({
         action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
         auction_slug: "saleslug",
@@ -438,8 +447,17 @@ describe("Routes/ConfirmBid", () => {
       await page.agreeToTerms()
       await page.submitForm()
 
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toBeCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledTimes(2)
+      expect(mockPostEvent.mock.calls[0][0]).toEqual({
+        action_type: AnalyticsSchema.ActionType.RegistrationSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+      expect(mockPostEvent.mock.calls[1][0]).toEqual({
         action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
         error_messages: ["Sale Closed to Bids"],
@@ -487,8 +505,17 @@ describe("Routes/ConfirmBid", () => {
       await page.agreeToTerms()
       await page.submitForm()
 
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toBeCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledTimes(2)
+      expect(mockPostEvent.mock.calls[0][0]).toEqual({
+        action_type: AnalyticsSchema.ActionType.RegistrationSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+      expect(mockPostEvent.mock.calls[1][0]).toEqual({
         action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
         error_messages: ["Your bid wasn’t high enough"],
@@ -652,6 +679,34 @@ describe("Routes/ConfirmBid", () => {
         error_messages: [
           "JavaScript error: The `createCreditCard` mutation failed.",
         ],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+
+    it("tracks an error when there are validation errors in the form", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue(stripeTokenResponse)
+
+      const address = Object.assign({}, ValidFormValues)
+      address.phoneNumber = "    "
+
+      await page.fillAddressForm(address)
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["Telephone is required"],
         auction_slug: "saleslug",
         artwork_slug: "artworkslug",
         bidder_id: null,

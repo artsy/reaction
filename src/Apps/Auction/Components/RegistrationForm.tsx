@@ -7,20 +7,13 @@ import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Form, Formik, FormikActions, FormikProps } from "formik"
 import React, { useEffect, useState } from "react"
 import {
-  CardElement,
   Elements,
   injectStripe,
   ReactStripeElements,
   StripeProvider,
 } from "react-stripe-elements"
 import { data as sd } from "sharify"
-import styled from "styled-components"
 import * as Yup from "yup"
-
-export const StyledCardElement = styled(CardElement)`
-  width: 100%;
-  padding: 9px 10px;
-`
 
 export interface FormResult {
   token: stripe.Token
@@ -125,7 +118,7 @@ const validationSchema = Yup.object().shape({
   ),
 })
 
-type TrackErrors = (errors: string[]) => void
+export type TrackErrors = (errors: string[]) => void
 
 /*
   This component exists only to capture formik's renderProps and track form
@@ -139,9 +132,9 @@ type TrackErrors = (errors: string[]) => void
   Background:
     https://github.com/jaredpalmer/formik/issues/1484#issuecomment-490558973
  */
-const OnSubmitValidationError: React.FC<{
+export const OnSubmitValidationError: React.FC<{
   cb: TrackErrors
-  formikProps: FormikProps<FormValues>
+  formikProps: Partial<FormikProps<FormValues>>
 }> = props => {
   const { cb, formikProps } = props
 

@@ -19,6 +19,7 @@ export type ConfirmBidCreateBidderPositionMutationResponse = {
                     readonly sale: {
                         readonly registrationStatus: {
                             readonly internalID: string;
+                            readonly qualifiedForBidding: boolean | null;
                         } | null;
                     } | null;
                 } | null;
@@ -47,6 +48,7 @@ mutation ConfirmBidCreateBidderPositionMutation(
           sale {
             registrationStatus {
               internalID
+              qualifiedForBidding
               id
             }
             id
@@ -88,18 +90,25 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "status",
+  "name": "qualifiedForBidding",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "messageHeader",
+  "name": "status",
   "args": null,
   "storageKey": null
 },
 v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "messageHeader",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -170,7 +179,8 @@ return {
                             "concreteType": "Bidder",
                             "plural": false,
                             "selections": [
-                              (v2/*: any*/)
+                              (v2/*: any*/),
+                              (v3/*: any*/)
                             ]
                           }
                         ]
@@ -179,8 +189,8 @@ return {
                   }
                 ]
               },
-              (v3/*: any*/),
-              (v4/*: any*/)
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
           }
         ]
@@ -248,20 +258,21 @@ return {
                             "plural": false,
                             "selections": [
                               (v2/*: any*/),
-                              (v5/*: any*/)
+                              (v3/*: any*/),
+                              (v6/*: any*/)
                             ]
                           },
-                          (v5/*: any*/)
+                          (v6/*: any*/)
                         ]
                       },
-                      (v5/*: any*/)
+                      (v6/*: any*/)
                     ]
                   },
-                  (v5/*: any*/)
+                  (v6/*: any*/)
                 ]
               },
-              (v3/*: any*/),
-              (v4/*: any*/)
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
           }
         ]
@@ -272,10 +283,10 @@ return {
     "operationKind": "mutation",
     "name": "ConfirmBidCreateBidderPositionMutation",
     "id": null,
-    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        saleArtwork {\n          sale {\n            registrationStatus {\n              internalID\n              id\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n      status\n      messageHeader\n    }\n  }\n}\n",
+    "text": "mutation ConfirmBidCreateBidderPositionMutation(\n  $input: BidderPositionInput!\n) {\n  createBidderPosition(input: $input) {\n    result {\n      position {\n        internalID\n        saleArtwork {\n          sale {\n            registrationStatus {\n              internalID\n              qualifiedForBidding\n              id\n            }\n            id\n          }\n          id\n        }\n        id\n      }\n      status\n      messageHeader\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '1ed3f093df63d0401ed964616a1597d6';
+(node as any).hash = 'b68f3811be758bcc79f4bba38bd57d91';
 export default node;
