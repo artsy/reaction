@@ -1,17 +1,12 @@
-import { CloseIcon, Link } from "@artsy/palette"
 import {
   AuthenticityCertificateTestQueryRawResponse,
   AuthenticityCertificateTestQueryResponse,
 } from "__generated__/AuthenticityCertificateTestQuery.graphql"
 import { renderRelayTree } from "DevTools"
-import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
 import { ExtractProps } from "Utils/ExtractProps"
-import {
-  AuthenticityCertificate,
-  AuthenticityCertificateFragmentContainer,
-} from "../AuthenticityCertificate"
+import { AuthenticityCertificateFragmentContainer } from "../AuthenticityCertificate"
 
 jest.unmock("react-relay")
 
