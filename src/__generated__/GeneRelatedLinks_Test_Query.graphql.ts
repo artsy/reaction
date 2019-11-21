@@ -2,26 +2,46 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type GeneRelatedLinksQueryVariables = {
-    geneID: string;
-};
-export type GeneRelatedLinksQueryResponse = {
+export type GeneRelatedLinks_Test_QueryVariables = {};
+export type GeneRelatedLinks_Test_QueryResponse = {
     readonly gene: {
         readonly " $fragmentRefs": FragmentRefs<"GeneRelatedLinks_gene">;
     } | null;
 };
-export type GeneRelatedLinksQuery = {
-    readonly response: GeneRelatedLinksQueryResponse;
-    readonly variables: GeneRelatedLinksQueryVariables;
+export type GeneRelatedLinks_Test_QueryRawResponse = {
+    readonly gene: ({
+        readonly similar: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly href: string | null;
+                    readonly name: string | null;
+                    readonly id: string | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly artists: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly href: string | null;
+                    readonly name: string | null;
+                    readonly id: string | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly id: string | null;
+    }) | null;
+};
+export type GeneRelatedLinks_Test_Query = {
+    readonly response: GeneRelatedLinks_Test_QueryResponse;
+    readonly variables: GeneRelatedLinks_Test_QueryVariables;
+    readonly rawResponse: GeneRelatedLinks_Test_QueryRawResponse;
 };
 
 
 
 /*
-query GeneRelatedLinksQuery(
-  $geneID: String!
-) {
-  gene(id: $geneID) {
+query GeneRelatedLinks_Test_Query {
+  gene(id: "cats") {
     ...GeneRelatedLinks_gene
     id
   }
@@ -52,34 +72,26 @@ fragment GeneRelatedLinks_gene on Gene {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "LocalArgument",
-    "name": "geneID",
-    "type": "String!",
-    "defaultValue": null
+    "kind": "Literal",
+    "name": "id",
+    "value": "cats"
   }
 ],
 v1 = [
-  {
-    "kind": "Variable",
-    "name": "id",
-    "variableName": "geneID"
-  }
-],
-v2 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 10
   }
 ],
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = [
+v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -94,23 +106,23 @@ v4 = [
     "args": null,
     "storageKey": null
   },
-  (v3/*: any*/)
+  (v2/*: any*/)
 ];
 return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "GeneRelatedLinksQuery",
+    "name": "GeneRelatedLinks_Test_Query",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "gene",
-        "storageKey": null,
-        "args": (v1/*: any*/),
+        "storageKey": "gene(id:\"cats\")",
+        "args": (v0/*: any*/),
         "concreteType": "Gene",
         "plural": false,
         "selections": [
@@ -125,15 +137,15 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "GeneRelatedLinksQuery",
-    "argumentDefinitions": (v0/*: any*/),
+    "name": "GeneRelatedLinks_Test_Query",
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "gene",
-        "storageKey": null,
-        "args": (v1/*: any*/),
+        "storageKey": "gene(id:\"cats\")",
+        "args": (v0/*: any*/),
         "concreteType": "Gene",
         "plural": false,
         "selections": [
@@ -142,7 +154,7 @@ return {
             "alias": null,
             "name": "similar",
             "storageKey": "similar(first:10)",
-            "args": (v2/*: any*/),
+            "args": (v1/*: any*/),
             "concreteType": "GeneConnection",
             "plural": false,
             "selections": [
@@ -163,7 +175,7 @@ return {
                     "args": null,
                     "concreteType": "Gene",
                     "plural": false,
-                    "selections": (v4/*: any*/)
+                    "selections": (v3/*: any*/)
                   }
                 ]
               }
@@ -174,7 +186,7 @@ return {
             "alias": "artists",
             "name": "artistsConnection",
             "storageKey": "artistsConnection(first:10)",
-            "args": (v2/*: any*/),
+            "args": (v1/*: any*/),
             "concreteType": "ArtistConnection",
             "plural": false,
             "selections": [
@@ -195,25 +207,25 @@ return {
                     "args": null,
                     "concreteType": "Artist",
                     "plural": false,
-                    "selections": (v4/*: any*/)
+                    "selections": (v3/*: any*/)
                   }
                 ]
               }
             ]
           },
-          (v3/*: any*/)
+          (v2/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "GeneRelatedLinksQuery",
+    "name": "GeneRelatedLinks_Test_Query",
     "id": null,
-    "text": "query GeneRelatedLinksQuery(\n  $geneID: String!\n) {\n  gene(id: $geneID) {\n    ...GeneRelatedLinks_gene\n    id\n  }\n}\n\nfragment GeneRelatedLinks_gene on Gene {\n  similar(first: 10) {\n    edges {\n      node {\n        href\n        name\n        id\n      }\n    }\n  }\n  artists: artistsConnection(first: 10) {\n    edges {\n      node {\n        href\n        name\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query GeneRelatedLinks_Test_Query {\n  gene(id: \"cats\") {\n    ...GeneRelatedLinks_gene\n    id\n  }\n}\n\nfragment GeneRelatedLinks_gene on Gene {\n  similar(first: 10) {\n    edges {\n      node {\n        href\n        name\n        id\n      }\n    }\n  }\n  artists: artistsConnection(first: 10) {\n    edges {\n      node {\n        href\n        name\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '5eed777d3dbca83e395937c6eb8489ae';
+(node as any).hash = '8cb2f41c637fc5a0fe4761ff910f6d02';
 export default node;

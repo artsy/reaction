@@ -1,18 +1,16 @@
 import { Box } from "@artsy/palette"
-import {
-  GeneRelatedLinksQuery,
-  GeneRelatedLinksQueryResponse,
-} from "__generated__/GeneRelatedLinksQuery.graphql"
+import { GeneRelatedLinks_gene } from "__generated__/GeneRelatedLinks_gene.graphql"
+import { GeneRelatedLinksQuery } from "__generated__/GeneRelatedLinksQuery.graphql"
 import { useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React from "react"
-import { graphql } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 
 /**
  * Used on the Gene page to show related artists and categories.
  */
-export const GeneRelatedLinks: React.FC<GeneRelatedLinksQueryResponse> = ({
+export const GeneRelatedLinks: React.FC<{ gene: GeneRelatedLinks_gene }> = ({
   gene,
 }) => {
   return (
@@ -40,7 +38,7 @@ export const GeneRelatedLinks: React.FC<GeneRelatedLinksQueryResponse> = ({
           <div className="artists">
             {gene.artists.edges.map(({ node: artist }, index) => {
               const separator =
-                index < gene.similar.edges.length - 1 ? ", " : ""
+                index < gene.artists.edges.length - 1 ? ", " : ""
               return (
                 <React.Fragment key={artist.name}>
                   <a href={artist.href}>{artist.name}</a>
@@ -54,6 +52,32 @@ export const GeneRelatedLinks: React.FC<GeneRelatedLinksQueryResponse> = ({
     </>
   )
 }
+
+export const GeneRelatedLinksFragmentContainer = createFragmentContainer(
+  GeneRelatedLinks,
+  {
+    gene: graphql`
+      fragment GeneRelatedLinks_gene on Gene {
+        similar(first: 10) {
+          edges {
+            node {
+              href
+              name
+            }
+          }
+        }
+        artists: artistsConnection(first: 10) {
+          edges {
+            node {
+              href
+              name
+            }
+          }
+        }
+      }
+    `,
+  }
+)
 
 // export const GeneRElatedArtistLinksFragmentContainer
 export interface GeneRelatedLinksQueryRendererProps {
@@ -69,26 +93,11 @@ export const GeneRelatedLinksQueryRenderer: React.FC<
     <QueryRenderer<GeneRelatedLinksQuery>
       environment={relayEnvironment}
       variables={{ geneID }}
-      render={renderWithLoadProgress(GeneRelatedLinks)}
+      render={renderWithLoadProgress(GeneRelatedLinksFragmentContainer)}
       query={graphql`
         query GeneRelatedLinksQuery($geneID: String!) {
           gene(id: $geneID) {
-            similar(first: 10) {
-              edges {
-                node {
-                  href
-                  name
-                }
-              }
-            }
-            artists: artistsConnection(first: 10) {
-              edges {
-                node {
-                  href
-                  name
-                }
-              }
-            }
+            ...GeneRelatedLinks_gene
           }
         }
       `}
