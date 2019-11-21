@@ -59,6 +59,7 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                   <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
                   <EntityHeader
+                    initials=" "
                     py={2}
                     href={`/collection/${collection.slug}`}
                     imageUrl={imageUrl || undefined}
