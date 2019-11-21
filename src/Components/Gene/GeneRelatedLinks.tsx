@@ -79,7 +79,6 @@ export const GeneRelatedLinksFragmentContainer = createFragmentContainer(
   }
 )
 
-// export const GeneRElatedArtistLinksFragmentContainer
 export interface GeneRelatedLinksQueryRendererProps {
   geneID: string
 }
