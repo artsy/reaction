@@ -1,3 +1,15 @@
+# v22.3.0 (Thu Nov 21 2019)
+
+#### 🚀  Enhancement
+
+- Create gene links view [#3020](https://github.com/artsy/reaction/pull/3020) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v22.2.4 (Thu Nov 21 2019)
 
 #### 🐛  Bug Fix
