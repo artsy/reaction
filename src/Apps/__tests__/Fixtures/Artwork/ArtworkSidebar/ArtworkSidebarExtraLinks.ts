@@ -12,10 +12,25 @@ export const LiveAuctionArtwork: ArtworkSidebarExtraLinks_Test_QueryRawResponse[
     id: "QXJ0aXN0Ompvc2VwLW1hc3R1c2V3",
     is_closed: false,
     partner: { id: "partner-id", name: "Christie's" },
-    is_benefit: false,
+    isBenefit: false,
   },
 }
 
+export const VanHamLiveAuctionArtwork: ArtworkSidebarExtraLinks_Test_QueryRawResponse["artwork"] = {
+  id: "QXJ0d29yazpqb3NlcC1tYXN0dXNldC1zZWxmLXBvcnRyYWl0",
+  internalID: "abc12356",
+  is_in_auction: true,
+  is_for_sale: true,
+  is_acquireable: false,
+  is_inquireable: true,
+  artists: [{ id: "QXJ0aXN0Ompvc2VwLW1hc3R1c2V0", is_consignable: true }],
+  sale: {
+    id: "QXJ0aXN0Ompvc2VwLW1hc3R1c2V3",
+    is_closed: false,
+    partner: { id: "partner-id2", name: "Van Ham" },
+    isBenefit: false,
+  },
+}
 export const BenefitAuctionArtwork: ArtworkSidebarExtraLinks_Test_QueryRawResponse["artwork"] = {
   id: "QXJ0d29yazpqb3NlcC1tYXN0dXNldC1zZWxmLXBvcnRyYWl0",
   internalID: "abc12356",
@@ -28,7 +43,7 @@ export const BenefitAuctionArtwork: ArtworkSidebarExtraLinks_Test_QueryRawRespon
     id: "QXJ0aXN0Ompvc2VwLW1hc3R1c2V2",
     is_closed: false,
     partner: { id: "partner-id", name: "Christie's" },
-    is_benefit: true,
+    isBenefit: true,
   },
 }
 

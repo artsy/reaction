@@ -21,7 +21,7 @@ export type ArtworkSidebarExtraLinks_Test_QueryRawResponse = {
         }) | null> | null;
         readonly sale: ({
             readonly is_closed: boolean | null;
-            readonly is_benefit: boolean | null;
+            readonly isBenefit: boolean | null;
             readonly partner: ({
                 readonly name: string | null;
                 readonly id: string | null;
@@ -59,7 +59,7 @@ fragment ArtworkSidebarExtraLinks_artwork on Artwork {
   }
   sale {
     is_closed: isClosed
-    is_benefit: isBenefit
+    isBenefit
     partner {
       name
       id
@@ -197,7 +197,7 @@ return {
               },
               {
                 "kind": "ScalarField",
-                "alias": "is_benefit",
+                "alias": null,
                 "name": "isBenefit",
                 "args": null,
                 "storageKey": null
@@ -233,7 +233,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkSidebarExtraLinks_Test_Query",
     "id": null,
-    "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  internalID\n  is_in_auction: isInAuction\n  is_for_sale: isForSale\n  is_acquireable: isAcquireable\n  is_inquireable: isInquireable\n  artists {\n    is_consignable: isConsignable\n    id\n  }\n  sale {\n    is_closed: isClosed\n    is_benefit: isBenefit\n    partner {\n      name\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query ArtworkSidebarExtraLinks_Test_Query {\n  artwork(id: \"josef-albers-homage-to-the-square-85\") {\n    ...ArtworkSidebarExtraLinks_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarExtraLinks_artwork on Artwork {\n  internalID\n  is_in_auction: isInAuction\n  is_for_sale: isForSale\n  is_acquireable: isAcquireable\n  is_inquireable: isInquireable\n  artists {\n    is_consignable: isConsignable\n    id\n  }\n  sale {\n    is_closed: isClosed\n    isBenefit\n    partner {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

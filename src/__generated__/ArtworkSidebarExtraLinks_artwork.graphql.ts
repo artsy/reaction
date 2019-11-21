@@ -13,7 +13,7 @@ export type ArtworkSidebarExtraLinks_artwork = {
     } | null> | null;
     readonly sale: {
         readonly is_closed: boolean | null;
-        readonly is_benefit: boolean | null;
+        readonly isBenefit: boolean | null;
         readonly partner: {
             readonly name: string | null;
         } | null;
@@ -106,7 +106,7 @@ const node: ReaderFragment = {
         },
         {
           "kind": "ScalarField",
-          "alias": "is_benefit",
+          "alias": null,
           "name": "isBenefit",
           "args": null,
           "storageKey": null
@@ -133,5 +133,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'f643aadc7a2bc23e046dc1296d03f4ad';
+(node as any).hash = 'bec792d6e1dee8cecdc8ce83584d8d2e';
 export default node;

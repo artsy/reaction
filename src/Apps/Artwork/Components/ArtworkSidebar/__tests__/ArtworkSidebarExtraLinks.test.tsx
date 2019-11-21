@@ -5,6 +5,7 @@ import {
   InquireableArtworkWithMultipleConsignableArtists,
   LiveAuctionArtwork,
   NotForSaleArtworkWithOneConsignableArtist,
+  VanHamLiveAuctionArtwork,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -46,6 +47,17 @@ describe("ArtworkSidebarExtraLinks", () => {
       )
       expect(wrapper.text()).toContain(
         "Want to sell a work by this artist? Consign with Artsy."
+      )
+    })
+  })
+
+  describe("for work in an auction by Van Ham", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(VanHamLiveAuctionArtwork)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's and Van Ham's Conditions of Sale."
       )
     })
   })
