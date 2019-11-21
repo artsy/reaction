@@ -271,6 +271,33 @@ describe("SeoDataForArtwork", () => {
 
         expect(getProductData(wrapper).offers).toBeFalsy()
       })
+
+      it("Does not render seller within offer when profile image (required) is not present", async () => {
+        const wrapper = await getWrapper({
+          ...SeoDataForArtworkFixture,
+          partner: {
+            id: "opaque-partner-id",
+            name: "Wright",
+            type: "Auction House",
+            profile: {
+              id: "opaque-profile-id",
+              image: null,
+            },
+          },
+          listPrice: {
+            __typename: "PriceRange",
+            maxPrice: {
+              major: 1000,
+            },
+            minPrice: {
+              major: 100,
+              currencyCode: "USD",
+            },
+          },
+        })
+
+        expect(getProductData(wrapper).offers.seller).toBeFalsy()
+      })
     })
     describe("Artwork dimensions", () => {
       it("renders no dimensions when dimensions aren't parseable", async () => {

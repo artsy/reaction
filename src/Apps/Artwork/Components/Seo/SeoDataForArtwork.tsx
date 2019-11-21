@@ -124,10 +124,14 @@ export const SeoDataForArtworkFragmentContainer = createFragmentContainer(
 
 export const offerAttributes = (artwork: SeoDataForArtwork_artwork) => {
   if (!artwork.listPrice || artwork.is_price_hidden) return null
-  const seller = {
+  const galleryProfileImage = get(
+    artwork,
+    a => a.partner.profile.image.resized.url
+  )
+  const seller = galleryProfileImage && {
     "@type": "ArtGallery",
     name: get(artwork, a => a.partner.name),
-    image: get(artwork, a => a.partner.profile.image.resized.url),
+    image: galleryProfileImage,
   }
   const availability = AVAILABILITY[artwork.availability]
   switch (artwork.listPrice.__typename) {
