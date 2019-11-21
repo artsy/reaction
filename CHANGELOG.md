@@ -1,3 +1,15 @@
+# v22.3.1 (Thu Nov 21 2019)
+
+#### 🐛  Bug Fix
+
+- Remove impression event [#3025](https://github.com/artsy/reaction/pull/3025) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v22.3.0 (Thu Nov 21 2019)
 
 #### 🚀  Enhancement
