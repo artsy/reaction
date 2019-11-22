@@ -13,6 +13,10 @@ export type ArtworkSidebarExtraLinks_artwork = {
     } | null> | null;
     readonly sale: {
         readonly is_closed: boolean | null;
+        readonly isBenefit: boolean | null;
+        readonly partner: {
+            readonly name: string | null;
+        } | null;
     } | null;
     readonly " $refType": "ArtworkSidebarExtraLinks_artwork";
 };
@@ -99,10 +103,35 @@ const node: ReaderFragment = {
           "name": "isClosed",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "isBenefit",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "partner",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Partner",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         }
       ]
     }
   ]
 };
-(node as any).hash = '16a127f76e4dc42d24d17fe3db12e481';
+(node as any).hash = 'bec792d6e1dee8cecdc8ce83584d8d2e';
 export default node;

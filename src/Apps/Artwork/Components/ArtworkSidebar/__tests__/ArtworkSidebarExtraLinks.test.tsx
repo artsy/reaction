@@ -1,9 +1,11 @@
 import { ArtworkSidebarExtraLinks_Test_QueryRawResponse } from "__generated__/ArtworkSidebarExtraLinks_Test_Query.graphql"
 import {
   AcquireableArtworkWithOneConsignableArtist,
+  BenefitAuctionArtwork,
   InquireableArtworkWithMultipleConsignableArtists,
   LiveAuctionArtwork,
   NotForSaleArtworkWithOneConsignableArtist,
+  VanHamLiveAuctionArtwork,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -32,13 +34,41 @@ describe("ArtworkSidebarExtraLinks", () => {
     })
   }
 
+  describe("for work in a benefit auction", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(BenefitAuctionArtwork)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's Conditions of Sale."
+      )
+      expect(wrapper.text()).toContain(
+        "Have a question? Read our auction FAQs or ask a specialist."
+      )
+      expect(wrapper.text()).toContain(
+        "Want to sell a work by this artist? Consign with Artsy."
+      )
+    })
+  })
+
+  describe("for work in an auction by Van Ham", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(VanHamLiveAuctionArtwork)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's and Van Ham's Conditions of Sale."
+      )
+    })
+  })
+
   describe("for work in an auction", () => {
     beforeAll(async () => {
       wrapper = await getWrapper(LiveAuctionArtwork)
     })
-    it("displays proper text", () => {
+    it("displays proper conditions of sale text", () => {
       expect(wrapper.text()).toContain(
-        "By placing your bid you agree to Artsy's Conditions of Sale."
+        "By placing your bid you agree to Artsy's and Christie's Conditions of Sale."
       )
       expect(wrapper.text()).toContain(
         "Have a question? Read our auction FAQs or ask a specialist."

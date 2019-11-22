@@ -104,10 +104,23 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     window.open(sd.APP_URL + "/consign", "_blank")
   }
 
+  conditionsOfSaleText() {
+    const first = "By placing your bid you agree to Artsy's "
+    if (!this.props.artwork.sale.isBenefit) {
+      const partnerName = this.props.artwork.sale.partner.name
+      const possessivePartnerName = partnerName.endsWith("'s")
+        ? partnerName
+        : partnerName + "'s"
+      return first + "and " + possessivePartnerName + " "
+    } else {
+      return first
+    }
+  }
+
   renderAuctionTerms() {
     return (
       <Container>
-        By placing your bid you agree to Artsy's{" "}
+        {this.conditionsOfSaleText()}
         <Link onClick={this.onClickConditionsOfSale.bind(this)}>
           Conditions of Sale
         </Link>
@@ -213,6 +226,10 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
         }
         sale {
           is_closed: isClosed
+          isBenefit
+          partner {
+            name
+          }
         }
       }
     `,
