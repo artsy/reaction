@@ -65,4 +65,8 @@ describe("AuthenticityCertificate", () => {
     })
     expect(component.find("TrustSignal").length).toBe(1)
   })
+
+  it.todo("Click on certificate of authenticity link opens modal")
+
+  it.todo("Click on modal close button closes modal")
 })
