@@ -381,7 +381,7 @@ describe("Routes/ConfirmBid", () => {
       )
     })
 
-    it("tracks a success event to Segment including Criteo info", async () => {
+    it("tracks registration submitted and success events to Segment including Criteo info", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage({
         mockData: FixtureForUnregisteredUserWithCreditCard,
@@ -394,8 +394,17 @@ describe("Routes/ConfirmBid", () => {
       await page.agreeToTerms()
       await page.submitForm()
 
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toHaveBeenCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledTimes(2)
+      expect(mockPostEvent.mock.calls[0][0]).toEqual({
+        action_type: AnalyticsSchema.ActionType.RegistrationSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+      expect(mockPostEvent.mock.calls[1][0]).toEqual({
         action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
         auction_slug: "saleslug",
@@ -428,7 +437,7 @@ describe("Routes/ConfirmBid", () => {
       expect(page.text()).toContain("You must agree to the Conditions of Sale")
     })
 
-    it("tracks an error without bidder id when the mutation returns a GraphQL error", async () => {
+    it("tracks a registration submitted event and an error without bidder id when the mutation returns a GraphQL error", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage({
         mockData: FixtureForUnregisteredUserWithCreditCard,
@@ -438,8 +447,17 @@ describe("Routes/ConfirmBid", () => {
       await page.agreeToTerms()
       await page.submitForm()
 
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toBeCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledTimes(2)
+      expect(mockPostEvent.mock.calls[0][0]).toEqual({
+        action_type: AnalyticsSchema.ActionType.RegistrationSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+      expect(mockPostEvent.mock.calls[1][0]).toEqual({
         action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
         error_messages: ["Sale Closed to Bids"],
@@ -474,7 +492,7 @@ describe("Routes/ConfirmBid", () => {
       })
     })
 
-    it("tracks an error with bidder id when polling receives a non-success status", async () => {
+    it("tracks a registration submitted event and an error with bidder id when polling receives a non-success status", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage({
         mockData: FixtureForUnregisteredUserWithCreditCard,
@@ -487,8 +505,17 @@ describe("Routes/ConfirmBid", () => {
       await page.agreeToTerms()
       await page.submitForm()
 
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toBeCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledTimes(2)
+      expect(mockPostEvent.mock.calls[0][0]).toEqual({
+        action_type: AnalyticsSchema.ActionType.RegistrationSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+      expect(mockPostEvent.mock.calls[1][0]).toEqual({
         action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
         context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
         error_messages: ["Your bid wasn’t high enough"],
@@ -497,6 +524,50 @@ describe("Routes/ConfirmBid", () => {
         bidder_id: "new-bidder-id",
         sale_id: "saleid",
         user_id: "my-user-id",
+      })
+    })
+
+    it("does not track registration submitted twice when newly registered bidder places two bids on the same page", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithCreditCard,
+      })
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithOutbid
+      )
+
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      mockPostEvent.mockClear()
+      mockBidderPositionQuery.mockReset()
+      env.mutations.useResultsOnce(createBidderPositionSuccessfulAndBidder)
+      mockBidderPositionQuery.mockResolvedValue(
+        confirmBidBidderPositionQueryWithWinning
+      )
+
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidSubmitted,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "new-bidder-id",
+        bidder_position_id: "winning-bidder-position-id-from-polling",
+        sale_id: "saleid",
+        user_id: "my-user-id",
+        order_id: "new-bidder-id",
+        products: [
+          {
+            product_id: "artworkid",
+            quantity: 1,
+            price: 50000,
+          },
+        ],
       })
     })
   })
@@ -652,6 +723,34 @@ describe("Routes/ConfirmBid", () => {
         error_messages: [
           "JavaScript error: The `createCreditCard` mutation failed.",
         ],
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: null,
+        sale_id: "saleid",
+        user_id: "my-user-id",
+      })
+    })
+
+    it("tracks an error when there are validation errors in the form", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage({
+        mockData: FixtureForUnregisteredUserWithoutCreditCard,
+      })
+
+      createTokenMock.mockResolvedValue(stripeTokenResponse)
+
+      const address = Object.assign({}, ValidFormValues)
+      address.phoneNumber = "    "
+
+      await page.fillAddressForm(address)
+      await page.agreeToTerms()
+      await page.submitForm()
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.ConfirmBidFailed,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        error_messages: ["Telephone is required"],
         auction_slug: "saleslug",
         artwork_slug: "artworkslug",
         bidder_id: null,

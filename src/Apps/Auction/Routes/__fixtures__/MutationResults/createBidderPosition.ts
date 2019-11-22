@@ -10,6 +10,7 @@ export const createBidderPositionSuccessful: ConfirmBidCreateBidderPositionMutat
           sale: {
             registrationStatus: {
               internalID: "existing-bidder-id",
+              qualifiedForBidding: true,
             },
           },
         },
@@ -29,6 +30,7 @@ export const createBidderPositionSuccessfulAndBidder: ConfirmBidCreateBidderPosi
           sale: {
             registrationStatus: {
               internalID: "new-bidder-id",
+              qualifiedForBidding: true,
             },
           },
         },

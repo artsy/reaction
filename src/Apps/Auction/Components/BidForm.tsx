@@ -20,6 +20,7 @@ import Yup from "yup"
 import { CreditCardInstructions } from "Apps/Auction/Components/CreditCardInstructions"
 import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+import { OnSubmitValidationError, TrackErrors } from "./RegistrationForm"
 
 interface Props {
   initialSelectedBid?: string
@@ -27,6 +28,7 @@ interface Props {
   onSubmit: (values: FormikValues, actions: FormikActions<object>) => void
   saleArtwork: BidForm_saleArtwork
   showPricingTransparency?: boolean
+  trackSubmissionErrors: TrackErrors
 }
 
 export interface FormValues {
@@ -114,6 +116,7 @@ export const BidForm: React.FC<Props> = ({
   onSubmit,
   saleArtwork,
   showPricingTransparency = false,
+  trackSubmissionErrors,
 }) => {
   const displayIncrements = dropWhile(
     saleArtwork.increments,
@@ -155,12 +158,26 @@ export const BidForm: React.FC<Props> = ({
           touched,
           errors,
           isSubmitting,
+          isValid,
           setFieldValue,
           setFieldTouched,
+          setSubmitting,
           status,
+          submitCount,
         }) => {
           return (
             <Form>
+              <OnSubmitValidationError
+                cb={trackSubmissionErrors}
+                formikProps={{
+                  errors,
+                  isSubmitting,
+                  isValid,
+                  setSubmitting,
+                  submitCount,
+                }}
+              />
+
               <Flex flexDirection="column">
                 <Flex flexDirection="column" py={4}>
                   <Serif pb={0.5} size="4t" weight="semibold" color="black100">

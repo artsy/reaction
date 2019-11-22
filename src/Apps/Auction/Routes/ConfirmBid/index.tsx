@@ -20,6 +20,7 @@ import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { FormikActions } from "formik"
+import { isEmpty } from "lodash"
 import qs from "qs"
 import React, { useEffect, useState } from "react"
 import { Title } from "react-head"
@@ -54,6 +55,7 @@ const MAX_POLL_ATTEMPTS = 20
 
 export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   let pollCount = 0
+  let registrationTracked = false
 
   const { artwork, me, relay, stripe } = props
   const { saleArtwork } = artwork
@@ -64,6 +66,9 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     (sale as any).registrationStatus,
     me as any
   )
+
+  let bidderId: string | null =
+    sale.registrationStatus && sale.registrationStatus.internalID
 
   function createBidderPosition(maxBidAmountCents: number) {
     return new Promise<ConfirmBidCreateBidderPositionMutationResponse>(
@@ -83,6 +88,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
                       sale {
                         registrationStatus {
                           internalID
+                          qualifiedForBidding
                         }
                       }
                     }
@@ -105,16 +111,16 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     )
   }
 
-  function onJsError(actions: BidFormActions, error: Error, bidderId: string) {
+  function onJsError(actions: BidFormActions, error: Error) {
     logger.error(error)
-    trackConfirmBidFailed(bidderId, [`JavaScript error: ${error.message}`])
+    trackConfirmBidFailed([`JavaScript error: ${error.message}`])
     actions.setSubmitting(false)
     actions.setStatus(
       "Something went wrong while processing your bid. Please make sure your internet connection is active and try again"
     )
   }
 
-  function trackConfirmBidFailed(bidderId: string, errors: string[]) {
+  function trackConfirmBidFailed(errors: string[]) {
     trackEvent({
       action_type: Schema.ActionType.ConfirmBidFailed,
       bidder_id: bidderId,
@@ -124,7 +130,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
   function trackConfirmBidSuccess(
     positionId: string,
-    bidderId: string,
     selectedBidAmountCents: number
   ) {
     trackEvent({
@@ -154,8 +159,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
   async function handleSubmit(values: FormValues, actions: BidFormActions) {
     const selectedBid = Number(values.selectedBid)
-    const possibleExistingBidderId: string | null =
-      sale.registrationStatus && sale.registrationStatus.internalID
 
     if (requiresPaymentInformation) {
       try {
@@ -177,38 +180,44 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           token.id
         )
       } catch (error) {
-        onJsError(actions, error, possibleExistingBidderId)
+        onJsError(actions, error)
         return
       }
     }
 
     createBidderPosition(selectedBid)
-      .then(data =>
-        verifyBidderPosition({
-          actions,
-          data,
-          selectedBid,
-          possibleExistingBidderId,
-        })
-      )
-      .catch(error => onJsError(actions, error, possibleExistingBidderId))
+      .then(data => verifyBidderPosition({ actions, data, selectedBid }))
+      .catch(error => onJsError(actions, error))
   }
 
   function verifyBidderPosition({
     actions,
     data,
-    possibleExistingBidderId,
     selectedBid,
   }: {
     actions: BidFormActions
     data: ConfirmBidCreateBidderPositionMutationResponse
-    possibleExistingBidderId: string
     selectedBid: number
   }) {
     const { result } = data.createBidderPosition
     const { position, messageHeader } = result
-    const bidderId =
-      possibleExistingBidderId ||
+
+    if (!bidderId && !registrationTracked) {
+      const newBidderId =
+        position &&
+        position.saleArtwork &&
+        position.saleArtwork.sale &&
+        position.saleArtwork.sale.registrationStatus.internalID
+
+      trackEvent({
+        action_type: Schema.ActionType.RegistrationSubmitted,
+        bidder_id: newBidderId,
+      })
+      registrationTracked = true
+    }
+
+    bidderId =
+      bidderId ||
       (position &&
         position.saleArtwork &&
         position.saleArtwork.sale &&
@@ -218,26 +227,22 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
       bidderPositionQuery(environment, {
         bidderPositionID: position.internalID,
       })
-        .then(res =>
-          checkBidderPosition({ actions, data: res, bidderId, selectedBid })
-        )
-        .catch(error => onJsError(actions, error, bidderId))
+        .then(res => checkBidderPosition({ actions, data: res, selectedBid }))
+        .catch(error => onJsError(actions, error))
     } else {
       actions.setStatus(messageHeader)
       actions.setSubmitting(false)
-      trackConfirmBidFailed(bidderId, [messageHeader])
+      trackConfirmBidFailed([messageHeader])
     }
   }
 
   function checkBidderPosition({
     actions,
     data,
-    bidderId,
     selectedBid,
   }: {
     actions: BidFormActions
     data: BidderPositionQueryResponse
-    bidderId: string
     selectedBid: number
   }) {
     const { bidderPosition } = data.me
@@ -252,20 +257,20 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
             bidderPositionID: position.internalID,
           })
             .then(res =>
-              checkBidderPosition({ actions, data: res, bidderId, selectedBid })
+              checkBidderPosition({ actions, data: res, selectedBid })
             )
-            .catch(error => onJsError(actions, error, bidderId)),
+            .catch(error => onJsError(actions, error)),
         1000
       )
 
       pollCount += 1
     } else if (status === "WINNING") {
-      trackConfirmBidSuccess(position.internalID, bidderId, selectedBid)
+      trackConfirmBidSuccess(position.internalID, selectedBid)
       window.location.assign(`${sd.APP_URL}/artwork/${artwork.slug}`)
     } else {
       actions.setStatus(messageHeader)
       actions.setSubmitting(false)
-      trackConfirmBidFailed(bidderId, [messageHeader])
+      trackConfirmBidFailed([messageHeader])
     }
   }
 
@@ -288,6 +293,9 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
           me={me as any}
+          trackSubmissionErrors={errors =>
+            !isEmpty(errors) && trackConfirmBidFailed(errors)
+          }
         />
       </Box>
     </AppContainer>
