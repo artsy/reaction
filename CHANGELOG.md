@@ -1,3 +1,22 @@
+# v22.4.0 (Sat Nov 23 2019)
+
+#### 🚀  Enhancement
+
+- Track validation errors and registration submitted events [#3028](https://github.com/artsy/reaction/pull/3028) ([@yuki24](https://github.com/yuki24))
+
+#### 🐛  Bug Fix
+
+- Trigger a new build to cut a new version. includes #3018, #3028, #3029 [#3030](https://github.com/artsy/reaction/pull/3030) ([@yuki24](https://github.com/yuki24))
+- Add modal to "Certificate of Authenticity" Badges with explanation of COA [#3018](https://github.com/artsy/reaction/pull/3018) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Include partner's name on copy stating bidders agree to Artsy's COS [#3029](https://github.com/artsy/reaction/pull/3029) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v22.3.1 (Thu Nov 21 2019)
 
 #### 🐛  Bug Fix
