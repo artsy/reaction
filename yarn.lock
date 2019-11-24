@@ -1740,23 +1740,24 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@betterer/betterer@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@betterer/betterer/-/betterer-0.3.0.tgz#047957a9c408a8c58b74880f6f546c7b91108efc"
-  integrity sha512-v1lZUZtbK2cL/UL1SBZBMm4d3ZptgysqAWQilT4R4+ix2EU1eGOTAVCJk/36NRWyTKLXyh5sX1qmOrN9/cVZ3g==
+"@betterer/betterer@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@betterer/betterer/-/betterer-0.3.4.tgz#935fed8025d8e2096bb469c943a965e09e2ebd1f"
+  integrity sha512-Kb2p+cHtdJmxa3vZmkrTTlAlQzZqiQ/cNvVe49TYxlXtlFipDHQrx01n+lqm+/jrmIfO7TN6X/SLQGP9cqXRvw==
   dependencies:
     "@betterer/constraints" "^0.3.0"
     "@betterer/logger" "^0.3.0"
     jest-diff "^24.9.0"
     lines-and-columns "^1.1.6"
+    safe-string-literal "^1.0.1"
     tslib "^1.10.0"
 
-"@betterer/cli@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@betterer/cli/-/cli-0.3.3.tgz#635ca588afca7f2495759223959395c6e38d42ef"
-  integrity sha512-hGOdNUfn8B419bfTPJFoK2eggftKataI8ytR9oKoCP0+cZ18fltFjw3ehChKJdrxbZJSjkEfW0ngRcLfhALr/Q==
+"@betterer/cli@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@betterer/cli/-/cli-0.3.4.tgz#5ee5d2d2b578a4aca50de12bbfb22718af594adb"
+  integrity sha512-mR3GrAo+sMHPpNLxLuLPf30rMNvXe00CKqbClCvSpOglB9DnfaZf1/GnbzSlwmXvbHPpxtEiyTNV9IIAjuQcvA==
   dependencies:
-    "@betterer/betterer" "^0.3.0"
+    "@betterer/betterer" "^0.3.4"
     commander "^3.0.1"
     find-up "^4.1.0"
     tslib "^1.10.0"
@@ -1779,12 +1780,12 @@
     npmlog "^4.1.2"
     tslib "^1.10.0"
 
-"@betterer/typescript@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@betterer/typescript/-/typescript-0.3.0.tgz#2e2653e5e9ea0c38ffa99dce6b3ba993cebc6ebc"
-  integrity sha512-0QE6zcRIkXBR9GEHxd8fkr9zLLPp/fFVVqlSh11jlM/dm834x9lnsIzKlCiHU/UOVtOBj7ytOxsE11Nsj2QeyQ==
+"@betterer/typescript@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@betterer/typescript/-/typescript-0.3.4.tgz#ee155fc38d30baed58763015caddf111f237c2c9"
+  integrity sha512-tIFKSdUskDG90E5fxL3ctN7E71deZokZkThKPOHPIUif959/pDZYteQ7x9wmKMnVC1x2Xp38iJr+dZyr+QPMhQ==
   dependencies:
-    "@betterer/betterer" "^0.3.0"
+    "@betterer/betterer" "^0.3.4"
     "@betterer/logger" "^0.3.0"
     callsite "^1.0.0"
     tslib "^1.10.0"
@@ -14149,6 +14150,11 @@ safe-regex@^1.1.0:
   integrity sha1-QKNmnzsHfR6UPURinhV91IAjvy4=
   dependencies:
     ret "~0.1.10"
+
+safe-string-literal@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/safe-string-literal/-/safe-string-literal-1.0.1.tgz#ca6d332bad223ce3233c38142e05c1c3cc7f76bb"
+  integrity sha512-qxlBSDdbeaJbk7tPeNg04+maY8B6HFBRuePIOfDqTZzbD4NXZTbrpRVcJGsmG88OpB30SYKJDqFjvUqnujdpew==
 
 "safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2:
   version "2.1.2"
