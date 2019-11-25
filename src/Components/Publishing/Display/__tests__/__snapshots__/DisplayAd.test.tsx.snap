@@ -35,7 +35,6 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
 <div
   className="c0"
   height="1px"
-  onClick={[Function]}
 >
   <div
     className="c1"
