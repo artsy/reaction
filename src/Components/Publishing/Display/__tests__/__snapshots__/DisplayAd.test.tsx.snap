@@ -1,7 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display Ad renders the new canvas in standard layout 1`] = `
-.c1 {
+Array [
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />,
+  .c1 {
   margin: auto;
 }
 
@@ -33,28 +41,30 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
 }
 
 <div
-  className="c0"
-  height="1px"
->
-  <div
-    className="c1"
+    className="c0"
+    height="1px"
+    onClick={[Function]}
   >
     <div
-      style={
-        Object {
-          "height": 250,
-          "width": 970,
-        }
-      }
-    />
-    <div
-      className="c2"
-      color="black30"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize="10px"
+      className="c1"
     >
-      Advertisement
+      <div
+        style={
+          Object {
+            "height": 250,
+            "width": 970,
+          }
+        }
+      />
+      <div
+        className="c2"
+        color="black30"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize="10px"
+      >
+        Advertisement
+      </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;
