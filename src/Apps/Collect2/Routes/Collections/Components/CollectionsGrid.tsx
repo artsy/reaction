@@ -58,7 +58,9 @@ export class CollectionsGrid extends Component<CollectionsGridProps> {
                   <Media at="xs">{index === 0 && <Separator />}</Media>
                   <Media greaterThan="xs">{index < 3 && <Separator />}</Media>
 
+                  {/* An empty space in initials to generate a blank avatar when there's no imageUrl */}
                   <EntityHeader
+                    initials=" "
                     py={2}
                     href={`/collection/${collection.slug}`}
                     imageUrl={imageUrl || undefined}
