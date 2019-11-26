@@ -40,30 +40,27 @@ GPT.syncCorrelator(true)
 @track(null, {
   dispatch: data => Events.postEvent(data),
 })
+@track<DisplayAdProps>(props => ({
+  context_page: AnalyticsSchema.PageName.ArticlePage,
+  context_module: AnalyticsSchema.ContextModule.AdServer,
+  context_page_owner_type: AnalyticsSchema.OwnerType.Article,
+  context_page_owner_id: props.targetingData.post_id,
+  context_page_owner_slug: props.articleSlug,
+}))
 export class DisplayAd extends React.Component<DisplayAdProps> {
   state = {
     isAdEmpty: null,
   }
-  @track<DisplayAdProps>(props => ({
+  @track({
     action_type: AnalyticsSchema.ActionType.Impression,
-    context_page: AnalyticsSchema.PageName.ArticlePage,
-    context_module: AnalyticsSchema.ContextModule.AdServer,
-    context_page_owner_id: props.targetingData.post_id,
-    context_page_owner_slug: props.articleSlug,
-    context_page_owner_type: AnalyticsSchema.OwnerType.Article,
-  }))
+  })
   trackImpression() {
     // noop
   }
 
-  @track<DisplayAdProps>(props => ({
+  @track({
     action_type: AnalyticsSchema.ActionType.Click,
-    context_page: AnalyticsSchema.PageName.ArticlePage,
-    context_module: AnalyticsSchema.ContextModule.AdServer,
-    context_page_owner_id: props.targetingData.post_id,
-    context_page_owner_slug: props.articleSlug,
-    context_page_owner_type: AnalyticsSchema.OwnerType.Article,
-  }))
+  })
   trackImpressionClick() {
     // noop
   }
@@ -97,10 +94,7 @@ export class DisplayAd extends React.Component<DisplayAdProps> {
     }
     return (
       <>
-        <Waypoint
-          onEnter={once(this.trackImpression.bind(this))}
-          topOffset={"20%"}
-        />
+        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
         <DisplayAdContainer
           onClick={this.trackImpressionClick.bind(this)}
           flexDirection="column"
