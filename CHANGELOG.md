@@ -1,3 +1,15 @@
+# v22.7.3 (Tue Nov 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix for SaleArtwork/Sale without a partner [#3032](https://github.com/artsy/reaction/pull/3032) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
 # v22.7.2 (Tue Nov 26 2019)
 
 #### 🐛  Bug Fix
