@@ -27,7 +27,7 @@ export type Collection_collection = {
                 readonly count: number;
             } | null> | null;
         } | null> | null;
-        readonly " $fragmentRefs": FragmentRefs<"Header_artworks" | "SeoProductsForArtworks_artworks">;
+        readonly " $fragmentRefs": FragmentRefs<"Header_artworks" | "SeoProductsForArtworks_artworks" | "SeoProductsForCollections_artworks">;
     } | null;
     readonly filtered_artworks: {
         readonly id: string;
@@ -323,6 +323,11 @@ return {
           "kind": "FragmentSpread",
           "name": "SeoProductsForArtworks_artworks",
           "args": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "SeoProductsForCollections_artworks",
+          "args": null
         }
       ]
     },
@@ -429,5 +434,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3fc32052507e4edee4b54630c0cd7129';
+(node as any).hash = '76032289f3815b04b5f2f6140e0fab73';
 export default node;

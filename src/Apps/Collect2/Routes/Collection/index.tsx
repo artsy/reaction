@@ -1,6 +1,7 @@
 import { Box, Separator } from "@artsy/palette"
 import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
+import { SeoProductsForCollections } from "Apps/Collect2/Components/SeoProductsForCollections"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
@@ -90,10 +91,19 @@ export class CollectionApp extends Component<CollectionAppProps> {
           {artworksConnection && (
             <SeoProductsForArtworks artworks={artworksConnection} />
           )}
+          {artworksConnection && (
+            <SeoProductsForCollections
+              artworks={artworksConnection}
+              collectionDescription={description}
+              collectionURL={collectionHref}
+              collectionName={title}
+            />
+          )}
           <CollectionHeader
             collection={collection}
             artworks={artworksConnection}
           />
+
           {showCollectionHubs && (
             <CollectionsHubRails
               linkedCollections={collection.linkedCollections}
@@ -246,6 +256,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
         ) {
           ...Header_artworks
           ...SeoProductsForArtworks_artworks
+          ...SeoProductsForCollections_artworks
           aggregations {
             slice
             counts {
