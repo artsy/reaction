@@ -8,12 +8,6 @@ jest.mock("Apps/Auction/Routes/ConfirmBid/BidderPositionQuery", () => ({
   bidderPositionQuery: jest.fn(),
 }))
 
-jest.mock("sharify", () => ({
-  data: {
-    ENABLE_PRICE_TRANSPARENCY: false,
-  },
-}))
-
 jest.mock("react-stripe-elements", () => {
   const stripeMock = {
     createToken: jest.fn(),
@@ -34,7 +28,6 @@ import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import React from "react"
 import { graphql } from "react-relay"
-import { data as sd } from "sharify"
 
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
@@ -65,8 +58,13 @@ const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 const createTokenMock = require("react-stripe-elements").__stripeMock
   .createToken as jest.Mock
 
+const mockEnablePriceTransparency = jest.fn()
+
 jest.mock("sharify", () => ({
   data: {
+    get ENABLE_PRICE_TRANSPARENCY() {
+      return mockEnablePriceTransparency()
+    },
     APP_URL: "https://example.com",
   },
 }))
@@ -132,7 +130,7 @@ const setupTestEnv = ({
 
 describe("Routes/ConfirmBid", () => {
   beforeEach(() => {
-    ;(sd as any).ENABLE_PRICE_TRANSPARENCY = false
+    mockEnablePriceTransparency.mockReturnValue(false)
 
     // @ts-ignore
     // tslint:disable-next-line:no-empty
@@ -197,7 +195,7 @@ describe("Routes/ConfirmBid", () => {
     })
 
     it("displays buyer's premium and subtotal", async () => {
-      ;(sd as any).ENABLE_PRICE_TRANSPARENCY = true
+      mockEnablePriceTransparency.mockReturnValue(true)
 
       const env = setupTestEnv()
 
@@ -228,7 +226,7 @@ describe("Routes/ConfirmBid", () => {
     })
 
     it("updates buyer's premium and subtotal when a different bid is selected", async () => {
-      ;(sd as any).ENABLE_PRICE_TRANSPARENCY = true
+      mockEnablePriceTransparency.mockReturnValue(true)
 
       const env = setupTestEnv()
 

@@ -121,7 +121,7 @@ export const BidForm: React.FC<Props> = ({
   saleArtwork,
   trackSubmissionErrors,
 }) => {
-  const { ENABLE_PRICE_TRANSPARENCY } = sd as any
+  const { ENABLE_PRICE_TRANSPARENCY } = sd
   const displayIncrements = dropWhile(
     saleArtwork.increments,
     increment => increment.cents < saleArtwork.minimumNextBid.cents
