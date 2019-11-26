@@ -10,7 +10,7 @@ import {
 import { SystemContextProps, withSystemContext } from "Artsy"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
-const _PricingTransparency: React.FC<
+export const PricingTransparency: React.FC<
   PricingTransparencyQueryResponse
 > = props => {
   const { calculatedCost } = props.artwork.saleArtwork
@@ -79,7 +79,7 @@ const _PricingTransparency: React.FC<
   )
 }
 
-export const PricingTransparency = withSystemContext(
+export const PricingTransparencyQueryRenderer = withSystemContext(
   ({
     saleId,
     artworkId,
@@ -115,7 +115,7 @@ export const PricingTransparency = withSystemContext(
         variables={{ saleId, artworkId, bidAmountMinor }}
         render={({ props }) => {
           if (props) {
-            return <_PricingTransparency artwork={props.artwork} />
+            return <PricingTransparency artwork={props.artwork} />
           } else {
             return (
               <Flex position="relative" height="178px">
