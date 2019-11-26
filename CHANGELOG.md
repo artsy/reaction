@@ -1,3 +1,15 @@
+# v22.7.2 (Tue Nov 26 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1479 Blank thumbnail on collections with generated banner [#3027](https://github.com/artsy/reaction/pull/3027) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
 # v22.7.1 (Tue Nov 26 2019)
 
 #### 🐛  Bug Fix
