@@ -1,7 +1,20 @@
-import { Box, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, Sans, Serif, Spinner } from "@artsy/palette"
 import React from "react"
+import { graphql } from "react-relay"
 
-export const PricingTransparency: React.FC<{}> = () => {
+import {
+  PricingTransparencyQuery,
+  PricingTransparencyQueryResponse,
+  PricingTransparencyQueryVariables,
+} from "__generated__/PricingTransparencyQuery.graphql"
+import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+
+const _PricingTransparency: React.FC<
+  PricingTransparencyQueryResponse
+> = props => {
+  const { calculatedCost } = props.artwork.saleArtwork
+
   return (
     <Flex pt={3} flexDirection="column">
       <Serif pb={1} size="4t" weight="semibold" color="black100">
@@ -21,7 +34,7 @@ export const PricingTransparency: React.FC<{}> = () => {
         </Box>
         <Box>
           <Serif size="3t" color="black100">
-            £18,000
+            {calculatedCost.bidAmount.display}
           </Serif>
         </Box>
       </Flex>
@@ -38,7 +51,7 @@ export const PricingTransparency: React.FC<{}> = () => {
         </Box>
         <Box>
           <Serif size="3t" color="black100">
-            £3,600
+            {calculatedCost.buyersPremium.display}
           </Serif>
         </Box>
       </Flex>
@@ -55,7 +68,7 @@ export const PricingTransparency: React.FC<{}> = () => {
         </Box>
         <Box>
           <Serif size="3t" color="black100">
-            £21,600
+            {calculatedCost.subtotal.display}
           </Serif>
         </Box>
       </Flex>
@@ -65,3 +78,53 @@ export const PricingTransparency: React.FC<{}> = () => {
     </Flex>
   )
 }
+
+export const PricingTransparency = withSystemContext(
+  ({
+    saleId,
+    artworkId,
+    bidAmountMinor,
+    relayEnvironment,
+  }: SystemContextProps & PricingTransparencyQueryVariables) => {
+    return (
+      <QueryRenderer<PricingTransparencyQuery>
+        environment={relayEnvironment}
+        query={graphql`
+          query PricingTransparencyQuery(
+            $saleId: String!
+            $artworkId: String!
+            $bidAmountMinor: Int!
+          ) {
+            artwork(id: $artworkId) {
+              saleArtwork(saleID: $saleId) {
+                calculatedCost(bidAmountMinor: $bidAmountMinor) {
+                  bidAmount {
+                    display
+                  }
+                  buyersPremium {
+                    display
+                  }
+                  subtotal {
+                    display
+                  }
+                }
+              }
+            }
+          }
+        `}
+        variables={{ saleId, artworkId, bidAmountMinor }}
+        render={({ props }) => {
+          if (props) {
+            return <_PricingTransparency artwork={props.artwork} />
+          } else {
+            return (
+              <Flex position="relative" height="178px">
+                <Spinner />
+              </Flex>
+            )
+          }
+        }}
+      />
+    )
+  }
+)

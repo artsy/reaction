@@ -8,6 +8,12 @@ jest.mock("Apps/Auction/Routes/ConfirmBid/BidderPositionQuery", () => ({
   bidderPositionQuery: jest.fn(),
 }))
 
+jest.mock("sharify", () => ({
+  data: {
+    ENABLE_PRICE_TRANSPARENCY: false,
+  },
+}))
+
 jest.mock("react-stripe-elements", () => {
   const stripeMock = {
     createToken: jest.fn(),
@@ -28,11 +34,13 @@ import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import React from "react"
 import { graphql } from "react-relay"
+import { data as sd } from "sharify"
 
 import { routes_ConfirmBidQueryResponse } from "__generated__/routes_ConfirmBidQuery.graphql"
 import { ConfirmBidQueryResponseFixture } from "Apps/Auction/__fixtures__/routes_ConfirmBidQuery"
 import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
 import { AnalyticsSchema } from "Artsy/Analytics"
+import { createMockFetchQuery } from "DevTools/createMockNetworkLayer"
 import { TrackingProp } from "react-tracking"
 import {
   confirmBidBidderPositionQueryWithOutbid,
@@ -124,6 +132,8 @@ const setupTestEnv = ({
 
 describe("Routes/ConfirmBid", () => {
   beforeEach(() => {
+    ;(sd as any).ENABLE_PRICE_TRANSPARENCY = false
+
     // @ts-ignore
     // tslint:disable-next-line:no-empty
     window.Stripe = () => {}
@@ -184,6 +194,96 @@ describe("Routes/ConfirmBid", () => {
         )
         done()
       }, 1001)
+    })
+
+    it("displays buyer's premium and subtotal", async () => {
+      ;(sd as any).ENABLE_PRICE_TRANSPARENCY = true
+
+      const env = setupTestEnv()
+
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              calculatedCost: {
+                bidAmount: {
+                  display: "$50,000",
+                },
+                buyersPremium: {
+                  display: "$10,000",
+                },
+                subtotal: {
+                  display: "$60,000",
+                },
+              },
+            },
+          },
+        }),
+      })
+
+      expect(page.text()).toContain("Summary")
+      expect(page.text()).toContain("Your max bid$50,000")
+      expect(page.text()).toContain("Buyer's Premium$10,000")
+      expect(page.text()).toContain("Subtotal$60,000")
+    })
+
+    it("updates buyer's premium and subtotal when a different bid is selected", async () => {
+      ;(sd as any).ENABLE_PRICE_TRANSPARENCY = true
+
+      const env = setupTestEnv()
+
+      const page = await env.buildPage({
+        mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+          artwork: {
+            saleArtwork: {
+              calculatedCost: {
+                bidAmount: {
+                  display: "$50,000",
+                },
+                buyersPremium: {
+                  display: "$10,000",
+                },
+                subtotal: {
+                  display: "$60,000",
+                },
+              },
+            },
+          },
+        }),
+      })
+
+      expect(page.text()).toContain("Your max bid$50,000")
+
+      env.mockQuery.mockReset()
+      env.mockQuery.mockImplementation(
+        createMockFetchQuery({
+          mockData: deepMerge(ConfirmBidQueryResponseFixture, {
+            artwork: {
+              saleArtwork: {
+                calculatedCost: {
+                  bidAmount: {
+                    display: "$60,000",
+                  },
+                  buyersPremium: {
+                    display: "$12,000",
+                  },
+                  subtotal: {
+                    display: "$72,000",
+                  },
+                },
+              },
+            },
+          }),
+        })
+      )
+
+      await page.selectBidAmount("6000000")
+      await page.update()
+
+      expect(page.text()).toContain("Summary")
+      expect(page.text()).toContain("Your max bid$60,000")
+      expect(page.text()).toContain("Buyer's Premium$12,000")
+      expect(page.text()).toContain("Subtotal$72,000")
     })
 
     it("tracks a success event to Segment including Criteo info", async () => {

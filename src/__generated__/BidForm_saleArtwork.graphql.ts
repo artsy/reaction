@@ -11,6 +11,7 @@ export type BidForm_saleArtwork = {
         readonly display: string | null;
     } | null> | null;
     readonly sale: {
+        readonly slug: string;
         readonly registrationStatus: {
             readonly qualifiedForBidding: boolean | null;
         } | null;
@@ -87,6 +88,13 @@ return {
       "plural": false,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "slug",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "LinkedField",
           "alias": null,
           "name": "registrationStatus",
@@ -109,5 +117,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd5f35722b95804bd4fd260470c7ad8fa';
+(node as any).hash = '40cc7961713f7964a792ce4f22933426';
 export default node;
