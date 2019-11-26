@@ -106,7 +106,10 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
 
   conditionsOfSaleText() {
     const first = "By placing your bid you agree to Artsy's "
-    if (!this.props.artwork.sale.isBenefit) {
+    if (
+      !this.props.artwork.sale.isBenefit &&
+      !!this.props.artwork.sale.partner
+    ) {
       const partnerName = this.props.artwork.sale.partner.name
       const possessivePartnerName = partnerName.endsWith("'s")
         ? partnerName
