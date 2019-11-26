@@ -1621,6 +1621,13 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
       </div>
     </div>
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
   <div
     className="c56"
     height="1px"
@@ -4303,6 +4310,13 @@ exports[`Video Layout matches the snapshot 1`] = `
       </div>
     </div>
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
   <div
     className="c83"
     height="1px"

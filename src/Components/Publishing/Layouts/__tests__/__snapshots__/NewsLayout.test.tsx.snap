@@ -2863,6 +2863,13 @@ exports[`News Layout with display ads renders the news layout properly with disp
       Expand
     </button>
   </div>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
   <div
     className="c23"
     height="1px"

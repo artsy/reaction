@@ -1,6 +1,7 @@
-import { useTracking } from "Artsy/Analytics/useTracking"
+import { mockTracking } from "Artsy/Analytics"
 import {
   DisplayAd,
+  DisplayAdContainer,
   DisplayAdProps,
 } from "Components/Publishing/Display/DisplayAd"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
@@ -10,44 +11,27 @@ import "jest-styled-components"
 import React from "react"
 import { Bling as GPT } from "react-gpt"
 import renderer from "react-test-renderer"
+import Waypoint from "react-waypoint"
 import { ArticleDisplayAdProps as AdData } from "../../Fixtures/Components"
-
-jest.mock("Artsy/Analytics/useTracking")
+jest.unmock("react-tracking")
 
 describe("Display Ad", () => {
-  const trackEvent = jest.fn()
-
-  beforeEach(() => {
-    ;(useTracking as jest.Mock).mockImplementation(() => {
-      return {
-        trackEvent,
-      }
-    })
-  })
+  const displayAdProps = {
+    adDimension: AdData.adDimension,
+    adUnit: AdData.adUnit,
+    targetingData: targetingData(StandardArticle, "article"),
+    articleSlug: StandardArticle.slug,
+  }
 
   it("renders the new canvas in standard layout", () => {
     const component = renderer
-      .create(
-        <DisplayAd
-          adDimension={AdData.adDimension}
-          adUnit={AdData.adUnit}
-          targetingData={targetingData(StandardArticle, "article")}
-          articleSlug={StandardArticle.slug}
-        />
-      )
+      .create(<DisplayAd {...displayAdProps} />)
       .toJSON()
     expect(component).toMatchSnapshot()
   })
 
   it("renders the component with the correct data and properties in standard layout articles", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdData.adDimension}
-        adUnit={AdData.adUnit}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+    const ad = mount(<DisplayAd {...displayAdProps} />)
 
     const adProps: DisplayAdProps = ad.props()
     expect(adProps.adDimension).toEqual("970x250")
@@ -56,14 +40,7 @@ describe("Display Ad", () => {
   })
 
   it("renders GPT with the correct properties in standard layout articles", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdData.adDimension}
-        adUnit={AdData.adUnit}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+    const ad = mount(<DisplayAd {...displayAdProps} />)
 
     const gptComponent = ad.find(GPT)
     const gptProps: any = gptComponent.props()
@@ -78,7 +55,16 @@ describe("Display Ad", () => {
   })
 
   it("Tracks display ad impression", () => {
-    expect(trackEvent).toBeCalledWith({
+    const { Component, dispatch } = mockTracking(DisplayAd)
+
+    const component = mount(<Component {...displayAdProps} />)
+
+    component
+      .find(Waypoint)
+      .getElement()
+      .props.onEnter()
+
+    expect(dispatch).toBeCalledWith({
       action_type: "Impression",
       context_page: "Article",
       context_module: "AdServer",
@@ -89,18 +75,16 @@ describe("Display Ad", () => {
   })
 
   it("Tracks display ad click", () => {
-    const component = mount(
-      <DisplayAd
-        adDimension={AdData.adDimension}
-        adUnit={AdData.adUnit}
-        targetingData={targetingData(StandardArticle, "article")}
-        articleSlug={StandardArticle.slug}
-      />
-    )
+    const { Component, dispatch } = mockTracking(DisplayAd)
 
-    component.at(0).simulate("click")
+    const component = mount(<Component {...displayAdProps} />)
 
-    expect(trackEvent).toBeCalledWith({
+    component
+      .find(DisplayAdContainer)
+      .at(0)
+      .simulate("click")
+
+    expect(dispatch).toBeCalledWith({
       action_type: "Click",
       context_page: "Article",
       context_module: "AdServer",
