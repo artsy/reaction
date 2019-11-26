@@ -23,6 +23,7 @@ interface SeoProductsProps {
 export class SeoProducts extends React.Component<SeoProductsProps> {
   render() {
     const { artworks } = this.props
+
     // here the filtering is necessary so we can re-use the artwork list shown in the page (could include
     // non-acquireable artworks) without making an extra request. Also, seller image is a required field
     // so excluding those that don't have `partner.profile.icon.url`.
