@@ -12,10 +12,19 @@ export interface AuctionInfo {
    * but occasionally it is a fixed bid amount.
    */
   bidder_position_id: string
+
   /**
    * List of reasons why there's a failure event
    *
    *  Used by the auction registration flow.
    */
   error_messages: string[]
+
+  /**
+   * The amount of max bid the user selected in cents. For example, if the user
+   * selected $5,000.00, it will be reported as 500000.
+   *
+   *  Used by the auction confirm bid flow.
+   */
+  selected_max_bid_minor: string
 }
