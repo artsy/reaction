@@ -1,3 +1,17 @@
+# v22.9.0 (Wed Nov 27 2019)
+
+#### 🚀  Enhancement
+
+- Track "selected max bid" events on the confirm bid page
+
+addresses https://artsyproduct.atlassian.net/browse/AUCT-773 [#3034](https://github.com/artsy/reaction/pull/3034) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v22.8.0 (Wed Nov 27 2019)
 
 #### 🚀  Enhancement
