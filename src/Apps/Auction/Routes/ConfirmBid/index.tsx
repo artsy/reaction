@@ -147,6 +147,15 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     })
   }
 
+  function trackMaxBidSelected(maxBid: string) {
+    trackEvent({
+      action_type: Schema.ActionType.SelectedMaxBid,
+      bidder_id: bidderId,
+      order_id: bidderId,
+      selected_max_bid_minor: maxBid,
+    })
+  }
+
   const createTokenFromAddress = async (address: stripe.TokenOptions) => {
     const { error, token } = await stripe.createToken(address)
 
@@ -292,6 +301,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           initialSelectedBid={getInitialSelectedBid(props.location)}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
+          onMaxBidSelect={trackMaxBidSelected}
           me={me as any}
           trackSubmissionErrors={errors =>
             !isEmpty(errors) && trackConfirmBidFailed(errors)

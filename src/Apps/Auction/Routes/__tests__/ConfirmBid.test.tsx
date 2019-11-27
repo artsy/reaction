@@ -315,6 +315,26 @@ describe("Routes/ConfirmBid", () => {
       })
     })
 
+    it("tracks a max bid selected event to Segment", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      await page.selectBidAmount("6000000")
+
+      expect(mockPostEvent).toHaveBeenCalledTimes(1)
+      expect(mockPostEvent).toHaveBeenCalledWith({
+        action_type: AnalyticsSchema.ActionType.SelectedMaxBid,
+        context_page: AnalyticsSchema.PageName.AuctionConfirmBidPage,
+        auction_slug: "saleslug",
+        artwork_slug: "artworkslug",
+        bidder_id: "existing-bidder-id",
+        sale_id: "saleid",
+        selected_max_bid_minor: "6000000",
+        user_id: "my-user-id",
+        order_id: "existing-bidder-id",
+      })
+    })
+
     it("displays an error message when the mutation returns a GraphQL error", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()

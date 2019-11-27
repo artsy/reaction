@@ -28,6 +28,7 @@ interface Props {
   initialSelectedBid?: string
   me: BidForm_me
   onSubmit: (values: FormikValues, actions: FormikActions<object>) => void
+  onMaxBidSelect?: (values: string) => void
   relay: RelayProp
   saleArtwork: BidForm_saleArtwork
   trackSubmissionErrors: TrackErrors
@@ -117,6 +118,7 @@ export const BidForm: React.FC<Props> = ({
   initialSelectedBid,
   me,
   onSubmit,
+  onMaxBidSelect,
   relay,
   saleArtwork,
   trackSubmissionErrors,
@@ -190,6 +192,7 @@ export const BidForm: React.FC<Props> = ({
                   <LargeSelect
                     selected={values.selectedBid}
                     onSelect={value => {
+                      onMaxBidSelect && onMaxBidSelect(value)
                       setFieldValue("selectedBid", value)
                       setFieldTouched("selectedBid")
                     }}

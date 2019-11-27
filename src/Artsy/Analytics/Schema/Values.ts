@@ -93,6 +93,7 @@ export enum ActionType {
   ConfirmBidFailed = "Confirm bid failed",
   PlacedMaxBid = "Placed Max Bid",
   RegisteredToBid = "Registered To Bid",
+  SelectedMaxBid = "Selected max bid",
 
   /**
    * A tap on a UI element using a finger-like input device.
