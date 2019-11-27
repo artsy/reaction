@@ -26,6 +26,7 @@ jest.mock("react-stripe-elements", () => {
 
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
+import { Location, Match } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -70,7 +71,9 @@ jest.mock("sharify", () => ({
 }))
 
 const mockLocation: Partial<Location> = {
-  search: "",
+  query: {
+    bid: null,
+  },
 }
 
 const setupTestEnv = ({
@@ -84,7 +87,7 @@ const setupTestEnv = ({
       props: routes_ConfirmBidQueryResponse & { tracking: TrackingProp }
     ) => (
       <ConfirmBidRouteFragmentContainer
-        location={location as Location}
+        match={{ location } as Match}
         {...props}
       />
     ),
@@ -861,8 +864,10 @@ describe("Routes/ConfirmBid", () => {
   describe("preselected bid amounts", () => {
     it("pre-fills the bid select box with a value from the query string that is available in increments", async () => {
       const specialSelectedBidAmount = "7000000"
-      const search = `?bid=${specialSelectedBidAmount}`
-      const env = setupTestEnv({ location: { search } })
+
+      const env = setupTestEnv({
+        location: { query: { bid: specialSelectedBidAmount } },
+      })
       const page = await env.buildPage()
 
       expect(page.selectBidAmountInput.props().value).toBe(
@@ -872,8 +877,10 @@ describe("Routes/ConfirmBid", () => {
 
     it("pre-fills the bid select box with the highest increment if the value is higher than what is available", async () => {
       const specialSelectedBidAmount = "42000000"
-      const search = `?bid=${specialSelectedBidAmount}`
-      const env = setupTestEnv({ location: { search } })
+
+      const env = setupTestEnv({
+        location: { query: { bid: specialSelectedBidAmount } },
+      })
       const page = await env.buildPage()
 
       expect(page.selectBidAmountInput.props().value).toBe("5000000")
@@ -881,8 +888,10 @@ describe("Routes/ConfirmBid", () => {
 
     it("pre-fills the bid select box with the lowest increment if the value is lower than what is available", async () => {
       const specialSelectedBidAmount = "420000"
-      const search = `?bid=${specialSelectedBidAmount}`
-      const env = setupTestEnv({ location: { search } })
+
+      const env = setupTestEnv({
+        location: { query: { bid: specialSelectedBidAmount } },
+      })
       const page = await env.buildPage()
 
       expect(page.selectBidAmountInput.props().value).toBe("5000000")
@@ -890,8 +899,10 @@ describe("Routes/ConfirmBid", () => {
 
     it("pre-fills the bid select box with the lowest increment if the value is not a number", async () => {
       const specialSelectedBidAmount = "50 thousand and 00/100 dollars"
-      const search = `?bid=${specialSelectedBidAmount}`
-      const env = setupTestEnv({ location: { search } })
+
+      const env = setupTestEnv({
+        location: { query: { bid: specialSelectedBidAmount } },
+      })
       const page = await env.buildPage()
 
       expect(page.selectBidAmountInput.props().value).toBe("5000000")

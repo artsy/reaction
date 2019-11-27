@@ -1,4 +1,6 @@
 import { Box, Separator, Serif } from "@artsy/palette"
+import { Location, Match } from "found"
+
 import { BidderPositionQueryResponse } from "__generated__/BidderPositionQuery.graphql"
 import { ConfirmBid_me } from "__generated__/ConfirmBid_me.graphql"
 import {
@@ -21,7 +23,6 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { FormikActions } from "formik"
 import { isEmpty } from "lodash"
-import qs from "qs"
 import React, { useEffect, useState } from "react"
 import { Title } from "react-head"
 import {
@@ -44,11 +45,15 @@ const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
 
 type BidFormActions = FormikActions<FormValues>
 
+interface OptionalQueryStrings {
+  bid?: string
+}
+
 interface ConfirmBidProps extends ReactStripeElements.InjectedStripeProps {
   artwork: routes_ConfirmBidQueryResponse["artwork"]
   me: ConfirmBid_me
   relay: RelayProp
-  location: Location
+  match: Match
 }
 
 const MAX_POLL_ATTEMPTS = 20
@@ -289,7 +294,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
         <BidForm
           artworkSlug={artwork.slug}
-          initialSelectedBid={getInitialSelectedBid(props.location)}
+          initialSelectedBid={getInitialSelectedBid(props.match.location)}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
           me={me as any}
@@ -304,8 +309,8 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
 const getInitialSelectedBid = (location: Location): string | undefined => {
   return get(
-    qs,
-    querystring => querystring.parse(location.search.slice(1)).bid,
+    location,
+    ({ query }) => (query as OptionalQueryStrings).bid,
     undefined
   )
 }
