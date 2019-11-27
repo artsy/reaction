@@ -1,3 +1,15 @@
+# v22.8.0 (Wed Nov 27 2019)
+
+#### 🚀  Enhancement
+
+- User can see buyer's premium cost on web [#3033](https://github.com/artsy/reaction/pull/3033) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v22.7.3 (Tue Nov 26 2019)
 
 #### 🐛  Bug Fix
