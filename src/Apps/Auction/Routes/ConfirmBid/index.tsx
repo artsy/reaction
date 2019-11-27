@@ -288,8 +288,8 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
         <Separator />
 
         <BidForm
+          artworkSlug={artwork.slug}
           initialSelectedBid={getInitialSelectedBid(props.location)}
-          showPricingTransparency={false}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
           me={me as any}

@@ -95,9 +95,11 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       }
     })
 
+    this.mockQuery = jest.fn()
     this.mutations = new Mutations(mutationResolvers)
   }
 
+  mockQuery: jest.Mock
   mutations: Mutations<MutationNames>
   routes = new Routes()
   readonly headTags: Array<ReactElement<any>> = []
@@ -147,13 +149,14 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       })
 
     this.mutations.mockFetch.mockImplementation(wrappedFetchQuery)
+    this.mockQuery.mockImplementation(wrappedFetchQuery)
 
     // Switch on mutation/query when making requests to help make assertions
     // Seems we only make assertions about mutations right now
     const mockNetwork = Network.create((operation, variableValues) => {
       return operation.operationKind === "mutation"
         ? this.mutations.mockFetch(operation, variableValues)
-        : wrappedFetchQuery(operation, variableValues)
+        : this.mockQuery(operation, variableValues)
     })
 
     // @ts-ignore
