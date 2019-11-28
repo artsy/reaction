@@ -1,3 +1,15 @@
+# v22.9.1 (Thu Nov 28 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes a bug where your max bid is not pre-selected on the new confirm bid page [#3035](https://github.com/artsy/reaction/pull/3035) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v22.9.0 (Wed Nov 27 2019)
 
 #### 🚀  Enhancement
