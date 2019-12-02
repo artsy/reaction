@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 
 import {
+  AuctionIcon,
   Box,
   Flex,
   HeartIcon,
@@ -51,6 +52,10 @@ export const UserMenu: React.FC = () => {
           </Box>
         </Flex>
       )}
+      <MenuItem href="/user/orders">
+        <AuctionIcon mr={1} />
+        Orders & Inquiries
+      </MenuItem>
 
       <MenuItem href="/user/saves">
         <HeartIcon mr={1} /> Saves & Follows
