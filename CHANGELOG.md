@@ -1,3 +1,15 @@
+# v22.9.2 (Mon Dec 02 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1649: Adds data-test attribute to the sale message on artwork view [#3037](https://github.com/artsy/reaction/pull/3037) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v22.9.1 (Thu Nov 28 2019)
 
 #### 🐛  Bug Fix
