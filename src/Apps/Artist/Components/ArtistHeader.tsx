@@ -193,7 +193,8 @@ export class SmallArtistHeader extends Component<Props> {
           <Fragment>
             <Carousel
               data={carousel.images as object[]}
-              height="200px"
+              height="180px"
+              options={{ pageDots: false }}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
