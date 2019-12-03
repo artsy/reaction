@@ -1,3 +1,21 @@
+# v22.9.4 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Remove dots from the artist images [#3036](https://github.com/artsy/reaction/pull/3036) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep prettier from 1.16.4 to v1.19.1 [#3040](https://github.com/artsy/reaction/pull/3040) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v22.9.3 (Tue Dec 03 2019)
 
 #### 🐛  Bug Fix
