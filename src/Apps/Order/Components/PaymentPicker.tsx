@@ -139,12 +139,14 @@ export class PaymentPicker extends React.Component<
       return { type: "invalid_form" }
     }
 
-    const creditCardOrError = (await this.createCreditCard({
-      input: {
-        token: stripeResult.token.id,
-        oneTimeUse: !saveNewCreditCard,
-      },
-    })).createCreditCard.creditCardOrError
+    const creditCardOrError = (
+      await this.createCreditCard({
+        input: {
+          token: stripeResult.token.id,
+          oneTimeUse: !saveNewCreditCard,
+        },
+      })
+    ).createCreditCard.creditCardOrError
 
     if (
       creditCardOrError.mutationError &&
@@ -413,17 +415,17 @@ export class PaymentPicker extends React.Component<
 // Our mess of HOC wrappers is not amenable to ref forwarding, so to expose a
 // ref to the PaymentPicker instance (for getCreditCardId) we'll add an
 // `innerRef` prop which gets sneakily injected here
-const PaymentPickerWithInnerRef: React.SFC<
-  PaymentPickerProps & { innerRef: React.RefObject<PaymentPicker> }
-> = ({ innerRef, ...props }) => (
-  <PaymentPicker ref={innerRef} {...props as any} />
+const PaymentPickerWithInnerRef: React.SFC<PaymentPickerProps & {
+  innerRef: React.RefObject<PaymentPicker>
+}> = ({ innerRef, ...props }) => (
+  <PaymentPicker ref={innerRef} {...(props as any)} />
 )
 
 export const PaymentPickerFragmentContainer = createFragmentContainer(
   // 😭 HOCs
-  injectStripe(track()(
-    PaymentPickerWithInnerRef
-  ) as typeof PaymentPickerWithInnerRef),
+  injectStripe(
+    track()(PaymentPickerWithInnerRef) as typeof PaymentPickerWithInnerRef
+  ),
   {
     me: graphql`
       fragment PaymentPicker_me on Me {

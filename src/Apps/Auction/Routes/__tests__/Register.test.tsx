@@ -144,9 +144,7 @@ describe("Routes/Register ", () => {
     expect(mockPostEvent).toHaveBeenCalledTimes(1)
 
     expect(window.location.assign).toHaveBeenCalledWith(
-      `https://example.com/auction/${
-        RegisterQueryResponseFixture.sale.slug
-      }/confirm-registration`
+      `https://example.com/auction/${RegisterQueryResponseFixture.sale.slug}/confirm-registration`
     )
   })
 

@@ -447,9 +447,7 @@ interface ArtworkSidebarCommercialProps {
   relay?: RelayProp
 }
 
-export const ArtworkSidebarCommercial: FC<
-  ArtworkSidebarCommercialProps
-> = props => {
+export const ArtworkSidebarCommercial: FC<ArtworkSidebarCommercialProps> = props => {
   const { mediator, user } = useContext(SystemContext)
 
   return (

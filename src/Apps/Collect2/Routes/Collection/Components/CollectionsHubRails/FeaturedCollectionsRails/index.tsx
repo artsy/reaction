@@ -85,9 +85,10 @@ interface FeaturedCollectionEntityProps {
   itemNumber: number
 }
 
-export const FeaturedCollectionEntity: React.FC<
-  FeaturedCollectionEntityProps
-> = ({ itemNumber, member }) => {
+export const FeaturedCollectionEntity: React.FC<FeaturedCollectionEntityProps> = ({
+  itemNumber,
+  member,
+}) => {
   const { description, price_guidance, slug, thumbnail, title } = member
   const { trackEvent } = useTracking()
   const formattedPrice = currency(price_guidance, {

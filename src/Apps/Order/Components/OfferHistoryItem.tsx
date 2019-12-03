@@ -8,11 +8,12 @@ import React, { HTMLProps } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RevealButton } from "./RevealButton"
 
-const OfferHistoryItem: React.SFC<
-  {
-    order: OfferHistoryItem_order
-  } & StepSummaryItemProps
-> = ({ order: { totalListPrice, lastOffer, offers }, ...others }) => {
+const OfferHistoryItem: React.SFC<{
+  order: OfferHistoryItem_order
+} & StepSummaryItemProps> = ({
+  order: { totalListPrice, lastOffer, offers },
+  ...others
+}) => {
   const previousOffers = offers.edges.filter(
     ({ node: { internalID } }) => internalID !== lastOffer.internalID
   )
@@ -75,11 +76,10 @@ const OfferHistoryItem: React.SFC<
     </StepSummaryItem>
   )
 }
-
-const Row: React.SFC<
-  // TODO: look into why a separate style prop is necessary here
-  FlexProps & { style?: HTMLProps<HTMLDivElement>["style"] }
-> = ({ children, ...others }) => (
+// TODO: look into why a separate style prop is necessary here
+const Row: React.SFC<FlexProps & {
+  style?: HTMLProps<HTMLDivElement>["style"]
+}> = ({ children, ...others }) => (
   <Flex justifyContent="space-between" alignItems="baseline" {...others}>
     {children}
   </Flex>

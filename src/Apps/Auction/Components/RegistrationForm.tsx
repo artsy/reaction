@@ -86,7 +86,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
         size="large"
         width="100%"
         loading={isSubmitting}
-        {...{ type: "submit" } as any}
+        {...({ type: "submit" } as any)}
       >
         Register
       </Button>
@@ -245,9 +245,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
 
 const StripeInjectedRegistrationForm = injectStripe(RegistrationForm)
 
-export const StripeWrappedRegistrationForm: React.FC<
-  RegistrationFormProps
-> = props => {
+export const StripeWrappedRegistrationForm: React.FC<RegistrationFormProps> = props => {
   const [stripe, setStripe] = useState(null)
 
   function setupStripe() {

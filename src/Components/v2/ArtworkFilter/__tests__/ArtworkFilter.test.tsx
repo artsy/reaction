@@ -19,7 +19,9 @@ describe("ArtworkFilter", () => {
     passedProps = {}
   ) => {
     return await renderRelayTree({
-      Component: props => <ArtworkFilter {...props as any} {...passedProps} />,
+      Component: props => (
+        <ArtworkFilter {...(props as any)} {...passedProps} />
+      ),
       query: ArtworkQueryFilter,
       mockData: ArtworkFilterFixture,
       wrapper: children => {

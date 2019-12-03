@@ -39,9 +39,7 @@ export class MarketInsights extends React.Component<MarketInsightsProps> {
     }
     const topAuctionResult = this.props.artist.auctionResultsConnection.edges[0]
       .node
-    const display = `${topAuctionResult.price_realized.display}, ${
-      topAuctionResult.organization
-    }, ${topAuctionResult.sale_date}`
+    const display = `${topAuctionResult.price_realized.display}, ${topAuctionResult.organization}, ${topAuctionResult.sale_date}`
     return (
       <TextWrap>
         <Sans size="2" weight="medium" display="inline" mr={1}>

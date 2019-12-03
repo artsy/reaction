@@ -144,11 +144,9 @@ export type SharedArtworkFilterContextProps = Pick<
   onChange?: (filterState) => void
 }
 
-export const ArtworkFilterContextProvider: React.FC<
-  SharedArtworkFilterContextProps & {
-    children: React.ReactNode
-  }
-> = ({
+export const ArtworkFilterContextProvider: React.FC<SharedArtworkFilterContextProps & {
+  children: React.ReactNode
+}> = ({
   aggregations = [],
   children,
   counts = {},

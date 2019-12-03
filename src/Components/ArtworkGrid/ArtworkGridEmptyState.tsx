@@ -6,9 +6,7 @@ interface ArtworkGridEmptyStateProps {
   onClearFilters?: () => void
 }
 
-export const ArtworkGridEmptyState: React.SFC<
-  ArtworkGridEmptyStateProps
-> = props => (
+export const ArtworkGridEmptyState: React.SFC<ArtworkGridEmptyStateProps> = props => (
   <EmptyMessage>
     <span>
       There aren't any works available that meet the following criteria at this

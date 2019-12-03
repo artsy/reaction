@@ -10,9 +10,7 @@ import {
 import { SystemContextProps, withSystemContext } from "Artsy"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
-export const PricingTransparency: React.FC<
-  PricingTransparencyQueryResponse
-> = props => {
+export const PricingTransparency: React.FC<PricingTransparencyQueryResponse> = props => {
   const { calculatedCost } = props.artwork.saleArtwork
 
   return (

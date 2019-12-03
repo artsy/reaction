@@ -57,9 +57,7 @@ describe("Auction/routes", () => {
     it("does not redirect if the user is qualified to bid in the sale, the sale is open, and the artwork is biddable", async () => {
       const fixture = mockConfirmBidResolver()
       const { redirect, status } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
-          fixture.artwork.slug
-        }`,
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${fixture.artwork.slug}`,
         fixture
       )
 
@@ -76,9 +74,7 @@ describe("Auction/routes", () => {
         },
       })
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
-          fixture.artwork.slug
-        }`,
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${fixture.artwork.slug}`,
         fixture
       )
 
@@ -98,15 +94,11 @@ describe("Auction/routes", () => {
         },
       })
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
-          fixture.artwork.slug
-        }`,
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${fixture.artwork.slug}`,
         fixture
       )
       expect(redirect.url).toBe(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/artwork/${
-          fixture.artwork.slug
-        }`
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/artwork/${fixture.artwork.slug}`
       )
     })
 
@@ -116,9 +108,7 @@ describe("Auction/routes", () => {
       })
 
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
-          fixture.artwork.slug
-        }`,
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${fixture.artwork.slug}`,
         fixture
       )
       expect(redirect.url).toBe(
@@ -138,15 +128,11 @@ describe("Auction/routes", () => {
         },
       })
       const { redirect } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
-          fixture.artwork.slug
-        }`,
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${fixture.artwork.slug}`,
         fixture
       )
       expect(redirect.url).toBe(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/artwork/${
-          fixture.artwork.slug
-        }`
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/artwork/${fixture.artwork.slug}`
       )
     })
 
@@ -162,9 +148,7 @@ describe("Auction/routes", () => {
         },
       })
       const { redirect, status } = await render(
-        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${
-          fixture.artwork.slug
-        }`,
+        `/auction/${fixture.artwork.saleArtwork.sale.slug}/bid/${fixture.artwork.slug}`,
         fixture
       )
 
@@ -243,9 +227,7 @@ describe("Auction/routes", () => {
       )
 
       expect(redirect.url).toBe(
-        `/auction/${
-          RegisterQueryResponseFixture.sale.slug
-        }/confirm-registration`
+        `/auction/${RegisterQueryResponseFixture.sale.slug}/confirm-registration`
       )
     })
   })

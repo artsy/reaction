@@ -207,9 +207,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
   }
 }
 
-export const ArtworkSidebarExtraLinks: SFC<
-  ArtworkSidebarExtraLinksProps
-> = props => {
+export const ArtworkSidebarExtraLinks: SFC<ArtworkSidebarExtraLinksProps> = props => {
   const { mediator } = useContext(SystemContext)
   return <ArtworkSidebarExtraLinksContainer {...props} mediator={mediator} />
 }

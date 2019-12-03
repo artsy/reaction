@@ -8,7 +8,7 @@ import Button from "./Default"
 const FacebookButton = (props: ExtractProps<typeof Button>) => {
   const icon = <Icon name="facebook" color={props.color || "white"} />
   return (
-    <Button {...props as any} icon={icon}>
+    <Button {...(props as any)} icon={icon}>
       {props.children || "Log in with Facebook"}
     </Button>
   )

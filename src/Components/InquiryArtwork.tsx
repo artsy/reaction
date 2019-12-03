@@ -47,9 +47,9 @@ const Overlay: React.SFC<OverlayProps> = props => (
   </OverlayBackground>
 )
 
-export const InquiryArtwork: React.SFC<
-  ArtworkProps & { artwork: InquiryArtwork_artwork }
-> = props => {
+export const InquiryArtwork: React.SFC<ArtworkProps & {
+  artwork: InquiryArtwork_artwork
+}> = props => {
   return (
     <Artwork {...props} extended={false} Overlay={Overlay} showOverlayOnHover />
   )

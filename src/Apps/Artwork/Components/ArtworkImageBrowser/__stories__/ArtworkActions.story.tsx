@@ -47,12 +47,12 @@ storiesOf("Apps/Artwork/Components/ArtworkImageBrowser", module).add(
       </Section>
       <Section title="Auction Share">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
-          <MockArtworkActions {...ArtworkActionsAuctionFixture as any} />
+          <MockArtworkActions {...(ArtworkActionsAuctionFixture as any)} />
         </Flex>
       </Section>
       <Section title="Non-admin">
         <Flex justifyContent="center" alignItems="flex-end" height="200px">
-          <MockArtworkActions {...ArtworkActionsNonAdminFixture as any} />
+          <MockArtworkActions {...(ArtworkActionsNonAdminFixture as any)} />
         </Flex>
       </Section>
     </>

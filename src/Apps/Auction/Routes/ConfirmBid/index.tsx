@@ -327,9 +327,7 @@ const getInitialSelectedBid = (location: Location): string | undefined => {
 
 const StripeInjectedConfirmBidRoute = injectStripe(ConfirmBidRoute)
 
-export const StripeWrappedConfirmBidRoute: React.FC<
-  ConfirmBidProps
-> = props => {
+export const StripeWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   const [stripe, setStripe] = useState(null)
 
   function setupStripe() {

@@ -45,11 +45,9 @@ import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRen
  * doesn't `extend Viewer`, the BaseArtworkFilter can be imported below. See
  * `Apps/Collection` for an example, which queries Kaws for data.
  */
-export const ArtworkFilter: React.FC<
-  SharedArtworkFilterContextProps & {
-    viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
-  }
-> = ({
+export const ArtworkFilter: React.FC<SharedArtworkFilterContextProps & {
+  viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
+}> = ({
   viewer,
   aggregations,
   counts,

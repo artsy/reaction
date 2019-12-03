@@ -85,7 +85,10 @@ class RelatedWorksArtworkGrid extends React.Component<
     }
 
     // For sale artworks are already rendered on the page so we filter them from related works
-    const names = take(layers.filter(l => l.name !== "For Sale"), MAX_TAB_ITEMS)
+    const names = take(
+      layers.filter(l => l.name !== "For Sale"),
+      MAX_TAB_ITEMS
+    )
 
     if (!names.length) {
       return <></>

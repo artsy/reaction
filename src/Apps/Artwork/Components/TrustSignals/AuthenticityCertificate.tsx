@@ -10,9 +10,10 @@ interface AuthenticityCertificateProps
   artwork: AuthenticityCertificate_artwork
 }
 
-export const AuthenticityCertificate: React.FC<
-  AuthenticityCertificateProps
-> = ({ artwork, ...other }) => {
+export const AuthenticityCertificate: React.FC<AuthenticityCertificateProps> = ({
+  artwork,
+  ...other
+}) => {
   const [isShowingModal, setIsShowingModal] = useState(false)
 
   const onDismissModal = () => {
