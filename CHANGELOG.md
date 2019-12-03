@@ -1,3 +1,15 @@
+# v22.9.3 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Handle missing partner on artwork page [#3039](https://github.com/artsy/reaction/pull/3039) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v22.9.2 (Mon Dec 02 2019)
 
 #### 🐛  Bug Fix
