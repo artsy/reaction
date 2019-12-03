@@ -152,9 +152,10 @@ export class ArtworkActions extends React.Component<
 
   renderEditButton() {
     const { artwork } = this.props
-    const editUrl = `${sd.CMS_URL}/artworks/${artwork.slug}/edit?current_partner_id=${artwork.partner.slug}` // prettier-ignore
-
-    return <UtilButton name="edit" href={editUrl} label="Edit" />
+    if (artwork.partner) {
+      const editUrl = `${sd.CMS_URL}/artworks/${artwork.slug}/edit?current_partner_id=${artwork.partner.slug}` // prettier-ignore
+      return <UtilButton name="edit" href={editUrl} label="Edit" />
+    }
   }
 
   renderGenomeButton() {
