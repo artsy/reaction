@@ -88,7 +88,7 @@ export function renderWithLoadProgress<P>(
       handleError(error)
       return null
     } else if (props) {
-      return <Container {...initialProps} {...props as any} />
+      return <Container {...initialProps} {...(props as any)} />
     } else {
       return (
         <SpinnerContainer className={LoadingClassName} {...wrapperProps}>

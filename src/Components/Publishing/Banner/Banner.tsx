@@ -44,7 +44,10 @@ export class BannerWrapper extends Component<{ article: ArticleData }, State> {
 
   componentDidMount() {
     if (window) {
-      window.addEventListener("scroll", debounce(() => this.handleScroll(), 10))
+      window.addEventListener(
+        "scroll",
+        debounce(() => this.handleScroll(), 10)
+      )
     }
   }
 

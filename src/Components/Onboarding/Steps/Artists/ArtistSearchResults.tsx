@@ -200,9 +200,8 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   }
 )
 
-const ArtistSearchResultsComponent: React.SFC<
-  ContainerProps & SystemContextProps
-> = ({ term, relayEnvironment, updateFollowCount }) => {
+const ArtistSearchResultsComponent: React.SFC<ContainerProps &
+  SystemContextProps> = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer<ArtistSearchResultsQuery>
       environment={relayEnvironment}

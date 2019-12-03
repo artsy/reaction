@@ -200,9 +200,8 @@ const GeneSearchResultsContentContainer = createFragmentContainer(
   }
 )
 
-const GeneSearchResultsComponent: React.SFC<
-  ContainerProps & SystemContextProps
-> = ({ term, relayEnvironment, updateFollowCount }) => {
+const GeneSearchResultsComponent: React.SFC<ContainerProps &
+  SystemContextProps> = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer<GeneSearchResultsQuery>
       environment={relayEnvironment}

@@ -83,9 +83,9 @@ export interface GeneRelatedLinksQueryRendererProps {
   geneID: string
 }
 
-export const GeneRelatedLinksQueryRenderer: React.FC<
-  GeneRelatedLinksQueryRendererProps
-> = ({ geneID }) => {
+export const GeneRelatedLinksQueryRenderer: React.FC<GeneRelatedLinksQueryRendererProps> = ({
+  geneID,
+}) => {
   const { relayEnvironment } = useSystemContext()
 
   return (

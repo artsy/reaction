@@ -105,12 +105,14 @@ export class NewPaymentRoute extends Component<
         return
       }
 
-      const orderOrError = (await this.fixFailedPayment({
-        input: {
-          creditCardId: result.creditCardId,
-          offerId: this.props.order.lastOffer.internalID,
-        },
-      })).commerceFixFailedPayment.orderOrError
+      const orderOrError = (
+        await this.fixFailedPayment({
+          input: {
+            creditCardId: result.creditCardId,
+            offerId: this.props.order.lastOffer.internalID,
+          },
+        })
+      ).commerceFixFailedPayment.orderOrError
 
       if (orderOrError.error) {
         this.handleFixFailedPaymentError(orderOrError.error.code)

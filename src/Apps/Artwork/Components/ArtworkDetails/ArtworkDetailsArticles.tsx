@@ -10,9 +10,7 @@ export interface ArtworkDetailsArticlesProps {
   artwork: ArtworkDetailsArticles_artwork
 }
 
-export const ArtworkDetailsArticles: React.SFC<
-  ArtworkDetailsArticlesProps
-> = props => {
+export const ArtworkDetailsArticles: React.SFC<ArtworkDetailsArticlesProps> = props => {
   const { articles } = props.artwork
   if (!articles || articles.length < 1) {
     return null

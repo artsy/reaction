@@ -73,9 +73,7 @@ export class TagArtworks extends React.Component<Props, State> {
             .hasNextPage
           if (newLength - origLength < PageSize && newHasMore) {
             console.error(
-              `Total count inconsistent with actual records returned for tag: ${
-                this.props.tag.slug
-              }`
+              `Total count inconsistent with actual records returned for tag: ${this.props.tag.slug}`
             )
             this.finishedPaginatingWithError = true
           }

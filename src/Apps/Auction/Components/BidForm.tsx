@@ -288,7 +288,7 @@ export const BidForm: React.FC<Props> = ({
                     size="large"
                     width="100%"
                     loading={isSubmitting}
-                    {...{ type: "submit" } as any}
+                    {...({ type: "submit" } as any)}
                   >
                     Confirm bid
                   </Button>
