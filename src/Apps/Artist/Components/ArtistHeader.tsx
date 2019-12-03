@@ -106,12 +106,13 @@ export class LargeArtistHeader extends Component<Props> {
         {hasImages && (
           <Carousel
             height="200px"
+            options={{ pageDots: false }}
             data={carousel.images as object[]}
             render={(slide: Image, slideIndex: number) => {
               return (
                 <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                   <Image
-                    px={5}
+                    px={0.3}
                     lazyLoad={slideIndex > 5}
                     src={slide.resized.url}
                     width={slide.resized.width}
@@ -199,8 +200,8 @@ export class SmallArtistHeader extends Component<Props> {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                     <Image
-                      px={5}
                       src={slide.resized.url}
+                      px={0.3}
                       width={slide.resized.width}
                       height={slide.resized.height}
                       preventRightClick={!isAdmin}
@@ -212,38 +213,42 @@ export class SmallArtistHeader extends Component<Props> {
             <Spacer my={2} />
           </Fragment>
         )}
-
         <span id="jumpto-ArtistHeader" />
-        <Flex flexDirection="column" alignItems="center">
-          <H1>
-            <Serif size="5">{props.artist.name}</Serif>
-          </H1>
-          <Flex>
-            <Box mx={1}>
-              <H2>
+        <Box mx={2}>
+          <Flex flexDirection="column" alignItems="center">
+            <H1>
+              <Serif size="5">{props.artist.name}</Serif>
+            </H1>
+            <Flex>
+              <Box mx={1}>
+                <H2>
+                  <Serif size="2">
+                    {props.artist.nationality &&
+                      `${props.artist.nationality}, `}
+                    {props.artist.years}
+                  </Serif>
+                </H2>
+              </Box>
+              {props.artist.counts.follows > 50 && (
                 <Serif size="2">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
+                  {props.artist.counts.follows.toLocaleString()} followers
                 </Serif>
-              </H2>
-            </Box>
-            {props.artist.counts.follows > 50 && (
-              <Serif size="2">
-                {props.artist.counts.follows.toLocaleString()} followers
-              </Serif>
-            )}
+              )}
+            </Flex>
           </Flex>
-        </Flex>
-        <Box my={2}>
-          <FollowArtistButton
-            artist={props.artist}
-            useDeprecatedButtonStyle={false}
-            buttonProps={{ width: "100%" }}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
+          <Box my={2}>
+            <FollowArtistButton
+              artist={props.artist}
+              useDeprecatedButtonStyle={false}
+              buttonProps={{ width: "100%" }}
+              user={user}
+              onOpenAuthModal={() =>
+                handleOpenAuth(props.mediator, props.artist)
+              }
+            >
+              Follow
+            </FollowArtistButton>
+          </Box>
         </Box>
       </Flex>
     )
