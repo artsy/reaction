@@ -1,3 +1,15 @@
+# v22.9.5 (Wed Dec 04 2019)
+
+#### 🐛  Bug Fix
+
+- Modifies waypoint method call [#3038](https://github.com/artsy/reaction/pull/3038) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v22.9.4 (Tue Dec 03 2019)
 
 #### 🐛  Bug Fix
