@@ -1,4 +1,4 @@
-import { Flex, Image, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, ResponsiveImage, Sans, Serif } from "@artsy/palette"
 import { LotInfo_artwork } from "__generated__/LotInfo_artwork.graphql"
 import { LotInfo_saleArtwork } from "__generated__/LotInfo_saleArtwork.graphql"
 import React from "react"
@@ -16,9 +16,9 @@ export const LotInfo: React.FC<Props> = ({ artwork, saleArtwork }) => {
   } = saleArtwork
   return (
     <Flex py={4}>
-      <Flex maxWidth="150px">
-        <Image width="100%" src={artwork.imageUrl} />
-      </Flex>
+      <Box maxWidth="150px" width="100%" height="auto" p={0}>
+        <ResponsiveImage src={artwork.imageUrl} />
+      </Box>
       <Flex pl={3} pt={1} flexDirection="column">
         <Sans size="3" weight="medium" color="black100">
           Lot {saleArtwork.lotLabel}
