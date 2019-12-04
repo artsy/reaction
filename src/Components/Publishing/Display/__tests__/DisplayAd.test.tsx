@@ -62,7 +62,7 @@ describe("Display Ad", () => {
     component
       .find(Waypoint)
       .getElement()
-      .props.onEnter()
+      .props.onLeave()
 
     expect(dispatch).toBeCalledWith({
       action_type: "Impression",
