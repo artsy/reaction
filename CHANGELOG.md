@@ -1,3 +1,15 @@
+# v22.9.7 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Bring back arrows removed by #3036 [#3044](https://github.com/artsy/reaction/pull/3044) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v22.9.6 (Thu Dec 05 2019)
 
 #### 🐛  Bug Fix
