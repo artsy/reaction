@@ -1,5 +1,6 @@
 import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -102,62 +103,67 @@ export class LargeArtistHeader extends Component<Props> {
     const isAdmin = userIsAdmin(user)
 
     return (
-      <Box width="100%">
-        {hasImages && (
-          <Carousel
-            height="200px"
-            options={{ pageDots: false }}
-            data={carousel.images as object[]}
-            render={(slide: Image, slideIndex: number) => {
-              return (
-                <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                  <Image
-                    px={0.3}
-                    lazyLoad={slideIndex > 5}
-                    src={slide.resized.url}
-                    width={slide.resized.width}
-                    height={slide.resized.height}
-                    preventRightClick={!isAdmin}
-                  />
-                </a>
-              )
-            }}
-          />
-        )}
-        <Spacer my={2} />
+      <HorizontalPadding>
+        <Box width="100%">
+          {hasImages && (
+            <Carousel
+              height="200px"
+              options={{ pageDots: false }}
+              data={carousel.images as object[]}
+              render={(slide: Image, slideIndex: number) => {
+                return (
+                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                    <Image
+                      px={0.3}
+                      lazyLoad={slideIndex > 5}
+                      src={slide.resized.url}
+                      width={slide.resized.width}
+                      height={slide.resized.height}
+                      preventRightClick={!isAdmin}
+                    />
+                  </a>
+                )
+              }}
+            />
+          )}
+          <Spacer my={2} />
 
-        <span id="jumpto-ArtistHeader" />
+          <span id="jumpto-ArtistHeader" />
 
-        <Flex justifyContent="space-between">
-          <Box>
-            <H1>
-              <Serif size="10">{props.artist.name}</Serif>
-            </H1>
-            <Flex>
-              <H2>
-                <Serif size="3">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
-                </Serif>
-              </H2>
-              <Spacer mr={2} />
-              {props.artist.counts.follows > 50 && (
-                <Serif size="3">
-                  {props.artist.counts.follows.toLocaleString()} followers
-                </Serif>
-              )}
-            </Flex>
-          </Box>
-          <FollowArtistButton
-            useDeprecatedButtonStyle={false}
-            artist={props.artist}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
-        </Flex>
-      </Box>
+          <Flex justifyContent="space-between">
+            <Box>
+              <H1>
+                <Serif size="10">{props.artist.name}</Serif>
+              </H1>
+              <Flex>
+                <H2>
+                  <Serif size="3">
+                    {props.artist.nationality &&
+                      `${props.artist.nationality}, `}
+                    {props.artist.years}
+                  </Serif>
+                </H2>
+                <Spacer mr={2} />
+                {props.artist.counts.follows > 50 && (
+                  <Serif size="3">
+                    {props.artist.counts.follows.toLocaleString()} followers
+                  </Serif>
+                )}
+              </Flex>
+            </Box>
+            <FollowArtistButton
+              useDeprecatedButtonStyle={false}
+              artist={props.artist}
+              user={user}
+              onOpenAuthModal={() =>
+                handleOpenAuth(props.mediator, props.artist)
+              }
+            >
+              Follow
+            </FollowArtistButton>
+          </Flex>
+        </Box>
+      </HorizontalPadding>
     )
   }
 }
