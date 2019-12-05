@@ -1,3 +1,20 @@
+# v22.9.6 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Maintain proper aspect ratio for image on confirm bid [#3042](https://github.com/artsy/reaction/pull/3042) ([@dleve123](https://github.com/dleve123))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.2 to v3.7.3 [#3041](https://github.com/artsy/reaction/pull/3041) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v22.9.5 (Wed Dec 04 2019)
 
 #### 🐛  Bug Fix
