@@ -46,7 +46,6 @@ export const collectRoutes: RouteConfig[] = [
           first: 30
         ) {
           ...SeoProductsForArtworks_artworks
-          ...SeoProductsForCollections_artworks
         }
         viewer {
           ...ArtworkFilter_viewer

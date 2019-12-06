@@ -71,7 +71,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
     const showCollectionHubs = collection.linkedCollections.length > 0
-
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -256,7 +255,6 @@ export const CollectionRefetchContainer = createRefetchContainer(
         ) {
           ...Header_artworks
           ...SeoProductsForArtworks_artworks
-          ...SeoProductsForCollections_artworks
           aggregations {
             slice
             counts {
@@ -266,6 +264,51 @@ export const CollectionRefetchContainer = createRefetchContainer(
             }
           }
         }
+
+        descending_artworks: artworksConnection(
+          aggregations: $aggregations
+          includeMediumFilterInAggregation: true
+          first: 1
+          sort: "sold,-has_price,-prices"
+        ) {
+          ...SeoProductsForCollections_descending_artworks
+          aggregations {
+            slice
+            counts {
+              value
+              name
+              count
+            }
+          }
+        }
+
+        #These two things are going to get highest price and lowest price of the artwork on the collection page.
+        #descending_artworks: artworksConnection(
+        # aggregations: $aggregations
+        #  includeMediumFilterInAggregation: true
+        #  size:1
+        # first: 1
+        # sort: "sold,-has_price,-prices"
+        # ) {
+        #  ...SeoProductsForCollections_descending_artworks
+        #  aggregations {
+        #    slice
+        #   counts {
+        #     value
+        #     name
+        #     count
+        #   }
+        # }
+        #  }
+
+        #ascending_artworks: artworksConnection(
+        # aggregations: $aggregations
+        # first: 1
+        # sort: "sold,-has_price,prices"
+        #) {
+        #  ...SmallestPriceArtwork_ascending_artworks
+        #}
+
         filtered_artworks: artworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations

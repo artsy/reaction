@@ -2,7 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type SeoProductsForCollections_artworks = {
+export type SeoProductsForCollections_descending_artworks = {
     readonly edges: ReadonlyArray<{
         readonly node: {
             readonly id: string;
@@ -30,12 +30,12 @@ export type SeoProductsForCollections_artworks = {
             }) | null;
         } | null;
     } | null> | null;
-    readonly " $refType": "SeoProductsForCollections_artworks";
+    readonly " $refType": "SeoProductsForCollections_descending_artworks";
 };
-export type SeoProductsForCollections_artworks$data = SeoProductsForCollections_artworks;
-export type SeoProductsForCollections_artworks$key = {
-    readonly " $data"?: SeoProductsForCollections_artworks$data;
-    readonly " $fragmentRefs": FragmentRefs<"SeoProductsForCollections_artworks">;
+export type SeoProductsForCollections_descending_artworks$data = SeoProductsForCollections_descending_artworks;
+export type SeoProductsForCollections_descending_artworks$key = {
+    readonly " $data"?: SeoProductsForCollections_descending_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"SeoProductsForCollections_descending_artworks">;
 };
 
 
@@ -59,7 +59,7 @@ var v0 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "SeoProductsForCollections_artworks",
+  "name": "SeoProductsForCollections_descending_artworks",
   "type": "FilterArtworksConnection",
   "metadata": null,
   "argumentDefinitions": [],
@@ -166,5 +166,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd4f06a646fa1e4363f33d82d2e144ca5';
+(node as any).hash = '753320dbc3a5558877757c65a0526b36';
 export default node;

@@ -1,11 +1,11 @@
-import { SeoProductsForCollections_artworks } from "__generated__/SeoProductsForCollections_artworks.graphql"
-import { Product } from "Components/v2/Seo/Product"
+// import { SeoProductsForCollections_descending_artworks } from "__generated__/SeoProductsForCollections_descending_artworks.graphql"
+// import { Product } from "Components/v2/Seo/Product"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 
 export interface SeoProductsProps {
-  artworks: SeoProductsForCollections_artworks
+  artworks: any
   collectionDescription: string
   collectionURL: string
   collectionName: string
@@ -47,28 +47,31 @@ export const getMaxMinPrice = priceableArtworks => {
   return priceRange
 }
 
-export const getFilteredArtworks = artworks => {
-  const filtedWorks = artworks.edges.filter(edge => {
-    return (
-      edge.node.listPrice &&
-      edge.node.sale_message !== "Contact For Price" &&
-      edge.node.sale_message !== "Sold"
-    )
-  })
-  return filtedWorks
-}
+// export const getFilteredArtworks = artworks => {
+//   console.log("showme", artworks)
+//   const filtedWorks = artworks.edges.filter(edge => {
+//     return (
+//       edge.node.listPrice &&
+//       edge.node.sale_message !== "Contact For Price" &&
+//       edge.node.sale_message !== "Sold"
+//     )
+//   })
+//   return filtedWorks
+// }
 
 export class SeoProducts extends React.Component<SeoProductsProps> {
   render() {
     const {
       artworks,
-      collectionDescription,
-      collectionName,
-      collectionURL,
+      // collectionDescription,
+      // collectionName,
+      // collectionURL,
     } = this.props
-    const priceAbleArtworks = getFilteredArtworks(artworks)
+    console.log(artworks)
+    // const priceAbleArtworks = getFilteredArtworks(artworks)
     return (
       <>
+        {/*
         <Product
           data={{
             name: collectionName,
@@ -83,14 +86,15 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
             },
           }}
         />
+        */}
       </>
     )
   }
 }
 
 export const SeoProductsForCollections = createFragmentContainer(SeoProducts, {
-  artworks: graphql`
-    fragment SeoProductsForCollections_artworks on FilterArtworksConnection {
+  descending_artworks: graphql`
+    fragment SeoProductsForCollections_descending_artworks on FilterArtworksConnection {
       edges {
         node {
           id
