@@ -43,7 +43,9 @@ describe("Artsy context", () => {
             expect(Object.keys(props).sort()).toEqual([
               "isFetching",
               "relayEnvironment",
+              "router",
               "setIsFetching",
+              "setRouter",
               "user",
             ])
             setImmediate(done)
