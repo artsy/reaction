@@ -57,12 +57,10 @@ describe("Seo Products for Collection Page", () => {
   })
 
   it("pass data into the component, and it correctly re-shows itself on ld-json", () => {
-    console.log("f", props.descending_artworks.edges[0].node.listPrice)
     const handledItems = getMaxMinPrice(
       props.descending_artworks,
       props.ascending_artworks
     )
-    console.log("hhh", handledItems)
 
     const expectedData = {
       "@context": "http://schema.org",
