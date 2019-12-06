@@ -62,6 +62,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
       headerImage,
       description,
       artworksConnection,
+      descending_artworks,
+      ascending_artworks,
     } = collection
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
@@ -92,7 +94,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
           )}
           {artworksConnection && (
             <SeoProductsForCollections
-              artworks={artworksConnection}
+              descending_artworks={descending_artworks}
+              ascending_artworks={ascending_artworks}
               collectionDescription={description}
               collectionURL={collectionHref}
               collectionName={title}
@@ -265,49 +268,26 @@ export const CollectionRefetchContainer = createRefetchContainer(
           }
         }
 
+        #These two things are going to get highest price and lowest price of the artwork on the collection page.
         descending_artworks: artworksConnection(
           aggregations: $aggregations
           includeMediumFilterInAggregation: true
           first: 1
+          size: 1
           sort: "sold,-has_price,-prices"
         ) {
           ...SeoProductsForCollections_descending_artworks
-          aggregations {
-            slice
-            counts {
-              value
-              name
-              count
-            }
-          }
         }
 
-        #These two things are going to get highest price and lowest price of the artwork on the collection page.
-        #descending_artworks: artworksConnection(
-        # aggregations: $aggregations
-        #  includeMediumFilterInAggregation: true
-        #  size:1
-        # first: 1
-        # sort: "sold,-has_price,-prices"
-        # ) {
-        #  ...SeoProductsForCollections_descending_artworks
-        #  aggregations {
-        #    slice
-        #   counts {
-        #     value
-        #     name
-        #     count
-        #   }
-        # }
-        #  }
-
-        #ascending_artworks: artworksConnection(
-        # aggregations: $aggregations
-        # first: 1
-        # sort: "sold,-has_price,prices"
-        #) {
-        #  ...SmallestPriceArtwork_ascending_artworks
-        #}
+        ascending_artworks: artworksConnection(
+          aggregations: $aggregations
+          includeMediumFilterInAggregation: true
+          first: 1
+          size: 1
+          sort: "sold,-has_price,prices"
+        ) {
+          ...SeoProductsForCollections_ascending_artworks
+        }
 
         filtered_artworks: artworksConnection(
           acquireable: $acquireable

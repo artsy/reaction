@@ -2,7 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type SeoProductsForCollections_descending_artworks = {
+export type SeoProductsForCollections_ascending_artworks = {
     readonly edges: ReadonlyArray<{
         readonly node: {
             readonly id: string;
@@ -28,12 +28,12 @@ export type SeoProductsForCollections_descending_artworks = {
             }) | null;
         } | null;
     } | null> | null;
-    readonly " $refType": "SeoProductsForCollections_descending_artworks";
+    readonly " $refType": "SeoProductsForCollections_ascending_artworks";
 };
-export type SeoProductsForCollections_descending_artworks$data = SeoProductsForCollections_descending_artworks;
-export type SeoProductsForCollections_descending_artworks$key = {
-    readonly " $data"?: SeoProductsForCollections_descending_artworks$data;
-    readonly " $fragmentRefs": FragmentRefs<"SeoProductsForCollections_descending_artworks">;
+export type SeoProductsForCollections_ascending_artworks$data = SeoProductsForCollections_ascending_artworks;
+export type SeoProductsForCollections_ascending_artworks$key = {
+    readonly " $data"?: SeoProductsForCollections_ascending_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"SeoProductsForCollections_ascending_artworks">;
 };
 
 
@@ -57,7 +57,7 @@ var v0 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "SeoProductsForCollections_descending_artworks",
+  "name": "SeoProductsForCollections_ascending_artworks",
   "type": "FilterArtworksConnection",
   "metadata": null,
   "argumentDefinitions": [],
@@ -150,5 +150,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '31cfab99d23880ca64f6dab67bb8d39b';
+(node as any).hash = 'cd042396a84a9f2782d46cbcbd2ebc0a';
 export default node;
