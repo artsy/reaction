@@ -140,6 +140,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 <RelatedCollectionsRail
                   collections={collection.relatedCollections}
                   title={collection.title}
+                  lazyLoadImages
                 />
               </Box>
             </>
