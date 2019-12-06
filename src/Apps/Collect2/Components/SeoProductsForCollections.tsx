@@ -14,15 +14,16 @@ export interface SeoProductsProps {
 }
 
 export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
-  const result = { min: null, max: null }
+  const result = { min: "", max: "" }
   if (!descending_artworks.edges[0].node.listPrice) return null
   switch (descending_artworks.edges[0].node.listPrice.__typename) {
     case "PriceRange":
-      if (!descending_artworks.edges[0].node.listPrice.maxPrice) return null
-      if (descending_artworks.edges[0].node.listPrice.maxPrice) {
+      if (!descending_artworks.edges[0].node.listPrice.maxPrice.major)
+        return null
+      if (descending_artworks.edges[0].node.listPrice.maxPrice.major) {
         result.max = get(
           descending_artworks,
-          p => p.edges[0].node.listPrice.maxPrice
+          p => p.edges[0].node.listPrice.maxPrice.major
         )
       }
     case "Money":
@@ -37,11 +38,12 @@ export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
   if (!ascending_artworks.edges[0].node.listPrice) return null
   switch (ascending_artworks.edges[0].node.listPrice.__typename) {
     case "PriceRange":
-      if (!ascending_artworks.edge[0].node.listPrice.minPrice) return null
-      if (ascending_artworks.edge[0].node.listPrice.minPrice) {
+      if (!ascending_artworks.edges[0].node.listPrice.minPrice.major)
+        return null
+      if (ascending_artworks.edges[0].node.listPrice.minPrice.major) {
         result.min = get(
           ascending_artworks,
-          p => p.edges[0].node.listPrice.minPrice
+          p => p.edges[0].node.listPrice.minPrice.major
         )
       }
     case "Money":
@@ -53,6 +55,7 @@ export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
         )
       }
   }
+
   return result
 }
 
@@ -65,7 +68,6 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
       collectionName,
       collectionURL,
     } = this.props
-    console.log("hahaha", descending_artworks)
     const handledItems = getMaxMinPrice(descending_artworks, ascending_artworks)
     return (
       <>

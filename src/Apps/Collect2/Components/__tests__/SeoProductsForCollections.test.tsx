@@ -14,14 +14,15 @@ describe("Seo Products for Collection Page", () => {
           {
             node: {
               listPrice: {
-                __typename: "PriceRange",
                 minPrice: {
                   major: 8800,
                   currencyCode: "USD",
+                  __typename: "PriceRange",
                 },
                 maxPrice: {
                   major: 9000,
                   currencyCode: "USD",
+                  __typename: "PriceRange",
                 },
               },
             },
@@ -34,14 +35,15 @@ describe("Seo Products for Collection Page", () => {
           {
             node: {
               listPrice: {
-                __typename: "PriceRange",
                 minPrice: {
                   major: 10,
                   currencyCode: "USD",
+                  __typename: "PriceRange",
                 },
                 maxPrice: {
                   major: 20,
                   currencyCode: "USD",
+                  __typename: "PriceRange",
                 },
               },
             },
@@ -54,12 +56,13 @@ describe("Seo Products for Collection Page", () => {
     }
   })
 
-  it("send data into the component, and it correctly re-shows itself on ld-json", () => {
+  it("pass data into the component, and it correctly re-shows itself on ld-json", () => {
+    console.log("f", props.descending_artworks.edges[0].node.listPrice)
     const handledItems = getMaxMinPrice(
       props.descending_artworks,
       props.ascending_artworks
     )
-    console.log("hhh", handledItems.max)
+    console.log("hhh", handledItems)
 
     const expectedData = {
       "@context": "http://schema.org",
@@ -97,7 +100,7 @@ describe("Seo Products for Collection Page", () => {
     expect(
       wrapper.html().includes("name" && "A fake name for collection")
     ).toBe(true)
-    expect(wrapper.html().includes("lowPrice" && "12")).toBe(true),
-      expect(wrapper.html().includes("highPrice" && "8000")).toBe(true)
+    expect(wrapper.html().includes("lowPrice" && "10")).toBe(true),
+      expect(wrapper.html().includes("highPrice" && "9000")).toBe(true)
   })
 })
