@@ -1,3 +1,15 @@
+# v22.10.1 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1681] adds analytics events to the navbar notification menu [#3048](https://github.com/artsy/reaction/pull/3048) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v22.10.0 (Mon Dec 09 2019)
 
 #### 🚀  Enhancement
