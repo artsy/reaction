@@ -1,3 +1,15 @@
+# v22.10.2 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- Bump version of lazy-load lib to fix SSR issue [#3049](https://github.com/artsy/reaction/pull/3049) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v22.10.1 (Mon Dec 09 2019)
 
 #### 🐛  Bug Fix
