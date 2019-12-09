@@ -1,5 +1,7 @@
+import { AnalyticsSchema } from "Artsy/Analytics"
 import React, { useContext } from "react"
 import { graphql } from "react-relay"
+import { useTracking } from "react-tracking"
 
 import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
@@ -36,12 +38,29 @@ export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = p
     []
   )
 
+  const { trackEvent } = useTracking()
+
+  const handleClick = (href: string, subject: string) => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_module: AnalyticsSchema.ContextModule.HeaderActivityDropdown,
+      destination_path: href,
+      subject,
+    })
+  }
+
   return (
     <>
       {notifications.map(({ node }, index) => {
         const { artists, href, image, summary } = node
         return (
-          <MenuItem href={href} key={index}>
+          <MenuItem
+            href={href}
+            key={index}
+            onClick={() => {
+              handleClick(href, AnalyticsSchema.Subject.Notification)
+            }}
+          >
             <Flex alignItems="center">
               <Box width={40} height={40} bg="black5" mr={1}>
                 <Image
@@ -80,7 +99,14 @@ export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = p
 
           <Box pt={2}>
             <Sans size="2">
-              <Link href="/works-for-you">View all</Link>
+              <Link
+                href="/works-for-you"
+                onClick={() => {
+                  handleClick("/works-for-you", AnalyticsSchema.Subject.ViewAll)
+                }}
+              >
+                View all
+              </Link>
             </Sans>
           </Box>
         </>

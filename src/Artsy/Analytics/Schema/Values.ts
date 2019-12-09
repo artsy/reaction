@@ -254,6 +254,8 @@ export enum Subject {
    * Header
    */
   NotificationBell = "Notification Bell",
+  Notification = "Notification",
+  ViewAll = "View All",
   Login = "Log In",
   Signup = "Sign Up",
   SmallScreenMenuSandwichIcon = "Small Screen Menu Sandwich Icon",
@@ -273,6 +275,7 @@ export enum ContextModule {
   RecentlyViewedArtworks = "recently_viewed_artworks",
   HeaderMoreDropdown = "HeaderMoreDropdown",
   HeaderUserDropdown = "HeaderUserDropdown",
+  HeaderActivityDropdown = "HeaderActivityDropdown",
 
   /**
    * Artist page
