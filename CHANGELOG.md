@@ -1,3 +1,16 @@
+# v22.10.0 (Mon Dec 09 2019)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 5.1.5 to v5.1.11 [#2985](https://github.com/artsy/reaction/pull/2985) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v22.9.7 (Thu Dec 05 2019)
 
 #### 🐛  Bug Fix
