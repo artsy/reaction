@@ -1,7 +1,7 @@
 import { AnalyticsSchema } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import React, { useContext } from "react"
 import { graphql } from "react-relay"
-import { useTracking } from "react-tracking"
 
 import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
