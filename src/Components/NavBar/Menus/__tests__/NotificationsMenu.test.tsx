@@ -1,8 +1,21 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NotificationMenuItems } from "../NotificationsMenu"
 
+jest.mock("Artsy/Analytics/useTracking")
+
 describe("NotificationsMenu", () => {
+  const trackEvent = jest.fn()
+
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
   const getWrapper = (props = NotificationMenuFixture) => {
     return mount(<NotificationMenuItems {...props} />)
   }
