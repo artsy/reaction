@@ -129,13 +129,6 @@ export const NavBar: React.FC = track(
                   }}
                 >
                   {({ hover }) => {
-                    if (hover) {
-                      trackEvent({
-                        action_type: AnalyticsSchema.ActionType.Hover,
-                        subject: AnalyticsSchema.Subject.NotificationBell,
-                        new_notification_count: getNotificationCount(),
-                      })
-                    }
                     return (
                       <BellIcon
                         top={3}
