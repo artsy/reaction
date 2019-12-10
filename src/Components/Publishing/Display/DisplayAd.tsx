@@ -6,7 +6,6 @@ import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import React, { useState } from "react"
 import { Bling as GPT } from "react-gpt"
-import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import Events from "Utils/Events"
 
@@ -84,6 +83,9 @@ export const DisplayAd = track(
       onSlotRenderEnded={event => {
         setIsAdEmpty(event.isEmpty)
       }}
+      onImpressionViewable={() => {
+        trackImpression()
+      }}
     />
   )
 
@@ -92,7 +94,6 @@ export const DisplayAd = track(
   }
   return (
     <>
-      <Waypoint onEnter={() => trackImpression()} bottomOffset="100px" />
       <DisplayAdContainer
         onClick={() => trackClick()}
         flexDirection="column"
