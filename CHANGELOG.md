@@ -1,3 +1,15 @@
+# v22.10.3 (Tue Dec 10 2019)
+
+#### 🐛  Bug Fix
+
+- Add lazy loading to collections rail [#3047](https://github.com/artsy/reaction/pull/3047) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v22.10.2 (Mon Dec 09 2019)
 
 #### 🐛  Bug Fix
