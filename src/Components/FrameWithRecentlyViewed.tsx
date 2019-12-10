@@ -9,7 +9,6 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
-import { getENV } from "Utils/getENV"
 
 export interface Props {
   name?: string

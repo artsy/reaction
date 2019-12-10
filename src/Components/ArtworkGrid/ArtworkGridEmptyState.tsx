@@ -25,7 +25,9 @@ export const ArtworkGridEmptyState: React.SFC<ArtworkGridEmptyStateProps> = prop
   </Message>
 )
 
-const ResetFilterLink = styled.span`
+export const ResetFilterLink = styled.span`
   text-decoration: underline;
   cursor: pointer;
 `
+
+ResetFilterLink.displayName = "ResetFilterLink"
