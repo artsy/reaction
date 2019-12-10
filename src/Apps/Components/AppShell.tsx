@@ -2,7 +2,6 @@ import { Box } from "@artsy/palette"
 import React from "react"
 
 import { NavBar } from "Components/NavBar"
-import { Footer } from "Components/v2"
 
 export const AppShell = props => {
   const { children } = props
@@ -17,10 +16,6 @@ export const AppShell = props => {
 
       <Box>
         <Box>{children}</Box>
-
-        <Box px={4}>
-          <Footer />
-        </Box>
       </Box>
     </Box>
   )
