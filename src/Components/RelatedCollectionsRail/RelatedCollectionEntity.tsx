@@ -1,4 +1,13 @@
-import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import {
+  Box,
+  color,
+  Flex,
+  Image,
+  Link,
+  Sans,
+  Serif,
+  WebImageProps,
+} from "@artsy/palette"
 import { RelatedCollectionEntity_collection } from "__generated__/RelatedCollectionEntity_collection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -12,6 +21,7 @@ import { get } from "Utils/get"
 
 export interface CollectionProps {
   collection: RelatedCollectionEntity_collection
+  lazyLoad?: boolean
 }
 
 @track()
@@ -28,6 +38,7 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
   }
 
   render() {
+    const { lazyLoad } = this.props
     const {
       artworksConnection,
       headerImage,
@@ -63,6 +74,7 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
                       src={url}
                       width={imageSize}
                       alt={alt}
+                      lazyLoad={lazyLoad}
                     />
                   </SingleImgContainer>
                 )
@@ -123,8 +135,7 @@ const ImgOverlay = styled(Box)<{ width: number }>`
   z-index: 7;
 `
 
-export const ArtworkImage = styled.img<{ width: number }>`
-  width: ${({ width }) => width}px;
+export const ArtworkImage = styled(Image)<WebImageProps>`
   height: 125px;
   background-color: ${color("black10")};
   object-fit: cover;
