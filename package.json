@@ -237,6 +237,12 @@
   },
   "jest": {
     "cacheDirectory": ".cache/jest",
+    "coverageDirectory": "coverage",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ],
     "transform": {
       "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
       "\\.graphql$": "jest-raw-loader"
