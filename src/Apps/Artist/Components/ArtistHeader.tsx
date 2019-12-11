@@ -1,4 +1,16 @@
-import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
+import {
+  AuctionIcon,
+  BlueChipIcon,
+  Box,
+  color,
+  Flex,
+  Image,
+  Sans,
+  Serif,
+  Spacer,
+  TopEmergingIcon,
+  TopEstablishedIcon,
+} from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
@@ -11,6 +23,7 @@ import styled from "styled-components"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 import { userIsAdmin } from "Utils/user"
+import { highestCategory } from "./MarketInsights/MarketInsights"
 
 /**
  * This H1 and H2 were added for SEO purposes
@@ -101,62 +114,82 @@ export class LargeArtistHeader extends Component<Props> {
     const hasImages = carousel && carousel.images
     const isAdmin = userIsAdmin(user)
 
+    console.table(props.artist.highlights.partnersConnection)
+
     return (
-      <Box width="100%">
-        {hasImages && (
-          <Carousel
-            height="200px"
-            data={carousel.images as object[]}
-            render={(slide: Image, slideIndex: number) => {
-              return (
-                <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                  <Image
-                    px={5}
-                    lazyLoad={slideIndex > 5}
-                    src={slide.resized.url}
-                    width={slide.resized.width}
-                    height={slide.resized.height}
-                    preventRightClick={!isAdmin}
-                  />
-                </a>
-              )
-            }}
-          />
-        )}
-        <Spacer my={2} />
+      <>
+        <Box width="100%">
+          {hasImages && (
+            <Carousel
+              height="200px"
+              data={carousel.images as object[]}
+              render={(slide: Image, slideIndex: number) => {
+                return (
+                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                    <Image
+                      px={5}
+                      lazyLoad={slideIndex > 5}
+                      src={slide.resized.url}
+                      width={slide.resized.width}
+                      height={slide.resized.height}
+                      preventRightClick={!isAdmin}
+                    />
+                  </a>
+                )
+              }}
+            />
+          )}
+          <Spacer my={2} />
 
-        <span id="jumpto-ArtistHeader" />
+          <span id="jumpto-ArtistHeader" />
 
-        <Flex justifyContent="space-between">
-          <Box>
-            <H1>
-              <Serif size="10">{props.artist.name}</Serif>
-            </H1>
-            <Flex>
-              <H2>
-                <Serif size="3">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
-                </Serif>
-              </H2>
-              <Spacer mr={2} />
+          <Flex justifyContent="space-between">
+            <Box>
+              <H1>
+                <Serif size="10">{props.artist.name}</Serif>
+              </H1>
+              <Flex>
+                <H2>
+                  <Serif size="3">
+                    {props.artist.nationality &&
+                      `${props.artist.nationality}, `}
+                    {props.artist.years}
+                  </Serif>
+                </H2>
+                <Spacer mr={2} />
+              </Flex>
+            </Box>
+            <Flex justifyContent="space-between">
               {props.artist.counts.follows > 50 && (
-                <Serif size="3">
-                  {props.artist.counts.follows.toLocaleString()} followers
-                </Serif>
+                <Flex flexDirection="column">
+                  <Sans size="4" weight="medium">
+                    {props.artist.counts.follows.toLocaleString()}
+                  </Sans>
+                  <Sans size="2" color="black60" weight="medium">
+                    Followers
+                  </Sans>
+                </Flex>
               )}
+              <Spacer mr={3} />
+              <FollowArtistButton
+                useDeprecatedButtonStyle={false}
+                artist={props.artist}
+                user={user}
+                onOpenAuthModal={() =>
+                  handleOpenAuth(props.mediator, props.artist)
+                }
+              >
+                Follow
+              </FollowArtistButton>
             </Flex>
-          </Box>
-          <FollowArtistButton
-            useDeprecatedButtonStyle={false}
-            artist={props.artist}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
+          </Flex>
+        </Box>
+        <Spacer mb={1} />
+        <Flex flexDirection="row">
+          {renderAuctionHighlight(props.artist)}
+          {renderRepresentationStatus(props.artist)}
         </Flex>
-      </Box>
+      </>
     )
   }
 }
@@ -211,7 +244,6 @@ export class SmallArtistHeader extends Component<Props> {
             <Spacer my={2} />
           </Fragment>
         )}
-
         <span id="jumpto-ArtistHeader" />
         <Flex flexDirection="column" alignItems="center">
           <H1>
@@ -226,24 +258,54 @@ export class SmallArtistHeader extends Component<Props> {
                 </Serif>
               </H2>
             </Box>
-            {props.artist.counts.follows > 50 && (
-              <Serif size="2">
-                {props.artist.counts.follows.toLocaleString()} followers
-              </Serif>
-            )}
           </Flex>
         </Flex>
-        <Box my={2}>
-          <FollowArtistButton
-            artist={props.artist}
-            useDeprecatedButtonStyle={false}
-            buttonProps={{ width: "100%" }}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
-        </Box>
+        <Spacer mb={0.5} />
+        <Flex flexDirection="row" justifyContent="center">
+          {props.artist.counts.follows > 50 && (
+            <Flex>
+              <Sans size="2" weight="medium">
+                {props.artist.counts.follows.toLocaleString()} followers
+              </Sans>
+              <Sans size="2" color="black100" mx={0.3} display="inline-block">
+                •
+              </Sans>
+            </Flex>
+          )}
+          <Flex>
+            <FollowArtistButton
+              artist={props.artist}
+              useDeprecatedButtonStyle={false}
+              buttonProps={{ width: "100%" }}
+              user={user}
+              render={({ is_followed }) => {
+                return (
+                  <Sans
+                    size="2"
+                    weight="medium"
+                    color="black"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {is_followed ? "Following" : "Follow"}
+                  </Sans>
+                )
+              }}
+              onOpenAuthModal={() =>
+                handleOpenAuth(props.mediator, props.artist)
+              }
+            >
+              Follow
+            </FollowArtistButton>
+          </Flex>
+        </Flex>
+        <Spacer mb={1} />
+        <Flex flexDirection="row" justifyContent="center">
+          {renderAuctionHighlight(props.artist)}
+          {renderRepresentationStatus(props.artist)}
+        </Flex>
       </Flex>
     )
   }
@@ -257,11 +319,115 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
+const RoundedFlex = styled(Flex)`
+  border-radius: 100px;
+`
+
+const renderAuctionHighlight = artist => {
+  if (
+    !artist.auctionResultsConnection ||
+    artist.auctionResultsConnection.edges.length < 1
+  ) {
+    return null
+  }
+  const topAuctionResult =
+    artist.auctionResultsConnection.edges[0].node.price_realized.display
+
+  return (
+    <RoundedFlex
+      background={color("black5")}
+      width="auto"
+      py={5}
+      px={10}
+      mr={5}
+    >
+      <AuctionIcon pr={5} />
+      <Sans size="2">{topAuctionResult} Auction Record</Sans>
+    </RoundedFlex>
+  )
+}
+
+const CATEGORIES = {
+  "blue-chip": "Blue chip",
+  "top-established": "Established",
+  "top-emerging": "Emerging",
+}
+
+const ICON_MAPPING = {
+  BLUE_CHIP: BlueChipIcon,
+  TOP_ESTABLISHED: TopEstablishedIcon,
+  TOP_EMERGING: TopEmergingIcon,
+}
+
+const renderRepresentationStatus = artist => {
+  const { highlights } = artist
+  const { partnersConnection } = highlights
+  if (
+    partnersConnection &&
+    partnersConnection.edges &&
+    partnersConnection.edges.length > 0
+  ) {
+    const highCategory = highestCategory(partnersConnection.edges)
+    const type = highCategory.toUpperCase().replace("-", "_")
+
+    return (
+      <RoundedFlex background={color("black5")} width="auto" py={5} px={10}>
+        {renderIcon(type)}
+        <Sans size="2">{CATEGORIES[highCategory]}</Sans>
+      </RoundedFlex>
+    )
+  }
+}
+
+const renderIcon = insightType => {
+  const Icon = ICON_MAPPING[insightType]
+
+  return <Icon pr={5} />
+}
+
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   {
     artist: graphql`
-      fragment ArtistHeader_artist on Artist {
+      fragment ArtistHeader_artist on Artist
+        @argumentDefinitions(
+          partnerCategory: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
+          }
+        ) {
+        highlights {
+          partnersConnection(
+            first: 10
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
+          ) {
+            edges {
+              node {
+                categories {
+                  slug
+                }
+              }
+            }
+          }
+        }
+
+        auctionResultsConnection(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized: priceRealized {
+                display(format: "0a")
+              }
+              organization
+              sale_date: saleDate(format: "YYYY")
+            }
+          }
+        }
         internalID
         slug
         name

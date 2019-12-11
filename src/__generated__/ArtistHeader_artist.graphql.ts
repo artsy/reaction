@@ -3,6 +3,28 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ArtistHeader_artist = {
+    readonly highlights: {
+        readonly partnersConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly categories: ReadonlyArray<{
+                        readonly slug: string;
+                    } | null> | null;
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly auctionResultsConnection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly price_realized: {
+                    readonly display: string | null;
+                } | null;
+                readonly organization: string | null;
+                readonly sale_date: string | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly internalID: string;
     readonly slug: string;
     readonly name: string | null;
@@ -32,13 +54,202 @@ export type ArtistHeader_artist$key = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "slug",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtistHeader_artist",
   "type": "Artist",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "partnerCategory",
+      "type": "[String]",
+      "defaultValue": [
+        "blue-chip",
+        "top-established",
+        "top-emerging"
+      ]
+    }
+  ],
   "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "highlights",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistHighlights",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "partnersConnection",
+          "storageKey": null,
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "displayOnPartnerProfile",
+              "value": true
+            },
+            {
+              "kind": "Literal",
+              "name": "first",
+              "value": 10
+            },
+            {
+              "kind": "Variable",
+              "name": "partnerCategory",
+              "variableName": "partnerCategory"
+            },
+            {
+              "kind": "Literal",
+              "name": "representedBy",
+              "value": true
+            }
+          ],
+          "concreteType": "PartnerArtistConnection",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "PartnerArtistEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Partner",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "categories",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "PartnerCategory",
+                      "plural": true,
+                      "selections": [
+                        (v0/*: any*/)
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "auctionResultsConnection",
+      "storageKey": "auctionResultsConnection(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "first",
+          "value": 1
+        },
+        {
+          "kind": "Literal",
+          "name": "recordsTrusted",
+          "value": true
+        },
+        {
+          "kind": "Literal",
+          "name": "sort",
+          "value": "PRICE_AND_DATE_DESC"
+        }
+      ],
+      "concreteType": "AuctionResultConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "AuctionResultEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "AuctionResult",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": "price_realized",
+                  "name": "priceRealized",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "AuctionResultPriceRealized",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "display",
+                      "args": [
+                        {
+                          "kind": "Literal",
+                          "name": "format",
+                          "value": "0a"
+                        }
+                      ],
+                      "storageKey": "display(format:\"0a\")"
+                    }
+                  ]
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "organization",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": "sale_date",
+                  "name": "saleDate",
+                  "args": [
+                    {
+                      "kind": "Literal",
+                      "name": "format",
+                      "value": "YYYY"
+                    }
+                  ],
+                  "storageKey": "saleDate(format:\"YYYY\")"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -46,13 +257,7 @@ const node: ReaderFragment = {
       "args": null,
       "storageKey": null
     },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "slug",
-      "args": null,
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -166,5 +371,6 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'effa836893fe1cf4476282a6ff5eeabc';
+})();
+(node as any).hash = 'd4a370d7724347e2da0bae6557418ae0';
 export default node;
