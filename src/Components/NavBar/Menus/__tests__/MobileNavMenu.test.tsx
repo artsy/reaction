@@ -24,6 +24,7 @@ describe("MobileNavMenu", () => {
 
   const defaultLinks = [
     ["/", "Home"],
+    ["/collect", "Artworks"],
     ["/artists", "Artists"],
     ["/shows", "Shows"],
     ["/galleries", "Galleries"],
