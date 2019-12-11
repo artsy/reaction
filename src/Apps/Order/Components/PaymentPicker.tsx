@@ -414,7 +414,9 @@ export class PaymentPicker extends React.Component<
 // ref to the PaymentPicker instance (for getCreditCardId) we'll add an
 // `innerRef` prop which gets sneakily injected here
 const PaymentPickerWithInnerRef: React.SFC<
-  PaymentPickerProps & { innerRef: React.RefObject<PaymentPicker> }
+  PaymentPickerProps & {
+    innerRef: React.RefObject<PaymentPicker>
+  }
 > = ({ innerRef, ...props }) => (
   <PaymentPicker ref={innerRef} {...props as any} />
 )

@@ -1,3 +1,135 @@
+# v22.10.3 (Tue Dec 10 2019)
+
+#### 🐛  Bug Fix
+
+- Add lazy loading to collections rail [#3047](https://github.com/artsy/reaction/pull/3047) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.10.2 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- Bump version of lazy-load lib to fix SSR issue [#3049](https://github.com/artsy/reaction/pull/3049) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.10.1 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1681] adds analytics events to the navbar notification menu [#3048](https://github.com/artsy/reaction/pull/3048) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v22.10.0 (Mon Dec 09 2019)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 5.1.5 to v5.1.11 [#2985](https://github.com/artsy/reaction/pull/2985) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.9.7 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Bring back arrows removed by #3036 [#3044](https://github.com/artsy/reaction/pull/3044) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v22.9.6 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Maintain proper aspect ratio for image on confirm bid [#3042](https://github.com/artsy/reaction/pull/3042) ([@dleve123](https://github.com/dleve123))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.2 to v3.7.3 [#3041](https://github.com/artsy/reaction/pull/3041) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v22.9.5 (Wed Dec 04 2019)
+
+#### 🐛  Bug Fix
+
+- Modifies waypoint method call [#3038](https://github.com/artsy/reaction/pull/3038) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v22.9.4 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Remove dots from the artist images [#3036](https://github.com/artsy/reaction/pull/3036) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep prettier from 1.16.4 to v1.19.1 [#3040](https://github.com/artsy/reaction/pull/3040) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.9.3 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Handle missing partner on artwork page [#3039](https://github.com/artsy/reaction/pull/3039) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v22.9.2 (Mon Dec 02 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1649: Adds data-test attribute to the sale message on artwork view [#3037](https://github.com/artsy/reaction/pull/3037) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v22.9.1 (Thu Nov 28 2019)
 
 #### 🐛  Bug Fix

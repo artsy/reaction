@@ -75,10 +75,11 @@ const OfferHistoryItem: React.SFC<
     </StepSummaryItem>
   )
 }
-
+// TODO: look into why a separate style prop is necessary here
 const Row: React.SFC<
-  // TODO: look into why a separate style prop is necessary here
-  FlexProps & { style?: HTMLProps<HTMLDivElement>["style"] }
+  FlexProps & {
+    style?: HTMLProps<HTMLDivElement>["style"]
+  }
 > = ({ children, ...others }) => (
   <Flex justifyContent="space-between" alignItems="baseline" {...others}>
     {children}

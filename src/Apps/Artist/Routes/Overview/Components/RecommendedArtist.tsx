@@ -50,7 +50,9 @@ class RecommendedArtistWithTracking extends React.Component<
 }
 
 const RecommendedArtist: FC<
-  RecommendedArtistProps & { onArtworkClicked: () => void }
+  RecommendedArtistProps & {
+    onArtworkClicked: () => void
+  }
 > = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
   const artistData = get(

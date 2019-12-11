@@ -50,7 +50,7 @@ describe("GeneRelatedLinks", () => {
   it("should render related genes and related artists", async () => {
     const wrapper = await getWrapper()
     expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<div class=\\"related-genes related-links bisected-header-cell-section is-fade-in sc-bdVaJa dVZOZN\\"><h2>Related Categories</h2><div class=\\"related-genes-links\\"><a href=\\"https://www.artsy.net/artwork/david-shrigley-im-dead\\">meow</a></div></div>"`
+      `"<div class=\\"related-genes related-links bisected-header-cell-section is-fade-in sc-bdVaJa hcJFwa\\"><h2>Related Categories</h2><div class=\\"related-genes-links\\"><a href=\\"https://www.artsy.net/artwork/david-shrigley-im-dead\\">meow</a></div></div>"`
     )
   })
 

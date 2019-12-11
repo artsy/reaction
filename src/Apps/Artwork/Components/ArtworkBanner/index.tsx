@@ -25,12 +25,14 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
       return (
         <Banner
           imageUrl={auctionImage}
-          initials={partner.initials}
+          initials={partner && partner.initials}
           meta="In auction"
           name={context.name}
           // Do not display partner name for benefit or gallery auctions
           subHeadline={
-            sale.isBenefit || sale.isGalleryAuction ? null : partner.name
+            sale.isBenefit || sale.isGalleryAuction
+              ? null
+              : partner && partner.name
           }
           href={context.href}
         />
@@ -45,7 +47,7 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
           initials={initials}
           meta="At fair"
           name={context.name}
-          subHeadline={partner.name}
+          subHeadline={partner && partner.name}
           href={context.href}
         />
       )
@@ -61,10 +63,10 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
       return (
         <Banner
           imageUrl={showImage}
-          initials={partner.initials}
+          initials={partner && partner.initials}
           meta={showLine}
           name={context.name}
-          subHeadline={partner.name}
+          subHeadline={partner && partner.name}
           href={context.href}
         />
       )

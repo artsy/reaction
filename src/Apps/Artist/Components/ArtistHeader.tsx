@@ -12,6 +12,7 @@ import {
   TopEstablishedIcon,
 } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -117,17 +118,18 @@ export class LargeArtistHeader extends Component<Props> {
     console.table(props.artist.highlights.partnersConnection)
 
     return (
-      <>
+      <HorizontalPadding>
         <Box width="100%">
           {hasImages && (
             <Carousel
               height="200px"
+              options={{ pageDots: false }}
               data={carousel.images as object[]}
               render={(slide: Image, slideIndex: number) => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                     <Image
-                      px={5}
+                      px={0.3}
                       lazyLoad={slideIndex > 5}
                       src={slide.resized.url}
                       width={slide.resized.width}
@@ -189,7 +191,7 @@ export class LargeArtistHeader extends Component<Props> {
           {renderAuctionHighlight(props.artist)}
           {renderRepresentationStatus(props.artist)}
         </Flex>
-      </>
+      </HorizontalPadding>
     )
   }
 }
@@ -226,13 +228,14 @@ export class SmallArtistHeader extends Component<Props> {
           <Fragment>
             <Carousel
               data={carousel.images as object[]}
-              height="200px"
+              height="180px"
+              options={{ pageDots: false }}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                     <Image
-                      px={5}
                       src={slide.resized.url}
+                      px={0.3}
                       width={slide.resized.width}
                       height={slide.resized.height}
                       preventRightClick={!isAdmin}
@@ -245,21 +248,29 @@ export class SmallArtistHeader extends Component<Props> {
           </Fragment>
         )}
         <span id="jumpto-ArtistHeader" />
-        <Flex flexDirection="column" alignItems="center">
-          <H1>
-            <Serif size="5">{props.artist.name}</Serif>
-          </H1>
-          <Flex>
-            <Box mx={1}>
-              <H2>
+        <Box mx={2}>
+          <Flex flexDirection="column" alignItems="center">
+            <H1>
+              <Serif size="5">{props.artist.name}</Serif>
+            </H1>
+            <Flex>
+              <Box mx={1}>
+                <H2>
+                  <Serif size="2">
+                    {props.artist.nationality &&
+                      `${props.artist.nationality}, `}
+                    {props.artist.years}
+                  </Serif>
+                </H2>
+              </Box>
+              {props.artist.counts.follows > 50 && (
                 <Serif size="2">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
+                  {props.artist.counts.follows.toLocaleString()} followers
                 </Serif>
-              </H2>
-            </Box>
+              )}
+            </Flex>
           </Flex>
-        </Flex>
+        </Box>
         <Spacer mb={0.5} />
         <Flex flexDirection="row" justifyContent="center">
           {props.artist.counts.follows > 50 && (

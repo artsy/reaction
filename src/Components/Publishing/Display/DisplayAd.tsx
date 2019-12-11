@@ -94,7 +94,10 @@ export class DisplayAd extends React.Component<DisplayAdProps> {
     }
     return (
       <>
-        <Waypoint onEnter={once(this.trackImpression.bind(this))} />
+        <Waypoint
+          onLeave={once(this.trackImpression.bind(this))}
+          bottomOffset="10%"
+        />
         <DisplayAdContainer
           onClick={this.trackImpressionClick.bind(this)}
           flexDirection="column"

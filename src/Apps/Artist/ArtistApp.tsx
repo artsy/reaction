@@ -34,14 +34,13 @@ export class ArtistApp extends React.Component<ArtistAppProps> {
 
     return (
       <AppContainer>
+        <ArtistMeta artist={artist} />
+        <Row>
+          <Col>
+            <ArtistHeader artist={artist} />
+          </Col>
+        </Row>
         <HorizontalPadding>
-          <ArtistMeta artist={artist} />
-          <Row>
-            <Col>
-              <ArtistHeader artist={artist} />
-            </Col>
-          </Row>
-
           <Spacer mb={3} />
 
           <Row>
