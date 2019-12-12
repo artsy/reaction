@@ -115,8 +115,6 @@ export class LargeArtistHeader extends Component<Props> {
     const hasImages = carousel && carousel.images
     const isAdmin = userIsAdmin(user)
 
-    console.table(props.artist.highlights.partnersConnection)
-
     return (
       <HorizontalPadding>
         <Box width="100%">

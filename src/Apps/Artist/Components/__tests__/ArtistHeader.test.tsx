@@ -39,4 +39,16 @@ describe("ArtistHeader", () => {
     expect(html).toContain(">Following<")
     expect(html).not.toContain(">Follow<")
   })
+
+  it("renders blue chip indicator", async () => {
+    const wrapper = await getWrapper()
+    const html = wrapper.html()
+    expect(html).toContain("Blue chip")
+  })
+
+  it("renders auction record indicator", async () => {
+    const wrapper = await getWrapper()
+    const html = wrapper.html()
+    expect(html).toContain("Auction Record")
+  })
 })
