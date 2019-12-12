@@ -189,9 +189,7 @@ describe("Routes/ConfirmBid", () => {
         })
 
         expect(window.location.assign).toHaveBeenCalledWith(
-          `https://example.com/artwork/${
-            ConfirmBidQueryResponseFixture.artwork.slug
-          }`
+          `https://example.com/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
         )
         done()
       }, 1001)
@@ -763,9 +761,7 @@ describe("Routes/ConfirmBid", () => {
         bidderPositionID: "positionid",
       })
       expect(window.location.assign).toHaveBeenCalledWith(
-        `https://example.com/artwork/${
-          ConfirmBidQueryResponseFixture.artwork.slug
-        }`
+        `https://example.com/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
       )
     })
 

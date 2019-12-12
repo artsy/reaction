@@ -29,9 +29,7 @@ import {
 } from "@artsy/palette"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
-export const NotificationMenuItems: React.FC<
-  NotificationsMenuQueryResponse
-> = props => {
+export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = props => {
   const notifications = get(
     props,
     p => {

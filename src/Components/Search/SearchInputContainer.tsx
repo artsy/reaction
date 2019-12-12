@@ -26,22 +26,22 @@ const SearchButton = styled.button`
   }
 `
 
-export const SearchInputContainer: React.ForwardRefExoticComponent<
-  any
-> = React.forwardRef((props, ref) => {
-  return (
-    <Box style={{ position: "relative" }}>
-      <Input ref={ref} style={{ width: "100%" }} {...props} />
-      <SearchButton
-        onClick={event => {
-          ;(event.target as HTMLElement).parentElement.blur()
-          if (isEmpty(props.value)) {
-            event.preventDefault()
-          }
-        }}
-      >
-        <MagnifyingGlassIcon />
-      </SearchButton>
-    </Box>
-  )
-})
+export const SearchInputContainer: React.ForwardRefExoticComponent<any> = React.forwardRef(
+  (props, ref) => {
+    return (
+      <Box style={{ position: "relative" }}>
+        <Input ref={ref} style={{ width: "100%" }} {...props} />
+        <SearchButton
+          onClick={event => {
+            ;(event.target as HTMLElement).parentElement.blur()
+            if (isEmpty(props.value)) {
+              event.preventDefault()
+            }
+          }}
+        >
+          <MagnifyingGlassIcon />
+        </SearchButton>
+      </Box>
+    )
+  }
+)

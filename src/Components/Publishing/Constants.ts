@@ -98,9 +98,7 @@ export const getDate = (date, format: DateFormat = "default") => {
   const amPm = dateTime.hour >= 12 ? "pm" : "am"
   const minutes = dateTime.minute < 10 ? "0" + dateTime.minute : dateTime.minute
   const monthDay = `${dateTime.monthShort} ${dateTime.day}`
-  const monthDayYear = `${dateTime.monthShort} ${dateTime.day}, ${
-    dateTime.year
-  }`
+  const monthDayYear = `${dateTime.monthShort} ${dateTime.day}, ${dateTime.year}`
   let hour
   if (dateTime.hour > 12) {
     hour = dateTime.hour - 12

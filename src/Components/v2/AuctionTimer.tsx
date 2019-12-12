@@ -53,9 +53,7 @@ export class AuctionTimer extends React.Component<Props> {
     } else {
       hour = dateTime.hour
     }
-    const display = `${dateTime.monthShort} ${
-      dateTime.day
-    }, ${hour}:${minutes}${amPm}`
+    const display = `${dateTime.monthShort} ${dateTime.day}, ${hour}:${minutes}${amPm}`
     if (this.liveStartAt) {
       return `Live ${display}`
     } else {

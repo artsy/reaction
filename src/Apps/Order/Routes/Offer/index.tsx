@@ -184,13 +184,15 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     }
 
     try {
-      const orderOrError = (await this.addInitialOfferToOrder({
-        input: {
-          note: this.state.offerNoteValue && this.state.offerNoteValue.value,
-          orderId: this.props.order.internalID,
-          amountCents: offerValue * 100,
-        },
-      })).commerceAddInitialOfferToOrder.orderOrError
+      const orderOrError = (
+        await this.addInitialOfferToOrder({
+          input: {
+            note: this.state.offerNoteValue && this.state.offerNoteValue.value,
+            orderId: this.props.order.internalID,
+            amountCents: offerValue * 100,
+          },
+        })
+      ).commerceAddInitialOfferToOrder.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)

@@ -67,9 +67,7 @@ export const routes: RouteConfig[] = [
           if (redirect !== null) {
             if (process.env.NODE_ENV === "development") {
               console.error(
-                `Redirecting from ${match.location.pathname} to ${
-                  redirect.path
-                } because '${redirect.reason}'`
+                `Redirecting from ${match.location.pathname} to ${redirect.path} because '${redirect.reason}'`
               )
             }
             throw new RedirectException(redirect.path)

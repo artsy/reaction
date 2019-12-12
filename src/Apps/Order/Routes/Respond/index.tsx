@@ -158,13 +158,15 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     }
 
     try {
-      const orderOrError = (await this.createCounterOffer({
-        input: {
-          offerId: this.props.order.lastOffer.internalID,
-          amountCents: this.state.offerValue * 100,
-          note: this.state.offerNoteValue && this.state.offerNoteValue.value,
-        },
-      })).commerceBuyerCounterOffer.orderOrError
+      const orderOrError = (
+        await this.createCounterOffer({
+          input: {
+            offerId: this.props.order.lastOffer.internalID,
+            amountCents: this.state.offerValue * 100,
+            note: this.state.offerNoteValue && this.state.offerNoteValue.value,
+          },
+        })
+      ).commerceBuyerCounterOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error

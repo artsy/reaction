@@ -295,11 +295,13 @@ Object {
 
         await page.update()
 
-        const [addressInput, cityInput] = ["Address line 1", "City"].map(
-          label =>
-            page
-              .find(Input)
-              .filterWhere(wrapper => wrapper.props().title === label)
+        const [addressInput, cityInput] = [
+          "Address line 1",
+          "City",
+        ].map(label =>
+          page
+            .find(Input)
+            .filterWhere(wrapper => wrapper.props().title === label)
         )
 
         expect(addressInput.props().error).toBeTruthy()

@@ -161,13 +161,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
 
     try {
-      const orderOrError = (await this.setShipping({
-        input: {
-          id: this.props.order.internalID,
-          fulfillmentType: shippingOption,
-          shipping: address,
-        },
-      })).commerceSetShipping.orderOrError
+      const orderOrError = (
+        await this.setShipping({
+          input: {
+            id: this.props.order.internalID,
+            fulfillmentType: shippingOption,
+            shipping: address,
+          },
+        })
+      ).commerceSetShipping.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)

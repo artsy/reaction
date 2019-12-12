@@ -69,11 +69,13 @@ export class Reject extends Component<RejectProps> {
 
   onSubmit = async () => {
     try {
-      const orderOrError = (await this.rejectOffer({
-        input: {
-          offerId: this.props.order.lastOffer.internalID,
-        },
-      })).commerceBuyerRejectOffer.orderOrError
+      const orderOrError = (
+        await this.rejectOffer({
+          input: {
+            offerId: this.props.order.lastOffer.internalID,
+          },
+        })
+      ).commerceBuyerRejectOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error

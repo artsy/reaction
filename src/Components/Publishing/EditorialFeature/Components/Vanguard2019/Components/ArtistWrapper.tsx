@@ -170,9 +170,7 @@ export class VanguardArtistWrapper extends React.Component<
                   <Flex justifyContent={["center", "flex-start"]}>
                     <Box position={["relative", "absolute"]} top={0}>
                       <Share
-                        url={`${
-                          sd.APP_URL
-                        }/artsy-vanguard-2019/${slugifiedTitle}`}
+                        url={`${sd.APP_URL}/artsy-vanguard-2019/${slugifiedTitle}`}
                         title={`Artsy Vanguard 2019: ${shareTitle}`}
                         color={color("white100")}
                       />
