@@ -3,7 +3,7 @@
 exports[`default header component renders a snapshot 1`] = `
 <header>
   <div
-    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-ermo8a-0 bEbXv"
+    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-ermo8a-0 igHTUA"
     height={
       Array [
         160,
