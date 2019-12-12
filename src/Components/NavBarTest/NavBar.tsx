@@ -22,7 +22,7 @@ import {
   MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
-  NotificationsMenu,
+  NotificationsMenuTest,
   UserMenu,
 } from "./Menus"
 
@@ -107,7 +107,7 @@ export const NavBarTest: React.FC = track(
               <>
                 <NavItem
                   href="/works-for-you"
-                  Menu={NotificationsMenu}
+                  Menu={NotificationsMenuTest}
                   Overlay={NotificationsBadge}
                   onClick={() => {
                     trackEvent({

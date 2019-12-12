@@ -12,9 +12,9 @@ import {
 } from "Artsy/Relay/renderWithLoadProgress"
 
 import {
-  NotificationsMenuQuery,
-  NotificationsMenuQueryResponse,
-} from "__generated__/NotificationsMenuQuery.graphql"
+  NotificationsMenuTestQuery,
+  NotificationsMenuTestQueryResponse,
+} from "__generated__/NotificationsMenuTestQuery.graphql"
 
 import {
   Box,
@@ -29,7 +29,7 @@ import {
 } from "@artsy/palette"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
-export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = props => {
+export const NotificationMenuItems: React.FC<NotificationsMenuTestQueryResponse> = props => {
   const notifications = get(
     props,
     p => {
@@ -119,7 +119,7 @@ export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = p
  * The <Menu /> component renders a QueryRenderer inside of it, which fetches
  * individual MenuItems for display. During fetch there is a loading spinner.
  */
-export const NotificationsMenu: React.FC = () => {
+export const NotificationsMenuTest: React.FC = () => {
   return (
     <Menu title="Activity">
       <NotificationsQueryRenderer
@@ -145,10 +145,10 @@ export const NotificationsQueryRenderer: React.FC<{
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<NotificationsMenuQuery>
+    <QueryRenderer<NotificationsMenuTestQuery>
       environment={relayEnvironment}
       query={graphql`
-        query NotificationsMenuQuery {
+        query NotificationsMenuTestQuery {
           me {
             followsAndSaves {
               notifications: bundledArtworksByArtistConnection(
