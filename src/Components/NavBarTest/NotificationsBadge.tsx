@@ -29,7 +29,6 @@ export const NotificationsBadge: React.FC<{
       }) => {
         // If there's an error hide the badge
         if (error) {
-          console.log("error:", error)
           logger.error(error)
           return null
         }
