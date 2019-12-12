@@ -36,6 +36,7 @@ export const MobileNavMenu: React.FC = () => {
   return (
     <MobileNavContainer py={[1, 4]} flexDirection="column" onClick={trackClick}>
       <MobileLink href="/">Home</MobileLink>
+      <MobileLink href="/collect">Artworks</MobileLink>
       <MobileLink href="/artists">Artists</MobileLink>
       <MobileLink href="/shows">Shows</MobileLink>
       <MobileLink href="/galleries">Galleries</MobileLink>

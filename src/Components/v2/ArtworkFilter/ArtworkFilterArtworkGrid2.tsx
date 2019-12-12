@@ -63,7 +63,7 @@ const ArtworkFilterArtworkGrid: React.FC<ArtworkFilterArtworkGridProps> = props 
         <ArtworkGrid
           artworks={props.filtered_artworks}
           columnCount={columnCount}
-          preloadImageCount={9}
+          preloadImageCount={6}
           itemMargin={40}
           user={user}
           mediator={mediator}
