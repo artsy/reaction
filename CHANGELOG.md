@@ -1,3 +1,15 @@
+# v23.0.4 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1633] fix double hover event in new navbar [#3057](https://github.com/artsy/reaction/pull/3057) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v23.0.3 (Fri Dec 13 2019)
 
 #### 🐛  Bug Fix
