@@ -1,9 +1,8 @@
 import { Box, color, Flex, Sans } from "@artsy/palette"
 import { NotificationsMenuQueryResponse } from "__generated__/NotificationsMenuQuery.graphql"
-import { AnalyticsSchema, SystemContext } from "Artsy"
-import { useTracking } from "Artsy/Analytics/useTracking"
+import { SystemContext } from "Artsy"
 import cookie from "cookies-js"
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -11,12 +10,7 @@ import { NotificationsQueryRenderer } from "./Menus"
 
 const logger = createLogger("Components/NavBar")
 
-export const NotificationsBadge: React.FC<{
-  /**
-   * If hovering over the nav item, `hover` is passed into the badge (Overlay)
-   */
-  hover?: boolean
-}> = ({ hover }) => {
+export const NotificationsBadge: React.FC<{}> = () => {
   const isClient = typeof window !== "undefined"
   return isClient ? (
     <NotificationsQueryRenderer
@@ -73,11 +67,7 @@ export const NotificationsBadge: React.FC<{
 
         return (
           <Box>
-            <CircularCount
-              count={displayCount}
-              rawCount={totalUnread}
-              hover={hover}
-            />
+            <CircularCount count={displayCount} />
           </Box>
         )
       }}
@@ -92,34 +82,15 @@ const CircularCount: React.FC<{
    * Formatted count for display
    */
   count?: string
-  /**
-   * Raw unread count, used for analytics.
-   */
-  rawCount?: number
-  /**
-   * True if hovering over the badge
-   */
-  hover?: boolean
-}> = ({ count, rawCount, hover }) => {
+}> = ({ count }) => {
   // Check to see if we've got a value from sharify, populated by a cookie on
   // the server.
   const { notificationCount } = useContext(SystemContext)
   const notificationsLabel = count || notificationCount
-  const { trackEvent } = useTracking()
 
   if (!notificationsLabel) {
     return null
   }
-
-  useEffect(() => {
-    if (hover) {
-      trackEvent({
-        action_type: AnalyticsSchema.ActionType.Hover,
-        subject: AnalyticsSchema.Subject.NotificationBell,
-        new_notification_count: rawCount,
-      })
-    }
-  }, [hover])
 
   return (
     <Container>
