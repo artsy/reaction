@@ -1,3 +1,15 @@
+# v23.0.3 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- Updates to display ad tracking [#3052](https://github.com/artsy/reaction/pull/3052) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v22.10.4 (Thu Dec 12 2019)
 
 #### 🐛  Bug Fix
