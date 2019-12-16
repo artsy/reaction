@@ -1574,13 +1574,6 @@ exports[`series layout renders a series 1`] = `
       </div>
     </div>
   </div>
-  <span
-    style={
-      Object {
-        "fontSize": 0,
-      }
-    }
-  />
   <div
     className="c42"
     height="1px"
@@ -3356,13 +3349,6 @@ exports[`series layout renders a sponsored series 1`] = `
       </div>
     </div>
   </div>
-  <span
-    style={
-      Object {
-        "fontSize": 0,
-      }
-    }
-  />
   <div
     className="c50"
     height="1px"

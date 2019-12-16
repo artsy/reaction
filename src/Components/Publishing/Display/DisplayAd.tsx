@@ -1,12 +1,11 @@
 import { Box, color, Flex, FlexProps, Sans } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as AnalyticsSchema from "Artsy/Analytics/Schema"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { is300x50AdUnit } from "Components/Publishing/Display/DisplayTargeting"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
-import { once } from "lodash"
-import React from "react"
+import React, { useState } from "react"
 import { Bling as GPT } from "react-gpt"
-import Waypoint from "react-waypoint"
 import styled from "styled-components"
 import Events from "Utils/Events"
 
@@ -37,93 +36,89 @@ export interface DisplayAdContainerProps extends FlexProps {
 
 GPT.syncCorrelator(true)
 
-@track(null, {
-  dispatch: data => Events.postEvent(data),
+export const DisplayAd = track(
+  {
+    context_page: AnalyticsSchema.PageName.ArticlePage,
+    context_module: AnalyticsSchema.ContextModule.AdServer,
+    context_page_owner_type: AnalyticsSchema.OwnerType.Article,
+  },
+  { dispatch: data => Events.postEvent(data) }
+)((props: DisplayAdProps) => {
+  const { trackEvent } = useTracking()
+  const [isAdEmpty, setIsAdEmpty] = useState<boolean | null>(null)
+
+  const {
+    adDimension,
+    adUnit,
+    targetingData,
+    articleSlug,
+    ...otherProps
+  } = props
+
+  function trackImpression() {
+    trackEvent({
+      context_page_owner_id: targetingData.post_id,
+      context_page_owner_slug: articleSlug,
+      action_type: AnalyticsSchema.ActionType.Impression,
+    })
+  }
+
+  function trackClick() {
+    trackEvent({
+      context_page_owner_id: targetingData.post_id,
+      context_page_owner_slug: articleSlug,
+      action_type: AnalyticsSchema.ActionType.Click,
+    })
+  }
+
+  const [width, height] = adDimension.split("x").map(a => parseInt(a))
+  const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
+
+  const ad = (
+    <GPT
+      collapseEmptyDiv
+      adUnitPath={`/21805539690/${adUnit}`}
+      targeting={targetingData}
+      slotSize={[width, height]}
+      onSlotRenderEnded={event => {
+        setIsAdEmpty(event.isEmpty)
+      }}
+      onImpressionViewable={() => {
+        trackImpression()
+      }}
+    />
+  )
+
+  if (isAdEmpty) {
+    return null
+  }
+  return (
+    <>
+      <DisplayAdContainer
+        onClick={() => trackClick()}
+        flexDirection="column"
+        pt={isMobileLeaderboardAd ? 2 : 4}
+        pb={isMobileLeaderboardAd ? 2 : 1}
+        height={
+          isAdEmpty || isAdEmpty === null
+            ? "1px" // on initial render OR when no ad content returned from Google, set 1px height to ad container to prevent jarring UX effect
+            : isMobileLeaderboardAd
+            ? "100px" // on mobile 300x50 ads reduce ad container height to 100px
+            : "334px"
+        }
+        isAdEmpty={isAdEmpty}
+        {...otherProps}
+      >
+        <Box m="auto">
+          {ad}
+          <Sans size="1" color="black30" m={1}>
+            Advertisement
+          </Sans>
+        </Box>
+      </DisplayAdContainer>
+    </>
+  )
 })
-@track<DisplayAdProps>(props => ({
-  context_page: AnalyticsSchema.PageName.ArticlePage,
-  context_module: AnalyticsSchema.ContextModule.AdServer,
-  context_page_owner_type: AnalyticsSchema.OwnerType.Article,
-  context_page_owner_id: props.targetingData.post_id,
-  context_page_owner_slug: props.articleSlug,
-}))
-export class DisplayAd extends React.Component<DisplayAdProps> {
-  state = {
-    isAdEmpty: null,
-  }
-  @track({
-    action_type: AnalyticsSchema.ActionType.Impression,
-  })
-  trackImpression() {
-    // noop
-  }
-
-  @track({
-    action_type: AnalyticsSchema.ActionType.Click,
-  })
-  trackImpressionClick() {
-    // noop
-  }
-
-  render() {
-    const {
-      adDimension,
-      adUnit,
-      targetingData,
-      articleSlug,
-      ...otherProps
-    } = this.props
-    const { isAdEmpty } = this.state
-    const [width, height] = adDimension.split("x").map(a => parseInt(a))
-    const isMobileLeaderboardAd = is300x50AdUnit(adDimension)
-
-    const ad = (
-      <GPT
-        collapseEmptyDiv
-        adUnitPath={`/21805539690/${adUnit}`}
-        targeting={targetingData}
-        slotSize={[width, height]}
-        onSlotRenderEnded={event => {
-          this.setState({ isAdEmpty: event.isEmpty })
-        }}
-      />
-    )
-
-    if (isAdEmpty) {
-      return null
-    }
-    return (
-      <>
-        <Waypoint
-          onLeave={once(this.trackImpression.bind(this))}
-          bottomOffset="10%"
-        />
-        <DisplayAdContainer
-          onClick={this.trackImpressionClick.bind(this)}
-          flexDirection="column"
-          pt={isMobileLeaderboardAd ? 2 : 4}
-          pb={isMobileLeaderboardAd ? 2 : 1}
-          height={
-            isAdEmpty || isAdEmpty === null
-              ? "1px" // on initial render OR when no ad content returned from Google, set 1px height to ad container to prevent jarring UX effect
-              : isMobileLeaderboardAd
-              ? "100px" // on mobile 300x50 ads reduce ad container height to 100px
-              : "334px"
-          }
-          isAdEmpty={isAdEmpty}
-          {...otherProps}
-        >
-          <Box m="auto">
-            {ad}
-            <Sans size="1" color="black30" m={1}>
-              Advertisement
-            </Sans>
-          </Box>
-        </DisplayAdContainer>
-      </>
-    )
-  }
-}
 
 export const DisplayAdContainer = styled(Flex)<DisplayAdContainerProps>`
   margin: ${p => (p.isStandard ? "0" : "0 auto")};

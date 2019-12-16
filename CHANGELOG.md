@@ -1,3 +1,48 @@
+# v23.0.4 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1633] fix double hover event in new navbar [#3057](https://github.com/artsy/reaction/pull/3057) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v23.0.3 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- Updates to display ad tracking [#3052](https://github.com/artsy/reaction/pull/3052) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v22.10.4 (Thu Dec 12 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1683] clone the NavBar component for navigation a/b test [#3055](https://github.com/artsy/reaction/pull/3055) ([@xtina-starr](https://github.com/xtina-starr))
+- [GROW-1633] remove duplicate hover analytics event [#3050](https://github.com/artsy/reaction/pull/3050) ([@xtina-starr](https://github.com/xtina-starr))
+- Bump down threshold for lazy-loading on artist artwork grid [#3053](https://github.com/artsy/reaction/pull/3053) ([@zephraph](https://github.com/zephraph))
+- Restore Artworks link to mobile nav [#3046](https://github.com/artsy/reaction/pull/3046) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### ⚠️  Pushed to master
+
+- Bump to 23.0.1 to get around issues with auto-release  (steven.j.hicks@gmail.com)
+
+#### Authors: 3
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Steven Hicks (steven.j.hicks@gmail.com)
+
+---
+
 # v22.10.3 (Tue Dec 10 2019)
 
 #### 🐛  Bug Fix
