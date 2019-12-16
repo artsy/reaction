@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   yarn: artsy/yarn@2.1.1
+  codecov: codecov/codecov@1.0.5
 
 workflows:
   build_and_verify:
@@ -23,6 +24,9 @@ workflows:
           args: --runInBand
           requires:
             - yarn/workflow-queue
+          post-steps:
+            - codecov/upload:
+              file: coverage/lcov.info
       - yarn/auto-release:
           # The deploy job is the _only_ job that should have access to our npm
           # tokens. We include a context that has our publish credentials
