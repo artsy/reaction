@@ -14,7 +14,7 @@ export interface MarketInsightsProps {
   Container?: (props: { children: JSX.Element }) => JSX.Element
 }
 
-const CATEGORIES = {
+export const CATEGORIES = {
   "blue-chip": "Blue chip",
   "top-established": "Established",
   "top-emerging": "Emerging",

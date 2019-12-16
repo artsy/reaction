@@ -1,29 +1,20 @@
-import {
-  AuctionIcon,
-  BlueChipIcon,
-  Box,
-  color,
-  Flex,
-  Image,
-  Sans,
-  Serif,
-  Spacer,
-  TopEmergingIcon,
-  TopEstablishedIcon,
-} from "@artsy/palette"
+import { Box, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { CATEGORIES } from "Components/v2/ArtistMarketInsights"
 import { Carousel } from "Components/v2/Carousel"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 import { userIsAdmin } from "Utils/user"
+import { ArtistIndicator } from "./ArtistIndicator"
 import { highestCategory } from "./MarketInsights/MarketInsights"
 
 /**
@@ -184,7 +175,6 @@ export class LargeArtistHeader extends Component<Props> {
             </Flex>
           </Flex>
         </Box>
-        <Spacer mb={1} />
         <Flex flexDirection="row">
           {renderAuctionHighlight(props.artist)}
           {renderRepresentationStatus(props.artist)}
@@ -310,7 +300,6 @@ export class SmallArtistHeader extends Component<Props> {
             </FollowArtistButton>
           </Flex>
         </Flex>
-        <Spacer mb={1} />
         <Flex flexDirection="row" justifyContent="center">
           {renderAuctionHighlight(props.artist)}
           {renderRepresentationStatus(props.artist)}
@@ -328,44 +317,15 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
-const RoundedFlex = styled(Flex)`
-  border-radius: 100px;
-`
-
 const renderAuctionHighlight = artist => {
-  if (
-    !artist.auctionResultsConnection ||
-    artist.auctionResultsConnection.edges.length < 1
-  ) {
-    return null
-  }
-  const topAuctionResult =
-    artist.auctionResultsConnection.edges[0].node.price_realized.display
-
-  return (
-    <RoundedFlex
-      background={color("black5")}
-      width="auto"
-      py={5}
-      px={10}
-      mr={5}
-    >
-      <AuctionIcon pr={5} />
-      <Sans size="2">{topAuctionResult} Auction Record</Sans>
-    </RoundedFlex>
+  const topAuctionResult = get(
+    artist,
+    a => artist.auctionResultsConnection.edges[0].node.price_realized.display
   )
-}
-
-const CATEGORIES = {
-  "blue-chip": "Blue chip",
-  "top-established": "Established",
-  "top-emerging": "Emerging",
-}
-
-const ICON_MAPPING = {
-  BLUE_CHIP: BlueChipIcon,
-  TOP_ESTABLISHED: TopEstablishedIcon,
-  TOP_EMERGING: TopEmergingIcon,
+  if (topAuctionResult) {
+    const auctionLabel = topAuctionResult + " Auction Record"
+    return <ArtistIndicator label={auctionLabel} type="high-auction" />
+  }
 }
 
 const renderRepresentationStatus = artist => {
@@ -377,21 +337,11 @@ const renderRepresentationStatus = artist => {
     partnersConnection.edges.length > 0
   ) {
     const highCategory = highestCategory(partnersConnection.edges)
-    const type = highCategory.toUpperCase().replace("-", "_")
 
     return (
-      <RoundedFlex background={color("black5")} width="auto" py={5} px={10}>
-        {renderIcon(type)}
-        <Sans size="2">{CATEGORIES[highCategory]}</Sans>
-      </RoundedFlex>
+      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
     )
   }
-}
-
-const renderIcon = insightType => {
-  const Icon = ICON_MAPPING[insightType]
-
-  return <Icon pr={5} />
 }
 
 export const ArtistHeaderFragmentContainer = createFragmentContainer(

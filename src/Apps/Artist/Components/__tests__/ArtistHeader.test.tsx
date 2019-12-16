@@ -40,15 +40,35 @@ describe("ArtistHeader", () => {
     expect(html).not.toContain(">Follow<")
   })
 
-  it("renders blue chip indicator", async () => {
+  it("renders blue chip indicator when data is present", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
     expect(html).toContain("Blue chip")
   })
 
-  it("renders auction record indicator", async () => {
+  it("renders auction record indicator when data is present", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
     expect(html).toContain("Auction Record")
+  })
+
+  it("hides auction record indicator when data is not present", async () => {
+    const artist = {
+      ...ArtistHeaderFixture,
+      auctionResultsConnection: null,
+    }
+    const wrapper = await getWrapper(artist)
+    const html = wrapper.html()
+    expect(html).not.toContain("Auction Record")
+  })
+
+  it("hides auction record indicator when data is not present", async () => {
+    const artist = {
+      ...ArtistHeaderFixture,
+      highlights: { partnersConnection: null },
+    }
+    const wrapper = await getWrapper(artist)
+    const html = wrapper.html()
+    expect(html).not.toContain("Blue chip")
   })
 })
