@@ -1,3 +1,15 @@
+# v23.0.5 (Mon Dec 16 2019)
+
+#### 🐛  Bug Fix
+
+- Coverage reporting [#3051](https://github.com/artsy/reaction/pull/3051) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v23.0.4 (Fri Dec 13 2019)
 
 #### 🐛  Bug Fix
