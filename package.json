@@ -20,8 +20,8 @@
     "styled-components": "^4"
   },
   "scripts": {
-    "codemod": "./scripts/codemod.sh",
     "clean": "rm -rf .cache && rm -rf dist",
+    "codemod": "./scripts/codemod.sh",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
@@ -237,6 +237,12 @@
   },
   "jest": {
     "cacheDirectory": ".cache/jest",
+    "coverageDirectory": "coverage",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ],
     "transform": {
       "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
       "\\.graphql$": "jest-raw-loader"
