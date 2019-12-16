@@ -156,7 +156,9 @@ export class SearchBar extends Component<Props, State> {
   constructor(props) {
     super(props)
 
-    this.enableExperimentalAppShell = getENV("EXPERIMENTAL_APP_SHELL")
+    this.enableExperimentalAppShell =
+      sd.CLIENT_SIDE_ROUTING === "experiment" &&
+      getENV("EXPERIMENTAL_APP_SHELL")
   }
 
   componentDidMount() {
@@ -400,7 +402,6 @@ export class SearchBar extends Component<Props, State> {
         itemScope
         itemType="http://schema.org/SearchAction"
         onSubmit={event => {
-          console.log(this.enableExperimentalAppShell)
           if (this.enableExperimentalAppShell) {
             if (router) {
               event.preventDefault()

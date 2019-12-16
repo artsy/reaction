@@ -37,7 +37,7 @@ import {
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Router } from "found"

@@ -12,7 +12,6 @@ import {
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import Input from "Components/Input"
 import { CountrySelect } from "Components/v2"
 import { createTestEnv } from "DevTools/createTestEnv"
@@ -26,7 +25,12 @@ import {
 import { ShippingFragmentContainer } from "../Shipping"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
+
 jest.unmock("react-relay")
 
 const fillAddressForm = (component: any, address: Address) => {
@@ -76,6 +80,10 @@ describe("Shipping", () => {
       }
     `,
     TestPage: ShippingTestPage,
+  })
+
+  beforeEach(() => {
+    mockTrackPageView.mockClear()
   })
 
   it("removes radio group if pickup_available flag is false", async () => {
@@ -360,6 +368,6 @@ Object {
 
   it("tracks a pageview", async () => {
     await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

@@ -18,6 +18,7 @@ import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
+import { trackPageViewWrapper } from "Artsy"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import {
   ArtworkFilterContextProvider,
@@ -202,7 +203,7 @@ export const CollectionAppQuery = graphql`
 `
 
 export const CollectionRefetchContainer = createRefetchContainer(
-  withSystemContext(CollectionApp),
+  withSystemContext(trackPageViewWrapper(CollectionApp)),
   {
     collection: graphql`
       fragment Collection_collection on MarketingCollection

@@ -20,7 +20,11 @@ jest.mock("Utils/Events", () => ({
 }))
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 jest.mock("Utils/logger")
@@ -32,7 +36,6 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
 jest.unmock("react-relay")
 
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 import { graphql } from "react-relay"
@@ -409,7 +412,7 @@ describe("The respond page", () => {
     })
   })
 
-  describe("Analaytics", () => {
+  describe("Analytics", () => {
     let page: RespondTestPage
     beforeEach(async () => {
       page = await buildPage()
@@ -417,6 +420,7 @@ describe("The respond page", () => {
 
     beforeAll(() => {
       global.setInterval = jest.fn()
+      mockTrackPageView.mockClear()
     })
 
     afterAll(() => {
@@ -424,7 +428,7 @@ describe("The respond page", () => {
     })
 
     it("tracks a pageview", () => {
-      expect(trackPageView).toHaveBeenCalledTimes(1)
+      expect(mockTrackPageView).toHaveBeenCalledTimes(1)
     })
 
     it("tracks the offer input focus", async () => {

@@ -18,6 +18,7 @@ import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
+import { trackPageViewWrapper } from "Artsy"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
@@ -138,11 +139,14 @@ export const CollectApp = track({
   )
 })
 
-export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
-  marketingHubCollections: graphql`
-    fragment Collect_marketingHubCollections on MarketingCollection
-      @relay(plural: true) {
-      ...CollectionsHubsNav_marketingHubCollections
-    }
-  `,
-})
+export const CollectAppFragmentContainer = createFragmentContainer(
+  trackPageViewWrapper(CollectApp),
+  {
+    marketingHubCollections: graphql`
+      fragment Collect_marketingHubCollections on MarketingCollection
+        @relay(plural: true) {
+        ...CollectionsHubsNav_marketingHubCollections
+      }
+    `,
+  }
+)

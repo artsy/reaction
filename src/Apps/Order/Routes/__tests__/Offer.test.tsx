@@ -1,5 +1,4 @@
 import { OfferTestQueryRawResponse } from "__generated__/OfferTestQuery.graphql"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
@@ -24,7 +23,11 @@ jest.mock("Utils/Events", () => ({
 
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
 
 const testOrder: OfferTestQueryRawResponse["order"] = {
   ...UntouchedOfferOrder,
@@ -211,10 +214,12 @@ describe("Offer InitialMutation", () => {
     beforeEach(async () => {
       page = await buildPage()
       mockPostEvent.mockReset()
+      mockTrackPageView.mockClear()
     })
 
-    it("tracks a pageview", () => {
-      expect(trackPageView).toHaveBeenCalledTimes(1)
+    it("tracks a pageview", async () => {
+      await buildPage()
+      expect(mockTrackPageView).toHaveBeenCalledTimes(1)
     })
 
     it("tracks the offer input focus", () => {
