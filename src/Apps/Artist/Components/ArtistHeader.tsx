@@ -1,17 +1,21 @@
-import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
+import { Box, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
+import { CATEGORIES } from "Components/v2/ArtistMarketInsights"
 import { Carousel } from "Components/v2/Carousel"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 import { userIsAdmin } from "Utils/user"
+import { ArtistIndicator } from "./ArtistIndicator"
+import { highestCategory } from "./MarketInsights/MarketInsights"
 
 /**
  * This H1 and H2 were added for SEO purposes
@@ -144,25 +148,37 @@ export class LargeArtistHeader extends Component<Props> {
                   </Serif>
                 </H2>
                 <Spacer mr={2} />
-                {props.artist.counts.follows > 50 && (
-                  <Serif size="3">
-                    {props.artist.counts.follows.toLocaleString()} followers
-                  </Serif>
-                )}
               </Flex>
             </Box>
-            <FollowArtistButton
-              useDeprecatedButtonStyle={false}
-              artist={props.artist}
-              user={user}
-              onOpenAuthModal={() =>
-                handleOpenAuth(props.mediator, props.artist)
-              }
-            >
-              Follow
-            </FollowArtistButton>
+            <Flex justifyContent="space-between">
+              {props.artist.counts.follows > 50 && (
+                <Flex flexDirection="column">
+                  <Sans size="4" weight="medium">
+                    {props.artist.counts.follows.toLocaleString()}
+                  </Sans>
+                  <Sans size="2" color="black60" weight="medium">
+                    Followers
+                  </Sans>
+                </Flex>
+              )}
+              <Spacer mr={3} />
+              <FollowArtistButton
+                useDeprecatedButtonStyle={false}
+                artist={props.artist}
+                user={user}
+                onOpenAuthModal={() =>
+                  handleOpenAuth(props.mediator, props.artist)
+                }
+              >
+                Follow
+              </FollowArtistButton>
+            </Flex>
           </Flex>
         </Box>
+        <Flex flexDirection="row">
+          {renderAuctionHighlight(props.artist)}
+          {renderRepresentationStatus(props.artist)}
+        </Flex>
       </HorizontalPadding>
     )
   }
@@ -242,20 +258,52 @@ export class SmallArtistHeader extends Component<Props> {
               )}
             </Flex>
           </Flex>
-          <Box my={2}>
+        </Box>
+        <Spacer mb={0.5} />
+        <Flex flexDirection="row" justifyContent="center">
+          {props.artist.counts.follows > 50 && (
+            <Flex>
+              <Sans size="2" weight="medium">
+                {props.artist.counts.follows.toLocaleString()} followers
+              </Sans>
+              <Sans size="2" color="black100" mx={0.3} display="inline-block">
+                •
+              </Sans>
+            </Flex>
+          )}
+          <Flex>
             <FollowArtistButton
               artist={props.artist}
               useDeprecatedButtonStyle={false}
               buttonProps={{ width: "100%" }}
               user={user}
+              render={({ is_followed }) => {
+                return (
+                  <Sans
+                    size="2"
+                    weight="medium"
+                    color="black"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {is_followed ? "Following" : "Follow"}
+                  </Sans>
+                )
+              }}
               onOpenAuthModal={() =>
                 handleOpenAuth(props.mediator, props.artist)
               }
             >
               Follow
             </FollowArtistButton>
-          </Box>
-        </Box>
+          </Flex>
+        </Flex>
+        <Flex flexDirection="row" justifyContent="center">
+          {renderAuctionHighlight(props.artist)}
+          {renderRepresentationStatus(props.artist)}
+        </Flex>
       </Flex>
     )
   }
@@ -269,11 +317,76 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
+const renderAuctionHighlight = artist => {
+  const topAuctionResult = get(
+    artist,
+    a => artist.auctionResultsConnection.edges[0].node.price_realized.display
+  )
+  if (topAuctionResult) {
+    const auctionLabel = topAuctionResult + " Auction Record"
+    return <ArtistIndicator label={auctionLabel} type="high-auction" />
+  }
+}
+
+const renderRepresentationStatus = artist => {
+  const { highlights } = artist
+  const { partnersConnection } = highlights
+  if (
+    partnersConnection &&
+    partnersConnection.edges &&
+    partnersConnection.edges.length > 0
+  ) {
+    const highCategory = highestCategory(partnersConnection.edges)
+
+    return (
+      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
+    )
+  }
+}
+
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   {
     artist: graphql`
-      fragment ArtistHeader_artist on Artist {
+      fragment ArtistHeader_artist on Artist
+        @argumentDefinitions(
+          partnerCategory: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
+          }
+        ) {
+        highlights {
+          partnersConnection(
+            first: 10
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
+          ) {
+            edges {
+              node {
+                categories {
+                  slug
+                }
+              }
+            }
+          }
+        }
+
+        auctionResultsConnection(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized: priceRealized {
+                display(format: "0a")
+              }
+              organization
+              sale_date: saleDate(format: "YYYY")
+            }
+          }
+        }
         internalID
         slug
         name

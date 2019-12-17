@@ -29,4 +29,96 @@ export const ArtistHeaderFixture = {
     cv: true,
     auction_lots: true,
   },
+  highlights: {
+    partnersConnection: {
+      edges: [
+        {
+          node: {
+            categories: [
+              {
+                id: "opaque-gene-contemporary",
+                slug: "contemporary",
+              },
+              {
+                id: "opaque-gene-established",
+                slug: "established",
+              },
+              {
+                id: "opaque-gene-modern",
+                slug: "modern",
+              },
+              {
+                id: "opaque-gene-painting",
+                slug: "painting",
+              },
+              {
+                id: "opaque-gene-blue-chip",
+                slug: "blue-chip",
+              },
+            ],
+            id: "UGFydG5lcjpnYWdvc2lhbg==",
+          },
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTIwM2Y1NWU4N2E1M2ViOWZkMDAwMDcw",
+        },
+        {
+          node: {
+            categories: [
+              {
+                id: "opaque-gene-blue-chip",
+                slug: "blue-chip",
+              },
+            ],
+            id: "UGFydG5lcjpnYWxlcmllLXRoYWRkYWV1cy1yb3BhYw==",
+          },
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTU0YWI2MDg3NzZmNzI1MzQyMDYwMDAw",
+        },
+        {
+          node: {
+            categories: [
+              {
+                id: "opaque-gene-blue-chip",
+                slug: "blue-chip",
+              },
+            ],
+            id: "UGFydG5lcjpza2Fyc3RlZHQtZ2FsbGVyeQ==",
+          },
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNWE4Zjk4YjNiODFlNDQ4MDAwMDc1",
+        },
+        {
+          node: {
+            categories: [
+              {
+                id: "opaque-gene-contemporary",
+                slug: "contemporary",
+              },
+              {
+                id: "opaque-gene-established",
+                slug: "established",
+              },
+              {
+                id: "opaque-gene-top-established",
+                slug: "top-established",
+              },
+            ],
+            id: "UGFydG5lcjphbnRvbi1rZXJuLWdhbGxlcnk=",
+          },
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTFlNThlZGQyNzViMjRjMzI3MDAwMWNj",
+        },
+      ],
+    },
+  },
+  auctionResultsConnection: {
+    edges: [
+      {
+        node: {
+          price_realized: {
+            display: "$63m",
+          },
+          organization: "Christie's",
+          sale_date: "2017",
+          id: "QXVjdGlvblJlc3VsdDoxMDkzOQ==",
+        },
+      },
+    ],
+  },
 } as ArtistHeader_Test_QueryRawResponse["artist"]
