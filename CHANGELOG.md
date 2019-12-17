@@ -1,3 +1,21 @@
+# v24.0.1 (Tue Dec 17 2019)
+
+#### 🐛  Bug Fix
+
+- Margin fix for Artist Header [#3061](https://github.com/artsy/reaction/pull/3061) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Update "artist summary" on artist page [#3056](https://github.com/artsy/reaction/pull/3056) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Remove @alloy from point people [#3060](https://github.com/artsy/reaction/pull/3060) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Add coverage badge [#3059](https://github.com/artsy/reaction/pull/3059) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v24.0.0 (Tue Dec 17 2019)
 
 #### 💥  Breaking Change
