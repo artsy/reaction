@@ -1,3 +1,15 @@
+# v24.0.0 (Tue Dec 17 2019)
+
+#### 💥  Breaking Change
+
+- Adds full page AppShell component w/ routing for supported Reaction apps [#3043](https://github.com/artsy/reaction/pull/3043) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v23.0.5 (Mon Dec 16 2019)
 
 #### 🐛  Bug Fix
