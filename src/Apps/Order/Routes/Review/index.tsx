@@ -18,7 +18,7 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteConfig, Router } from "found"

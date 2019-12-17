@@ -11,7 +11,7 @@ import {
   StripeWrappedRegistrationForm,
 } from "Apps/Auction/Components/RegistrationForm"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FormikActions } from "formik"

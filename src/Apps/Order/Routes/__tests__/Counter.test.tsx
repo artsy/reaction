@@ -4,7 +4,6 @@ import {
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { DateTime } from "luxon"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
@@ -16,7 +15,11 @@ import {
 import { CounterFragmentContainer } from "../Counter"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
@@ -145,6 +148,7 @@ describe("Submit Pending Counter Offer", () => {
     beforeEach(async () => {
       global.setInterval = jest.fn()
       page = await buildPage()
+      mockTrackPageView.mockClear()
     })
 
     afterEach(() => {
@@ -187,7 +191,7 @@ describe("Submit Pending Counter Offer", () => {
   describe("analytics", () => {
     it("tracks a pageview", async () => {
       await buildPage()
-      expect(trackPageView).toHaveBeenCalledTimes(1)
+      expect(mockTrackPageView).toHaveBeenCalledTimes(1)
     })
   })
 })

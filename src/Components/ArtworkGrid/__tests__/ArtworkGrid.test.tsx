@@ -14,7 +14,10 @@ import ArtworkGrid, {
   ArtworkGridProps,
   createSectionedArtworks,
 } from "../ArtworkGrid"
-import { ArtworkGridEmptyState } from "../ArtworkGridEmptyState"
+import {
+  ArtworkGridEmptyState,
+  ResetFilterLink,
+} from "../ArtworkGridEmptyState"
 
 jest.unmock("react-relay")
 global.clearInterval = jest.fn()
@@ -152,7 +155,7 @@ describe("ArtworkGrid", () => {
         onClearFilters,
         artworks: { ...props.artworks, edges: [] },
       })
-      wrapper.find("a").simulate("click")
+      wrapper.find(ResetFilterLink).simulate("click")
       expect(onClearFilters).toBeCalled()
     })
 

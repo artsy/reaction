@@ -5,7 +5,6 @@ import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
 import * as paymentPickerMock from "../../Components/__mocks__/PaymentPicker"
@@ -25,7 +24,11 @@ jest.mock("Utils/Events", () => ({
 
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
 jest.mock(
   "Apps/Order/Components/PaymentPicker",
   // not sure why this is neccessary :(
@@ -169,6 +172,7 @@ describe("Payment", () => {
   describe("analytics", () => {
     const err = console.error
     beforeEach(() => {
+      mockTrackPageView.mockClear()
       mockPostEvent.mockClear()
       // TODO: update to react 16.9 so we can use async `act`
       console.error = (...args) => {
@@ -193,7 +197,7 @@ describe("Payment", () => {
     })
     it("tracks a pageview", async () => {
       await buildPage()
-      expect(trackPageView).toHaveBeenCalledTimes(1)
+      expect(mockTrackPageView).toHaveBeenCalledTimes(1)
     })
   })
 })

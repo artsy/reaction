@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { Collections_marketingCategories } from "__generated__/Collections_marketingCategories.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
+import { trackPageViewWrapper } from "Artsy"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { Link, Router } from "found"
@@ -103,7 +104,7 @@ const CategoryItem = props => {
 }
 
 export const CollectionsAppFragmentContainer = createFragmentContainer(
-  CollectionsApp,
+  trackPageViewWrapper(CollectionsApp),
   {
     marketingCategories: graphql`
       fragment Collections_marketingCategories on MarketingCollectionCategory

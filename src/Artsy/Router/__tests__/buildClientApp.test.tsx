@@ -91,8 +91,10 @@ describe("buildClientApp", () => {
               "isFetching",
               "mediator",
               "relayEnvironment",
+              "router",
               "routes",
               "setIsFetching",
+              "setRouter",
               "user",
             ])
             setImmediate(done)

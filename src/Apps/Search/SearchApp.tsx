@@ -4,6 +4,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Search/Components/NavigationTabs"
 import { SearchMeta } from "Apps/Search/Components/SearchMeta"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -133,7 +134,7 @@ export class SearchApp extends React.Component<Props> {
 }
 
 export const SearchAppFragmentContainer = createFragmentContainer(
-  withRouter(SearchApp),
+  withRouter(trackPageViewWrapper(SearchApp)),
   {
     viewer: graphql`
       fragment SearchApp_viewer on Viewer

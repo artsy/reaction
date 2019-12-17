@@ -18,6 +18,7 @@ import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
+import { trackPageViewWrapper } from "Artsy"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
@@ -100,7 +101,11 @@ export const CollectApp = track({
               const url = buildUrlForCollectApp(filters)
 
               if (typeof window !== "undefined") {
-                window.history.replaceState({}, "", url)
+                // FIXME: Is this the best way to guard against history updates
+                // in Storybooks?
+                if (!process.env.IS_STORYBOOK) {
+                  window.history.replaceState({}, "", url)
+                }
               }
 
               /**
@@ -134,11 +139,14 @@ export const CollectApp = track({
   )
 })
 
-export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
-  marketingHubCollections: graphql`
-    fragment Collect_marketingHubCollections on MarketingCollection
-      @relay(plural: true) {
-      ...CollectionsHubsNav_marketingHubCollections
-    }
-  `,
-})
+export const CollectAppFragmentContainer = createFragmentContainer(
+  trackPageViewWrapper(CollectApp),
+  {
+    marketingHubCollections: graphql`
+      fragment Collect_marketingHubCollections on MarketingCollection
+        @relay(plural: true) {
+        ...CollectionsHubsNav_marketingHubCollections
+      }
+    `,
+  }
+)

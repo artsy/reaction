@@ -7,7 +7,7 @@ interface ArtworkGridEmptyStateProps {
 }
 
 export const ArtworkGridEmptyState: React.SFC<ArtworkGridEmptyStateProps> = props => (
-  <EmptyMessage>
+  <Message>
     <span>
       There aren't any works available that meet the following criteria at this
       time.
@@ -16,18 +16,18 @@ export const ArtworkGridEmptyState: React.SFC<ArtworkGridEmptyStateProps> = prop
       <span>
         {" "}
         Change your filter criteria to view more works.{" "}
-        <a onClick={props.onClearFilters}>Clear all filters</a>.
+        <ResetFilterLink onClick={props.onClearFilters}>
+          Clear all filters
+        </ResetFilterLink>
+        .
       </span>
     )}
-  </EmptyMessage>
+  </Message>
 )
 
-// TODO: add link styling to palette Message
-const EmptyMessage = styled(Message)`
-  a {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+export const ResetFilterLink = styled.span`
+  text-decoration: underline;
+  cursor: pointer;
 `
 
-EmptyMessage.displayName = "EmptyMessage"
+ResetFilterLink.displayName = "ResetFilterLink"

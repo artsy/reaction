@@ -90,6 +90,14 @@ export class ArtworkApp extends React.Component<Props> {
 
     if (typeof window.analytics !== "undefined") {
       window.analytics.page(properties, { integrations: { Marketo: false } })
+      // Reset timers that track time on page to account for being in a
+      // client-side routing context, where these have already been initialized.
+      typeof window.desktopPageTimeTrackers !== "undefined" &&
+        window.desktopPageTimeTrackers.forEach(tracker => {
+          // No need to reset the tracker if we're on the same page.
+          if (window.location.pathname !== tracker.path)
+            tracker.reset(window.location.pathname)
+        })
     }
   }
 

@@ -9,7 +9,6 @@ import {
   PaymentDetails,
 } from "Apps/__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 import { render } from "enzyme"
@@ -18,7 +17,12 @@ import { graphql } from "react-relay"
 import { StatusFragmentContainer } from "../Status"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
+
 jest.unmock("react-relay")
 
 class StatusTestPage extends OrderAppTestPage {
@@ -68,6 +72,10 @@ describe("Status", () => {
       },
     })
   }
+
+  beforeEach(() => {
+    mockTrackPageView.mockClear()
+  })
 
   describe("offers", () => {
     it("should should have a title containing status", async () => {
@@ -325,6 +333,6 @@ describe("Status", () => {
   it("tracks a pageview", async () => {
     await env.buildPage()
 
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

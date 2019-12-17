@@ -23,9 +23,9 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
+import { trackPageViewWrapper } from "Artsy/Analytics/trackPageViewWrapper"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"

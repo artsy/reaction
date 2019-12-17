@@ -4,6 +4,7 @@ import { ArtistMetaFragmentContainer as ArtistMeta } from "Apps/Artist/Component
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -22,67 +23,73 @@ export interface ArtistAppProps {
   }
 }
 
-@track<ArtistAppProps>(props => ({
-  context_page: Schema.PageName.ArtistPage,
-  context_page_owner_id: props.artist.internalID,
-  context_page_owner_slug: props.artist.slug,
-  context_page_owner_type: Schema.OwnerType.Artist,
-}))
-export class ArtistApp extends React.Component<ArtistAppProps> {
-  render() {
-    const { artist, children } = this.props
+export const ArtistApp: React.FC<ArtistAppProps> = props => {
+  const { artist, children } = props
 
-    return (
-      <AppContainer>
-        <ArtistMeta artist={artist} />
+  return (
+    <AppContainer>
+      <ArtistMeta artist={artist} />
+      <Row>
+        <Col>
+          <ArtistHeader artist={artist} />
+        </Col>
+      </Row>
+      <HorizontalPadding>
+        <Spacer mb={3} />
+
         <Row>
           <Col>
-            <ArtistHeader artist={artist} />
+            <NavigationTabs artist={artist} />
+            <Spacer mb={3} />
+
+            <Box minHeight="30vh">{children}</Box>
           </Col>
         </Row>
-        <HorizontalPadding>
-          <Spacer mb={3} />
 
-          <Row>
-            <Col>
-              <NavigationTabs artist={artist} />
-              <Spacer mb={3} />
+        {typeof window !== "undefined" && (
+          <LazyLoadComponent threshold={1000}>
+            <Row>
+              <Col>
+                <RecentlyViewed />
+              </Col>
+            </Row>
+          </LazyLoadComponent>
+        )}
 
-              <Box minHeight="30vh">{children}</Box>
-            </Col>
-          </Row>
+        <Separator mt={6} mb={3} />
 
-          {typeof window !== "undefined" && (
-            <LazyLoadComponent threshold={1000}>
-              <Row>
-                <Col>
-                  <RecentlyViewed />
-                </Col>
-              </Row>
-            </LazyLoadComponent>
-          )}
-
-          <Separator mt={6} mb={3} />
-
-          <Row>
-            <Col>
-              <Footer />
-            </Col>
-          </Row>
-        </HorizontalPadding>
-      </AppContainer>
-    )
-  }
+        <Row>
+          <Col>
+            <Footer />
+          </Col>
+        </Row>
+      </HorizontalPadding>
+    </AppContainer>
+  )
 }
 
-export const ArtistAppFragmentContainer = createFragmentContainer(ArtistApp, {
-  artist: graphql`
-    fragment ArtistApp_artist on Artist {
-      internalID
-      slug
-      ...ArtistMeta_artist
-      ...ArtistHeader_artist
-      ...NavigationTabs_artist
-    }
-  `,
-})
+const TrackingWrappedArtistApp: React.FC<ArtistAppProps> = props => {
+  const Component = track<ArtistAppProps>(_p => ({
+    context_page: Schema.PageName.ArtistPage,
+    context_page_owner_id: props.artist.internalID,
+    context_page_owner_slug: props.artist.slug,
+    context_page_owner_type: Schema.OwnerType.Artist,
+  }))(ArtistApp)
+
+  return <Component {...props} />
+}
+
+export const ArtistAppFragmentContainer = createFragmentContainer(
+  trackPageViewWrapper(TrackingWrappedArtistApp),
+  {
+    artist: graphql`
+      fragment ArtistApp_artist on Artist {
+        internalID
+        slug
+        ...ArtistMeta_artist
+        ...ArtistHeader_artist
+        ...NavigationTabs_artist
+      }
+    `,
+  }
+)

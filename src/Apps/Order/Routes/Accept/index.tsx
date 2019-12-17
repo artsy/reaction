@@ -22,7 +22,7 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"

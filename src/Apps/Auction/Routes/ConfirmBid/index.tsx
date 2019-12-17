@@ -17,7 +17,7 @@ import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/Lot
 import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
 import { createCreditCardAndUpdatePhone } from "Apps/Auction/Routes/Register"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
