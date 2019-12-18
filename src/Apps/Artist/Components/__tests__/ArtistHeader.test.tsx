@@ -43,7 +43,7 @@ describe("ArtistHeader", () => {
   it("renders blue chip indicator when data is present", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
-    expect(html).toContain("Blue chip")
+    expect(html).toContain("Blue Chip")
   })
 
   it("renders auction record indicator when data is present", async () => {
@@ -69,6 +69,6 @@ describe("ArtistHeader", () => {
     }
     const wrapper = await getWrapper(artist)
     const html = wrapper.html()
-    expect(html).not.toContain("Blue chip")
+    expect(html).not.toContain("Blue Chip")
   })
 })
