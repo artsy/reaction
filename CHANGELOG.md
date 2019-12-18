@@ -1,3 +1,15 @@
+# v24.0.3 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1698] Fix whitespace in global nav [#3062](https://github.com/artsy/reaction/pull/3062) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v24.0.2 (Wed Dec 18 2019)
 
 #### 🐛  Bug Fix
