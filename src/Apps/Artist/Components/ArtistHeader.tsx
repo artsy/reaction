@@ -5,7 +5,6 @@ import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { CATEGORIES } from "Components/v2/ArtistMarketInsights"
 import { Carousel } from "Components/v2/Carousel"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -42,6 +41,12 @@ interface Props {
   artist: ArtistHeader_artist
   user?: User
   mediator?: Mediator
+}
+
+const Categories = {
+  "blue-chip": "Blue Chip",
+  "top-established": "Established",
+  "top-emerging": "Emerging",
 }
 
 type Image = Props["artist"]["carousel"]["images"][0]
@@ -152,8 +157,8 @@ export class LargeArtistHeader extends Component<Props> {
             </Box>
             <Flex justifyContent="space-between">
               {props.artist.counts.follows > 50 && (
-                <Flex flexDirection="column">
-                  <Sans size="4" weight="medium">
+                <Flex flexDirection="column" alignItems="center">
+                  <Sans size="5t" weight="medium">
                     {props.artist.counts.follows.toLocaleString()}
                   </Sans>
                   <Sans size="2" color="black60" weight="medium">
@@ -176,10 +181,10 @@ export class LargeArtistHeader extends Component<Props> {
           </Flex>
         </Box>
         <Flex flexDirection="row">
-          {renderAuctionHighlight(props.artist)}
+          {renderRepresentationStatus(props.artist)}
           {renderAuctionHighlight(props.artist) &&
             renderRepresentationStatus(props.artist) && <Spacer mr={5} />}
-          {renderRepresentationStatus(props.artist)}
+          {renderAuctionHighlight(props.artist)}
         </Flex>
       </HorizontalPadding>
     )
@@ -303,10 +308,10 @@ export class SmallArtistHeader extends Component<Props> {
           </Flex>
         </Flex>
         <Flex flexDirection="row" justifyContent="center">
-          {renderAuctionHighlight(props.artist)}
+          {renderRepresentationStatus(props.artist)}
           {renderAuctionHighlight(props.artist) &&
             renderRepresentationStatus(props.artist) && <Spacer mr={5} />}
-          {renderRepresentationStatus(props.artist)}
+          {renderAuctionHighlight(props.artist)}
         </Flex>
       </Flex>
     )
@@ -343,7 +348,10 @@ const renderRepresentationStatus = artist => {
     const highCategory = highestCategory(partnersConnection.edges)
 
     return (
-      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
+      <ArtistIndicator
+        label={Categories[highCategory] + " Representation"}
+        type={highCategory}
+      />
     )
   }
 }

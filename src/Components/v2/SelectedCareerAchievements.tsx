@@ -68,12 +68,13 @@ export class SelectedCareerAchievements extends React.Component<
     ) {
       const highCategory = highestCategory(partnersConnection.edges)
       const type = highCategory.toUpperCase().replace("-", "_")
+      const label = CATEGORIES[highCategory] + " representation"
 
       return (
         <ArtistInsight
           key={type}
           type={type}
-          label={CATEGORIES[highCategory]}
+          label={label}
           value={CATEGORY_LABEL_MAP[highCategory]}
         />
       )
