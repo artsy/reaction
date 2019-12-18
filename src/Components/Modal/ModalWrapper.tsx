@@ -64,17 +64,23 @@ export class ModalWrapper extends React.Component<
   }
 
   componentDidMount() {
-    this.updateBodyScrollBlock()
-    this.updateEscapeKeyListener()
+    const isOpen = this.props.show
+    this.updateBodyScrollBlock(isOpen)
+    this.updateEscapeKeyListener(isOpen)
   }
 
-  componentDidUpdate() {
-    this.updateBodyScrollBlock()
-    this.updateEscapeKeyListener()
+  componentDidUpdate(prevProps) {
+    const isOpen = this.props.show
+    if (prevProps.show !== isOpen) {
+      this.updateBodyScrollBlock(isOpen)
+      this.updateEscapeKeyListener(isOpen)
+    }
   }
 
   componentWillUnmount() {
     this.removeBlurToContainers()
+    this.updateBodyScrollBlock(false)
+    this.updateEscapeKeyListener(false)
   }
 
   close = () => {
@@ -94,8 +100,8 @@ export class ModalWrapper extends React.Component<
     }
   }
 
-  updateBodyScrollBlock() {
-    if (this.props.show) {
+  updateBodyScrollBlock(isOpen) {
+    if (isOpen) {
       document.body.style.overflowY = "hidden"
     } else {
       document.body.style.overflowY = "visible"
@@ -108,8 +114,8 @@ export class ModalWrapper extends React.Component<
     }
   }
 
-  updateEscapeKeyListener() {
-    if (this.props.show) {
+  updateEscapeKeyListener(isOpen) {
+    if (isOpen) {
       document.addEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
     } else {
       document.removeEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
