@@ -1,3 +1,15 @@
+# v24.0.4 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- Remove linking artifact [#3064](https://github.com/artsy/reaction/pull/3064) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v24.0.3 (Wed Dec 18 2019)
 
 #### 🐛  Bug Fix
