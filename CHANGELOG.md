@@ -1,3 +1,15 @@
+# v24.0.2 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- Fix scrolling issue after modal is closed [#3063](https://github.com/artsy/reaction/pull/3063) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v24.0.1 (Tue Dec 17 2019)
 
 #### 🐛  Bug Fix
