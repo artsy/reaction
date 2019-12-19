@@ -17,9 +17,9 @@ export interface SelectedCareerAchievementsProps {
 }
 
 const CATEGORIES = {
-  "blue-chip": "Blue chip",
-  "top-established": "Established",
-  "top-emerging": "Emerging",
+  "blue-chip": "Blue chip representation",
+  "top-established": "Established representation",
+  "top-emerging": "Emerging representation",
 }
 const CATEGORY_LABEL_MAP = {
   "blue-chip": "Represented by internationally reputable galleries.",
@@ -68,7 +68,7 @@ export class SelectedCareerAchievements extends React.Component<
     ) {
       const highCategory = highestCategory(partnersConnection.edges)
       const type = highCategory.toUpperCase().replace("-", "_")
-      const label = CATEGORIES[highCategory] + " representation"
+      const label = CATEGORIES[highCategory]
 
       return (
         <ArtistInsight

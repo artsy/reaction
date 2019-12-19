@@ -43,10 +43,10 @@ interface Props {
   mediator?: Mediator
 }
 
-const Categories = {
-  "blue-chip": "Blue Chip",
-  "top-established": "Established",
-  "top-emerging": "Emerging",
+const CATEGORIES = {
+  "blue-chip": "Blue Chip Representation",
+  "top-established": "Established Representation",
+  "top-emerging": "Emerging Representation",
 }
 
 type Image = Props["artist"]["carousel"]["images"][0]
@@ -348,10 +348,7 @@ const renderRepresentationStatus = artist => {
     const highCategory = highestCategory(partnersConnection.edges)
 
     return (
-      <ArtistIndicator
-        label={Categories[highCategory] + " Representation"}
-        type={highCategory}
-      />
+      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
     )
   }
 }
