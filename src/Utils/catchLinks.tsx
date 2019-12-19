@@ -124,6 +124,12 @@ export const routeThroughBrowserOrApp = hrefHandler => event => {
     return true
   }
 
+  // Empty anchor tags should be skipped. Those either won't navigate
+  // anywhere, or may have custom click handlers.
+  if (clickedAnchor.href === "") {
+    return false
+  }
+
   if (authorIsForcingNavigation(clickedAnchor)) {
     return true
   }
