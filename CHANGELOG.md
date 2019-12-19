@@ -1,3 +1,15 @@
+# v24.0.5 (Thu Dec 19 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CatchLinks] Dont attempt to handle empty anchor tags [#3066](https://github.com/artsy/reaction/pull/3066) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.0.4 (Wed Dec 18 2019)
 
 #### 🐛  Bug Fix
