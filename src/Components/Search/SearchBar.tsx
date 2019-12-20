@@ -157,8 +157,7 @@ export class SearchBar extends Component<Props, State> {
     super(props)
 
     this.enableExperimentalAppShell =
-      sd.CLIENT_SIDE_ROUTING === "experiment" &&
-      getENV("EXPERIMENTAL_APP_SHELL")
+      sd.CLIENT_NAVIGATION === "experiment" && getENV("EXPERIMENTAL_APP_SHELL")
   }
 
   componentDidMount() {
