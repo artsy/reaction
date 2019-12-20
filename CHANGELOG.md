@@ -1,3 +1,15 @@
+# v24.0.7 (Fri Dec 20 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] Fire AB test events for client side routing [#3067](https://github.com/artsy/reaction/pull/3067) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.0.6 (Fri Dec 20 2019)
 
 #### 🐛  Bug Fix
