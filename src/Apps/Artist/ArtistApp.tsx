@@ -11,9 +11,11 @@ import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
-import React from "react"
+import React, { useEffect } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
+import { useTracking } from "react-tracking"
+import { data as sd } from "sharify"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 
 export interface ArtistAppProps {
@@ -25,6 +27,23 @@ export interface ArtistAppProps {
 
 export const ArtistApp: React.FC<ArtistAppProps> = props => {
   const { artist, children } = props
+  const { trackEvent } = useTracking()
+
+  // TODO: Remove after AB test ends.
+  useEffect(() => {
+    const { CLIENT_NAVIGATION } = sd
+
+    const experiment = "client_navigation"
+    const variation = CLIENT_NAVIGATION
+    trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    })
+  }, [])
 
   return (
     <AppContainer>

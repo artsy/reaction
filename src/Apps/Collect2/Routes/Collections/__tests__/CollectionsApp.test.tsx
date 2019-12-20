@@ -17,8 +17,11 @@ jest.mock("found", () => ({
 describe("CollectionApp", () => {
   it("renders a relay tree correctly", async () => {
     const getRelayWrapper = async () => {
+      const trackEvent = jest.fn()
+      const tracking = { trackEvent }
       return await renderRelayTree({
         Component: CollectionsApp,
+        componentProps: { tracking },
         query: graphql`
           query CollectionsAppTestQuery @raw_response_type {
             marketingCategories {

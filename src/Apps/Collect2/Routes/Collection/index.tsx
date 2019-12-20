@@ -50,6 +50,23 @@ export class CollectionApp extends Component<CollectionAppProps> {
     this.collectionNotFound(this.props.collection)
   }
 
+  // TODO: Remove after AB test ends.
+  componentDidMount() {
+    const { tracking } = this.props
+    const { CLIENT_NAVIGATION } = sd
+
+    const experiment = "client_navigation"
+    const variation = CLIENT_NAVIGATION
+    tracking.trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    })
+  }
+
   render() {
     const {
       collection,

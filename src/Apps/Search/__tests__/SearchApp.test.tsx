@@ -11,10 +11,12 @@ jest.mock("Components/v2/RouteTabs", () => ({
 
 describe("SearchApp", () => {
   const getWrapper = (searchProps: any) => {
+    const trackEvent = jest.fn()
+    const tracking = { trackEvent }
     return mount(
       <MockBoot breakpoint="lg">
         <SystemContextProvider>
-          <SearchApp {...searchProps} />
+          <SearchApp {...searchProps} tracking={tracking} />
         </SystemContextProvider>
       </MockBoot>
     )
