@@ -1,3 +1,15 @@
+# v24.0.6 (Fri Dec 20 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1700: Artist Page Tweaks [#3065](https://github.com/artsy/reaction/pull/3065) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v24.0.5 (Thu Dec 19 2019)
 
 #### 🐛  Bug Fix
