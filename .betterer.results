@@ -1,24 +1,24 @@
 // BETTERER RESULTS V1.
 exports[`stricter compilation`] = {
-  timestamp: 1574638556412,
+  timestamp: 1577016571917,
   value: `{
     "../src/Apps/__stories__/Apps.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/__stories__/ArtistApp.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/__stories__/ArtworkApp.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/__stories__/Collect.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/__stories__/OrderApp.story.tsx": [
-      [18, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [18, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/__stories__/Search.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/__tests__/Fixtures/Artwork/ArtworkImageBrowser.fixture.ts": [
       [4, 2, 7, "Type \'{ title: string; image_alt: string; href: string; id: string; slug: string; is_saved: false; images: ({ internalID: string; uri: string; url: string; placeholder: { url: string; }; aspectRatio: number; is_zoomable: true; is_default: true; deepZoom: { ...; }; } | { ...; })[]; } | { ...; }\' is not assignable to type \'{ readonly image_alt: string | null; readonly id: string; readonly internalID: string; readonly slug: string; readonly is_saved: boolean | null; readonly title: string | null; ... 10 more ...; readonly sale: { ...; } | null; } | null\'.\\n  Type \'{ title: string; image_alt: string; href: string; id: string; slug: string; is_saved: false; images: ({ internalID: string; uri: string; url: string; placeholder: { url: string; }; aspectRatio: number; is_zoomable: true; is_default: true; deepZoom: { ...; }; } | { ...; })[]; }\' is missing the following properties from type \'{ readonly image_alt: string | null; readonly id: string; readonly internalID: string; readonly slug: string; readonly is_saved: boolean | null; readonly title: string | null; readonly href: string | null; ... 9 more ...; readonly sale: { ...; } | null; }\': internalID, artworkMeta, artists, date, and 6 more."]
@@ -47,13 +47,13 @@ exports[`stricter compilation`] = {
       [16, 12, 1, "Parameter \'x\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artist/ArtistApp.tsx": [
-      [13, 34, 33, "Could not find a declaration file for module \'react-lazy-load-image-component\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-lazy-load-image-component/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-lazy-load-image-component\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-lazy-load-image-component\';\`"]
+      [13, 34, 33, "Could not find a declaration file for module \'react-lazy-load-image-component\'. \'./node_modules/react-lazy-load-image-component/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-lazy-load-image-component\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-lazy-load-image-component\';\`"]
     ],
     "../src/Apps/Artist/Components/__stories__/ArtistCollectionsRail.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artist/Components/__stories__/ArtistRecommendations.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artist/Components/__tests__/ArtistMeta.test.tsx": [
       [16, 4, 11, "Type \'null\' is not assignable to type \'\\"ArtistMeta_artist\\"\'."],
@@ -129,7 +129,7 @@ exports[`stricter compilation`] = {
       [251, 34, 6, "Parameter \'artist\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artist/Components/ArtistMeta.tsx": [
-      [4, 34, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [4, 34, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [12, 60, 7, "Property \'edges\' does not exist on type \'{ readonly edges: readonly ({ readonly node: { readonly title: string | null; readonly date: string | null; readonly description: string | null; readonly category: string | null; readonly price_currency: string | null; ... 4 more ...; readonly partner: { ...; } | null; } | null; } | null)[] | null; } | null\'."],
       [54, 10, 5, "Property \'edges\' does not exist on type \'{ readonly edges: readonly ({ readonly node: { readonly title: string | null; readonly date: string | null; readonly description: string | null; readonly category: string | null; readonly price_currency: string | null; ... 4 more ...; readonly partner: { ...; } | null; } | null; } | null)[] | null; } | null\'."],
       [59, 14, 4, "Binding element \'node\' implicitly has an \'any\' type."],
@@ -397,7 +397,7 @@ exports[`stricter compilation`] = {
       [41, 8, 6, "Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"ArtistShows_artist\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"ArtistShows_artist\\">\'.\\n  Type \'null\' is not assignable to type \'_FragmentRefs<\\"ArtistShows_artist\\">\'."]
     ],
     "../src/Apps/Artwork/ArtworkApp.tsx": [
-      [2, 34, 33, "Could not find a declaration file for module \'react-lazy-load-image-component\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-lazy-load-image-component/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-lazy-load-image-component\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-lazy-load-image-component\';\`"],
+      [2, 34, 33, "Could not find a declaration file for module \'react-lazy-load-image-component\'. \'./node_modules/react-lazy-load-image-component/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-lazy-load-image-component\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-lazy-load-image-component\';\`"],
       [64, 26, 8, "Parameter \'mediator\' implicitly has an \'any\' type."],
       [98, 9, 7, "Object is possibly \'null\' or \'undefined\'."],
       [104, 9, 7, "Object is possibly \'null\' or \'undefined\'."],
@@ -407,36 +407,36 @@ exports[`stricter compilation`] = {
       [110, 30, 6, "Type \'{ readonly id: string; readonly slug: string; readonly \\" $fragmentRefs\\": FragmentRefs<\\"ArtistInfo_artist\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"ArtistInfo_artist\\">\'.\\n  Type \'null\' is not assignable to type \'_FragmentRefs<\\"ArtistInfo_artist\\">\'."]
     ],
     "../src/Apps/Artwork/Components/__stories__/ArtistInfo.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__stories__/ArtworkBanner.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__stories__/ArtworkDetails.story.tsx": [
-      [4, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [4, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [11, 30, 7, "Binding element \'artwork\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__stories__/ArtworkSidebar.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [19, 30, 7, "Binding element \'artwork\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__stories__/ArtworkSidebarLive.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__stories__/Banner.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__stories__/OtherAuctions.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [15, 6, 11, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<QueryRendererProps<OtherAuctionsStoryQuery>>): SystemQueryRenderer<OtherAuctionsStoryQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n  Overload 2 of 2, \'(props: QueryRendererProps<OtherAuctionsStoryQuery>, context?: any): SystemQueryRenderer<OtherAuctionsStoryQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'."]
     ],
     "../src/Apps/Artwork/Components/__stories__/OtherWorks.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [16, 6, 11, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<QueryRendererProps<OtherWorksQuery>>): SystemQueryRenderer<OtherWorksQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n  Overload 2 of 2, \'(props: QueryRendererProps<OtherWorksQuery>, context?: any): SystemQueryRenderer<OtherWorksQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'."],
       [25, 37, 27, "Argument of type \'ComponentType<MappedFragmentProps<Pick<{ artwork: OtherWorks_artwork; }, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to parameter of type \'ComponentType<MappedFragmentProps<Pick<OtherWorksQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n  Type \'ComponentClass<MappedFragmentProps<Pick<{ artwork: OtherWorks_artwork; }, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentType<MappedFragmentProps<Pick<OtherWorksQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n    Type \'ComponentClass<MappedFragmentProps<Pick<{ artwork: OtherWorks_artwork; }, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentClass<MappedFragmentProps<Pick<OtherWorksQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n      Types of property \'getDerivedStateFromProps\' are incompatible.\\n        Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<{ artwork: OtherWorks_artwork; }, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<OtherWorksQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\'.\\n          Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<{ artwork: OtherWorks_artwork; }, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<OtherWorksQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n            Types of parameters \'nextProps\' and \'nextProps\' are incompatible.\\n              Type \'Readonly<MappedFragmentProps<Pick<OtherWorksQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to type \'Readonly<MappedFragmentProps<Pick<{ artwork: OtherWorks_artwork; }, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n                Types of property \'artwork\' are incompatible.\\n                  Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"OtherWorks_artwork\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"OtherWorks_artwork\\">\'.\\n                    Type \'null\' is not assignable to type \'_FragmentRefs<\\"OtherWorks_artwork\\">\'."]
     ],
     "../src/Apps/Artwork/Components/__stories__/PricingContext.story.tsx": [
-      [5, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [5, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/__tests__/ArtistInfo.test.tsx": [
       [10, 21, 5, "Parameter \'props\' implicitly has an \'any\' type."],
@@ -632,13 +632,13 @@ exports[`stricter compilation`] = {
       [127, 37, 31, "Argument of type \'ComponentType<MappedFragmentProps<Pick<ArtworkDetailsProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to parameter of type \'ComponentType<MappedFragmentProps<Pick<ArtworkDetailsQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n  Type \'ComponentClass<MappedFragmentProps<Pick<ArtworkDetailsProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentType<MappedFragmentProps<Pick<ArtworkDetailsQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n    Type \'ComponentClass<MappedFragmentProps<Pick<ArtworkDetailsProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentClass<MappedFragmentProps<Pick<ArtworkDetailsQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n      Types of property \'getDerivedStateFromProps\' are incompatible.\\n        Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ArtworkDetailsProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ArtworkDetailsQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\'.\\n          Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ArtworkDetailsProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ArtworkDetailsQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n            Types of parameters \'nextProps\' and \'nextProps\' are incompatible.\\n              Type \'Readonly<MappedFragmentProps<Pick<ArtworkDetailsQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to type \'Readonly<MappedFragmentProps<Pick<ArtworkDetailsProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n                Types of property \'artwork\' are incompatible.\\n                  Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"ArtworkDetails_artwork\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"ArtworkDetails_artwork\\">\'.\\n                    Type \'null\' is not assignable to type \'_FragmentRefs<\\"ArtworkDetails_artwork\\">\'."]
     ],
     "../src/Apps/Artwork/Components/ArtworkImageBrowser/__stories__/ArtworkActions.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [11, 0, 41, "Type \'{ is_closed: boolean; is_auction: boolean; }\' is not assignable to type \'null\'."],
       [20, 0, 39, "Type \'\\"User\\"\' is not assignable to type \'null\'."],
       [22, 30, 7, "Binding element \'artwork\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkImageBrowser/__stories__/ArtworkImageBrowser.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkImageBrowser/__tests__/ArtworkActions.test.tsx": [
       [82, 45, 4, "Argument of type \'{ artwork: { sale: null; } | { sale: null; id: string; internalID: string; slug: string; is_saved: boolean | null; title: string | null; href: string | null; images: readonly ({ readonly url: string | null; } | null)[] | null; ... 7 more ...; partner: { ...; } | null; }; user: User; }\' is not assignable to parameter of type \'ArtworkActions_Test_QueryRawResponse & { user: User; }\'.\\n  Type \'{ artwork: { sale: null; } | { sale: null; id: string; internalID: string; slug: string; is_saved: boolean | null; title: string | null; href: string | null; images: readonly ({ readonly url: string | null; } | null)[] | null; ... 7 more ...; partner: { ...; } | null; }; user: User; }\' is not assignable to type \'ArtworkActions_Test_QueryRawResponse\'.\\n    Types of property \'artwork\' are incompatible.\\n      Type \'{ sale: null; } | { sale: null; id: string; internalID: string; slug: string; is_saved: boolean | null; title: string | null; href: string | null; images: readonly ({ readonly url: string | null; } | null)[] | null; ... 7 more ...; partner: { ...; } | null; }\' is not assignable to type \'{ readonly id: string; readonly internalID: string; readonly slug: string; readonly is_saved: boolean | null; readonly title: string | null; readonly href: string | null; readonly images: readonly ({ ...; } | null)[] | null; ... 8 more ...; readonly sale: { ...; } | null; } | null\'.\\n        Type \'{ sale: null; }\' is missing the following properties from type \'{ readonly id: string; readonly internalID: string; readonly slug: string; readonly is_saved: boolean | null; readonly title: string | null; readonly href: string | null; readonly images: readonly ({ ...; } | null)[] | null; ... 8 more ...; readonly sale: { ...; } | null; }\': id, internalID, slug, is_saved, and 11 more."],
@@ -694,7 +694,7 @@ exports[`stricter compilation`] = {
       [101, 37, 36, "Argument of type \'ComponentType<MappedFragmentProps<Pick<ImageBrowserProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to parameter of type \'ComponentType<MappedFragmentProps<Pick<ArtworkImageBrowserQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n  Type \'ComponentClass<MappedFragmentProps<Pick<ImageBrowserProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentType<MappedFragmentProps<Pick<ArtworkImageBrowserQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n    Type \'ComponentClass<MappedFragmentProps<Pick<ImageBrowserProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentClass<MappedFragmentProps<Pick<ArtworkImageBrowserQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n      Types of property \'getDerivedStateFromProps\' are incompatible.\\n        Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ImageBrowserProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ArtworkImageBrowserQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\'.\\n          Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ImageBrowserProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<ArtworkImageBrowserQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n            Types of parameters \'nextProps\' and \'nextProps\' are incompatible.\\n              Type \'Readonly<MappedFragmentProps<Pick<ArtworkImageBrowserQueryResponse, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to type \'Readonly<MappedFragmentProps<Pick<ImageBrowserProps, \\"artwork\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n                Types of property \'artwork\' are incompatible.\\n                  Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"ArtworkImageBrowser_artwork\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"ArtworkImageBrowser_artwork\\">\'.\\n                    Type \'null\' is not assignable to type \'_FragmentRefs<\\"ArtworkImageBrowser_artwork\\">\'."]
     ],
     "../src/Apps/Artwork/Components/ArtworkMeta.tsx": [
-      [2, 34, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [2, 34, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [19, 44, 11, "Object is possibly \'null\'."],
       [19, 44, 3, "Object is possibly \'null\'."],
       [26, 51, 10, "Object is possibly \'null\'."],
@@ -724,14 +724,14 @@ exports[`stricter compilation`] = {
       [138, 13, 28, "Object is possibly \'null\'."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarArtists.story.tsx": [
-      [9, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [9, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [12, 37, 7, "Binding element \'artwork\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarAuctionPartnerInfo.story.tsx": [
-      [9, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [9, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarBidActionStory.story.tsx": [
-      [15, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [15, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [26, 29, 25, "Argument of type \'{ readonly myLotStanding: readonly { readonly most_recent_bid: { readonly max_bid: { readonly cents: number | null; } | null; readonly id: string | null; } | null; }[] | null; readonly slug: string; readonly internalID: string; readonly sale: { ...; } | null; readonly sale_artwork: { ...; } | null; readonly id: stri...\' is not assignable to parameter of type \'object\'.\\n  Type \'null\' is not assignable to type \'object\'."],
       [31, 29, 25, "Argument of type \'{ readonly myLotStanding: readonly { readonly most_recent_bid: { readonly max_bid: { readonly cents: number | null; } | null; readonly id: string | null; } | null; }[] | null; readonly slug: string; readonly internalID: string; readonly sale: { ...; } | null; readonly sale_artwork: { ...; } | null; readonly id: stri...\' is not assignable to parameter of type \'object\'.\\n  Type \'null\' is not assignable to type \'object\'."],
       [36, 29, 25, "Argument of type \'{ readonly myLotStanding: readonly { readonly most_recent_bid: { readonly max_bid: { readonly cents: number | null; } | null; readonly id: string | null; } | null; }[] | null; readonly slug: string; readonly internalID: string; readonly sale: { ...; } | null; readonly sale_artwork: { ...; } | null; readonly id: stri...\' is not assignable to parameter of type \'object\'.\\n  Type \'null\' is not assignable to type \'object\'."],
@@ -750,30 +750,30 @@ exports[`stricter compilation`] = {
       [155, 29, 24, "Argument of type \'{ readonly myLotStanding: readonly { readonly most_recent_bid: { readonly max_bid: { readonly cents: number | null; } | null; readonly id: string | null; } | null; }[] | null; readonly slug: string; readonly internalID: string; readonly sale: { ...; } | null; readonly sale_artwork: { ...; } | null; readonly id: stri...\' is not assignable to parameter of type \'object\'.\\n  Type \'null\' is not assignable to type \'object\'."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarClassification.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarCommercial.story.tsx": [
-      [16, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [16, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [19, 40, 7, "Binding element \'artwork\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarCurrentBidInfo.story.tsx": [
-      [16, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [16, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarExtraLinks.story.tsx": [
-      [12, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [12, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarMetadata.story.tsx": [
-      [13, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [13, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [16, 38, 7, "Binding element \'artwork\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarPartnerInfo.story.tsx": [
-      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarSizeInfo.story.tsx": [
-      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__stories__/ArtworkSidebarTitleInfo.story.tsx": [
-      [8, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [8, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/ArtworkSidebar/__tests__/ArtworkSidebar.test.tsx": [
       [29, 6, 7, "Variable \'wrapper\' implicitly has type \'any\' in some locations where its type cannot be determined."],
@@ -1096,7 +1096,7 @@ exports[`stricter compilation`] = {
       [144, 6, 14, "Argument of type \'string | null\' is not assignable to parameter of type \'string\'.\\n  Type \'null\' is not assignable to type \'string\'."]
     ],
     "../src/Apps/Artwork/Components/TrustSignals/__stories__/TrustSignals.story.tsx": [
-      [5, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [5, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Artwork/Components/TrustSignals/__tests__/AuthenticityCertificate.test.tsx": [
       [21, 8, 7, "Type \'{} | { hasCertificateOfAuthenticity: boolean | null; is_biddable: boolean | null; id: string | null; }\' is not assignable to type \'_FragmentRefs<\\"AuthenticityCertificate_artwork\\">\'.\\n  Property \'\' $fragmentRefs\'\' is missing in type \'{}\' but required in type \'_FragmentRefs<\\"AuthenticityCertificate_artwork\\">\'."]
@@ -1123,7 +1123,7 @@ exports[`stricter compilation`] = {
       [4, 35, 4, "Argument of type \'null\' is not assignable to parameter of type \'readonly string[]\'."]
     ],
     "../src/Apps/Auction/__tests__/routes.test.ts": [
-      [8, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
+      [8, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'./node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
       [16, 4, 3, "Parameter \'url\' implicitly has an \'any\' type."],
       [59, 20, 27, "Object is possibly \'null\'."],
       [59, 20, 32, "Object is possibly \'null\'."],
@@ -1181,20 +1181,20 @@ exports[`stricter compilation`] = {
       [246, 10, 33, "Object is possibly \'null\'."]
     ],
     "../src/Apps/Auction/Components/__stories__/LotInfo.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Auction/Components/__stories__/PricingTransparency.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Auction/Components/__stories__/RegistrationForm.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Auction/Components/AuctionFAQ.tsx": [
       [156, 6, 11, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<QueryRendererProps<AuctionFAQQuery>>): SystemQueryRenderer<AuctionFAQQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n  Overload 2 of 2, \'(props: QueryRendererProps<AuctionFAQQuery>, context?: any): SystemQueryRenderer<AuctionFAQQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'."],
       [165, 37, 27, "Argument of type \'ComponentType<MappedFragmentProps<Pick<AuctionFAQProps, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to parameter of type \'ComponentType<MappedFragmentProps<Pick<AuctionFAQQueryResponse, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n  Type \'ComponentClass<MappedFragmentProps<Pick<AuctionFAQProps, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentType<MappedFragmentProps<Pick<AuctionFAQQueryResponse, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n    Type \'ComponentClass<MappedFragmentProps<Pick<AuctionFAQProps, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'ComponentClass<MappedFragmentProps<Pick<AuctionFAQQueryResponse, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n      Types of property \'getDerivedStateFromProps\' are incompatible.\\n        Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<AuctionFAQProps, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<AuctionFAQQueryResponse, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any> | undefined\'.\\n          Type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<AuctionFAQProps, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\' is not assignable to type \'GetDerivedStateFromProps<MappedFragmentProps<Pick<AuctionFAQQueryResponse, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }, any>\'.\\n            Types of parameters \'nextProps\' and \'nextProps\' are incompatible.\\n              Type \'Readonly<MappedFragmentProps<Pick<AuctionFAQQueryResponse, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\' is not assignable to type \'Readonly<MappedFragmentProps<Pick<AuctionFAQProps, \\"viewer\\">> & { componentRef?: ((ref: any) => void) | undefined; }>\'.\\n                Types of property \'viewer\' are incompatible.\\n                  Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"AuctionFAQ_viewer\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"AuctionFAQ_viewer\\">\'.\\n                    Type \'null\' is not assignable to type \'_FragmentRefs<\\"AuctionFAQ_viewer\\">\'."]
     ],
     "../src/Apps/Auction/Components/BidForm.tsx": [
-      [16, 16, 5, "Could not find a declaration file for module \'yup\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"],
+      [16, 16, 5, "Could not find a declaration file for module \'yup\'. \'./node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"],
       [67, 17, 9, "Object is possibly \'null\'."],
       [67, 17, 15, "Object is possibly \'null\'."],
       [67, 35, 26, "Object is possibly \'null\'."],
@@ -1211,7 +1211,7 @@ exports[`stricter compilation`] = {
       [34, 24, 26, "Object is possibly \'null\'."]
     ],
     "../src/Apps/Auction/Components/RegistrationForm.tsx": [
-      [16, 21, 5, "Could not find a declaration file for module \'yup\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"],
+      [16, 21, 5, "Could not find a declaration file for module \'yup\'. \'./node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"],
       [58, 10, 293, "No overload matches this call.\\n  Overload 2 of 2, \'(props: AddressFormProps, context?: any): AddressForm\', gave the following error.\\n    Type \'FormikErrors<Address> | undefined\' is not assignable to type \'Partial<Address>\'.\\n      Type \'undefined\' is not assignable to type \'Partial<Address>\'.\\n  Overload 2 of 2, \'(props: AddressFormProps, context?: any): AddressForm\', gave the following error.\\n    Type \'FormikTouched<Address> | undefined\' is not assignable to type \'Partial<{ name: boolean; country: boolean; postalCode: boolean; addressLine1: boolean; addressLine2: boolean; city: boolean; region: boolean; phoneNumber: boolean; }>\'.\\n      Type \'undefined\' is not assignable to type \'Partial<{ name: boolean; country: boolean; postalCode: boolean; addressLine1: boolean; addressLine2: boolean; city: boolean; region: boolean; phoneNumber: boolean; }>\'."],
       [102, 46, 7, "Parameter \'message\' implicitly has an \'any\' type."],
       [103, 9, 4, "\'this\' implicitly has type \'any\' because it does not have a type annotation."],
@@ -1249,10 +1249,10 @@ exports[`stricter compilation`] = {
       [3, 2, 5, "Type \'{ id: string; object: string; client_ip: null; created: number; livemode: false; type: string; used: false; }\' is not assignable to type \'Token\'.\\n  Types of property \'client_ip\' are incompatible.\\n    Type \'null\' is not assignable to type \'string\'."]
     ],
     "../src/Apps/Auction/Routes/__stories__/ConfirmBid.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Auction/Routes/__stories__/Register.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Auction/Routes/__tests__/ConfirmBid.test.tsx": [
       [119, 8, 38, "Object is possibly \'null\'."],
@@ -1291,7 +1291,7 @@ exports[`stricter compilation`] = {
       [35, 4, 39, "Cannot invoke an object which is possibly \'undefined\'."]
     ],
     "../src/Apps/Auction/Routes/ConfirmBid/index.tsx": [
-      [16, 22, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [16, 22, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [38, 10, 11, "Property \'saleArtwork\' does not exist on type \'{ readonly id: string; readonly internalID: string; readonly slug: string; readonly saleArtwork: { readonly id: string; readonly internalID: string; readonly slug: string; readonly sale: { readonly id: string; ... 5 more ...; readonly isRegistrationClosed: boolean | null; } | null; readonly \\" $fragmentRefs\\": Fragmen...\'."],
       [74, 25, 7, "Object is possibly \'null\'."],
       [99, 36, 13, "Variable \'errorMessages\' is used before being assigned."],
@@ -1318,7 +1318,7 @@ exports[`stricter compilation`] = {
       [195, 13, 4, "Object is possibly \'null\'."]
     ],
     "../src/Apps/Auction/Routes/Register/index.tsx": [
-      [18, 22, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [18, 22, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [90, 42, 5, "Parameter \'phone\' implicitly has an \'any\' type."],
       [90, 49, 5, "Parameter \'token\' implicitly has an \'any\' type."],
       [97, 34, 17, "Property \'creditCardOrError\' does not exist on type \'{ readonly creditCardOrError: { readonly creditCardEdge?: { readonly node: { readonly lastDigits: string; } | null; } | null | undefined; readonly mutationError?: { readonly type: string | null; readonly message: string | null; readonly detail: string | null; } | null | undefined; } | null; } | null\'."],
@@ -1345,10 +1345,10 @@ exports[`stricter compilation`] = {
       [0, 37, 6, "Parameter \'medium\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Collect2/Routes/Collect/index.tsx": [
-      [3, 34, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
+      [3, 34, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
     ],
     "../src/Apps/Collect2/Routes/Collection/Components/__stories__/CollectionsHubRails.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [51, 20, 17, "Property \'linkedCollections\' does not exist on type \'{ readonly linkedCollections: readonly { readonly \\" $fragmentRefs\\": FragmentRefs<\\"CollectionsHubRails_linkedCollections\\">; }[]; } | null\'."]
     ],
     "../src/Apps/Collect2/Routes/Collection/Components/CollectionsHubRails/ArtistSeriesRail/__tests__/ArtistSeriesEntity.test.tsx": [
@@ -1480,8 +1480,8 @@ exports[`stricter compilation`] = {
       [95, 25, 11, "Binding element \'is_followed\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Collect2/Routes/Collection/index.tsx": [
-      [14, 34, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
-      [17, 21, 12, "Could not find a declaration file for module \'trunc-html\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/trunc-html/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/trunc-html\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'trunc-html\';\`"],
+      [14, 34, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [17, 21, 12, "Could not find a declaration file for module \'trunc-html\'. \'./node_modules/trunc-html/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/trunc-html\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'trunc-html\';\`"],
       [41, 23, 10, "Parameter \'collection\' implicitly has an \'any\' type."],
       [94, 12, 8, "Type \'{ readonly aggregations: readonly ({ readonly slice: \\"COLOR\\" | \\"DIMENSION_RANGE\\" | \\"FOLLOWED_ARTISTS\\" | \\"GALLERY\\" | \\"INSTITUTION\\" | \\"MAJOR_PERIOD\\" | \\"MEDIUM\\" | \\"MERCHANDISABLE_ARTISTS\\" | \\"PARTNER_CITY\\" | ... 4 more ... | null; readonly counts: readonly ({ ...; } | null)[] | null; } | null)[] | null; readonly \\" $frag...\' is not assignable to type \'_FragmentRefs<\\"Header_artworks\\">\'.\\n  Type \'null\' is not assignable to type \'_FragmentRefs<\\"Header_artworks\\">\'."],
       [114, 16, 18, "Object is possibly \'null\'."]
@@ -1496,7 +1496,7 @@ exports[`stricter compilation`] = {
       [40, 33, 5, "Variable \'props\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Collect2/Routes/Collections/index.tsx": [
-      [7, 28, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [7, 28, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [73, 21, 5, "Parameter \'props\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Components/HorizontalPadding.tsx": [
@@ -1532,8 +1532,8 @@ exports[`stricter compilation`] = {
       [155, 13, 6, "Object is possibly \'null\'."]
     ],
     "../src/Apps/Order/__tests__/OrderApp.test.tsx": [
-      [4, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
-      [7, 35, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [4, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'./node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
+      [7, 35, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [26, 15, 8, "Binding element \'children\' implicitly has an \'any\' type."],
       [27, 21, 8, "Binding element \'children\' implicitly has an \'any\' type."],
       [390, 21, 228, "Types of property \'myLastOffer\' are incompatible.\\n  Type \'{ createdAt: string; } | { createdAt: string; internalID: string; id: string | null; }\' is not assignable to type \'{ readonly internalID: string; readonly createdAt: string; readonly id: string | null; } | null | undefined\'.\\n    Type \'{ createdAt: string; }\' is missing the following properties from type \'{ readonly internalID: string; readonly createdAt: string; readonly id: string | null; }\': internalID, id"],
@@ -1544,35 +1544,35 @@ exports[`stricter compilation`] = {
       [56, 49, 8, "Binding element \'innerRef\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Order/Components/__stories__/AddressForm.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [10, 14, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [15, 13, 7, "Parameter \'address\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Order/Components/__stories__/ArtworkSummaryItem.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [10, 25, 10, "Binding element \'artistName\' implicitly has an \'any\' type."],
       [10, 37, 12, "Binding element \'artworkTitle\' implicitly has an \'any\' type."],
       [43, 6, 13, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<MockRelayRendererProps<OperationType>>): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'.\\n      Property \'CommerceOrder\' is incompatible with index signature.\\n        Type \'(_: any, { id, ...others }: { [x: string]: any; id: any; }) => any\' is not assignable to type \'GraphQLFieldResolver<any, any, { [argName: string]: any; }>\'.\\n          Types of parameters \'__1\' and \'args\' are incompatible.\\n            Property \'id\' is missing in type \'{ [argName: string]: any; }\' but required in type \'{ [x: string]: any; id: any; }\'.\\n  Overload 2 of 2, \'(props: MockRelayRendererProps<OperationType>, context?: any): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'."]
     ],
     "../src/Apps/Order/Components/__stories__/CreditCardDetails.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Order/Components/__stories__/ItemReview.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [13, 14, 11, "Type \'null\' is not assignable to type \'\\"ItemReview_lineItem\\"\'."],
       [43, 14, 11, "Type \'null\' is not assignable to type \'\\"ItemReview_lineItem\\"\'."],
       [88, 14, 11, "Type \'null\' is not assignable to type \'\\"ItemReview_lineItem\\"\'."],
       [117, 14, 11, "Type \'null\' is not assignable to type \'\\"ItemReview_lineItem\\"\'."]
     ],
     "../src/Apps/Order/Components/__stories__/OfferHistoryItem.story.tsx": [
-      [12, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [12, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [32, 4, 13, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<MockRelayRendererProps<OperationType>>): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'.\\n  Overload 2 of 2, \'(props: MockRelayRendererProps<OperationType>, context?: any): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'."]
     ],
     "../src/Apps/Order/Components/__stories__/OfferInput.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Order/Components/__stories__/ShippingSummaryItem.story.tsx": [
-      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [13, 2, 11, "Type \'null\' is not assignable to type \'\\"ShippingAddress_ship\\"\'."],
       [25, 2, 11, "Type \'null\' is not assignable to type \'\\"ShippingSummaryItem_order\\"\'."],
       [50, 10, 13, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<MockRelayRendererProps<OperationType>>): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'.\\n  Overload 2 of 2, \'(props: MockRelayRendererProps<OperationType>, context?: any): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'."],
@@ -1582,7 +1582,7 @@ exports[`stricter compilation`] = {
       [112, 10, 13, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<MockRelayRendererProps<OperationType>>): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'.\\n  Overload 2 of 2, \'(props: MockRelayRendererProps<OperationType>, context?: any): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'."]
     ],
     "../src/Apps/Order/Components/__stories__/TransactionDetailsSummaryItem.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [12, 2, 11, "Type \'null\' is not assignable to type \'\\"TransactionDetailsSummaryItem_order\\"\'."],
       [42, 4, 13, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<MockRelayRendererProps<OperationType>>): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'.\\n  Overload 2 of 2, \'(props: MockRelayRendererProps<OperationType>, context?: any): MockRelayRenderer<OperationType>\', gave the following error.\\n    Type \'{ Query: () => { me: { name: string; }; }; CommerceOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceBuyOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; CommerceOfferOrder: (_: any, { id, ...others }: { [x: string]: any; id: any; }) => any; }\' is not assignable to type \'IMocks\'."]
     ],
@@ -1734,7 +1734,7 @@ exports[`stricter compilation`] = {
       [54, 29, 7, "Binding element \'Sidebar\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Order/OrderApp.tsx": [
-      [8, 28, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [8, 28, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [27, 19, 21, "Object is possibly \'undefined\'."],
       [45, 2, 5, "Property \'state\' in type \'OrderApp\' is not assignable to the same property in base type \'Component<OrderAppProps, OrderAppState, any>\'.\\n  Type \'{ stripe: null; }\' is not assignable to type \'Readonly<OrderAppState>\'.\\n    Types of property \'stripe\' are incompatible.\\n      Type \'null\' is not assignable to type \'Stripe\'."],
       [46, 2, 20, "Property \'removeTransitionHook\' has no initializer and is not definitely assigned in the constructor."],
@@ -1915,7 +1915,7 @@ exports[`stricter compilation`] = {
       [339, 37, 7, "Object is possibly \'null\' or \'undefined\'."]
     ],
     "../src/Apps/Order/Routes/Status/index.tsx": [
-      [17, 22, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [17, 22, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [50, 19, 20, "Object is possibly \'null\'."],
       [199, 11, 11, "Object is possibly \'null\'."],
       [199, 11, 17, "Object is possibly \'null\'."],
@@ -1953,7 +1953,7 @@ exports[`stricter compilation`] = {
       [6, 4, 11, "Type \'null\' is not assignable to type \'\\"NavigationTabs_searchableConnection\\"\'."]
     ],
     "../src/Apps/Search/Components/__tests__/SearchMeta.test.tsx": [
-      [4, 28, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
+      [4, 28, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
     ],
     "../src/Apps/Search/Components/__tests__/SendFeedback.test.tsx": [
       [14, 31, 9, "Parameter \'component\' implicitly has an \'any\' type."],
@@ -1983,10 +1983,10 @@ exports[`stricter compilation`] = {
       [179, 37, 3, "Object is possibly \'null\'."]
     ],
     "../src/Apps/Search/Components/SearchMeta.tsx": [
-      [1, 34, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
+      [1, 34, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
     ],
     "../src/Apps/Search/Components/SearchResultsSkeleton/__stories__/SearchResultsSkeleton.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Apps/Search/Components/SendFeedback.tsx": [
       [46, 54, 16, "Argument of type \'RelayModernEnvironment | undefined\' is not assignable to parameter of type \'Environment\'.\\n  Type \'undefined\' is not assignable to type \'Environment\'."],
@@ -2132,9 +2132,9 @@ exports[`stricter compilation`] = {
       [10, 4, 26, "Type \'null\' is not assignable to type \'string\'."]
     ],
     "../src/Artsy/Relay/createRelaySSREnvironment.ts": [
-      [5, 27, 45, "Could not find a declaration file for module \'react-relay-network-modern-ssr/node8/client\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-relay-network-modern-ssr/node8/client.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-relay-network-modern-ssr\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-relay-network-modern-ssr/node8/client\';\`"],
-      [6, 27, 45, "Could not find a declaration file for module \'react-relay-network-modern-ssr/node8/server\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-relay-network-modern-ssr/node8/server.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-relay-network-modern-ssr\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-relay-network-modern-ssr/node8/server\';\`"],
-      [16, 7, 34, "Could not find a declaration file for module \'react-relay-network-modern/node8\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-relay-network-modern/node8/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-relay-network-modern\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-relay-network-modern/node8\';\`"],
+      [5, 27, 45, "Could not find a declaration file for module \'react-relay-network-modern-ssr/node8/client\'. \'./node_modules/react-relay-network-modern-ssr/node8/client.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-relay-network-modern-ssr\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-relay-network-modern-ssr/node8/client\';\`"],
+      [6, 27, 45, "Could not find a declaration file for module \'react-relay-network-modern-ssr/node8/server\'. \'./node_modules/react-relay-network-modern-ssr/node8/server.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-relay-network-modern-ssr\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-relay-network-modern-ssr/node8/server\';\`"],
+      [16, 7, 34, "Could not find a declaration file for module \'react-relay-network-modern/node8\'. \'./node_modules/react-relay-network-modern/node8/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-relay-network-modern\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-relay-network-modern/node8\';\`"],
       [45, 20, 10, "Parameter \'isFetching\' implicitly has an \'any\' type."],
       [79, 4, 21, "Element implicitly has an \'any\' type because expression of type \'\\"X-TIMEZONE\\"\' can\'t be used to index type \'{ \\"Content-Type\\": string; \\"User-Agent\\": string; }\'.\\n  Property \'X-TIMEZONE\' does not exist on type \'{ \\"Content-Type\\": string; \\"User-Agent\\": string; }\'."],
       [100, 14, 18, "Parameter \'queryResponseCache\' implicitly has an \'any\' type."],
@@ -2171,7 +2171,7 @@ exports[`stricter compilation`] = {
       [21, 26, 8, "Binding element \'children\' implicitly has an \'any\' type."]
     ],
     "../src/Artsy/Router/__tests__/buildServerApp.test.tsx": [
-      [15, 22, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [15, 22, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [56, 6, 67, "Argument of type \'symbol | null\' is not assignable to parameter of type \'string | number | symbol\'.\\n  Type \'null\' is not assignable to type \'string | number | symbol\'."],
       [91, 11, 8, "Object is possibly \'undefined\'."],
       [91, 20, 8, "Object is possibly \'undefined\'."],
@@ -2182,24 +2182,24 @@ exports[`stricter compilation`] = {
       [23, 18, 11, "Argument of type \'(enzyme: ReactWrapper<any, Readonly<{}>, Component<{}, {}, any>>) => boolean | undefined\' is not assignable to parameter of type \'RenderUntilPredicate<any, Readonly<{}>, Component<{}, {}, any>>\'.\\n  Type \'boolean | undefined\' is not assignable to type \'boolean\'.\\n    Type \'undefined\' is not assignable to type \'boolean\'."]
     ],
     "../src/Artsy/Router/Boot.tsx": [
-      [7, 29, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [7, 29, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [35, 7, 4, "Argument of type \'null\' is not assignable to parameter of type \'AuctionInfo | ContextModule | ContextPage | CriteoInfo | Flow | Interaction | AuthenticationInteraction | Label | Success | Failure | Type | Uncategorized | ((props: {}, state: null, args: any[]) => Trackables) | undefined\'."],
       [36, 12, 4, "Parameter \'data\' implicitly has an \'any\' type."]
     ],
     "../src/Artsy/Router/buildClientApp.tsx": [
-      [2, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
-      [3, 30, 14, "Could not find a declaration file for module \'found-scroll\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/found-scroll/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-scroll\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-scroll\';\`"],
-      [7, 28, 27, "Could not find a declaration file for module \'farce/lib/BrowserProtocol\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/BrowserProtocol.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/BrowserProtocol\';\`"],
-      [8, 34, 33, "Could not find a declaration file for module \'farce/lib/createQueryMiddleware\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/createQueryMiddleware.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/createQueryMiddleware\';\`"],
-      [9, 25, 24, "Could not find a declaration file for module \'farce/lib/HashProtocol\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/HashProtocol.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/HashProtocol\';\`"],
-      [10, 27, 26, "Could not find a declaration file for module \'farce/lib/MemoryProtocol\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/MemoryProtocol.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/MemoryProtocol\';\`"],
+      [2, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'./node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
+      [3, 30, 14, "Could not find a declaration file for module \'found-scroll\'. \'./node_modules/found-scroll/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-scroll\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-scroll\';\`"],
+      [7, 28, 27, "Could not find a declaration file for module \'farce/lib/BrowserProtocol\'. \'./node_modules/farce/lib/BrowserProtocol.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/BrowserProtocol\';\`"],
+      [8, 34, 33, "Could not find a declaration file for module \'farce/lib/createQueryMiddleware\'. \'./node_modules/farce/lib/createQueryMiddleware.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/createQueryMiddleware\';\`"],
+      [9, 25, 24, "Could not find a declaration file for module \'farce/lib/HashProtocol\'. \'./node_modules/farce/lib/HashProtocol.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/HashProtocol\';\`"],
+      [10, 27, 26, "Could not find a declaration file for module \'farce/lib/MemoryProtocol\'. \'./node_modules/farce/lib/MemoryProtocol.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/MemoryProtocol\';\`"],
       [44, 34, 92, "Argument of type \'{ cache: any; user: User | null; }\' is not assignable to parameter of type \'Config\'.\\n  Types of property \'user\' are incompatible.\\n    Type \'User | null\' is not assignable to type \'User | undefined\'.\\n      Type \'null\' is not assignable to type \'User | undefined\'."],
       [96, 12, 4, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<BootProps>): Boot\', gave the following error.\\n    Type \'User | null\' is not assignable to type \'User\'.\\n      Type \'null\' is not assignable to type \'User\'.\\n  Overload 2 of 2, \'(props: BootProps, context?: any): Boot\', gave the following error.\\n    Type \'User | null\' is not assignable to type \'User\'.\\n      Type \'null\' is not assignable to type \'User\'."]
     ],
     "../src/Artsy/Router/buildServerApp.tsx": [
-      [2, 22, 22, "Could not find a declaration file for module \'serialize-javascript\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/serialize-javascript/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/serialize-javascript\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'serialize-javascript\';\`"],
-      [5, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
-      [14, 34, 33, "Could not find a declaration file for module \'farce/lib/createQueryMiddleware\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/createQueryMiddleware.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/createQueryMiddleware\';\`"],
+      [2, 22, 22, "Could not find a declaration file for module \'serialize-javascript\'. \'./node_modules/serialize-javascript/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/serialize-javascript\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'serialize-javascript\';\`"],
+      [5, 25, 13, "Could not find a declaration file for module \'found-relay\'. \'./node_modules/found-relay/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found-relay\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found-relay\';\`"],
+      [14, 34, 33, "Could not find a declaration file for module \'farce/lib/createQueryMiddleware\'. \'./node_modules/farce/lib/createQueryMiddleware.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce/lib/createQueryMiddleware\';\`"],
       [57, 87, 19, "Argument of type \'{ user: User | null; userAgent: string | undefined; }\' is not assignable to parameter of type \'Config\'.\\n  Types of property \'user\' are incompatible.\\n    Type \'User | null\' is not assignable to type \'User | undefined\'.\\n      Type \'null\' is not assignable to type \'User | undefined\'."],
       [75, 12, 3, "Type \'string | undefined\' is not assignable to type \'string\'.\\n  Type \'undefined\' is not assignable to type \'string\'."],
       [96, 14, 260, "No overload matches this call.\\n  Overload 2 of 2, \'(props: BootProps, context?: any): Boot\', gave the following error.\\n    Type \'User | null\' is not assignable to type \'User\'.\\n      Type \'null\' is not assignable to type \'User\'.\\n  Overload 2 of 2, \'(props: BootProps, context?: any): Boot\', gave the following error.\\n    Type \'\\"\\" | (\\"xs\\" | \\"sm\\" | \\"md\\" | \\"hover\\" | \\"xl\\" | \\"lg\\" | \\"notHover\\")[] | undefined\' is not assignable to type \'(\\"xs\\" | \\"sm\\" | \\"md\\" | \\"hover\\" | \\"xl\\" | \\"lg\\" | \\"notHover\\")[] | undefined\'.\\n      Type \'\\"\\"\' is not assignable to type \'(\\"xs\\" | \\"sm\\" | \\"md\\" | \\"hover\\" | \\"xl\\" | \\"lg\\" | \\"notHover\\")[] | undefined\'."],
@@ -2209,7 +2209,7 @@ exports[`stricter compilation`] = {
       [189, 19, 1, "Parameter \'i\' implicitly has an \'any\' type."]
     ],
     "../src/Artsy/Router/index.ts": [
-      [1, 48, 7, "Could not find a declaration file for module \'farce\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce\';\`"]
+      [1, 48, 7, "Could not find a declaration file for module \'farce\'. \'./node_modules/farce/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce\';\`"]
     ],
     "../src/Artsy/Router/RouterLink.tsx": [
       [22, 15, 4, "Argument of type \'string\' is not assignable to parameter of type \'never\'."],
@@ -2227,8 +2227,8 @@ exports[`stricter compilation`] = {
       [2, 19, 5, "Parameter \'value\' implicitly has an \'any\' type."]
     ],
     "../src/Artsy/Router/Utils/RenderStatus.tsx": [
-      [1, 28, 24, "Could not find a declaration file for module \'react-static-container\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-static-container/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-static-container\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-static-container\';\`"],
-      [5, 29, 28, "Could not find a declaration file for module \'found/lib/ElementsRenderer\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/found/lib/ElementsRenderer.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found/lib/ElementsRenderer\';\`"],
+      [1, 28, 24, "Could not find a declaration file for module \'react-static-container\'. \'./node_modules/react-static-container/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-static-container\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-static-container\';\`"],
+      [5, 29, 28, "Could not find a declaration file for module \'found/lib/ElementsRenderer\'. \'./node_modules/found/lib/ElementsRenderer.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/found\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'found/lib/ElementsRenderer\';\`"],
       [55, 9, 64, "JSX element type \'ErrorPage\' is not a constructor function for JSX elements."],
       [64, 20, 8, "Binding element \'children\' implicitly has an \'any\' type."]
     ],
@@ -2260,10 +2260,10 @@ exports[`stricter compilation`] = {
       [36, 4, 12, "Object is possibly \'null\'."]
     ],
     "../src/Components/__stories__/CollectionsRail.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/ErrorModal.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/ErrorPage.story.tsx": [
       [5, 26, 24, "JSX element type \'ErrorPage\' is not a constructor function for JSX elements."],
@@ -2274,7 +2274,7 @@ exports[`stricter compilation`] = {
       [22, 36, 9, "No overload matches this call.\\n  Overload 1 of 2, \'(props: MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | \\"onChange\\" | ... 239 more ... | \\"gutter\\">> & { ...; }, context?: any): ReactElement<...> | ... 1 more ... | null\', gave the following error.\\n    Type \'{} | { artworks: { readonly \\" $fragmentRefs\\": FragmentRefs<\\"Fillwidth_artworks\\">; } | null; }\' is not assignable to type \'IntrinsicAttributes & MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | ... 240 more ... | \\"gutter\\">> & { ...; }\'.\\n      Property \'artworks\' is missing in type \'{}\' but required in type \'MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | \\"onChange\\" | ... 239 more ... | \\"gutter\\">>\'.\\n  Overload 2 of 2, \'(props: PropsWithChildren<MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | \\"onChange\\" | ... 239 more ... | \\"gutter\\">> & { ...; }>, context?: any): ReactElement<...> | ... 1 more ... | null\', gave the following error.\\n    Type \'{} | { artworks: { readonly \\" $fragmentRefs\\": FragmentRefs<\\"Fillwidth_artworks\\">; } | null; }\' is not assignable to type \'IntrinsicAttributes & MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | ... 240 more ... | \\"gutter\\">> & { ...; } & { ...; }\'.\\n      Property \'artworks\' is missing in type \'{}\' but required in type \'MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | \\"onChange\\" | ... 239 more ... | \\"gutter\\">>\'."]
     ],
     "../src/Components/__stories__/Icons.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/Input.story.tsx": [
       [71, 14, 5, "Type \'string | null\' is not assignable to type \'string | undefined\'.\\n  Type \'null\' is not assignable to type \'string | undefined\'."],
@@ -2285,17 +2285,17 @@ exports[`stricter compilation`] = {
       [178, 43, 5, "Type \'true\' is not assignable to type \'undefined\'."]
     ],
     "../src/Components/__stories__/MarketInsights.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/Modal.story.tsx": [
       [9, 14, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [57, 14, 5, "Parameter \'props\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/ModalDialog.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/NavBar.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [8, 19, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [85, 21, 8, "Binding element \'children\' implicitly has an \'any\' type."]
     ],
@@ -2305,7 +2305,7 @@ exports[`stricter compilation`] = {
       [42, 31, 23, "Element implicitly has an \'any\' type because expression of type \'any\' can\'t be used to index type \'{ [ENTERING]: string; [ENTERED]: string; }\'."]
     ],
     "../src/Components/__stories__/Search.story.tsx": [
-      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [6, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/StepMarker.story.tsx": [
       [56, 58, 5, "No overload matches this call.\\n  Overload 1 of 2, \'(...items: ConcatArray<never>[]): never[]\', gave the following error.\\n    Argument of type \'{ label: string; }[]\' is not assignable to parameter of type \'ConcatArray<never>\'.\\n      Types of property \'slice\' are incompatible.\\n        Type \'(start?: number | undefined, end?: number | undefined) => { label: string; }[]\' is not assignable to type \'(start?: number | undefined, end?: number | undefined) => never[]\'.\\n          Type \'{ label: string; }[]\' is not assignable to type \'never[]\'.\\n            Type \'{ label: string; }\' is not assignable to type \'never\'.\\n  Overload 2 of 2, \'(...items: ConcatArray<never>[]): never[]\', gave the following error.\\n    Argument of type \'{ label: string; }[]\' is not assignable to parameter of type \'ConcatArray<never>\'."]
@@ -2319,7 +2319,7 @@ exports[`stricter compilation`] = {
       [18, 24, 2, "Parameter \'c\' implicitly has an \'any\' type."]
     ],
     "../src/Components/__stories__/WizardExamples/FormWizard.tsx": [
-      [3, 16, 5, "Could not find a declaration file for module \'yup\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"],
+      [3, 16, 5, "Could not find a declaration file for module \'yup\'. \'./node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"],
       [13, 22, 6, "Parameter \'values\' implicitly has an \'any\' type."],
       [13, 30, 7, "Parameter \'actions\' implicitly has an \'any\' type."],
       [49, 27, 6, "Object is possibly \'null\'."],
@@ -2335,7 +2335,7 @@ exports[`stricter compilation`] = {
       [26, 15, 23, "Element implicitly has an \'any\' type because expression of type \'any\' can\'t be used to index type \'{ entering: { opacity: number; }; entered: { opacity: number; }; }\'."]
     ],
     "../src/Components/Animation/ReplaceTransition.tsx": [
-      [1, 38, 30, "Could not find a declaration file for module \'react-css-transition-replace\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-css-transition-replace/lib/ReactCSSTransitionReplace.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-css-transition-replace\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-css-transition-replace\';\`"],
+      [1, 38, 30, "Could not find a declaration file for module \'react-css-transition-replace\'. \'./node_modules/react-css-transition-replace/lib/ReactCSSTransitionReplace.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-css-transition-replace\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-css-transition-replace\';\`"],
       [30, 15, 5, "Parameter \'props\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Animation/SlideTransition.tsx": [
@@ -2413,7 +2413,7 @@ exports[`stricter compilation`] = {
       [209, 64, 7, "Argument of type \'typeof Details\' is not assignable to parameter of type \'ComponentType<Props & { relay?: RelayProp | undefined; }>\'.\\n  Type \'typeof Details\' is not assignable to type \'ComponentClass<Props & { relay?: RelayProp | undefined; }, any>\'.\\n    Type \'Details\' is not assignable to type \'Component<Props & { relay?: RelayProp | undefined; }, any, any>\'.\\n      Types of property \'state\' are incompatible.\\n        Type \'null\' is not assignable to type \'Readonly<any>\'."]
     ],
     "../src/Components/Artwork/Fillwidth.tsx": [
-      [4, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"],
+      [4, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'./node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"],
       [17, 16, 7, "Parameter \'artwork\' implicitly has an \'any\' type."],
       [17, 25, 10, "Parameter \'dimensions\' implicitly has an \'any\' type."],
       [17, 37, 1, "Parameter \'i\' implicitly has an \'any\' type."],
@@ -2458,7 +2458,7 @@ exports[`stricter compilation`] = {
       [188, 9, 17, "Cannot invoke an object which is possibly \'undefined\'."]
     ],
     "../src/Components/ArtworkFilter/Dropdown.tsx": [
-      [2, 20, 9, "Could not find a declaration file for module \'numeral\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/numeral/numeral.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/numeral\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'numeral\';\`"],
+      [2, 20, 9, "Could not find a declaration file for module \'numeral\'. \'./node_modules/numeral/numeral.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/numeral\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'numeral\';\`"],
       [31, 35, 9, "Parameter \'nextProps\' implicitly has an \'any\' type."],
       [35, 14, 5, "Parameter \'value\' implicitly has an \'any\' type."],
       [46, 4, 21, "Cannot invoke an object which is possibly \'undefined\'."],
@@ -2480,7 +2480,7 @@ exports[`stricter compilation`] = {
       [84, 30, 8, "No overload matches this call.\\n  Overload 1 of 3, \'(tag: \\"symbol\\" | \\"object\\" | \\"big\\" | \\"link\\" | \\"small\\" | \\"sub\\" | \\"sup\\" | \\"track\\" | \\"progress\\" | \\"a\\" | \\"abbr\\" | \\"address\\" | \\"area\\" | \\"article\\" | \\"aside\\" | \\"audio\\" | \\"b\\" | \\"base\\" | \\"bdi\\" | \\"bdo\\" | ... 151 more ... | \\"mpath\\"): ThemedStyledFunction<...>\', gave the following error.\\n    Argument of type \'typeof Headline\' is not assignable to parameter of type \'\\"symbol\\" | \\"object\\" | \\"big\\" | \\"link\\" | \\"small\\" | \\"sub\\" | \\"sup\\" | \\"track\\" | \\"progress\\" | \\"a\\" | \\"abbr\\" | \\"address\\" | \\"area\\" | \\"article\\" | \\"aside\\" | \\"audio\\" | \\"b\\" | \\"base\\" | \\"bdi\\" | \\"bdo\\" | ... 151 more ... | \\"mpath\\"\'.\\n      Type \'typeof Headline\' is not assignable to type \'\\"mpath\\"\'.\\n  Overload 2 of 3, \'(component: StyledComponentClass<unknown, any, Props>): ThemedStyledFunction<unknown, any, Props>\', gave the following error.\\n    Argument of type \'typeof Headline\' is not assignable to parameter of type \'StyledComponentClass<unknown, any, Props>\'.\\n      Property \'withComponent\' is missing in type \'typeof Headline\' but required in type \'StyledComponentClass<unknown, any, Props>\'.\\n  Overload 3 of 3, \'(component: ComponentType<Props>): ThemedStyledFunction<Props, any, WithOptionalTheme<Props, any>>\', gave the following error.\\n    Argument of type \'typeof Headline\' is not assignable to parameter of type \'ComponentType<Props>\'.\\n      Type \'typeof Headline\' is not assignable to type \'ComponentClass<Props, any>\'.\\n        Type \'Headline\' is not assignable to type \'Component<Props, any, any>\'.\\n          Types of property \'state\' are incompatible.\\n            Type \'null\' is not assignable to type \'Readonly<any>\'."]
     ],
     "../src/Components/ArtworkFilter/TotalCount.tsx": [
-      [1, 20, 9, "Could not find a declaration file for module \'numeral\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/numeral/numeral.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/numeral\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'numeral\';\`"],
+      [1, 20, 9, "Could not find a declaration file for module \'numeral\'. \'./node_modules/numeral/numeral.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/numeral\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'numeral\';\`"],
       [13, 18, 33, "Object is possibly \'null\'."],
       [24, 32, 10, "No overload matches this call.\\n  Overload 1 of 3, \'(tag: \\"symbol\\" | \\"object\\" | \\"big\\" | \\"link\\" | \\"small\\" | \\"sub\\" | \\"sup\\" | \\"track\\" | \\"progress\\" | \\"a\\" | \\"abbr\\" | \\"address\\" | \\"area\\" | \\"article\\" | \\"aside\\" | \\"audio\\" | \\"b\\" | \\"base\\" | \\"bdi\\" | \\"bdo\\" | ... 151 more ... | \\"mpath\\"): ThemedStyledFunction<...>\', gave the following error.\\n    Argument of type \'typeof TotalCount\' is not assignable to parameter of type \'\\"symbol\\" | \\"object\\" | \\"big\\" | \\"link\\" | \\"small\\" | \\"sub\\" | \\"sup\\" | \\"track\\" | \\"progress\\" | \\"a\\" | \\"abbr\\" | \\"address\\" | \\"area\\" | \\"article\\" | \\"aside\\" | \\"audio\\" | \\"b\\" | \\"base\\" | \\"bdi\\" | \\"bdo\\" | ... 151 more ... | \\"mpath\\"\'.\\n      Type \'typeof TotalCount\' is not assignable to type \'\\"mpath\\"\'.\\n  Overload 2 of 3, \'(component: StyledComponentClass<unknown, any, TotalCountProps>): ThemedStyledFunction<unknown, any, TotalCountProps>\', gave the following error.\\n    Argument of type \'typeof TotalCount\' is not assignable to parameter of type \'StyledComponentClass<unknown, any, TotalCountProps>\'.\\n      Property \'withComponent\' is missing in type \'typeof TotalCount\' but required in type \'StyledComponentClass<unknown, any, TotalCountProps>\'.\\n  Overload 3 of 3, \'(component: ComponentType<TotalCountProps>): ThemedStyledFunction<TotalCountProps, any, WithOptionalTheme<TotalCountProps, any>>\', gave the following error.\\n    Argument of type \'typeof TotalCount\' is not assignable to parameter of type \'ComponentType<TotalCountProps>\'.\\n      Type \'typeof TotalCount\' is not assignable to type \'ComponentClass<TotalCountProps, any>\'.\\n        Type \'TotalCount\' is not assignable to type \'Component<TotalCountProps, any, any>\'.\\n          Types of property \'state\' are incompatible.\\n            Type \'null\' is not assignable to type \'Readonly<any>\'."]
     ],
@@ -2522,11 +2522,11 @@ exports[`stricter compilation`] = {
       [287, 8, 16, "Variable \'sectionRatioSums\' implicitly has an \'any[]\' type."]
     ],
     "../src/Components/Auction/__stories__/AuctionRegistrationModal.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [4, 22, 11, "Parameter \'submitUtils\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Auction/__stories__/PostRegistrationModal.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Auction/__tests__/AuctionRegistrationModal.test.tsx": [
       [17, 6, 7, "Variable \'wrapper\' implicitly has type \'any\' in some locations where its type cannot be determined."],
@@ -2702,7 +2702,7 @@ exports[`stricter compilation`] = {
       [10, 2, 5, "Binding element \'value\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Authentication/Validators.tsx": [
-      [0, 16, 5, "Could not find a declaration file for module \'yup\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"]
+      [0, 16, 5, "Could not find a declaration file for module \'yup\'. \'./node_modules/yup/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/yup\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'yup\';\`"]
     ],
     "../src/Components/BorderedPulldown.tsx": [
       [31, 14, 5, "Parameter \'value\' implicitly has an \'any\' type."],
@@ -2827,7 +2827,7 @@ exports[`stricter compilation`] = {
       [101, 10, 10, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<Props>): FollowButton\', gave the following error.\\n    Type \'boolean | null | undefined\' is not assignable to type \'boolean | undefined\'.\\n      Type \'null\' is not assignable to type \'boolean | undefined\'.\\n  Overload 2 of 2, \'(props: Props, context?: any): FollowButton\', gave the following error.\\n    Type \'boolean | null | undefined\' is not assignable to type \'boolean | undefined\'.\\n      Type \'null\' is not assignable to type \'boolean | undefined\'."]
     ],
     "../src/Components/FrameWithRecentlyViewed.tsx": [
-      [5, 34, 33, "Could not find a declaration file for module \'react-lazy-load-image-component\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-lazy-load-image-component/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-lazy-load-image-component\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-lazy-load-image-component\';\`"]
+      [5, 34, 33, "Could not find a declaration file for module \'react-lazy-load-image-component\'. \'./node_modules/react-lazy-load-image-component/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-lazy-load-image-component\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-lazy-load-image-component\';\`"]
     ],
     "../src/Components/Gene/ArtistRow.tsx": [
       [26, 19, 8, "No overload matches this call.\\n  Overload 1 of 2, \'(props: MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | \\"onChange\\" | ... 239 more ... | \\"gutter\\">> & { ...; }, context?: any): ReactElement<...> | ... 1 more ... | null\', gave the following error.\\n    Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"Fillwidth_artworks\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"Fillwidth_artworks\\">\'.\\n      Type \'null\' is not assignable to type \'_FragmentRefs<\\"Fillwidth_artworks\\">\'.\\n  Overload 2 of 2, \'(props: PropsWithChildren<MappedFragmentProps<Pick<Props, \\"hidden\\" | \\"dir\\" | \\"slot\\" | \\"style\\" | \\"title\\" | \\"color\\" | \\"size\\" | \\"children\\" | \\"onClick\\" | \\"role\\" | \\"is\\" | \\"aria-label\\" | \\"className\\" | \\"defaultValue\\" | \\"onChange\\" | ... 239 more ... | \\"gutter\\">> & { ...; }>, context?: any): ReactElement<...> | ... 1 more ... | null\', gave the following error.\\n    Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"Fillwidth_artworks\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"Fillwidth_artworks\\">\'.\\n      Type \'null\' is not assignable to type \'_FragmentRefs<\\"Fillwidth_artworks\\">\'."],
@@ -2894,7 +2894,7 @@ exports[`stricter compilation`] = {
       [44, 35, 7, "Rest parameter \'args\' implicitly has an \'any[]\' type."]
     ],
     "../src/Components/History.tsx": [
-      [0, 26, 30, "Could not find a declaration file for module \'history/createBrowserHistory\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/history/createBrowserHistory.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/history\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'history/createBrowserHistory\';\`"]
+      [0, 26, 30, "Could not find a declaration file for module \'history/createBrowserHistory\'. \'./node_modules/history/createBrowserHistory.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/history\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'history/createBrowserHistory\';\`"]
     ],
     "../src/Components/index.tsx": [
       [43, 0, 161, "Default export of the module has or is using private name \'TextAreaProps\'."]
@@ -3210,7 +3210,7 @@ exports[`stricter compilation`] = {
       [9, 24, 11, "Parameter \'increaseBy\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Onboarding/Wizard.tsx": [
-      [1, 32, 14, "Could not find a declaration file for module \'react-router\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-router/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-router\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-router\';\`"],
+      [1, 32, 14, "Could not find a declaration file for module \'react-router\'. \'./node_modules/react-router/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-router\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-router\';\`"],
       [32, 14, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [39, 45, 7, "Parameter \'history\' implicitly has an \'any\' type."],
       [47, 4, 19, "Object is possibly \'undefined\'."],
@@ -3335,10 +3335,10 @@ exports[`stricter compilation`] = {
       [29, 8, 153, "JSX element type \'PartnerInline\' is not a constructor function for JSX elements."]
     ],
     "../src/Components/Publishing/__stories__/ReadMore.story.tsx": [
-      [2, 36, 35, "Could not find a declaration file for module \'../../../__stories__/storiesOf.js\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 36, 35, "Could not find a declaration file for module \'../../../__stories__/storiesOf.js\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/__stories__/RelatedArticles.story.tsx": [
-      [1, 36, 35, "Could not find a declaration file for module \'../../../__stories__/storiesOf.js\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 36, 35, "Could not find a declaration file for module \'../../../__stories__/storiesOf.js\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/__stories__/ToolTip.story.tsx": [
       [8, 31, 1, "Parameter \'x\' implicitly has an \'any\' type."],
@@ -3387,7 +3387,7 @@ exports[`stricter compilation`] = {
       [145, 17, 7, "Variable \'article\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/Article.tsx": [
-      [16, 29, 11, "Could not find a declaration file for module \'react-gpt\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-gpt/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-gpt\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-gpt\';\`"],
+      [16, 29, 11, "Could not find a declaration file for module \'react-gpt\'. \'./node_modules/react-gpt/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-gpt\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-gpt\';\`"],
       [98, 17, 32, "JSX element type \'SeriesLayout\' is not a constructor function for JSX elements.\\n  Types of property \'state\' are incompatible.\\n    Type \'null\' is not assignable to type \'Readonly<{}>\'."],
       [127, 29, 7, "Parameter \'article\' implicitly has an \'any\' type."]
     ],
@@ -3455,10 +3455,10 @@ exports[`stricter compilation`] = {
       [192, 22, 24, "Object is possibly \'undefined\'."]
     ],
     "../src/Components/Publishing/Display/__tests__/DisplayAd.test.tsx": [
-      [9, 29, 11, "Could not find a declaration file for module \'react-gpt\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-gpt/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-gpt\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-gpt\';\`"]
+      [9, 29, 11, "Could not find a declaration file for module \'react-gpt\'. \'./node_modules/react-gpt/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-gpt\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-gpt\';\`"]
     ],
     "../src/Components/Publishing/Display/DisplayAd.tsx": [
-      [4, 29, 11, "Could not find a declaration file for module \'react-gpt\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-gpt/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-gpt\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-gpt\';\`"],
+      [4, 29, 11, "Could not find a declaration file for module \'react-gpt\'. \'./node_modules/react-gpt/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-gpt\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-gpt\';\`"],
       [41, 25, 5, "Parameter \'event\' implicitly has an \'any\' type."],
       [63, 6, 9, "Type \'null\' is not assignable to type \'boolean | undefined\'."]
     ],
@@ -3659,13 +3659,13 @@ exports[`stricter compilation`] = {
       [109, 14, 8, "Type \'boolean | undefined\' is not assignable to type \'boolean\'.\\n  Type \'undefined\' is not assignable to type \'boolean\'."]
     ],
     "../src/Components/Publishing/Email/__tests__/EmailPanel.test.tsx": [
-      [4, 20, 12, "Could not find a declaration file for module \'superagent\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"]
+      [4, 20, 12, "Could not find a declaration file for module \'superagent\'. \'./node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"]
     ],
     "../src/Components/Publishing/Email/__tests__/InstantArticleEmailSignup.test.tsx": [
-      [4, 20, 12, "Could not find a declaration file for module \'superagent\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"]
+      [4, 20, 12, "Could not find a declaration file for module \'superagent\'. \'./node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"]
     ],
     "../src/Components/Publishing/Email/EmailPanel.tsx": [
-      [4, 20, 12, "Could not find a declaration file for module \'superagent\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"],
+      [4, 20, 12, "Could not find a declaration file for module \'superagent\'. \'./node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"],
       [54, 14, 3, "Parameter \'err\' implicitly has an \'any\' type."],
       [54, 19, 3, "Parameter \'res\' implicitly has an \'any\' type."],
       [59, 12, 19, "Object is possibly \'undefined\'."],
@@ -3676,7 +3676,7 @@ exports[`stricter compilation`] = {
       [78, 18, 38, "Argument of type \'{ value: any; error: null; }\' is not assignable to parameter of type \'EmailPanelState | ((prevState: Readonly<EmailPanelState>, props: Readonly<EmailPanelProps>) => EmailPanelState | Pick<EmailPanelState, \\"error\\" | \\"value\\"> | null) | Pick<...> | null\'.\\n  Type \'{ value: any; error: null; }\' is not assignable to type \'Pick<EmailPanelState, \\"error\\" | \\"value\\">\'.\\n    Types of property \'error\' are incompatible.\\n      Type \'null\' is not assignable to type \'boolean\'."]
     ],
     "../src/Components/Publishing/Email/InstantArticleEmailSignup.tsx": [
-      [3, 20, 12, "Could not find a declaration file for module \'superagent\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"],
+      [3, 20, 12, "Could not find a declaration file for module \'superagent\'. \'./node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"],
       [29, 14, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [46, 14, 3, "Parameter \'err\' implicitly has an \'any\' type."],
       [46, 19, 3, "Parameter \'res\' implicitly has an \'any\' type."],
@@ -3877,7 +3877,7 @@ exports[`stricter compilation`] = {
       [5, 13, 1, "Parameter \'x\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/index.tsx": [
-      [58, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"]
+      [58, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'./node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"]
     ],
     "../src/Components/Publishing/Layouts/__tests__/ArticleWithFullScreen.test.tsx": [
       [20, 20, 1, "Parameter \'x\' implicitly has an \'any\' type."],
@@ -4200,7 +4200,7 @@ exports[`stricter compilation`] = {
       [342, 44, 5, "Variable \'props\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/Sections/__tests__/SocialEmbed.test.tsx": [
-      [6, 18, 7, "Could not find a declaration file for module \'jsonp\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/jsonp/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/jsonp\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'jsonp\';\`"]
+      [6, 18, 7, "Could not find a declaration file for module \'jsonp\'. \'./node_modules/jsonp/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/jsonp\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'jsonp\';\`"]
     ],
     "../src/Components/Publishing/Sections/__tests__/Text.test.tsx": [
       [12, 21, 5, "Parameter \'props\' implicitly has an \'any\' type."],
@@ -4282,7 +4282,7 @@ exports[`stricter compilation`] = {
       [50, 8, 3, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<Props>): ImageWrapper\', gave the following error.\\n    Type \'string | null\' is not assignable to type \'string\'.\\n      Type \'null\' is not assignable to type \'string\'.\\n  Overload 2 of 2, \'(props: Props, context?: any): ImageWrapper\', gave the following error.\\n    Type \'string | null\' is not assignable to type \'string\'.\\n      Type \'null\' is not assignable to type \'string\'."]
     ],
     "../src/Components/Publishing/Sections/ImageCollection.tsx": [
-      [3, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"],
+      [3, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'./node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"],
       [35, 15, 10, "Parameter \'dimensions\' implicitly has an \'any\' type."],
       [42, 14, 5, "Property \'width\' does not exist on type \'{ width: number; } | undefined\'."],
       [106, 6, 4, "Object is possibly \'undefined\'."]
@@ -4346,8 +4346,8 @@ exports[`stricter compilation`] = {
       [404, 21, 6, "Parameter \'layout\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/Sections/SocialEmbed.tsx": [
-      [1, 18, 7, "Could not find a declaration file for module \'jsonp\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/jsonp/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/jsonp\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'jsonp\';\`"],
-      [3, 27, 24, "Could not find a declaration file for module \'react-oembed-container\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-oembed-container/dist/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-oembed-container\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-oembed-container\';\`"],
+      [1, 18, 7, "Could not find a declaration file for module \'jsonp\'. \'./node_modules/jsonp/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/jsonp\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'jsonp\';\`"],
+      [3, 27, 24, "Could not find a declaration file for module \'react-oembed-container\'. \'./node_modules/react-oembed-container/dist/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-oembed-container\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-oembed-container\';\`"],
       [36, 20, 3, "Parameter \'url\' implicitly has an \'any\' type."],
       [37, 16, 3, "Parameter \'err\' implicitly has an \'any\' type."],
       [37, 21, 4, "Parameter \'data\' implicitly has an \'any\' type."],
@@ -4360,7 +4360,7 @@ exports[`stricter compilation`] = {
       [16, 35, 4, "Parameter \'size\' implicitly has an \'any\' type."]
     ],
     "../src/Components/Publishing/Sections/Text.tsx": [
-      [0, 54, 26, "Could not find a declaration file for module \'@artsy/react-html-parser\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/@artsy/react-html-parser/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/artsy__react-html-parser\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'@artsy/react-html-parser\';\`"],
+      [0, 54, 26, "Could not find a declaration file for module \'@artsy/react-html-parser\'. \'./node_modules/@artsy/react-html-parser/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/artsy__react-html-parser\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'@artsy/react-html-parser\';\`"],
       [66, 21, 25, "Argument of type \'string | null\' is not assignable to parameter of type \'string | undefined\'.\\n  Type \'null\' is not assignable to type \'string | undefined\'."],
       [74, 34, 5, "Parameter \'index\' implicitly has an \'any\' type."],
       [81, 22, 18, "Object is possibly \'null\'."],
@@ -4377,7 +4377,7 @@ exports[`stricter compilation`] = {
       [25, 39, 5, "Type \'string | undefined\' is not assignable to type \'string | ((string | null)[] & string)\'.\\n  Type \'undefined\' is not assignable to type \'string | ((string | null)[] & string)\'."]
     ],
     "../src/Components/Publishing/Sections/Video.tsx": [
-      [1, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"],
+      [1, 19, 14, "Could not find a declaration file for module \'react-sizeme\'. \'./node_modules/react-sizeme/dist/react-sizeme.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-sizeme\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-sizeme\';\`"],
       [50, 18, 1, "Parameter \'x\' implicitly has an \'any\' type."],
       [54, 14, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [84, 4, 19, "Object is possibly \'undefined\'."],
@@ -4621,8 +4621,8 @@ exports[`stricter compilation`] = {
       [139, 50, 9, "Argument of type \'undefined\' is not assignable to parameter of type \'string\'."]
     ],
     "../src/Components/Search/SearchBar.tsx": [
-      [18, 24, 19, "Could not find a declaration file for module \'react-autosuggest\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-autosuggest/dist/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-autosuggest\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-autosuggest\';\`"],
-      [22, 20, 12, "Could not find a declaration file for module \'superagent\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"],
+      [18, 24, 19, "Could not find a declaration file for module \'react-autosuggest\'. \'./node_modules/react-autosuggest/dist/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-autosuggest\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-autosuggest\';\`"],
+      [22, 20, 12, "Could not find a declaration file for module \'superagent\'. \'./node_modules/superagent/lib/node/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/superagent\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'superagent\';\`"],
       [62, 41, 14, "Binding element \'containerProps\' implicitly has an \'any\' type."],
       [62, 31, 8, "Binding element \'children\' implicitly has an \'any\' type."],
       [80, 7, 4, "Argument of type \'null\' is not assignable to parameter of type \'AuctionInfo | ContextModule | ContextPage | CriteoInfo | Flow | Interaction | AuthenticationInteraction | Label | Success | Failure | Type | Uncategorized | ((props: {}, state: null, args: any[]) => Trackables) | undefined\'."],
@@ -4671,8 +4671,8 @@ exports[`stricter compilation`] = {
       [36, 11, 43, "Object is possibly \'null\'."]
     ],
     "../src/Components/Search/Suggestions/SuggestionItem.tsx": [
-      [1, 18, 29, "Could not find a declaration file for module \'autosuggest-highlight/match\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/autosuggest-highlight/match/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/autosuggest-highlight\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'autosuggest-highlight/match\';\`"],
-      [2, 18, 29, "Could not find a declaration file for module \'autosuggest-highlight/parse\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/autosuggest-highlight/parse/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/autosuggest-highlight\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'autosuggest-highlight/parse\';\`"],
+      [1, 18, 29, "Could not find a declaration file for module \'autosuggest-highlight/match\'. \'./node_modules/autosuggest-highlight/match/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/autosuggest-highlight\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'autosuggest-highlight/match\';\`"],
+      [2, 18, 29, "Could not find a declaration file for module \'autosuggest-highlight/parse\'. \'./node_modules/autosuggest-highlight/parse/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/autosuggest-highlight\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'autosuggest-highlight/parse\';\`"],
       [65, 26, 5, "Parameter \'props\' implicitly has an \'any\' type."],
       [71, 29, 7, "Binding element \'display\' implicitly has an \'any\' type."],
       [71, 38, 5, "Binding element \'label\' implicitly has an \'any\' type."],
@@ -4742,93 +4742,93 @@ exports[`stricter compilation`] = {
       [8, 24, 5, "Parameter \'props\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/ArtistBio.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/ArtistCard.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [27, 26, 6, "Binding element \'artist\' implicitly has an \'any\' type."],
       [27, 34, 9, "Binding element \'Component\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/ArtworkFilter.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/ArtworkGrid.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/AuctionCard.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/AuctionFAQ.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [9, 20, 6, "Type \'null\' is not assignable to type \'_FragmentRefs<\\"AuctionFAQ_viewer\\">\'."]
     ],
     "../src/Components/v2/__stories__/AuctionTimer.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/Carousel.story.tsx": [
-      [4, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [4, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [10, 29, 7, "Binding element \'artwork\' implicitly has an \'any\' type."],
       [246, 21, 8, "Binding element \'children\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/CollectionsHubsHomepageNav.story.tsx": [
-      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [24, 6, 11, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<QueryRendererProps<CollectionsHubsHomepageNavQuery>>): SystemQueryRenderer<CollectionsHubsHomepageNavQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n  Overload 2 of 2, \'(props: QueryRendererProps<CollectionsHubsHomepageNavQuery>, context?: any): SystemQueryRenderer<CollectionsHubsHomepageNavQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'."]
     ],
     "../src/Components/v2/__stories__/CollectionsHubsNav.story.tsx": [
-      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [7, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [21, 6, 11, "No overload matches this call.\\n  Overload 1 of 2, \'(props: Readonly<QueryRendererProps<CollectionsHubsNavQuery>>): SystemQueryRenderer<CollectionsHubsNavQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n  Overload 2 of 2, \'(props: QueryRendererProps<CollectionsHubsNavQuery>, context?: any): SystemQueryRenderer<CollectionsHubsNavQuery>\', gave the following error.\\n    Type \'RelayModernEnvironment | undefined\' is not assignable to type \'RelayModernEnvironment\'.\\n      Type \'undefined\' is not assignable to type \'RelayModernEnvironment\'."]
     ],
     "../src/Components/v2/__stories__/CountdownTimer.story.tsx": [
-      [5, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [5, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/CountrySelect.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/FollowArtistPopover.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/FollowIcon.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/Footer.story.tsx": [
-      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [1, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/ImageLink.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/Lightbox.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."],
       [5, 14, 4, "Parameter \'size\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/LightboxSlider.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/MobileActionSheet.story.tsx": [
-      [10, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [10, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/MobileTopBar.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/Pagination.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/RecentlyViewed.story.tsx": [
-      [4, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [4, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/SelectedCareerAchivements.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/SelectedExhibitions.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/StepSummaryItem.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/Tabs.Router.story.tsx": [
-      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [3, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__stories__/Timer.story.tsx": [
-      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'/Users/zephraph/Code/artsy/reaction/src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
+      [2, 26, 21, "Could not find a declaration file for module \'storybook/storiesOf\'. \'./src/__stories__/storiesOf.js\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/__tests__/ArtistBio.test.tsx": [
       [22, 21, 3, "Type \'{ readonly \\" $fragmentRefs\\": FragmentRefs<\\"ArtistBio_bio\\">; } | null\' is not assignable to type \'_FragmentRefs<\\"ArtistBio_bio\\">\'.\\n  Type \'null\' is not assignable to type \'_FragmentRefs<\\"ArtistBio_bio\\">\'."]
@@ -4948,7 +4948,7 @@ exports[`stricter compilation`] = {
       [86, 31, 4, "Parameter \'page\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/ArtworkFilter/ArtworkFilterContext.tsx": [
-      [2, 33, 25, "Could not find a declaration file for module \'use-deep-compare-effect\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/use-deep-compare-effect/dist/use-deep-compare-effect.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/use-deep-compare-effect\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'use-deep-compare-effect\';\`"],
+      [2, 33, 25, "Could not find a declaration file for module \'use-deep-compare-effect\'. \'./node_modules/use-deep-compare-effect/dist/use-deep-compare-effect.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/use-deep-compare-effect\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'use-deep-compare-effect\';\`"],
       [119, 2, 14, "Type \'null\' is not assignable to type \'(name: \\"medium\\" | \\"color\\" | \\"page\\" | \\"height\\" | \\"width\\" | \\"sort\\" | \\"acquireable\\" | \\"artist_id\\" | \\"atAuction\\" | \\"forSale\\" | \\"inquireableOnly\\" | \\"keyword\\" | \\"majorPeriods\\" | \\"offerable\\" | \\"partnerID\\" | \\"priceRange\\" | \\"term\\") => boolean\'."],
       [120, 2, 12, "Type \'null\' is not assignable to type \'(name: \\"medium\\" | \\"color\\" | \\"page\\" | \\"height\\" | \\"width\\" | \\"sort\\" | \\"acquireable\\" | \\"artist_id\\" | \\"atAuction\\" | \\"forSale\\" | \\"inquireableOnly\\" | \\"keyword\\" | \\"majorPeriods\\" | \\"offerable\\" | \\"partnerID\\" | \\"priceRange\\" | \\"term\\") => [...]\'."],
       [121, 2, 12, "Type \'null\' is not assignable to type \'() => void\'."],
@@ -5064,7 +5064,7 @@ exports[`stricter compilation`] = {
       [66, 30, 13, "Object is of type \'unknown\'."]
     ],
     "../src/Components/v2/ArtworkFilter/index.tsx": [
-      [2, 33, 25, "Could not find a declaration file for module \'use-deep-compare-effect\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/use-deep-compare-effect/dist/use-deep-compare-effect.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/use-deep-compare-effect\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'use-deep-compare-effect\';\`"],
+      [2, 33, 25, "Could not find a declaration file for module \'use-deep-compare-effect\'. \'./node_modules/use-deep-compare-effect/dist/use-deep-compare-effect.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/use-deep-compare-effect\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'use-deep-compare-effect\';\`"],
       [97, 38, 13, "Object is of type \'unknown\'."],
       [103, 26, 8, "Parameter \'doScroll\' implicitly has an \'any\' type."],
       [119, 19, 13, "Object is of type \'unknown\'."],
@@ -5259,18 +5259,18 @@ exports[`stricter compilation`] = {
       [178, 14, 16, "Type \'number | undefined\' is not assignable to type \'number\'.\\n  Type \'undefined\' is not assignable to type \'number\'."]
     ],
     "../src/Components/v2/Seo/BreadCrumbList.tsx": [
-      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
+      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"]
     ],
     "../src/Components/v2/Seo/CreativeWork.tsx": [
-      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [3, 31, 4, "Binding element \'data\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/Seo/Person.tsx": [
-      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [3, 25, 4, "Binding element \'data\' implicitly has an \'any\' type."]
     ],
     "../src/Components/v2/Seo/Product.tsx": [
-      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
+      [1, 21, 12, "Could not find a declaration file for module \'react-head\'. \'./node_modules/react-head/dist/index.cjs.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/react-head\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'react-head\';\`"],
       [3, 26, 4, "Binding element \'data\' implicitly has an \'any\' type."]
     ],
     "../src/Components/WithCurrentTime.tsx": [
@@ -5324,8 +5324,8 @@ exports[`stricter compilation`] = {
       [61, 13, 6, "Variable \'states\' implicitly has an \'any[]\' type."]
     ],
     "../src/DevTools/createMockNetworkLayer/index.ts": [
-      [10, 28, 26, "Could not find a declaration file for module \'relay-mock-network-layer\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/relay-mock-network-layer/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/relay-mock-network-layer\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'relay-mock-network-layer\';\`"],
-      [13, 17, 6, "Could not find a declaration file for module \'uuid\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/uuid/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/uuid\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'uuid\';\`"],
+      [10, 28, 26, "Could not find a declaration file for module \'relay-mock-network-layer\'. \'./node_modules/relay-mock-network-layer/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/relay-mock-network-layer\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'relay-mock-network-layer\';\`"],
+      [13, 17, 6, "Could not find a declaration file for module \'uuid\'. \'./node_modules/uuid/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/uuid\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'uuid\';\`"],
       [74, 45, 16, "Object is possibly \'undefined\'."],
       [218, 6, 13, "Type \'string | undefined\' is not assignable to type \'string\'.\\n  Type \'undefined\' is not assignable to type \'string\'."],
       [218, 36, 16, "Object is possibly \'undefined\'."]
@@ -5346,7 +5346,7 @@ exports[`stricter compilation`] = {
       [198, 21, 9, "Property \'errorInfo\' does not exist on type \'undefined\'."]
     ],
     "../src/DevTools/MockRouter.tsx": [
-      [6, 31, 7, "Could not find a declaration file for module \'farce\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/farce/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce\';\`"],
+      [6, 31, 7, "Could not find a declaration file for module \'farce\'. \'./node_modules/farce/lib/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/farce\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'farce\';\`"],
       [79, 23, 9, "JSX element type \'ClientApp\' does not have any construct or call signatures."]
     ],
     "../src/DevTools/renderUntil.tsx": [
@@ -5361,10 +5361,10 @@ exports[`stricter compilation`] = {
       [5, 0, 41, "Default export of the module has or is using private name \'TextAreaProps\'."]
     ],
     "../src/Polyfills/DOMParser.ts": [
-      [6, 22, 7, "Could not find a declaration file for module \'jsdom\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/jsdom/lib/api.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/jsdom\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'jsdom\';\`"]
+      [6, 22, 7, "Could not find a declaration file for module \'jsdom\'. \'./node_modules/jsdom/lib/api.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/jsdom\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'jsdom\';\`"]
     ],
     "../src/setup_jest.ts": [
-      [2, 20, 25, "Could not find a declaration file for module \'enzyme-adapter-react-16\'. \'/Users/zephraph/Code/artsy/reaction/node_modules/enzyme-adapter-react-16/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/enzyme-adapter-react-16\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'enzyme-adapter-react-16\';\`"],
+      [2, 20, 25, "Could not find a declaration file for module \'enzyme-adapter-react-16\'. \'./node_modules/enzyme-adapter-react-16/build/index.js\' implicitly has an \'any\' type.\\n  Try \`npm install @types/enzyme-adapter-react-16\` if it exists or add a new declaration (.d.ts) file containing \`declare module \'enzyme-adapter-react-16\';\`"],
       [11, 45, 1, "Parameter \'d\' implicitly has an \'any\' type."],
       [31, 2, 17, "Type \'undefined\' is not assignable to type \'((query: string) => MediaQueryList) & ((query: string) => MediaQueryList)\'.\\n  Type \'undefined\' is not assignable to type \'(query: string) => MediaQueryList\'."],
       [47, 22, 4, "Parameter \'type\' implicitly has an \'any\' type."],
