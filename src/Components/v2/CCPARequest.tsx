@@ -12,7 +12,8 @@ import {
 } from "@artsy/palette"
 import { CCPARequestMutation } from "__generated__/CCPARequestMutation.graphql"
 import { useSystemContext } from "Artsy"
-import React, { useState } from "react"
+import { EMAIL_REGEX } from "Components/Publishing/Constants"
+import React, { useEffect, useState } from "react"
 import { commitMutation, graphql } from "react-relay"
 import styled from "styled-components"
 import { ErrorWithMetadata } from "Utils/errors"
@@ -34,7 +35,7 @@ const IconContainer = styled(Box)`
   margin: auto;
 `
 
-const Feedback = ({ setText }) => {
+const Feedback = ({ setNotes, notes, triggeredValidation }) => {
   return (
     <>
       <Sans weight="medium" size="3">
@@ -43,22 +44,56 @@ const Feedback = ({ setText }) => {
       <FeedbackTextAreaContainer mt={1}>
         <TextArea
           onChange={({ value }) => {
-            setText(value)
+            setNotes(value)
           }}
           placeholder="Describe your data request"
           required
+          error={errorForText({ triggeredValidation, text: notes })}
         />
       </FeedbackTextAreaContainer>
     </>
   )
 }
 
-const LoggedOutContents = ({ setName, setEmail, setText }) => {
+const errorForEmail = ({ triggeredValidation, email }) => {
+  if (!triggeredValidation) return
+  if (!email) return "Cannot leave field blank."
+  if (!email.match(EMAIL_REGEX)) return "Please enter a valid email."
+}
+
+const errorForText = ({ triggeredValidation, text }) => {
+  if (!triggeredValidation) return
+  if (!text) return "Cannot leave field blank."
+}
+
+const hasErrors = ({ user, triggeredValidation, notes, name, email }) => {
+  if (user) return !!errorForText({ triggeredValidation, text: notes })
+
+  return !!(
+    errorForEmail({ triggeredValidation, email }) ||
+    errorForText({ triggeredValidation, text: name }) ||
+    errorForText({ triggeredValidation, text: notes })
+  )
+}
+
+const LoggedOutContents = ({
+  triggeredValidation,
+  setName,
+  setEmail,
+  setNotes,
+  email,
+  name,
+  notes,
+}) => {
   return (
     <>
       <Header />
 
-      <Feedback setText={setText} />
+      <Feedback
+        notes={notes}
+        triggeredValidation={triggeredValidation}
+        setNotes={setNotes}
+      />
 
       <Box mt={1}>
         <Input
@@ -68,6 +103,7 @@ const LoggedOutContents = ({ setName, setEmail, setText }) => {
             setName(value)
           }}
           required
+          error={errorForText({ text: name, triggeredValidation })}
         />
       </Box>
       <Box mt={1}>
@@ -78,13 +114,14 @@ const LoggedOutContents = ({ setName, setEmail, setText }) => {
             setEmail(value)
           }}
           required
+          error={errorForEmail({ email, triggeredValidation })}
         />
       </Box>
     </>
   )
 }
 
-const LoggedInContents = ({ email, setText }) => {
+const LoggedInContents = ({ triggeredValidation, notes, email, setNotes }) => {
   return (
     <>
       <Header />
@@ -95,7 +132,11 @@ const LoggedInContents = ({ email, setText }) => {
       </Box>
 
       <Separator mb={3} />
-      <Feedback setText={setText} />
+      <Feedback
+        notes={notes}
+        triggeredValidation={triggeredValidation}
+        setNotes={setNotes}
+      />
     </>
   )
 }
@@ -189,6 +230,8 @@ export const CCPARequest: React.SFC<Props> = props => {
   const [notes, setNotes] = useState(null)
   const [email, setEmail] = useState(null)
   const [name, setName] = useState(null)
+  const [triggeredValidation, setTriggeredValidation] = useState(null)
+  const [clickedSubmit, setClickedSubmit] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
   const userEmail = get(props, p => p.user.email)
@@ -197,13 +240,38 @@ export const CCPARequest: React.SFC<Props> = props => {
     <SuccessScreen />
   ) : !user ? (
     <LoggedOutContents
+      email={email}
+      name={name}
+      notes={notes}
+      triggeredValidation={triggeredValidation}
       setName={setName.bind(this)}
       setEmail={setEmail.bind(this)}
-      setText={setNotes.bind(this)}
+      setNotes={setNotes.bind(this)}
     />
   ) : (
-    <LoggedInContents email={userEmail} setText={setNotes.bind(this)} />
+    <LoggedInContents
+      notes={notes}
+      email={userEmail}
+      triggeredValidation={triggeredValidation}
+      setNotes={setNotes.bind(this)}
+    />
   )
+
+  useEffect(() => {
+    if (clickedSubmit) {
+      if (hasErrors({ user, email, name, notes, triggeredValidation })) {
+        setClickedSubmit(false)
+        return
+      }
+      sendDataRequest({
+        relayEnvironment,
+        email,
+        name,
+        notes,
+        setSubmitted,
+      })
+    }
+  }, [clickedSubmit])
 
   const modalButton = submitted ? (
     <Button width="100%" onClick={() => setShowModal(false)}>
@@ -213,7 +281,8 @@ export const CCPARequest: React.SFC<Props> = props => {
     <Button
       width="100%"
       onClick={() => {
-        sendDataRequest({ relayEnvironment, email, name, notes, setSubmitted })
+        setTriggeredValidation(true)
+        setClickedSubmit(true)
       }}
     >
       Send message
