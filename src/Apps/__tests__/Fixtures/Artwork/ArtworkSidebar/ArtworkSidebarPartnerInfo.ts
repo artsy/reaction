@@ -25,6 +25,7 @@ export const ArtworkFromPartnerWithLocations = {
   internalID: "artwork_from_partner_with_locations",
   collecting_institution: null,
   partner: PartnerWithLocations,
+  sale: null,
 }
 
 const PartnerWithoutLocations = {
@@ -33,6 +34,7 @@ const PartnerWithoutLocations = {
   href: "/galerie-kronsbein",
   locations: [],
 }
+
 export const ArtworkFromPartnerWithoutLocations = {
   id: "artwork_from_partner_without_locations",
   collecting_institution: null,
@@ -42,4 +44,14 @@ export const ArtworkFromPartnerWithoutLocations = {
 export const ArtworkWithCollectingInstitution = {
   collecting_institution: "National Gallery of Art, Washington D.C.",
   partner: PartnerWithLocations,
+}
+
+export const ArtworkInNonAuctionSale = {
+  id: "artwork_from_partner_without_locations",
+  collecting_institution: null,
+  partner: PartnerWithoutLocations,
+  sale: {
+    name: "MASS MoCA Benefit Auction 2019: Buy Now",
+    href: "/auction/mass-moca-benefit-auction-2019-buy-now",
+  },
 }

@@ -1,5 +1,8 @@
 import { ArtworkSidebarPartnerInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarPartnerInfo_Test_Query.graphql"
-import { ArtworkFromPartnerWithLocations } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarPartnerInfo"
+import {
+  ArtworkFromPartnerWithLocations,
+  ArtworkInNonAuctionSale,
+} from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import { ArtworkSidebarPartnerInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarPartnerInfo"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -27,7 +30,20 @@ describe("ArtworkSidebarPartnerInfo", () => {
 
   let artwork
 
-  describe("ArtworkSidebarPartnerInfo", () => {
+  describe("Non-auction Sales display", () => {
+    beforeEach(() => {
+      artwork = Object.assign({}, ArtworkInNonAuctionSale)
+    })
+
+    it("displays sale name", async () => {
+      const wrapper = await getWrapper(artwork)
+
+      expect(wrapper.text()).toContain(artwork.sale.name)
+      expect(wrapper.find({ href: artwork.sale.href }).length).toBe(1)
+    })
+  })
+
+  describe("Partners display", () => {
     beforeEach(() => {
       artwork = Object.assign({}, ArtworkFromPartnerWithLocations)
     })
