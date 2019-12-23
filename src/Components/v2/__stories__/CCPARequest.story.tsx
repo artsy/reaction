@@ -10,7 +10,7 @@ storiesOf("Styleguide/Components", module).add("CCPARequest", () => {
         <CCPARequest />
       </Section>
       <Section title="Logged in">
-        <CCPARequest user={{ email: "percy@cat.com", name: "Percy" }} />
+        <CCPARequest user={{ email: "percy@cat.com" }} />
       </Section>
     </React.Fragment>
   )
