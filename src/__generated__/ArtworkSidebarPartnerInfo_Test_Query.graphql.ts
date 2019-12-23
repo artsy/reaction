@@ -19,6 +19,11 @@ export type ArtworkSidebarPartnerInfo_Test_QueryRawResponse = {
             }) | null> | null;
             readonly id: string | null;
         }) | null;
+        readonly sale: ({
+            readonly name: string | null;
+            readonly href: string | null;
+            readonly id: string | null;
+        }) | null;
         readonly id: string | null;
     }) | null;
 };
@@ -48,6 +53,11 @@ fragment ArtworkSidebarPartnerInfo_artwork on Artwork {
     }
     id
   }
+  sale {
+    name
+    href
+    id
+  }
 }
 */
 
@@ -60,6 +70,20 @@ var v0 = [
   }
 ],
 v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -116,20 +140,8 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "href",
-                "args": null,
-                "storageKey": null
-              },
+              (v1/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -146,13 +158,27 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v1/*: any*/)
+                  (v3/*: any*/)
                 ]
               },
-              (v1/*: any*/)
+              (v3/*: any*/)
             ]
           },
-          (v1/*: any*/)
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "sale",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Sale",
+            "plural": false,
+            "selections": [
+              (v1/*: any*/),
+              (v2/*: any*/),
+              (v3/*: any*/)
+            ]
+          },
+          (v3/*: any*/)
         ]
       }
     ]
@@ -161,7 +187,7 @@ return {
     "operationKind": "query",
     "name": "ArtworkSidebarPartnerInfo_Test_Query",
     "id": null,
-    "text": "query ArtworkSidebarPartnerInfo_Test_Query {\n  artwork(id: \"artwork_from_partner_with_locations\") {\n    ...ArtworkSidebarPartnerInfo_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    href\n    locations {\n      city\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query ArtworkSidebarPartnerInfo_Test_Query {\n  artwork(id: \"artwork_from_partner_with_locations\") {\n    ...ArtworkSidebarPartnerInfo_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    href\n    locations {\n      city\n      id\n    }\n    id\n  }\n  sale {\n    name\n    href\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

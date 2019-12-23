@@ -13,6 +13,15 @@ export class ArtworkSidebarPartnerInfo extends React.Component<
   ArtworkSidebarPartnerInfoProps
 > {
   renderPartnerName() {
+    const sale = this.props.artwork.sale
+    if (sale) {
+      return (
+        <Serif size="5t" display="inline-block" weight="semibold">
+          <a href={sale.href}>{sale.name}</a>
+        </Serif>
+      )
+    }
+
     const partner = this.props.artwork.partner
     if (!partner) {
       return null
@@ -77,6 +86,10 @@ export const ArtworkSidebarPartnerInfoFragmentContainer = createFragmentContaine
           locations {
             city
           }
+        }
+        sale {
+          name
+          href
         }
       }
     `,

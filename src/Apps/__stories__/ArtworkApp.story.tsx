@@ -124,6 +124,14 @@ storiesOf("Apps/Artwork", module)
       />
     )
   })
+  .add("Artwork in a benefit buy now auction", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/annie-lennox-now-dot-dot-dot"
+      />
+    )
+  })
   .add("Artwork with Price in Context", () => {
     return (
       <MockRouter
