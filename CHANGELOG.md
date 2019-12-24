@@ -1,3 +1,15 @@
+# v24.0.10 (Tue Dec 24 2019)
+
+#### 🐛  Bug Fix
+
+- Fix link in buy now benefit auctions to link to sale, not partner [#3070](https://github.com/artsy/reaction/pull/3070) (barry@hoggard.org)
+
+#### Authors: 1
+
+- Barry Hoggard (barry@hoggard.org)
+
+---
+
 # v24.0.9 (Tue Dec 24 2019)
 
 #### 🐛  Bug Fix
