@@ -32,7 +32,7 @@ const FeedbackTextAreaContainer = styled(Box)`
 `
 
 const IconContainer = styled(Box)`
-  margin: auto;
+  margin: 0 auto;
 `
 
 const Feedback = ({ setNotes, notes, triggeredValidation }) => {
@@ -159,11 +159,11 @@ const Header = () => {
 const SuccessScreen = () => {
   return (
     <>
-      <IconContainer>
-        <CheckCircleIcon fill="green100" height="24" width="24" />
+      <IconContainer pt={1}>
+        <CheckCircleIcon fill="green100" height="32" width="32" />
       </IconContainer>
       <Box mt={3} textAlign="center">
-        <Serif size="3">We've received your message</Serif>
+        <Serif size="4">We've received your message.</Serif>
       </Box>
     </>
   )
@@ -230,8 +230,8 @@ export const CCPARequest: React.SFC<Props> = props => {
   const [notes, setNotes] = useState(null)
   const [email, setEmail] = useState(null)
   const [name, setName] = useState(null)
-  const [triggeredValidation, setTriggeredValidation] = useState(null)
-  const [clickedSubmit, setClickedSubmit] = useState(null)
+  const [triggeredValidation, setTriggeredValidation] = useState(false)
+  const [clickedSubmit, setClickedSubmit] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
   const userEmail = get(props, p => p.user.email)
@@ -295,15 +295,16 @@ export const CCPARequest: React.SFC<Props> = props => {
     setSubmitted(false)
     setNotes(null)
     setShowModal(false)
+    setTriggeredValidation(false)
   }
 
   const title = submitted ? "Message sent" : "Personal Data Request"
 
   return (
     <>
-      <Button onClick={() => setShowModal(true)}>
+      <Box style={{ cursor: "pointer" }} onClick={() => setShowModal(true)}>
         Do not sell my personal information
-      </Button>
+      </Box>
       <Modal
         title={title}
         forcedScroll={false}
