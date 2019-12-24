@@ -1,3 +1,15 @@
+# v24.0.9 (Tue Dec 24 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CCPARequest] Proper cta styling for Force integration [#3072](https://github.com/artsy/reaction/pull/3072) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.0.8 (Mon Dec 23 2019)
 
 #### 🐛  Bug Fix
