@@ -1,3 +1,15 @@
+# v24.0.11 (Mon Dec 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove showing follower numbers twice on mobile [#3074](https://github.com/artsy/reaction/pull/3074) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v24.0.10 (Tue Dec 24 2019)
 
 #### 🐛  Bug Fix
