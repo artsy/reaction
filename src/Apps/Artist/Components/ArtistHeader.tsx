@@ -258,11 +258,6 @@ export class SmallArtistHeader extends Component<Props> {
                   </Serif>
                 </H2>
               </Box>
-              {props.artist.counts.follows > 50 && (
-                <Serif size="2">
-                  {props.artist.counts.follows.toLocaleString()} followers
-                </Serif>
-              )}
             </Flex>
           </Flex>
         </Box>
