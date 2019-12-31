@@ -149,16 +149,33 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   onContinueButtonPressed = async () => {
     const { address, shippingOption } = this.state
 
-    if (shippingOption === "SHIP") {
-      const { errors, hasErrors } = this.validateAddress(this.state.address)
-      if (hasErrors) {
-        this.setState({
-          addressErrors: errors,
-          addressTouched: this.touchedAddress,
-        })
-        return
-      }
+    const { errors, hasErrors } = this.validateAddress(
+      this.state.address,
+      shippingOption === "PICKUP"
+    )
+    if (hasErrors) {
+      this.setState({
+        addressErrors: errors,
+        addressTouched: this.touchedAddress,
+      })
+      return
     }
+
+    // if (shippingOption === "SHIP") {
+    //   const { errors, hasErrors } = this.validateAddress(this.state.address)
+    // } else if (shippingOption === "PICKUP") {
+    //   const { errors, hasErrors } = this.validatePhoneNumber(
+    //     this.state.address.phoneNumber
+    //   )
+    // }
+
+    // if (hasErrors) {
+    //   this.setState({
+    //     addressErrors: errors,
+    //     addressTouched: this.touchedAddress,
+    //   })
+    //   return
+    // }
 
     try {
       const orderOrError = (
@@ -210,7 +227,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
-  private validateAddress(address: Address) {
+  private validateAddress(address: Address, phoneNumberOnly?) {
     const {
       name,
       addressLine1,
@@ -221,14 +238,23 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       phoneNumber,
     } = address
     const usOrCanada = country === "US" || country === "CA"
-    const errors = {
-      name: validatePresence(name),
-      addressLine1: validatePresence(addressLine1),
-      city: validatePresence(city),
-      region: usOrCanada && validatePresence(region),
-      country: validatePresence(country),
-      postalCode: usOrCanada && validatePresence(postalCode),
-      phoneNumber: validatePresence(phoneNumber),
+
+    let errors
+
+    if (phoneNumberOnly) {
+      errors = {
+        phoneNumber: validatePresence(phoneNumber),
+      }
+    } else {
+      errors = {
+        name: validatePresence(name),
+        addressLine1: validatePresence(addressLine1),
+        city: validatePresence(city),
+        region: usOrCanada && validatePresence(region),
+        country: validatePresence(country),
+        postalCode: usOrCanada && validatePresence(postalCode),
+        phoneNumber: validatePresence(phoneNumber),
+      }
     }
     const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
 
@@ -239,7 +265,10 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onAddressChange: AddressChangeHandler = (address, key) => {
-    const { errors } = this.validateAddress(address)
+    const { errors } = this.validateAddress(
+      address,
+      this.state.shippingOption === "PICKUP"
+    )
     this.setState({
       address,
       addressErrors: {
@@ -343,6 +372,16 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   />
                 </Collapse>
 
+                <Collapse open={this.state.shippingOption === "PICKUP"}>
+                  <AddressForm
+                    value={address}
+                    errors={addressErrors}
+                    touched={addressTouched}
+                    onChange={this.onAddressChange}
+                    phoneNumberOnly
+                  />
+                </Collapse>
+
                 <Media greaterThan="xs">
                   <Button
                     onClick={this.onContinueButtonPressed}
@@ -392,6 +431,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
         state
         requestedFulfillment {
           __typename
+
           ... on CommerceShip {
             name
             addressLine1
