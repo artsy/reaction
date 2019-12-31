@@ -153,6 +153,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       this.state.address,
       shippingOption === "PICKUP"
     )
+
     if (hasErrors) {
       this.setState({
         addressErrors: errors,
@@ -160,22 +161,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       })
       return
     }
-
-    // if (shippingOption === "SHIP") {
-    //   const { errors, hasErrors } = this.validateAddress(this.state.address)
-    // } else if (shippingOption === "PICKUP") {
-    //   const { errors, hasErrors } = this.validatePhoneNumber(
-    //     this.state.address.phoneNumber
-    //   )
-    // }
-
-    // if (hasErrors) {
-    //   this.setState({
-    //     addressErrors: errors,
-    //     addressTouched: this.touchedAddress,
-    //   })
-    //   return
-    // }
 
     try {
       const orderOrError = (

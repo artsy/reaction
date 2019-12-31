@@ -150,10 +150,17 @@ Object {
   it("commits the mutation with pickup option", async () => {
     const page = await buildPage()
     await page.selectPickupOption()
+    fillIn(page.root, {
+      title: "Phone number",
+      value: validAddress.phoneNumber,
+    })
     expect(mutations.mockFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
     expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
     expect(mutations.lastFetchVariables.input.fulfillmentType).toBe("PICKUP")
+    expect(mutations.lastFetchVariables.input.shipping.phoneNumber).toBe(
+      "8475937743"
+    )
   })
 
   describe("mutation", () => {
@@ -347,6 +354,10 @@ Object {
 
     it("does submit the mutation with a non-ship order", async () => {
       await page.selectPickupOption()
+      fillIn(page.root, {
+        title: "Phone number",
+        value: validAddress.phoneNumber,
+      })
       await page.clickSubmit()
       expect(mutations.mockFetch).toBeCalled()
     })
