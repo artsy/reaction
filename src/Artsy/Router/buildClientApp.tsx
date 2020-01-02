@@ -45,7 +45,9 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         createRelaySSREnvironment({
           cache: JSON.parse(window.__RELAY_BOOTSTRAP__ || "{}"),
           user,
-          userAgent: (navigator && navigator.userAgent) || undefined,
+          userAgent:
+            (typeof navigator !== "undefined" && navigator.userAgent) ||
+            undefined,
         })
 
       const getHistoryProtocol = () => {
