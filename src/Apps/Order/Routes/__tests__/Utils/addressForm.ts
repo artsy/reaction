@@ -15,11 +15,14 @@ export const validAddress: Address = {
 
 export const fillIn = (
   component: any,
-  inputData: { title: string; value: string }
+  inputData: { title: string; value: string },
+  index?: number
 ) => {
   const input = component
     .find(Input)
     .filterWhere(wrapper => wrapper.props().title === inputData.title)
+    .at(index ? index : 0)
+
   input.props().onChange({ currentTarget: { value: inputData.value } } as any)
 }
 
