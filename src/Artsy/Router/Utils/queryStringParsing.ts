@@ -6,7 +6,8 @@ const parseValue = value => {
   // If this is a string that can be coerced into a number, do it.
   if (
     !Number.isNaN(Number(value)) &&
-    (typeof value === "string" && value.trim() !== "")
+    typeof value === "string" &&
+    value.trim() !== ""
   ) {
     parsedValue = Number(value)
   } else if (

@@ -4,6 +4,7 @@ import {
   BenefitAuctionArtwork,
   InquireableArtworkWithMultipleConsignableArtists,
   LiveAuctionArtwork,
+  LiveAuctionArtworkWithoutPartner,
   NotForSaleArtworkWithOneConsignableArtist,
   VanHamLiveAuctionArtwork,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
@@ -58,6 +59,17 @@ describe("ArtworkSidebarExtraLinks", () => {
     it("displays proper conditions of sale text", () => {
       expect(wrapper.text()).toContain(
         "By placing your bid you agree to Artsy's and Van Ham's Conditions of Sale."
+      )
+    })
+  })
+
+  describe("for work in an auction without a partner", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(LiveAuctionArtworkWithoutPartner)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's Conditions of Sale."
       )
     })
   })

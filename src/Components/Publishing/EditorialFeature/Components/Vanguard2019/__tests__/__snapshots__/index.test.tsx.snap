@@ -2,7 +2,7 @@
 
 exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
 <div
-  className="sc-bdVaJa Vanguard2019__VanguardWrapper-sc-18g2aj7-0 QMlZP"
+  className="sc-bdVaJa Vanguard2019__VanguardWrapper-sc-18g2aj7-0 NGJhq"
 >
   <div>
     <div
@@ -111,16 +111,16 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa Introduction__IntroContainer-acx5fk-1 kPnXde"
+    className="sc-bdVaJa Introduction__IntroContainer-acx5fk-1 cwRynz"
   >
     <div
-      className="sc-bdVaJa blwHZB"
+      className="sc-bdVaJa gpmWlJ"
     >
       <div
         className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 fGGulG"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 bhsYXz"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
         >
           <svg
             fill="#FFF"
@@ -134,7 +134,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 iPaIrP"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
           >
             <video
               autoPlay={true}
@@ -168,10 +168,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa jKvdAZ"
+      className="sc-bdVaJa ZuRvZ"
     >
       <div
-        className="sc-bdVaJa iXRZDZ"
+        className="sc-bdVaJa eFgrYo"
       >
         <div
           className="sc-bwzfXH eZcrdQ"
@@ -326,7 +326,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
           <div
-            className="sc-bdVaJa dMGznX"
+            className="sc-bdVaJa kJpBUu"
           >
             <div
               className="sc-bxivhb bUZGRr sc-htpNat dOrNHt"
@@ -367,7 +367,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           </div>
         </div>
         <div
-          className="sc-bdVaJa hJzSAN"
+          className="sc-bdVaJa isuVdk"
         >
           <div
             className="article__text-section StyledText-sc-1ysl1h-0 bBVXyI"
@@ -386,7 +386,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa bWSbok"
+    className="sc-bdVaJa jvtNeD"
   >
     <div
       className="sc-bxivhb bUZGRr sc-htpNat kKCefX"
@@ -403,11 +403,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       Table of Contents
     </div>
     <div
-      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 eNICuC"
+      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 efckVn"
       onClick={[Function]}
     >
       <div
-        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 gTQwlc"
+        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 iliCmL"
       >
         <svg
           data-name="Layer 1"
@@ -420,7 +420,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </svg>
       </div>
       <div
-        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 djUmvX"
+        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 Bhriv"
       >
         <div
           className="sc-ifAKCX cFlEyZ sc-htpNat hpCWrY"
@@ -453,11 +453,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 eNICuC"
+      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 efckVn"
       onClick={[Function]}
     >
       <div
-        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 gTQwlc"
+        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 iliCmL"
       >
         <svg
           data-name="Layer 1"
@@ -470,7 +470,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </svg>
       </div>
       <div
-        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 djUmvX"
+        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 Bhriv"
       >
         <div
           className="sc-ifAKCX cFlEyZ sc-htpNat hpCWrY"
@@ -504,11 +504,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 eNICuC"
+      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 efckVn"
       onClick={[Function]}
     >
       <div
-        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 gTQwlc"
+        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 iliCmL"
       >
         <svg
           data-name="Layer 1"
@@ -521,7 +521,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </svg>
       </div>
       <div
-        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 djUmvX"
+        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 Bhriv"
       >
         <div
           className="sc-ifAKCX cFlEyZ sc-htpNat hpCWrY"
@@ -557,17 +557,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa beBHWd"
+    className="sc-bdVaJa cgFBqI"
     id="emerging"
   >
     <div
-      className="sc-bdVaJa huoVqb"
+      className="sc-bdVaJa jVebKB"
     />
     <div
-      className="sc-bdVaJa dVZOZN"
+      className="sc-bdVaJa hcJFwa"
     >
       <div
-        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 VQKBl"
+        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 eYvwSR"
       >
         <h2
           className="sc-bxivhb SeriesWrapper__Title-sc-1v4ou91-1 kYSKae sc-htpNat ivKDje"
@@ -588,7 +588,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 fGGulG"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 bhsYXz"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
         >
           <svg
             fill="#FFF"
@@ -603,7 +603,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 iPaIrP"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
           >
             <video
               autoPlay={true}
@@ -619,10 +619,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa kMZTKH"
+      className="sc-bdVaJa fBlBum"
     >
       <div
-        className="sc-bdVaJa cgWHJD"
+        className="sc-bdVaJa bRlLEf"
       >
         <div
           className="sc-bwzfXH ldrAcd"
@@ -731,7 +731,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="victoria-sin"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -745,10 +745,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -780,7 +780,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -806,7 +806,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -1140,7 +1140,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -1154,7 +1154,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="monira-al-qadiri"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -1168,10 +1168,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -1203,7 +1203,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -1229,7 +1229,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -1563,7 +1563,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -1577,7 +1577,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="diedrick-brackens"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -1591,10 +1591,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -1626,7 +1626,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -1652,7 +1652,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -1986,7 +1986,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -2000,7 +2000,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="dineo-seshee-bopape"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -2014,10 +2014,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -2049,7 +2049,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -2075,7 +2075,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -2381,7 +2381,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -2395,7 +2395,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="martine-gutierrez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -2409,10 +2409,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -2444,7 +2444,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -2470,7 +2470,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -2804,7 +2804,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -2818,7 +2818,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="genesis-belanger"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -2832,10 +2832,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -2867,7 +2867,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -2893,7 +2893,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -3199,7 +3199,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -3213,7 +3213,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="tao-hui"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -3227,10 +3227,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -3262,7 +3262,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -3288,7 +3288,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -3622,7 +3622,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -3636,7 +3636,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="jordan-nassar"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -3650,10 +3650,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -3685,7 +3685,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -3711,7 +3711,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -4045,7 +4045,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -4059,7 +4059,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="geng-xue"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -4073,10 +4073,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -4108,7 +4108,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -4134,7 +4134,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -4468,7 +4468,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -4482,7 +4482,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="meriem-bennani"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -4496,10 +4496,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -4531,7 +4531,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -4557,7 +4557,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -4863,7 +4863,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -4877,7 +4877,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="manuel-solano"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -4891,10 +4891,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -4926,7 +4926,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -4952,7 +4952,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -5258,7 +5258,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -5272,7 +5272,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="lauren-halsey"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -5286,10 +5286,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -5321,7 +5321,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -5347,7 +5347,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -5681,7 +5681,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -5695,7 +5695,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="derek-fordjour"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -5709,10 +5709,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -5744,7 +5744,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -5770,7 +5770,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -6104,7 +6104,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -6118,7 +6118,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="alia-farid"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -6132,10 +6132,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -6167,7 +6167,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -6193,7 +6193,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -6499,7 +6499,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -6513,7 +6513,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="gala-porras-kim"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -6527,10 +6527,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -6562,7 +6562,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -6588,7 +6588,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -6894,7 +6894,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -6908,7 +6908,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="jonathan-lyndon-chase"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -6922,10 +6922,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -6957,7 +6957,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -6983,7 +6983,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -7317,7 +7317,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -7331,7 +7331,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="elle-perez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -7345,10 +7345,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -7380,7 +7380,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -7406,7 +7406,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -7712,7 +7712,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -7726,7 +7726,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="suki-seokyeong-kang"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -7740,10 +7740,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -7775,7 +7775,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -7801,7 +7801,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -8135,7 +8135,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -8149,7 +8149,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="evelyn-taocheng-wang"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -8163,10 +8163,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -8198,7 +8198,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -8224,7 +8224,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -8530,7 +8530,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -8544,7 +8544,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="jill-mulleady"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -8558,10 +8558,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -8593,7 +8593,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -8619,7 +8619,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -8925,7 +8925,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -8936,17 +8936,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa beBHWd"
+    className="sc-bdVaJa cgFBqI"
     id="newly-established"
   >
     <div
-      className="sc-bdVaJa huoVqb"
+      className="sc-bdVaJa jVebKB"
     />
     <div
-      className="sc-bdVaJa dVZOZN"
+      className="sc-bdVaJa hcJFwa"
     >
       <div
-        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 VQKBl"
+        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 eYvwSR"
       >
         <h2
           className="sc-bxivhb SeriesWrapper__Title-sc-1v4ou91-1 kYSKae sc-htpNat ivKDje"
@@ -8967,7 +8967,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 fGGulG"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 bhsYXz"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
         >
           <svg
             fill="#FFF"
@@ -8982,7 +8982,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 iPaIrP"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
           >
             <video
               autoPlay={true}
@@ -8998,10 +8998,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa kMZTKH"
+      className="sc-bdVaJa fBlBum"
     >
       <div
-        className="sc-bdVaJa cgWHJD"
+        className="sc-bdVaJa bRlLEf"
       >
         <div
           className="sc-bwzfXH ldrAcd"
@@ -9110,7 +9110,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="michael-armitage"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -9124,10 +9124,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -9159,7 +9159,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -9185,7 +9185,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -9519,7 +9519,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -9533,7 +9533,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="ebony-g-patterson"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -9547,10 +9547,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -9582,7 +9582,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -9608,7 +9608,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -9942,7 +9942,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -9956,7 +9956,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="lawrence-abu-hamdan"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -9970,10 +9970,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -10005,7 +10005,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -10031,7 +10031,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -10337,7 +10337,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -10351,7 +10351,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="korakrit-arunanondchai"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -10365,10 +10365,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -10400,7 +10400,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -10426,7 +10426,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -10732,7 +10732,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -10746,7 +10746,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="barbara-wagner-benjamin-de-burca"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -10760,10 +10760,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -10795,7 +10795,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -10821,7 +10821,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -11155,7 +11155,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -11169,7 +11169,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="charlotte-prodger"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -11183,10 +11183,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -11218,7 +11218,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -11244,7 +11244,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -11550,7 +11550,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -11564,7 +11564,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="jeffrey-gibson"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -11578,10 +11578,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -11613,7 +11613,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -11639,7 +11639,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -11973,7 +11973,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -11987,7 +11987,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="hao-liang"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -12001,10 +12001,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -12036,7 +12036,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -12062,7 +12062,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -12368,7 +12368,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -12382,7 +12382,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="jacolby-satterwhite"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -12396,10 +12396,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -12431,7 +12431,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -12457,7 +12457,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -12791,7 +12791,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -12805,7 +12805,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="melike-kara"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -12819,10 +12819,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -12854,7 +12854,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -12880,7 +12880,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -13186,7 +13186,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -13200,7 +13200,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="cui-jie"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -13214,10 +13214,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -13249,7 +13249,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -13275,7 +13275,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -13609,7 +13609,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -13623,7 +13623,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="firelei-baez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -13637,10 +13637,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -13672,7 +13672,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -13698,7 +13698,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -14032,7 +14032,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -14046,7 +14046,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="forensic-architecture"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -14060,10 +14060,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -14095,7 +14095,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -14121,7 +14121,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -14455,7 +14455,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -14469,7 +14469,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="tschabalala-self"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -14483,10 +14483,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -14518,7 +14518,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -14544,7 +14544,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -14850,7 +14850,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -14864,7 +14864,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="harold-ancart"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -14878,10 +14878,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -14913,7 +14913,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -14939,7 +14939,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -15245,7 +15245,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -15256,17 +15256,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa beBHWd"
+    className="sc-bdVaJa cgFBqI"
     id="getting-their-due"
   >
     <div
-      className="sc-bdVaJa huoVqb"
+      className="sc-bdVaJa jVebKB"
     />
     <div
-      className="sc-bdVaJa dVZOZN"
+      className="sc-bdVaJa hcJFwa"
     >
       <div
-        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 VQKBl"
+        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 eYvwSR"
       >
         <h2
           className="sc-bxivhb SeriesWrapper__Title-sc-1v4ou91-1 kYSKae sc-htpNat ivKDje"
@@ -15287,7 +15287,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 fGGulG"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 bhsYXz"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
         >
           <svg
             fill="#FFF"
@@ -15302,7 +15302,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 iPaIrP"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
           >
             <video
               autoPlay={true}
@@ -15318,10 +15318,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa kMZTKH"
+      className="sc-bdVaJa fBlBum"
     >
       <div
-        className="sc-bdVaJa cgWHJD"
+        className="sc-bdVaJa bRlLEf"
       >
         <div
           className="sc-bwzfXH ldrAcd"
@@ -15430,7 +15430,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="frank-bowling"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -15444,10 +15444,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -15479,7 +15479,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -15505,7 +15505,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -15811,7 +15811,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -15825,7 +15825,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="zilia-sanchez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -15839,10 +15839,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -15874,7 +15874,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -15900,7 +15900,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -16234,7 +16234,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -16248,7 +16248,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="fred-eversley"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -16262,10 +16262,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -16297,7 +16297,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -16323,7 +16323,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -16657,7 +16657,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -16671,7 +16671,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="tishan-hsu"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -16685,10 +16685,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -16720,7 +16720,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -16746,7 +16746,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -17052,7 +17052,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -17066,7 +17066,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="howardena-pindell"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -17080,10 +17080,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -17115,7 +17115,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -17141,7 +17141,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -17447,7 +17447,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -17461,7 +17461,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="diane-simpson"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -17475,10 +17475,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -17510,7 +17510,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -17536,7 +17536,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -17842,7 +17842,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -17856,7 +17856,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="lorraine-o-grady"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -17870,10 +17870,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -17905,7 +17905,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -17931,7 +17931,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -18237,7 +18237,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -18251,7 +18251,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="teresa-burga"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -18265,10 +18265,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -18300,7 +18300,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -18326,7 +18326,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -18660,7 +18660,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -18674,7 +18674,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="siah-armajani"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -18688,10 +18688,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -18723,7 +18723,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -18749,7 +18749,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -19083,7 +19083,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -19097,7 +19097,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="mcarthur-binion"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -19111,10 +19111,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -19146,7 +19146,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -19172,7 +19172,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -19478,7 +19478,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -19492,7 +19492,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="beatriz-gonzalez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -19506,10 +19506,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -19541,7 +19541,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -19567,7 +19567,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -19901,7 +19901,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -19915,7 +19915,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="simone-fattal"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -19929,10 +19929,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -19964,7 +19964,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -19990,7 +19990,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -20324,7 +20324,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -20338,7 +20338,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="vivian-suter"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -20352,10 +20352,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -20387,7 +20387,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -20413,7 +20413,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -20747,7 +20747,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -20761,7 +20761,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="henry-taylor"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -20775,10 +20775,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -20810,7 +20810,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -20836,7 +20836,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -21142,7 +21142,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -21156,7 +21156,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       id="anna-maria-maiolino"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 hDSacK"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
       >
         <svg
           data-name="Layer 1"
@@ -21170,10 +21170,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 leyVab"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
         >
           <div
-            className="sc-bdVaJa dUOPRQ"
+            className="sc-bdVaJa jTeONE"
           >
             <div
               className="rrm-container rrm-greaterThanOrEqual-xl"
@@ -21205,7 +21205,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa beBHWd"
+              className="sc-bdVaJa cgFBqI"
             >
               <div
                 className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
@@ -21231,7 +21231,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-bwzfXH gDpChx"
               >
                 <div
-                  className="sc-bdVaJa AlnOQ"
+                  className="sc-bdVaJa cuOYlR"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -21565,7 +21565,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 fWZMix"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
             >
               Read More
             </div>
@@ -21576,10 +21576,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa hMQMDu"
+    className="sc-bdVaJa ezNlgj"
   >
     <div
-      className="sc-bdVaJa gDsVjt"
+      className="sc-bdVaJa imGIdc"
     >
       <div
         className="sc-VigVT gbmPvL"
@@ -21589,7 +21589,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bwzfXH gmZxTF"
       >
         <div
-          className="sc-bdVaJa lkRmZa"
+          className="sc-bdVaJa ccErhE"
           width={
             Array [
               "100%",
@@ -21622,7 +21622,7 @@ been updated to reflect these changes.
           </p>
         </div>
         <div
-          className="sc-bdVaJa blgdGe"
+          className="sc-bdVaJa hpCjOP"
           width={
             Array [
               "100%",

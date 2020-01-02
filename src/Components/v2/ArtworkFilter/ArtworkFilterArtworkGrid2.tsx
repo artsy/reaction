@@ -18,9 +18,7 @@ interface ArtworkFilterArtworkGridProps {
   relay: RelayProp
 }
 
-const ArtworkFilterArtworkGrid: React.FC<
-  ArtworkFilterArtworkGridProps
-> = props => {
+const ArtworkFilterArtworkGrid: React.FC<ArtworkFilterArtworkGridProps> = props => {
   const { user, mediator } = useSystemContext()
   const context = useArtworkFilterContext()
   const aggregations = get(props, p => p.filtered_artworks.aggregations)
@@ -65,7 +63,7 @@ const ArtworkFilterArtworkGrid: React.FC<
         <ArtworkGrid
           artworks={props.filtered_artworks}
           columnCount={columnCount}
-          preloadImageCount={9}
+          preloadImageCount={6}
           itemMargin={40}
           user={user}
           mediator={mediator}

@@ -1,4 +1,4 @@
-import { Checkbox } from "@artsy/palette"
+import { Checkbox, LargeSelect } from "@artsy/palette"
 
 import { ValidFormValues } from "Apps/Auction/Routes/__tests__/Utils/RegisterTestPage"
 import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
@@ -15,6 +15,10 @@ export class ConfirmBidTestPage extends RootTestPage {
     return expectOne(this.find("select"))
   }
 
+  get bidAmountLargeSelect() {
+    return expectOne(this.find(LargeSelect))
+  }
+
   get form() {
     return expectOne(this.find("form"))
   }
@@ -25,6 +29,10 @@ export class ConfirmBidTestPage extends RootTestPage {
 
   get agreeToTermsInput() {
     return expectOne(this.form.find(Checkbox))
+  }
+
+  async selectBidAmount(value: string) {
+    return this.bidAmountLargeSelect.props().onSelect(value)
   }
 
   async fillAddressForm(address: Address) {

@@ -22,69 +22,69 @@ export interface ArtworkRelatedArtistsProps {
 
 const PAGE_SIZE = 4
 
-export const ArtworkRelatedArtists: React.FC<
-  ArtworkRelatedArtistsProps
-> = track()(props => {
-  const { trackEvent } = useTracking()
-  const { mediator, user } = useSystemContext()
-  const [fetchingNextPage, setFetchingNextPage] = useState(false)
+export const ArtworkRelatedArtists: React.FC<ArtworkRelatedArtistsProps> = track()(
+  props => {
+    const { trackEvent } = useTracking()
+    const { mediator, user } = useSystemContext()
+    const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
-  const {
-    artwork: { artist },
-    relay,
-  } = props
-  if (hideGrid(artist.related.artistsConnection)) {
-    return null
-  }
-
-  const fetchData = () => {
-    if (!relay.hasMore() || relay.isLoading()) {
-      return
+    const {
+      artwork: { artist },
+      relay,
+    } = props
+    if (hideGrid(artist.related.artistsConnection)) {
+      return null
     }
-    setFetchingNextPage(true)
-    relay.loadMore(PAGE_SIZE, error => {
-      if (error) {
-        logger.error(error)
+
+    const fetchData = () => {
+      if (!relay.hasMore() || relay.isLoading()) {
+        return
       }
-      setFetchingNextPage(false)
-    })
+      setFetchingNextPage(true)
+      relay.loadMore(PAGE_SIZE, error => {
+        if (error) {
+          logger.error(error)
+        }
+        setFetchingNextPage(false)
+      })
+    }
+
+    return (
+      <Box mt={6}>
+        <Flex flexDirection="column" alignItems="center">
+          <Serif size={["5t", "8"]} color="black100" mb={2} textAlign="center">
+            Related artists
+          </Serif>
+        </Flex>
+        <Flex flexWrap="wrap" mr={-2} width="100%">
+          {artist.related.artistsConnection.edges.map(({ node }, index) => {
+            return (
+              <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
+                <ArtistCard
+                  lazyLoad
+                  artist={node}
+                  mediator={mediator}
+                  user={user}
+                  onClick={() => {
+                    trackEvent({
+                      context_module: Schema.ContextModule.RelatedArtists,
+                      type: Schema.Type.ArtistCard,
+                      action_type: Schema.ActionType.Click,
+                    })
+                  }}
+                />
+              </Box>
+            )
+          })}
+        </Flex>
+
+        {relay.hasMore() && (
+          <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
+        )}
+      </Box>
+    )
   }
-
-  return (
-    <Box mt={6}>
-      <Flex flexDirection="column" alignItems="center">
-        <Serif size={["5t", "8"]} color="black100" mb={2} textAlign="center">
-          Related artists
-        </Serif>
-      </Flex>
-      <Flex flexWrap="wrap" mr={-2} width="100%">
-        {artist.related.artistsConnection.edges.map(({ node }, index) => {
-          return (
-            <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
-              <ArtistCard
-                lazyLoad
-                artist={node}
-                mediator={mediator}
-                user={user}
-                onClick={() => {
-                  trackEvent({
-                    context_module: Schema.ContextModule.RelatedArtists,
-                    type: Schema.Type.ArtistCard,
-                    action_type: Schema.ActionType.Click,
-                  })
-                }}
-              />
-            </Box>
-          )
-        })}
-      </Flex>
-
-      {relay.hasMore() && (
-        <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
-      )}
-    </Box>
-  )
-})
+)
 
 const ShowMoreButton: React.FC<{ onClick: () => void; loading: boolean }> = ({
   onClick,

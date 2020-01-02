@@ -17,7 +17,7 @@ function ArtworkExample(props: { artworkID: string }) {
       `}
       variables={{ artworkID: props.artworkID }}
       render={readyState =>
-        readyState.props && <InquiryArtwork {...readyState.props as any} />
+        readyState.props && <InquiryArtwork {...(readyState.props as any)} />
       }
     />
   )

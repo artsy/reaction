@@ -103,8 +103,10 @@ describe("buildServerApp", () => {
               "mediator",
               "onlyMatchMediaQueries",
               "relayEnvironment",
+              "router",
               "routes",
               "setIsFetching",
+              "setRouter",
               "user",
             ])
             setImmediate(done)

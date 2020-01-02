@@ -3,7 +3,6 @@ import {
   OfferOrderWithShippingDetails,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { DateTime } from "luxon"
 import { graphql } from "react-relay"
@@ -24,7 +23,11 @@ jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
 
-jest.mock("Apps/Order/Utils/trackPageView")
+jest.mock("Artsy/Analytics/trackPageView", () => ({
+  trackPageView: jest.fn(),
+}))
+const mockTrackPageView = require("Artsy/Analytics/trackPageView")
+  .trackPageView as jest.Mock
 jest.mock(
   "Apps/Order/Components/PaymentPicker",
   // not sure why this is neccessary :(
@@ -98,6 +101,7 @@ describe("Payment", () => {
   beforeEach(() => {
     ;(window.location.assign as any).mockReset()
     global.setInterval = jest.fn()
+    mockTrackPageView.mockClear()
   })
 
   afterEach(() => {
@@ -220,6 +224,6 @@ describe("Payment", () => {
 
   it("tracks a pageview", async () => {
     await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

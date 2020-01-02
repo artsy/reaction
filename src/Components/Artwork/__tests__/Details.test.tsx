@@ -12,7 +12,7 @@ describe("Details", () => {
   ) => {
     return await renderRelayTree({
       Component: props => (
-        <DetailsFragmentContainer {...props as any} showSaleLine />
+        <DetailsFragmentContainer {...(props as any)} showSaleLine />
       ),
       query: graphql`
         query Details_Test_Query @raw_response_type {

@@ -6,7 +6,7 @@ import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { RouteConfig, Router } from "found"
@@ -105,12 +105,14 @@ export class NewPaymentRoute extends Component<
         return
       }
 
-      const orderOrError = (await this.fixFailedPayment({
-        input: {
-          creditCardId: result.creditCardId,
-          offerId: this.props.order.lastOffer.internalID,
-        },
-      })).commerceFixFailedPayment.orderOrError
+      const orderOrError = (
+        await this.fixFailedPayment({
+          input: {
+            creditCardId: result.creditCardId,
+            offerId: this.props.order.lastOffer.internalID,
+          },
+        })
+      ).commerceFixFailedPayment.orderOrError
 
       if (orderOrError.error) {
         this.handleFixFailedPaymentError(orderOrError.error.code)

@@ -77,7 +77,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   renderSaleMessage(saleMessage: string) {
     return (
-      <Serif size="5t" weight="semibold">
+      <Serif size="5t" weight="semibold" data-test="SaleMessage">
         {saleMessage}
       </Serif>
     )
@@ -90,7 +90,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const editionFragment = (
       <>
         <SizeInfo piece={editionSet} />
-        <Serif ml="auto" size="2">
+        <Serif ml="auto" size="2" data-test="SaleMessage">
           {editionSet.sale_message}
         </Serif>
       </>
@@ -447,9 +447,7 @@ interface ArtworkSidebarCommercialProps {
   relay?: RelayProp
 }
 
-export const ArtworkSidebarCommercial: FC<
-  ArtworkSidebarCommercialProps
-> = props => {
+export const ArtworkSidebarCommercial: FC<ArtworkSidebarCommercialProps> = props => {
   const { mediator, user } = useContext(SystemContext)
 
   return (

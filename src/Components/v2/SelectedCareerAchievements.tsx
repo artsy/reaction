@@ -17,9 +17,9 @@ export interface SelectedCareerAchievementsProps {
 }
 
 const CATEGORIES = {
-  "blue-chip": "Blue chip",
-  "top-established": "Established",
-  "top-emerging": "Emerging",
+  "blue-chip": "Blue chip representation",
+  "top-established": "Established representation",
+  "top-emerging": "Emerging representation",
 }
 const CATEGORY_LABEL_MAP = {
   "blue-chip": "Represented by internationally reputable galleries.",
@@ -47,9 +47,7 @@ export class SelectedCareerAchievements extends React.Component<
     }
     const topAuctionResult = this.props.artist.auctionResultsConnection.edges[0]
       .node
-    const display = `${topAuctionResult.price_realized.display}, ${
-      topAuctionResult.organization
-    }, ${topAuctionResult.sale_date}`
+    const display = `${topAuctionResult.price_realized.display}, ${topAuctionResult.organization}, ${topAuctionResult.sale_date}`
 
     return (
       <ArtistInsight
@@ -70,12 +68,13 @@ export class SelectedCareerAchievements extends React.Component<
     ) {
       const highCategory = highestCategory(partnersConnection.edges)
       const type = highCategory.toUpperCase().replace("-", "_")
+      const label = CATEGORIES[highCategory]
 
       return (
         <ArtistInsight
           key={type}
           type={type}
-          label={CATEGORIES[highCategory]}
+          label={label}
           value={CATEGORY_LABEL_MAP[highCategory]}
         />
       )

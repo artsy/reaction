@@ -4,7 +4,7 @@ import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { Router } from "found"
 import React, { Component } from "react"
 
@@ -69,11 +69,13 @@ export class Reject extends Component<RejectProps> {
 
   onSubmit = async () => {
     try {
-      const orderOrError = (await this.rejectOffer({
-        input: {
-          offerId: this.props.order.lastOffer.internalID,
-        },
-      })).commerceBuyerRejectOffer.orderOrError
+      const orderOrError = (
+        await this.rejectOffer({
+          input: {
+            offerId: this.props.order.lastOffer.internalID,
+          },
+        })
+      ).commerceBuyerRejectOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error

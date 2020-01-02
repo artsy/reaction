@@ -107,9 +107,7 @@ export class Wizard extends React.Component<Props, State> {
         />
 
         {new RegExp(
-          `^/personalize(?!(/${CollectorIntentComponent.slug}|/${
-            Artists.slug
-          }|/${Genes.slug}|/${BudgetComponent.slug})).*$`
+          `^/personalize(?!(/${CollectorIntentComponent.slug}|/${Artists.slug}|/${Genes.slug}|/${BudgetComponent.slug})).*$`
         ).exec(location.pathname) && (
           <Redirect to={`/personalize/${CollectorIntentComponent.slug}`} />
         )}

@@ -7,27 +7,30 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
-import { BidForm_me } from "__generated__/BidForm_me.graphql"
-import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
-import { PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
-import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { Form, Formik, FormikActions, FormikValues } from "formik"
 import { dropWhile, find } from "lodash"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import { data as sd } from "sharify"
 import Yup from "yup"
 
+import { BidForm_me } from "__generated__/BidForm_me.graphql"
+import { BidForm_saleArtwork } from "__generated__/BidForm_saleArtwork.graphql"
 import { CreditCardInstructions } from "Apps/Auction/Components/CreditCardInstructions"
+import { PricingTransparencyQueryRenderer as PricingTransparency } from "Apps/Auction/Components/PricingTransparency"
 import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { OnSubmitValidationError, TrackErrors } from "./RegistrationForm"
 
 interface Props {
+  artworkSlug: string
   initialSelectedBid?: string
   me: BidForm_me
   onSubmit: (values: FormikValues, actions: FormikActions<object>) => void
+  onMaxBidSelect?: (values: string) => void
+  relay: RelayProp
   saleArtwork: BidForm_saleArtwork
-  showPricingTransparency?: boolean
   trackSubmissionErrors: TrackErrors
 }
 
@@ -111,13 +114,16 @@ export const determineDisplayRequirements = (
 }
 
 export const BidForm: React.FC<Props> = ({
+  artworkSlug,
   initialSelectedBid,
   me,
   onSubmit,
+  onMaxBidSelect,
+  relay,
   saleArtwork,
-  showPricingTransparency = false,
   trackSubmissionErrors,
 }) => {
+  const { ENABLE_PRICE_TRANSPARENCY } = sd
   const displayIncrements = dropWhile(
     saleArtwork.increments,
     increment => increment.cents < saleArtwork.minimumNextBid.cents
@@ -186,6 +192,7 @@ export const BidForm: React.FC<Props> = ({
                   <LargeSelect
                     selected={values.selectedBid}
                     onSelect={value => {
+                      onMaxBidSelect && onMaxBidSelect(value)
                       setFieldValue("selectedBid", value)
                       setFieldTouched("selectedBid")
                     }}
@@ -196,7 +203,15 @@ export const BidForm: React.FC<Props> = ({
                       {errors.selectedBid}
                     </Sans>
                   )}
-                  {showPricingTransparency && <PricingTransparency />}
+
+                  {ENABLE_PRICE_TRANSPARENCY && (
+                    <PricingTransparency
+                      relayEnvironment={relay.environment}
+                      saleId={saleArtwork.sale.slug}
+                      artworkId={artworkSlug}
+                      bidAmountMinor={parseInt(values.selectedBid)}
+                    />
+                  )}
                 </Flex>
 
                 {requiresPaymentInformation && (
@@ -273,7 +288,7 @@ export const BidForm: React.FC<Props> = ({
                     size="large"
                     width="100%"
                     loading={isSubmitting}
-                    {...{ type: "submit" } as any}
+                    {...({ type: "submit" } as any)}
                   >
                     Confirm bid
                   </Button>
@@ -298,6 +313,7 @@ export const BidFormFragmentContainer = createFragmentContainer(BidForm, {
         display
       }
       sale {
+        slug
         registrationStatus {
           qualifiedForBidding
         }

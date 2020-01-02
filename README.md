@@ -15,7 +15,8 @@
 - **CI:** [![CircleCI](https://circleci.com/gh/artsy/reaction.svg?style=shield)](https://circleci.com/gh/artsy/reaction)
   [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartsy%2Freaction.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartsy%2Freaction?ref=badge_shield)
 - **NPM:** [![npm version](https://badge.fury.io/js/%40artsy%2Freaction.svg)](https://www.npmjs.com/package/@artsy/reaction)
-- **Point People:** [@alloy](https://github.com/alloy), [@damassi](https://github.com/damassi)
+- **Coverage:** [![codecov](https://codecov.io/gh/artsy/reaction/branch/master/graph/badge.svg)](https://codecov.io/gh/artsy/reaction)
+- **Point People:** [@damassi](https://github.com/damassi)
 
 ## Installation
 

@@ -15,6 +15,7 @@ import { RelatedCollectionEntityFragmentContainer as RelatedCollectionEntity } f
 interface RelatedCollectionsRailProps {
   collections: RelatedCollectionsRail_collections
   title?: string
+  lazyLoadImages?: boolean
 }
 
 @track(null, {
@@ -45,7 +46,7 @@ export class RelatedCollectionsRail extends React.Component<
 
   render() {
     const { collections } = this.props
-    const { title } = this.props
+    const { title, lazyLoadImages } = this.props
     if (collections.length > 3) {
       return (
         <Box>
@@ -68,7 +69,12 @@ export class RelatedCollectionsRail extends React.Component<
             onArrowClick={this.trackCarouselNav.bind(this)}
             data={take(collections, 16)}
             render={slide => {
-              return <RelatedCollectionEntity collection={slide} />
+              return (
+                <RelatedCollectionEntity
+                  lazyLoad={lazyLoadImages}
+                  collection={slide}
+                />
+              )
             }}
             renderLeftArrow={({ Arrow }) => {
               return (

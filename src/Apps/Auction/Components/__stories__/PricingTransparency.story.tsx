@@ -6,7 +6,23 @@ import { PricingTransparency } from "../PricingTransparency"
 storiesOf("Apps/Auction/Components", module).add("Pricing Transparency", () => {
   return (
     <Section>
-      <PricingTransparency />
+      <PricingTransparency
+        artwork={{
+          saleArtwork: {
+            calculatedCost: {
+              bidAmount: {
+                display: "$5,000",
+              },
+              buyersPremium: {
+                display: "$1,000",
+              },
+              subtotal: {
+                display: "$6,000",
+              },
+            },
+          },
+        }}
+      />
     </Section>
   )
 })

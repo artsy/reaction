@@ -2,6 +2,7 @@ import React, { SFC, useContext, useState } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
+import { Router } from "found"
 import { getUser } from "Utils/user"
 
 export interface Mediator {
@@ -39,12 +40,18 @@ export interface SystemContextProps {
    */
   relayEnvironment?: Environment
 
+  /**
+   * When in AppShell router context, store a reference to router instance
+   */
+  router?: Router
+
   searchQuery?: string
 
   /**
    * Toggle for setting global fetch state, typically set in the `RenderStatus.tsx`
    */
   setIsFetching?: (isFetching: boolean) => void
+  setRouter?: (router: Router) => void
 
   /**
    * The currently signed-in user.
@@ -65,18 +72,19 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
+  const [isFetching, setIsFetching] = useState(false)
+  const [router, setRouter] = useState(null)
   const user = getUser(props.user)
-
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
-
-  const [isFetching, setIsFetching] = useState(false)
 
   const providerValues = {
     ...props,
     isFetching,
     setIsFetching,
     relayEnvironment,
+    router,
+    setRouter,
     user,
   }
 

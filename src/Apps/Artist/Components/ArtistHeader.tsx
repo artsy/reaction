@@ -1,5 +1,6 @@
-import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
+import { Box, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -8,9 +9,12 @@ import { Carousel } from "Components/v2/Carousel"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { get } from "Utils/get"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 import { userIsAdmin } from "Utils/user"
+import { ArtistIndicator } from "./ArtistIndicator"
+import { highestCategory } from "./MarketInsights/MarketInsights"
 
 /**
  * This H1 and H2 were added for SEO purposes
@@ -37,6 +41,12 @@ interface Props {
   artist: ArtistHeader_artist
   user?: User
   mediator?: Mediator
+}
+
+const CATEGORIES = {
+  "blue-chip": "Blue Chip Representation",
+  "top-established": "Established Representation",
+  "top-emerging": "Emerging Representation",
 }
 
 type Image = Props["artist"]["carousel"]["images"][0]
@@ -102,61 +112,81 @@ export class LargeArtistHeader extends Component<Props> {
     const isAdmin = userIsAdmin(user)
 
     return (
-      <Box width="100%">
-        {hasImages && (
-          <Carousel
-            height="200px"
-            data={carousel.images as object[]}
-            render={(slide: Image, slideIndex: number) => {
-              return (
-                <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                  <Image
-                    px={5}
-                    lazyLoad={slideIndex > 5}
-                    src={slide.resized.url}
-                    width={slide.resized.width}
-                    height={slide.resized.height}
-                    preventRightClick={!isAdmin}
-                  />
-                </a>
-              )
-            }}
-          />
-        )}
-        <Spacer my={2} />
+      <HorizontalPadding>
+        <Box width="100%">
+          {hasImages && (
+            <Carousel
+              height="200px"
+              options={{ pageDots: false }}
+              data={carousel.images as object[]}
+              render={(slide: Image, slideIndex: number) => {
+                return (
+                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
+                    <Image
+                      px={0.3}
+                      lazyLoad={slideIndex > 5}
+                      src={slide.resized.url}
+                      width={slide.resized.width}
+                      height={slide.resized.height}
+                      preventRightClick={!isAdmin}
+                    />
+                  </a>
+                )
+              }}
+            />
+          )}
+          <Spacer my={2} />
 
-        <span id="jumpto-ArtistHeader" />
+          <span id="jumpto-ArtistHeader" />
 
-        <Flex justifyContent="space-between">
-          <Box>
-            <H1>
-              <Serif size="10">{props.artist.name}</Serif>
-            </H1>
-            <Flex>
-              <H2>
-                <Serif size="3">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
-                </Serif>
-              </H2>
-              <Spacer mr={2} />
+          <Flex justifyContent="space-between">
+            <Box>
+              <H1>
+                <Serif size="10">{props.artist.name}</Serif>
+              </H1>
+              <Flex>
+                <H2>
+                  <Serif size="3">
+                    {props.artist.nationality &&
+                      `${props.artist.nationality}, `}
+                    {props.artist.years}
+                  </Serif>
+                </H2>
+                <Spacer mr={2} />
+              </Flex>
+            </Box>
+            <Flex justifyContent="space-between">
               {props.artist.counts.follows > 50 && (
-                <Serif size="3">
-                  {props.artist.counts.follows.toLocaleString()} followers
-                </Serif>
+                <Flex flexDirection="column" alignItems="center">
+                  <Sans size="5t" weight="medium">
+                    {props.artist.counts.follows.toLocaleString()}
+                  </Sans>
+                  <Sans size="2" color="black60" weight="medium">
+                    Followers
+                  </Sans>
+                </Flex>
               )}
+              <Spacer mr={3} />
+              <FollowArtistButton
+                useDeprecatedButtonStyle={false}
+                artist={props.artist}
+                user={user}
+                onOpenAuthModal={() =>
+                  handleOpenAuth(props.mediator, props.artist)
+                }
+              >
+                Follow
+              </FollowArtistButton>
             </Flex>
-          </Box>
-          <FollowArtistButton
-            useDeprecatedButtonStyle={false}
-            artist={props.artist}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
+          </Flex>
+        </Box>
+        <Flex flexDirection="row">
+          {renderRepresentationStatus(props.artist)}
+          {renderAuctionHighlight(props.artist) &&
+            renderRepresentationStatus(props.artist) && <Spacer mr={5} />}
+          {renderAuctionHighlight(props.artist)}
         </Flex>
-      </Box>
+      </HorizontalPadding>
     )
   }
 }
@@ -193,13 +223,14 @@ export class SmallArtistHeader extends Component<Props> {
           <Fragment>
             <Carousel
               data={carousel.images as object[]}
-              height="200px"
+              height="180px"
+              options={{ pageDots: false }}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                     <Image
-                      px={5}
                       src={slide.resized.url}
+                      px={0.3}
                       width={slide.resized.width}
                       height={slide.resized.height}
                       preventRightClick={!isAdmin}
@@ -211,39 +242,72 @@ export class SmallArtistHeader extends Component<Props> {
             <Spacer my={2} />
           </Fragment>
         )}
-
         <span id="jumpto-ArtistHeader" />
-        <Flex flexDirection="column" alignItems="center">
-          <H1>
-            <Serif size="5">{props.artist.name}</Serif>
-          </H1>
-          <Flex>
-            <Box mx={1}>
-              <H2>
-                <Serif size="2">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
-                </Serif>
-              </H2>
-            </Box>
-            {props.artist.counts.follows > 50 && (
-              <Serif size="2">
+        <Box mx={2}>
+          <Flex flexDirection="column" alignItems="center">
+            <H1>
+              <Serif size="5">{props.artist.name}</Serif>
+            </H1>
+            <Flex>
+              <Box mx={1}>
+                <H2>
+                  <Serif size="2">
+                    {props.artist.nationality &&
+                      `${props.artist.nationality}, `}
+                    {props.artist.years}
+                  </Serif>
+                </H2>
+              </Box>
+            </Flex>
+          </Flex>
+        </Box>
+        <Spacer mb={0.5} />
+        <Flex flexDirection="row" justifyContent="center">
+          {props.artist.counts.follows > 50 && (
+            <Flex>
+              <Sans size="2" weight="medium">
                 {props.artist.counts.follows.toLocaleString()} followers
-              </Serif>
-            )}
+              </Sans>
+              <Sans size="2" color="black100" mx={0.3} display="inline-block">
+                •
+              </Sans>
+            </Flex>
+          )}
+          <Flex>
+            <FollowArtistButton
+              artist={props.artist}
+              useDeprecatedButtonStyle={false}
+              buttonProps={{ width: "100%" }}
+              user={user}
+              render={({ is_followed }) => {
+                return (
+                  <Sans
+                    size="2"
+                    weight="medium"
+                    color="black"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {is_followed ? "Following" : "Follow"}
+                  </Sans>
+                )
+              }}
+              onOpenAuthModal={() =>
+                handleOpenAuth(props.mediator, props.artist)
+              }
+            >
+              Follow
+            </FollowArtistButton>
           </Flex>
         </Flex>
-        <Box my={2}>
-          <FollowArtistButton
-            artist={props.artist}
-            useDeprecatedButtonStyle={false}
-            buttonProps={{ width: "100%" }}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
-        </Box>
+        <Flex flexDirection="row" justifyContent="center">
+          {renderRepresentationStatus(props.artist)}
+          {renderAuctionHighlight(props.artist) &&
+            renderRepresentationStatus(props.artist) && <Spacer mr={5} />}
+          {renderAuctionHighlight(props.artist)}
+        </Flex>
       </Flex>
     )
   }
@@ -257,11 +321,76 @@ const handleOpenAuth = (mediator, artist) => {
   })
 }
 
+const renderAuctionHighlight = artist => {
+  const topAuctionResult = get(
+    artist,
+    a => artist.auctionResultsConnection.edges[0].node.price_realized.display
+  )
+  if (topAuctionResult) {
+    const auctionLabel = topAuctionResult + " Auction Record"
+    return <ArtistIndicator label={auctionLabel} type="high-auction" />
+  }
+}
+
+const renderRepresentationStatus = artist => {
+  const { highlights } = artist
+  const { partnersConnection } = highlights
+  if (
+    partnersConnection &&
+    partnersConnection.edges &&
+    partnersConnection.edges.length > 0
+  ) {
+    const highCategory = highestCategory(partnersConnection.edges)
+
+    return (
+      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
+    )
+  }
+}
+
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   {
     artist: graphql`
-      fragment ArtistHeader_artist on Artist {
+      fragment ArtistHeader_artist on Artist
+        @argumentDefinitions(
+          partnerCategory: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
+          }
+        ) {
+        highlights {
+          partnersConnection(
+            first: 10
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
+          ) {
+            edges {
+              node {
+                categories {
+                  slug
+                }
+              }
+            }
+          }
+        }
+
+        auctionResultsConnection(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized: priceRealized {
+                display(format: "0a")
+              }
+              organization
+              sale_date: saleDate(format: "YYYY")
+            }
+          }
+        }
         internalID
         slug
         name

@@ -1,4 +1,6 @@
 import { Box, Separator, Serif } from "@artsy/palette"
+import { Location, Match } from "found"
+
 import { BidderPositionQueryResponse } from "__generated__/BidderPositionQuery.graphql"
 import { ConfirmBid_me } from "__generated__/ConfirmBid_me.graphql"
 import {
@@ -15,13 +17,12 @@ import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/Lot
 import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
 import { createCreditCardAndUpdatePhone } from "Apps/Auction/Routes/Register"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { FormikActions } from "formik"
 import { isEmpty } from "lodash"
-import qs from "qs"
 import React, { useEffect, useState } from "react"
 import { Title } from "react-head"
 import {
@@ -44,11 +45,15 @@ const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
 
 type BidFormActions = FormikActions<FormValues>
 
+interface OptionalQueryStrings {
+  bid?: string
+}
+
 interface ConfirmBidProps extends ReactStripeElements.InjectedStripeProps {
   artwork: routes_ConfirmBidQueryResponse["artwork"]
   me: ConfirmBid_me
   relay: RelayProp
-  location: Location
+  match: Match
 }
 
 const MAX_POLL_ATTEMPTS = 20
@@ -144,6 +149,15 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           price: selectedBidAmountCents / 100,
         },
       ],
+    })
+  }
+
+  function trackMaxBidSelected(maxBid: string) {
+    trackEvent({
+      action_type: Schema.ActionType.SelectedMaxBid,
+      bidder_id: bidderId,
+      order_id: bidderId,
+      selected_max_bid_minor: maxBid,
     })
   }
 
@@ -288,10 +302,11 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
         <Separator />
 
         <BidForm
-          initialSelectedBid={getInitialSelectedBid(props.location)}
-          showPricingTransparency={false}
+          artworkSlug={artwork.slug}
+          initialSelectedBid={getInitialSelectedBid(props.match.location)}
           saleArtwork={saleArtwork}
           onSubmit={handleSubmit}
+          onMaxBidSelect={trackMaxBidSelected}
           me={me as any}
           trackSubmissionErrors={errors =>
             !isEmpty(errors) && trackConfirmBidFailed(errors)
@@ -304,17 +319,15 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
 const getInitialSelectedBid = (location: Location): string | undefined => {
   return get(
-    qs,
-    querystring => querystring.parse(location.search.slice(1)).bid,
+    location,
+    ({ query }) => (query as OptionalQueryStrings).bid,
     undefined
   )
 }
 
 const StripeInjectedConfirmBidRoute = injectStripe(ConfirmBidRoute)
 
-export const StripeWrappedConfirmBidRoute: React.FC<
-  ConfirmBidProps
-> = props => {
+export const StripeWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   const [stripe, setStripe] = useState(null)
 
   function setupStripe() {

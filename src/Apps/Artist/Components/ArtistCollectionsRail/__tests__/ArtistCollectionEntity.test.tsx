@@ -1,13 +1,10 @@
 import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mockTracking } from "Artsy/Analytics"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { mount } from "enzyme"
 import React from "react"
-import {
-  ArtistCollectionEntity,
-  ArtworkImage,
-  StyledLink,
-} from "../ArtistCollectionEntity"
+import { ArtistCollectionEntity, ArtworkImage } from "../ArtistCollectionEntity"
 jest.unmock("react-tracking")
 
 describe("ArtistCollectionEntity", () => {
@@ -116,7 +113,7 @@ describe("ArtistCollectionEntity", () => {
   it("Tracks link clicks", () => {
     const { Component, dispatch } = mockTracking(ArtistCollectionEntity)
     const component = mount(<Component {...props} />)
-    component.find(StyledLink).simulate("click")
+    component.find(RouterLink).simulate("click")
 
     expect(dispatch).toBeCalledWith({
       action_type: "Click",

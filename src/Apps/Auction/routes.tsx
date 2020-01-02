@@ -106,9 +106,7 @@ export const routes: RouteConfig[] = [
 function handleRedirect(redirect: Redirect, location: Location) {
   if (redirect) {
     logger.warn(
-      `Redirecting from ${location.pathname} to ${redirect.path} because '${
-        redirect.reason
-      }'`
+      `Redirecting from ${location.pathname} to ${redirect.path} because '${redirect.reason}'`
     )
     throw new RedirectException(redirect.path)
   }

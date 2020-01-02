@@ -37,7 +37,7 @@ import {
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
+import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Router } from "found"
@@ -161,13 +161,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
 
     try {
-      const orderOrError = (await this.setShipping({
-        input: {
-          id: this.props.order.internalID,
-          fulfillmentType: shippingOption,
-          shipping: address,
-        },
-      })).commerceSetShipping.orderOrError
+      const orderOrError = (
+        await this.setShipping({
+          input: {
+            id: this.props.order.internalID,
+            fulfillmentType: shippingOption,
+            shipping: address,
+          },
+        })
+      ).commerceSetShipping.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)

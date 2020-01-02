@@ -76,7 +76,7 @@ export const NavBar: React.FC = track(
           </Box>
         </NavSection>
 
-        <Spacer mr={3} />
+        <Spacer mr={2} />
 
         {/*
           Desktop. Collapses into mobile at `sm` breakpoint.

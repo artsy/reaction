@@ -1,3 +1,392 @@
+# v24.0.11 (Mon Dec 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove showing follower numbers twice on mobile [#3074](https://github.com/artsy/reaction/pull/3074) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v24.0.10 (Tue Dec 24 2019)
+
+#### 🐛  Bug Fix
+
+- Fix link in buy now benefit auctions to link to sale, not partner [#3070](https://github.com/artsy/reaction/pull/3070) (barry@hoggard.org)
+
+#### Authors: 1
+
+- Barry Hoggard (barry@hoggard.org)
+
+---
+
+# v24.0.9 (Tue Dec 24 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CCPARequest] Proper cta styling for Force integration [#3072](https://github.com/artsy/reaction/pull/3072) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.8 (Mon Dec 23 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [CCPA] Initial start for CCPA modals [#3069](https://github.com/artsy/reaction/pull/3069) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.7 (Fri Dec 20 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] Fire AB test events for client side routing [#3067](https://github.com/artsy/reaction/pull/3067) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.6 (Fri Dec 20 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1700: Artist Page Tweaks [#3065](https://github.com/artsy/reaction/pull/3065) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.0.5 (Thu Dec 19 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CatchLinks] Dont attempt to handle empty anchor tags [#3066](https://github.com/artsy/reaction/pull/3066) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.4 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- Remove linking artifact [#3064](https://github.com/artsy/reaction/pull/3064) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v24.0.3 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1698] Fix whitespace in global nav [#3062](https://github.com/artsy/reaction/pull/3062) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v24.0.2 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- Fix scrolling issue after modal is closed [#3063](https://github.com/artsy/reaction/pull/3063) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v24.0.1 (Tue Dec 17 2019)
+
+#### 🐛  Bug Fix
+
+- Margin fix for Artist Header [#3061](https://github.com/artsy/reaction/pull/3061) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Update "artist summary" on artist page [#3056](https://github.com/artsy/reaction/pull/3056) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Remove @alloy from point people [#3060](https://github.com/artsy/reaction/pull/3060) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Add coverage badge [#3059](https://github.com/artsy/reaction/pull/3059) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.0.0 (Tue Dec 17 2019)
+
+#### 💥  Breaking Change
+
+- Adds full page AppShell component w/ routing for supported Reaction apps [#3043](https://github.com/artsy/reaction/pull/3043) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v23.0.5 (Mon Dec 16 2019)
+
+#### 🐛  Bug Fix
+
+- Coverage reporting [#3051](https://github.com/artsy/reaction/pull/3051) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v23.0.4 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1633] fix double hover event in new navbar [#3057](https://github.com/artsy/reaction/pull/3057) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v23.0.3 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- Updates to display ad tracking [#3052](https://github.com/artsy/reaction/pull/3052) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v22.10.4 (Thu Dec 12 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1683] clone the NavBar component for navigation a/b test [#3055](https://github.com/artsy/reaction/pull/3055) ([@xtina-starr](https://github.com/xtina-starr))
+- [GROW-1633] remove duplicate hover analytics event [#3050](https://github.com/artsy/reaction/pull/3050) ([@xtina-starr](https://github.com/xtina-starr))
+- Bump down threshold for lazy-loading on artist artwork grid [#3053](https://github.com/artsy/reaction/pull/3053) ([@zephraph](https://github.com/zephraph))
+- Restore Artworks link to mobile nav [#3046](https://github.com/artsy/reaction/pull/3046) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### ⚠️  Pushed to master
+
+- Bump to 23.0.1 to get around issues with auto-release  (steven.j.hicks@gmail.com)
+
+#### Authors: 3
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Steven Hicks (steven.j.hicks@gmail.com)
+
+---
+
+# v22.10.3 (Tue Dec 10 2019)
+
+#### 🐛  Bug Fix
+
+- Add lazy loading to collections rail [#3047](https://github.com/artsy/reaction/pull/3047) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.10.2 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- Bump version of lazy-load lib to fix SSR issue [#3049](https://github.com/artsy/reaction/pull/3049) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.10.1 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1681] adds analytics events to the navbar notification menu [#3048](https://github.com/artsy/reaction/pull/3048) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v22.10.0 (Mon Dec 09 2019)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 5.1.5 to v5.1.11 [#2985](https://github.com/artsy/reaction/pull/2985) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.9.7 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Bring back arrows removed by #3036 [#3044](https://github.com/artsy/reaction/pull/3044) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v22.9.6 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Maintain proper aspect ratio for image on confirm bid [#3042](https://github.com/artsy/reaction/pull/3042) ([@dleve123](https://github.com/dleve123))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.2 to v3.7.3 [#3041](https://github.com/artsy/reaction/pull/3041) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v22.9.5 (Wed Dec 04 2019)
+
+#### 🐛  Bug Fix
+
+- Modifies waypoint method call [#3038](https://github.com/artsy/reaction/pull/3038) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v22.9.4 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Remove dots from the artist images [#3036](https://github.com/artsy/reaction/pull/3036) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep prettier from 1.16.4 to v1.19.1 [#3040](https://github.com/artsy/reaction/pull/3040) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.9.3 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Handle missing partner on artwork page [#3039](https://github.com/artsy/reaction/pull/3039) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v22.9.2 (Mon Dec 02 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1649: Adds data-test attribute to the sale message on artwork view [#3037](https://github.com/artsy/reaction/pull/3037) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v22.9.1 (Thu Nov 28 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes a bug where your max bid is not pre-selected on the new confirm bid page [#3035](https://github.com/artsy/reaction/pull/3035) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.9.0 (Wed Nov 27 2019)
+
+#### 🚀  Enhancement
+
+- Track "selected max bid" events on the confirm bid page
+
+addresses https://artsyproduct.atlassian.net/browse/AUCT-773 [#3034](https://github.com/artsy/reaction/pull/3034) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.8.0 (Wed Nov 27 2019)
+
+#### 🚀  Enhancement
+
+- User can see buyer's premium cost on web [#3033](https://github.com/artsy/reaction/pull/3033) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.7.3 (Tue Nov 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix for SaleArtwork/Sale without a partner [#3032](https://github.com/artsy/reaction/pull/3032) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
 # v22.7.2 (Tue Nov 26 2019)
 
 #### 🐛  Bug Fix

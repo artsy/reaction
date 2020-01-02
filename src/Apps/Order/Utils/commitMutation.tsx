@@ -94,7 +94,7 @@ export function injectCommitMutation<Props extends CommitMutationProps>(
             <Component
               isCommittingMutation={isCommittingMutation}
               commitMutation={commitMutation}
-              {...props as Props}
+              {...(props as Props)}
             />
           )}
         </MutationContext.Consumer>

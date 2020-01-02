@@ -10,6 +10,10 @@ export type ArtworkSidebarPartnerInfo_artwork = {
             readonly city: string | null;
         } | null> | null;
     } | null;
+    readonly sale: {
+        readonly name: string | null;
+        readonly href: string | null;
+    } | null;
     readonly " $refType": "ArtworkSidebarPartnerInfo_artwork";
 };
 export type ArtworkSidebarPartnerInfo_artwork$data = ArtworkSidebarPartnerInfo_artwork;
@@ -20,7 +24,22 @@ export type ArtworkSidebarPartnerInfo_artwork$key = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "ArtworkSidebarPartnerInfo_artwork",
   "type": "Artwork",
@@ -36,20 +55,8 @@ const node: ReaderFragment = {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "href",
-          "args": null,
-          "storageKey": null
-        },
+        (v0/*: any*/),
+        (v1/*: any*/),
         {
           "kind": "LinkedField",
           "alias": null,
@@ -69,8 +76,22 @@ const node: ReaderFragment = {
           ]
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        (v0/*: any*/),
+        (v1/*: any*/)
+      ]
     }
   ]
 };
-(node as any).hash = '2d4008d718bc19a2034d96f2665bacf9';
+})();
+(node as any).hash = '806a61f16b48333cb19accd4017590d0';
 export default node;

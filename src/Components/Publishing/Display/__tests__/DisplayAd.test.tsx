@@ -11,7 +11,6 @@ import "jest-styled-components"
 import React from "react"
 import { Bling as GPT } from "react-gpt"
 import renderer from "react-test-renderer"
-import Waypoint from "react-waypoint"
 import { ArticleDisplayAdProps as AdData } from "../../Fixtures/Components"
 jest.unmock("react-tracking")
 
@@ -54,15 +53,17 @@ describe("Display Ad", () => {
     expect(gptProps.slotSize).toEqual([970, 250])
   })
 
-  it("Tracks display ad impression", () => {
+  it("Tracks display ad impression after ad is viewed", () => {
     const { Component, dispatch } = mockTracking(DisplayAd)
 
     const component = mount(<Component {...displayAdProps} />)
 
-    component
-      .find(Waypoint)
-      .getElement()
-      .props.onEnter()
+      // onImpressionViewable fires when the user scrolls to an ad long enough to view it:
+      //   https://support.google.com/admanager/answer/4524488?hl=en&visit_id=637116147923101672-4119934528&rd=1
+    ;(component
+      .find(GPT)
+      .at(0)
+      .props() as any).onImpressionViewable()
 
     expect(dispatch).toBeCalledWith({
       action_type: "Impression",

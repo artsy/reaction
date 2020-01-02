@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "22.7.2",
+  "version": "24.0.11",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -20,8 +20,8 @@
     "styled-components": "^4"
   },
   "scripts": {
-    "codemod": "./scripts/codemod.sh",
     "clean": "rm -rf .cache && rm -rf dist",
+    "codemod": "./scripts/codemod.sh",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
     "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.1",
-    "@artsy/palette": "5.1.5",
+    "@artsy/palette": "5.1.12",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -135,7 +135,7 @@
     "lint-staged": "4.3.0",
     "patch-package": "6.2.0",
     "postinstall-prepare": "1.0.1",
-    "prettier": "1.16.4",
+    "prettier": "1.19.1",
     "raf": "3.4.0",
     "raw-loader": "0.5.1",
     "react": "16.8.4",
@@ -161,7 +161,7 @@
     "tslint-config-prettier": "1.13.0",
     "tslint-plugin-relay": "0.0.3",
     "tslint-react": "2.6.0",
-    "typescript": "3.7.2",
+    "typescript": "3.7.4",
     "typescript-styled-plugin": "0.13.0",
     "vscode-apollo-relay": "1.5.0",
     "webpack": "4.29.6",
@@ -175,6 +175,7 @@
     "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@types/luxon": "^1.15.1",
     "autosuggest-highlight": "^3.1.1",
+    "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
     "farce": "^0.2.6",
     "formik": "^1.5.8",
@@ -196,7 +197,7 @@
     "react-css-transition-replace": "^3.0.2",
     "react-gpt": "^2.0.1",
     "react-head": "^3.0.0",
-    "react-lazy-load-image-component": "^1.1.1",
+    "react-lazy-load-image-component": "^1.4.0-beta.1",
     "react-lines-ellipsis": "^0.14.0",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
@@ -237,6 +238,12 @@
   },
   "jest": {
     "cacheDirectory": ".cache/jest",
+    "coverageDirectory": "coverage",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
+    ],
     "transform": {
       "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
       "\\.graphql$": "jest-raw-loader"
