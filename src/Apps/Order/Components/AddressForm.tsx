@@ -87,7 +87,7 @@ export class AddressForm extends React.Component<
 
   phoneNumberInputDescription = (): string | null => {
     if (this.props.phoneNumberOnly) {
-      return "After your order is confirmed, a specialist will contact you within 2 business days to coordinate pickup."
+      return "Number to contact for pickup logistics"
     } else if (this.props.billing && this.props.showPhoneNumberInput) {
       return null
     } else {
@@ -97,10 +97,16 @@ export class AddressForm extends React.Component<
 
   render() {
     const lockCountryToOrigin = !this.props.billing && this.props.domesticOnly
+
+    const showPhoneNumber =
+      this.props.phoneNumberOnly ||
+      !this.props.billing ||
+      this.props.showPhoneNumberInput
+
     return (
-      <Join separator={<Spacer mb={2} />}>
+      <>
         {!this.props.phoneNumberOnly && (
-          <>
+          <Join separator={<Spacer mb={2} />}>
             <Flex flexDirection="column">
               <Input
                 id="AddressForm_name"
@@ -208,29 +214,29 @@ export class AddressForm extends React.Component<
                 />
               </Flex>
             </TwoColumnSplit>
+          </Join>
+        )}
+        {showPhoneNumber && (
+          <>
+            <Flex flexDirection="column">
+              {!this.props.phoneNumberOnly && <Spacer mb={2} />}
+              <Input
+                id="AddressForm_phoneNumber"
+                title="Phone number"
+                type="tel"
+                description={this.phoneNumberInputDescription()}
+                placeholder="Add phone"
+                pattern="[^a-z]+"
+                value={this.props.value.phoneNumber}
+                onChange={this.changeEventHandler("phoneNumber")}
+                error={this.getError("phoneNumber")}
+                block
+              />
+            </Flex>
+            <Spacer mb={2} />
           </>
         )}
-        {this.props.phoneNumberOnly ||
-          ((!this.props.billing || this.props.showPhoneNumberInput) && (
-            <>
-              <Flex flexDirection="column">
-                <Input
-                  id="AddressForm_phoneNumber"
-                  title="Phone number"
-                  type="tel"
-                  description={this.phoneNumberInputDescription()}
-                  placeholder="Add phone"
-                  pattern="[^a-z]+"
-                  value={this.props.value.phoneNumber}
-                  onChange={this.changeEventHandler("phoneNumber")}
-                  error={this.getError("phoneNumber")}
-                  block
-                />
-              </Flex>
-              <Spacer mb={2} />
-            </>
-          ))}
-      </Join>
+      </>
     )
   }
 }
