@@ -79,7 +79,14 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   const { userAgent } = props
 
   const relayEnvironment =
-    props.relayEnvironment || createRelaySSREnvironment({ user, userAgent })
+    props.relayEnvironment ||
+    createRelaySSREnvironment({
+      user,
+      userAgent:
+        userAgent ||
+        (typeof navigator !== "undefined" && navigator.userAgent) ||
+        undefined,
+    })
 
   const providerValues = {
     ...props,
