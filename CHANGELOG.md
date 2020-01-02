@@ -1,3 +1,20 @@
+# v24.0.12 (Thu Jan 02 2020)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] Correctly trigger pageviews using componentDidUpdate [#3076](https://github.com/artsy/reaction/pull/3076) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.3 to v3.7.4 [#3068](https://github.com/artsy/reaction/pull/3068) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v24.0.11 (Mon Dec 30 2019)
 
 #### 🐛  Bug Fix
