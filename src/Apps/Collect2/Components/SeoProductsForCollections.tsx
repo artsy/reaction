@@ -101,16 +101,16 @@ export const SeoProductsForCollections = createFragmentContainer(SeoProducts, {
             __typename
             ... on PriceRange {
               minPrice {
-                major
+                major(convertTo: "USD")
                 currencyCode
               }
               maxPrice {
-                major
+                major(convertTo: "USD")
                 currencyCode
               }
             }
             ... on Money {
-              major
+              major(convertTo: "USD")
               currencyCode
             }
           }
@@ -128,16 +128,16 @@ export const SeoProductsForCollections = createFragmentContainer(SeoProducts, {
             __typename
             ... on PriceRange {
               minPrice {
-                major
+                major(convertTo: "USD")
                 currencyCode
               }
               maxPrice {
-                major
+                major(convertTo: "USD")
                 currencyCode
               }
             }
             ... on Money {
-              major
+              major(convertTo: "USD")
               currencyCode
             }
           }

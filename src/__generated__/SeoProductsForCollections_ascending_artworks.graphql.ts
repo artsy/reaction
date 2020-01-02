@@ -44,8 +44,14 @@ var v0 = [
     "kind": "ScalarField",
     "alias": null,
     "name": "major",
-    "args": null,
-    "storageKey": null
+    "args": [
+      {
+        "kind": "Literal",
+        "name": "convertTo",
+        "value": "USD"
+      }
+    ],
+    "storageKey": "major(convertTo:\"USD\")"
   },
   {
     "kind": "ScalarField",
@@ -150,5 +156,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'cd042396a84a9f2782d46cbcbd2ebc0a';
+(node as any).hash = 'baa3ae179bf675aae89ff4ebe677be01';
 export default node;
