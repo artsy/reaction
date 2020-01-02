@@ -15,7 +15,6 @@ import { RouterState, withRouter } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { TrackingProp } from "react-tracking"
-import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import { ZeroState } from "./Components/ZeroState"
 
@@ -37,23 +36,6 @@ const TotalResults: React.SFC<{ count: number; term: string }> = ({
   context_page: Schema.PageName.SearchPage,
 })
 export class SearchApp extends React.Component<Props> {
-  // TODO: Remove after AB test ends.
-  componentDidMount() {
-    const { tracking } = this.props
-    const { CLIENT_NAVIGATION } = sd
-
-    const experiment = "client_navigation"
-    const variation = CLIENT_NAVIGATION
-    tracking.trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    })
-  }
-
   renderResults(count: number, artworkCount: number) {
     const {
       viewer,

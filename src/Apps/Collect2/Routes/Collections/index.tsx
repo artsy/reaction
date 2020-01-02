@@ -2,7 +2,6 @@ import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { Collections_marketingCategories } from "__generated__/Collections_marketingCategories.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { trackPageViewWrapper, withSystemContext } from "Artsy"
-import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
 import { Link, Router } from "found"
@@ -26,22 +25,6 @@ const META_DESCRIPTION =
 const isServer = typeof window === "undefined"
 
 export class CollectionsApp extends Component<CollectionsAppProps> {
-  // TODO: Remove after AB Test ends.
-  componentDidMount() {
-    const { tracking } = this.props
-    const { CLIENT_NAVIGATION } = sd
-
-    const experiment = "client_navigation"
-    const variation = CLIENT_NAVIGATION
-    tracking.trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    })
-  }
   render() {
     const { marketingCategories, router } = this.props
 
