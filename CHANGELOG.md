@@ -1,3 +1,15 @@
+# v24.0.13 (Fri Jan 03 2020)
+
+#### 🐛  Bug Fix
+
+- Add "no-switch-case-fall-through" tslint rule [#3077](https://github.com/artsy/reaction/pull/3077) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v24.0.12 (Thu Jan 02 2020)
 
 #### 🐛  Bug Fix
