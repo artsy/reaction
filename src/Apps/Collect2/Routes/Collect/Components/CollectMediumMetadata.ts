@@ -46,6 +46,7 @@ export function getMetadataForMedium(medium) {
     case "performance-art":
       title = "Performance Art Works"
       mediumDescription = "3,000 performance art works"
+      break
     default:
       null
   }
