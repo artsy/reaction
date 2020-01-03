@@ -1,3 +1,20 @@
+# v24.0.15 (Fri Jan 03 2020)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [RouterLink] Tweak check to decide whether to route [#3081](https://github.com/artsy/reaction/pull/3081) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 5.1.12 to v5.1.13 [#3079](https://github.com/artsy/reaction/pull/3079) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v24.0.14 (Fri Jan 03 2020)
 
 #### 🐛  Bug Fix
