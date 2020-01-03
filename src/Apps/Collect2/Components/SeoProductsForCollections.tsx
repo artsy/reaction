@@ -1,3 +1,5 @@
+// tslint:enable:no-switch-case-fall-through
+
 import { SeoProductsForCollections_ascending_artworks } from "__generated__/SeoProductsForCollections_ascending_artworks.graphql"
 import { SeoProductsForCollections_descending_artworks } from "__generated__/SeoProductsForCollections_descending_artworks.graphql"
 import { Product } from "Components/v2/Seo/Product"
@@ -13,7 +15,12 @@ export interface SeoProductsProps {
   collectionName: string
 }
 
-export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
+export const getMaxMinPrice = (
+  descending_artworks: SeoProductsForCollections_descending_artworks,
+  ascending_artworks: SeoProductsForCollections_ascending_artworks
+) => {
+  // type ListPriceAscending = SeoProductsForCollections_ascending_artworks["edges"][0]["node"]["listPrice"]
+
   const result = { min: "", max: "" }
   if (!descending_artworks.edges[0].node.listPrice) return null
   switch (descending_artworks.edges[0].node.listPrice.__typename) {
@@ -26,6 +33,7 @@ export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
           p => p.edges[0].node.listPrice.maxPrice.major
         )
       }
+      break
     case "Money":
       if (!descending_artworks.edges[0].node.listPrice.major) return null
       if (descending_artworks.edges[0].node.listPrice.major) {
@@ -34,6 +42,7 @@ export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
           p => p.edges[0].node.listPrice.major
         )
       }
+      break
   }
   if (!ascending_artworks.edges[0].node.listPrice) return null
   switch (ascending_artworks.edges[0].node.listPrice.__typename) {
@@ -46,6 +55,7 @@ export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
           p => p.edges[0].node.listPrice.minPrice.major
         )
       }
+      break
     case "Money":
       if (!ascending_artworks.edges[0].node.listPrice.major) return null
       if (ascending_artworks.edges[0].node.listPrice.major) {
@@ -54,8 +64,8 @@ export const getMaxMinPrice = (descending_artworks, ascending_artworks) => {
           p => p.edges[0].node.listPrice.major
         )
       }
+      break
   }
-
   return result
 }
 
