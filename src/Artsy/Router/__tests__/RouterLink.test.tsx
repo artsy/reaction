@@ -10,7 +10,7 @@ describe("RouterLink", () => {
       <MockRouter
         routes={[
           {
-            path: "/",
+            path: "/*",
             Component: () => {
               return (
                 <RouterLink to="/foo" {...props}>
