@@ -1,6 +1,7 @@
 import { Link, LinkProps, LinkPropsSimple, RouterContext } from "found"
 import { pick } from "lodash"
 import React, { useContext } from "react"
+import { get } from "Utils/get"
 
 /**
  * Wrapper component around found's <Link> component with a fallback to a normal
@@ -14,7 +15,11 @@ import React, { useContext } from "react"
  */
 
 export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
-  const isRouterContext = !!useContext(RouterContext)
+  const context = useContext(RouterContext)
+  const routes = get(context, c => c.router.matcher.routeConfig, [])
+  const isSupportedInRouter = !!get(context, c =>
+    c.router.matcher.matchRoutes(routes, to)
+  )
 
   // Only pass found-router specific props across, props that conform to the
   // link API found here: https://github.com/4Catalyzer/found#links
@@ -25,7 +30,7 @@ export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
     return acc
   }, [])
 
-  if (isRouterContext) {
+  if (isSupportedInRouter) {
     const allowedProps = pick(props, [
       "Component",
       "activeClassName",
