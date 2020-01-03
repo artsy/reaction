@@ -1,3 +1,15 @@
+# v24.0.14 (Fri Jan 03 2020)
+
+#### 🐛  Bug Fix
+
+- Update `react-lazy-load-image-component` version [#3078](https://github.com/artsy/reaction/pull/3078) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v24.0.13 (Fri Jan 03 2020)
 
 #### 🐛  Bug Fix
