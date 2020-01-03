@@ -17,6 +17,7 @@
     "no-console": false,
     "no-import-un-mocked": true,
     "no-namespace": [true, "allow-declarations"],
+    "no-switch-case-fall-through": true,
     "no-unused-expression": false,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
