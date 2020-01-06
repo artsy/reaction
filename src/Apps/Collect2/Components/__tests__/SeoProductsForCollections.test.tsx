@@ -28,6 +28,10 @@ describe("Seo Products for Collection Page", () => {
     }
   }
 
+  function buildEmptyPrice() {
+    return {}
+  }
+
   function buildDescendingArtworks(
     listPrice
   ): SeoProductsForCollections_descending_artworks {
@@ -114,5 +118,59 @@ describe("Seo Products for Collection Page", () => {
     const html = wrapper.html()
     expect(html).toContain('"lowPrice":15')
     expect(html).toContain('"highPrice":30')
+  })
+
+  describe("no prices for descending artwork", () => {
+    beforeEach(() => {
+      props.descending_artworks = buildDescendingArtworks(buildEmptyPrice())
+    })
+
+    it("renders price from individual ascending artwork price", () => {
+      props.ascending_artworks = buildAscendingArtworks(
+        buildIndividualPrice(20)
+      )
+      const wrapper = renderProducts()
+
+      const html = wrapper.html()
+      expect(html).toContain('"lowPrice":20')
+      expect(html).toContain('"highPrice":20')
+    })
+
+    it("renders price from ascending artwork price range", () => {
+      props.ascending_artworks = buildAscendingArtworks(buildPriceRange(11, 14))
+      const wrapper = renderProducts()
+
+      const html = wrapper.html()
+      expect(html).toContain('"lowPrice":11')
+      expect(html).toContain('"highPrice":14')
+    })
+  })
+
+  describe("no prices for ascending artwork", () => {
+    beforeEach(() => {
+      props.ascending_artworks = buildAscendingArtworks(buildEmptyPrice())
+    })
+
+    it("renders price from individual descending artwork price", () => {
+      props.descending_artworks = buildDescendingArtworks(
+        buildIndividualPrice(20)
+      )
+      const wrapper = renderProducts()
+
+      const html = wrapper.html()
+      expect(html).toContain('"lowPrice":20')
+      expect(html).toContain('"highPrice":20')
+    })
+
+    it("renders price from ascending artwork price range", () => {
+      props.descending_artworks = buildDescendingArtworks(
+        buildPriceRange(11, 14)
+      )
+      const wrapper = renderProducts()
+
+      const html = wrapper.html()
+      expect(html).toContain('"lowPrice":11')
+      expect(html).toContain('"highPrice":14')
+    })
   })
 })

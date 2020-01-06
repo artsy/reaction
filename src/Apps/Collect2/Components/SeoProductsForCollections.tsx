@@ -19,54 +19,37 @@ export const getMaxMinPrice = (
   descending_artworks: SeoProductsForCollections_descending_artworks,
   ascending_artworks: SeoProductsForCollections_ascending_artworks
 ) => {
-  // type ListPriceAscending = SeoProductsForCollections_ascending_artworks["edges"][0]["node"]["listPrice"]
+  const leastExpensive = getLeastExpensivePrice(
+    ascending_artworks.edges[0].node.listPrice
+  )
+  const mostExpensive = getMostExpensivePrice(
+    descending_artworks.edges[0].node.listPrice
+  )
 
-  const result = { min: "", max: "" }
-  if (!descending_artworks.edges[0].node.listPrice) return null
-  switch (descending_artworks.edges[0].node.listPrice.__typename) {
-    case "PriceRange":
-      if (!descending_artworks.edges[0].node.listPrice.maxPrice.major)
-        return null
-      if (descending_artworks.edges[0].node.listPrice.maxPrice.major) {
-        result.max = get(
-          descending_artworks,
-          p => p.edges[0].node.listPrice.maxPrice.major
-        )
-      }
-      break
-    case "Money":
-      if (!descending_artworks.edges[0].node.listPrice.major) return null
-      if (descending_artworks.edges[0].node.listPrice.major) {
-        result.max = get(
-          descending_artworks,
-          p => p.edges[0].node.listPrice.major
-        )
-      }
-      break
+  return {
+    min: leastExpensive || mostExpensive,
+    max: mostExpensive || leastExpensive,
   }
-  if (!ascending_artworks.edges[0].node.listPrice) return null
-  switch (ascending_artworks.edges[0].node.listPrice.__typename) {
+}
+
+const getLeastExpensivePrice = (listPrice: any) => {
+  if (!listPrice) return null
+  switch (listPrice.__typename) {
     case "PriceRange":
-      if (!ascending_artworks.edges[0].node.listPrice.minPrice.major)
-        return null
-      if (ascending_artworks.edges[0].node.listPrice.minPrice.major) {
-        result.min = get(
-          ascending_artworks,
-          p => p.edges[0].node.listPrice.minPrice.major
-        )
-      }
-      break
+      return get(listPrice, x => x.minPrice.major)
     case "Money":
-      if (!ascending_artworks.edges[0].node.listPrice.major) return null
-      if (ascending_artworks.edges[0].node.listPrice.major) {
-        result.min = get(
-          ascending_artworks,
-          p => p.edges[0].node.listPrice.major
-        )
-      }
-      break
+      return get(listPrice, x => x.major)
   }
-  return result
+}
+
+const getMostExpensivePrice = (listPrice: any) => {
+  if (!listPrice) return null
+  switch (listPrice.__typename) {
+    case "PriceRange":
+      return get(listPrice, x => x.maxPrice.major)
+    case "Money":
+      return get(listPrice, x => x.major)
+  }
 }
 
 export class SeoProducts extends React.Component<SeoProductsProps> {
