@@ -6,17 +6,29 @@ import { HeadProvider } from "react-head"
 import { SeoProductsForCollections } from "../SeoProductsForCollections"
 
 describe("Seo Products for Collection Page", () => {
-  function buildPriceRange(minPrice = 1, maxPrice = 2) {
+  function buildPriceRange(minPrice?, maxPrice?) {
+    const minPriceObject = minPrice
+      ? {
+          minPrice: {
+            major: minPrice,
+            currencyCode: "USD",
+          },
+        }
+      : {}
+
+    const maxPriceObject = maxPrice
+      ? {
+          maxPrice: {
+            major: maxPrice,
+            currencyCode: "USD",
+          },
+        }
+      : {}
+
     return {
       __typename: "PriceRange",
-      minPrice: {
-        major: minPrice,
-        currencyCode: "USD",
-      },
-      maxPrice: {
-        major: maxPrice,
-        currencyCode: "USD",
-      },
+      ...minPriceObject,
+      ...maxPriceObject,
     }
   }
 
@@ -106,6 +118,28 @@ describe("Seo Products for Collection Page", () => {
     const html = wrapper.html()
     expect(html).toContain('"lowPrice":10')
     expect(html).toContain('"highPrice":9000')
+  })
+
+  it("falls back to maxPrice if the ascending artwork range is missing minPrice", () => {
+    props.ascending_artworks = buildAscendingArtworks(buildPriceRange(null, 25))
+
+    const wrapper = renderProducts()
+
+    const html = wrapper.html()
+    expect(html).toContain('"lowPrice":25')
+    expect(html).toContain('"highPrice":9000')
+  })
+
+  it("falls back to minPrice if the descending artwork range is missing maxPrice", () => {
+    props.descending_artworks = buildDescendingArtworks(
+      buildPriceRange(500, null)
+    )
+
+    const wrapper = renderProducts()
+
+    const html = wrapper.html()
+    expect(html).toContain('"lowPrice":10')
+    expect(html).toContain('"highPrice":500')
   })
 
   it("renders pricing data for collections with individual prices", () => {

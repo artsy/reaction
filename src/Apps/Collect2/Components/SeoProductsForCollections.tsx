@@ -37,9 +37,12 @@ const getPriceRange = (
 
   switch (listPrice.__typename) {
     case "PriceRange":
+      const localMin = get(listPrice, x => x.minPrice.major)
+      const localMax = get(listPrice, x => x.maxPrice.major)
+
       return {
-        min: get(listPrice, x => x.minPrice.major),
-        max: get(listPrice, x => x.maxPrice.major),
+        min: localMin || localMax,
+        max: localMax || localMin,
       }
     case "Money":
       return {
