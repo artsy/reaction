@@ -94,7 +94,7 @@ const LargeAuctionItem: SFC<Props> = props => {
           <>
             <Col sm={1}>
               <Box height="auto" pr={2}>
-                <Image width="70px" src={imageUrl} />
+                <Image width="70px" src={imageUrl} preventRightClick />
               </Box>
             </Col>
             <Col sm={4}>
@@ -153,7 +153,7 @@ const SmallAuctionItem: SFC<Props> = props => {
       <Col sm={6}>
         <Flex>
           <Box height="auto">
-            <Image width="70px" src={imageUrl} />
+            <Image width="70px" src={imageUrl} preventRightClick />
           </Box>
 
           <Spacer mr={2} />
@@ -204,7 +204,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
       <Col>
         <Flex>
           <Box height="auto">
-            <Image width="70px" src={imageUrl} />
+            <Image width="70px" src={imageUrl} preventRightClick />
           </Box>
 
           <Spacer mr={2} />
