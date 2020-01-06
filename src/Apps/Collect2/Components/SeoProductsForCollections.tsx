@@ -1,5 +1,3 @@
-// tslint:enable:no-switch-case-fall-through
-
 import { SeoProductsForCollections_ascending_artworks } from "__generated__/SeoProductsForCollections_ascending_artworks.graphql"
 import { SeoProductsForCollections_descending_artworks } from "__generated__/SeoProductsForCollections_descending_artworks.graphql"
 import { Product } from "Components/v2/Seo/Product"
