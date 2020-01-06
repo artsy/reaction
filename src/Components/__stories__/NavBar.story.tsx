@@ -1,10 +1,12 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
+import styled from "styled-components"
 
-import { Box } from "@artsy/palette"
+import { Box, Sans } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 import * as Menus from "Components/NavBar/Menus"
+import { NavBarTest } from "Components/NavBarTest"
 
 const NavBarArea = props => {
   return (
@@ -17,6 +19,37 @@ const NavBarArea = props => {
 }
 
 storiesOf("Components/NavBar", module)
+  .add("A/B Tests", () => {
+    const ABTestDemo = ({ isLoggedIn, isExperiment }) => (
+      <SystemContextProvider user={isLoggedIn ? { name: "foo" } : null}>
+        <Box width="100%">
+          <Sans size="2" color="red100" textAlign="center" mt={2} mb={1}>
+            {isLoggedIn ? "Logged in • " : "Logged out • "}
+            {isExperiment ? "Experiment" : "Control"}
+          </Sans>
+          <ShowOutlines>
+            {isExperiment ? <NavBarTest /> : <NavBar />}
+          </ShowOutlines>
+        </Box>
+      </SystemContextProvider>
+    )
+
+    const ShowOutlines = styled.div`
+      * {
+        outline: solid 0px hsla(180, 100%, 50%, 0.5);
+      }
+    `
+
+    return (
+      <>
+        <ABTestDemo isLoggedIn={0} isExperiment={0} />
+        <ABTestDemo isLoggedIn={0} isExperiment={1} />
+        <ABTestDemo isLoggedIn={1} isExperiment={0} />
+        <ABTestDemo isLoggedIn={1} isExperiment={1} />
+      </>
+    )
+  })
+
   .add("Logged out", () => {
     return (
       <Container>
@@ -29,7 +62,7 @@ storiesOf("Components/NavBar", module)
   .add("Logged in", () => {
     return (
       <Container>
-        <NavBarArea />
+        <NavBarArea user={{ email: "somebody@example.com" }} />
         <PageCopy />
       </Container>
     )
