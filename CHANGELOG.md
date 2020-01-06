@@ -1,3 +1,15 @@
+# v24.0.16 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- Prevent right click on auction results images [#3083](https://github.com/artsy/reaction/pull/3083) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v24.0.15 (Fri Jan 03 2020)
 
 #### 🐛  Bug Fix
