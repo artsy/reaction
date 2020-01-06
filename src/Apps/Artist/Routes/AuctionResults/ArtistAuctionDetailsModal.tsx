@@ -89,7 +89,7 @@ const LotDetails: SFC<Props> = props => {
         <Spacer mr={2} />
 
         <Box height="auto">
-          <Image width="100px" src={imageUrl} />
+          <Image width="100px" src={imageUrl} preventRightClick />
         </Box>
       </Flex>
 
