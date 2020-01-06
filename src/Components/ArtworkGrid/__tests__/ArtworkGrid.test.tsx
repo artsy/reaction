@@ -6,7 +6,7 @@ import { cloneDeep } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ExtractProps } from "Utils/ExtractProps"
-import { ArtworkGridItem } from "../../Artwork/GridItem"
+import GridItem, { ArtworkGridItem } from "../../Artwork/GridItem"
 import { ArtworkGridFixture } from "../__stories__/ArtworkGridFixture"
 import ArtworkGrid, {
   ArtworkGridContainer,
@@ -197,6 +197,19 @@ describe("ArtworkGrid", () => {
       const wrapper = (await getRelayWrapper(props)).find(ArtworkGridContainer)
       expect(wrapper.text()).toMatch(ArtworkGridFixture.edges[0].node.title)
       expect(wrapper.find(ArtworkGridItem).length).toBe(4)
+    })
+
+    it("Should preload same number of images as specified in preloadImageCount", async () => {
+      const wrapper = await getRelayWrapper({
+        preloadImageCount: 2,
+        columnCount: 2,
+        ...props,
+      })
+      const gridItems = wrapper.find(GridItem)
+      expect(gridItems.get(0).props.lazyLoad).toBeFalsy()
+      expect(gridItems.get(1).props.lazyLoad).toBeFalsy()
+      expect(gridItems.get(2).props.lazyLoad).toBeTruthy()
+      expect(gridItems.get(3).props.lazyLoad).toBeTruthy()
     })
   })
 })
