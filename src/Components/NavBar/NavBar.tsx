@@ -110,8 +110,6 @@ export const NavBar: React.FC = track(
             </NavItem>
           </NavSection>
 
-          <Spacer mr={2} />
-
           <NavSection>
             {isLoggedIn && (
               <>
@@ -166,6 +164,7 @@ export const NavBar: React.FC = track(
 
           {!isLoggedIn && (
             <NavSection>
+              <Spacer mr={2} />
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
