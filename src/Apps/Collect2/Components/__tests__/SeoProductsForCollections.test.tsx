@@ -29,7 +29,7 @@ describe("Seo Products for Collection Page", () => {
   }
 
   function buildEmptyPrice() {
-    return {}
+    return undefined
   }
 
   function buildDescendingArtworks(

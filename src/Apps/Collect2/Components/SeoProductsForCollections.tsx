@@ -19,36 +19,35 @@ export const getMaxMinPrice = (
   descending_artworks: SeoProductsForCollections_descending_artworks,
   ascending_artworks: SeoProductsForCollections_ascending_artworks
 ) => {
-  const leastExpensive = getLeastExpensivePrice(
+  const leastExpensive = getPriceRange(
     ascending_artworks.edges[0].node.listPrice
   )
-  const mostExpensive = getMostExpensivePrice(
+  const mostExpensive = getPriceRange(
     descending_artworks.edges[0].node.listPrice
   )
 
   return {
-    min: leastExpensive || mostExpensive,
-    max: mostExpensive || leastExpensive,
+    min: leastExpensive.min || mostExpensive.min,
+    max: mostExpensive.max || leastExpensive.max,
   }
 }
 
-const getLeastExpensivePrice = (listPrice: any) => {
-  if (!listPrice) return null
-  switch (listPrice.__typename) {
-    case "PriceRange":
-      return get(listPrice, x => x.minPrice.major)
-    case "Money":
-      return get(listPrice, x => x.major)
-  }
-}
+const getPriceRange = (
+  listPrice: SeoProductsForCollections_ascending_artworks["edges"][0]["node"]["listPrice"]
+) => {
+  if (!listPrice) return { min: undefined, max: undefined }
 
-const getMostExpensivePrice = (listPrice: any) => {
-  if (!listPrice) return null
   switch (listPrice.__typename) {
     case "PriceRange":
-      return get(listPrice, x => x.maxPrice.major)
+      return {
+        min: get(listPrice, x => x.minPrice.major),
+        max: get(listPrice, x => x.maxPrice.major),
+      }
     case "Money":
-      return get(listPrice, x => x.major)
+      return {
+        min: get(listPrice, x => x.major),
+        max: get(listPrice, x => x.major),
+      }
   }
 }
 
