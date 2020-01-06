@@ -1,3 +1,15 @@
+# v24.0.17 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- Fix artwork grid preloading too many images [#3080](https://github.com/artsy/reaction/pull/3080) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v24.0.16 (Mon Jan 06 2020)
 
 #### 🐛  Bug Fix
