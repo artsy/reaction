@@ -1,3 +1,15 @@
+# v24.0.19 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- Remove react-responsive-media and add fresnel [#3084](https://github.com/artsy/reaction/pull/3084) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v24.0.18 (Mon Jan 06 2020)
 
 #### 🐛  Bug Fix
