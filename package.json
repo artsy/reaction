@@ -171,8 +171,8 @@
   },
   "dependencies": {
     "@artsy/detect-responsive-traits": "^0.0.5",
+    "@artsy/fresnel": "^1.0.13",
     "@artsy/react-html-parser": "^3.0.2",
-    "@artsy/react-responsive-media": "^2.0.0-beta.5",
     "@types/luxon": "^1.15.1",
     "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
