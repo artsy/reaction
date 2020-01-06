@@ -465,7 +465,8 @@ exports[`Video About matches the snapshot 1`] = `
       />
     </div>
     <div
-      className="rrm-container rrm-greaterThanOrEqual-md"
+      className="fresnel-container fresnel-greaterThanOrEqual-md"
+      suppressHydrationWarning={false}
     >
       <div
         className="c5"
@@ -619,7 +620,8 @@ exports[`Video About matches the snapshot 1`] = `
       />
     </div>
     <div
-      className="rrm-container rrm-lessThan-md"
+      className="fresnel-container fresnel-lessThan-md"
+      suppressHydrationWarning={false}
     >
       <div
         className="c5"
@@ -1206,7 +1208,8 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-greaterThanOrEqual-md"
+      className="fresnel-container fresnel-greaterThanOrEqual-md"
+      suppressHydrationWarning={false}
     >
       <div
         className="c5"
@@ -1357,7 +1360,8 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-lessThan-md"
+      className="fresnel-container fresnel-lessThan-md"
+      suppressHydrationWarning={false}
     >
       <div
         className="c5"
