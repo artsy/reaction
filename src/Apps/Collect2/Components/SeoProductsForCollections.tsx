@@ -60,7 +60,15 @@ export class SeoProducts extends React.Component<SeoProductsProps> {
       collectionName,
       collectionURL,
     } = this.props
+
     const handledItems = getMaxMinPrice(descending_artworks, ascending_artworks)
+    if (!handledItems.min && !handledItems.max) {
+      // If we don't know any prices, we can't build an offer.
+      // And if we try to render a Product without an offer, we'll get an error
+      // from Google. So just don't render anything.
+      return null
+    }
+
     return (
       <>
         <Product

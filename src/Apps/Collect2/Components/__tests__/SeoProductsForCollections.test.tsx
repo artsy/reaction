@@ -173,4 +173,13 @@ describe("Seo Products for Collection Page", () => {
       expect(html).toContain('"highPrice":14')
     })
   })
+
+  it("does not render anything if there is no ascending or descending artwork price", () => {
+    props.descending_artworks = buildDescendingArtworks(buildEmptyPrice())
+    props.ascending_artworks = buildAscendingArtworks(buildEmptyPrice())
+    const wrapper = renderProducts()
+
+    const html = wrapper.html()
+    expect(html).toBeNull()
+  })
 })
