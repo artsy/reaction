@@ -108,16 +108,24 @@ export class ArtworkGridContainer extends React.Component<
     }
     const sections = []
 
-    for (let i = 0; i < columnCount; i++) {
+    for (let column = 0; column < columnCount; column++) {
       const artworkComponents = []
-      for (let j = 0; j < sectionedArtworks[i].length; j++) {
-        const artwork = sectionedArtworks[i][j]
+      for (let row = 0; row < sectionedArtworks[column].length; row++) {
+        /**
+         * The position of the image in the grid represented
+         * by counting left to right, top to bottom.
+         *
+         * Here's a stackoverflow explaining the math: https://stackoverflow.com/questions/1730961/convert-a-2d-array-index-into-a-1d-index
+         */
+        const artworkIndex = column * columnCount + row
+
+        const artwork = sectionedArtworks[column][row]
         artworkComponents.push(
           <GridItem
             artwork={artwork}
             key={artwork.id}
             mediator={this.props.mediator}
-            lazyLoad={i + j >= preloadImageCount}
+            lazyLoad={artworkIndex >= preloadImageCount}
             onClick={() => {
               if (this.props.onBrickClick) {
                 this.props.onBrickClick(artwork)
@@ -126,9 +134,9 @@ export class ArtworkGridContainer extends React.Component<
           />
         )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
-        if (j < sectionedArtworks[i].length - 1) {
+        if (row < sectionedArtworks[column].length - 1) {
           artworkComponents.push(
-            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.id} />
+            <div style={spacerStyle} key={"spacer-" + row + "-" + artwork.id} />
           )
         }
       }
@@ -136,11 +144,11 @@ export class ArtworkGridContainer extends React.Component<
       const sectionSpecificStyle = {
         flex: 1,
         minWidth: 0,
-        marginRight: i === columnCount - 1 ? 0 : this.props.sectionMargin,
+        marginRight: column === columnCount - 1 ? 0 : this.props.sectionMargin,
       }
 
       sections.push(
-        <div style={sectionSpecificStyle} key={i}>
+        <div style={sectionSpecificStyle} key={column}>
           {artworkComponents}
         </div>
       )
