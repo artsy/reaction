@@ -24,7 +24,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="sc-ifAKCX Nav__Title-cd3j7j-1 dlWCPx sc-htpNat gcRkdF"
@@ -50,7 +51,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     />
   </div>
   <div
-    className="rrm-container rrm-at-xs"
+    className="fresnel-container fresnel-at-xs"
+    suppressHydrationWarning={false}
   >
     <div
       className="sc-bwzfXH FrameText__MobileFrame-sc-8olftt-3 gbUxui"
@@ -79,7 +81,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="rrm-container rrm-greaterThan-xs"
+    className="fresnel-container fresnel-greaterThan-xs"
+    suppressHydrationWarning={false}
   >
     <div
       className="sc-bxivhb FrameText-sc-8olftt-0 FrameText__FrameTextLeft-sc-8olftt-1 jeAhdw sc-htpNat bbRNyO"
@@ -149,7 +152,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </div>
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="sc-bxivhb Introduction__HeaderText-acx5fk-0 MoUBM sc-htpNat FZqZl"
@@ -177,7 +181,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           className="sc-bwzfXH eZcrdQ"
         >
           <div
-            className="rrm-container rrm-greaterThanOrEqual-xl"
+            className="fresnel-container fresnel-greaterThanOrEqual-xl"
+            suppressHydrationWarning={false}
           >
             <h1
               className="sc-ifAKCX Introduction__Title-acx5fk-2 Introduction__LargeTitle-acx5fk-3 dwpeyH sc-htpNat dSCwbf"
@@ -188,7 +193,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </h1>
           </div>
           <div
-            className="rrm-container rrm-lessThan-xl"
+            className="fresnel-container fresnel-lessThan-xl"
+            suppressHydrationWarning={false}
           >
             <h1
               className="sc-ifAKCX Introduction__Title-acx5fk-2 fpoUpA sc-htpNat XcbTY"
@@ -751,7 +757,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -762,7 +769,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -1174,7 +1182,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -1185,7 +1194,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -1597,7 +1607,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -1608,7 +1619,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -2020,7 +2032,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -2031,7 +2044,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -2415,7 +2429,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -2426,7 +2441,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -2838,7 +2854,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -2849,7 +2866,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -3233,7 +3251,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -3244,7 +3263,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -3656,7 +3676,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -3667,7 +3688,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -4079,7 +4101,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -4090,7 +4113,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -4502,7 +4526,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -4513,7 +4538,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -4897,7 +4923,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -4908,7 +4935,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -5292,7 +5320,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -5303,7 +5332,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -5715,7 +5745,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -5726,7 +5757,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -6138,7 +6170,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -6149,7 +6182,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -6533,7 +6567,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -6544,7 +6579,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -6928,7 +6964,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -6939,7 +6976,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -7351,7 +7389,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -7362,7 +7401,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -7746,7 +7786,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -7757,7 +7798,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -8169,7 +8211,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -8180,7 +8223,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -8564,7 +8608,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -8575,7 +8620,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -9130,7 +9176,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -9141,7 +9188,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -9553,7 +9601,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -9564,7 +9613,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -9976,7 +10026,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -9987,7 +10038,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -10371,7 +10423,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -10382,7 +10435,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -10766,7 +10820,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -10777,7 +10832,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -11189,7 +11245,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -11200,7 +11257,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -11584,7 +11642,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -11595,7 +11654,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -12007,7 +12067,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -12018,7 +12079,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -12402,7 +12464,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -12413,7 +12476,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -12825,7 +12889,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -12836,7 +12901,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -13220,7 +13286,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -13231,7 +13298,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -13643,7 +13711,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -13654,7 +13723,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -14066,7 +14136,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -14077,7 +14148,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -14489,7 +14561,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -14500,7 +14573,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -14884,7 +14958,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -14895,7 +14970,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -15450,7 +15526,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -15461,7 +15538,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -15845,7 +15923,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -15856,7 +15935,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -16268,7 +16348,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -16279,7 +16360,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -16691,7 +16773,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -16702,7 +16785,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -17086,7 +17170,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -17097,7 +17182,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -17481,7 +17567,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -17492,7 +17579,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -17876,7 +17964,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -17887,7 +17976,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -18271,7 +18361,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -18282,7 +18373,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -18694,7 +18786,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -18705,7 +18798,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -19117,7 +19211,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -19128,7 +19223,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -19512,7 +19608,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -19523,7 +19620,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -19935,7 +20033,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -19946,7 +20045,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -20358,7 +20458,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -20369,7 +20470,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -20781,7 +20883,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -20792,7 +20895,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
@@ -21176,7 +21280,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-bdVaJa jTeONE"
           >
             <div
-              className="rrm-container rrm-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
@@ -21187,7 +21292,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="rrm-container rrm-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl"
+              suppressHydrationWarning={false}
             >
               <h3
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 jeUPk sc-htpNat gbAHCR"
