@@ -1,3 +1,15 @@
+# v24.0.18 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- [GROW-1725] Fix global nav bar spacing [#3082](https://github.com/artsy/reaction/pull/3082) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v24.0.17 (Mon Jan 06 2020)
 
 #### 🐛  Bug Fix
