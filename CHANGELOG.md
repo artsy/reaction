@@ -1,3 +1,15 @@
+# v24.0.21 (Tue Jan 07 2020)
+
+#### 🐛  Bug Fix
+
+- @damassi => [PageView Tracking] Correct for over-tracking on tabbed routes [#3086](https://github.com/artsy/reaction/pull/3086) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.0.20 (Tue Jan 07 2020)
 
 #### 🐛  Bug Fix
