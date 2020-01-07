@@ -1,3 +1,15 @@
+# v24.0.20 (Tue Jan 07 2020)
+
+#### 🐛  Bug Fix
+
+- Only render one breakpoint for mobile googlebot [#3085](https://github.com/artsy/reaction/pull/3085) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v24.0.19 (Mon Jan 06 2020)
 
 #### 🐛  Bug Fix
