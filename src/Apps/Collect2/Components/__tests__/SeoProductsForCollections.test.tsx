@@ -208,6 +208,38 @@ describe("Seo Products for Collection Page", () => {
     })
   })
 
+  describe("when both a Money and a PriceRange are present", () => {
+    it("it uses the maxPrice when the descending is a PriceRange", () => {
+      props.ascending_artworks = buildAscendingArtworks(
+        buildIndividualPrice(42)
+      )
+      props.descending_artworks = buildDescendingArtworks(
+        buildPriceRange(400, 420)
+      )
+
+      const wrapper = renderProducts()
+
+      const html = wrapper.html()
+      expect(html).toContain('"lowPrice":42')
+      expect(html).toContain('"highPrice":420')
+    })
+
+    it("it uses the minPrice when the ascending is a PriceRange", () => {
+      props.ascending_artworks = buildAscendingArtworks(
+        buildPriceRange(42, 100)
+      )
+      props.descending_artworks = buildDescendingArtworks(
+        buildIndividualPrice(420)
+      )
+
+      const wrapper = renderProducts()
+
+      const html = wrapper.html()
+      expect(html).toContain('"lowPrice":42')
+      expect(html).toContain('"highPrice":420')
+    })
+  })
+
   it("does not render anything if there is no ascending or descending artwork price", () => {
     props.descending_artworks = buildDescendingArtworks(buildEmptyPrice())
     props.ascending_artworks = buildAscendingArtworks(buildEmptyPrice())
