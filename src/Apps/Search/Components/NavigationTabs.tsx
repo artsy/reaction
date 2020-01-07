@@ -1,6 +1,6 @@
 import { Flex, Sans } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
-import { track } from "Artsy/Analytics"
+import { track, trackPageView } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteTab, TabCarousel } from "Components/v2"
 import React from "react"
@@ -38,7 +38,7 @@ export class NavigationTabs extends React.Component<Props> {
     destination_path,
   }))
   trackClick(tab: string, destination_path: string) {
-    // no-op
+    trackPageView({ path: destination_path })
   }
 
   shouldComponentUpdate = prevProps => {

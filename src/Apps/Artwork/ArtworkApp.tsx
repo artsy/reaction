@@ -47,11 +47,6 @@ export class ArtworkApp extends React.Component<Props> {
     this.trackProductView()
   }
 
-  componentDidUpdate() {
-    this.trackPageview()
-    this.trackProductView()
-  }
-
   trackProductView() {
     const {
       tracking,
