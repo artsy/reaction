@@ -1,7 +1,7 @@
 import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
-import { track } from "Artsy/Analytics"
+import { track, trackPageView } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteTab, RouteTabs } from "Components/v2"
 import React from "react"
@@ -21,7 +21,7 @@ export class NavigationTabs extends React.Component<Props> {
     destination_path,
   }))
   handleClick(tab: string, destination_path: string) {
-    // no-op
+    trackPageView({ path: destination_path })
   }
 
   renderTab(
@@ -29,19 +29,15 @@ export class NavigationTabs extends React.Component<Props> {
     to: string,
     options: {
       exact?: boolean
-      mediator: {
-        trigger: (action: string, config: object) => void
-      }
-    }
+    } = {}
   ) {
-    const { exact, mediator } = options
+    const { exact } = options
 
     return (
       <RouteTab
         to={to}
         exact={exact}
         onClick={() => {
-          mediator && mediator.trigger("artist:tabclick", { to })
           this.handleClick(text, to)
         }}
       >
@@ -53,7 +49,6 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const {
       artist: { slug, statuses },
-      mediator,
     } = this.props
 
     const route = path => `/artist/${slug}${path}`
@@ -62,19 +57,12 @@ export class NavigationTabs extends React.Component<Props> {
       <>
         {this.renderTab("Overview", route(""), {
           exact: true,
-          mediator,
         })}
-        {statuses.cv && this.renderTab("CV", route("/cv"), { mediator })}
-        {statuses.articles &&
-          this.renderTab("Articles", route("/articles"), {
-            mediator,
-          })}
-        {statuses.shows &&
-          this.renderTab("Shows", route("/shows"), { mediator })}
+        {statuses.cv && this.renderTab("CV", route("/cv"))}
+        {statuses.articles && this.renderTab("Articles", route("/articles"))}
+        {statuses.shows && this.renderTab("Shows", route("/shows"))}
         {statuses.auction_lots &&
-          this.renderTab("Auction results", route("/auction-results"), {
-            mediator,
-          })}
+          this.renderTab("Auction results", route("/auction-results"))}
       </>
     )
   }

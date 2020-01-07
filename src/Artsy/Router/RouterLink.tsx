@@ -1,4 +1,5 @@
-import { Link, LinkProps, LinkPropsSimple, RouterContext } from "found"
+import { trackPageView } from "Artsy/Analytics/trackPageView"
+import { Link, LinkProps, LinkPropsSimple, Match, RouterContext } from "found"
 import { pick } from "lodash"
 import React, { useContext } from "react"
 import { get } from "Utils/get"
@@ -16,6 +17,7 @@ import { get } from "Utils/get"
 
 export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
   const context = useContext(RouterContext)
+  const match: Match = context && context.match
   const routes = get(context, c => c.router.matcher.routeConfig, [])
   const isSupportedInRouter = !!get(context, c =>
     c.router.matcher.matchRoutes(routes, to)
@@ -41,8 +43,26 @@ export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
       ...handlers,
     ])
 
+    // Wrap any provided onClick with pageview tracking
+    // if the page type stays the same. When linking across apps
+    // those components will get mounted with their own tracking.
+    // But when linking within the same app (just different params),
+    // we want to trigger a pageview.
+    const handleClick = event => {
+      const toPath = to.toString()
+      const currentPageType = match && match.location.pathname.split("/")[1]
+      const toPageType = toPath.split("/")[1]
+      if (currentPageType === toPageType) {
+        trackPageView({ path: toPath })
+      }
+
+      if (props.onClick) {
+        props.onClick(event)
+      }
+    }
+
     return (
-      <Link to={to} {...allowedProps}>
+      <Link to={to} {...allowedProps} onClick={handleClick}>
         {children}
       </Link>
     )

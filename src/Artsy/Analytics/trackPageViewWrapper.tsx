@@ -11,9 +11,6 @@ export function trackPageViewWrapper<T>(
     componentDidMount() {
       trackPageView()
     }
-    componentDidUpdate() {
-      trackPageView()
-    }
     render() {
       return <Component {...this.props} />
     }
