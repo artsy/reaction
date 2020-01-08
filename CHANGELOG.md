@@ -1,3 +1,15 @@
+# v24.0.22 (Wed Jan 08 2020)
+
+#### 🐛  Bug Fix
+
+- Grow 1378 Add AggregateOffer schema for Collections pages [#3007](https://github.com/artsy/reaction/pull/3007) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
 # v24.0.21 (Tue Jan 07 2020)
 
 #### 🐛  Bug Fix
