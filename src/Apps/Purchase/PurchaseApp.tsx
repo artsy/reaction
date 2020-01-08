@@ -11,7 +11,6 @@ import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
 import { get } from "Utils/get"
-import { ConnectedModalDialog } from "./Dialogs"
 
 declare global {
   interface Window {
@@ -35,21 +34,11 @@ export interface PurchaseAppProps extends RouterState {
   orders: PurchaseApp_orders
 }
 
-class PurchaseApp extends React.Component<{}, {}> {
+class PurchaseApp extends React.Component<PurchaseAppProps, {}> {
   mediator: Mediator | null = null
 
   render() {
-    const { children, order } = this.props
-    let artworkId
-
-    if (!order) {
-      return <ErrorPage code={404} />
-    } else {
-      artworkId = get(
-        this.props,
-        props => order.lineItems.edges[0].node.artwork.slug
-      )
-    }
+    const { orders } = this.props
 
     return (
       <SystemContextConsumer>
@@ -57,7 +46,7 @@ class PurchaseApp extends React.Component<{}, {}> {
           this.mediator = mediator
           return (
             <AppContainer>
-              <Title>Checkout | Artsy</Title>
+              <Title>My Orders | Artsy</Title>
               {isEigen ? (
                 <Meta
                   name="viewport"
@@ -70,14 +59,11 @@ class PurchaseApp extends React.Component<{}, {}> {
                 />
               )}
               <SafeAreaContainer>
-                <StripeProvider stripe={this.state.stripe}>
-                  <Elements>
-                    <>{children}</>
-                  </Elements>
-                </StripeProvider>
+                <Elements>
+                  <>HELLO WORLD</>
+                  <>{orders}</>
+                </Elements>
               </SafeAreaContainer>
-              <StickyFooter orderType={order.mode} artworkId={artworkId} />
-              <ConnectedModalDialog />
             </AppContainer>
           )
         }}
@@ -86,9 +72,9 @@ class PurchaseApp extends React.Component<{}, {}> {
   }
 }
 
-const OrderAppWithRouter = withRouter(OrderApp)
+const PurchaseAppWithRouter = withRouter(PurchaseApp)
 
-export { OrderAppWithRouter as OrderApp }
+export { PurchaseAppWithRouter as PurchaseApp }
 
 const SafeAreaContainer = styled(Box)`
   padding: env(safe-area-inset-top) env(safe-area-inset-right)

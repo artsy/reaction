@@ -1,30 +1,38 @@
 import { graphql } from "react-relay"
-import { ArtworkAppFragmentContainer as ArtworkApp } from "./ArtworkApp"
 
 // @ts-ignore
+import { RouteConfig } from "found"
 import { ComponentClass, StatelessComponent } from "react"
+import { PurchaseApp } from "./PurchaseApp"
 
-export const routes = [
+export const routes: RouteConfig[] = [
   {
     path: "/user/purchases",
-    Component: ArtworkApp,
+    Component: PurchaseApp,
     query: graphql`
       query routes_PurchaseQuery(
         $buyerId: String!
         $buyerType: String
-        $first: Integer!
+        $first: Int!
       ) {
         commerceOrders(
           buyerId: $buyerId
           buyerType: $buyerType
           first: $first
         ) {
-          ...ArtworkApp_artwork
+          ...PurchaseApp_orders
         }
       }
     `,
     cacheConfig: {
       force: true,
+    },
+    prepareVariables: (params, props) => {
+      return {
+        buyerId: "5b97dd5de437cf2b7abbfd24",
+        buyerType: "user",
+        first: 20,
+      }
     },
   },
 ]
