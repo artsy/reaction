@@ -1,6 +1,7 @@
 import { Box, Separator } from "@artsy/palette"
 import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
+import { SeoProductsForCollections } from "Apps/Collect2/Components/SeoProductsForCollections"
 import { CollectionFilterFragmentContainer as CollectionHeader } from "Apps/Collect2/Routes/Collection/Components/Header"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
@@ -62,6 +63,8 @@ export class CollectionApp extends Component<CollectionAppProps> {
       headerImage,
       description,
       artworksConnection,
+      descending_artworks,
+      ascending_artworks,
     } = collection
     const collectionHref = `${sd.APP_URL}/collection/${slug}`
 
@@ -71,7 +74,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
     const showCollectionHubs = collection.linkedCollections.length > 0
-
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
@@ -91,10 +93,20 @@ export class CollectionApp extends Component<CollectionAppProps> {
           {artworksConnection && (
             <SeoProductsForArtworks artworks={artworksConnection} />
           )}
+          {artworksConnection && (
+            <SeoProductsForCollections
+              descending_artworks={descending_artworks}
+              ascending_artworks={ascending_artworks}
+              collectionDescription={description}
+              collectionURL={collectionHref}
+              collectionName={title}
+            />
+          )}
           <CollectionHeader
             collection={collection}
             artworks={artworksConnection}
           />
+
           {showCollectionHubs && (
             <CollectionsHubRails
               linkedCollections={collection.linkedCollections}
@@ -257,6 +269,28 @@ export const CollectionRefetchContainer = createRefetchContainer(
             }
           }
         }
+
+        #These two things are going to get highest price and lowest price of the artwork on the collection page.
+        descending_artworks: artworksConnection(
+          aggregations: $aggregations
+          includeMediumFilterInAggregation: true
+          first: 1
+          size: 1
+          sort: "sold,-has_price,-prices"
+        ) {
+          ...SeoProductsForCollections_descending_artworks
+        }
+
+        ascending_artworks: artworksConnection(
+          aggregations: $aggregations
+          includeMediumFilterInAggregation: true
+          first: 1
+          size: 1
+          sort: "sold,-has_price,prices"
+        ) {
+          ...SeoProductsForCollections_ascending_artworks
+        }
+
         filtered_artworks: artworksConnection(
           acquireable: $acquireable
           aggregations: $aggregations

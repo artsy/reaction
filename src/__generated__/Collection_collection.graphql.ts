@@ -29,6 +29,12 @@ export type Collection_collection = {
         } | null> | null;
         readonly " $fragmentRefs": FragmentRefs<"Header_artworks" | "SeoProductsForArtworks_artworks">;
     } | null;
+    readonly descending_artworks: {
+        readonly " $fragmentRefs": FragmentRefs<"SeoProductsForCollections_descending_artworks">;
+    } | null;
+    readonly ascending_artworks: {
+        readonly " $fragmentRefs": FragmentRefs<"SeoProductsForCollections_ascending_artworks">;
+    } | null;
     readonly filtered_artworks: {
         readonly id: string;
         readonly " $fragmentRefs": FragmentRefs<"ArtworkFilterArtworkGrid2_filtered_artworks">;
@@ -49,6 +55,21 @@ var v0 = {
   "kind": "Variable",
   "name": "aggregations",
   "variableName": "aggregations"
+},
+v1 = {
+  "kind": "Literal",
+  "name": "includeMediumFilterInAggregation",
+  "value": true
+},
+v2 = {
+  "kind": "Literal",
+  "name": "first",
+  "value": 1
+},
+v3 = {
+  "kind": "Literal",
+  "name": "size",
+  "value": 1
 };
 return {
   "kind": "Fragment",
@@ -245,11 +266,7 @@ return {
           "name": "first",
           "value": 20
         },
-        {
-          "kind": "Literal",
-          "name": "includeMediumFilterInAggregation",
-          "value": true
-        },
+        (v1/*: any*/),
         {
           "kind": "Literal",
           "name": "size",
@@ -322,6 +339,58 @@ return {
         {
           "kind": "FragmentSpread",
           "name": "SeoProductsForArtworks_artworks",
+          "args": null
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": "descending_artworks",
+      "name": "artworksConnection",
+      "storageKey": null,
+      "args": [
+        (v0/*: any*/),
+        (v2/*: any*/),
+        (v1/*: any*/),
+        (v3/*: any*/),
+        {
+          "kind": "Literal",
+          "name": "sort",
+          "value": "sold,-has_price,-prices"
+        }
+      ],
+      "concreteType": "FilterArtworksConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "SeoProductsForCollections_descending_artworks",
+          "args": null
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": "ascending_artworks",
+      "name": "artworksConnection",
+      "storageKey": null,
+      "args": [
+        (v0/*: any*/),
+        (v2/*: any*/),
+        (v1/*: any*/),
+        (v3/*: any*/),
+        {
+          "kind": "Literal",
+          "name": "sort",
+          "value": "sold,-has_price,prices"
+        }
+      ],
+      "concreteType": "FilterArtworksConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "SeoProductsForCollections_ascending_artworks",
           "args": null
         }
       ]
@@ -429,5 +498,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3fc32052507e4edee4b54630c0cd7129';
+(node as any).hash = '97ab444a74d25a80f172edd67473f1b4';
 export default node;
