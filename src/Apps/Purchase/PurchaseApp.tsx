@@ -1,4 +1,12 @@
-import { Box } from "@artsy/palette"
+import {
+  Box,
+  Flex,
+  Image,
+  Link,
+  Sans,
+  Serif,
+  StackableBorderBox,
+} from "@artsy/palette"
 import { PurchaseApp_orders } from "__generated__/PurchaseApp_orders.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import React from "react"
@@ -10,10 +18,46 @@ export interface Props {
   orders: PurchaseApp_orders
 }
 
+interface OrderRowProps {
+  order: any
+}
+const OrderRow = (props: OrderRowProps) => {
+  const { order } = props
+  const artwork = order.lineItems.edges[0].node.artwork
+  return (
+    <Box p={1}>
+      <StackableBorderBox flexDirection="row">
+        <Box height="auto">
+          {artwork.image.url && (
+            <Image src={artwork.image.url} width="55px" mr={1} />
+          )}
+        </Box>
+        <Flex flexDirection="column" style={{ overflow: "hidden" }}>
+          <Link
+            href={`/orders/${order.internalID}/status`}
+            underlineBehavior="hover"
+          >
+            <Sans size="2">#{order.code}</Sans>
+          </Link>
+          <Serif size="2" weight="semibold" color="black60">
+            {artwork.artist.name}
+          </Serif>
+          <div style={{ lineHeight: "1" }}>
+            <Serif italic size="2" color="black60" display="inline">
+              {artwork.title}
+            </Serif>
+          </div>
+          <Serif size="1" style={{ textTransform: "capitalize" }}>
+            {order.mode.toLowerCase()} / {order.state.toLowerCase()}
+          </Serif>
+        </Flex>
+      </StackableBorderBox>
+    </Box>
+  )
+}
+
 export class PurchaseApp extends React.Component<Props, {}> {
   render() {
-    console.log(this.props)
-
     const { orders } = this.props
     return (
       <AppContainer>
@@ -26,7 +70,7 @@ export class PurchaseApp extends React.Component<Props, {}> {
           {orders.edges
             .map(x => x.node)
             .map(order => (
-              <> {order.state} </>
+              <OrderRow order={order} />
             ))}
         </SafeAreaContainer>
       </AppContainer>
@@ -48,7 +92,9 @@ export const PurchaseAppFragmentContainer = createFragmentContainer(
         edges {
           node {
             internalID
+            code
             state
+            mode
             buyerTotal
             lineItems {
               edges {

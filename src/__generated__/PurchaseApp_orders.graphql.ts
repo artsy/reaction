@@ -1,13 +1,16 @@
 /* tslint:disable */
 
 import { ReaderFragment } from "relay-runtime";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type PurchaseApp_orders = {
     readonly edges: ReadonlyArray<{
         readonly node: {
             readonly internalID: string;
+            readonly code: string;
             readonly state: CommerceOrderStateEnum;
+            readonly mode: CommerceOrderModeEnum | null;
             readonly buyerTotal: string | null;
             readonly lineItems: {
                 readonly edges: ReadonlyArray<{
@@ -86,7 +89,21 @@ return {
             {
               "kind": "ScalarField",
               "alias": null,
+              "name": "code",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
               "name": "state",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "mode",
               "args": null,
               "storageKey": null
             },
@@ -194,5 +211,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '5038ecd104e32c4b8b6c4cd6a85c476f';
+(node as any).hash = '144ef50a2d571b9b9724a1499e6572d4';
 export default node;
