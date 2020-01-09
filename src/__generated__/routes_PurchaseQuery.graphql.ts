@@ -2,14 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type CommerceOrderConnectionSortEnum = "STATE_EXPIRES_AT_ASC" | "STATE_EXPIRES_AT_DESC" | "STATE_UPDATED_AT_ASC" | "STATE_UPDATED_AT_DESC" | "UPDATED_AT_ASC" | "UPDATED_AT_DESC" | "%future added value";
-export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 export type routes_PurchaseQueryVariables = {
-    sellerId?: string | null;
-    state?: CommerceOrderStateEnum | null;
-    mode?: CommerceOrderModeEnum | null;
-    sort?: CommerceOrderConnectionSortEnum | null;
     first: number;
 };
 export type routes_PurchaseQueryResponse = {
@@ -26,13 +19,9 @@ export type routes_PurchaseQuery = {
 
 /*
 query routes_PurchaseQuery(
-  $sellerId: String
-  $state: CommerceOrderStateEnum
-  $mode: CommerceOrderModeEnum
-  $sort: CommerceOrderConnectionSortEnum
   $first: Int!
 ) {
-  orders: commerceMyOrders(sellerId: $sellerId, state: $state, mode: $mode, sort: $sort, first: $first) {
+  orders: commerceMyOrders(first: $first) {
     ...PurchaseApp_orders
   }
 }
@@ -77,30 +66,6 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "sellerId",
-    "type": "String",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "state",
-    "type": "CommerceOrderStateEnum",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "mode",
-    "type": "CommerceOrderModeEnum",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
-    "name": "sort",
-    "type": "CommerceOrderConnectionSortEnum",
-    "defaultValue": null
-  },
-  {
-    "kind": "LocalArgument",
     "name": "first",
     "type": "Int!",
     "defaultValue": null
@@ -111,26 +76,6 @@ v1 = [
     "kind": "Variable",
     "name": "first",
     "variableName": "first"
-  },
-  {
-    "kind": "Variable",
-    "name": "mode",
-    "variableName": "mode"
-  },
-  {
-    "kind": "Variable",
-    "name": "sellerId",
-    "variableName": "sellerId"
-  },
-  {
-    "kind": "Variable",
-    "name": "sort",
-    "variableName": "sort"
-  },
-  {
-    "kind": "Variable",
-    "name": "state",
-    "variableName": "state"
   }
 ],
 v2 = {
@@ -343,10 +288,10 @@ return {
     "operationKind": "query",
     "name": "routes_PurchaseQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery(\n  $sellerId: String\n  $state: CommerceOrderStateEnum\n  $mode: CommerceOrderModeEnum\n  $sort: CommerceOrderConnectionSortEnum\n  $first: Int!\n) {\n  orders: commerceMyOrders(sellerId: $sellerId, state: $state, mode: $mode, sort: $sort, first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      state\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              image {\n                url\n              }\n              internalID\n              title\n              artist {\n                name\n                id\n              }\n              partner {\n                name\n                id\n              }\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "text": "query routes_PurchaseQuery(\n  $first: Int!\n) {\n  orders: commerceMyOrders(first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      state\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              image {\n                url\n              }\n              internalID\n              title\n              artist {\n                name\n                id\n              }\n              partner {\n                name\n                id\n              }\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '397dc4ae93461aafa03e55df1d6049e7';
+(node as any).hash = 'd507231ca63a6ade1b4bda34bd6a6e29';
 export default node;

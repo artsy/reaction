@@ -2,34 +2,22 @@ import { graphql } from "react-relay"
 
 // @ts-ignore
 import { RouteConfig } from "found"
-import { PurchaseApp } from "./PurchaseApp"
+import { PurchaseAppFragmentContainer as PurchaseApp } from "./PurchaseApp"
 
 export const routes: RouteConfig[] = [
   {
     path: "/user/purchases",
     Component: PurchaseApp,
     query: graphql`
-      query routes_PurchaseQuery(
-        $sellerId: String
-        $state: CommerceOrderStateEnum
-        $mode: CommerceOrderModeEnum
-        $sort: CommerceOrderConnectionSortEnum
-        $first: Int!
-      ) {
-        orders: commerceMyOrders(
-          sellerId: $sellerId
-          state: $state
-          mode: $mode
-          sort: $sort
-          first: $first
-        ) {
+      query routes_PurchaseQuery($first: Int!) {
+        orders: commerceMyOrders(first: $first) {
           ...PurchaseApp_orders
         }
       }
     `,
     prepareVariables: (params, props) => {
       return {
-        first: 1,
+        first: 20,
       }
     },
     cacheConfig: {

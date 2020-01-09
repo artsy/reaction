@@ -1,26 +1,20 @@
 import { Box } from "@artsy/palette"
 import { PurchaseApp_orders } from "__generated__/PurchaseApp_orders.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { Mediator, SystemContextConsumer } from "Artsy"
-import { RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
-import { graphql } from "react-relay"
-import { Elements } from "react-stripe-elements"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
-export interface PurchaseAppProps extends RouterState {
+export interface Props {
   orders: PurchaseApp_orders
 }
 
-class PurchaseApp extends React.Component<PurchaseAppProps, {}> {
+export class PurchaseApp extends React.Component<Props, {}> {
   render() {
     console.log(this.props)
 
     const { orders } = this.props
-
-    console.log("ORDERS", orders)
-
     return (
       <AppContainer>
         <Title>My Orders | Artsy</Title>
@@ -29,16 +23,16 @@ class PurchaseApp extends React.Component<PurchaseAppProps, {}> {
           content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
         />
         <SafeAreaContainer>
-          <>HELLO WORLD</>
+          {orders.edges
+            .map(x => x.node)
+            .map(order => (
+              <> {order.state} </>
+            ))}
         </SafeAreaContainer>
       </AppContainer>
     )
   }
 }
-
-const PurchaseAppWithRouter = withRouter(PurchaseApp)
-
-export { PurchaseAppWithRouter as PurchaseApp }
 
 const SafeAreaContainer = styled(Box)`
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
@@ -46,33 +40,38 @@ const SafeAreaContainer = styled(Box)`
   margin-bottom: 75px;
 `
 
-graphql`
-  fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
-    edges {
-      node {
-        internalID
-        state
-        buyerTotal
-        lineItems {
-          edges {
-            node {
-              artwork {
-                image {
-                  url
-                }
-                internalID
-                title
-                artist {
-                  name
-                }
-                partner {
-                  name
+export const PurchaseAppFragmentContainer = createFragmentContainer(
+  PurchaseApp,
+  {
+    orders: graphql`
+      fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
+        edges {
+          node {
+            internalID
+            state
+            buyerTotal
+            lineItems {
+              edges {
+                node {
+                  artwork {
+                    image {
+                      url
+                    }
+                    internalID
+                    title
+                    artist {
+                      name
+                    }
+                    partner {
+                      name
+                    }
+                  }
                 }
               }
             }
           }
         }
       }
-    }
+    `,
   }
-`
+)
