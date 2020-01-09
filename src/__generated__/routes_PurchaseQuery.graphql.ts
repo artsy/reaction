@@ -13,7 +13,7 @@ export type routes_PurchaseQueryVariables = {
     first: number;
 };
 export type routes_PurchaseQueryResponse = {
-    readonly commerceMyOrders: {
+    readonly orders: {
         readonly " $fragmentRefs": FragmentRefs<"PurchaseApp_orders">;
     } | null;
 };
@@ -32,7 +32,7 @@ query routes_PurchaseQuery(
   $sort: CommerceOrderConnectionSortEnum
   $first: Int!
 ) {
-  commerceMyOrders(sellerId: $sellerId, state: $state, mode: $mode, sort: $sort, first: $first) {
+  orders: commerceMyOrders(sellerId: $sellerId, state: $state, mode: $mode, sort: $sort, first: $first) {
     ...PurchaseApp_orders
   }
 }
@@ -168,7 +168,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
+        "alias": "orders",
         "name": "commerceMyOrders",
         "storageKey": null,
         "args": (v1/*: any*/),
@@ -191,7 +191,7 @@ return {
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": null,
+        "alias": "orders",
         "name": "commerceMyOrders",
         "storageKey": null,
         "args": (v1/*: any*/),
@@ -343,10 +343,10 @@ return {
     "operationKind": "query",
     "name": "routes_PurchaseQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery(\n  $sellerId: String\n  $state: CommerceOrderStateEnum\n  $mode: CommerceOrderModeEnum\n  $sort: CommerceOrderConnectionSortEnum\n  $first: Int!\n) {\n  commerceMyOrders(sellerId: $sellerId, state: $state, mode: $mode, sort: $sort, first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      state\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              image {\n                url\n              }\n              internalID\n              title\n              artist {\n                name\n                id\n              }\n              partner {\n                name\n                id\n              }\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "text": "query routes_PurchaseQuery(\n  $sellerId: String\n  $state: CommerceOrderStateEnum\n  $mode: CommerceOrderModeEnum\n  $sort: CommerceOrderConnectionSortEnum\n  $first: Int!\n) {\n  orders: commerceMyOrders(sellerId: $sellerId, state: $state, mode: $mode, sort: $sort, first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      state\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              image {\n                url\n              }\n              internalID\n              title\n              artist {\n                name\n                id\n              }\n              partner {\n                name\n                id\n              }\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '82aca670dd2d0529d145d75b7a6c0796';
+(node as any).hash = '397dc4ae93461aafa03e55df1d6049e7';
 export default node;

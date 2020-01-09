@@ -2,7 +2,6 @@ import { graphql } from "react-relay"
 
 // @ts-ignore
 import { RouteConfig } from "found"
-import { ComponentClass, StatelessComponent } from "react"
 import { PurchaseApp } from "./PurchaseApp"
 
 export const routes: RouteConfig[] = [
@@ -17,7 +16,7 @@ export const routes: RouteConfig[] = [
         $sort: CommerceOrderConnectionSortEnum
         $first: Int!
       ) {
-        commerceMyOrders(
+        orders: commerceMyOrders(
           sellerId: $sellerId
           state: $state
           mode: $mode
@@ -28,15 +27,21 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
+    prepareVariables: (params, props) => {
+      return {
+        first: 1,
+      }
+    },
     cacheConfig: {
       force: true,
     },
-    prepareVariables: (params, props) => {
-      return {
-        buyerId: "5b97dd5de437cf2b7abbfd24",
-        buyerType: "user",
-        first: 20,
-      }
-    },
   },
 ]
+
+// prepareVariables: (params, props) => {
+//   return {
+//     buyerId: "5b97dd5de437cf2b7abbfd24",
+//     buyerType: "user",
+//     first: 20,
+//   }
+// },

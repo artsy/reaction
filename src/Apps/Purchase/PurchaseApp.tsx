@@ -14,39 +14,24 @@ export interface PurchaseAppProps extends RouterState {
 }
 
 class PurchaseApp extends React.Component<PurchaseAppProps, {}> {
-  mediator: Mediator | null = null
-
   render() {
+    console.log(this.props)
+
     const { orders } = this.props
 
+    console.log("ORDERS", orders)
+
     return (
-      <SystemContextConsumer>
-        {({ isEigen, mediator }) => {
-          this.mediator = mediator
-          return (
-            <AppContainer>
-              <Title>My Orders | Artsy</Title>
-              {isEigen ? (
-                <Meta
-                  name="viewport"
-                  content="width=device-width, user-scalable=no"
-                />
-              ) : (
-                <Meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-                />
-              )}
-              <SafeAreaContainer>
-                <Elements>
-                  <>HELLO WORLD</>
-                  <>{orders}</>
-                </Elements>
-              </SafeAreaContainer>
-            </AppContainer>
-          )
-        }}
-      </SystemContextConsumer>
+      <AppContainer>
+        <Title>My Orders | Artsy</Title>
+        <Meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+        />
+        <SafeAreaContainer>
+          <>HELLO WORLD</>
+        </SafeAreaContainer>
+      </AppContainer>
     )
   }
 }
