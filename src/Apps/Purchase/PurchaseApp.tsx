@@ -1,26 +1,12 @@
 import { Box } from "@artsy/palette"
-import { OrderApp_order } from "__generated__/OrderApp_order.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Mediator, SystemContextConsumer } from "Artsy"
-import { ErrorPage } from "Components/ErrorPage"
 import { Match, RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { graphql } from "react-relay"
-import { Elements, StripeProvider } from "react-stripe-elements"
+import { Elements } from "react-stripe-elements"
 import styled from "styled-components"
-import { get } from "Utils/get"
-
-declare global {
-  interface Window {
-    sd: {
-      CURRENT_USER: {
-        id: string
-      }
-    }
-  }
-}
 
 const findCurrentRoute = ({ routes, routeIndices }: Match) => {
   let currentRoute = routes[routeIndices[0]]

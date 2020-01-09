@@ -11,13 +11,17 @@ export const routes: RouteConfig[] = [
     Component: PurchaseApp,
     query: graphql`
       query routes_PurchaseQuery(
-        $buyerId: String!
-        $buyerType: String
+        $sellerId: String
+        $state: CommerceOrderStateEnum
+        $mode: CommerceOrderModeEnum
+        $sort: CommerceOrderConnectionSortEnum
         $first: Int!
       ) {
-        commerceOrders(
-          buyerId: $buyerId
-          buyerType: $buyerType
+        commerceMyOrders(
+          sellerId: $sellerId
+          state: $state
+          mode: $mode
+          sort: $sort
           first: $first
         ) {
           ...PurchaseApp_orders
