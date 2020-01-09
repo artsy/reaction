@@ -1,20 +1,13 @@
 import { Box } from "@artsy/palette"
+import { PurchaseApp_orders } from "__generated__/PurchaseApp_orders.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { Mediator, SystemContextConsumer } from "Artsy"
-import { Match, RouterState, withRouter } from "found"
+import { RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { graphql } from "react-relay"
 import { Elements } from "react-stripe-elements"
 import styled from "styled-components"
-
-const findCurrentRoute = ({ routes, routeIndices }: Match) => {
-  let currentRoute = routes[routeIndices[0]]
-  routeIndices.slice(1).forEach(routeIndex => {
-    currentRoute = currentRoute.children[routeIndex]
-  })
-  return currentRoute
-}
 
 export interface PurchaseAppProps extends RouterState {
   orders: PurchaseApp_orders
