@@ -56,13 +56,14 @@ export const UserMenu: React.FC = () => {
       <MenuItem href="/user/saves">
         <HeartIcon mr={1} /> Saves & Follows
       </MenuItem>
-      {isAdmin || <MenuItem href="/user/orders">Purchases</MenuItem>}
       <MenuItem href="/profile/edit">
         <SoloIcon mr={1} /> Collector Profile
       </MenuItem>
-      <MenuItem href="/user/purchases">
-        <TagIcon mr={1} /> Purchases
-      </MenuItem>
+      {isAdmin && (
+        <MenuItem href="/user/purchases">
+          <TagIcon mr={1} /> Purchases
+        </MenuItem>
+      )}
       <MenuItem href="/user/edit">
         <SettingsIcon mr={1} /> Settings
       </MenuItem>
