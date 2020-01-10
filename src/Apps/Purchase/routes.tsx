@@ -25,11 +25,3 @@ export const routes: RouteConfig[] = [
     },
   },
 ]
-
-// prepareVariables: (params, props) => {
-//   return {
-//     buyerId: "5b97dd5de437cf2b7abbfd24",
-//     buyerType: "user",
-//     first: 20,
-//   }
-// },
