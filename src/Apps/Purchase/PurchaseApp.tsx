@@ -100,6 +100,7 @@ export class PurchaseApp extends React.Component<Props, {}> {
           content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
         />
         <SafeAreaContainer>
+          <Serif size="5">Purchases</Serif>
           {orders.edges
             .map(x => x.node)
             .map(order => (
