@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   Image,
   Link,
@@ -24,32 +25,65 @@ interface OrderRowProps {
 const OrderRow = (props: OrderRowProps) => {
   const { order } = props
   const artwork = order.lineItems.edges[0].node.artwork
+
+  console.log("ORDER", order)
   return (
     <Box p={1}>
-      <StackableBorderBox flexDirection="row">
-        <Box height="auto">
-          {artwork.image.url && (
-            <Image src={artwork.image.url} width="55px" mr={1} />
-          )}
-        </Box>
-        <Flex flexDirection="column" style={{ overflow: "hidden" }}>
+      <StackableBorderBox
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+        height="100px"
+      >
+        <Flex width="400px">
+          <Flex height="auto" alignItems="center">
+            {artwork.image.url && (
+              <Image src={artwork.image.url} width="55px" mr={1} />
+            )}
+          </Flex>
+          <Flex
+            flexDirection="column"
+            justifyContent="center"
+            style={{ overflow: "hidden" }}
+          >
+            <Link
+              href={`/orders/${order.internalID}/status`}
+              underlineBehavior="hover"
+            >
+              <Serif size="2" weight="semibold">
+                {artwork.artist.name}
+              </Serif>
+            </Link>
+            <div style={{ lineHeight: "1" }}>
+              <Serif italic size="2" color="black60" display="inline">
+                {artwork.title}, {artwork.date}
+              </Serif>
+            </div>
+          </Flex>
+        </Flex>
+        <Flex flexDirection="column" justifyContent="center">
+          <Sans
+            size="2"
+            weight="medium"
+            style={{ textTransform: "capitalize" }}
+          >
+            {order.mode.toLowerCase()}
+          </Sans>
+          <Sans
+            size="2"
+            color="black60"
+            style={{ textTransform: "capitalize" }}
+          >
+            {order.state.toLowerCase()}
+          </Sans>
+        </Flex>
+        <Flex>
           <Link
             href={`/orders/${order.internalID}/status`}
             underlineBehavior="hover"
           >
-            <Sans size="2">#{order.code}</Sans>
+            <Button variant="secondaryGray">View details</Button>
           </Link>
-          <Serif size="2" weight="semibold" color="black60">
-            {artwork.artist.name}
-          </Serif>
-          <div style={{ lineHeight: "1" }}>
-            <Serif italic size="2" color="black60" display="inline">
-              {artwork.title}
-            </Serif>
-          </div>
-          <Serif size="1" style={{ textTransform: "capitalize" }}>
-            {order.mode.toLowerCase()} / {order.state.toLowerCase()}
-          </Serif>
         </Flex>
       </StackableBorderBox>
     </Box>
@@ -91,15 +125,18 @@ export const PurchaseAppFragmentContainer = createFragmentContainer(
       fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
         edges {
           node {
+            stateExpiresAt
             internalID
             code
             state
             mode
+            stateReason
             buyerTotal
             lineItems {
               edges {
                 node {
                   artwork {
+                    date
                     image {
                       url
                     }
