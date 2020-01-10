@@ -10,10 +10,13 @@ import {
 } from "@artsy/palette"
 import { PurchaseApp_orders } from "__generated__/PurchaseApp_orders.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
-import React from "react"
+import { SystemContext } from "Artsy"
+import { ErrorPage } from "Components/ErrorPage"
+import React, { useContext } from "react"
 import { Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { userIsAdmin } from "Utils/user"
 
 export interface Props {
   orders: PurchaseApp_orders
@@ -89,9 +92,11 @@ const OrderRow = (props: OrderRowProps) => {
   )
 }
 
-export class PurchaseApp extends React.Component<Props, {}> {
-  render() {
-    const { orders } = this.props
+export const PurchaseApp = (props: Props) => {
+  const { orders } = props
+  const { user } = useContext(SystemContext)
+  const isAdmin = userIsAdmin(user)
+  if (isAdmin) {
     return (
       <AppContainer>
         <Title>My Orders | Artsy</Title>
@@ -109,6 +114,9 @@ export class PurchaseApp extends React.Component<Props, {}> {
         </SafeAreaContainer>
       </AppContainer>
     )
+  } else {
+    // not an admin
+    return <ErrorPage code={404} />
   }
 }
 
