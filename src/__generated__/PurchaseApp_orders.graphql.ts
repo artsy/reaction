@@ -7,12 +7,10 @@ import { FragmentRefs } from "relay-runtime";
 export type PurchaseApp_orders = {
     readonly edges: ReadonlyArray<{
         readonly node: {
-            readonly stateExpiresAt: string | null;
             readonly internalID: string;
             readonly code: string;
             readonly state: CommerceOrderStateEnum;
             readonly mode: CommerceOrderModeEnum | null;
-            readonly stateReason: string | null;
             readonly buyerTotal: string | null;
             readonly lineItems: {
                 readonly edges: ReadonlyArray<{
@@ -88,13 +86,6 @@ return {
           "concreteType": null,
           "plural": false,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "stateExpiresAt",
-              "args": null,
-              "storageKey": null
-            },
             (v0/*: any*/),
             {
               "kind": "ScalarField",
@@ -114,13 +105,6 @@ return {
               "kind": "ScalarField",
               "alias": null,
               "name": "mode",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "stateReason",
               "args": null,
               "storageKey": null
             },
@@ -235,5 +219,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'c99e78d5fd057673b2b7a833878ca913';
+(node as any).hash = 'f968f02005c483b25b42d0204d043249';
 export default node;

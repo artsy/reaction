@@ -26,7 +26,6 @@ const OrderRow = (props: OrderRowProps) => {
   const { order } = props
   const artwork = order.lineItems.edges[0].node.artwork
 
-  console.log("ORDER", order)
   return (
     <Box p={1}>
       <StackableBorderBox
@@ -35,7 +34,7 @@ const OrderRow = (props: OrderRowProps) => {
         justifyContent="space-between"
         height="100px"
       >
-        <Flex width="400px">
+        <Flex width="350px">
           <Flex height="auto" alignItems="center">
             {artwork.image.url && (
               <Image src={artwork.image.url} width="55px" mr={1} />
@@ -125,12 +124,10 @@ export const PurchaseAppFragmentContainer = createFragmentContainer(
       fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
         edges {
           node {
-            stateExpiresAt
             internalID
             code
             state
             mode
-            stateReason
             buyerTotal
             lineItems {
               edges {
