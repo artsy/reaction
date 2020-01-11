@@ -97,6 +97,7 @@ export const PurchaseApp = (props: Props) => {
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
   if (isAdmin) {
+    const myOrders = orders.edges.map(x => x.node)
     return (
       <AppContainer>
         <Title>My Orders | Artsy</Title>
@@ -106,11 +107,9 @@ export const PurchaseApp = (props: Props) => {
         />
         <SafeAreaContainer>
           <Serif size="5">Purchases</Serif>
-          {orders.edges
-            .map(x => x.node)
-            .map(order => (
-              <OrderRow order={order} />
-            ))}
+          {myOrders.length > 0 &&
+            myOrders.map(order => <OrderRow order={order} />)}
+          {myOrders.length === 0 && <Sans size="2"> No Orders</Sans>}
         </SafeAreaContainer>
       </AppContainer>
     )
