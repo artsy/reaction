@@ -256,7 +256,9 @@ const artworkFilterReducer = (
     case "SET": {
       const { name, value } = action.payload
 
-      let filterState: ArtworkFilters = {}
+      let filterState: ArtworkFilters = {
+        page: 1,
+      }
 
       if (name === "majorPeriods") {
         filterState = {
@@ -311,7 +313,9 @@ const artworkFilterReducer = (
     case "UNSET": {
       const { name } = action.payload as { name: keyof ArtworkFilters }
 
-      let filterState: ArtworkFilters = {}
+      let filterState: ArtworkFilters = {
+        page: 1,
+      }
 
       if (name === "majorPeriods") {
         filterState = {
