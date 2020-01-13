@@ -1,3 +1,15 @@
+# v24.0.25 (Mon Jan 13 2020)
+
+#### 🐛  Bug Fix
+
+- @damassi => [PageView Tracking] Ensure pageviews are counted for navigation in the same page type [#3091](https://github.com/artsy/reaction/pull/3091) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.0.24 (Mon Jan 13 2020)
 
 #### 🐛  Bug Fix
