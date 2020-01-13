@@ -86,6 +86,22 @@ describe("ArtworkFilterContext", () => {
       })
     })
 
+    it("#setFilter resets pagination", done => {
+      getWrapper({
+        filters: {
+          page: 10,
+        },
+      })
+      act(() => {
+        expect(context.filters.page).toEqual(10)
+        context.setFilter("sort", "relevant")
+        setTimeout(() => {
+          expect(context.filters.page).toEqual(1)
+          done()
+        })
+      })
+    })
+
     it("#unsetFilter", done => {
       getWrapper()
       act(() => {
@@ -99,6 +115,23 @@ describe("ArtworkFilterContext", () => {
               done()
             })
           })
+        })
+      })
+    })
+
+    it("#unsetFilter resets pagination", done => {
+      getWrapper({
+        filters: {
+          page: 10,
+          sort: "relevant",
+        },
+      })
+      act(() => {
+        expect(context.filters.page).toEqual(10)
+        context.unsetFilter("sort", "relevant")
+        setTimeout(() => {
+          expect(context.filters.page).toEqual(1)
+          done()
         })
       })
     })
