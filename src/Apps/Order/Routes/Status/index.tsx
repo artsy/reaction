@@ -246,7 +246,7 @@ export class StatusRoute extends Component<StatusProps> {
             {title}
           </Serif>
           <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-            {flowName} #{order.code}
+            {flowName} <span data-test="OrderCode">#{order.code}</span>
           </Sans>
           <TwoColumnLayout
             Content={
