@@ -1,3 +1,15 @@
+# v24.0.23 (Mon Jan 13 2020)
+
+#### 🐛  Bug Fix
+
+- Add `data-test` attribute to Order code so we can use it in integrity [#3089](https://github.com/artsy/reaction/pull/3089) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
 # v24.0.22 (Wed Jan 08 2020)
 
 #### 🐛  Bug Fix
