@@ -1,3 +1,15 @@
+# v24.0.24 (Mon Jan 13 2020)
+
+#### 🐛  Bug Fix
+
+- Reset pagination on artwork filter updates [#3090](https://github.com/artsy/reaction/pull/3090) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v24.0.23 (Mon Jan 13 2020)
 
 #### 🐛  Bug Fix
