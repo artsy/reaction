@@ -8,7 +8,7 @@ import {
 } from "../ArtworkFilterContext"
 
 describe("ArtworkFilterContext", () => {
-  let context
+  let context: ReturnType<typeof useArtworkFilterContext>
 
   const getWrapper = (props = {}) => {
     return mount(
@@ -38,7 +38,7 @@ describe("ArtworkFilterContext", () => {
     it("#onArtworkBrickClick", () => {
       const spy = jest.fn()
       getWrapper({ onArtworkBrickClick: spy })
-      context.onArtworkBrickClick()
+      context.onArtworkBrickClick(null, null)
       expect(spy).toHaveBeenCalled()
     })
 
@@ -109,7 +109,7 @@ describe("ArtworkFilterContext", () => {
         setTimeout(() => {
           expect(context.filters.page).toEqual(10)
           act(() => {
-            context.unsetFilter("page", 10)
+            context.unsetFilter("page")
             setTimeout(() => {
               expect(context.filters.page).toEqual(1)
               done()
@@ -128,7 +128,7 @@ describe("ArtworkFilterContext", () => {
       })
       act(() => {
         expect(context.filters.page).toEqual(10)
-        context.unsetFilter("sort", "relevant")
+        context.unsetFilter("sort")
         setTimeout(() => {
           expect(context.filters.page).toEqual(1)
           done()
