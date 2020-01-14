@@ -7,6 +7,8 @@ export type ArtworkDetailsAdditionalInfo_artwork = {
     readonly publisher: string | null;
     readonly manufacturer: string | null;
     readonly image_rights: string | null;
+    readonly isBiddable: boolean | null;
+    readonly internalID: string;
     readonly framed: {
         readonly label: string | null;
         readonly details: string | null;
@@ -86,6 +88,20 @@ return {
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "isBiddable",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "LinkedField",
       "alias": null,
       "name": "framed",
@@ -128,5 +144,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '2acf4d5f57a53256eec4c5d5bd4d7e61';
+(node as any).hash = 'a7bcb4071c1f9cd52f63d3e3e69d34e1';
 export default node;

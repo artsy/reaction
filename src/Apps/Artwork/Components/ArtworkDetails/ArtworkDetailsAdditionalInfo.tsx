@@ -6,10 +6,11 @@ import {
   Sans,
   StackableBorderBox,
 } from "@artsy/palette"
+import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-
-import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
+import { data as sd } from "sharify"
+import { RequestConditionReportQueryRenderer } from "./RequestConditionReport"
 
 export interface ArtworkDetailsAdditionalInfoProps {
   artwork: ArtworkDetailsAdditionalInfo_artwork
@@ -24,6 +25,8 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
       publisher,
       manufacturer,
       image_rights,
+      internalID,
+      isBiddable,
       framed,
       signatureInfo,
       conditionDescription,
@@ -33,8 +36,14 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
     const listItems = [
       {
         title: "Condition",
-        value: conditionDescription ? conditionDescription.details : null,
+        value:
+          isBiddable && sd.ENABLE_REQUEST_CONDITION_REPORT ? (
+            <RequestConditionReportQueryRenderer artworkID={internalID} />
+          ) : (
+            conditionDescription && conditionDescription.details
+          ),
       },
+
       {
         title: "Signature",
         value: signatureInfo && signatureInfo.details,
@@ -76,7 +85,11 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
               </Col>
               <Col xs={12} sm={6} md={6} lg={9}>
                 <Sans size="2" weight="regular" color="black60">
-                  <ReadMore maxChars={140} content={value} />
+                  {React.isValidElement(value) ? (
+                    value
+                  ) : (
+                    <ReadMore maxChars={140} content={value} />
+                  )}
                 </Sans>
               </Col>
             </Row>
@@ -96,6 +109,8 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
         publisher
         manufacturer
         image_rights: imageRights
+        isBiddable
+        internalID
         framed {
           label
           details
