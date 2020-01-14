@@ -40,7 +40,7 @@ const OrderRow = (props: OrderRowProps) => {
         <Flex width="350px">
           <Flex height="auto" alignItems="center">
             {artwork.image.url && (
-              <Image src={artwork.image.url} width="55px" mr={1} />
+              <Image src={artwork.image.resized.url} width="55px" mr={1} />
             )}
           </Flex>
           <Flex
@@ -53,7 +53,7 @@ const OrderRow = (props: OrderRowProps) => {
               underlineBehavior="hover"
             >
               <Serif size="2" weight="semibold">
-                {artwork.artist.name}
+                {artwork.artist_names}
               </Serif>
             </Link>
             <div style={{ lineHeight: "1" }}>
@@ -143,16 +143,13 @@ export const PurchaseAppFragmentContainer = createFragmentContainer(
                   artwork {
                     date
                     image {
-                      url
+                      resized {
+                        url
+                      }
                     }
                     internalID
                     title
-                    artist {
-                      name
-                    }
-                    partner {
-                      name
-                    }
+                    artist_names: artistNames
                   }
                 }
               }

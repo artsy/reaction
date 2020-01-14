@@ -2,26 +2,59 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_PurchaseQueryVariables = {
-    first: number;
-};
-export type routes_PurchaseQueryResponse = {
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+export type PurchaseAppTestQueryVariables = {};
+export type PurchaseAppTestQueryResponse = {
     readonly orders: {
         readonly " $fragmentRefs": FragmentRefs<"PurchaseApp_orders">;
     } | null;
 };
-export type routes_PurchaseQuery = {
-    readonly response: routes_PurchaseQueryResponse;
-    readonly variables: routes_PurchaseQueryVariables;
+export type PurchaseAppTestQueryRawResponse = {
+    readonly orders: ({
+        readonly edges: ReadonlyArray<({
+            readonly node: ({
+                readonly __typename: string | null;
+                readonly internalID: string;
+                readonly code: string;
+                readonly state: CommerceOrderStateEnum;
+                readonly mode: CommerceOrderModeEnum | null;
+                readonly buyerTotal: string | null;
+                readonly lineItems: ({
+                    readonly edges: ReadonlyArray<({
+                        readonly node: ({
+                            readonly artwork: ({
+                                readonly date: string | null;
+                                readonly image: ({
+                                    readonly resized: ({
+                                        readonly url: string | null;
+                                    }) | null;
+                                }) | null;
+                                readonly internalID: string;
+                                readonly title: string | null;
+                                readonly artist_names: string | null;
+                                readonly id: string | null;
+                            }) | null;
+                            readonly id: string | null;
+                        }) | null;
+                    }) | null> | null;
+                }) | null;
+                readonly id: string | null;
+            }) | null;
+        }) | null> | null;
+    }) | null;
+};
+export type PurchaseAppTestQuery = {
+    readonly response: PurchaseAppTestQueryResponse;
+    readonly variables: PurchaseAppTestQueryVariables;
+    readonly rawResponse: PurchaseAppTestQueryRawResponse;
 };
 
 
 
 /*
-query routes_PurchaseQuery(
-  $first: Int!
-) {
-  orders: commerceMyOrders(first: $first) {
+query PurchaseAppTestQuery {
+  orders: commerceMyOrders(first: 20) {
     ...PurchaseApp_orders
   }
 }
@@ -63,27 +96,19 @@ fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "LocalArgument",
+    "kind": "Literal",
     "name": "first",
-    "type": "Int!",
-    "defaultValue": null
+    "value": 20
   }
 ],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "first",
-    "variableName": "first"
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -94,17 +119,17 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseAppTestQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "orders",
         "name": "commerceMyOrders",
-        "storageKey": null,
-        "args": (v1/*: any*/),
+        "storageKey": "commerceMyOrders(first:20)",
+        "args": (v0/*: any*/),
         "concreteType": "CommerceOrderConnectionWithTotalCount",
         "plural": false,
         "selections": [
@@ -119,15 +144,15 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_PurchaseQuery",
-    "argumentDefinitions": (v0/*: any*/),
+    "name": "PurchaseAppTestQuery",
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "orders",
         "name": "commerceMyOrders",
-        "storageKey": null,
-        "args": (v1/*: any*/),
+        "storageKey": "commerceMyOrders(first:20)",
+        "args": (v0/*: any*/),
         "concreteType": "CommerceOrderConnectionWithTotalCount",
         "plural": false,
         "selections": [
@@ -156,7 +181,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  (v2/*: any*/),
+                  (v1/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -257,7 +282,7 @@ return {
                                       }
                                     ]
                                   },
-                                  (v2/*: any*/),
+                                  (v1/*: any*/),
                                   {
                                     "kind": "ScalarField",
                                     "alias": null,
@@ -272,17 +297,17 @@ return {
                                     "args": null,
                                     "storageKey": null
                                   },
-                                  (v3/*: any*/)
+                                  (v2/*: any*/)
                                 ]
                               },
-                              (v3/*: any*/)
+                              (v2/*: any*/)
                             ]
                           }
                         ]
                       }
                     ]
                   },
-                  (v3/*: any*/)
+                  (v2/*: any*/)
                 ]
               }
             ]
@@ -293,12 +318,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseAppTestQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery(\n  $first: Int!\n) {\n  orders: commerceMyOrders(first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "text": "query PurchaseAppTestQuery {\n  orders: commerceMyOrders(first: 20) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'd507231ca63a6ade1b4bda34bd6a6e29';
+(node as any).hash = 'c1017f33f422cb91721c8e2fbff0b87e';
 export default node;

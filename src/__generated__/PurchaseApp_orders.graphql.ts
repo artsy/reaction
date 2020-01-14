@@ -18,16 +18,13 @@ export type PurchaseApp_orders = {
                         readonly artwork: {
                             readonly date: string | null;
                             readonly image: {
-                                readonly url: string | null;
+                                readonly resized: {
+                                    readonly url: string | null;
+                                } | null;
                             } | null;
                             readonly internalID: string;
                             readonly title: string | null;
-                            readonly artist: {
-                                readonly name: string | null;
-                            } | null;
-                            readonly partner: {
-                                readonly name: string | null;
-                            } | null;
+                            readonly artist_names: string | null;
                         } | null;
                     } | null;
                 } | null> | null;
@@ -51,16 +48,7 @@ var v0 = {
   "name": "internalID",
   "args": null,
   "storageKey": null
-},
-v1 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "name",
-    "args": null,
-    "storageKey": null
-  }
-];
+};
 return {
   "kind": "Fragment",
   "name": "PurchaseApp_orders",
@@ -168,11 +156,22 @@ return {
                               "plural": false,
                               "selections": [
                                 {
-                                  "kind": "ScalarField",
+                                  "kind": "LinkedField",
                                   "alias": null,
-                                  "name": "url",
+                                  "name": "resized",
+                                  "storageKey": null,
                                   "args": null,
-                                  "storageKey": null
+                                  "concreteType": "ResizedImageUrl",
+                                  "plural": false,
+                                  "selections": [
+                                    {
+                                      "kind": "ScalarField",
+                                      "alias": null,
+                                      "name": "url",
+                                      "args": null,
+                                      "storageKey": null
+                                    }
+                                  ]
                                 }
                               ]
                             },
@@ -185,24 +184,11 @@ return {
                               "storageKey": null
                             },
                             {
-                              "kind": "LinkedField",
-                              "alias": null,
-                              "name": "artist",
-                              "storageKey": null,
+                              "kind": "ScalarField",
+                              "alias": "artist_names",
+                              "name": "artistNames",
                               "args": null,
-                              "concreteType": "Artist",
-                              "plural": false,
-                              "selections": (v1/*: any*/)
-                            },
-                            {
-                              "kind": "LinkedField",
-                              "alias": null,
-                              "name": "partner",
-                              "storageKey": null,
-                              "args": null,
-                              "concreteType": "Partner",
-                              "plural": false,
-                              "selections": (v1/*: any*/)
+                              "storageKey": null
                             }
                           ]
                         }
@@ -219,5 +205,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f968f02005c483b25b42d0204d043249';
+(node as any).hash = 'd9aac0461a7d2b43164e37c4c772617e';
 export default node;

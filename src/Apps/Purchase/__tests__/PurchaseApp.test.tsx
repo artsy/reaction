@@ -2,19 +2,20 @@ import {
   PurchaseAppTestQueryRawResponse,
   PurchaseAppTestQueryResponse,
 } from "__generated__/PurchaseAppTestQuery.graphql"
+import { UntouchedBuyOrder } from "Apps/__tests__/Fixtures/Order"
 import { SystemContextProvider } from "Artsy"
 import { renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
-import { ExtractProps } from "Utils/ExtractProps"
 import { PurchaseAppFragmentContainer } from "../PurchaseApp"
 
 jest.unmock("react-relay")
 
-const render = (
-  orders: any,
-  extraProps?: Partial<ExtractProps<typeof PurchaseAppFragmentContainer>>
-) =>
+const user = {
+  type: "Admin",
+}
+
+const render = (orders: any) =>
   renderRelayTree({
     Component: (props: PurchaseAppTestQueryResponse) => (
       <PurchaseAppFragmentContainer
@@ -22,7 +23,6 @@ const render = (
           ...orders,
         }}
         {...props}
-        {...extraProps}
       />
     ),
     mockData: {
@@ -30,16 +30,20 @@ const render = (
     } as PurchaseAppTestQueryRawResponse,
     query: graphql`
       query PurchaseAppTestQuery @raw_response_type {
-        orders(first: 20) {
+        orders: commerceMyOrders(first: 20) {
           ...PurchaseApp_orders
         }
       }
     `,
+    wrapper: children => (
+      <SystemContextProvider user={user}>{children}</SystemContextProvider>
+    ),
   })
 
 describe("Purchase app", () => {
-  // it("resolves with a 404 status if url does not match request", async () => {
-  //   const { status } = await getWrapper({ url: "/bad-url" })
-  //   expect(status).toEqual(404)
-  // })
+  it("renders", async () => {
+    const component = await render({ edges: [{ node: UntouchedBuyOrder }] })
+    console.log(component.debug())
+    expect(component.find("Box").length).toBe(1)
+  })
 })
