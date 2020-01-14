@@ -39,7 +39,7 @@ const OrderRow = (props: OrderRowProps) => {
       >
         <Flex width="350px">
           <Flex height="auto" alignItems="center">
-            {artwork.image.url && (
+            {artwork.image.resized.url && (
               <Image src={artwork.image.resized.url} width="55px" mr={1} />
             )}
           </Flex>
@@ -108,7 +108,7 @@ export const PurchaseApp = (props: Props) => {
         <SafeAreaContainer>
           <Serif size="5">Purchases</Serif>
           {myOrders.length > 0 &&
-            myOrders.map(order => <OrderRow order={order} />)}
+            myOrders.map(order => <OrderRow key={order.code} order={order} />)}
           {myOrders.length === 0 && <Sans size="2"> No Orders</Sans>}
         </SafeAreaContainer>
       </AppContainer>
