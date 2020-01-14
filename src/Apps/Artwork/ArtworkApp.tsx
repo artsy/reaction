@@ -25,6 +25,7 @@ import {
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
 import { TrackingProp } from "react-tracking"
+import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
@@ -45,6 +46,24 @@ export class ArtworkApp extends React.Component<Props> {
   componentDidMount() {
     this.trackPageview()
     this.trackProductView()
+    this.trackABTest()
+  }
+
+  // TODO: Remove after AB test ends.
+  trackABTest() {
+    const { tracking } = this.props
+    const { CLIENT_NAVIGATION_V2 } = sd
+
+    const experiment = "client_navigation_v2"
+    const variation = CLIENT_NAVIGATION_V2
+    tracking.trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    })
   }
 
   trackProductView() {

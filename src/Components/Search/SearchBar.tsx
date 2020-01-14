@@ -24,6 +24,7 @@ import styled from "styled-components"
 import request from "superagent"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { SearchInputContainer } from "./SearchInputContainer"
@@ -150,6 +151,14 @@ export class SearchBar extends Component<Props, State> {
         this.trackSearch(term, edges.length > 0)
       }
     )
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.enableExperimentalAppShell =
+      sd.CLIENT_NAVIGATION_V2 === "experiment" &&
+      getENV("EXPERIMENTAL_APP_SHELL")
   }
 
   componentDidMount() {

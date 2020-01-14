@@ -1,6 +1,6 @@
 import { Box, Separator, Serif, Spacer } from "@artsy/palette"
 import { Match, Router } from "found"
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -54,6 +54,22 @@ export const CollectApp = track({
       name: breadcrumbTitle,
     })
   }
+
+  // TODO: Remove after AB test ends.
+  useEffect(() => {
+    const { CLIENT_NAVIGATION_V2 } = sd
+
+    const experiment = "client_navigation_v2"
+    const variation = CLIENT_NAVIGATION_V2
+    trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    })
+  }, [])
 
   return (
     <AppContainer>
