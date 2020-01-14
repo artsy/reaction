@@ -4,6 +4,8 @@ export const ArtworkDetailsFixture: ArtworkDetails_Test_QueryRawResponse["artwor
   id: "richard-prince-untitled-fashion",
   description: "Artist designed towel for WOW. --*Courtesy of EHC Fine Art*",
   additional_information: "<p>Here is some addition info for this work</p>\n",
+  isBiddable: false,
+  internalID: "4e259f0a3453450001006a56",
   partner: {
     id: "salon-94",
     internalID: "4e259f0a9441930001006a25",

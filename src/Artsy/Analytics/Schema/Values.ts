@@ -94,6 +94,8 @@ export enum ActionType {
   PlacedMaxBid = "Placed Max Bid",
   RegisteredToBid = "Registered To Bid",
   SelectedMaxBid = "Selected max bid",
+  RequestConditionReportFailed = "Request condition report failed",
+  RequestConditionReportSubmitted = "Request condition report submitted",
 
   /**
    * A tap on a UI element using a finger-like input device.
@@ -249,6 +251,7 @@ export enum Subject {
   HistogramBar = "Histogram Bar",
   BrowseWorks = "Browse works in this category",
   QuestionMarkIcon = "Question Mark Informational Icon",
+  RequestConditionReport = "Request condition report",
 
   /**
    * Header

@@ -1,4 +1,6 @@
-import { MockRouter } from "DevTools/MockRouter"
+import { Box } from "@artsy/palette"
+import { SystemContextProvider } from "Artsy/SystemContext"
+import { MockRouter } from "DevTools"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as artworkRoutes } from "../Artwork/routes"
@@ -118,10 +120,19 @@ storiesOf("Apps/Artwork", module)
   })
   .add("Artwork in an auction", () => {
     return (
-      <MockRouter
-        routes={artworkRoutes}
-        initialRoute="/artwork/mayumi-lake-in-front-of-my-back-number-25055"
-      />
+      <SystemContextProvider>
+        <Box>
+          <MockRouter
+            routes={artworkRoutes}
+            initialRoute="/artwork/pablo-picasso-la-minotauromachie"
+            context={{
+              mediator: {
+                trigger: x => x,
+              },
+            }}
+          />
+        </Box>
+      </SystemContextProvider>
     )
   })
   .add("Artwork in a benefit buy now auction", () => {

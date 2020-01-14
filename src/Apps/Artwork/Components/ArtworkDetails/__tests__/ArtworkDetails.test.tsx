@@ -1,18 +1,42 @@
 import { ArtworkDetails_Test_QueryRawResponse } from "__generated__/ArtworkDetails_Test_Query.graphql"
 import { ArtworkDetailsFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkDetails"
 import { ArtworkDetailsFragmentContainer } from "Apps/Artwork/Components/ArtworkDetails"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
+
+import { SystemContextProvider } from "Artsy"
 import React from "react"
 import { graphql } from "react-relay"
 
+jest.mock("Artsy/Analytics/useTracking")
 jest.unmock("react-relay")
+
+const mockEnableRequestConditionReport = jest.fn()
+
+jest.mock("sharify", () => ({
+  data: {
+    get ENABLE_REQUEST_CONDITION_REPORT() {
+      return mockEnableRequestConditionReport()
+    },
+  },
+}))
+;(useTracking as jest.Mock).mockImplementation(() => {
+  return {}
+})
 
 describe("ArtworkDetails", () => {
   const getWrapper = async (
-    response: ArtworkDetails_Test_QueryRawResponse["artwork"] = ArtworkDetailsFixture
+    response: ArtworkDetails_Test_QueryRawResponse["artwork"] = ArtworkDetailsFixture,
+    user: User = null
   ) => {
     return await renderRelayTree({
-      Component: ArtworkDetailsFragmentContainer,
+      Component: ({ artwork }: any) => {
+        return (
+          <SystemContextProvider user={user}>
+            <ArtworkDetailsFragmentContainer artwork={artwork} />
+          </SystemContextProvider>
+        )
+      },
       query: graphql`
         query ArtworkDetails_Test_Query @raw_response_type {
           artwork(id: "richard-prince-untitled-fashion") {

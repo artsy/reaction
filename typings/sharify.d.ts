@@ -23,6 +23,7 @@ declare module "sharify" {
       readonly CLIENT_NAVIGATION_V2: string // TODO: Remove after AB test.
       readonly CMS_URL: string
       readonly ENABLE_PRICE_TRANSPARENCY: string
+      readonly ENABLE_REQUEST_CONDITION_REPORT: string
       readonly FACEBOOK_APP_NAMESPACE: string
       readonly FACEBOOK_ID: string
       readonly FORCE_CLOUDFRONT_URL: string
