@@ -27,6 +27,10 @@ query routes_PurchaseQuery(
 }
 
 fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
+  ...PurchaseHistory_orders
+}
+
+fragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {
   edges {
     node {
       __typename
@@ -295,7 +299,7 @@ return {
     "operationKind": "query",
     "name": "routes_PurchaseQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery(\n  $first: Int!\n) {\n  orders: commerceMyOrders(first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "text": "query routes_PurchaseQuery(\n  $first: Int!\n) {\n  orders: commerceMyOrders(first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
