@@ -1,3 +1,15 @@
+# v24.0.26 (Wed Jan 15 2020)
+
+#### 🐛  Bug Fix
+
+- Fix spacing issue in follow button on related artists component [#3094](https://github.com/artsy/reaction/pull/3094) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v24.0.25 (Mon Jan 13 2020)
 
 #### 🐛  Bug Fix
