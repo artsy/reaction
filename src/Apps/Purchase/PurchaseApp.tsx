@@ -30,65 +30,67 @@ const OrderRow = (props: OrderRowProps) => {
   const artwork = order.lineItems.edges[0].node.artwork
 
   return (
-    <Box p={1}>
-      <StackableBorderBox
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
-        height="100px"
-      >
-        <Flex width="350px">
-          <Flex height="auto" alignItems="center">
-            {artwork.image.resized.url && (
-              <Image src={artwork.image.resized.url} width="55px" mr={1} />
-            )}
+    artwork && (
+      <Box p={1}>
+        <StackableBorderBox
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+          height="100px"
+        >
+          <Flex width="350px">
+            <Flex height="auto" alignItems="center">
+              {artwork.image.resized.url && (
+                <Image src={artwork.image.resized.url} width="55px" mr={1} />
+              )}
+            </Flex>
+            <Flex
+              flexDirection="column"
+              justifyContent="center"
+              style={{ overflow: "hidden" }}
+            >
+              <Link
+                href={`/orders/${order.internalID}/status`}
+                underlineBehavior="hover"
+              >
+                <Serif size="2" weight="semibold">
+                  {artwork.artist_names}
+                </Serif>
+              </Link>
+              <div style={{ lineHeight: "1" }}>
+                <Serif italic size="2" color="black60" display="inline">
+                  {artwork.title}, {artwork.date}
+                </Serif>
+              </div>
+            </Flex>
           </Flex>
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            style={{ overflow: "hidden" }}
-          >
+          <Flex flexDirection="column" justifyContent="center">
+            <Sans
+              size="2"
+              weight="medium"
+              style={{ textTransform: "capitalize" }}
+            >
+              {order.mode.toLowerCase()}
+            </Sans>
+            <Sans
+              size="2"
+              color="black60"
+              style={{ textTransform: "capitalize" }}
+            >
+              {order.state.toLowerCase()}
+            </Sans>
+          </Flex>
+          <Flex>
             <Link
               href={`/orders/${order.internalID}/status`}
               underlineBehavior="hover"
             >
-              <Serif size="2" weight="semibold">
-                {artwork.artist_names}
-              </Serif>
+              <Button variant="secondaryGray">View details</Button>
             </Link>
-            <div style={{ lineHeight: "1" }}>
-              <Serif italic size="2" color="black60" display="inline">
-                {artwork.title}, {artwork.date}
-              </Serif>
-            </div>
           </Flex>
-        </Flex>
-        <Flex flexDirection="column" justifyContent="center">
-          <Sans
-            size="2"
-            weight="medium"
-            style={{ textTransform: "capitalize" }}
-          >
-            {order.mode.toLowerCase()}
-          </Sans>
-          <Sans
-            size="2"
-            color="black60"
-            style={{ textTransform: "capitalize" }}
-          >
-            {order.state.toLowerCase()}
-          </Sans>
-        </Flex>
-        <Flex>
-          <Link
-            href={`/orders/${order.internalID}/status`}
-            underlineBehavior="hover"
-          >
-            <Button variant="secondaryGray">View details</Button>
-          </Link>
-        </Flex>
-      </StackableBorderBox>
-    </Box>
+        </StackableBorderBox>
+      </Box>
+    )
   )
 }
 
