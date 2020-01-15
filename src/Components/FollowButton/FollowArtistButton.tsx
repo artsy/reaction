@@ -153,20 +153,27 @@ export class FollowArtistButton extends React.Component<Props, State> {
       user,
     } = this.props
     const { openSuggestions } = this.state
-    // FIXME: Unify design language
-    const Button = useDeprecatedButtonStyle
-      ? FollowButtonDeprecated
-      : FollowButton
 
     // Custom button renderer
     const content = render ? (
       <span onClick={this.handleFollow}> {render(artist)}</span>
     ) : (
-      <Button
-        isFollowed={artist && artist.is_followed}
-        handleFollow={this.handleFollow}
-        buttonProps={buttonProps}
-      />
+      <>
+        {useDeprecatedButtonStyle && (
+          <FollowButtonDeprecated
+            isFollowed={artist && artist.is_followed}
+            handleFollow={this.handleFollow}
+            buttonProps={buttonProps}
+          />
+        )}
+        {!useDeprecatedButtonStyle && (
+          <FollowButton
+            isFollowed={artist && artist.is_followed}
+            handleFollow={this.handleFollow}
+            buttonProps={buttonProps}
+          />
+        )}
+      </>
     )
 
     return (

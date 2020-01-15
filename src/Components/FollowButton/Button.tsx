@@ -40,6 +40,7 @@ export class FollowButton extends React.Component<Props, State> {
 
     return (
       <Button
+        longestText="following"
         variant={isFollowed ? "secondaryOutline" : "primaryBlack"}
         {...props}
       >
