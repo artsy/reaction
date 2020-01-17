@@ -98,9 +98,11 @@ const PurchaseHistory: React.FC<PurchaseHistoryProps> = (
   return (
     <>
       <Serif size="5">Purchases</Serif>
-      {myOrders.length > 0 &&
-        myOrders.map(order => <OrderRow key={order.code} order={order} />)}
-      {myOrders.length === 0 && <Sans size="2"> No Orders</Sans>}
+      {myOrders.length ? (
+        myOrders.map(order => <OrderRow key={order.code} order={order} />)
+      ) : (
+        <Sans size="2">No Orders</Sans>
+      )}
     </>
   )
 }

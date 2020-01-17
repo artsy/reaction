@@ -46,17 +46,30 @@ const render = (
 
 describe("Purchase app", () => {
   describe("User with admin privilages", () => {
-    it("renders orders with view details button", async () => {
-      // TODO: revisit mocking and remove `artist_names` alias from PurchseHistory
-      const mockOrderEdges = { edges: [{ node: UntouchedBuyOrder }] }
-      const component = await render(mockOrderEdges, { type: "Admin" })
-      const text = component.text()
-      expect(text).toContain(
-        "PurchasesLisa BreslowGramercy Park South, 2016buypending"
-      )
-      const btn = component.find("Button")
-      expect(btn.length).toBe(1)
-      expect(btn.text()).toEqual("View details")
+    const userType = { type: "Admin" }
+    describe("having previous orders", () => {
+      it("renders orders with view details button", async () => {
+        // TODO: revisit mocking and remove `artist_names` alias from PurchseHistory
+        const mockOrderEdges = { edges: [{ node: UntouchedBuyOrder }] }
+        const component = await render(mockOrderEdges, userType)
+        const text = component.text()
+        expect(text).toContain(
+          "PurchasesLisa BreslowGramercy Park South, 2016buypending"
+        )
+        const btn = component.find("Button")
+        expect(btn.length).toBe(1)
+        expect(btn.text()).toEqual("View details")
+      })
+    })
+    describe("without previous orders", () => {
+      it("shows No orders", async () => {
+        const mockOrderEdges = { edges: [] }
+        const component = await render(mockOrderEdges, userType)
+        const text = component.text()
+        expect(text).toContain("No Orders")
+        const btn = component.find("Button")
+        expect(btn.length).toBe(0)
+      })
     })
   })
   describe("User without admin privilages", () => {
