@@ -10,6 +10,7 @@ import {
   Separator,
   SettingsIcon,
   SoloIcon,
+  TagIcon,
 } from "@artsy/palette"
 
 import { AnalyticsSchema, SystemContext } from "Artsy"
@@ -51,7 +52,11 @@ export const UserMenu: React.FC = () => {
           </Box>
         </Flex>
       )}
-
+      {isAdmin && (
+        <MenuItem href="/user/purchases">
+          <TagIcon mr={1} /> Purchases
+        </MenuItem>
+      )}
       <MenuItem href="/user/saves">
         <HeartIcon mr={1} /> Saves & Follows
       </MenuItem>
