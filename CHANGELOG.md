@@ -1,3 +1,19 @@
+# v24.1.0 (Fri Jan 17 2020)
+
+#### 🚀  Enhancement
+
+- My purchases #hackaton2020 [#3096](https://github.com/artsy/reaction/pull/3096) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🐛  Bug Fix
+
+- Put admin check in front of purchases page [#3088](https://github.com/artsy/reaction/pull/3088) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v24.0.28 (Fri Jan 17 2020)
 
 #### 🐛  Bug Fix
