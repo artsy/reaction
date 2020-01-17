@@ -94,6 +94,7 @@ export class AddressForm extends React.Component<
 
   render() {
     const lockCountryToOrigin = !this.props.billing && this.props.domesticOnly
+
     return (
       <Join separator={<Spacer mb={2} />}>
         <Flex flexDirection="column">
@@ -101,7 +102,6 @@ export class AddressForm extends React.Component<
             id="AddressForm_name"
             placeholder="Add full name"
             title={this.props.billing ? "Name on card" : "Full name"}
-            autoCapitalize="words"
             autoCorrect="off"
             value={this.props.value.name}
             onChange={this.changeEventHandler("name")}
@@ -154,7 +154,6 @@ export class AddressForm extends React.Component<
               id="AddressForm_addressLine1"
               placeholder="Add street address"
               title="Address line 1"
-              autoCapitalize="words"
               value={this.props.value.addressLine1}
               onChange={this.changeEventHandler("addressLine1")}
               error={this.getError("addressLine1")}
@@ -167,7 +166,6 @@ export class AddressForm extends React.Component<
               id="AddressForm_addressLine2"
               placeholder="Add apt, floor, suite, etc."
               title="Address line 2 (optional)"
-              autoCapitalize="words"
               value={this.props.value.addressLine2}
               onChange={this.changeEventHandler("addressLine2")}
               error={this.getError("addressLine2")}
@@ -181,7 +179,6 @@ export class AddressForm extends React.Component<
               id="AddressForm_city"
               placeholder="Add city"
               title="City"
-              autoCapitalize="words"
               value={this.props.value.city}
               onChange={this.changeEventHandler("city")}
               error={this.getError("city")}
@@ -194,7 +191,6 @@ export class AddressForm extends React.Component<
               id="AddressForm_region"
               placeholder="Add State, province, or region"
               title="State, province, or region"
-              autoCapitalize="words"
               autoCorrect="off"
               value={this.props.value.region}
               onChange={this.changeEventHandler("region")}
