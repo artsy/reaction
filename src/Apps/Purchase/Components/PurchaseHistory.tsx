@@ -25,25 +25,17 @@ const OrderRow = (props: OrderRowProps) => {
   }
 
   return (
-    <Box p={1}>
+    <Box py={1}>
       <StackableBorderBox
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
       >
         <Flex width="350px">
-          <Flex height="auto" alignItems="center">
-            <Image
-              src={get(artwork, a => a.image.resized.url)}
-              width="55px"
-              mr={1}
-            />
+          <Flex height="auto" alignItems="center" mr={2}>
+            <Image src={get(artwork, a => a.image.resized.url)} width="55px" />
           </Flex>
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            style={{ overflow: "hidden" }}
-          >
+          <Flex flexDirection="column" justifyContent="center">
             <Link
               href={`/orders/${order.internalID}/status`}
               underlineBehavior="hover"
@@ -52,11 +44,9 @@ const OrderRow = (props: OrderRowProps) => {
                 {artwork.artist_names}
               </Serif>
             </Link>
-            <div style={{ lineHeight: "1" }}>
-              <Serif italic size="2" color="black60" display="inline">
-                {artwork.title}, {artwork.date}
-              </Serif>
-            </div>
+            <Serif italic size="2" color="black60" lineHeight={1.3}>
+              {artwork.title}, {artwork.date}
+            </Serif>
           </Flex>
         </Flex>
         <Flex flexDirection="column" justifyContent="center">
@@ -98,14 +88,14 @@ const PurchaseHistory: React.FC<PurchaseHistoryProps> = (
   const { orders } = props
   const myOrders = orders.edges && orders.edges.map(x => x.node)
   return (
-    <>
+    <Box px={1}>
       <Serif size="5">Purchases</Serif>
       {myOrders.length ? (
         myOrders.map(order => <OrderRow key={order.code} order={order} />)
       ) : (
         <Sans size="2">No Orders</Sans>
       )}
-    </>
+    </Box>
   )
 }
 
@@ -127,7 +117,7 @@ export const PurchaseHistoryFragmentContainer = createFragmentContainer(
                   artwork {
                     date
                     image {
-                      resized {
+                      resized(width: 55) {
                         url
                       }
                     }

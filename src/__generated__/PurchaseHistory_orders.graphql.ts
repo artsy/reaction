@@ -159,8 +159,14 @@ return {
                                   "kind": "LinkedField",
                                   "alias": null,
                                   "name": "resized",
-                                  "storageKey": null,
-                                  "args": null,
+                                  "storageKey": "resized(width:55)",
+                                  "args": [
+                                    {
+                                      "kind": "Literal",
+                                      "name": "width",
+                                      "value": 55
+                                    }
+                                  ],
                                   "concreteType": "ResizedImageUrl",
                                   "plural": false,
                                   "selections": [
@@ -205,5 +211,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '722a1f38d1f7d163dad674b6f8f4f35f';
+(node as any).hash = '0549518a1b712ae72dcc743e297ffb0f';
 export default node;

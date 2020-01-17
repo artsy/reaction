@@ -45,7 +45,7 @@ fragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {
             artwork {
               date
               image {
-                resized {
+                resized(width: 55) {
                   url
                 }
               }
@@ -245,8 +245,14 @@ return {
                                         "kind": "LinkedField",
                                         "alias": null,
                                         "name": "resized",
-                                        "storageKey": null,
-                                        "args": null,
+                                        "storageKey": "resized(width:55)",
+                                        "args": [
+                                          {
+                                            "kind": "Literal",
+                                            "name": "width",
+                                            "value": 55
+                                          }
+                                        ],
                                         "concreteType": "ResizedImageUrl",
                                         "plural": false,
                                         "selections": [
@@ -299,7 +305,7 @@ return {
     "operationKind": "query",
     "name": "routes_PurchaseQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery(\n  $first: Int!\n) {\n  orders: commerceMyOrders(first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "text": "query routes_PurchaseQuery(\n  $first: Int!\n) {\n  orders: commerceMyOrders(first: $first) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized(width: 55) {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -8,11 +8,11 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { userIsAdmin } from "Utils/user"
 import { PurchaseHistoryFragmentContainer as PurchaseHistory } from "./Components/PurchaseHistory"
 
-export interface Props {
+export interface PurchaseAppProps {
   orders: PurchaseApp_orders
 }
 
-export const PurchaseApp = (props: Props) => {
+export const PurchaseApp = (props: PurchaseAppProps) => {
   const { orders } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
