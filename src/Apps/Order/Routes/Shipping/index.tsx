@@ -29,6 +29,13 @@ import {
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
+import {
+  PhoneNumber,
+  PhoneNumberChangeHandler,
+  PhoneNumberErrors,
+  PhoneNumberForm,
+  PhoneNumberTouched,
+} from "Apps/Order/Components/PhoneNumberForm"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -238,6 +245,34 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
+  private validatePhoneNumber(phoneNumber: atring) {
+    const {
+      name,
+      addressLine1,
+      city,
+      region,
+      country,
+      postalCode,
+      phoneNumber,
+    } = address
+    const usOrCanada = country === "US" || country === "CA"
+    const errors = {
+      name: validatePresence(name),
+      addressLine1: validatePresence(addressLine1),
+      city: validatePresence(city),
+      region: usOrCanada && validatePresence(region),
+      country: validatePresence(country),
+      postalCode: usOrCanada && validatePresence(postalCode),
+      phoneNumber: validatePresence(phoneNumber),
+    }
+    const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
+
+    return {
+      errors,
+      hasErrors,
+    }
+  }
+
   onAddressChange: AddressChangeHandler = (address, key) => {
     const { errors } = this.validateAddress(address)
     this.setState({
@@ -343,6 +378,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   />
                 </Collapse>
 
+                <Collapse open={this.state.shippingOption === "PICKUP"}>
+                  <PhoneNumberForm
+                    value={address}
+                    errors={addressErrors}
+                    touched={addressTouched}
+                    onChange={this.onAddressChange}
+                    domesticOnly={artwork.onlyShipsDomestically}
+                    shippingCountry={artwork.shippingCountry}
+                  />
+                </Collapse>
+
                 <Media greaterThan="xs">
                   <Button
                     onClick={this.onContinueButtonPressed}
@@ -392,6 +438,9 @@ export const ShippingFragmentContainer = createFragmentContainer(
         state
         requestedFulfillment {
           __typename
+          ... on CommercePickup {
+            phoneNumber
+          }
           ... on CommerceShip {
             name
             addressLine1
