@@ -1,3 +1,15 @@
+# v24.0.28 (Fri Jan 17 2020)
+
+#### 🐛  Bug Fix
+
+- MX-104 - Fix double capitalized letters in iOS inputs [#3095](https://github.com/artsy/reaction/pull/3095) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
 # v24.0.27 (Fri Jan 17 2020)
 
 #### 🐛  Bug Fix
