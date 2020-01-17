@@ -1,3 +1,20 @@
+# v24.0.27 (Fri Jan 17 2020)
+
+#### 🐛  Bug Fix
+
+- Wrap main page header in header tags [#3097](https://github.com/artsy/reaction/pull/3097) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.4 to v3.7.5 [#3098](https://github.com/artsy/reaction/pull/3098) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v24.0.26 (Wed Jan 15 2020)
 
 #### 🐛  Bug Fix
