@@ -60,7 +60,7 @@ export const NavBar: React.FC = track(
   }, [isMobile])
 
   return (
-    <>
+    <header>
       <NavBarContainer px={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>
@@ -232,7 +232,7 @@ export const NavBar: React.FC = track(
           <MobileNavMenu />
         </>
       )}
-    </>
+    </header>
   )
 })
 
