@@ -47,6 +47,7 @@ const render = (
 describe("Purchase app", () => {
   describe("User with admin privilages", () => {
     it("renders orders with view details button", async () => {
+      // TODO: revisit mocking and remove `artist_names` alias from PurchseHistory
       const mockOrderEdges = { edges: [{ node: UntouchedBuyOrder }] }
       const component = await render(mockOrderEdges, { type: "Admin" })
       const text = component.text()

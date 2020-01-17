@@ -11,13 +11,14 @@ import {
 import { PurchaseHistory_orders } from "__generated__/PurchaseHistory_orders.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 interface OrderRowProps {
-  order: any
+  order: PurchaseHistory_orders["edges"][number]["node"]
 }
 const OrderRow = (props: OrderRowProps) => {
   const { order } = props
-  const artwork = order.lineItems.edges[0].node.artwork
+  const artwork = get(order, o => o.lineItems.edges[0].node.artwork)
 
   return (
     artwork && (
@@ -29,9 +30,11 @@ const OrderRow = (props: OrderRowProps) => {
         >
           <Flex width="350px">
             <Flex height="auto" alignItems="center">
-              {artwork.image.resized.url && (
-                <Image src={artwork.image.resized.url} width="55px" mr={1} />
-              )}
+              <Image
+                src={get(artwork, a => a.image.resized.url)}
+                width="55px"
+                mr={1}
+              />
             </Flex>
             <Flex
               flexDirection="column"
@@ -91,7 +94,7 @@ const PurchaseHistory: React.FC<PurchaseHistoryProps> = (
   props: PurchaseHistoryProps
 ) => {
   const { orders } = props
-  const myOrders = orders.edges.map(x => x.node)
+  const myOrders = orders.edges && orders.edges.map(x => x.node)
   return (
     <>
       <Serif size="5">Purchases</Serif>

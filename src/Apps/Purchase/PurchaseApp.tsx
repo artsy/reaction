@@ -1,12 +1,10 @@
-import { Box } from "@artsy/palette"
 import { PurchaseApp_orders } from "__generated__/PurchaseApp_orders.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import React, { useContext } from "react"
-import { Meta, Title } from "react-head"
+import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { userIsAdmin } from "Utils/user"
 import { PurchaseHistoryFragmentContainer as PurchaseHistory } from "./Components/PurchaseHistory"
 
@@ -22,13 +20,7 @@ export const PurchaseApp = (props: Props) => {
     return (
       <AppContainer>
         <Title>My Orders | Artsy</Title>
-        <Meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-        />
-        <SafeAreaContainer>
-          <PurchaseHistory orders={orders} />
-        </SafeAreaContainer>
+        <PurchaseHistory orders={orders} />
       </AppContainer>
     )
   } else {
@@ -36,12 +28,6 @@ export const PurchaseApp = (props: Props) => {
     return <ErrorPage code={404} />
   }
 }
-
-const SafeAreaContainer = styled(Box)`
-  padding: env(safe-area-inset-top) env(safe-area-inset-right)
-    env(safe-area-inset-bottom) env(safe-area-inset-left);
-  margin-bottom: 75px;
-`
 
 export const PurchaseAppFragmentContainer = createFragmentContainer(
   PurchaseApp,
