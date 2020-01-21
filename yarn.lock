@@ -12968,6 +12968,14 @@ react-lazy-load-image-component@^1.4.0:
     lodash.debounce "^4.0.8"
     lodash.throttle "^4.1.1"
 
+react-lazy-load-image-component@^1.4.1-beta.0:
+  version "1.4.1-beta.0"
+  resolved "https://registry.yarnpkg.com/react-lazy-load-image-component/-/react-lazy-load-image-component-1.4.1-beta.0.tgz#4b47fcda23b40412bc03f66442e419a23e5cae9d"
+  integrity sha512-SFYu44wAMRpN9afyoeerlSprjl3K/aokueZgTW/qbqmxkEbRLUSWubr5dM1cXEAcLxFruqGdjswzB8YI3KaPBQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
+
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"

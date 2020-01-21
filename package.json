@@ -197,7 +197,7 @@
     "react-css-transition-replace": "^3.0.2",
     "react-gpt": "^2.0.1",
     "react-head": "^3.0.0",
-    "react-lazy-load-image-component": "^1.4.0",
+    "react-lazy-load-image-component": "^1.4.1-beta.0",
     "react-lines-ellipsis": "^0.14.0",
     "react-markdown": "^2.5.0",
     "react-oembed-container": "^0.3.0",
