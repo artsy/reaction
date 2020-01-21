@@ -17,17 +17,17 @@
   resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
   integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
 
-"@artsy/palette@5.1.13":
-  version "5.1.13"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-5.1.13.tgz#1f7c055d2d1fea074b00a409811680fae48785de"
-  integrity sha512-W8l7vmgcFtv8LXMeRw2zubfqK9plCgLj50Hlf/gQVwxkTYEn+jG8/CtmRQf0Ip2ect+GRC9UyEEhYYAgcek61Q==
+"@artsy/palette@5.1.16":
+  version "5.1.16"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-5.1.16.tgz#d224ecc90f00a298244e1c667f04cc97db899057"
+  integrity sha512-21qZveD9aKboCOCGY7gPl/UIQVUG94Qmfv/WQ2CUUClCfoE7n5ogxkLNgYLOvSl2NnmH5x4Vo6lpLN+LxySF9A==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     d3-interpolate "^1.3.2"
     d3-shape "^1.3.5"
     luxon "^1.15"
     rc-slider "^8.6.2"
-    react-lazy-load-image-component "^1.4.0"
+    react-lazy-load-image-component "^1.4.1-beta.0"
     react-live "^1.12.0"
     react-powerplug "^1.0.0"
     react-spring "^8.0.27"
@@ -12964,6 +12964,14 @@ react-lazy-load-image-component@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/react-lazy-load-image-component/-/react-lazy-load-image-component-1.4.0.tgz#10c73ca46afc039864b395191d6b54a46a673b60"
   integrity sha512-o/L93CyJVvXPuA2P/ouUZI7ZXJRrdE/eqP45AH5/SakOU0bzAk2ZP6qNT/WaaXhf+JtE7hhjXxMr7KGsLNX64w==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
+
+react-lazy-load-image-component@^1.4.1-beta.0:
+  version "1.4.1-beta.0"
+  resolved "https://registry.yarnpkg.com/react-lazy-load-image-component/-/react-lazy-load-image-component-1.4.1-beta.0.tgz#4b47fcda23b40412bc03f66442e419a23e5cae9d"
+  integrity sha512-SFYu44wAMRpN9afyoeerlSprjl3K/aokueZgTW/qbqmxkEbRLUSWubr5dM1cXEAcLxFruqGdjswzB8YI3KaPBQ==
   dependencies:
     lodash.debounce "^4.0.8"
     lodash.throttle "^4.1.1"
