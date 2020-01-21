@@ -1,3 +1,15 @@
+# v24.1.2 (Tue Jan 21 2020)
+
+#### 🐛  Bug Fix
+
+- Add `data-test` tags to offer response radio btns [#3101](https://github.com/artsy/reaction/pull/3101) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v24.1.1 (Sat Jan 18 2020)
 
 
