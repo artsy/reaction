@@ -255,11 +255,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   }
                   defaultValue={this.state.responseOption}
                 >
-                  <BorderedRadio value="ACCEPT" label="Accept seller's offer" />
+                  <BorderedRadio
+                    value="ACCEPT"
+                    label="Accept seller's offer"
+                    data-test="AcceptOffer"
+                  />
                   <BorderedRadio
                     value="COUNTER"
                     position="relative"
                     label="Send counteroffer"
+                    data-test="SendCounteroffer"
                   >
                     <Collapse open={this.state.responseOption === "COUNTER"}>
                       <Spacer mb={2} />
@@ -291,6 +296,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     value="DECLINE"
                     position="relative"
                     label="Decline seller's offer"
+                    data-test="DeclineOffer"
                   >
                     <Flex position="relative">
                       <Collapse open={this.state.responseOption === "DECLINE"}>
