@@ -1,11 +1,11 @@
-import { Flex, Join, Sans, Serif, Spacer } from "@artsy/palette"
+import { Flex, Spacer } from "@artsy/palette"
 import Input from "Components/Input"
 import React from "react"
 
 export type PhoneNumber = string
 
-export type PhoneNumberErrors = Partial<PhoneNumber>
-export type PhoneNumberTouched = Partial<{ [T in keyof PhoneNumber]: boolean }>
+export type PhoneNumberError = Partial<PhoneNumber>
+export type PhoneNumberTouched = boolean
 export type PhoneNumberChangeHandler = (phoneNumber: string) => void
 
 export const emptyPhoneNumber: string = ""
@@ -13,7 +13,8 @@ export const emptyPhoneNumber: string = ""
 export interface PhoneNumberFormProps {
   onChange: PhoneNumberChangeHandler
   value?: string
-  errors: PhoneNumberErrors
+  title: string
+  errors: PhoneNumberError
   touched: PhoneNumberTouched
   label: string
 }
@@ -30,23 +31,23 @@ export class PhoneNumberForm extends React.Component<
     phoneNumber: this.props.value || emptyPhoneNumber,
   }
 
-  changeEventHandler = PhoneNumber => (
+  changeEventHandler = phoneNumber => (
     ev: React.FormEvent<HTMLInputElement>
   ) => {
-    this.onChangeValue(PhoneNumber, ev.currentTarget.value)
+    this.onChangeValue(phoneNumber, ev.currentTarget.value)
   }
 
-  changeValueHandler = PhoneNumber => (value: string) => {
-    this.onChangeValue(PhoneNumber, value)
+  changeValueHandler = phoneNumber => (value: string) => {
+    this.onChangeValue(phoneNumber, value)
   }
 
-  onChangeValue = (PhoneNumber, value: string) => {
+  onChangeValue = (phoneNumber, value: string) => {
     this.setState({ phoneNumber: value }, () => {
       this.props.onChange(this.state.phoneNumber)
     })
   }
 
-  getError = (PhoneNumber): string => {
+  getError = (phoneNumber): string => {
     return (this.props.touched && this.props.errors) || ""
   }
 
@@ -55,7 +56,7 @@ export class PhoneNumberForm extends React.Component<
       <Flex flexDirection="column">
         <Input
           id="PhoneNumberForm_phoneNumber"
-          title="Phone number"
+          title={this.props.title}
           type="tel"
           description={this.props.label}
           placeholder="Add phone"
@@ -65,6 +66,7 @@ export class PhoneNumberForm extends React.Component<
           error={this.getError("phoneNumber")}
           block
         />
+        <Spacer mb={2} />
       </Flex>
     )
   }

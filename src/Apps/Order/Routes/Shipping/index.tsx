@@ -32,7 +32,7 @@ import {
 import {
   PhoneNumber,
   PhoneNumberChangeHandler,
-  PhoneNumberErrors,
+  PhoneNumberError,
   PhoneNumberForm,
   PhoneNumberTouched,
 } from "Apps/Order/Components/PhoneNumberForm"
@@ -67,6 +67,9 @@ export interface ShippingProps {
 export interface ShippingState {
   shippingOption: CommerceOrderFulfillmentTypeEnum
   address: Address
+  phoneNumber: PhoneNumber
+  phoneNumberError: PhoneNumberError
+  phoneNumberTouched: PhoneNumberTouched
   addressErrors: AddressErrors
   addressTouched: AddressTouched
 }
@@ -83,6 +86,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
+    phoneNumber:
+      this.props.order.requestedFulfillment &&
+      (this.props.order.requestedFulfillment.__typename === "CommerceShip" ||
+        this.props.order.requestedFulfillment.__typename === "CommercePickup")
+        ? this.props.order.requestedFulfillment.phoneNumber
+        : "",
+    phoneNumberError: "",
+    phoneNumberTouched: false,
   }
 
   get startingAddress() {
@@ -154,7 +165,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onContinueButtonPressed = async () => {
-    const { address, shippingOption } = this.state
+    const { address, shippingOption, phoneNumber } = this.state
 
     if (shippingOption === "SHIP") {
       const { errors, hasErrors } = this.validateAddress(this.state.address)
@@ -162,6 +173,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         this.setState({
           addressErrors: errors,
           addressTouched: this.touchedAddress,
+        })
+        return
+      }
+    } else {
+      const { error, hasError } = this.validatePhoneNumber(
+        this.state.phoneNumber
+      )
+      if (hasError) {
+        this.setState({
+          phoneNumberError: error,
+          phoneNumberTouched: true,
         })
         return
       }
@@ -174,6 +196,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             id: this.props.order.internalID,
             fulfillmentType: shippingOption,
             shipping: address,
+            phoneNumber,
           },
         })
       ).commerceSetShipping.orderOrError
@@ -218,15 +241,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   private validateAddress(address: Address) {
-    const {
-      name,
-      addressLine1,
-      city,
-      region,
-      country,
-      postalCode,
-      phoneNumber,
-    } = address
+    const { name, addressLine1, city, region, country, postalCode } = address
     const usOrCanada = country === "US" || country === "CA"
     const errors = {
       name: validatePresence(name),
@@ -235,7 +250,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       region: usOrCanada && validatePresence(region),
       country: validatePresence(country),
       postalCode: usOrCanada && validatePresence(postalCode),
-      phoneNumber: validatePresence(phoneNumber),
     }
     const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
 
@@ -245,31 +259,13 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     }
   }
 
-  private validatePhoneNumber(phoneNumber: atring) {
-    const {
-      name,
-      addressLine1,
-      city,
-      region,
-      country,
-      postalCode,
-      phoneNumber,
-    } = address
-    const usOrCanada = country === "US" || country === "CA"
-    const errors = {
-      name: validatePresence(name),
-      addressLine1: validatePresence(addressLine1),
-      city: validatePresence(city),
-      region: usOrCanada && validatePresence(region),
-      country: validatePresence(country),
-      postalCode: usOrCanada && validatePresence(postalCode),
-      phoneNumber: validatePresence(phoneNumber),
-    }
-    const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
+  private validatePhoneNumber(phoneNumber: string) {
+    const error = validatePresence(phoneNumber)
+    const hasError = error != null
 
     return {
-      errors,
-      hasErrors,
+      error,
+      hasError,
     }
   }
 
@@ -288,6 +284,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
+  onPhoneNumberChange: PhoneNumberChangeHandler = phoneNumber => {
+    const { error } = this.validatePhoneNumber(phoneNumber)
+    this.setState({
+      phoneNumber,
+      phoneNumberError: error,
+      phoneNumberTouched: true,
+    })
+  }
+
   @track((props, state, args) => ({
     action_type: Schema.ActionType.Click,
     subject:
@@ -303,10 +308,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order, isCommittingMutation } = this.props
-    const { address, addressErrors, addressTouched } = this.state
+    const {
+      address,
+      addressErrors,
+      addressTouched,
+      phoneNumber,
+      phoneNumberError,
+      phoneNumberTouched,
+    } = this.state
     const artwork = get(
       this.props,
-      props => order.lineItems.edges[0].node.artwork
+      props => props.order.lineItems.edges[0].node.artwork
     )
 
     return (
@@ -375,17 +387,26 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     onChange={this.onAddressChange}
                     domesticOnly={artwork.onlyShipsDomestically}
                     shippingCountry={artwork.shippingCountry}
+                    showPhoneNumberInput={false}
+                  />
+                  <PhoneNumberForm
+                    value={phoneNumber}
+                    errors={phoneNumberError}
+                    touched={phoneNumberTouched}
+                    title="Shipping phone number"
+                    onChange={this.onPhoneNumberChange}
+                    label="Required for shipping logistics"
                   />
                 </Collapse>
 
                 <Collapse open={this.state.shippingOption === "PICKUP"}>
                   <PhoneNumberForm
-                    value={address}
-                    errors={addressErrors}
-                    touched={addressTouched}
-                    onChange={this.onAddressChange}
-                    domesticOnly={artwork.onlyShipsDomestically}
-                    shippingCountry={artwork.shippingCountry}
+                    value={phoneNumber}
+                    errors={phoneNumberError}
+                    touched={phoneNumberTouched}
+                    title="Pickup phone number"
+                    onChange={this.onPhoneNumberChange}
+                    label="Number to contact you for pickup logistics"
                   />
                 </Collapse>
 

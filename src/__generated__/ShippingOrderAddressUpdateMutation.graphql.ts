@@ -7,6 +7,7 @@ export type CommerceSetShippingInput = {
     readonly clientMutationId?: string | null;
     readonly fulfillmentType: CommerceOrderFulfillmentTypeEnum;
     readonly id: string;
+    readonly phoneNumber?: string | null;
     readonly shipping?: CommerceShippingAttributes | null;
 };
 export type CommerceShippingAttributes = {
@@ -15,7 +16,7 @@ export type CommerceShippingAttributes = {
     readonly city?: string | null;
     readonly country?: string | null;
     readonly name?: string | null;
-    readonly phoneNumber: string;
+    readonly phoneNumber?: string | null;
     readonly postalCode?: string | null;
     readonly region?: string | null;
 };
