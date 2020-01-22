@@ -1,3 +1,23 @@
+# v24.1.3 (Wed Jan 22 2020)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Client Side Routing] Reenable AB test [#3092](https://github.com/artsy/reaction/pull/3092) ([@mzikherman](https://github.com/mzikherman))
+- Fix double image load issue by updating lazy load library [#3102](https://github.com/artsy/reaction/pull/3102) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Bump handlebars from 4.1.2 to 4.5.3 [#3073](https://github.com/artsy/reaction/pull/3073) ([@mzikherman](https://github.com/mzikherman))
+- Update dep @artsy/palette from 5.1.13 to v5.1.16 [#3093](https://github.com/artsy/reaction/pull/3093) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v24.1.2 (Tue Jan 21 2020)
 
 #### 🐛  Bug Fix
