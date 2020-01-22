@@ -1,3 +1,15 @@
+# v24.1.5 (Wed Jan 22 2020)
+
+#### 🐛  Bug Fix
+
+- Add cypress test attrs for artwork grid [#3103](https://github.com/artsy/reaction/pull/3103) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v24.1.3 (Wed Jan 22 2020)
 
 #### 🐛  Bug Fix
