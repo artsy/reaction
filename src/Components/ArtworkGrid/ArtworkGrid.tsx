@@ -207,7 +207,9 @@ export class ArtworkGridContainer extends React.Component<
     )
 
     return (
-      <div className={className}>{hasArtworks ? artworkGrids : emptyState}</div>
+      <div className={className} data-test="ArtworkGrid">
+        {hasArtworks ? artworkGrids : emptyState}
+      </div>
     )
   }
 }
