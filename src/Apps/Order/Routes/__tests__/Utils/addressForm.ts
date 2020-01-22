@@ -23,6 +23,18 @@ export const fillIn = (
   input.props().onChange({ currentTarget: { value: inputData.value } } as any)
 }
 
+export const fillInPhoneNumber = (
+  component: any,
+  inputData: { isPickup?: boolean; value: string }
+) => {
+  const index = inputData.isPickup ? 0 : 1
+  const input = component
+    .find(Input)
+    .filterWhere(wrapper => wrapper.props().title === "Phone number")
+    .at(index)
+  input.props().onChange({ currentTarget: { value: inputData.value } } as any)
+}
+
 export const fillCountrySelect = (component, value) => {
   const input = component.find(CountrySelect)
   input.props().onSelect(value)

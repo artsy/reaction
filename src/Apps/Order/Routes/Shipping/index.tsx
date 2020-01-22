@@ -389,11 +389,11 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     shippingCountry={artwork.shippingCountry}
                     showPhoneNumberInput={false}
                   />
+                  <Spacer mb={2} />
                   <PhoneNumberForm
                     value={phoneNumber}
                     errors={phoneNumberError}
                     touched={phoneNumberTouched}
-                    title="Shipping phone number"
                     onChange={this.onPhoneNumberChange}
                     label="Required for shipping logistics"
                   />
@@ -404,7 +404,6 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     value={phoneNumber}
                     errors={phoneNumberError}
                     touched={phoneNumberTouched}
-                    title="Pickup phone number"
                     onChange={this.onPhoneNumberChange}
                     label="Number to contact you for pickup logistics"
                   />

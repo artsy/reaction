@@ -10,6 +10,7 @@ import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
+  fillInPhoneNumber,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input from "Components/Input"
@@ -46,8 +47,7 @@ const fillAddressForm = (component: any, address: Address) => {
     value: address.region,
   })
   fillIn(component, { title: "Postal code", value: address.postalCode })
-  fillIn(component, {
-    title: "Shipping phone number",
+  fillInPhoneNumber(component, {
     value: address.phoneNumber,
   })
   fillCountrySelect(component, address.country)
@@ -153,8 +153,9 @@ describe("Shipping", () => {
 
   it("commits the mutation with pickup option", async () => {
     const page = await buildPage()
+    console.log("")
     await page.selectPickupOption()
-    fillIn(page.root, { title: "Pickup phone number", value: "2813308004" })
+    fillInPhoneNumber(page.root, { isPickup: true, value: "2813308004" })
     expect(mutations.mockFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
     expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
@@ -352,7 +353,7 @@ describe("Shipping", () => {
 
     it("does submit the mutation with a non-ship order", async () => {
       await page.selectPickupOption()
-      fillIn(page.root, { title: "Pickup phone number", value: "2813308004" })
+      fillInPhoneNumber(page.root, { isPickup: true, value: "2813308004" })
       await page.clickSubmit()
       expect(mutations.mockFetch).toBeCalled()
     })

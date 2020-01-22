@@ -13,7 +13,6 @@ export const emptyPhoneNumber: string = ""
 export interface PhoneNumberFormProps {
   onChange: PhoneNumberChangeHandler
   value?: string
-  title: string
   errors: PhoneNumberError
   touched: PhoneNumberTouched
   label: string
@@ -56,7 +55,7 @@ export class PhoneNumberForm extends React.Component<
       <Flex flexDirection="column">
         <Input
           id="PhoneNumberForm_phoneNumber"
-          title={this.props.title}
+          title="Phone number"
           type="tel"
           description={this.props.label}
           placeholder="Add phone"
