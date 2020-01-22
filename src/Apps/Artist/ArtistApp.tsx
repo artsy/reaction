@@ -4,16 +4,17 @@ import { ArtistMetaFragmentContainer as ArtistMeta } from "Apps/Artist/Component
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { trackPageViewWrapper } from "Artsy"
+import { trackPageViewWrapper, useTracking } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
   Footer,
   RecentlyViewedQueryRenderer as RecentlyViewed,
 } from "Components/v2"
-import React from "react"
+import React, { useEffect } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
 
 export interface ArtistAppProps {
@@ -25,6 +26,24 @@ export interface ArtistAppProps {
 
 export const ArtistApp: React.FC<ArtistAppProps> = props => {
   const { artist, children } = props
+
+  const { trackEvent } = useTracking()
+
+  // TODO: Remove after AB test ends.
+  useEffect(() => {
+    const { CLIENT_NAVIGATION_V2 } = sd
+
+    const experiment = "client_navigation_v2"
+    const variation = CLIENT_NAVIGATION_V2
+    trackEvent({
+      action_type: Schema.ActionType.ExperimentViewed,
+      experiment_id: experiment,
+      experiment_name: experiment,
+      variation_id: variation,
+      variation_name: variation,
+      nonInteraction: 1,
+    })
+  }, [])
 
   return (
     <AppContainer>
