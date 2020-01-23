@@ -4,8 +4,10 @@ import React, { useEffect } from "react"
 
 import { AppShell } from "Apps/Components/AppShell"
 import { trackPageView } from "Artsy"
+import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import { useSystemContext } from "Artsy/SystemContext"
 import { catchLinks } from "Utils/catchLinks"
+import { getENV } from "Utils/getENV"
 
 const ROUTE_NAMESPACE = ""
 
@@ -71,6 +73,8 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
           const toPageType = toPath.split("/")[1]
           if (currentPageType === toPageType && toPageType !== "collection") {
             trackPageView({ path: toPath })
+            if (getENV("EXPERIMENTAL_APP_SHELL"))
+              trackExperimentViewed("client_navigation_v2")
           }
           props.router.push(url)
         } else {

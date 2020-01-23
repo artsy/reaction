@@ -1,8 +1,10 @@
+import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import { trackPageView } from "Artsy/Analytics/trackPageView"
 import { Link, LinkProps, LinkPropsSimple, Match, RouterContext } from "found"
 import { pick } from "lodash"
 import React, { useContext } from "react"
 import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
 
 /**
  * Wrapper component around found's <Link> component with a fallback to a normal
@@ -54,6 +56,8 @@ export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
       const toPageType = toPath.split("/")[1]
       if (currentPageType === toPageType) {
         trackPageView({ path: toPath })
+        if (getENV("EXPERIMENTAL_APP_SHELL"))
+          trackExperimentViewed("client_navigation_v2")
       }
 
       if (props.onClick) {
