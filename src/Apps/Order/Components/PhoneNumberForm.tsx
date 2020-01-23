@@ -1,4 +1,4 @@
-import { Flex, Spacer } from "@artsy/palette"
+import { Flex } from "@artsy/palette"
 import Input from "Components/Input"
 import React from "react"
 
@@ -30,29 +30,27 @@ export class PhoneNumberForm extends React.Component<
     phoneNumber: this.props.value || emptyPhoneNumber,
   }
 
-  changeEventHandler = phoneNumber => (
-    ev: React.FormEvent<HTMLInputElement>
-  ) => {
-    this.onChangeValue(phoneNumber, ev.currentTarget.value)
+  changeEventHandler = () => (ev: React.FormEvent<HTMLInputElement>) => {
+    this.onChangeValue(ev.currentTarget.value)
   }
 
-  changeValueHandler = phoneNumber => (value: string) => {
-    this.onChangeValue(phoneNumber, value)
+  changeValueHandler = () => (value: string) => {
+    this.onChangeValue(value)
   }
 
-  onChangeValue = (phoneNumber, value: string) => {
+  onChangeValue = (value: string) => {
     this.setState({ phoneNumber: value }, () => {
       this.props.onChange(this.state.phoneNumber)
     })
   }
 
-  getError = (phoneNumber): string => {
+  getError = () => {
     return (this.props.touched && this.props.errors) || ""
   }
 
   render() {
     return (
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" mb={2}>
         <Input
           id="PhoneNumberForm_phoneNumber"
           title="Phone number"
@@ -61,11 +59,10 @@ export class PhoneNumberForm extends React.Component<
           placeholder="Add phone"
           pattern="[^a-z]+"
           value={this.props.value}
-          onChange={this.changeEventHandler("phoneNumber")}
-          error={this.getError("phoneNumber")}
+          onChange={this.changeEventHandler()}
+          error={this.getError()}
           block
         />
-        <Spacer mb={2} />
       </Flex>
     )
   }

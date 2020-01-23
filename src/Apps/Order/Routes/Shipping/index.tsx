@@ -261,7 +261,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   private validatePhoneNumber(phoneNumber: string) {
     const error = validatePresence(phoneNumber)
-    const hasError = error != null
+    const hasError = error !== null
 
     return {
       error,
