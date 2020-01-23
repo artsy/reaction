@@ -8,8 +8,7 @@ export const trackExperimentViewed = (name: string) => {
     if (!Boolean(variation))
       return console.warn(`experiment value for ${name} not found, skipping`)
 
-    window.analytics.track({
-      action_type: Schema.ActionType.ExperimentViewed,
+    window.analytics.track(Schema.ActionType.ExperimentViewed, {
       experiment_id: name,
       experiment_name: name,
       variation_id: variation,
