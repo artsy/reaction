@@ -1,3 +1,15 @@
+# v24.1.6 (Thu Jan 23 2020)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] More explicitly track AB test events [#3105](https://github.com/artsy/reaction/pull/3105) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.1.5 (Wed Jan 22 2020)
 
 #### 🐛  Bug Fix
