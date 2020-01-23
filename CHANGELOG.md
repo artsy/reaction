@@ -1,3 +1,15 @@
+# v24.1.7 (Thu Jan 23 2020)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Analytics] Proper structure for experiment viewed event [#3106](https://github.com/artsy/reaction/pull/3106) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.1.6 (Thu Jan 23 2020)
 
 #### 🐛  Bug Fix
