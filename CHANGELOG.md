@@ -1,3 +1,15 @@
+# v24.1.8 (Fri Jan 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Schema] Update schema to latest [#3107](https://github.com/artsy/reaction/pull/3107) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v24.1.7 (Thu Jan 23 2020)
 
 #### 🐛  Bug Fix
