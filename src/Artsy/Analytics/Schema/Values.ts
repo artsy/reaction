@@ -89,13 +89,12 @@ export enum ActionType {
   /**
    * Auctions
    */
+  ClickedRequestConditionReport = "Clicked request condition report",
   ConfirmBidSubmitted = "Confirmed bid on bid page",
   ConfirmBidFailed = "Confirm bid failed",
   PlacedMaxBid = "Placed Max Bid",
   RegisteredToBid = "Registered To Bid",
   SelectedMaxBid = "Selected max bid",
-  RequestConditionReportFailed = "Request condition report failed",
-  RequestConditionReportSubmitted = "Request condition report submitted",
 
   /**
    * A tap on a UI element using a finger-like input device.
@@ -296,6 +295,7 @@ export enum ContextModule {
   /**
    * Artwork page
    */
+  AboutTheWorkCondition = "About the work condition",
   ArtworkPage = "Artwork page",
   ArtworkTabs = "Artwork tabs",
   OtherWorksByArtist = "Other works by artist",

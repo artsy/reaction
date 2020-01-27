@@ -18,6 +18,8 @@ export type RequestConditionReportTestQueryRawResponse = {
         readonly id: string | null;
     }) | null;
     readonly artwork: ({
+        readonly internalID: string;
+        readonly slug: string;
         readonly saleArtwork: ({
             readonly internalID: string;
             readonly id: string | null;
@@ -46,6 +48,8 @@ query RequestConditionReportTestQuery {
 }
 
 fragment RequestConditionReport_artwork on Artwork {
+  internalID
+  slug
   saleArtwork {
     internalID
     id
@@ -157,6 +161,14 @@ return {
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
+          (v1/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "slug",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "LinkedField",
             "alias": null,
@@ -179,7 +191,7 @@ return {
     "operationKind": "query",
     "name": "RequestConditionReportTestQuery",
     "id": null,
-    "text": "query RequestConditionReportTestQuery {\n  me {\n    ...RequestConditionReport_me\n    id\n  }\n  artwork(id: \"artwork-id\") {\n    ...RequestConditionReport_artwork\n    id\n  }\n}\n\nfragment RequestConditionReport_artwork on Artwork {\n  saleArtwork {\n    internalID\n    id\n  }\n}\n\nfragment RequestConditionReport_me on Me {\n  email\n  internalID\n}\n",
+    "text": "query RequestConditionReportTestQuery {\n  me {\n    ...RequestConditionReport_me\n    id\n  }\n  artwork(id: \"artwork-id\") {\n    ...RequestConditionReport_artwork\n    id\n  }\n}\n\nfragment RequestConditionReport_artwork on Artwork {\n  internalID\n  slug\n  saleArtwork {\n    internalID\n    id\n  }\n}\n\nfragment RequestConditionReport_me on Me {\n  email\n  internalID\n}\n",
     "metadata": {}
   }
 };

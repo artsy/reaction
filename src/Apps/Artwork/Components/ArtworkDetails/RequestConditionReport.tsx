@@ -89,7 +89,7 @@ export const RequestConditionReport: React.FC<RequestConditionReportProps> = pro
 
   function trackRequestClick() {
     trackEvent({
-      action_type: Schema.ActionType.Click,
+      action_type: Schema.ActionType.ClickedRequestConditionReport,
       subject: Schema.Subject.RequestConditionReport,
     })
   }
@@ -98,6 +98,7 @@ export const RequestConditionReport: React.FC<RequestConditionReportProps> = pro
     trackEvent({
       action_type: Schema.ActionType.Click,
       subject: Schema.Subject.Login,
+      sale_artwork_id: artwork.saleArtwork.internalID,
     })
 
     return authentication.login(mediator)
@@ -190,9 +191,11 @@ const TrackingWrappedRequestConditionReport: React.FC<RequestConditionReportProp
 >(props => {
   return {
     context_page: Schema.PageName.ArtworkPage,
-    context_module: Schema.ContextModule.ArtworkPage,
+    context_module: Schema.ContextModule.AboutTheWorkCondition,
+    context_page_owner_id: props.artwork.internalID,
+    context_page_owner_slug: props.artwork.slug,
+    context_page_owner_type: "Artwork",
     sale_artwork_id: props.artwork.saleArtwork.internalID,
-    user_id: props.me && props.me.internalID,
   }
 })(RequestConditionReport)
 
@@ -243,6 +246,8 @@ export const RequestConditionReportFragmentContainer = createFragmentContainer(
     `,
     artwork: graphql`
       fragment RequestConditionReport_artwork on Artwork {
+        internalID
+        slug
         saleArtwork {
           internalID
         }
