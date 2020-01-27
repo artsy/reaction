@@ -27,4 +27,11 @@ export interface AuctionInfo {
    *  Used by the auction confirm bid flow.
    */
   selected_max_bid_minor: string
+
+  /**
+   * Internal ID of the SaleArtwork.
+   *
+   *  Used by the request condition report flow.
+   */
+  sale_artwork_id: string
 }

@@ -38,7 +38,11 @@ const setupTestEnv = () => {
     `,
     defaultData: {
       me: { internalID: "user-id", email: "user@example.com" },
-      artwork: { saleArtwork: { internalID: "sale-artwork-id" } },
+      artwork: {
+        internalID: "artwork-id",
+        slug: "artwork-slug",
+        saleArtwork: { internalID: "sale-artwork-id" },
+      },
     },
     defaultMutationResults: {
       requestConditionReport: {},
@@ -62,11 +66,13 @@ describe("RequestConditionReport ", () => {
     await page.clickRequestConditionReportButton()
 
     expect(mockPostEvent).toBeCalledWith({
-      action_type: Schema.ActionType.Click,
+      action_type: Schema.ActionType.ClickedRequestConditionReport,
       subject: Schema.Subject.RequestConditionReport,
       context_page: Schema.PageName.ArtworkPage,
-      context_module: Schema.ContextModule.ArtworkPage,
-      user_id: "user-id",
+      context_module: Schema.ContextModule.AboutTheWorkCondition,
+      context_page_owner_id: "artwork-id",
+      context_page_owner_slug: "artwork-slug",
+      context_page_owner_type: "Artwork",
       sale_artwork_id: "sale-artwork-id",
     })
 
@@ -102,11 +108,13 @@ describe("RequestConditionReport ", () => {
 
       expect(mockPostEvent).toBeCalledWith({
         action_type: Schema.ActionType.Click,
-        subject: Schema.Subject.Login,
+        context_module: Schema.ContextModule.AboutTheWorkCondition,
         context_page: Schema.PageName.ArtworkPage,
-        context_module: Schema.ContextModule.ArtworkPage,
-        user_id: null,
+        context_page_owner_id: "artwork-id",
+        context_page_owner_slug: "artwork-slug",
+        context_page_owner_type: "Artwork",
         sale_artwork_id: "sale-artwork-id",
+        subject: Schema.Subject.Login,
       })
     })
   })
