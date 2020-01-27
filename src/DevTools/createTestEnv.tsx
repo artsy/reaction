@@ -1,6 +1,7 @@
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
-import { SystemContext } from "Artsy"
+import { SystemContext, SystemContextProps } from "Artsy"
 import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
+import { merge } from "lodash"
 import React, { ReactElement, useContext } from "react"
 import { GraphQLTaggedNode } from "react-relay"
 import { Network } from "relay-runtime"
@@ -60,6 +61,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       defaultData: object
       defaultMutationResults?: Record<MutationNames, any>
       defaultBreakpoint?: Breakpoint
+      systemContextProps?: SystemContextProps
       TestPage: { new (): TestPage }
     }
   ) {
@@ -128,6 +130,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       query,
       defaultData,
       defaultBreakpoint,
+      systemContextProps,
     } = this.opts
     const page = new TestPage() as TestPage
 
@@ -164,7 +167,12 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       Component: (props: any) => {
         // MockBoot overwrites system context, but we want to preserve the
         // context set higher in the tree by MockQueryRenderer
-        const contextBypass = useContext(SystemContext)
+        let contextBypass = useContext(SystemContext)
+
+        if (systemContextProps) {
+          contextBypass = merge(contextBypass, systemContextProps)
+        }
+
         return (
           <MockBoot
             breakpoint={breakpoint || defaultBreakpoint}
