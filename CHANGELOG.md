@@ -1,3 +1,19 @@
+# v24.2.0 (Mon Jan 27 2020)
+
+#### 🚀  Enhancement
+
+- Allow users to request a condition report for an artwork in a sale [#3099](https://github.com/artsy/reaction/pull/3099) ([@dblandin](https://github.com/dblandin))
+- Add systemContextProps argument to createTestEnv [#3099](https://github.com/artsy/reaction/pull/3099) ([@dblandin](https://github.com/dblandin))
+- Update analytic event payloads for RequestConditionReport
+
+Paired with @abhitip @mikehrom on updates to these event payloads. [#3099](https://github.com/artsy/reaction/pull/3099) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v24.1.8 (Fri Jan 24 2020)
 
 #### 🐛  Bug Fix
