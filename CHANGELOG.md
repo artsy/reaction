@@ -1,3 +1,15 @@
+# v24.3.0 (Tue Jan 28 2020)
+
+#### 🚀  Enhancement
+
+- PURCHASE-1656: Add phone number field to Address for pickup [#3104](https://github.com/artsy/reaction/pull/3104) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v24.2.0 (Mon Jan 27 2020)
 
 #### 🚀  Enhancement
