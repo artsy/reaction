@@ -1,3 +1,15 @@
+# v24.4.0 (Tue Jan 28 2020)
+
+#### 🚀  Enhancement
+
+- Use open:auth with redirectTo option to skip signup onboarding [#3110](https://github.com/artsy/reaction/pull/3110) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v24.3.1 (Tue Jan 28 2020)
 
 #### 🐛  Bug Fix
