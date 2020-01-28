@@ -19,11 +19,9 @@ import {
 } from "Artsy"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import * as authentication from "Components/NavBar/Utils/authentication"
 import createLogger from "Utils/logger"
 
 import { RequestConditionReport_artwork } from "__generated__/RequestConditionReport_artwork.graphql"
-
 import { RequestConditionReport_me } from "__generated__/RequestConditionReport_me.graphql"
 import {
   RequestConditionReportMutation,
@@ -101,7 +99,10 @@ export const RequestConditionReport: React.FC<RequestConditionReportProps> = pro
       sale_artwork_id: artwork.saleArtwork.internalID,
     })
 
-    return authentication.login(mediator)
+    mediator.trigger("open:auth", {
+      mode: "login",
+      redirectTo: location.href,
+    })
   }
 
   const handleRequestConditionReportClick = () => {

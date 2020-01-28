@@ -65,7 +65,7 @@ describe("RequestConditionReport ", () => {
 
     await page.clickRequestConditionReportButton()
 
-    expect(mockPostEvent).toBeCalledWith({
+    expect(mockPostEvent).toHaveBeenCalledWith({
       action_type: Schema.ActionType.ClickedRequestConditionReport,
       subject: Schema.Subject.RequestConditionReport,
       context_page: Schema.PageName.ArtworkPage,
@@ -93,7 +93,7 @@ describe("RequestConditionReport ", () => {
   })
 
   describe("when unauthenticated", () => {
-    it("redirects to login flows and tracks a login analytic event", async () => {
+    it("redirects to login/signup flow and tracks click event", async () => {
       const env = setupTestEnv()
 
       const page = await env.buildPage({
@@ -104,9 +104,12 @@ describe("RequestConditionReport ", () => {
 
       await page.clickLogInButton()
 
-      expect(mediator.trigger).toHaveBeenCalledTimes(1)
+      expect(mediator.trigger).toHaveBeenCalledWith("open:auth", {
+        mode: "login",
+        redirectTo: "http://localhost/",
+      })
 
-      expect(mockPostEvent).toBeCalledWith({
+      expect(mockPostEvent).toHaveBeenCalledWith({
         action_type: Schema.ActionType.Click,
         context_module: Schema.ContextModule.AboutTheWorkCondition,
         context_page: Schema.PageName.ArtworkPage,
