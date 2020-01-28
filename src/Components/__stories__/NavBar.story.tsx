@@ -1,8 +1,7 @@
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import styled from "styled-components"
 
-import { Box, Sans } from "@artsy/palette"
+import { Box, Sans, Spacer } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
 import * as Menus from "Components/NavBar/Menus"
@@ -27,18 +26,11 @@ storiesOf("Components/NavBar", module)
             {isLoggedIn ? "Logged in • " : "Logged out • "}
             {isExperiment ? "Experiment" : "Control"}
           </Sans>
-          <ShowOutlines>
-            {isExperiment ? <NavBarTest /> : <NavBar />}
-          </ShowOutlines>
+          {isExperiment ? <NavBarTest /> : <NavBar />}
+          <Spacer height={180} />
         </Box>
       </SystemContextProvider>
     )
-
-    const ShowOutlines = styled.div`
-      * {
-        outline: solid 0px hsla(180, 100%, 50%, 0.5);
-      }
-    `
 
     return (
       <>
