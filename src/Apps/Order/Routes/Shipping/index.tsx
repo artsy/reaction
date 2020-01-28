@@ -29,6 +29,13 @@ import {
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
+import {
+  PhoneNumber,
+  PhoneNumberChangeHandler,
+  PhoneNumberError,
+  PhoneNumberForm,
+  PhoneNumberTouched,
+} from "Apps/Order/Components/PhoneNumberForm"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -60,6 +67,9 @@ export interface ShippingProps {
 export interface ShippingState {
   shippingOption: CommerceOrderFulfillmentTypeEnum
   address: Address
+  phoneNumber: PhoneNumber
+  phoneNumberError: PhoneNumberError
+  phoneNumberTouched: PhoneNumberTouched
   addressErrors: AddressErrors
   addressTouched: AddressTouched
 }
@@ -76,6 +86,14 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
+    phoneNumber:
+      this.props.order.requestedFulfillment &&
+      (this.props.order.requestedFulfillment.__typename === "CommerceShip" ||
+        this.props.order.requestedFulfillment.__typename === "CommercePickup")
+        ? this.props.order.requestedFulfillment.phoneNumber
+        : "",
+    phoneNumberError: "",
+    phoneNumberTouched: false,
   }
 
   get startingAddress() {
@@ -147,7 +165,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onContinueButtonPressed = async () => {
-    const { address, shippingOption } = this.state
+    const { address, shippingOption, phoneNumber } = this.state
 
     if (shippingOption === "SHIP") {
       const { errors, hasErrors } = this.validateAddress(this.state.address)
@@ -155,6 +173,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
         this.setState({
           addressErrors: errors,
           addressTouched: this.touchedAddress,
+        })
+        return
+      }
+    } else {
+      const { error, hasError } = this.validatePhoneNumber(
+        this.state.phoneNumber
+      )
+      if (hasError) {
+        this.setState({
+          phoneNumberError: error,
+          phoneNumberTouched: true,
         })
         return
       }
@@ -167,6 +196,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
             id: this.props.order.internalID,
             fulfillmentType: shippingOption,
             shipping: address,
+            phoneNumber,
           },
         })
       ).commerceSetShipping.orderOrError
@@ -211,15 +241,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   private validateAddress(address: Address) {
-    const {
-      name,
-      addressLine1,
-      city,
-      region,
-      country,
-      postalCode,
-      phoneNumber,
-    } = address
+    const { name, addressLine1, city, region, country, postalCode } = address
     const usOrCanada = country === "US" || country === "CA"
     const errors = {
       name: validatePresence(name),
@@ -228,13 +250,22 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       region: usOrCanada && validatePresence(region),
       country: validatePresence(country),
       postalCode: usOrCanada && validatePresence(postalCode),
-      phoneNumber: validatePresence(phoneNumber),
     }
     const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
 
     return {
       errors,
       hasErrors,
+    }
+  }
+
+  private validatePhoneNumber(phoneNumber: string) {
+    const error = validatePresence(phoneNumber)
+    const hasError = error !== null
+
+    return {
+      error,
+      hasError,
     }
   }
 
@@ -253,6 +284,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
+  onPhoneNumberChange: PhoneNumberChangeHandler = phoneNumber => {
+    const { error } = this.validatePhoneNumber(phoneNumber)
+    this.setState({
+      phoneNumber,
+      phoneNumberError: error,
+      phoneNumberTouched: true,
+    })
+  }
+
   @track((props, state, args) => ({
     action_type: Schema.ActionType.Click,
     subject:
@@ -268,10 +308,17 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
   render() {
     const { order, isCommittingMutation } = this.props
-    const { address, addressErrors, addressTouched } = this.state
+    const {
+      address,
+      addressErrors,
+      addressTouched,
+      phoneNumber,
+      phoneNumberError,
+      phoneNumberTouched,
+    } = this.state
     const artwork = get(
       this.props,
-      props => order.lineItems.edges[0].node.artwork
+      props => props.order.lineItems.edges[0].node.artwork
     )
 
     return (
@@ -340,6 +387,25 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     onChange={this.onAddressChange}
                     domesticOnly={artwork.onlyShipsDomestically}
                     shippingCountry={artwork.shippingCountry}
+                    showPhoneNumberInput={false}
+                  />
+                  <Spacer mb={2} />
+                  <PhoneNumberForm
+                    value={phoneNumber}
+                    errors={phoneNumberError}
+                    touched={phoneNumberTouched}
+                    onChange={this.onPhoneNumberChange}
+                    label="Required for shipping logistics"
+                  />
+                </Collapse>
+
+                <Collapse open={this.state.shippingOption === "PICKUP"}>
+                  <PhoneNumberForm
+                    value={phoneNumber}
+                    errors={phoneNumberError}
+                    touched={phoneNumberTouched}
+                    onChange={this.onPhoneNumberChange}
+                    label="Number to contact you for pickup logistics"
                   />
                 </Collapse>
 
@@ -392,6 +458,9 @@ export const ShippingFragmentContainer = createFragmentContainer(
         state
         requestedFulfillment {
           __typename
+          ... on CommercePickup {
+            phoneNumber
+          }
           ... on CommerceShip {
             name
             addressLine1

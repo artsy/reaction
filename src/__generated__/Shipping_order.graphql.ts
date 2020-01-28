@@ -9,6 +9,9 @@ export type Shipping_order = {
     readonly mode: CommerceOrderModeEnum | null;
     readonly state: CommerceOrderStateEnum;
     readonly requestedFulfillment: ({
+        readonly __typename: "CommercePickup";
+        readonly phoneNumber: string | null;
+    } | {
         readonly __typename: "CommerceShip";
         readonly name: string | null;
         readonly addressLine1: string | null;
@@ -46,7 +49,15 @@ export type Shipping_order$key = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "phoneNumber",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "Shipping_order",
   "type": "CommerceOrder",
@@ -89,6 +100,13 @@ const node: ReaderFragment = {
           "name": "__typename",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "CommercePickup",
+          "selections": [
+            (v0/*: any*/)
+          ]
         },
         {
           "kind": "InlineFragment",
@@ -143,13 +161,7 @@ const node: ReaderFragment = {
               "args": null,
               "storageKey": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "phoneNumber",
-              "args": null,
-              "storageKey": null
-            }
+            (v0/*: any*/)
           ]
         }
       ]
@@ -238,5 +250,6 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'a4f4398ad5fddb05c06e6fba20a78582';
+})();
+(node as any).hash = 'f4a89928c1e8a5625d7eb9b5789d324a';
 export default node;

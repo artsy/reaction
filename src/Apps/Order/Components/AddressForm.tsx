@@ -199,7 +199,7 @@ export class AddressForm extends React.Component<
             />
           </Flex>
         </TwoColumnSplit>
-        {(!this.props.billing || this.props.showPhoneNumberInput) && (
+        {this.props.showPhoneNumberInput && (
           <>
             <Flex flexDirection="column">
               <Input

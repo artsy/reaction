@@ -10,6 +10,7 @@ import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
+  fillInPhoneNumber,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input from "Components/Input"
@@ -46,7 +47,9 @@ const fillAddressForm = (component: any, address: Address) => {
     value: address.region,
   })
   fillIn(component, { title: "Postal code", value: address.postalCode })
-  fillIn(component, { title: "Phone number", value: address.phoneNumber })
+  fillInPhoneNumber(component, {
+    value: address.phoneNumber,
+  })
   fillCountrySelect(component, address.country)
 }
 
@@ -112,23 +115,24 @@ describe("Shipping", () => {
 
     expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
     expect(mutations.lastFetchVariables).toMatchInlineSnapshot(`
-Object {
-  "input": Object {
-    "fulfillmentType": "SHIP",
-    "id": "1234",
-    "shipping": Object {
-      "addressLine1": "14 Gower's Walk",
-      "addressLine2": "Suite 2.5, The Loom",
-      "city": "Whitechapel",
-      "country": "UK",
-      "name": "Artsy UK Ltd",
-      "phoneNumber": "8475937743",
-      "postalCode": "E1 8PY",
-      "region": "London",
-    },
-  },
-}
-`)
+      Object {
+        "input": Object {
+          "fulfillmentType": "SHIP",
+          "id": "1234",
+          "phoneNumber": "8475937743",
+          "shipping": Object {
+            "addressLine1": "14 Gower's Walk",
+            "addressLine2": "Suite 2.5, The Loom",
+            "city": "Whitechapel",
+            "country": "UK",
+            "name": "Artsy UK Ltd",
+            "phoneNumber": "",
+            "postalCode": "E1 8PY",
+            "region": "London",
+          },
+        },
+      }
+    `)
   })
 
   it("commits the mutation with shipping option", async () => {
@@ -149,7 +153,9 @@ Object {
 
   it("commits the mutation with pickup option", async () => {
     const page = await buildPage()
+    console.log("")
     await page.selectPickupOption()
+    fillInPhoneNumber(page.root, { isPickup: true, value: "2813308004" })
     expect(mutations.mockFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
     expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
@@ -347,8 +353,15 @@ Object {
 
     it("does submit the mutation with a non-ship order", async () => {
       await page.selectPickupOption()
+      fillInPhoneNumber(page.root, { isPickup: true, value: "2813308004" })
       await page.clickSubmit()
       expect(mutations.mockFetch).toBeCalled()
+    })
+
+    it("does not submit the mutation with an incomplete form for a PICKUP order", async () => {
+      await page.selectPickupOption()
+      await page.clickSubmit()
+      expect(mutations.mockFetch).not.toBeCalled()
     })
   })
 
