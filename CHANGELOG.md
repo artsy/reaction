@@ -1,3 +1,15 @@
+# v24.3.1 (Tue Jan 28 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1692] Reorder mobile nav items to match desktop [#3109](https://github.com/artsy/reaction/pull/3109) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v24.3.0 (Tue Jan 28 2020)
 
 #### 🚀  Enhancement
