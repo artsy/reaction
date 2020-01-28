@@ -23,15 +23,14 @@ describe("MobileNavMenu", () => {
   }
 
   const defaultLinks = [
-    ["/", "Home"],
     ["/collect", "Artworks"],
+    ["/auctions", "Auctions"],
+    ["/galleries", "Galleries"],
+    ["/fairs", "Fairs"],
+    ["/articles", "Editorial"],
     ["/artists", "Artists"],
     ["/shows", "Shows"],
-    ["/galleries", "Galleries"],
     ["/institutions", "Museums"],
-    ["/fairs", "Fairs"],
-    ["/auctions", "Auctions"],
-    ["/articles", "Editorial"],
   ]
 
   describe("nav structure", () => {

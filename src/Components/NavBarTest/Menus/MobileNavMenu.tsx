@@ -35,14 +35,14 @@ export const MobileNavMenu: React.FC = () => {
 
   return (
     <MobileNavContainer py={[1, 4]} flexDirection="column" onClick={trackClick}>
-      <MobileLink href="/">Home</MobileLink>
+      <MobileLink href="/collect">Artworks</MobileLink>
       <MobileLink href="/artists">Artists</MobileLink>
-      <MobileLink href="/shows">Shows</MobileLink>
-      <MobileLink href="/galleries">Galleries</MobileLink>
-      <MobileLink href="/institutions">Museums</MobileLink>
-      <MobileLink href="/fairs">Fairs</MobileLink>
       <MobileLink href="/auctions">Auctions</MobileLink>
       <MobileLink href="/articles">Editorial</MobileLink>
+      <MobileLink href="/galleries">Galleries</MobileLink>
+      <MobileLink href="/fairs">Fairs</MobileLink>
+      <MobileLink href="/shows">Shows</MobileLink>
+      <MobileLink href="/institutions">Museums</MobileLink>
 
       <Box px={2}>
         <Separator my={[1, 4]} />
