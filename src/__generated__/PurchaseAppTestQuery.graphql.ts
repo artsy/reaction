@@ -42,6 +42,34 @@ export type PurchaseAppTestQueryRawResponse = {
                 readonly id: string | null;
             }) | null;
         }) | null> | null;
+        readonly pageCursors: ({
+            readonly around: ReadonlyArray<{
+                readonly cursor: string;
+                readonly isCurrent: boolean;
+                readonly page: number;
+            }>;
+            readonly first: ({
+                readonly cursor: string;
+                readonly isCurrent: boolean;
+                readonly page: number;
+            }) | null;
+            readonly last: ({
+                readonly cursor: string;
+                readonly isCurrent: boolean;
+                readonly page: number;
+            }) | null;
+            readonly previous: ({
+                readonly cursor: string;
+                readonly isCurrent: boolean;
+                readonly page: number;
+            }) | null;
+        }) | null;
+        readonly pageInfo: {
+            readonly endCursor: string | null;
+            readonly hasNextPage: boolean;
+            readonly hasPreviousPage: boolean;
+            readonly startCursor: string | null;
+        };
     }) | null;
 };
 export type PurchaseAppTestQuery = {
@@ -94,6 +122,34 @@ fragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {
       id
     }
   }
+  pageCursors {
+    around {
+      cursor
+      isCurrent
+      page
+    }
+    first {
+      cursor
+      isCurrent
+      page
+    }
+    last {
+      cursor
+      isCurrent
+      page
+    }
+    previous {
+      cursor
+      isCurrent
+      page
+    }
+  }
+  pageInfo {
+    endCursor
+    hasNextPage
+    hasPreviousPage
+    startCursor
+  }
 }
 */
 
@@ -118,7 +174,30 @@ v2 = {
   "name": "id",
   "args": null,
   "storageKey": null
-};
+},
+v3 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cursor",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "isCurrent",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "page",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -321,6 +400,96 @@ return {
                 ]
               }
             ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "pageCursors",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "CommercePageCursors",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "around",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommercePageCursor",
+                "plural": true,
+                "selections": (v3/*: any*/)
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "first",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommercePageCursor",
+                "plural": false,
+                "selections": (v3/*: any*/)
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "last",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommercePageCursor",
+                "plural": false,
+                "selections": (v3/*: any*/)
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "previous",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CommercePageCursor",
+                "plural": false,
+                "selections": (v3/*: any*/)
+              }
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "pageInfo",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "CommercePageInfo",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "endCursor",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "hasNextPage",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "hasPreviousPage",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "startCursor",
+                "args": null,
+                "storageKey": null
+              }
+            ]
           }
         ]
       }
@@ -330,7 +499,7 @@ return {
     "operationKind": "query",
     "name": "PurchaseAppTestQuery",
     "id": null,
-    "text": "query PurchaseAppTestQuery {\n  orders: commerceMyOrders(first: 20) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized(width: 55) {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n}\n",
+    "text": "query PurchaseAppTestQuery {\n  orders: commerceMyOrders(first: 20) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized(width: 55) {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n  pageCursors {\n    around {\n      cursor\n      isCurrent\n      page\n    }\n    first {\n      cursor\n      isCurrent\n      page\n    }\n    last {\n      cursor\n      isCurrent\n      page\n    }\n    previous {\n      cursor\n      isCurrent\n      page\n    }\n  }\n  pageInfo {\n    endCursor\n    hasNextPage\n    hasPreviousPage\n    startCursor\n  }\n}\n",
     "metadata": {}
   }
 };

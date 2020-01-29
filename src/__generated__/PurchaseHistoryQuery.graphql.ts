@@ -2,26 +2,26 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_PurchaseQueryVariables = {
+export type PurchaseHistoryQueryVariables = {
     first: number;
     last?: number | null;
     after?: string | null;
     before?: string | null;
 };
-export type routes_PurchaseQueryResponse = {
+export type PurchaseHistoryQueryResponse = {
     readonly orders: {
         readonly " $fragmentRefs": FragmentRefs<"PurchaseApp_orders">;
     } | null;
 };
-export type routes_PurchaseQuery = {
-    readonly response: routes_PurchaseQueryResponse;
-    readonly variables: routes_PurchaseQueryVariables;
+export type PurchaseHistoryQuery = {
+    readonly response: PurchaseHistoryQueryResponse;
+    readonly variables: PurchaseHistoryQueryVariables;
 };
 
 
 
 /*
-query routes_PurchaseQuery(
+query PurchaseHistoryQuery(
   $first: Int!
   $last: Int
   $after: String
@@ -188,7 +188,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseHistoryQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -213,7 +213,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseHistoryQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -483,12 +483,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseHistoryQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery(\n  $first: Int!\n  $last: Int\n  $after: String\n  $before: String\n) {\n  orders: commerceMyOrders(first: $first, last: $last, before: $before, after: $after) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized(width: 55) {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n  pageCursors {\n    around {\n      cursor\n      isCurrent\n      page\n    }\n    first {\n      cursor\n      isCurrent\n      page\n    }\n    last {\n      cursor\n      isCurrent\n      page\n    }\n    previous {\n      cursor\n      isCurrent\n      page\n    }\n  }\n  pageInfo {\n    endCursor\n    hasNextPage\n    hasPreviousPage\n    startCursor\n  }\n}\n",
+    "text": "query PurchaseHistoryQuery(\n  $first: Int!\n  $last: Int\n  $after: String\n  $before: String\n) {\n  orders: commerceMyOrders(first: $first, last: $last, before: $before, after: $after) {\n    ...PurchaseApp_orders\n  }\n}\n\nfragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {\n  ...PurchaseHistory_orders\n}\n\nfragment PurchaseHistory_orders on CommerceOrderConnectionWithTotalCount {\n  edges {\n    node {\n      __typename\n      internalID\n      code\n      state\n      mode\n      buyerTotal\n      lineItems {\n        edges {\n          node {\n            artwork {\n              date\n              image {\n                resized(width: 55) {\n                  url\n                }\n              }\n              internalID\n              title\n              artist_names: artistNames\n              id\n            }\n            id\n          }\n        }\n      }\n      id\n    }\n  }\n  pageCursors {\n    around {\n      cursor\n      isCurrent\n      page\n    }\n    first {\n      cursor\n      isCurrent\n      page\n    }\n    last {\n      cursor\n      isCurrent\n      page\n    }\n    previous {\n      cursor\n      isCurrent\n      page\n    }\n  }\n  pageInfo {\n    endCursor\n    hasNextPage\n    hasPreviousPage\n    startCursor\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '3fb998ba1e3ba16fee1a02e85a8bc0c2';
+(node as any).hash = '863eb07c40fcf2469dc57547c02eb4eb';
 export default node;

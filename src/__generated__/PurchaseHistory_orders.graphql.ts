@@ -31,6 +31,34 @@ export type PurchaseHistory_orders = {
             } | null;
         } | null;
     } | null> | null;
+    readonly pageCursors: {
+        readonly around: ReadonlyArray<{
+            readonly cursor: string;
+            readonly isCurrent: boolean;
+            readonly page: number;
+        }>;
+        readonly first: {
+            readonly cursor: string;
+            readonly isCurrent: boolean;
+            readonly page: number;
+        } | null;
+        readonly last: {
+            readonly cursor: string;
+            readonly isCurrent: boolean;
+            readonly page: number;
+        } | null;
+        readonly previous: {
+            readonly cursor: string;
+            readonly isCurrent: boolean;
+            readonly page: number;
+        } | null;
+    } | null;
+    readonly pageInfo: {
+        readonly endCursor: string | null;
+        readonly hasNextPage: boolean;
+        readonly hasPreviousPage: boolean;
+        readonly startCursor: string | null;
+    };
     readonly " $refType": "PurchaseHistory_orders";
 };
 export type PurchaseHistory_orders$data = PurchaseHistory_orders;
@@ -48,7 +76,30 @@ var v0 = {
   "name": "internalID",
   "args": null,
   "storageKey": null
-};
+},
+v1 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cursor",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "isCurrent",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "page",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "PurchaseHistory_orders",
@@ -207,9 +258,99 @@ return {
           ]
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "pageCursors",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CommercePageCursors",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "around",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommercePageCursor",
+          "plural": true,
+          "selections": (v1/*: any*/)
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "first",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommercePageCursor",
+          "plural": false,
+          "selections": (v1/*: any*/)
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "last",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommercePageCursor",
+          "plural": false,
+          "selections": (v1/*: any*/)
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "previous",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommercePageCursor",
+          "plural": false,
+          "selections": (v1/*: any*/)
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "pageInfo",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "CommercePageInfo",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "endCursor",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "hasNextPage",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "hasPreviousPage",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "startCursor",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     }
   ]
 };
 })();
-(node as any).hash = '0549518a1b712ae72dcc743e297ffb0f';
+(node as any).hash = 'ee39df314ced3c901d6635ed120beef0';
 export default node;

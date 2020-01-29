@@ -12,7 +12,8 @@ export interface PurchaseAppProps {
   orders: PurchaseApp_orders
 }
 
-export const PurchaseApp = (props: PurchaseAppProps) => {
+export const PurchaseApp = (props: any) => {
+  console.log("props", props, props.orders)
   const { orders } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
