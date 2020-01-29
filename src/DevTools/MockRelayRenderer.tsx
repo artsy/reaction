@@ -4,6 +4,7 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
+/* tslint:disable-next-line:no-query-renderer-import */
 import { QueryRenderer } from "react-relay"
 import {
   Environment,

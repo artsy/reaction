@@ -1,4 +1,5 @@
 import React from "react"
+/* tslint:disable-next-line:no-query-renderer-import */
 import { QueryRenderer, QueryRendererProps } from "react-relay"
 import { OperationType } from "relay-runtime"
 
