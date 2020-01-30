@@ -1,3 +1,19 @@
+# v24.4.1 (Thu Jan 30 2020)
+
+#### 🐛  Bug Fix
+
+- User should not be able to advance to the payment page without entering a phone number with their shipping address [#3112](https://github.com/artsy/reaction/pull/3112) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- @zephraph => [TSLint] Rule to warn about using QueryRenderer [#3108](https://github.com/artsy/reaction/pull/3108) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v24.4.0 (Tue Jan 28 2020)
 
 #### 🚀  Enhancement
