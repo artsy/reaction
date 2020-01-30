@@ -1,4 +1,4 @@
-import { repcaptcha } from "../repcaptcha"
+import { recaptcha } from "../recaptcha"
 jest.mock("sharify", () => ({ data: jest.fn() }))
 const sd = require("sharify").data
 
@@ -10,7 +10,7 @@ describe("repcaptcha", () => {
   })
 
   it("fires an action", () => {
-    repcaptcha("login_submit")
+    recaptcha("login_submit")
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "login_submit",
     })
@@ -24,7 +24,7 @@ describe("repcaptcha", () => {
       done()
     })
 
-    repcaptcha("signup_submit", callback)
+    recaptcha("signup_submit", callback)
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "signup_submit",
     })
@@ -39,7 +39,7 @@ describe("repcaptcha", () => {
       done()
     })
 
-    repcaptcha("signup_submit", callback)
+    recaptcha("signup_submit", callback)
     expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {
       action: "signup_submit",
     })
@@ -54,7 +54,7 @@ describe("repcaptcha", () => {
       done()
     })
 
-    repcaptcha("signup_submit", callback)
+    recaptcha("signup_submit", callback)
     expect(window.grecaptcha.ready).not.toBeCalled()
     expect(window.grecaptcha.execute).not.toBeCalled()
   })

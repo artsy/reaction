@@ -9,7 +9,7 @@ import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
 import { Environment } from "relay-runtime"
-import { repcaptcha } from "Utils/repcaptcha"
+import { recaptcha } from "Utils/recaptcha"
 import {
   BackButton,
   Error,
@@ -42,7 +42,7 @@ class MobileLoginFormWithSystemContext extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("login_submit")
+    recaptcha("login_submit")
     this.props.handleSubmit(values, formikBag)
   }
 

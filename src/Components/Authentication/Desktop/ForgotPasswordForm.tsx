@@ -8,7 +8,7 @@ import {
   SubmitButton,
 } from "Components/Authentication/commonElements"
 import QuickInput from "Components/QuickInput"
-import { repcaptcha } from "Utils/repcaptcha"
+import { recaptcha } from "Utils/recaptcha"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
 
@@ -25,7 +25,7 @@ export class ForgotPasswordForm extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("forgot_submit")
+    recaptcha("forgot_submit")
     this.props.handleSubmit(values, formikBag)
   }
 
