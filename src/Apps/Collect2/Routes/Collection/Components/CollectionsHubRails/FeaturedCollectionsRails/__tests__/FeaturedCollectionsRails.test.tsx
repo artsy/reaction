@@ -115,8 +115,8 @@ describe("FeaturedCollectionEntity", () => {
     expect(firstEntity.text()).toMatch("From SpongeBob SquarePants to Snoopy")
     expect(firstEntity.text()).toMatch("From $60")
     const featuredImage = component.find(FeaturedImage).at(0)
-    expect(featuredImage.getElement().props.src).toBe(
-      "http://files.artsy.net/images/cartoons_thumbnail.png"
+    expect(featuredImage.getElement().props.src).toContain(
+      "cartoons_thumbnail.png&width=500&height=500&quality=80"
     )
   })
 
