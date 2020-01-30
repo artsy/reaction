@@ -1,3 +1,15 @@
+# v25.1.0 (Thu Jan 30 2020)
+
+#### 🚀  Enhancement
+
+- [PUR-1727] Add medium field to artwork details [#3116](https://github.com/artsy/reaction/pull/3116) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 1
+
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
 # v25.0.0 (Thu Jan 30 2020)
 
 #### 💥  Breaking Change
