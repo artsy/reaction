@@ -18,6 +18,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { resize } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
 
 interface Props {
@@ -136,7 +137,13 @@ export const FeaturedCollectionEntity: React.FC<FeaturedCollectionEntityProps> =
     <Container p={2} m={1} width={["261px", "261px", "355px", "355px"]}>
       <StyledLink to={`/collection/${slug}`} onClick={handleClick}>
         <Flex height={["190px", "190px", "280px", "280px"]}>
-          <FeaturedImage src={thumbnail} />
+          <FeaturedImage
+            src={resize(thumbnail, {
+              width: 500,
+              height: 500,
+              quality: 80,
+            })}
+          />
         </Flex>
         <Serif size="4" mt={1} maxWidth={["246px", "100%"]}>
           <Truncator maxLineCount={1}>{title}</Truncator>
