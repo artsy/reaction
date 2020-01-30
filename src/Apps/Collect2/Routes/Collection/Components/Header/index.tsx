@@ -73,7 +73,7 @@ export const featuredArtistsEntityCollection: (
     return (
       <Box width={["100%", "33%", "33%", "25%"]} key={index} pb={20}>
         <EntityHeader
-          imageUrl={artist.imageUrl}
+          imageUrl={artist.image.resized.url}
           name={artist.name}
           meta={
             hasArtistMetaData
@@ -363,7 +363,11 @@ export const CollectionFilterFragmentContainer = createFragmentContainer(
           slug
           internalID
           name
-          imageUrl
+          image {
+            resized(width: 45, height: 45, version: "square") {
+              url
+            }
+          }
           birthday
           nationality
           ...FollowArtistButton_artist

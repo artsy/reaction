@@ -120,8 +120,12 @@ describe("collections header", () => {
 
       expect(artist).toMatchObject({
         name: "KAWS",
-        imageUrl:
-          "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
+        image: {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=45&height=45&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FWhacjFyMKlMkNVzncPjlRA%2Fsquare.jpg",
+          },
+        },
         birthday: "1974",
         nationality: "American",
       })
@@ -284,8 +288,12 @@ describe("collections header", () => {
         slug: "medicom-toy-slash-china",
         internalID: "5b9821af86c8aa21d364dde5",
         name: "Medicom Toy/China",
-        imageUrl:
-          "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
+        image: {
+          resized: {
+            url:
+              "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=45&height=45&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FnpEmyaOeaPzkfEHX5VsmQg%2Fsquare.jpg",
+          },
+        },
         birthday: "",
         nationality: "",
         " $fragmentRefs": null,
