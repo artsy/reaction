@@ -334,6 +334,22 @@ describe("Shipping", () => {
         expect(cityInput.props().error).toBeTruthy()
       })
 
+      it("does not submit the mutation without a phone number", async () => {
+        const address = {
+          name: "Erik David",
+          addressLine1: "401 Broadway",
+          addressLine2: "",
+          city: "New York",
+          region: "",
+          postalCode: "7Z",
+          phoneNumber: "",
+          country: "AQ",
+        }
+        fillAddressForm(page.root, address)
+        await page.clickSubmit()
+        expect(mutations.mockFetch).not.toBeCalled()
+      })
+
       it("allows a missing state/province if the selected country is not US or Canada", async () => {
         const address = {
           name: "Erik David",

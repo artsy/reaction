@@ -169,10 +169,27 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 
     if (shippingOption === "SHIP") {
       const { errors, hasErrors } = this.validateAddress(this.state.address)
-      if (hasErrors) {
+      const { error, hasError } = this.validatePhoneNumber(
+        this.state.phoneNumber
+      )
+      if (hasErrors && hasError) {
         this.setState({
           addressErrors: errors,
           addressTouched: this.touchedAddress,
+          phoneNumberError: error,
+          phoneNumberTouched: true,
+        })
+        return
+      } else if (hasErrors) {
+        this.setState({
+          addressErrors: errors,
+          addressTouched: this.touchedAddress,
+        })
+        return
+      } else if (hasError) {
+        this.setState({
+          phoneNumberError: error,
+          phoneNumberTouched: true,
         })
         return
       }
