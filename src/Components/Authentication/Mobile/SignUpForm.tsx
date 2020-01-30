@@ -26,7 +26,7 @@ import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
 import { Environment } from "relay-runtime"
-import { repcaptcha } from "Utils/repcaptcha"
+import { recaptcha } from "Utils/recaptcha"
 
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
@@ -74,7 +74,7 @@ class TrackedMobileSignUpForm extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("signup_submit", recaptcha_token => {
+    recaptcha("signup_submit", recaptcha_token => {
       const valuesWithToken = {
         ...values,
         recaptcha_token,

@@ -15,7 +15,7 @@ import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React, { Component } from "react"
-import { repcaptcha } from "Utils/repcaptcha"
+import { recaptcha } from "Utils/recaptcha"
 
 export interface SignUpFormState {
   error?: string
@@ -27,7 +27,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("signup_submit", recaptcha_token => {
+    recaptcha("signup_submit", recaptcha_token => {
       const valuesWithToken = {
         ...values,
         recaptcha_token,

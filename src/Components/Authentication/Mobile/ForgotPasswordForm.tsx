@@ -10,13 +10,13 @@ import {
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React from "react"
-import { repcaptcha } from "Utils/repcaptcha"
+import { recaptcha } from "Utils/recaptcha"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { ForgotPasswordValidator } from "../Validators"
 
 export class MobileForgotPasswordForm extends React.Component<FormProps> {
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("forgot_submit")
+    recaptcha("forgot_submit")
     this.props.handleSubmit(values, formikBag)
   }
 
