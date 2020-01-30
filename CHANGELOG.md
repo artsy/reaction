@@ -1,3 +1,15 @@
+# v25.0.0 (Thu Jan 30 2020)
+
+#### 💥  Breaking Change
+
+- Rename 'repcaptcha' to 'recaptcha', add new types [#3113](https://github.com/artsy/reaction/pull/3113) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v24.4.1 (Thu Jan 30 2020)
 
 #### 🐛  Bug Fix
