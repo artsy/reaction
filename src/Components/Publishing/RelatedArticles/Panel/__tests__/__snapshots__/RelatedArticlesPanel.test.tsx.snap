@@ -85,7 +85,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     >
       <img
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=160&height=110&quality=95"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=160&height=110&quality=80"
       />
       <div
         className="c6"
@@ -103,7 +103,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     >
       <img
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=160&height=110&quality=95"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=160&height=110&quality=80"
       />
       <div
         className="c6"
@@ -121,7 +121,7 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     >
       <img
         className="c5"
-        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=160&height=110&quality=95"
+        src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=160&height=110&quality=80"
       />
       <div
         className="c6"

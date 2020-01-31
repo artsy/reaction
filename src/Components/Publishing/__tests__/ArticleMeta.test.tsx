@@ -180,7 +180,7 @@ describe("ArticleMeta", () => {
       expect(
         component.find("[name='sailthru.image.full']").props().content
       ).toContain(
-        "?resize_to=fill&src=email_image.jpg&width=1200&height=800&quality=95"
+        "?resize_to=fill&src=email_image.jpg&width=1200&height=800&quality=80"
       )
     })
 
@@ -189,7 +189,7 @@ describe("ArticleMeta", () => {
       expect(
         component.find("[name='sailthru.image.thumb']").props().content
       ).toContain(
-        "?resize_to=fill&src=email_image.jpg&width=600&height=400&quality=95"
+        "?resize_to=fill&src=email_image.jpg&width=600&height=400&quality=80"
       )
     })
 

@@ -36,7 +36,7 @@ export const crop = (
     src,
     width,
     height,
-    quality: quality || 95,
+    quality: quality || 80,
   }
 
   return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
