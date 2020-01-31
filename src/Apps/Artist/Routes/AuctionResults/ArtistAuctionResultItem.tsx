@@ -173,9 +173,14 @@ const LargeAuctionItem: SFC<Props> = props => {
             </Col>
             <Col sm={1}>
               <FloatRight alignItems="center" height="100%">
-                <div onClick={() => toggleDetails(props)}>
-                  {!state.showDetails && <ArrowDownIcon />}
-                  {state.showDetails && <ArrowUpIcon />}
+                <div onClick={() => toggleDetails(props.auctionResult)}>
+                  {props.auctionResult !== state.selectedAuction && (
+                    <ArrowDownIcon />
+                  )}
+                  {state.showDetails &&
+                    props.auctionResult === state.selectedAuction && (
+                      <ArrowUpIcon />
+                    )}
                 </div>
               </FloatRight>
             </Col>
@@ -363,7 +368,11 @@ const renderLargeCollapse = (props, user, mediator) => {
     <Subscribe to={[AuctionResultsState]}>
       {({ state }: AuctionResultsState) => {
         return (
-          <Collapse open={state.showDetails}>
+          <Collapse
+            open={
+              state.showDetails && props.auctionResult === state.selectedAuction
+            }
+          >
             <Separator />
             <Box p={2}>
               <Row>
