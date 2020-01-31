@@ -1,6 +1,5 @@
-import { Col, Row } from "@artsy/palette"
+import { Col, Flex, Row } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
-import { AuctionResultsCount_results } from "__generated__/AuctionResultsCount_results.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -8,14 +7,15 @@ import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
-import { TableColumns } from "./TableColumns"
+// import { TableColumns } from "./TableColumns"
 // import { TableSidebar } from "./TableSidebar"
 
-import { Box, Separator, Spacer } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import createLogger from "Utils/logger"
-import { AuctionResultsCount } from "./Components/AuctionResultsCount"
+import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
+import { SortSelect } from "./Components/SortSelect"
 
 const logger = createLogger("ArtistAuctionResults.tsx")
 
@@ -119,15 +119,17 @@ class AuctionResultsContainer extends Component<
                 */}
 
                 {/* <Col sm={10}> */}
-                <AuctionResultsCount
-                  results={artist.auctionResultsConnection}
-                />
-
-                <TableColumns />
-
-                <Box pt={0.5}>
-                  <Separator />
-                </Box>
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  width="100%"
+                  mb={2}
+                >
+                  <AuctionResultsCount
+                    results={artist.auctionResultsConnection}
+                  />
+                  <SortSelect />
+                </Flex>
 
                 <ArtistAuctionDetailsModal
                   auctionResult={state.selectedAuction}

@@ -1,4 +1,4 @@
-import { LargeSelect } from "@artsy/palette"
+import { SelectSmall } from "@artsy/palette"
 import React from "react"
 import { Subscribe } from "unstated"
 import { AuctionResultsState } from "../state"
@@ -6,7 +6,7 @@ import { AuctionResultsState } from "../state"
 const SORTS = [
   {
     value: "DATE_DESC",
-    text: "Most recent",
+    text: "Sale Date (Most recent)",
   },
   {
     value: "ESTIMATE_AND_DATE_DESC",
@@ -22,7 +22,7 @@ export const SortSelect = () => {
   return (
     <Subscribe to={[AuctionResultsState]}>
       {(filters: AuctionResultsState) => (
-        <LargeSelect
+        <SelectSmall
           options={SORTS}
           selected={filters.state.sort}
           onSelect={filters.setSort}

@@ -10,12 +10,12 @@ interface AuctionResultsCountProps {
 export const AuctionResultsCount = ({ results }: AuctionResultsCountProps) => {
   return (
     <Sans size="2" weight="medium">
-      {`${results.totalCount.toLocaleString()} Results`}
+      {`Showing ${results.totalCount.toLocaleString()} results`}
     </Sans>
   )
 }
 
-export const ResultCountFragmentContainer = createFragmentContainer(
+export const AuctionResultsCountFragmentContainer = createFragmentContainer(
   AuctionResultsCount,
   {
     results: graphql`
