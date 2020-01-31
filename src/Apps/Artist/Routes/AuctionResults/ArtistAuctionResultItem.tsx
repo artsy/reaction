@@ -1,6 +1,7 @@
 import {
   ArrowDownIcon,
   ArrowUpIcon,
+  BorderBox,
   Col,
   Collapse,
   Row,
@@ -34,6 +35,25 @@ export interface Props extends SystemContextProps {
   lastChild: boolean
 }
 
+const FullWidthBox = styled(Box)`
+  width: 100%;
+  display: block;
+`
+
+const FullWidthBorderBox = styled(BorderBox)`
+  display: block;
+  padding: 0;
+`
+
+const FloatRight = styled(Flex)`
+  float: right;
+`
+
+const StyledImage = styled(Image)`
+  max-height: 100%;
+  max-width: 100%;
+`
+
 // TODO: This whole component should be refactored to use less `Media` decisions
 export const ArtistAuctionResultItem: SFC<Props> = props => {
   const { user, mediator } = useContext(SystemContext)
@@ -55,39 +75,22 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
                 </Row>
               )}
             </Media>
-            <Media between={["sm", "lg"]}>
+            <Media greaterThanOrEqual="sm">
               {(className, renderChildren) => (
-                <Row className={className}>
-                  {renderChildren && (
-                    <SmallAuctionItem
-                      {...props}
-                      mediator={mediator}
-                      user={user}
-                    />
-                  )}
-                </Row>
-              )}
-            </Media>
-            <Media greaterThanOrEqual="lg">
-              {(className, renderChildren) => (
-                <Box mb={2}>
-                  <StackableBorderBox>
-                    <Box width="100%">
-                      <Row className={className}>
-                        {renderChildren && (
-                          <LargeAuctionItem
-                            {...props}
-                            mediator={mediator}
-                            user={user}
-                          />
-                        )}
-                      </Row>
-                    </Box>
-                  </StackableBorderBox>
-                  <StackableBorderBox>
-                    {renderLargeCollapse(props, user, mediator)}
-                  </StackableBorderBox>
-                </Box>
+                <FullWidthBorderBox mb={2}>
+                  <Box p={2} height="120px">
+                    <Row height="80px" className={className}>
+                      {renderChildren && (
+                        <LargeAuctionItem
+                          {...props}
+                          mediator={mediator}
+                          user={user}
+                        />
+                      )}
+                    </Row>
+                  </Box>
+                  <Box>{renderLargeCollapse(props, user, mediator)}</Box>
+                </FullWidthBorderBox>
               )}
             </Media>
             <Spacer />
@@ -121,90 +124,65 @@ const LargeAuctionItem: SFC<Props> = props => {
         return (
           <>
             <Col sm={2}>
-              <Box height="auto" pr={2}>
-                <Image width="80px" src={imageUrl} preventRightClick />
-              </Box>
+              <Flex
+                alignItems="center"
+                justifyContent="center"
+                height="80px"
+                width="80px"
+                pr={2}
+              >
+                <StyledImage src={imageUrl} preventRightClick />
+              </Flex>
             </Col>
             <Col sm={4}>
-              <Box pl={1} pr={6}>
-                <Sans size="3" weight="medium">
-                  {title && title + ", "}
-                  {date_text}
-                </Sans>
-                <Sans size="2" color="black60">
-                  {mediumText}
-                </Sans>
-                <Spacer pt={1} />
-              </Box>
+              <Flex alignItems="center" height="100%" pl={1} pr={6}>
+                <div>
+                  <Sans size="3" weight="medium">
+                    {title && title + ", "}
+                    {date_text}
+                  </Sans>
+                  <Sans size="2" color="black60">
+                    {mediumText}
+                  </Sans>
+                  <Spacer pt={1} />
+                </div>
+              </Flex>
             </Col>
             <Col sm={2}>
-              <Box pr={2}>
-                <Sans size="3" weight="medium">
-                  {sale_date_text}
-                </Sans>
-                <Sans size="2" color="black60">
-                  {organization}
-                </Sans>
-              </Box>
+              <Flex alignItems="center" height="100%" pr={2}>
+                <div>
+                  <Sans size="3" weight="medium">
+                    {sale_date_text}
+                  </Sans>
+                  <Sans size="2" color="black60">
+                    {organization}
+                  </Sans>
+                </div>
+              </Flex>
             </Col>
             <Col sm={3}>
-              {renderPricing(
-                salePrice,
-                currency,
-                props.user,
-                props.mediator,
-                "lg"
-              )}
+              <FloatRight alignItems="center" height="100%">
+                {renderPricing(
+                  salePrice,
+                  currency,
+                  props.user,
+                  props.mediator,
+                  "lg"
+                )}
+              </FloatRight>
             </Col>
             <Col sm={1}>
-              <span onClick={() => toggleDetails(props)}>
-                {!state.showDetails && <ArrowDownIcon />}
-                {state.showDetails && <ArrowUpIcon />}
-              </span>
+              <FloatRight alignItems="center" height="100%">
+                <div onClick={() => toggleDetails(props)}>
+                  {!state.showDetails && <ArrowDownIcon />}
+                  {state.showDetails && <ArrowUpIcon />}
+                </div>
+              </FloatRight>
             </Col>
           </>
         )
       }}
     </Subscribe>
-  )
-}
-
-const SmallAuctionItem: SFC<Props> = props => {
-  const {
-    auctionResult: { dimension_text, images, date_text, title, currency },
-    salePrice,
-    truncatedDescription,
-    estimatedPrice,
-  } = getProps(props)
-  const imageUrl = get(images, i => i.thumbnail.url, "")
-
-  return (
-    <>
-      <Col sm={6}>
-        <Flex>
-          <Box height="auto">
-            <Image width="70px" src={imageUrl} preventRightClick />
-          </Box>
-
-          <Spacer mr={2} />
-
-          <Box pr={4}>
-            <Serif size="2" italic>
-              {title && title + ","}
-              {date_text}
-            </Serif>
-            <Serif size="2">{dimension_text}</Serif>
-            <Spacer pt={1} />
-            <Serif size="1" color="black60">
-              {truncatedDescription}
-            </Serif>
-          </Box>
-        </Flex>
-      </Col>
-      <Col sm={6}>
-        {renderPricing(salePrice, currency, props.user, props.mediator, "sm")}
-      </Col>
-    </>
   )
 }
 
@@ -309,28 +287,17 @@ const getSalePrice = price_realized => {
   return salePrice
 }
 
-const getDescription = (fullDescription: string) => {
-  let truncatedDescription
-  if (fullDescription) {
-    truncatedDescription = fullDescription.substr(0, 200)
-    return truncatedDescription + "..."
-  }
-  return truncatedDescription
-}
-
 const getProps = (props: Props) => {
   const {
-    auctionResult: { description, estimate, price_realized },
+    auctionResult: { estimate, price_realized },
   } = props
 
   const salePrice = getSalePrice(price_realized)
-  const truncatedDescription = getDescription(description)
   const estimatedPrice = estimate.display
 
   return {
     ...props,
     salePrice,
-    truncatedDescription,
     estimatedPrice,
   }
 }
@@ -338,17 +305,26 @@ const getProps = (props: Props) => {
 const renderPricing = (salePrice, currency, user, mediator, size) => {
   if (user) {
     return (
-      <>
+      <Box textAlign="right">
         {salePrice && (
-          <Sans size="3" weight="medium">
-            {salePrice + " "}
-            {currency}
-          </Sans>
+          <>
+            <Sans size="3" weight="medium">
+              {salePrice + " "}
+              {currency}
+            </Sans>
+            <Sans size="2" color="black60">
+              Realized price
+            </Sans>
+          </>
         )}
-        <Sans size="2" color="black60">
-          Realized price
-        </Sans>
-      </>
+        {!salePrice && (
+          <Box textAlign="right">
+            <Sans size="3" weight="medium">
+              Price not available
+            </Sans>
+          </Box>
+        )}
+      </Box>
     )
   } else {
     const btnSize = size === "xs" || "sm" ? "small" : "large"
@@ -374,17 +350,13 @@ const renderLargeCollapse = (props, user, mediator) => {
   const {
     auctionResult: {
       dimension_text,
-      images,
-      date_text,
+      description,
       organization,
       sale_date_text,
-      title,
-      mediumText,
       categoryText,
       currency,
     },
     salePrice,
-    truncatedDescription,
     estimatedPrice,
   } = getProps(props)
   return (
@@ -392,75 +364,82 @@ const renderLargeCollapse = (props, user, mediator) => {
       {({ state }: AuctionResultsState) => {
         return (
           <Collapse open={state.showDetails}>
-            <Row>
-              <Col sm={2}>
-                <Sans size="2" weight="medium">
-                  Artwork Info
-                </Sans>
-              </Col>
-              <Col sm={4}>
-                <Box pl={1} pr={6}>
-                  <Sans size="2">{categoryText}</Sans>
-                  <Sans size="2">{dimension_text}</Sans>
-                  <Spacer pt={1} />
-                </Box>
-              </Col>
-              <Col sm={2}>
-                <Box pr={2}>
+            <Separator />
+            <Box p={2}>
+              <Row>
+                <Col sm={2}>
                   <Sans size="2" weight="medium">
-                    Estimate
+                    Artwork Info
                   </Sans>
-                </Box>
-              </Col>
-              <Col sm={4}>
-                <Sans size="2">
-                  {estimatedPrice + " "}
-                  {currency}
-                </Sans>
-              </Col>
-            </Row>
+                </Col>
+                <Col sm={4}>
+                  <Box pl={1} pr={6}>
+                    <Sans size="2">{categoryText}</Sans>
+                    <Sans size="2">{dimension_text}</Sans>
+                    <Spacer pt={1} />
+                  </Box>
+                </Col>
+                <Col sm={2}>
+                  <Box pr={2}>
+                    <Sans size="2" weight="medium">
+                      Estimate
+                    </Sans>
+                  </Box>
+                </Col>
+                <Col sm={4}>
+                  <Sans size="2">
+                    {estimatedPrice + " "}
+                    {currency}
+                  </Sans>
+                </Col>
+              </Row>
 
-            <Row>
-              <Col sm={2}>
-                <Sans size="2" weight="medium">
-                  Auction Sale
-                </Sans>
-              </Col>
-              <Col sm={4}>
-                <Box pl={1} pr={6}>
-                  <Sans size="2">{sale_date_text}</Sans>
-                  <Sans size="2">{organization}</Sans>
-                  <Spacer pt={1} />
-                </Box>
-              </Col>
-              <Col sm={2}>
-                <Box pr={2}>
+              <Row>
+                <Col sm={2}>
                   <Sans size="2" weight="medium">
-                    Realized Price
+                    Auction Sale
                   </Sans>
-                </Box>
-              </Col>
-              <Col sm={4}>
-                <Sans size="2">
-                  {salePrice + " "}
-                  {currency}
-                </Sans>
-                <Sans size="2">Percentage</Sans>
-              </Col>
-            </Row>
+                </Col>
+                <Col sm={4}>
+                  <Box pl={1} pr={6}>
+                    <Sans size="2">{sale_date_text}</Sans>
+                    <Sans size="2">{organization}</Sans>
+                    <Spacer pt={1} />
+                  </Box>
+                </Col>
 
-            <Row>
-              <Col sm={2}>
-                <Sans size="2" weight="medium">
-                  Description
-                </Sans>
-              </Col>
-              <Col sm={10}>
-                <Box pl={1} pr={6}>
-                  <Sans size="2">{truncatedDescription}</Sans>
-                </Box>
-              </Col>
-            </Row>
+                <Col sm={2}>
+                  <Box pr={2}>
+                    <Sans size="2" weight="medium">
+                      Realized Price
+                    </Sans>
+                  </Box>
+                </Col>
+                <Col sm={4}>
+                  {salePrice && (
+                    <Sans size="2">
+                      {salePrice + " "}
+                      {currency}
+                    </Sans>
+                  )}
+                  {!salePrice && <Sans size="2">Price not available</Sans>}
+                  <Sans size="2">Percentage</Sans>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col sm={2}>
+                  <Sans size="2" weight="medium">
+                    Description
+                  </Sans>
+                </Col>
+                <Col sm={10}>
+                  <Box pl={1} pr={6}>
+                    <Sans size="2">{description}</Sans>
+                  </Box>
+                </Col>
+              </Row>
+            </Box>
           </Collapse>
         )
       }}
