@@ -9,8 +9,12 @@ export const collectionHeaderArtworks: Header_artworks = {
       slug: "kaws",
       internalID: "4e934002e340fa0001005336",
       name: "KAWS",
-      imageUrl:
-        "https://d32dm0rphc51dk.cloudfront.net/WhacjFyMKlMkNVzncPjlRA/square.jpg",
+      image: {
+        resized: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=45&height=45&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FWhacjFyMKlMkNVzncPjlRA%2Fsquare.jpg",
+        },
+      },
       birthday: "1974",
       nationality: "American",
       " $fragmentRefs": null,
@@ -19,8 +23,12 @@ export const collectionHeaderArtworks: Header_artworks = {
       slug: "robert-lazzarini",
       internalID: "4f5f64c23b555230ac0003ae",
       name: "Robert Lazzarini",
-      imageUrl:
-        "https://d32dm0rphc51dk.cloudfront.net/1npk1i_Xua5q8Hv0YOq_3g/square.jpg",
+      image: {
+        resized: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=45&height=45&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F1npk1i_Xua5q8Hv0YOq_3g%2Fsquare.jpg",
+        },
+      },
       birthday: "1965",
       nationality: "American",
       " $fragmentRefs": null,
@@ -29,8 +37,12 @@ export const collectionHeaderArtworks: Header_artworks = {
       slug: "medicom",
       internalID: "58fe85ee275b2450a0fd2b51",
       name: "Medicom",
-      imageUrl:
-        "https://d32dm0rphc51dk.cloudfront.net/jUMOidRmCQ0RyynXM_sFzQ/square.jpg",
+      image: {
+        resized: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=45&height=45&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjUMOidRmCQ0RyynXM_sFzQ%2Fsquare.jpg",
+        },
+      },
       birthday: "",
       nationality: "",
       " $fragmentRefs": null,
@@ -39,8 +51,12 @@ export const collectionHeaderArtworks: Header_artworks = {
       slug: "medicom-toy-slash-china",
       internalID: "5b9821af86c8aa21d364dde5",
       name: "Medicom Toy/China",
-      imageUrl:
-        "https://d32dm0rphc51dk.cloudfront.net/npEmyaOeaPzkfEHX5VsmQg/square.jpg",
+      image: {
+        resized: {
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=45&height=45&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FnpEmyaOeaPzkfEHX5VsmQg%2Fsquare.jpg",
+        },
+      },
       birthday: "",
       nationality: "",
       " $fragmentRefs": null,

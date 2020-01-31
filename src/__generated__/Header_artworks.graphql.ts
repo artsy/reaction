@@ -7,7 +7,11 @@ export type Header_artworks = {
         readonly slug: string;
         readonly internalID: string;
         readonly name: string | null;
-        readonly imageUrl: string | null;
+        readonly image: {
+            readonly resized: {
+                readonly url: string | null;
+            } | null;
+        } | null;
         readonly birthday: string | null;
         readonly nationality: string | null;
         readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
@@ -61,11 +65,49 @@ const node: ReaderFragment = {
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
-          "name": "imageUrl",
+          "name": "image",
+          "storageKey": null,
           "args": null,
-          "storageKey": null
+          "concreteType": "Image",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "resized",
+              "storageKey": "resized(height:45,version:\"square\",width:45)",
+              "args": [
+                {
+                  "kind": "Literal",
+                  "name": "height",
+                  "value": 45
+                },
+                {
+                  "kind": "Literal",
+                  "name": "version",
+                  "value": "square"
+                },
+                {
+                  "kind": "Literal",
+                  "name": "width",
+                  "value": 45
+                }
+              ],
+              "concreteType": "ResizedImageUrl",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "url",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
+            }
+          ]
         },
         {
           "kind": "ScalarField",
@@ -95,5 +137,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '7094c150ec1332c9565fc3a75995460f';
+(node as any).hash = 'ee9a91cd2dac53afe39f913787441bc3';
 export default node;
