@@ -1,3 +1,16 @@
+# v25.1.1 (Fri Jan 31 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1684] use resizer for featured collection image [#3114](https://github.com/artsy/reaction/pull/3114) ([@xtina-starr](https://github.com/xtina-starr))
+- [FX-1675] Resize collection header artist images [#3115](https://github.com/artsy/reaction/pull/3115) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.1.0 (Thu Jan 30 2020)
 
 #### 🚀  Enhancement
