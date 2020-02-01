@@ -1,6 +1,6 @@
 import { Box } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
-import { RecentlyViewedQueryRenderer } from "Components/v2"
+import { RecentlyViewedQueryRenderer } from "Components/v2/RecentlyViewed"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

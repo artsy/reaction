@@ -2,7 +2,7 @@ import { Box, Serif } from "@artsy/palette"
 import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 
-import { FollowIcon } from "Components/v2"
+import { FollowIcon } from "Components/v2/FollowIcon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 

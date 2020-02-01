@@ -1,5 +1,5 @@
 import { Box, Button, Sans } from "@artsy/palette"
-import { MobileTopBar } from "Components/v2"
+import { MobileTopBar } from "Components/v2/MobileTopBar"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

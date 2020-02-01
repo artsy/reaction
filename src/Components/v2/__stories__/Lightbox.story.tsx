@@ -1,4 +1,4 @@
-import { Lightbox } from "Components/v2"
+import { Lightbox } from "Components/v2/Lightbox"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

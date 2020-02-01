@@ -3,7 +3,7 @@ import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graph
 import { SystemContextProps, withSystemContext } from "Artsy"
 import { track, trackPageView } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouteTab, RouteTabs } from "Components/v2"
+import { RouteTab, RouteTabs } from "Components/v2/RouteTabs"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 

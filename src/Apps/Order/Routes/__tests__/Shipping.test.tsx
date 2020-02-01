@@ -14,7 +14,7 @@ import {
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
 import Input from "Components/Input"
-import { CountrySelect } from "Components/v2"
+import { CountrySelect } from "Components/v2/CountrySelect"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
