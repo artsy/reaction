@@ -1,5 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/server"
+import EllipsisHtml from "react-lines-ellipsis/lib/html"
+import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC"
 import { ErrorBoundary } from "./ErrorBoundary"
 
 interface Props {
@@ -25,21 +27,7 @@ export const Truncator: React.SFC<Props> = ({
     readMoreHTML = ReactDOM.renderToStaticMarkup(ReadMoreLink())
   }
 
-  // FIXME: Make safe for tests
-  let HTMLEllipsis
-
-  if (process.env.NODE_ENV !== "test") {
-    const responsiveHOC = require("react-lines-ellipsis/lib/responsiveHOC")
-    HTMLEllipsis = responsiveHOC()(require("react-lines-ellipsis/lib/html"))
-  } else {
-    HTMLEllipsis = ({ unsafeHTML }) => (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: unsafeHTML,
-        }}
-      />
-    )
-  }
+  const HTMLEllipsis = responsiveHOC()(EllipsisHtml)
 
   return (
     <ErrorBoundary>

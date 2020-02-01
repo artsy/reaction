@@ -89,7 +89,7 @@ interface CarouselProps {
 type ArrowProps = (props: {
   currentSlideIndex: number
   Arrow: React.ReactType
-  flickity: FlickityType
+  flickity: Promise<FlickityType>
 }) => React.ReactNode
 
 export class Carousel extends React.Component<CarouselProps> {
@@ -174,7 +174,7 @@ export class BaseCarousel extends React.Component<
   /**
    * A reference to the Flickity instance
    */
-  flickity: FlickityType = null
+  flickity: Promise<FlickityType> = null
   carouselRef = null
 
   /**
@@ -218,28 +218,31 @@ export class BaseCarousel extends React.Component<
   componentDidMount() {
     const { setCarouselRef } = this.props
 
-    const Flickity = require("flickity") as typeof FlickityType
-    this.flickity = new Flickity(this.carouselRef, this.options)
+    this.flickity = import("flickity").then(
+      ({ default: Flickity }) => new Flickity(this.carouselRef, this.options)
+    )
 
     this.setState(
       {
         isMounted: true,
       },
-      () => {
+      async () => {
         if (setCarouselRef) {
           setCarouselRef(this.flickity)
         }
-        this.flickity.on("select", this.handleSlideChange)
+        ;(await this.flickity).on("select", this.handleSlideChange)
         this.allowPreventDefault()
       }
     )
   }
 
   componentWillUnmount() {
-    if (this.flickity) {
-      this.flickity.off("select", this.handleSlideChange)
-      this.flickity.destroy()
-    }
+    return this.flickity.then(flick => {
+      if (!flick) return
+
+      flick.off("select", this.handleSlideChange)
+      flick.destroy()
+    })
   }
 
   handleSlideChange = index => {
@@ -248,13 +251,14 @@ export class BaseCarousel extends React.Component<
     })
   }
 
-  checkLastItemVisible = () => {
-    if (this.flickity && this.flickity.selectedElements) {
-      const lastItemVisible = this.flickity.selectedElements.includes(
+  checkLastItemVisible = async () => {
+    const flick = await this.flickity
+    if (flick && flick.selectedElements) {
+      const lastItemVisible = flick.selectedElements.includes(
         // FIXME: Undocumented API. Is there a way this can be achieved with
         // something public and commonly available?
         // @ts-ignore
-        this.flickity.getLastCell().element
+        flick.getLastCell().element
       )
       return lastItemVisible
     } else {
@@ -284,8 +288,8 @@ export class BaseCarousel extends React.Component<
       <ArrowWrapper left={leftPosition} showArrow={showLeftArrow}>
         <ArrowButton
           height={height}
-          onClick={() => {
-            this.flickity.previous()
+          onClick={async () => {
+            ;(await this.flickity).previous()
 
             if (onArrowClick) {
               onArrowClick({
@@ -340,8 +344,8 @@ export class BaseCarousel extends React.Component<
       <ArrowWrapper right={rightPosition} showArrow={showRightArrow}>
         <ArrowButton
           height={height}
-          onClick={() => {
-            this.flickity.next()
+          onClick={async () => {
+            ;(await this.flickity).next()
 
             if (onArrowClick) {
               onArrowClick({
