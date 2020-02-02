@@ -7,10 +7,10 @@ import { SearchMeta } from "Apps/Search/Components/SearchMeta"
 import { trackPageViewWrapper, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Components/v2"
+
+import { Footer } from "Components/v2/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
+
 import { RouterState, withRouter } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

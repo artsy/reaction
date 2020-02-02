@@ -1,5 +1,5 @@
 import { Sans, Serif } from "@artsy/palette"
-import { StepSummaryItem } from "Components/v2"
+import { StepSummaryItem } from "Components/v2/StepSummaryItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

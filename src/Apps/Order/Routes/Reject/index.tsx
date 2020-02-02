@@ -9,8 +9,8 @@ import { Router } from "found"
 import React, { Component } from "react"
 
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { StepSummaryItem } from "Components/v2"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { StepSummaryItem } from "Components/v2/StepSummaryItem"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 

@@ -15,11 +15,11 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import {
-  ArtistBioFragmentContainer as ArtistBio,
-  ArtistMarketInsightsFragmentContainer as ArtistMarketInsights,
-  SelectedExhibitionFragmentContainer as SelectedExhibitions,
-} from "Components/v2"
+
+import { ArtistBioFragmentContainer as ArtistBio } from "Components/v2/ArtistBio"
+import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/v2/ArtistMarketInsights"
+import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/v2/SelectedExhibitions"
+
 import { MIN_EXHIBITIONS } from "Components/v2/SelectedExhibitions"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"

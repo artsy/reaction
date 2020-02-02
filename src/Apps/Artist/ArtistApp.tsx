@@ -7,10 +7,8 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { trackPageViewWrapper, useTracking } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Components/v2"
+import { Footer } from "Components/v2/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 import React, { useEffect } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"

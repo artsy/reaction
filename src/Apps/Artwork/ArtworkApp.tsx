@@ -20,10 +20,8 @@ import { PricingContextFragmentContainer as PricingContext } from "./Components/
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Components/v2"
+import { Footer } from "Components/v2/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"

@@ -1,5 +1,5 @@
 import { Box, Button, Sans, Spacer } from "@artsy/palette"
-import { MobileTopBar } from "Components/v2"
+import { MobileTopBar } from "Components/v2/MobileTopBar"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { useArtworkFilterContext } from "./ArtworkFilterContext"

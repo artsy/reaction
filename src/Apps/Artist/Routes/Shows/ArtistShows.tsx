@@ -1,6 +1,6 @@
 import { Box, Col, Flex, Row, Sans, Spacer } from "@artsy/palette"
 import { ArtistShows_artist } from "__generated__/ArtistShows_artist.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2"
+import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"

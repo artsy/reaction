@@ -7,7 +7,7 @@ import {
   space,
   TabsContainer,
 } from "@artsy/palette"
-import { ArrowButton, Carousel } from "Components/v2"
+import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import { Link, LinkProps } from "found"
 import React from "react"
 import styled from "styled-components"
