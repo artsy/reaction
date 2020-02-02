@@ -10,8 +10,10 @@ export const routes: RouteConfig[] = [
     Component: PurchaseApp,
     query: graphql`
       query routes_PurchaseQuery($first: Int!) {
-        orders: commerceMyOrders(first: $first) {
-          ...PurchaseApp_orders
+        me {
+          orders(first: $first) {
+            ...PurchaseApp_orders
+          }
         }
       }
     `,
