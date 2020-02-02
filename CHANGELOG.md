@@ -1,3 +1,15 @@
+# v25.1.2 (Sun Feb 02 2020)
+
+#### 🐛  Bug Fix
+
+- Avoid performance hit by not importing all components from v2 [#3119](https://github.com/artsy/reaction/pull/3119) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.1.1 (Fri Jan 31 2020)
 
 #### 🐛  Bug Fix
