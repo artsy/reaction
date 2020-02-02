@@ -12,26 +12,26 @@ import { PurchaseAppFragmentContainer } from "../PurchaseApp"
 
 jest.unmock("react-relay")
 
-const render = (
-  orders: PurchaseAppTestQueryRawResponse["orders"],
-  user: User
-) =>
+const render = (me: PurchaseAppTestQueryRawResponse["me"], user: User) =>
   renderRelayTree({
     Component: (props: PurchaseAppTestQueryResponse) => (
       <PurchaseAppFragmentContainer
         orders={{
-          ...orders,
+          ...me.orders,
+          " $fragmentRefs": null,
         }}
         {...props}
       />
     ),
     mockData: {
-      orders,
+      me,
     } as PurchaseAppTestQueryRawResponse,
     query: graphql`
       query PurchaseAppTestQuery @raw_response_type {
-        orders: commerceMyOrders(first: 20) {
-          ...PurchaseApp_orders
+        me {
+          orders(first: 20) {
+            ...PurchaseApp_orders
+          }
         }
       }
     `,

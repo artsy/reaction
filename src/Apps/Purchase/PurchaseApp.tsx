@@ -9,15 +9,11 @@ import { userIsAdmin } from "Utils/user"
 import { PurchaseHistoryFragmentContainer as PurchaseHistory } from "./Components/PurchaseHistory"
 
 export interface PurchaseAppProps {
-  me: {
-    orders: PurchaseApp_orders
-  }
+  orders: PurchaseApp_orders
 }
 
 export const PurchaseApp = (props: PurchaseAppProps) => {
-  const {
-    me: { orders },
-  } = props
+  const { orders } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
   if (isAdmin) {
