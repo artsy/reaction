@@ -185,8 +185,8 @@ storiesOf("Styleguide/Components/Carousel", module)
           renderLeftArrow={({ flickity }) => {
             return (
               <Box
-                onClick={async () => {
-                  ;(await flickity).previous()
+                onClick={() => {
+                  flickity.previous()
                 }}
               >
                 Prev
@@ -196,8 +196,8 @@ storiesOf("Styleguide/Components/Carousel", module)
           renderRightArrow={({ flickity }) => {
             return (
               <Box
-                onClick={async () => {
-                  ;(await flickity).next()
+                onClick={() => {
+                  flickity.next()
                 }}
               >
                 Next

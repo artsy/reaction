@@ -54,7 +54,7 @@ describe("FeaturedCollectionsRails", () => {
   })
 
   describe("Tracking", () => {
-    it("Tracks arrow click", async () => {
+    it("Tracks arrow click", () => {
       props.collectionGroup.members = [
         memberData(),
         memberData(),
@@ -63,10 +63,9 @@ describe("FeaturedCollectionsRails", () => {
         memberData(),
       ]
 
-      const component = mount(
-        <FeaturedCollectionsRails {...props} />
-      ).renderUntil(r => r.contains("ArrowButton"))
-      ;(await component)
+      const component = mount(<FeaturedCollectionsRails {...props} />)
+
+      component
         .find(ArrowButton)
         .at(1)
         .simulate("click")
