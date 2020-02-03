@@ -8,6 +8,7 @@ import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { graphql } from "react-relay"
+import { PurchaseHistoryProps } from "../Components/PurchaseHistory"
 import { PurchaseAppFragmentContainer } from "../PurchaseApp"
 
 jest.unmock("react-relay")
@@ -102,6 +103,37 @@ describe("Purchase app", () => {
         const btn = component.find("Button")
         expect(btn.length).toBe(1)
         expect(btn.text()).toEqual("View details")
+      })
+    })
+    describe("with around pages", () => {
+      it("renders pagination component", async () => {
+        const mockMe = {
+          id: "111",
+          orders: {
+            edges: [{ node: UntouchedBuyOrder }],
+            pageInfo,
+            pageCursors,
+          },
+        }
+        const component = await render(mockMe, userType)
+
+        const refetchSpy = jest.spyOn(
+          (component.find("PurchaseHistory").props() as PurchaseHistoryProps)
+            .relay,
+          "refetch"
+        )
+
+        const pagination = component.find("LargePagination")
+        expect(pagination.length).toBe(1)
+        expect(pagination.text()).toContain("1234...7")
+        pagination
+          .find("button")
+          .at(1)
+          .simulate("click")
+        expect(refetchSpy).toHaveBeenCalledTimes(1)
+        expect(refetchSpy.mock.calls[0][0]).toEqual(
+          expect.objectContaining({ first: 5, after: "NQ" })
+        )
       })
     })
     describe("without previous orders", () => {

@@ -110,7 +110,7 @@ const loadAfter = (cursor, relay, setLoading) => {
     }
   )
 }
-interface PurchaseHistoryProps {
+export interface PurchaseHistoryProps {
   me: PurchaseHistory_me
   relay: RelayRefetchProp
 }
