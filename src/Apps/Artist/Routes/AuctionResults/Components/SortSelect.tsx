@@ -6,7 +6,7 @@ import { AuctionResultsState } from "../state"
 const SORTS = [
   {
     value: "DATE_DESC",
-    text: "Sale Date (Most recent)",
+    text: "Sale Date (Most Recent First)",
   },
   {
     value: "ESTIMATE_AND_DATE_DESC",
@@ -23,6 +23,7 @@ export const SortSelect = () => {
     <Subscribe to={[AuctionResultsState]}>
       {(filters: AuctionResultsState) => (
         <SelectSmall
+          title="Sort:"
           options={SORTS}
           selected={filters.state.sort}
           onSelect={filters.setSort}
