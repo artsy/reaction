@@ -1,3 +1,29 @@
+# v25.2.0 (Mon Feb 03 2020)
+
+#### 🚀  Enhancement
+
+- Update the auction result layout [#3118](https://github.com/artsy/reaction/pull/3118) ([@zephraph](https://github.com/zephraph))
+- [PUR-1727] Return category data for medium field [#3121](https://github.com/artsy/reaction/pull/3121) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v25.1.2 (Sun Feb 02 2020)
+
+#### 🐛  Bug Fix
+
+- Avoid performance hit by not importing all components from v2 [#3119](https://github.com/artsy/reaction/pull/3119) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.1.1 (Fri Jan 31 2020)
 
 #### 🐛  Bug Fix

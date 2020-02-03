@@ -1,19 +1,21 @@
-import { Col, Row } from "@artsy/palette"
+import { Col, Flex, Row } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2"
+import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
-import { TableColumns } from "./TableColumns"
-import { TableSidebar } from "./TableSidebar"
+// import { TableColumns } from "./TableColumns"
+// import { TableSidebar } from "./TableSidebar"
 
-import { Box, Separator, Spacer } from "@artsy/palette"
+import { Box, Spacer } from "@artsy/palette"
 
 import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
 import createLogger from "Utils/logger"
+import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
+import { SortSelect } from "./Components/SortSelect"
 
 const logger = createLogger("ArtistAuctionResults.tsx")
 
@@ -102,47 +104,54 @@ class AuctionResultsContainer extends Component<
   }
 
   render() {
-    const auctionResultsLength = this.props.artist.auctionResultsConnection
-      .edges.length
-    const { totalCount } = this.props.artist.auctionResultsConnection
+    const { artist } = this.props
+    const auctionResultsLength = artist.auctionResultsConnection.edges.length
     return (
       <Subscribe to={[AuctionResultsState]}>
         {({ state }: AuctionResultsState) => {
           return (
             <>
               <Row>
+                {/* 
                 <Col sm={2} pr={[0, 2]}>
-                  <TableSidebar count={totalCount} />
+                   <TableSidebar count={totalCount} />
                 </Col>
+                */}
 
-                <Col sm={10}>
-                  <TableColumns />
-
-                  <Box pt={0.5}>
-                    <Separator />
-                  </Box>
-
-                  <ArtistAuctionDetailsModal
-                    auctionResult={state.selectedAuction}
+                {/* <Col sm={10}> */}
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  width="100%"
+                  mb={2}
+                >
+                  <AuctionResultsCount
+                    results={artist.auctionResultsConnection}
                   />
+                  <SortSelect />
+                </Flex>
 
-                  <Spacer mt={3} />
+                <ArtistAuctionDetailsModal
+                  auctionResult={state.selectedAuction}
+                />
 
-                  <LoadingArea isLoading={this.state.isLoading}>
-                    {this.props.artist.auctionResultsConnection.edges.map(
-                      ({ node }, index) => {
-                        return (
-                          <React.Fragment key={index}>
-                            <AuctionResultItem
-                              auctionResult={node}
-                              lastChild={index === auctionResultsLength - 1}
-                            />
-                          </React.Fragment>
-                        )
-                      }
-                    )}
-                  </LoadingArea>
-                </Col>
+                <Spacer mt={3} />
+
+                <LoadingArea isLoading={this.state.isLoading}>
+                  {this.props.artist.auctionResultsConnection.edges.map(
+                    ({ node }, index) => {
+                      return (
+                        <React.Fragment key={index}>
+                          <AuctionResultItem
+                            auctionResult={node}
+                            lastChild={index === auctionResultsLength - 1}
+                          />
+                        </React.Fragment>
+                      )
+                    }
+                  )}
+                </LoadingArea>
+                {/* </Col> */}
               </Row>
 
               <Row>
@@ -199,6 +208,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           last: $last
           sort: $sort
         ) {
+          ...AuctionResultsCount_results
           pageInfo {
             hasNextPage
             endCursor

@@ -6,10 +6,9 @@ import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Com
 import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  ArtistBioFragmentContainer as ArtistBio,
-  SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements,
-} from "Components/v2"
+
+import { ArtistBioFragmentContainer as ArtistBio } from "Components/v2/ArtistBio"
+import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/v2/SelectedCareerAchievements"
 
 import React from "react"
 import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"

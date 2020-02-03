@@ -21,7 +21,7 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
 > {
   render() {
     const {
-      medium,
+      category,
       series,
       publisher,
       manufacturer,
@@ -37,7 +37,7 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
     const listItems = [
       {
         title: "Medium",
-        value: medium,
+        value: category,
       },
       {
         title: "Condition",
@@ -110,7 +110,7 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
   {
     artwork: graphql`
       fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
-        medium
+        category
         series
         publisher
         manufacturer

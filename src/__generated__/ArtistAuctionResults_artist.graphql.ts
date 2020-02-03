@@ -18,6 +18,7 @@ export type ArtistAuctionResults_artist = {
                 readonly " $fragmentRefs": FragmentRefs<"ArtistAuctionResultItem_auctionResult">;
             } | null;
         } | null> | null;
+        readonly " $fragmentRefs": FragmentRefs<"AuctionResultsCount_results">;
     } | null;
     readonly " $refType": "ArtistAuctionResults_artist";
 };
@@ -183,10 +184,15 @@ const node: ReaderFragment = {
               ]
             }
           ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "AuctionResultsCount_results",
+          "args": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '91a544d759a1674fbda032fab9cf830d';
+(node as any).hash = '7ba95d8a09043fc63f344b9434f24f8d';
 export default node;
