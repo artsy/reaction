@@ -27,10 +27,20 @@ export class Text extends Component<Props, State> {
 
   state = {
     html: this.props.html || "",
+    LinkWithTooltip: null,
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const html = this.htmlMaybeWithContentEnd()
+
+    if (html.length && this.props.showTooltips) {
+      const LinkWithTooltip = (await import("../ToolTip/LinkWithTooltip"))
+        .default
+      this.setState(state => ({
+        ...state,
+        LinkWithTooltip,
+      }))
+    }
 
     this.setState({ html })
   }
@@ -74,9 +84,7 @@ export class Text extends Component<Props, State> {
 
   transformNode = (node: Element, index) => {
     const { color } = this.props
-    // Dont include relay components unless necessary
-    // To avoid 'regeneratorRuntime' error
-    const LinkWithTooltip = require("../ToolTip/LinkWithTooltip").default
+    const { LinkWithTooltip } = this.state
 
     if (node.tagName === "P") {
       const newNode = node.ownerDocument.createElement("div")
@@ -132,7 +140,7 @@ export class Text extends Component<Props, State> {
       postscript,
       showTooltips,
     } = this.props
-    const { html } = this.state
+    const { html, LinkWithTooltip } = this.state
 
     return (
       <StyledText
@@ -144,7 +152,7 @@ export class Text extends Component<Props, State> {
         showTooltips={showTooltips}
       >
         {html.length ? (
-          showTooltips ? (
+          showTooltips && LinkWithTooltip ? (
             <div>
               {ReactHtmlParser(html, { transform: this.transformNode })}
             </div>
