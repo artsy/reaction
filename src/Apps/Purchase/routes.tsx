@@ -9,15 +9,15 @@ export const routes: RouteConfig[] = [
     path: "/user/purchases",
     Component: PurchaseApp,
     query: graphql`
-      query routes_PurchaseQuery($first: Int!) {
-        orders: commerceMyOrders(first: $first) {
-          ...PurchaseApp_orders
+      query routes_PurchaseQuery {
+        me {
+          ...PurchaseApp_me
         }
       }
     `,
     prepareVariables: (params, props) => {
       return {
-        first: 20,
+        first: 5,
       }
     },
     cacheConfig: {

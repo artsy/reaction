@@ -1,4 +1,4 @@
-import { PurchaseApp_orders } from "__generated__/PurchaseApp_orders.graphql"
+import { PurchaseApp_me } from "__generated__/PurchaseApp_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
@@ -9,18 +9,18 @@ import { userIsAdmin } from "Utils/user"
 import { PurchaseHistoryFragmentContainer as PurchaseHistory } from "./Components/PurchaseHistory"
 
 export interface PurchaseAppProps {
-  orders: PurchaseApp_orders
+  me: PurchaseApp_me
 }
 
-export const PurchaseApp = (props: PurchaseAppProps) => {
-  const { orders } = props
+export const PurchaseApp = (props: any) => {
+  const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
   if (isAdmin) {
     return (
       <AppContainer>
         <Title>My Orders | Artsy</Title>
-        <PurchaseHistory orders={orders} />
+        <PurchaseHistory me={me} />
       </AppContainer>
     )
   } else {
@@ -32,9 +32,9 @@ export const PurchaseApp = (props: PurchaseAppProps) => {
 export const PurchaseAppFragmentContainer = createFragmentContainer(
   PurchaseApp,
   {
-    orders: graphql`
-      fragment PurchaseApp_orders on CommerceOrderConnectionWithTotalCount {
-        ...PurchaseHistory_orders
+    me: graphql`
+      fragment PurchaseApp_me on Me {
+        ...PurchaseHistory_me
       }
     `,
   }
