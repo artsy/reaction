@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ArtworkDetailsAdditionalInfo_artwork = {
-    readonly medium: string | null;
+    readonly category: string | null;
     readonly series: string | null;
     readonly publisher: string | null;
     readonly manufacturer: string | null;
@@ -63,7 +63,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "medium",
+      "name": "category",
       "args": null,
       "storageKey": null
     },
@@ -152,5 +152,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f14fcfc3a5f459f969e77eb0b8920325';
+(node as any).hash = '0c49f0c238fa2268b741ee12e4c86538';
 export default node;

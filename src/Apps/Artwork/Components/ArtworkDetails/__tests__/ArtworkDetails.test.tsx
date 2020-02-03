@@ -73,7 +73,7 @@ describe("ArtworkDetails", () => {
   it("Does not render the additional details section for an artwork who has no metadata", async () => {
     const emptyData = {
       ...ArtworkDetailsFixture,
-      medium: null,
+      category: null,
       series: null,
       publisher: null,
       manufacturer: null,
