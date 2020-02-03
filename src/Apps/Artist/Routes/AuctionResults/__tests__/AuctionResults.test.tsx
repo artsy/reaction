@@ -38,17 +38,17 @@ describe("AuctionResults", () => {
     })
 
     it("renders proper elements", () => {
-      expect(wrapper.find("LargeSelect").length).toBe(1)
+      expect(wrapper.find("SelectSmall").length).toBe(1)
       expect(wrapper.find("Pagination").length).toBe(1)
       expect(wrapper.find("ArtistAuctionResultItem").length).toBe(10)
     })
 
     it("renders the proper count", () => {
-      expect(wrapper.html()).toContain("830 Results")
+      expect(wrapper.html()).toContain("Showing 830 results")
     })
 
     it("renders proper select options", () => {
-      const html = wrapper.find("LargeSelect").html()
+      const html = wrapper.find("SelectSmall").html()
       expect(html).toContain("Most recent")
       expect(html).toContain("Estimate")
       expect(html).toContain("Sale price")
