@@ -60,13 +60,12 @@ describe("ArtworkDetails", () => {
         image_rights: null,
         framed: null,
       })
-      expect(wrapper.html()).toContain("Medium")
       expect(wrapper.html()).toContain("Signature")
       expect(wrapper.html()).toContain("Condition")
       expect(wrapper.html()).toContain("Certificate of authenticity")
       expect(
         wrapper.find("ArtworkDetailsAdditionalInfo").find("Row").length
-      ).toBe(4)
+      ).toBe(3)
     })
   })
 
