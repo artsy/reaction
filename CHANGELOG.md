@@ -1,3 +1,15 @@
+# v25.2.1 (Mon Feb 03 2020)
+
+#### 🐛  Bug Fix
+
+- @eessex => Fix SSR on article pages [#3125](https://github.com/artsy/reaction/pull/3125) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v25.2.0 (Mon Feb 03 2020)
 
 #### 🚀  Enhancement
