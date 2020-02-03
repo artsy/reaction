@@ -23,7 +23,7 @@ export const SortSelect = () => {
     <Subscribe to={[AuctionResultsState]}>
       {(filters: AuctionResultsState) => (
         <SelectSmall
-          title="Sort:"
+          title="Sort"
           options={SORTS}
           selected={filters.state.sort}
           onSelect={filters.setSort}
