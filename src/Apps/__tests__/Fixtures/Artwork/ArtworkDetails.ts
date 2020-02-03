@@ -45,7 +45,7 @@ export const ArtworkDetailsFixture: ArtworkDetails_Test_QueryRawResponse["artwor
     label: "Certificate of authenticity",
     details: "Not included",
   },
-  medium: "Oil on canvas",
+  category: "Painting",
   series: "Lorem Ipsum Dolor",
   publisher: "Factory Editions, New York",
   manufacturer: "Mfg Group",

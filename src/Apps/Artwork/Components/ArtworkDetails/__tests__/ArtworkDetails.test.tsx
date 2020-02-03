@@ -60,19 +60,20 @@ describe("ArtworkDetails", () => {
         image_rights: null,
         framed: null,
       })
+      expect(wrapper.html()).toContain("Medium")
       expect(wrapper.html()).toContain("Signature")
       expect(wrapper.html()).toContain("Condition")
       expect(wrapper.html()).toContain("Certificate of authenticity")
       expect(
         wrapper.find("ArtworkDetailsAdditionalInfo").find("Row").length
-      ).toBe(3)
+      ).toBe(4)
     })
   })
 
   it("Does not render the additional details section for an artwork who has no metadata", async () => {
     const emptyData = {
       ...ArtworkDetailsFixture,
-      medium: null,
+      category: null,
       series: null,
       publisher: null,
       manufacturer: null,
