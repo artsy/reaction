@@ -49,7 +49,7 @@ describe("AuctionResults", () => {
 
     it("renders proper select options", () => {
       const html = wrapper.find("SelectSmall").html()
-      expect(html).toContain("Most recent")
+      expect(html).toContain("Sale Date (Most Recent First)")
       expect(html).toContain("Estimate")
       expect(html).toContain("Sale price")
     })
