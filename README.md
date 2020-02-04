@@ -28,7 +28,7 @@
 
 ## Instructions
 
-- Development of components happen in [storybooks](https://getstorybook.io):
+- Development of components happen in [storybooks](https://storybook.js.org/):
 
         $ yarn start
         $ open http://localhost:9001/
