@@ -1,5 +1,6 @@
 import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import ActionTypes from "farce/lib/ActionTypes"
+import { get } from "Utils/get"
 import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 
@@ -13,22 +14,26 @@ const logger = createLogger("Artsy/Analytics/trackingMiddleware")
  * @see https://github.com/4Catalyzer/farce/blob/master/src/ActionTypes.js
  */
 export function trackingMiddleware() {
-  return _store => next => action => {
+  return store => next => action => {
     const { type, payload } = action
 
     switch (type) {
       case ActionTypes.UPDATE_LOCATION: {
         const { pathname } = payload
+        const referrer = get(
+          store.getState(),
+          state => state.found.match.location.pathname
+        )
 
         // Pluck segment analytics instance from force
         const analytics =
           typeof window.analytics !== "undefined" && window.analytics
 
         if (analytics) {
-          if (pathname) logger.warn("Tracking PageView:", pathname)
+          logger.warn("Tracking PageView:", pathname)
 
           analytics.page(
-            { path: pathname },
+            { path: pathname, referrer },
             { integrations: { Marketo: false } }
           )
 
