@@ -27,12 +27,6 @@ import {
 import { ReviewFragmentContainer } from "../Review"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 jest.unmock("react-relay")
 
 const testOrder: ReviewTestQueryRawResponse["order"] = {
@@ -186,7 +180,6 @@ describe("Review", () => {
           },
         },
       })
-      mockTrackPageView.mockClear()
     })
 
     it("shows an active offer stepper if the order is an Offer Order", () => {
@@ -281,10 +274,5 @@ describe("Review", () => {
       await page.clickSubmit()
       expect(handleCardSetup).toBeCalledWith("client-secret")
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

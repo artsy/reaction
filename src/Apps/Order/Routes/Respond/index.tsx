@@ -25,7 +25,6 @@ import {
 } from "Apps/Order/Utils/commitMutation"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { trackPageViewWrapper } from "Artsy/Analytics/trackPageViewWrapper"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
@@ -353,7 +352,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 }
 
 export const RespondFragmentContainer = createFragmentContainer(
-  injectCommitMutation(injectDialog(trackPageViewWrapper(RespondRoute))),
+  injectCommitMutation(injectDialog(RespondRoute)),
   {
     order: graphql`
       fragment Respond_order on CommerceOrder {

@@ -26,12 +26,6 @@ import {
 import { ShippingFragmentContainer } from "../Shipping"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 jest.unmock("react-relay")
 
 const fillAddressForm = (component: any, address: Address) => {
@@ -83,10 +77,6 @@ describe("Shipping", () => {
       }
     `,
     TestPage: ShippingTestPage,
-  })
-
-  beforeEach(() => {
-    mockTrackPageView.mockClear()
   })
 
   it("removes radio group if pickup_available flag is false", async () => {
@@ -393,10 +383,5 @@ describe("Shipping", () => {
       )
       expect(page.orderStepperCurrentStep).toBe("Shipping")
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

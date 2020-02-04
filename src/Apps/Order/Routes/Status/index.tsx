@@ -12,7 +12,6 @@ import { Status_order } from "__generated__/Status_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Artsy/Analytics/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
@@ -314,57 +313,54 @@ const StyledTransactionDetailsSummaryItem = styled(
   `};
 `
 
-export const StatusFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(StatusRoute),
-  {
-    order: graphql`
-      fragment Status_order on CommerceOrder {
-        __typename
-        internalID
-        code
-        state
-        mode
-        stateReason
-        stateExpiresAt(format: "MMM D")
-        requestedFulfillment {
-          ... on CommerceShip {
-            __typename
-          }
-          ... on CommercePickup {
-            __typename
-          }
+export const StatusFragmentContainer = createFragmentContainer(StatusRoute, {
+  order: graphql`
+    fragment Status_order on CommerceOrder {
+      __typename
+      internalID
+      code
+      state
+      mode
+      stateReason
+      stateExpiresAt(format: "MMM D")
+      requestedFulfillment {
+        ... on CommerceShip {
+          __typename
         }
-        ...ArtworkSummaryItem_order
-        ...TransactionDetailsSummaryItem_order
-        ...ShippingSummaryItem_order
-        ...CreditCardSummaryItem_order
-        lineItems {
-          edges {
-            node {
-              fulfillments {
-                edges {
-                  node {
-                    courier
-                    trackingId
-                    estimatedDelivery(format: "MMM Do, YYYY")
-                  }
+        ... on CommercePickup {
+          __typename
+        }
+      }
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
+      lineItems {
+        edges {
+          node {
+            fulfillments {
+              edges {
+                node {
+                  courier
+                  trackingId
+                  estimatedDelivery(format: "MMM Do, YYYY")
                 }
               }
             }
           }
         }
-        ... on CommerceOfferOrder {
-          myLastOffer {
-            internalID
-            amount(precision: 2)
-            amountCents
-            shippingTotal(precision: 2)
-            shippingTotalCents
-            taxTotal(precision: 2)
-            taxTotalCents
-          }
+      }
+      ... on CommerceOfferOrder {
+        myLastOffer {
+          internalID
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
         }
       }
-    `,
-  }
-)
+    }
+  `,
+})

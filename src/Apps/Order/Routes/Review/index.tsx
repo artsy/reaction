@@ -18,7 +18,6 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteConfig, Router } from "found"
@@ -410,7 +409,7 @@ export class ReviewRoute extends Component<ReviewProps, ReviewState> {
 }
 
 export const ReviewFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(ReviewRoute))),
+  injectCommitMutation(injectDialog(ReviewRoute)),
   {
     order: graphql`
       fragment Review_order on CommerceOrder {

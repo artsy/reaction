@@ -22,7 +22,6 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Artsy"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -257,7 +256,7 @@ export class Accept extends Component<AcceptProps> {
 }
 
 export const AcceptFragmentContainer = createFragmentContainer(
-  injectCommitMutation(injectDialog(trackPageViewWrapper(Accept))),
+  injectCommitMutation(injectDialog(Accept)),
   {
     order: graphql`
       fragment Accept_order on CommerceOrder {
