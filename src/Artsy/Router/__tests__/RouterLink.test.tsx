@@ -4,12 +4,6 @@ import { Link } from "found"
 import React from "react"
 import { RouterLink } from "../RouterLink"
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 describe("RouterLink", () => {
   const getWrapper = async (props: any = {}) => {
     return await mount(
@@ -36,10 +30,6 @@ describe("RouterLink", () => {
       }
     })
   }
-
-  beforeEach(() => {
-    mockTrackPageView.mockClear()
-  })
 
   it("uses the <Link> component if within a router context", async () => {
     const wrapper = await getWrapper()

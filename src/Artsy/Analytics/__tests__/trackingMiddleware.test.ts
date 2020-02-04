@@ -1,9 +1,10 @@
+import ActionTypes from "farce/lib/ActionTypes"
 import { trackingMiddleware } from "../trackingMiddleware"
 
 declare const global: any
 
 describe("trackingMiddleware", () => {
-  const analytics = global.analytics
+  const analytics = window.analytics
 
   beforeEach(() => {
     window.analytics = { page: jest.fn() }
@@ -17,7 +18,7 @@ describe("trackingMiddleware", () => {
     trackingMiddleware()(null)(props => {
       // noop
     })({
-      type: "@@farce/UPDATE_LOCATION",
+      type: ActionTypes.UPDATE_LOCATION,
       payload: {
         pathname: "foo",
       },
@@ -33,7 +34,7 @@ describe("trackingMiddleware", () => {
     trackingMiddleware()(null)(props => {
       // noop
     })({
-      type: "@@farce/POP_LOCAION",
+      type: ActionTypes.PUSH,
       payload: {
         pathname: "bar",
       },

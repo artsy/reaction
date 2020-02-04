@@ -1,31 +1,16 @@
 import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
+import ActionTypes from "farce/lib/ActionTypes"
 import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Artsy/Analytics/trackingMiddleware")
 
-const ActionTypes = {
-  UPDATE_LOCATION: "@@farce/UPDATE_LOCATION",
-
-  /**
-   * Unused Farce/Found router events.
-   * TODO: Remove once we're sure we don't need to intercept anything else or
-   * after client side routing launches.
-   */
-  // INIT: "@@farce/INIT",
-  // PUSH: "@@farce/PUSH",
-  // REPLACE: "@@farce/REPLACE",
-  // TRANSITION: "@@farce/TRANSITION",
-  // GO: "@@farce/GO",
-  // CREATE_HREF: "@@farce/CREATE_HREF",
-  // CREATE_LOCATION: "@@farce/CREATE_LOCATION",
-  // DISPOSE: "@@farce/DISPOSE",
-}
-
 /**
- * PageView tracking middleware for use in our router apps.
+ * PageView tracking middleware for use in our router apps. Middleware conforms
+ * to Redux middleware spec.
  *
  * @see Artsy/Router/buildClientApp.tsx for mount point
+ * @see https://github.com/4Catalyzer/farce/blob/master/src/ActionTypes.js
  */
 export function trackingMiddleware() {
   return _store => next => action => {
@@ -40,7 +25,7 @@ export function trackingMiddleware() {
           typeof window.analytics !== "undefined" && window.analytics
 
         if (analytics) {
-          logger.warn("Tracking PageView:", pathname)
+          if (pathname) logger.warn("Tracking PageView:", pathname)
 
           analytics.page(
             { path: pathname },

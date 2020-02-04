@@ -56,7 +56,9 @@ export class ArtworkApp extends React.Component<Props> {
         action_type: Schema.ActionType.ViewedProduct,
         product_id: internalID,
       }
-      if (tracking) tracking.trackEvent(trackingData)
+      if (tracking) {
+        tracking.trackEvent(trackingData)
+      }
     }
   }
 
@@ -77,7 +79,9 @@ export class ArtworkApp extends React.Component<Props> {
       artwork: { listPrice, availability, is_offerable, is_acquireable },
     } = this.props
 
-    // Pageview
+    // FIXME: This breaks our global pageview tracking in the router level.
+    // Can these props be tracked on mount using our typical @track() or
+    // trackEvent() patterns as used in other apps?
     const properties = {
       path: window.location.pathname,
       acquireable: is_acquireable,
