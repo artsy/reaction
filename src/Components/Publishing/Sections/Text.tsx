@@ -142,7 +142,7 @@ export class Text extends Component<Props, State> {
     const props = { artist, onOpenAuthModal }
 
     return (
-      <FollowContainer>
+      <FollowContainer key={artistId}>
         <FollowButton {...props} />
       </FollowContainer>
     )
