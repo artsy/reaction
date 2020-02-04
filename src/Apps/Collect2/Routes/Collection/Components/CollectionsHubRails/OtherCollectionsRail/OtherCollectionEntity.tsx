@@ -7,6 +7,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
+import { resize } from "Utils/resizer"
 
 export interface CollectionProps {
   member: OtherCollectionEntity_member
@@ -37,7 +38,13 @@ export const OtherCollectionEntity: React.FC<CollectionProps> = ({
       <Flex alignItems="center" height="60px">
         {thumbnail && (
           <ImageContainer>
-            <ThumbnailImage src={thumbnail} />
+            <ThumbnailImage
+              src={resize(thumbnail, {
+                width: 60,
+                height: 60,
+                convert_to: "jpg",
+              })}
+            />
           </ImageContainer>
         )}
         <Box>
