@@ -1,4 +1,4 @@
-import { Col, Flex, Row } from "@artsy/palette"
+import { Col, Flex, Row, Sans, Separator, Serif } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { Component } from "react"
@@ -6,8 +6,7 @@ import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
-// import { TableColumns } from "./TableColumns"
-// import { TableSidebar } from "./TableSidebar"
+import { TableSidebar } from "./TableSidebar"
 
 import { Box, Spacer } from "@artsy/palette"
 
@@ -111,41 +110,52 @@ class AuctionResultsContainer extends Component<
           return (
             <>
               <Row>
-                {/* 
+                <Box pb={2}>
+                  <Sans size="5t">Auction results</Sans>
+                  <Serif size="3" color="black100">
+                    Some copy about definitions and methodology and link to it
+                    here.
+                  </Serif>
+                </Box>
+              </Row>
+              <Row>
                 <Col sm={2} pr={[0, 2]}>
-                   <TableSidebar count={totalCount} />
+                  <TableSidebar />
                 </Col>
-                */}
 
-                {/* <Col sm={10}> */}
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  width="100%"
-                  mb={2}
-                >
-                  <AuctionResultsCount
-                    results={artist.auctionResultsConnection}
-                  />
-                  <SortSelect />
-                </Flex>
-                <Spacer mt={3} />
+                <Col sm={10}>
+                  <Row pb={2}>
+                    <Separator />
+                  </Row>
+                  <Flex
+                    justifyContent="space-between"
+                    alignItems="center"
+                    width="100%"
+                    mb={2}
+                  >
+                    <AuctionResultsCount
+                      results={artist.auctionResultsConnection}
+                    />
+                    <SortSelect />
+                  </Flex>
 
-                <LoadingArea isLoading={this.state.isLoading}>
-                  {this.props.artist.auctionResultsConnection.edges.map(
-                    ({ node }, index) => {
-                      return (
-                        <React.Fragment key={index}>
-                          <AuctionResultItem
-                            auctionResult={node}
-                            lastChild={index === auctionResultsLength - 1}
-                          />
-                        </React.Fragment>
-                      )
-                    }
-                  )}
-                </LoadingArea>
-                {/* </Col> */}
+                  <Spacer mt={3} />
+
+                  <LoadingArea isLoading={this.state.isLoading}>
+                    {this.props.artist.auctionResultsConnection.edges.map(
+                      ({ node }, index) => {
+                        return (
+                          <React.Fragment key={index}>
+                            <AuctionResultItem
+                              auctionResult={node}
+                              lastChild={index === auctionResultsLength - 1}
+                            />
+                          </React.Fragment>
+                        )
+                      }
+                    )}
+                  </LoadingArea>
+                </Col>
               </Row>
 
               <Row>
