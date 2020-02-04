@@ -17,7 +17,7 @@ export const routes: RouteConfig[] = [
     `,
     prepareVariables: (params, props) => {
       return {
-        first: 5,
+        first: 10,
       }
     },
     cacheConfig: {

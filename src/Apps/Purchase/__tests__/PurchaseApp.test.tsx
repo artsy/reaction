@@ -132,7 +132,7 @@ describe("Purchase app", () => {
           .simulate("click")
         expect(refetchSpy).toHaveBeenCalledTimes(1)
         expect(refetchSpy.mock.calls[0][0]).toEqual(
-          expect.objectContaining({ first: 5, after: "NQ" })
+          expect.objectContaining({ first: 10, after: "NQ" })
         )
       })
     })

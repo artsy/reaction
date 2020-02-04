@@ -80,7 +80,7 @@ const OrderRow = (props: OrderRowProps) => {
   )
 }
 
-const PAGE_SIZE = 5
+const PAGE_SIZE = 10
 
 const loadNext = (pageInfo, relay, setLoading) => {
   const { hasNextPage, endCursor } = pageInfo
