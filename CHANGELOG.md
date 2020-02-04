@@ -1,3 +1,15 @@
+# v25.3.1 (Tue Feb 04 2020)
+
+#### 🐛  Bug Fix
+
+- Remove Node verson requirement [#3128](https://github.com/artsy/reaction/pull/3128) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.3.0 (Tue Feb 04 2020)
 
 #### 🚀  Enhancement
