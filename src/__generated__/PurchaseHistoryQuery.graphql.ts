@@ -2,33 +2,39 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_PurchaseQueryVariables = {};
-export type routes_PurchaseQueryResponse = {
+export type PurchaseHistoryQueryVariables = {
+    first: number;
+    last?: number | null;
+    after?: string | null;
+    before?: string | null;
+};
+export type PurchaseHistoryQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"PurchaseApp_me">;
+        readonly " $fragmentRefs": FragmentRefs<"PurchaseHistory_me">;
     } | null;
 };
-export type routes_PurchaseQuery = {
-    readonly response: routes_PurchaseQueryResponse;
-    readonly variables: routes_PurchaseQueryVariables;
+export type PurchaseHistoryQuery = {
+    readonly response: PurchaseHistoryQueryResponse;
+    readonly variables: PurchaseHistoryQueryVariables;
 };
 
 
 
 /*
-query routes_PurchaseQuery {
+query PurchaseHistoryQuery(
+  $first: Int!
+  $last: Int
+  $after: String
+  $before: String
+) {
   me {
-    ...PurchaseApp_me
+    ...PurchaseHistory_me_pbnwq
     id
   }
 }
 
-fragment PurchaseApp_me on Me {
-  ...PurchaseHistory_me
-}
-
-fragment PurchaseHistory_me on Me {
-  orders(first: 10) {
+fragment PurchaseHistory_me_pbnwq on Me {
+  orders(first: $first, last: $last, before: $before, after: $after) {
     edges {
       node {
         __typename
@@ -92,21 +98,69 @@ fragment PurchaseHistory_me on Me {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "first",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "last",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "after",
+    "type": "String",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "before",
+    "type": "String",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "after"
+  },
+  {
+    "kind": "Variable",
+    "name": "before",
+    "variableName": "before"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "first"
+  },
+  {
+    "kind": "Variable",
+    "name": "last",
+    "variableName": "last"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v1 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v2 = [
+v4 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -133,10 +187,10 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseHistoryQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -149,8 +203,8 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "PurchaseApp_me",
-            "args": null
+            "name": "PurchaseHistory_me",
+            "args": (v1/*: any*/)
           }
         ]
       }
@@ -158,8 +212,8 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_PurchaseQuery",
-    "argumentDefinitions": [],
+    "name": "PurchaseHistoryQuery",
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -174,14 +228,8 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "orders",
-            "storageKey": "orders(first:10)",
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 10
-              }
-            ],
+            "storageKey": null,
+            "args": (v1/*: any*/),
             "concreteType": "CommerceOrderConnectionWithTotalCount",
             "plural": false,
             "selections": [
@@ -210,7 +258,7 @@ return {
                         "args": null,
                         "storageKey": null
                       },
-                      (v0/*: any*/),
+                      (v2/*: any*/),
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -317,7 +365,7 @@ return {
                                           }
                                         ]
                                       },
-                                      (v0/*: any*/),
+                                      (v2/*: any*/),
                                       {
                                         "kind": "ScalarField",
                                         "alias": null,
@@ -332,17 +380,17 @@ return {
                                         "args": null,
                                         "storageKey": null
                                       },
-                                      (v1/*: any*/)
+                                      (v3/*: any*/)
                                     ]
                                   },
-                                  (v1/*: any*/)
+                                  (v3/*: any*/)
                                 ]
                               }
                             ]
                           }
                         ]
                       },
-                      (v1/*: any*/)
+                      (v3/*: any*/)
                     ]
                   }
                 ]
@@ -364,7 +412,7 @@ return {
                     "args": null,
                     "concreteType": "CommercePageCursor",
                     "plural": true,
-                    "selections": (v2/*: any*/)
+                    "selections": (v4/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -374,7 +422,7 @@ return {
                     "args": null,
                     "concreteType": "CommercePageCursor",
                     "plural": false,
-                    "selections": (v2/*: any*/)
+                    "selections": (v4/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -384,7 +432,7 @@ return {
                     "args": null,
                     "concreteType": "CommercePageCursor",
                     "plural": false,
-                    "selections": (v2/*: any*/)
+                    "selections": (v4/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -394,7 +442,7 @@ return {
                     "args": null,
                     "concreteType": "CommercePageCursor",
                     "plural": false,
-                    "selections": (v2/*: any*/)
+                    "selections": (v4/*: any*/)
                   }
                 ]
               },
@@ -439,19 +487,19 @@ return {
               }
             ]
           },
-          (v1/*: any*/)
+          (v3/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_PurchaseQuery",
+    "name": "PurchaseHistoryQuery",
     "id": null,
-    "text": "query routes_PurchaseQuery {\n  me {\n    ...PurchaseApp_me\n    id\n  }\n}\n\nfragment PurchaseApp_me on Me {\n  ...PurchaseHistory_me\n}\n\nfragment PurchaseHistory_me on Me {\n  orders(first: 10) {\n    edges {\n      node {\n        __typename\n        internalID\n        code\n        state\n        mode\n        buyerTotal\n        lineItems {\n          edges {\n            node {\n              artwork {\n                date\n                image {\n                  resized(width: 55) {\n                    url\n                  }\n                }\n                internalID\n                title\n                artist_names: artistNames\n                id\n              }\n              id\n            }\n          }\n        }\n        id\n      }\n    }\n    pageCursors {\n      around {\n        cursor\n        isCurrent\n        page\n      }\n      first {\n        cursor\n        isCurrent\n        page\n      }\n      last {\n        cursor\n        isCurrent\n        page\n      }\n      previous {\n        cursor\n        isCurrent\n        page\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+    "text": "query PurchaseHistoryQuery(\n  $first: Int!\n  $last: Int\n  $after: String\n  $before: String\n) {\n  me {\n    ...PurchaseHistory_me_pbnwq\n    id\n  }\n}\n\nfragment PurchaseHistory_me_pbnwq on Me {\n  orders(first: $first, last: $last, before: $before, after: $after) {\n    edges {\n      node {\n        __typename\n        internalID\n        code\n        state\n        mode\n        buyerTotal\n        lineItems {\n          edges {\n            node {\n              artwork {\n                date\n                image {\n                  resized(width: 55) {\n                    url\n                  }\n                }\n                internalID\n                title\n                artist_names: artistNames\n                id\n              }\n              id\n            }\n          }\n        }\n        id\n      }\n    }\n    pageCursors {\n      around {\n        cursor\n        isCurrent\n        page\n      }\n      first {\n        cursor\n        isCurrent\n        page\n      }\n      last {\n        cursor\n        isCurrent\n        page\n      }\n      previous {\n        cursor\n        isCurrent\n        page\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '2c1326ea8ff7865c90f29b2e8ff141c7';
+(node as any).hash = '1290b839c54d6117a01b4c8e69d3fa7a';
 export default node;
