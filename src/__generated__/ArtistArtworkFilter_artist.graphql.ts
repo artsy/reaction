@@ -34,16 +34,6 @@ const node: ReaderFragment = {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "partnerCategory",
-      "type": "[String]",
-      "defaultValue": [
-        "blue-chip",
-        "top-established",
-        "top-emerging"
-      ]
-    },
-    {
-      "kind": "LocalArgument",
       "name": "acquireable",
       "type": "Boolean",
       "defaultValue": null
@@ -83,12 +73,6 @@ const node: ReaderFragment = {
       "name": "forSale",
       "type": "Boolean",
       "defaultValue": null
-    },
-    {
-      "kind": "LocalArgument",
-      "name": "hasFilter",
-      "type": "Boolean",
-      "defaultValue": false
     },
     {
       "kind": "LocalArgument",
@@ -344,5 +328,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '09d117cb871dd244de4b2a5ea74134d4';
+(node as any).hash = '256a5291627f3ade454521ec4aa0778f';
 export default node;

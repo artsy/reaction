@@ -56,24 +56,4 @@ describe("RouterLink", () => {
     const wrapper = await getWrapper({ hey: true, you: true })
     expect(Object.keys(wrapper.find("a").props())).not.toContain(["hey", "you"])
   })
-
-  it("tracks a pageview and calls onclick when navigating to the same page type", async () => {
-    const onClick = jest.fn()
-    const wrapper = await getWrapper({
-      onClick,
-      initialRoute: "/foo/23",
-      to: "/foo/45",
-    })
-    wrapper.find("a").simulate("click")
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
-    expect(onClick).toHaveBeenCalledTimes(1)
-  })
-
-  it("doesnt track a pageview and calls onclick when navigating to a different page type", async () => {
-    const onClick = jest.fn()
-    const wrapper = await getWrapper({ onClick })
-    wrapper.find("a").simulate("click")
-    expect(mockTrackPageView).not.toHaveBeenCalled()
-    expect(onClick).toHaveBeenCalledTimes(1)
-  })
 })

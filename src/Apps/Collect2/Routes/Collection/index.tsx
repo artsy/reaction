@@ -19,7 +19,6 @@ import { data as sd } from "sharify"
 import truncate from "trunc-html"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
-import { trackPageViewWrapper } from "Artsy"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import {
   ArtworkFilterContextProvider,
@@ -49,23 +48,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
 
   UNSAFE_componentWillMount() {
     this.collectionNotFound(this.props.collection)
-  }
-
-  // TODO: Remove after AB test ends.
-  componentDidMount() {
-    const { tracking } = this.props
-    const { CLIENT_NAVIGATION_V2 } = sd
-
-    const experiment = "client_navigation_v2"
-    const variation = CLIENT_NAVIGATION_V2
-    tracking.trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    })
   }
 
   render() {
@@ -232,7 +214,7 @@ export const CollectionAppQuery = graphql`
 `
 
 export const CollectionRefetchContainer = createRefetchContainer(
-  withSystemContext(trackPageViewWrapper(CollectionApp)),
+  withSystemContext(CollectionApp),
   {
     collection: graphql`
       fragment Collection_collection on MarketingCollection

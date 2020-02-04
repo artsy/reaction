@@ -4,7 +4,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Search/Components/NavigationTabs"
 import { SearchMeta } from "Apps/Search/Components/SearchMeta"
-import { trackPageViewWrapper, withSystemContext } from "Artsy"
+import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 
@@ -15,7 +15,6 @@ import { RouterState, withRouter } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { TrackingProp } from "react-tracking"
-import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import { ZeroState } from "./Components/ZeroState"
 
@@ -37,23 +36,6 @@ const TotalResults: React.SFC<{ count: number; term: string }> = ({
   context_page: Schema.PageName.SearchPage,
 })
 export class SearchApp extends React.Component<Props> {
-  // TODO: Remove after AB test ends.
-  componentDidMount() {
-    const { tracking } = this.props
-    const { CLIENT_NAVIGATION_V2 } = sd
-
-    const experiment = "client_navigation_v2"
-    const variation = CLIENT_NAVIGATION_V2
-    tracking.trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    })
-  }
-
   renderResults(count: number, artworkCount: number) {
     const {
       viewer,
@@ -154,7 +136,7 @@ export class SearchApp extends React.Component<Props> {
 }
 
 export const SearchAppFragmentContainer = createFragmentContainer(
-  withSystemContext(withRouter(trackPageViewWrapper(SearchApp))),
+  withSystemContext(withRouter(SearchApp)),
   {
     viewer: graphql`
       fragment SearchApp_viewer on Viewer

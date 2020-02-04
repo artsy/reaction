@@ -1,6 +1,6 @@
 import { Box, Separator, Serif, Spacer } from "@artsy/palette"
 import { Match, Router } from "found"
-import React, { useEffect } from "react"
+import React from "react"
 import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -18,7 +18,6 @@ import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
-import { trackPageViewWrapper } from "Artsy"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
 import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
@@ -54,22 +53,6 @@ export const CollectApp = track({
       name: breadcrumbTitle,
     })
   }
-
-  // TODO: Remove after AB test ends.
-  useEffect(() => {
-    const { CLIENT_NAVIGATION_V2 } = sd
-
-    const experiment = "client_navigation_v2"
-    const variation = CLIENT_NAVIGATION_V2
-    trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    })
-  }, [])
 
   return (
     <AppContainer>
@@ -155,14 +138,11 @@ export const CollectApp = track({
   )
 })
 
-export const CollectAppFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(CollectApp),
-  {
-    marketingHubCollections: graphql`
-      fragment Collect_marketingHubCollections on MarketingCollection
-        @relay(plural: true) {
-        ...CollectionsHubsNav_marketingHubCollections
-      }
-    `,
-  }
-)
+export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
+  marketingHubCollections: graphql`
+    fragment Collect_marketingHubCollections on MarketingCollection
+      @relay(plural: true) {
+      ...CollectionsHubsNav_marketingHubCollections
+    }
+  `,
+})

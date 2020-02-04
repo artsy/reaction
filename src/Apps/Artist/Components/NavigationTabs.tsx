@@ -1,7 +1,7 @@
 import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
-import { track, trackPageView } from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteTab, RouteTabs } from "Components/v2/RouteTabs"
 import React from "react"
@@ -21,7 +21,7 @@ export class NavigationTabs extends React.Component<Props> {
     destination_path,
   }))
   handleClick(tab: string, destination_path: string) {
-    trackPageView({ path: destination_path })
+    // noop
   }
 
   renderTab(

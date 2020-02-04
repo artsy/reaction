@@ -175,12 +175,6 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "hasFilter",
-      "type": "Boolean",
-      "defaultValue": false
-    },
-    {
-      "kind": "LocalArgument",
       "name": "height",
       "type": "String",
       "defaultValue": null
@@ -683,11 +677,6 @@ return {
         },
         {
           "kind": "Variable",
-          "name": "hasFilter",
-          "variableName": "hasFilter"
-        },
-        {
-          "kind": "Variable",
           "name": "height",
           "variableName": "height"
         },
@@ -738,5 +727,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '9dba1f7c4a8329dc61cc52930b363bcd';
+(node as any).hash = '34a0568e878305a8452de5bd33524053';
 export default node;
