@@ -1,3 +1,19 @@
+# v25.3.0 (Tue Feb 04 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1720] Adds pagination to purchases page [#3123](https://github.com/artsy/reaction/pull/3123) ([@sepans](https://github.com/sepans))
+
+#### 🐛  Bug Fix
+
+- Resize category rail [#3127](https://github.com/artsy/reaction/pull/3127) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.2.1 (Mon Feb 03 2020)
 
 #### 🐛  Bug Fix
