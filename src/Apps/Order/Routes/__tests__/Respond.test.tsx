@@ -20,12 +20,6 @@ jest.mock("Utils/Events", () => ({
 }))
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 jest.mock("Utils/getCurrentTimeAsIsoString")
 jest.mock("Utils/logger")
 
@@ -420,15 +414,10 @@ describe("The respond page", () => {
 
     beforeAll(() => {
       global.setInterval = jest.fn()
-      mockTrackPageView.mockClear()
     })
 
     afterAll(() => {
       global.setInterval = realSetInterval
-    })
-
-    it("tracks a pageview", () => {
-      expect(mockTrackPageView).toHaveBeenCalledTimes(1)
     })
 
     it("tracks the offer input focus", async () => {

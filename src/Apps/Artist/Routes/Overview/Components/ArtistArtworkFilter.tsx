@@ -70,10 +70,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
     artist: graphql`
       fragment ArtistArtworkFilter_artist on Artist
         @argumentDefinitions(
-          partnerCategory: {
-            type: "[String]"
-            defaultValue: ["blue-chip", "top-established", "top-emerging"]
-          }
           acquireable: { type: "Boolean" }
           aggregations: { type: "[ArtworkAggregation]" }
           artistID: { type: "String" }
@@ -81,7 +77,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
           attributionClass: { type: "[String]" }
           color: { type: "String" }
           forSale: { type: "Boolean" }
-          hasFilter: { type: "Boolean", defaultValue: false }
           height: { type: "String" }
           inquireableOnly: { type: "Boolean" }
           keyword: { type: "String" }
@@ -146,7 +141,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
       $attributionClass: [String]
       $color: String
       $forSale: Boolean
-      $hasFilter: Boolean!
       $height: String
       $inquireableOnly: Boolean
       $keyword: String
@@ -169,7 +163,6 @@ export const ArtistArtworkFilterRefetchContainer = createRefetchContainer(
             attributionClass: $attributionClass
             color: $color
             forSale: $forSale
-            hasFilter: $hasFilter
             height: $height
             inquireableOnly: $inquireableOnly
             keyword: $keyword

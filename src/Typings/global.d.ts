@@ -15,6 +15,14 @@ declare global {
   interface Window {
     __RELAY_BOOTSTRAP__: string
     grecaptcha: any
+    // FIXME: Add real type
+    analytics: any
+    desktopPageTimeTrackers: [
+      {
+        path: string
+        reset: (path) => void
+      }
+    ]
   }
 }
 

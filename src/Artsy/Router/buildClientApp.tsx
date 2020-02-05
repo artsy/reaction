@@ -21,6 +21,7 @@ import { Boot } from "Artsy/Router/Boot"
 
 import { RouterConfig } from "./"
 
+import { trackingMiddleware } from "Artsy/Analytics/trackingMiddleware"
 import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 interface Resolve {
@@ -64,6 +65,9 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         createQueryMiddleware({
           parse: queryStringParsing,
           stringify: qs.stringify,
+        }),
+        trackingMiddleware({
+          excludePaths: ["/artwork/"],
         }),
       ]
       const resolver = new Resolver(relayEnvironment)

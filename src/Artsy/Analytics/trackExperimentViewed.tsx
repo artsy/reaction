@@ -1,7 +1,6 @@
 import * as Schema from "Artsy/Analytics"
 import { data as sd } from "sharify"
 
-declare const window: any
 export const trackExperimentViewed = (name: string) => {
   if (typeof window.analytics !== "undefined") {
     const variation = sd[name.toUpperCase()]

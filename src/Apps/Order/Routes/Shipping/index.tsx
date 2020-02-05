@@ -44,7 +44,6 @@ import {
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
-import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Router } from "found"
@@ -466,7 +465,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 }
 
 export const ShippingFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(ShippingRoute))),
+  injectCommitMutation(injectDialog(ShippingRoute)),
   {
     order: graphql`
       fragment Shipping_order on CommerceOrder {

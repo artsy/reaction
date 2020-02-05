@@ -23,11 +23,6 @@ jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
 jest.mock(
   "Apps/Order/Components/PaymentPicker",
   // not sure why this is neccessary :(
@@ -101,7 +96,6 @@ describe("Payment", () => {
   beforeEach(() => {
     ;(window.location.assign as any).mockReset()
     global.setInterval = jest.fn()
-    mockTrackPageView.mockClear()
   })
 
   afterEach(() => {
@@ -220,10 +214,5 @@ describe("Payment", () => {
 
     await page.clickSubmit()
     expect(handleCardAction).toBeCalledWith("client-secret")
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

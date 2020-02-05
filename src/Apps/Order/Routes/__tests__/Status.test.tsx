@@ -17,12 +17,6 @@ import { graphql } from "react-relay"
 import { StatusFragmentContainer } from "../Status"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 jest.unmock("react-relay")
 
 class StatusTestPage extends OrderAppTestPage {
@@ -72,10 +66,6 @@ describe("Status", () => {
       },
     })
   }
-
-  beforeEach(() => {
-    mockTrackPageView.mockClear()
-  })
 
   describe("offers", () => {
     it("should should have a title containing status", async () => {
@@ -328,11 +318,5 @@ describe("Status", () => {
         page.expectMessage()
       })
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await env.buildPage()
-
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

@@ -18,11 +18,6 @@ import {
 import { AcceptFragmentContainer } from "../Accept"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
 jest.unmock("react-relay")
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
@@ -76,7 +71,6 @@ describe("Accept seller offer", () => {
 
   beforeEach(() => {
     ;(window.location.assign as any).mockReset()
-    mockTrackPageView.mockClear()
   })
 
   describe("with default data", () => {
@@ -210,10 +204,5 @@ describe("Accept seller offer", () => {
       const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].slug
       expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

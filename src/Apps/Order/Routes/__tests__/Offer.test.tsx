@@ -23,12 +23,6 @@ jest.mock("Utils/Events", () => ({
 
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 const testOrder: OfferTestQueryRawResponse["order"] = {
   ...UntouchedOfferOrder,
   internalID: "1234",
@@ -214,12 +208,6 @@ describe("Offer InitialMutation", () => {
     beforeEach(async () => {
       page = await buildPage()
       mockPostEvent.mockReset()
-      mockTrackPageView.mockClear()
-    })
-
-    it("tracks a pageview", async () => {
-      await buildPage()
-      expect(mockTrackPageView).toHaveBeenCalledTimes(1)
     })
 
     it("tracks the offer input focus", () => {

@@ -143,7 +143,6 @@ export const ArtistOverviewQuery = graphql`
     $attributionClass: [String]
     $color: String
     $forSale: Boolean
-    $hasFilter: Boolean!
     $height: String
     $inquireableOnly: Boolean
     $keyword: String
@@ -166,7 +165,6 @@ export const ArtistOverviewQuery = graphql`
           attributionClass: $attributionClass
           color: $color
           forSale: $forSale
-          hasFilter: $hasFilter
           height: $height
           inquireableOnly: $inquireableOnly
           keyword: $keyword
@@ -200,7 +198,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
           attributionClass: { type: "[String]" }
           color: { type: "String" }
           forSale: { type: "Boolean" }
-          hasFilter: { type: "Boolean", defaultValue: false }
           height: { type: "String" }
           inquireableOnly: { type: "Boolean" }
           keyword: { type: "String" }
@@ -291,21 +288,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
               value
             }
           }
-          # FIXME: Might need to reenable the below.
-          # Include the below fragment so that this will match
-          # the initial load (w/ no filter applied), and thus MP
-          # will consolidate aggregations _and_ the grid into one call.
-          # Leave out this fragment if navigating to the artist page
-          # with a filter applied, as those can't be consolidated and
-          # this is extra data.
-          # artworks_connection: artworksConnection(first: 30, after: "")
-          #   @skip(if: $hasFilter) {
-          #   edges {
-          #     node {
-          #       slug
-          #     }
-          #   }
-          # }
         }
         ...ArtistArtworkFilter_artist
           @arguments(
@@ -316,7 +298,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
             attributionClass: $attributionClass
             color: $color
             forSale: $forSale
-            hasFilter: $hasFilter
             height: $height
             inquireableOnly: $inquireableOnly
             keyword: $keyword

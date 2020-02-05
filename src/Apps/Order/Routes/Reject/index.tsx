@@ -4,7 +4,6 @@ import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Artsy"
 import { Router } from "found"
 import React, { Component } from "react"
 
@@ -186,7 +185,7 @@ export class Reject extends Component<RejectProps> {
 }
 
 export const RejectFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(Reject))),
+  injectCommitMutation(injectDialog(Reject)),
   {
     order: graphql`
       fragment Reject_order on CommerceOrder {

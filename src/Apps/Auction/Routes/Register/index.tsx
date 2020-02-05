@@ -11,7 +11,6 @@ import {
   StripeWrappedRegistrationForm,
 } from "Apps/Auction/Components/RegistrationForm"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FormikActions } from "formik"
@@ -217,7 +216,7 @@ const TrackingWrappedRegisterRoute: React.FC<RegisterProps> = props => {
 }
 
 export const RegisterRouteFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(TrackingWrappedRegisterRoute),
+  TrackingWrappedRegisterRoute,
   {
     sale: graphql`
       fragment Register_sale on Sale {

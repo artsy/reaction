@@ -17,7 +17,6 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
@@ -213,7 +212,7 @@ export class CounterRoute extends Component<CounterProps> {
 }
 
 export const CounterFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(CounterRoute))),
+  injectCommitMutation(injectDialog(CounterRoute)),
   {
     order: graphql`
       fragment Counter_order on CommerceOrder {

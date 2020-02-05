@@ -3,11 +3,8 @@ import { flatten } from "lodash"
 import React, { useEffect } from "react"
 
 import { AppShell } from "Apps/Components/AppShell"
-import { trackPageView } from "Artsy"
-import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import { useSystemContext } from "Artsy/SystemContext"
 import { catchLinks } from "Utils/catchLinks"
-import { getENV } from "Utils/getENV"
 
 const ROUTE_NAMESPACE = ""
 
@@ -49,6 +46,7 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
 
   const Component = props => {
     const { router, setRouter } = useSystemContext()
+
     // Store global reference to router instance
     useEffect(() => {
       if (props.router !== router) {
@@ -62,20 +60,8 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
       catchLinks(window, href => {
         const url = ROUTE_NAMESPACE + href
         const foundUrl = props.router.matcher.matchRoutes(routes, url)
-        // Make sure to track pageviews when staying on the same page type.
-        // Collection pages link to each other using `RouterLink` which already
-        // handles this, so just in case avoid double triggering.
+
         if (foundUrl) {
-          const toPath = url.toString()
-          // TODO: Figure out why the router prop is stale.
-          // const currentPageType = props.match.location.pathname.split("/")[1]
-          const currentPageType = window.location.pathname.split("/")[1]
-          const toPageType = toPath.split("/")[1]
-          if (currentPageType === toPageType && toPageType !== "collection") {
-            trackPageView({ path: toPath })
-            if (getENV("EXPERIMENTAL_APP_SHELL"))
-              trackExperimentViewed("client_navigation_v2")
-          }
           props.router.push(url)
         } else {
           window.location.assign(url)
@@ -91,7 +77,6 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
   return [
     {
       path: ROUTE_NAMESPACE,
-
       Component: withRouter(Component),
       children: routes,
     },

@@ -6,7 +6,6 @@ import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { RouteConfig, Router } from "found"
@@ -310,7 +309,7 @@ export class NewPaymentRoute extends Component<
 }
 
 export const NewPaymentFragmentContainer = createFragmentContainer(
-  injectCommitMutation(trackPageViewWrapper(injectDialog(NewPaymentRoute))),
+  injectCommitMutation(injectDialog(NewPaymentRoute)),
   {
     me: graphql`
       fragment NewPayment_me on Me {

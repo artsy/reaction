@@ -11,12 +11,6 @@ import {
 import { RejectFragmentContainer } from "../Reject"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Artsy/Analytics/trackPageView", () => ({
-  trackPageView: jest.fn(),
-}))
-const mockTrackPageView = require("Artsy/Analytics/trackPageView")
-  .trackPageView as jest.Mock
-
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
@@ -112,7 +106,6 @@ describe("Buyer rejects seller offer", () => {
     beforeEach(async () => {
       global.setInterval = jest.fn()
       page = await buildPage()
-      mockTrackPageView.mockClear()
     })
 
     afterAll(() => {
@@ -141,10 +134,5 @@ describe("Buyer rejects seller offer", () => {
       await page.clickSubmit()
       await page.expectAndDismissDefaultErrorDialog()
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(mockTrackPageView).toHaveBeenCalledTimes(1)
   })
 })

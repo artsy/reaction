@@ -1,5 +1,5 @@
 import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
-import React from "react"
+import React, { useContext } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -22,46 +22,73 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Footer } from "Components/v2/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
+import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
-import { data as sd } from "sharify"
 import { get } from "Utils/get"
+import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+
+const logger = createLogger("Apps/Artwork/ArtworkApp")
 
 export interface Props {
   artwork: ArtworkApp_artwork
   tracking?: TrackingProp
+  routerPathname: string
 }
 
 declare const window: any
 @track()
 export class ArtworkApp extends React.Component<Props> {
-  // TODO: Move the below tracking, which consists of:
-  //
-  //  * a custom `track` event when the artwork is acquireable or in an auction
-  //  * a custom pageview event including extra metadata
-  //
-  // into an appropriate wrapper HOC.
+  /**
+   * On mount, trigger a page view and product view
+   *
+   * FIXME: We're manually invoking pageView tracking here, instead of within
+   * the `trackingMiddleware` file as we need to pass along additional metadata.
+   * Waiting on analytics team to decide if there's a better way to capture this
+   * data that remains consistent with the rest of the app.
+   */
   componentDidMount() {
     this.trackPageview()
     this.trackProductView()
-    this.trackABTest()
   }
 
-  // TODO: Remove after AB test ends.
-  trackABTest() {
-    const { tracking } = this.props
-    const { CLIENT_NAVIGATION_V2 } = sd
+  componentDidUpdate(prevProps) {
+    /**
+     * If we've changed routes within the app, trigger pageView and productView.
+     *
+     * FIXME: We're manually invoking pageView tracking here, instead of within
+     * the `trackingMiddleware` file as we need to pass along additional metadata.
+     * Waiting on analytics team to decide if there's a better way to capture this
+     * data that remains consistent with the rest of the app.
+     */
+    if (this.props.routerPathname !== prevProps.routerPathname) {
+      if (this.props.routerPathname.includes("/artwork/")) {
+        this.trackPageview()
+        this.trackProductView()
+      }
+    }
+  }
 
-    const experiment = "client_navigation_v2"
-    const variation = CLIENT_NAVIGATION_V2
-    tracking.trackEvent({
-      action_type: Schema.ActionType.ExperimentViewed,
-      experiment_id: experiment,
-      experiment_name: experiment,
-      variation_id: variation,
-      variation_name: variation,
-      nonInteraction: 1,
-    })
+  trackPageview() {
+    const {
+      artwork: { listPrice, availability, is_offerable, is_acquireable },
+    } = this.props
+
+    // FIXME: This breaks our global pageview tracking in the router level.
+    // Can these props be tracked on mount using our typical @track() or
+    // trackEvent() patterns as used in other apps?
+    const properties = {
+      path: window.location.pathname,
+      acquireable: is_acquireable,
+      offerable: is_offerable,
+      availability,
+      price_listed: !!listPrice,
+    }
+
+    if (typeof window.analytics !== "undefined") {
+      logger.warn("Tracking PageView:", properties)
+      window.analytics.page(properties, { integrations: { Marketo: false } })
+    }
   }
 
   trackProductView() {
@@ -75,7 +102,10 @@ export class ArtworkApp extends React.Component<Props> {
         action_type: Schema.ActionType.ViewedProduct,
         product_id: internalID,
       }
-      if (tracking) tracking.trackEvent(trackingData)
+      if (tracking) {
+        logger.warn("Tracking ProductView:", trackingData)
+        tracking.trackEvent(trackingData)
+      }
     }
   }
 
@@ -89,33 +119,6 @@ export class ArtworkApp extends React.Component<Props> {
         is_offerable,
         is_acquireable,
       })
-  }
-
-  trackPageview() {
-    const {
-      artwork: { listPrice, availability, is_offerable, is_acquireable },
-    } = this.props
-
-    // Pageview
-    const properties = {
-      path: window.location.pathname,
-      acquireable: is_acquireable,
-      offerable: is_offerable,
-      availability,
-      price_listed: !!listPrice,
-    }
-
-    if (typeof window.analytics !== "undefined") {
-      window.analytics.page(properties, { integrations: { Marketo: false } })
-      // Reset timers that track time on page to account for being in a
-      // client-side routing context, where these have already been initialized.
-      typeof window.desktopPageTimeTrackers !== "undefined" &&
-        window.desktopPageTimeTrackers.forEach(tracker => {
-          // No need to reset the tracker if we're on the same page.
-          if (window.location.pathname !== tracker.path)
-            tracker.reset(window.location.pathname)
-        })
-    }
   }
 
   renderArtists() {
@@ -232,41 +235,52 @@ export class ArtworkApp extends React.Component<Props> {
   }
 }
 
-export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
-  artwork: graphql`
-    fragment ArtworkApp_artwork on Artwork {
-      slug
-      internalID
-      is_acquireable: isAcquireable
-      is_offerable: isOfferable
-      availability
-      # FIXME: The props in the component need to update to reflect
-      # the new structure for price.
-      listPrice {
-        ... on PriceRange {
-          display
-        }
-        ... on Money {
-          display
-        }
-      }
-      is_in_auction: isInAuction
-      artists {
-        id
+export const ArtworkAppFragmentContainer = createFragmentContainer(
+  (props: Props) => {
+    const {
+      match: {
+        location: { pathname },
+      },
+    } = useContext(RouterContext)
+
+    return <ArtworkApp {...props} routerPathname={pathname} />
+  },
+  {
+    artwork: graphql`
+      fragment ArtworkApp_artwork on Artwork {
         slug
-        ...ArtistInfo_artist
+        internalID
+        is_acquireable: isAcquireable
+        is_offerable: isOfferable
+        availability
+        # FIXME: The props in the component need to update to reflect
+        # the new structure for price.
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
+        is_in_auction: isInAuction
+        artists {
+          id
+          slug
+          ...ArtistInfo_artist
+        }
+        artist {
+          ...ArtistInfo_artist
+        }
+        ...ArtworkRelatedArtists_artwork
+        ...ArtworkMeta_artwork
+        ...ArtworkBanner_artwork
+        ...ArtworkSidebar_artwork
+        ...ArtworkDetails_artwork
+        ...ArtworkImageBrowser_artwork
+        ...OtherWorks_artwork
+        ...PricingContext_artwork
       }
-      artist {
-        ...ArtistInfo_artist
-      }
-      ...ArtworkRelatedArtists_artwork
-      ...ArtworkMeta_artwork
-      ...ArtworkBanner_artwork
-      ...ArtworkSidebar_artwork
-      ...ArtworkDetails_artwork
-      ...ArtworkImageBrowser_artwork
-      ...OtherWorks_artwork
-      ...PricingContext_artwork
-    }
-  `,
-})
+    `,
+  }
+)

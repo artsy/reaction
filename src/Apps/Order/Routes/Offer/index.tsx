@@ -22,7 +22,6 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
 import { Router } from "found"
@@ -313,7 +312,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 }
 
 export const OfferFragmentContainer = createFragmentContainer(
-  injectCommitMutation(injectDialog(trackPageViewWrapper(OfferRoute))),
+  injectCommitMutation(injectDialog(OfferRoute)),
   {
     order: graphql`
       fragment Offer_order on CommerceOrder {
