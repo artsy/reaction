@@ -1,5 +1,4 @@
 import { NavigationTabs_Test_QueryRawResponse } from "__generated__/NavigationTabs_Test_Query.graphql"
-import { NavigationTabsFixture } from "Apps/__tests__/Fixtures/Artist/Components/NavigationTabs"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Artist/Components/NavigationTabs"
 import { SystemContextProvider } from "Artsy"
 import { renderRelayTree } from "DevTools"
@@ -38,13 +37,66 @@ describe("ArtistHeader", () => {
   it("renders (or doesnt) the appropriate tabs based on the counts", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
-    expect(html).toContain("Shows")
-    expect(html).toContain("/artist/andy-warhol/shows")
-    expect(html).toContain("CV")
-    expect(html).toContain("/artist/andy-warhol/cv")
+    expect(html).toContain("Works for sale")
+    expect(html).toContain("/artist/andy-warhol/works-for-sale")
     expect(html).toContain("Auction results")
     expect(html).toContain("/artist/andy-warhol/auction-results")
-    expect(html).not.toContain("Articles")
-    expect(html).not.toContain("/artist/andy-warhol/articles")
+    expect(html).toContain("Overview")
+  })
+
+  it("renders the count of forSaleWorks if greater than zero", async () => {
+    const wrapper = await getWrapper({
+      ...NavigationTabsFixture,
+      counts: {
+        forSaleArtworks: 12,
+      },
+    })
+    const html = wrapper.html()
+    expect(html).toContain("Works for sale (12)")
+  })
+
+  it("renders no tabs if there is no content", async () => {
+    const wrapper = await getWrapper({
+      ...NavigationTabsFixture,
+      statuses: {
+        auctionLots: false,
+        cv: false,
+        shows: false,
+        articles: false,
+        artworks: false,
+      },
+      biographyBlurb: null,
+    })
+    const html = wrapper.html()
+    expect(html).toBe(null)
   })
 })
+
+const NavigationTabsFixture: NavigationTabs_Test_QueryRawResponse["artist"] = {
+  id: "blah",
+  slug: "andy-warhol",
+  statuses: {
+    auctionLots: true,
+    cv: true,
+    shows: true,
+    articles: true,
+    artworks: true,
+  },
+  counts: {
+    forSaleArtworks: 0,
+  },
+  highlights: {
+    partnersConnection: {
+      edges: [],
+    },
+  },
+  biographyBlurb: {
+    text: "bio!",
+  },
+  insights: null,
+  related: {
+    genes: {
+      edges: [],
+    },
+  },
+}

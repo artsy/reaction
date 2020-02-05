@@ -48,14 +48,14 @@ describe("ArtistRecommendations", () => {
 
     const wrapper = await getWrapper(request)
 
-    expect(wrapper.html()).toContain("Related to Juan Gris")
+    expect(wrapper.html()).toContain("Related Artists")
     expect(wrapper.find(RecommendedArtist).length).toEqual(0)
   })
 
   it("Renders recommended artists when they exist", async () => {
     const wrapper = await getWrapper(defaultArtist)
 
-    expect(wrapper.html()).toContain("Related to Juan Gris")
+    expect(wrapper.html()).toContain("Related Artists")
     expect(wrapper.find(RecommendedArtist).length).toEqual(1)
   })
 

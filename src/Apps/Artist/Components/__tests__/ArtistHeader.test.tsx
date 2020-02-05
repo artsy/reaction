@@ -1,6 +1,9 @@
 import { ArtistHeader_Test_QueryRawResponse } from "__generated__/ArtistHeader_Test_Query.graphql"
 import { ArtistHeaderFixture } from "Apps/__tests__/Fixtures/Artist/Components/ArtistHeader"
-import { ArtistHeaderFragmentContainer as ArtistHeader } from "Apps/Artist/Components/ArtistHeader"
+import {
+  ArtistHeaderFragmentContainer as ArtistHeader,
+  WorksForSaleButton,
+} from "Apps/Artist/Components/ArtistHeader"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 
@@ -70,5 +73,31 @@ describe("ArtistHeader", () => {
     const wrapper = await getWrapper(artist)
     const html = wrapper.html()
     expect(html).not.toContain("Blue Chip")
+  })
+
+  it("renders the correct button on the carousel when there are no for sale artworks", async () => {
+    const wrapper = await getWrapper()
+    expect(
+      wrapper
+        .find(WorksForSaleButton)
+        .at(0)
+        .text()
+    ).toEqual("Shop works for sale")
+  })
+
+  it("renders the correct button on the carousel when there are for sale artworks", async () => {
+    const wrapper = await getWrapper({
+      ...ArtistHeaderFixture,
+      counts: {
+        ...ArtistHeaderFixture.counts,
+        forSaleArtworks: 21,
+      },
+    })
+    expect(
+      wrapper
+        .find(WorksForSaleButton)
+        .at(0)
+        .text()
+    ).toEqual("Shop works for sale (21)")
   })
 })

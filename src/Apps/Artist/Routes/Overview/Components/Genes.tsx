@@ -1,4 +1,4 @@
-import { Sans, Spacer, Tags } from "@artsy/palette"
+import { Tags } from "@artsy/palette"
 import { Genes_artist } from "__generated__/Genes_artist.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -23,10 +23,6 @@ export class Genes extends Component<Props> {
     })
     return (
       <GeneFamily>
-        <Sans size="2" weight="medium">
-          Related Categories
-        </Sans>
-        <Spacer mb={1} />
         <Tags tags={tags} displayNum={8} />
       </GeneFamily>
     )

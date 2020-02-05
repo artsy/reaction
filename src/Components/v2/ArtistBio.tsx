@@ -17,7 +17,7 @@ export class ArtistBio extends React.Component<ArtistBioProps> {
       <Serif size="3">
         <BioSpan
           dangerouslySetInnerHTML={{
-            __html: bio.biography_blurb.text,
+            __html: bio.biographyBlurb.text,
           }}
         />
       </Serif>
@@ -28,7 +28,7 @@ export class ArtistBio extends React.Component<ArtistBioProps> {
 export const ArtistBioFragmentContainer = createFragmentContainer(ArtistBio, {
   bio: graphql`
     fragment ArtistBio_bio on Artist {
-      biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
+      biographyBlurb: biographyBlurb(format: HTML, partnerBio: true) {
         text
       }
     }

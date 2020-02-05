@@ -81,8 +81,8 @@ describe("ArtistInfo", () => {
     it("hides ArtistBio if no data", async () => {
       const artist = {
         ...ArtistInfoFixture,
-        biography_blurb: {
-          ...ArtistInfoFixture.biography_blurb,
+        biographyBlurb: {
+          ...ArtistInfoFixture.biographyBlurb,
           text: null,
         },
       }

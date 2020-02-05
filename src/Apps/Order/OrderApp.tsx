@@ -4,12 +4,13 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
-import { Match, RouterState, withRouter } from "found"
+import { RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
+import { findCurrentRoute } from "Utils/findCurrentRoute"
 import { get } from "Utils/get"
 import { ConnectedModalDialog } from "./Dialogs"
 
@@ -20,14 +21,6 @@ declare global {
       STRIPE_PUBLISHABLE_KEY: string
     }
   }
-}
-
-const findCurrentRoute = ({ routes, routeIndices }: Match) => {
-  let currentRoute = routes[routeIndices[0]]
-  routeIndices.slice(1).forEach(routeIndex => {
-    currentRoute = currentRoute.children[routeIndex]
-  })
-  return currentRoute
 }
 
 export interface OrderAppProps extends RouterState {

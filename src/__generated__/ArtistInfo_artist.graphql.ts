@@ -36,7 +36,7 @@ export type ArtistInfo_artist = {
             } | null;
         } | null> | null;
     } | null;
-    readonly biography_blurb: {
+    readonly biographyBlurb: {
         readonly text: string | null;
     } | null;
     readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio" | "ArtistMarketInsights_artist" | "FollowArtistButton_artist">;
@@ -314,7 +314,7 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": "biography_blurb",
+      "alias": null,
       "name": "biographyBlurb",
       "storageKey": "biographyBlurb(format:\"HTML\",partnerBio:true)",
       "args": [
@@ -359,5 +359,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f5b9e9fa96792613dff677e7c37dd805';
+(node as any).hash = '18b724b8ae5e5b82b1181478cf151e78';
 export default node;

@@ -92,8 +92,8 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
 
   render() {
     const { artist } = this.props
-    const { biography_blurb, image, slug, internalID } = this.props.artist
-    const showArtistBio = !!biography_blurb.text
+    const { biographyBlurb, image, slug, internalID } = this.props.artist
+    const showArtistBio = !!biographyBlurb.text
     const imageUrl = get(this.props, p => image.cropped.url)
     const showArtistInsightsButton =
       (artist.exhibition_highlights &&
@@ -264,7 +264,7 @@ export const ArtistInfoFragmentContainer = createFragmentContainer(ArtistInfo, {
       ...FollowArtistButton_artist
       # The below data is only used to determine whether a section
       # should be rendered
-      biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
+      biographyBlurb: biographyBlurb(format: HTML, partnerBio: true) {
         text
       }
     }

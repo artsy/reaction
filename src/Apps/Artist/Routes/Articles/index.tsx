@@ -1,3 +1,4 @@
+import { Sans, Spacer } from "@artsy/palette"
 import { Articles_artist } from "__generated__/Articles_artist.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -8,7 +9,15 @@ export interface ArticlesRouteProps {
 }
 
 export const ArticlesRoute: React.SFC<ArticlesRouteProps> = props => {
-  return <Articles artist={props.artist} />
+  return (
+    <>
+      <Sans size="6" color="black100">
+        All Articles
+      </Sans>
+      <Spacer mb={3} />
+      <Articles artist={props.artist} />
+    </>
+  )
 }
 
 export const ArticlesRouteFragmentContainer = createFragmentContainer(

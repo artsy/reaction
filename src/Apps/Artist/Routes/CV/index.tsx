@@ -1,3 +1,4 @@
+import { Sans, Spacer } from "@artsy/palette"
 import { CV_viewer } from "__generated__/CV_viewer.graphql"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -21,6 +22,10 @@ export class CVRoute extends Component<CVRouteProps> {
     const { viewer } = this.props
     return (
       <Container>
+        <Sans size="6" color="black100">
+          Past Shows and Fair Booths
+        </Sans>
+        <Spacer mb={3} />
         <CVItem category="Solo shows" artist={viewer.artist_soloShows} />
         <CVItem category="Group shows" artist={viewer.artist_groupShows} />
         <CVItem category="Fair booths" artist={viewer.artist_fairBooths} />

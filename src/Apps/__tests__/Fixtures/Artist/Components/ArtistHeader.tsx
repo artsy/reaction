@@ -6,7 +6,7 @@ export const ArtistHeaderFixture = {
   name: "Cecily Brown",
   nationality: "British",
   years: "born 1969",
-  counts: { follows: 9135 },
+  counts: { follows: 9135, forSaleArtworks: 0 },
   carousel: {
     images: [
       {
@@ -28,6 +28,7 @@ export const ArtistHeaderFixture = {
     articles: false,
     cv: true,
     auction_lots: true,
+    artworks: true,
   },
   highlights: {
     partnersConnection: {

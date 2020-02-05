@@ -10,13 +10,14 @@ import { ArtistCollectionsRailFragmentContainer as ArtistCollectionsRail } from 
 interface Props {
   artistID: string
   isFeaturedArtistContent?: boolean
+  includeTopSpacer?: boolean
 }
 
 export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
   const { relayEnvironment } = useSystemContext()
 
   return (
-    <Box mb={3}>
+    <Box>
       <QueryRenderer<ArtistCollectionsRailQuery>
         environment={relayEnvironment}
         variables={{
@@ -39,7 +40,7 @@ export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
             }
           }
         `}
-        render={renderWithLoadProgress(ArtistCollectionsRail)}
+        render={renderWithLoadProgress(ArtistCollectionsRail, passedProps)}
         cacheConfig={{ force: true }}
       />
     </Box>

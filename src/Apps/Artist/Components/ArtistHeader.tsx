@@ -1,5 +1,6 @@
-import { Box, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
+import { Box, Button, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { StyledLink } from "Apps/Artist/ArtistApp"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
@@ -37,6 +38,17 @@ const H1 = styled.h1`
 
 const H2 = H1.withComponent("h2")
 
+const WorksForSaleButtonWrapper = styled(Box)`
+  position: absolute;
+  top: 166px;
+  left: 12px;
+`
+
+export const WorksForSaleButton = styled(Box)`
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+`
+
 interface Props {
   artist: ArtistHeader_artist
   user?: User
@@ -52,6 +64,12 @@ const CATEGORIES = {
 type Image = Props["artist"]["carousel"]["images"][0]
 
 const carouselSlideTrack: Track<null, null, [Image]> = track
+
+const shopAllWorksButtonText = (forSaleArtworksCount: number) => {
+  return forSaleArtworksCount > 0
+    ? `Shop works for sale (${forSaleArtworksCount.toLocaleString()})`
+    : `Shop works for sale`
+}
 
 @track<Props>(
   props =>
@@ -101,10 +119,19 @@ export class LargeArtistHeader extends Component<Props> {
     // no-op
   }
 
+  @track<Props>(props => ({
+    action_type: Schema.ActionType.Click,
+    subject: "Shop all works for sale",
+    destination_path: `artist/${props.artist.slug}/works-for-sale`,
+  }))
+  handleBrowseWorksClick() {
+    // no-op
+  }
+
   render() {
     const { props } = this
     const {
-      artist: { carousel },
+      artist: { carousel, statuses },
       user,
     } = props
 
@@ -115,25 +142,46 @@ export class LargeArtistHeader extends Component<Props> {
       <HorizontalPadding>
         <Box width="100%">
           {hasImages && (
-            <Carousel
-              height="200px"
-              options={{ pageDots: false }}
-              data={carousel.images as object[]}
-              render={(slide: Image, slideIndex: number) => {
-                return (
-                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                    <Image
-                      px={0.3}
-                      lazyLoad={slideIndex > 5}
-                      src={slide.resized.url}
-                      width={slide.resized.width}
-                      height={slide.resized.height}
-                      preventRightClick={!isAdmin}
-                    />
-                  </a>
-                )
-              }}
-            />
+            <>
+              <Carousel
+                height="200px"
+                options={{ pageDots: false }}
+                data={carousel.images as object[]}
+                render={(slide: Image, slideIndex: number) => {
+                  return (
+                    <a
+                      href={slide.href}
+                      onClick={() => this.onClickSlide(slide)}
+                    >
+                      <Image
+                        px={0.3}
+                        lazyLoad={slideIndex > 5}
+                        src={slide.resized.url}
+                        width={slide.resized.width}
+                        height={slide.resized.height}
+                        preventRightClick={!isAdmin}
+                      />
+                    </a>
+                  )
+                }}
+              />
+              {statuses.artworks && (
+                <WorksForSaleButtonWrapper pl={4}>
+                  <StyledLink
+                    onClick={() => this.handleBrowseWorksClick()}
+                    to={`/artist/${props.artist.slug}/works-for-sale`}
+                  >
+                    <WorksForSaleButton>
+                      <Button variant="primaryWhite" size="small">
+                        {shopAllWorksButtonText(
+                          props.artist.counts.forSaleArtworks
+                        )}
+                      </Button>
+                    </WorksForSaleButton>
+                  </StyledLink>
+                </WorksForSaleButtonWrapper>
+              )}
+            </>
           )}
           <Spacer my={2} />
 
@@ -207,10 +255,19 @@ export class SmallArtistHeader extends Component<Props> {
     // no-op
   }
 
+  @track<Props>(props => ({
+    action_type: Schema.ActionType.Click,
+    subject: "Clicked shop works for sale",
+    destination_path: `artist/${props.artist.slug}/works-for-sale`,
+  }))
+  handleBrowseWorksClick() {
+    // no-op
+  }
+
   render() {
     const props = this.props
     const {
-      artist: { carousel },
+      artist: { carousel, statuses },
       user,
     } = props
 
@@ -239,6 +296,22 @@ export class SmallArtistHeader extends Component<Props> {
                 )
               }}
             />
+            {statuses.artworks && (
+              <WorksForSaleButtonWrapper>
+                <StyledLink
+                  onClick={() => this.handleBrowseWorksClick()}
+                  to={`/artist/${props.artist.slug}/works-for-sale`}
+                >
+                  <WorksForSaleButton>
+                    <Button variant="primaryWhite" size="small">
+                      {shopAllWorksButtonText(
+                        props.artist.counts.forSaleArtworks
+                      )}
+                    </Button>
+                  </WorksForSaleButton>
+                </StyledLink>
+              </WorksForSaleButtonWrapper>
+            )}
             <Spacer my={2} />
           </Fragment>
         )}
@@ -398,6 +471,10 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
         years
         counts {
           follows
+          forSaleArtworks
+        }
+        statuses {
+          artworks
         }
         carousel {
           images {

@@ -1,4 +1,4 @@
-import { BorderBox, Box, Flex, Sans } from "@artsy/palette"
+import { BorderBox, Flex, Spacer } from "@artsy/palette"
 import { SelectedCareerAchievements_artist } from "__generated__/SelectedCareerAchievements_artist.graphql"
 import {
   hasSections,
@@ -12,8 +12,6 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 export interface SelectedCareerAchievementsProps {
   artist: SelectedCareerAchievements_artist
-  border?: boolean
-  Container?: (props: { children: JSX.Element }) => JSX.Element
 }
 
 const CATEGORIES = {
@@ -30,10 +28,6 @@ const CATEGORY_LABEL_MAP = {
 export class SelectedCareerAchievements extends React.Component<
   SelectedCareerAchievementsProps
 > {
-  static defaultProps = {
-    border: true,
-  }
-
   state = {
     showModal: false,
   }
@@ -100,26 +94,13 @@ export class SelectedCareerAchievements extends React.Component<
       return null
     }
 
-    const Container = props => {
-      let Wrap
-      if (props.Container) {
-        Wrap = this.props.Container
-      } else if (this.props.border) {
-        Wrap = BorderBox
-      } else {
-        Wrap = Box
-      }
-
-      return <Wrap {...props} />
-    }
-
     return (
       <>
-        <Container>
+        <ArtistInsightsModal />
+        <Spacer mb={2} />
+
+        <BorderBox pt={1}>
           <Flex flexDirection="column" alignItems="left" width="100%">
-            <Sans size="2" weight="medium">
-              Selected career achievements
-            </Sans>
             <Flex
               flexDirection="column"
               flexWrap="wrap"
@@ -133,9 +114,7 @@ export class SelectedCareerAchievements extends React.Component<
               })}
             </Flex>
           </Flex>
-        </Container>
-
-        <ArtistInsightsModal />
+        </BorderBox>
 
         {this.props.children}
       </>
