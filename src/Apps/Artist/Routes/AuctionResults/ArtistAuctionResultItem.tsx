@@ -7,7 +7,6 @@ import {
   Link,
   Row,
   Sans,
-  StackableBorderBox,
 } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { SystemContextProps } from "Artsy"
@@ -19,15 +18,7 @@ import { Subscribe } from "unstated"
 import { Media } from "Utils/Responsive"
 import { AuctionResultsState } from "./state"
 
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Separator,
-  Serif,
-  Spacer,
-} from "@artsy/palette"
+import { Box, Button, Flex, Image, Separator, Spacer } from "@artsy/palette"
 import { get } from "Utils/get"
 
 export interface Props extends SystemContextProps {
@@ -41,21 +32,9 @@ const FullWidthBorderBox = styled(BorderBox)`
   padding: 0;
 `
 
-const StyledFlex = styled(Flex)`
-  div {
-    height: 100% !important;
-    background-color: red;
-  }
-`
-
 const StyledImage = styled(Image)`
   max-height: 100%;
   max-width: 100%;
-
-  div {
-    height: 100% !important;
-    background-color: red;
-  }
 `
 
 // TODO: This whole component should be refactored to use less `Media` decisions
@@ -115,7 +94,6 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
 const LargeAuctionItem: SFC<Props> = props => {
   const {
     auctionResult: {
-      dimension_text,
       currency,
       images,
       date_text,
@@ -125,7 +103,6 @@ const LargeAuctionItem: SFC<Props> = props => {
       mediumText,
     },
     salePrice,
-    estimatedPrice,
   } = getProps(props)
 
   const imageUrl = get(images, i => i.thumbnail.url, "")
@@ -135,7 +112,7 @@ const LargeAuctionItem: SFC<Props> = props => {
         return (
           <>
             <Col sm={2}>
-              <StyledFlex
+              <Flex
                 alignItems="center"
                 justifyContent="center"
                 height="80px"
@@ -143,7 +120,7 @@ const LargeAuctionItem: SFC<Props> = props => {
                 pr={2}
               >
                 <StyledImage src={imageUrl} preventRightClick />
-              </StyledFlex>
+              </Flex>
             </Col>
             <Col sm={4}>
               <Flex alignItems="center" height="100%" pl={1} pr={6}>
@@ -204,17 +181,8 @@ const LargeAuctionItem: SFC<Props> = props => {
 
 const ExtraSmallAuctionItem: SFC<Props> = props => {
   const {
-    auctionResult: {
-      dimension_text,
-      images,
-      date_text,
-      organization,
-      sale_date_text,
-      title,
-      currency,
-    },
+    auctionResult: { images, date_text, sale_date_text, title, currency },
     salePrice,
-    estimatedPrice,
   } = getProps(props)
   const imageUrl = get(images, i => i.thumbnail.url, "")
 
@@ -348,12 +316,12 @@ const renderPricing = (salePrice, currency, user, mediator, size) => {
       <Box textAlign={textAlign}>
         {salePrice && (
           <>
-            <Sans size={textSize} weight="medium">
+            <Sans size={textSize} weight="medium" mb="2px">
               {salePrice + " "}
               {currency}
             </Sans>
             {size !== "xs" && (
-              <Sans size="2" mt="2px" color="black60">
+              <Sans size="2" color="black60">
                 Realized price
               </Sans>
             )}

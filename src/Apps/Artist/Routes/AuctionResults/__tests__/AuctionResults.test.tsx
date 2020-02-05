@@ -54,36 +54,22 @@ describe("AuctionResults", () => {
       expect(html).toContain("Sale price")
     })
 
-    it('renders "Full Description" buttons', () => {
-      expect(wrapper.find("FullDescriptionLink").length).toBe(10)
-    })
-
-    describe("modal pop up", () => {
-      let modalWrapper: ReactWrapper
-
+    describe("collapsed details", () => {
       beforeAll(() => {
         wrapper
-          .find("FullDescriptionLink")
+          .find("ArrowDownIcon")
           .first()
           .simulate("click")
         wrapper.update()
-        modalWrapper = wrapper.find("ArtistAuctionDetailsModal")
       })
 
-      it("shows a modal on FullDescriptionLink click", () => {
-        expect(modalWrapper.length).toBe(1)
-      })
-
-      it("renders the proper modal content", () => {
-        expect(modalWrapper.length).toBe(1)
-        const html = modalWrapper.html()
+      it("opens the collapse", () => {
+        const html = wrapper.html()
         const data =
           AuctionResultsFixture.artist.auctionResultsConnection.edges[0].node
-        expect(html).toContain("Lot description")
-        expect(html).toContain(data.title)
+        expect(html).toContain("Artwork Info")
         expect(html).toContain(data.dimension_text)
         expect(html).toContain(data.description)
-        expect(html).toContain(data.images.thumbnail.url)
       })
     })
   })
