@@ -61,6 +61,7 @@ class AuctionResultsContainer extends Component<
         artistID: this.props.artist.slug,
         before: null,
         last: null,
+        organization: null,
         sort: this.props.sort,
       },
       null,
@@ -203,6 +204,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
+          organization: { type: "String", defaultValue: "Sotheby's" }
         ) {
         slug
         auctionResultsConnection(
@@ -211,6 +213,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           before: $before
           last: $last
           sort: $sort
+          organization: $organization
         ) {
           ...AuctionResultsCount_results
           pageInfo {
@@ -238,6 +241,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $before: String
       $sort: AuctionResultSorts
       $artistID: String!
+      $organization: String
     ) {
       artist(id: $artistID) {
         ...ArtistAuctionResults_artist
@@ -247,6 +251,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             after: $after
             before: $before
             sort: $sort
+            organization: $organization
           )
       }
     }

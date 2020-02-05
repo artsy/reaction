@@ -65,6 +65,12 @@ const node: ReaderFragment = {
       "name": "before",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "organization",
+      "type": "String",
+      "defaultValue": "Sotheby's"
     }
   ],
   "selections": [
@@ -100,6 +106,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "last",
           "variableName": "last"
+        },
+        {
+          "kind": "Variable",
+          "name": "organization",
+          "variableName": "organization"
         },
         {
           "kind": "Variable",
@@ -194,5 +205,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '7ba95d8a09043fc63f344b9434f24f8d';
+(node as any).hash = '9505973c94de2c5c8ce8561d687becfe';
 export default node;
