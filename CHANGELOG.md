@@ -1,3 +1,15 @@
+# v25.4.1 (Wed Feb 05 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1773] Adjust default jpeg quality for cropped images [#3117](https://github.com/artsy/reaction/pull/3117) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.4.0 (Wed Feb 05 2020)
 
 #### 🚀  Enhancement
