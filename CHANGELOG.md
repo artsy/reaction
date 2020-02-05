@@ -1,3 +1,20 @@
+# v25.4.0 (Wed Feb 05 2020)
+
+#### 🚀  Enhancement
+
+- [Tracking] Consolidate page-view tracking within new trackingMiddleware [#3126](https://github.com/artsy/reaction/pull/3126) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update URL for storybooks documentation [#3130](https://github.com/artsy/reaction/pull/3130) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
 # v25.3.2 (Tue Feb 04 2020)
 
 
