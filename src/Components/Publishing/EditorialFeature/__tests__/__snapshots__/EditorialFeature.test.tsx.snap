@@ -6514,7 +6514,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
               >
                 <img
                   className="c86 c87"
-                  src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fr3TUoJ9u8QhxGeWdjR4ccQ%252FVC-email-final.jpg&width=680&height=450&quality=95"
+                  src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fr3TUoJ9u8QhxGeWdjR4ccQ%252FVC-email-final.jpg&width=680&height=450&quality=80"
                 />
               </div>
             </div>

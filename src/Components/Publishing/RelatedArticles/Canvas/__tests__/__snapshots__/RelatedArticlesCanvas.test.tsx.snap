@@ -236,7 +236,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <img
           alt="The 15 Top Art Schools in the United States"
           className="c7"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=95"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=80"
         />
         <div
           className="c8"
@@ -296,7 +296,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <img
           alt="Four Years after Walter De Maria’s Death, His Final Work Is Complete"
           className="c7"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=95"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=80"
         />
         <div
           className="c8"
@@ -356,7 +356,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <img
           alt="French Art History in a Nutshell"
           className="c7"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=95"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=80"
         />
         <div
           className="c8"
@@ -416,7 +416,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         <img
           alt="Miami Artists and Museums Brace for Hurricane Irma"
           className="c7"
-          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=95"
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=80"
         />
         <div
           className="c8"
