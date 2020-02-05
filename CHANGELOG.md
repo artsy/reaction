@@ -1,3 +1,15 @@
+# v25.5.0 (Wed Feb 05 2020)
+
+#### 🚀  Enhancement
+
+- Updates artist page design to match vision [#3058](https://github.com/artsy/reaction/pull/3058) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v25.4.1 (Wed Feb 05 2020)
 
 #### 🐛  Bug Fix
