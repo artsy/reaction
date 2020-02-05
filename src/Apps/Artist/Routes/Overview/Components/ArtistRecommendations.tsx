@@ -1,7 +1,8 @@
-import { Box, Button, Flex, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans } from "@artsy/palette"
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
 import { ArtistRecommendationsRendererQuery } from "__generated__/ArtistRecommendationsRendererQuery.graphql"
-import { SystemContext } from "Artsy"
+import { SystemContext, useTracking } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext, useState } from "react"
@@ -29,7 +30,6 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
 }) => {
   const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
-  const { name } = artist
   const relatedArtists = get(
     artist,
     a => a.related.artistsConnection.edges,
@@ -51,9 +51,9 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
 
   return (
     <Box>
-      <Serif size="8" color="black100">
-        Related to {name}
-      </Serif>
+      <Sans size="5" color="black100" mb={2}>
+        Related Artists
+      </Sans>
       {relatedArtists}
 
       {relay.hasMore() && (
@@ -67,12 +67,21 @@ const ShowMoreButton: React.FC<{ onClick: () => void; loading: boolean }> = ({
   onClick,
   loading,
 }) => {
+  const tracking = useTracking()
+
   return (
     <Flex flexDirection="column" alignItems="center">
       <Button
         my={4}
         variant="secondaryOutline"
-        onClick={onClick}
+        onClick={() => {
+          tracking.trackEvent({
+            action_type: Schema.ActionType.Click,
+            subject: "Show more",
+            context_module: Schema.ContextModule.RecommendedArtists,
+          })
+          onClick()
+        }}
         loading={loading}
       >
         Show More
@@ -92,7 +101,6 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
           minForsaleArtworks: { type: "Int", defaultValue: 7 }
         ) {
         slug
-        name
         related {
           artistsConnection(
             first: $count

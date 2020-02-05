@@ -17,7 +17,7 @@ export const ZeroState = props => {
   }
 
   return (
-    <Message justifyContent="center" textSize="5">
+    <Message justifyContent="center" textSize="4">
       There aren’t any works available by the artist at this time.{" "}
       {!is_followed && (
         <>

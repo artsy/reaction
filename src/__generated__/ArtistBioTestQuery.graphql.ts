@@ -10,7 +10,7 @@ export type ArtistBioTestQueryResponse = {
 };
 export type ArtistBioTestQueryRawResponse = {
     readonly bio: ({
-        readonly biography_blurb: ({
+        readonly biographyBlurb: ({
             readonly text: string | null;
         }) | null;
         readonly id: string | null;
@@ -33,7 +33,7 @@ query ArtistBioTestQuery {
 }
 
 fragment ArtistBio_bio on Artist {
-  biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {
+  biographyBlurb(format: HTML, partnerBio: true) {
     text
   }
 }
@@ -90,7 +90,7 @@ return {
         "selections": [
           {
             "kind": "LinkedField",
-            "alias": "biography_blurb",
+            "alias": null,
             "name": "biographyBlurb",
             "storageKey": "biographyBlurb(format:\"HTML\",partnerBio:true)",
             "args": [
@@ -132,7 +132,7 @@ return {
     "operationKind": "query",
     "name": "ArtistBioTestQuery",
     "id": null,
-    "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biography_blurb: biographyBlurb(format: HTML, partnerBio: true) {\n    text\n  }\n}\n",
+    "text": "query ArtistBioTestQuery {\n  bio: artist(id: \"unused\") {\n    ...ArtistBio_bio\n    id\n  }\n}\n\nfragment ArtistBio_bio on Artist {\n  biographyBlurb(format: HTML, partnerBio: true) {\n    text\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -1,5 +1,5 @@
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
-import { Overview_artist } from "__generated__/Overview_artist.graphql"
+import { Works_artist } from "__generated__/Works_artist.graphql"
 import { useTracking } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
@@ -13,7 +13,7 @@ import { ZeroState } from "./ZeroState"
 interface ArtistArtworkFilterProps {
   artist: ArtistArtworkFilter_artist
   relay: RelayRefetchProp
-  sidebarAggregations: Overview_artist["sidebarAggregations"]
+  sidebarAggregations: Works_artist["sidebarAggregations"]
   match?: Match
 }
 

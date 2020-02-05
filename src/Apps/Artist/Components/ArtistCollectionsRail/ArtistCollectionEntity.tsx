@@ -1,4 +1,4 @@
-import { Box, color, Flex, Image, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Image, Sans, Serif } from "@artsy/palette"
 import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -37,7 +37,14 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
       title,
       artworksConnection,
     } = this.props.collection
-    const artworks = artworksConnection.edges.map(({ node }) => node)
+    const artworks = get(artworksConnection, ac =>
+      ac.edges.map(({ node }) => node)
+    )
+
+    if (!artworks) {
+      return null
+    }
+
     const formattedTitle = (title && title.split(": ")[1]) || title
     const bgImages = compact(
       artworks.map(({ image }) => image && image.resized && image.resized.url)
@@ -47,7 +54,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
 
     return (
       <Box pr={2}>
-        <RouterLink
+        <StyledLink
           to={`/collection/${slug}`}
           onClick={this.onLinkClick.bind(this)}
         >
@@ -92,7 +99,7 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
               }).format()}
             </Sans>
           )}
-        </RouterLink>
+        </StyledLink>
       </Box>
     )
   }
@@ -102,7 +109,7 @@ const CollectionTitle = styled(Serif)`
   width: max-content;
 `
 
-export const StyledLink = styled(Link)`
+const StyledLink = styled(RouterLink)`
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 

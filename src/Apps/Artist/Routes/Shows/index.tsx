@@ -1,4 +1,4 @@
-import { Spacer } from "@artsy/palette"
+import { Sans, Spacer } from "@artsy/palette"
 import { Shows_viewer } from "__generated__/Shows_viewer.graphql"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -12,6 +12,9 @@ export const ShowsRoute: SFC<ArtistShowsProps> = props => {
 
   return (
     <>
+      <Sans size="6" color="black100">
+        All Shows
+      </Sans>
       <Spacer mb={-1} />
 
       <Shows

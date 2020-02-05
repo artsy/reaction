@@ -1,4 +1,4 @@
-import { Box, Sans, Spacer } from "@artsy/palette"
+import { Box, Sans, Separator } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -14,6 +14,7 @@ import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } fro
 
 interface ArtistCollectionsRailProps {
   collections: ArtistCollectionsRail_collections
+  includeTopSpacer?: boolean
 }
 
 @track(null, {
@@ -42,16 +43,22 @@ export class ArtistCollectionsRail extends React.Component<
     // noop
   }
 
+  static defaultProps = {
+    includeTopSpacer: true,
+  }
+
   render() {
-    const { collections } = this.props
+    const { collections, includeTopSpacer } = this.props
     if (collections.length > 3) {
       return (
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-          <Sans size="3" weight="medium">
-            Browse by iconic collections
+
+          {includeTopSpacer && <Separator my={3} />}
+
+          <Sans size="5" color="black100" mb={2}>
+            Iconic Collections
           </Sans>
-          <Spacer pb={1} />
 
           <Carousel
             height="200px"

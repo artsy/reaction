@@ -163,7 +163,7 @@ export const FullArtworkFixture = {
           },
         ],
       },
-      biography_blurb: {
+      biographyBlurb: {
         text:
           '<p>Obsessed with <a href="/collection/andy-warhol-celebrity-portraits">celebrity</a>, consumer culture, and mechanical (re)production, <a href="/gene/pop-art">Pop artist</a> Andy Warhol created some of the most iconic images of the 20th century. As famous for his quips as for his art—he variously mused that “art is what you can get away with” and “everyone will be famous for 15 minutes”—Warhol drew widely from popular culture and everyday subject matter, creating works like his <a href="/collection/andy-warhol-campbells-soup-can"><em>32 Campbell&#39;s Soup Cans</em></a> (1962), <a href="/collection/andy-warhol-brillo-boxes">Brillo pad box sculptures</a>, and portraits of <a href="/collection/andy-warhol-marilyn-monroe">Marilyn Monroe</a>, using the medium of silk-screen printmaking to achieve his characteristic hard edges and flat areas of color. Known for his cultivation of celebrity, Factory studio (a radical social and creative melting pot), and avant-garde films like <em>Chelsea Girls</em> (1966), Warhol was also a mentor to artists like <a href="/artist/keith-haring">Keith Haring</a> and <a href="/artist/jean-michel-basquiat">Jean-Michel Basquiat</a>. His Pop sensibility is now standard practice, taken up by major contemporary artists <a href="/artist/richard-prince">Richard Prince</a>, <a href="/artist/takashi-murakami">Takashi Murakami</a>, and <a href="/artist/jeff-koons">Jeff Koons</a>, among countless others.</p>\n',
       },
@@ -322,7 +322,7 @@ export const FullArtworkFixture = {
         },
       ],
     },
-    biography_blurb: {
+    biographyBlurb: {
       text:
         '<p>Obsessed with <a href="/collection/andy-warhol-celebrity-portraits">celebrity</a>, consumer culture, and mechanical (re)production, <a href="/gene/pop-art">Pop artist</a> Andy Warhol created some of the most iconic images of the 20th century. As famous for his quips as for his art—he variously mused that “art is what you can get away with” and “everyone will be famous for 15 minutes”—Warhol drew widely from popular culture and everyday subject matter, creating works like his <a href="/collection/andy-warhol-campbells-soup-can"><em>32 Campbell&#39;s Soup Cans</em></a> (1962), <a href="/collection/andy-warhol-brillo-boxes">Brillo pad box sculptures</a>, and portraits of <a href="/collection/andy-warhol-marilyn-monroe">Marilyn Monroe</a>, using the medium of silk-screen printmaking to achieve his characteristic hard edges and flat areas of color. Known for his cultivation of celebrity, Factory studio (a radical social and creative melting pot), and avant-garde films like <em>Chelsea Girls</em> (1966), Warhol was also a mentor to artists like <a href="/artist/keith-haring">Keith Haring</a> and <a href="/artist/jean-michel-basquiat">Jean-Michel Basquiat</a>. His Pop sensibility is now standard practice, taken up by major contemporary artists <a href="/artist/richard-prince">Richard Prince</a>, <a href="/artist/takashi-murakami">Takashi Murakami</a>, and <a href="/artist/jeff-koons">Jeff Koons</a>, among countless others.</p>\n',
     },

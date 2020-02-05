@@ -32,6 +32,10 @@ export type ArtistHeader_artist = {
     readonly years: string | null;
     readonly counts: {
         readonly follows: number | null;
+        readonly forSaleArtworks: number | null;
+    } | null;
+    readonly statuses: {
+        readonly artworks: boolean | null;
     } | null;
     readonly carousel: {
         readonly images: ReadonlyArray<{
@@ -294,6 +298,31 @@ return {
           "name": "follows",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "forSaleArtworks",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "statuses",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ArtistStatuses",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "artworks",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -372,5 +401,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd4a370d7724347e2da0bae6557418ae0';
+(node as any).hash = 'b823d3a8b825045e16f9dfe9198fd7aa';
 export default node;

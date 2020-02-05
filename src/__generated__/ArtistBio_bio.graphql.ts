@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ArtistBio_bio = {
-    readonly biography_blurb: {
+    readonly biographyBlurb: {
         readonly text: string | null;
     } | null;
     readonly " $refType": "ArtistBio_bio";
@@ -25,7 +25,7 @@ const node: ReaderFragment = {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "biography_blurb",
+      "alias": null,
       "name": "biographyBlurb",
       "storageKey": "biographyBlurb(format:\"HTML\",partnerBio:true)",
       "args": [
@@ -54,5 +54,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'db22a8e9fe1267a0d9dd915b0cbe75c2';
+(node as any).hash = '8d3d6cad9783dad9b00e24bb96e77b1a';
 export default node;

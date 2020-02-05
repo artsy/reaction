@@ -11,7 +11,7 @@ import { ArtistBioFragmentContainer as ArtistBio } from "../ArtistBio"
 jest.unmock("react-relay")
 
 describe("ArtistBio", () => {
-  const biography_blurb = {
+  const biographyBlurb = {
     text: '<a href="hi">hello how are you</a>',
     credit: "",
   }
@@ -33,7 +33,7 @@ describe("ArtistBio", () => {
       mockData: {
         bio: {
           id: "unused",
-          biography_blurb,
+          biographyBlurb,
         },
       } as ArtistBioTestQueryRawResponse,
     })
@@ -42,6 +42,6 @@ describe("ArtistBio", () => {
   it("renders html text", async () => {
     const wrapper = await getWrapper()
 
-    expect(wrapper.html()).toContain(biography_blurb.text)
+    expect(wrapper.html()).toContain(biographyBlurb.text)
   })
 })

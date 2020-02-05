@@ -102,6 +102,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
       <Carousel
         height="240px"
         data={artistData}
+        options={{ pageDots: false }}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
           return (

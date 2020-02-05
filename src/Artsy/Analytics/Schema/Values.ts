@@ -291,6 +291,7 @@ export enum ContextModule {
   ArtistInsights = "ArtistInsights",
   Biography = "Biography",
   Sidebar = "Sidebar",
+  WorksForSale = "Works For Sale",
 
   /**
    * Artwork page
