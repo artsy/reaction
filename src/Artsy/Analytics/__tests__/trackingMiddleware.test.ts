@@ -5,6 +5,9 @@ declare const global: any
 
 describe("trackingMiddleware", () => {
   const analytics = window.analytics
+  const store = {
+    getState: () => ({}),
+  }
 
   beforeEach(() => {
     window.analytics = { page: jest.fn() }
@@ -15,7 +18,7 @@ describe("trackingMiddleware", () => {
   })
 
   it("tracks pageviews", () => {
-    trackingMiddleware()(null)(props => {
+    trackingMiddleware()(store)(props => {
       // noop
     })({
       type: ActionTypes.UPDATE_LOCATION,
@@ -31,10 +34,24 @@ describe("trackingMiddleware", () => {
   })
 
   it("does not track pageviews for other events", () => {
-    trackingMiddleware()(null)(props => {
+    trackingMiddleware()(store)(props => {
       // noop
     })({
       type: ActionTypes.PUSH,
+      payload: {
+        pathname: "bar",
+      },
+    })
+    expect(global.analytics.page).not.toBeCalled()
+  })
+
+  it("excludes paths based on config option", () => {
+    trackingMiddleware({
+      excludePaths: ["bar"],
+    })(store)(props => {
+      // noop
+    })({
+      type: ActionTypes.UPDATE_LOCATION,
       payload: {
         pathname: "bar",
       },

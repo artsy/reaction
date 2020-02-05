@@ -13,8 +13,14 @@ const logger = createLogger("Artsy/Analytics/trackingMiddleware")
  * @see Artsy/Router/buildClientApp.tsx for mount point
  * @see https://github.com/4Catalyzer/farce/blob/master/src/ActionTypes.js
  */
-export function trackingMiddleware() {
+
+interface TrackingMiddlewareOptions {
+  excludePaths?: [string]
+}
+
+export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
   return store => next => action => {
+    const { excludePaths = [] } = options
     const { type, payload } = action
 
     switch (type) {
@@ -30,12 +36,18 @@ export function trackingMiddleware() {
           typeof window.analytics !== "undefined" && window.analytics
 
         if (analytics) {
-          logger.warn("Tracking PageView:", pathname)
+          const foundExcludedPath = excludePaths.some(excludedPath => {
+            return pathname.includes(excludedPath)
+          })
 
-          analytics.page(
-            { path: pathname, referrer },
-            { integrations: { Marketo: false } }
-          )
+          if (!foundExcludedPath) {
+            logger.warn("Tracking PageView:", pathname)
+
+            analytics.page(
+              { path: pathname, referrer },
+              { integrations: { Marketo: false } }
+            )
+          }
 
           // TODO: Remove after AB test ends.
           if (getENV("EXPERIMENTAL_APP_SHELL")) {

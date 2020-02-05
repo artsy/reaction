@@ -66,7 +66,9 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
           parse: queryStringParsing,
           stringify: qs.stringify,
         }),
-        trackingMiddleware(),
+        trackingMiddleware({
+          excludePaths: ["/artwork/"],
+        }),
       ]
       const resolver = new Resolver(relayEnvironment)
 
