@@ -4,7 +4,6 @@ import { PaginationFragmentContainer as Pagination } from "Components/v2/Paginat
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
-import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { AuctionResultsState } from "./state"
 // import { TableColumns } from "./TableColumns"
