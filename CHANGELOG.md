@@ -1,3 +1,15 @@
+# v25.5.1 (Thu Feb 06 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure PNG → JPG in Collection Hubs's related rail [#3133](https://github.com/artsy/reaction/pull/3133) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.5.0 (Wed Feb 05 2020)
 
 #### 🚀  Enhancement
