@@ -1,5 +1,6 @@
 import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import ActionTypes from "farce/lib/ActionTypes"
+import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
@@ -43,13 +44,34 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           if (!foundExcludedPath) {
             logger.warn("Tracking PageView:", pathname)
 
-            analytics.page(
-              { path: pathname, referrer },
-              { integrations: { Marketo: false } }
-            )
+            const trackingData: {
+              path: string
+              referrer?: string
+              url: string
+            } = {
+              path: pathname,
+              url: sd.APP_URL + pathname,
+            }
+
+            // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
+            if (getENV("EXPERIMENTAL_APP_SHELL")) {
+              trackingData.referrer = sd.APP_URL + referrer
+            }
+
+            // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
+            if (
+              ["/collect", "/collections", "/collection/"].some(path =>
+                pathname.includes(path)
+              ) &&
+              referrer
+            ) {
+              trackingData.referrer = sd.APP_URL + referrer
+            }
+
+            analytics.page(trackingData, { integrations: { Marketo: false } })
           }
 
-          // TODO: Remove after AB test ends.
+          // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
           if (getENV("EXPERIMENTAL_APP_SHELL")) {
             trackExperimentViewed("client_navigation_v2")
           }
