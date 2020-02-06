@@ -1,7 +1,7 @@
 import { Col, Flex, Row, Sans, Separator, Serif } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
-import React, { Component } from "react"
+import React, { useEffect, useState } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { Subscribe } from "unstated"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
@@ -10,7 +10,7 @@ import { TableSidebar } from "./TableSidebar"
 
 import { Box, Spacer } from "@artsy/palette"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { LoadingArea } from "Components/v2/LoadingArea"
 import createLogger from "Utils/logger"
 import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
 import { SortSelect } from "./Components/SortSelect"
@@ -25,44 +25,53 @@ interface AuctionResultsProps {
   sort: string
 }
 
-class AuctionResultsContainer extends Component<
-  AuctionResultsProps,
-  LoadingAreaState
-> {
-  state = {
-    isLoading: false,
-  }
-
-  loadNext = () => {
-    const {
-      artist: {
-        auctionResultsConnection: {
-          pageInfo: { hasNextPage, endCursor },
-        },
-      },
-    } = this.props
+const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
+  artist,
+  relay,
+  sort,
+}) => {
+  const loadNext = () => {
+    const { hasNextPage, endCursor } = pageInfo
 
     if (hasNextPage) {
-      this.loadAfter(endCursor)
+      this.loadAfter(artist.slug, endCursor, relay, setIsLoading)
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.sort !== this.props.sort) {
-      this.resort()
-    }
-  }
+  const loadAfter = cursor => {
+    setIsLoading(true)
 
-  resort = () => {
-    this.props.relay.refetch(
+    relay.refetch(
       {
         first: PAGE_SIZE,
-        after: null,
-        artistID: this.props.artist.slug,
+        after: cursor,
+        artistID: artist.slug,
         before: null,
         last: null,
         organization: null,
-        sort: this.props.sort,
+        sort,
+      },
+      null,
+      error => {
+        setIsLoading(false)
+
+        if (error) {
+          console.error(error)
+        }
+      }
+    )
+  }
+
+  const resort = () => {
+    relay.refetch(
+      {
+        first: PAGE_SIZE,
+        after: null,
+        artistID: artist.slug,
+        before: null,
+        last: null,
+        organization: null,
+        sort,
       },
       null,
       error => {
@@ -73,116 +82,89 @@ class AuctionResultsContainer extends Component<
     )
   }
 
-  loadAfter = cursor => {
-    this.toggleLoading(true)
 
-    this.props.relay.refetch(
-      {
-        first: PAGE_SIZE,
-        after: cursor,
-        artistID: this.props.artist.slug,
-        before: null,
-        last: null,
-        sort: this.props.sort,
-      },
-      null,
-      error => {
-        this.toggleLoading(false)
+  const [isLoading, setIsLoading] = useState(false)
+  useEffect(resort, [sort])
 
-        if (error) {
-          console.error(error)
-        }
-      }
-    )
-  }
+  const { pageInfo } = artist.auctionResultsConnection
+  const auctionResultsLength = artist.auctionResultsConnection.edges.length
 
-  toggleLoading = isLoading => {
-    this.setState({
-      isLoading,
-    })
-  }
+  return (
+    <Subscribe to={[AuctionResultsState]}>
+      {({ state }: AuctionResultsState) => {
+        return (
+          <>
+            <Row>
+              <Box pb={2}>
+                <Sans size="5t">Auction results</Sans>
+                <Serif size="3" color="black100">
+                  Some copy about definitions and methodology and link to it
+                  here.
+                </Serif>
+              </Box>
+            </Row>
+            <Row>
+              <Col sm={2} pr={[0, 2]}>
+                <TableSidebar />
+              </Col>
 
-  render() {
-    const { artist } = this.props
-    const auctionResultsLength = artist.auctionResultsConnection.edges.length
-    return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state }: AuctionResultsState) => {
-          return (
-            <>
-              <Row>
-                <Box pb={2}>
-                  <Sans size="5t">Auction results</Sans>
-                  <Serif size="3" color="black100">
-                    Some copy about definitions and methodology and link to it
-                    here.
-                  </Serif>
+              <Col sm={10}>
+                <Row pb={2}>
+                  <Separator />
+                </Row>
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  width="100%"
+                  mb={2}
+                >
+                  <AuctionResultsCount
+                    results={artist.auctionResultsConnection}
+                  />
+                  <SortSelect />
+                </Flex>
+
+                <ArtistAuctionDetailsModal
+                  auctionResult={state.selectedAuction}
+                />
+
+                <Spacer mt={3} />
+
+                <LoadingArea isLoading={isLoading}>
+                  {artist.auctionResultsConnection.edges.map(
+                    ({ node }, index) => {
+                      return (
+                        <React.Fragment key={index}>
+                          <AuctionResultItem
+                            auctionResult={node}
+                            lastChild={index === auctionResultsLength - 1}
+                          />
+                        </React.Fragment>
+                      )
+                    }
+                  )}
+                </LoadingArea>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Box>
+                  <Pagination
+                    hasNextPage={pageInfo.hasNextPage}
+                    pageCursors={artist.auctionResultsConnection.pageCursors}
+                    onClick={loadAfter}
+                    onNext={loadNext}
+                    scrollTo="#jumpto-ArtistHeader"
+                  />
                 </Box>
-              </Row>
-              <Row>
-                <Col sm={2} pr={[0, 2]}>
-                  <TableSidebar />
-                </Col>
-
-                <Col sm={10}>
-                  <Row pb={2}>
-                    <Separator />
-                  </Row>
-                  <Flex
-                    justifyContent="space-between"
-                    alignItems="center"
-                    width="100%"
-                    mb={2}
-                  >
-                    <AuctionResultsCount
-                      results={artist.auctionResultsConnection}
-                    />
-                    <SortSelect />
-                  </Flex>
-
-                  <Spacer mt={3} />
-
-                  <LoadingArea isLoading={this.state.isLoading}>
-                    {this.props.artist.auctionResultsConnection.edges.map(
-                      ({ node }, index) => {
-                        return (
-                          <React.Fragment key={index}>
-                            <AuctionResultItem
-                              auctionResult={node}
-                              lastChild={index === auctionResultsLength - 1}
-                            />
-                          </React.Fragment>
-                        )
-                      }
-                    )}
-                  </LoadingArea>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <Box>
-                    <Pagination
-                      hasNextPage={
-                        this.props.artist.auctionResultsConnection.pageInfo
-                          .hasNextPage
-                      }
-                      pageCursors={
-                        this.props.artist.auctionResultsConnection.pageCursors
-                      }
-                      onClick={this.loadAfter}
-                      onNext={this.loadNext}
-                      scrollTo="#jumpto-ArtistHeader"
-                    />
-                  </Box>
-                </Col>
-              </Row>
-            </>
-          )
-        }}
-      </Subscribe>
-    )
-  }
+              </Col>
+            </Row>
+          </>
+        )
+      }}
+    </Subscribe>
+  )
 }
 
 export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
@@ -204,7 +186,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
-          organization: { type: "String", defaultValue: "Sotheby's" }
+          organization: { type: "String" }
         ) {
         slug
         auctionResultsConnection(

@@ -70,7 +70,7 @@ const node: ReaderFragment = {
       "kind": "LocalArgument",
       "name": "organization",
       "type": "String",
-      "defaultValue": "Sotheby's"
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -205,5 +205,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '9505973c94de2c5c8ce8561d687becfe';
+(node as any).hash = '74ee54d0b3c62a148b5cc226dda7c199';
 export default node;

@@ -112,7 +112,7 @@ fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
 
 fragment ArtistAuctionResults_artist on Artist {
   slug
-  auctionResultsConnection(first: 10, sort: DATE_DESC, organization: "Sotheby's") {
+  auctionResultsConnection(first: 10, sort: DATE_DESC) {
     ...AuctionResultsCount_results
     pageInfo {
       hasNextPage
@@ -269,17 +269,12 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "auctionResultsConnection",
-            "storageKey": "auctionResultsConnection(first:10,organization:\"Sotheby's\",sort:\"DATE_DESC\")",
+            "storageKey": "auctionResultsConnection(first:10,sort:\"DATE_DESC\")",
             "args": [
               {
                 "kind": "Literal",
                 "name": "first",
                 "value": 10
-              },
-              {
-                "kind": "Literal",
-                "name": "organization",
-                "value": "Sotheby's"
               },
               {
                 "kind": "Literal",
