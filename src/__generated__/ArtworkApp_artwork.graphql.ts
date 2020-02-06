@@ -12,6 +12,10 @@ export type ArtworkApp_artwork = {
         readonly display?: string | null;
     } | null;
     readonly is_in_auction: boolean | null;
+    readonly sale: {
+        readonly internalID: string;
+        readonly slug: string;
+    } | null;
     readonly artists: ReadonlyArray<{
         readonly id: string;
         readonly slug: string;
@@ -39,7 +43,14 @@ var v0 = {
   "args": null,
   "storageKey": null
 },
-v1 = [
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+},
+v2 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -48,7 +59,7 @@ v1 = [
     "storageKey": null
   }
 ],
-v2 = {
+v3 = {
   "kind": "FragmentSpread",
   "name": "ArtistInfo_artist",
   "args": null
@@ -61,13 +72,7 @@ return {
   "argumentDefinitions": [],
   "selections": [
     (v0/*: any*/),
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "internalID",
-      "args": null,
-      "storageKey": null
-    },
+    (v1/*: any*/),
     {
       "kind": "ScalarField",
       "alias": "is_acquireable",
@@ -101,12 +106,12 @@ return {
         {
           "kind": "InlineFragment",
           "type": "PriceRange",
-          "selections": (v1/*: any*/)
+          "selections": (v2/*: any*/)
         },
         {
           "kind": "InlineFragment",
           "type": "Money",
-          "selections": (v1/*: any*/)
+          "selections": (v2/*: any*/)
         }
       ]
     },
@@ -116,6 +121,19 @@ return {
       "name": "isInAuction",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sale",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sale",
+      "plural": false,
+      "selections": [
+        (v1/*: any*/),
+        (v0/*: any*/)
+      ]
     },
     {
       "kind": "LinkedField",
@@ -134,7 +152,7 @@ return {
           "storageKey": null
         },
         (v0/*: any*/),
-        (v2/*: any*/)
+        (v3/*: any*/)
       ]
     },
     {
@@ -146,7 +164,7 @@ return {
       "concreteType": "Artist",
       "plural": false,
       "selections": [
-        (v2/*: any*/)
+        (v3/*: any*/)
       ]
     },
     {
@@ -192,5 +210,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a6f40e5e386f177795ad698b3f70e0c3';
+(node as any).hash = 'b5ee0e1dcc98c7bdd728725f012674a8';
 export default node;
