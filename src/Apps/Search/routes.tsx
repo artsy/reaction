@@ -1,15 +1,13 @@
+import loadable from "@loadable/component"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
 
-import { SearchResultsArtistsRouteFragmentContainer as SearchResultsArtistsRoute } from "Apps/Search/Routes/Artists/SearchResultsArtists"
-import { SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks"
 import { SearchResultsEntityRouteFragmentContainer as SearchResultsEntityRoute } from "Apps/Search/Routes/Entity/SearchResultsEntity"
 
 import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
-import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter"
+import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter/ArtworkQueryFilter"
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 
 const prepareVariables = (_params, { location }) => {
   return {
@@ -67,7 +65,7 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
 export const routes: RouteConfig[] = [
   {
     path: "/search",
-    Component: SearchApp,
+    getComponent: () => loadable(() => import("./SearchApp")),
     query: graphql`
       query routes_SearchResultsTopLevelQuery($term: String!) {
         viewer {
@@ -79,13 +77,14 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "/",
-        Component: SearchResultsArtworksRoute,
+        getComponent: () => loadable(() => import("./Routes/Artworks")),
         prepareVariables,
         query: ArtworkQueryFilter,
       },
       {
         path: "artists",
-        Component: SearchResultsArtistsRoute,
+        getComponent: () =>
+          loadable(() => import("./Routes/Artists/SearchResultsArtists")),
         prepareVariables,
         query: graphql`
           query routes_SearchResultsArtistsQuery($term: String!, $page: Int) {

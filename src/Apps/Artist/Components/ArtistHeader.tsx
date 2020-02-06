@@ -1,10 +1,11 @@
 import { Box, Button, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
-import { StyledLink } from "Apps/Artist/ArtistApp"
+import { StyledLink } from "Apps/Artist/Components/StyledLink"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Carousel } from "Components/v2/Carousel"
 import React, { Component, Fragment } from "react"
@@ -149,7 +150,9 @@ export class LargeArtistHeader extends Component<Props> {
                 data={carousel.images as object[]}
                 render={(slide: Image, slideIndex: number) => {
                   return (
-                    <a
+                    // FIXME: Update this type to appropriately accept children
+                    // @ts-ignore
+                    <RouterLink
                       href={slide.href}
                       onClick={() => this.onClickSlide(slide)}
                     >
@@ -161,7 +164,7 @@ export class LargeArtistHeader extends Component<Props> {
                         height={slide.resized.height}
                         preventRightClick={!isAdmin}
                       />
-                    </a>
+                    </RouterLink>
                   )
                 }}
               />
