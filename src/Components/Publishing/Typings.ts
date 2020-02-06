@@ -89,6 +89,7 @@ export interface ArticleData {
   postscript?: string
   date?: string
   published_at?: string
+  lead_paragraph?: string
   sections?: SectionData[]
   series?: {
     description?: string

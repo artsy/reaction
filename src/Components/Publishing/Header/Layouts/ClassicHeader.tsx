@@ -1,13 +1,11 @@
-import { space } from "@artsy/palette"
-import { garamond } from "Assets/Fonts"
+import { Flex, Serif, space } from "@artsy/palette"
+import { ClassicByline } from "Components/Publishing/Byline/ClassicByline"
+import { ArticleData } from "Components/Publishing/Typings"
 import React, { ReactElement } from "react"
 import styled from "styled-components"
-import { pMedia } from "../../../Helpers"
-import { ClassicByline } from "../../Byline/ClassicByline"
-import { ArticleData } from "../../Typings"
 
 interface ClassicHeaderProps {
-  article?: ArticleData
+  article: ArticleData
   date?: string
   editLeadParagraph?: ReactElement<any>
   editTitle?: ReactElement<any>
@@ -15,62 +13,44 @@ interface ClassicHeaderProps {
 
 export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
   const { article, date, editTitle, editLeadParagraph } = props
-  return (
-    <ClassicHeaderContainer>
-      <Title>{editTitle || <h1>{article.title}</h1>}</Title>
 
+  return (
+    <Flex
+      flexDirection="column"
+      my={space(4)}
+      mx="auto"
+      px={[space(2), 0]}
+      alignItems={["left", "center"]}
+      maxWidth={["580px", "900px"]}
+    >
+      <Title size={["8", "10"]} pb={space(3)} textAlign={["left", "center"]}>
+        {editTitle || <h1>{article.title}</h1>}
+      </Title>
       {editLeadParagraph ? (
-        <LeadParagraph>{editLeadParagraph}</LeadParagraph>
+        <LeadParagraph size="4">{editLeadParagraph}</LeadParagraph>
       ) : (
-        <LeadParagraph
-          dangerouslySetInnerHTML={{ __html: article.lead_paragraph }}
-        />
+        article.lead_paragraph && (
+          <LeadParagraph size="4">
+            <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
+          </LeadParagraph>
+        )
       )}
       <ClassicByline article={article} date={date} />
-    </ClassicHeaderContainer>
+    </Flex>
   )
 }
 
-const ClassicHeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 900px;
-  width: 100%;
-  margin: ${space(4)}px auto;
-  box-sizing: border-box;
-  text-align: center;
+export const Title = styled(Serif)``
 
-  ${pMedia.xl`padding: 0 ${space(2)}px;`};
-
-  ${pMedia.xs`
-    text-align: left;
-  `};
-`
-
-export const Title = styled.div`
-  padding-bottom: ${space(3)}px;
-  ${garamond("s37")};
-
-  ${pMedia.xs`
-    ${garamond("s34")}
-  `};
-`
-
-export const LeadParagraph = styled.div`
-  ${garamond("s19")};
-  line-height: 1.35em;
-  text-align: left;
+export const LeadParagraph = styled(Serif)`
   max-width: 580px;
   width: 100%;
   margin: 0 auto;
   padding-bottom: ${space(3)}px;
+  font-style: italic;
+  text-align: left;
 
   p {
     margin: 0;
   }
-
-  ${pMedia.xs`
-    ${garamond("s17")}
-    line-height: 1.35em;
-  `};
 `
