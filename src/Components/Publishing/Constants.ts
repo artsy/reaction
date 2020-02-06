@@ -35,7 +35,9 @@ export const getArticleFullHref = slug => `${APP_URL}/article/${slug}`
  */
 
 export const getPreSlugPath = layout => {
-  return ["standard", "feature"].includes(layout) ? "article" : layout
+  return ["standard", "feature", "classic"].includes(layout)
+    ? "article"
+    : layout
 }
 
 /**
