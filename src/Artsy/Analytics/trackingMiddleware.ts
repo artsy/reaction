@@ -49,7 +49,7 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
               referrer?: string
               url: string
             } = {
-              path: pathname,
+              path: sd.APP_URL + pathname,
               url: sd.APP_URL + pathname,
             }
 
