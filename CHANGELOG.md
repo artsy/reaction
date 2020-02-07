@@ -1,3 +1,15 @@
+# v25.5.5 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [AUCT-870] - Add lot viewed analytics [#3134](https://github.com/artsy/reaction/pull/3134) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v25.5.4 (Fri Feb 07 2020)
 
 #### 🐛  Bug Fix
