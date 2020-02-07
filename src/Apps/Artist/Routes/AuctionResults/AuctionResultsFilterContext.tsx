@@ -4,6 +4,7 @@ import React, { useContext, useReducer } from "react"
 
 export interface AuctionResultsFilters {
   // organization?: string[]
+  openedItemIndex: number
   page?: number
   sort?: string
 }
@@ -16,6 +17,7 @@ interface AuctionResultsFiltersState extends AuctionResultsFilters {
  */
 export const initialAuctionResultsFilterState: AuctionResultsFilters = {
   // organization: [],
+  openedItemIndex: -1,
   page: 1,
   sort: "DATE_DESC",
 }
@@ -24,6 +26,7 @@ export interface AuctionResultsFilterContextProps {
   filters?: AuctionResultsFilters
   onChange?: (filterState) => void
   setFilter: (name: keyof AuctionResultsFilters, value: any) => void
+  onAuctionResultClick?: (index: number) => void
 }
 
 /**
@@ -34,13 +37,13 @@ export const AuctionResultsFilterContext = React.createContext<
 >({
   filters: initialAuctionResultsFilterState,
   setFilter: null,
+  onAuctionResultClick: null,
 })
 
 export type SharedAuctionResultsFilterContextProps = Pick<
   AuctionResultsFilterContextProps,
-  "filters"
+  "filters" | "onAuctionResultClick"
   // | "sortOptions"
-  // | "onArtworkBrickClick"
   // | "onFilterClick"
   // | "ZeroState"
 > & {
@@ -53,7 +56,7 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
   children,
   // counts = {},
   filters = {},
-  // onAuctionResultClick,
+  onAuctionResultClick,
   // onChange,
   // onFilterClick,
   // sortOptions,
@@ -82,7 +85,15 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     // hasFilters: hasFilters(AuctionResultsFilterState),
 
     // Handlers
-    // onAuctionResultClick,
+    onAuctionResultClick: index => {
+      dispatch({
+        type: "SET",
+        payload: {
+          name: "openedItemIndex",
+          value: index,
+        },
+      })
+    },
     // onFilterClick,
 
     // sortOptions,
@@ -157,6 +168,7 @@ const AuctionResultsFilterReducer = (
 
       const filterState: AuctionResultsFilters = {
         page: 1,
+        openedItemIndex: -1,
       }
 
       // if (name === "organization") {
@@ -165,9 +177,12 @@ const AuctionResultsFilterReducer = (
       //   }
       // }
 
-      // String filter types
-      const stringFilterTypes: Array<keyof AuctionResultsFilters> = ["sort"]
-      stringFilterTypes.forEach(filter => {
+      // primitive filter types
+      const primitiveFilterTypes: Array<keyof AuctionResultsFilters> = [
+        "sort",
+        "openedItemIndex",
+      ]
+      primitiveFilterTypes.forEach(filter => {
         console.log("string filter", filter)
         if (name === filter) {
           filterState[name as any] = value
@@ -200,6 +215,7 @@ const AuctionResultsFilterReducer = (
 
       const filterState: AuctionResultsFilters = {
         page: 1,
+        openedItemIndex: -1,
       }
 
       // if (name === "organization") {

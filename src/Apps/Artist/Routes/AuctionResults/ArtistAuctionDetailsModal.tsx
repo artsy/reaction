@@ -1,7 +1,5 @@
 import { Modal } from "Components/Modal/Modal"
 import React, { SFC } from "react"
-import { Subscribe } from "unstated"
-import { AuctionResultsState } from "./state"
 
 import {
   Box,
@@ -14,9 +12,9 @@ import {
   Spacer,
 } from "@artsy/palette"
 import { get } from "Utils/get"
+import { useAuctionResultsFilterContext } from "./AuctionResultsFilterContext"
 
 interface Props {
-  hideDetailsModal?: () => void
   auctionResult?: {
     title: string
     date_text: string
@@ -31,38 +29,32 @@ interface Props {
 }
 
 export const ArtistAuctionDetailsModal: SFC<Props> = props => {
-  return (
-    <Subscribe to={[AuctionResultsState]}>
-      {({ state, hideDetailsModal }: AuctionResultsState) => {
-        if (!state.showModal) {
-          return null
-        }
+  const filterContext = useAuctionResultsFilterContext()
 
-        return (
-          <Modal
-            onClose={() => hideDetailsModal()}
-            show={state.showModal}
-            style={{
-              maxHeight: 540,
-              overflowX: "scroll",
-            }}
-          >
-            <LotDetails
-              auctionResult={state.selectedAuction.auctionResult}
-              hideDetailsModal={hideDetailsModal}
-            />
-          </Modal>
-        )
+  if (filterContext.filters.openedItemIndex === -1) {
+    return null
+  }
+
+  return (
+    <Modal
+      onClose={() => filterContext.onAuctionResultClick(-1)}
+      show
+      style={{
+        maxHeight: 540,
+        overflowX: "scroll",
       }}
-    </Subscribe>
+    >
+      <LotDetails auctionResult={props.auctionResult} />
+    </Modal>
   )
 }
 
 const LotDetails: SFC<Props> = props => {
   const {
-    hideDetailsModal,
     auctionResult: { title, date_text, dimension_text, images, description },
   } = props
+  const filterContext = useAuctionResultsFilterContext()
+
   const imageUrl = get(images, i => i.thumbnail.url, "")
 
   return (
@@ -109,7 +101,7 @@ const LotDetails: SFC<Props> = props => {
       <Button
         variant="secondaryOutline"
         width="100%"
-        onClick={() => hideDetailsModal()}
+        onClick={() => filterContext.onAuctionResultClick(-1)}
       >
         OK
       </Button>

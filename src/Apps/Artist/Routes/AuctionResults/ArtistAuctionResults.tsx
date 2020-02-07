@@ -12,7 +12,6 @@ import { Box, Spacer } from "@artsy/palette"
 import { LoadingArea } from "Components/v2/LoadingArea"
 import { isEqual } from "lodash"
 import { usePrevious } from "Utils/Hooks/usePrevious"
-import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
 import {
   AuctionResultsFilterContextProvider,
   useAuctionResultsFilterContext,
@@ -20,6 +19,7 @@ import {
 import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
 import { SortSelect } from "./Components/SortSelect"
 
+// TODO:
 // const logger = createLogger("ArtistAuctionResults.tsx")
 
 const PAGE_SIZE = 10
@@ -125,6 +125,12 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
   const { pageInfo } = artist.auctionResultsConnection
   const auctionResultsLength = artist.auctionResultsConnection.edges.length
 
+  const { openedItemIndex } = filterContext.filters
+  const openedAuctionResult =
+    openedItemIndex > -1
+      ? artist.auctionResultsConnection.edges[openedItemIndex].node
+      : null
+
   return (
     <>
       <Row>
@@ -154,8 +160,6 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
             <SortSelect />
           </Flex>
 
-          <ArtistAuctionDetailsModal />
-
           <Spacer mt={3} />
 
           <LoadingArea isLoading={isLoading}>
@@ -163,6 +167,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
               return (
                 <React.Fragment key={index}>
                   <AuctionResultItem
+                    index={index}
                     auctionResult={node}
                     lastChild={index === auctionResultsLength - 1}
                   />
@@ -227,6 +232,15 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           totalCount
           edges {
             node {
+              title
+              dimension_text: dimensionText
+              images {
+                thumbnail {
+                  url
+                }
+              }
+              description
+              date_text: dateText
               ...ArtistAuctionResultItem_auctionResult
             }
           }
