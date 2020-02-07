@@ -94,7 +94,6 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
 const LargeAuctionItem: SFC<Props> = props => {
   const {
     auctionResult: {
-      currency,
       images,
       date_text,
       organization,
@@ -126,7 +125,8 @@ const LargeAuctionItem: SFC<Props> = props => {
               <Flex alignItems="center" height="100%" pl={1} pr={6}>
                 <div>
                   <Sans size="3" weight="medium">
-                    {title && title + ", "}
+                    {title}
+                    {title && date_text && ", "}
                     {date_text}
                   </Sans>
                   <Sans size="2" color="black60">
@@ -151,13 +151,7 @@ const LargeAuctionItem: SFC<Props> = props => {
             <Col sm={4}>
               <Flex alignItems="center" height="100%">
                 <Flex width="90%" pr="10px" justifyContent="flex-end">
-                  {renderPricing(
-                    salePrice,
-                    currency,
-                    props.user,
-                    props.mediator,
-                    "lg"
-                  )}
+                  {renderPricing(salePrice, props.user, props.mediator, "lg")}
                 </Flex>
                 <Flex width="10%" justifyContent="flex-end">
                   <div onClick={() => toggleDetails(props.auctionResult)}>
@@ -181,7 +175,7 @@ const LargeAuctionItem: SFC<Props> = props => {
 
 const ExtraSmallAuctionItem: SFC<Props> = props => {
   const {
-    auctionResult: { images, date_text, sale_date_text, title, currency },
+    auctionResult: { images, date_text, sale_date_text, title },
     salePrice,
   } = getProps(props)
   const imageUrl = get(images, i => i.thumbnail.url, "")
@@ -205,15 +199,10 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
             <Col xs="6">
               <Flex alignItems="center" width="100%" height="100%">
                 <Box>
-                  {renderPricing(
-                    salePrice,
-                    currency,
-                    props.user,
-                    props.mediator,
-                    "xs"
-                  )}
+                  {renderPricing(salePrice, props.user, props.mediator, "xs")}
                   <Sans size="2" weight="medium" color="black60">
-                    {title && title + ","}
+                    {title}
+                    {title && date_text && ", "}
                     {date_text}
                   </Sans>
                   <Sans size="2" color="black60" mt="5px">
@@ -263,7 +252,6 @@ export const AuctionResultItemFragmentContainer = createFragmentContainer(
         mediumText
         categoryText
         description
-        currency
         date_text: dateText
         sale_date_text: saleDateText
         price_realized: priceRealized {
@@ -308,17 +296,16 @@ const getProps = (props: Props) => {
   }
 }
 
-const renderPricing = (salePrice, currency, user, mediator, size) => {
+const renderPricing = (salePrice, user, mediator, size) => {
   const textSize = size === "xs" ? "2" : "3t"
   if (user) {
     const textAlign = size === "xs" ? "left" : "right"
     return (
-      <Box textAlign={textAlign}>
+      <Box textAlign={textAlign} mb="5px">
         {salePrice && (
           <>
             <Sans size={textSize} weight="medium" mb="2px">
-              {salePrice + " "}
-              {currency}
+              {salePrice}
             </Sans>
             {size !== "xs" && (
               <Sans size="2" color="black60">
@@ -329,7 +316,7 @@ const renderPricing = (salePrice, currency, user, mediator, size) => {
         )}
         {!salePrice && (
           <Box textAlign={textAlign}>
-            <Sans size={textSize} weight="medium">
+            <Sans mb="2px" size={textSize} weight="medium">
               Price not available
             </Sans>
           </Box>
@@ -356,24 +343,22 @@ const renderPricing = (salePrice, currency, user, mediator, size) => {
   }
 }
 
-const renderEstimate = (estimatedPrice, currency, user, mediator, size) => {
+const renderEstimate = (estimatedPrice, user, mediator, size) => {
+  const justifyContent = size === "xs" ? "flex-start" : "flex-end"
   if (user) {
     return (
-      <Box>
+      <Flex justifyContent={justifyContent}>
         {estimatedPrice && (
           <>
-            <Sans size="2">
-              {estimatedPrice + " "}
-              {currency}
-            </Sans>
+            <Sans size="2">{estimatedPrice}</Sans>
           </>
         )}
         {!estimatedPrice && (
-          <Box>
+          <>
             <Sans size="2">Estimate not available</Sans>
-          </Box>
+          </>
         )}
-      </Box>
+      </Flex>
     )
   } else {
     return (
@@ -392,30 +377,22 @@ const renderEstimate = (estimatedPrice, currency, user, mediator, size) => {
   }
 }
 
-const renderRealizedPrice = (
-  estimatedPrice,
-  currency,
-  user,
-  mediator,
-  size
-) => {
+const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
+  const justifyContent = size === "xs" ? "flex-start" : "flex-end"
   if (user) {
     return (
-      <Box>
+      <Flex justifyContent={justifyContent}>
         {estimatedPrice && (
           <>
-            <Sans size="2">
-              {estimatedPrice + " "}
-              {currency}
-            </Sans>
+            <Sans size="2">{estimatedPrice}</Sans>
           </>
         )}
         {!estimatedPrice && (
-          <Box>
+          <>
             <Sans size="2">Price not available</Sans>
-          </Box>
+          </>
         )}
-      </Box>
+      </Flex>
     )
   } else {
     return (
@@ -442,7 +419,6 @@ const renderLargeCollapse = (props, user, mediator) => {
       organization,
       sale_date_text,
       categoryText,
-      currency,
     },
     salePrice,
     estimatedPrice,
@@ -458,7 +434,7 @@ const renderLargeCollapse = (props, user, mediator) => {
           >
             <Separator />
             <Box p={2}>
-              <Row>
+              <Row pr="5%">
                 <Col sm={2}>
                   <Sans size="2" weight="medium">
                     Artwork Info
@@ -480,18 +456,12 @@ const renderLargeCollapse = (props, user, mediator) => {
                 </Col>
                 <Col sm={4}>
                   <Sans size="2">
-                    {renderEstimate(
-                      estimatedPrice,
-                      currency,
-                      user,
-                      mediator,
-                      "lg"
-                    )}
+                    {renderEstimate(estimatedPrice, user, mediator, "lg")}
                   </Sans>
                 </Col>
               </Row>
 
-              <Row>
+              <Row pr="5%">
                 <Col sm={2}>
                   <Sans size="2" weight="medium">
                     Auction Sale
@@ -513,17 +483,11 @@ const renderLargeCollapse = (props, user, mediator) => {
                   </Box>
                 </Col>
                 <Col sm={4}>
-                  {renderRealizedPrice(
-                    salePrice,
-                    currency,
-                    user,
-                    mediator,
-                    "lg"
-                  )}
+                  {renderRealizedPrice(salePrice, user, mediator, "lg")}
                 </Col>
               </Row>
 
-              <Row>
+              <Row pr="5%">
                 <Col sm={2}>
                   <Sans size="2" weight="medium">
                     Description
@@ -551,7 +515,6 @@ const renderSmallCollapse = (props, user, mediator) => {
       organization,
       sale_date_text,
       categoryText,
-      currency,
       mediumText,
     },
     salePrice,
@@ -589,13 +552,7 @@ const renderSmallCollapse = (props, user, mediator) => {
                   </Sans>
                 </Col>
                 <Col xs={8}>
-                  {renderEstimate(
-                    estimatedPrice,
-                    currency,
-                    user,
-                    mediator,
-                    "xs"
-                  )}
+                  {renderEstimate(estimatedPrice, user, mediator, "xs")}
                 </Col>
               </Row>
 
@@ -606,13 +563,7 @@ const renderSmallCollapse = (props, user, mediator) => {
                   </Sans>
                 </Col>
                 <Col xs={8}>
-                  {renderRealizedPrice(
-                    salePrice,
-                    currency,
-                    user,
-                    mediator,
-                    "xs"
-                  )}
+                  {renderRealizedPrice(salePrice, user, mediator, "xs")}
                 </Col>
               </Row>
 
