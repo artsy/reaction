@@ -34,7 +34,7 @@ describe("trackingMiddleware", () => {
 
     expect(global.analytics.page).toBeCalledWith(
       {
-        path: "/foo",
+        path: "http://testing.com/foo",
         url: "http://testing.com/foo",
       },
       { integrations: { Marketo: false } }
@@ -90,7 +90,7 @@ describe("trackingMiddleware", () => {
 
         expect(global.analytics.page).toBeCalledWith(
           {
-            path: pathToTest,
+            path: `http://testing.com${pathToTest}`,
             referrer: `http://testing.com/referrer`,
             url: `http://testing.com${pathToTest}`,
           },
