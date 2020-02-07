@@ -27,9 +27,16 @@ export class AuctionResultsState extends Container<StateContainer> {
   }
 
   toggleDetails = selectedAuction => {
-    this.setState({
-      showDetails: !this.state.showDetails,
-      selectedAuction: this.state.selectedAuction ? null : selectedAuction,
-    })
+    if (!this.state.showDetails) {
+      this.setState({
+        showDetails: true,
+        selectedAuction,
+      })
+    } else {
+      this.setState({
+        showDetails: false,
+        selectedAuction: null,
+      })
+    }
   }
 }

@@ -42,14 +42,17 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
   const { user, mediator } = useContext(SystemContext)
   return (
     <Subscribe to={[AuctionResultsState]}>
-      {({ state }: AuctionResultsState) => {
+      {({ state, toggleDetails }: AuctionResultsState) => {
         return (
           <>
             <Media at="xs">
               {(className, renderChildren) => (
                 <>
                   {renderChildren && (
-                    <FullWidthBorderBox mb={2}>
+                    <FullWidthBorderBox
+                      mb={2}
+                      onClick={() => toggleDetails(props.auctionResult)}
+                    >
                       <Row height="120px" className={className} p={2}>
                         <ExtraSmallAuctionItem
                           {...props}
@@ -67,7 +70,10 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
               {(className, renderChildren) => (
                 <>
                   {renderChildren && (
-                    <FullWidthBorderBox mb={2}>
+                    <FullWidthBorderBox
+                      mb={2}
+                      onClick={() => toggleDetails(props.auctionResult)}
+                    >
                       <Box p={2} minHeight="120px">
                         <Row minHeight="80px" className={className}>
                           <LargeAuctionItem
@@ -154,7 +160,7 @@ const LargeAuctionItem: SFC<Props> = props => {
                   {renderPricing(salePrice, props.user, props.mediator, "lg")}
                 </Flex>
                 <Flex width="10%" justifyContent="flex-end">
-                  <div onClick={() => toggleDetails(props.auctionResult)}>
+                  <div>
                     {props.auctionResult !== state.selectedAuction && (
                       <ArrowDownIcon />
                     )}
@@ -218,7 +224,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
                 alignItems="center"
                 height="100%"
               >
-                <div onClick={() => toggleDetails(props.auctionResult)}>
+                <div>
                   {props.auctionResult !== state.selectedAuction && (
                     <ArrowDownIcon />
                   )}
@@ -434,7 +440,7 @@ const renderLargeCollapse = (props, user, mediator) => {
           >
             <Separator />
             <Box p={2}>
-              <Row pr="5%">
+              <Row>
                 <Col sm={2}>
                   <Sans size="2" weight="medium">
                     Artwork Info
@@ -454,14 +460,14 @@ const renderLargeCollapse = (props, user, mediator) => {
                     </Sans>
                   </Box>
                 </Col>
-                <Col sm={4}>
+                <Col sm={4} pr="4.5%">
                   <Sans size="2">
                     {renderEstimate(estimatedPrice, user, mediator, "lg")}
                   </Sans>
                 </Col>
               </Row>
 
-              <Row pr="5%">
+              <Row>
                 <Col sm={2}>
                   <Sans size="2" weight="medium">
                     Auction Sale
@@ -482,19 +488,19 @@ const renderLargeCollapse = (props, user, mediator) => {
                     </Sans>
                   </Box>
                 </Col>
-                <Col sm={4}>
+                <Col sm={4} pr="4.5%">
                   {renderRealizedPrice(salePrice, user, mediator, "lg")}
                 </Col>
               </Row>
 
-              <Row pr="5%">
+              <Row>
                 <Col sm={2}>
                   <Sans size="2" weight="medium">
                     Description
                   </Sans>
                 </Col>
-                <Col sm={10}>
-                  <Box pl={1} pr={6}>
+                <Col sm={10} pr="4.5%">
+                  <Box pl={1}>
                     <Sans size="2">{description}</Sans>
                   </Box>
                 </Col>
