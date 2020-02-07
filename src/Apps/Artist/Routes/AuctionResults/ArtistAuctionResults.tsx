@@ -129,7 +129,6 @@ class AuctionResultsContainer extends Component<
                   />
                   <SortSelect />
                 </Flex>
-
                 <Spacer mt={3} />
 
                 <LoadingArea isLoading={this.state.isLoading}>
