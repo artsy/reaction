@@ -1,3 +1,15 @@
+# v25.5.4 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Fix artwork page 1-off [#3138](https://github.com/artsy/reaction/pull/3138) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.5.3 (Fri Feb 07 2020)
 
 #### 🐛  Bug Fix
