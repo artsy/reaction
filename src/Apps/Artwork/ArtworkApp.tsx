@@ -123,7 +123,7 @@ export class ArtworkApp extends React.Component<Props> {
         artwork_id: internalID,
         artwork_slug: slug,
         sale_id: sale.internalID,
-        sale_slug: sale.slug,
+        auction_slug: sale.slug,
       }
       logger.warn("Tracking LotView:", trackingData)
       tracking.trackEvent(trackingData)
