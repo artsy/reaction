@@ -1,3 +1,15 @@
+# v25.5.3 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Make path absolute [#3136](https://github.com/artsy/reaction/pull/3136) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.5.2 (Fri Feb 07 2020)
 
 #### 🐛  Bug Fix
