@@ -1,25 +1,40 @@
 import { Box, Checkbox, Flex, Toggle } from "@artsy/palette"
 import React from "react"
+import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
 
 const auctionHouses = [
-  { name: "sothebys", displayName: "Sotheby's" },
-  { name: "christies", displayName: "Christie's" },
-  { namee: "bonhams", displayName: "Bonhams" },
-  { name: "phillips", displayName: "Phillips" },
+  { name: "Sotheby's" },
+  { name: "Christie's" },
+  { name: "Phillips" },
 ]
 
 export const AuctionHouseFilter: React.FC = () => {
+  const filterContext = useAuctionResultsFilterContext()
+
+  const toggleSelection = (selected, name) => {
+    let organizations = filterContext.filters.organizations.slice()
+    if (selected) {
+      organizations.push(name)
+    } else {
+      organizations = organizations.filter(item => item !== name)
+    }
+    filterContext.setFilter("organizations", organizations)
+  }
+
   return (
     <Toggle label="Auction house" expanded>
       <Flex flexDirection="column" alignItems="left">
         <Box pt={1}>
           {auctionHouses.map((checkbox, index) => {
+            const { name } = checkbox
             const props = {
               key: index,
-              // onSelect: value => filterContext.setFilter(checkbox.state, value),
-              // selected: Boolean(filterContext.filters[checkbox.state]),
+              onSelect: selected => {
+                toggleSelection(selected, name)
+              },
+              selected: filterContext.filters.organizations.includes(name),
             }
-            return <Checkbox {...props}>{checkbox.displayName}</Checkbox>
+            return <Checkbox {...props}>{name}</Checkbox>
           })}
         </Box>
       </Flex>

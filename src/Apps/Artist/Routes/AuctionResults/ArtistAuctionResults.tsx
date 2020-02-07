@@ -212,6 +212,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
+          organizations: { type: "[String]" }
         ) {
         slug
         auctionResultsConnection(
@@ -220,6 +221,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           before: $before
           last: $last
           sort: $sort
+          organizations: $organizations
         ) {
           ...AuctionResultsCount_results
           pageInfo {
@@ -256,6 +258,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $before: String
       $sort: AuctionResultSorts
       $artistID: String!
+      $organizations: [String]
     ) {
       artist(id: $artistID) {
         ...ArtistAuctionResults_artist
@@ -265,6 +268,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             after: $after
             before: $before
             sort: $sort
+            organizations: $organizations
           )
       }
     }

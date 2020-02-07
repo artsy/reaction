@@ -3,7 +3,7 @@ import { rangeToTuple } from "Components/v2/ArtworkFilter/Utils/rangeToTuple"
 import React, { useContext, useReducer } from "react"
 
 export interface AuctionResultsFilters {
-  // organization?: string[]
+  organizations?: string[]
   openedItemIndex: number
   page?: number
   sort?: string
@@ -16,7 +16,7 @@ interface AuctionResultsFiltersState extends AuctionResultsFilters {
  * Initial filter state
  */
 export const initialAuctionResultsFilterState: AuctionResultsFilters = {
-  // organization: [],
+  organizations: [],
   openedItemIndex: -1,
   page: 1,
   sort: "DATE_DESC",
@@ -26,6 +26,7 @@ export interface AuctionResultsFilterContextProps {
   filters?: AuctionResultsFilters
   onChange?: (filterState) => void
   setFilter: (name: keyof AuctionResultsFilters, value: any) => void
+  unsetFilter: (name: keyof AuctionResultsFilters, value: any) => void
   onAuctionResultClick?: (index: number) => void
 }
 
@@ -37,6 +38,7 @@ export const AuctionResultsFilterContext = React.createContext<
 >({
   filters: initialAuctionResultsFilterState,
   setFilter: null,
+  unsetFilter: null,
   onAuctionResultClick: null,
 })
 
@@ -171,11 +173,9 @@ const AuctionResultsFilterReducer = (
         openedItemIndex: -1,
       }
 
-      // if (name === "organization") {
-      //   filterState = {
-      //     organization: value ? [value] : [],
-      //   }
-      // }
+      if (name === "organizations") {
+        filterState.organizations = value || []
+      }
 
       // primitive filter types
       const primitiveFilterTypes: Array<keyof AuctionResultsFilters> = [
@@ -218,11 +218,9 @@ const AuctionResultsFilterReducer = (
         openedItemIndex: -1,
       }
 
-      // if (name === "organization") {
-      //   filterState = {
-      //     organization: [],
-      //   }
-      // }
+      if (name === "organizations") {
+        filterState.organizations = []
+      }
 
       // const filters: Array<keyof AuctionResultsFilters> = [
       //   "acquireable",
