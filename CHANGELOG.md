@@ -1,3 +1,15 @@
+# v25.5.2 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Fix url and referrer tracking [#3135](https://github.com/artsy/reaction/pull/3135) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.5.1 (Thu Feb 06 2020)
 
 #### 🐛  Bug Fix
