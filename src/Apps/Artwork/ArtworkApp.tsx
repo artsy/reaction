@@ -51,6 +51,7 @@ export class ArtworkApp extends React.Component<Props> {
   componentDidMount() {
     this.trackPageview()
     this.trackProductView()
+    this.trackLotView()
   }
 
   componentDidUpdate(prevProps) {
@@ -66,6 +67,7 @@ export class ArtworkApp extends React.Component<Props> {
       if (this.props.routerPathname.includes("/artwork/")) {
         this.trackPageview()
         this.trackProductView()
+        this.trackLotView()
       }
     }
   }
@@ -107,6 +109,25 @@ export class ArtworkApp extends React.Component<Props> {
         logger.warn("Tracking ProductView:", trackingData)
         tracking.trackEvent(trackingData)
       }
+    }
+  }
+
+  trackLotView() {
+    const {
+      tracking,
+      artwork: { is_in_auction, slug, internalID, sale },
+    } = this.props
+
+    if (tracking && is_in_auction) {
+      const trackingData = {
+        action_type: Schema.ActionType.ViewedLot,
+        artwork_id: internalID,
+        artwork_slug: slug,
+        sale_id: sale.internalID,
+        auction_slug: sale.slug,
+      }
+      logger.warn("Tracking LotView:", trackingData)
+      tracking.trackEvent(trackingData)
     }
   }
 
@@ -265,6 +286,10 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
           }
         }
         is_in_auction: isInAuction
+        sale {
+          internalID
+          slug
+        }
         artists {
           id
           slug
