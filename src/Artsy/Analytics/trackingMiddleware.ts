@@ -37,6 +37,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           typeof window.analytics !== "undefined" && window.analytics
 
         if (analytics) {
+          // TODO: Pass referrer over to Artwork page if A/B test passes
+          // window.sd.routerReferrer = referrer
+
           const foundExcludedPath = excludePaths.some(excludedPath => {
             return pathname.includes(excludedPath)
           })
@@ -55,7 +58,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
             if (getENV("EXPERIMENTAL_APP_SHELL")) {
-              trackingData.referrer = sd.APP_URL + referrer
+              if (referrer) {
+                trackingData.referrer = sd.APP_URL + referrer
+              }
             }
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
