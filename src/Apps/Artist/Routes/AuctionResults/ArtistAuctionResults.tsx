@@ -35,13 +35,13 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 }) => {
   const filterContext = useAuctionResultsFilterContext()
 
-  const { sort } = filterContext.filters
+  const { sort, organizations } = filterContext.filters
 
   const loadNext = () => {
     const { hasNextPage, endCursor } = pageInfo
 
     if (hasNextPage) {
-      this.loadAfter(artist.slug, endCursor, relay, setIsLoading)
+      loadAfter(endCursor)
     }
   }
 
@@ -55,7 +55,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         artistID: artist.slug,
         before: null,
         last: null,
-        organization: null,
+        organizations,
         sort,
       },
       null,
