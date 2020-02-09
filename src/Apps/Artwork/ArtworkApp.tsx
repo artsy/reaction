@@ -24,7 +24,6 @@ import { Footer } from "Components/v2/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
-import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -81,7 +80,7 @@ export class ArtworkApp extends React.Component<Props> {
     // Can these props be tracked on mount using our typical @track() or
     // trackEvent() patterns as used in other apps?
     const properties = {
-      path: sd.APP_URL + window.location.pathname,
+      path: window.location.pathname,
       acquireable: is_acquireable,
       offerable: is_offerable,
       availability,
