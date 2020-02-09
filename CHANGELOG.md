@@ -1,3 +1,15 @@
+# v25.5.6 (Sun Feb 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Analytics] Path is relative [#3142](https://github.com/artsy/reaction/pull/3142) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.5.5 (Fri Feb 07 2020)
 
 #### 🐛  Bug Fix
