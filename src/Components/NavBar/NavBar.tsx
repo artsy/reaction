@@ -229,7 +229,7 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu />
+          <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
         </>
       )}
     </header>
