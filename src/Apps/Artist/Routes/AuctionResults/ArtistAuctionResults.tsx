@@ -17,6 +17,8 @@ import {
   AuctionResultsFilterContextProvider,
   useAuctionResultsFilterContext,
 } from "./AuctionResultsFilterContext"
+import { AuctionFilterMobileActionSheet } from "./Components/AuctionFilterMobileActionSheet"
+import { AuctionFilters } from "./Components/AuctionFilters"
 import { AuctionResultHeader } from "./Components/AuctionResultHeader"
 import { AuctionResultsControls } from "./Components/AuctionResultsControls"
 
@@ -71,6 +73,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
   }
 
   const [isLoading, setIsLoading] = useState(false)
+  const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
 
   const previousFilters = usePrevious(filterContext.filters)
 
@@ -150,6 +153,13 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
   return (
     <>
+      {showMobileActionSheet && (
+        <AuctionFilterMobileActionSheet
+          onClose={() => toggleMobileActionSheet(false)}
+        >
+          <AuctionFilters />
+        </AuctionFilterMobileActionSheet>
+      )}
       <Row>
         <AuctionResultHeader />
       </Row>
@@ -161,7 +171,10 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         </Col>
 
         <Col sm={10}>
-          <AuctionResultsControls artist={artist} />
+          <AuctionResultsControls
+            artist={artist}
+            toggleMobileActionSheet={toggleMobileActionSheet}
+          />
 
           <Spacer mt={3} />
 

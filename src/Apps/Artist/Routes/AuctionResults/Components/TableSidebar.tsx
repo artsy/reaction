@@ -1,5 +1,4 @@
 import React from "react"
-import { Media } from "Utils/Responsive"
 
 import { Flex, Row, Separator } from "@artsy/palette"
 import { AuctionFilters } from "./AuctionFilters"
