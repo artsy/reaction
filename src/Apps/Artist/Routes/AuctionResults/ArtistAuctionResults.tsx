@@ -1,4 +1,4 @@
-import { Col, Flex, Row, Sans, Separator, Serif } from "@artsy/palette"
+import { Col, Flex, Row, Separator } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { useState } from "react"
@@ -16,6 +16,7 @@ import {
   AuctionResultsFilterContextProvider,
   useAuctionResultsFilterContext,
 } from "./AuctionResultsFilterContext"
+import { AuctionResultHeader } from "./Components/AuctionResultHeader"
 import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
 import { SortSelect } from "./Components/SortSelect"
 
@@ -131,15 +132,26 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
       ? artist.auctionResultsConnection.edges[openedItemIndex].node
       : null
 
+  const resultList = (
+    <LoadingArea isLoading={isLoading}>
+      {artist.auctionResultsConnection.edges.map(({ node }, index) => {
+        return (
+          <React.Fragment key={index}>
+            <AuctionResultItem
+              index={index}
+              auctionResult={node}
+              lastChild={index === auctionResultsLength - 1}
+            />
+          </React.Fragment>
+        )
+      })}
+    </LoadingArea>
+  )
+
   return (
     <>
       <Row>
-        <Box pb={2}>
-          <Sans size="5t">Auction results</Sans>
-          <Serif size="3" color="black100">
-            Some copy about definitions and methodology and link to it here.
-          </Serif>
-        </Box>
+        <AuctionResultHeader />
       </Row>
       <Row>
         <Col sm={2} pr={[0, 2]}>
@@ -162,19 +174,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
           <Spacer mt={3} />
 
-          <LoadingArea isLoading={isLoading}>
-            {artist.auctionResultsConnection.edges.map(({ node }, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <AuctionResultItem
-                    index={index}
-                    auctionResult={node}
-                    lastChild={index === auctionResultsLength - 1}
-                  />
-                </React.Fragment>
-              )
-            })}
-          </LoadingArea>
+          {resultList}
         </Col>
       </Row>
 
