@@ -72,5 +72,101 @@ describe("AuctionResults", () => {
         expect(html).toContain(data.description)
       })
     })
+
+    describe("user interactions", () => {
+      const defualtRelayParams = {
+        first: 10,
+        after: null,
+        artistID: "pablo-picasso",
+        organizations: [],
+        sort: "DATE_DESC",
+      }
+      let refetchSpy
+      beforeEach(async () => {
+        wrapper = await getWrapper()
+        refetchSpy = jest.spyOn(
+          (wrapper.find("AuctionResultsContainer").props() as any).relay,
+          "refetch"
+        )
+      })
+      describe("pagination", () => {
+        it("triggers relay refetch with after", () => {
+          const pagination = wrapper.find("Pagination")
+
+          pagination
+            .find("button")
+            .at(1)
+            .simulate("click")
+          expect(refetchSpy).toHaveBeenCalledTimes(1)
+          expect(refetchSpy.mock.calls[0][0]).toEqual(
+            expect.objectContaining({
+              ...defualtRelayParams,
+              after: "YXJyYXljb25uZWN0aW9uOjk=",
+            })
+          )
+        })
+      })
+      describe("filters", () => {
+        describe("auction house filter", () => {
+          it("triggers relay refetch with organization list", done => {
+            const filter = wrapper.find("AuctionHouseFilter")
+
+            const checkboxes = filter.find("Checkbox")
+
+            checkboxes.at(1).simulate("click")
+
+            checkboxes.at(2).simulate("click")
+
+            checkboxes.at(1).simulate("click")
+
+            setTimeout(() => {
+              expect(refetchSpy).toHaveBeenCalledTimes(3)
+
+              expect(refetchSpy.mock.calls[0][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  organizations: ["Christie's"],
+                })
+              )
+              expect(refetchSpy.mock.calls[1][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  organizations: ["Christie's", "Phillips"],
+                })
+              )
+              expect(refetchSpy.mock.calls[2][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  organizations: ["Phillips"],
+                })
+              )
+              done()
+            })
+          })
+        })
+      })
+
+      describe("sort", () => {
+        it("triggers relay refetch with correct params", done => {
+          const sort = wrapper.find("SortSelect SelectSmall")
+
+          sort
+            .find("option")
+            .at(1)
+            .simulate("change")
+
+          setTimeout(() => {
+            expect(refetchSpy).toHaveBeenCalledTimes(1)
+            expect(refetchSpy.mock.calls[0][0]).toEqual(
+              expect.objectContaining({
+                ...defualtRelayParams,
+                sort: "ESTIMATE_AND_DATE_DESC",
+              })
+            )
+            done()
+          })
+        })
+      })
+    })
   })
 })
