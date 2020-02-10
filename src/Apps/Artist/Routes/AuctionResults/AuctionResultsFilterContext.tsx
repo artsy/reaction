@@ -1,5 +1,3 @@
-import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
-import { rangeToTuple } from "Components/v2/ArtworkFilter/Utils/rangeToTuple"
 import React, { useContext, useReducer } from "react"
 
 export interface AuctionResultsFilters {
@@ -25,8 +23,9 @@ export const initialAuctionResultsFilterState: AuctionResultsFilters = {
 export interface AuctionResultsFilterContextProps {
   filters?: AuctionResultsFilters
   onChange?: (filterState) => void
+  resetFilters: () => void
   setFilter: (name: keyof AuctionResultsFilters, value: any) => void
-  unsetFilter: (name: keyof AuctionResultsFilters, value: any) => void
+  unsetFilter: (name: keyof AuctionResultsFilters) => void
   onAuctionResultClick?: (index: number) => void
 }
 
@@ -38,16 +37,15 @@ export const AuctionResultsFilterContext = React.createContext<
 >({
   filters: initialAuctionResultsFilterState,
   setFilter: null,
+  resetFilters: null,
   unsetFilter: null,
   onAuctionResultClick: null,
 })
 
 export type SharedAuctionResultsFilterContextProps = Pick<
   AuctionResultsFilterContextProps,
-  "filters" | "onAuctionResultClick"
-  // | "sortOptions"
+  "filters"
   // | "onFilterClick"
-  // | "ZeroState"
 > & {
   onChange?: (filterState) => void
 }
@@ -58,33 +56,27 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
   children,
   // counts = {},
   filters = {},
-  onAuctionResultClick,
   // onChange,
   // onFilterClick,
-  // sortOptions,
-  // ZeroState,
 }) => {
   const initialFilterState = {
     ...initialAuctionResultsFilterState,
     ...filters,
   }
 
-  console.log("initialFilterState", initialFilterState, filters)
-
-  const [AuctionResultsFilterState, dispatch] = useReducer(
+  const [auctionResultsFilterState, dispatch] = useReducer(
     AuctionResultsFilterReducer,
     initialFilterState
   )
 
   // useDeepCompareEffect(() => {
   //   if (onChange) {
-  //     onChange(omit(AuctionResultsFilterState, ["reset"]))
+  //     onChange(omit(auctionResultsFilterState, ["reset"]))
   //   }
-  // }, [AuctionResultsFilterState])
+  // }, [auctionResultsFilterState])
 
   const auctionResultsFilterContext = {
-    filters: AuctionResultsFilterState,
-    // hasFilters: hasFilters(AuctionResultsFilterState),
+    filters: auctionResultsFilterState,
 
     // Handlers
     onAuctionResultClick: index => {
@@ -98,26 +90,7 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     },
     // onFilterClick,
 
-    // sortOptions,
-
-    // Components
-    // ZeroState,
-
-    // Filter manipulation
-    isDefaultValue: field => {
-      return isDefaultFilter(field, AuctionResultsFilterState[field])
-    },
-
-    rangeToTuple: range => {
-      return rangeToTuple(AuctionResultsFilterState, range)
-    },
-
     setFilter: (name, val) => {
-      // if (onFilterClick) {
-      //   onFilterClick(name, val, { ...AuctionResultsFilterState, [name]: val })
-      // }
-      console.log("set filter", name, val)
-
       dispatch({
         type: "SET",
         payload: {
@@ -144,8 +117,6 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     },
   }
 
-  console.log("auctionResultsFilterContext !!!", auctionResultsFilterContext)
-
   return (
     <AuctionResultsFilterContext.Provider value={auctionResultsFilterContext}>
       {children}
@@ -160,7 +131,6 @@ const AuctionResultsFilterReducer = (
     payload: { name: keyof AuctionResultsFilters; value?: any }
   }
 ): AuctionResultsFiltersState => {
-  console.log("reducer", action)
   switch (action.type) {
     /**
      * Setting  and updating filters
@@ -180,26 +150,16 @@ const AuctionResultsFilterReducer = (
       // primitive filter types
       const primitiveFilterTypes: Array<keyof AuctionResultsFilters> = [
         "sort",
+        "page",
         "openedItemIndex",
       ]
       primitiveFilterTypes.forEach(filter => {
-        console.log("string filter", filter)
         if (name === filter) {
           filterState[name as any] = value
         }
       })
 
-      // // Boolean filter types
-      // const booleanFilterTypes: Array<keyof AuctionResultsFilters> = [
-
-      // ]
-      // booleanFilterTypes.forEach(filter => {
-      //   if (name === filter) {
-      //     filterState[name as any] = Boolean(value)
-      //   }
-      // })
-
-      // delete state.reset
+      delete state.reset
 
       return {
         ...state,
@@ -211,7 +171,7 @@ const AuctionResultsFilterReducer = (
      * Unsetting a filter
      */
     case "UNSET": {
-      // const { name } = action.payload as { name: keyof AuctionResultsFilters }
+      const { name } = action.payload as { name: keyof AuctionResultsFilters }
 
       const filterState: AuctionResultsFilters = {
         page: 1,
@@ -222,20 +182,15 @@ const AuctionResultsFilterReducer = (
         filterState.organizations = []
       }
 
-      // const filters: Array<keyof AuctionResultsFilters> = [
-      //   "acquireable",
-      //   "atAuction",
-      //   "color",
-      //   "forSale",
-      //   "inquireableOnly",
-      //   "offerable",
-      //   "partnerID",
-      // ]
-      // filters.forEach(filter => {
-      //   if (name === filter) {
-      //     filterState[name as any] = null
-      //   }
-      // })
+      const filters: Array<keyof AuctionResultsFilters> = [
+        "sort",
+        "openedItemIndex",
+      ]
+      filters.forEach(filter => {
+        if (name === filter) {
+          filterState[name as any] = null
+        }
+      })
 
       return {
         ...state,
