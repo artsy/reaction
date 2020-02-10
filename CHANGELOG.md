@@ -1,3 +1,15 @@
+# v25.5.7 (Mon Feb 10 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Ensure nav closed on clienside routes [#3140](https://github.com/artsy/reaction/pull/3140) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.5.6 (Sun Feb 09 2020)
 
 #### 🐛  Bug Fix
