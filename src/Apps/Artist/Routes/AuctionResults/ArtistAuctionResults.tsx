@@ -1,24 +1,24 @@
-import { Col, Flex, Row, Separator } from "@artsy/palette"
+import { Col, Row } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
 import React, { useState } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import useDeepCompareEffect from "use-deep-compare-effect"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
-import { TableSidebar } from "./TableSidebar"
+import { TableSidebar } from "./Components/TableSidebar"
 
 import { Box, Spacer } from "@artsy/palette"
 
 import { LoadingArea } from "Components/v2/LoadingArea"
 import { isEqual } from "lodash"
 import { usePrevious } from "Utils/Hooks/usePrevious"
+import { Media } from "Utils/Responsive"
 import {
   AuctionResultsFilterContextProvider,
   useAuctionResultsFilterContext,
 } from "./AuctionResultsFilterContext"
 import { AuctionResultHeader } from "./Components/AuctionResultHeader"
-import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
-import { SortSelect } from "./Components/SortSelect"
+import { AuctionResultsControls } from "./Components/AuctionResultsControls"
 
 // TODO:
 // const logger = createLogger("ArtistAuctionResults.tsx")
@@ -155,22 +155,13 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
       </Row>
       <Row>
         <Col sm={2} pr={[0, 2]}>
-          <TableSidebar />
+          <Media greaterThan="xs">
+            <TableSidebar />
+          </Media>
         </Col>
 
         <Col sm={10}>
-          <Row pb={2}>
-            <Separator />
-          </Row>
-          <Flex
-            justifyContent="space-between"
-            alignItems="center"
-            width="100%"
-            mb={2}
-          >
-            <AuctionResultsCount results={artist.auctionResultsConnection} />
-            <SortSelect />
-          </Flex>
+          <AuctionResultsControls artist={artist} />
 
           <Spacer mt={3} />
 
