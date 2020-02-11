@@ -31,13 +31,13 @@ interface Props {
 export const ArtistAuctionDetailsModal: SFC<Props> = props => {
   const filterContext = useAuctionResultsFilterContext()
 
-  if (filterContext.filters.openedItemIndex === -1) {
+  if (filterContext.filters.openedItemIndex === null) {
     return null
   }
 
   return (
     <Modal
-      onClose={() => filterContext.onAuctionResultClick(-1)}
+      onClose={() => filterContext.onAuctionResultClick(null)}
       show
       style={{
         maxHeight: 540,
@@ -101,7 +101,7 @@ const LotDetails: SFC<Props> = props => {
       <Button
         variant="secondaryOutline"
         width="100%"
-        onClick={() => filterContext.onAuctionResultClick(-1)}
+        onClick={() => filterContext.onAuctionResultClick(null)}
       >
         OK
       </Button>

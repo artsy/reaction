@@ -18,33 +18,35 @@ const RowContainer: React.FC = ({ children }) => (
 )
 
 // TODO: get count from context instead of passing down artist?
-export const AuctionResultsControls = ({ artist, toggleMobileActionSheet }) => (
-  <>
-    <Media at="xs">
-      <Row pb={2}>
+export const AuctionResultsControls = ({ artist, toggleMobileActionSheet }) => {
+  return (
+    <>
+      <Media at="xs">
+        <Row pb={2}>
+          <RowContainer>
+            <Button size="small" onClick={() => toggleMobileActionSheet(true)}>
+              <Flex justifyContent="space-between" alignItems="center">
+                <FilterIcon fill="white100" />
+                <Spacer mr={0.5} />
+                Filter
+              </Flex>
+            </Button>
+            <SortSelect />
+          </RowContainer>
+        </Row>
+        <Row>
+          <AuctionResultsCount results={artist.auctionResultsConnection} />
+        </Row>
+      </Media>
+      <Media greaterThan="xs">
+        <Row pb={2}>
+          <Separator />
+        </Row>
         <RowContainer>
-          <Button size="small" onClick={() => toggleMobileActionSheet(true)}>
-            <Flex justifyContent="space-between" alignItems="center">
-              <FilterIcon fill="white100" />
-              <Spacer mr={0.5} />
-              Filter
-            </Flex>
-          </Button>
+          <AuctionResultsCount results={artist.auctionResultsConnection} />
           <SortSelect />
         </RowContainer>
-      </Row>
-      <Row>
-        <AuctionResultsCount results={artist.auctionResultsConnection} />
-      </Row>
-    </Media>
-    <Media greaterThan="xs">
-      <Row pb={2}>
-        <Separator />
-      </Row>
-      <RowContainer>
-        <AuctionResultsCount results={artist.auctionResultsConnection} />
-        <SortSelect />
-      </RowContainer>
-    </Media>
-  </>
-)
+      </Media>
+    </>
+  )
+}

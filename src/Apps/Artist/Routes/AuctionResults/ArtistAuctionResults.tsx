@@ -12,6 +12,7 @@ import { Box, Spacer } from "@artsy/palette"
 import { LoadingArea } from "Components/v2/LoadingArea"
 import { isEqual } from "lodash"
 import { usePrevious } from "Utils/Hooks/usePrevious"
+import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import {
   AuctionResultsFilterContextProvider,
@@ -22,8 +23,7 @@ import { AuctionFilters } from "./Components/AuctionFilters"
 import { AuctionResultHeader } from "./Components/AuctionResultHeader"
 import { AuctionResultsControls } from "./Components/AuctionResultsControls"
 
-// TODO:
-// const logger = createLogger("ArtistAuctionResults.tsx")
+const logger = createLogger("ArtistAuctionResults.tsx")
 
 const PAGE_SIZE = 10
 
@@ -66,7 +66,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         setIsLoading(false)
 
         if (error) {
-          console.error(error)
+          logger.error(error)
         }
       }
     )
@@ -119,7 +119,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
     relay.refetch(relayRefetchVariables, null, error => {
       if (error) {
-        console.error(error)
+        logger.error(error)
       }
 
       setIsLoading(false)
@@ -131,7 +131,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
   const { openedItemIndex } = filterContext.filters
   const openedAuctionResult =
-    openedItemIndex > -1
+    openedItemIndex !== null
       ? artist.auctionResultsConnection.edges[openedItemIndex].node
       : null
 

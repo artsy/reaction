@@ -2,7 +2,7 @@ import React, { useContext, useReducer } from "react"
 
 export interface AuctionResultsFilters {
   organizations?: string[]
-  openedItemIndex: number
+  openedItemIndex: number | null
   page?: number
   sort?: string
 }
@@ -15,7 +15,7 @@ interface AuctionResultsFiltersState extends AuctionResultsFilters {
  */
 export const initialAuctionResultsFilterState: AuctionResultsFilters = {
   organizations: [],
-  openedItemIndex: -1,
+  openedItemIndex: null,
   page: 1,
   sort: "DATE_DESC",
 }
@@ -140,7 +140,7 @@ const AuctionResultsFilterReducer = (
 
       const filterState: AuctionResultsFilters = {
         page: 1,
-        openedItemIndex: -1,
+        openedItemIndex: null,
       }
 
       if (name === "organizations") {
@@ -175,7 +175,7 @@ const AuctionResultsFilterReducer = (
 
       const filterState: AuctionResultsFilters = {
         page: 1,
-        openedItemIndex: -1,
+        openedItemIndex: null,
       }
 
       if (name === "organizations") {
