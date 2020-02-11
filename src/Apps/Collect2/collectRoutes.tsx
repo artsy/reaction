@@ -3,7 +3,7 @@ import { RouteConfig } from "found"
 import { graphql } from "react-relay"
 
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { CollectionAppQuery } from "./Routes/Collection"
+import { CollectionAppQuery } from "./Routes/Collection/CollectionAppQuery"
 
 export const collectRoutes: RouteConfig[] = [
   {
