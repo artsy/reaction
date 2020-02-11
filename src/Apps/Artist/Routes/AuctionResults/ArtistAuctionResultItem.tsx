@@ -46,48 +46,37 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
         return (
           <>
             <Media at="xs">
-              {(className, renderChildren) => (
-                <>
-                  {renderChildren && (
-                    <FullWidthBorderBox
-                      mb={2}
-                      onClick={() => toggleDetails(props.auctionResult)}
-                    >
-                      <Row height="120px" className={className} p={2}>
-                        <ExtraSmallAuctionItem
-                          {...props}
-                          mediator={mediator}
-                          user={user}
-                        />
-                      </Row>
-                      <Box>{renderSmallCollapse(props, user, mediator)}</Box>
-                    </FullWidthBorderBox>
-                  )}
-                </>
-              )}
+              <FullWidthBorderBox
+                mb={2}
+                onClick={() => toggleDetails(props.auctionResult)}
+              >
+                <Row height="120px" p={2}>
+                  <ExtraSmallAuctionItem
+                    {...props}
+                    mediator={mediator}
+                    user={user}
+                  />
+                </Row>
+                <Box>{renderSmallCollapse(props, user, mediator)}</Box>
+              </FullWidthBorderBox>
             </Media>
+
             <Media greaterThanOrEqual="sm">
-              {(className, renderChildren) => (
-                <>
-                  {renderChildren && (
-                    <FullWidthBorderBox
-                      mb={2}
-                      onClick={() => toggleDetails(props.auctionResult)}
-                    >
-                      <Box p={2} minHeight="120px">
-                        <Row minHeight="80px" className={className}>
-                          <LargeAuctionItem
-                            {...props}
-                            mediator={mediator}
-                            user={user}
-                          />
-                        </Row>
-                      </Box>
-                      <Box>{renderLargeCollapse(props, user, mediator)}</Box>
-                    </FullWidthBorderBox>
-                  )}
-                </>
-              )}
+              <FullWidthBorderBox
+                mb={2}
+                onClick={() => toggleDetails(props.auctionResult)}
+              >
+                <Box p={2} minHeight="120px">
+                  <Row minHeight="80px">
+                    <LargeAuctionItem
+                      {...props}
+                      mediator={mediator}
+                      user={user}
+                    />
+                  </Row>
+                </Box>
+                <Box>{renderLargeCollapse(props, user, mediator)}</Box>
+              </FullWidthBorderBox>
             </Media>
             <Spacer />
           </>
