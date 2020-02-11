@@ -356,17 +356,13 @@ export const StripeWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => 
   )
 }
 
-const TrackingWrappedConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
-  const Component = track<ConfirmBidProps>(p => ({
-    context_page: Schema.PageName.AuctionConfirmBidPage,
-    auction_slug: p.artwork.saleArtwork.sale.slug,
-    artwork_slug: p.artwork.slug,
-    sale_id: p.artwork.saleArtwork.sale.internalID,
-    user_id: p.me.internalID,
-  }))(StripeWrappedConfirmBidRoute)
-
-  return <Component {...props} />
-}
+const TrackingWrappedConfirmBidRoute = track<ConfirmBidProps>(props => ({
+  context_page: Schema.PageName.AuctionConfirmBidPage,
+  auction_slug: props.artwork.saleArtwork.sale.slug,
+  artwork_slug: props.artwork.slug,
+  sale_id: props.artwork.saleArtwork.sale.internalID,
+  user_id: props.me.internalID,
+}))(StripeWrappedConfirmBidRoute)
 
 export const ConfirmBidRouteFragmentContainer = createFragmentContainer(
   TrackingWrappedConfirmBidRoute,
