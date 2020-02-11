@@ -83,8 +83,8 @@ exports[`Input renders as a snapshot 1`] = `
   color: #F7625A;
   -webkit-transition: visibility 0.2s linear;
   transition: visibility 0.2s linear;
-  -webkit-animation: eBtoLo 0.25s linear;
-  animation: eBtoLo 0.25s linear;
+  -webkit-animation: hqnQVQ 0.25s linear;
+  animation: hqnQVQ 0.25s linear;
   height: 16px;
 }
 

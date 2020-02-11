@@ -121,7 +121,7 @@ exports[`Artwork renders correctly 1`] = `
     >
       <div>
         <div
-          className="c5"
+          className="c5 "
           color="#000"
           fontFamily={
             Object {
@@ -140,7 +140,7 @@ exports[`Artwork renders correctly 1`] = `
            
         </div>
         <div
-          className="c6"
+          className="c6 "
           color="#000"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="12px"

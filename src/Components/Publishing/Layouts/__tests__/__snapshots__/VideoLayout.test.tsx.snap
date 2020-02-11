@@ -48,7 +48,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   display: flex;
 }
 
-.c7 {
+.c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
   font-size: 22px;
@@ -57,7 +57,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   text-align: center;
 }
 
-.c35 {
+.c34 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -158,7 +158,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c59 {
+.c3 .IconPlus-sc-1uyfpws-0 {
   margin: 0 20px;
 }
 
@@ -182,7 +182,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   top: 0;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   width: 100%;
   left: 0;
@@ -204,7 +204,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   color: white;
 }
 
-.c6 a {
+.c7 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -367,7 +367,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   background-size: 1.25px 1px;
 }
 
-.c46 h2 .c60 {
+.c46 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -696,7 +696,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   margin-right: auto;
 }
 
-.c34 a {
+.c35 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -860,7 +860,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
     font-size: 24px;
   }
 
-  .c3 .c59 {
+  .c3 .IconPlus-sc-1uyfpws-0 {
     margin: 0 10px;
   }
 }
@@ -1006,7 +1006,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
       color="white"
     >
       <div
-        className="PartnerInline c3"
+        className="c3 PartnerInline"
       >
         <a
           href="/"
@@ -1263,7 +1263,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                     Art Market
                   </div>
                   <div
-                    className="c36"
+                    className="c36 "
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
                   >
@@ -1271,7 +1271,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   </div>
                 </div>
                 <h1
-                  className="c37"
+                  className="c37 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
@@ -1284,7 +1284,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             className="c38"
           >
             <div
-              className="c39"
+              className="c39 "
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -1323,7 +1323,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
           }
         >
           <div
-            className="c44"
+            className="c44 "
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
@@ -1331,7 +1331,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             Credits
           </div>
           <div
-            className="article__text-section c45 c46"
+            className="c45 c46 article__text-section"
             color="white"
           >
             <div
@@ -1356,7 +1356,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   className="c49"
                 >
                   <div
-                    className="c50"
+                    className="c50 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1372,7 +1372,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   className="c51 c52"
                 >
                   <div
-                    className="c53 c50"
+                    className="c50 c53"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1478,7 +1478,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
           }
         >
           <div
-            className="c44"
+            className="c44 "
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
@@ -1486,7 +1486,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             About the Film
           </div>
           <div
-            className="article__text-section c45 c46"
+            className="c45 c46 article__text-section"
             color="white"
           >
             <div
@@ -1511,7 +1511,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   className="c49"
                 >
                   <div
-                    className="c50"
+                    className="c50 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1527,7 +1527,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   className="c51 c52"
                 >
                   <div
-                    className="c53 c50"
+                    className="c50 c53"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1641,7 +1641,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
         }
       />
       <div
-        className="c58"
+        className="c58 "
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
@@ -1776,7 +1776,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   width: 100%;
 }
 
-.c7 {
+.c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
   font-size: 22px;
@@ -1785,7 +1785,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   text-align: center;
 }
 
-.c35 {
+.c34 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -1826,7 +1826,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   line-height: 20px;
 }
 
-.c61 {
+.c59 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -1938,7 +1938,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c86 {
+.c3 .IconPlus-sc-1uyfpws-0 {
   margin: 0 20px;
 }
 
@@ -1962,7 +1962,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   top: 0;
 }
 
-.c6 {
+.c7 {
   position: absolute;
   width: 100%;
   left: 0;
@@ -1984,7 +1984,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
-.c6 a {
+.c7 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -2236,7 +2236,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c46 h2 .c87 {
+.c46 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -2579,7 +2579,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-right: auto;
 }
 
-.c60 a {
+.c61 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -2593,7 +2593,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   color: white;
 }
 
-.c57 .c59 {
+.c57 .c60 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -2602,11 +2602,11 @@ exports[`Video Layout matches the snapshot 1`] = `
   margin-bottom: 40px;
 }
 
-.c57 .c59 a {
+.c57 .c60 a {
   border-bottom: 2px solid;
 }
 
-.c34 a {
+.c35 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -3016,7 +3016,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     font-size: 24px;
   }
 
-  .c3 .c86 {
+  .c3 .IconPlus-sc-1uyfpws-0 {
     margin: 0 10px;
   }
 }
@@ -3237,7 +3237,7 @@ exports[`Video Layout matches the snapshot 1`] = `
       color="white"
     >
       <div
-        className="PartnerInline c3"
+        className="c3 PartnerInline"
       >
         <a
           href="/"
@@ -3498,7 +3498,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     </a>
                   </div>
                   <div
-                    className="c36"
+                    className="c36 "
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
                   >
@@ -3506,7 +3506,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   </div>
                 </div>
                 <h1
-                  className="c37"
+                  className="c37 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
@@ -3519,7 +3519,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             className="c38"
           >
             <div
-              className="c39"
+              className="c39 "
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -3558,7 +3558,7 @@ exports[`Video Layout matches the snapshot 1`] = `
           }
         >
           <div
-            className="c44"
+            className="c44 "
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
@@ -3566,7 +3566,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             Credits
           </div>
           <div
-            className="article__text-section c45 c46"
+            className="c45 c46 article__text-section"
             color="white"
           >
             <div
@@ -3591,7 +3591,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c49"
                 >
                   <div
-                    className="c50"
+                    className="c50 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3607,7 +3607,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c51 c52"
                 >
                   <div
-                    className="c53 c50"
+                    className="c50 c53"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3713,7 +3713,7 @@ exports[`Video Layout matches the snapshot 1`] = `
           }
         >
           <div
-            className="c44"
+            className="c44 "
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
@@ -3721,7 +3721,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             About the Film
           </div>
           <div
-            className="article__text-section c45 c46"
+            className="c45 c46 article__text-section"
             color="white"
           >
             <div
@@ -3746,7 +3746,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c49"
                 >
                   <div
-                    className="c50"
+                    className="c50 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3762,7 +3762,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c51 c52"
                 >
                   <div
-                    className="c53 c50"
+                    className="c50 c53"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3894,7 +3894,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               className="c63"
             >
               <a
-                className="ArticleCard c64"
+                className="c64 ArticleCard"
                 color="white"
                 href="joanne-artman-gallery-poetry-naturerefinement-form"
                 onClick={[Function]}
@@ -3915,7 +3915,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   >
                     <div>
                       <div
-                        className="c67"
+                        className="c67 "
                         fontFamily={
                           Object {
                             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3927,7 +3927,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         The Future of Art
                       </div>
                       <div
-                        className="c68"
+                        className="c68 "
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize={
                           Array [
@@ -3941,7 +3941,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                       </div>
                       <div
-                        className="c69"
+                        className="c69 "
                         fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                         fontSize={
                           Array [
@@ -3959,7 +3959,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       className="c49"
                     >
                       <div
-                        className="c50"
+                        className="c50 "
                         fontFamily={
                           Object {
                             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4011,7 +4011,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         </g>
                       </svg>
                       <div
-                        className="c74"
+                        className="c74 "
                         fontFamily={
                           Object {
                             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4031,7 +4031,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               className="c63"
             >
               <a
-                className="ArticleCard c64"
+                className="c64 ArticleCard"
                 color="white"
                 href="new-yorks-next-art-district"
                 onClick={[Function]}
@@ -4052,7 +4052,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   >
                     <div>
                       <div
-                        className="c67"
+                        className="c67 "
                         fontFamily={
                           Object {
                             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4064,7 +4064,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         The Future of Art
                       </div>
                       <div
-                        className="c68"
+                        className="c68 "
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize={
                           Array [
@@ -4078,7 +4078,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         New York's Next Art District
                       </div>
                       <div
-                        className="c69"
+                        className="c69 "
                         fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                         fontSize={
                           Array [
@@ -4093,11 +4093,11 @@ exports[`Video Layout matches the snapshot 1`] = `
                       </div>
                     </div>
                     <div
-                      className="Byline c75"
+                      className="c75 Byline"
                       color="white"
                     >
                       <div
-                        className="c50"
+                        className="c50 "
                         fontFamily={
                           Object {
                             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4117,7 +4117,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                         className="c49"
                       >
                         <div
-                          className="c50"
+                          className="c50 "
                           fontFamily={
                             Object {
                               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4173,7 +4173,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             >
               <div>
                 <div
-                  className="c80"
+                  className="c80 "
                   color="white"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="28px"
@@ -4181,7 +4181,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   About the Series
                 </div>
                 <div
-                  className="c81"
+                  className="c81 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="18px"
                 >
@@ -4289,7 +4289,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 className="SeriesAbout__description"
               >
                 <div
-                  className="article__text-section c45 c46"
+                  className="c45 c46 article__text-section"
                   color="white"
                 >
                   <div
@@ -4328,7 +4328,7 @@ exports[`Video Layout matches the snapshot 1`] = `
         }
       />
       <div
-        className="c85"
+        className="c85 "
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"

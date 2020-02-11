@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c9 {
+.c8 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -30,21 +30,21 @@ exports[`renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c8 {
+.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c8 a {
+.c9 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c8 .title,
-.c8 .title a {
+.c9 .title,
+.c9 .title a {
   font-style: italic;
 }
 
@@ -171,19 +171,19 @@ exports[`renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c9 {
+  .c8 {
     font-size: 16px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c9 {
+  .c8 {
     line-height: 26px;
   }
 }
 
 @media (max-width:720px) {
-  .c8 {
+  .c9 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -295,7 +295,7 @@ exports[`renders properly 1`] = `
               className="c5"
             >
               <div
-                className="fullscreen-viewer__caption-toggle c6"
+                className="c6 fullscreen-viewer__caption-toggle"
                 onClick={[Function]}
               >
                 <span>
@@ -308,7 +308,7 @@ exports[`renders properly 1`] = `
               >
                 <div>
                   <div
-                    className="c8 c9"
+                    className="c8 sc-AxhCb c9"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -411,7 +411,7 @@ exports[`renders properly 1`] = `
               className="c5"
             >
               <div
-                className="fullscreen-viewer__caption-toggle c6"
+                className="c6 fullscreen-viewer__caption-toggle"
                 onClick={[Function]}
               >
                 <span>
@@ -459,7 +459,7 @@ exports[`renders properly 1`] = `
               className="c5"
             >
               <div
-                className="fullscreen-viewer__caption-toggle c6"
+                className="c6 fullscreen-viewer__caption-toggle"
                 onClick={[Function]}
               >
                 <span>

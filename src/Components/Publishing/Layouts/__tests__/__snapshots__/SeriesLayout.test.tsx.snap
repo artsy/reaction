@@ -69,7 +69,7 @@ exports[`series layout renders a series 1`] = `
   width: 100%;
 }
 
-.c6 {
+.c5 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
   font-size: 22px;
@@ -196,7 +196,7 @@ exports[`series layout renders a series 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c2 .c45 {
+.c2 .IconPlus-sc-1uyfpws-0 {
   margin: 0 20px;
 }
 
@@ -220,7 +220,7 @@ exports[`series layout renders a series 1`] = `
   top: 0;
 }
 
-.c5 {
+.c6 {
   position: absolute;
   width: 100%;
   left: 0;
@@ -242,7 +242,7 @@ exports[`series layout renders a series 1`] = `
   color: white;
 }
 
-.c5 a {
+.c6 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -526,7 +526,7 @@ exports[`series layout renders a series 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c41 h2 .c47 {
+.c41 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -623,12 +623,12 @@ exports[`series layout renders a series 1`] = `
   text-align: center;
 }
 
-.c13 .c46 {
+.c13 .PartnerBlock__ImageContainer-ydgi2-1 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c13 .c46 img {
+.c13 .PartnerBlock__ImageContainer-ydgi2-1 img {
   margin-left: auto;
   margin-right: auto;
 }
@@ -924,7 +924,7 @@ exports[`series layout renders a series 1`] = `
     font-size: 24px;
   }
 
-  .c2 .c45 {
+  .c2 .IconPlus-sc-1uyfpws-0 {
     margin: 0 10px;
   }
 }
@@ -1065,7 +1065,7 @@ exports[`series layout renders a series 1`] = `
 }
 
 @media (max-width:900px) {
-  .c13 .c46 {
+  .c13 .PartnerBlock__ImageContainer-ydgi2-1 {
     padding-bottom: 0;
   }
 }
@@ -1080,7 +1080,7 @@ exports[`series layout renders a series 1`] = `
       color="white"
     >
       <div
-        className="PartnerInline c2"
+        className="c2 PartnerInline"
       >
         <a
           href="/"
@@ -1142,7 +1142,7 @@ exports[`series layout renders a series 1`] = `
       color="white"
     >
       <h1
-        className="c14"
+        className="c14 "
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize={
           Array [
@@ -1163,7 +1163,7 @@ exports[`series layout renders a series 1`] = `
         className="c16"
       >
         <a
-          className="ArticleCard c17"
+          className="c17 ArticleCard"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
@@ -1184,7 +1184,7 @@ exports[`series layout renders a series 1`] = `
             >
               <div>
                 <div
-                  className="c20"
+                  className="c20 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1196,7 +1196,7 @@ exports[`series layout renders a series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c21"
+                  className="c21 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -1210,7 +1210,7 @@ exports[`series layout renders a series 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="c22"
+                  className="c22 "
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -1228,7 +1228,7 @@ exports[`series layout renders a series 1`] = `
                 className="c23"
               >
                 <div
-                  className="c24"
+                  className="c24 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1280,7 +1280,7 @@ exports[`series layout renders a series 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="c30"
+                  className="c30 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1300,7 +1300,7 @@ exports[`series layout renders a series 1`] = `
         className="c16"
       >
         <a
-          className="ArticleCard c17"
+          className="c17 ArticleCard"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
@@ -1321,7 +1321,7 @@ exports[`series layout renders a series 1`] = `
             >
               <div>
                 <div
-                  className="c20"
+                  className="c20 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1333,7 +1333,7 @@ exports[`series layout renders a series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c21"
+                  className="c21 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -1347,7 +1347,7 @@ exports[`series layout renders a series 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="c22"
+                  className="c22 "
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -1362,11 +1362,11 @@ exports[`series layout renders a series 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c31"
+                className="c31 Byline"
                 color="white"
               >
                 <div
-                  className="c24"
+                  className="c24 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1386,7 +1386,7 @@ exports[`series layout renders a series 1`] = `
                   className="c23"
                 >
                   <div
-                    className="c24"
+                    className="c24 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1441,7 +1441,7 @@ exports[`series layout renders a series 1`] = `
         >
           <div>
             <div
-              className="c36"
+              className="c36 "
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
@@ -1449,7 +1449,7 @@ exports[`series layout renders a series 1`] = `
               About the Series
             </div>
             <div
-              className="c37"
+              className="c37 "
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
             >
@@ -1557,7 +1557,7 @@ exports[`series layout renders a series 1`] = `
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c41"
+              className="c41 article__text-section"
               color="white"
             >
               <div
@@ -1594,7 +1594,7 @@ exports[`series layout renders a series 1`] = `
         }
       />
       <div
-        className="c44"
+        className="c44 "
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
@@ -1618,16 +1618,16 @@ exports[`series layout renders a sponsored series 1`] = `
   padding-top: 40px;
 }
 
-.c51 {
-  margin: auto;
-}
-
 .c46 {
   margin-bottom: 4px;
 }
 
 .c49 {
   margin-top: 60px;
+}
+
+.c51 {
+  margin: auto;
 }
 
 .c24 {
@@ -1683,7 +1683,7 @@ exports[`series layout renders a sponsored series 1`] = `
   width: 100%;
 }
 
-.c8 {
+.c7 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
   font-size: 22px;
@@ -1839,7 +1839,7 @@ exports[`series layout renders a sponsored series 1`] = `
   top: 0;
 }
 
-.c7 {
+.c8 {
   position: absolute;
   width: 100%;
   left: 0;
@@ -1861,7 +1861,7 @@ exports[`series layout renders a sponsored series 1`] = `
   color: white;
 }
 
-.c7 a {
+.c8 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -2164,7 +2164,7 @@ exports[`series layout renders a sponsored series 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c48 h2 .c54 {
+.c48 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -2269,10 +2269,6 @@ exports[`series layout renders a sponsored series 1`] = `
 .c15 .c19 img {
   margin-left: auto;
   margin-right: auto;
-}
-
-.c53 .c14 {
-  margin-bottom: 90px;
 }
 
 .c13 {
@@ -2738,7 +2734,7 @@ exports[`series layout renders a sponsored series 1`] = `
       color="white"
     >
       <div
-        className="PartnerInline c2"
+        className="c2 PartnerInline"
       >
         <a
           href="/"
@@ -2844,7 +2840,7 @@ exports[`series layout renders a sponsored series 1`] = `
       color="white"
     >
       <h1
-        className="c16"
+        className="c16 "
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize={
           Array [
@@ -2857,7 +2853,7 @@ exports[`series layout renders a sponsored series 1`] = `
         The Future of Art
       </h1>
       <div
-        className="PartnerBlock c17"
+        className="c17 PartnerBlock"
       >
         <div
           className="c18"
@@ -2887,7 +2883,7 @@ exports[`series layout renders a sponsored series 1`] = `
         className="c22"
       >
         <a
-          className="ArticleCard c23"
+          className="c23 ArticleCard"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
@@ -2908,7 +2904,7 @@ exports[`series layout renders a sponsored series 1`] = `
             >
               <div>
                 <div
-                  className="c26"
+                  className="c26 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2920,7 +2916,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c27"
+                  className="c27 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -2934,7 +2930,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="c28"
+                  className="c28 "
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -2952,7 +2948,7 @@ exports[`series layout renders a sponsored series 1`] = `
                 className="c29"
               >
                 <div
-                  className="c30"
+                  className="c30 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3004,7 +3000,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="c36"
+                  className="c36 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3024,7 +3020,7 @@ exports[`series layout renders a sponsored series 1`] = `
         className="c22"
       >
         <a
-          className="ArticleCard c23"
+          className="c23 ArticleCard"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
@@ -3045,7 +3041,7 @@ exports[`series layout renders a sponsored series 1`] = `
             >
               <div>
                 <div
-                  className="c26"
+                  className="c26 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3057,7 +3053,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="c27"
+                  className="c27 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -3071,7 +3067,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="c28"
+                  className="c28 "
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -3086,11 +3082,11 @@ exports[`series layout renders a sponsored series 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c37"
+                className="c37 Byline"
                 color="white"
               >
                 <div
-                  className="c30"
+                  className="c30 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3110,7 +3106,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   className="c29"
                 >
                   <div
-                    className="c30"
+                    className="c30 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3165,7 +3161,7 @@ exports[`series layout renders a sponsored series 1`] = `
         >
           <div>
             <div
-              className="c42"
+              className="c42 "
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
@@ -3173,7 +3169,7 @@ exports[`series layout renders a sponsored series 1`] = `
               About the Series
             </div>
             <div
-              className="c43"
+              className="c43 "
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
             >
@@ -3269,7 +3265,7 @@ exports[`series layout renders a sponsored series 1`] = `
               className="c46"
             >
               <div
-                className="PartnerBlock c17"
+                className="c17 PartnerBlock"
               >
                 <div
                   className="c18"
@@ -3308,7 +3304,7 @@ exports[`series layout renders a sponsored series 1`] = `
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c48"
+              className="c48 article__text-section"
               color="white"
             >
               <div
@@ -3328,7 +3324,7 @@ exports[`series layout renders a sponsored series 1`] = `
               className="c49"
             >
               <div
-                className="PartnerBlock c17"
+                className="c17 PartnerBlock"
               >
                 <div
                   className="c18"
@@ -3372,7 +3368,7 @@ exports[`series layout renders a sponsored series 1`] = `
         }
       />
       <div
-        className="c52"
+        className="c52 "
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"

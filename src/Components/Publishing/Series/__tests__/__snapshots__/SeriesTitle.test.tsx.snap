@@ -13,12 +13,12 @@ exports[`renders a series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .c2 {
+.c0 .PartnerBlock__ImageContainer-ydgi2-1 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c0 .c2 img {
+.c0 .PartnerBlock__ImageContainer-ydgi2-1 img {
   margin-left: auto;
   margin-right: auto;
 }
@@ -54,7 +54,7 @@ exports[`renders a series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .c2 {
+  .c0 .PartnerBlock__ImageContainer-ydgi2-1 {
     padding-bottom: 0;
   }
 }
@@ -64,7 +64,7 @@ exports[`renders a series title properly 1`] = `
   color="black"
 >
   <h1
-    className="c1"
+    className="c1 "
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={
       Array [
@@ -92,12 +92,12 @@ exports[`renders a series with children properly 1`] = `
   text-align: center;
 }
 
-.c0 .c2 {
+.c0 .PartnerBlock__ImageContainer-ydgi2-1 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c0 .c2 img {
+.c0 .PartnerBlock__ImageContainer-ydgi2-1 img {
   margin-left: auto;
   margin-right: auto;
 }
@@ -133,7 +133,7 @@ exports[`renders a series with children properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .c2 {
+  .c0 .PartnerBlock__ImageContainer-ydgi2-1 {
     padding-bottom: 0;
   }
 }
@@ -143,7 +143,7 @@ exports[`renders a series with children properly 1`] = `
   color="black"
 >
   <h1
-    className="c1"
+    className="c1 "
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={
       Array [
@@ -253,7 +253,7 @@ exports[`renders a sponsored series title properly 1`] = `
   color="black"
 >
   <h1
-    className="c1"
+    className="c1 "
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={
       Array [
@@ -266,7 +266,7 @@ exports[`renders a sponsored series title properly 1`] = `
     The Future of Art
   </h1>
   <div
-    className="PartnerBlock c2"
+    className="c2 PartnerBlock"
   >
     <div
       className="c3"

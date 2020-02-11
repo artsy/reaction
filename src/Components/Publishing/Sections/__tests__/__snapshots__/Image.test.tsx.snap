@@ -113,7 +113,7 @@ exports[`Image snapshots renders a long caption properly 1`] = `
   >
     <img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="BlockImage__container c1"
+      className="c1 BlockImage__container"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80"
       width="100%"
@@ -304,7 +304,7 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
   >
     <img
       alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-      className="BlockImage__container c1"
+      className="c1 BlockImage__container"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80"
       width="100%"
@@ -499,7 +499,7 @@ exports[`Image snapshots renders properly 1`] = `
   >
     <img
       alt="Photo by Adam Kuehl for Artsy."
-      className="BlockImage__container c1"
+      className="c1 BlockImage__container"
       height="auto"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=80"
       width="100%"

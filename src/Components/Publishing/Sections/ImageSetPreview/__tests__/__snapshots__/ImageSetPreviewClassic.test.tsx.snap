@@ -63,7 +63,7 @@ exports[`renders properly 1`] = `
 }
 
 <div
-  className="imageset-preview c0"
+  className="c0 imageset-preview"
 >
   <div
     className="imageset-preview__container"
@@ -108,10 +108,10 @@ exports[`renders properly 1`] = `
     />
   </div>
   <div
-    className="imageset-preview__remaining c1"
+    className="c1 imageset-preview__remaining"
   >
     <div
-      className="imageset-preview__icon-container c2"
+      className="c2 imageset-preview__icon-container"
     >
       <svg
         className="image-set"
@@ -133,7 +133,7 @@ exports[`renders properly 1`] = `
         />
       </svg>
       <div
-        className="imageset-preview__length c3"
+        className="c3 imageset-preview__length"
       >
         <div
           className="c4"
@@ -143,7 +143,7 @@ exports[`renders properly 1`] = `
       </div>
     </div>
     <div
-      className="imageset-preview__text c4"
+      className="c4 imageset-preview__text"
     >
       Enter Slideshow
     </div>

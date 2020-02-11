@@ -42,7 +42,7 @@ exports[`renders a headline with children properly 1`] = `
     className="c0"
   >
     <h1
-      className="c1"
+      className="c1 "
       fontFamily={
         Object {
           "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -107,7 +107,7 @@ exports[`renders a news headline properly 1`] = `
     className="c0"
   >
     <h1
-      className="c1"
+      className="c1 "
       fontFamily={
         Object {
           "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",

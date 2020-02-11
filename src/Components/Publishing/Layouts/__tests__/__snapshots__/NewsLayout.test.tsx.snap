@@ -126,7 +126,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   position: relative;
 }
 
-.c7:hover .c23 {
+.c7:hover .ImageWrapper__Fullscreen-sc-87c4qo-0 {
   opacity: 1;
 }
 
@@ -321,7 +321,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c12 h2 .c24 {
+.c12 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -421,7 +421,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin-top: 30px;
 }
 
-.c0 .c25 {
+.c0 .CanvasFooter__CanvasFooterContainer-sc-1tuekop-0 {
   border-bottom: 1px solid #E5E5E5;
 }
 
@@ -494,7 +494,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:720px) {
-  .c7 .c23 {
+  .c7 .ImageWrapper__Fullscreen-sc-87c4qo-0 {
     opacity: 1;
   }
 }
@@ -641,7 +641,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         className="c2"
       >
         <h1
-          className="c3"
+          className="c3 "
           fontFamily={
             Object {
               "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -678,7 +678,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               >
                 <img
                   alt="Illustration by Tomi Um for Artsy."
-                  className="BlockImage__container c8"
+                  className="c8 BlockImage__container"
                   height="auto"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                   width="100%"
@@ -708,7 +708,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -729,7 +729,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -746,7 +746,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -763,7 +763,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -780,7 +780,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -801,7 +801,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -823,7 +823,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             className="c15"
           >
             <div
-              className="c16"
+              className="c16 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1075,7 +1075,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   position: relative;
 }
 
-.c7:hover .c23 {
+.c7:hover .ImageWrapper__Fullscreen-sc-87c4qo-0 {
   opacity: 1;
 }
 
@@ -1270,7 +1270,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c12 h2 .c24 {
+.c12 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -1370,7 +1370,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin-top: 30px;
 }
 
-.c0 .c25 {
+.c0 .CanvasFooter__CanvasFooterContainer-sc-1tuekop-0 {
   border-bottom: 1px solid #E5E5E5;
 }
 
@@ -1437,7 +1437,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c7 .c23 {
+  .c7 .ImageWrapper__Fullscreen-sc-87c4qo-0 {
     opacity: 1;
   }
 }
@@ -1584,7 +1584,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         className="c2"
       >
         <h1
-          className="c3"
+          className="c3 "
           fontFamily={
             Object {
               "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -1621,7 +1621,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               >
                 <img
                   alt="Illustration by Tomi Um for Artsy."
-                  className="BlockImage__container c8"
+                  className="c8 BlockImage__container"
                   height="auto"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                   width="100%"
@@ -1651,7 +1651,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -1672,7 +1672,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -1689,7 +1689,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -1706,7 +1706,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -1723,7 +1723,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -1744,7 +1744,7 @@ exports[`News Layout renders the news layout properly 1`] = `
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -1766,7 +1766,7 @@ exports[`News Layout renders the news layout properly 1`] = `
             className="c15"
           >
             <div
-              className="c16"
+              className="c16 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2049,7 +2049,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   position: relative;
 }
 
-.c7:hover .c26 {
+.c7:hover .ImageWrapper__Fullscreen-sc-87c4qo-0 {
   opacity: 1;
 }
 
@@ -2244,7 +2244,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   background-size: 1.25px 1px;
 }
 
-.c12 h2 .c27 {
+.c12 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -2344,7 +2344,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin-top: 30px;
 }
 
-.c0 .c28 {
+.c0 .CanvasFooter__CanvasFooterContainer-sc-1tuekop-0 {
   border-bottom: 1px solid #E5E5E5;
 }
 
@@ -2411,7 +2411,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
 }
 
 @media (max-width:720px) {
-  .c7 .c26 {
+  .c7 .ImageWrapper__Fullscreen-sc-87c4qo-0 {
     opacity: 1;
   }
 }
@@ -2558,7 +2558,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         className="c2"
       >
         <h1
-          className="c3"
+          className="c3 "
           fontFamily={
             Object {
               "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -2595,7 +2595,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
               >
                 <img
                   alt="Illustration by Tomi Um for Artsy."
-                  className="BlockImage__container c8"
+                  className="c8 BlockImage__container"
                   height="auto"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                   width="100%"
@@ -2625,7 +2625,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -2646,7 +2646,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -2663,7 +2663,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -2680,7 +2680,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -2697,7 +2697,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -2718,7 +2718,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="c12 article__text-section"
           color="black"
         >
           <div
@@ -2740,7 +2740,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
             className="c15"
           >
             <div
-              className="c16"
+              className="c16 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2880,7 +2880,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         }
       />
       <div
-        className="c25"
+        className="c25 "
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"

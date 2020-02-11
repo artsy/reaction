@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork snapshots renders properly 1`] = `
-.c8 {
+.c7 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -16,7 +16,7 @@ exports[`Artwork snapshots renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c7 {
+.c8 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -25,14 +25,14 @@ exports[`Artwork snapshots renders properly 1`] = `
   display: flex;
 }
 
-.c7 a {
+.c8 a {
   color: #C2C2C2;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7 .title,
-.c7 .title a {
+.c8 .title,
+.c8 .title a {
   font-style: italic;
 }
 
@@ -97,7 +97,7 @@ exports[`Artwork snapshots renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c7 {
+  .c8 {
     padding: 0 10px;
   }
 }
@@ -120,7 +120,7 @@ exports[`Artwork snapshots renders properly 1`] = `
     >
       <img
         alt="Nude on the Beach"
-        className="BlockImage__container c3"
+        className="c3 BlockImage__container"
         height="auto"
         src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
         width="100%"
@@ -183,7 +183,7 @@ exports[`Artwork snapshots renders properly 1`] = `
   </a>
   <div>
     <div
-      className="c7 c8"
+      className="c7 sc-AxhCb c8"
       color="#C2C2C2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"

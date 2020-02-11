@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an artwork caption properly 1`] = `
-.c5 {
+.c4 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -16,21 +16,21 @@ exports[`renders an artwork caption properly 1`] = `
   white-space: nowrap;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c4 a {
+.c5 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c4 .title,
-.c4 .title a {
+.c5 .title,
+.c5 .title a {
   font-style: italic;
 }
 
@@ -86,19 +86,19 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c5 {
+  .c4 {
     font-size: 16px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c5 {
+  .c4 {
     line-height: 26px;
   }
 }
 
 @media (max-width:720px) {
-  .c4 {
+  .c5 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -163,7 +163,7 @@ exports[`renders an artwork caption properly 1`] = `
     className="c1"
   >
     <div
-      className="fullscreen-viewer__caption-toggle c2"
+      className="c2 fullscreen-viewer__caption-toggle"
     >
       <span>
         Hide
@@ -175,7 +175,7 @@ exports[`renders an artwork caption properly 1`] = `
     >
       <div>
         <div
-          className="c4 c5"
+          className="c4 sc-AxhCb c5"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -362,7 +362,7 @@ exports[`renders an image caption properly 1`] = `
     className="c1"
   >
     <div
-      className="fullscreen-viewer__caption-toggle c2"
+      className="c2 fullscreen-viewer__caption-toggle"
     >
       <span>
         Hide

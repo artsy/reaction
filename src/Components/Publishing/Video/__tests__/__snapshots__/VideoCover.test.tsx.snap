@@ -24,7 +24,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   display: flex;
 }
 
-.c10 {
+.c9 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -55,7 +55,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   height: 32px;
 }
 
-.c9 a {
+.c10 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -225,7 +225,7 @@ exports[`Video Cover matches the snapshot 1`] = `
                 Future of Art
               </div>
               <div
-                className="c11"
+                className="c11 "
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
@@ -233,7 +233,7 @@ exports[`Video Cover matches the snapshot 1`] = `
               </div>
             </div>
             <h1
-              className="c12"
+              className="c12 "
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
             >
@@ -246,7 +246,7 @@ exports[`Video Cover matches the snapshot 1`] = `
         className="c13"
       >
         <div
-          className="c14"
+          className="c14 "
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -289,7 +289,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   display: flex;
 }
 
-.c10 {
+.c9 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -320,7 +320,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   height: 32px;
 }
 
-.c9 a {
+.c10 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -490,7 +490,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
                 Future of Art
               </div>
               <div
-                className="c11"
+                className="c11 "
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
               >
@@ -498,7 +498,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
               </div>
             </div>
             <h1
-              className="c12"
+              className="c12 "
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
             >
@@ -514,7 +514,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
         className="c13"
       >
         <div
-          className="c14"
+          className="c14 "
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [

@@ -179,7 +179,7 @@ exports[`Video About matches the snapshot 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .c14 {
+.c4 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -431,10 +431,10 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-AxirZ c0"
 >
   <div
-    className="c1"
+    className="sc-AxirZ c1"
     width={
       Array [
         1,
@@ -445,7 +445,7 @@ exports[`Video About matches the snapshot 1`] = `
     }
   >
     <div
-      className="c2"
+      className="c2 "
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -453,7 +453,7 @@ exports[`Video About matches the snapshot 1`] = `
       Credits
     </div>
     <div
-      className="article__text-section c3 c4"
+      className="c3 c4 article__text-section"
       color="black"
     >
       <div
@@ -478,7 +478,7 @@ exports[`Video About matches the snapshot 1`] = `
             className="c7"
           >
             <div
-              className="c8"
+              className="c8 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -494,7 +494,7 @@ exports[`Video About matches the snapshot 1`] = `
             className="c9 c10"
           >
             <div
-              className="c11 c8"
+              className="c8 c11"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -600,7 +600,7 @@ exports[`Video About matches the snapshot 1`] = `
     }
   >
     <div
-      className="c2"
+      className="c2 "
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -608,7 +608,7 @@ exports[`Video About matches the snapshot 1`] = `
       About the Film
     </div>
     <div
-      className="article__text-section c3 c4"
+      className="c3 c4 article__text-section"
       color="black"
     >
       <div
@@ -633,7 +633,7 @@ exports[`Video About matches the snapshot 1`] = `
             className="c7"
           >
             <div
-              className="c8"
+              className="c8 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -649,7 +649,7 @@ exports[`Video About matches the snapshot 1`] = `
             className="c9 c10"
           >
             <div
-              className="c11 c8"
+              className="c8 c11"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -925,7 +925,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c4 h2 .c14 {
+.c4 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -1177,10 +1177,10 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-AxirZ c0"
 >
   <div
-    className="c1"
+    className="sc-AxirZ c1"
     width={
       Array [
         1,
@@ -1191,7 +1191,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     }
   >
     <div
-      className="c2"
+      className="c2 "
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -1199,7 +1199,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       Credits
     </div>
     <div
-      className="article__text-section c3 c4"
+      className="c3 c4 article__text-section"
       color="black"
     >
       <div>
@@ -1221,7 +1221,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             className="c7"
           >
             <div
-              className="c8"
+              className="c8 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1237,7 +1237,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             className="c9 c10"
           >
             <div
-              className="c11 c8"
+              className="c8 c11"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1343,7 +1343,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
     }
   >
     <div
-      className="c2"
+      className="c2 "
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
@@ -1351,7 +1351,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       About the Film
     </div>
     <div
-      className="article__text-section c3 c4"
+      className="c3 c4 article__text-section"
       color="black"
     >
       <div>
@@ -1373,7 +1373,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             className="c7"
           >
             <div
-              className="c8"
+              className="c8 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1389,7 +1389,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
             className="c9 c10"
           >
             <div
-              className="c11 c8"
+              className="c8 c11"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

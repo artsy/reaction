@@ -16,7 +16,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   margin-right: auto;
 }
 
-.c2 {
+.c1 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 22px;
   line-height: 30px;
@@ -104,7 +104,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   object-fit: cover;
 }
 
-.c1 {
+.c2 {
   margin-bottom: 20px;
 }
 
@@ -133,13 +133,13 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c2 {
+  .c1 {
     font-size: 28px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c2 {
+  .c1 {
     line-height: 36px;
   }
 }
@@ -158,13 +158,13 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c1 {
+  .c2 {
     margin: 0 20px 30px 40px;
   }
 }
 
 @media (max-width:720px) {
-  .c1 {
+  .c2 {
     margin-left: 20px;
   }
 }
@@ -239,7 +239,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F4Tq-iYkN8dOpshFoKRXyYw%252Fcustom-Custom_Size___PoetterHall_Exterior%2Bcopy.jpg&width=510&height=340&quality=80"
         />
         <div
-          className="c8"
+          className="c8 "
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -247,11 +247,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="c9 Byline"
         color="black"
       >
         <div
-          className="c10"
+          className="c10 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -271,7 +271,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c12"
         >
           <div
-            className="c10"
+            className="c10 "
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -299,7 +299,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F6IqxBTQCkExip2auQ7ZWCA%252FDEMAR-2011.0006-B.jpg&width=510&height=340&quality=80"
         />
         <div
-          className="c8"
+          className="c8 "
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -307,11 +307,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="c9 Byline"
         color="black"
       >
         <div
-          className="c10"
+          className="c10 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -331,7 +331,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c12"
         >
           <div
-            className="c10"
+            className="c10 "
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -359,7 +359,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FlEcCm2XbfZ7bPAVgLlM21w%252Flarger-21.jpg&width=510&height=340&quality=80"
         />
         <div
-          className="c8"
+          className="c8 "
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -367,11 +367,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="c9 Byline"
         color="black"
       >
         <div
-          className="c10"
+          className="c10 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -391,7 +391,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c12"
         >
           <div
-            className="c10"
+            className="c10 "
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -419,7 +419,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FjAu4NaKnr_m53OnnMaDe_w%252Fmag.jpg&width=510&height=340&quality=80"
         />
         <div
-          className="c8"
+          className="c8 "
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
         >
@@ -427,11 +427,11 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         </div>
       </div>
       <div
-        className="Byline c9"
+        className="c9 Byline"
         color="black"
       >
         <div
-          className="c10"
+          className="c10 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -451,7 +451,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c12"
         >
           <div
-            className="c10"
+            className="c10 "
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

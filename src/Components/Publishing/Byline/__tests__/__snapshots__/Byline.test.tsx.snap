@@ -72,11 +72,11 @@ exports[`Byline renders a byline 1`] = `
 }
 
 <div
-  className="Byline c0"
+  className="c0 Byline"
   color="black"
 >
   <div
-    className="c1"
+    className="c1 "
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -96,7 +96,7 @@ exports[`Byline renders a byline 1`] = `
     className="c3"
   >
     <div
-      className="c1"
+      className="c1 "
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

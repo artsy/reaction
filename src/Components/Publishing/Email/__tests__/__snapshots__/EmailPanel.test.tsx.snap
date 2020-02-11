@@ -170,7 +170,7 @@ exports[`EmailSignup renders an email signup 1`] = `
       value=""
     />
     <button
-      className="c4"
+      className="Default__StyledButton-sc-15nq3tj-0 Inverted__InvertedButton-sc-1azds3k-0 c4"
       disabled={false}
       onClick={[Function]}
     >

@@ -184,7 +184,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c7 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -450,7 +450,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="c2 "
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -458,7 +458,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
         About the Series
       </div>
       <div
-        className="c3"
+        className="c3 "
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
@@ -566,7 +566,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c7"
+        className="c7 article__text-section"
         color="black"
       >
         <div
@@ -770,7 +770,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c7 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -1036,7 +1036,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="c2 "
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -1044,7 +1044,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
         About the Series
       </div>
       <div
-        className="c3"
+        className="c3 "
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
@@ -1149,7 +1149,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
     }
   >
     <div
-      className="article__text-section c7"
+      className="c7 article__text-section"
       color="black"
     >
       <div>
@@ -1349,7 +1349,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c7 h2 .c8 {
+.c7 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -1615,7 +1615,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="c2 "
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -1626,7 +1626,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
         </div>
       </div>
       <div
-        className="c3"
+        className="c3 "
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
@@ -1734,7 +1734,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c7"
+        className="c7 article__text-section"
         color="black"
       >
         <div
@@ -1965,7 +1965,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c11 h2 .c13 {
+.c11 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -2240,7 +2240,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   >
     <div>
       <div
-        className="c2"
+        className="c2 "
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
@@ -2248,7 +2248,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         About the Series
       </div>
       <div
-        className="c3"
+        className="c3 "
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
       >
@@ -2344,7 +2344,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         className="c6"
       >
         <div
-          className="PartnerBlock c7"
+          className="c7 PartnerBlock"
         >
           <div
             className="c8"
@@ -2383,7 +2383,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       className="SeriesAbout__description"
     >
       <div
-        className="article__text-section c11"
+        className="c11 article__text-section"
         color="black"
       >
         <div
@@ -2403,7 +2403,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         className="c12"
       >
         <div
-          className="PartnerBlock c7"
+          className="c7 PartnerBlock"
         >
           <div
             className="c8"

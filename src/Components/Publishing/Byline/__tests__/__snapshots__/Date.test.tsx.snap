@@ -17,7 +17,7 @@ exports[`Date Snapshots renders a condensed date 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 "
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -48,7 +48,7 @@ exports[`Date Snapshots renders a date 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 "
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

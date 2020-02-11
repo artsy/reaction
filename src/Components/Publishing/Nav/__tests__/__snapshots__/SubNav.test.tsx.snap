@@ -165,11 +165,11 @@ exports[`SubNav renders SubNav 1`] = `
   className="c0"
 >
   <a
-    className="mlh-login c1"
+    className="c1 mlh-login"
     href="/log_in"
   >
     <button
-      className="c2 c3"
+      className="Default__StyledButton-sc-15nq3tj-0 Inverted__InvertedButton-sc-1azds3k-0 c2 c3"
     >
       <span>
         Login
@@ -177,11 +177,11 @@ exports[`SubNav renders SubNav 1`] = `
     </button>
   </a>
   <a
-    className="mlh-signup c1"
+    className="c1 mlh-signup"
     href="/sign_up"
   >
     <button
-      className="c4 c5"
+      className="Default__StyledButton-sc-15nq3tj-0 c4 c5"
     >
       <span>
         Signup

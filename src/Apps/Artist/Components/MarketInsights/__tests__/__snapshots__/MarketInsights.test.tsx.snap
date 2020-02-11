@@ -53,11 +53,7 @@ exports[`MarketInsights snapshots renders correctly 1`] = `
 
 .c3::after {
   display: block;
-  top: 0;
-  bottom: inherit;
-  left: 0;
-  right: inherit;
-  position: absolute;
+  top: 0 bottom:inherit left:0 right:inherit position:absolute;
   visibility: hidden;
   text-align: left;
   z-index: 1;

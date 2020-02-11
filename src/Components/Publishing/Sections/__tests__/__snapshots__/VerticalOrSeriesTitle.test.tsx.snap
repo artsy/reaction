@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly for a feature article 1`] = `
-.c1 {
+.c0 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -9,14 +9,14 @@ exports[`renders properly for a feature article 1`] = `
   color: #000;
 }
 
-.c0 a {
+.c1 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 <div
-  className="c0 c1"
+  className="c0 sc-AxhCb c1"
   color="#000"
   fontFamily={
     Object {
@@ -33,7 +33,7 @@ exports[`renders properly for a feature article 1`] = `
 `;
 
 exports[`renders properly for a standard article 1`] = `
-.c1 {
+.c0 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -41,14 +41,14 @@ exports[`renders properly for a standard article 1`] = `
   color: #000;
 }
 
-.c0 a {
+.c1 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
 <div
-  className="c0 c1"
+  className="c0 sc-AxhCb c1"
   color="#000"
   fontFamily={
     Object {

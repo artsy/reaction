@@ -63,7 +63,7 @@ exports[`renders ShareDate properly 1`] = `
     className="c1"
   >
     <div
-      className="c2"
+      className="c2 "
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -79,7 +79,7 @@ exports[`renders ShareDate properly 1`] = `
     className="c3 c4"
   >
     <div
-      className="c5 c2"
+      className="c2 c5"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

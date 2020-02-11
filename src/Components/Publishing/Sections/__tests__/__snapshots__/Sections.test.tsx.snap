@@ -15,7 +15,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   justify-content: space-between;
 }
 
-.c18 {
+.c17 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -59,7 +59,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c17 {
+.c18 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -68,14 +68,14 @@ exports[`Sections snapshots tests renders properly 1`] = `
   display: flex;
 }
 
-.c17 a {
+.c18 a {
   color: #C2C2C2;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c17 .title,
-.c17 .title a {
+.c18 .title,
+.c18 .title a {
   font-style: italic;
 }
 
@@ -551,7 +551,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c2 h2 .c46 {
+.c2 h2 .LinkWithTooltip__PrimaryLink-sc-1omtxql-0 {
   background-position: bottom !important;
 }
 
@@ -683,7 +683,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c17 {
+  .c18 {
     padding: 0 10px;
   }
 }
@@ -839,6 +839,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
   }
 }
 
+@media (max-width:1280px) {
+
+}
+
 @media (max-width:900px) {
   .c38 {
     padding: 0 20px;
@@ -937,7 +941,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -953,7 +957,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -969,7 +973,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c3"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -985,7 +989,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -1015,7 +1019,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="John Elisle, The Star, from the reimagined female Tarot cards. Courtesy of the artist. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={351}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5ZP7vKuVPqiynVU0jpFewQ%252Funnamed.png&width=1200&quality=80"
               width={197}
@@ -1104,7 +1108,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="John Elisle, The Magician, from the reimagined female Tarot cards. Courtesy of the artist. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={351}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FPcvH_rh89gRGxRXgCyGGng%252Funnamed-5.png&width=1200&quality=80"
               width={197}
@@ -1197,7 +1201,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             >
               <img
                 alt="Brass Tax"
-                className="BlockImage__container c8"
+                className="c8 BlockImage__container"
                 height={352}
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FlSBz0tsfvOAm2qKdWwgxLw%2Flarger.jpg&width=1200&quality=80"
                 width={264}
@@ -1336,7 +1340,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -1366,7 +1370,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={425}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGwIVCQftjauWBCQie9oQ-A%252FTarot_de_Marseille_major21_world.jpg&width=1200&quality=80"
               width={219}
@@ -1455,7 +1459,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Queen of Clubs. Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={425}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FUaNPuL9iz-X7Xm-SNtat7Q%252FTarot_de_Marseille_clubs13_queen.jpg&width=1200&quality=80"
               width={219}
@@ -1544,7 +1548,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Nicolas Conver, Tarot card from Tarot de Marseille, ca. 1760. Via Wikimedia Commons. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={426}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fx5EcmVNBKoUJqQa8BQgqJA%252FTarot_de_Marseille_major06_lovers.jpg&width=1200&quality=80"
               width={219}
@@ -1627,7 +1631,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -1656,7 +1660,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Pamela Colman Smith, The Empress, c. 1937. Courtesy of the Beinecke Rare Book &amp; Manuscript Library at Yale University."
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height="auto"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
               width="100%"
@@ -1739,7 +1743,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -1766,7 +1770,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -1796,7 +1800,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={387}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fjmrvzuo7VfRidule-4zWNA%252F07272017170054-0001%2B%2528dragged%2529%2Bcopy.jpg&width=1200&quality=80"
               width={216}
@@ -1885,7 +1889,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={388}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F66XOTGwZQzAAa0igYKSNTQ%252F07272017170207-0001%2B%2528dragged%2529.jpg&width=1200&quality=80"
               width={219}
@@ -1974,7 +1978,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Bill Greer and Lloyd Morgan, card from Morgan-Greer Tarot, 1979. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height={388}
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl0Qu946mLja0Dbv4ME4MHg%252F07272017170259-0001%2B%2528dragged%2529.jpg&width=1200&quality=80"
               width={222}
@@ -2057,7 +2061,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -2086,7 +2090,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             className="c31"
           >
             <div
-              className="c32"
+              className="c32 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2106,7 +2110,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
               className="c33"
             >
               <div
-                className="c34"
+                className="c34 "
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2123,7 +2127,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                 View Slideshow
               </div>
               <div
-                className="c35"
+                className="c35 "
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize={
                   Array [
@@ -2181,7 +2185,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -2210,7 +2214,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           >
             <img
               alt="Designed by Kati Forner for The Dreslyn, courtesy of the artist. "
-              className="BlockImage__container c8"
+              className="c8 BlockImage__container"
               height="auto"
               src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGk95i1tUaDJKeqQ-jcq6Cw%252FIMG_2142.jpg&width=1200&quality=80"
               width="100%"
@@ -2293,7 +2297,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c1"
   >
     <div
-      className="article__text-section c2"
+      className="c2 article__text-section"
       color="black"
     >
       <div
@@ -2316,7 +2320,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         color="black"
       >
         <div
-          className="c41"
+          className="c41 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

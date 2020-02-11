@@ -115,20 +115,20 @@ exports[`renders properly 1`] = `
 }
 
 <div
-  className="VideoContainer c0"
+  className="c0 VideoContainer"
 >
   <div
-    className="VideoCover c1"
+    className="c1 VideoCover"
     height={281.25}
     hidden={false}
     onClick={[Function]}
     src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=80"
   >
     <div
-      className="PlayButton c2"
+      className="c2 PlayButton"
     >
       <div
-        className="PlayButton__PlayButtonCaret c3"
+        className="c3 PlayButton__PlayButtonCaret"
       />
     </div>
   </div>

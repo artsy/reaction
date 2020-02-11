@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c8 {
+.c7 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -16,21 +16,21 @@ exports[`renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c7 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c7 a {
+.c8 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7 .title,
-.c7 .title a {
+.c8 .title,
+.c8 .title a {
   font-style: italic;
 }
 
@@ -118,19 +118,19 @@ exports[`renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c8 {
+  .c7 {
     font-size: 16px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c8 {
+  .c7 {
     line-height: 26px;
   }
 }
 
 @media (max-width:720px) {
-  .c7 {
+  .c8 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -227,7 +227,7 @@ exports[`renders properly 1`] = `
         className="c4"
       >
         <div
-          className="fullscreen-viewer__caption-toggle c5"
+          className="c5 fullscreen-viewer__caption-toggle"
         >
           <span>
             View Caption
@@ -238,7 +238,7 @@ exports[`renders properly 1`] = `
         >
           <div>
             <div
-              className="c7 c8"
+              className="c7 sc-AxhCb c8"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

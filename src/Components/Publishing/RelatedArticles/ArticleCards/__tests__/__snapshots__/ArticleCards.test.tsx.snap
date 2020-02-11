@@ -367,7 +367,7 @@ exports[`ArticleCard renders properly 1`] = `
     className="c0"
   >
     <a
-      className="ArticleCard c1"
+      className="c1 ArticleCard"
       color="#000"
       href="new-yorks-next-art-district"
       onClick={[Function]}
@@ -388,7 +388,7 @@ exports[`ArticleCard renders properly 1`] = `
         >
           <div>
             <div
-              className="c4"
+              className="c4 "
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -402,7 +402,7 @@ exports[`ArticleCard renders properly 1`] = `
               New York's Next Art District
             </div>
             <div
-              className="c5"
+              className="c5 "
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -417,11 +417,11 @@ exports[`ArticleCard renders properly 1`] = `
             </div>
           </div>
           <div
-            className="Byline c6"
+            className="c6 Byline"
             color="#000"
           >
             <div
-              className="c7"
+              className="c7 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -441,7 +441,7 @@ exports[`ArticleCard renders properly 1`] = `
               className="c9"
             >
               <div
-                className="c7"
+                className="c7 "
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -478,7 +478,7 @@ exports[`ArticleCard renders properly 1`] = `
     className="c0"
   >
     <a
-      className="ArticleCard c1"
+      className="c1 ArticleCard"
       color="#000"
       href="joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
@@ -499,7 +499,7 @@ exports[`ArticleCard renders properly 1`] = `
         >
           <div>
             <div
-              className="c4"
+              className="c4 "
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize={
                 Array [
@@ -513,7 +513,7 @@ exports[`ArticleCard renders properly 1`] = `
               New Study Shows the Gender Pay Gap for Artists Is Not So Simple
             </div>
             <div
-              className="c5"
+              className="c5 "
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize={
                 Array [
@@ -531,7 +531,7 @@ exports[`ArticleCard renders properly 1`] = `
             className="c9"
           >
             <div
-              className="c7"
+              className="c7 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -583,7 +583,7 @@ exports[`ArticleCard renders properly 1`] = `
               </g>
             </svg>
             <div
-              className="c15"
+              className="c15 "
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

@@ -38,7 +38,7 @@ exports[`ArticleCard renders properly 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c2 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -74,7 +74,7 @@ exports[`ArticleCard renders properly 1`] = `
   line-height: 1em;
 }
 
-.c3 a {
+.c4 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -187,7 +187,7 @@ exports[`ArticleCard renders properly 1`] = `
   color: #000;
 }
 
-.c0 .c2 {
+.c0 .c3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -196,7 +196,7 @@ exports[`ArticleCard renders properly 1`] = `
   margin-bottom: 40px;
 }
 
-.c0 .c2 a {
+.c0 .c3 a {
   border-bottom: 2px solid;
 }
 
@@ -432,7 +432,7 @@ exports[`ArticleCard renders properly 1`] = `
         className="c6"
       >
         <a
-          className="ArticleCard c7"
+          className="c7 ArticleCard"
           color="#000"
           href="new-yorks-next-art-district"
           onClick={[Function]}
@@ -453,7 +453,7 @@ exports[`ArticleCard renders properly 1`] = `
             >
               <div>
                 <div
-                  className="c10"
+                  className="c10 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -467,7 +467,7 @@ exports[`ArticleCard renders properly 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="c11"
+                  className="c11 "
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -482,11 +482,11 @@ exports[`ArticleCard renders properly 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c12"
+                className="c12 Byline"
                 color="#000"
               >
                 <div
-                  className="c13"
+                  className="c13 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -506,7 +506,7 @@ exports[`ArticleCard renders properly 1`] = `
                   className="c15"
                 >
                   <div
-                    className="c13"
+                    className="c13 "
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -543,7 +543,7 @@ exports[`ArticleCard renders properly 1`] = `
         className="c6"
       >
         <a
-          className="ArticleCard c7"
+          className="c7 ArticleCard"
           color="#000"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
@@ -564,7 +564,7 @@ exports[`ArticleCard renders properly 1`] = `
             >
               <div>
                 <div
-                  className="c10"
+                  className="c10 "
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -578,7 +578,7 @@ exports[`ArticleCard renders properly 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="c11"
+                  className="c11 "
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -596,7 +596,7 @@ exports[`ArticleCard renders properly 1`] = `
                 className="c15"
               >
                 <div
-                  className="c13"
+                  className="c13 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -648,7 +648,7 @@ exports[`ArticleCard renders properly 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="c21"
+                  className="c21 "
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",

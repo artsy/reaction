@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a single image properly 1`] = `
-.c10 {
+.c9 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -16,7 +16,7 @@ exports[`renders a single image properly 1`] = `
   white-space: nowrap;
 }
 
-.c9 {
+.c10 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -25,14 +25,14 @@ exports[`renders a single image properly 1`] = `
   display: flex;
 }
 
-.c9 a {
+.c10 a {
   color: #C2C2C2;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c9 .title,
-.c9 .title a {
+.c10 .title,
+.c10 .title a {
   font-style: italic;
 }
 
@@ -120,7 +120,7 @@ exports[`renders a single image properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c9 {
+  .c10 {
     padding: 0 10px;
   }
 }
@@ -168,7 +168,7 @@ exports[`renders a single image properly 1`] = `
         >
           <img
             alt="Nude on the Beach"
-            className="BlockImage__container c5"
+            className="c5 BlockImage__container"
             height="auto"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
             width="100%"
@@ -231,7 +231,7 @@ exports[`renders a single image properly 1`] = `
       </a>
       <div>
         <div
-          className="c9 c10"
+          className="c9 sc-AxhCb c10"
           color="#C2C2C2"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="14px"
@@ -305,7 +305,7 @@ exports[`renders a single image properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c10 {
+.c9 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -320,7 +320,7 @@ exports[`renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c9 {
+.c10 {
   padding: 0;
   margin-top: 10px;
   display: -webkit-box;
@@ -329,14 +329,14 @@ exports[`renders properly 1`] = `
   display: flex;
 }
 
-.c9 a {
+.c10 a {
   color: #C2C2C2;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c9 .title,
-.c9 .title a {
+.c10 .title,
+.c10 .title a {
   font-style: italic;
 }
 
@@ -487,7 +487,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c9 {
+  .c10 {
     padding: 0 10px;
   }
 }
@@ -570,7 +570,7 @@ exports[`renders properly 1`] = `
         >
           <img
             alt="Nude on the Beach"
-            className="BlockImage__container c5"
+            className="c5 BlockImage__container"
             height={224}
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
             width={312}
@@ -633,7 +633,7 @@ exports[`renders properly 1`] = `
       </a>
       <div>
         <div
-          className="c9 c10"
+          className="c9 sc-AxhCb c10"
           color="#C2C2C2"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="14px"
@@ -715,7 +715,7 @@ exports[`renders properly 1`] = `
       >
         <img
           alt="Photo by Adam Kuehl for Artsy."
-          className="BlockImage__container c5"
+          className="c5 BlockImage__container"
           height={224}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fco8j2xq40ROMyBrJQm_4eQ%252FDafenOilPaintingVillage_AK03.jpg&width=1200&quality=80"
           width={168}
@@ -804,7 +804,7 @@ exports[`renders properly 1`] = `
       >
         <img
           alt="Photo by Adam Kuehl for Artsy. Image courtesy of the Guggenheim Museum."
-          className="BlockImage__container c5"
+          className="c5 BlockImage__container"
           height={224}
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FCpHY-DRr7KW0HGXLslCXHw%2Flarger.jpg&width=1200&quality=80"
           width={178}

@@ -33,7 +33,7 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-AxirZ c0"
   height="1px"
   onClick={[Function]}
 >
@@ -49,7 +49,7 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
       }
     />
     <div
-      className="c2"
+      className="c2 "
       color="black30"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="10px"

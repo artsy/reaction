@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Standard Header Snapshots renders editable props properly 1`] = `
-.c7 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c4 {
+.c3 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   color: #C2C2C2;
+}
+
+.c7 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .c8 {
@@ -79,7 +79,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
   color: black;
 }
 
-.c3 a {
+.c4 a {
   color: #C2C2C2;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -173,11 +173,11 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
       </div>
     </div>
     <div
-      className="Byline c6"
+      className="c6 Byline"
       color="black"
     >
       <div
-        className="c7"
+        className="c7 "
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -197,7 +197,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
         className="c9"
       >
         <div
-          className="c7"
+          className="c7 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -297,7 +297,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
 `;
 
 exports[`Standard Header Snapshots renders properly 1`] = `
-.c4 {
+.c3 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -375,7 +375,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
   color: black;
 }
 
-.c3 a {
+.c4 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -465,11 +465,11 @@ exports[`Standard Header Snapshots renders properly 1`] = `
       </h1>
     </div>
     <div
-      className="Byline c6"
+      className="c6 Byline"
       color="black"
     >
       <div
-        className="c7"
+        className="c7 "
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -489,7 +489,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
         className="c9"
       >
         <div
-          className="c7"
+          className="c7 "
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
