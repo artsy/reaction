@@ -1,3 +1,16 @@
+# v25.7.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Implement route-level bundle splitting [#3137](https://github.com/artsy/reaction/pull/3137) ([@damassi](https://github.com/damassi) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.6.0 (Wed Feb 12 2020)
 
 #### 🚀  Enhancement
