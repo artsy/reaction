@@ -129,12 +129,6 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
   const { pageInfo } = artist.auctionResultsConnection
   const auctionResultsLength = artist.auctionResultsConnection.edges.length
 
-  const { openedItemIndex } = filterContext.filters
-  const openedAuctionResult =
-    openedItemIndex !== null
-      ? artist.auctionResultsConnection.edges[openedItemIndex].node
-      : null
-
   const resultList = (
     <LoadingArea isLoading={isLoading}>
       {artist.auctionResultsConnection.edges.map(({ node }, index) => {
