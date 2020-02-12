@@ -1,3 +1,15 @@
+# v25.5.9 (Wed Feb 12 2020)
+
+#### 🐛  Bug Fix
+
+- Updates MP schema [#3145](https://github.com/artsy/reaction/pull/3145) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.5.8 (Mon Feb 10 2020)
 
 #### 🐛  Bug Fix
