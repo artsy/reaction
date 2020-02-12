@@ -1,3 +1,19 @@
+# v25.8.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- Auction results auction-house filter [#3131](https://github.com/artsy/reaction/pull/3131) ([@sepans](https://github.com/sepans))
+
+#### 🐛  Bug Fix
+
+- Remove deprecated fonts from classic articles, fix bylines [#3143](https://github.com/artsy/reaction/pull/3143) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.7.0 (Wed Feb 12 2020)
 
 #### 🚀  Enhancement
