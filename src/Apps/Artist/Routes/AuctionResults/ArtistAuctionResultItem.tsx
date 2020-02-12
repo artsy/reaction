@@ -320,19 +320,21 @@ const renderPricing = (salePrice, user, mediator, size) => {
     )
   } else {
     const btnSize = size === "xs" || "sm" ? "small" : "large"
+    const buttonMargin = size === "xs" ? "10px" : "0px"
     return (
       <Button
         size={btnSize}
-        variant="secondaryOutline"
+        variant="secondaryGray"
+        mb={buttonMargin}
         onClick={() => {
           mediator &&
             mediator.trigger("open:auth", {
               mode: "register",
-              copy: "Sign up to see full auction records — for free",
+              copy: "Log in to see full auction records — for free",
             })
         }}
       >
-        Sign up to see price
+        Log in to see price
       </Button>
     )
   }
