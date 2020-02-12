@@ -320,7 +320,7 @@ const renderPricing = (salePrice, user, mediator, size) => {
     )
   } else {
     const btnSize = size === "xs" || "sm" ? "small" : "large"
-    const buttonMargin = size === "xs" ? "10px" : "0px"
+    const buttonMargin = size === "xs" ? 1 : 0
     return (
       <Button
         size={btnSize}
