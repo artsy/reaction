@@ -1,8 +1,8 @@
 import { SelectSmall } from "@artsy/palette"
 import React from "react"
-import { Subscribe } from "unstated"
-import { AuctionResultsState } from "../state"
+import { useAuctionResultsFilterContext } from "../AuctionResultsFilterContext"
 
+// TODO: move this to sortOptions?
 const SORTS = [
   {
     value: "DATE_DESC",
@@ -19,15 +19,15 @@ const SORTS = [
 ]
 
 export const SortSelect = () => {
+  const filterContext = useAuctionResultsFilterContext()
+
   return (
-    <Subscribe to={[AuctionResultsState]}>
-      {(filters: AuctionResultsState) => (
-        <SelectSmall
-          options={SORTS}
-          selected={filters.state.sort}
-          onSelect={filters.setSort}
-        />
-      )}
-    </Subscribe>
+    <SelectSmall
+      options={SORTS}
+      selected={filterContext.filters.sort}
+      onSelect={sort => {
+        filterContext.setFilter("sort", sort)
+      }}
+    />
   )
 }

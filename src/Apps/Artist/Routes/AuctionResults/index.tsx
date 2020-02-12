@@ -8,7 +8,7 @@ export interface AuctionResultsRouteProps {
 }
 
 export const AuctionResultsRoute = (props: AuctionResultsRouteProps) => {
-  return <AuctionResults sort="DATE_DESC" artist={props.artist} />
+  return <AuctionResults artist={props.artist} />
 }
 
 export const AuctionResultsRouteFragmentContainer = createFragmentContainer(
