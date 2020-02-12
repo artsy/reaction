@@ -30,11 +30,16 @@ export interface Props extends SystemContextProps {
 const FullWidthBorderBox = styled(BorderBox)`
   display: block;
   padding: 0;
+  cursor: pointer;
 `
 
 const StyledImage = styled(Image)`
   max-height: 100%;
   max-width: 100%;
+`
+
+const Capitalize = styled.span`
+  text-transform: capitalize;
 `
 
 // TODO: This whole component should be refactored to use less `Media` decisions
@@ -43,13 +48,14 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
 
   const filterContext = useAuctionResultsFilterContext()
   const onAuctionResultClick = filterContext.onAuctionResultClick
+  const opened = props.index === filterContext.filters.openedItemIndex
 
   return (
     <>
       <Media at="xs">
         <FullWidthBorderBox
           mb={2}
-          onClick={() => onAuctionResultClick(props.index)}
+          onClick={() => onAuctionResultClick(opened ? null : props.index)}
         >
           <Row height="120px" p={2}>
             <ExtraSmallAuctionItem {...props} mediator={mediator} user={user} />
@@ -61,7 +67,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
       <Media greaterThanOrEqual="sm">
         <FullWidthBorderBox
           mb={2}
-          onClick={() => onAuctionResultClick(props.index)}
+          onClick={() => onAuctionResultClick(opened ? null : props.index)}
         >
           <Box p={2} minHeight="120px">
             <Row minHeight="80px">
@@ -115,7 +121,7 @@ const LargeAuctionItem: SFC<Props> = props => {
               {date_text}
             </Sans>
             <Sans size="2" color="black60">
-              {mediumText}
+              <Capitalize>{mediumText}</Capitalize>
             </Sans>
             <Spacer pt={1} />
           </div>
@@ -493,7 +499,9 @@ const renderSmallCollapse = (props, user, mediator) => {
           <Col xs={8}>
             <Box>
               <Sans size="2">{categoryText}</Sans>
-              <Sans size="2">{mediumText}</Sans>
+              <Sans size="2">
+                <Capitalize>{mediumText}</Capitalize>
+              </Sans>
               <Sans size="2">{dimension_text}</Sans>
             </Box>
           </Col>
