@@ -1,3 +1,16 @@
+# v25.6.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- As a user I see the updated list view of auction results and i can expand the result [#3139](https://github.com/artsy/reaction/pull/3139) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.5.10 (Wed Feb 12 2020)
 
 
