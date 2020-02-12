@@ -1,3 +1,15 @@
+# v25.7.1 (Wed Feb 12 2020)
+
+#### 🐛  Bug Fix
+
+- Remove deprecated fonts from classic articles, fix bylines [#3143](https://github.com/artsy/reaction/pull/3143) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v25.7.0 (Wed Feb 12 2020)
 
 #### 🚀  Enhancement
