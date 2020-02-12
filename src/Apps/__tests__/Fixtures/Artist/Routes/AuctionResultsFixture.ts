@@ -41,6 +41,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$40,000 - 60,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDk2Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -61,6 +63,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$4,000,000 - 6,000,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDc3Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -81,6 +85,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$500,000 - 700,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDc1Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -101,6 +107,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$3,500 - 4,500" },
             id: "QXVjdGlvblJlc3VsdDoyNDY4Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -121,6 +129,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$6,000 - 8,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDY3Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -141,6 +151,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$2,500 - 3,500" },
             id: "QXVjdGlvblJlc3VsdDoyNDY2Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -161,6 +173,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$18,000 - 25,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDY1Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -181,6 +195,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$10,000 - 15,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDY0Nw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -201,6 +217,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$7,000 - 10,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDYzNw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
         {
@@ -221,6 +239,8 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
             price_realized: { display: "$NaN", cents_usd: 0 },
             estimate: { display: "$7,000 - 10,000" },
             id: "QXVjdGlvblJlc3VsdDoyNDYyNw==",
+            mediumText: "oil on canvas",
+            categoryText: "Painting",
           },
         },
       ],
