@@ -35,7 +35,9 @@ export const getArticleFullHref = slug => `${APP_URL}/article/${slug}`
  */
 
 export const getPreSlugPath = layout => {
-  return ["standard", "feature"].includes(layout) ? "article" : layout
+  return ["standard", "feature", "classic"].includes(layout)
+    ? "article"
+    : layout
 }
 
 /**
@@ -68,7 +70,7 @@ export const getAuthorByline = (authors, isEditoral = true) => {
   const authorCount = Number(authors && authors.length)
 
   if (authorCount === 1) {
-    return authors[0].name || ""
+    return (authors[0] && authors[0].name) || ""
   } else if (authorCount > 1) {
     const names = authors.reduce((prev, curr, i) => {
       let delim

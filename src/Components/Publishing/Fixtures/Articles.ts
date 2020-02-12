@@ -166,6 +166,53 @@ export const ClassicArticleManyAuthors = extend({}, ClassicArticle, {
   ],
 })
 
+export const ClassicArticleInternalChannel: ArticleData = {
+  id: "5e3b232c77aee50020ddfb7f",
+  title: "Consignments Intern",
+  description:
+    "Artsy’s mission is to expand the art market to support more artists and art in the world. Artsy has created the world’s largest two-sided art marketpl...",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/QqdsjeaNSJcspGs0pEw_7A%2F18_11_09_Artsy_0377%2B0366%2B0386.jpg",
+  thumbnail_title: "Consignments Intern",
+  published_at: "2020-02-05T20:51:39.758Z",
+  tags: [],
+  tracking_tags: [],
+  slug: "artsy-jobs-consignments-intern-02-05-20",
+  layout: "classic",
+  featured: false,
+  channel_id: "578eb73cb5989e6f98f779a1",
+  partner_channel_id: null,
+  lead_paragraph:
+    "<p>Artsy’s mission is to expand the art market to support more artists and art in the world. Artsy has created the world’s largest two-sided art marketplace, with more than 1,000,000 works by 100,000 artists from 4,000 of the world’s leading galleries, auction houses, art fairs, and institutions across 190 countries. </p>",
+  keywords: [],
+  published: true,
+  email_metadata: {
+    headline: "Consignments Intern",
+    author: "Artsy Jobs",
+    image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/e7TOhXLnd0vkNqtFRByrgQ%2F18_11_09_Artsy_0123.jpg",
+  },
+  author: {
+    name: "Artsy Jobs",
+  },
+  authors: null,
+  channel: {
+    name: "Artsy Jobs",
+  },
+  sections: [
+    {
+      type: "text",
+      body:
+        '<p>We are currently seeking an analytical and driven Consignments Intern who will help grow this new Artsy business and provide guidance and expertise to collectors while selling their art.</p><p>The Consignments team is a recent area of business investment that aims to create more liquidity in the market and enable collectors to sell and rotate their collection more frequently, seamlessly and with the best outcome.</p><p>The Consignments Intern will be responsible for being the first person reviewing incoming Consignment property submissions, addressing inquiries from collectors via email and phone, as well as supporting the team of Specialists with a variety of administrative tasks. This is a unique opportunity for a professional early in their career in the art industry, who is eager to play an important role in growing a new business within Artsy. </p><p><br></p><h2>Key Responsibilities:</h2><ul><li>Review consignment submissions and ensuring that consignment requests are being evaluated promptly</li><li>Identify and surface high-value property and consignors to Specialists </li><li>Catalog consignment submissions data </li><li>Create consignment reports </li><li>Address consignment requests via email, phone and in-person requests</li><li>Log and synthesize feedback from clients</li><li>Track the status of Artsy’s consignments thorough follow-ups with partners and logging consignments outcomes </li></ul><p><br></p><h2>Candidate Qualifications:</h2><ul><li>0-3 years of professional experience (preferably in an auction house setting)</li><li>Background or experience in art market and/or art history - preferably with a focus on research, data or analytics</li><li>Excellent analytical skills and focus on process</li><li>Strong written and verbal communication skills</li><li>Ability to work on tight deadlines and under pressure</li><li>Comfort operating independently in a fast-paced environment</li><li>Proficiency in a language other than English is a plus, but not required</li><li>Solutions-oriented and go-getter mentality</li></ul><p><br></p><h2>To Apply:</h2><p>This position is a paid full-time, six month internship based in our Manhattan offices. To apply, please submit your resumé and a cover letter <strong><a href="https://grnh.se/298b49861">here</a>.</strong> </p><p><em>When you apply, you will be directed to a third party site.</em></p>',
+    },
+    {
+      type: "text",
+      body:
+        "<h2>Artsy Values</h2><p>Artsy has five core values that will inform your experience at Artsy.</p><p><strong>Art x Science:</strong> We believe in uniting empathy with logic, emotion with data, and intuition with research in everything we do. Whether in business strategy or design, culture or code, we seek the magic that happens when the often separate worlds of art and science come together.</p><p><strong>People are Paramount:</strong> We spend extraordinary energy finding the best person for a job—and once found, we give them the trust and autonomy to be CEO of their role. We avoid pointless bureaucracy and prefer to empower people with information rather than limit them with process.</p><p><strong>Quality Worthy of Art:</strong> We aim to create an experience worthy of all the world’s art and so hold ourselves to the highest standards in all our work. We believe that the best long term quality comes from rapid shipping, iterating, and learning as we go.</p><p><strong>Positive Energy:</strong> We know positivity and optimism benefit our work, and we harness positive energy as a vehicle towards greater awareness, growth, and collaboration. We believe in cultivating a positive relationship to art as opposed to one based on exclusivity or scarcity.</p><p><strong>Openness:</strong> We believe in being open with each other and the world—whether in open-sourcing our code, sharing feedback, or building a diverse and inclusive work culture. We believe in bringing our full selves to work and manifesting an open world where everyone has access to art.</p><p><em>Artsy is an equal opportunity employer. We value a diverse workforce and an inclusive culture. We encourage applications from all qualified individuals without regard to race, color, religion, gender, sexual orientation, gender identity or expression, age, national origin, marital status, disability, and veteran status.</em></p>",
+    },
+  ],
+}
+
 export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",

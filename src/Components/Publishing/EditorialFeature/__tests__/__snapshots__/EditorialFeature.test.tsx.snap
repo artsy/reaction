@@ -141,6 +141,35 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   margin-bottom: 20px;
 }
 
+.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1em;
+  margin-top: 5px;
+}
+
+.c23 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.c23:hover {
+  opacity: 0.6;
+}
+
+.c23:first-child {
+  padding-left: 0;
+}
+
 .c20 {
   margin: 10px 20px 0 0;
 }
@@ -172,35 +201,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 .c21 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
-}
-
-.c22 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  white-space: nowrap;
-  line-height: 1em;
-  margin-top: 5px;
-}
-
-.c23 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-.c23:hover {
-  opacity: 0.6;
-}
-
-.c23:first-child {
-  padding-left: 0;
 }
 
 .c18 {
@@ -6637,25 +6637,6 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   line-height: 32px;
 }
 
-.c21 {
-  margin: 10px 20px 0 0;
-}
-
-.c21::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin: 5px 5px 1px 0;
-  background-color: black;
-}
-
-.c23 {
-  margin: 5px 20px 0 0;
-  white-space: nowrap;
-}
-
 .c16 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6683,6 +6664,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 
 .c17:first-child {
   padding-left: 0;
+}
+
+.c21 {
+  margin: 10px 20px 0 0;
+}
+
+.c21::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 5px 5px 1px 0;
+  background-color: black;
+}
+
+.c23 {
+  margin: 5px 20px 0 0;
+  white-space: nowrap;
 }
 
 .c37 {
