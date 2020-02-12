@@ -45,7 +45,6 @@ export const AuctionResultsFilterContext = React.createContext<
 export type SharedAuctionResultsFilterContextProps = Pick<
   AuctionResultsFilterContextProps,
   "filters"
-  // | "onFilterClick"
 > & {
   onChange?: (filterState) => void
 }
@@ -54,10 +53,8 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
   children: React.ReactNode
 }> = ({
   children,
-  // counts = {},
+  // counts = {}, // TODO: maybe use this for counts
   filters = {},
-  // onChange,
-  // onFilterClick,
 }) => {
   const initialFilterState = {
     ...initialAuctionResultsFilterState,
@@ -68,12 +65,6 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     AuctionResultsFilterReducer,
     initialFilterState
   )
-
-  // useDeepCompareEffect(() => {
-  //   if (onChange) {
-  //     onChange(omit(auctionResultsFilterState, ["reset"]))
-  //   }
-  // }, [auctionResultsFilterState])
 
   const auctionResultsFilterContext = {
     filters: auctionResultsFilterState,
@@ -88,7 +79,6 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
         },
       })
     },
-    // onFilterClick,
 
     setFilter: (name, val) => {
       dispatch({
@@ -204,7 +194,7 @@ const AuctionResultsFilterReducer = (
     case "RESET": {
       return {
         ...initialAuctionResultsFilterState,
-        // reset: true,
+        reset: true,
       }
     }
 
