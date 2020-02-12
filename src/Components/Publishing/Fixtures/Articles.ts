@@ -166,6 +166,373 @@ export const ClassicArticleManyAuthors = extend({}, ClassicArticle, {
   ],
 })
 
+export const ClassicArticleInternalChannel: ArticleData = {
+  id: "5e3b232c77aee50020ddfb7f",
+  title: "Consignments Intern",
+  description:
+    "Artsy’s mission is to expand the art market to support more artists and art in the world. Artsy has created the world’s largest two-sided art marketpl...",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/QqdsjeaNSJcspGs0pEw_7A%2F18_11_09_Artsy_0377%2B0366%2B0386.jpg",
+  thumbnail_title: "Consignments Intern",
+  published_at: "2020-02-05T20:51:39.758Z",
+  tags: [],
+  tracking_tags: [],
+  slug: "artsy-jobs-consignments-intern-02-05-20",
+  layout: "classic",
+  featured: false,
+  channel_id: "578eb73cb5989e6f98f779a1",
+  partner_channel_id: null,
+  lead_paragraph:
+    "<p>Artsy’s mission is to expand the art market to support more artists and art in the world. Artsy has created the world’s largest two-sided art marketplace, with more than 1,000,000 works by 100,000 artists from 4,000 of the world’s leading galleries, auction houses, art fairs, and institutions across 190 countries. </p>",
+  keywords: [],
+  published: true,
+  email_metadata: {
+    headline: "Consignments Intern",
+    author: "Artsy Jobs",
+    image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/e7TOhXLnd0vkNqtFRByrgQ%2F18_11_09_Artsy_0123.jpg",
+  },
+  author: {
+    name: "Artsy Jobs",
+  },
+  authors: null,
+  channel: {
+    name: "Artsy Jobs",
+  },
+  sections: [
+    {
+      type: "text",
+      body:
+        '<p>We are currently seeking an analytical and driven Consignments Intern who will help grow this new Artsy business and provide guidance and expertise to collectors while selling their art.</p><p>The Consignments team is a recent area of business investment that aims to create more liquidity in the market and enable collectors to sell and rotate their collection more frequently, seamlessly and with the best outcome.</p><p>The Consignments Intern will be responsible for being the first person reviewing incoming Consignment property submissions, addressing inquiries from collectors via email and phone, as well as supporting the team of Specialists with a variety of administrative tasks. This is a unique opportunity for a professional early in their career in the art industry, who is eager to play an important role in growing a new business within Artsy. </p><p><br></p><h2>Key Responsibilities:</h2><ul><li>Review consignment submissions and ensuring that consignment requests are being evaluated promptly</li><li>Identify and surface high-value property and consignors to Specialists </li><li>Catalog consignment submissions data </li><li>Create consignment reports </li><li>Address consignment requests via email, phone and in-person requests</li><li>Log and synthesize feedback from clients</li><li>Track the status of Artsy’s consignments thorough follow-ups with partners and logging consignments outcomes </li></ul><p><br></p><h2>Candidate Qualifications:</h2><ul><li>0-3 years of professional experience (preferably in an auction house setting)</li><li>Background or experience in art market and/or art history - preferably with a focus on research, data or analytics</li><li>Excellent analytical skills and focus on process</li><li>Strong written and verbal communication skills</li><li>Ability to work on tight deadlines and under pressure</li><li>Comfort operating independently in a fast-paced environment</li><li>Proficiency in a language other than English is a plus, but not required</li><li>Solutions-oriented and go-getter mentality</li></ul><p><br></p><h2>To Apply:</h2><p>This position is a paid full-time, six month internship based in our Manhattan offices. To apply, please submit your resumé and a cover letter <strong><a href="https://grnh.se/298b49861">here</a>.</strong> </p><p><em>When you apply, you will be directed to a third party site.</em></p>',
+    },
+    {
+      type: "text",
+      body:
+        "<h2>Artsy Values</h2><p>Artsy has five core values that will inform your experience at Artsy.</p><p><strong>Art x Science:</strong> We believe in uniting empathy with logic, emotion with data, and intuition with research in everything we do. Whether in business strategy or design, culture or code, we seek the magic that happens when the often separate worlds of art and science come together.</p><p><strong>People are Paramount:</strong> We spend extraordinary energy finding the best person for a job—and once found, we give them the trust and autonomy to be CEO of their role. We avoid pointless bureaucracy and prefer to empower people with information rather than limit them with process.</p><p><strong>Quality Worthy of Art:</strong> We aim to create an experience worthy of all the world’s art and so hold ourselves to the highest standards in all our work. We believe that the best long term quality comes from rapid shipping, iterating, and learning as we go.</p><p><strong>Positive Energy:</strong> We know positivity and optimism benefit our work, and we harness positive energy as a vehicle towards greater awareness, growth, and collaboration. We believe in cultivating a positive relationship to art as opposed to one based on exclusivity or scarcity.</p><p><strong>Openness:</strong> We believe in being open with each other and the world—whether in open-sourcing our code, sharing feedback, or building a diverse and inclusive work culture. We believe in bringing our full selves to work and manifesting an open world where everyone has access to art.</p><p><em>Artsy is an equal opportunity employer. We value a diverse workforce and an inclusive culture. We encourage applications from all qualified individuals without regard to race, color, religion, gender, sexual orientation, gender identity or expression, age, national origin, marital status, disability, and veteran status.</em></p>",
+    },
+  ],
+}
+
+export const ClassicArticleSponsored: ArticleData = {
+  id: "5849c4f44b6d880011d6cf8b",
+  title: "In Miami, New Work from Hijack",
+  search_title: "",
+  social_title: "",
+  description:
+    " “Is Hijack the new Banksy?” asked the Huffington Post UK after the London debut of 20-year-old Hijack in 2013. One work in particular seemed to invit...",
+  search_description: "",
+  social_description: "",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/BE0BTvqVIZednPodWgjsKA%2FScreen+Shot+2016-12-08+at+3.58.13+PM.png",
+  thumbnail_title:
+    "In Miami, New Work from Hijack, the Street Artist Son of Mr. Brainwash",
+  social_image: null,
+  published_at: "2016-12-08T21:03:27.431Z",
+  tags: [],
+  tracking_tags: null,
+  slug:
+    "artsy-in-miami-new-work-from-hijack-the-street-artist-son-of-mr-brainwash",
+  layout: "classic",
+  featured: false,
+  channel_id: "5759e508b5989e6f98f77999",
+  partner_channel_id: null,
+  lead_paragraph: "",
+  indexable: true,
+  keywords: ["Hijack", "Contessa Gallery"],
+  published: true,
+  postscript: null,
+  is_super_article: false,
+  is_super_sub_article: false,
+  sponsor: null,
+  seriesArticle: null,
+  super_article: {
+    partner_link: null,
+    partner_link_title: null,
+    partner_logo: "",
+    partner_logo_link: null,
+    partner_fullscreen_header_logo: "",
+    secondary_partner_logo: "",
+    secondary_logo_text: null,
+    secondary_logo_link: null,
+    footer_blurb: null,
+    footer_title: null,
+    related_articles: [],
+  },
+  email_metadata: {
+    headline:
+      "In Miami, New Work from Hijack, the Street Artist Son of Mr. Brainwash",
+    author: "Artsy",
+    image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/BE0BTvqVIZednPodWgjsKA%2FScreen+Shot+2016-12-08+at+3.58.13+PM.png",
+  },
+  author: {
+    name: "Artsy",
+  },
+  authors: null,
+  channel: {
+    name: "Artsy",
+  },
+  contributing_authors: [],
+  vertical: null,
+  news_source: null,
+  media: null,
+  series: null,
+  hero_section: null,
+  sections: [
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          type: "artwork",
+          id: "582492c17622dd216100077e",
+          slug: "hijack-beating-heart-i",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/k6UIs3ey96Y2u98E6VTsDQ/larger.jpg",
+          title: "Beating Heart I",
+          date: "2016",
+          partner: {
+            name: "Contessa Gallery",
+            slug: "contessa-gallery",
+          },
+          artists: [
+            {
+              name: "Hijack",
+              slug: "hijack",
+            },
+          ],
+          artist: null,
+          width: 697,
+          height: 698,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>“Is Hijack the new Banksy?” <a href="http://www.huffingtonpost.co.uk/caroline-frost/banksy-hijack-mr-brainwash-exhibition_b_3155775.html">asked</a> the <em>Huffington Post UK</em> after Hijack’s London debut in 2013. One work in particular seemed to invite the comparison. It was a familiar-looking piece: stencil, spray paint, and oil on canvas, depicting a child holding a pail of sidewalk chalk and scrawling words, graffiti-style, onto a blank wall. In dripping red, the words spell out the painting’s title: <em>You’re Never Too Young to Dream Big.</em></p>',
+    },
+    {
+      type: "text",
+      body:
+        "<p>Certainly the style is reminiscent of Banksy’s. And there’s an unavoidable connection between the young artist and the subversive street art icon. </p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "582492c67622dd2161000787",
+          slug: "hijack-splatter",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/6soWuWkm9VF8MqAe_t5MKQ/larger.jpg",
+          title: "Splatter",
+          date: "2016",
+          partner: {
+            name: "Contessa Gallery",
+            slug: "contessa-gallery",
+          },
+          artists: [
+            {
+              name: "Hijack",
+              slug: "hijack",
+            },
+          ],
+          artist: null,
+          width: 639,
+          height: 817,
+        },
+        {
+          type: "artwork",
+          id: "582492c62a893a3605000853",
+          slug: "hijack-smoke",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/hsaDPlZA2ULclhaTwPErpg/larger.jpg",
+          title: "Smoke",
+          date: "2016",
+          partner: {
+            name: "Contessa Gallery",
+            slug: "contessa-gallery",
+          },
+          artists: [
+            {
+              name: "Hijack",
+              slug: "hijack",
+            },
+          ],
+          artist: null,
+          width: 642,
+          height: 813,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>With connections like these, you might expect a youthful artist like Hijack to coast into the London gallery scene. But he built his practice as any street artist would: on the street. The streets of Los Angeles, to be precise, with its stretches of grit and glamour. At night, he’d head out with his tools, adding his stencils to some of the city’s most heavily trafficked areas, like Melrose Avenue and the hiking trails of Runyon Canyon.</p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          url:
+            "https://artsy-media-uploads.s3.amazonaws.com/ZKy0jkxTWHDgap8GxtXYMw%2FSlack+for+iOS+Upload.jpg",
+          caption: "<p>Image copyright Hijack. All rights reserved.</p>",
+          type: "image",
+          width: 374,
+          height: 374,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>Some of those stencils were short-lived, quickly\ncovered up. Others were photographed by passersby and shared on social media. Their\nmessages—grappling, Banksy-like, with themes of police authority, personal\nautonomy, conformity, and the status quo—resonated with a curious public. Those\nmiddle-of-the-night creations laid the groundwork for a blossoming career that\nhas taken the artist to Guadalajara, Mexico, for a special joint exhibition\nwith Mr. Brainwash in 2013, and onto solo shows in Paris and Japan in\n2014.</p>",
+    },
+    {
+      type: "image_collection",
+      layout: "column_width",
+      images: [
+        {
+          type: "artwork",
+          id: "582492c62a893a363e000737",
+          slug: "hijack-bubble-gum-girl",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/sEPNEy0QJAaVKfVL84Wuxw/larger.jpg",
+          title: "Bubble Gum Girl",
+          date: "2016",
+          partner: {
+            name: "Contessa Gallery",
+            slug: "contessa-gallery",
+          },
+          artists: [
+            {
+              name: "Hijack",
+              slug: "hijack",
+            },
+          ],
+          artist: null,
+          width: 645,
+          height: 816,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>This past week marked Hijack’s debut at Art\nMiami, where Contessa Gallery showed a selection of his works. Like the small\nbut attention-grabbing stencils he put up around L.A., his newer paintings are\nbracing and vivid. Some have a graphic, illustration-like feel, as in <i>Bubble\nGum Girl</i> (2016), while others, like the “Beating Heart” series (2016) on shattered glass, are loaded with\nmeaning. And, at less than 25 years old, Hijack surely has plenty more in store.&nbsp;</p><p><br></p><p>—Bridget Gleeson</p><p><br></p><p><i><a href="https://www.artsy.net/show/contessa-gallery-contessa-gallery-at-art-miami-2016">Hijack’s work </a></i><i>was\non view at Contessa Gallery’s booth at Art Miami, Nov. 29–Dec. 4, 2016.</i></p><p><i><a href="https://www.artsy.net/contessa-gallery">See\nmore artists from Contessa Gallery on Artsy</a>.</i></p>',
+    },
+  ],
+  relatedArticlesPanel: [
+    {
+      id: "566db932b7b5ad06003a960a",
+      layout: "standard",
+      slug:
+        "artsy-editorial-in-julie-green-s-portland-exhibition-the-blues-are-insistent",
+      thumbnail_title:
+        "In Julie Green’s Portland Exhibition, the Blues Are Insistent",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/C0BD7OYvQRl83WrhVh8SuA%2FDSC_7813.jpg",
+    },
+    {
+      id: "55566cf1dbe3b00600391e81",
+      layout: "classic",
+      slug:
+        "artsy-editorial-miami-painter-michael-clifford-employs-smoke-bombs-satire",
+      thumbnail_title:
+        "Miami Painter Michael Clifford Employs Smoke Bombs, Satire, and Paper Towels ",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/nHA2Zc6jzv_-9lVBFdZNxg%2Flarger.jpg",
+    },
+  ],
+  relatedArticlesCanvas: [
+    {
+      id: "5e41c51ed8efac001f67eb62",
+      layout: "standard",
+      slug: "artsy-editorial-david-hockneys-pool-paintings-making-splash",
+      thumbnail_title:
+        "Why David Hockney’s Pool Paintings Keep Making a Splash",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/8DjVtS5N23bL_OYXcgJqsg%2Fmagsplash2.jpg",
+      published_at: "2020-02-10T22:21:46.454Z",
+      contributing_authors: [
+        {
+          name: "Scott Indrisek",
+        },
+      ],
+      authors: [
+        {
+          name: "Scott Indrisek",
+        },
+      ],
+    },
+    {
+      id: "5e416460f42520001f017748",
+      layout: "standard",
+      slug: "artsy-editorial-flipping-art-controversial",
+      thumbnail_title: "Why “Flipping” Art Is so Controversial",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/aZQOh3Kj-PZSKhQhMFnohA%2Fcustom-Custom_Size___large+%281%29.jpg",
+      published_at: "2020-02-10T16:20:11.611Z",
+      contributing_authors: [
+        {
+          name: "Alina Cohen",
+        },
+      ],
+      authors: [
+        {
+          name: "Alina Cohen",
+        },
+      ],
+    },
+    {
+      id: "5e3d99d77b339e0020fc8b98",
+      layout: "standard",
+      slug:
+        "artsy-editorial-forgotten-female-art-dealer-championed-picasso-modigliani",
+      thumbnail_title:
+        "The Forgotten Female Art Dealer Who Championed Picasso and Modigliani",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/v4r6m8QXPtJeETb_c2H4lw%2Fcustom-Custom_Size___Georges+Kars%2C+Portrait+de+Berthe+Weill%2C56+x+46+cm%2C+1933%2C+collection+priveI%CC%80%C2%81e%2C+A%CC%82%C2%A9Maxime+Champion+_+Delorme+%26+Collin+du+Bocage.jpg",
+      published_at: "2020-02-07T18:30:46.591Z",
+      contributing_authors: [
+        {
+          name: "Karen Chernick",
+        },
+      ],
+      authors: [
+        {
+          name: "Karen Chernick",
+        },
+      ],
+    },
+    {
+      id: "5e3054f85dae95002061cf6f",
+      layout: "standard",
+      slug:
+        "artsy-editorial-stephen-shores-unorthodox-photography-teaches-celebrate-everyday",
+      thumbnail_title:
+        "Stephen Shore’s Unorthodox Photography Teaches Us to Celebrate the Everyday",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/27Ejh9ALCrNt3tJ5_ooj7A%2Fcustom-Custom_Size___stephen-shore-horseshoe-bend-motel-lovell-wyoming-july-16-1973-1973+2.jpg",
+      published_at: "2020-02-06T23:11:17.094Z",
+      contributing_authors: [
+        {
+          name: "Jacqui Palumbo",
+        },
+      ],
+      authors: [
+        {
+          name: "Jacqui Palumbo",
+        },
+      ],
+    },
+  ],
+  relatedArticles: null,
+}
+
 export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
   title: "New York's Next Art District",

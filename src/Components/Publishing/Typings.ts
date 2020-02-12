@@ -109,6 +109,8 @@ export interface ArticleData {
     partner_condensed_logo?: string
   }
   shouldAdRender?: boolean
+  partner?: any
+  sale?: any
 }
 
 export type SectionType =
