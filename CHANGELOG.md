@@ -1,3 +1,15 @@
+# v25.8.3 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1807] update MP schema and use new size arg to limit relatedCollections [#3154](https://github.com/artsy/reaction/pull/3154) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.8.2 (Thu Feb 13 2020)
 
 #### 🐛  Bug Fix
