@@ -25,8 +25,7 @@ export const SizeFilter: React.FC = () => {
     <Toggle label="Size" expanded>
       <Flex flexDirection="column" alignItems="left">
         <Sans size="2" color="black60">
-          Size is a relative metric based on the average dimensions of an
-          artwork.
+          This is based on the artwork’s average dimension.
         </Sans>
         <Box mt={0.5}>
           {sizeMap.map((checkbox, index) => {
