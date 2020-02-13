@@ -2,7 +2,7 @@ import { Box, Sans, Serif } from "@artsy/palette"
 import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import ConversationSnippet from "./ConversationSnippet"
+import { ConversationSnippetFragmentContainer as ConversationSnippet } from "./ConversationSnippet"
 
 interface ConversationsProps {
   me: Conversations_me
@@ -18,16 +18,13 @@ const Conversations: React.FC<ConversationsProps> = (
     me.conversationsConnection.edges.map(x => x.node)
   return (
     <Box px={1}>
-      <Serif size="5">Purchases</Serif>
+      <Serif size="5">Conversations</Serif>
       {conversations.length ? (
-        conversations.map(conversation => (
-          <ConversationSnippet
-            key={conversation.internalID}
-            conversation={conversation}
-          />
+        conversations.map(c => (
+          <ConversationSnippet conversation={c} key={c.internalID} />
         ))
       ) : (
-        <Sans size="2">No Orders</Sans>
+        <Sans size="2">No Conversations</Sans>
       )}
     </Box>
   )

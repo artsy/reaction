@@ -7,12 +7,14 @@ import {
   Serif,
   StackableBorderBox,
 } from "@artsy/palette"
+import { ConversationSnippet_conversation } from "__generated__/ConversationSnippet_conversation.graphql"
+import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
 
 interface ConversationSnippetProps {
-  conversation: any
+  conversation: ConversationSnippet_conversation
 }
 
 const ConversationSnippet = (props: ConversationSnippetProps) => {
@@ -30,11 +32,15 @@ const ConversationSnippet = (props: ConversationSnippetProps) => {
   const item = conversation.items[0].item
 
   let imageURL
+  let title
   if (item.__typename === "Artwork") {
     imageURL = item.image && item.image.url
+    title = item.title
   } else if (item.__typename === "Show") {
     imageURL = item.coverImage && item.coverImage.url
+    title = item.name
   }
+  const date = DateTime.fromISO(conversation.lastMessageAt).toRelative()
 
   const partnerName = conversation.to.name
 
@@ -60,7 +66,7 @@ const ConversationSnippet = (props: ConversationSnippetProps) => {
               {partnerName} - {conversationText}
             </Link>
             <Serif italic size="2" color="black60" lineHeight={1.3}>
-              {item.title.trim()}, ReplaceSomeDate
+              {title && title.trim()}, {date}
             </Serif>
           </Flex>
         </Flex>
@@ -77,38 +83,41 @@ const ConversationSnippet = (props: ConversationSnippetProps) => {
   )
 }
 
-export default createFragmentContainer(ConversationSnippet, {
-  conversation: graphql`
-    fragment ConversationSnippet_conversation on Conversation {
-      internalID
-      to {
-        name
-      }
-      lastMessage
-      lastMessageAt
-      unread
-      items {
-        item {
-          __typename
-          ... on Artwork {
-            date
-            title
-            artistNames
-            image {
-              url
+export const ConversationSnippetFragmentContainer = createFragmentContainer(
+  ConversationSnippet,
+  {
+    conversation: graphql`
+      fragment ConversationSnippet_conversation on Conversation {
+        internalID
+        to {
+          name
+        }
+        lastMessage
+        lastMessageAt
+        unread
+        items {
+          item {
+            __typename
+            ... on Artwork {
+              date
+              title
+              artistNames
+              image {
+                url
+              }
             }
-          }
-          ... on Show {
-            fair {
+            ... on Show {
+              fair {
+                name
+              }
               name
-            }
-            name
-            coverImage {
-              url
+              coverImage {
+                url
+              }
             }
           }
         }
       }
-    }
-  `,
-})
+    `,
+  }
+)

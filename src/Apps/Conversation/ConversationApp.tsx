@@ -8,14 +8,15 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { userIsAdmin } from "Utils/user"
 import { ConversationsFragmentContainer as Conversations } from "./Components/Conversations"
 
-export interface ConversationAppProps {
+interface ConversationAppProps {
   me: ConversationApp_me
 }
 
-export const ConversationApp = (props: any) => {
+export const ConversationApp = (props: ConversationAppProps) => {
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
+  console.log("--->", isAdmin)
   if (isAdmin) {
     return (
       <AppContainer>
