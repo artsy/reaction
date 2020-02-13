@@ -244,7 +244,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           artist_id: artistID
           gene_id: geneID
         }
-        relatedCollections {
+        relatedCollections(size: 16) {
           ...RelatedCollectionsRail_collections
         }
         linkedCollections {
