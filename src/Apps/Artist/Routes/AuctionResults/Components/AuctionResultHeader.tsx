@@ -1,11 +1,11 @@
 import { Box, Sans, Serif } from "@artsy/palette"
-import { AuctionResultHeader_results } from "__generated__/AuctionResultHeader_results.graphql"
+import { AuctionResultHeader_artist } from "__generated__/AuctionResultHeader_artist.graphql"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
 
 interface Props {
-  artist: AuctionResultHeader_results
+  artist: AuctionResultHeader_artist
 }
 
 const AuctionResultHeader: React.FC<Props> = props => {
@@ -25,7 +25,7 @@ export const AuctionResultHeaderFragmentContainer = createFragmentContainer(
   AuctionResultHeader,
   {
     artist: graphql`
-      fragment AuctionResultHeader_results on Artist {
+      fragment AuctionResultHeader_artist on Artist {
         name
       }
     `,

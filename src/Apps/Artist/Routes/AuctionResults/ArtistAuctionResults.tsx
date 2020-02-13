@@ -213,7 +213,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           organizations: { type: "[String]" }
         ) {
         slug
-        ...AuctionResultHeader_results
+        ...AuctionResultHeader_artist
         auctionResultsConnection(
           first: $first
           after: $after
