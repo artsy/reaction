@@ -123,6 +123,11 @@ const AuctionResultsFilterReducer = (
     payload: { name: keyof AuctionResultsFilters; value?: any }
   }
 ): AuctionResultsFiltersState => {
+  const arrayFilterTypes: Array<keyof AuctionResultsFilters> = [
+    "organizations",
+    "sizes",
+  ]
+
   switch (action.type) {
     /**
      * Setting  and updating filters
@@ -135,10 +140,6 @@ const AuctionResultsFilterReducer = (
         openedItemIndex: null,
       }
 
-      const arrayFilterTypes: Array<keyof AuctionResultsFilters> = [
-        "organizations",
-        "sizes",
-      ]
       arrayFilterTypes.forEach(filter => {
         if (name === filter) {
           filterState[name as any] = value || []
@@ -186,10 +187,6 @@ const AuctionResultsFilterReducer = (
         }
       })
 
-      const arrayFilterTypes: Array<keyof AuctionResultsFilters> = [
-        "organizations",
-        "sizes",
-      ]
       arrayFilterTypes.forEach(filter => {
         if (name === filter) {
           filterState[name as any] = []

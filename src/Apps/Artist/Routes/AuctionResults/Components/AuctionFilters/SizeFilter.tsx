@@ -1,11 +1,11 @@
-import { Box, Checkbox, Flex, Toggle } from "@artsy/palette"
+import { Box, Checkbox, Flex, Sans, Toggle } from "@artsy/palette"
 import React from "react"
 import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
 
 const sizeMap = [
-  { displayName: "Small", name: "SMALL" },
-  { displayName: "Medium", name: "MEDIUM" },
-  { displayName: "Large", name: "LARGE" },
+  { displayName: "Small (under 40cm)", name: "SMALL" },
+  { displayName: "Medium (40–70cm)", name: "MEDIUM" },
+  { displayName: "Large (over 70cm)", name: "LARGE" },
 ]
 
 export const SizeFilter: React.FC = () => {
@@ -22,9 +22,13 @@ export const SizeFilter: React.FC = () => {
   }
 
   return (
-    <Toggle label="Artwork size" expanded>
+    <Toggle label="Size" expanded>
       <Flex flexDirection="column" alignItems="left">
-        <Box pt={1}>
+        <Sans size="2" color="black60">
+          Size is a relative metric based on the average dimensions of an
+          artwork.
+        </Sans>
+        <Box mt={0.5}>
           {sizeMap.map((checkbox, index) => {
             const { name, displayName } = checkbox
             const props = {

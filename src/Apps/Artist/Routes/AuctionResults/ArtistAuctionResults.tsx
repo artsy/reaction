@@ -159,13 +159,13 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         <AuctionResultHeader artist={artist} />
       </Row>
       <Row>
-        <Col sm={2} pr={[0, 2]}>
+        <Col sm={3} pr={[0, 2]}>
           <Media greaterThan="xs">
             <TableSidebar />
           </Media>
         </Col>
 
-        <Col sm={10}>
+        <Col sm={9}>
           <AuctionResultsControls
             artist={artist}
             toggleMobileActionSheet={toggleMobileActionSheet}
