@@ -226,8 +226,14 @@ return {
       "kind": "LinkedField",
       "alias": null,
       "name": "relatedCollections",
-      "storageKey": null,
-      "args": null,
+      "storageKey": "relatedCollections(size:16)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 16
+        }
+      ],
       "concreteType": "MarketingCollection",
       "plural": true,
       "selections": [
@@ -498,5 +504,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '97ab444a74d25a80f172edd67473f1b4';
+(node as any).hash = 'd3be9cd0f40b6d2577a580344d0f2713';
 export default node;
