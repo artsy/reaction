@@ -144,6 +144,43 @@ describe("AuctionResults", () => {
             })
           })
         })
+        describe("size filter", () => {
+          it("triggers relay refetch with size list", done => {
+            const filter = wrapper.find("SizeFilter")
+
+            const checkboxes = filter.find("Checkbox")
+
+            checkboxes.at(1).simulate("click")
+
+            checkboxes.at(2).simulate("click")
+
+            checkboxes.at(1).simulate("click")
+
+            setTimeout(() => {
+              expect(refetchSpy).toHaveBeenCalledTimes(3)
+
+              expect(refetchSpy.mock.calls[0][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  sizes: ["MEDIUM"],
+                })
+              )
+              expect(refetchSpy.mock.calls[1][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  sizes: ["MEDIUM", "LARGE"],
+                })
+              )
+              expect(refetchSpy.mock.calls[2][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  sizes: ["LARGE"],
+                })
+              )
+              done()
+            })
+          })
+        })
       })
 
       describe("sort", () => {
