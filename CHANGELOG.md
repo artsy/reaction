@@ -1,3 +1,15 @@
+# v25.8.1 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "[Refactor] Implement route-level bundle splitting" [#3150](https://github.com/artsy/reaction/pull/3150) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.8.0 (Wed Feb 12 2020)
 
 #### 🚀  Enhancement
