@@ -1,6 +1,6 @@
-import { ArtworkQueryFilterQueryRawResponse } from "__generated__/ArtworkQueryFilterQuery.graphql"
+import { ArtworkFilterQueryRawResponse } from "__generated__/ArtworkFilterQuery.graphql"
 
-export const ArtworkFilterFixture: ArtworkQueryFilterQueryRawResponse = {
+export const ArtworkFilterFixture: ArtworkFilterQueryRawResponse = {
   viewer: {
     filtered_artworks: {
       id:

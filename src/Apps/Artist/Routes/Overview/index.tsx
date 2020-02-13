@@ -23,7 +23,7 @@ import { ArtistBioFragmentContainer as ArtistBio } from "Components/v2/ArtistBio
 import { Carousel } from "Components/v2/Carousel"
 import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/v2/SelectedCareerAchievements"
 
-import { StyledLink } from "Apps/Artist/Components/StyledLink"
+import { StyledLink } from "Apps/Artist/ArtistApp"
 import { WorksForSaleRailQueryRenderer as WorksForSaleRail } from "Apps/Artist/Routes/Overview/Components/WorksForSaleRail"
 import { pMedia } from "Components/Helpers"
 import React from "react"
@@ -561,6 +561,3 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
     `,
   }
 )
-
-// Top-level route needs to be exported for bundle splitting in the router
-export default OverviewRouteFragmentContainer

@@ -1,10 +1,13 @@
 import { Breakpoint } from "@artsy/palette"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import { ArtworkFilter, BaseArtworkFilter } from "Components/v2/ArtworkFilter"
+import {
+  ArtworkFilter,
+  ArtworkQueryFilter,
+  BaseArtworkFilter,
+} from "Components/v2/ArtworkFilter"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { renderToString } from "DevTools/__tests__/MockRelayRendererFixtures"
 import React from "react"
-import { ArtworkQueryFilter } from "../ArtworkQueryFilter"
 import { ArtworkFilterFixture } from "./fixtures/ArtworkFilter.fixture"
 
 jest.unmock("react-relay")

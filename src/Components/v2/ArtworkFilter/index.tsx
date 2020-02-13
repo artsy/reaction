@@ -11,7 +11,7 @@ import { usePrevious } from "Utils/Hooks/usePrevious"
 import { Media } from "Utils/Responsive"
 
 import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
-import { ArtworkQueryFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkQueryFilterQuery.graphql"
+import { ArtworkFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkFilterQuery.graphql"
 
 import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } from "./ArtworkFilterArtworkGrid2"
 import { SortFilter } from "./ArtworkFilters/SortFilter"
@@ -37,7 +37,6 @@ import {
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
 import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
-import { ArtworkQueryFilter } from "./ArtworkQueryFilter"
 
 /**
  * Primary ArtworkFilter which is wrapped with a context and refetch container.
@@ -223,6 +222,53 @@ export const BaseArtworkFilter: React.FC<{
     </Box>
   )
 }
+
+export const ArtworkQueryFilter = graphql`
+  query ArtworkFilterQuery(
+    $acquireable: Boolean
+    $aggregations: [ArtworkAggregation] = [TOTAL]
+    $artistID: String
+    $atAuction: Boolean
+    $attributionClass: [String]
+    $color: String
+    $forSale: Boolean
+    $height: String
+    $inquireableOnly: Boolean
+    $majorPeriods: [String]
+    $medium: String
+    $offerable: Boolean
+    $page: Int
+    $partnerID: ID
+    $priceRange: String
+    $sort: String
+    $keyword: String
+    $width: String
+  ) @raw_response_type {
+    viewer {
+      ...ArtworkFilter_viewer
+        @arguments(
+          acquireable: $acquireable
+          aggregations: $aggregations
+          artistID: $artistID
+          atAuction: $atAuction
+          attributionClass: $attributionClass
+          color: $color
+          forSale: $forSale
+          height: $height
+          inquireableOnly: $inquireableOnly
+          keyword: $keyword
+          majorPeriods: $majorPeriods
+          medium: $medium
+          offerable: $offerable
+          page: $page
+          partnerID: $partnerID
+          priceRange: $priceRange
+          sort: $sort
+          width: $width
+        )
+    }
+  }
+`
 
 export const ArtworkFilterRefetchContainer = createRefetchContainer(
   BaseArtworkFilter,

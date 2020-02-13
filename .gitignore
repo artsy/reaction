@@ -5,7 +5,6 @@
 .env
 .storybook/.DS_Store
 .storybook/manager.js
-.tsbuildinfo
 .vscode/cSpell.json
 *.tgz
 assets/reaction-force.js
