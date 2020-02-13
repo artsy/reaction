@@ -146,6 +146,3 @@ export const CollectAppFragmentContainer = createFragmentContainer(CollectApp, {
     }
   `,
 })
-
-// Top-level route needs to be exported for bundle splitting in the router
-export default CollectAppFragmentContainer
