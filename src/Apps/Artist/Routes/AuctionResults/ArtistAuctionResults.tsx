@@ -20,7 +20,7 @@ import {
 } from "./AuctionResultsFilterContext"
 import { AuctionFilterMobileActionSheet } from "./Components/AuctionFilterMobileActionSheet"
 import { AuctionFilters } from "./Components/AuctionFilters"
-import { AuctionResultHeader } from "./Components/AuctionResultHeader"
+import { AuctionResultHeaderFragmentContainer as AuctionResultHeader } from "./Components/AuctionResultHeader"
 import { AuctionResultsControls } from "./Components/AuctionResultsControls"
 
 const logger = createLogger("ArtistAuctionResults.tsx")
@@ -155,7 +155,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         </AuctionFilterMobileActionSheet>
       )}
       <Row>
-        <AuctionResultHeader />
+        <AuctionResultHeader artist={artist} />
       </Row>
       <Row>
         <Col sm={2} pr={[0, 2]}>
@@ -213,6 +213,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           organizations: { type: "[String]" }
         ) {
         slug
+        ...AuctionResultHeader_artist
         auctionResultsConnection(
           first: $first
           after: $after
