@@ -1,3 +1,15 @@
+# v25.8.2 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- Add Auction result header description [#3152](https://github.com/artsy/reaction/pull/3152) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.8.1 (Thu Feb 13 2020)
 
 #### 🐛  Bug Fix
