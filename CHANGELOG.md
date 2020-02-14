@@ -1,3 +1,15 @@
+# v25.9.1 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1749] Add auction result size filter [#3153](https://github.com/artsy/reaction/pull/3153) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.9.0 (Fri Feb 14 2020)
 
 #### 🚀  Enhancement
