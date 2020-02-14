@@ -2,7 +2,9 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_DetailQueryVariables = {};
+export type routes_DetailQueryVariables = {
+    conversationID: string;
+};
 export type routes_DetailQueryResponse = {
     readonly me: {
         readonly " $fragmentRefs": FragmentRefs<"Detail_me">;
@@ -16,15 +18,17 @@ export type routes_DetailQuery = {
 
 
 /*
-query routes_DetailQuery {
+query routes_DetailQuery(
+  $conversationID: String!
+) {
   me {
-    ...Detail_me
+    ...Detail_me_3oGfhn
     id
   }
 }
 
-fragment Detail_me on Me {
-  conversation(id: "840") {
+fragment Detail_me_3oGfhn on Me {
+  conversation(id: $conversationID) {
     internalID
     from {
       name
@@ -60,21 +64,29 @@ fragment Messages_messages on MessageConnection {
 */
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "conversationID",
+    "type": "String!",
+    "defaultValue": null
+  }
+],
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v1 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -88,7 +100,7 @@ return {
     "name": "routes_DetailQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -102,7 +114,13 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "Detail_me",
-            "args": null
+            "args": [
+              {
+                "kind": "Variable",
+                "name": "conversationID",
+                "variableName": "conversationID"
+              }
+            ]
           }
         ]
       }
@@ -111,7 +129,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "routes_DetailQuery",
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -126,18 +144,18 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "conversation",
-            "storageKey": "conversation(id:\"840\")",
+            "storageKey": null,
             "args": [
               {
-                "kind": "Literal",
+                "kind": "Variable",
                 "name": "id",
-                "value": "840"
+                "variableName": "conversationID"
               }
             ],
             "concreteType": "Conversation",
             "plural": false,
             "selections": [
-              (v0/*: any*/),
+              (v1/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -147,8 +165,8 @@ return {
                 "concreteType": "ConversationInitiator",
                 "plural": false,
                 "selections": [
-                  (v1/*: any*/),
-                  (v2/*: any*/)
+                  (v2/*: any*/),
+                  (v3/*: any*/)
                 ]
               },
               {
@@ -191,7 +209,7 @@ return {
                         "concreteType": "Message",
                         "plural": false,
                         "selections": [
-                          (v0/*: any*/),
+                          (v1/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -222,7 +240,7 @@ return {
                             "concreteType": "MessageInitiator",
                             "plural": false,
                             "selections": [
-                              (v1/*: any*/),
+                              (v2/*: any*/),
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
@@ -232,17 +250,17 @@ return {
                               }
                             ]
                           },
-                          (v2/*: any*/)
+                          (v3/*: any*/)
                         ]
                       }
                     ]
                   }
                 ]
               },
-              (v2/*: any*/)
+              (v3/*: any*/)
             ]
           },
-          (v2/*: any*/)
+          (v3/*: any*/)
         ]
       }
     ]
@@ -251,10 +269,10 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery {\n  me {\n    ...Detail_me\n    id\n  }\n}\n\nfragment Detail_me on Me {\n  conversation(id: \"840\") {\n    internalID\n    from {\n      name\n      id\n    }\n    initialMessage\n    messages(first: 10) {\n      ...Messages_messages\n    }\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n\nfragment Messages_messages on MessageConnection {\n  edges {\n    node {\n      ...Message_message\n      id\n    }\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    internalID\n    from {\n      name\n      id\n    }\n    initialMessage\n    messages(first: 10) {\n      ...Messages_messages\n    }\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n\nfragment Messages_messages on MessageConnection {\n  edges {\n    node {\n      ...Message_message\n      id\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '1b96dfd132b4d913a50292b780e60088';
+(node as any).hash = '7a86aa6acf364335ea5874519b2a6389';
 export default node;

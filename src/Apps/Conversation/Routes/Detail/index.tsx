@@ -9,9 +9,11 @@ import { userIsAdmin } from "Utils/user"
 
 interface DetailRouteProps {
   me: Detail_me
+  conversationID: string
 }
 
 export const DetailRoute = (props: DetailRouteProps) => {
+  console.log("---->", props)
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
@@ -34,8 +36,9 @@ export const DetailRoute = (props: DetailRouteProps) => {
 
 export const DetailFragmentContainer = createFragmentContainer(DetailRoute, {
   me: graphql`
-    fragment Detail_me on Me {
-      conversation(id: "840") {
+    fragment Detail_me on Me
+      @argumentDefinitions(conversationID: { type: "String!" }) {
+      conversation(id: $conversationID) {
         internalID
         from {
           name

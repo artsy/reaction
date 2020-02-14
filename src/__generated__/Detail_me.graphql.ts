@@ -28,18 +28,25 @@ const node: ReaderFragment = {
   "name": "Detail_me",
   "type": "Me",
   "metadata": null,
-  "argumentDefinitions": [],
+  "argumentDefinitions": [
+    {
+      "kind": "LocalArgument",
+      "name": "conversationID",
+      "type": "String!",
+      "defaultValue": null
+    }
+  ],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
       "name": "conversation",
-      "storageKey": "conversation(id:\"840\")",
+      "storageKey": null,
       "args": [
         {
-          "kind": "Literal",
+          "kind": "Variable",
           "name": "id",
-          "value": "840"
+          "variableName": "conversationID"
         }
       ],
       "concreteType": "Conversation",
@@ -103,5 +110,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'd65e4bdc8fda4adcfee31f5b137a0867';
+(node as any).hash = 'a3d6318d7625d6321a8962c637b17012';
 export default node;

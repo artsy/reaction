@@ -34,9 +34,9 @@ export const routes: RouteConfig[] = [
       }
     },
     query: graphql`
-      query routes_DetailQuery {
+      query routes_DetailQuery($conversationID: String!) {
         me {
-          ...Detail_me
+          ...Detail_me @arguments(conversationID: $conversationID)
         }
       }
     `,
