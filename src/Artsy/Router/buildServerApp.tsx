@@ -175,24 +175,35 @@ export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
               scripts.push(
                 bundleScriptTags
                   .split("\n")
-                  .filter(
-                    script =>
-                      !(
-                        /**
-                         * Since these files are already embedded in our main
-                         * layout file, omit them from the scripts array.
-                         *
-                         * TODO: Don't include these files in the main layout
-                         * and instead relay on dynamically including them here.
-                         * Will require some shuffling in the jade template,
-                         * however.
-                         */
-                        (
-                          script.includes("/assets/runtime-manifest.") ||
-                          script.includes("/assets/common.")
-                        )
+                  .map(script => {
+                    // In production, prefix injected script src with CDN endpoint
+                    if (getENV("CDN_URL")) {
+                      const scriptTagWithCDN = script.replace(
+                        /src="\/assets/g,
+                        `src="${getENV("CDN_URL")}/assets`
                       )
-                  )
+                      return scriptTagWithCDN
+                    } else {
+                      return script
+                    }
+                  })
+                  .filter(script => {
+                    return !(
+                      /**
+                       * Since these files are already embedded in our main
+                       * layout file, omit them from the scripts array.
+                       *
+                       * TODO: Don't include these files in the main layout
+                       * and instead relay on dynamically including them here.
+                       * Will require some shuffling in the jade template,
+                       * however.
+                       */
+                      (
+                        script.includes("/assets/runtime-manifest.") ||
+                        script.includes("/assets/common.")
+                      )
+                    )
+                  })
                   .join("\n")
               )
 
