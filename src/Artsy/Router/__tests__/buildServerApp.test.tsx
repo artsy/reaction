@@ -19,6 +19,13 @@ import { Media } from "Utils/Responsive"
 
 jest.unmock("react-relay")
 
+jest.mock("@loadable/server", () => ({
+  ChunkExtractor: class {
+    collectChunks = x => x
+    getScriptTags = x => ""
+  },
+}))
+
 const defaultComponent = () => <div>hi!</div>
 
 describe("buildServerApp", () => {

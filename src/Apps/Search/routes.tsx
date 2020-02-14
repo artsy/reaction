@@ -7,7 +7,7 @@ import { SearchResultsArtworksRoute } from "Apps/Search/Routes/Artworks"
 import { SearchResultsEntityRouteFragmentContainer as SearchResultsEntityRoute } from "Apps/Search/Routes/Entity/SearchResultsEntity"
 
 import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
-import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter"
+import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter/ArtworkQueryFilter"
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 import { SearchAppFragmentContainer as SearchApp } from "./SearchApp"
 

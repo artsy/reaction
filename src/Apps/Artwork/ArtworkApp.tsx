@@ -309,3 +309,6 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default ArtworkAppFragmentContainer

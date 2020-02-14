@@ -1,19 +1,14 @@
+import loadable from "@loadable/component"
 import { RouteConfig } from "found"
 import { graphql } from "react-relay"
 
-import { CollectAppFragmentContainer as CollectApp } from "./Routes/Collect"
-import { CollectionsAppFragmentContainer as CollectionsApp } from "./Routes/Collections"
-
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import {
-  CollectionAppQuery,
-  CollectionRefetchContainer as CollectionApp,
-} from "./Routes/Collection"
+import { CollectionAppQuery } from "./Routes/Collection/CollectionAppQuery"
 
 export const collectRoutes: RouteConfig[] = [
   {
     path: "/collect/:medium?",
-    Component: CollectApp,
+    getComponent: () => loadable(() => import("./Routes/Collect")),
     fetchIndicator: "overlay",
     prepareVariables: initializeVariablesWithFilterState,
     query: graphql`
@@ -75,7 +70,7 @@ export const collectRoutes: RouteConfig[] = [
   },
   {
     path: "/collections",
-    Component: CollectionsApp,
+    getComponent: () => loadable(() => import("./Routes/Collections")),
     fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
@@ -87,7 +82,7 @@ export const collectRoutes: RouteConfig[] = [
   },
   {
     path: "/collection/:slug",
-    Component: CollectionApp,
+    getComponent: () => loadable(() => import("./Routes/Collection")),
     prepareVariables: initializeVariablesWithFilterState,
     fetchIndicator: "overlay",
     query: CollectionAppQuery,
