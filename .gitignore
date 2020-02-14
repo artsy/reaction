@@ -16,6 +16,7 @@ node_modules
 npm-debug.log
 out*
 package-lock.json
+tsconfig.tsbuildinfo
 reaction-force.js
 reaction-force.js.map
 yarn-error.log
