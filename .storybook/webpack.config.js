@@ -18,6 +18,7 @@ const cacheDirectory = path.resolve(__dirname, "../", ".cache")
 const {
   ADMIN_URL,
   APP_URL,
+  CDN_URL,
   CI,
   CMS_URL,
   ENABLE_REQUEST_CONDITION_REPORT,
@@ -52,6 +53,7 @@ const notOnCI = value => (isCI ? [] : [value])
 const sharifyPath = sharify({
   ADMIN_URL,
   APP_URL,
+  CDN_URL,
   CMS_URL,
   ENABLE_REQUEST_CONDITION_REPORT,
   EXPERIMENTAL_APP_SHELL,
