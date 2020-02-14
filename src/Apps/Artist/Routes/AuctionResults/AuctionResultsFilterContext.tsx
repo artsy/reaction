@@ -2,6 +2,7 @@ import React, { useContext, useReducer } from "react"
 
 export interface AuctionResultsFilters {
   organizations?: string[]
+  sizes?: string[]
   openedItemIndex: number | null
   page?: number
   sort?: string
@@ -15,6 +16,7 @@ interface AuctionResultsFiltersState extends AuctionResultsFilters {
  */
 export const initialAuctionResultsFilterState: AuctionResultsFilters = {
   organizations: [],
+  sizes: [],
   openedItemIndex: null,
   page: 1,
   sort: "DATE_DESC",
@@ -121,6 +123,11 @@ const AuctionResultsFilterReducer = (
     payload: { name: keyof AuctionResultsFilters; value?: any }
   }
 ): AuctionResultsFiltersState => {
+  const arrayFilterTypes: Array<keyof AuctionResultsFilters> = [
+    "organizations",
+    "sizes",
+  ]
+
   switch (action.type) {
     /**
      * Setting  and updating filters
@@ -133,9 +140,11 @@ const AuctionResultsFilterReducer = (
         openedItemIndex: null,
       }
 
-      if (name === "organizations") {
-        filterState.organizations = value || []
-      }
+      arrayFilterTypes.forEach(filter => {
+        if (name === filter) {
+          filterState[name as any] = value || []
+        }
+      })
 
       // primitive filter types
       const primitiveFilterTypes: Array<keyof AuctionResultsFilters> = [
@@ -168,10 +177,6 @@ const AuctionResultsFilterReducer = (
         openedItemIndex: null,
       }
 
-      if (name === "organizations") {
-        filterState.organizations = []
-      }
-
       const filters: Array<keyof AuctionResultsFilters> = [
         "sort",
         "openedItemIndex",
@@ -179,6 +184,12 @@ const AuctionResultsFilterReducer = (
       filters.forEach(filter => {
         if (name === filter) {
           filterState[name as any] = null
+        }
+      })
+
+      arrayFilterTypes.forEach(filter => {
+        if (name === filter) {
+          filterState[name as any] = []
         }
       })
 
