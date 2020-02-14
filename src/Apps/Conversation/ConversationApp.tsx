@@ -16,7 +16,6 @@ export const ConversationApp = (props: ConversationAppProps) => {
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
-  console.log("--->", isAdmin)
   if (isAdmin) {
     return (
       <AppContainer>

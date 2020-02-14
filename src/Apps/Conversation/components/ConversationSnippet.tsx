@@ -75,7 +75,7 @@ const ConversationSnippet = (props: ConversationSnippetProps) => {
             href={`/conversations/${conversation.internalID}`}
             underlineBehavior="hover"
           >
-            <Button variant="secondaryGray">View details</Button>
+            <Button variant="secondaryGray">></Button>
           </Link>
         </Flex>
       </StackableBorderBox>
