@@ -1,3 +1,20 @@
+# v25.8.4 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- Collapse auction results filter for reasons [#3155](https://github.com/artsy/reaction/pull/3155) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update README with info on publishing canary [#3156](https://github.com/artsy/reaction/pull/3156) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.8.3 (Thu Feb 13 2020)
 
 #### 🐛  Bug Fix
