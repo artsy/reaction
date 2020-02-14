@@ -1,3 +1,15 @@
+# v25.9.2 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Prefix injected split tag scripts with CDN_URL [#3159](https://github.com/artsy/reaction/pull/3159) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.9.1 (Fri Feb 14 2020)
 
 #### 🐛  Bug Fix
