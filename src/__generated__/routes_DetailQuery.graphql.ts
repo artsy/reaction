@@ -28,9 +28,11 @@ query routes_DetailQuery(
 }
 
 fragment Conversation_conversation on Conversation {
+  id
   internalID
   from {
     name
+    email
     id
   }
   initialMessage
@@ -77,21 +79,28 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "internalID",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "email",
   "args": null,
   "storageKey": null
 };
@@ -158,6 +167,7 @@ return {
             "plural": false,
             "selections": [
               (v1/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -167,8 +177,9 @@ return {
                 "concreteType": "ConversationInitiator",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/),
-                  (v3/*: any*/)
+                  (v3/*: any*/),
+                  (v4/*: any*/),
+                  (v1/*: any*/)
                 ]
               },
               {
@@ -218,8 +229,8 @@ return {
                         "concreteType": "Message",
                         "plural": false,
                         "selections": [
-                          (v3/*: any*/),
                           (v1/*: any*/),
+                          (v2/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": null,
@@ -250,14 +261,8 @@ return {
                             "concreteType": "MessageInitiator",
                             "plural": false,
                             "selections": [
-                              (v2/*: any*/),
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "email",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v3/*: any*/),
+                              (v4/*: any*/)
                             ]
                           }
                         ]
@@ -265,11 +270,10 @@ return {
                     ]
                   }
                 ]
-              },
-              (v3/*: any*/)
+              }
             ]
           },
-          (v3/*: any*/)
+          (v1/*: any*/)
         ]
       }
     ]
@@ -278,7 +282,7 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  internalID\n  from {\n    name\n    id\n  }\n  initialMessage\n  lastMessageID\n  messages(first: 10) {\n    edges {\n      node {\n        id\n        internalID\n        ...Message_message\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  initialMessage\n  lastMessageID\n  messages(first: 10) {\n    edges {\n      node {\n        id\n        internalID\n        ...Message_message\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
     "metadata": {}
   }
 };

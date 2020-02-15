@@ -3,9 +3,11 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Conversation_conversation = {
+    readonly id: string;
     readonly internalID: string | null;
     readonly from: {
         readonly name: string;
+        readonly email: string;
     };
     readonly initialMessage: string;
     readonly lastMessageID: string | null;
@@ -32,6 +34,13 @@ const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "internalID",
   "args": null,
   "storageKey": null
@@ -44,6 +53,7 @@ return {
   "argumentDefinitions": [],
   "selections": [
     (v0/*: any*/),
+    (v1/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -57,6 +67,13 @@ return {
           "kind": "ScalarField",
           "alias": null,
           "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "email",
           "args": null,
           "storageKey": null
         }
@@ -109,14 +126,8 @@ return {
               "concreteType": "Message",
               "plural": false,
               "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
                 (v0/*: any*/),
+                (v1/*: any*/),
                 {
                   "kind": "FragmentSpread",
                   "name": "Message_message",
@@ -131,5 +142,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0c8064354f41a12a59914e4b77145657';
+(node as any).hash = '0af7892a542212a56dba58e58a4bd564';
 export default node;

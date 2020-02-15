@@ -1,13 +1,31 @@
+import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { SendConversationMessageMutation } from "__generated__/SendConversationMessageMutation.graphql"
-import { CommitMutation } from "Apps/Order/Utils/commitMutation"
-import { graphql } from "relay-runtime"
+import {
+  commitMutation,
+  Environment,
+  graphql,
+  MutationConfig,
+} from "relay-runtime"
 
 export const SendConversationMessage = (
-  commitMutation: CommitMutation,
-  variables: SendConversationMessageMutation["variables"]
+  environment: Environment,
+  conversation: Conversation_conversation,
+  text: string,
+  onCompleted: MutationConfig<any>["onCompleted"],
+  onError: MutationConfig<any>["onError"]
 ) => {
-  return commitMutation<SendConversationMessageMutation>({
-    variables,
+  return commitMutation<SendConversationMessageMutation>(environment, {
+    onError,
+    onCompleted,
+    variables: {
+      input: {
+        id: conversation.internalID,
+        from: conversation.from.email,
+        bodyText: text,
+        // Reply to the last message
+        replyToMessageID: conversation.lastMessageID,
+      },
+    },
     mutation: graphql`
       mutation SendConversationMessageMutation(
         $input: SendConversationMessageMutationInput!

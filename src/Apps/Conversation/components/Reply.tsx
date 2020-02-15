@@ -1,22 +1,17 @@
 import { Box, Button, TextArea } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
-import { CommitMutation } from "Apps/Order/Utils/commitMutation"
-import { SystemContext } from "Artsy"
-import React, { useContext, useState } from "react"
-import { RelayProp } from "react-relay"
+import React, { useState } from "react"
+import { Environment } from "react-relay"
 import { SendConversationMessage } from "../Mutation/SendConversationMessage"
 
 interface ReplyProps {
   conversation: Conversation_conversation
-  replyToMessageId: string
-  relay?: RelayProp
-  commitMutation: CommitMutation
+  environment: Environment
 }
 
 export const Reply = (props: ReplyProps) => {
-  const { commitMutation, conversation, replyToMessageId } = props
+  const { environment, conversation } = props
   const [bodyText, setBodyText] = useState("")
-  const { user } = useContext(SystemContext)
   return (
     <Box m={1}>
       <TextArea
@@ -25,14 +20,17 @@ export const Reply = (props: ReplyProps) => {
       />
       <Button
         onClick={() =>
-          SendConversationMessage(commitMutation, {
-            input: {
-              id: conversation.internalID,
-              bodyText,
-              from: user.email || "ashkan.nasseri@gmail.com",
-              replyToMessageID: replyToMessageId,
+          SendConversationMessage(
+            environment,
+            conversation,
+            bodyText,
+            _response => {
+              window.location.reload
             },
-          })
+            _error => {
+              window.location.reload
+            }
+          )
         }
       >
         Reply
