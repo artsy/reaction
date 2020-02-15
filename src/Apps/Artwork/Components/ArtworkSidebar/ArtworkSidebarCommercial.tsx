@@ -18,6 +18,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import currency from "currency.js"
+import { Router } from "found"
 import React, { FC, useContext } from "react"
 import {
   commitMutation,
@@ -27,6 +28,7 @@ import {
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
@@ -35,6 +37,7 @@ type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
 export interface ArtworkSidebarCommercialContainerProps
   extends ArtworkSidebarCommercialProps {
   mediator: Mediator
+  router?: Router
   user: User
 }
 
@@ -228,9 +231,14 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                         )
                       )
                     } else {
-                      window.location.assign(
-                        `/orders/${orderOrError.order.internalID}`
-                      )
+                      const url = `/orders/${orderOrError.order.internalID}`
+
+                      // FIXME: Remove once A/B test completes
+                      if (getENV("EXPERIMENTAL_APP_SHELL")) {
+                        this.props.router.push(url)
+                      } else {
+                        window.location.assign(url)
+                      }
                     }
                   }
                 )
@@ -448,12 +456,13 @@ interface ArtworkSidebarCommercialProps {
 }
 
 export const ArtworkSidebarCommercial: FC<ArtworkSidebarCommercialProps> = props => {
-  const { mediator, user } = useContext(SystemContext)
+  const { mediator, router, user } = useContext(SystemContext)
 
   return (
     <ArtworkSidebarCommercialContainer
       {...props}
       mediator={mediator}
+      router={router}
       user={user}
     />
   )

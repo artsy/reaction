@@ -3,10 +3,6 @@ import ActionTypes from "farce/lib/ActionTypes"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import { getENV } from "Utils/getENV"
-import createLogger from "Utils/logger"
-
-const logger = createLogger("Artsy/Analytics/trackingMiddleware")
-
 /**
  * PageView tracking middleware for use in our router apps. Middleware conforms
  * to Redux middleware spec.
@@ -45,8 +41,6 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           })
 
           if (!foundExcludedPath) {
-            logger.warn("Tracking PageView:", pathname)
-
             const trackingData: {
               path: string
               referrer?: string

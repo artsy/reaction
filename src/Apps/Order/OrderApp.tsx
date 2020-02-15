@@ -4,6 +4,7 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
+import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
@@ -109,27 +110,29 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
           this.mediator = mediator
           return (
             <AppContainer>
-              <Title>Checkout | Artsy</Title>
-              {isEigen ? (
-                <Meta
-                  name="viewport"
-                  content="width=device-width, user-scalable=no"
-                />
-              ) : (
-                <Meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-                />
-              )}
-              <SafeAreaContainer>
-                <StripeProvider stripe={this.state.stripe}>
-                  <Elements>
-                    <>{children}</>
-                  </Elements>
-                </StripeProvider>
-              </SafeAreaContainer>
-              <StickyFooter orderType={order.mode} artworkId={artworkId} />
-              <ConnectedModalDialog />
+              <MinimalNavBar>
+                <Title>Checkout | Artsy</Title>
+                {isEigen ? (
+                  <Meta
+                    name="viewport"
+                    content="width=device-width, user-scalable=no"
+                  />
+                ) : (
+                  <Meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+                  />
+                )}
+                <SafeAreaContainer>
+                  <StripeProvider stripe={this.state.stripe}>
+                    <Elements>
+                      <>{children}</>
+                    </Elements>
+                  </StripeProvider>
+                </SafeAreaContainer>
+                <StickyFooter orderType={order.mode} artworkId={artworkId} />
+                <ConnectedModalDialog />
+              </MinimalNavBar>
             </AppContainer>
           )
         }}

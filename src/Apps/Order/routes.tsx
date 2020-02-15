@@ -14,27 +14,15 @@ import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Resp
 import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
 import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
 import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
-import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
-
-// @ts-ignore
-import { ComponentClass, StatelessComponent } from "react"
-
-// @ts-ignore
 import { ErrorPage } from "Components/ErrorPage"
-// @ts-ignore
-import { PaymentProps } from "./Routes/Payment"
-// @ts-ignore
-import { ReviewProps } from "./Routes/Review"
-// @ts-ignore
-import { ShippingProps } from "./Routes/Shipping"
-// @ts-ignore
-import { StatusProps } from "./Routes/Status"
+import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
 
 // FIXME:
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
   {
     path: "/order(2|s)/:orderID",
+    showTopNav: false,
     Component: OrderApp,
     // TODO: Better support `@principalField` in Metaphysics.
     // This currently only works because of the `order` field alias.
