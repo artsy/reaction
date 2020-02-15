@@ -444,3 +444,6 @@ export const ReviewFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default ReviewFragmentContainer

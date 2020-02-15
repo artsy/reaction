@@ -17,11 +17,9 @@ export const AppShell = props => {
   const { children, match } = props
   const { isFetching } = useSystemContext()
 
-  const showNav =
-    !isFetching &&
-    HIDE_DEFAULT_NAV_FOR_ROUTES.some(
-      path => !match.location.pathname.includes(path)
-    )
+  const showNav = HIDE_DEFAULT_NAV_FOR_ROUTES.some(
+    path => !(match.location.pathname.includes(path) && isFetching)
+  )
 
   return (
     <Box width="100%">

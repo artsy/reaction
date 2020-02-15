@@ -168,6 +168,9 @@ const OrderAppWithRouter = withRouter(OrderApp)
 
 export { OrderAppWithRouter as OrderApp }
 
+// For bundle splitting at router level
+export default OrderAppWithRouter
+
 const SafeAreaContainer = styled(Box)`
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);

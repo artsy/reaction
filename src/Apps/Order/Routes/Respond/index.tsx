@@ -393,3 +393,6 @@ export const RespondFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default RespondFragmentContainer

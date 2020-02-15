@@ -347,3 +347,6 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default NewPaymentFragmentContainer

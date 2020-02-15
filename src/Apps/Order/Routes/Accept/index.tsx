@@ -288,3 +288,6 @@ export const AcceptFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default AcceptFragmentContainer
