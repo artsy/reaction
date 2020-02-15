@@ -1,3 +1,15 @@
+# v25.9.4 (Sat Feb 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Ensure all search-bar nav items navigate properly [#3161](https://github.com/artsy/reaction/pull/3161) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.9.3 (Sat Feb 15 2020)
 
 #### 🐛  Bug Fix
