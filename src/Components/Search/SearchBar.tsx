@@ -263,9 +263,21 @@ export class SearchBar extends Component<Props, State> {
 
     if (this.enableExperimentalAppShell) {
       if (this.props.router) {
-        this.props.router.push(href)
-        this.onBlur({})
+        // @ts-ignore (routeConfig not found; need to update DT types)
+        const routes = this.props.router.matcher.routeConfig
+        // @ts-ignore (matchRoutes not found; need to update DT types)
+        const isSupportedInRouter = !!this.props.router.matcher.matchRoutes(
+          routes,
+          href
+        )
 
+        // Check if url exists within the global router context
+        if (isSupportedInRouter) {
+          this.props.router.push(href)
+          this.onBlur({})
+        } else {
+          window.location.assign(href)
+        }
         // Outside of router context
       } else {
         window.location.assign(href)
