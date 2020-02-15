@@ -32,7 +32,7 @@ import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 import { ChunkExtractor } from "@loadable/server"
 import { getENV } from "Utils/getENV"
 
-interface Resolve {
+export interface ServerAppResolve {
   bodyHTML?: string
   redirect?: {
     url: string
@@ -50,7 +50,9 @@ export interface ServerRouterConfig extends RouterConfig {
   userAgent?: string
 }
 
-export function buildServerApp(config: ServerRouterConfig): Promise<Resolve> {
+export function buildServerApp(
+  config: ServerRouterConfig
+): Promise<ServerAppResolve> {
   return trace(
     "buildServerApp",
     new Promise(async (resolve, reject) => {
