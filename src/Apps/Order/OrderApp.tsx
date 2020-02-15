@@ -13,6 +13,7 @@ import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
 import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
 import { ConnectedModalDialog } from "./Dialogs"
 
 declare global {
@@ -118,13 +119,21 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       )
     }
 
+    // FIXME: Remove after A/B test completes
+    let NavBar
+    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      NavBar = MinimalNavBar
+    } else {
+      NavBar = Box // pass-through; nav bar comes from the server right now
+    }
+
     return (
       <SystemContextConsumer>
         {({ isEigen, mediator }) => {
           this.mediator = mediator
           return (
             <AppContainer>
-              <MinimalNavBar to={artworkHref}>
+              <NavBar to={artworkHref}>
                 <Title>Checkout | Artsy</Title>
                 {isEigen ? (
                   <Meta
@@ -146,7 +155,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
                 </SafeAreaContainer>
                 <StickyFooter orderType={order.mode} artworkId={artworkId} />
                 <ConnectedModalDialog />
-              </MinimalNavBar>
+              </NavBar>
             </AppContainer>
           )
         }}
