@@ -8,13 +8,15 @@ import { NavBar } from "Components/NavBar"
  * Ensure the default nav doesn't show for a subset of routes that manage their
  * own custom nav bar.
  *
- * TODO: Move this setting to the routes definition for the app in question.
+ * TODO: Refactor this catch-all by moving setting to the route definition
+ * for the app in question and pluck setting via `Router/Utils/findCurrentRoute`.
  */
 const HIDE_DEFAULT_NAV_FOR_ROUTES = ["/orders/"]
 
 export const AppShell = props => {
   const { children, match } = props
   const { isFetching } = useSystemContext()
+
   const showNav =
     !isFetching &&
     HIDE_DEFAULT_NAV_FOR_ROUTES.some(

@@ -47,6 +47,8 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       )
     }
 
+    window.addEventListener("beforeunload", this.preventHardReload)
+
     const artwork = get(
       null,
       () => this.props.order.lineItems.edges[0].node.artwork
@@ -78,11 +80,17 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     if (this.removeTransitionHook) {
       this.removeTransitionHook()
     }
+
+    window.removeEventListener("beforeunload", this.preventHardReload)
+  }
+
+  preventHardReload = event => {
+    event.preventDefault()
+    event.returnValue = true
   }
 
   onTransition = newLocation => {
-    console.log("hello")
-    if (newLocation === null) {
+    if (newLocation === null || !newLocation.pathname.includes("/order/")) {
       // leaving the order page, closing, or refreshing
       const route = findCurrentRoute(this.props.match)
       if (route.shouldWarnBeforeLeaving) {
