@@ -3,6 +3,7 @@ import { OrderApp_order } from "__generated__/OrderApp_order.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Mediator, SystemContextConsumer } from "Artsy"
+import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { ErrorPage } from "Components/ErrorPage"
 import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { RouterState, withRouter } from "found"
@@ -11,7 +12,6 @@ import { Meta, Title } from "react-head"
 import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
-import { findCurrentRoute } from "Utils/findCurrentRoute"
 import { get } from "Utils/get"
 import { ConnectedModalDialog } from "./Dialogs"
 
@@ -81,6 +81,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   onTransition = newLocation => {
+    console.log("hello")
     if (newLocation === null) {
       // leaving the order page, closing, or refreshing
       const route = findCurrentRoute(this.props.match)
