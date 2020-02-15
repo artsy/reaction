@@ -4,14 +4,7 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Detail_me = {
     readonly conversation: {
-        readonly internalID: string | null;
-        readonly from: {
-            readonly name: string;
-        };
-        readonly initialMessage: string;
-        readonly messages: {
-            readonly " $fragmentRefs": FragmentRefs<"Messages_messages">;
-        } | null;
+        readonly " $fragmentRefs": FragmentRefs<"Conversation_conversation">;
     } | null;
     readonly " $refType": "Detail_me";
 };
@@ -53,62 +46,13 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "internalID",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "from",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "ConversationInitiator",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "name",
-              "args": null,
-              "storageKey": null
-            }
-          ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "initialMessage",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "messages",
-          "storageKey": "messages(first:10)",
-          "args": [
-            {
-              "kind": "Literal",
-              "name": "first",
-              "value": 10
-            }
-          ],
-          "concreteType": "MessageConnection",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "Messages_messages",
-              "args": null
-            }
-          ]
+          "kind": "FragmentSpread",
+          "name": "Conversation_conversation",
+          "args": null
         }
       ]
     }
   ]
 };
-(node as any).hash = 'a3d6318d7625d6321a8962c637b17012';
+(node as any).hash = '31b7e7cba20fc4499aca7969cf52b9ca';
 export default node;

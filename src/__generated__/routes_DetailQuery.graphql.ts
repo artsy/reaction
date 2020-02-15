@@ -27,17 +27,28 @@ query routes_DetailQuery(
   }
 }
 
+fragment Conversation_conversation on Conversation {
+  internalID
+  from {
+    name
+    id
+  }
+  initialMessage
+  lastMessageID
+  messages(first: 10) {
+    edges {
+      node {
+        id
+        internalID
+        ...Message_message
+      }
+    }
+  }
+}
+
 fragment Detail_me_3oGfhn on Me {
   conversation(id: $conversationID) {
-    internalID
-    from {
-      name
-      id
-    }
-    initialMessage
-    messages(first: 10) {
-      ...Messages_messages
-    }
+    ...Conversation_conversation
     id
   }
 }
@@ -50,15 +61,6 @@ fragment Message_message on Message {
   from {
     name
     email
-  }
-}
-
-fragment Messages_messages on MessageConnection {
-  edges {
-    node {
-      ...Message_message
-      id
-    }
   }
 }
 */
@@ -177,6 +179,13 @@ return {
                 "storageKey": null
               },
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "lastMessageID",
+                "args": null,
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "messages",
@@ -209,6 +218,7 @@ return {
                         "concreteType": "Message",
                         "plural": false,
                         "selections": [
+                          (v3/*: any*/),
                           (v1/*: any*/),
                           {
                             "kind": "ScalarField",
@@ -249,8 +259,7 @@ return {
                                 "storageKey": null
                               }
                             ]
-                          },
-                          (v3/*: any*/)
+                          }
                         ]
                       }
                     ]
@@ -269,7 +278,7 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    internalID\n    from {\n      name\n      id\n    }\n    initialMessage\n    messages(first: 10) {\n      ...Messages_messages\n    }\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n\nfragment Messages_messages on MessageConnection {\n  edges {\n    node {\n      ...Message_message\n      id\n    }\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  internalID\n  from {\n    name\n    id\n  }\n  initialMessage\n  lastMessageID\n  messages(first: 10) {\n    edges {\n      node {\n        id\n        internalID\n        ...Message_message\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
     "metadata": {}
   }
 };

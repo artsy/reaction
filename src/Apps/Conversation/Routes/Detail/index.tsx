@@ -1,6 +1,6 @@
 import { BorderBox, Flex } from "@artsy/palette"
 import { Detail_me } from "__generated__/Detail_me.graphql"
-import { MessagesFragmentContainer as Messages } from "Apps/Conversation/Components/Messages"
+import { ConversationFragmentContainer as Conversation } from "Apps/Conversation/Components/Conversation"
 import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import React, { useContext } from "react"
@@ -13,7 +13,6 @@ interface DetailRouteProps {
 }
 
 export const DetailRoute = (props: DetailRouteProps) => {
-  console.log("---->", props)
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
@@ -21,10 +20,7 @@ export const DetailRoute = (props: DetailRouteProps) => {
     return (
       <BorderBox>
         <Flex flexDirection="column">
-          <Messages
-            messages={me.conversation.messages}
-            initialMessage={me.conversation.initialMessage}
-          />
+          <Conversation conversation={me.conversation} />
         </Flex>
       </BorderBox>
     )
@@ -39,14 +35,7 @@ export const DetailFragmentContainer = createFragmentContainer(DetailRoute, {
     fragment Detail_me on Me
       @argumentDefinitions(conversationID: { type: "String!" }) {
       conversation(id: $conversationID) {
-        internalID
-        from {
-          name
-        }
-        initialMessage
-        messages(first: 10) {
-          ...Messages_messages
-        }
+        ...Conversation_conversation
       }
     }
   `,
