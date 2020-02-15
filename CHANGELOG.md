@@ -1,3 +1,15 @@
+# v25.9.3 (Sat Feb 15 2020)
+
+#### 🐛  Bug Fix
+
+- Bundle split search; fix SSR search input [#3160](https://github.com/artsy/reaction/pull/3160) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.9.2 (Fri Feb 14 2020)
 
 #### 🐛  Bug Fix
