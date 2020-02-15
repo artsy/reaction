@@ -25,6 +25,7 @@ import request from "superagent"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
 import { getENV } from "Utils/getENV"
+import { useDidMount } from "Utils/Hooks/useDidMount"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { SearchInputContainer } from "./SearchInputContainer"
@@ -157,7 +158,8 @@ export class SearchBar extends Component<Props, State> {
     super(props)
 
     this.enableExperimentalAppShell =
-      sd.CLIENT_NAVIGATION_V2 === "experiment" &&
+      // FIXME: Reenable A/B test
+      // sd.CLIENT_NAVIGATION_V2 === "experiment" &&
       getENV("EXPERIMENTAL_APP_SHELL")
   }
 
@@ -460,6 +462,35 @@ export const SearchBarRefetchContainer = createRefetchContainer(
 
 export const SearchBarQueryRenderer: React.FC = () => {
   const { relayEnvironment, searchQuery = "" } = useContext(SystemContext)
+  const isMounted = useDidMount(typeof window !== "undefined")
+
+  /**
+   * Displays during SSR render, but once mounted is swapped out with
+   * QueryRenderer below.
+   */
+  const StaticSearchContainer = () => {
+    return (
+      <>
+        <Box display={["block", "none"]}>
+          <SearchInputContainer
+            placeholder={searchQuery || PLACEHOLDER_XS}
+            defaultValue={searchQuery}
+          />
+        </Box>
+        <Box display={["none", "block"]}>
+          <SearchInputContainer
+            placeholder={searchQuery || PLACEHOLDER}
+            defaultValue={searchQuery}
+          />
+        </Box>
+      </>
+    )
+  }
+
+  if (!isMounted) {
+    return <StaticSearchContainer />
+  }
+
   return (
     <QueryRenderer<SearchBarSuggestQuery>
       environment={relayEnvironment}
@@ -481,22 +512,7 @@ export const SearchBarQueryRenderer: React.FC = () => {
           // from within the NavBar (it's not a part of any app) we need to lean
           // on styled-system for showing / hiding depending upon breakpoint.
         } else {
-          return (
-            <>
-              <Box display={["block", "none"]}>
-                <SearchInputContainer
-                  placeholder={searchQuery || PLACEHOLDER_XS}
-                  defaultValue={searchQuery}
-                />
-              </Box>
-              <Box display={["none", "block"]}>
-                <SearchInputContainer
-                  placeholder={searchQuery || PLACEHOLDER}
-                  defaultValue={searchQuery}
-                />
-              </Box>
-            </>
-          )
+          return <StaticSearchContainer />
         }
       }}
     />
