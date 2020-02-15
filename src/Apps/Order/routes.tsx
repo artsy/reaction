@@ -22,7 +22,6 @@ import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
 export const routes: RouteConfig[] = [
   {
     path: "/order(2|s)/:orderID",
-    showTopNav: false,
     Component: OrderApp,
     // TODO: Better support `@principalField` in Metaphysics.
     // This currently only works because of the `order` field alias.

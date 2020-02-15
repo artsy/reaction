@@ -94,6 +94,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   render() {
     const { children, order } = this.props
     let artworkId
+    let artworkHref
 
     if (!order) {
       return <ErrorPage code={404} />
@@ -101,6 +102,10 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       artworkId = get(
         this.props,
         props => order.lineItems.edges[0].node.artwork.slug
+      )
+      artworkHref = get(
+        this.props,
+        props => order.lineItems.edges[0].node.artwork.href
       )
     }
 
@@ -110,7 +115,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
           this.mediator = mediator
           return (
             <AppContainer>
-              <MinimalNavBar>
+              <MinimalNavBar to={artworkHref}>
                 <Title>Checkout | Artsy</Title>
                 {isEigen ? (
                   <Meta
@@ -158,6 +163,7 @@ graphql`
       edges {
         node {
           artwork {
+            href
             slug
             is_acquireable: isAcquireable
             is_offerable: isOfferable

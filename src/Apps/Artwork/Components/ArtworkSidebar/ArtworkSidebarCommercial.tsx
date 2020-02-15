@@ -320,9 +320,14 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                         )
                       )
                     } else {
-                      window.location.assign(
-                        `/orders/${orderOrError.order.internalID}/offer`
-                      )
+                      const url = `/orders/${orderOrError.order.internalID}/offer`
+
+                      // FIXME: Remove once A/B test completes
+                      if (getENV("EXPERIMENTAL_APP_SHELL")) {
+                        this.props.router.push(url)
+                      } else {
+                        window.location.assign(url)
+                      }
                     }
                   }
                 )

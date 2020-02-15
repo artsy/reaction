@@ -9,6 +9,7 @@ export type OrderApp_order = {
         readonly edges: ReadonlyArray<{
             readonly node: {
                 readonly artwork: {
+                    readonly href: string | null;
                     readonly slug: string;
                     readonly is_acquireable: boolean | null;
                     readonly is_offerable: boolean | null;
@@ -79,6 +80,13 @@ const node: ReaderFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "href",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "slug",
                       "args": null,
                       "storageKey": null
@@ -107,5 +115,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '9fc62d5ccf7d952e69863f2952d5bf51';
+(node as any).hash = '22f0547ca97d2ba0d33dbc5db1aa4c77';
 export default node;

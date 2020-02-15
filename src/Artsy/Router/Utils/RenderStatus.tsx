@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import StaticContainer from "react-static-container"
 
 import { Box, PageLoader } from "@artsy/palette"
