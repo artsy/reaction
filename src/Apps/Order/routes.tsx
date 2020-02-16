@@ -28,7 +28,9 @@ export const routes: RouteConfig[] = [
     `,
     render: ({ Component, props, resolving }) => {
       if (!(Component && props)) {
-        return null
+        // Returning `null` will show the spinner; but undefined uses purple
+        // loader. Its a weird quirk :(
+        return undefined // null
       }
       // resolving is true only if this render results from a query initiated by
       // found-relay

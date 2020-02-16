@@ -91,7 +91,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   onTransition = newLocation => {
-    if (newLocation === null || !newLocation.pathname.includes("/order/")) {
+    if (newLocation === null || !newLocation.pathname.includes("/orders/")) {
       // leaving the order page, closing, or refreshing
       const route = findCurrentRoute(this.props.match)
       if (route.shouldWarnBeforeLeaving) {
@@ -132,8 +132,8 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
         {({ isEigen, mediator }) => {
           this.mediator = mediator
           return (
-            <AppContainer>
-              <NavBar to={artworkHref}>
+            <NavBar to={artworkHref}>
+              <AppContainer>
                 <Title>Checkout | Artsy</Title>
                 {isEigen ? (
                   <Meta
@@ -155,8 +155,8 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
                 </SafeAreaContainer>
                 <StickyFooter orderType={order.mode} artworkId={artworkId} />
                 <ConnectedModalDialog />
-              </NavBar>
-            </AppContainer>
+              </AppContainer>
+            </NavBar>
           )
         }}
       </SystemContextConsumer>
