@@ -66,7 +66,6 @@ jest.mock("sharify", () => ({
     get ENABLE_PRICE_TRANSPARENCY() {
       return mockEnablePriceTransparency()
     },
-    APP_URL: "https://example.com",
   },
 }))
 
@@ -189,7 +188,7 @@ describe("Routes/ConfirmBid", () => {
         })
 
         expect(window.location.assign).toHaveBeenCalledWith(
-          `https://example.com/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
+          `/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
         )
         done()
       }, 1001)
@@ -761,7 +760,7 @@ describe("Routes/ConfirmBid", () => {
         bidderPositionID: "positionid",
       })
       expect(window.location.assign).toHaveBeenCalledWith(
-        `https://example.com/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
+        `/artwork/${ConfirmBidQueryResponseFixture.artwork.slug}`
       )
     })
 

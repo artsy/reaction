@@ -150,6 +150,7 @@ export const AuctionFAQFragmentContainer = createFragmentContainer(AuctionFAQ, {
   `,
 })
 
+// FIXME: Why is this a QueryRenderer
 export const AuctionFAQQueryRenderer: React.SFC = () => {
   const { relayEnvironment } = useSystemContext()
   return (
@@ -167,3 +168,6 @@ export const AuctionFAQQueryRenderer: React.SFC = () => {
     />
   )
 }
+
+// For bundle splitting in router
+export default AuctionFAQFragmentContainer
