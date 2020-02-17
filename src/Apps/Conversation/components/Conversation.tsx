@@ -13,19 +13,17 @@ interface ConversationProps {
 
 const Conversation = (props: ConversationProps) => {
   const { conversation, relay } = props
+  const messageCount = conversation.messages.edges.length
   return (
     <Box>
-      {conversation.messages.edges.map((m, idx) =>
-        idx === 0 ? (
-          <Message
-            message={m.node}
-            initialMessage={conversation.initialMessage}
-            key={m.node.id}
-          />
-        ) : (
-          <Message message={m.node} key={m.node.id} />
-        )
-      )}
+      {conversation.messages.edges.map((m, idx) => (
+        <Message
+          message={m.node}
+          initialMessage={conversation.initialMessage}
+          key={m.cursor}
+          isFirst={idx === messageCount - 1}
+        />
+      ))}
       <Reply conversation={conversation} environment={relay.environment} />
     </Box>
   )
@@ -35,17 +33,34 @@ export const ConversationFragmentContainer = createFragmentContainer(
   Conversation,
   {
     conversation: graphql`
-      fragment Conversation_conversation on Conversation {
+      fragment Conversation_conversation on Conversation
+        @argumentDefinitions(
+          count: { type: "Int", defaultValue: 10 }
+          after: { type: "String" }
+        ) {
         id
         internalID
         from {
           name
           email
         }
+        to {
+          name
+          initials
+        }
         initialMessage
         lastMessageID
-        messages(first: 10) {
+        unread
+        messages(first: $count, after: $after, sort: DESC)
+          @connection(key: "Messages_messages", filters: []) {
+          pageInfo {
+            startCursor
+            endCursor
+            hasPreviousPage
+            hasNextPage
+          }
           edges {
+            cursor
             node {
               id
               internalID

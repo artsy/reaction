@@ -35,14 +35,28 @@ fragment Conversation_conversation on Conversation {
     email
     id
   }
+  to {
+    name
+    initials
+    id
+  }
   initialMessage
   lastMessageID
-  messages(first: 10) {
+  unread
+  messages(first: 10, sort: DESC) {
+    pageInfo {
+      startCursor
+      endCursor
+      hasPreviousPage
+      hasNextPage
+    }
     edges {
+      cursor
       node {
         id
         internalID
         ...Message_message
+        __typename
       }
     }
   }
@@ -103,7 +117,19 @@ v4 = {
   "name": "email",
   "args": null,
   "storageKey": null
-};
+},
+v5 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 10
+  },
+  {
+    "kind": "Literal",
+    "name": "sort",
+    "value": "DESC"
+  }
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -183,6 +209,26 @@ return {
                 ]
               },
               {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "to",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "ConversationResponder",
+                "plural": false,
+                "selections": [
+                  (v3/*: any*/),
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "initials",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  (v1/*: any*/)
+                ]
+              },
+              {
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "initialMessage",
@@ -197,20 +243,60 @@ return {
                 "storageKey": null
               },
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "unread",
+                "args": null,
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "messages",
-                "storageKey": "messages(first:10)",
-                "args": [
-                  {
-                    "kind": "Literal",
-                    "name": "first",
-                    "value": 10
-                  }
-                ],
+                "storageKey": "messages(first:10,sort:\"DESC\")",
+                "args": (v5/*: any*/),
                 "concreteType": "MessageConnection",
                 "plural": false,
                 "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "pageInfo",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "PageInfo",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "startCursor",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "endCursor",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "hasPreviousPage",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "hasNextPage",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -220,6 +306,13 @@ return {
                     "concreteType": "MessageEdge",
                     "plural": true,
                     "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "cursor",
+                        "args": null,
+                        "storageKey": null
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -264,12 +357,28 @@ return {
                               (v3/*: any*/),
                               (v4/*: any*/)
                             ]
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "__typename",
+                            "args": null,
+                            "storageKey": null
                           }
                         ]
                       }
                     ]
                   }
                 ]
+              },
+              {
+                "kind": "LinkedHandle",
+                "alias": null,
+                "name": "messages",
+                "args": (v5/*: any*/),
+                "handle": "connection",
+                "key": "Messages_messages",
+                "filters": []
               }
             ]
           },
@@ -282,7 +391,7 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  initialMessage\n  lastMessageID\n  messages(first: 10) {\n    edges {\n      node {\n        id\n        internalID\n        ...Message_message\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 10, sort: DESC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        ...Message_message\n        __typename\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
     "metadata": {}
   }
 };

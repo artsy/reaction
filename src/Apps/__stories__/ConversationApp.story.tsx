@@ -16,7 +16,7 @@ storiesOf("Apps/Conversation", module)
     return (
       <MockRouter
         routes={conversationRoute}
-        initialRoute="/user/conversations/841"
+        initialRoute="/user/conversations/842"
       />
     )
   })

@@ -8,16 +8,17 @@ import { graphql } from "relay-runtime"
 interface MessageProps {
   message: Message_message
   initialMessage?: string
+  isFirst: boolean
 }
 const Message = (props: MessageProps) => {
-  const { message, initialMessage } = props
+  const { message, initialMessage, isFirst } = props
   const createdAt = DateTime.fromISO(message.createdAt).toRelative()
   return (
     <BorderBox m={2} flexDirection={"column"}>
       <Sans size="2">
         From: {message.from.name} - {createdAt}
       </Sans>
-      <Sans size="2">{initialMessage || message.body}</Sans>
+      <Sans size="2">{isFirst ? initialMessage : message.body}</Sans>
     </BorderBox>
   )
 }
