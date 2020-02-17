@@ -5,6 +5,7 @@ import { FragmentRefs } from "relay-runtime";
 export type Conversations_me = {
     readonly conversationsConnection: {
         readonly edges: ReadonlyArray<{
+            readonly cursor: string;
             readonly node: {
                 readonly internalID: string | null;
                 readonly lastMessage: string | null;
@@ -100,6 +101,13 @@ const node: ReaderFragment = {
           "plural": true,
           "selections": [
             {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "cursor",
+              "args": null,
+              "storageKey": null
+            },
+            {
               "kind": "LinkedField",
               "alias": null,
               "name": "node",
@@ -174,5 +182,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '9d509c137719ff456e56350244da6fd2';
+(node as any).hash = 'e94e07540fbe2e24b795e52d48c2b76f';
 export default node;

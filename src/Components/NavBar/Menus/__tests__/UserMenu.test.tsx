@@ -81,6 +81,16 @@ describe("UserMenu", () => {
       expect(wrapper.html()).toContain("Purchases")
     })
 
+    it("hides inquiries button if not admin", () => {
+      const wrapper = getWrapper({ user: { type: "NotAdmin" } })
+      expect(wrapper.html()).not.toContain("Inquiries")
+    })
+
+    it("shows inquiries button if admin", () => {
+      const wrapper = getWrapper({ user: { type: "Admin" } })
+      expect(wrapper.html()).toContain("Inquiries")
+    })
+
     it("shows CMS button if admin", () => {
       const wrapper = getWrapper({ user: { type: "Admin" } })
       expect(wrapper.html()).toContain("CMS")

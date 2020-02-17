@@ -73,6 +73,7 @@ fragment ConversationSnippet_conversation on Conversation {
 fragment Conversations_me_pbnwq on Me {
   conversationsConnection(first: $first, last: $last, before: $before, after: $after) {
     edges {
+      cursor
       node {
         internalID
         lastMessage
@@ -225,6 +226,13 @@ return {
                 "concreteType": "ConversationEdge",
                 "plural": true,
                 "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "cursor",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -421,7 +429,7 @@ return {
     "operationKind": "query",
     "name": "ConversationsQuery",
     "id": null,
-    "text": "query ConversationsQuery(\n  $first: Int!\n  $last: Int\n  $after: String\n  $before: String\n) {\n  me {\n    ...Conversations_me_pbnwq\n    id\n  }\n}\n\nfragment ConversationSnippet_conversation on Conversation {\n  internalID\n  to {\n    name\n    id\n  }\n  lastMessage\n  lastMessageAt\n  unread\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversations_me_pbnwq on Me {\n  conversationsConnection(first: $first, last: $last, before: $before, after: $after) {\n    edges {\n      node {\n        internalID\n        lastMessage\n        ...ConversationSnippet_conversation\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+    "text": "query ConversationsQuery(\n  $first: Int!\n  $last: Int\n  $after: String\n  $before: String\n) {\n  me {\n    ...Conversations_me_pbnwq\n    id\n  }\n}\n\nfragment ConversationSnippet_conversation on Conversation {\n  internalID\n  to {\n    name\n    id\n  }\n  lastMessage\n  lastMessageAt\n  unread\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversations_me_pbnwq on Me {\n  conversationsConnection(first: $first, last: $last, before: $before, after: $after) {\n    edges {\n      cursor\n      node {\n        internalID\n        lastMessage\n        ...ConversationSnippet_conversation\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

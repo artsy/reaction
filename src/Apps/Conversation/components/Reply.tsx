@@ -19,7 +19,7 @@ export const Reply = (props: ReplyProps) => {
         onChange={event => setBodyText(event.value)}
       />
       <Button
-        onClick={() =>
+        onClick={_event =>
           SendConversationMessage(
             environment,
             conversation,

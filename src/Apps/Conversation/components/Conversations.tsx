@@ -13,15 +13,13 @@ const Conversations: React.FC<ConversationsProps> = (
   props: ConversationsProps
 ) => {
   const { me } = props
-  const conversations =
-    me.conversationsConnection.edges &&
-    me.conversationsConnection.edges.map(x => x.node)
+  const conversations = me.conversationsConnection.edges
   return (
     <Box px={1}>
       <Serif size="5">Conversations</Serif>
       {conversations.length ? (
-        conversations.map(c => (
-          <ConversationSnippet conversation={c} key={c.internalID} />
+        conversations.map(edge => (
+          <ConversationSnippet conversation={edge.node} key={edge.cursor} />
         ))
       ) : (
         <Sans size="2">No Conversations</Sans>
@@ -48,6 +46,7 @@ export const ConversationsFragmentContainer = createRefetchContainer(
           after: $after
         ) {
           edges {
+            cursor
             node {
               internalID
               lastMessage
