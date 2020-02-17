@@ -51,7 +51,7 @@
     "chokidar": "^3.0.2"
   },
   "devDependencies": {
-    "@artsy/auto-config": "1.0.1",
+    "@artsy/auto-config": "1.0.2",
     "@artsy/palette": "5.1.16",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
