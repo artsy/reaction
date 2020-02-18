@@ -1,3 +1,21 @@
+# v25.9.5 (Tue Feb 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update yarn orb to v3 [#3166](https://github.com/artsy/reaction/pull/3166) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3157](https://github.com/artsy/reaction/pull/3157) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.9.4 (Sat Feb 15 2020)
 
 #### 🐛  Bug Fix
