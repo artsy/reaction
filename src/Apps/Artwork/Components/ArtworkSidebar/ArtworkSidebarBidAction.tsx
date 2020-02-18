@@ -43,7 +43,6 @@ export class ArtworkSidebarBidAction extends React.Component<
     this.setState({ selectedMaxBidCents: newVal })
   }
 
-  // FIXME: Wire up router link here
   redirectToRegister = () => {
     const { sale } = this.props.artwork
     const href = `/auction-registration/${sale.slug}`
