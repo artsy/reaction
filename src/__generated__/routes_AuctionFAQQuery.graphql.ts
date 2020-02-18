@@ -2,21 +2,21 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type AuctionFAQQueryVariables = {};
-export type AuctionFAQQueryResponse = {
+export type routes_AuctionFAQQueryVariables = {};
+export type routes_AuctionFAQQueryResponse = {
     readonly viewer: {
         readonly " $fragmentRefs": FragmentRefs<"AuctionFAQ_viewer">;
     } | null;
 };
-export type AuctionFAQQuery = {
-    readonly response: AuctionFAQQueryResponse;
-    readonly variables: AuctionFAQQueryVariables;
+export type routes_AuctionFAQQuery = {
+    readonly response: routes_AuctionFAQQueryResponse;
+    readonly variables: routes_AuctionFAQQueryVariables;
 };
 
 
 
 /*
-query AuctionFAQQuery {
+query routes_AuctionFAQQuery {
   viewer {
     ...AuctionFAQ_viewer
   }
@@ -67,7 +67,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "AuctionFAQQuery",
+    "name": "routes_AuctionFAQQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -92,7 +92,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AuctionFAQQuery",
+    "name": "routes_AuctionFAQQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -190,12 +190,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "AuctionFAQQuery",
+    "name": "routes_AuctionFAQQuery",
     "id": null,
-    "text": "query AuctionFAQQuery {\n  viewer {\n    ...AuctionFAQ_viewer\n  }\n}\n\nfragment AuctionFAQ_viewer on Viewer {\n  bidding: staticContent(id: \"how-auctions-work-bidding\") {\n    content\n    id\n  }\n  buyersPremiumTaxesAndFees: staticContent(id: \"how-auctions-work-buyers-premium-taxes-and-fees\") {\n    content\n    id\n  }\n  paymentsAndShipping: staticContent(id: \"how-auctions-work-payments-and-shipping\") {\n    content\n    id\n  }\n  emailsAndAlerts: staticContent(id: \"how-auctions-work-emails-and-alerts\") {\n    content\n    id\n  }\n  conditionsOfSale: staticContent(id: \"how-auctions-work-conditions-of-sale\") {\n    content\n    id\n  }\n}\n",
+    "text": "query routes_AuctionFAQQuery {\n  viewer {\n    ...AuctionFAQ_viewer\n  }\n}\n\nfragment AuctionFAQ_viewer on Viewer {\n  bidding: staticContent(id: \"how-auctions-work-bidding\") {\n    content\n    id\n  }\n  buyersPremiumTaxesAndFees: staticContent(id: \"how-auctions-work-buyers-premium-taxes-and-fees\") {\n    content\n    id\n  }\n  paymentsAndShipping: staticContent(id: \"how-auctions-work-payments-and-shipping\") {\n    content\n    id\n  }\n  emailsAndAlerts: staticContent(id: \"how-auctions-work-emails-and-alerts\") {\n    content\n    id\n  }\n  conditionsOfSale: staticContent(id: \"how-auctions-work-conditions-of-sale\") {\n    content\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'a3919be173a3a996315aa0da7c1bc1e6';
+(node as any).hash = '6b138c40e1ca0295da3be70c984600d3';
 export default node;

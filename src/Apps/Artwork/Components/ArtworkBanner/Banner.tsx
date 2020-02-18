@@ -1,7 +1,6 @@
 import { Avatar, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { Truncator } from "Components/Truncator"
 import React from "react"
-import { data as sd } from "sharify"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
@@ -29,7 +28,7 @@ const StyledLink = styled(Link)`
 const withLink = (href: string, children: React.ReactNode) => {
   if (href) {
     return (
-      <StyledLink noUnderline href={sd.APP_URL + href}>
+      <StyledLink noUnderline href={href}>
         {children}
       </StyledLink>
     )

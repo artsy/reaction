@@ -1,23 +1,30 @@
+import loadable from "@loadable/component"
 import { ErrorPage } from "Components/ErrorPage"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
+import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
-import { AuctionFAQQueryRenderer as AuctionFAQ } from "./Components/AuctionFAQ"
 import { confirmBidRedirect, Redirect, registerRedirect } from "./getRedirect"
-import { ConfirmBidRouteFragmentContainer } from "./Routes/ConfirmBid"
-import { RegisterRouteFragmentContainer } from "./Routes/Register"
 
 const logger = createLogger("Apps/Auction/routes")
 
 export const routes: RouteConfig[] = [
   {
     path: "/auction-faq",
-    Component: AuctionFAQ,
+    getComponent: () => loadable(() => import("./Components/AuctionFAQ")),
+    query: graphql`
+      query routes_AuctionFAQQuery {
+        viewer {
+          ...AuctionFAQ_viewer
+        }
+      }
+    `,
+    fetchIndicator: "overlay",
   },
   {
     path: "/auction/:saleID/bid(2)?/:artworkID",
-    Component: ConfirmBidRouteFragmentContainer,
+    getComponent: () => loadable(() => import("./Routes/ConfirmBid")),
     render: ({ Component, props }) => {
       if (Component && props) {
         const { artwork, me, match } = props as any
@@ -66,7 +73,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/auction-registration(2)?/:saleID",
-    Component: RegisterRouteFragmentContainer,
+    getComponent: () => loadable(() => import("./Routes/Register")),
     render: ({ Component, props }) => {
       if (Component && props) {
         const { match, sale, me } = props as any
@@ -108,6 +115,17 @@ function handleRedirect(redirect: Redirect, location: Location) {
     logger.warn(
       `Redirecting from ${location.pathname} to ${redirect.path} because '${redirect.reason}'`
     )
-    throw new RedirectException(redirect.path)
+
+    // FIXME: Remove after A/B test completes
+    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      // Perform a hard jump to login page as it doesn't exist within router
+      if (redirect.path.includes("/log_in?")) {
+        window.location.href = redirect.path
+      } else {
+        throw new RedirectException(redirect.path)
+      }
+    } else {
+      throw new RedirectException(redirect.path)
+    }
   }
 }
