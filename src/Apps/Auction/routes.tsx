@@ -3,6 +3,7 @@ import { ErrorPage } from "Components/ErrorPage"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
+import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { confirmBidRedirect, Redirect, registerRedirect } from "./getRedirect"
 
@@ -114,6 +115,17 @@ function handleRedirect(redirect: Redirect, location: Location) {
     logger.warn(
       `Redirecting from ${location.pathname} to ${redirect.path} because '${redirect.reason}'`
     )
-    throw new RedirectException(redirect.path)
+
+    // FIXME: Remove after A/B test completes
+    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      // Perform a hard jump to login page as it doesn't exist within router
+      if (redirect.path.includes("/log_in?")) {
+        window.location.href = redirect.path
+      } else {
+        throw new RedirectException(redirect.path)
+      }
+    } else {
+      throw new RedirectException(redirect.path)
+    }
   }
 }

@@ -297,8 +297,16 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     }
   }
 
+  // FIXME: Remove after A/B test completes
+  let NavBar
+  if (getENV("EXPERIMENTAL_APP_SHELL")) {
+    NavBar = MinimalNavBar
+  } else {
+    NavBar = Box // pass-through; nav bar comes from the server right now
+  }
+
   return (
-    <MinimalNavBar to={`/artwork/${artwork.slug}`}>
+    <NavBar to={`/artwork/${artwork.slug}`}>
       <AppContainer>
         <Title>Confirm Bid | Artsy</Title>
 
@@ -324,7 +332,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
           />
         </Box>
       </AppContainer>
-    </MinimalNavBar>
+    </NavBar>
   )
 }
 
