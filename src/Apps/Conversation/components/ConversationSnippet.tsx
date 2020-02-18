@@ -1,6 +1,6 @@
 import {
+  ArrowRightCircleIcon,
   Box,
-  Button,
   Flex,
   Image,
   Link,
@@ -75,7 +75,7 @@ const ConversationSnippet = (props: ConversationSnippetProps) => {
             href={`/conversations/${conversation.internalID}`}
             underlineBehavior="hover"
           >
-            <Button variant="secondaryGray">></Button>
+            <ArrowRightCircleIcon height="28px" width="24px" />
           </Link>
         </Flex>
       </StackableBorderBox>
