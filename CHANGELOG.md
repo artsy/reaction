@@ -1,3 +1,21 @@
+# v25.10.0 (Tue Feb 18 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Routing] Wire in Order app [#3162](https://github.com/artsy/reaction/pull/3162) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/auto-config from ^1.0.2 to 1.0.2 [#3167](https://github.com/artsy/reaction/pull/3167) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.9.5 (Tue Feb 18 2020)
 
 #### 🐛  Bug Fix
