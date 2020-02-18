@@ -1,3 +1,15 @@
+# v25.11.0 (Tue Feb 18 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Routing] Wire in Auctions app [#3163](https://github.com/artsy/reaction/pull/3163) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.10.0 (Tue Feb 18 2020)
 
 #### 🚀  Enhancement
