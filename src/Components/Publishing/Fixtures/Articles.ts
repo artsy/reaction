@@ -213,7 +213,7 @@ export const ClassicArticleInternalChannel: ArticleData = {
   ],
 }
 
-export const ClassicArticleSponsored: ArticleData = {
+export const ClassicArticlePromotedContent: ArticleData = {
   id: "5da49b750c2c190020d70d2d",
   title: "ICI: Benefit Auction 2019 Curatorial Committee Picks",
   search_title: null,

@@ -4,7 +4,7 @@ import { Article } from "../Article"
 import {
   ClassicArticle,
   ClassicArticleInternalChannel,
-  ClassicArticleSponsored,
+  ClassicArticlePromotedContent,
 } from "../Fixtures/Articles"
 
 storiesOf("Publishing/Articles/Classic", module).add("Classic", () => {
@@ -18,6 +18,6 @@ storiesOf("Publishing/Articles/Classic", module).add("Internal channel", () => {
 storiesOf("Publishing/Articles/Classic", module).add(
   "Sponsored content",
   () => {
-    return <Article article={ClassicArticleSponsored} />
+    return <Article article={ClassicArticlePromotedContent} />
   }
 )
