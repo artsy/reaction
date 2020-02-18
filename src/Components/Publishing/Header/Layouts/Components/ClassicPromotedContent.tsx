@@ -1,8 +1,10 @@
 import {
+  ArrowRightIcon,
   Box,
   Button,
   Flex,
   Image,
+  Link,
   Sans,
   Separator,
   Serif,
@@ -29,14 +31,22 @@ export const ClassicPromotedContent: React.SFC<{
       <Flex justifyContent="space-between" mb={space(2)} alignItems="center">
         <Flex>
           <Media greaterThan="xs">
-            <Image src={image} width="100px" mr={space(2)} />
+            <a href={href}>
+              <Image src={image} width="100px" mr={space(2)} />
+            </a>
           </Media>
 
           <Flex flexDirection="column">
             <Sans size={["3", "4"]} weight="medium">
-              Promoted Content
+              <Link href={href} underlineBehavior="none">
+                Promoted Content
+              </Link>
             </Sans>
-            <Serif size={["4", "5"]}>{name}</Serif>
+            <Serif size={["4", "5"]}>
+              <Link href={href} noUnderline>
+                {name}
+              </Link>
+            </Serif>
           </Flex>
         </Flex>
 
@@ -45,6 +55,11 @@ export const ClassicPromotedContent: React.SFC<{
             <Button variant="secondaryOutline">
               Explore {partner ? "Gallery" : "Auction"}
             </Button>
+          </a>
+        </Media>
+        <Media at="xs">
+          <a href={href}>
+            <ArrowRightIcon />
           </a>
         </Media>
       </Flex>
