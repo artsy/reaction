@@ -8,7 +8,7 @@ export interface AuctionResultsRouteProps {
 }
 
 export const AuctionResultsRoute = (props: AuctionResultsRouteProps) => {
-  return <AuctionResults sort="DATE_DESC" artist={props.artist} />
+  return <AuctionResults artist={props.artist} />
 }
 
 export const AuctionResultsRouteFragmentContainer = createFragmentContainer(
@@ -21,3 +21,6 @@ export const AuctionResultsRouteFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default AuctionResultsRouteFragmentContainer

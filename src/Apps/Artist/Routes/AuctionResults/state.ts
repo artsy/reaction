@@ -3,12 +3,12 @@ import { Container } from "unstated"
 interface StateContainer {
   selectedAuction?: any
   page?: number
-  showModal: boolean
+  showDetails: boolean
   sort?: string
 }
 
 export class AuctionResultsState extends Container<StateContainer> {
-  state = { showModal: false, sort: "DATE_DESC", selectedAuction: null }
+  state = { showDetails: false, sort: "DATE_DESC", selectedAuction: null }
 
   setPage = page => {
     this.setState({ page })
@@ -18,11 +18,25 @@ export class AuctionResultsState extends Container<StateContainer> {
     this.setState({ sort })
   }
 
-  showDetailsModal = selectedAuction => {
-    this.setState({ showModal: true, selectedAuction })
+  openDetailsCollpase = selectedAuction => {
+    this.setState({ showDetails: true, selectedAuction })
   }
 
-  hideDetailsModal = () => {
-    this.setState({ showModal: false, selectedAuction: null })
+  closeDetailsCollapse = () => {
+    this.setState({ showDetails: false, selectedAuction: null })
+  }
+
+  toggleDetails = selectedAuction => {
+    if (!this.state.showDetails) {
+      this.setState({
+        showDetails: true,
+        selectedAuction,
+      })
+    } else {
+      this.setState({
+        showDetails: false,
+        selectedAuction: null,
+      })
+    }
   }
 }

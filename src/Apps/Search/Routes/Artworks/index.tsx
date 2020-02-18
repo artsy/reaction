@@ -43,3 +43,6 @@ export const SearchResultsArtworksRoute = withRouter((props => {
     </Box>
   )
 }) as React.FC<SearchResultsRouteProps>)
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default SearchResultsArtworksRoute

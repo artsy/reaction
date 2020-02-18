@@ -3,7 +3,7 @@ import { RelatedCollectionsRail_collections } from "__generated__/RelatedCollect
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ArrowButton, Carousel } from "Components/v2/Carousel"
-import { once, take } from "lodash"
+import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
@@ -67,7 +67,7 @@ export class RelatedCollectionsRail extends React.Component<
               draggable: sd.IS_MOBILE ? true : false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={take(collections, 16)}
+            data={collections}
             render={slide => {
               return (
                 <RelatedCollectionEntity

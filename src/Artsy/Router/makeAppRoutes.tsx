@@ -18,31 +18,7 @@ interface RouteList {
 }
 
 export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
-  function removeDisabledRoutes(acc, route: RouteList) {
-    if (route.disabled) {
-      return acc
-    } else {
-      return acc.concat(route.routes)
-    }
-  }
-
-  function createRouteConfiguration(route): RouteConfig {
-    let path = route.path
-    if (path.slice(-1) === "/") {
-      path = route.path.substring(1) // remove leading slash from route
-    }
-
-    return {
-      ...route,
-      fetchIndicator: "overlay",
-      path,
-    }
-  }
-
-  // Build route list
-  const routes = flatten(routeList.reduce(removeDisabledRoutes, [])).map(
-    createRouteConfiguration
-  )
+  const routes = getActiveRoutes(routeList)
 
   const Component = props => {
     const { router, setRouter } = useSystemContext()
@@ -81,4 +57,30 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
       children: routes,
     },
   ]
+}
+
+function getActiveRoutes(routeList) {
+  const routes = flatten(
+    routeList.reduce((acc, route: RouteList) => {
+      if (route.disabled) {
+        return acc
+      } else {
+        return acc.concat(route.routes)
+      }
+    }, [])
+  ).map(createRouteConfiguration)
+  return routes
+}
+
+function createRouteConfiguration(route): RouteConfig {
+  let path = route.path
+  if (path.slice(-1) === "/") {
+    path = route.path.substring(1) // remove leading slash from route
+  }
+
+  return {
+    ...route,
+    fetchIndicator: "overlay",
+    path,
+  }
 }

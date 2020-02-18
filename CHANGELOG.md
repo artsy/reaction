@@ -1,3 +1,290 @@
+# v25.9.5 (Tue Feb 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update yarn orb to v3 [#3166](https://github.com/artsy/reaction/pull/3166) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3157](https://github.com/artsy/reaction/pull/3157) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.9.4 (Sat Feb 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Ensure all search-bar nav items navigate properly [#3161](https://github.com/artsy/reaction/pull/3161) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.9.3 (Sat Feb 15 2020)
+
+#### 🐛  Bug Fix
+
+- Bundle split search; fix SSR search input [#3160](https://github.com/artsy/reaction/pull/3160) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.9.2 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Prefix injected split tag scripts with CDN_URL [#3159](https://github.com/artsy/reaction/pull/3159) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.9.1 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1749] Add auction result size filter [#3153](https://github.com/artsy/reaction/pull/3153) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.9.0 (Fri Feb 14 2020)
+
+#### 🚀  Enhancement
+
+- Take 2: [Refactor] Implement route-level bundle splitting [#3151](https://github.com/artsy/reaction/pull/3151) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.8.4 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- Collapse auction results filter for reasons [#3155](https://github.com/artsy/reaction/pull/3155) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update README with info on publishing canary [#3156](https://github.com/artsy/reaction/pull/3156) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.8.3 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1807] update MP schema and use new size arg to limit relatedCollections [#3154](https://github.com/artsy/reaction/pull/3154) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.8.2 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- Add Auction result header description [#3152](https://github.com/artsy/reaction/pull/3152) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.8.1 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "[Refactor] Implement route-level bundle splitting" [#3150](https://github.com/artsy/reaction/pull/3150) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.8.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- Auction results auction-house filter [#3131](https://github.com/artsy/reaction/pull/3131) ([@sepans](https://github.com/sepans))
+
+#### 🐛  Bug Fix
+
+- Remove deprecated fonts from classic articles, fix bylines [#3143](https://github.com/artsy/reaction/pull/3143) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.7.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Implement route-level bundle splitting [#3137](https://github.com/artsy/reaction/pull/3137) ([@damassi](https://github.com/damassi) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.6.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- As a user I see the updated list view of auction results and i can expand the result [#3139](https://github.com/artsy/reaction/pull/3139) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.5.10 (Wed Feb 12 2020)
+
+
+
+---
+
+# v25.5.9 (Wed Feb 12 2020)
+
+#### 🐛  Bug Fix
+
+- Updates MP schema [#3145](https://github.com/artsy/reaction/pull/3145) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.5.8 (Mon Feb 10 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Routing] Update mobile page loader to be more obvious [#3141](https://github.com/artsy/reaction/pull/3141) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.7 (Mon Feb 10 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Ensure nav closed on clienside routes [#3140](https://github.com/artsy/reaction/pull/3140) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.6 (Sun Feb 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Analytics] Path is relative [#3142](https://github.com/artsy/reaction/pull/3142) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.5 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [AUCT-870] - Add lot viewed analytics [#3134](https://github.com/artsy/reaction/pull/3134) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
+# v25.5.4 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Fix artwork page 1-off [#3138](https://github.com/artsy/reaction/pull/3138) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.3 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Make path absolute [#3136](https://github.com/artsy/reaction/pull/3136) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.2 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Fix url and referrer tracking [#3135](https://github.com/artsy/reaction/pull/3135) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.1 (Thu Feb 06 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure PNG → JPG in Collection Hubs's related rail [#3133](https://github.com/artsy/reaction/pull/3133) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.5.0 (Wed Feb 05 2020)
 
 #### 🚀  Enhancement

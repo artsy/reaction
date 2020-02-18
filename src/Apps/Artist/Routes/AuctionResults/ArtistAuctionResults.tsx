@@ -1,21 +1,27 @@
-import { Col, Flex, Row } from "@artsy/palette"
+import { Col, Row } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
-import React, { Component } from "react"
+import React, { useState } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
-import { Subscribe } from "unstated"
-import { ArtistAuctionDetailsModal } from "./ArtistAuctionDetailsModal"
+import useDeepCompareEffect from "use-deep-compare-effect"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
-import { AuctionResultsState } from "./state"
-// import { TableColumns } from "./TableColumns"
-// import { TableSidebar } from "./TableSidebar"
+import { TableSidebar } from "./Components/TableSidebar"
 
 import { Box, Spacer } from "@artsy/palette"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { LoadingArea } from "Components/v2/LoadingArea"
+import { isEqual } from "lodash"
+import { usePrevious } from "Utils/Hooks/usePrevious"
 import createLogger from "Utils/logger"
-import { AuctionResultsCountFragmentContainer as AuctionResultsCount } from "./Components/AuctionResultsCount"
-import { SortSelect } from "./Components/SortSelect"
+import { Media } from "Utils/Responsive"
+import {
+  AuctionResultsFilterContextProvider,
+  useAuctionResultsFilterContext,
+} from "./AuctionResultsFilterContext"
+import { AuctionFilterMobileActionSheet } from "./Components/AuctionFilterMobileActionSheet"
+import { AuctionFilters } from "./Components/AuctionFilters"
+import { AuctionResultHeaderFragmentContainer as AuctionResultHeader } from "./Components/AuctionResultHeader"
+import { AuctionResultsControls } from "./Components/AuctionResultsControls"
 
 const logger = createLogger("ArtistAuctionResults.tsx")
 
@@ -24,49 +30,42 @@ const PAGE_SIZE = 10
 interface AuctionResultsProps {
   relay: RelayRefetchProp
   artist: ArtistAuctionResults_artist
-  sort: string
 }
 
-class AuctionResultsContainer extends Component<
-  AuctionResultsProps,
-  LoadingAreaState
-> {
-  state = {
-    isLoading: false,
-  }
+const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
+  artist,
+  relay,
+}) => {
+  const filterContext = useAuctionResultsFilterContext()
 
-  loadNext = () => {
-    const {
-      artist: {
-        auctionResultsConnection: {
-          pageInfo: { hasNextPage, endCursor },
-        },
-      },
-    } = this.props
+  const { sort, organizations, sizes } = filterContext.filters
+
+  const loadNext = () => {
+    const { hasNextPage, endCursor } = pageInfo
 
     if (hasNextPage) {
-      this.loadAfter(endCursor)
+      loadAfter(endCursor)
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.sort !== this.props.sort) {
-      this.resort()
-    }
-  }
+  const loadAfter = cursor => {
+    setIsLoading(true)
 
-  resort = () => {
-    this.props.relay.refetch(
+    relay.refetch(
       {
         first: PAGE_SIZE,
-        after: null,
-        artistID: this.props.artist.slug,
+        after: cursor,
+        artistID: artist.slug,
         before: null,
         last: null,
-        sort: this.props.sort,
+        organizations,
+        sizes,
+        sort,
       },
       null,
       error => {
+        setIsLoading(false)
+
         if (error) {
           logger.error(error)
         }
@@ -74,120 +73,133 @@ class AuctionResultsContainer extends Component<
     )
   }
 
-  loadAfter = cursor => {
-    this.toggleLoading(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
 
-    this.props.relay.refetch(
-      {
-        first: PAGE_SIZE,
-        after: cursor,
-        artistID: this.props.artist.slug,
-        before: null,
-        last: null,
-        sort: this.props.sort,
-      },
-      null,
-      error => {
-        this.toggleLoading(false)
+  const previousFilters = usePrevious(filterContext.filters)
 
-        if (error) {
-          console.error(error)
+  // TODO: move this and artwork copy to util?
+  useDeepCompareEffect(() => {
+    Object.entries(filterContext.filters).forEach(
+      ([filterKey, currentFilter]) => {
+        const previousFilter = previousFilters[filterKey]
+        const filtersHaveUpdated = !isEqual(currentFilter, previousFilter)
+        if (filtersHaveUpdated) {
+          fetchResults()
+
+          // TODO: instrumentation?
+          // tracking.trackEvent({
+          //   action_type:
+          //     AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
+          //   current: filterContext.filters,
+          //   changed: {
+          //     [filterKey]: filterContext.filters[filterKey],
+          //   },
+          // })
         }
       }
     )
-  }
+  }, [filterContext.filters])
 
-  toggleLoading = isLoading => {
-    this.setState({
-      isLoading,
+  // TODO: move this and artwork copy to util? (pass loading state setter)
+  function fetchResults() {
+    setIsLoading(true)
+
+    const relayParams = {
+      first: PAGE_SIZE,
+      artistID: artist.slug,
+      after: null,
+      before: null,
+      last: null,
+    }
+
+    const relayRefetchVariables = {
+      ...relayParams,
+      ...filterContext.filters,
+    }
+
+    relay.refetch(relayRefetchVariables, null, error => {
+      if (error) {
+        logger.error(error)
+      }
+
+      setIsLoading(false)
     })
   }
 
-  render() {
-    const { artist } = this.props
-    const auctionResultsLength = artist.auctionResultsConnection.edges.length
-    return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state }: AuctionResultsState) => {
-          return (
-            <>
-              <Row>
-                {/* 
-                <Col sm={2} pr={[0, 2]}>
-                   <TableSidebar count={totalCount} />
-                </Col>
-                */}
+  const { pageInfo } = artist.auctionResultsConnection
+  const auctionResultsLength = artist.auctionResultsConnection.edges.length
 
-                {/* <Col sm={10}> */}
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  width="100%"
-                  mb={2}
-                >
-                  <AuctionResultsCount
-                    results={artist.auctionResultsConnection}
-                  />
-                  <SortSelect />
-                </Flex>
+  const resultList = (
+    <LoadingArea isLoading={isLoading}>
+      {artist.auctionResultsConnection.edges.map(({ node }, index) => {
+        return (
+          <React.Fragment key={index}>
+            <AuctionResultItem
+              index={index}
+              auctionResult={node}
+              lastChild={index === auctionResultsLength - 1}
+            />
+          </React.Fragment>
+        )
+      })}
+    </LoadingArea>
+  )
 
-                <ArtistAuctionDetailsModal
-                  auctionResult={state.selectedAuction}
-                />
+  return (
+    <>
+      {showMobileActionSheet && (
+        <AuctionFilterMobileActionSheet
+          onClose={() => toggleMobileActionSheet(false)}
+        >
+          <AuctionFilters />
+        </AuctionFilterMobileActionSheet>
+      )}
+      <Row>
+        <AuctionResultHeader artist={artist} />
+      </Row>
+      <Row>
+        <Col sm={3} pr={[0, 2]}>
+          <Media greaterThan="xs">
+            <TableSidebar />
+          </Media>
+        </Col>
 
-                <Spacer mt={3} />
+        <Col sm={9}>
+          <AuctionResultsControls
+            artist={artist}
+            toggleMobileActionSheet={toggleMobileActionSheet}
+          />
 
-                <LoadingArea isLoading={this.state.isLoading}>
-                  {this.props.artist.auctionResultsConnection.edges.map(
-                    ({ node }, index) => {
-                      return (
-                        <React.Fragment key={index}>
-                          <AuctionResultItem
-                            auctionResult={node}
-                            lastChild={index === auctionResultsLength - 1}
-                          />
-                        </React.Fragment>
-                      )
-                    }
-                  )}
-                </LoadingArea>
-                {/* </Col> */}
-              </Row>
+          <Spacer mt={3} />
 
-              <Row>
-                <Col>
-                  <Box>
-                    <Pagination
-                      hasNextPage={
-                        this.props.artist.auctionResultsConnection.pageInfo
-                          .hasNextPage
-                      }
-                      pageCursors={
-                        this.props.artist.auctionResultsConnection.pageCursors
-                      }
-                      onClick={this.loadAfter}
-                      onNext={this.loadNext}
-                      scrollTo="#jumpto-ArtistHeader"
-                    />
-                  </Box>
-                </Col>
-              </Row>
-            </>
-          )
-        }}
-      </Subscribe>
-    )
-  }
+          {resultList}
+        </Col>
+      </Row>
+
+      <Row>
+        <Col>
+          <Box>
+            <Pagination
+              hasNextPage={pageInfo.hasNextPage}
+              pageCursors={artist.auctionResultsConnection.pageCursors}
+              onClick={loadAfter}
+              onNext={loadNext}
+              scrollTo="#jumpto-ArtistHeader"
+            />
+          </Box>
+        </Col>
+      </Row>
+    </>
+  )
 }
 
 export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
     return (
-      <Subscribe to={[AuctionResultsState]}>
-        {({ state }: AuctionResultsState) => {
-          return <AuctionResultsContainer {...props} sort={state.sort} />
-        }}
-      </Subscribe>
+      <AuctionResultsFilterContextProvider>
+        <AuctionResultsContainer {...props} />
+      </AuctionResultsFilterContextProvider>
     )
   },
   {
@@ -199,14 +211,19 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
+          organizations: { type: "[String]" }
+          sizes: { type: "[ArtworkSizes]" }
         ) {
         slug
+        ...AuctionResultHeader_artist
         auctionResultsConnection(
           first: $first
           after: $after
           before: $before
           last: $last
           sort: $sort
+          organizations: $organizations
+          sizes: $sizes
         ) {
           ...AuctionResultsCount_results
           pageInfo {
@@ -219,6 +236,15 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           totalCount
           edges {
             node {
+              title
+              dimension_text: dimensionText
+              images {
+                thumbnail {
+                  url
+                }
+              }
+              description
+              date_text: dateText
               ...ArtistAuctionResultItem_auctionResult
             }
           }
@@ -234,6 +260,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $before: String
       $sort: AuctionResultSorts
       $artistID: String!
+      $organizations: [String]
+      $sizes: [ArtworkSizes]
     ) {
       artist(id: $artistID) {
         ...ArtistAuctionResults_artist
@@ -243,6 +271,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             after: $after
             before: $before
             sort: $sort
+            organizations: $organizations
+            sizes: $sizes
           )
       }
     }

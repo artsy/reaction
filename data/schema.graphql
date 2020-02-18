@@ -577,8 +577,11 @@ type Artist implements Node & Searchable & EntityWithFilterArtworksConnectionInt
   auctionResultsConnection(
     sort: AuctionResultSorts
 
-    # Filter auction results by organization
-    organization: String
+    # Filter auction results by organizations
+    organizations: [String]
+
+    # Filter auction results by Artwork sizes
+    sizes: [ArtworkSizes]
 
     # When true, will only return records for allowed artists.
     recordsTrusted: Boolean = false
@@ -1247,6 +1250,12 @@ type ArtworkMeta {
 type ArtworksAggregationResults {
   counts: [AggregationCount]
   slice: ArtworkAggregation
+}
+
+enum ArtworkSizes {
+  SMALL
+  MEDIUM
+  LARGE
 }
 
 enum ArtworkSorts {
@@ -4966,7 +4975,7 @@ type MarketingCollection {
 
   # IDs of artists that should be excluded from Featured Artists for this collection
   featuredArtistExclusionIds: [String!]
-  relatedCollections: [MarketingCollection!]!
+  relatedCollections(size: Int = 10): [MarketingCollection!]!
   artworksConnection(
     acquireable: Boolean
     offerable: Boolean
@@ -5387,6 +5396,11 @@ type Mutation {
   createGeminiEntryForAsset(
     input: CreateGeminiEntryForAssetInput!
   ): CreateGeminiEntryForAssetPayload
+
+  # Start an identity verification flow for a pending identity verification
+  startIdentityVerification(
+    input: startIdentityVerificationMutationInput!
+  ): startIdentityVerificationMutationPayload
 
   # Create a new consignment submission using Convection
   createConsignmentSubmission(
@@ -7181,6 +7195,33 @@ enum ShowSorts {
 enum sort {
   DESC
   ASC
+}
+
+type StartIdentityVerificationFailure {
+  mutationError: GravityMutationError
+}
+
+input startIdentityVerificationMutationInput {
+  # Primary ID of the identity verification to be started
+  identityVerificationId: String!
+  clientMutationId: String
+}
+
+type startIdentityVerificationMutationPayload {
+  startIdentityVerificationResponseOrError: StartIdentityVerificationResponseOrError
+  clientMutationId: String
+}
+
+union StartIdentityVerificationResponseOrError =
+    StartIdentityVerificationSuccess
+  | StartIdentityVerificationFailure
+
+type StartIdentityVerificationSuccess {
+  # Primary ID of the started identity verification
+  identityVerificationId: String
+
+  # URL that hosts the user-facing identity verification flow (Jumio)
+  identityVerificationWizardUrl: String
 }
 
 type StaticContent {

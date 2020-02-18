@@ -220,7 +220,7 @@ export const NavBarTest: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu />
+          <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
         </>
       )}
     </>

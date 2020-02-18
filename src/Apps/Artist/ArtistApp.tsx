@@ -16,16 +16,15 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { useTracking } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouterLink } from "Artsy/Router/RouterLink"
 import { Footer } from "Components/v2/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 import { Match } from "found"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
 import { findCurrentRoute } from "Utils/findCurrentRoute"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
+import { StyledLink } from "./Components/StyledLink"
 
 export interface ArtistAppProps {
   artist: ArtistApp_artist
@@ -118,15 +117,6 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
   )
 }
 
-export const StyledLink = styled(RouterLink)`
-  text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  &:hover {
-    text-decoration: none;
-  }
-`
-
 const TrackingWrappedArtistApp: React.FC<ArtistAppProps> = props => {
   const Component = track<ArtistAppProps>(_p => ({
     context_page: Schema.PageName.ArtistPage,
@@ -153,3 +143,6 @@ export const ArtistAppFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default ArtistAppFragmentContainer

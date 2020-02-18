@@ -72,16 +72,19 @@ describe("ClassicByline", () => {
     it("renders internal channels as author", () => {
       props.article = ClassicArticleInternalChannel
       delete props.article.author
-      expect(getWrapper().text()).toMatch("Artsy Jobs")
+      const component = getWrapper()
+      expect(component.text()).toMatch("Artsy Jobs")
     })
 
     it("renders published date", () => {
-      expect(getWrapper().text()).toMatch("Jul 28, 2017 4:38pm")
+      const component = getWrapper()
+      expect(component.text()).toMatch("Jul 28, 2017 4:38pm")
     })
 
     it("renders a custom date", () => {
       props.date = "2017-05-19T13:09:18.567Z"
-      expect(getWrapper().text()).toMatch("May 19, 2017 9:09am")
+      const component = getWrapper()
+      expect(component.text()).toMatch("May 19, 2017 9:09am")
     })
   })
 })

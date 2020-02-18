@@ -142,6 +142,7 @@ export const FeaturedCollectionEntity: React.FC<FeaturedCollectionEntityProps> =
               width: 500,
               height: 500,
               quality: 80,
+              convert_to: "jpg",
             })}
           />
         </Flex>

@@ -17,6 +17,7 @@ import { Link, Meta, Title } from "react-head"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { data as sd } from "sharify"
 import truncate from "trunc-html"
+import { CollectionAppQuery } from "./CollectionAppQuery"
 import { CollectionsHubRailsContainer as CollectionsHubRails } from "./Components/CollectionsHubRails"
 
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
@@ -163,56 +164,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
   }
 }
 
-// TODO: Add `@principalField` to below query
-// when KAWS returns a 404 in `errors` for non-existent collections.
-// Currently it doesn't send any errors so there isn't anything
-// for Metaphysics to propagate.
-export const CollectionAppQuery = graphql`
-  query CollectionRefetch2Query(
-    $acquireable: Boolean
-    $aggregations: [ArtworkAggregation] = [
-      MERCHANDISABLE_ARTISTS
-      MEDIUM
-      MAJOR_PERIOD
-      TOTAL
-    ]
-    $atAuction: Boolean
-    $color: String
-    $forSale: Boolean
-    $height: String
-    $inquireableOnly: Boolean
-    $majorPeriods: [String]
-    $medium: String
-    $offerable: Boolean
-    $page: Int
-    $priceRange: String
-    $sort: String
-    $slug: String!
-    $width: String
-  ) {
-    collection: marketingCollection(slug: $slug) {
-      ...Collection_collection
-        @arguments(
-          acquireable: $acquireable
-          aggregations: $aggregations
-          atAuction: $atAuction
-          color: $color
-          forSale: $forSale
-          height: $height
-          inquireableOnly: $inquireableOnly
-          majorPeriods: $majorPeriods
-          medium: $medium
-          offerable: $offerable
-          page: $page
-          priceRange: $priceRange
-          sort: $sort
-          width: $width
-          first: 30
-        )
-    }
-  }
-`
-
 export const CollectionRefetchContainer = createRefetchContainer(
   withSystemContext(CollectionApp),
   {
@@ -244,7 +195,7 @@ export const CollectionRefetchContainer = createRefetchContainer(
           artist_id: artistID
           gene_id: geneID
         }
-        relatedCollections {
+        relatedCollections(size: 16) {
           ...RelatedCollectionsRail_collections
         }
         linkedCollections {
@@ -315,3 +266,6 @@ export const CollectionRefetchContainer = createRefetchContainer(
   },
   CollectionAppQuery
 )
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default CollectionRefetchContainer

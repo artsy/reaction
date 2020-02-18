@@ -461,7 +461,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
     }
     fontSize="16px"
   >
-    Joanne Artman Gallery
+    Artsy Jobs
   </div>
   <div
     className="c2"
@@ -474,14 +474,14 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
     }
     fontSize="14px"
   >
-    Jul 28, 2017 4:38pm
+    Feb 5, 2020 3:51pm
   </div>
   <div
     className="c3 c4"
   >
     <a
       className="c5"
-      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
+      href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-jobs-consignments-intern-02-05-20"
       onClick={[Function]}
       target="_blank"
     >
@@ -507,7 +507,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
     </a>
     <a
       className="c5"
-      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
+      href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-jobs-consignments-intern-02-05-20&text=Consignments Intern&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-jobs-consignments-intern-02-05-20&via=artsy"
       onClick={[Function]}
       target="_blank"
     >
@@ -533,7 +533,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
     </a>
     <a
       className="c5"
-      href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
+      href="mailto:?subject=Consignments Intern&body=Check out Consignments Intern on Artsy: https://www.artsy.net/article/artsy-jobs-consignments-intern-02-05-20"
       onClick={[Function]}
       target="_blank"
     >

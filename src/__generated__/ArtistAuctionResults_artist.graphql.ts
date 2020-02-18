@@ -15,11 +15,21 @@ export type ArtistAuctionResults_artist = {
         readonly totalCount: number | null;
         readonly edges: ReadonlyArray<{
             readonly node: {
+                readonly title: string | null;
+                readonly dimension_text: string | null;
+                readonly images: {
+                    readonly thumbnail: {
+                        readonly url: string | null;
+                    } | null;
+                } | null;
+                readonly description: string | null;
+                readonly date_text: string | null;
                 readonly " $fragmentRefs": FragmentRefs<"ArtistAuctionResultItem_auctionResult">;
             } | null;
         } | null> | null;
         readonly " $fragmentRefs": FragmentRefs<"AuctionResultsCount_results">;
     } | null;
+    readonly " $fragmentRefs": FragmentRefs<"AuctionResultHeader_artist">;
     readonly " $refType": "ArtistAuctionResults_artist";
 };
 export type ArtistAuctionResults_artist$data = ArtistAuctionResults_artist;
@@ -65,6 +75,18 @@ const node: ReaderFragment = {
       "name": "before",
       "type": "String",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "organizations",
+      "type": "[String]",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sizes",
+      "type": "[ArtworkSizes]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -100,6 +122,16 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "last",
           "variableName": "last"
+        },
+        {
+          "kind": "Variable",
+          "name": "organizations",
+          "variableName": "organizations"
+        },
+        {
+          "kind": "Variable",
+          "name": "sizes",
+          "variableName": "sizes"
         },
         {
           "kind": "Variable",
@@ -177,6 +209,63 @@ const node: ReaderFragment = {
               "plural": false,
               "selections": [
                 {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "title",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": "dimension_text",
+                  "name": "dimensionText",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "images",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "AuctionLotImages",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "thumbnail",
+                      "storageKey": null,
+                      "args": null,
+                      "concreteType": "Image",
+                      "plural": false,
+                      "selections": [
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "url",
+                          "args": null,
+                          "storageKey": null
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "description",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": "date_text",
+                  "name": "dateText",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
                   "kind": "FragmentSpread",
                   "name": "ArtistAuctionResultItem_auctionResult",
                   "args": null
@@ -191,8 +280,13 @@ const node: ReaderFragment = {
           "args": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "AuctionResultHeader_artist",
+      "args": null
     }
   ]
 };
-(node as any).hash = '7ba95d8a09043fc63f344b9434f24f8d';
+(node as any).hash = 'a7f440f538129730adaed32d71543675';
 export default node;

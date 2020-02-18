@@ -95,6 +95,7 @@ export enum ActionType {
   PlacedMaxBid = "Placed Max Bid",
   RegisteredToBid = "Registered To Bid",
   SelectedMaxBid = "Selected max bid",
+  ViewedLot = "Lot Viewed",
 
   /**
    * A tap on a UI element using a finger-like input device.
