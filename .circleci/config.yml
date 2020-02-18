@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  yarn: artsy/yarn@3.0.0
+  yarn: artsy/yarn@dev:94201cf9cd41b8b0d7441b5095ea044d
   codecov: codecov/codecov@1.0.5
   auto: artsy/auto@dev:94201cf9cd41b8b0d7441b5095ea044d
 
