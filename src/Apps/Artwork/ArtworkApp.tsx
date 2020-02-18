@@ -25,10 +25,7 @@ import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/Rec
 import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
-import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
-
-const logger = createLogger("Apps/Artwork/ArtworkApp")
 
 export interface Props {
   artwork: ArtworkApp_artwork
@@ -88,7 +85,6 @@ export class ArtworkApp extends React.Component<Props> {
     }
 
     if (typeof window.analytics !== "undefined") {
-      logger.warn("Tracking PageView:", properties)
       window.analytics.page(properties, { integrations: { Marketo: false } })
     }
   }
@@ -105,7 +101,6 @@ export class ArtworkApp extends React.Component<Props> {
         product_id: internalID,
       }
       if (tracking) {
-        logger.warn("Tracking ProductView:", trackingData)
         tracking.trackEvent(trackingData)
       }
     }
@@ -125,7 +120,6 @@ export class ArtworkApp extends React.Component<Props> {
         sale_id: sale.internalID,
         auction_slug: sale.slug,
       }
-      logger.warn("Tracking LotView:", trackingData)
       tracking.trackEvent(trackingData)
     }
   }

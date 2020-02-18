@@ -337,3 +337,6 @@ export const OfferFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default OfferFragmentContainer

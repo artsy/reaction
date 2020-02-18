@@ -81,9 +81,9 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   const providerValues = {
     ...props,
     isFetching,
-    setIsFetching,
     relayEnvironment,
     router,
+    setIsFetching,
     setRouter,
     user,
   }
