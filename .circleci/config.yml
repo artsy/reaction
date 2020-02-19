@@ -1,9 +1,9 @@
 version: 2.1
 
 orbs:
-  yarn: artsy/yarn@dev:94201cf9cd41b8b0d7441b5095ea044d
+  yarn: artsy/yarn@4.0.0
   codecov: codecov/codecov@1.0.5
-  auto: artsy/auto@dev:94201cf9cd41b8b0d7441b5095ea044d
+  auto: artsy/auto@1.0.1
 
 workflows:
   build_and_verify:
