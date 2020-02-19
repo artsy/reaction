@@ -1,3 +1,15 @@
+# v25.11.3 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Use data-link instead of classname for integration test [#3174](https://github.com/artsy/reaction/pull/3174) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.11.2 (Wed Feb 19 2020)
 
 #### 🐛  Bug Fix
