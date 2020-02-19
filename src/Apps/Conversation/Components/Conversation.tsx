@@ -10,7 +10,7 @@ interface ItemProps {
   item: Conversation_conversation["items"][0]["item"]
 }
 
-const Item = (props: ItemProps) => {
+const Item: React.FC<ItemProps> = props => {
   const { item } = props
   if (item.__typename === "Artwork") {
     return (
@@ -52,7 +52,7 @@ interface ConversationProps {
   relay: RelayProp
 }
 
-const Conversation = (props: ConversationProps) => {
+const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
   const messageCount = conversation.messages.edges.length
   return (

@@ -12,7 +12,7 @@ interface DetailRouteProps {
   conversationID: string
 }
 
-export const DetailRoute = (props: DetailRouteProps) => {
+export const DetailRoute: React.FC<DetailRouteProps> = props => {
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)

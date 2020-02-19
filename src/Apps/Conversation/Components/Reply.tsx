@@ -9,7 +9,7 @@ interface ReplyProps {
   environment: Environment
 }
 
-export const Reply = (props: ReplyProps) => {
+export const Reply: React.FC<ReplyProps> = props => {
   const { environment, conversation } = props
   const [bodyText, setBodyText] = useState("")
   return (

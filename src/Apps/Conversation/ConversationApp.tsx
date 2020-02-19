@@ -12,7 +12,7 @@ interface ConversationAppProps {
   me: ConversationApp_me
 }
 
-export const ConversationApp = (props: ConversationAppProps) => {
+export const ConversationApp: React.FC<ConversationAppProps> = props => {
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)

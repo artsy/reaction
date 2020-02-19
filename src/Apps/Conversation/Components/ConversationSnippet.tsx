@@ -17,7 +17,7 @@ interface ConversationSnippetProps {
   conversation: ConversationSnippet_conversation
 }
 
-const ConversationSnippet = (props: ConversationSnippetProps) => {
+const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
   const conversation = props.conversation
   // If we cannot resolve items in the conversation, such as deleted fair booths
   // prior to snapshotting them at time of inquiry (generally older conversations),

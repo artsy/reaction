@@ -10,7 +10,7 @@ interface MessageProps {
   initialMessage?: string
   isFirst: boolean
 }
-const Message = (props: MessageProps) => {
+const Message: React.FC<MessageProps> = props => {
   const { message, initialMessage, isFirst } = props
   const createdAt = DateTime.fromISO(message.createdAt).toRelative()
   return (

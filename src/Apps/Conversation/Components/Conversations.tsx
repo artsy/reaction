@@ -9,9 +9,7 @@ interface ConversationsProps {
   relay: RelayRefetchProp
 }
 
-const Conversations: React.FC<ConversationsProps> = (
-  props: ConversationsProps
-) => {
+const Conversations: React.FC<ConversationsProps> = props => {
   const { me } = props
   const conversations = me.conversationsConnection.edges
   return (
