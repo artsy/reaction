@@ -9,7 +9,6 @@
   "peerDependencies": {
     "@artsy/palette": "^4.16.0 || ^5.0.0",
     "@sentry/browser": "^4.2.3",
-    "dd-trace": "^0.6.0",
     "flickity": "2.1.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
@@ -112,7 +111,6 @@
     "concurrently": "3.5.1",
     "cookies-js": "1.2.3",
     "core-js": "2.6.5",
-    "dd-trace": "0.6.0",
     "dedent": "0.7.0",
     "dotenv": "4.0.0",
     "enzyme": "3.8.0",
