@@ -1,13 +1,13 @@
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { routes as conversationRoute } from "../Conversation/routes"
+import { conversationRoutes } from "../Conversation/routes"
 
 storiesOf("Apps/Conversation", module)
   .add("Default", () => {
     return (
       <MockRouter
-        routes={conversationRoute}
+        routes={conversationRoutes}
         initialRoute="/user/conversations"
       />
     )
@@ -15,7 +15,7 @@ storiesOf("Apps/Conversation", module)
   .add("Detail", () => {
     return (
       <MockRouter
-        routes={conversationRoute}
+        routes={conversationRoutes}
         initialRoute="/user/conversations/842"
       />
     )

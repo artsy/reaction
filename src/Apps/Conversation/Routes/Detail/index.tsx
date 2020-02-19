@@ -40,3 +40,5 @@ export const DetailFragmentContainer = createFragmentContainer(DetailRoute, {
     }
   `,
 })
+
+export default DetailFragmentContainer
