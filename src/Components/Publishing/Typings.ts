@@ -109,6 +109,8 @@ export interface ArticleData {
     partner_condensed_logo?: string
   }
   shouldAdRender?: boolean
+  partner?: ArticlePartner
+  sale?: ArticleSale
 }
 
 export type SectionType =
@@ -188,4 +190,30 @@ export interface RelatedArticleCanvasData {
   slug: string
   thumbnail_title: string
   thumbnail_image: string
+}
+
+export interface ArticleSale {
+  id: string
+  name: string
+  href: string
+  cover_image?: {
+    cropped: {
+      url: string
+    }
+  }
+}
+
+export interface ArticlePartner {
+  default_profile_id: string
+  name: string
+  type: string
+  profile: {
+    id: string
+    href: string
+    image?: {
+      cropped: {
+        url: string
+      }
+    }
+  }
 }
