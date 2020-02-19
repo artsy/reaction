@@ -1,3 +1,20 @@
+# v25.11.1 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Add integrity classname [#3171](https://github.com/artsy/reaction/pull/3171) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Add canary deployment to reaction PRs [#3168](https://github.com/artsy/reaction/pull/3168) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.11.0 (Tue Feb 18 2020)
 
 #### 🚀  Enhancement
