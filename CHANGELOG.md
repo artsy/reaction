@@ -1,3 +1,15 @@
+# v25.11.6 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Remove dd-trace [#3176](https://github.com/artsy/reaction/pull/3176) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.11.5 (Wed Feb 19 2020)
 
 #### 🐛  Bug Fix
