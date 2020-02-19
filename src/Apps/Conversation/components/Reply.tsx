@@ -25,10 +25,10 @@ export const Reply = (props: ReplyProps) => {
             conversation,
             bodyText,
             _response => {
-              setBodyText("")
+              setBodyText(null)
             },
             _error => {
-              setBodyText("")
+              setBodyText(null)
             }
           )
         }

@@ -32,6 +32,32 @@ export type Conversation_conversation = {
             } | null;
         } | null> | null;
     } | null;
+    readonly items: ReadonlyArray<{
+        readonly item: ({
+            readonly __typename: "Artwork";
+            readonly id: string;
+            readonly date: string | null;
+            readonly title: string | null;
+            readonly artistNames: string | null;
+            readonly image: {
+                readonly url: string | null;
+            } | null;
+        } | {
+            readonly __typename: "Show";
+            readonly id: string;
+            readonly fair: {
+                readonly name: string | null;
+            } | null;
+            readonly name: string | null;
+            readonly coverImage: {
+                readonly url: string | null;
+            } | null;
+        } | {
+            /*This will never be '%other', but we need some
+            value in case none of the concrete values match.*/
+            readonly __typename: "%other";
+        }) | null;
+    } | null> | null;
     readonly " $refType": "Conversation_conversation";
 };
 export type Conversation_conversation$data = Conversation_conversation;
@@ -63,7 +89,23 @@ v2 = {
   "name": "name",
   "args": null,
   "storageKey": null
-};
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "url",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "Conversation_conversation",
@@ -231,13 +273,7 @@ return {
               "selections": [
                 (v0/*: any*/),
                 (v1/*: any*/),
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "__typename",
-                  "args": null,
-                  "storageKey": null
-                },
+                (v3/*: any*/),
                 {
                   "kind": "FragmentSpread",
                   "name": "Message_message",
@@ -248,9 +284,100 @@ return {
           ]
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "items",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ConversationItem",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "item",
+          "storageKey": null,
+          "args": null,
+          "concreteType": null,
+          "plural": false,
+          "selections": [
+            (v3/*: any*/),
+            {
+              "kind": "InlineFragment",
+              "type": "Artwork",
+              "selections": [
+                (v0/*: any*/),
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "date",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "title",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "artistNames",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "image",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Image",
+                  "plural": false,
+                  "selections": (v4/*: any*/)
+                }
+              ]
+            },
+            {
+              "kind": "InlineFragment",
+              "type": "Show",
+              "selections": [
+                (v0/*: any*/),
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "fair",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Fair",
+                  "plural": false,
+                  "selections": [
+                    (v2/*: any*/)
+                  ]
+                },
+                (v2/*: any*/),
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "coverImage",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Image",
+                  "plural": false,
+                  "selections": (v4/*: any*/)
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 };
 })();
-(node as any).hash = 'e8387528d3a7c038528ca12da33953b8';
+(node as any).hash = '4c0c12062f732c1c052e7c13b739c768';
 export default node;

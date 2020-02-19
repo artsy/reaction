@@ -60,6 +60,34 @@ fragment Conversation_conversation on Conversation {
       }
     }
   }
+  items {
+    item {
+      __typename
+      ... on Artwork {
+        id
+        date
+        title
+        artistNames
+        image {
+          url
+        }
+      }
+      ... on Show {
+        id
+        fair {
+          name
+          id
+        }
+        name
+        coverImage {
+          url
+        }
+      }
+      ... on Node {
+        id
+      }
+    }
+  }
 }
 
 fragment Detail_me_3oGfhn on Me {
@@ -128,6 +156,22 @@ v5 = [
     "kind": "Literal",
     "name": "sort",
     "value": "DESC"
+  }
+],
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v7 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "url",
+    "args": null,
+    "storageKey": null
   }
 ];
 return {
@@ -358,13 +402,7 @@ return {
                               (v4/*: any*/)
                             ]
                           },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "name": "__typename",
-                            "args": null,
-                            "storageKey": null
-                          }
+                          (v6/*: any*/)
                         ]
                       }
                     ]
@@ -379,6 +417,97 @@ return {
                 "handle": "connection",
                 "key": "Messages_messages",
                 "filters": []
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "items",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "ConversationItem",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "item",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": null,
+                    "plural": false,
+                    "selections": [
+                      (v6/*: any*/),
+                      (v1/*: any*/),
+                      {
+                        "kind": "InlineFragment",
+                        "type": "Artwork",
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "date",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "title",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "artistNames",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": (v7/*: any*/)
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "InlineFragment",
+                        "type": "Show",
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "fair",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Fair",
+                            "plural": false,
+                            "selections": [
+                              (v3/*: any*/),
+                              (v1/*: any*/)
+                            ]
+                          },
+                          (v3/*: any*/),
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "coverImage",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": (v7/*: any*/)
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -391,7 +520,7 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 10, sort: DESC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        ...Message_message\n        __typename\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 10, sort: DESC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        ...Message_message\n        __typename\n      }\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
     "metadata": {}
   }
 };
