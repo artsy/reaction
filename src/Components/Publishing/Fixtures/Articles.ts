@@ -1,5 +1,5 @@
 import { cloneDeep, extend } from "lodash"
-import { ArticleData } from "../Typings"
+import { ArticleData, ArticlePartner, ArticleSale } from "../Typings"
 import {
   ClassicText,
   FeatureText,
@@ -211,6 +211,34 @@ export const ClassicArticleInternalChannel: ArticleData = {
         "<h2>Artsy Values</h2><p>Artsy has five core values that will inform your experience at Artsy.</p><p><strong>Art x Science:</strong> We believe in uniting empathy with logic, emotion with data, and intuition with research in everything we do. Whether in business strategy or design, culture or code, we seek the magic that happens when the often separate worlds of art and science come together.</p><p><strong>People are Paramount:</strong> We spend extraordinary energy finding the best person for a job—and once found, we give them the trust and autonomy to be CEO of their role. We avoid pointless bureaucracy and prefer to empower people with information rather than limit them with process.</p><p><strong>Quality Worthy of Art:</strong> We aim to create an experience worthy of all the world’s art and so hold ourselves to the highest standards in all our work. We believe that the best long term quality comes from rapid shipping, iterating, and learning as we go.</p><p><strong>Positive Energy:</strong> We know positivity and optimism benefit our work, and we harness positive energy as a vehicle towards greater awareness, growth, and collaboration. We believe in cultivating a positive relationship to art as opposed to one based on exclusivity or scarcity.</p><p><strong>Openness:</strong> We believe in being open with each other and the world—whether in open-sourcing our code, sharing feedback, or building a diverse and inclusive work culture. We believe in bringing our full selves to work and manifesting an open world where everyone has access to art.</p><p><em>Artsy is an equal opportunity employer. We value a diverse workforce and an inclusive culture. We encourage applications from all qualified individuals without regard to race, color, religion, gender, sexual orientation, gender identity or expression, age, national origin, marital status, disability, and veteran status.</em></p>",
     },
   ],
+}
+
+export const ClassicArticlePartner: ArticlePartner = {
+  default_profile_id: "contessa-gallery",
+  name: "Contessa Gallery",
+  type: "Gallery",
+  profile: {
+    id: "contessa-gallery",
+    href: "/contessa-gallery",
+    image: {
+      cropped: {
+        url:
+          "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FOyZ08tRGQ1k-ue1nk06vlQ%2Fsquare.jpg",
+      },
+    },
+  },
+}
+
+export const ClassicArticleSale: ArticleSale = {
+  id: "ici-benefit-auction-2019",
+  name: "ICI: Benefit Auction 2019",
+  href: "/auction/ici-benefit-auction-2019",
+  cover_image: {
+    cropped: {
+      url:
+        "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FLp8BFIM7yd8AspTZJz-MGg%2Flarge_rectangle.jpg",
+    },
+  },
 }
 
 export const ClassicArticlePromotedContent: ArticleData = {
@@ -807,17 +835,7 @@ export const ClassicArticlePromotedContent: ArticleData = {
     },
   ],
   relatedArticles: null,
-  sale: {
-    id: "ici-benefit-auction-2019",
-    name: "ICI: Benefit Auction 2019",
-    href: "/auction/ici-benefit-auction-2019",
-    cover_image: {
-      cropped: {
-        url:
-          "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FLp8BFIM7yd8AspTZJz-MGg%2Flarge_rectangle.jpg",
-      },
-    },
-  },
+  sale: ClassicArticleSale,
 }
 
 export const StandardArticle: ArticleData = {
