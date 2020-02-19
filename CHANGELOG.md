@@ -1,3 +1,15 @@
+# v25.11.4 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Pass data-test down through RouterLink #trivial [#3177](https://github.com/artsy/reaction/pull/3177) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.11.3 (Wed Feb 19 2020)
 
 #### 🐛  Bug Fix
