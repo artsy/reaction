@@ -1,3 +1,15 @@
+# v25.11.5 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1793] Fix artwork filter events being tracked twice. [#3175](https://github.com/artsy/reaction/pull/3175) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.11.4 (Wed Feb 19 2020)
 
 #### 🐛  Bug Fix
