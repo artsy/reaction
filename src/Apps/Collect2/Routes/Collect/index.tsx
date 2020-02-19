@@ -9,7 +9,7 @@ import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForA
 import { buildUrlForCollectApp } from "Apps/Collect2/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 
-import { track, useTracking } from "Artsy/Analytics"
+import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
 import { BreadCrumbList } from "Components/v2/Seo"
@@ -38,7 +38,6 @@ export const CollectApp = track({
   } = props
   const medium = params && params.medium
   const { description, breadcrumbTitle, title } = getMetadataForMedium(medium)
-  const { trackEvent } = useTracking()
 
   const canonicalHref = medium
     ? `${sd.APP_URL}/collect/${medium}`
@@ -123,13 +122,6 @@ export const CollectApp = track({
                 })
                *
                */
-            }}
-            onFilterClick={(key, value, filterState) => {
-              trackEvent({
-                action_type: Schema.ActionType.CommercialFilterParamsChanged,
-                changed: { [key]: value },
-                current: filterState,
-              })
             }}
           />
         </Box>
