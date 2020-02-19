@@ -1,12 +1,12 @@
 import { ConversationApp_me } from "__generated__/ConversationApp_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
+import { ConversationsFragmentContainer as Conversations } from "Apps/Conversation/Components/Conversations"
 import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import React, { useContext } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { userIsAdmin } from "Utils/user"
-import { ConversationsFragmentContainer as Conversations } from "./Components/Conversations"
 
 interface ConversationAppProps {
   me: ConversationApp_me

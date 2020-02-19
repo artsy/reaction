@@ -24,7 +24,7 @@ export const Items = [
   },
 ]
 
-export const Conversation = {
+export const MockedConversation = {
   id: "123898",
   internalID: "conversation1",
   from: {

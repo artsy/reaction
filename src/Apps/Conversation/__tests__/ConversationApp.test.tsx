@@ -2,7 +2,7 @@ import {
   ConversationAppTestQueryRawResponse,
   ConversationAppTestQueryResponse,
 } from "__generated__/ConversationAppTestQuery.graphql"
-import { Conversation } from "Apps/__tests__/Fixtures/Conversation"
+import { MockedConversation } from "Apps/__tests__/Fixtures/Conversation"
 import { SystemContextProvider } from "Artsy"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
@@ -57,7 +57,7 @@ describe("Conversation app", () => {
         const mockMe = {
           id: "111",
           conversationsConnection: {
-            edges: [{ node: Conversation, cursor: "absc" }],
+            edges: [{ node: MockedConversation, cursor: "absc" }],
             pageInfo,
           },
         }
@@ -87,7 +87,7 @@ describe("Conversation app", () => {
       const mockMe = {
         id: "111",
         conversationsConnection: {
-          edges: [{ node: Conversation, cursor: "absc" }],
+          edges: [{ node: MockedConversation, cursor: "absc" }],
           pageInfo,
         },
       }
