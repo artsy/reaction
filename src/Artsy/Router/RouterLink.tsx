@@ -37,6 +37,7 @@ export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
       "Component",
       "activeClassName",
       "className",
+      "data-test",
       "exact",
       "replace",
       "style",
