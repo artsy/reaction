@@ -1,3 +1,20 @@
+# v25.11.2 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Migrate "Promoted Content" banner from Force [#3169](https://github.com/artsy/reaction/pull/3169) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Note that canaries are auto published [#3172](https://github.com/artsy/reaction/pull/3172) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.11.1 (Wed Feb 19 2020)
 
 #### 🐛  Bug Fix
