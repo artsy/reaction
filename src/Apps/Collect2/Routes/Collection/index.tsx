@@ -128,13 +128,6 @@ export class CollectionApp extends Component<CollectionAppProps> {
                 artworksConnection.aggregations as SharedArtworkFilterContextProps["aggregations"]
               }
               onChange={updateUrl}
-              onFilterClick={(key, value, filterState) => {
-                this.props.tracking.trackEvent({
-                  action_type: Schema.ActionType.CommercialFilterParamsChanged,
-                  changed: { [key]: value },
-                  current: filterState,
-                })
-              }}
             >
               <BaseArtworkFilter
                 relay={relay}

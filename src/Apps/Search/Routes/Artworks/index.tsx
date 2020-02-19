@@ -30,14 +30,6 @@ export const SearchResultsArtworksRoute = withRouter((props => {
             destination_path: artwork.href,
           })
         }}
-        onFilterClick={(key, value, filterState) => {
-          tracking.trackEvent({
-            action_type:
-              AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
-            changed: { [key]: value },
-            current: filterState,
-          })
-        }}
         ZeroState={ZeroState}
       />
     </Box>
