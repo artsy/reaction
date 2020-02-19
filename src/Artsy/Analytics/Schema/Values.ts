@@ -4,6 +4,7 @@
 export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
+  ArtistAuctionResults = "Artist Auction Results",
   ArtworkPage = "Artwork page",
   AuctionRegistrationPage = "Auction Registration page",
   AuctionConfirmBidPage = "Auction Confirm Bid page",
@@ -62,6 +63,7 @@ export enum ActionType {
   ClickedReadMore = "Clicked read more",
 
   CommercialFilterParamsChanged = "Commercial filter params changed",
+  AuctionResultFilterParamChanged = "Auction results filter params changed",
 
   /**
    * A/B Test Experiments
