@@ -21,7 +21,7 @@ export const MinimalNavBar: React.FC<MinimalNavBarProps> = props => {
     >
       <AppContainer>
         <Box height={70} px={[2, 4]}>
-          <RouterLink to={props.to}>
+          <RouterLink to={props.to} className="acceptance__logoLink">
             <ArtsyLogoBlackIcon />
           </RouterLink>
         </Box>
