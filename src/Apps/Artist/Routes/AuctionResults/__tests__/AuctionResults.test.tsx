@@ -5,9 +5,11 @@ import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
+import { useTracking } from "react-tracking"
 import { Breakpoint } from "Utils/Responsive"
 
 jest.unmock("react-relay")
+jest.mock("react-tracking")
 
 describe("AuctionResults", () => {
   let wrapper: ReactWrapper
@@ -31,6 +33,15 @@ describe("AuctionResults", () => {
       ),
     })
   }
+
+  const trackEvent = jest.fn()
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
 
   describe("general behavior", () => {
     beforeAll(async () => {
@@ -146,7 +157,7 @@ describe("AuctionResults", () => {
           })
         })
         describe("size filter", () => {
-          it("triggers relay refetch with size list", done => {
+          it("triggers relay refetch with size list and tracks events", done => {
             const filter = wrapper.find("SizeFilter")
 
             const checkboxes = filter.find("Checkbox")
@@ -178,6 +189,21 @@ describe("AuctionResults", () => {
                   sizes: ["LARGE"],
                 })
               )
+
+              expect(trackEvent).toHaveBeenCalledTimes(3)
+              expect(trackEvent.mock.calls[0][0]).toEqual({
+                action_type: "Auction results filter params changed",
+                context_page: "Artist Auction Results",
+                changed: { sizes: ["MEDIUM"] },
+                current: {
+                  sizes: ["MEDIUM"],
+                  page: 1,
+                  sort: "DATE_DESC",
+                  openedItemIndex: null,
+                  organizations: [],
+                },
+              })
+
               done()
             })
           })
