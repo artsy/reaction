@@ -1,3 +1,15 @@
+# v25.13.1 (Thu Feb 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix double track on artwork page [#3181](https://github.com/artsy/reaction/pull/3181) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.13.0 (Thu Feb 20 2020)
 
 #### 🚀  Enhancement
