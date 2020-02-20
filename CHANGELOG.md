@@ -1,3 +1,15 @@
+# v25.13.0 (Thu Feb 20 2020)
+
+#### 🚀  Enhancement
+
+- [FX-1752] Add "Consign" to desktop global nav More menu; nav code cleanup [#3158](https://github.com/artsy/reaction/pull/3158) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.12.0 (Thu Feb 20 2020)
 
 #### 🚀  Enhancement
