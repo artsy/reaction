@@ -50,24 +50,6 @@ export class ArtworkApp extends React.Component<Props> {
     this.trackLotView()
   }
 
-  componentDidUpdate(prevProps) {
-    /**
-     * If we've changed routes within the app, trigger pageView and productView.
-     *
-     * FIXME: We're manually invoking pageView tracking here, instead of within
-     * the `trackingMiddleware` file as we need to pass along additional metadata.
-     * Waiting on analytics team to decide if there's a better way to capture this
-     * data that remains consistent with the rest of the app.
-     */
-    if (this.props.routerPathname !== prevProps.routerPathname) {
-      if (this.props.routerPathname.includes("/artwork/")) {
-        this.trackPageview()
-        this.trackProductView()
-        this.trackLotView()
-      }
-    }
-  }
-
   trackPageview() {
     const {
       artwork: { listPrice, availability, is_offerable, is_acquireable },

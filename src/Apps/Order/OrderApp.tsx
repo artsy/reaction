@@ -86,6 +86,11 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   preventHardReload = event => {
+    // Don't block navigation for status page, as we've completed the flow
+    if (window.location.pathname.includes("/status")) {
+      return false
+    }
+
     event.preventDefault()
     event.returnValue = true
   }
