@@ -29,6 +29,11 @@ export interface AuctionResultsFilterContextProps {
   setFilter: (name: keyof AuctionResultsFilters, value: any) => void
   unsetFilter: (name: keyof AuctionResultsFilters) => void
   onAuctionResultClick?: (index: number) => void
+  onFilterClick?: (
+    key: keyof AuctionResultsFilters,
+    value: string,
+    filterState: AuctionResultsFilters
+  ) => void
 }
 
 /**
@@ -46,18 +51,14 @@ export const AuctionResultsFilterContext = React.createContext<
 
 export type SharedAuctionResultsFilterContextProps = Pick<
   AuctionResultsFilterContextProps,
-  "filters"
+  "filters" | "onFilterClick"
 > & {
   onChange?: (filterState) => void
 }
 
 export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsFilterContextProps & {
   children: React.ReactNode
-}> = ({
-  children,
-  // counts = {}, // TODO: maybe use this for counts
-  filters = {},
-}) => {
+}> = ({ children, filters = {}, onFilterClick }) => {
   const initialFilterState = {
     ...initialAuctionResultsFilterState,
     ...filters,
@@ -72,6 +73,7 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     filters: auctionResultsFilterState,
 
     // Handlers
+    onFilterClick,
     onAuctionResultClick: index => {
       dispatch({
         type: "SET",
@@ -83,6 +85,9 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     },
 
     setFilter: (name, val) => {
+      if (onFilterClick) {
+        onFilterClick(name, val, { ...auctionResultsFilterState, [name]: val })
+      }
       dispatch({
         type: "SET",
         payload: {
