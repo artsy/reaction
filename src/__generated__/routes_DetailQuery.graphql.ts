@@ -7,7 +7,7 @@ export type routes_DetailQueryVariables = {
 };
 export type routes_DetailQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"Detail_me">;
+        readonly " $fragmentRefs": FragmentRefs<"Conversation_me">;
     } | null;
 };
 export type routes_DetailQuery = {
@@ -22,7 +22,7 @@ query routes_DetailQuery(
   $conversationID: String!
 ) {
   me {
-    ...Detail_me_3oGfhn
+    ...Conversation_me_3oGfhn
     id
   }
 }
@@ -43,7 +43,7 @@ fragment Conversation_conversation on Conversation {
   initialMessage
   lastMessageID
   unread
-  messages(first: 20, sort: ASC) {
+  messages(first: 30, sort: ASC) {
     pageInfo {
       startCursor
       endCursor
@@ -51,13 +51,13 @@ fragment Conversation_conversation on Conversation {
       hasNextPage
     }
     edges {
-      cursor
       node {
         id
         internalID
         ...Message_message
         __typename
       }
+      cursor
     }
   }
   items {
@@ -90,7 +90,7 @@ fragment Conversation_conversation on Conversation {
   }
 }
 
-fragment Detail_me_3oGfhn on Me {
+fragment Conversation_me_3oGfhn on Me {
   conversation(id: $conversationID) {
     ...Conversation_conversation
     id
@@ -150,7 +150,7 @@ v5 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 20
+    "value": 30
   },
   {
     "kind": "Literal",
@@ -194,7 +194,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "Detail_me",
+            "name": "Conversation_me",
             "args": [
               {
                 "kind": "Variable",
@@ -297,7 +297,7 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "messages",
-                "storageKey": "messages(first:20,sort:\"ASC\")",
+                "storageKey": "messages(first:30,sort:\"ASC\")",
                 "args": (v5/*: any*/),
                 "concreteType": "MessageConnection",
                 "plural": false,
@@ -351,13 +351,6 @@ return {
                     "plural": true,
                     "selections": [
                       {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "cursor",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
                         "kind": "LinkedField",
                         "alias": null,
                         "name": "node",
@@ -404,6 +397,13 @@ return {
                           },
                           (v6/*: any*/)
                         ]
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "cursor",
+                        "args": null,
+                        "storageKey": null
                       }
                     ]
                   }
@@ -520,10 +520,10 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Detail_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 20, sort: ASC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        ...Message_message\n        __typename\n      }\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Detail_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Conversation_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 30, sort: ASC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      node {\n        id\n        internalID\n        ...Message_message\n        __typename\n      }\n      cursor\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversation_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '7a86aa6acf364335ea5874519b2a6389';
+(node as any).hash = 'a084dd3714f4f1e2112d2c936bc6b7fa';
 export default node;

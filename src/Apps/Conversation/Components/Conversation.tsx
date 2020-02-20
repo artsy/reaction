@@ -57,13 +57,20 @@ const Conversation: React.FC<ConversationProps> = props => {
   return (
     <Box>
       {conversation.items.map((i, idx) => (
-        <Item item={i.item} key={idx} />
+        <Item
+          item={i.item}
+          key={
+            i.item.__typename === "Artwork" || i.item.__typename === "Show"
+              ? i.item.id
+              : idx
+          }
+        />
       ))}
       {conversation.messages.edges.map((m, idx) => (
         <Message
           message={m.node}
           initialMessage={conversation.initialMessage}
-          key={m.cursor}
+          key={m.node.id}
           isFirst={idx === 0}
         />
       ))}
@@ -78,7 +85,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
     conversation: graphql`
       fragment Conversation_conversation on Conversation
         @argumentDefinitions(
-          count: { type: "Int", defaultValue: 20 }
+          count: { type: "Int", defaultValue: 30 }
           after: { type: "String" }
         ) {
         id
@@ -103,7 +110,6 @@ export const ConversationFragmentContainer = createFragmentContainer(
             hasNextPage
           }
           edges {
-            cursor
             node {
               id
               internalID

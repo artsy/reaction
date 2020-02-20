@@ -24,7 +24,6 @@ export type Conversation_conversation = {
             readonly hasNextPage: boolean;
         };
         readonly edges: ReadonlyArray<{
-            readonly cursor: string;
             readonly node: {
                 readonly id: string;
                 readonly internalID: string;
@@ -127,7 +126,7 @@ return {
       "kind": "LocalArgument",
       "name": "count",
       "type": "Int",
-      "defaultValue": 20
+      "defaultValue": 30
     },
     {
       "kind": "LocalArgument",
@@ -256,13 +255,6 @@ return {
           "plural": true,
           "selections": [
             {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "cursor",
-              "args": null,
-              "storageKey": null
-            },
-            {
               "kind": "LinkedField",
               "alias": null,
               "name": "node",
@@ -280,6 +272,13 @@ return {
                   "args": null
                 }
               ]
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "cursor",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -379,5 +378,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f5d84154e15c76190bd873d357d6c740';
+(node as any).hash = 'bcf380e0b952c72dddca48ab44031d10';
 export default node;

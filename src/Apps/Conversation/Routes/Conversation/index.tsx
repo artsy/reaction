@@ -1,5 +1,5 @@
 import { BorderBox, Flex } from "@artsy/palette"
-import { Detail_me } from "__generated__/Detail_me.graphql"
+import { Conversation_me } from "__generated__/Conversation_me.graphql"
 import { ConversationFragmentContainer as Conversation } from "Apps/Conversation/Components/Conversation"
 import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
@@ -7,12 +7,12 @@ import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { userIsAdmin } from "Utils/user"
 
-interface DetailRouteProps {
-  me: Detail_me
+interface ConversationRouteProps {
+  me: Conversation_me
   conversationID: string
 }
 
-export const DetailRoute: React.FC<DetailRouteProps> = props => {
+export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
   const { me } = props
   const { user } = useContext(SystemContext)
   const isAdmin = userIsAdmin(user)
@@ -30,15 +30,18 @@ export const DetailRoute: React.FC<DetailRouteProps> = props => {
   }
 }
 
-export const DetailFragmentContainer = createFragmentContainer(DetailRoute, {
-  me: graphql`
-    fragment Detail_me on Me
-      @argumentDefinitions(conversationID: { type: "String!" }) {
-      conversation(id: $conversationID) {
-        ...Conversation_conversation
+export const ConversationFragmentContainer = createFragmentContainer(
+  ConversationRoute,
+  {
+    me: graphql`
+      fragment Conversation_me on Me
+        @argumentDefinitions(conversationID: { type: "String!" }) {
+        conversation(id: $conversationID) {
+          ...Conversation_conversation
+        }
       }
-    }
-  `,
-})
+    `,
+  }
+)
 
-export default DetailFragmentContainer
+export default ConversationFragmentContainer

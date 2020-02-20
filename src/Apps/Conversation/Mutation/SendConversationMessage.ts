@@ -81,6 +81,9 @@ export const SendConversationMessage = (
       sendConversationMessage: {
         messageEdge: {
           node: {
+            id: null,
+            internalID: null,
+            impulseID: null,
             body: text,
             from: {
               email: conversation.from.email,
@@ -88,7 +91,6 @@ export const SendConversationMessage = (
             },
             isFromUser: true,
             createdAt: null, // Intentionally left blank so Message can recognize this as an optimistic response.
-            attachments: [],
           } as any,
         },
       },

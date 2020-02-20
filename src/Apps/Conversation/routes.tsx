@@ -17,7 +17,7 @@ export const conversationRoutes: RouteConfig[] = [
     `,
     prepareVariables: (params, props) => {
       return {
-        first: 10,
+        first: 30,
       }
     },
     cacheConfig: {
@@ -26,7 +26,7 @@ export const conversationRoutes: RouteConfig[] = [
   },
   {
     path: "/user/conversations/:conversationID",
-    getComponent: () => loadable(() => import("./Routes/Detail")),
+    getComponent: () => loadable(() => import("./Routes/Conversation")),
     prepareVariables: (params, _props) => {
       return {
         conversationID: params.conversationID,
@@ -35,7 +35,7 @@ export const conversationRoutes: RouteConfig[] = [
     query: graphql`
       query routes_DetailQuery($conversationID: String!) {
         me {
-          ...Detail_me @arguments(conversationID: $conversationID)
+          ...Conversation_me @arguments(conversationID: $conversationID)
         }
       }
     `,
