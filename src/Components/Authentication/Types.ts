@@ -1,3 +1,8 @@
+import {
+  ContextModule as AuthContextModule,
+  Intent as AuthIntent,
+  Trigger as AuthTrigger,
+} from "Artsy/Analytics/v2/Events/AuthImpression"
 import { FormikProps } from "formik"
 
 export enum ModalType {
@@ -23,12 +28,12 @@ export interface FormProps {
    * any global error that comes from an external data source
    * (e.g. server)
    */
-  contextModule?: string
+  contextModule?: AuthContextModule
   error?: string
   values?: InputValues
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void
-  intent?: string
+  intent?: AuthIntent
   onFacebookLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
   title?: string
@@ -64,7 +69,7 @@ export interface ModalOptions {
   /**
    * the action taken that prompted user to signup or login.
    */
-  intent?: string
+  intent?: AuthIntent
   /**
    * the page before the page on which the sign up was triggered.
    */
@@ -82,11 +87,11 @@ export interface ModalOptions {
   /*
    * the location where the modal was triggered.
    */
-  contextModule?: string
+  contextModule?: AuthContextModule
   /**
    * the type of action that triggered the modal (eg: click, timed)
    */
-  trigger?: string
+  trigger?: AuthTrigger
   /**
    * the number of seconds before a modal was triggered
    */

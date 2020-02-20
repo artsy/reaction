@@ -1,4 +1,5 @@
 import { Theme } from "@artsy/palette"
+import { authImpression } from "Artsy/Analytics/v2/Events/AuthImpression"
 import qs from "querystring"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -63,7 +64,6 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       options: {
         contextModule,
         copy,
-        destination,
         redirectTo,
         intent,
         trigger,
@@ -76,14 +76,12 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     // Analytics
     const event = Object.assign(
       {
-        action: "Auth impression",
-        type,
-        context_module: contextModule,
-        modal_copy: copy,
-        trigger: trigger || "click",
-        trigger_seconds: triggerSeconds,
+        contextModule,
         intent,
-        auth_redirect: redirectTo || destination,
+        copy,
+        trigger,
+        triggerSeconds,
+        type,
       },
       type === "signup"
         ? {
@@ -91,8 +89,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
           }
         : null
     )
+
+    const trackingArgs = authImpression(event)
+
     if (tracking) {
-      tracking.trackEvent(event)
+      tracking.trackEvent(trackingArgs)
     }
   }
 

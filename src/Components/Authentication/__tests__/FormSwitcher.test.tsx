@@ -18,10 +18,10 @@ describe("FormSwitcher", () => {
         handleSubmit={jest.fn()}
         tracking={props.tracking}
         options={{
-          contextModule: "Header",
+          contextModule: "header",
           copy: "Foo Bar",
           destination: "/collect",
-          intent: "follow artist",
+          intent: "followArtist",
           redirectTo: "/foo",
           trigger: "timed",
           triggerSeconds: 1,
