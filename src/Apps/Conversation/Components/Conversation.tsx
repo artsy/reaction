@@ -54,7 +54,6 @@ interface ConversationProps {
 
 const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
-  const messageCount = conversation.messages.edges.length
   return (
     <Box>
       {conversation.items.map((i, idx) => (
@@ -65,7 +64,7 @@ const Conversation: React.FC<ConversationProps> = props => {
           message={m.node}
           initialMessage={conversation.initialMessage}
           key={m.cursor}
-          isFirst={idx === messageCount - 1}
+          isFirst={idx === 0}
         />
       ))}
       <Reply conversation={conversation} environment={relay.environment} />
@@ -79,7 +78,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
     conversation: graphql`
       fragment Conversation_conversation on Conversation
         @argumentDefinitions(
-          count: { type: "Int", defaultValue: 10 }
+          count: { type: "Int", defaultValue: 20 }
           after: { type: "String" }
         ) {
         id
@@ -95,7 +94,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
         initialMessage
         lastMessageID
         unread
-        messages(first: $count, after: $after, sort: DESC)
+        messages(first: $count, after: $after, sort: ASC)
           @connection(key: "Messages_messages", filters: []) {
           pageInfo {
             startCursor

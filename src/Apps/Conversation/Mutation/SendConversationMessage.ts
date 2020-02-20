@@ -24,7 +24,7 @@ export const SendConversationMessage = (
       conversationStore,
       "Messages_messages"
     )
-    ConnectionHandler.insertEdgeBefore(connection, newMessageEdge)
+    ConnectionHandler.insertEdgeAfter(connection, newMessageEdge)
   }
   return commitMutation<SendConversationMessageMutation>(environment, {
     onError,
