@@ -23,13 +23,13 @@ export function getAppRoutes(): RouteConfig[] {
       routes: collectRoutes,
     },
     {
+      routes: conversationRoutes,
+    },
+    {
       routes: orderRoutes,
     },
     {
       routes: searchRoutes,
-    },
-    {
-      routes: conversationRoutes,
     },
   ])
 }
