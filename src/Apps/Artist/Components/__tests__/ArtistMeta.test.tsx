@@ -340,5 +340,11 @@ describe("Meta", () => {
         },
       })
     })
+
+    it("#offersAttributes doesn't error out when the ES-backed connection is missing", () => {
+      const { artworks_connection, ...rest } = artist
+      const artistWithoutESData = { artworks_connection: undefined, ...rest }
+      expect(offersAttributes(artistWithoutESData)).toBeUndefined()
+    })
   })
 })

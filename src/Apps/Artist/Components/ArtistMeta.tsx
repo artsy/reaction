@@ -53,7 +53,8 @@ export const imageObjectAttributes = (item: ItemWithImage) => {
 }
 
 export const offersAttributes = (artist: ArtistMeta_artist) => {
-  const { edges } = artist.artworks_connection
+  const { artworks_connection } = artist
+  const edges = artworks_connection && artworks_connection.edges
 
   const offers =
     edges &&
