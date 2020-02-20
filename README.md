@@ -109,6 +109,15 @@ Peril will automatically add "Version: Patch", if you don't set one on creating 
 If you're making a change but you don't want to immediate trigger a release (i.e. when 2 PRs need to go out together), specify the correct
 version and add the `Skip Release` label. That'll ensure when the next release happens the version is still bumped appropriately.
 
+### Publishing a Canary to NPM
+
+Canaries are [automatically published](https://github.com/artsy/reaction/pull/3168) to NPM when creating a PR based off of a repo branch (i.e. not a fork). If you need to publish a canary of a fork you'll have to do a few manual steps:
+
+1. Update `package.json`, set version to a canary version, e.g. `2.0.0-canary-<PR#>`, `3.1.5-canary-<PR#>`, ...
+1. Run `npm publish --tag canary` to publish the package under the canary tag
+1. Run `yarn add @artsy/reaction@canary` to install canary package
+1. Running `npm dist-tag ls` can be helpful to see what tagged packages are available
+
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartsy%2Freaction.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartsy%2Freaction?ref=badge_large)

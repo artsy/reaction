@@ -1,7 +1,5 @@
 import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
 import { Works_artist } from "__generated__/Works_artist.graphql"
-import { useTracking } from "Artsy"
-import * as Schema from "Artsy/Analytics/Schema"
 import { BaseArtworkFilter } from "Components/v2/ArtworkFilter"
 import { ArtworkFilterContextProvider } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
 import { updateUrl } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
@@ -19,7 +17,6 @@ interface ArtistArtworkFilterProps {
 
 const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
   const { match, relay, artist, sidebarAggregations } = props
-  const tracking = useTracking()
   const { filtered_artworks } = artist
 
   const hasFilter = filtered_artworks && filtered_artworks.id
@@ -41,13 +38,6 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
       aggregations={sidebarAggregations.aggregations as any}
       counts={artist.counts}
       onChange={updateUrl}
-      onFilterClick={(key, value, filterState) => {
-        tracking.trackEvent({
-          action_type: Schema.ActionType.CommercialFilterParamsChanged,
-          changed: { [key]: value },
-          current: filterState,
-        })
-      }}
     >
       <BaseArtworkFilter
         relay={relay}

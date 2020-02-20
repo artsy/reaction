@@ -1,7 +1,6 @@
 import { Box } from "@artsy/palette"
-import React from "react"
-
 import { NavBar } from "Components/NavBar"
+import React from "react"
 
 export const AppShell = props => {
   const { children } = props

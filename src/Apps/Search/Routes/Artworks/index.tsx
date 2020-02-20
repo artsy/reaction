@@ -30,16 +30,11 @@ export const SearchResultsArtworksRoute = withRouter((props => {
             destination_path: artwork.href,
           })
         }}
-        onFilterClick={(key, value, filterState) => {
-          tracking.trackEvent({
-            action_type:
-              AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
-            changed: { [key]: value },
-            current: filterState,
-          })
-        }}
         ZeroState={ZeroState}
       />
     </Box>
   )
 }) as React.FC<SearchResultsRouteProps>)
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default SearchResultsArtworksRoute

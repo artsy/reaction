@@ -13,6 +13,7 @@ import {
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
+import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { FormikActions } from "formik"
 import React from "react"
 import { Title } from "react-head"
@@ -24,6 +25,7 @@ import {
 } from "react-relay"
 import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
+import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/Register")
@@ -191,19 +193,29 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
       })
   }
 
-  return (
-    <AppContainer>
-      <Title>Auction Registration</Title>
-      <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
-        <Serif size="10">Register to Bid on Artsy</Serif>
-        <Separator mt={1} mb={2} />
+  // FIXME: Remove after A/B test completes
+  let NavBar
+  if (getENV("EXPERIMENTAL_APP_SHELL")) {
+    NavBar = MinimalNavBar
+  } else {
+    NavBar = Box // pass-through; nav bar comes from the server right now
+  }
 
-        <StripeWrappedRegistrationForm
-          onSubmit={handleSubmit}
-          trackSubmissionErrors={trackRegistrationFailed}
-        />
-      </Box>
-    </AppContainer>
+  return (
+    <NavBar to={`/auction/${sale.slug}`}>
+      <AppContainer>
+        <Title>Auction Registration</Title>
+        <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
+          <Serif size="10">Register to Bid on Artsy</Serif>
+          <Separator mt={1} mb={2} />
+
+          <StripeWrappedRegistrationForm
+            onSubmit={handleSubmit}
+            trackSubmissionErrors={trackRegistrationFailed}
+          />
+        </Box>
+      </AppContainer>
+    </NavBar>
   )
 }
 
@@ -232,3 +244,6 @@ export const RegisterRouteFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default RegisterRouteFragmentContainer

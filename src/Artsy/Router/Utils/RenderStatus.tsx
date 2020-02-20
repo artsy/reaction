@@ -2,6 +2,7 @@ import React from "react"
 import StaticContainer from "react-static-container"
 
 import { Box, PageLoader } from "@artsy/palette"
+import { useSystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import ElementsRenderer from "found/lib/ElementsRenderer"
 import { data as sd } from "sharify"
@@ -12,6 +13,12 @@ import { Media } from "Utils/Responsive"
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
 export const RenderPending = () => {
+  const { isFetching, setIsFetching } = useSystemContext()
+
+  if (!isFetching) {
+    setIsFetching(true)
+  }
+
   /**
    * TODO: Add timeout here for when a request takes too long. Show generic error
    * and notify Sentry.
@@ -84,6 +91,12 @@ export const RenderPending = () => {
 export const RenderReady: React.FC<{
   elements: React.ReactNode
 }> = props => {
+  const { isFetching, setIsFetching } = useSystemContext()
+
+  if (isFetching) {
+    setIsFetching(false)
+  }
+
   return (
     <Renderer shouldUpdate>
       <ElementsRenderer elements={props.elements} />
@@ -95,6 +108,12 @@ export const RenderError: React.FC<{
   error: { status?: number; data?: any }
 }> = props => {
   logger.error(props.error.data)
+
+  const { isFetching, setIsFetching } = useSystemContext()
+
+  if (isFetching) {
+    setIsFetching(false)
+  }
 
   const message =
     (process.env.NODE_ENV || sd.NODE_ENV) === "development"

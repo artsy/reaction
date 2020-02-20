@@ -1,41 +1,18 @@
+import loadable from "@loadable/component"
 import { getRedirect } from "Apps/Order/getRedirect"
 import { redirects } from "Apps/Order/redirects"
+import { ErrorPage } from "Components/ErrorPage"
 import { Redirect, RedirectException, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
-import { OrderApp } from "./OrderApp"
-
-import { AcceptFragmentContainer as AcceptRoute } from "Apps/Order/Routes/Accept"
-import { NewPaymentFragmentContainer as NewPaymentRoute } from "Apps/Order/Routes/NewPayment"
-import { OfferFragmentContainer as OfferRoute } from "Apps/Order/Routes/Offer"
-import { PaymentFragmentContainer as PaymentRoute } from "Apps/Order/Routes/Payment"
-import { RejectFragmentContainer as RejectRoute } from "Apps/Order/Routes/Reject"
-import { RespondFragmentContainer as RespondRoute } from "Apps/Order/Routes/Respond"
-import { ReviewFragmentContainer as ReviewRoute } from "Apps/Order/Routes/Review"
-import { ShippingFragmentContainer as ShippingRoute } from "Apps/Order/Routes/Shipping"
-import { StatusFragmentContainer as StatusRoute } from "Apps/Order/Routes/Status"
-import { CounterFragmentContainer as CounterRoute } from "./Routes/Counter"
-
-// @ts-ignore
-import { ComponentClass, StatelessComponent } from "react"
-
-// @ts-ignore
-import { ErrorPage } from "Components/ErrorPage"
-// @ts-ignore
-import { PaymentProps } from "./Routes/Payment"
-// @ts-ignore
-import { ReviewProps } from "./Routes/Review"
-// @ts-ignore
-import { ShippingProps } from "./Routes/Shipping"
-// @ts-ignore
-import { StatusProps } from "./Routes/Status"
 
 // FIXME:
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
   {
     path: "/order(2|s)/:orderID",
-    Component: OrderApp,
+    getComponent: () => loadable(() => import("./OrderApp")),
+
     // TODO: Better support `@principalField` in Metaphysics.
     // This currently only works because of the `order` field alias.
     query: graphql`
@@ -51,7 +28,9 @@ export const routes: RouteConfig[] = [
     `,
     render: ({ Component, props, resolving }) => {
       if (!(Component && props)) {
-        return null
+        // Returning `null` will show the spinner; but undefined uses purple
+        // loader. Its a weird quirk :/
+        return undefined // null
       }
       // resolving is true only if this render results from a query initiated by
       // found-relay
@@ -80,7 +59,7 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "respond",
-        Component: RespondRoute,
+        getComponent: () => loadable(() => import("./Routes/Respond")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_RespondQuery($orderID: ID!) {
@@ -95,7 +74,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "offer",
-        Component: OfferRoute,
+        getComponent: () => loadable(() => import("./Routes/Offer")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_OfferQuery($orderID: ID!) {
@@ -110,7 +89,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "shipping",
-        Component: ShippingRoute,
+        getComponent: () => loadable(() => import("./Routes/Shipping")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_ShippingQuery($orderID: ID!) {
@@ -125,7 +104,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "payment",
-        Component: PaymentRoute,
+        getComponent: () => loadable(() => import("./Routes/Payment")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_PaymentQuery($orderID: ID!) {
@@ -143,7 +122,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "payment/new",
-        Component: NewPaymentRoute,
+        getComponent: () => loadable(() => import("./Routes/NewPayment")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_NewPaymentQuery($orderID: ID!) {
@@ -161,7 +140,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review/counter",
-        Component: CounterRoute,
+        getComponent: () => loadable(() => import("./Routes/Counter")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_CounterQuery($orderID: ID!) {
@@ -176,7 +155,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review",
-        Component: ReviewRoute,
+        getComponent: () => loadable(() => import("./Routes/Review")),
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_ReviewQuery($orderID: ID!) {
@@ -191,7 +170,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review/accept",
-        Component: AcceptRoute,
+        getComponent: () => loadable(() => import("./Routes/Accept")),
         query: graphql`
           query routes_AcceptQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -205,7 +184,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review/decline",
-        Component: RejectRoute,
+        getComponent: () => loadable(() => import("./Routes/Reject")),
         query: graphql`
           query routes_RejectQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -216,7 +195,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "status",
-        Component: StatusRoute,
+        getComponent: () => loadable(() => import("./Routes/Status")),
         query: graphql`
           query routes_StatusQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {

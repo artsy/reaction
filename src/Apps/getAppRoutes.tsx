@@ -1,6 +1,8 @@
 import { routes as artistRoutes } from "Apps/Artist/routes"
 import { routes as artworkRoutes } from "Apps/Artwork/routes"
+import { routes as auctionRoutes } from "Apps/Auction/routes"
 import { collectRoutes } from "Apps/Collect2/collectRoutes"
+import { routes as orderRoutes } from "Apps/Order/routes"
 import { routes as searchRoutes } from "Apps/Search/routes"
 import { makeAppRoutes } from "Artsy/Router/makeAppRoutes"
 import { RouteConfig } from "found"
@@ -14,7 +16,13 @@ export function getAppRoutes(): RouteConfig[] {
       routes: artworkRoutes,
     },
     {
+      routes: auctionRoutes,
+    },
+    {
       routes: collectRoutes,
+    },
+    {
+      routes: orderRoutes,
     },
     {
       routes: searchRoutes,

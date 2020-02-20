@@ -22,9 +22,9 @@ export const AuctionHouseFilter: React.FC = () => {
   }
 
   return (
-    <Toggle label="Auction house" expanded>
+    <Toggle label="Auction house">
       <Flex flexDirection="column" alignItems="left">
-        <Box pt={1}>
+        <Box>
           {auctionHouses.map((checkbox, index) => {
             const { name } = checkbox
             const props = {

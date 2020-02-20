@@ -15,12 +15,15 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
-import { SystemContextConsumer } from "Artsy"
+import { SystemContextConsumer, useSystemContext } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
+import { Router } from "found"
 import track from "react-tracking"
+import { getENV } from "Utils/getENV"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
+  router?: Router
 }
 
 export interface ArtworkSidebarBidActionState {
@@ -42,7 +45,14 @@ export class ArtworkSidebarBidAction extends React.Component<
 
   redirectToRegister = () => {
     const { sale } = this.props.artwork
-    window.location.href = `${sd.APP_URL}/auction-registration/${sale.slug}`
+    const href = `/auction-registration/${sale.slug}`
+
+    // TODO: Remove once A/B test completes
+    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      this.props.router.push(href)
+    } else {
+      window.location.href = href
+    }
   }
 
   @track((props: ArtworkSidebarBidActionProps) => ({
@@ -64,7 +74,14 @@ export class ArtworkSidebarBidAction extends React.Component<
   redirectToBid(firstIncrement: number) {
     const { slug, sale } = this.props.artwork
     const bid = this.state.selectedMaxBidCents || firstIncrement
-    window.location.href = `${sd.APP_URL}/auction/${sale.slug}/bid/${slug}?bid=${bid}`
+    const href = `/auction/${sale.slug}/bid/${slug}?bid=${bid}`
+
+    // TODO: Remove once A/B test completes
+    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      this.props.router.push(href)
+    } else {
+      window.location.href = href
+    }
   }
 
   @track({
@@ -213,7 +230,10 @@ export class ArtworkSidebarBidAction extends React.Component<
 }
 
 export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
-  ArtworkSidebarBidAction,
+  (props: ArtworkSidebarBidActionProps) => {
+    const { router } = useSystemContext()
+    return <ArtworkSidebarBidAction {...props} router={router} />
+  },
   {
     artwork: graphql`
       fragment ArtworkSidebarBidAction_artwork on Artwork {

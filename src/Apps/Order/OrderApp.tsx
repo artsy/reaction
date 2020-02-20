@@ -3,15 +3,17 @@ import { OrderApp_order } from "__generated__/OrderApp_order.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
 import { Mediator, SystemContextConsumer } from "Artsy"
+import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { ErrorPage } from "Components/ErrorPage"
+import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { RouterState, withRouter } from "found"
 import React from "react"
 import { Meta, Title } from "react-head"
 import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
-import { findCurrentRoute } from "Utils/findCurrentRoute"
 import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
 import { ConnectedModalDialog } from "./Dialogs"
 
 declare global {
@@ -46,6 +48,8 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
       )
     }
 
+    window.addEventListener("beforeunload", this.preventHardReload)
+
     const artwork = get(
       null,
       () => this.props.order.lineItems.edges[0].node.artwork
@@ -77,10 +81,22 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
     if (this.removeTransitionHook) {
       this.removeTransitionHook()
     }
+
+    window.removeEventListener("beforeunload", this.preventHardReload)
+  }
+
+  preventHardReload = event => {
+    // Don't block navigation for status page, as we've completed the flow
+    if (window.location.pathname.includes("/status")) {
+      return false
+    }
+
+    event.preventDefault()
+    event.returnValue = true
   }
 
   onTransition = newLocation => {
-    if (newLocation === null) {
+    if (newLocation === null || !newLocation.pathname.includes("/orders/")) {
       // leaving the order page, closing, or refreshing
       const route = findCurrentRoute(this.props.match)
       if (route.shouldWarnBeforeLeaving) {
@@ -93,6 +109,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   render() {
     const { children, order } = this.props
     let artworkId
+    let artworkHref
 
     if (!order) {
       return <ErrorPage code={404} />
@@ -101,6 +118,18 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
         this.props,
         props => order.lineItems.edges[0].node.artwork.slug
       )
+      artworkHref = get(
+        this.props,
+        props => order.lineItems.edges[0].node.artwork.href
+      )
+    }
+
+    // FIXME: Remove after A/B test completes
+    let NavBar
+    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      NavBar = MinimalNavBar
+    } else {
+      NavBar = Box // pass-through; nav bar comes from the server right now
     }
 
     return (
@@ -108,29 +137,31 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
         {({ isEigen, mediator }) => {
           this.mediator = mediator
           return (
-            <AppContainer>
-              <Title>Checkout | Artsy</Title>
-              {isEigen ? (
-                <Meta
-                  name="viewport"
-                  content="width=device-width, user-scalable=no"
-                />
-              ) : (
-                <Meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-                />
-              )}
-              <SafeAreaContainer>
-                <StripeProvider stripe={this.state.stripe}>
-                  <Elements>
-                    <>{children}</>
-                  </Elements>
-                </StripeProvider>
-              </SafeAreaContainer>
-              <StickyFooter orderType={order.mode} artworkId={artworkId} />
-              <ConnectedModalDialog />
-            </AppContainer>
+            <NavBar to={artworkHref}>
+              <AppContainer>
+                <Title>Checkout | Artsy</Title>
+                {isEigen ? (
+                  <Meta
+                    name="viewport"
+                    content="width=device-width, user-scalable=no"
+                  />
+                ) : (
+                  <Meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+                  />
+                )}
+                <SafeAreaContainer>
+                  <StripeProvider stripe={this.state.stripe}>
+                    <Elements>
+                      <>{children}</>
+                    </Elements>
+                  </StripeProvider>
+                </SafeAreaContainer>
+                <StickyFooter orderType={order.mode} artworkId={artworkId} />
+                <ConnectedModalDialog />
+              </AppContainer>
+            </NavBar>
           )
         }}
       </SystemContextConsumer>
@@ -141,6 +172,9 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
 const OrderAppWithRouter = withRouter(OrderApp)
 
 export { OrderAppWithRouter as OrderApp }
+
+// For bundle splitting at router level
+export default OrderAppWithRouter
 
 const SafeAreaContainer = styled(Box)`
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
@@ -155,6 +189,7 @@ graphql`
       edges {
         node {
           artwork {
+            href
             slug
             is_acquireable: isAcquireable
             is_offerable: isOfferable

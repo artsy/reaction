@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ClassicByline Snapshots renders a custom date 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
 .c2 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -21,6 +14,13 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
   font-size: 14px;
   line-height: 24px;
   color: #666;
+}
+
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .c5 {
@@ -198,18 +198,11 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
 .c1 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c2 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
   font-size: 16px;
   line-height: 26px;
 }
 
-.c3 {
+.c2 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -217,7 +210,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
   color: #666;
 }
 
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -231,18 +224,18 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
   margin-top: 5px;
 }
 
-.c6 {
+.c5 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c5:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c5:first-child {
   padding-left: 0;
 }
 
@@ -251,7 +244,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
   display: block;
 }
 
-.c0 .c4 {
+.c0 .c3 {
   display: inline-block;
 }
 
@@ -264,34 +257,20 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
 <div
   className="c0"
 >
-  <div>
-    <div
-      className="c1"
-      fontFamily={
-        Object {
-          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-          "fontWeight": 500,
-        }
+  <div
+    className="c1"
+    fontFamily={
+      Object {
+        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "fontWeight": 500,
       }
-      fontSize="14px"
-    >
-      Joanne Artman Gallery
-    </div>
-    <div
-      className="c2"
-      fontFamily={
-        Object {
-          "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-          "fontWeight": 500,
-        }
-      }
-      fontSize="16px"
-    >
-      By First Author, Second Author and Third Author
-    </div>
+    }
+    fontSize="16px"
+  >
+    Joanne Artman Gallery
   </div>
   <div
-    className="c3"
+    className="c2"
     color="#666"
     fontFamily={
       Object {
@@ -304,10 +283,10 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
     Jul 28, 2017 4:38pm
   </div>
   <div
-    className="c4 c5"
+    className="c3 c4"
   >
     <a
-      className="c6"
+      className="c5"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -333,7 +312,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c5"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -359,7 +338,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c5"
       href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -562,13 +541,6 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
 `;
 
 exports[`ClassicByline Snapshots renders multiple authors 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
 .c2 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -582,6 +554,13 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
   font-size: 14px;
   line-height: 24px;
   color: #666;
+}
+
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .c5 {

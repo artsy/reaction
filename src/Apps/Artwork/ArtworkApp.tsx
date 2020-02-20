@@ -25,10 +25,7 @@ import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/Rec
 import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
-import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
-
-const logger = createLogger("Apps/Artwork/ArtworkApp")
 
 export interface Props {
   artwork: ArtworkApp_artwork
@@ -53,24 +50,6 @@ export class ArtworkApp extends React.Component<Props> {
     this.trackLotView()
   }
 
-  componentDidUpdate(prevProps) {
-    /**
-     * If we've changed routes within the app, trigger pageView and productView.
-     *
-     * FIXME: We're manually invoking pageView tracking here, instead of within
-     * the `trackingMiddleware` file as we need to pass along additional metadata.
-     * Waiting on analytics team to decide if there's a better way to capture this
-     * data that remains consistent with the rest of the app.
-     */
-    if (this.props.routerPathname !== prevProps.routerPathname) {
-      if (this.props.routerPathname.includes("/artwork/")) {
-        this.trackPageview()
-        this.trackProductView()
-        this.trackLotView()
-      }
-    }
-  }
-
   trackPageview() {
     const {
       artwork: { listPrice, availability, is_offerable, is_acquireable },
@@ -88,7 +67,6 @@ export class ArtworkApp extends React.Component<Props> {
     }
 
     if (typeof window.analytics !== "undefined") {
-      logger.warn("Tracking PageView:", properties)
       window.analytics.page(properties, { integrations: { Marketo: false } })
     }
   }
@@ -105,7 +83,6 @@ export class ArtworkApp extends React.Component<Props> {
         product_id: internalID,
       }
       if (tracking) {
-        logger.warn("Tracking ProductView:", trackingData)
         tracking.trackEvent(trackingData)
       }
     }
@@ -125,7 +102,6 @@ export class ArtworkApp extends React.Component<Props> {
         sale_id: sale.internalID,
         auction_slug: sale.slug,
       }
-      logger.warn("Tracking LotView:", trackingData)
       tracking.trackEvent(trackingData)
     }
   }
@@ -309,3 +285,6 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default ArtworkAppFragmentContainer

@@ -506,3 +506,6 @@ export const ShippingFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default ShippingFragmentContainer

@@ -364,3 +364,6 @@ export const StatusFragmentContainer = createFragmentContainer(StatusRoute, {
     }
   `,
 })
+
+// For bundle splitting in router
+export default StatusFragmentContainer

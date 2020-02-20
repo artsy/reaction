@@ -59,6 +59,7 @@ export const UntouchedOrder = {
           artwork: {
             id: "02393",
             internalID: "artworkId",
+            href: "/artwork/artworkID",
             slug: "artworkId",
             pickup_available: true,
             artist_names: "Lisa Breslow",

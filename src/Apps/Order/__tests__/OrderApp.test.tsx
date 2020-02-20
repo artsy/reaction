@@ -92,6 +92,7 @@ describe("OrderApp routing redirects", () => {
                 artwork: {
                   id: "artwork-id",
                   slug: "artwork-id",
+                  href: "/artwork/artwork-id",
                   is_acquireable: true,
                   is_offerable: false,
                 },

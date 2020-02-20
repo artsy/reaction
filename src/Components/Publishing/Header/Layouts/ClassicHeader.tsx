@@ -1,5 +1,6 @@
 import { Flex, Serif, space } from "@artsy/palette"
 import { ClassicByline } from "Components/Publishing/Byline/ClassicByline"
+import { ClassicPromotedContent } from "Components/Publishing/Header/Layouts/Components/ClassicPromotedContent"
 import { ArticleData } from "Components/Publishing/Typings"
 import React, { ReactElement } from "react"
 import styled from "styled-components"
@@ -15,28 +16,35 @@ export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
   const { article, date, editTitle, editLeadParagraph } = props
 
   return (
-    <Flex
-      flexDirection="column"
-      my={space(4)}
-      mx="auto"
-      px={[space(2), 0]}
-      alignItems={["left", "center"]}
-      maxWidth={["580px", "900px"]}
-    >
-      <Title size={["8", "10"]} pb={space(3)} textAlign={["left", "center"]}>
-        {editTitle || <h1>{article.title}</h1>}
-      </Title>
-      {editLeadParagraph ? (
-        <LeadParagraph size="4">{editLeadParagraph}</LeadParagraph>
-      ) : (
-        article.lead_paragraph && (
-          <LeadParagraph size="4">
-            <div dangerouslySetInnerHTML={{ __html: article.lead_paragraph }} />
-          </LeadParagraph>
-        )
+    <>
+      {(article.partner || article.sale) && (
+        <ClassicPromotedContent article={article} />
       )}
-      <ClassicByline article={article} date={date} />
-    </Flex>
+      <Flex
+        flexDirection="column"
+        my={space(4)}
+        mx="auto"
+        px={[space(2), 0]}
+        alignItems={["left", "center"]}
+        maxWidth={["580px", "900px"]}
+      >
+        <Title size={["8", "10"]} pb={space(3)} textAlign={["left", "center"]}>
+          {editTitle || <h1>{article.title}</h1>}
+        </Title>
+        {editLeadParagraph ? (
+          <LeadParagraph size="4">{editLeadParagraph}</LeadParagraph>
+        ) : (
+          article.lead_paragraph && (
+            <LeadParagraph size="4">
+              <div
+                dangerouslySetInnerHTML={{ __html: article.lead_paragraph }}
+              />
+            </LeadParagraph>
+          )
+        )}
+        <ClassicByline article={article} date={date} />
+      </Flex>
+    </>
   )
 }
 

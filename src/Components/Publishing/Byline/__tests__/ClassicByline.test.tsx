@@ -13,7 +13,7 @@ describe("ClassicByline", () => {
   describe("Snapshots", () => {
     it("renders a single author", () => {
       const snapshot = renderer.create(
-        <ClassicByline article={ClassicArticleManyAuthors} />
+        <ClassicByline article={ClassicArticle} />
       )
       expect(snapshot).toMatchSnapshot()
     })

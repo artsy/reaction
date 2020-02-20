@@ -248,3 +248,6 @@ export const CounterFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default CounterFragmentContainer

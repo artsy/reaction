@@ -81,6 +81,12 @@ const node: ReaderFragment = {
       "name": "organizations",
       "type": "[String]",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sizes",
+      "type": "[ArtworkSizes]",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -121,6 +127,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "organizations",
           "variableName": "organizations"
+        },
+        {
+          "kind": "Variable",
+          "name": "sizes",
+          "variableName": "sizes"
         },
         {
           "kind": "Variable",
@@ -277,5 +288,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'bf31e4b09d79cb8d0877c2ce20a89553';
+(node as any).hash = 'a7f440f538129730adaed32d71543675';
 export default node;
