@@ -60,7 +60,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
           </Flex>
           <Flex flexDirection="column" justifyContent="center">
             <Link
-              href={`/conversations/${conversation.internalID}`}
+              href={`/user/conversations/${conversation.internalID}`}
               underlineBehavior="hover"
             >
               {partnerName} - {conversationText}
@@ -72,7 +72,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         </Flex>
         <Flex>
           <Link
-            href={`/conversations/${conversation.internalID}`}
+            href={`/user/conversations/${conversation.internalID}`}
             underlineBehavior="hover"
           >
             <ArrowRightCircleIcon height="28px" width="24px" />
