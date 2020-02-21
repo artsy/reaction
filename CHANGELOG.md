@@ -1,3 +1,15 @@
+# v25.17.1 (Fri Feb 21 2020)
+
+#### 🐛  Bug Fix
+
+- [QueryRenderers] Delay showing spinner [#3185](https://github.com/artsy/reaction/pull/3185) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.15.0 (Fri Feb 21 2020)
 
 #### 🚀  Enhancement
