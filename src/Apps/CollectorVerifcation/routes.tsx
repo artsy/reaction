@@ -2,10 +2,10 @@ import { ErrorPage } from "Components/ErrorPage"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
-import createLogger from "Utils/logger"
+// import createLogger from "Utils/logger"
 import { CollectorVerificationApp } from "./CollectorVerificationApp"
 
-const logger = createLogger("Apps/CollectorVerification/routes")
+// const logger = createLogger("Apps/CollectorVerification/routes")
 
 export const routes: RouteConfig[] = [
   {
@@ -23,7 +23,6 @@ export const routes: RouteConfig[] = [
       }
     `,
     render: ({ Component, props }) => {
-      logger.log("render")
       if (Component && props) {
         const { me } = props as any
         const { identityVerification } = me
