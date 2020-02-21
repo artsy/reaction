@@ -1,3 +1,15 @@
+# v25.14.1 (Fri Feb 21 2020)
+
+#### 🐛  Bug Fix
+
+- @damassi => [ClientSide Routing] Launch v3 of the AB test [#3184](https://github.com/artsy/reaction/pull/3184) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v25.14.0 (Thu Feb 20 2020)
 
 #### 🚀  Enhancement
