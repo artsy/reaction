@@ -1,5 +1,6 @@
-import { BorderBox, Flex } from "@artsy/palette"
+import { BorderBox, Flex, Title } from "@artsy/palette"
 import { Conversation_me } from "__generated__/Conversation_me.graphql"
+import { AppContainer } from "Apps/Components/AppContainer"
 import { ConversationFragmentContainer as Conversation } from "Apps/Conversation/Components/Conversation"
 import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
@@ -18,11 +19,14 @@ export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
   const isAdmin = userIsAdmin(user)
   if (isAdmin) {
     return (
-      <BorderBox>
-        <Flex flexDirection="column">
-          <Conversation conversation={me.conversation} />
-        </Flex>
-      </BorderBox>
+      <AppContainer>
+        <Title>My Inquiries | Artsy</Title>
+        <BorderBox>
+          <Flex flexDirection="column">
+            <Conversation conversation={me.conversation} />
+          </Flex>
+        </BorderBox>
+      </AppContainer>
     )
   } else {
     // not an admin
