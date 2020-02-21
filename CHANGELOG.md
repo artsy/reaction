@@ -1,3 +1,19 @@
+# v25.15.0 (Fri Feb 21 2020)
+
+#### 🚀  Enhancement
+
+- [BundleSplitting] Comment out for now [#3188](https://github.com/artsy/reaction/pull/3188) ([@damassi](https://github.com/damassi))
+
+#### ⚠️  Pushed to master
+
+- [BundleSplitting] Comment out for now  ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.14.1 (Fri Feb 21 2020)
 
 #### 🐛  Bug Fix
