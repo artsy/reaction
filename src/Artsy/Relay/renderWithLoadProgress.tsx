@@ -19,13 +19,6 @@ const SpinnerContainer = styled.figure`
   flex-direction: column;
   justify-content: center;
   position: relative;
-
-  /*
-    Noticed some weird behavior in force due to figure margin being set to 0
-    in global css. Adding padding of 22 gets things back to visual default.
-  */
-  margin: unset;
-  padding: 22px;
 `
 
 const RouteSpinnerContainer = styled.figure`
@@ -77,7 +70,9 @@ export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
   initialProps: object = {},
   wrapperProps: object = {},
-  spinnerProps: SpinnerProps = {}
+  spinnerProps: SpinnerProps = {
+    delay: 800,
+  }
 ): LoadProgressRenderer<P> {
   // TODO: We need design for retrying or the approval to use the iOS design.
   // See also: https://artsyproduct.atlassian.net/browse/PLATFORM-1272
