@@ -1,3 +1,4 @@
+import loadable from "@loadable/component"
 import { ErrorPage } from "Components/ErrorPage"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
@@ -6,19 +7,12 @@ import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { confirmBidRedirect, Redirect, registerRedirect } from "./getRedirect"
 
-import AuctionFAQ from "./Components/AuctionFAQ"
-import ConfirmBidRoute from "./Routes/ConfirmBid"
-import RegisterRoute from "./Routes/Register"
-
-// import loadable from "@loadable/component"
-
 const logger = createLogger("Apps/Auction/routes")
 
 export const routes: RouteConfig[] = [
   {
     path: "/auction-faq",
-    // getComponent: () => loadable(() => import("./Components/AuctionFAQ")),
-    Component: AuctionFAQ,
+    getComponent: () => loadable(() => import("./Components/AuctionFAQ")),
     query: graphql`
       query routes_AuctionFAQQuery {
         viewer {
@@ -30,8 +24,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/auction/:saleID/bid(2)?/:artworkID",
-    // getComponent: () => loadable(() => import("./Routes/ConfirmBid")),
-    Component: ConfirmBidRoute,
+    getComponent: () => loadable(() => import("./Routes/ConfirmBid")),
     render: ({ Component, props }) => {
       if (Component && props) {
         const { artwork, me, match } = props as any
@@ -80,8 +73,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/auction-registration(2)?/:saleID",
-    // getComponent: () => loadable(() => import("./Routes/Register")),
-    Component: RegisterRoute,
+    getComponent: () => loadable(() => import("./Routes/Register")),
     render: ({ Component, props }) => {
       if (Component && props) {
         const { match, sale, me } = props as any

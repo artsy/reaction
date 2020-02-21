@@ -1,3 +1,4 @@
+import loadable from "@loadable/component"
 import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
 import {
   ArtworkFilters,
@@ -9,16 +10,6 @@ import { Redirect, RedirectException, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
 import { hasOverviewContent } from "./Components/NavigationTabs"
-
-import ArtistApp from "./ArtistApp"
-import ArticlesRoute from "./Routes/Articles"
-import AuctionResultsRoute from "./Routes/AuctionResults"
-import CVRoute from "./Routes/CV"
-import OverviewRoute from "./Routes/Overview"
-import ShowsRoute from "./Routes/Shows"
-import WorksRoute from "./Routes/Works"
-
-// import loadable from "@loadable/component"
 
 graphql`
   fragment routes_Artist on Artist {
@@ -71,8 +62,7 @@ graphql`
 export const routes: RouteConfig[] = [
   {
     path: "/artist/:artistID",
-    // getComponent: () => loadable(() => import("./ArtistApp")),
-    Component: ArtistApp,
+    getComponent: () => loadable(() => import("./ArtistApp")),
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) @raw_response_type {
         artist(id: $artistID) @principalField {
@@ -110,8 +100,7 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "/",
-        // getComponent: () => loadable(() => import("./Routes/Overview")),
-        Component: OverviewRoute,
+        getComponent: () => loadable(() => import("./Routes/Overview")),
         displayNavigationTabs: true,
         query: graphql`
           query routes_OverviewQuery($artistID: String!) @raw_response_type {
@@ -123,8 +112,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "cv",
-        // getComponent: () => loadable(() => import("./Routes/CV")),
-        Component: CVRoute,
+        getComponent: () => loadable(() => import("./Routes/CV")),
         query: graphql`
           query routes_CVQuery($artistID: String!) {
             viewer {
@@ -135,8 +123,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "articles",
-        // getComponent: () => loadable(() => import("./Routes/Articles")),
-        Component: ArticlesRoute,
+        getComponent: () => loadable(() => import("./Routes/Articles")),
         query: graphql`
           query routes_ArticlesQuery($artistID: String!) {
             artist(id: $artistID) {
@@ -147,8 +134,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "shows",
-        // getComponent: () => loadable(() => import("./Routes/Shows")),
-        Component: ShowsRoute,
+        getComponent: () => loadable(() => import("./Routes/Shows")),
         query: graphql`
           query routes_ShowsQuery($artistID: String!) {
             viewer {
@@ -159,8 +145,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "auction-results",
-        // getComponent: () => loadable(() => import("./Routes/AuctionResults")),
-        Component: AuctionResultsRoute,
+        getComponent: () => loadable(() => import("./Routes/AuctionResults")),
         displayNavigationTabs: true,
         query: graphql`
           query routes_AuctionResultsQuery($artistID: String!) {
@@ -172,8 +157,7 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "works-for-sale",
-        // getComponent: () => loadable(() => import("./Routes/Works")),
-        Component: WorksRoute,
+        getComponent: () => loadable(() => import("./Routes/Works")),
         displayNavigationTabs: true,
         query: graphql`
           query routes_WorksQuery(
