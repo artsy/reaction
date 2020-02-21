@@ -1,3 +1,31 @@
+# v25.15.0 (Fri Feb 21 2020)
+
+#### 🚀  Enhancement
+
+- [BundleSplitting] Reenable [#3189](https://github.com/artsy/reaction/pull/3189) ([@damassi](https://github.com/damassi))
+- [BundleSplitting] Comment out for now [#3188](https://github.com/artsy/reaction/pull/3188) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Fix conversation detail link [#3187](https://github.com/artsy/reaction/pull/3187) ([@ashkan18](https://github.com/ashkan18))
+
+#### ⚠️  Pushed to master
+
+- [BundleSplitting] Comment out for now  ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v7.1.0 [#3149](https://github.com/artsy/reaction/pull/3149) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.14.1 (Fri Feb 21 2020)
 
 #### 🐛  Bug Fix
