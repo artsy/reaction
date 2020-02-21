@@ -1,15 +1,11 @@
+import loadable from "@loadable/component"
 import { RouteConfig } from "found"
 import { graphql } from "react-relay"
-
-// import loadable from "@loadable/component"
-import ConversationApp from "./ConversationApp"
-import ConversationRoute from "./Routes/Conversation"
 
 export const conversationRoutes: RouteConfig[] = [
   {
     path: "/user/conversations",
-    // getComponent: () => loadable(() => import("./ConversationApp")),
-    Component: ConversationApp,
+    getComponent: () => loadable(() => import("./ConversationApp")),
     query: graphql`
       query routes_ConversationQuery {
         me {
@@ -28,8 +24,7 @@ export const conversationRoutes: RouteConfig[] = [
   },
   {
     path: "/user/conversations/:conversationID",
-    // getComponent: () => loadable(() => import("./Routes/Conversation")),
-    Component: ConversationRoute,
+    getComponent: () => loadable(() => import("./Routes/Conversation")),
     prepareVariables: (params, _props) => {
       return {
         conversationID: params.conversationID,
