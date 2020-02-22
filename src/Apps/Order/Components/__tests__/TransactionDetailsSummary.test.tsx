@@ -15,7 +15,16 @@ import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDe
 
 jest.unmock("react-relay")
 
-const transactionSummaryBuyOrder: TransactionDetailsSummaryItemTestQueryRawResponse["order"] = {
+type TestOfferOrder = Extract<
+  TransactionDetailsSummaryItemTestQueryRawResponse["order"],
+  { __typename: "CommerceOfferOrder" }
+>
+type TestBuyOrder = Exclude<
+  TransactionDetailsSummaryItemTestQueryRawResponse["order"],
+  { __typename: "CommerceBuyOrder" }
+>
+
+const transactionSummaryBuyOrder: TestBuyOrder = {
   ...UntouchedBuyOrder,
   shippingTotal: "$12.00",
   shippingTotalCents: 1200,
@@ -25,7 +34,7 @@ const transactionSummaryBuyOrder: TransactionDetailsSummaryItemTestQueryRawRespo
   buyerTotal: "$215.25",
 }
 
-const transactionSummaryOfferOrder: TransactionDetailsSummaryItemTestQueryRawResponse["order"] = {
+const transactionSummaryOfferOrder: TestOfferOrder = {
   ...OfferOrderWithOffers,
   shippingTotal: "$12.00",
   shippingTotalCents: 1200,
@@ -104,6 +113,7 @@ describe("TransactionDetailsSummaryItem", () => {
     it("shows the shipping and tax price as dashes if null", async () => {
       const transactionSummary = await render({
         ...transactionSummaryOfferOrder,
+        __typename: "CommerceOfferOrder",
         myLastOffer: {
           ...OfferWithTotals,
           taxTotal: null,
@@ -142,6 +152,7 @@ describe("TransactionDetailsSummaryItem", () => {
       const transactionSummary = await render(
         {
           ...transactionSummaryOfferOrder,
+          __typename: "CommerceOfferOrder",
           lastOffer: {
             ...OfferWithTotals,
             id: "last-offer",
