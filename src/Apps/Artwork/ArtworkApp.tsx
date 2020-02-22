@@ -222,7 +222,14 @@ export class ArtworkApp extends React.Component<Props> {
             </Col>
           </Row>
 
-          <div id="lightbox-container" />
+          <div
+            id="lightbox-container"
+            style={{
+              position: "absolute",
+              top: 0,
+              zIndex: 1100, // over top nav
+            }}
+          />
           <SystemContextConsumer>
             {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
           </SystemContextConsumer>
