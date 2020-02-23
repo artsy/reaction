@@ -91,6 +91,7 @@ export const SendConversationMessage = (
             },
             isFromUser: true,
             createdAt: null, // Intentionally left blank so Message can recognize this as an optimistic response.
+            attachments: [],
           } as any,
         },
       },
