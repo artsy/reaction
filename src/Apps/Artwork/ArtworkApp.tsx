@@ -31,6 +31,7 @@ export interface Props {
   artwork: ArtworkApp_artwork
   tracking?: TrackingProp
   routerPathname: string
+  referrer: string
 }
 
 declare const window: any
@@ -53,6 +54,7 @@ export class ArtworkApp extends React.Component<Props> {
   trackPageview() {
     const {
       artwork: { listPrice, availability, is_offerable, is_acquireable },
+      referrer,
     } = this.props
 
     // FIXME: This breaks our global pageview tracking in the router level.
@@ -64,6 +66,7 @@ export class ArtworkApp extends React.Component<Props> {
       offerable: is_offerable,
       availability,
       price_listed: !!listPrice,
+      referrer,
     }
 
     if (typeof window.analytics !== "undefined") {
@@ -242,12 +245,16 @@ export class ArtworkApp extends React.Component<Props> {
 export const ArtworkAppFragmentContainer = createFragmentContainer(
   (props: Props) => {
     const {
+      match,
       match: {
-        location: { pathname },
+        location: { pathname, state },
       },
     } = useContext(RouterContext)
 
-    return <ArtworkApp {...props} routerPathname={pathname} />
+    const referrer = state && state.previousHref
+    return (
+      <ArtworkApp {...props} routerPathname={pathname} referrer={referrer} />
+    )
   },
   {
     artwork: graphql`
