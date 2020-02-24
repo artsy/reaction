@@ -11,6 +11,13 @@ export type Message_message = {
         readonly name: string | null;
         readonly email: string | null;
     } | null;
+    readonly attachments: ReadonlyArray<{
+        readonly id: string;
+        readonly internalID: string;
+        readonly contentType: string;
+        readonly fileName: string;
+        readonly downloadURL: string;
+    } | null> | null;
     readonly " $refType": "Message_message";
 };
 export type Message_message$data = Message_message;
@@ -21,20 +28,22 @@ export type Message_message$key = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "Message_message",
   "type": "Message",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "internalID",
-      "args": null,
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -80,8 +89,49 @@ const node: ReaderFragment = {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "attachments",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Attachment",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        (v0/*: any*/),
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "contentType",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "fileName",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "downloadURL",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     }
   ]
 };
-(node as any).hash = '8f5506e296f74d8b4a79772cff897128';
+})();
+(node as any).hash = 'a0bb840faf9e20e16a5b20a7e14582aa';
 export default node;

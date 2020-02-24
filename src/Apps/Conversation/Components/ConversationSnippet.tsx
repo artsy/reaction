@@ -54,7 +54,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Flex width="350px">
+        <Flex>
           <Flex height="auto" alignItems="center" mr={2}>
             <Image src={imageURL} width="55px" />
           </Flex>
@@ -63,11 +63,17 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
               href={`/user/conversations/${conversation.internalID}`}
               underlineBehavior="hover"
             >
-              {partnerName} - {conversationText}
+              <Flex flexDirection="row">
+                <Serif size="2">{partnerName}</Serif>
+                <Serif size="2" ml={0.5} mr={0.5}>
+                  -
+                </Serif>
+                <Serif italic size="2" color="black60">
+                  {title && title.trim()}, {date}
+                </Serif>
+              </Flex>
             </Link>
-            <Serif italic size="2" color="black60" lineHeight={1.3}>
-              {title && title.trim()}, {date}
-            </Serif>
+            {conversationText}
           </Flex>
         </Flex>
         <Flex>
