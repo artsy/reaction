@@ -21,7 +21,13 @@ export const MinimalNavBar: React.FC<MinimalNavBarProps> = props => {
     >
       <AppContainer>
         <Box height={70} px={[2, 4]}>
-          <RouterLink to={props.to} data-test="logoLink">
+          <RouterLink
+            to={props.to}
+            // TODO: figure out a minimal example of the underlying cause of this error
+            // and submit an issue to TS 😓
+            // @ts-ignore
+            data-test="logoLink"
+          >
             <ArtsyLogoBlackIcon />
           </RouterLink>
         </Box>

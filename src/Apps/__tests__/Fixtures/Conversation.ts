@@ -7,6 +7,7 @@ export const Message = {
     name: "Ashkan",
     email: "ashkan@ross.biz",
   },
+  attachments: [],
 }
 
 export const Items = [

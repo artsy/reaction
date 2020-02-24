@@ -1,3 +1,23 @@
+# v25.18.0 (Mon Feb 24 2020)
+
+#### 🚀  Enhancement
+
+- Add attachments to each message [#3192](https://github.com/artsy/reaction/pull/3192) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.5 to v3.8.2 [#3183](https://github.com/artsy/reaction/pull/3183) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@ds300](https://github.com/ds300) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 5
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.17.1 (Fri Feb 21 2020)
 
 #### 🐛  Bug Fix

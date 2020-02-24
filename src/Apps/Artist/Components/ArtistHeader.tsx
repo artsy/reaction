@@ -153,7 +153,8 @@ export class LargeArtistHeader extends Component<Props> {
                     // FIXME: Update this type to appropriately accept children
                     // @ts-ignore
                     <RouterLink
-                      href={slide.href}
+                      // FIXME: this `as never` should go away
+                      href={slide.href as never}
                       onClick={() => this.onClickSlide(slide)}
                     >
                       <Image

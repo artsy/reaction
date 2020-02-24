@@ -63,7 +63,7 @@ describe("Conversation app", () => {
         }
         const component = await render(mockMe, userType)
         const text = component.text()
-        expect(text).toContain("ConversationsAshkan Gallery - Title 1")
+        expect(text).toContain("ConversationsAshkan Gallery-Title 1")
         const btn = component.find("ArrowRightCircleIcon")
         expect(btn.length).toBe(1)
       })

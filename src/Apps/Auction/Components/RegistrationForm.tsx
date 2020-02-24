@@ -150,7 +150,7 @@ export const OnSubmitValidationError: React.FC<{
 
       const errors = Object.assign({}, clonedErrors, addressErrors)
 
-      cb(Object.values(errors))
+      cb(Object.values(errors as string[]))
       formikProps.setSubmitting(false)
     }
   }
