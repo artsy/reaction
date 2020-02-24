@@ -1,3 +1,16 @@
+# v25.18.1 (Mon Feb 24 2020)
+
+#### 🐛  Bug Fix
+
+- Simplify A/B test lookup via `express-http-context` [#3191](https://github.com/artsy/reaction/pull/3191) ([@damassi](https://github.com/damassi) [@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v25.18.0 (Mon Feb 24 2020)
 
 #### 🚀  Enhancement
