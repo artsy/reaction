@@ -82,7 +82,7 @@ describe("FormSwitcher", () => {
         .simulate("click")
 
       expect((window.location.assign as any).mock.calls[0][0]).toEqual(
-        "/signup?contextModule=Header&copy=Foo%20Bar&destination=%2Fcollect&intent=follow%20artist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
+        "/signup?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
       )
     })
 
@@ -106,12 +106,12 @@ describe("FormSwitcher", () => {
       const tracking = { trackEvent: jest.fn() }
       getWrapper({ type: ModalType.login, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
-        action: "Auth impression",
-        auth_redirect: "/foo",
-        intent: "follow artist",
+        action: "authImpression",
+        intent: "followArtist",
         type: "login",
-        context_module: "Header",
+        context_module: "header",
         modal_copy: "Foo Bar",
+        onboarding: false,
         trigger: "timed",
         trigger_seconds: 1,
       })
@@ -121,12 +121,12 @@ describe("FormSwitcher", () => {
       const tracking = { trackEvent: jest.fn() }
       getWrapper({ type: ModalType.forgot, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
-        action: "Auth impression",
-        auth_redirect: "/foo",
+        action: "authImpression",
         type: "forgot",
-        intent: "follow artist",
-        context_module: "Header",
+        intent: "followArtist",
+        context_module: "header",
         modal_copy: "Foo Bar",
+        onboarding: false,
         trigger: "timed",
         trigger_seconds: 1,
       })
@@ -139,12 +139,11 @@ describe("FormSwitcher", () => {
         tracking,
       })
       expect(tracking.trackEvent).toBeCalledWith({
-        action: "Auth impression",
+        action: "authImpression",
         type: "signup",
-        context_module: "Header",
+        context_module: "header",
         onboarding: false,
-        auth_redirect: "/foo",
-        intent: "follow artist",
+        intent: "followArtist",
         modal_copy: "Foo Bar",
         trigger: "timed",
         trigger_seconds: 1,
