@@ -35,7 +35,12 @@ describe("ArtistHeader", () => {
   }
 
   it("renders (or doesnt) the appropriate tabs based on the counts", async () => {
-    const wrapper = await getWrapper()
+    const wrapper = await getWrapper({
+      ...NavigationTabsFixture,
+      counts: {
+        forSaleArtworks: 12,
+      },
+    })
     const html = wrapper.html()
     expect(html).toContain("Works for sale")
     expect(html).toContain("/artist/andy-warhol/works-for-sale")
@@ -53,6 +58,18 @@ describe("ArtistHeader", () => {
     })
     const html = wrapper.html()
     expect(html).toContain("Works for sale (12)")
+  })
+
+  it("renders 'Artworks' instead of 'Works for sale' on tab if there are no works for sale", async () => {
+    const wrapper = await getWrapper({
+      ...NavigationTabsFixture,
+      counts: {
+        forSaleArtworks: 0,
+      },
+    })
+    const html = wrapper.html()
+    expect(html).not.toContain("Works for sale (12)")
+    expect(html).not.toContain("Artworks")
   })
 
   it("renders no tabs if there is no content", async () => {

@@ -82,7 +82,7 @@ describe("ArtistHeader", () => {
         .find(WorksForSaleButton)
         .at(0)
         .text()
-    ).toEqual("Shop works for sale")
+    ).toEqual("Browse artworks")
   })
 
   it("renders the correct button on the carousel when there are for sale artworks", async () => {
