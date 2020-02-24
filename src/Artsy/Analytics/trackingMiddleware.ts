@@ -71,7 +71,7 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           }
 
           // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-          if (getENV("EXPERIMENTAL_APP_SHELL")) {
+          if (sd.CLIENT_NAVIGATION_V3) {
             trackExperimentViewed("client_navigation_v3")
           }
 
