@@ -1,4 +1,5 @@
 import { Link } from "@artsy/palette"
+import { AnalyticsSchema as Schema } from "Artsy/Analytics/v2"
 import { mount } from "enzyme"
 import React from "react"
 import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
@@ -18,10 +19,10 @@ describe("FormSwitcher", () => {
         handleSubmit={jest.fn()}
         tracking={props.tracking}
         options={{
-          contextModule: "header",
+          contextModule: Schema.ContextModule.header,
           copy: "Foo Bar",
           destination: "/collect",
-          intent: "followArtist",
+          intent: Schema.Intent.followArtist,
           redirectTo: "/foo",
           trigger: "timed",
           triggerSeconds: 1,

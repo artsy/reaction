@@ -1,49 +1,30 @@
-import { ActionTypes } from "./Types"
+import {
+  ActionType,
+  AuthContextModule,
+  AuthIntent,
+  AuthModalType,
+  AuthTrigger,
+} from "../Schema"
 
-/*
- * the component where the modal was triggered.
- */
-export type ContextModule = "header"
-
-/**
- * the type of modal to display.
- */
-export type Type = "signup" | "login" | "forgot"
-
-/**
- * the action taken that prompted user to signup or login.
- */
-export type Intent =
-  | "signup"
-  | "login"
-  | "forgot"
-  | "followArtist"
-  | "followGene"
-
-/**
- * the type of action that opened the modal
- */
-export type Trigger = "click" | "timed"
-
-export interface AuthImpression {
-  action: ActionTypes.AuthImpression
-  context_module: ContextModule
-  intent: Intent
+interface AuthImpression {
+  action: ActionType.authImpression
+  context_module: AuthContextModule
+  intent: AuthIntent
   modal_copy?: string
   onboarding: boolean
-  trigger: Trigger
+  trigger: AuthTrigger
   trigger_seconds?: number
-  type: Type
+  type: AuthModalType
 }
 
-export interface AuthImpressionArgs {
+interface AuthImpressionArgs {
   copy?: string
-  contextModule: ContextModule
-  intent: Intent
+  contextModule: AuthContextModule
+  intent: AuthIntent
   onboarding?: boolean
-  trigger?: Trigger
+  trigger?: AuthTrigger
   triggerSeconds?: number
-  type: Type
+  type: AuthModalType
 }
 
 /**
@@ -66,7 +47,7 @@ export const authImpression = ({
   type,
 }: AuthImpressionArgs): AuthImpression => {
   return {
-    action: ActionTypes.AuthImpression,
+    action: ActionType.authImpression,
     context_module: contextModule,
     intent,
     modal_copy: copy,

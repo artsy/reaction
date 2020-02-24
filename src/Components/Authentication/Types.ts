@@ -1,8 +1,8 @@
 import {
-  ContextModule as AuthContextModule,
-  Intent as AuthIntent,
-  Trigger as AuthTrigger,
-} from "Artsy/Analytics/v2/Events/AuthImpression"
+  AuthContextModule,
+  AuthIntent,
+  AuthTrigger,
+} from "Artsy/Analytics/v2/Schema"
 import { FormikProps } from "formik"
 
 export enum ModalType {

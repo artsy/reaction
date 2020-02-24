@@ -1,11 +1,12 @@
+import * as Schema from "../../Schema"
 import { authImpression } from "../AuthImpression"
 
 describe("authImpression", () => {
   it("Works with minimal args", () => {
     const args = authImpression({
-      contextModule: "header",
-      intent: "signup",
-      type: "signup",
+      contextModule: Schema.ContextModule.header,
+      intent: Schema.Intent.signup,
+      type: Schema.AuthModalType.signup,
     })
 
     expect(args).toEqual({
@@ -22,12 +23,12 @@ describe("authImpression", () => {
 
   it("Works with all args", () => {
     const args = authImpression({
-      contextModule: "header",
-      intent: "followArtist",
+      contextModule: Schema.ContextModule.header,
+      intent: Schema.Intent.followArtist,
       copy: "Sign up to follow artists",
       onboarding: true,
       triggerSeconds: 4,
-      type: "signup",
+      type: Schema.AuthModalType.signup,
     })
 
     expect(args).toEqual({

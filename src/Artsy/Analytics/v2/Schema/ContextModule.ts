@@ -1,0 +1,15 @@
+export enum ContextModule {
+  aboutTheWork = "aboutTheWork",
+  artistsToFollowRail = "artistsToFollowRail",
+  artworkGrid = "artworkGrid",
+  auctionRail = "auctionRail",
+  categoryRail = "categoryRail",
+  featuredArtistsRail = "featuredArtistsRail",
+  header = "header",
+  otherWorksByArtistRail = "otherWorksByArtistRail",
+  otherWorksByGalleryRail = "otherWorksByGalleryRail",
+  relatedArtistsRail = "relatedArtistsRail",
+  relatedWorksRail = "relatedWorksRail",
+  worksByPopularArtistsRail = "worksByPopularArtistsRail",
+  worksForSaleRail = "worksForSaleRail",
+}
