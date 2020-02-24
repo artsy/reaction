@@ -245,7 +245,6 @@ export class ArtworkApp extends React.Component<Props> {
 export const ArtworkAppFragmentContainer = createFragmentContainer(
   (props: Props) => {
     const {
-      match,
       match: {
         location: { pathname, state },
       },
