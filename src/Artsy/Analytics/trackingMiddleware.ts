@@ -72,7 +72,7 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
 
           // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
           if (getENV("EXPERIMENTAL_APP_SHELL")) {
-            trackExperimentViewed("client_navigation_v2")
+            trackExperimentViewed("client_navigation_v3")
           }
 
           // Reset timers that track time on page since we're tracking each order

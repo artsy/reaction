@@ -34,7 +34,7 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
 
     // FIXME: We shouldn't overwrite our route functionality, as that breaks
     // global route configuration behavior.
-    render: ({ props, Component }) => {
+    render: ({ props, Component }: { props?: any; Component?: any }) => {
       if (!props) {
         return <RouteSpinner />
       }

@@ -157,10 +157,7 @@ export class SearchBar extends Component<Props, State> {
   constructor(props) {
     super(props)
 
-    this.enableExperimentalAppShell =
-      // FIXME: Reenable A/B test
-      // sd.CLIENT_NAVIGATION_V2 === "experiment" &&
-      getENV("EXPERIMENTAL_APP_SHELL")
+    this.enableExperimentalAppShell = getENV("EXPERIMENTAL_APP_SHELL")
   }
 
   componentDidMount() {
