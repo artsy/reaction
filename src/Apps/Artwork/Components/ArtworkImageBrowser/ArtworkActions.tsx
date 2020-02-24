@@ -87,7 +87,7 @@ export class ArtworkActions extends React.Component<
     if (is_downloadable || this.isAdmin) {
       const artistNames = artists.map(({ name }) => name).join(", ")
       const filename = slugify(compact([artistNames, title, date]).join(" "))
-      const downloadableImageUrl = `${sd.APP_URL}${href}/download/${filename}.jpg` // prettier-ignore
+      const downloadableImageUrl = `${href}/download/${filename}.jpg` // prettier-ignore
       return downloadableImageUrl
     }
   }
