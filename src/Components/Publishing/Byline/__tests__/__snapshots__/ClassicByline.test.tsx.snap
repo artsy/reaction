@@ -2,28 +2,6 @@
 
 exports[`ClassicByline Snapshots renders a custom date 1`] = `
 .c2 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c1 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -37,18 +15,18 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
   margin-top: 5px;
 }
 
-.c6 {
+.c3 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c3:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c3:first-child {
   padding-left: 0;
 }
 
@@ -57,7 +35,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
   display: block;
 }
 
-.c0 .c4 {
+.c0 .c1 {
   display: inline-block;
 }
 
@@ -68,11 +46,11 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bdVaJa c0"
 >
   <div>
     <div
-      className="c1"
+      className="sc-bxivhb bUZGRr sc-htpNat bVRgFi"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -84,7 +62,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
       Joanne Artman Gallery
     </div>
     <div
-      className="c2"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -97,7 +75,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
     </div>
   </div>
   <div
-    className="c3"
+    className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
     color="#666"
     fontFamily={
       Object {
@@ -110,10 +88,10 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
     May 19, 2017 9:09am
   </div>
   <div
-    className="c4 c5"
+    className="c1 c2"
   >
     <a
-      className="c6"
+      className="c3"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -139,7 +117,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c3"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -165,7 +143,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c3"
       href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -195,22 +173,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
 `;
 
 exports[`ClassicByline Snapshots renders a single author 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
 .c2 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -224,18 +187,18 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
   margin-top: 5px;
 }
 
-.c5 {
+.c3 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c3:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c3:first-child {
   padding-left: 0;
 }
 
@@ -244,7 +207,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
   display: block;
 }
 
-.c0 .c3 {
+.c0 .c1 {
   display: inline-block;
 }
 
@@ -255,10 +218,10 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bdVaJa c0"
 >
   <div
-    className="c1"
+    className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -270,7 +233,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
     Joanne Artman Gallery
   </div>
   <div
-    className="c2"
+    className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
     color="#666"
     fontFamily={
       Object {
@@ -283,10 +246,10 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
     Jul 28, 2017 4:38pm
   </div>
   <div
-    className="c3 c4"
+    className="c1 c2"
   >
     <a
-      className="c5"
+      className="c3"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -312,7 +275,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
       </svg>
     </a>
     <a
-      className="c5"
+      className="c3"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -338,7 +301,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
       </svg>
     </a>
     <a
-      className="c5"
+      className="c3"
       href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -368,22 +331,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
 `;
 
 exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
-.c1 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
 .c2 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -397,18 +345,18 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
   margin-top: 5px;
 }
 
-.c5 {
+.c3 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c5:hover {
+.c3:hover {
   opacity: 0.6;
 }
 
-.c5:first-child {
+.c3:first-child {
   padding-left: 0;
 }
 
@@ -417,7 +365,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
   display: block;
 }
 
-.c0 .c3 {
+.c0 .c1 {
   display: inline-block;
 }
 
@@ -428,10 +376,10 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bdVaJa c0"
 >
   <div
-    className="c1"
+    className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -443,7 +391,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
     Artsy Jobs
   </div>
   <div
-    className="c2"
+    className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
     color="#666"
     fontFamily={
       Object {
@@ -456,10 +404,10 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
     Feb 5, 2020 3:51pm
   </div>
   <div
-    className="c3 c4"
+    className="c1 c2"
   >
     <a
-      className="c5"
+      className="c3"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-jobs-consignments-intern-02-05-20"
       onClick={[Function]}
       target="_blank"
@@ -485,7 +433,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
       </svg>
     </a>
     <a
-      className="c5"
+      className="c3"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-jobs-consignments-intern-02-05-20&text=Consignments Intern&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fartsy-jobs-consignments-intern-02-05-20&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -511,7 +459,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
       </svg>
     </a>
     <a
-      className="c5"
+      className="c3"
       href="mailto:?subject=Consignments Intern&body=Check out Consignments Intern on Artsy: https://www.artsy.net/article/artsy-jobs-consignments-intern-02-05-20"
       onClick={[Function]}
       target="_blank"
@@ -542,28 +490,6 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
 
 exports[`ClassicByline Snapshots renders multiple authors 1`] = `
 .c2 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c1 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -577,18 +503,18 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
   margin-top: 5px;
 }
 
-.c6 {
+.c3 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c6:hover {
+.c3:hover {
   opacity: 0.6;
 }
 
-.c6:first-child {
+.c3:first-child {
   padding-left: 0;
 }
 
@@ -597,7 +523,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
   display: block;
 }
 
-.c0 .c4 {
+.c0 .c1 {
   display: inline-block;
 }
 
@@ -608,11 +534,11 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
 }
 
 <div
-  className="c0"
+  className="sc-bdVaJa c0"
 >
   <div>
     <div
-      className="c1"
+      className="sc-bxivhb bUZGRr sc-htpNat bVRgFi"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -624,7 +550,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
       Joanne Artman Gallery
     </div>
     <div
-      className="c2"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -637,7 +563,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
     </div>
   </div>
   <div
-    className="c3"
+    className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
     color="#666"
     fontFamily={
       Object {
@@ -650,10 +576,10 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
     Jul 28, 2017 4:38pm
   </div>
   <div
-    className="c4 c5"
+    className="c1 c2"
   >
     <a
-      className="c6"
+      className="c3"
       href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"
@@ -679,7 +605,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c3"
       href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
       onClick={[Function]}
       target="_blank"
@@ -705,7 +631,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
       </svg>
     </a>
     <a
-      className="c6"
+      className="c3"
       href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
       onClick={[Function]}
       target="_blank"

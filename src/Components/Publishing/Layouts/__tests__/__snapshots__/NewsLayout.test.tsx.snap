@@ -1,40 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout renders the news layout on mobile 1`] = `
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 780;
-  margin-bottom: 16px;
-  margin-top: 4px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
-}
-
-.c16 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c18 {
+.c15 {
   margin: 10px 20px 0 0;
 }
 
-.c18::before {
+.c15::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -44,7 +15,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-color: black;
 }
 
-.c19 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,11 +27,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   color: #999999;
 }
 
-.c19 a {
+.c16 a {
   color: #999999;
 }
 
-.c20 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,22 +45,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin-top: 5px;
 }
 
-.c21 {
+.c18 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c21:hover {
+.c18:hover {
   opacity: 0.6;
 }
 
-.c21:first-child {
+.c18:first-child {
   padding-left: 0;
 }
 
-.c14 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -107,12 +78,12 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   align-items: flex-start;
 }
 
-.c14 .c17 {
+.c12 .c14 {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
-.c15 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -122,29 +93,29 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   flex-direction: column;
 }
 
-.c7 {
+.c5 {
   position: relative;
 }
 
-.c7:hover .c23 {
+.c5:hover .c20 {
   opacity: 1;
 }
 
-.c7 .BlockImage__container {
+.c5 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c7 .image-loaded {
+.c5 .image-loaded {
   opacity: 1;
 }
 
-.c8 {
+.c6 {
   display: block;
 }
 
-.c9 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -156,16 +127,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c10 {
+.c8 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c10 > p,
-.c10 p,
-.c10 .public-DraftEditorPlaceholder-root,
-.c10 .public-DraftStyleDefault-block {
+.c8 > p,
+.c8 p,
+.c8 .public-DraftEditorPlaceholder-root,
+.c8 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -175,17 +146,17 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   display: inline;
 }
 
-.c10 > a,
-.c10 a {
+.c8 > a,
+.c8 a {
   color: #999;
 }
 
-.c10 > a:hover,
-.c10 a:hover {
+.c8 > a:hover,
+.c8 a:hover {
   color: black;
 }
 
-.c5 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -197,24 +168,24 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   justify-content: center;
 }
 
-.c6 {
+.c4 {
   margin-right: 0px;
   width: 100%;
   max-width: 100%;
 }
 
-.c6 img {
+.c4 img {
   max-width: 100%;
   height: auto;
 }
 
-.c12 {
+.c10 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c12 a {
+.c10 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -224,22 +195,22 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   background-position: bottom;
 }
 
-.c12 a:hover {
+.c10 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c12 div[class*='ToolTip'] a {
+.c10 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c12 p,
-.c12 ul,
-.c12 ol,
-.c12 .paragraph,
-.c12 div[data-block=true] .public-DraftStyleDefault-block {
+.c10 p,
+.c10 ul,
+.c10 ol,
+.c10 .paragraph,
+.c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -250,32 +221,32 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-style: inherit;
 }
 
-.c12 p:first-child,
-.c12 .paragraph:first-child,
-.c12 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c10 p:first-child,
+.c10 .paragraph:first-child,
+.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c12 p:last-child,
-.c12 .paragraph:last-child,
-.c12 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c10 p:last-child,
+.c10 .paragraph:last-child,
+.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c12 ul,
-.c12 ol {
+.c10 ul,
+.c10 ol {
   padding-left: 1em;
 }
 
-.c12 ul {
+.c10 ul {
   list-style: disc;
 }
 
-.c12 ol {
+.c10 ol {
   list-style: decimal;
 }
 
-.c12 li {
+.c10 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -284,7 +255,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   padding-bottom: .5em;
 }
 
-.c12 h1 {
+.c10 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -297,7 +268,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-align: center;
 }
 
-.c12 h1::before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -308,7 +279,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   right: calc(50% - 4px);
 }
 
-.c12 h2 {
+.c10 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -317,15 +288,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 0;
 }
 
-.c12 h2 a {
+.c10 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c12 h2 .c24 {
+.c10 h2 .c21 {
   background-position: bottom !important;
 }
 
-.c12 h3 {
+.c10 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -335,7 +306,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: 0;
 }
 
-.c12 h3 strong {
+.c10 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -343,11 +314,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1.5em;
 }
 
-.c12 h3 a {
+.c10 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c12 blockquote {
+.c10 blockquote {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -364,15 +335,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin: auto;
 }
 
-.c12 blockquote a {
+.c10 blockquote a {
   background-size: 1.25px 1px;
 }
 
-.c12 .preventLineBreak {
+.c10 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c12 .content-end {
+.c10 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -383,14 +354,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   margin-bottom: 1px;
 }
 
-.c12 .artist-follow {
+.c10 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c12 .artist-follow::before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -398,7 +369,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   font-size: 32px;
 }
 
-.c12 .artist-follow::after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -407,25 +378,25 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   text-transform: none;
 }
 
-.c4 {
+.c2 {
   margin-bottom: 20px;
 }
 
-.c11 {
+.c9 {
   max-width: 660px;
   margin-bottom: 20px;
 }
 
-.c13 {
+.c11 {
   max-width: 780px;
   margin-top: 30px;
 }
 
-.c0 .c25 {
+.c0 .c22 {
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c22 {
+.c19 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -448,11 +419,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   line-height: 1em;
 }
 
-.c22:focus {
+.c19:focus {
   outline: 0;
 }
 
-.c22:hover {
+.c19:hover {
   color: #E5E5E5;
 }
 
@@ -466,20 +437,8 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   border: 1px solid transparent;
 }
 
-@media screen and (min-width:40em) {
-  .c3 {
-    font-size: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    line-height: initial;
-  }
-}
-
 @media (max-width:720px) {
-  .c19 {
+  .c16 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -488,31 +447,31 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:600px) {
-  .c20 {
+  .c17 {
     margin-top: 15px;
   }
 }
 
 @media (max-width:720px) {
-  .c7 .c23 {
+  .c5 .c20 {
     opacity: 1;
   }
 }
 
 @media (max-width:600px) {
-  .c9 {
+  .c7 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c10 {
+  .c8 {
     padding: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c5 {
+  .c3 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -520,49 +479,49 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 }
 
 @media (max-width:600px) {
-  .c6 {
+  .c4 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c6 img {
+  .c4 img {
     width: 100%;
   }
 }
 
 @media (max-width:600px) {
-  .c12 p,
-  .c12 ul,
-  .c12 ol,
-  .c12 div[data-block=true] .public-DraftStyleDefault-block {
+  .c10 p,
+  .c10 ul,
+  .c10 ol,
+  .c10 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c12 li {
+  .c10 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c12 h1 {
+  .c10 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c12 h2 {
+  .c10 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c12 h3 {
+  .c10 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -570,14 +529,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     line-height: 1.5em;
   }
 
-  .c12 h3 strong {
+  .c10 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c12 blockquote {
+  .c10 blockquote {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -585,13 +544,20 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     margin: 0 10px;
   }
 
-  .c12 .content-start {
+  .c10 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:720px) {
-  .c4 {
+  .c2 {
+    margin: 0 0 15px 0;
+    padding: 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 {
     margin: 0 0 15px 0;
     padding: 0;
   }
@@ -599,20 +565,13 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 
 @media (max-width:720px) {
   .c11 {
-    margin: 0 0 15px 0;
-    padding: 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c13 {
     margin: 30px 0 0 0;
     padding: 0px;
   }
 }
 
 @media (max-width:720px) {
-  .c22 {
+  .c19 {
     bottom: 15px;
     right: 15px;
   }
@@ -635,13 +594,13 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     onMouseLeave={[Function]}
   >
     <div
-      className=""
+      className="hcJFwa"
     >
       <div
-        className="c2"
+        className="jUQFso"
       >
         <h1
-          className="c3"
+          className="cFlEyZ jAwvHb"
           fontFamily={
             Object {
               "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -661,34 +620,34 @@ exports[`News Layout renders the news layout on mobile 1`] = `
     </div>
     <div>
       <div
-        className="c4"
+        className="c2"
         type="image_collection"
       >
         <div
-          className="c5"
+          className="c3"
         >
           <div
-            className="c6"
+            className="c4"
           >
             <div
               className="article-image"
             >
               <div
-                className="c7"
+                className="c5"
               >
                 <img
                   alt="Illustration by Tomi Um for Artsy."
-                  className="BlockImage__container c8"
+                  className="BlockImage__container c6"
                   height="auto"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                   width="100%"
                 />
               </div>
               <div
-                className="c9"
+                className="c7"
               >
                 <div
-                  className="c10"
+                  className="c8"
                 >
                   <div
                     dangerouslySetInnerHTML={
@@ -704,11 +663,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -721,15 +680,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="social_embed"
       />
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -742,11 +701,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -759,11 +718,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -776,11 +735,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -793,15 +752,15 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="social_embed"
       />
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -814,16 +773,16 @@ exports[`News Layout renders the news layout on mobile 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c11"
       >
         <div
-          className="c14"
+          className="c12"
         >
           <div
-            className="c15"
+            className="c13"
           >
             <div
-              className="c16"
+              className="bUZGRr dOrNHt"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -833,14 +792,14 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               fontSize="14px"
             >
               <div
-                className="c17 c18"
+                className="c14 c15"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c19"
+              className="c16"
             >
               Jul 19, 2018 at 1:19pm
               , via
@@ -855,10 +814,10 @@ exports[`News Layout renders the news layout on mobile 1`] = `
             </div>
           </div>
           <div
-            className="c20"
+            className="c17"
           >
             <a
-              className="c21"
+              className="c18"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -884,7 +843,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               </svg>
             </a>
             <a
-              className="c21"
+              className="c18"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -910,7 +869,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               </svg>
             </a>
             <a
-              className="c21"
+              className="c18"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -940,7 +899,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
       </div>
     </div>
     <button
-      className="c22"
+      className="c19"
       onClick={[Function]}
     >
       Expand
@@ -950,40 +909,11 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 `;
 
 exports[`News Layout renders the news layout properly 1`] = `
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 780;
-  margin-bottom: 16px;
-  margin-top: 4px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
-}
-
-.c16 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c18 {
+.c15 {
   margin: 10px 20px 0 0;
 }
 
-.c18::before {
+.c15::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -993,7 +923,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-color: black;
 }
 
-.c19 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1005,11 +935,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   color: #999999;
 }
 
-.c19 a {
+.c16 a {
   color: #999999;
 }
 
-.c20 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1023,22 +953,22 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin-top: 5px;
 }
 
-.c21 {
+.c18 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c21:hover {
+.c18:hover {
   opacity: 0.6;
 }
 
-.c21:first-child {
+.c18:first-child {
   padding-left: 0;
 }
 
-.c14 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1056,12 +986,12 @@ exports[`News Layout renders the news layout properly 1`] = `
   align-items: flex-start;
 }
 
-.c14 .c17 {
+.c12 .c14 {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
-.c15 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1071,29 +1001,29 @@ exports[`News Layout renders the news layout properly 1`] = `
   flex-direction: column;
 }
 
-.c7 {
+.c5 {
   position: relative;
 }
 
-.c7:hover .c23 {
+.c5:hover .c20 {
   opacity: 1;
 }
 
-.c7 .BlockImage__container {
+.c5 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c7 .image-loaded {
+.c5 .image-loaded {
   opacity: 1;
 }
 
-.c8 {
+.c6 {
   display: block;
 }
 
-.c9 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1105,16 +1035,16 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 10px 0 10px 0;
 }
 
-.c10 {
+.c8 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c10 > p,
-.c10 p,
-.c10 .public-DraftEditorPlaceholder-root,
-.c10 .public-DraftStyleDefault-block {
+.c8 > p,
+.c8 p,
+.c8 .public-DraftEditorPlaceholder-root,
+.c8 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -1124,17 +1054,17 @@ exports[`News Layout renders the news layout properly 1`] = `
   display: inline;
 }
 
-.c10 > a,
-.c10 a {
+.c8 > a,
+.c8 a {
   color: #999;
 }
 
-.c10 > a:hover,
-.c10 a:hover {
+.c8 > a:hover,
+.c8 a:hover {
   color: black;
 }
 
-.c5 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1146,24 +1076,24 @@ exports[`News Layout renders the news layout properly 1`] = `
   justify-content: center;
 }
 
-.c6 {
+.c4 {
   margin-right: 0px;
   width: 100%;
   max-width: 100%;
 }
 
-.c6 img {
+.c4 img {
   max-width: 100%;
   height: auto;
 }
 
-.c12 {
+.c10 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c12 a {
+.c10 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1173,22 +1103,22 @@ exports[`News Layout renders the news layout properly 1`] = `
   background-position: bottom;
 }
 
-.c12 a:hover {
+.c10 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c12 div[class*='ToolTip'] a {
+.c10 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c12 p,
-.c12 ul,
-.c12 ol,
-.c12 .paragraph,
-.c12 div[data-block=true] .public-DraftStyleDefault-block {
+.c10 p,
+.c10 ul,
+.c10 ol,
+.c10 .paragraph,
+.c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1199,32 +1129,32 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-style: inherit;
 }
 
-.c12 p:first-child,
-.c12 .paragraph:first-child,
-.c12 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c10 p:first-child,
+.c10 .paragraph:first-child,
+.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c12 p:last-child,
-.c12 .paragraph:last-child,
-.c12 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c10 p:last-child,
+.c10 .paragraph:last-child,
+.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c12 ul,
-.c12 ol {
+.c10 ul,
+.c10 ol {
   padding-left: 1em;
 }
 
-.c12 ul {
+.c10 ul {
   list-style: disc;
 }
 
-.c12 ol {
+.c10 ol {
   list-style: decimal;
 }
 
-.c12 li {
+.c10 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1233,7 +1163,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   padding-bottom: .5em;
 }
 
-.c12 h1 {
+.c10 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1246,7 +1176,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-align: center;
 }
 
-.c12 h1::before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1257,7 +1187,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   right: calc(50% - 4px);
 }
 
-.c12 h2 {
+.c10 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1266,15 +1196,15 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c12 h2 a {
+.c10 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c12 h2 .c24 {
+.c10 h2 .c21 {
   background-position: bottom !important;
 }
 
-.c12 h3 {
+.c10 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1284,7 +1214,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: 0;
 }
 
-.c12 h3 strong {
+.c10 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1292,11 +1222,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1.5em;
 }
 
-.c12 h3 a {
+.c10 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c12 blockquote {
+.c10 blockquote {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1313,15 +1243,15 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin: auto;
 }
 
-.c12 blockquote a {
+.c10 blockquote a {
   background-size: 1.25px 1px;
 }
 
-.c12 .preventLineBreak {
+.c10 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c12 .content-end {
+.c10 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1332,14 +1262,14 @@ exports[`News Layout renders the news layout properly 1`] = `
   margin-bottom: 1px;
 }
 
-.c12 .artist-follow {
+.c10 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c12 .artist-follow::before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1347,7 +1277,7 @@ exports[`News Layout renders the news layout properly 1`] = `
   font-size: 32px;
 }
 
-.c12 .artist-follow::after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1356,25 +1286,25 @@ exports[`News Layout renders the news layout properly 1`] = `
   text-transform: none;
 }
 
-.c4 {
+.c2 {
   margin-bottom: 20px;
 }
 
-.c11 {
+.c9 {
   max-width: 660px;
   margin-bottom: 20px;
 }
 
-.c13 {
+.c11 {
   max-width: 780px;
   margin-top: 30px;
 }
 
-.c0 .c25 {
+.c0 .c22 {
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c22 {
+.c19 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -1397,11 +1327,11 @@ exports[`News Layout renders the news layout properly 1`] = `
   line-height: 1em;
 }
 
-.c22:focus {
+.c19:focus {
   outline: 0;
 }
 
-.c22:hover {
+.c19:hover {
   color: #E5E5E5;
 }
 
@@ -1415,20 +1345,8 @@ exports[`News Layout renders the news layout properly 1`] = `
   border: 1px solid transparent;
 }
 
-@media screen and (min-width:40em) {
-  .c3 {
-    font-size: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    line-height: initial;
-  }
-}
-
 @media (max-width:720px) {
-  .c19 {
+  .c16 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -1437,25 +1355,25 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c7 .c23 {
+  .c5 .c20 {
     opacity: 1;
   }
 }
 
 @media (max-width:600px) {
-  .c9 {
+  .c7 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c10 {
+  .c8 {
     padding: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c5 {
+  .c3 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1463,49 +1381,49 @@ exports[`News Layout renders the news layout properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c6 {
+  .c4 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c6 img {
+  .c4 img {
     width: 100%;
   }
 }
 
 @media (max-width:600px) {
-  .c12 p,
-  .c12 ul,
-  .c12 ol,
-  .c12 div[data-block=true] .public-DraftStyleDefault-block {
+  .c10 p,
+  .c10 ul,
+  .c10 ol,
+  .c10 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c12 li {
+  .c10 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c12 h1 {
+  .c10 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c12 h2 {
+  .c10 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c12 h3 {
+  .c10 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1513,14 +1431,14 @@ exports[`News Layout renders the news layout properly 1`] = `
     line-height: 1.5em;
   }
 
-  .c12 h3 strong {
+  .c10 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c12 blockquote {
+  .c10 blockquote {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1528,13 +1446,20 @@ exports[`News Layout renders the news layout properly 1`] = `
     margin: 0 10px;
   }
 
-  .c12 .content-start {
+  .c10 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:720px) {
-  .c4 {
+  .c2 {
+    margin: 0 0 15px 0;
+    padding: 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 {
     margin: 0 0 15px 0;
     padding: 0;
   }
@@ -1542,20 +1467,13 @@ exports[`News Layout renders the news layout properly 1`] = `
 
 @media (max-width:720px) {
   .c11 {
-    margin: 0 0 15px 0;
-    padding: 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c13 {
     margin: 30px 0 0 0;
     padding: 0px;
   }
 }
 
 @media (max-width:720px) {
-  .c22 {
+  .c19 {
     bottom: 15px;
     right: 15px;
   }
@@ -1578,13 +1496,13 @@ exports[`News Layout renders the news layout properly 1`] = `
     onMouseLeave={[Function]}
   >
     <div
-      className=""
+      className="hcJFwa"
     >
       <div
-        className="c2"
+        className="jUQFso"
       >
         <h1
-          className="c3"
+          className="cFlEyZ jAwvHb"
           fontFamily={
             Object {
               "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -1604,34 +1522,34 @@ exports[`News Layout renders the news layout properly 1`] = `
     </div>
     <div>
       <div
-        className="c4"
+        className="c2"
         type="image_collection"
       >
         <div
-          className="c5"
+          className="c3"
         >
           <div
-            className="c6"
+            className="c4"
           >
             <div
               className="article-image"
             >
               <div
-                className="c7"
+                className="c5"
               >
                 <img
                   alt="Illustration by Tomi Um for Artsy."
-                  className="BlockImage__container c8"
+                  className="BlockImage__container c6"
                   height="auto"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                   width="100%"
                 />
               </div>
               <div
-                className="c9"
+                className="c7"
               >
                 <div
-                  className="c10"
+                  className="c8"
                 >
                   <div
                     dangerouslySetInnerHTML={
@@ -1647,11 +1565,11 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -1664,15 +1582,15 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="social_embed"
       />
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -1685,11 +1603,11 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -1702,11 +1620,11 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -1719,11 +1637,11 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -1736,15 +1654,15 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="social_embed"
       />
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -1757,16 +1675,16 @@ exports[`News Layout renders the news layout properly 1`] = `
         </div>
       </div>
       <div
-        className="c13"
+        className="c11"
       >
         <div
-          className="c14"
+          className="c12"
         >
           <div
-            className="c15"
+            className="c13"
           >
             <div
-              className="c16"
+              className="bUZGRr dOrNHt"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1776,14 +1694,14 @@ exports[`News Layout renders the news layout properly 1`] = `
               fontSize="14px"
             >
               <div
-                className="c17 c18"
+                className="c14 c15"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c19"
+              className="c16"
             >
               Jul 19, 2018 at 1:19pm
               , via
@@ -1798,10 +1716,10 @@ exports[`News Layout renders the news layout properly 1`] = `
             </div>
           </div>
           <div
-            className="c20"
+            className="c17"
           >
             <a
-              className="c21"
+              className="c18"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -1827,7 +1745,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               </svg>
             </a>
             <a
-              className="c21"
+              className="c18"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -1853,7 +1771,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               </svg>
             </a>
             <a
-              className="c21"
+              className="c18"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -1883,7 +1801,7 @@ exports[`News Layout renders the news layout properly 1`] = `
       </div>
     </div>
     <button
-      className="c22"
+      className="c19"
       onClick={[Function]}
     >
       Expand
@@ -1893,48 +1811,7 @@ exports[`News Layout renders the news layout properly 1`] = `
 `;
 
 exports[`News Layout with display ads renders the news layout properly with display ads 1`] = `
-.c24 {
-  margin: auto;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 780;
-  margin-bottom: 16px;
-  margin-top: 4px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
-}
-
-.c16 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c25 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  color: black30;
-  margin: 4px;
-}
-
-.c23 {
+.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1953,11 +1830,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
   visibility: hidden;
 }
 
-.c18 {
+.c15 {
   margin: 10px 20px 0 0;
 }
 
-.c18::before {
+.c15::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1967,7 +1844,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   background-color: black;
 }
 
-.c19 {
+.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1979,11 +1856,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
   color: #999999;
 }
 
-.c19 a {
+.c16 a {
   color: #999999;
 }
 
-.c20 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1997,22 +1874,22 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin-top: 5px;
 }
 
-.c21 {
+.c18 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c21:hover {
+.c18:hover {
   opacity: 0.6;
 }
 
-.c21:first-child {
+.c18:first-child {
   padding-left: 0;
 }
 
-.c14 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2030,12 +1907,12 @@ exports[`News Layout with display ads renders the news layout properly with disp
   align-items: flex-start;
 }
 
-.c14 .c17 {
+.c12 .c14 {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
-.c15 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2045,29 +1922,29 @@ exports[`News Layout with display ads renders the news layout properly with disp
   flex-direction: column;
 }
 
-.c7 {
+.c5 {
   position: relative;
 }
 
-.c7:hover .c26 {
+.c5:hover .c21 {
   opacity: 1;
 }
 
-.c7 .BlockImage__container {
+.c5 .BlockImage__container {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.c7 .image-loaded {
+.c5 .image-loaded {
   opacity: 1;
 }
 
-.c8 {
+.c6 {
   display: block;
 }
 
-.c9 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2079,16 +1956,16 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin: 10px 0 10px 0;
 }
 
-.c10 {
+.c8 {
   padding: 0;
   width: 100%;
   word-break: break-word;
 }
 
-.c10 > p,
-.c10 p,
-.c10 .public-DraftEditorPlaceholder-root,
-.c10 .public-DraftStyleDefault-block {
+.c8 > p,
+.c8 p,
+.c8 .public-DraftEditorPlaceholder-root,
+.c8 .public-DraftStyleDefault-block {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 14px;
@@ -2098,17 +1975,17 @@ exports[`News Layout with display ads renders the news layout properly with disp
   display: inline;
 }
 
-.c10 > a,
-.c10 a {
+.c8 > a,
+.c8 a {
   color: #999;
 }
 
-.c10 > a:hover,
-.c10 a:hover {
+.c8 > a:hover,
+.c8 a:hover {
   color: black;
 }
 
-.c5 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2120,24 +1997,24 @@ exports[`News Layout with display ads renders the news layout properly with disp
   justify-content: center;
 }
 
-.c6 {
+.c4 {
   margin-right: 0px;
   width: 100%;
   max-width: 100%;
 }
 
-.c6 img {
+.c4 img {
   max-width: 100%;
   height: auto;
 }
 
-.c12 {
+.c10 {
   position: relative;
   width: 100%;
   color: black;
 }
 
-.c12 a {
+.c10 a {
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -2147,22 +2024,22 @@ exports[`News Layout with display ads renders the news layout properly with disp
   background-position: bottom;
 }
 
-.c12 a:hover {
+.c10 a:hover {
   color: #C2C2C2;
   opacity: 1;
 }
 
-.c12 div[class*='ToolTip'] a {
+.c10 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c12 p,
-.c12 ul,
-.c12 ol,
-.c12 .paragraph,
-.c12 div[data-block=true] .public-DraftStyleDefault-block {
+.c10 p,
+.c10 ul,
+.c10 ol,
+.c10 .paragraph,
+.c10 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -2173,32 +2050,32 @@ exports[`News Layout with display ads renders the news layout properly with disp
   font-style: inherit;
 }
 
-.c12 p:first-child,
-.c12 .paragraph:first-child,
-.c12 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c10 p:first-child,
+.c10 .paragraph:first-child,
+.c10 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c12 p:last-child,
-.c12 .paragraph:last-child,
-.c12 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c10 p:last-child,
+.c10 .paragraph:last-child,
+.c10 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c12 ul,
-.c12 ol {
+.c10 ul,
+.c10 ol {
   padding-left: 1em;
 }
 
-.c12 ul {
+.c10 ul {
   list-style: disc;
 }
 
-.c12 ol {
+.c10 ol {
   list-style: decimal;
 }
 
-.c12 li {
+.c10 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -2207,7 +2084,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   padding-bottom: .5em;
 }
 
-.c12 h1 {
+.c10 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -2220,7 +2097,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   text-align: center;
 }
 
-.c12 h1::before {
+.c10 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -2231,7 +2108,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   right: calc(50% - 4px);
 }
 
-.c12 h2 {
+.c10 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -2240,15 +2117,15 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin: 0;
 }
 
-.c12 h2 a {
+.c10 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c12 h2 .c27 {
+.c10 h2 .c22 {
   background-position: bottom !important;
 }
 
-.c12 h3 {
+.c10 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -2258,7 +2135,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin: 0;
 }
 
-.c12 h3 strong {
+.c10 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -2266,11 +2143,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
   line-height: 1.5em;
 }
 
-.c12 h3 a {
+.c10 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c12 blockquote {
+.c10 blockquote {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -2287,15 +2164,15 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin: auto;
 }
 
-.c12 blockquote a {
+.c10 blockquote a {
   background-size: 1.25px 1px;
 }
 
-.c12 .preventLineBreak {
+.c10 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c12 .content-end {
+.c10 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -2306,14 +2183,14 @@ exports[`News Layout with display ads renders the news layout properly with disp
   margin-bottom: 1px;
 }
 
-.c12 .artist-follow {
+.c10 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c12 .artist-follow::before {
+.c10 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -2321,7 +2198,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
   font-size: 32px;
 }
 
-.c12 .artist-follow::after {
+.c10 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -2330,25 +2207,25 @@ exports[`News Layout with display ads renders the news layout properly with disp
   text-transform: none;
 }
 
-.c4 {
+.c2 {
   margin-bottom: 20px;
 }
 
-.c11 {
+.c9 {
   max-width: 660px;
   margin-bottom: 20px;
 }
 
-.c13 {
+.c11 {
   max-width: 780px;
   margin-top: 30px;
 }
 
-.c0 .c28 {
+.c0 .c23 {
   border-bottom: 1px solid #E5E5E5;
 }
 
-.c22 {
+.c19 {
   width: 80px;
   height: 30px;
   background-color: black;
@@ -2371,11 +2248,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
   line-height: 1em;
 }
 
-.c22:focus {
+.c19:focus {
   outline: 0;
 }
 
-.c22:hover {
+.c19:hover {
   color: #E5E5E5;
 }
 
@@ -2389,20 +2266,8 @@ exports[`News Layout with display ads renders the news layout properly with disp
   border: 1px solid transparent;
 }
 
-@media screen and (min-width:40em) {
-  .c3 {
-    font-size: 32px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c3 {
-    line-height: initial;
-  }
-}
-
 @media (max-width:720px) {
-  .c19 {
+  .c16 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 12px;
@@ -2411,25 +2276,25 @@ exports[`News Layout with display ads renders the news layout properly with disp
 }
 
 @media (max-width:720px) {
-  .c7 .c26 {
+  .c5 .c21 {
     opacity: 1;
   }
 }
 
 @media (max-width:600px) {
-  .c9 {
+  .c7 {
     padding: 0px 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c10 {
+  .c8 {
     padding: 0px;
   }
 }
 
 @media (max-width:600px) {
-  .c5 {
+  .c3 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -2437,49 +2302,49 @@ exports[`News Layout with display ads renders the news layout properly with disp
 }
 
 @media (max-width:600px) {
-  .c6 {
+  .c4 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c6 img {
+  .c4 img {
     width: 100%;
   }
 }
 
 @media (max-width:600px) {
-  .c12 p,
-  .c12 ul,
-  .c12 ol,
-  .c12 div[data-block=true] .public-DraftStyleDefault-block {
+  .c10 p,
+  .c10 ul,
+  .c10 ol,
+  .c10 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c12 li {
+  .c10 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c12 h1 {
+  .c10 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c12 h2 {
+  .c10 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c12 h3 {
+  .c10 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -2487,14 +2352,14 @@ exports[`News Layout with display ads renders the news layout properly with disp
     line-height: 1.5em;
   }
 
-  .c12 h3 strong {
+  .c10 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c12 blockquote {
+  .c10 blockquote {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -2502,13 +2367,20 @@ exports[`News Layout with display ads renders the news layout properly with disp
     margin: 0 10px;
   }
 
-  .c12 .content-start {
+  .c10 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:720px) {
-  .c4 {
+  .c2 {
+    margin: 0 0 15px 0;
+    padding: 0;
+  }
+}
+
+@media (max-width:720px) {
+  .c9 {
     margin: 0 0 15px 0;
     padding: 0;
   }
@@ -2516,20 +2388,13 @@ exports[`News Layout with display ads renders the news layout properly with disp
 
 @media (max-width:720px) {
   .c11 {
-    margin: 0 0 15px 0;
-    padding: 0;
-  }
-}
-
-@media (max-width:720px) {
-  .c13 {
     margin: 30px 0 0 0;
     padding: 0px;
   }
 }
 
 @media (max-width:720px) {
-  .c22 {
+  .c19 {
     bottom: 15px;
     right: 15px;
   }
@@ -2552,13 +2417,13 @@ exports[`News Layout with display ads renders the news layout properly with disp
     onMouseLeave={[Function]}
   >
     <div
-      className=""
+      className="hcJFwa"
     >
       <div
-        className="c2"
+        className="jUQFso"
       >
         <h1
-          className="c3"
+          className="cFlEyZ jAwvHb"
           fontFamily={
             Object {
               "fontFamily": "'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif",
@@ -2578,34 +2443,34 @@ exports[`News Layout with display ads renders the news layout properly with disp
     </div>
     <div>
       <div
-        className="c4"
+        className="c2"
         type="image_collection"
       >
         <div
-          className="c5"
+          className="c3"
         >
           <div
-            className="c6"
+            className="c4"
           >
             <div
               className="article-image"
             >
               <div
-                className="c7"
+                className="c5"
               >
                 <img
                   alt="Illustration by Tomi Um for Artsy."
-                  className="BlockImage__container c8"
+                  className="BlockImage__container c6"
                   height="auto"
                   src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FN13JE8AbtWFAgvueH8G1uQ%2Flarger.jpg&width=1200&quality=80"
                   width="100%"
                 />
               </div>
               <div
-                className="c9"
+                className="c7"
               >
                 <div
-                  className="c10"
+                  className="c8"
                 >
                   <div
                     dangerouslySetInnerHTML={
@@ -2621,11 +2486,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -2638,15 +2503,15 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="social_embed"
       />
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -2659,11 +2524,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -2676,11 +2541,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -2693,11 +2558,11 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -2710,15 +2575,15 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c11"
+        className="c9"
         type="social_embed"
       />
       <div
-        className="c11"
+        className="c9"
         type="text"
       >
         <div
-          className="article__text-section c12"
+          className="article__text-section c10"
           color="black"
         >
           <div
@@ -2731,16 +2596,16 @@ exports[`News Layout with display ads renders the news layout properly with disp
         </div>
       </div>
       <div
-        className="c13"
+        className="c11"
       >
         <div
-          className="c14"
+          className="c12"
         >
           <div
-            className="c15"
+            className="c13"
           >
             <div
-              className="c16"
+              className="bUZGRr dOrNHt"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2750,14 +2615,14 @@ exports[`News Layout with display ads renders the news layout properly with disp
               fontSize="14px"
             >
               <div
-                className="c17 c18"
+                className="c14 c15"
                 color="black"
               >
                 Casey Lesser
               </div>
             </div>
             <div
-              className="c19"
+              className="c16"
             >
               Jul 19, 2018 at 1:19pm
               , via
@@ -2772,10 +2637,10 @@ exports[`News Layout with display ads renders the news layout properly with disp
             </div>
           </div>
           <div
-            className="c20"
+            className="c17"
           >
             <a
-              className="c21"
+              className="c18"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article"
               onClick={[Function]}
               target="_blank"
@@ -2801,7 +2666,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
               </svg>
             </a>
             <a
-              className="c21"
+              className="c18"
               href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&text=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fnews-article&via=artsy"
               onClick={[Function]}
               target="_blank"
@@ -2827,7 +2692,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
               </svg>
             </a>
             <a
-              className="c21"
+              className="c18"
               href="mailto:?subject=The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.&body=Check out The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe. on Artsy: https://www.artsy.net/article/news-article"
               onClick={[Function]}
               target="_blank"
@@ -2857,19 +2722,19 @@ exports[`News Layout with display ads renders the news layout properly with disp
       </div>
     </div>
     <button
-      className="c22"
+      className="c19"
       onClick={[Function]}
     >
       Expand
     </button>
   </div>
   <div
-    className="c23"
+    className="c20"
     height="1px"
     onClick={[Function]}
   >
     <div
-      className="c24"
+      className="hPRziE"
     >
       <div
         style={
@@ -2880,7 +2745,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         }
       />
       <div
-        className="c25"
+        className="bUZGRr jritVp"
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"

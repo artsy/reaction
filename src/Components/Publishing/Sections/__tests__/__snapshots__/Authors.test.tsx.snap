@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.c7 {
+.c6 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -31,7 +24,7 @@ exports[`renders properly 1`] = `
   background-size: cover;
 }
 
-.c8 {
+.c7 {
   margin-right: 20px;
   min-width: 60px;
   min-height: 60px;
@@ -57,17 +50,17 @@ exports[`renders properly 1`] = `
   color: black;
 }
 
-.c4 {
+.c3 {
   margin-right: 20px;
 }
 
-.c5 {
+.c4 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c5 .c6 {
+.c4 .c5 {
   vertical-align: middle;
   margin: 0;
 }
@@ -90,7 +83,7 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c8 {
+  .c7 {
     min-width: 40px;
     min-height: 40px;
   }
@@ -100,15 +93,15 @@ exports[`renders properly 1`] = `
   className="c0"
 >
   <div
-    className="c1"
+    className="sc-bwzfXH c1"
     color="black"
   >
     <div
-      className="c2"
+      className="sc-bdVaJa c2"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9vcX6FR21rKHatmvJ8K0sg%252FAbigail.jpg&width=200&quality=80"
     />
     <div
-      className="c3"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -118,7 +111,7 @@ exports[`renders properly 1`] = `
       fontSize="16px"
     >
       <span
-        className="c4"
+        className="c3"
       >
         <span>
           <a
@@ -131,11 +124,11 @@ exports[`renders properly 1`] = `
       </span>
       <span>
         <a
-          className="c5"
+          className="c4"
           href="http://twitter.com/abigailcain"
         >
           <div
-            className="c6 c7"
+            className="c5 c6"
           >
             
           </div>
@@ -145,15 +138,15 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
+    className="sc-bwzfXH c1"
     color="black"
   >
     <div
-      className="c8"
+      className="sc-bdVaJa c7"
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=http%3A%2F%2Ffiles.artsy.net%2Fimages%2Fmolly_01.jpg&width=200&quality=80"
     />
     <div
-      className="c3"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -163,7 +156,7 @@ exports[`renders properly 1`] = `
       fontSize="16px"
     >
       <span
-        className="c4"
+        className="c3"
       >
         <span>
           <a
@@ -176,11 +169,11 @@ exports[`renders properly 1`] = `
       </span>
       <span>
         <a
-          className="c5"
+          className="c4"
           href="http://twitter.com/mollygottschalk"
         >
           <div
-            className="c6 c7"
+            className="c5 c6"
           >
             
           </div>
@@ -190,11 +183,11 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
+    className="sc-bwzfXH c1"
     color="black"
   >
     <div
-      className="c3"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -204,7 +197,7 @@ exports[`renders properly 1`] = `
       fontSize="16px"
     >
       <span
-        className="c4"
+        className="c3"
       >
         <span>
           <a
@@ -217,11 +210,11 @@ exports[`renders properly 1`] = `
       </span>
       <span>
         <a
-          className="c5"
+          className="c4"
           href="http://twitter.com/halleyjohnson"
         >
           <div
-            className="c6 c7"
+            className="c5 c6"
           >
             
           </div>
@@ -231,11 +224,11 @@ exports[`renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c1"
+    className="sc-bwzfXH c1"
     color="black"
   >
     <div
-      className="c3"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -245,7 +238,7 @@ exports[`renders properly 1`] = `
       fontSize="16px"
     >
       <span
-        className="c4"
+        className="c3"
       >
         <div>
           Kana Abe

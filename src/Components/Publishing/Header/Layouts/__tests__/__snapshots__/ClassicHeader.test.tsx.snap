@@ -1,57 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Classic Header Snapshots renders editable props properly 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c1 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 32px;
-  line-height: 38px;
-  padding-bottom: 30px;
-  text-align: left;
-}
-
 .c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.c6 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -65,31 +15,31 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
   margin-top: 5px;
 }
 
-.c9 {
+.c4 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c9:hover {
+.c4:hover {
   opacity: 0.6;
 }
 
-.c9:first-child {
+.c4:first-child {
   padding-left: 0;
 }
 
-.c4 {
+.c1 {
   text-align: left;
   display: block;
 }
 
-.c4 .c7 {
+.c1 .c2 {
   display: inline-block;
 }
 
-.c2 {
+.c0 {
   max-width: 580px;
   width: 100%;
   margin: 0 auto;
@@ -98,61 +48,21 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
   text-align: left;
 }
 
-.c2 p {
+.c0 p {
   margin: 0;
 }
 
 @media screen and (min-width:40em) {
-  .c0 {
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c1 {
-    font-size: 44px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    text-align: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
     text-align: center;
   }
 }
 
 <div
-  className="c0"
+  className="sc-bwzfXH bcJdzp"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX sc-htpNat ibRFZo"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize={
       Array [
@@ -167,7 +77,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
     </div>
   </div>
   <div
-    className="c2 c3"
+    className="sc-ifAKCX c0 sc-htpNat eYagYn"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="18px"
   >
@@ -177,10 +87,10 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
     </div>
   </div>
   <div
-    className="c4"
+    className="sc-bdVaJa c1"
   >
     <div
-      className="c5"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -192,7 +102,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
       Joanne Artman Gallery
     </div>
     <div
-      className="c6"
+      className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
       color="#666"
       fontFamily={
         Object {
@@ -205,10 +115,10 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
       Jun 19, 2015 9:09am
     </div>
     <div
-      className="c7 c8"
+      className="c2 c3"
     >
       <a
-        className="c9"
+        className="c4"
         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
         onClick={[Function]}
         target="_blank"
@@ -234,7 +144,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
         </svg>
       </a>
       <a
-        className="c9"
+        className="c4"
         href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
         onClick={[Function]}
         target="_blank"
@@ -260,7 +170,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
         </svg>
       </a>
       <a
-        className="c9"
+        className="c4"
         href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
         onClick={[Function]}
         target="_blank"
@@ -292,183 +202,14 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
 
 exports[`Classic Header Snapshots renders promoted content properly 1`] = `
 Array [
-  .c0 {
-  max-width: 1250px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c3 {
-  margin-right: 20px;
-  width: 100px;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-}
-
-.c10 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  padding-top: 1px;
-}
-
-.c11 {
-  position: relative;
-}
-
-.c9 {
-  cursor: pointer;
-  position: relative;
-  white-space: nowrap;
-  border: 2px solid;
-  border-radius: 3px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 41px;
-  -webkit-transition: 0.25s ease;
-  transition: 0.25s ease;
-  background-color: #FFF;
-  border-color: #E5E5E5;
-  color: #000;
-}
-
-.c9.loading {
-  -webkit-transition: none;
-  transition: none;
-  background-color: transparent;
-  color: transparent;
-  border: 0;
-  cursor: auto;
-}
-
-.c9.disabled {
-  background-color: #E5E5E5;
-  border-color: #E5E5E5;
-  color: #FFF;
-  pointer-events: none;
-}
-
-.c6 {
-  color: #000;
-  -webkit-transition: color 0.25s;
-  transition: color 0.25s;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c6:hover {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #000;
-}
-
-.c8 {
-  color: #000;
-  -webkit-transition: color 0.25s;
-  transition: color 0.25s;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c8:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  color: #000;
-}
-
-.c12 {
-  border: 1px solid #E5E5E5;
-  border-bottom-width: 0;
-  width: 100%;
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 16px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c7 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c7 {
-    line-height: 32px;
-  }
-}
-
-@media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
-  .c9:hover {
-    background-color: #FFF;
-    border-color: #000;
-    color: #000;
-  }
-}
-
-<div
-    className="c0"
+  <div
+    className="sc-bdVaJa iyRdex"
   >
     <div
-      className="c1"
+      className="sc-bwzfXH eDpOyl"
     >
       <div
-        className="c2"
+        className="sc-bwzfXH eNmxcA"
       >
         <div
           className="fresnel-container fresnel-greaterThan-xs"
@@ -478,17 +219,17 @@ Array [
             href="/auction/ici-benefit-auction-2019"
           >
             <img
-              className="c3"
+              className="Imageshared__BaseImage-sc-1dymtq1-0 juVuwX"
               onContextMenu={[Function]}
               src="https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FLp8BFIM7yd8AspTZJz-MGg%2Flarge_rectangle.jpg"
             />
           </a>
         </div>
         <div
-          className="c4"
+          className="sc-bwzfXH bYgytZ"
         >
           <div
-            className="c5"
+            className="sc-bxivhb bUZGRr sc-htpNat cjXgyL"
             fontFamily={
               Object {
                 "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -503,14 +244,14 @@ Array [
             }
           >
             <a
-              className="c6"
+              className="Link-oxrwcw-0 lcvbOy"
               href="/auction/ici-benefit-auction-2019"
             >
               Promoted Content
             </a>
           </div>
           <div
-            className="c7"
+            className="sc-ifAKCX cFlEyZ sc-htpNat cUeMls"
             fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
             fontSize={
               Array [
@@ -520,7 +261,7 @@ Array [
             }
           >
             <a
-              className="c8"
+              className="Link-oxrwcw-0 idfMpf"
               href="/auction/ici-benefit-auction-2019"
             >
               ICI: Benefit Auction 2019
@@ -536,12 +277,12 @@ Array [
           href="/auction/ici-benefit-auction-2019"
         >
           <button
-            className="  c9"
+            className="  Button__Container-sc-1bhxy1c-2 hPaPSV"
             height="41px"
             onClick={[Function]}
           >
             <div
-              className="c10"
+              className="sc-bxivhb bUZGRr sc-htpNat fTelno"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -564,7 +305,7 @@ Array [
           href="/auction/ici-benefit-auction-2019"
         >
           <svg
-            className="c11"
+            className="Icon-sc-1eovgys-0 lmJieb"
             fill="black100"
             height="18px"
             viewBox="0 0 18 18"
@@ -582,56 +323,12 @@ Array [
       </div>
     </div>
     <div
-      className="c12"
+      className="sc-VigVT hAknHr"
       color="black60"
       width="100%"
     />
   </div>,
-  .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c1 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 32px;
-  line-height: 38px;
-  padding-bottom: 30px;
-  text-align: left;
-}
-
-.c3 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.c4 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c6 {
+  .c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -645,81 +342,41 @@ Array [
   margin-top: 5px;
 }
 
-.c7 {
+.c3 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c7:hover {
+.c3:hover {
   opacity: 0.6;
 }
 
-.c7:first-child {
+.c3:first-child {
   padding-left: 0;
 }
 
-.c2 {
+.c0 {
   text-align: left;
   display: block;
 }
 
-.c2 .c5 {
+.c0 .c1 {
   display: inline-block;
 }
 
 @media screen and (min-width:40em) {
   .c0 {
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    font-size: 44px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    text-align: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c2 {
     text-align: center;
   }
 }
 
 <div
-    className="c0"
+    className="sc-bwzfXH bcJdzp"
   >
     <div
-      className="c1"
+      className="sc-ifAKCX sc-htpNat ibRFZo"
       fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
       fontSize={
         Array [
@@ -734,10 +391,10 @@ Array [
     </div>
     
     <div
-      className="c2"
+      className="sc-bdVaJa c0"
     >
       <div
-        className="c3"
+        className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
         fontFamily={
           Object {
             "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -749,7 +406,7 @@ Array [
         Independent Curators International
       </div>
       <div
-        className="c4"
+        className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
         color="#666"
         fontFamily={
           Object {
@@ -762,10 +419,10 @@ Array [
         Oct 14, 2019 2:52pm
       </div>
       <div
-        className="c5 c6"
+        className="c1 c2"
       >
         <a
-          className="c7"
+          className="c3"
           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Findependent-curators-international-ici-benefit-auction-2019-curatorial-committee-picks"
           onClick={[Function]}
           target="_blank"
@@ -791,7 +448,7 @@ Array [
           </svg>
         </a>
         <a
-          className="c7"
+          className="c3"
           href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Findependent-curators-international-ici-benefit-auction-2019-curatorial-committee-picks&text=ICI: Benefit Auction 2019 Curatorial Committee Picks&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Findependent-curators-international-ici-benefit-auction-2019-curatorial-committee-picks&via=artsy"
           onClick={[Function]}
           target="_blank"
@@ -817,7 +474,7 @@ Array [
           </svg>
         </a>
         <a
-          className="c7"
+          className="c3"
           href="mailto:?subject=ICI: Benefit Auction 2019 Curatorial Committee Picks&body=Check out ICI: Benefit Auction 2019 Curatorial Committee Picks on Artsy: https://www.artsy.net/article/independent-curators-international-ici-benefit-auction-2019-curatorial-committee-picks"
           onClick={[Function]}
           target="_blank"
@@ -849,57 +506,7 @@ Array [
 `;
 
 exports[`Classic Header Snapshots renders properly 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 580px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c1 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 32px;
-  line-height: 38px;
-  padding-bottom: 30px;
-  text-align: left;
-}
-
 .c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.c6 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: #666;
-}
-
-.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -913,31 +520,31 @@ exports[`Classic Header Snapshots renders properly 1`] = `
   margin-top: 5px;
 }
 
-.c9 {
+.c4 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c9:hover {
+.c4:hover {
   opacity: 0.6;
 }
 
-.c9:first-child {
+.c4:first-child {
   padding-left: 0;
 }
 
-.c4 {
+.c1 {
   text-align: left;
   display: block;
 }
 
-.c4 .c7 {
+.c1 .c2 {
   display: inline-block;
 }
 
-.c2 {
+.c0 {
   max-width: 580px;
   width: 100%;
   margin: 0 auto;
@@ -946,61 +553,21 @@ exports[`Classic Header Snapshots renders properly 1`] = `
   text-align: left;
 }
 
-.c2 p {
+.c0 p {
   margin: 0;
 }
 
 @media screen and (min-width:40em) {
-  .c0 {
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c1 {
-    font-size: 44px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    line-height: 50px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c1 {
-    text-align: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c4 {
     text-align: center;
   }
 }
 
 <div
-  className="c0"
+  className="sc-bwzfXH bcJdzp"
 >
   <div
-    className="c1"
+    className="sc-ifAKCX sc-htpNat ibRFZo"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize={
       Array [
@@ -1014,7 +581,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
     </h1>
   </div>
   <div
-    className="c2 c3"
+    className="sc-ifAKCX c0 sc-htpNat eYagYn"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="18px"
   >
@@ -1027,10 +594,10 @@ exports[`Classic Header Snapshots renders properly 1`] = `
     />
   </div>
   <div
-    className="c4"
+    className="sc-bdVaJa c1"
   >
     <div
-      className="c5"
+      className="sc-bxivhb bUZGRr sc-htpNat htJRPl"
       fontFamily={
         Object {
           "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1042,7 +609,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
       Joanne Artman Gallery
     </div>
     <div
-      className="c6"
+      className="sc-bxivhb bUZGRr sc-htpNat dZAObW"
       color="#666"
       fontFamily={
         Object {
@@ -1055,10 +622,10 @@ exports[`Classic Header Snapshots renders properly 1`] = `
       Jul 28, 2017 4:38pm
     </div>
     <div
-      className="c7 c8"
+      className="c2 c3"
     >
       <a
-        className="c9"
+        className="c4"
         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form"
         onClick={[Function]}
         target="_blank"
@@ -1084,7 +651,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
         </svg>
       </a>
       <a
-        className="c9"
+        className="c4"
         href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&text=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Fjoanne-artman-gallery-poetry-naturerefinement-form&via=artsy"
         onClick={[Function]}
         target="_blank"
@@ -1110,7 +677,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
         </svg>
       </a>
       <a
-        className="c9"
+        className="c4"
         href="mailto:?subject=New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple&body=Check out New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple on Artsy: https://www.artsy.net/article/joanne-artman-gallery-poetry-naturerefinement-form"
         onClick={[Function]}
         target="_blank"
