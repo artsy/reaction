@@ -9,18 +9,19 @@ import {
   Sans,
 } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
-import { SystemContextProps } from "Artsy"
+import { AnalyticsSchema, SystemContextProps } from "Artsy"
 import { Mediator, SystemContext } from "Artsy"
-import React, { SFC, useContext } from "react"
+import React, { SFC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
 import { Box, Button, Flex, Image, Separator, Spacer } from "@artsy/palette"
+import { useTracking } from "react-tracking"
 import { get } from "Utils/get"
-import { useAuctionResultsFilterContext } from "./AuctionResultsFilterContext"
 
 export interface Props extends SystemContextProps {
+  expanded: boolean
   auctionResult: ArtistAuctionResultItem_auctionResult
   index: number
   mediator?: Mediator
@@ -46,35 +47,55 @@ const Capitalize = styled.span`
 export const ArtistAuctionResultItem: SFC<Props> = props => {
   const { user, mediator } = useContext(SystemContext)
 
-  const filterContext = useAuctionResultsFilterContext()
-  const onAuctionResultClick = filterContext.onAuctionResultClick
-  const opened = props.index === filterContext.filters.openedItemIndex
+  const tracking = useTracking()
+  const [expanded, setExpanded] = useState(false)
+
+  const toggle = () => {
+    const expand = !expanded
+
+    setExpanded(!expanded)
+    tracking.trackEvent({
+      context_page: AnalyticsSchema.PageName.ArtistAuctionResults,
+      action_type: AnalyticsSchema.ActionType.AuctionResultItemClicked,
+      current: {
+        expanded: expand,
+      },
+    })
+  }
 
   return (
     <>
       <Media at="xs">
-        <FullWidthBorderBox
-          mb={2}
-          onClick={() => onAuctionResultClick(opened ? null : props.index)}
-        >
+        <FullWidthBorderBox mb={2} onClick={toggle}>
           <Row height="120px" p={2}>
-            <ExtraSmallAuctionItem {...props} mediator={mediator} user={user} />
+            <ExtraSmallAuctionItem
+              {...props}
+              expanded={expanded}
+              mediator={mediator}
+              user={user}
+            />
           </Row>
-          <Box>{renderSmallCollapse(props, user, mediator)}</Box>
+          <Box>
+            {renderSmallCollapse({ ...props, expanded }, user, mediator)}
+          </Box>
         </FullWidthBorderBox>
       </Media>
 
       <Media greaterThanOrEqual="sm">
-        <FullWidthBorderBox
-          mb={2}
-          onClick={() => onAuctionResultClick(opened ? null : props.index)}
-        >
+        <FullWidthBorderBox mb={2} onClick={toggle}>
           <Box p={2} minHeight="120px">
             <Row minHeight="80px">
-              <LargeAuctionItem {...props} mediator={mediator} user={user} />
+              <LargeAuctionItem
+                {...props}
+                expanded={expanded}
+                mediator={mediator}
+                user={user}
+              />
             </Row>
           </Box>
-          <Box>{renderLargeCollapse(props, user, mediator)}</Box>
+          <Box>
+            {renderLargeCollapse({ ...props, expanded }, user, mediator)}
+          </Box>
         </FullWidthBorderBox>
       </Media>
       <Spacer />
@@ -84,6 +105,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
 
 const LargeAuctionItem: SFC<Props> = props => {
   const {
+    expanded,
     auctionResult: {
       images,
       date_text,
@@ -94,9 +116,6 @@ const LargeAuctionItem: SFC<Props> = props => {
     },
     salePrice,
   } = getProps(props)
-
-  const filterContext = useAuctionResultsFilterContext()
-  const opened = props.index === filterContext.filters.openedItemIndex
 
   const imageUrl = get(images, i => i.thumbnail.url, "")
   return (
@@ -145,7 +164,7 @@ const LargeAuctionItem: SFC<Props> = props => {
             {renderPricing(salePrice, props.user, props.mediator, "lg")}
           </Flex>
           <Flex width="10%" justifyContent="flex-end">
-            <div>{opened ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
+            <div>{expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
           </Flex>
         </Flex>
       </Col>
@@ -155,12 +174,11 @@ const LargeAuctionItem: SFC<Props> = props => {
 
 const ExtraSmallAuctionItem: SFC<Props> = props => {
   const {
+    expanded,
     auctionResult: { images, date_text, sale_date_text, title },
     salePrice,
   } = getProps(props)
   const imageUrl = get(images, i => i.thumbnail.url, "")
-  const filterContext = useAuctionResultsFilterContext()
-  const opened = props.index === filterContext.filters.openedItemIndex
 
   return (
     <>
@@ -197,7 +215,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
           alignItems="center"
           height="100%"
         >
-          <div>{opened ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
+          <div>{expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
         </Flex>
       </Col>
     </>
@@ -383,6 +401,7 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
 
 const renderLargeCollapse = (props, user, mediator) => {
   const {
+    expanded,
     auctionResult: {
       dimension_text,
       description,
@@ -393,11 +412,9 @@ const renderLargeCollapse = (props, user, mediator) => {
     salePrice,
     estimatedPrice,
   } = getProps(props)
-  const filterContext = useAuctionResultsFilterContext()
-  const opened = props.index === filterContext.filters.openedItemIndex
 
   return (
-    <Collapse open={opened}>
+    <Collapse open={expanded}>
       <Separator />
       <Box p={2}>
         <Row>
@@ -472,6 +489,7 @@ const renderLargeCollapse = (props, user, mediator) => {
 
 const renderSmallCollapse = (props, user, mediator) => {
   const {
+    expanded,
     auctionResult: {
       dimension_text,
       description,
@@ -483,11 +501,9 @@ const renderSmallCollapse = (props, user, mediator) => {
     salePrice,
     estimatedPrice,
   } = getProps(props)
-  const filterContext = useAuctionResultsFilterContext()
-  const opened = props.index === filterContext.filters.openedItemIndex
 
   return (
-    <Collapse open={opened}>
+    <Collapse open={expanded}>
       <Separator />
       <Box p={2}>
         <Row mb={2}>

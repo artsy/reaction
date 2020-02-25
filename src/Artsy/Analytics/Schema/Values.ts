@@ -64,6 +64,7 @@ export enum ActionType {
 
   CommercialFilterParamsChanged = "Commercial filter params changed",
   AuctionResultFilterParamChanged = "Auction results filter params changed",
+  AuctionResultItemClicked = "Auction result item clicked",
 
   /**
    * A/B Test Experiments
