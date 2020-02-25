@@ -37,11 +37,13 @@ query routes_CollectorVerificationAppQuery(
 }
 
 fragment CollectorVerificationApp_me_1Bmzm5 on Me {
+  internalID
   name
   identityVerification(id: $id) {
     id
     state
     invitationExpiresAt
+    userID
   }
 }
 */
@@ -137,6 +139,7 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
+          (v1/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -171,7 +174,6 @@ return {
               (v3/*: any*/)
             ]
           },
-          (v1/*: any*/),
           (v4/*: any*/)
         ]
       }
@@ -181,7 +183,7 @@ return {
     "operationKind": "query",
     "name": "routes_CollectorVerificationAppQuery",
     "id": null,
-    "text": "query routes_CollectorVerificationAppQuery(\n  $id: String!\n) {\n  me {\n    ...CollectorVerificationApp_me_1Bmzm5\n    internalID\n    identityVerification(id: $id) {\n      userID\n      id\n    }\n    id\n  }\n}\n\nfragment CollectorVerificationApp_me_1Bmzm5 on Me {\n  name\n  identityVerification(id: $id) {\n    id\n    state\n    invitationExpiresAt\n  }\n}\n",
+    "text": "query routes_CollectorVerificationAppQuery(\n  $id: String!\n) {\n  me {\n    ...CollectorVerificationApp_me_1Bmzm5\n    internalID\n    identityVerification(id: $id) {\n      userID\n      id\n    }\n    id\n  }\n}\n\nfragment CollectorVerificationApp_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    id\n    state\n    invitationExpiresAt\n    userID\n  }\n}\n",
     "metadata": {}
   }
 };

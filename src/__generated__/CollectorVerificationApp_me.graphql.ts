@@ -3,11 +3,13 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type CollectorVerificationApp_me = {
+    readonly internalID: string;
     readonly name: string | null;
     readonly identityVerification: {
         readonly id: string;
         readonly state: string;
         readonly invitationExpiresAt: string | null;
+        readonly userID: string;
     } | null;
     readonly " $refType": "CollectorVerificationApp_me";
 };
@@ -33,6 +35,13 @@ const node: ReaderFragment = {
     }
   ],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -75,10 +84,17 @@ const node: ReaderFragment = {
           "name": "invitationExpiresAt",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "userID",
+          "args": null,
+          "storageKey": null
         }
       ]
     }
   ]
 };
-(node as any).hash = '9cf085e732ed7ebf724d0bee0c6eb936';
+(node as any).hash = 'c5b9697095e5575adc68f63cb6726996';
 export default node;

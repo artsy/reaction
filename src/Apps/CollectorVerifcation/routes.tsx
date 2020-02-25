@@ -9,7 +9,7 @@ import { CollectorVerificationApp } from "./CollectorVerificationApp"
 
 export const routes: RouteConfig[] = [
   {
-    path: "/collector-verification/:id",
+    path: "/identity-verification/:id",
     Component: CollectorVerificationApp,
     query: graphql`
       query routes_CollectorVerificationAppQuery($id: String!) {
@@ -22,20 +22,5 @@ export const routes: RouteConfig[] = [
         }
       }
     `,
-    render: ({ Component, props }) => {
-      if (Component && props) {
-        const { me } = props as any
-        const { identityVerification } = me
-
-        if (
-          !identityVerification ||
-          identityVerification.userID !== me.internalID
-        ) {
-          return <ErrorPage code={404} />
-        }
-
-        return <Component {...props} />
-      }
-    },
   },
 ]
