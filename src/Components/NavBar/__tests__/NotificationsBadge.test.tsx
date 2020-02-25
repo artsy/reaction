@@ -54,6 +54,7 @@ describe("NotificationsBadge", () => {
       return props.render({
         props: {
           me: {
+            unreadNotificationsCount: 55,
             followsAndSaves: {
               notifications: {
                 edges: new Array(55).map(x => x),
@@ -80,6 +81,7 @@ describe("NotificationsBadge", () => {
       return props.render({
         props: {
           me: {
+            unreadNotificationsCount: 200,
             followsAndSaves: {
               notifications: {
                 edges: new Array(200).map(x => x),

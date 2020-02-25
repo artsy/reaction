@@ -36,7 +36,7 @@ export const NotificationsBadge: React.FC<{}> = () => {
         const totalUnread = get(
           props,
           p => {
-            return p.me.followsAndSaves.notifications.edges.length
+            return p.me.unreadNotificationsCount
           },
           0
         )
