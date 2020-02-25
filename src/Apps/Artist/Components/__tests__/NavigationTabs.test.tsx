@@ -68,8 +68,8 @@ describe("ArtistHeader", () => {
       },
     })
     const html = wrapper.html()
-    expect(html).not.toContain("Works for sale (12)")
-    expect(html).not.toContain("Artworks")
+    expect(html).not.toContain("Works for sale")
+    expect(html).toContain("Artworks")
   })
 
   it("renders no tabs if there is no content", async () => {

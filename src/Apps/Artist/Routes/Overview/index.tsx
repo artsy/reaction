@@ -297,7 +297,13 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
             </Media>
             <Row>
               <Col>
-                <SectionHeader headerString="Works For Sale" />
+                <SectionHeader
+                  headerString={
+                    artist.counts.forSaleArtworks
+                      ? "Works For Sale"
+                      : "Artworks"
+                  }
+                />
                 {isClient && <WorksForSaleRail artistID={artist.internalID} />}
                 <Spacer mb={2} />
                 <StyledLink
