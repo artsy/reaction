@@ -17,10 +17,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
   integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
 
-"@artsy/palette@7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-7.1.0.tgz#bd96b3e9825888ee89287d347f08b2a2f081b939"
-  integrity sha512-JgGbIuYRMSEBqP0dUfv1ACjPrrQXN8HDuyoNZnAxl+6KugaYIIHrlGB39nAK/Sc5Wrz/6vrHrnlryKsiShhsWw==
+"@artsy/palette@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-7.1.1.tgz#22a4088ddf4d0efe0af97aac40ecca849450b70c"
+  integrity sha512-XS5uPczGgscy5LKMxK/oB6WWHcxBdoH7SDgVjsoSdsq6yzJ07PhVnJ8hsqQYRoFYNG6f0d8W7MS/cEZstwYfvg==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     d3-interpolate "^1.3.2"
