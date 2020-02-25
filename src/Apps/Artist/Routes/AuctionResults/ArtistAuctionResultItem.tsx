@@ -21,7 +21,7 @@ import { useTracking } from "react-tracking"
 import { get } from "Utils/get"
 
 export interface Props extends SystemContextProps {
-  expanded: boolean
+  expanded?: boolean
   auctionResult: ArtistAuctionResultItem_auctionResult
   index: number
   mediator?: Mediator
