@@ -199,9 +199,7 @@ export class LargeArtistHeader extends Component<Props> {
               <Flex>
                 <H2>
                   <Serif size="3">
-                    {props.artist.nationality &&
-                      `${props.artist.nationality}, `}
-                    {props.artist.years}
+                    {props.artist.formattedNationalityAndBirthday}
                   </Serif>
                 </H2>
                 <Spacer mr={2} />
@@ -329,9 +327,7 @@ export class SmallArtistHeader extends Component<Props> {
               <Box mx={1}>
                 <H2>
                   <Serif size="2">
-                    {props.artist.nationality &&
-                      `${props.artist.nationality}, `}
-                    {props.artist.years}
+                    {props.artist.formattedNationalityAndBirthday}
                   </Serif>
                 </H2>
               </Box>
@@ -481,8 +477,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
         internalID
         slug
         name
-        nationality
-        years
+        formattedNationalityAndBirthday
         counts {
           follows
           forSaleArtworks

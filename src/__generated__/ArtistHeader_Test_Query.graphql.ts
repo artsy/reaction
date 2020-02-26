@@ -39,8 +39,7 @@ export type ArtistHeader_Test_QueryRawResponse = {
         readonly internalID: string;
         readonly slug: string;
         readonly name: string | null;
-        readonly nationality: string | null;
-        readonly years: string | null;
+        readonly formattedNationalityAndBirthday: string | null;
         readonly counts: ({
             readonly follows: number | null;
             readonly forSaleArtworks: number | null;
@@ -72,7 +71,7 @@ export type ArtistHeader_Test_Query = {
 
 /*
 query ArtistHeader_Test_Query {
-  artist(id: "pablo-picasso") {
+  artist(id: "cecily-brown") {
     ...ArtistHeader_artist
     id
   }
@@ -108,8 +107,7 @@ fragment ArtistHeader_artist on Artist {
   internalID
   slug
   name
-  nationality
-  years
+  formattedNationalityAndBirthday
   counts {
     follows
     forSaleArtworks
@@ -146,7 +144,7 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "pablo-picasso"
+    "value": "cecily-brown"
   }
 ],
 v1 = {
@@ -176,7 +174,7 @@ return {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
-        "storageKey": "artist(id:\"pablo-picasso\")",
+        "storageKey": "artist(id:\"cecily-brown\")",
         "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
@@ -199,7 +197,7 @@ return {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
-        "storageKey": "artist(id:\"pablo-picasso\")",
+        "storageKey": "artist(id:\"cecily-brown\")",
         "args": (v0/*: any*/),
         "concreteType": "Artist",
         "plural": false,
@@ -400,14 +398,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "nationality",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "years",
+            "name": "formattedNationalityAndBirthday",
             "args": null,
             "storageKey": null
           },
@@ -537,10 +528,10 @@ return {
     "operationKind": "query",
     "name": "ArtistHeader_Test_Query",
     "id": null,
-    "text": "query ArtistHeader_Test_Query {\n  artist(id: \"pablo-picasso\") {\n    ...ArtistHeader_artist\n    id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  highlights {\n    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized: priceRealized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date: saleDate(format: \"YYYY\")\n        id\n      }\n    }\n  }\n  internalID\n  slug\n  name\n  nationality\n  years\n  counts {\n    follows\n    forSaleArtworks\n  }\n  statuses {\n    artworks\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n",
+    "text": "query ArtistHeader_Test_Query {\n  artist(id: \"cecily-brown\") {\n    ...ArtistHeader_artist\n    id\n  }\n}\n\nfragment ArtistHeader_artist on Artist {\n  highlights {\n    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: [\"blue-chip\", \"top-established\", \"top-emerging\"]) {\n      edges {\n        node {\n          categories {\n            slug\n            id\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {\n    edges {\n      node {\n        price_realized: priceRealized {\n          display(format: \"0a\")\n        }\n        organization\n        sale_date: saleDate(format: \"YYYY\")\n        id\n      }\n    }\n  }\n  internalID\n  slug\n  name\n  formattedNationalityAndBirthday\n  counts {\n    follows\n    forSaleArtworks\n  }\n  statuses {\n    artworks\n  }\n  carousel {\n    images {\n      href\n      resized(height: 200) {\n        url\n        width\n        height\n      }\n    }\n  }\n  ...FollowArtistButton_artist\n}\n\nfragment FollowArtistButton_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n  counts {\n    follows\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '99f3a33391d142dbf18cee9573ada661';
+(node as any).hash = '8958c37137d7f6c8d285aeda7c543522';
 export default node;
