@@ -58,7 +58,7 @@ export class NavigationTabs extends React.Component<Props> {
     const worksForSaleTabName =
       counts.forSaleArtworks > 0
         ? `Works for sale (${counts.forSaleArtworks.toLocaleString()})`
-        : "Works for sale"
+        : "Artworks"
 
     return (
       <>

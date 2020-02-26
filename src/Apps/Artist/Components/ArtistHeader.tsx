@@ -69,7 +69,7 @@ const carouselSlideTrack: Track<null, null, [Image]> = track
 const shopAllWorksButtonText = (forSaleArtworksCount: number) => {
   return forSaleArtworksCount > 0
     ? `Shop works for sale (${forSaleArtworksCount.toLocaleString()})`
-    : `Shop works for sale`
+    : `Browse artworks`
 }
 
 @track<Props>(
