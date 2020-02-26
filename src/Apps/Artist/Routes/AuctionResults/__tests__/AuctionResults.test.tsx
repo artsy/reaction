@@ -199,7 +199,6 @@ describe("AuctionResults", () => {
                   sizes: ["MEDIUM"],
                   page: 1,
                   sort: "DATE_DESC",
-                  openedItemIndex: null,
                   organizations: [],
                 },
               })
