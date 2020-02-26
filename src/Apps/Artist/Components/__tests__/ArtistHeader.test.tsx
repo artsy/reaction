@@ -6,6 +6,7 @@ import {
 } from "Apps/Artist/Components/ArtistHeader"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
+import { ArtistIndicator } from "../ArtistIndicator"
 
 jest.unmock("react-relay")
 
@@ -17,7 +18,7 @@ describe("ArtistHeader", () => {
       Component: ArtistHeader,
       query: graphql`
         query ArtistHeader_Test_Query @raw_response_type {
-          artist(id: "pablo-picasso") {
+          artist(id: "cecily-brown") {
             ...ArtistHeader_artist
           }
         }
@@ -49,10 +50,30 @@ describe("ArtistHeader", () => {
     expect(html).toContain("Blue Chip")
   })
 
+  it("career stage links to cv page", async () => {
+    const wrapper = await getWrapper()
+    expect(
+      wrapper
+        .find(ArtistIndicator)
+        .at(0)
+        .props().link
+    ).toEqual("/artist/cecily-brown/cv")
+  })
+
   it("renders auction record indicator when data is present", async () => {
     const wrapper = await getWrapper()
     const html = wrapper.html()
     expect(html).toContain("Auction Record")
+  })
+
+  it("auction record indicator links to auction results tab", async () => {
+    const wrapper = await getWrapper()
+    expect(
+      wrapper
+        .find(ArtistIndicator)
+        .at(1)
+        .props().link
+    ).toEqual("/artist/cecily-brown/auction-results")
   })
 
   it("hides auction record indicator when data is not present", async () => {
