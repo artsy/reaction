@@ -405,7 +405,13 @@ const renderAuctionHighlight = artist => {
   )
   if (topAuctionResult) {
     const auctionLabel = topAuctionResult + " Auction Record"
-    return <ArtistIndicator label={auctionLabel} type="high-auction" />
+    return (
+      <ArtistIndicator
+        label={auctionLabel}
+        type="high-auction"
+        link={`/artist/${artist.slug}/auction-results`}
+      />
+    )
   }
 }
 
@@ -420,7 +426,11 @@ const renderRepresentationStatus = artist => {
     const highCategory = highestCategory(partnersConnection.edges)
 
     return (
-      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
+      <ArtistIndicator
+        label={CATEGORIES[highCategory]}
+        type={highCategory}
+        link={`/artist/${artist.slug}/cv`}
+      />
     )
   }
 }
