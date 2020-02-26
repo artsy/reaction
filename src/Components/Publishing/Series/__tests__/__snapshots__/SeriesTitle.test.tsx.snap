@@ -1,23 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a series title properly 1`] = `
+.c1 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
+}
+
 .c0 {
   color: black;
   text-align: center;
 }
 
-.c0 .c1 {
+.c0 .c2 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c0 .c1 img {
+.c0 .c2 img {
   margin-left: auto;
   margin-right: auto;
 }
 
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    margin-bottom: 16px;
+  }
+}
+
 @media (max-width:900px) {
-  .c0 .c1 {
+  .c0 .c2 {
     padding-bottom: 0;
   }
 }
@@ -27,7 +64,7 @@ exports[`renders a series title properly 1`] = `
   color="black"
 >
   <h1
-    className="bUZGRr irRDJY"
+    className="c1"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={
       Array [
@@ -43,23 +80,60 @@ exports[`renders a series title properly 1`] = `
 `;
 
 exports[`renders a series with children properly 1`] = `
+.c1 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
+}
+
 .c0 {
   color: black;
   text-align: center;
 }
 
-.c0 .c1 {
+.c0 .c2 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c0 .c1 img {
+.c0 .c2 img {
   margin-left: auto;
   margin-right: auto;
 }
 
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    margin-bottom: 16px;
+  }
+}
+
 @media (max-width:900px) {
-  .c0 .c1 {
+  .c0 .c2 {
     padding-bottom: 0;
   }
 }
@@ -69,7 +143,7 @@ exports[`renders a series with children properly 1`] = `
   color="black"
 >
   <h1
-    className="bUZGRr irRDJY"
+    className="c1"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={
       Array [
@@ -89,17 +163,24 @@ exports[`renders a series with children properly 1`] = `
 
 exports[`renders a sponsored series title properly 1`] = `
 .c1 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
+}
+
+.c2 {
   display: block;
 }
 
-.c4 img {
+.c5 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c2 {
+.c3 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -112,18 +193,48 @@ exports[`renders a sponsored series title properly 1`] = `
   text-align: center;
 }
 
-.c0 .c3 {
+.c0 .c4 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c0 .c3 img {
+.c0 .c4 img {
   margin-left: auto;
   margin-right: auto;
 }
 
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    margin-bottom: 16px;
+  }
+}
+
 @media (max-width:720px) {
-  .c2 {
+  .c3 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -132,7 +243,7 @@ exports[`renders a sponsored series title properly 1`] = `
 }
 
 @media (max-width:900px) {
-  .c0 .c3 {
+  .c0 .c4 {
     padding-bottom: 0;
   }
 }
@@ -142,7 +253,7 @@ exports[`renders a sponsored series title properly 1`] = `
   color="black"
 >
   <h1
-    className="bUZGRr irRDJY"
+    className="c1"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize={
       Array [
@@ -155,15 +266,15 @@ exports[`renders a sponsored series title properly 1`] = `
     The Future of Art
   </h1>
   <div
-    className="PartnerBlock c1"
+    className="PartnerBlock c2"
   >
     <div
-      className="c2"
+      className="c3"
     >
       Presented in Partnership with
     </div>
     <div
-      className="c3 c4"
+      className="c4 c5"
     >
       <a
         href="http://artsy.net"

@@ -1,39 +1,150 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`series layout renders a series 1`] = `
+.c15 {
+  color: white;
+}
+
+.c33 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+.c43 {
+  margin: auto;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.c35 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c40 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
 .c6 {
-  background-color: #000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
 }
 
-.c7 {
-  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
-  background-size: cover;
-  background-position: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -2;
+.c14 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
 }
 
-.c8 {
-  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+.c20 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
 }
 
-.c27 {
+.c21 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c22 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c24 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c30 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c36 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.c37 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.c44 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
+.c42 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,7 +196,7 @@ exports[`series layout renders a series 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c2 .c28 {
+.c2 .c45 {
   margin: 0 20px;
 }
 
@@ -138,11 +249,11 @@ exports[`series layout renders a series 1`] = `
   z-index: 10;
 }
 
-.c22 {
+.c32 {
   margin: 10px 20px 0 0;
 }
 
-.c22::before {
+.c32::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -152,12 +263,12 @@ exports[`series layout renders a series 1`] = `
   background-color: white;
 }
 
-.c15 {
+.c23 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c24 {
+.c38 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -171,22 +282,22 @@ exports[`series layout renders a series 1`] = `
   margin-top: 5px;
 }
 
-.c25 {
+.c39 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c25:hover {
+.c39:hover {
   opacity: 0.6;
 }
 
-.c25:first-child {
+.c39:first-child {
   padding-left: 0;
 }
 
-.c21 {
+.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -201,12 +312,12 @@ exports[`series layout renders a series 1`] = `
   color: white;
 }
 
-.c20 {
+.c29 {
   width: 32px;
   height: 32px;
 }
 
-.c18 {
+.c27 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -216,7 +327,7 @@ exports[`series layout renders a series 1`] = `
   display: block;
 }
 
-.c16 {
+.c25 {
   margin-bottom: 10px;
   margin-left: 0px;
   width: 100%;
@@ -225,7 +336,7 @@ exports[`series layout renders a series 1`] = `
   background: white;
 }
 
-.c14 {
+.c17 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -235,15 +346,15 @@ exports[`series layout renders a series 1`] = `
   display: block;
 }
 
-.c14 .c17 {
+.c17 .c26 {
   opacity: 1;
 }
 
-.c14:hover .c17 {
+.c17:hover .c26 {
   opacity: 0.7;
 }
 
-.c19 {
+.c28 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -262,21 +373,53 @@ exports[`series layout renders a series 1`] = `
   bottom: 20px;
 }
 
-.c19 svg {
+.c28 svg {
   height: 40px;
 }
 
-.c13 {
+.c16 {
   margin-bottom: 40px;
 }
 
-.c26 {
+.c7 {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c8 {
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
+  background-size: cover;
+  background-position: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+
+.c9 {
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c41 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c26 a {
+.c41 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -286,22 +429,22 @@ exports[`series layout renders a series 1`] = `
   background-position: bottom;
 }
 
-.c26 a:hover {
+.c41 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c26 div[class*='ToolTip'] a {
+.c41 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c26 p,
-.c26 ul,
-.c26 ol,
-.c26 .paragraph,
-.c26 div[data-block=true] .public-DraftStyleDefault-block {
+.c41 p,
+.c41 ul,
+.c41 ol,
+.c41 .paragraph,
+.c41 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -312,32 +455,32 @@ exports[`series layout renders a series 1`] = `
   font-style: inherit;
 }
 
-.c26 p:first-child,
-.c26 .paragraph:first-child,
-.c26 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c41 p:first-child,
+.c41 .paragraph:first-child,
+.c41 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c26 p:last-child,
-.c26 .paragraph:last-child,
-.c26 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c41 p:last-child,
+.c41 .paragraph:last-child,
+.c41 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c26 ul,
-.c26 ol {
+.c41 ul,
+.c41 ol {
   padding-left: 1em;
 }
 
-.c26 ul {
+.c41 ul {
   list-style: disc;
 }
 
-.c26 ol {
+.c41 ol {
   list-style: decimal;
 }
 
-.c26 li {
+.c41 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -346,7 +489,7 @@ exports[`series layout renders a series 1`] = `
   padding-bottom: .5em;
 }
 
-.c26 h1 {
+.c41 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -359,7 +502,7 @@ exports[`series layout renders a series 1`] = `
   text-align: center;
 }
 
-.c26 h1::before {
+.c41 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -370,7 +513,7 @@ exports[`series layout renders a series 1`] = `
   right: calc(50% - 4px);
 }
 
-.c26 h2 {
+.c41 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -379,15 +522,15 @@ exports[`series layout renders a series 1`] = `
   margin: 0;
 }
 
-.c26 h2 a {
+.c41 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c26 h2 .c30 {
+.c41 h2 .c47 {
   background-position: bottom !important;
 }
 
-.c26 h3 {
+.c41 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -397,7 +540,7 @@ exports[`series layout renders a series 1`] = `
   margin: 0;
 }
 
-.c26 h3 strong {
+.c41 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -405,11 +548,11 @@ exports[`series layout renders a series 1`] = `
   line-height: 1.5em;
 }
 
-.c26 h3 a {
+.c41 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c26 blockquote {
+.c41 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -422,11 +565,11 @@ exports[`series layout renders a series 1`] = `
   word-break: break-word;
 }
 
-.c26 .preventLineBreak {
+.c41 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c26 .content-end {
+.c41 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -437,14 +580,14 @@ exports[`series layout renders a series 1`] = `
   margin-bottom: 1px;
 }
 
-.c26 .artist-follow {
+.c41 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c26 .artist-follow::before {
+.c41 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -452,7 +595,7 @@ exports[`series layout renders a series 1`] = `
   font-size: 32px;
 }
 
-.c26 .artist-follow::after {
+.c41 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -461,7 +604,7 @@ exports[`series layout renders a series 1`] = `
   text-transform: none;
 }
 
-.c23 {
+.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -475,28 +618,28 @@ exports[`series layout renders a series 1`] = `
   width: 100%;
 }
 
-.c12 {
+.c13 {
   color: white;
   text-align: center;
 }
 
-.c12 .c29 {
+.c13 .c46 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c12 .c29 img {
+.c13 .c46 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c10 {
+.c11 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c10 .c11 {
+.c11 .c12 {
   margin-bottom: 90px;
 }
 
@@ -504,8 +647,272 @@ exports[`series layout renders a series 1`] = `
   color: white;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c33 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c19 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c19 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c19 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c19 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c19 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c19 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c35 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c35 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c40 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c40 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c40 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c21 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c21 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c21 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c21 {
+    line-height: 36px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c21 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c21 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c22 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c22 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c22 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c22 {
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c22 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c22 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c36 {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c36 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c36 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c37 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c37 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c37 {
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width:720px) {
@@ -517,95 +924,95 @@ exports[`series layout renders a series 1`] = `
     font-size: 24px;
   }
 
-  .c2 .c28 {
+  .c2 .c45 {
     margin: 0 10px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c16 {
+  .c25 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c16 {
+  .c25 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c16 {
+  .c25 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c16 {
+  .c25 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c16 {
+  .c25 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c16 {
+  .c25 {
     width: 50%;
   }
 }
 
 @media (max-width:900px) {
-  .c19 svg {
+  .c28 svg {
     height: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c13 {
+  .c16 {
     margin-bottom: 60px;
   }
 }
 
 @media (max-width:600px) {
-  .c26 p,
-  .c26 ul,
-  .c26 ol,
-  .c26 div[data-block=true] .public-DraftStyleDefault-block {
+  .c41 p,
+  .c41 ul,
+  .c41 ol,
+  .c41 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c26 li {
+  .c41 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c26 h1 {
+  .c41 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c26 h2 {
+  .c41 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c26 h3 {
+  .c41 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -613,14 +1020,14 @@ exports[`series layout renders a series 1`] = `
     line-height: 1.5em;
   }
 
-  .c26 h3 strong {
+  .c41 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c26 blockquote {
+  .c41 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -628,13 +1035,13 @@ exports[`series layout renders a series 1`] = `
     margin: 0;
   }
 
-  .c26 .content-start {
+  .c41 .content-start {
     font-size: 55px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c23 {
+  .c34 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -642,7 +1049,7 @@ exports[`series layout renders a series 1`] = `
 }
 
 @media screen and (min-width:52em) {
-  .c23 {
+  .c34 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -650,7 +1057,7 @@ exports[`series layout renders a series 1`] = `
 }
 
 @media screen and (min-width:64em) {
-  .c23 {
+  .c34 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -658,7 +1065,7 @@ exports[`series layout renders a series 1`] = `
 }
 
 @media (max-width:900px) {
-  .c12 .c29 {
+  .c13 .c46 {
     padding-bottom: 0;
   }
 }
@@ -691,7 +1098,7 @@ exports[`series layout renders a series 1`] = `
         suppressHydrationWarning={false}
       >
         <div
-          className="c5 joTwtA"
+          className="c5 c6"
           color="white"
           fontFamily={
             Object {
@@ -718,24 +1125,24 @@ exports[`series layout renders a series 1`] = `
     />
   </div>
   <div
-    className="c6"
+    className="c7"
   >
-    <div
-      className="c7"
-    />
     <div
       className="c8"
     />
+    <div
+      className="c9"
+    />
   </div>
   <div
-    className="c9 c10"
+    className="c10 c11"
   >
     <div
-      className="c11 c12"
+      className="c12 c13"
       color="white"
     >
       <h1
-        className="bUZGRr irRDJY"
+        className="c14"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize={
           Array [
@@ -749,23 +1156,23 @@ exports[`series layout renders a series 1`] = `
       </h1>
     </div>
     <div
-      className="emSqWQ"
+      className="c15"
       color="white"
     >
       <div
-        className="c13"
+        className="c16"
       >
         <a
-          className="ArticleCard c14"
+          className="ArticleCard c17"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="gvQHeY"
+            className="c18"
           >
             <div
-              className="hlyKdw"
+              className="c19"
               width={
                 Array [
                   "100%",
@@ -777,7 +1184,7 @@ exports[`series layout renders a series 1`] = `
             >
               <div>
                 <div
-                  className="bUZGRr frfaAc"
+                  className="c20"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -789,7 +1196,7 @@ exports[`series layout renders a series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="bUZGRr ihlBMh"
+                  className="c21"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -803,7 +1210,7 @@ exports[`series layout renders a series 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="cFlEyZ gmgkop"
+                  className="c22"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -818,10 +1225,10 @@ exports[`series layout renders a series 1`] = `
                 </div>
               </div>
               <div
-                className="c15"
+                className="c23"
               >
                 <div
-                  className="bUZGRr dOrNHt"
+                  className="c24"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -835,7 +1242,7 @@ exports[`series layout renders a series 1`] = `
               </div>
             </div>
             <div
-              className="c16"
+              className="c25"
               width={
                 Array [
                   "100%",
@@ -846,14 +1253,14 @@ exports[`series layout renders a series 1`] = `
               }
             >
               <img
-                className="c17 c18"
+                className="c26 c27"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=80"
               />
               <div
-                className="c19"
+                className="c28"
               >
                 <svg
-                  className="c20"
+                  className="c29"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -873,7 +1280,7 @@ exports[`series layout renders a series 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="bUZGRr jwuwyh"
+                  className="c30"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -890,19 +1297,19 @@ exports[`series layout renders a series 1`] = `
         </a>
       </div>
       <div
-        className="c13"
+        className="c16"
       >
         <a
-          className="ArticleCard c14"
+          className="ArticleCard c17"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="gvQHeY"
+            className="c18"
           >
             <div
-              className="hlyKdw"
+              className="c19"
               width={
                 Array [
                   "100%",
@@ -914,7 +1321,7 @@ exports[`series layout renders a series 1`] = `
             >
               <div>
                 <div
-                  className="bUZGRr frfaAc"
+                  className="c20"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -926,7 +1333,7 @@ exports[`series layout renders a series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="bUZGRr ihlBMh"
+                  className="c21"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -940,7 +1347,7 @@ exports[`series layout renders a series 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="cFlEyZ gmgkop"
+                  className="c22"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -955,11 +1362,11 @@ exports[`series layout renders a series 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c21"
+                className="Byline c31"
                 color="white"
               >
                 <div
-                  className="bUZGRr dOrNHt"
+                  className="c24"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -969,17 +1376,17 @@ exports[`series layout renders a series 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c22"
+                    className="c32"
                     color="white"
                   >
                     Casey Lesser
                   </div>
                 </div>
                 <div
-                  className="c15"
+                  className="c23"
                 >
                   <div
-                    className="bUZGRr dOrNHt"
+                    className="c24"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -994,7 +1401,7 @@ exports[`series layout renders a series 1`] = `
               </div>
             </div>
             <div
-              className="c16"
+              className="c25"
               width={
                 Array [
                   "100%",
@@ -1005,7 +1412,7 @@ exports[`series layout renders a series 1`] = `
               }
             >
               <img
-                className="c17 c18"
+                className="c26 c27"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=80"
               />
             </div>
@@ -1014,15 +1421,15 @@ exports[`series layout renders a series 1`] = `
       </div>
     </div>
     <div
-      className="bGDddn"
+      className="c33"
     >
       <div
-        className="c23"
+        className="c34"
         color="white"
         width="100%"
       >
         <div
-          className="bEGzhX"
+          className="c35"
           width={
             Array [
               1,
@@ -1034,7 +1441,7 @@ exports[`series layout renders a series 1`] = `
         >
           <div>
             <div
-              className="bUZGRr bpiXLB"
+              className="c36"
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
@@ -1042,15 +1449,15 @@ exports[`series layout renders a series 1`] = `
               About the Series
             </div>
             <div
-              className="bUZGRr ieiYrI"
+              className="c37"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
             >
               <div
-                className="c24"
+                className="c38"
               >
                 <a
-                  className="c25"
+                  className="c39"
                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
                   onClick={[Function]}
                   target="_blank"
@@ -1076,7 +1483,7 @@ exports[`series layout renders a series 1`] = `
                   </svg>
                 </a>
                 <a
-                  className="c25"
+                  className="c39"
                   href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
                   onClick={[Function]}
                   target="_blank"
@@ -1102,7 +1509,7 @@ exports[`series layout renders a series 1`] = `
                   </svg>
                 </a>
                 <a
-                  className="c25"
+                  className="c39"
                   href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
                   onClick={[Function]}
                   target="_blank"
@@ -1136,7 +1543,7 @@ exports[`series layout renders a series 1`] = `
           />
         </div>
         <div
-          className="ZkXJl"
+          className="c40"
           width={
             Array [
               1,
@@ -1150,7 +1557,7 @@ exports[`series layout renders a series 1`] = `
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c26"
+              className="article__text-section c41"
               color="white"
             >
               <div
@@ -1171,12 +1578,12 @@ exports[`series layout renders a series 1`] = `
     </div>
   </div>
   <div
-    className="c27"
+    className="c42"
     height="1px"
     onClick={[Function]}
   >
     <div
-      className="hPRziE"
+      className="c43"
     >
       <div
         style={
@@ -1187,7 +1594,7 @@ exports[`series layout renders a series 1`] = `
         }
       />
       <div
-        className="bUZGRr jritVp"
+        className="c44"
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
@@ -1200,39 +1607,158 @@ exports[`series layout renders a series 1`] = `
 `;
 
 exports[`series layout renders a sponsored series 1`] = `
+.c21 {
+  color: white;
+}
+
+.c39 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+.c51 {
+  margin: auto;
+}
+
+.c46 {
+  margin-bottom: 4px;
+}
+
+.c49 {
+  margin-top: 60px;
+}
+
+.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+}
+
+.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.c41 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c47 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
 .c8 {
-  background-color: #000;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
 }
 
-.c9 {
-  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
-  background-size: cover;
-  background-position: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -2;
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
 }
 
-.c10 {
-  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+.c26 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
 }
 
-.c33 {
+.c27 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c28 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c30 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c36 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c42 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.c43 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.c52 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
+.c50 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1342,11 +1868,11 @@ exports[`series layout renders a sponsored series 1`] = `
   z-index: 10;
 }
 
-.c28 {
+.c38 {
   margin: 10px 20px 0 0;
 }
 
-.c28::before {
+.c38::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -1356,12 +1882,12 @@ exports[`series layout renders a sponsored series 1`] = `
   background-color: white;
 }
 
-.c21 {
+.c29 {
   margin: 5px 20px 0 0;
   white-space: nowrap;
 }
 
-.c30 {
+.c44 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1375,22 +1901,22 @@ exports[`series layout renders a sponsored series 1`] = `
   margin-top: 5px;
 }
 
-.c31 {
+.c45 {
   -webkit-text-decoration: none;
   text-decoration: none;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-.c31:hover {
+.c45:hover {
   opacity: 0.6;
 }
 
-.c31:first-child {
+.c45:first-child {
   padding-left: 0;
 }
 
-.c27 {
+.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1405,12 +1931,12 @@ exports[`series layout renders a sponsored series 1`] = `
   color: white;
 }
 
-.c26 {
+.c35 {
   width: 32px;
   height: 32px;
 }
 
-.c24 {
+.c33 {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1420,7 +1946,7 @@ exports[`series layout renders a sponsored series 1`] = `
   display: block;
 }
 
-.c22 {
+.c31 {
   margin-bottom: 10px;
   margin-left: 0px;
   width: 100%;
@@ -1429,7 +1955,7 @@ exports[`series layout renders a sponsored series 1`] = `
   background: white;
 }
 
-.c20 {
+.c23 {
   border: 1px solid;
   border-radius: 2px;
   color: white;
@@ -1439,15 +1965,15 @@ exports[`series layout renders a sponsored series 1`] = `
   display: block;
 }
 
-.c20 .c23 {
+.c23 .c32 {
   opacity: 1;
 }
 
-.c20:hover .c23 {
+.c23:hover .c32 {
   opacity: 0.7;
 }
 
-.c25 {
+.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1466,26 +1992,58 @@ exports[`series layout renders a sponsored series 1`] = `
   bottom: 20px;
 }
 
-.c25 svg {
+.c34 svg {
   height: 40px;
 }
 
-.c19 {
+.c22 {
   margin-bottom: 40px;
 }
 
-.c15 {
+.c9 {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c10 {
+  background-image: url(https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg);
+  background-size: cover;
+  background-position: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+
+.c11 {
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.6));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.c17 {
   display: block;
 }
 
-.c18 img {
+.c20 img {
   max-width: 240px;
   max-height: 40px;
   object-fit: contain;
   object-position: left;
 }
 
-.c16 {
+.c18 {
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
@@ -1493,13 +2051,13 @@ exports[`series layout renders a sponsored series 1`] = `
   margin-bottom: 20px;
 }
 
-.c32 {
+.c48 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c32 a {
+.c48 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1509,22 +2067,22 @@ exports[`series layout renders a sponsored series 1`] = `
   background-position: bottom;
 }
 
-.c32 a:hover {
+.c48 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c32 div[class*='ToolTip'] a {
+.c48 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c32 p,
-.c32 ul,
-.c32 ol,
-.c32 .paragraph,
-.c32 div[data-block=true] .public-DraftStyleDefault-block {
+.c48 p,
+.c48 ul,
+.c48 ol,
+.c48 .paragraph,
+.c48 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1535,32 +2093,32 @@ exports[`series layout renders a sponsored series 1`] = `
   font-style: inherit;
 }
 
-.c32 p:first-child,
-.c32 .paragraph:first-child,
-.c32 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c48 p:first-child,
+.c48 .paragraph:first-child,
+.c48 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c32 p:last-child,
-.c32 .paragraph:last-child,
-.c32 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c48 p:last-child,
+.c48 .paragraph:last-child,
+.c48 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c32 ul,
-.c32 ol {
+.c48 ul,
+.c48 ol {
   padding-left: 1em;
 }
 
-.c32 ul {
+.c48 ul {
   list-style: disc;
 }
 
-.c32 ol {
+.c48 ol {
   list-style: decimal;
 }
 
-.c32 li {
+.c48 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -1569,7 +2127,7 @@ exports[`series layout renders a sponsored series 1`] = `
   padding-bottom: .5em;
 }
 
-.c32 h1 {
+.c48 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -1582,7 +2140,7 @@ exports[`series layout renders a sponsored series 1`] = `
   text-align: center;
 }
 
-.c32 h1::before {
+.c48 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1593,7 +2151,7 @@ exports[`series layout renders a sponsored series 1`] = `
   right: calc(50% - 4px);
 }
 
-.c32 h2 {
+.c48 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -1602,15 +2160,15 @@ exports[`series layout renders a sponsored series 1`] = `
   margin: 0;
 }
 
-.c32 h2 a {
+.c48 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c32 h2 .c35 {
+.c48 h2 .c54 {
   background-position: bottom !important;
 }
 
-.c32 h3 {
+.c48 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -1620,7 +2178,7 @@ exports[`series layout renders a sponsored series 1`] = `
   margin: 0;
 }
 
-.c32 h3 strong {
+.c48 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -1628,11 +2186,11 @@ exports[`series layout renders a sponsored series 1`] = `
   line-height: 1.5em;
 }
 
-.c32 h3 a {
+.c48 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c32 blockquote {
+.c48 blockquote {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 40px;
   line-height: 1.1em;
@@ -1645,11 +2203,11 @@ exports[`series layout renders a sponsored series 1`] = `
   word-break: break-word;
 }
 
-.c32 .preventLineBreak {
+.c48 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c32 .content-end {
+.c48 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -1660,14 +2218,14 @@ exports[`series layout renders a sponsored series 1`] = `
   margin-bottom: 1px;
 }
 
-.c32 .artist-follow {
+.c48 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c32 .artist-follow::before {
+.c48 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -1675,7 +2233,7 @@ exports[`series layout renders a sponsored series 1`] = `
   font-size: 32px;
 }
 
-.c32 .artist-follow::after {
+.c48 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -1684,7 +2242,7 @@ exports[`series layout renders a sponsored series 1`] = `
   text-transform: none;
 }
 
-.c29 {
+.c40 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1698,32 +2256,32 @@ exports[`series layout renders a sponsored series 1`] = `
   width: 100%;
 }
 
-.c14 {
+.c15 {
   color: white;
   text-align: center;
 }
 
-.c14 .c17 {
+.c15 .c19 {
   padding-top: 5px;
   padding-bottom: 40px;
 }
 
-.c14 .c17 img {
+.c15 .c19 img {
   margin-left: auto;
   margin-right: auto;
 }
 
-.c34 .c13 {
+.c53 .c14 {
   margin-bottom: 90px;
 }
 
-.c12 {
+.c13 {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.c12 .c13 {
+.c13 .c14 {
   margin-bottom: 60px;
 }
 
@@ -1731,8 +2289,272 @@ exports[`series layout renders a sponsored series 1`] = `
   color: white;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   padding: 90px 20px 150px;
+}
+
+@media screen and (min-width:40em) {
+  .c39 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c39 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c24 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c24 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c25 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c25 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c25 {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c25 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c25 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c25 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c41 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c41 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c41 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c47 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c47 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c47 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c16 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c16 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c27 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c27 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c27 {
+    font-size: 42px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c27 {
+    line-height: 36px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c27 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c27 {
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c28 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c28 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c28 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c28 {
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c28 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c28 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c42 {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c42 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c42 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c43 {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c43 {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c43 {
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width:900px) {
@@ -1757,58 +2579,58 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c22 {
+  .c31 {
     margin-bottom: 10px;
     margin-left: 0px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c22 {
+  .c31 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c22 {
+  .c31 {
     margin-bottom: 0px;
     margin-left: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c22 {
+  .c31 {
     width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c22 {
+  .c31 {
     width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
-  .c22 {
+  .c31 {
     width: 50%;
   }
 }
 
 @media (max-width:900px) {
-  .c25 svg {
+  .c34 svg {
     height: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c19 {
+  .c22 {
     margin-bottom: 60px;
   }
 }
 
 @media (max-width:720px) {
-  .c16 {
+  .c18 {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -1817,38 +2639,38 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 @media (max-width:600px) {
-  .c32 p,
-  .c32 ul,
-  .c32 ol,
-  .c32 div[data-block=true] .public-DraftStyleDefault-block {
+  .c48 p,
+  .c48 ul,
+  .c48 ol,
+  .c48 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c32 li {
+  .c48 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c32 h1 {
+  .c48 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c32 h2 {
+  .c48 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c32 h3 {
+  .c48 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -1856,14 +2678,14 @@ exports[`series layout renders a sponsored series 1`] = `
     line-height: 1.5em;
   }
 
-  .c32 h3 strong {
+  .c48 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c32 blockquote {
+  .c48 blockquote {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 34px;
     line-height: 1.1em;
@@ -1871,13 +2693,13 @@ exports[`series layout renders a sponsored series 1`] = `
     margin: 0;
   }
 
-  .c32 .content-start {
+  .c48 .content-start {
     font-size: 55px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c29 {
+  .c40 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1885,7 +2707,7 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 @media screen and (min-width:52em) {
-  .c29 {
+  .c40 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -1893,7 +2715,7 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 @media screen and (min-width:64em) {
-  .c29 {
+  .c40 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -1901,7 +2723,7 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 @media (max-width:900px) {
-  .c14 .c17 {
+  .c15 .c19 {
     padding-bottom: 0;
   }
 }
@@ -1978,7 +2800,7 @@ exports[`series layout renders a sponsored series 1`] = `
         suppressHydrationWarning={false}
       >
         <div
-          className="c7 joTwtA"
+          className="c7 c8"
           color="white"
           fontFamily={
             Object {
@@ -2005,24 +2827,24 @@ exports[`series layout renders a sponsored series 1`] = `
     />
   </div>
   <div
-    className="c8"
+    className="c9"
   >
-    <div
-      className="c9"
-    />
     <div
       className="c10"
     />
+    <div
+      className="c11"
+    />
   </div>
   <div
-    className="c11 c12"
+    className="c12 c13"
   >
     <div
-      className="c13 c14"
+      className="c14 c15"
       color="white"
     >
       <h1
-        className="bUZGRr irRDJY"
+        className="c16"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize={
           Array [
@@ -2035,15 +2857,15 @@ exports[`series layout renders a sponsored series 1`] = `
         The Future of Art
       </h1>
       <div
-        className="PartnerBlock c15"
+        className="PartnerBlock c17"
       >
         <div
-          className="c16"
+          className="c18"
         >
           Presented in Partnership with
         </div>
         <div
-          className="c17 c18"
+          className="c19 c20"
         >
           <a
             href="http://artsy.net"
@@ -2058,23 +2880,23 @@ exports[`series layout renders a sponsored series 1`] = `
       </div>
     </div>
     <div
-      className="emSqWQ"
+      className="c21"
       color="white"
     >
       <div
-        className="c19"
+        className="c22"
       >
         <a
-          className="ArticleCard c20"
+          className="ArticleCard c23"
           color="white"
           href="joanne-artman-gallery-poetry-naturerefinement-form"
           onClick={[Function]}
         >
           <div
-            className="gvQHeY"
+            className="c24"
           >
             <div
-              className="hlyKdw"
+              className="c25"
               width={
                 Array [
                   "100%",
@@ -2086,7 +2908,7 @@ exports[`series layout renders a sponsored series 1`] = `
             >
               <div>
                 <div
-                  className="bUZGRr frfaAc"
+                  className="c26"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2098,7 +2920,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="bUZGRr ihlBMh"
+                  className="c27"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -2112,7 +2934,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
                 <div
-                  className="cFlEyZ gmgkop"
+                  className="c28"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -2127,10 +2949,10 @@ exports[`series layout renders a sponsored series 1`] = `
                 </div>
               </div>
               <div
-                className="c21"
+                className="c29"
               >
                 <div
-                  className="bUZGRr dOrNHt"
+                  className="c30"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2144,7 +2966,7 @@ exports[`series layout renders a sponsored series 1`] = `
               </div>
             </div>
             <div
-              className="c22"
+              className="c31"
               width={
                 Array [
                   "100%",
@@ -2155,14 +2977,14 @@ exports[`series layout renders a sponsored series 1`] = `
               }
             >
               <img
-                className="c23 c24"
+                className="c32 c33"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=80"
               />
               <div
-                className="c25"
+                className="c34"
               >
                 <svg
-                  className="c26"
+                  className="c35"
                   version="1.1"
                   viewBox="0 0 40 56"
                   x="0px"
@@ -2182,7 +3004,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   </g>
                 </svg>
                 <div
-                  className="bUZGRr jwuwyh"
+                  className="c36"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2199,19 +3021,19 @@ exports[`series layout renders a sponsored series 1`] = `
         </a>
       </div>
       <div
-        className="c19"
+        className="c22"
       >
         <a
-          className="ArticleCard c20"
+          className="ArticleCard c23"
           color="white"
           href="new-yorks-next-art-district"
           onClick={[Function]}
         >
           <div
-            className="gvQHeY"
+            className="c24"
           >
             <div
-              className="hlyKdw"
+              className="c25"
               width={
                 Array [
                   "100%",
@@ -2223,7 +3045,7 @@ exports[`series layout renders a sponsored series 1`] = `
             >
               <div>
                 <div
-                  className="bUZGRr frfaAc"
+                  className="c26"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2235,7 +3057,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   The Future of Art
                 </div>
                 <div
-                  className="bUZGRr ihlBMh"
+                  className="c27"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -2249,7 +3071,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   New York's Next Art District
                 </div>
                 <div
-                  className="cFlEyZ gmgkop"
+                  className="c28"
                   fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                   fontSize={
                     Array [
@@ -2264,11 +3086,11 @@ exports[`series layout renders a sponsored series 1`] = `
                 </div>
               </div>
               <div
-                className="Byline c27"
+                className="Byline c37"
                 color="white"
               >
                 <div
-                  className="bUZGRr dOrNHt"
+                  className="c30"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2278,17 +3100,17 @@ exports[`series layout renders a sponsored series 1`] = `
                   fontSize="14px"
                 >
                   <div
-                    className="c28"
+                    className="c38"
                     color="white"
                   >
                     Casey Lesser
                   </div>
                 </div>
                 <div
-                  className="c21"
+                  className="c29"
                 >
                   <div
-                    className="bUZGRr dOrNHt"
+                    className="c30"
                     fontFamily={
                       Object {
                         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2303,7 +3125,7 @@ exports[`series layout renders a sponsored series 1`] = `
               </div>
             </div>
             <div
-              className="c22"
+              className="c31"
               width={
                 Array [
                   "100%",
@@ -2314,7 +3136,7 @@ exports[`series layout renders a sponsored series 1`] = `
               }
             >
               <img
-                className="c23 c24"
+                className="c32 c33"
                 src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=80"
               />
             </div>
@@ -2323,15 +3145,15 @@ exports[`series layout renders a sponsored series 1`] = `
       </div>
     </div>
     <div
-      className="bGDddn"
+      className="c39"
     >
       <div
-        className="c29"
+        className="c40"
         color="white"
         width="100%"
       >
         <div
-          className="bEGzhX"
+          className="c41"
           width={
             Array [
               1,
@@ -2343,7 +3165,7 @@ exports[`series layout renders a sponsored series 1`] = `
         >
           <div>
             <div
-              className="bUZGRr bpiXLB"
+              className="c42"
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
@@ -2351,15 +3173,15 @@ exports[`series layout renders a sponsored series 1`] = `
               About the Series
             </div>
             <div
-              className="bUZGRr ieiYrI"
+              className="c43"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
             >
               <div
-                className="c30"
+                className="c44"
               >
                 <a
-                  className="c31"
+                  className="c45"
                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art"
                   onClick={[Function]}
                   target="_blank"
@@ -2385,7 +3207,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   </svg>
                 </a>
                 <a
-                  className="c31"
+                  className="c45"
                   href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&text=undefined&url=https%3A%2F%2Fwww.artsy.net%2Farticle%2Ffuture-of-art&via=artsy"
                   onClick={[Function]}
                   target="_blank"
@@ -2411,7 +3233,7 @@ exports[`series layout renders a sponsored series 1`] = `
                   </svg>
                 </a>
                 <a
-                  className="c31"
+                  className="c45"
                   href="mailto:?subject=undefined&body=Check out undefined on Artsy: https://www.artsy.net/article/future-of-art"
                   onClick={[Function]}
                   target="_blank"
@@ -2444,18 +3266,18 @@ exports[`series layout renders a sponsored series 1`] = `
             suppressHydrationWarning={false}
           >
             <div
-              className="jtInWY"
+              className="c46"
             >
               <div
-                className="PartnerBlock c15"
+                className="PartnerBlock c17"
               >
                 <div
-                  className="c16"
+                  className="c18"
                 >
                   Presented in Partnership with
                 </div>
                 <div
-                  className="c17 c18"
+                  className="c19 c20"
                 >
                   <a
                     href="http://artsy.net"
@@ -2472,7 +3294,7 @@ exports[`series layout renders a sponsored series 1`] = `
           </div>
         </div>
         <div
-          className="ZkXJl"
+          className="c47"
           width={
             Array [
               1,
@@ -2486,7 +3308,7 @@ exports[`series layout renders a sponsored series 1`] = `
             className="SeriesAbout__description"
           >
             <div
-              className="article__text-section c32"
+              className="article__text-section c48"
               color="white"
             >
               <div
@@ -2503,18 +3325,18 @@ exports[`series layout renders a sponsored series 1`] = `
             suppressHydrationWarning={false}
           >
             <div
-              className="izuImW"
+              className="c49"
             >
               <div
-                className="PartnerBlock c15"
+                className="PartnerBlock c17"
               >
                 <div
-                  className="c16"
+                  className="c18"
                 >
                   Presented in Partnership with
                 </div>
                 <div
-                  className="c17 c18"
+                  className="c19 c20"
                 >
                   <a
                     href="http://artsy.net"
@@ -2534,12 +3356,12 @@ exports[`series layout renders a sponsored series 1`] = `
     </div>
   </div>
   <div
-    className="c33"
+    className="c50"
     height="1px"
     onClick={[Function]}
   >
     <div
-      className="hPRziE"
+      className="c51"
     >
       <div
         style={
@@ -2550,7 +3372,7 @@ exports[`series layout renders a sponsored series 1`] = `
         }
       />
       <div
-        className="bUZGRr jritVp"
+        className="c52"
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"

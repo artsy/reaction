@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
+.c1 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 14px;
+  line-height: 18px;
+  color: #666;
+}
+
 .c0 {
   margin-top: 10px;
   display: block;
@@ -12,12 +19,12 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
   text-decoration: none;
 }
 
-.c0 .c1 {
+.c0 .c2 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.c0 .c1::after {
+.c0 .c2::after {
   content: ", ";
 }
 
@@ -27,7 +34,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 
 <div>
   <div
-    className="sc-ifAKCX display-artwork__caption c0 sc-htpNat eAqBPJ"
+    className="display-artwork__caption c0 c1"
     color="#666"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="14px"
@@ -35,7 +42,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": "<span><span class=\\"c1 ciyMlo\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
+          "__html": "<span><span class=\\"c2 ciyMlo\\"><span class=\\"name\\">Fernando Botero</span></span><span class=\\"title\\">Nude on the Beach</span><span>, </span><span class=\\"date\\">2000</span>. Gary Nader</span>",
         }
       }
     />
@@ -44,7 +51,14 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 `;
 
 exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
-.c2 {
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c3 {
   margin-right: 30px;
 }
 
@@ -66,6 +80,18 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   font-style: italic;
 }
 
+@media screen and (min-width:40em) {
+  .c1 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    line-height: 26px;
+  }
+}
+
 @media (max-width:720px) {
   .c0 {
     -webkit-flex-direction: column;
@@ -75,14 +101,14 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c1.artist-name {
+  .c2.artist-name {
     margin-bottom: 5px;
   }
 }
 
 <div>
   <div
-    className="sc-bxivhb c0 sc-htpNat cjXgyL"
+    className="c0 c1"
     fontFamily={
       Object {
         "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -97,10 +123,10 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
     }
   >
     <div
-      className="c1"
+      className="c2"
     >
       <span
-        className="c2"
+        className="c3"
       >
         <span
           className="name"
@@ -111,7 +137,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
     </div>
     <div>
       <div
-        className="c1"
+        className="c2"
       >
         <span
           className="title"
@@ -128,7 +154,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
         </span>
       </div>
       <div
-        className="c1"
+        className="c2"
       >
         Gary Nader
         <span>
@@ -146,7 +172,14 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 `;
 
 exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
-.c2 {
+.c1 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #C2C2C2;
+}
+
+.c3 {
   margin-right: 30px;
 }
 
@@ -170,12 +203,12 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
   font-style: italic;
 }
 
-.c3 .c1 {
+.c4 .c2 {
   margin-right: 0;
   font-weight: bold;
 }
 
-.c3 .c1::after {
+.c4 .c2::after {
   content: ", ";
 }
 
@@ -187,13 +220,13 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
 
 <div>
   <div
-    className="sc-bxivhb c0 sc-htpNat hoYAXX"
+    className="c0 c1"
     color="#C2C2C2"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="14px"
   >
     <span
-      className="c1 c2"
+      className="c2 c3"
     >
       <span
         className="name"
