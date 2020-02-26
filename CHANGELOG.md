@@ -1,3 +1,15 @@
+# v25.18.3 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Update field used for notifications badge count [#3190](https://github.com/artsy/reaction/pull/3190) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v25.18.2 (Wed Feb 26 2020)
 
 #### 🐛  Bug Fix
