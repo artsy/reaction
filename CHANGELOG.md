@@ -1,3 +1,22 @@
+# v25.18.2 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Fix issue where expanding auction result changed page [#3198](https://github.com/artsy/reaction/pull/3198) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.0 to v7.1.1 [#3194](https://github.com/artsy/reaction/pull/3194) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dependencies [#3195](https://github.com/artsy/reaction/pull/3195) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.18.1 (Mon Feb 24 2020)
 
 #### 🐛  Bug Fix
