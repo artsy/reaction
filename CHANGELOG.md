@@ -1,3 +1,15 @@
+# v25.19.0 (Wed Feb 26 2020)
+
+#### 🚀  Enhancement
+
+- Link header badges to Auction Result / Career Highlights [#3200](https://github.com/artsy/reaction/pull/3200) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.18.3 (Wed Feb 26 2020)
 
 #### 🐛  Bug Fix
