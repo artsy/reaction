@@ -1,5 +1,4 @@
 import { ContextModule } from "./ContextModule"
-import { Intent } from "./Intent"
 
 /*
  * Shared schema for authentication events
@@ -35,18 +34,19 @@ export enum AuthModalType {
 /**
  * the action taken that prompted user to signup or login.
  */
-export type AuthIntent =
-  | Intent.bid
-  | Intent.buyNow
-  | Intent.followArtist
-  | Intent.followGallery
-  | Intent.followGene
-  | Intent.forgot
-  | Intent.login
-  | Intent.makeOffer
-  | Intent.registerToBid
-  | Intent.saveArtwork
-  | Intent.signup
+export enum AuthIntent {
+  bid = "bid",
+  buyNow = "buyNow",
+  followArtist = "followArtist",
+  followGallery = "followGallery",
+  followGene = "followGene",
+  forgot = "forgot",
+  login = "login",
+  makeOffer = "makeOffer",
+  registerToBid = "registerToBid",
+  saveArtwork = "saveArtwork",
+  signup = "signup",
+}
 
 /**
  * the type of action that opened the modal

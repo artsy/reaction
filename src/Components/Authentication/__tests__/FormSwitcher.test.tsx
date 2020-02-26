@@ -22,7 +22,7 @@ describe("FormSwitcher", () => {
           contextModule: Schema.ContextModule.header,
           copy: "Foo Bar",
           destination: "/collect",
-          intent: Schema.Intent.followArtist,
+          intent: Schema.AuthIntent.followArtist,
           redirectTo: "/foo",
           trigger: "timed",
           triggerSeconds: 1,

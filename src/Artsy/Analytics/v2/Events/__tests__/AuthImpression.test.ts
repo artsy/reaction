@@ -5,7 +5,7 @@ describe("authImpression", () => {
   it("Works with minimal args", () => {
     const args = authImpression({
       contextModule: Schema.ContextModule.header,
-      intent: Schema.Intent.signup,
+      intent: Schema.AuthIntent.signup,
       type: Schema.AuthModalType.signup,
     })
 
@@ -24,7 +24,7 @@ describe("authImpression", () => {
   it("Works with all args", () => {
     const args = authImpression({
       contextModule: Schema.ContextModule.header,
-      intent: Schema.Intent.followArtist,
+      intent: Schema.AuthIntent.followArtist,
       copy: "Sign up to follow artists",
       onboarding: true,
       triggerSeconds: 4,
