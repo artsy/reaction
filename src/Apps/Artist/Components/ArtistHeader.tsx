@@ -199,7 +199,7 @@ export class LargeArtistHeader extends Component<Props> {
               <Flex>
                 <H2>
                   <Serif size="3">
-                    {props.formattedNationalityAndBirthday}
+                    {props.artist.formattedNationalityAndBirthday}
                   </Serif>
                 </H2>
                 <Spacer mr={2} />
@@ -327,7 +327,7 @@ export class SmallArtistHeader extends Component<Props> {
               <Box mx={1}>
                 <H2>
                   <Serif size="2">
-                    {props.formattedNationalityAndBirthday}
+                    {props.artist.formattedNationalityAndBirthday}
                   </Serif>
                 </H2>
               </Box>
