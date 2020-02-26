@@ -5,7 +5,6 @@ import { graphql } from "react-relay"
 export const routes: RouteConfig[] = [
   {
     path: "/identity-verification/:id",
-    // getComponent: () => loadable(() => import("./ConversationApp")),
     getComponent: () => loadable(() => import("./IdentityVerificationPage")),
     query: graphql`
       query routes_IdentityVerificationPageQuery($id: String!) {

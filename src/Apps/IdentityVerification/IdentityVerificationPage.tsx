@@ -1,7 +1,7 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { IdentityVerificationPage_me } from "__generated__/IdentityVerificationPage_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { SystemContextConsumer, useTracking } from "Artsy"
-import { IdentityVerificationPage_me } from "__generated__/IdentityVerificationPage_me.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorPage } from "Components/ErrorPage"
 import React from "react"
@@ -30,7 +30,6 @@ export const IdentityVerification: React.FC<Props> = ({ me }) => {
       user_id: me.internalID,
       identity_verification_id: identityVerification.internalID,
     })
-    console.log("clicked continue to verification")
   }
 
   return (
@@ -53,31 +52,29 @@ export const IdentityVerification: React.FC<Props> = ({ me }) => {
                 textAlign="center"
               >
                 <Serif size="6" color="black100">
-                  Artsy ID Verification
+                  Artsy identity verification
                 </Serif>
 
                 <Sans size="4" color="black100" mt={2}>
-                  For transactions involving [explainer], Artsy requires users
-                  to verify their identity. This helps us[prevent fraud etc.]
+                  To complete this process, you'll need a government ID and
+                  access to a camera on your phone or computer.
                 </Sans>
-                <br />
                 <Sans size="4" color="black100" mt={2}>
-                  Once you become a Verified Collector, you’ll have access to
-                  [artworks in high-value auctions and other VIP stuff.]
+                  Your ID and photo will be used for verification purposes only,
+                  and will not be shared.
                 </Sans>
                 <Sans size="4" color="black100" mt={2}>
                   Verification will take 5–10 minutues.
                 </Sans>
                 <Button
                   block
-                  width={["100%", 400]}
+                  width={["100%", 335]}
                   mt={4}
                   onClick={() => {
-                    console.log("click")
                     clickContinueToVerification()
                   }}
                 >
-                  Continue to Verification
+                  Continue to verification
                 </Button>
               </Box>
             </Box>
