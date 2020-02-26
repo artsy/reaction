@@ -1,4 +1,7 @@
 import { data as sd } from "sharify"
+import createLogger from "Utils/logger"
+
+const logger = createLogger("recaptcha.ts")
 
 export const recaptcha = (action: RecaptchaAction, cb?: any) => {
   if (sd.RECAPTCHA_KEY) {
@@ -9,11 +12,17 @@ export const recaptcha = (action: RecaptchaAction, cb?: any) => {
         })
         cb && cb(token)
       } catch (e) {
-        console.log(e)
+        logger.error(e)
+        if (action === "signup_submit") {
+          logger.warn("Signup submitted without Recaptcha Token")
+        }
         cb && cb()
       }
     })
   } else {
+    if (action === "signup_submit") {
+      logger.warn("Signup submitted without Recaptcha Key")
+    }
     cb && cb()
   }
 }
