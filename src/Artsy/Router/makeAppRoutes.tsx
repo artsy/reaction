@@ -38,7 +38,15 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
         const foundUrl = props.router.matcher.matchRoutes(routes, url)
 
         if (foundUrl) {
-          props.router.push(url)
+          const location = props.router.createLocation(url)
+          const previousHref = window.location.href
+
+          props.router.push({
+            ...location,
+            state: {
+              previousHref,
+            },
+          })
         } else {
           window.location.assign(url)
         }

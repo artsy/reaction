@@ -1,3 +1,47 @@
+# v25.18.3 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Update field used for notifications badge count [#3190](https://github.com/artsy/reaction/pull/3190) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.18.2 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Fix issue where expanding auction result changed page [#3198](https://github.com/artsy/reaction/pull/3198) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.0 to v7.1.1 [#3194](https://github.com/artsy/reaction/pull/3194) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dependencies [#3195](https://github.com/artsy/reaction/pull/3195) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.18.1 (Mon Feb 24 2020)
+
+#### 🐛  Bug Fix
+
+- Simplify A/B test lookup via `express-http-context` [#3191](https://github.com/artsy/reaction/pull/3191) ([@damassi](https://github.com/damassi) [@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v25.18.0 (Mon Feb 24 2020)
 
 #### 🚀  Enhancement

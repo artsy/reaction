@@ -1,4 +1,5 @@
 import { Button, Flex, Serif } from "@artsy/palette"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 
 interface HeaderProps {
@@ -16,14 +17,11 @@ export const Header: React.SFC<HeaderProps> = props => {
         {title}
       </Serif>
       {buttonHref && (
-        <Button
-          variant="secondaryOutline"
-          mb={3}
-          // FIXME: Move to <Link> component once https://github.com/artsy/palette/pull/130 is merged
-          onClick={() => (window.location.href = buttonHref)}
-        >
-          View all
-        </Button>
+        <RouterLink to={buttonHref}>
+          <Button variant="secondaryOutline" mb={3}>
+            View all
+          </Button>
+        </RouterLink>
       )}
       {children}
     </Flex>
