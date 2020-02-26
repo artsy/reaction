@@ -1,3 +1,15 @@
+# v25.20.1 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- use `formattedNationalityAndBirthday` in artist header [#3201](https://github.com/artsy/reaction/pull/3201) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.20.0 (Wed Feb 26 2020)
 
 #### 🚀  Enhancement
