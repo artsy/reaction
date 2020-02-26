@@ -1,21 +1,11 @@
 import {
   ActionType,
   AuthContextModule,
+  AuthImpression,
   AuthIntent,
   AuthModalType,
   AuthTrigger,
 } from "../Schema"
-
-interface AuthImpression {
-  action: ActionType.authImpression
-  context_module: AuthContextModule
-  intent: AuthIntent
-  modal_copy?: string
-  onboarding: boolean
-  trigger: AuthTrigger
-  trigger_seconds?: number
-  type: AuthModalType
-}
 
 interface AuthImpressionArgs {
   copy?: string

@@ -1,4 +1,3 @@
-export { ContextModule } from "./ContextModule"
 export { ActionType } from "./ActionType"
 export {
   AuthContextModule,
@@ -6,3 +5,6 @@ export {
   AuthModalType,
   AuthTrigger,
 } from "./Authentication"
+export { ContextModule } from "./ContextModule"
+
+export { AuthImpression } from "./Events"
