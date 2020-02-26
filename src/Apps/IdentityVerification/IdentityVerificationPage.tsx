@@ -1,7 +1,7 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
-import { CollectorVerificationApp_me } from "__generated__/CollectorVerificationApp_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { SystemContextConsumer, useTracking } from "Artsy"
+import { IdentityVerificationPage_me } from "__generated__/IdentityVerificationPage_me.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorPage } from "Components/ErrorPage"
 import React from "react"
@@ -10,10 +10,10 @@ import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
 
 interface Props {
-  me: CollectorVerificationApp_me
+  me: IdentityVerificationPage_me
 }
 
-export const CollectorVerification: React.FC<Props> = ({ me }) => {
+export const IdentityVerification: React.FC<Props> = ({ me }) => {
   const { identityVerification } = me
 
   // TODO: account for: expired, not present, completed, etc
@@ -25,9 +25,10 @@ export const CollectorVerification: React.FC<Props> = ({ me }) => {
 
   const clickContinueToVerification = () => {
     trackEvent({
-      action_type: Schema.ActionType.ClickedBeginVerification,
+      action_type: Schema.ActionType.ClickedContinueToIdVerification,
+      context_module: Schema.ContextModule.IdentityVerificationPage,
       user_id: me.internalID,
-      identity_verification_id: identityVerification.id,
+      identity_verification_id: identityVerification.internalID,
     })
     console.log("clicked continue to verification")
   }
@@ -37,7 +38,7 @@ export const CollectorVerification: React.FC<Props> = ({ me }) => {
       {() => {
         return (
           <AppContainer>
-            <HeadTitle>Artsy | Collector Verification</HeadTitle>
+            <HeadTitle>Artsy | ID Verification</HeadTitle>
 
             <Meta
               name="viewport"
@@ -52,14 +53,9 @@ export const CollectorVerification: React.FC<Props> = ({ me }) => {
                 textAlign="center"
               >
                 <Serif size="6" color="black100">
-                  Artsy Collector Verification
+                  Artsy ID Verification
                 </Serif>
-                <Sans size="4" color="black100" mt={3}>
-                  <code>
-                    Hello {me.name}. Your Identity Verification{" "}
-                    {identityVerification.id} is {identityVerification.state}
-                  </code>
-                </Sans>
+
                 <Sans size="4" color="black100" mt={2}>
                   For transactions involving [explainer], Artsy requires users
                   to verify their identity. This helps us[prevent fraud etc.]
@@ -92,27 +88,18 @@ export const CollectorVerification: React.FC<Props> = ({ me }) => {
   )
 }
 
-export const CollectorVerificationApp = createFragmentContainer(
-  CollectorVerification,
-  {
-    me: graphql`
-      fragment CollectorVerificationApp_me on Me
-        @argumentDefinitions(id: { type: "String!" }) {
+const IdentityVerificationPage = createFragmentContainer(IdentityVerification, {
+  me: graphql`
+    fragment IdentityVerificationPage_me on Me
+      @argumentDefinitions(id: { type: "String!" }) {
+      internalID
+      name
+      identityVerification(id: $id) {
         internalID
-        name
-        identityVerification(id: $id) {
-          id
-          state
-          invitationExpiresAt
-          userID
-        }
+        state
+        userID
       }
-    `,
-  }
-)
-
-// const SafeAreaContainer = styled(Box)`
-//   padding: env(safe-area-inset-top) env(safe-area-inset-right)
-//     env(safe-area-inset-bottom) env(safe-area-inset-left);
-//   margin-bottom: 75px;
-// `
+    }
+  `,
+})
+export default IdentityVerificationPage

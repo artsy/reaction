@@ -2,48 +2,39 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_CollectorVerificationAppQueryVariables = {
+export type routes_IdentityVerificationPageQueryVariables = {
     id: string;
 };
-export type routes_CollectorVerificationAppQueryResponse = {
+export type routes_IdentityVerificationPageQueryResponse = {
     readonly me: {
-        readonly internalID: string;
-        readonly identityVerification: {
-            readonly userID: string;
-        } | null;
-        readonly " $fragmentRefs": FragmentRefs<"CollectorVerificationApp_me">;
+        readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationPage_me">;
     } | null;
 };
-export type routes_CollectorVerificationAppQuery = {
-    readonly response: routes_CollectorVerificationAppQueryResponse;
-    readonly variables: routes_CollectorVerificationAppQueryVariables;
+export type routes_IdentityVerificationPageQuery = {
+    readonly response: routes_IdentityVerificationPageQueryResponse;
+    readonly variables: routes_IdentityVerificationPageQueryVariables;
 };
 
 
 
 /*
-query routes_CollectorVerificationAppQuery(
+query routes_IdentityVerificationPageQuery(
   $id: String!
 ) {
   me {
-    ...CollectorVerificationApp_me_1Bmzm5
-    internalID
-    identityVerification(id: $id) {
-      userID
-      id
-    }
+    ...IdentityVerificationPage_me_1Bmzm5
     id
   }
 }
 
-fragment CollectorVerificationApp_me_1Bmzm5 on Me {
+fragment IdentityVerificationPage_me_1Bmzm5 on Me {
   internalID
   name
   identityVerification(id: $id) {
-    id
+    internalID
     state
-    invitationExpiresAt
     userID
+    id
   }
 }
 */
@@ -57,28 +48,21 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "internalID",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Variable",
     "name": "id",
     "variableName": "id"
   }
 ],
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "userID",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -89,7 +73,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_CollectorVerificationAppQuery",
+    "name": "routes_IdentityVerificationPageQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -103,23 +87,10 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          (v1/*: any*/),
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "identityVerification",
-            "storageKey": null,
-            "args": (v2/*: any*/),
-            "concreteType": "IdentityVerification",
-            "plural": false,
-            "selections": [
-              (v3/*: any*/)
-            ]
-          },
           {
             "kind": "FragmentSpread",
-            "name": "CollectorVerificationApp_me",
-            "args": (v2/*: any*/)
+            "name": "IdentityVerificationPage_me",
+            "args": (v1/*: any*/)
           }
         ]
       }
@@ -127,7 +98,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_CollectorVerificationAppQuery",
+    "name": "routes_IdentityVerificationPageQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -139,7 +110,7 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          (v1/*: any*/),
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -152,11 +123,11 @@ return {
             "alias": null,
             "name": "identityVerification",
             "storageKey": null,
-            "args": (v2/*: any*/),
+            "args": (v1/*: any*/),
             "concreteType": "IdentityVerification",
             "plural": false,
             "selections": [
-              (v4/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -167,26 +138,26 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "invitationExpiresAt",
+                "name": "userID",
                 "args": null,
                 "storageKey": null
               },
               (v3/*: any*/)
             ]
           },
-          (v4/*: any*/)
+          (v3/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_CollectorVerificationAppQuery",
+    "name": "routes_IdentityVerificationPageQuery",
     "id": null,
-    "text": "query routes_CollectorVerificationAppQuery(\n  $id: String!\n) {\n  me {\n    ...CollectorVerificationApp_me_1Bmzm5\n    internalID\n    identityVerification(id: $id) {\n      userID\n      id\n    }\n    id\n  }\n}\n\nfragment CollectorVerificationApp_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    id\n    state\n    invitationExpiresAt\n    userID\n  }\n}\n",
+    "text": "query routes_IdentityVerificationPageQuery(\n  $id: String!\n) {\n  me {\n    ...IdentityVerificationPage_me_1Bmzm5\n    id\n  }\n}\n\nfragment IdentityVerificationPage_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '7953bee596805f8d2c7e9ee4976f379b';
+(node as any).hash = 'dab5557aa7e7308a1e38de08de04a5ed';
 export default node;

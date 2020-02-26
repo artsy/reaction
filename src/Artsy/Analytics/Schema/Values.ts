@@ -135,6 +135,11 @@ export enum ActionType {
    */
   RegistrationSubmitFailed = "Registration failed to submit",
   RegistrationSubmitted = "Registration submitted",
+
+  /**
+   * Identity Verification
+   */
+  ClickedContinueToIdVerification = "ClickedContinueToIdVerification",
 }
 
 /**
@@ -369,6 +374,11 @@ export enum ContextModule {
    * Ad Server
    */
   AdServer = "AdServer",
+
+  /**
+   * Identity Verification
+   */
+  IdentityVerificationPage = "IdentityVerificationPage",
 }
 
 export enum Flow {

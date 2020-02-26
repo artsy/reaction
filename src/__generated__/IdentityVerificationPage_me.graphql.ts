@@ -2,28 +2,35 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type CollectorVerificationApp_me = {
+export type IdentityVerificationPage_me = {
     readonly internalID: string;
     readonly name: string | null;
     readonly identityVerification: {
-        readonly id: string;
+        readonly internalID: string;
         readonly state: string;
-        readonly invitationExpiresAt: string | null;
         readonly userID: string;
     } | null;
-    readonly " $refType": "CollectorVerificationApp_me";
+    readonly " $refType": "IdentityVerificationPage_me";
 };
-export type CollectorVerificationApp_me$data = CollectorVerificationApp_me;
-export type CollectorVerificationApp_me$key = {
-    readonly " $data"?: CollectorVerificationApp_me$data;
-    readonly " $fragmentRefs": FragmentRefs<"CollectorVerificationApp_me">;
+export type IdentityVerificationPage_me$data = IdentityVerificationPage_me;
+export type IdentityVerificationPage_me$key = {
+    readonly " $data"?: IdentityVerificationPage_me$data;
+    readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationPage_me">;
 };
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
-  "name": "CollectorVerificationApp_me",
+  "name": "IdentityVerificationPage_me",
   "type": "Me",
   "metadata": null,
   "argumentDefinitions": [
@@ -35,13 +42,7 @@ const node: ReaderFragment = {
     }
   ],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "internalID",
-      "args": null,
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -64,24 +65,11 @@ const node: ReaderFragment = {
       "concreteType": "IdentityVerification",
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "state",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "invitationExpiresAt",
           "args": null,
           "storageKey": null
         },
@@ -96,5 +84,6 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'c5b9697095e5575adc68f63cb6726996';
+})();
+(node as any).hash = '3fa2bb16402dd44180fbeb17bb0c4a2d';
 export default node;
