@@ -299,7 +299,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
               <Col>
                 <SectionHeader
                   headerString={
-                    artist.counts.forSaleArtworks
+                    artist.counts.forSaleArtworks > 0
                       ? "Works For Sale"
                       : "Artworks"
                   }
