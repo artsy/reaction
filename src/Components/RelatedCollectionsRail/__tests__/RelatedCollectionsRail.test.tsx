@@ -38,6 +38,19 @@ describe("CollectionsRail", () => {
     expect(component.text()).toMatch("From $200")
   })
 
+  it("does not render a carousel entry if it has no artworks", () => {
+    const collectionsCopy = clone(props.collections)
+    collectionsCopy.push({
+      slug: "jasper-johns-flags2",
+      headerImage: "http://files.artsy.net/images/jasperjohnsflag.png",
+      title: "Jasper Johns: Flags Part 2",
+      price_guidance: 1000,
+      artworksConnection: null,
+    })
+    const component = getWrapper({ collections: collectionsCopy })
+    expect(component.find(RelatedCollectionEntity).length).toBe(8)
+  })
+
   it("Does not render carousel if less than 4 entries", () => {
     props.collections = drop(CollectionsRailFixture, 1)
     const component = getWrapper()
