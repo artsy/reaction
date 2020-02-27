@@ -139,15 +139,9 @@ export function buildServerApp(
           )
         }
 
-        // FIXME: Remove once EXPERIMENTAL_APP_SHELL A/B test completes
-        const entrypoints = []
-        if (getENV("EXPERIMENTAL_APP_SHELL")) {
-          entrypoints.push("experimental-app-shell")
-        }
-
         const extractor = new ChunkExtractor({
           statsFile,
-          entrypoints,
+          entrypoints: [],
         })
 
         // Wrap component tree in library contexts to extract usage
