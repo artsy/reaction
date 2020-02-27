@@ -3,7 +3,6 @@ import { ErrorPage } from "Components/ErrorPage"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
-import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 import { confirmBidRedirect, Redirect, registerRedirect } from "./getRedirect"
 
@@ -116,12 +115,17 @@ function handleRedirect(redirect: Redirect, location: Location) {
       `Redirecting from ${location.pathname} to ${redirect.path} because '${redirect.reason}'`
     )
 
-    // FIXME: Remove after A/B test completes
-    if (sd.CLIENT_NAVIGATION_V3 === "experiment") {
-      // This path will only ever be reached on the client
-      // Perform a hard jump to login page as it doesn't exist within router
-      if (redirect.path.includes("/log_in?")) {
-        window.location.href = redirect.path
+    if (typeof window !== "undefined") {
+      // FIXME: Remove after A/B test completes
+      // @ts-ignore
+      if (window.sd.CLIENT_NAVIGATION_V3 === "experiment") {
+        // This path will only ever be reached on the client
+        // Perform a hard jump to login page as it doesn't exist within router
+        if (redirect.path.includes("/log_in?")) {
+          window.location.href = redirect.path
+        } else {
+          throw new RedirectException(redirect.path)
+        }
       } else {
         throw new RedirectException(redirect.path)
       }
