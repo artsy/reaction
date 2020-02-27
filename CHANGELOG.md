@@ -1,3 +1,20 @@
+# v25.21.0 (Thu Feb 27 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Move to more conventional A/B test structure [#3203](https://github.com/artsy/reaction/pull/3203) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Add data file to describe new menu structure (for mobile and desktop) [#3199](https://github.com/artsy/reaction/pull/3199) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 2
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.20.3 (Thu Feb 27 2020)
 
 #### 🐛  Bug Fix
