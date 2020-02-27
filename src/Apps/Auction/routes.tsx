@@ -3,7 +3,7 @@ import { ErrorPage } from "Components/ErrorPage"
 import { RedirectException, RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
-import { getENV } from "Utils/getENV"
+import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 import { confirmBidRedirect, Redirect, registerRedirect } from "./getRedirect"
 
@@ -117,7 +117,8 @@ function handleRedirect(redirect: Redirect, location: Location) {
     )
 
     // FIXME: Remove after A/B test completes
-    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+    if (sd.CLIENT_NAVIGATION_V3 === "experiment") {
+      // This path will only ever be reached on the client
       // Perform a hard jump to login page as it doesn't exist within router
       if (redirect.path.includes("/log_in?")) {
         window.location.href = redirect.path

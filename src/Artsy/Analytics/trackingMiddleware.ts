@@ -2,7 +2,7 @@ import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import ActionTypes from "farce/lib/ActionTypes"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
-import { getENV } from "Utils/getENV"
+
 /**
  * PageView tracking middleware for use in our router apps. Middleware conforms
  * to Redux middleware spec.
@@ -51,7 +51,7 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
             }
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-            if (getENV("EXPERIMENTAL_APP_SHELL")) {
+            if (sd.CLIENT_NAVIGATION_V3 === "experiment") {
               if (referrer) {
                 trackingData.referrer = sd.APP_URL + referrer
               }
