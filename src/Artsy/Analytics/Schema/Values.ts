@@ -12,6 +12,7 @@ export enum PageName {
   CollectionPage = "Collection",
   SearchPage = "Search page",
   HomePage = "Home",
+  IdentityVerificationPage = "Identity Verification page",
 }
 
 /**
@@ -374,11 +375,6 @@ export enum ContextModule {
    * Ad Server
    */
   AdServer = "AdServer",
-
-  /**
-   * Identity Verification
-   */
-  IdentityVerificationPage = "IdentityVerificationPage",
 }
 
 export enum Flow {

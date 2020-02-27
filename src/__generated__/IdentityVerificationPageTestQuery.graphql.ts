@@ -2,15 +2,13 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_IdentityVerificationPageQueryVariables = {
-    id: string;
-};
-export type routes_IdentityVerificationPageQueryResponse = {
+export type IdentityVerificationPageTestQueryVariables = {};
+export type IdentityVerificationPageTestQueryResponse = {
     readonly me: {
         readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationPage_me">;
     } | null;
 };
-export type routes_IdentityVerificationPageQueryRawResponse = {
+export type IdentityVerificationPageTestQueryRawResponse = {
     readonly me: ({
         readonly internalID: string;
         readonly name: string | null;
@@ -23,28 +21,26 @@ export type routes_IdentityVerificationPageQueryRawResponse = {
         readonly id: string | null;
     }) | null;
 };
-export type routes_IdentityVerificationPageQuery = {
-    readonly response: routes_IdentityVerificationPageQueryResponse;
-    readonly variables: routes_IdentityVerificationPageQueryVariables;
-    readonly rawResponse: routes_IdentityVerificationPageQueryRawResponse;
+export type IdentityVerificationPageTestQuery = {
+    readonly response: IdentityVerificationPageTestQueryResponse;
+    readonly variables: IdentityVerificationPageTestQueryVariables;
+    readonly rawResponse: IdentityVerificationPageTestQueryRawResponse;
 };
 
 
 
 /*
-query routes_IdentityVerificationPageQuery(
-  $id: String!
-) {
+query IdentityVerificationPageTestQuery {
   me {
-    ...IdentityVerificationPage_me_1Bmzm5
+    ...IdentityVerificationPage_me_3zaPSf
     id
   }
 }
 
-fragment IdentityVerificationPage_me_1Bmzm5 on Me {
+fragment IdentityVerificationPage_me_3zaPSf on Me {
   internalID
   name
-  identityVerification(id: $id) {
+  identityVerification(id: "idv-id") {
     internalID
     state
     userID
@@ -56,27 +52,19 @@ fragment IdentityVerificationPage_me_1Bmzm5 on Me {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "LocalArgument",
+    "kind": "Literal",
     "name": "id",
-    "type": "String!",
-    "defaultValue": null
+    "value": "idv-id"
   }
 ],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "id",
-    "variableName": "id"
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -87,10 +75,10 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_IdentityVerificationPageQuery",
+    "name": "IdentityVerificationPageTestQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
@@ -104,7 +92,7 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "IdentityVerificationPage_me",
-            "args": (v1/*: any*/)
+            "args": (v0/*: any*/)
           }
         ]
       }
@@ -112,8 +100,8 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_IdentityVerificationPageQuery",
-    "argumentDefinitions": (v0/*: any*/),
+    "name": "IdentityVerificationPageTestQuery",
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
@@ -124,7 +112,7 @@ return {
         "concreteType": "Me",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
+          (v1/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -136,12 +124,12 @@ return {
             "kind": "LinkedField",
             "alias": null,
             "name": "identityVerification",
-            "storageKey": null,
-            "args": (v1/*: any*/),
+            "storageKey": "identityVerification(id:\"idv-id\")",
+            "args": (v0/*: any*/),
             "concreteType": "IdentityVerification",
             "plural": false,
             "selections": [
-              (v2/*: any*/),
+              (v1/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -156,22 +144,22 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              (v3/*: any*/)
+              (v2/*: any*/)
             ]
           },
-          (v3/*: any*/)
+          (v2/*: any*/)
         ]
       }
     ]
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_IdentityVerificationPageQuery",
+    "name": "IdentityVerificationPageTestQuery",
     "id": null,
-    "text": "query routes_IdentityVerificationPageQuery(\n  $id: String!\n) {\n  me {\n    ...IdentityVerificationPage_me_1Bmzm5\n    id\n  }\n}\n\nfragment IdentityVerificationPage_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
+    "text": "query IdentityVerificationPageTestQuery {\n  me {\n    ...IdentityVerificationPage_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationPage_me_3zaPSf on Me {\n  internalID\n  name\n  identityVerification(id: \"idv-id\") {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'e7dc4b838c568854fd3aac5829b5bd72';
+(node as any).hash = '95dc7198099644ef4890fad2eec88763';
 export default node;

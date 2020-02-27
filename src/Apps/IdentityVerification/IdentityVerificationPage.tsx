@@ -25,10 +25,9 @@ export const IdentityVerification: React.FC<Props> = ({ me }) => {
 
   const clickContinueToVerification = () => {
     trackEvent({
+      context_page_owner_id: identityVerification.internalID,
       action_type: Schema.ActionType.ClickedContinueToIdVerification,
-      context_module: Schema.ContextModule.IdentityVerificationPage,
-      user_id: me.internalID,
-      identity_verification_id: identityVerification.internalID,
+      context_page: Schema.PageName.IdentityVerificationPage,
     })
   }
 

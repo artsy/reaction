@@ -18,7 +18,6 @@ import { AuthenticationInteraction, Interaction } from "./Interaction"
 import { Label } from "./Label"
 import { Failure, Success } from "./Result"
 import { Type } from "./Type"
-import { IdentityVerificationInfo } from "./IdentityVerificationInfo"
 
 interface Uncategorized {
   changed: any
@@ -47,7 +46,6 @@ export type Trackables =
   | Uncategorized
   | AuctionInfo
   | CriteoInfo
-  | IdentityVerificationInfo
 
 /**
  * A sentinel type used to signal that anything goes in order to be able to

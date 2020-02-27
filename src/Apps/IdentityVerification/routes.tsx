@@ -7,7 +7,8 @@ export const routes: RouteConfig[] = [
     path: "/identity-verification/:id",
     getComponent: () => loadable(() => import("./IdentityVerificationPage")),
     query: graphql`
-      query routes_IdentityVerificationPageQuery($id: String!) {
+      query routes_IdentityVerificationPageQuery($id: String!)
+        @raw_response_type {
         me {
           ...IdentityVerificationPage_me @arguments(id: $id)
         }
