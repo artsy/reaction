@@ -1,3 +1,15 @@
+# v25.20.3 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Add data file to describe new menu structure (for mobile and desktop) [#3199](https://github.com/artsy/reaction/pull/3199) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.20.2 (Thu Feb 27 2020)
 
 #### 🐛  Bug Fix
