@@ -15,7 +15,6 @@ import {
 
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import { getENV } from "Utils/getENV"
 
 interface MobileNavMenuProps {
   onNavItemClick?: () => void
@@ -24,7 +23,7 @@ interface MobileNavMenuProps {
 export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
   const { onNavItemClick } = props
   const { trackEvent } = useTracking()
-  const { user } = useContext(SystemContext)
+  const { user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const isLoggedIn = Boolean(user)
 
   const trackClick = event => {
@@ -39,7 +38,7 @@ export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
     })
 
     // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-    if (getENV("EXPERIMENTAL_APP_SHELL") && href === "/collect") {
+    if (EXPERIMENTAL_APP_SHELL && href === "/collect") {
       onNavItemClick()
     }
   }

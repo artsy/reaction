@@ -11,7 +11,7 @@ import {
   StripeWrappedRegistrationForm,
 } from "Apps/Auction/Components/RegistrationForm"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { track } from "Artsy"
+import { track, useSystemContext } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { FormikActions } from "formik"
@@ -25,7 +25,6 @@ import {
 } from "react-relay"
 import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
-import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/Register")
@@ -101,6 +100,7 @@ export function createCreditCardAndUpdatePhone(relayEnvironment, phone, token) {
 
 export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
+  const { EXPERIMENTAL_APP_SHELL } = useSystemContext()
 
   const commonProperties = {
     auction_slug: sale.slug,
@@ -195,7 +195,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
 
   // FIXME: Remove after A/B test completes
   let NavBar
-  if (getENV("EXPERIMENTAL_APP_SHELL")) {
+  if (EXPERIMENTAL_APP_SHELL) {
     NavBar = MinimalNavBar
   } else {
     NavBar = Box // pass-through; nav bar comes from the server right now
