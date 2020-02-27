@@ -1,3 +1,15 @@
+# v25.21.1 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Bump Node to v12 to have parity with Force [#3204](https://github.com/artsy/reaction/pull/3204) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.21.0 (Thu Feb 27 2020)
 
 #### 🚀  Enhancement
