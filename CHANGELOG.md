@@ -1,3 +1,15 @@
+# v25.20.2 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Log recaptcha misses on signup [#3202](https://github.com/artsy/reaction/pull/3202) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v25.20.1 (Wed Feb 26 2020)
 
 #### 🐛  Bug Fix
