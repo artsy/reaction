@@ -1,3 +1,15 @@
+# v25.21.2 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- [step 2] Update schema to use MP's schema at mp@rename-wizard-to-flow [#3205](https://github.com/artsy/reaction/pull/3205) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v25.21.1 (Thu Feb 27 2020)
 
 #### 🐛  Bug Fix
