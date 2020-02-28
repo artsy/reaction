@@ -1,3 +1,15 @@
+# v25.21.4 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1828] Update typography and spacing in mobile menu [#3209](https://github.com/artsy/reaction/pull/3209) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v25.21.3 (Fri Feb 28 2020)
 
 #### 🐛  Bug Fix
