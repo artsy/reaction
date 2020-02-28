@@ -8,10 +8,17 @@ import { confirmBidRedirect, Redirect, registerRedirect } from "./getRedirect"
 
 const logger = createLogger("Apps/Auction/routes")
 
+const AuctionFAQRoute = loadable(() => import("./Components/AuctionFAQ"))
+const ConfirmBidRoute = loadable(() => import("./Routes/ConfirmBid"))
+const RegisterRoute = loadable(() => import("./Routes/Register"))
+
 export const routes: RouteConfig[] = [
   {
     path: "/auction-faq",
-    getComponent: () => loadable(() => import("./Components/AuctionFAQ")),
+    getComponent: () => AuctionFAQRoute,
+    prepare: () => {
+      AuctionFAQRoute.preload()
+    },
     query: graphql`
       query routes_AuctionFAQQuery {
         viewer {
@@ -23,7 +30,10 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/auction/:saleID/bid(2)?/:artworkID",
-    getComponent: () => loadable(() => import("./Routes/ConfirmBid")),
+    getComponent: () => ConfirmBidRoute,
+    prepare: () => {
+      ConfirmBidRoute.preload()
+    },
     render: ({ Component, props }) => {
       if (Component && props) {
         const { artwork, me, match } = props as any
@@ -72,7 +82,10 @@ export const routes: RouteConfig[] = [
   },
   {
     path: "/auction-registration(2)?/:saleID",
-    getComponent: () => loadable(() => import("./Routes/Register")),
+    getComponent: () => RegisterRoute,
+    prepare: () => {
+      RegisterRoute.preload()
+    },
     render: ({ Component, props }) => {
       if (Component && props) {
         const { match, sale, me } = props as any
