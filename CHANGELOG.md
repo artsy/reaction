@@ -1,3 +1,21 @@
+# v25.21.3 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- Only render "RelatedCollections" that have artworks [#3208](https://github.com/artsy/reaction/pull/3208) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update yarn orb to v4.0.1 [#3206](https://github.com/artsy/reaction/pull/3206) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.21.2 (Thu Feb 27 2020)
 
 #### 🐛  Bug Fix
