@@ -7,7 +7,6 @@ export type IdentityVerificationApp_me = {
     readonly name: string | null;
     readonly identityVerification: {
         readonly internalID: string;
-        readonly state: string;
         readonly userID: string;
     } | null;
     readonly " $refType": "IdentityVerificationApp_me";
@@ -69,13 +68,6 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "state",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
           "name": "userID",
           "args": null,
           "storageKey": null
@@ -85,5 +77,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f209dac81a64c97af497a1e393a1ec49';
+(node as any).hash = '9cb31391ccfe9a90dfd97d9d6e4330c1';
 export default node;

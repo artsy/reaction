@@ -87,7 +87,6 @@ export const IdentityVerificationAppFragmentContainer = createFragmentContainer(
         name
         identityVerification(id: $id) {
           internalID
-          state
           userID
         }
       }

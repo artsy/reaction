@@ -8,7 +8,6 @@ export const IdentityVerificationAppQueryResponseFixture: routes_IdentityVerific
     identityVerification: {
       internalID: "identity-verification-id",
       id: "unused-idv",
-      state: "pending",
       userID: "my-user-id",
     },
   },

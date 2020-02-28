@@ -14,7 +14,6 @@ export type IdentityVerificationAppTestQueryRawResponse = {
         readonly name: string | null;
         readonly identityVerification: ({
             readonly internalID: string;
-            readonly state: string;
             readonly userID: string;
             readonly id: string | null;
         }) | null;
@@ -42,7 +41,6 @@ fragment IdentityVerificationApp_me_3zaPSf on Me {
   name
   identityVerification(id: "idv-id") {
     internalID
-    state
     userID
     id
   }
@@ -133,13 +131,6 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "state",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
                 "name": "userID",
                 "args": null,
                 "storageKey": null
@@ -156,7 +147,7 @@ return {
     "operationKind": "query",
     "name": "IdentityVerificationAppTestQuery",
     "id": null,
-    "text": "query IdentityVerificationAppTestQuery {\n  me {\n    ...IdentityVerificationApp_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_3zaPSf on Me {\n  internalID\n  name\n  identityVerification(id: \"idv-id\") {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
+    "text": "query IdentityVerificationAppTestQuery {\n  me {\n    ...IdentityVerificationApp_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_3zaPSf on Me {\n  internalID\n  name\n  identityVerification(id: \"idv-id\") {\n    internalID\n    userID\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
