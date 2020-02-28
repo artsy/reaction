@@ -38,7 +38,6 @@ export interface ServerAppResolve {
   }
   status?: number
   scripts?: string
-  linkTags?: string[]
   headTags?: any[]
   styleTags?: string
 }

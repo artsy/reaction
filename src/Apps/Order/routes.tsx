@@ -7,6 +7,16 @@ import * as React from "react"
 import { graphql } from "react-relay"
 
 const OrderApp = loadable(() => import("./OrderApp"))
+const RespondRoute = loadable(() => import("./Routes/Respond"))
+const OfferRoute = loadable(() => import("./Routes/Offer"))
+const ShippingRoute = loadable(() => import("./Routes/Shipping"))
+const PaymentRoute = loadable(() => import("./Routes/Payment"))
+const NewPaymentRoute = loadable(() => import("./Routes/NewPayment"))
+const CounterRoute = loadable(() => import("./Routes/Counter"))
+const ReviewRoute = loadable(() => import("./Routes/Review"))
+const AcceptRoute = loadable(() => import("./Routes/Accept"))
+const DeclineRoute = loadable(() => import("./Routes/Reject"))
+const StatusRoute = loadable(() => import("./Routes/Status"))
 
 // FIXME:
 // * `render` functions requires casting
@@ -64,7 +74,10 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "respond",
-        getComponent: () => loadable(() => import("./Routes/Respond")),
+        getComponent: () => RespondRoute,
+        prepare: () => {
+          RespondRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_RespondQuery($orderID: ID!) {
@@ -79,7 +92,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "offer",
-        getComponent: () => loadable(() => import("./Routes/Offer")),
+        getComponent: () => OfferRoute,
+        prepare: () => {
+          OfferRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_OfferQuery($orderID: ID!) {
@@ -94,7 +110,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "shipping",
-        getComponent: () => loadable(() => import("./Routes/Shipping")),
+        getComponent: () => ShippingRoute,
+        prepare: () => {
+          ShippingRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_ShippingQuery($orderID: ID!) {
@@ -109,7 +128,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "payment",
-        getComponent: () => loadable(() => import("./Routes/Payment")),
+        getComponent: () => PaymentRoute,
+        prepare: () => {
+          PaymentRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_PaymentQuery($orderID: ID!) {
@@ -127,7 +149,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "payment/new",
-        getComponent: () => loadable(() => import("./Routes/NewPayment")),
+        getComponent: () => NewPaymentRoute,
+        prepare: () => {
+          NewPaymentRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_NewPaymentQuery($orderID: ID!) {
@@ -145,7 +170,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review/counter",
-        getComponent: () => loadable(() => import("./Routes/Counter")),
+        getComponent: () => CounterRoute,
+        prepare: () => {
+          CounterRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_CounterQuery($orderID: ID!) {
@@ -160,7 +188,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review",
-        getComponent: () => loadable(() => import("./Routes/Review")),
+        getComponent: () => ReviewRoute,
+        prepare: () => {
+          ReviewRoute.preload()
+        },
         shouldWarnBeforeLeaving: true,
         query: graphql`
           query routes_ReviewQuery($orderID: ID!) {
@@ -175,7 +206,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review/accept",
-        getComponent: () => loadable(() => import("./Routes/Accept")),
+        getComponent: () => AcceptRoute,
+        prepare: () => {
+          AcceptRoute.preload()
+        },
         query: graphql`
           query routes_AcceptQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -189,7 +223,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "review/decline",
-        getComponent: () => loadable(() => import("./Routes/Reject")),
+        getComponent: () => DeclineRoute,
+        prepare: () => {
+          DeclineRoute.preload()
+        },
         query: graphql`
           query routes_RejectQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
@@ -200,7 +237,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "status",
-        getComponent: () => loadable(() => import("./Routes/Status")),
+        getComponent: () => StatusRoute,
+        prepare: () => {
+          StatusRoute.preload()
+        },
         query: graphql`
           query routes_StatusQuery($orderID: ID!) {
             order: commerceOrder(id: $orderID) {
