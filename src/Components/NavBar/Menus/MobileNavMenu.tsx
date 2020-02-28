@@ -8,8 +8,8 @@ import {
   Flex,
   Link,
   MenuIcon,
+  Sans,
   Separator,
-  Serif,
   space,
 } from "@artsy/palette"
 
@@ -44,7 +44,7 @@ export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
   }
 
   return (
-    <MobileNavContainer py={[1, 4]} flexDirection="column" onClick={trackClick}>
+    <MobileNavContainer py={1} flexDirection="column" onClick={trackClick}>
       <MobileLink href="/collect">Artworks</MobileLink>
       <MobileLink href="/auctions">Auctions</MobileLink>
       <MobileLink href="/galleries">Galleries</MobileLink>
@@ -55,7 +55,7 @@ export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
       <MobileLink href="/institutions">Museums</MobileLink>
 
       <Box px={2}>
-        <Separator my={[1, 4]} />
+        <Separator my={1} />
       </Box>
 
       {isLoggedIn ? (
@@ -107,10 +107,10 @@ const MobileLink: React.FC<MobileLinkProps> = ({
       <Box px={2} py={[0, 0.5]}>
         {href ? (
           <Link href={href} underlineBehavior="none">
-            <Serif size={["4", "8"]}>{children}</Serif>
+            <Sans size={["5t", "6"]}>{children}</Sans>
           </Link>
         ) : (
-          <Serif size={["4", "8"]}>{children}</Serif>
+          <Sans size={["5t", "6"]}>{children}</Sans>
         )}
       </Box>
     </MobileLinkContainer>
