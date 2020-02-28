@@ -12,6 +12,7 @@ export type ArtistAuctionResultsQueryVariables = {
     sort?: AuctionResultSorts | null;
     artistID: string;
     organizations?: ReadonlyArray<string | null> | null;
+    categories?: ReadonlyArray<string | null> | null;
     sizes?: ReadonlyArray<ArtworkSizes | null> | null;
 };
 export type ArtistAuctionResultsQueryResponse = {
@@ -35,10 +36,11 @@ query ArtistAuctionResultsQuery(
   $sort: AuctionResultSorts
   $artistID: String!
   $organizations: [String]
+  $categories: [String]
   $sizes: [ArtworkSizes]
 ) {
   artist(id: $artistID) {
-    ...ArtistAuctionResults_artist_2jyALL
+    ...ArtistAuctionResults_artist_3L8Kmx
     id
   }
 }
@@ -66,10 +68,10 @@ fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
   }
 }
 
-fragment ArtistAuctionResults_artist_2jyALL on Artist {
+fragment ArtistAuctionResults_artist_3L8Kmx on Artist {
   slug
   ...AuctionResultHeader_artist
-  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, sizes: $sizes) {
+  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, categories: $categories, sizes: $sizes) {
     ...AuctionResultsCount_results
     pageInfo {
       hasNextPage
@@ -174,6 +176,12 @@ var v0 = [
   },
   {
     "kind": "LocalArgument",
+    "name": "categories",
+    "type": "[String]",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
     "name": "sizes",
     "type": "[ArtworkSizes]",
     "defaultValue": null
@@ -196,6 +204,11 @@ v2 = [
     "kind": "Variable",
     "name": "before",
     "variableName": "before"
+  },
+  {
+    "kind": "Variable",
+    "name": "categories",
+    "variableName": "categories"
   },
   {
     "kind": "Variable",
@@ -562,10 +575,10 @@ return {
     "operationKind": "query",
     "name": "ArtistAuctionResultsQuery",
     "id": null,
-    "text": "query ArtistAuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n  $organizations: [String]\n  $sizes: [ArtworkSizes]\n) {\n  artist(id: $artistID) {\n    ...ArtistAuctionResults_artist_2jyALL\n    id\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text: dimensionText\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  mediumText\n  categoryText\n  description\n  date_text: dateText\n  sale_date_text: saleDateText\n  price_realized: priceRealized {\n    display\n    cents_usd: centsUSD\n  }\n  estimate {\n    display\n  }\n}\n\nfragment ArtistAuctionResults_artist_2jyALL on Artist {\n  slug\n  ...AuctionResultHeader_artist\n  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, sizes: $sizes) {\n    ...AuctionResultsCount_results\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        title\n        dimension_text: dimensionText\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text: dateText\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment AuctionResultHeader_artist on Artist {\n  name\n}\n\nfragment AuctionResultsCount_results on AuctionResultConnection {\n  totalCount\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+    "text": "query ArtistAuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n  $organizations: [String]\n  $categories: [String]\n  $sizes: [ArtworkSizes]\n) {\n  artist(id: $artistID) {\n    ...ArtistAuctionResults_artist_3L8Kmx\n    id\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text: dimensionText\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  mediumText\n  categoryText\n  description\n  date_text: dateText\n  sale_date_text: saleDateText\n  price_realized: priceRealized {\n    display\n    cents_usd: centsUSD\n  }\n  estimate {\n    display\n  }\n}\n\nfragment ArtistAuctionResults_artist_3L8Kmx on Artist {\n  slug\n  ...AuctionResultHeader_artist\n  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, categories: $categories, sizes: $sizes) {\n    ...AuctionResultsCount_results\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        title\n        dimension_text: dimensionText\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text: dateText\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment AuctionResultHeader_artist on Artist {\n  name\n}\n\nfragment AuctionResultsCount_results on AuctionResultConnection {\n  totalCount\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '29f681a3099db794119e2abf5a72d2b0';
+(node as any).hash = 'd2ea0fd7125d370f96f35608d94882e5';
 export default node;
