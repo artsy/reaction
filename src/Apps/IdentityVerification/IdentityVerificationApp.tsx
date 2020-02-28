@@ -39,28 +39,47 @@ const IdentityVerificationApp: React.FC<Props> = ({ me }) => {
         content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
       />
 
-      <Box px={[2, 3]} mb={6}>
+      <Box px={[2, 3]} mb={6} mt={4}>
         <Box
           mx={["auto"]}
           width={["100%", "80%"]}
-          maxWidth={"520px"}
+          maxWidth={"400px"}
           textAlign="center"
         >
           <Serif size="6" color="black100">
             Artsy identity verification
           </Serif>
 
-          <Sans size="4" color="black100" mt={2}>
-            To complete this process, you'll need a government ID and access to
-            a camera on your phone or computer.
-          </Sans>
-          <Sans size="4" color="black100" mt={2}>
-            Your ID and photo will be used for verification purposes only, and
-            will not be shared.
-          </Sans>
-          <Sans size="4" color="black100" mt={2}>
-            Verification will take 5–10 minutues.
-          </Sans>
+          <Box textAlign="left">
+            <Sans size="4" color="black100" mt={2} weight="medium">
+              You’ll need
+            </Sans>
+            <Sans size="4" color="black100">
+              • A camera on your phone or computer
+            </Sans>
+            <Sans size="4" color="black100">
+              • Your government ID{" "}
+            </Sans>
+            <Sans size="4" color="black100" mt={2} weight="medium">
+              Keep in mind
+            </Sans>
+            <Sans size="4" color="black100">
+              • Verification will take 5–10 minutes
+            </Sans>
+            <Sans size="4" color="black100">
+              • The name on your ID must match the name on your payment method
+            </Sans>
+            <Sans size="4" color="black100">
+              • Your ID and photo will only be used for verification purposes,
+              and will not be shared
+            </Sans>
+            <br />
+            <Sans size="4" color="black100">
+              By clicking the button, you'll be redirected to our identity
+              verification partner.
+            </Sans>
+          </Box>
+
           <Button
             block
             width={["100%", 335]}
