@@ -1,4 +1,3 @@
-import loadable from "@loadable/component"
 import { RouteConfig } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -7,11 +6,10 @@ import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
 import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter/ArtworkQueryFilter"
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 
-const SearchApp = loadable(() => import("./SearchApp"))
-const ArtworksRoute = loadable(() => import("./Routes/Artworks"))
-const ArtistsRoute = loadable(() =>
-  import("./Routes/Artists/SearchResultsArtists")
-)
+import ArtistsRoute from "./Routes/Artists/SearchResultsArtists"
+import ArtworksRoute from "./Routes/Artworks"
+import SearchResultsEntity from "./Routes/Entity/SearchResultsEntity"
+import SearchApp from "./SearchApp"
 
 const prepareVariables = (_params, { location }) => {
   return {
@@ -35,8 +33,7 @@ const tabsToEntitiesMap = {
 const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
   return {
     path: key,
-    getComponent: () =>
-      loadable(() => import("./Routes/Entity/SearchResultsEntity")),
+    Component: SearchResultsEntity,
 
     // FIXME: We shouldn't overwrite our route functionality, as that breaks
     // global route configuration behavior.
@@ -70,10 +67,7 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
 export const routes: RouteConfig[] = [
   {
     path: "/search",
-    getComponent: () => SearchApp,
-    prepare: () => {
-      SearchApp.preload()
-    },
+    Component: SearchApp,
     query: graphql`
       query routes_SearchResultsTopLevelQuery($term: String!) {
         viewer {
@@ -85,19 +79,13 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "/",
-        getComponent: () => ArtworksRoute,
-        prepare: () => {
-          ArtworksRoute.preload()
-        },
+        Component: ArtworksRoute,
         prepareVariables,
         query: ArtworkQueryFilter,
       },
       {
         path: "artists",
-        getComponent: () => ArtistsRoute,
-        prepare: () => {
-          ArtistsRoute.preload()
-        },
+        Component: ArtistsRoute,
         prepareVariables,
         query: graphql`
           query routes_SearchResultsArtistsQuery($term: String!, $page: Int) {
