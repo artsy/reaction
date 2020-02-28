@@ -18,6 +18,17 @@ export type Collection_collection = {
     readonly linkedCollections: ReadonlyArray<{
         readonly " $fragmentRefs": FragmentRefs<"CollectionsHubRails_linkedCollections">;
     }>;
+    readonly fallbackHeaderImage: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly image: {
+                    readonly resized: {
+                        readonly url: string | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
     readonly artworksConnection: {
         readonly aggregations: ReadonlyArray<{
             readonly slice: ArtworkAggregation | null;
@@ -58,18 +69,23 @@ var v0 = {
 },
 v1 = {
   "kind": "Literal",
-  "name": "includeMediumFilterInAggregation",
-  "value": true
+  "name": "first",
+  "value": 1
 },
 v2 = {
   "kind": "Literal",
-  "name": "first",
-  "value": 1
+  "name": "includeMediumFilterInAggregation",
+  "value": true
 },
 v3 = {
   "kind": "Literal",
   "name": "size",
   "value": 1
+},
+v4 = {
+  "kind": "Literal",
+  "name": "sort",
+  "value": "-decayed_merch"
 };
 return {
   "kind": "Fragment",
@@ -262,6 +278,80 @@ return {
     },
     {
       "kind": "LinkedField",
+      "alias": "fallbackHeaderImage",
+      "name": "artworksConnection",
+      "storageKey": null,
+      "args": [
+        (v0/*: any*/),
+        (v1/*: any*/),
+        (v2/*: any*/),
+        (v3/*: any*/),
+        (v4/*: any*/)
+      ],
+      "concreteType": "FilterArtworksConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "FilterArtworksEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Artwork",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "image",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Image",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "LinkedField",
+                      "alias": null,
+                      "name": "resized",
+                      "storageKey": "resized(width:600)",
+                      "args": [
+                        {
+                          "kind": "Literal",
+                          "name": "width",
+                          "value": 600
+                        }
+                      ],
+                      "concreteType": "ResizedImageUrl",
+                      "plural": false,
+                      "selections": [
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "url",
+                          "args": null,
+                          "storageKey": null
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
       "alias": null,
       "name": "artworksConnection",
       "storageKey": null,
@@ -272,17 +362,13 @@ return {
           "name": "first",
           "value": 20
         },
-        (v1/*: any*/),
+        (v2/*: any*/),
         {
           "kind": "Literal",
           "name": "size",
           "value": 20
         },
-        {
-          "kind": "Literal",
-          "name": "sort",
-          "value": "-decayed_merch"
-        }
+        (v4/*: any*/)
       ],
       "concreteType": "FilterArtworksConnection",
       "plural": false,
@@ -356,8 +442,8 @@ return {
       "storageKey": null,
       "args": [
         (v0/*: any*/),
-        (v2/*: any*/),
         (v1/*: any*/),
+        (v2/*: any*/),
         (v3/*: any*/),
         {
           "kind": "Literal",
@@ -382,8 +468,8 @@ return {
       "storageKey": null,
       "args": [
         (v0/*: any*/),
-        (v2/*: any*/),
         (v1/*: any*/),
+        (v2/*: any*/),
         (v3/*: any*/),
         {
           "kind": "Literal",
@@ -504,5 +590,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd3be9cd0f40b6d2577a580344d0f2713';
+(node as any).hash = '3c621efaa9767196511102dded3f9f2d';
 export default node;

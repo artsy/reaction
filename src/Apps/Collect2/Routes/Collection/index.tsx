@@ -62,6 +62,7 @@ export class CollectionApp extends Component<CollectionAppProps> {
       slug,
       headerImage,
       description,
+      fallbackHeaderImage,
       artworksConnection,
       descending_artworks,
       ascending_artworks,
@@ -74,13 +75,16 @@ export class CollectionApp extends Component<CollectionAppProps> {
       : `Buy, bid, and inquire on ${title} on Artsy.`
 
     const showCollectionHubs = collection.linkedCollections.length > 0
+
+    const socialImage =
+      headerImage || fallbackHeaderImage?.edges[0]?.node?.image?.resized.url
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
           <Title>{`${title} - For Sale on Artsy`}</Title>
           <Meta name="description" content={metadataDescription} />
           <Meta property="og:url" content={collectionHref} />
-          <Meta property="og:image" content={headerImage} />
+          <Meta property="og:image" content={socialImage} />
           <Meta property="og:description" content={metadataDescription} />
           <Meta property="twitter:description" content={metadataDescription} />
           <Link rel="canonical" href={collectionHref} />
@@ -193,6 +197,23 @@ export const CollectionRefetchContainer = createRefetchContainer(
         }
         linkedCollections {
           ...CollectionsHubRails_linkedCollections
+        }
+        fallbackHeaderImage: artworksConnection(
+          aggregations: $aggregations
+          includeMediumFilterInAggregation: true
+          size: 1
+          first: 1
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              image {
+                resized(width: 600) {
+                  url
+                }
+              }
+            }
+          }
         }
         artworksConnection(
           aggregations: $aggregations
