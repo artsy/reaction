@@ -2944,7 +2944,7 @@
   dependencies:
     "@types/jest-diff" "*"
 
-"@types/loadable__component@^5.10.0":
+"@types/loadable__component@5.10.0":
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/@types/loadable__component/-/loadable__component-5.10.0.tgz#178fdc401983f4f93647fac778226da7b8c1e080"
   integrity sha512-AaDP1VxV3p7CdPOtOTl3ALgQ6ES4AxJKO9UGj9vJonq/w2yERxwdzFiWNQFh9fEDXEzjxujBlM2RmSJtHV1/pA==
