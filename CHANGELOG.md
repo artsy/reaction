@@ -1,3 +1,15 @@
+# v25.22.0 (Fri Feb 28 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add async bundle preloading pattern to router [#3207](https://github.com/artsy/reaction/pull/3207) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.21.4 (Fri Feb 28 2020)
 
 #### 🐛  Bug Fix
