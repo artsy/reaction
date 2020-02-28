@@ -61,6 +61,11 @@ const OverviewRoute = loadable(() => import("./Routes/Overview"))
 const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
 const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
 
+// Artist pages tend to load almost instantly, so just preload it up front
+if (typeof window !== "undefined") {
+  ArtistApp.preload()
+}
+
 // FIXME:
 // * `render` functions requires casting
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
