@@ -2,7 +2,7 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type IdentityVerificationPage_me = {
+export type IdentityVerificationApp_me = {
     readonly internalID: string;
     readonly name: string | null;
     readonly identityVerification: {
@@ -10,12 +10,12 @@ export type IdentityVerificationPage_me = {
         readonly state: string;
         readonly userID: string;
     } | null;
-    readonly " $refType": "IdentityVerificationPage_me";
+    readonly " $refType": "IdentityVerificationApp_me";
 };
-export type IdentityVerificationPage_me$data = IdentityVerificationPage_me;
-export type IdentityVerificationPage_me$key = {
-    readonly " $data"?: IdentityVerificationPage_me$data;
-    readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationPage_me">;
+export type IdentityVerificationApp_me$data = IdentityVerificationApp_me;
+export type IdentityVerificationApp_me$key = {
+    readonly " $data"?: IdentityVerificationApp_me$data;
+    readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationApp_me">;
 };
 
 
@@ -30,7 +30,7 @@ var v0 = {
 };
 return {
   "kind": "Fragment",
-  "name": "IdentityVerificationPage_me",
+  "name": "IdentityVerificationApp_me",
   "type": "Me",
   "metadata": null,
   "argumentDefinitions": [
@@ -85,5 +85,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '3fa2bb16402dd44180fbeb17bb0c4a2d';
+(node as any).hash = 'f209dac81a64c97af497a1e393a1ec49';
 export default node;

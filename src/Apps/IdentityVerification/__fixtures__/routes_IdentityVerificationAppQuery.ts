@@ -1,6 +1,6 @@
-import { routes_IdentityVerificationPageQueryRawResponse } from "__generated__/routes_IdentityVerificationPageQuery.graphql"
+import { routes_IdentityVerificationAppQueryRawResponse } from "__generated__/routes_IdentityVerificationAppQuery.graphql"
 
-export const IdentityVerificationPageQueryResponseFixture: routes_IdentityVerificationPageQueryRawResponse = {
+export const IdentityVerificationAppQueryResponseFixture: routes_IdentityVerificationAppQueryRawResponse = {
   me: {
     internalID: "my-user-id",
     name: "user",

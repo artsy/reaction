@@ -2,15 +2,15 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_IdentityVerificationPageQueryVariables = {
+export type routes_IdentityVerificationAppQueryVariables = {
     id: string;
 };
-export type routes_IdentityVerificationPageQueryResponse = {
+export type routes_IdentityVerificationAppQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationPage_me">;
+        readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationApp_me">;
     } | null;
 };
-export type routes_IdentityVerificationPageQueryRawResponse = {
+export type routes_IdentityVerificationAppQueryRawResponse = {
     readonly me: ({
         readonly internalID: string;
         readonly name: string | null;
@@ -23,25 +23,25 @@ export type routes_IdentityVerificationPageQueryRawResponse = {
         readonly id: string | null;
     }) | null;
 };
-export type routes_IdentityVerificationPageQuery = {
-    readonly response: routes_IdentityVerificationPageQueryResponse;
-    readonly variables: routes_IdentityVerificationPageQueryVariables;
-    readonly rawResponse: routes_IdentityVerificationPageQueryRawResponse;
+export type routes_IdentityVerificationAppQuery = {
+    readonly response: routes_IdentityVerificationAppQueryResponse;
+    readonly variables: routes_IdentityVerificationAppQueryVariables;
+    readonly rawResponse: routes_IdentityVerificationAppQueryRawResponse;
 };
 
 
 
 /*
-query routes_IdentityVerificationPageQuery(
+query routes_IdentityVerificationAppQuery(
   $id: String!
 ) {
   me {
-    ...IdentityVerificationPage_me_1Bmzm5
+    ...IdentityVerificationApp_me_1Bmzm5
     id
   }
 }
 
-fragment IdentityVerificationPage_me_1Bmzm5 on Me {
+fragment IdentityVerificationApp_me_1Bmzm5 on Me {
   internalID
   name
   identityVerification(id: $id) {
@@ -87,7 +87,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_IdentityVerificationPageQuery",
+    "name": "routes_IdentityVerificationAppQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -103,7 +103,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "IdentityVerificationPage_me",
+            "name": "IdentityVerificationApp_me",
             "args": (v1/*: any*/)
           }
         ]
@@ -112,7 +112,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_IdentityVerificationPageQuery",
+    "name": "routes_IdentityVerificationAppQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -166,12 +166,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_IdentityVerificationPageQuery",
+    "name": "routes_IdentityVerificationAppQuery",
     "id": null,
-    "text": "query routes_IdentityVerificationPageQuery(\n  $id: String!\n) {\n  me {\n    ...IdentityVerificationPage_me_1Bmzm5\n    id\n  }\n}\n\nfragment IdentityVerificationPage_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
+    "text": "query routes_IdentityVerificationAppQuery(\n  $id: String!\n) {\n  me {\n    ...IdentityVerificationApp_me_1Bmzm5\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'e7dc4b838c568854fd3aac5829b5bd72';
+(node as any).hash = '4874a6318b9369d2f685932d57fa41c5';
 export default node;

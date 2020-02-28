@@ -2,13 +2,13 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type IdentityVerificationPageTestQueryVariables = {};
-export type IdentityVerificationPageTestQueryResponse = {
+export type IdentityVerificationAppTestQueryVariables = {};
+export type IdentityVerificationAppTestQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationPage_me">;
+        readonly " $fragmentRefs": FragmentRefs<"IdentityVerificationApp_me">;
     } | null;
 };
-export type IdentityVerificationPageTestQueryRawResponse = {
+export type IdentityVerificationAppTestQueryRawResponse = {
     readonly me: ({
         readonly internalID: string;
         readonly name: string | null;
@@ -21,23 +21,23 @@ export type IdentityVerificationPageTestQueryRawResponse = {
         readonly id: string | null;
     }) | null;
 };
-export type IdentityVerificationPageTestQuery = {
-    readonly response: IdentityVerificationPageTestQueryResponse;
-    readonly variables: IdentityVerificationPageTestQueryVariables;
-    readonly rawResponse: IdentityVerificationPageTestQueryRawResponse;
+export type IdentityVerificationAppTestQuery = {
+    readonly response: IdentityVerificationAppTestQueryResponse;
+    readonly variables: IdentityVerificationAppTestQueryVariables;
+    readonly rawResponse: IdentityVerificationAppTestQueryRawResponse;
 };
 
 
 
 /*
-query IdentityVerificationPageTestQuery {
+query IdentityVerificationAppTestQuery {
   me {
-    ...IdentityVerificationPage_me_3zaPSf
+    ...IdentityVerificationApp_me_3zaPSf
     id
   }
 }
 
-fragment IdentityVerificationPage_me_3zaPSf on Me {
+fragment IdentityVerificationApp_me_3zaPSf on Me {
   internalID
   name
   identityVerification(id: "idv-id") {
@@ -75,7 +75,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "IdentityVerificationPageTestQuery",
+    "name": "IdentityVerificationAppTestQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -91,7 +91,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "IdentityVerificationPage_me",
+            "name": "IdentityVerificationApp_me",
             "args": (v0/*: any*/)
           }
         ]
@@ -100,7 +100,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "IdentityVerificationPageTestQuery",
+    "name": "IdentityVerificationAppTestQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -154,12 +154,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "IdentityVerificationPageTestQuery",
+    "name": "IdentityVerificationAppTestQuery",
     "id": null,
-    "text": "query IdentityVerificationPageTestQuery {\n  me {\n    ...IdentityVerificationPage_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationPage_me_3zaPSf on Me {\n  internalID\n  name\n  identityVerification(id: \"idv-id\") {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
+    "text": "query IdentityVerificationAppTestQuery {\n  me {\n    ...IdentityVerificationApp_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_3zaPSf on Me {\n  internalID\n  name\n  identityVerification(id: \"idv-id\") {\n    internalID\n    state\n    userID\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '95dc7198099644ef4890fad2eec88763';
+(node as any).hash = '9e5f6cb15751616ff1e1d7394f00b245';
 export default node;

@@ -1,4 +1,4 @@
-import { IdentityVerificationPageQueryResponseFixture } from "Apps/IdentityVerification/__fixtures__/routes_IdentitifcationPageQuery"
+import { IdentityVerificationAppQueryResponseFixture } from "Apps/IdentityVerification/__fixtures__/routes_IdentityVerificationAppQuery"
 import { createMockNetworkLayer2 } from "DevTools"
 import { Resolver } from "found-relay"
 import {
@@ -10,15 +10,15 @@ import { Environment, RecordSource, Store } from "relay-runtime"
 
 import { routes } from "Apps/IdentityVerification/routes"
 
-import { routes_IdentityVerificationPageQueryRawResponse } from "__generated__/routes_IdentityVerificationPageQuery.graphql"
+import { routes_IdentityVerificationAppQueryRawResponse } from "__generated__/routes_IdentityVerificationAppQuery.graphql"
 import { createRender } from "found"
 
 describe("IdentityVerification/routes", () => {
-  const idvID = (IdentityVerificationPageQueryResponseFixture.me as any)
+  const idvID = (IdentityVerificationAppQueryResponseFixture.me as any)
     .identityVerification.internalID
   async function render(
     url,
-    mockData: routes_IdentityVerificationPageQueryRawResponse
+    mockData: routes_IdentityVerificationAppQueryRawResponse
   ) {
     const network = createMockNetworkLayer2({ mockData })
     const source = new RecordSource()
@@ -36,8 +36,9 @@ describe("IdentityVerification/routes", () => {
   it("renders the Identity Verification landing page", async () => {
     const { status } = await render(
       `/identity-verification/${idvID}`,
-      IdentityVerificationPageQueryResponseFixture
+      IdentityVerificationAppQueryResponseFixture
     )
+
     expect(status).toBe(200)
   })
 })

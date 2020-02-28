@@ -1,13 +1,13 @@
-import { IdentityVerificationPageTestQueryRawResponse } from "__generated__/IdentityVerificationPageTestQuery.graphql"
-import { routes_IdentityVerificationPageQueryResponse } from "__generated__/routes_IdentityVerificationPageQuery.graphql"
+import { IdentityVerificationAppTestQueryRawResponse } from "__generated__/IdentityVerificationAppTestQuery.graphql"
+import { routes_IdentityVerificationAppQueryResponse } from "__generated__/routes_IdentityVerificationAppQuery.graphql"
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { Location } from "found"
 import React from "react"
 import { graphql } from "react-relay"
-import { IdentityVerificationPageQueryResponseFixture } from "../__fixtures__/routes_IdentitifcationPageQuery"
-import IdentityVerificationPage from "../IdentityVerificationPage"
-import { IdentityVerificationTestPage } from "./Utils/IdentityVerificationTestPage"
+import { IdentityVerificationAppQueryResponseFixture } from "../__fixtures__/routes_IdentityVerificationAppQuery"
+import { IdentityVerificationAppFragmentContainer } from "../IdentityVerificationApp"
+import { IdentityVerificationAppTestPage } from "./Utils/IdentityVerificationAppTestPage"
 
 jest.unmock("react-relay")
 jest.unmock("react-tracking")
@@ -23,18 +23,18 @@ const setupTestEnv = ({
   location?: Partial<Location>
 } = {}) => {
   return createTestEnv({
-    TestPage: IdentityVerificationTestPage,
-    Component: (props: routes_IdentityVerificationPageQueryResponse) => (
-      <IdentityVerificationPage {...props} />
+    TestPage: IdentityVerificationAppTestPage,
+    Component: (props: routes_IdentityVerificationAppQueryResponse) => (
+      <IdentityVerificationAppFragmentContainer {...props} />
     ),
     query: graphql`
-      query IdentityVerificationPageTestQuery @raw_response_type {
+      query IdentityVerificationAppTestQuery @raw_response_type {
         me {
-          ...IdentityVerificationPage_me @arguments(id: "idv-id")
+          ...IdentityVerificationApp_me @arguments(id: "idv-id")
         }
       }
     `,
-    defaultData: IdentityVerificationPageQueryResponseFixture as IdentityVerificationPageTestQueryRawResponse,
+    defaultData: IdentityVerificationAppQueryResponseFixture as IdentityVerificationAppTestQueryRawResponse,
   })
 }
 
@@ -43,10 +43,18 @@ describe("IdentityVerification route", () => {
     jest.resetAllMocks()
   })
   describe("for signed-in user", () => {
-    it("allows an identity instance owner to begin identity verification", async () => {
+    it("allows an identity verification instance's owner to view the landing page", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
+
+      expect(page.text()).toContain("Artsy identity verification")
+    })
+    it("user click on 'continue to verification' button is tracked", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
       await page.clickStartVerification()
+
       expect(mockPostEvent).toHaveBeenCalledTimes(1)
       expect(mockPostEvent).toHaveBeenCalledWith({
         action_type: "ClickedContinueToIdVerification",
@@ -58,7 +66,7 @@ describe("IdentityVerification route", () => {
       const env = setupTestEnv()
 
       const page = await env.buildPage({
-        mockData: deepMerge(IdentityVerificationPageQueryResponseFixture, {
+        mockData: deepMerge(IdentityVerificationAppQueryResponseFixture, {
           me: {
             internalID: "some-guy",
             identityVerification: {
@@ -67,10 +75,10 @@ describe("IdentityVerification route", () => {
           },
         }),
       })
+
       expect(page.text()).toContain(
         "Sorry, the page you were looking for doesn’t exist at this URL."
       )
     })
-    it.todo("shows a 404 page if the verification is not found")
   })
 })
