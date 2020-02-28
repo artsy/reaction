@@ -56,13 +56,21 @@ graphql`
   }
 `
 
+const ArtistApp = loadable(() => import("./ArtistApp"))
+const OverviewRoute = loadable(() => import("./Routes/Overview"))
+const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
+const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
+
 // FIXME:
 // * `render` functions requires casting
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
 export const routes: RouteConfig[] = [
   {
     path: "/artist/:artistID",
-    getComponent: () => loadable(() => import("./ArtistApp")),
+    getComponent: () => ArtistApp,
+    prepare: () => {
+      ArtistApp.preload()
+    },
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) @raw_response_type {
         artist(id: $artistID) @principalField {
@@ -100,7 +108,10 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "/",
-        getComponent: () => loadable(() => import("./Routes/Overview")),
+        getComponent: () => OverviewRoute,
+        prepare: () => {
+          OverviewRoute.preload()
+        },
         displayNavigationTabs: true,
         query: graphql`
           query routes_OverviewQuery($artistID: String!) @raw_response_type {
@@ -111,53 +122,11 @@ export const routes: RouteConfig[] = [
         `,
       },
       {
-        path: "cv",
-        getComponent: () => loadable(() => import("./Routes/CV")),
-        query: graphql`
-          query routes_CVQuery($artistID: String!) {
-            viewer {
-              ...CV_viewer
-            }
-          }
-        `,
-      },
-      {
-        path: "articles",
-        getComponent: () => loadable(() => import("./Routes/Articles")),
-        query: graphql`
-          query routes_ArticlesQuery($artistID: String!) {
-            artist(id: $artistID) {
-              ...Articles_artist
-            }
-          }
-        `,
-      },
-      {
-        path: "shows",
-        getComponent: () => loadable(() => import("./Routes/Shows")),
-        query: graphql`
-          query routes_ShowsQuery($artistID: String!) {
-            viewer {
-              ...Shows_viewer
-            }
-          }
-        `,
-      },
-      {
-        path: "auction-results",
-        getComponent: () => loadable(() => import("./Routes/AuctionResults")),
-        displayNavigationTabs: true,
-        query: graphql`
-          query routes_AuctionResultsQuery($artistID: String!) {
-            artist(id: $artistID) {
-              ...AuctionResults_artist
-            }
-          }
-        `,
-      },
-      {
         path: "works-for-sale",
-        getComponent: () => loadable(() => import("./Routes/Works")),
+        getComponent: () => WorksForSaleRoute,
+        prepare: () => {
+          WorksForSaleRoute.preload()
+        },
         displayNavigationTabs: true,
         query: graphql`
           query routes_WorksQuery(
@@ -231,6 +200,57 @@ export const routes: RouteConfig[] = [
           return filterParams
         },
       },
+      {
+        path: "auction-results",
+        getComponent: () => AuctionResultsRoute,
+        prepare: () => {
+          AuctionResultsRoute.preload()
+        },
+        displayNavigationTabs: true,
+        query: graphql`
+          query routes_AuctionResultsQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...AuctionResults_artist
+            }
+          }
+        `,
+      },
+
+      // FIXME: Remove the following unused routes
+      {
+        path: "cv",
+        getComponent: () => loadable(() => import("./Routes/CV")),
+        query: graphql`
+          query routes_CVQuery($artistID: String!) {
+            viewer {
+              ...CV_viewer
+            }
+          }
+        `,
+      },
+      {
+        path: "articles",
+        getComponent: () => loadable(() => import("./Routes/Articles")),
+        query: graphql`
+          query routes_ArticlesQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...Articles_artist
+            }
+          }
+        `,
+      },
+      {
+        path: "shows",
+        getComponent: () => loadable(() => import("./Routes/Shows")),
+        query: graphql`
+          query routes_ShowsQuery($artistID: String!) {
+            viewer {
+              ...Shows_viewer
+            }
+          }
+        `,
+      },
+
       // Redirect all unhandled tabs to the artist page.
       // Note: there is a deep-linked standalone auction-lot page
       // in Force, under /artist/:artistID/auction-result/:id.

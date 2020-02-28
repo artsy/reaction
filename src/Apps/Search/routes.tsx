@@ -7,6 +7,12 @@ import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
 import { ArtworkQueryFilter } from "Components/v2/ArtworkFilter/ArtworkQueryFilter"
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 
+const SearchApp = loadable(() => import("./SearchApp"))
+const ArtworksRoute = loadable(() => import("./Routes/Artworks"))
+const ArtistsRoute = loadable(() =>
+  import("./Routes/Artists/SearchResultsArtists")
+)
+
 const prepareVariables = (_params, { location }) => {
   return {
     ...paramsToCamelCase(location.query),
@@ -64,7 +70,10 @@ const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
 export const routes: RouteConfig[] = [
   {
     path: "/search",
-    getComponent: () => loadable(() => import("./SearchApp")),
+    getComponent: () => SearchApp,
+    prepare: () => {
+      SearchApp.preload()
+    },
     query: graphql`
       query routes_SearchResultsTopLevelQuery($term: String!) {
         viewer {
@@ -76,14 +85,19 @@ export const routes: RouteConfig[] = [
     children: [
       {
         path: "/",
-        getComponent: () => loadable(() => import("./Routes/Artworks")),
+        getComponent: () => ArtworksRoute,
+        prepare: () => {
+          ArtworksRoute.preload()
+        },
         prepareVariables,
         query: ArtworkQueryFilter,
       },
       {
         path: "artists",
-        getComponent: () =>
-          loadable(() => import("./Routes/Artists/SearchResultsArtists")),
+        getComponent: () => ArtistsRoute,
+        prepare: () => {
+          ArtistsRoute.preload()
+        },
         prepareVariables,
         query: graphql`
           query routes_SearchResultsArtistsQuery($term: String!, $page: Int) {

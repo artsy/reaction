@@ -6,12 +6,17 @@ import { Redirect, RedirectException, RouteConfig } from "found"
 import * as React from "react"
 import { graphql } from "react-relay"
 
+const OrderApp = loadable(() => import("./OrderApp"))
+
 // FIXME:
 // * `render` functions requires casting
 export const routes: RouteConfig[] = [
   {
     path: "/order(2|s)/:orderID",
-    getComponent: () => loadable(() => import("./OrderApp")),
+    Component: OrderApp,
+    prepare: () => {
+      OrderApp.preload()
+    },
 
     // TODO: Better support `@principalField` in Metaphysics.
     // This currently only works because of the `order` field alias.
