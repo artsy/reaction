@@ -60,6 +60,9 @@ const ArtistApp = loadable(() => import("./ArtistApp"))
 const OverviewRoute = loadable(() => import("./Routes/Overview"))
 const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
 const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
+const CVRoute = loadable(() => import("./Routes/CV"))
+const ArticlesRoute = loadable(() => import("./Routes/Articles"))
+const ShowsRoute = loadable(() => import("./Routes/Shows"))
 
 // Artist pages tend to load almost instantly, so just preload it up front
 if (typeof window !== "undefined") {
@@ -111,6 +114,7 @@ export const routes: RouteConfig[] = [
       }
     },
     children: [
+      // Routes in tabs
       {
         path: "/",
         getComponent: () => OverviewRoute,
@@ -221,10 +225,13 @@ export const routes: RouteConfig[] = [
         `,
       },
 
-      // FIXME: Remove the following unused routes
+      // Routes not in tabs
       {
         path: "cv",
-        getComponent: () => loadable(() => import("./Routes/CV")),
+        getComponent: () => CVRoute,
+        prepare: () => {
+          CVRoute.preload()
+        },
         query: graphql`
           query routes_CVQuery($artistID: String!) {
             viewer {
@@ -235,7 +242,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "articles",
-        getComponent: () => loadable(() => import("./Routes/Articles")),
+        getComponent: () => ArticlesRoute,
+        prepare: () => {
+          ArticlesRoute.preload()
+        },
         query: graphql`
           query routes_ArticlesQuery($artistID: String!) {
             artist(id: $artistID) {
@@ -246,7 +256,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "shows",
-        getComponent: () => loadable(() => import("./Routes/Shows")),
+        getComponent: () => ShowsRoute,
+        prepare: () => {
+          ShowsRoute.preload()
+        },
         query: graphql`
           query routes_ShowsQuery($artistID: String!) {
             viewer {
