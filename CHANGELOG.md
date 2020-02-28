@@ -1,3 +1,21 @@
+# v25.22.1 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Dont split bundles [#3214](https://github.com/artsy/reaction/pull/3214) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @types/loadable__component from ^5.10.0 to 5.10.0 [#3212](https://github.com/artsy/reaction/pull/3212) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.22.0 (Fri Feb 28 2020)
 
 #### 🚀  Enhancement
