@@ -41,7 +41,6 @@ export const ArtistCollectionsRailContent: React.SFC<Props> = passedProps => {
           }
         `}
         render={renderWithLoadProgress(ArtistCollectionsRail, passedProps)}
-        cacheConfig={{ force: true }}
       />
     </Box>
   )
