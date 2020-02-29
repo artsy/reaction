@@ -1,3 +1,24 @@
+# v25.22.1 (Sat Feb 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Dont split bundles [#3214](https://github.com/artsy/reaction/pull/3214) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update yarn orb to track tests via circle again [#3215](https://github.com/artsy/reaction/pull/3215) ([@zephraph](https://github.com/zephraph))
+- Update dep typescript from 3.8.2 to v3.8.3 [#3213](https://github.com/artsy/reaction/pull/3213) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dep @types/loadable__component from ^5.10.0 to 5.10.0 [#3212](https://github.com/artsy/reaction/pull/3212) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.22.0 (Fri Feb 28 2020)
 
 #### 🚀  Enhancement
