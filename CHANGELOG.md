@@ -1,3 +1,15 @@
+# v25.24.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- Update AB test name to CLIENT_NAVIGATION_V4 [#3224](https://github.com/artsy/reaction/pull/3224) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.24.1 (Mon Mar 02 2020)
 
 #### 🐛  Bug Fix
