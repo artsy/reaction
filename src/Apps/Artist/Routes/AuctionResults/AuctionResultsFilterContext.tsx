@@ -2,6 +2,7 @@ import React, { useContext, useReducer } from "react"
 
 export interface AuctionResultsFilters {
   organizations?: string[]
+  categories?: string[]
   sizes?: string[]
   page?: number
   sort?: string
@@ -15,6 +16,7 @@ interface AuctionResultsFiltersState extends AuctionResultsFilters {
  */
 export const initialAuctionResultsFilterState: AuctionResultsFilters = {
   organizations: [],
+  categories: [],
   sizes: [],
   page: 1,
   sort: "DATE_DESC",
@@ -117,6 +119,7 @@ const AuctionResultsFilterReducer = (
 ): AuctionResultsFiltersState => {
   const arrayFilterTypes: Array<keyof AuctionResultsFilters> = [
     "organizations",
+    "categories",
     "sizes",
   ]
 
