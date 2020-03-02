@@ -51,7 +51,7 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
             }
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-            if (sd.CLIENT_NAVIGATION_V3 === "experiment") {
+            if (sd.CLIENT_NAVIGATION_V4 === "experiment") {
               if (referrer) {
                 trackingData.referrer = sd.APP_URL + referrer
               }
@@ -71,8 +71,8 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           }
 
           // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-          if (sd.CLIENT_NAVIGATION_V3) {
-            trackExperimentViewed("client_navigation_v3")
+          if (sd.CLIENT_NAVIGATION_V4) {
+            trackExperimentViewed("client_navigation_v4")
           }
 
           // Reset timers that track time on page since we're tracking each order
