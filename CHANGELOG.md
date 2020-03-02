@@ -1,3 +1,15 @@
+# v25.24.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Visual QA [#3217](https://github.com/artsy/reaction/pull/3217) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.24.0 (Mon Mar 02 2020)
 
 #### 🚀  Enhancement
