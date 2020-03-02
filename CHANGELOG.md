@@ -1,3 +1,15 @@
+# v25.23.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add more tests [#3221](https://github.com/artsy/reaction/pull/3221) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.23.1 (Mon Mar 02 2020)
 
 #### 🐛  Bug Fix
