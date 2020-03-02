@@ -15,7 +15,9 @@ workflows:
       - yarn/relay:
           requires:
             - yarn/workflow-queue
-      - yarn/lint:
+      - yarn/run:
+          name: lint-changed
+          script: lint-changed
           requires:
             - yarn/workflow-queue
       - yarn/type-check:
@@ -37,7 +39,7 @@ workflows:
           requires:
             - yarn/jest
             - yarn/relay
-            - yarn/lint
+            - yarn/lint-changed
             - yarn/type-check
             - yarn/update-cache
       - auto/publish:
@@ -49,6 +51,6 @@ workflows:
           requires:
             - yarn/jest
             - yarn/relay
-            - yarn/lint
+            - yarn/lint-changed
             - yarn/type-check
             - yarn/update-cache
