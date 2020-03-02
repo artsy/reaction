@@ -5,11 +5,21 @@ import { PositionProps, SpaceProps } from "styled-system"
 export interface CountrySelectProps extends PositionProps, SpaceProps {
   selected?: string
   disabled?: boolean
+  euShippingOnly?: boolean
   onSelect?: (value) => void
 }
 
 export const CountrySelect = (props: CountrySelectProps) => {
-  return <LargeSelect {...props} options={COUNTRY_SELECT_OPTIONS} />
+  return (
+    <LargeSelect
+      {...props}
+      options={
+        props.euShippingOnly
+          ? EU_COUNTRY_SELECT_OPTIONS
+          : COUNTRY_SELECT_OPTIONS
+      }
+    />
+  )
 }
 
 const COUNTRY_SELECT_OPTIONS = [
@@ -256,6 +266,30 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Yemen", value: "YE" },
   { text: "Zambia", value: "ZM" },
   { text: "Zimbabwe", value: "ZW" },
+]
+
+const EU_COUNTRY_SELECT_OPTIONS = [
+  { text: "Austria", value: "AT" },
+  { text: "Belgium", value: "BE" },
+  { text: "Switzerland", value: "CH" },
+  { text: "Germany", value: "DE" },
+  { text: "Denmark", value: "DK" },
+  { text: "Estonia", value: "EE" },
+  { text: "Spain", value: "ES" },
+  { text: "Finland", value: "FI" },
+  { text: "France", value: "FR" },
+  { text: "Greece", value: "GR" },
+  { text: "Ireland", value: "IE" },
+  { text: "Italy", value: "IT" },
+  { text: "Latvia", value: "LV" },
+  { text: "Lithuania", value: "LT" },
+  { text: "Luxembourg", value: "LU" },
+  { text: "Netherlands", value: "NL" },
+  { text: "Poland", value: "PL" },
+  { text: "Portugal", value: "PT" },
+  { text: "Slovakia", value: "SK" },
+  { text: "Slovenia", value: "SI" },
+  { text: "Sweden", value: "SE" },
 ]
 
 export const COUNTRY_CODE_TO_COUNTRY_NAME = COUNTRY_SELECT_OPTIONS.reduce(
