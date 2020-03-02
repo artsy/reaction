@@ -6,11 +6,11 @@ import { conversationRoutes } from "Apps/Conversation/routes"
 import { routes as identityVerificationRoutes } from "Apps/IdentityVerification/routes"
 import { routes as orderRoutes } from "Apps/Order/routes"
 import { routes as searchRoutes } from "Apps/Search/routes"
-import { makeAppRoutes } from "Artsy/Router/makeAppRoutes"
+import { buildAppRoutes } from "Artsy/Router/buildAppRoutes"
 import { RouteConfig } from "found"
 
 export function getAppRoutes(): RouteConfig[] {
-  return makeAppRoutes([
+  return buildAppRoutes([
     {
       routes: artistRoutes,
     },

@@ -43,7 +43,7 @@ export const NavBar: React.FC = track(
   {
     dispatch: data => Events.postEvent(data),
   }
-)(_props => {
+)(() => {
   const { trackEvent } = useTracking()
   const { mediator, user } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
