@@ -1,12 +1,10 @@
-import { RouteConfig, withRouter } from "found"
+import { RouteConfig, Router, withRouter } from "found"
 import { flatten } from "lodash"
 import React, { useEffect } from "react"
 
 import { AppShell } from "Apps/Components/AppShell"
 import { useSystemContext } from "Artsy/SystemContext"
-import { catchLinks } from "Utils/catchLinks"
-
-const ROUTE_NAMESPACE = ""
+import { catchLinks } from "./Utils/catchLinks"
 
 interface RouteList {
   routes: RouteConfig
@@ -20,7 +18,9 @@ interface RouteList {
 export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
   const routes = getActiveRoutes(routeList)
 
-  const Component = props => {
+  const Component: React.FC<{
+    router: Router
+  }> = props => {
     const { router, setRouter } = useSystemContext()
 
     // Store global reference to router instance
@@ -34,11 +34,12 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
        * manifest, navigate via router versus doing a hard jump between pages.
        */
       catchLinks(window, href => {
-        const url = ROUTE_NAMESPACE + href
-        const foundUrl = props.router.matcher.matchRoutes(routes, url)
+        // FIXME: PR upstream; `matchRoutes` is missing from type definition
+        // @ts-ignore
+        const foundUrl = props.router.matcher.matchRoutes(routes, href)
 
         if (foundUrl) {
-          const location = props.router.createLocation(url)
+          const location = props.router.createLocation(href)
           const previousHref = window.location.href
 
           props.router.push({
@@ -48,7 +49,7 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
             },
           })
         } else {
-          window.location.assign(url)
+          window.location.assign(href)
         }
       })
     }, [])
@@ -60,7 +61,7 @@ export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
   // then mounted into the router.
   return [
     {
-      path: ROUTE_NAMESPACE,
+      path: "",
       Component: withRouter(Component),
       children: routes,
     },
