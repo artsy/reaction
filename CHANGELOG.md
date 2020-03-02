@@ -1,3 +1,15 @@
+# v25.24.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1765] Add medium (categories) filter to auction results [#3211](https://github.com/artsy/reaction/pull/3211) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
 # v25.23.2 (Mon Mar 02 2020)
 
 #### 🐛  Bug Fix
