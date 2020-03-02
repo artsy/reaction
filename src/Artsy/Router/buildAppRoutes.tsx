@@ -15,7 +15,7 @@ interface RouteList {
   disabled?: boolean
 }
 
-export function makeAppRoutes(routeList: RouteList[]): RouteConfig[] {
+export function buildAppRoutes(routeList: RouteList[]): RouteConfig[] {
   const routes = getActiveRoutes(routeList)
 
   const Component: React.FC<{

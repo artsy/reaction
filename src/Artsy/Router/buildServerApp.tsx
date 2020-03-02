@@ -25,8 +25,8 @@ import { createRouteConfig } from "./Utils/createRouteConfig"
 import { matchingMediaQueriesForUserAgent } from "./Utils/matchingMediaQueriesForUserAgent"
 
 import { RouterConfig } from "./"
+import { RenderError, RenderPending, RenderReady } from "./RenderStatus"
 import { queryStringParsing } from "./Utils/queryStringParsing"
-import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
 
 import { ChunkExtractor } from "@loadable/server"
 import { getENV } from "Utils/getENV"

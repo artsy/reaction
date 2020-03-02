@@ -1,8 +1,8 @@
 import { SystemContextProvider, useSystemContext } from "Artsy/SystemContext"
 import { mount } from "enzyme"
 import React from "react"
+import { buildAppRoutes } from "../buildAppRoutes"
 import { buildClientApp } from "../buildClientApp"
-import { makeAppRoutes } from "../makeAppRoutes"
 
 jest.mock("Components/NavBar/NavBar", () => ({
   NavBar: () => <div />,
@@ -18,9 +18,9 @@ jest.mock("Artsy/Analytics/useTracking", () => ({
   }),
 }))
 
-describe("makeAppRoutes", () => {
+describe("buildAppRoutes", () => {
   it("creates a master route list", () => {
-    const routes = makeAppRoutes([
+    const routes = buildAppRoutes([
       {
         routes: [
           {
@@ -52,7 +52,7 @@ describe("makeAppRoutes", () => {
   })
 
   it("filters out disabled routes", () => {
-    const routes = makeAppRoutes([
+    const routes = buildAppRoutes([
       {
         routes: [
           {
@@ -91,7 +91,7 @@ describe("makeAppRoutes", () => {
         protocol: "memory",
       },
       initialRoute: "/foo",
-      routes: makeAppRoutes([
+      routes: buildAppRoutes([
         {
           routes: [
             {
@@ -116,7 +116,7 @@ describe("makeAppRoutes", () => {
         protocol: "memory",
       },
       initialRoute: "/foo",
-      routes: makeAppRoutes([
+      routes: buildAppRoutes([
         {
           routes: [
             {

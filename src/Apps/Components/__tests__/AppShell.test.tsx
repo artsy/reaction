@@ -1,6 +1,6 @@
 import { SystemContextProvider } from "Artsy"
+import { buildAppRoutes } from "Artsy/Router/buildAppRoutes"
 import { buildClientApp } from "Artsy/Router/client"
-import { makeAppRoutes } from "Artsy/Router/makeAppRoutes"
 import { mount } from "enzyme"
 import React from "react"
 
@@ -25,7 +25,7 @@ describe("AppShell", () => {
         protocol: "memory",
       },
       initialRoute: "/foo",
-      routes: makeAppRoutes([
+      routes: buildAppRoutes([
         {
           routes: [
             {
@@ -51,7 +51,7 @@ describe("AppShell", () => {
         protocol: "memory",
       },
       initialRoute: "/foo",
-      routes: makeAppRoutes([
+      routes: buildAppRoutes([
         {
           routes: [
             {
