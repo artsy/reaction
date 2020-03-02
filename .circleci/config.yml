@@ -39,7 +39,7 @@ workflows:
           requires:
             - yarn/jest
             - yarn/relay
-            - yarn/lint-changed
+            - lint-changed
             - yarn/type-check
             - yarn/update-cache
       - auto/publish:
@@ -51,6 +51,6 @@ workflows:
           requires:
             - yarn/jest
             - yarn/relay
-            - yarn/lint-changed
+            - lint-changed
             - yarn/type-check
             - yarn/update-cache
