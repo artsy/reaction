@@ -24,7 +24,6 @@
     "find-unused-fields": "ts-node scripts/find-unused-fields",
     "integrate": "./scripts/quicklink-to-project.sh",
     "lint": "tslint -c tslint.json --project tsconfig.json && yarn prettier-check",
-    "lint-changed": "lint-changed",
     "omg": "om g",
     "prepare": "patch-package",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
