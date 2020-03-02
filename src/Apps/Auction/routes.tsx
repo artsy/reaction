@@ -131,7 +131,7 @@ function handleRedirect(redirect: Redirect, location: Location) {
     if (typeof window !== "undefined") {
       // FIXME: Remove after A/B test completes
       // @ts-ignore
-      if (window.sd.CLIENT_NAVIGATION_V3 === "experiment") {
+      if (window.sd.CLIENT_NAVIGATION_V4 === "experiment") {
         // This path will only ever be reached on the client
         // Perform a hard jump to login page as it doesn't exist within router
         if (redirect.path.includes("/log_in?")) {
