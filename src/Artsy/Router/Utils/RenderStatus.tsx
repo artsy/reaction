@@ -6,14 +6,17 @@ import { useSystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import ElementsRenderer from "found/lib/ElementsRenderer"
 import { data as sd } from "sharify"
-import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
 export const RenderPending = () => {
-  const { isFetching, setIsFetching } = useSystemContext()
+  const {
+    isFetching,
+    setIsFetching,
+    EXPERIMENTAL_APP_SHELL,
+  } = useSystemContext()
 
   if (!isFetching) {
     setIsFetching(true)
@@ -23,7 +26,7 @@ export const RenderPending = () => {
    * TODO: Add timeout here for when a request takes too long. Show generic error
    * and notify Sentry.
    */
-  if (getENV("EXPERIMENTAL_APP_SHELL")) {
+  if (EXPERIMENTAL_APP_SHELL) {
     return (
       <>
         <Renderer>{null}</Renderer>

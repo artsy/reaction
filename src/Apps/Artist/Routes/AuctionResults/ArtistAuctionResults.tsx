@@ -9,8 +9,10 @@ import { TableSidebar } from "./Components/TableSidebar"
 
 import { Box, Spacer } from "@artsy/palette"
 
+import { AnalyticsSchema } from "Artsy"
 import { LoadingArea } from "Components/v2/LoadingArea"
 import { isEqual } from "lodash"
+import { useTracking } from "react-tracking"
 import { usePrevious } from "Utils/Hooks/usePrevious"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -75,6 +77,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
   const [isLoading, setIsLoading] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
+  const tracking = useTracking()
 
   const previousFilters = usePrevious(filterContext.filters)
 
@@ -87,15 +90,15 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         if (filtersHaveUpdated) {
           fetchResults()
 
-          // TODO: instrumentation?
-          // tracking.trackEvent({
-          //   action_type:
-          //     AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
-          //   current: filterContext.filters,
-          //   changed: {
-          //     [filterKey]: filterContext.filters[filterKey],
-          //   },
-          // })
+          tracking.trackEvent({
+            context_page: AnalyticsSchema.PageName.ArtistAuctionResults,
+            action_type:
+              AnalyticsSchema.ActionType.AuctionResultFilterParamChanged,
+            current: filterContext.filters,
+            changed: {
+              [filterKey]: filterContext.filters[filterKey],
+            },
+          })
         }
       }
     )

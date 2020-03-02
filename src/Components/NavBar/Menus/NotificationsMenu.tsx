@@ -150,6 +150,7 @@ export const NotificationsQueryRenderer: React.FC<{
       query={graphql`
         query NotificationsMenuQuery {
           me {
+            unreadNotificationsCount
             followsAndSaves {
               notifications: bundledArtworksByArtistConnection(
                 sort: PUBLISHED_AT_DESC

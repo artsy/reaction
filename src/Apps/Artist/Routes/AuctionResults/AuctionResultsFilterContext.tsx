@@ -3,7 +3,6 @@ import React, { useContext, useReducer } from "react"
 export interface AuctionResultsFilters {
   organizations?: string[]
   sizes?: string[]
-  openedItemIndex: number | null
   page?: number
   sort?: string
 }
@@ -17,7 +16,6 @@ interface AuctionResultsFiltersState extends AuctionResultsFilters {
 export const initialAuctionResultsFilterState: AuctionResultsFilters = {
   organizations: [],
   sizes: [],
-  openedItemIndex: null,
   page: 1,
   sort: "DATE_DESC",
 }
@@ -28,7 +26,11 @@ export interface AuctionResultsFilterContextProps {
   resetFilters: () => void
   setFilter: (name: keyof AuctionResultsFilters, value: any) => void
   unsetFilter: (name: keyof AuctionResultsFilters) => void
-  onAuctionResultClick?: (index: number) => void
+  onFilterClick?: (
+    key: keyof AuctionResultsFilters,
+    value: string,
+    filterState: AuctionResultsFilters
+  ) => void
 }
 
 /**
@@ -41,23 +43,18 @@ export const AuctionResultsFilterContext = React.createContext<
   setFilter: null,
   resetFilters: null,
   unsetFilter: null,
-  onAuctionResultClick: null,
 })
 
 export type SharedAuctionResultsFilterContextProps = Pick<
   AuctionResultsFilterContextProps,
-  "filters"
+  "filters" | "onFilterClick"
 > & {
   onChange?: (filterState) => void
 }
 
 export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsFilterContextProps & {
   children: React.ReactNode
-}> = ({
-  children,
-  // counts = {}, // TODO: maybe use this for counts
-  filters = {},
-}) => {
+}> = ({ children, filters = {}, onFilterClick }) => {
   const initialFilterState = {
     ...initialAuctionResultsFilterState,
     ...filters,
@@ -72,17 +69,12 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
     filters: auctionResultsFilterState,
 
     // Handlers
-    onAuctionResultClick: index => {
-      dispatch({
-        type: "SET",
-        payload: {
-          name: "openedItemIndex",
-          value: index,
-        },
-      })
-    },
+    onFilterClick,
 
     setFilter: (name, val) => {
+      if (onFilterClick) {
+        onFilterClick(name, val, { ...auctionResultsFilterState, [name]: val })
+      }
       dispatch({
         type: "SET",
         payload: {
@@ -137,7 +129,6 @@ const AuctionResultsFilterReducer = (
 
       const filterState: AuctionResultsFilters = {
         page: 1,
-        openedItemIndex: null,
       }
 
       arrayFilterTypes.forEach(filter => {
@@ -150,7 +141,6 @@ const AuctionResultsFilterReducer = (
       const primitiveFilterTypes: Array<keyof AuctionResultsFilters> = [
         "sort",
         "page",
-        "openedItemIndex",
       ]
       primitiveFilterTypes.forEach(filter => {
         if (name === filter) {
@@ -174,13 +164,9 @@ const AuctionResultsFilterReducer = (
 
       const filterState: AuctionResultsFilters = {
         page: 1,
-        openedItemIndex: null,
       }
 
-      const filters: Array<keyof AuctionResultsFilters> = [
-        "sort",
-        "openedItemIndex",
-      ]
+      const filters: Array<keyof AuctionResultsFilters> = ["sort"]
       filters.forEach(filter => {
         if (name === filter) {
           filterState[name as any] = null

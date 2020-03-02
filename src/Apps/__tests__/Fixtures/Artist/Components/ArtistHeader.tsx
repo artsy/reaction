@@ -4,8 +4,7 @@ export const ArtistHeaderFixture = {
   internalID: "4d8b92884eb68a1b2c0001d8",
   slug: "cecily-brown",
   name: "Cecily Brown",
-  nationality: "British",
-  years: "born 1969",
+  formattedNationalityAndBirthday: "British, born 1969",
   counts: { follows: 9135, forSaleArtworks: 0 },
   carousel: {
     images: [

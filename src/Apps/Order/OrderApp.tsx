@@ -2,7 +2,7 @@ import { Box } from "@artsy/palette"
 import { OrderApp_order } from "__generated__/OrderApp_order.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { StickyFooter } from "Apps/Order/Components/StickyFooter"
-import { Mediator, SystemContextConsumer } from "Artsy"
+import { Mediator, SystemContextConsumer, withSystemContext } from "Artsy"
 import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { ErrorPage } from "Components/ErrorPage"
 import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
@@ -13,7 +13,6 @@ import { graphql } from "react-relay"
 import { Elements, StripeProvider } from "react-stripe-elements"
 import styled from "styled-components"
 import { get } from "Utils/get"
-import { getENV } from "Utils/getENV"
 import { ConnectedModalDialog } from "./Dialogs"
 
 declare global {
@@ -30,6 +29,7 @@ export interface OrderAppProps extends RouterState {
     orderID: string
   }
   order: OrderApp_order
+  EXPERIMENTAL_APP_SHELL: boolean
 }
 
 interface OrderAppState {
@@ -86,6 +86,11 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 
   preventHardReload = event => {
+    // Don't block navigation for status page, as we've completed the flow
+    if (window.location.pathname.includes("/status")) {
+      return false
+    }
+
     event.preventDefault()
     event.returnValue = true
   }
@@ -121,7 +126,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
 
     // FIXME: Remove after A/B test completes
     let NavBar
-    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+    if (this.props.EXPERIMENTAL_APP_SHELL) {
       NavBar = MinimalNavBar
     } else {
       NavBar = Box // pass-through; nav bar comes from the server right now
@@ -164,7 +169,7 @@ class OrderApp extends React.Component<OrderAppProps, OrderAppState> {
   }
 }
 
-const OrderAppWithRouter = withRouter(OrderApp)
+const OrderAppWithRouter = withRouter(withSystemContext(OrderApp))
 
 export { OrderAppWithRouter as OrderApp }
 

@@ -69,7 +69,7 @@ const carouselSlideTrack: Track<null, null, [Image]> = track
 const shopAllWorksButtonText = (forSaleArtworksCount: number) => {
   return forSaleArtworksCount > 0
     ? `Shop works for sale (${forSaleArtworksCount.toLocaleString()})`
-    : `Shop works for sale`
+    : `Browse artworks`
 }
 
 @track<Props>(
@@ -153,7 +153,8 @@ export class LargeArtistHeader extends Component<Props> {
                     // FIXME: Update this type to appropriately accept children
                     // @ts-ignore
                     <RouterLink
-                      href={slide.href}
+                      // FIXME: this `as never` should go away
+                      href={slide.href as never}
                       onClick={() => this.onClickSlide(slide)}
                     >
                       <Image
@@ -198,9 +199,7 @@ export class LargeArtistHeader extends Component<Props> {
               <Flex>
                 <H2>
                   <Serif size="3">
-                    {props.artist.nationality &&
-                      `${props.artist.nationality}, `}
-                    {props.artist.years}
+                    {props.artist.formattedNationalityAndBirthday}
                   </Serif>
                 </H2>
                 <Spacer mr={2} />
@@ -328,9 +327,7 @@ export class SmallArtistHeader extends Component<Props> {
               <Box mx={1}>
                 <H2>
                   <Serif size="2">
-                    {props.artist.nationality &&
-                      `${props.artist.nationality}, `}
-                    {props.artist.years}
+                    {props.artist.formattedNationalityAndBirthday}
                   </Serif>
                 </H2>
               </Box>
@@ -404,7 +401,13 @@ const renderAuctionHighlight = artist => {
   )
   if (topAuctionResult) {
     const auctionLabel = topAuctionResult + " Auction Record"
-    return <ArtistIndicator label={auctionLabel} type="high-auction" />
+    return (
+      <ArtistIndicator
+        label={auctionLabel}
+        type="high-auction"
+        link={`/artist/${artist.slug}/auction-results`}
+      />
+    )
   }
 }
 
@@ -419,7 +422,11 @@ const renderRepresentationStatus = artist => {
     const highCategory = highestCategory(partnersConnection.edges)
 
     return (
-      <ArtistIndicator label={CATEGORIES[highCategory]} type={highCategory} />
+      <ArtistIndicator
+        label={CATEGORIES[highCategory]}
+        type={highCategory}
+        link={`/artist/${artist.slug}/cv`}
+      />
     )
   }
 }
@@ -470,8 +477,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
         internalID
         slug
         name
-        nationality
-        years
+        formattedNationalityAndBirthday
         counts {
           follows
           forSaleArtworks

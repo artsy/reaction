@@ -53,11 +53,11 @@ describe("trackingMiddleware", () => {
 
   it("excludes paths based on config option", () => {
     trackingMiddleware({
-      excludePaths: ["/bar"],
+      excludePaths: ["/artwork/"],
     })(store)(noop)({
       type: ActionTypes.UPDATE_LOCATION,
       payload: {
-        pathname: "/bar",
+        pathname: "/artwork/some-id",
       },
     })
     expect(global.analytics.page).not.toBeCalled()

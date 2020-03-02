@@ -24,3 +24,5 @@ storybook_build
 .yalc
 yalc.lock
 coverage*
+reports*
+2

@@ -28,7 +28,6 @@ import {
 } from "react-relay"
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
-import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
@@ -39,6 +38,7 @@ export interface ArtworkSidebarCommercialContainerProps
   mediator: Mediator
   router?: Router
   user: User
+  EXPERIMENTAL_APP_SHELL?: boolean
 }
 
 export interface ArtworkSidebarCommercialContainerState {
@@ -234,7 +234,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       const url = `/orders/${orderOrError.order.internalID}`
 
                       // FIXME: Remove once A/B test completes
-                      if (getENV("EXPERIMENTAL_APP_SHELL")) {
+                      if (this.props.EXPERIMENTAL_APP_SHELL) {
                         this.props.router.push(url)
                       } else {
                         window.location.assign(url)
@@ -323,7 +323,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       const url = `/orders/${orderOrError.order.internalID}/offer`
 
                       // FIXME: Remove once A/B test completes
-                      if (getENV("EXPERIMENTAL_APP_SHELL")) {
+                      if (this.props.EXPERIMENTAL_APP_SHELL) {
                         this.props.router.push(url)
                       } else {
                         window.location.assign(url)
@@ -461,7 +461,9 @@ interface ArtworkSidebarCommercialProps {
 }
 
 export const ArtworkSidebarCommercial: FC<ArtworkSidebarCommercialProps> = props => {
-  const { mediator, router, user } = useContext(SystemContext)
+  const { mediator, router, user, EXPERIMENTAL_APP_SHELL } = useContext(
+    SystemContext
+  )
 
   return (
     <ArtworkSidebarCommercialContainer
@@ -469,6 +471,7 @@ export const ArtworkSidebarCommercial: FC<ArtworkSidebarCommercialProps> = props
       mediator={mediator}
       router={router}
       user={user}
+      EXPERIMENTAL_APP_SHELL={EXPERIMENTAL_APP_SHELL}
     />
   )
 }

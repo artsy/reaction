@@ -47,7 +47,11 @@ export class RelatedCollectionsRail extends React.Component<
   render() {
     const { collections } = this.props
     const { title, lazyLoadImages } = this.props
-    if (collections.length > 3) {
+    const collectionsWithArtworks = collections.filter(collection =>
+      Boolean(collection.artworksConnection)
+    )
+
+    if (collectionsWithArtworks.length > 3) {
       return (
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
@@ -67,7 +71,7 @@ export class RelatedCollectionsRail extends React.Component<
               draggable: sd.IS_MOBILE ? true : false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={collections}
+            data={collectionsWithArtworks}
             render={slide => {
               return (
                 <RelatedCollectionEntity
@@ -114,6 +118,19 @@ export const RelatedCollectionsRailFragmentContainer = createFragmentContainer(
       fragment RelatedCollectionsRail_collections on MarketingCollection
         @relay(plural: true) {
         ...RelatedCollectionEntity_collection
+        # We need this so we can filter out collections w/o artworks that would
+        # otherwise break the carousel.
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
       }
     `,
   }

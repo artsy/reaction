@@ -20,7 +20,7 @@ declare module "sharify" {
       readonly APP_URL: string
       readonly ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
       readonly ARTIST_COLLECTIONS_RAIL_IDS: string[]
-      readonly CLIENT_NAVIGATION_V2: string // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test.
+      readonly CLIENT_NAVIGATION_V3: "experiment" | "control" // TODO: Remove after A/B test.
       readonly CMS_URL: string
       readonly ENABLE_PRICE_TRANSPARENCY: string
       readonly ENABLE_REQUEST_CONDITION_REPORT: string

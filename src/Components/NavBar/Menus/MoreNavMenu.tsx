@@ -33,6 +33,7 @@ export const MoreNavMenu: React.FC<{ width?: number }> = ({ width = 160 }) => {
       <MenuItem href="/artists">Artists</MenuItem>
       <MenuItem href="/shows">Shows</MenuItem>
       <MenuItem href="/institutions">Museums</MenuItem>
+      <MenuItem href="/consign">Consign</MenuItem>
       <MenuItem href="https://partners.artsy.net">Artsy for Galleries</MenuItem>
     </Menu>
   )

@@ -39,7 +39,6 @@ import {
 } from "react-stripe-elements"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
-import { getENV } from "Utils/getENV"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/ConfirmBid")
@@ -63,7 +62,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   let pollCount = 0
   let registrationTracked = false
 
-  const { router } = useSystemContext()
+  const { router, EXPERIMENTAL_APP_SHELL } = useSystemContext()
   const { artwork, me, relay, stripe } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
@@ -285,7 +284,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
       const href = `/artwork/${artwork.slug}`
 
-      if (getENV("EXPERIMENTAL_APP_SHELL")) {
+      if (EXPERIMENTAL_APP_SHELL) {
         router.push(href)
       } else {
         window.location.assign(href)
@@ -299,7 +298,7 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
 
   // FIXME: Remove after A/B test completes
   let NavBar
-  if (getENV("EXPERIMENTAL_APP_SHELL")) {
+  if (EXPERIMENTAL_APP_SHELL) {
     NavBar = MinimalNavBar
   } else {
     NavBar = Box // pass-through; nav bar comes from the server right now

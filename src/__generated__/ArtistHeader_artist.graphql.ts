@@ -28,8 +28,7 @@ export type ArtistHeader_artist = {
     readonly internalID: string;
     readonly slug: string;
     readonly name: string | null;
-    readonly nationality: string | null;
-    readonly years: string | null;
+    readonly formattedNationalityAndBirthday: string | null;
     readonly counts: {
         readonly follows: number | null;
         readonly forSaleArtworks: number | null;
@@ -272,14 +271,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "nationality",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "years",
+      "name": "formattedNationalityAndBirthday",
       "args": null,
       "storageKey": null
     },
@@ -401,5 +393,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b823d3a8b825045e16f9dfe9198fd7aa';
+(node as any).hash = 'aa217d83bdfddc9bba710789717e44e6';
 export default node;

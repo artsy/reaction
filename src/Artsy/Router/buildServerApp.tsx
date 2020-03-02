@@ -37,8 +37,8 @@ export interface ServerAppResolve {
     url: string
   }
   status?: number
-  headTags?: any[]
   scripts?: string
+  headTags?: any[]
   styleTags?: string
 }
 
@@ -139,15 +139,9 @@ export function buildServerApp(
           )
         }
 
-        // FIXME: Remove once EXPERIMENTAL_APP_SHELL A/B test completes
-        const entrypoints = []
-        if (getENV("EXPERIMENTAL_APP_SHELL")) {
-          entrypoints.push("experimental-app-shell")
-        }
-
         const extractor = new ChunkExtractor({
           statsFile,
-          entrypoints,
+          entrypoints: [],
         })
 
         // Wrap component tree in library contexts to extract usage
@@ -159,6 +153,10 @@ export function buildServerApp(
 
         // Extract all dynamic `import()` bundle split tags from app
         const bundleScriptTags = extractor.getScriptTags()
+
+        // TODO: Wire up / experiment
+        // https://loadable-components.com/docs/api-loadable-server/
+        // const bundleLinkTags = extractor.getLinkTags()
 
         scripts.push(
           bundleScriptTags
