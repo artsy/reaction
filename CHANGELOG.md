@@ -1,3 +1,15 @@
+# v25.23.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- Collector Verification App [#3186](https://github.com/artsy/reaction/pull/3186) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v25.22.1 (Sat Feb 29 2020)
 
 #### 🐛  Bug Fix
