@@ -12,7 +12,7 @@ import { Footer } from "Components/v2/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 
 import { RouterState, withRouter } from "found"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
@@ -26,11 +26,17 @@ export interface Props extends RouterState {
 const TotalResults: React.SFC<{ count: number; term: string }> = ({
   count,
   term,
-}) => (
-  <Serif size="5">
-    {count.toLocaleString()} Result{count > 1 ? "s" : ""} for "{term}"
-  </Serif>
-)
+}) => {
+  const formatResults = () =>
+    `${count.toLocaleString()} Result${count > 1 ? "s" : ""} for "${term}"`
+  const [results, setResults] = useState(formatResults())
+
+  useEffect(() => {
+    setResults(formatResults())
+  }, [count])
+
+  return <Serif size="5">{results}</Serif>
+}
 
 @track({
   context_page: Schema.PageName.SearchPage,
