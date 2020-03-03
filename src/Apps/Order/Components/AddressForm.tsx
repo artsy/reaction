@@ -94,7 +94,7 @@ export class AddressForm extends React.Component<
   }
 
   render() {
-    const onlyLocalShipping = !this.props.billing && this.props.domesticOnly
+    const onlyLocalShipping = !this.props.billing && !!this.props.domesticOnly
     const lockCountryToOrigin = onlyLocalShipping && !this.props.euOrigin
     const lockCountriesToEU = onlyLocalShipping && this.props.euOrigin
 
