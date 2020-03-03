@@ -71,7 +71,7 @@ export function renderWithLoadProgress<P>(
   initialProps: object = {},
   wrapperProps: object = {},
   spinnerProps: SpinnerProps = {
-    delay: 800,
+    delay: 1000,
   }
 ): LoadProgressRenderer<P> {
   // TODO: We need design for retrying or the approval to use the iOS design.

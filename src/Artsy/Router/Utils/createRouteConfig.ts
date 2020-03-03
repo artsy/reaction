@@ -1,5 +1,5 @@
 import { RouteConfig } from "found"
-import { Route } from "./Route"
+import { Route } from "../Route"
 
 export function createRouteConfig(routes): RouteConfig[] {
   return routes.map(route => {

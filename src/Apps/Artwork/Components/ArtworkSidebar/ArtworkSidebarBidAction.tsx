@@ -19,11 +19,11 @@ import { SystemContextConsumer, useSystemContext } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { Router } from "found"
 import track from "react-tracking"
-import { getENV } from "Utils/getENV"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
   router?: Router
+  EXPERIMENTAL_APP_SHELL?: boolean
 }
 
 export interface ArtworkSidebarBidActionState {
@@ -48,7 +48,7 @@ export class ArtworkSidebarBidAction extends React.Component<
     const href = `/auction-registration/${sale.slug}`
 
     // TODO: Remove once A/B test completes
-    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+    if (this.props.EXPERIMENTAL_APP_SHELL) {
       this.props.router.push(href)
     } else {
       window.location.href = href
@@ -77,7 +77,7 @@ export class ArtworkSidebarBidAction extends React.Component<
     const href = `/auction/${sale.slug}/bid/${slug}?bid=${bid}`
 
     // TODO: Remove once A/B test completes
-    if (getENV("EXPERIMENTAL_APP_SHELL")) {
+    if (this.props.EXPERIMENTAL_APP_SHELL) {
       this.props.router.push(href)
     } else {
       window.location.href = href
@@ -231,8 +231,14 @@ export class ArtworkSidebarBidAction extends React.Component<
 
 export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   (props: ArtworkSidebarBidActionProps) => {
-    const { router } = useSystemContext()
-    return <ArtworkSidebarBidAction {...props} router={router} />
+    const { router, EXPERIMENTAL_APP_SHELL } = useSystemContext()
+    return (
+      <ArtworkSidebarBidAction
+        {...props}
+        router={router}
+        EXPERIMENTAL_APP_SHELL={EXPERIMENTAL_APP_SHELL}
+      />
+    )
   },
   {
     artwork: graphql`

@@ -24,7 +24,6 @@ import styled from "styled-components"
 import request from "superagent"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
-import { getENV } from "Utils/getENV"
 import { useDidMount } from "Utils/Hooks/useDidMount"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -157,7 +156,7 @@ export class SearchBar extends Component<Props, State> {
   constructor(props) {
     super(props)
 
-    this.enableExperimentalAppShell = getENV("EXPERIMENTAL_APP_SHELL")
+    this.enableExperimentalAppShell = props.EXPERIMENTAL_APP_SHELL
   }
 
   componentDidMount() {
@@ -364,6 +363,17 @@ export class SearchBar extends Component<Props, State> {
           isEmpty((event.target as HTMLInputElement).value)
         ) {
           event.preventDefault()
+        }
+
+        // Clear input after submit
+        if (this.enableExperimentalAppShell) {
+          if (event.key === "Enter") {
+            setTimeout(() => {
+              this.setState({
+                term: "",
+              })
+            })
+          }
         }
       },
     }

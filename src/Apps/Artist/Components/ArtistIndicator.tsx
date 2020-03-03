@@ -8,10 +8,12 @@ import {
   TopEstablishedIcon,
 } from "@artsy/palette"
 import styled from "styled-components"
+import { StyledLink } from "./StyledLink"
 
 interface ArtistIndicatorProps {
   type: string
   label: string
+  link: string
 }
 
 const ICON_MAPPING = {
@@ -33,21 +35,23 @@ export class ArtistIndicator extends React.Component<ArtistIndicatorProps> {
   }
 
   render() {
-    const { label, type } = this.props
+    const { label, type, link } = this.props
 
     return (
-      <RoundedFlex
-        background={color("black5")}
-        width="auto"
-        py={5}
-        px={10}
-        mt={1}
-      >
-        {this.renderIcon(type)}
-        <Sans pt="2px" size="2">
-          {label}
-        </Sans>
-      </RoundedFlex>
+      <StyledLink to={link}>
+        <RoundedFlex
+          background={color("black5")}
+          width="auto"
+          py={5}
+          px={10}
+          mt={1}
+        >
+          {this.renderIcon(type)}
+          <Sans pt="2px" size="2">
+            {label}
+          </Sans>
+        </RoundedFlex>
+      </StyledLink>
     )
   }
 }

@@ -1,3 +1,283 @@
+# v25.24.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- Update AB test name to CLIENT_NAVIGATION_V4 [#3224](https://github.com/artsy/reaction/pull/3224) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.24.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Visual QA [#3217](https://github.com/artsy/reaction/pull/3217) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.24.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1765] Add medium (categories) filter to auction results [#3211](https://github.com/artsy/reaction/pull/3211) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.23.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add more tests [#3221](https://github.com/artsy/reaction/pull/3221) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.23.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist] Visual QA [#3218](https://github.com/artsy/reaction/pull/3218) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.23.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- Collector Verification App [#3186](https://github.com/artsy/reaction/pull/3186) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.22.1 (Sat Feb 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Dont split bundles [#3214](https://github.com/artsy/reaction/pull/3214) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update yarn orb to track tests via circle again [#3215](https://github.com/artsy/reaction/pull/3215) ([@zephraph](https://github.com/zephraph))
+- Update dep typescript from 3.8.2 to v3.8.3 [#3213](https://github.com/artsy/reaction/pull/3213) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dep @types/loadable__component from ^5.10.0 to 5.10.0 [#3212](https://github.com/artsy/reaction/pull/3212) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.22.0 (Fri Feb 28 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add async bundle preloading pattern to router [#3207](https://github.com/artsy/reaction/pull/3207) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.21.4 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1828] Update typography and spacing in mobile menu [#3209](https://github.com/artsy/reaction/pull/3209) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.21.3 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- Only render "RelatedCollections" that have artworks [#3208](https://github.com/artsy/reaction/pull/3208) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update yarn orb to v4.0.1 [#3206](https://github.com/artsy/reaction/pull/3206) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.21.2 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- [step 2] Update schema to use MP's schema at mp@rename-wizard-to-flow [#3205](https://github.com/artsy/reaction/pull/3205) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v25.21.1 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Bump Node to v12 to have parity with Force [#3204](https://github.com/artsy/reaction/pull/3204) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.21.0 (Thu Feb 27 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Move to more conventional A/B test structure [#3203](https://github.com/artsy/reaction/pull/3203) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Add data file to describe new menu structure (for mobile and desktop) [#3199](https://github.com/artsy/reaction/pull/3199) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 2
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.20.3 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Add data file to describe new menu structure (for mobile and desktop) [#3199](https://github.com/artsy/reaction/pull/3199) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.20.2 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Log recaptcha misses on signup [#3202](https://github.com/artsy/reaction/pull/3202) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.20.1 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- use `formattedNationalityAndBirthday` in artist header [#3201](https://github.com/artsy/reaction/pull/3201) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.20.0 (Wed Feb 26 2020)
+
+#### 🚀  Enhancement
+
+- Handle "works for sale" copy and tabs on artwork page if no works for sale [#3197](https://github.com/artsy/reaction/pull/3197) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.19.0 (Wed Feb 26 2020)
+
+#### 🚀  Enhancement
+
+- Link header badges to Auction Result / Career Highlights [#3200](https://github.com/artsy/reaction/pull/3200) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.18.3 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Update field used for notifications badge count [#3190](https://github.com/artsy/reaction/pull/3190) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.18.2 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Fix issue where expanding auction result changed page [#3198](https://github.com/artsy/reaction/pull/3198) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.0 to v7.1.1 [#3194](https://github.com/artsy/reaction/pull/3194) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dependencies [#3195](https://github.com/artsy/reaction/pull/3195) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.18.1 (Mon Feb 24 2020)
+
+#### 🐛  Bug Fix
+
+- Simplify A/B test lookup via `express-http-context` [#3191](https://github.com/artsy/reaction/pull/3191) ([@damassi](https://github.com/damassi) [@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
 # v25.18.0 (Mon Feb 24 2020)
 
 #### 🚀  Enhancement

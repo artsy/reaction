@@ -29,11 +29,6 @@ describe("AuctionResultsFilterContext", () => {
   })
 
   describe("behaviors", () => {
-    it("#onAuctionResultClick changes openItemIndex", () => {
-      context.onAuctionResultClick(2)
-      expect(context.filters.openedItemIndex).toBe(2)
-    })
-
     // it("#onFilterClick", () => {
     //   const spy = jest.fn()
     //   getWrapper({ onFilterClick: spy })

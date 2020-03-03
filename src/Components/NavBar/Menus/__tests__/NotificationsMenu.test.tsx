@@ -48,6 +48,7 @@ describe("NotificationsMenu", () => {
 
 const NotificationMenuFixture = {
   me: {
+    unreadNotificationsCount: 0,
     followsAndSaves: {
       notifications: {
         edges: [

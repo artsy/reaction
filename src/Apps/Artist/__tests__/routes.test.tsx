@@ -151,7 +151,7 @@ describe("Artist/routes", () => {
 const overviewArtist: routes_ArtistTopLevelQueryRawResponse["artist"] = {
   id: "opaque-artist-id",
   slug: "juan-gris",
-  years: null,
+  formattedNationalityAndBirthday: "British, 1890-1970",
   carousel: null,
   is_followed: false,
   statuses: {

@@ -22,7 +22,7 @@ import { Boot } from "Artsy/Router/Boot"
 import { RouterConfig } from "./"
 
 import { trackingMiddleware } from "Artsy/Analytics/trackingMiddleware"
-import { RenderError, RenderPending, RenderReady } from "./Utils/RenderStatus"
+import { RenderError, RenderPending, RenderReady } from "./RenderStatus"
 
 interface Resolve {
   ClientApp: ComponentType<any>

@@ -24,5 +24,6 @@ storybook_build
 .yalc
 yalc.lock
 coverage*
-2
 tsconfig.tsbuildinfo
+reports*
+2

@@ -60,6 +60,9 @@ export interface SystemContextProps {
    * and `USER_ACCESS_TOKEN` environment variables if available.
    */
   user?: User
+
+  // TODO: Remove once A/B test completes
+  EXPERIMENTAL_APP_SHELL?: boolean
 }
 
 export const SystemContext = React.createContext<SystemContextProps>({})

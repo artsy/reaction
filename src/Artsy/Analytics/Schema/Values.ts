@@ -12,6 +12,7 @@ export enum PageName {
   CollectionPage = "Collection",
   SearchPage = "Search page",
   HomePage = "Home",
+  IdentityVerificationPage = "Identity Verification page",
 }
 
 /**
@@ -64,6 +65,7 @@ export enum ActionType {
 
   CommercialFilterParamsChanged = "Commercial filter params changed",
   AuctionResultFilterParamChanged = "Auction results filter params changed",
+  AuctionResultItemClicked = "Auction result item clicked",
 
   /**
    * A/B Test Experiments
@@ -134,6 +136,11 @@ export enum ActionType {
    */
   RegistrationSubmitFailed = "Registration failed to submit",
   RegistrationSubmitted = "Registration submitted",
+
+  /**
+   * Identity Verification
+   */
+  ClickedContinueToIdVerification = "ClickedContinueToIdVerification",
 }
 
 /**
