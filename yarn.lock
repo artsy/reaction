@@ -17,7 +17,7 @@
   resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
   integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
 
-"@artsy/lint-changed@^2.0.0":
+"@artsy/lint-changed@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-2.0.0.tgz#55b8536dc117f086c6cb74e49fd732844539af1c"
   integrity sha512-ZHvm4g0dAy/51gyJrX43xs7FpvGRAeIQNc+/DFCMODtYtnwe4g3GS/TzAaQB+pWeSEm3+J7oAUfLVwFqURb6kA==
