@@ -1,7 +1,9 @@
 import { IdentityVerificationAppTestQueryRawResponse } from "__generated__/IdentityVerificationAppTestQuery.graphql"
 import { routes_IdentityVerificationAppQueryResponse } from "__generated__/routes_IdentityVerificationAppQuery.graphql"
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
+import { expectOne } from "DevTools/RootTestPage"
 import { Location } from "found"
 import React from "react"
 import { graphql } from "react-relay"
@@ -35,6 +37,14 @@ const setupTestEnv = ({
       }
     `,
     defaultData: IdentityVerificationAppQueryResponseFixture as IdentityVerificationAppTestQueryRawResponse,
+    defaultMutationResults: {
+      startIdentityVerification: {
+        startIdentityVerificationResponseOrError: {
+          identityVerificationFlowUrl: "www.identity.biz",
+          mutationError: null,
+        },
+      },
+    },
   })
 }
 
@@ -49,19 +59,7 @@ describe("IdentityVerification route", () => {
 
       expect(page.text()).toContain("Artsy identity verification")
     })
-    it("user click on 'continue to verification' button is tracked", async () => {
-      const env = setupTestEnv()
-      const page = await env.buildPage()
 
-      await page.clickStartVerification()
-
-      expect(mockPostEvent).toHaveBeenCalledTimes(1)
-      expect(mockPostEvent).toHaveBeenCalledWith({
-        action_type: "ClickedContinueToIdVerification",
-        context_page: "Identity Verification page",
-        context_page_owner_id: "identity-verification-id",
-      })
-    })
     it("shows a 404 page if the user does not own the identity verification", async () => {
       const env = setupTestEnv()
 
@@ -79,6 +77,59 @@ describe("IdentityVerification route", () => {
       expect(page.text()).toContain(
         "Sorry, the page you were looking for doesn’t exist at this URL."
       )
+    })
+
+    describe("user enters verification flow", () => {
+      it("user click on 'continue to verification' button is tracked", async () => {
+        const env = setupTestEnv()
+        const page = await env.buildPage()
+
+        await page.clickStartVerification()
+
+        expect(mockPostEvent).toHaveBeenCalledTimes(1)
+        expect(mockPostEvent).toHaveBeenCalledWith({
+          action_type: "ClickedContinueToIdVerification",
+          context_page: "Identity Verification page",
+          context_page_owner_id: "identity-verification-id",
+        })
+      })
+      it("user is redirected to the verification flow on a successful mutation", async () => {
+        window.location.assign = jest.fn()
+        const env = setupTestEnv()
+        const page = await env.buildPage()
+
+        await page.clickStartVerification()
+        expect(window.location.assign).toHaveBeenCalledWith("www.identity.biz")
+      })
+      it("user sees an error modal if the mutation fails", async () => {
+        const env = setupTestEnv()
+        const page = await env.buildPage()
+
+        const badResult = {
+          startIdentityVerification: {
+            startIdentityVerificationResponseOrError: {
+              mutationError: {
+                error: "something bad :|",
+                message: "oh noes",
+                detail: "beep boop beep",
+              },
+            },
+          },
+        }
+        env.mutations.useResultsOnce(badResult)
+
+        await page.clickStartVerification()
+        const errorModal = expectOne(page.find(ErrorModal))
+        expect(errorModal.props().show).toBe(true)
+        expect(page.text()).toContain(
+          "Something went wrong. Please try again or contact verification@artsy.net."
+        )
+      })
+      xit("shows an error message on network failiure", () => {
+        "use mockNetworkFailureOnce"
+      })
+      xit("tracks mutation error")
+      xit("tracks network failure error")
     })
   })
 })

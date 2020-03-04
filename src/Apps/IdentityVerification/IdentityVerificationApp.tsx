@@ -8,7 +8,8 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { useTracking } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorPage } from "Components/ErrorPage"
-import React from "react"
+import { ErrorModal } from "Components/Modal/ErrorModal"
+import React, { useState } from "react"
 import { Meta, Title as HeadTitle } from "react-head"
 import {
   commitMutation,
@@ -16,12 +17,15 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import createLogger from "Utils/logger"
 // import { RedirectException } from "found"
+
+const logger = createLogger("IdentityVerificationApp.tsx")
 
 interface Props {
   me: IdentityVerificationApp_me
-  // match: any
   relay: RelayProp
+  // match: any
 }
 
 const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
@@ -33,13 +37,16 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
   const { identityVerification } = me
   const { environment } = relay
 
+  const [requesting, setRequesting] = useState(false)
+  const [showErrorModal, setShowErrorModal] = useState(false)
+
   if (!identityVerification || identityVerification.userID !== me.internalID) {
     return <ErrorPage code={404} />
   }
 
   const { trackEvent } = useTracking()
 
-  const clickedContinueToVerification = () => {
+  const trackClickedContinueToVerification = () => {
     trackEvent({
       context_page_owner_id: identityVerification.internalID,
       action_type: Schema.ActionType.ClickedContinueToIdVerification,
@@ -53,7 +60,7 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
     >((resolve, reject) => {
       commitMutation<IdentityVerificationAppStartFlowMutation>(environment, {
         onCompleted: data => resolve(data),
-        onError: error => reject(error),
+        onError: error => reject({ error }),
         mutation: graphql`
           mutation IdentityVerificationAppStartFlowMutation(
             $input: startIdentityVerificationMutationInput!
@@ -76,29 +83,47 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
         `,
         variables: {
           input: { identityVerificationId: identityVerification.internalID },
+          // input: { identityVerificationId: "fffffff" }, // for testing an error
         },
       })
     })
 
     mutation
-      .then(result => {
-        const {
-          startIdentityVerification: {
-            startIdentityVerificationResponseOrError: {
-              identityVerificationFlowUrl,
-            },
-          },
-        } = result
-        console.log("success: " + { identityVerificationFlowUrl })
-        console.log({ identityVerificationFlowUrl })
-        location.assign(identityVerificationFlowUrl)
+      .then(handleMutationSuccess)
+      .catch(handleMutationError)
+      .finally(() => {
+        setRequesting(false)
       })
-      .catch(result => {
-        const {
-          startIdentityVerification: { mutationError },
-        } = result
-        console.log("FAIL", { mutationError })
-      })
+  }
+
+  const handleMutationSuccess = (
+    result: IdentityVerificationAppStartFlowMutationResponse
+  ) => {
+    const {
+      startIdentityVerification: {
+        startIdentityVerificationResponseOrError: {
+          identityVerificationFlowUrl,
+          mutationError,
+        },
+      },
+    } = result
+    if (mutationError) {
+      logger.error("FAIL in handleMutation")
+      handleMutationError(mutationError)
+    } else {
+      location.assign(identityVerificationFlowUrl)
+    }
+  }
+
+  const handleMutationError = (mutationError: {
+    /** Message/detail from commitMutation conCompleted handler */
+    message?: string
+    detail?: string
+    /** Error from commitMutation onError handler */
+    error?: string
+  }) => {
+    logger.error("FAIL", mutationError)
+    setShowErrorModal(true)
   }
 
   return (
@@ -108,6 +133,13 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
       <Meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
+      />
+      <ErrorModal
+        show={showErrorModal}
+        contactEmail="verification@artsy.net"
+        onClose={() => {
+          setShowErrorModal(false)
+        }}
       />
 
       <Box px={[2, 3]} mb={6} mt={4}>
@@ -152,11 +184,13 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
           </Box>
 
           <Button
+            loading={requesting}
             block
             width={["100%", 335]}
             mt={4}
             onClick={() => {
-              clickedContinueToVerification()
+              setRequesting(true)
+              trackClickedContinueToVerification()
               startIdentityVerification()
             }}
           >
