@@ -1,3 +1,26 @@
+# v25.24.3 (Wed Mar 04 2020)
+
+#### 🐛  Bug Fix
+
+- Only lint changed files [#3220](https://github.com/artsy/reaction/pull/3220) ([@zephraph](https://github.com/zephraph))
+- User does not see lot condition report request if it's disabled for a sale [#3223](https://github.com/artsy/reaction/pull/3223) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/lint-changed from ^3.0.1 to 3.0.1 [#3231](https://github.com/artsy/reaction/pull/3231) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Only lint changed files [#3230](https://github.com/artsy/reaction/pull/3230) ([@zephraph](https://github.com/zephraph))
+- Revert "Only lint changed files" [#3228](https://github.com/artsy/reaction/pull/3228) ([@zephraph](https://github.com/zephraph))
+- Update auto orb to v1.0.2 [#3225](https://github.com/artsy/reaction/pull/3225) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v25.24.2 (Mon Mar 02 2020)
 
 #### 🐛  Bug Fix
