@@ -20,7 +20,7 @@ import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { Footer } from "Components/v2/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 import { Match } from "found"
-import React from "react"
+import React, { useRef } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistHeaderFragmentContainer as ArtistHeader } from "./Components/ArtistHeader"
@@ -34,12 +34,20 @@ export interface ArtistAppProps {
   match: Match
 }
 
+const scrollToRef = ref => {
+  window.scrollTo(0, ref.current.getBoundingClientRect().top)
+}
+
 export const ArtistApp: React.FC<ArtistAppProps> = props => {
   const { artist, children } = props
 
   const { trackEvent } = useTracking()
 
   const route = findCurrentRoute(props.match)
+
+  const myRef = useRef(null)
+
+  const executeScroll = () => scrollToRef(myRef)
 
   return (
     <AppContainer>
@@ -59,7 +67,10 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
           <Col>
             {route.displayNavigationTabs ? (
               <>
-                <NavigationTabs artist={artist} />
+                <NavigationTabs
+                  onClick={executeScroll.bind(this)}
+                  artist={artist}
+                />
                 <Spacer mb={2} />
               </>
             ) : (
@@ -90,8 +101,9 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
                 <Spacer mb={2} />
               </>
             )}
-
-            <Box minHeight="30vh">{children}</Box>
+            <Box ref={myRef} minHeight="30vh">
+              {children}
+            </Box>
           </Col>
         </Row>
 

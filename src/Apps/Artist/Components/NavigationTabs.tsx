@@ -11,6 +11,7 @@ import { get } from "Utils/get"
 
 interface Props extends SystemContextProps {
   artist: NavigationTabs_artist
+  onClick?: () => void
 }
 
 @track({
@@ -23,6 +24,7 @@ export class NavigationTabs extends React.Component<Props> {
     destination_path,
   }))
   handleClick(tab: string, destination_path: string) {
+    this.props.onClick()
     // noop
   }
 
