@@ -93,18 +93,20 @@ describe("IdentityVerification route", () => {
           context_page_owner_id: "identity-verification-id",
         })
       })
+
       it("user is redirected to the verification flow on a successful mutation", async () => {
         window.location.assign = jest.fn()
         const env = setupTestEnv()
         const page = await env.buildPage()
 
         await page.clickStartVerification()
+
         expect(window.location.assign).toHaveBeenCalledWith("www.identity.biz")
       })
+
       it("user sees an error modal if the mutation fails", async () => {
         const env = setupTestEnv()
         const page = await env.buildPage()
-
         const badResult = {
           startIdentityVerification: {
             startIdentityVerificationResponseOrError: {
@@ -119,17 +121,66 @@ describe("IdentityVerification route", () => {
         env.mutations.useResultsOnce(badResult)
 
         await page.clickStartVerification()
+
         const errorModal = expectOne(page.find(ErrorModal))
         expect(errorModal.props().show).toBe(true)
         expect(page.text()).toContain(
           "Something went wrong. Please try again or contact verification@artsy.net."
         )
       })
-      xit("shows an error message on network failiure", () => {
-        "use mockNetworkFailureOnce"
+
+      it("shows an error message on network failiure", async () => {
+        const env = setupTestEnv()
+        const page = await env.buildPage()
+        env.mutations.mockNetworkFailureOnce()
+
+        await page.clickStartVerification()
+
+        const errorModal = expectOne(page.find(ErrorModal))
+        expect(errorModal.props().show).toBe(true)
+        expect(page.text()).toContain(
+          "Something went wrong. Please try again or contact verification@artsy.net."
+        )
       })
-      xit("tracks mutation error")
-      xit("tracks network failure error")
+
+      xit("tracks mutation error", async () => {
+        const env = setupTestEnv()
+        const page = await env.buildPage()
+        const badResult = {
+          startIdentityVerification: {
+            startIdentityVerificationResponseOrError: {
+              mutationError: {
+                error: "something bad :|",
+                message: "oh noes",
+                detail: "beep boop beep",
+              },
+            },
+          },
+        }
+        env.mutations.useResultsOnce(badResult)
+
+        await page.clickStartVerification()
+
+        expect(mockPostEvent).toHaveBeenCalledWith({
+          action_type: "some-error-type",
+          context_page: "Identity Verification page",
+          context_page_owner_id: "identity-verification-id",
+        })
+      })
+
+      xit("tracks network failure error", async () => {
+        const env = setupTestEnv()
+        const page = await env.buildPage()
+        env.mutations.mockNetworkFailureOnce()
+
+        await page.clickStartVerification()
+
+        expect(mockPostEvent).toHaveBeenCalledWith({
+          action_type: "some-error-type",
+          context_page: "Identity Verification page",
+          // context_page_owner_id: "identity-verification-id",
+        })
+      })
     })
   })
 })

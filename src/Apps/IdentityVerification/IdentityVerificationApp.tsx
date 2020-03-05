@@ -54,13 +54,9 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
     })
   }
 
-  function startIdentityVerification() {
-    const mutation = new Promise<
-      IdentityVerificationAppStartFlowMutationResponse
-    >((resolve, reject) => {
+  async function startIdentityVerification() {
+    const mutation = new Promise<string>((resolve, reject) => {
       commitMutation<IdentityVerificationAppStartFlowMutation>(environment, {
-        onCompleted: data => resolve(data),
-        onError: error => reject({ error }),
         mutation: graphql`
           mutation IdentityVerificationAppStartFlowMutation(
             $input: startIdentityVerificationMutationInput!
@@ -83,7 +79,26 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
         `,
         variables: {
           input: { identityVerificationId: identityVerification.internalID },
-          // input: { identityVerificationId: "fffffff" }, // for testing an error
+        },
+        onError: reject,
+        onCompleted: (response, errors) => {
+          if (errors && errors.length > 0) {
+            reject(new Error(JSON.stringify(errors)))
+          } else {
+            const {
+              startIdentityVerification: {
+                startIdentityVerificationResponseOrError: {
+                  identityVerificationFlowUrl,
+                  mutationError,
+                },
+              },
+            } = response
+            if (mutationError) {
+              reject(new Error(JSON.stringify(mutationError)))
+            } else {
+              resolve(identityVerificationFlowUrl)
+            }
+          }
         },
       })
     })
@@ -96,33 +111,12 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
       })
   }
 
-  const handleMutationSuccess = (
-    result: IdentityVerificationAppStartFlowMutationResponse
-  ) => {
-    const {
-      startIdentityVerification: {
-        startIdentityVerificationResponseOrError: {
-          identityVerificationFlowUrl,
-          mutationError,
-        },
-      },
-    } = result
-    if (mutationError) {
-      logger.error("FAIL in handleMutation")
-      handleMutationError(mutationError)
-    } else {
-      location.assign(identityVerificationFlowUrl)
-    }
+  const handleMutationSuccess = (identityVerificationFlowUrl: string) => {
+    location.assign(identityVerificationFlowUrl)
   }
 
-  const handleMutationError = (mutationError: {
-    /** Message/detail from commitMutation conCompleted handler */
-    message?: string
-    detail?: string
-    /** Error from commitMutation onError handler */
-    error?: string
-  }) => {
-    logger.error("FAIL", mutationError)
+  const handleMutationError = (error: Error) => {
+    logger.error("Error when trying to start identity verification", error)
     setShowErrorModal(true)
   }
 
