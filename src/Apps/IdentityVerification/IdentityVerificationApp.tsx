@@ -1,9 +1,6 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import { IdentityVerificationApp_me } from "__generated__/IdentityVerificationApp_me.graphql"
-import {
-  IdentityVerificationAppStartFlowMutation,
-  IdentityVerificationAppStartFlowMutationResponse,
-} from "__generated__/IdentityVerificationAppStartFlowMutation.graphql"
+import { IdentityVerificationAppStartFlowMutation } from "__generated__/IdentityVerificationAppStartFlowMutation.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { useTracking } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -18,22 +15,15 @@ import {
   RelayProp,
 } from "react-relay"
 import createLogger from "Utils/logger"
-// import { RedirectException } from "found"
 
 const logger = createLogger("IdentityVerificationApp.tsx")
 
 interface Props {
   me: IdentityVerificationApp_me
   relay: RelayProp
-  // match: any
 }
 
 const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
-  // if (!me) {
-  //   const loginPath =
-  //     "/log_in?redirect_uri=" + encodeURIComponent(match.location.pathname)
-  //   throw new RedirectException(loginPath)
-  // }
   const { identityVerification } = me
   const { environment } = relay
 
