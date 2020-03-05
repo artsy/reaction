@@ -1,3 +1,21 @@
+# v25.26.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Add attribute to body when app is ready to be tested [#3233](https://github.com/artsy/reaction/pull/3233) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.1 to v3.0.2 [#3235](https://github.com/artsy/reaction/pull/3235) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.25.0 (Thu Mar 05 2020)
 
 #### 🚀  Enhancement
