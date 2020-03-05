@@ -128,7 +128,7 @@ class MobileLoginFormWithSystemContext extends Component<
           const { currentStep, isLastStep } = wizard
 
           return (
-            <MobileContainer>
+            <MobileContainer data-test-login-form>
               <ProgressIndicator percentComplete={wizard.progressPercentage} />
               <MobileInnerWrapper>
                 <BackButton
