@@ -1,3 +1,128 @@
+# v25.26.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Add attribute to body when app is ready to be tested [#3233](https://github.com/artsy/reaction/pull/3233) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.1 to v3.0.2 [#3235](https://github.com/artsy/reaction/pull/3235) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.25.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Adds hooks to login modals for integration tests [#3234](https://github.com/artsy/reaction/pull/3234) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.24.3 (Wed Mar 04 2020)
+
+#### 🐛  Bug Fix
+
+- Only lint changed files [#3220](https://github.com/artsy/reaction/pull/3220) ([@zephraph](https://github.com/zephraph))
+- User does not see lot condition report request if it's disabled for a sale [#3223](https://github.com/artsy/reaction/pull/3223) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/lint-changed from ^3.0.1 to 3.0.1 [#3231](https://github.com/artsy/reaction/pull/3231) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Only lint changed files [#3230](https://github.com/artsy/reaction/pull/3230) ([@zephraph](https://github.com/zephraph))
+- Revert "Only lint changed files" [#3228](https://github.com/artsy/reaction/pull/3228) ([@zephraph](https://github.com/zephraph))
+- Update auto orb to v1.0.2 [#3225](https://github.com/artsy/reaction/pull/3225) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.24.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- Update AB test name to CLIENT_NAVIGATION_V4 [#3224](https://github.com/artsy/reaction/pull/3224) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.24.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Visual QA [#3217](https://github.com/artsy/reaction/pull/3217) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.24.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1765] Add medium (categories) filter to auction results [#3211](https://github.com/artsy/reaction/pull/3211) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.23.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add more tests [#3221](https://github.com/artsy/reaction/pull/3221) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.23.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist] Visual QA [#3218](https://github.com/artsy/reaction/pull/3218) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.23.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- Collector Verification App [#3186](https://github.com/artsy/reaction/pull/3186) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v25.22.1 (Sat Feb 29 2020)
 
 #### 🐛  Bug Fix

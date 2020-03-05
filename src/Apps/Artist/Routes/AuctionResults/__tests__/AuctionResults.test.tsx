@@ -42,6 +42,9 @@ describe("AuctionResults", () => {
       }
     })
   })
+  afterEach(() => {
+    trackEvent.mockReset()
+  })
 
   describe("general behavior", () => {
     beforeAll(async () => {
@@ -118,6 +121,57 @@ describe("AuctionResults", () => {
         })
       })
       describe("filters", () => {
+        describe("medium filter", () => {
+          it("triggers relay refetch with medium list", done => {
+            const filter = wrapper.find("MediumFilter")
+
+            const checkboxes = filter.find("Checkbox")
+
+            checkboxes.at(1).simulate("click")
+
+            checkboxes.at(2).simulate("click")
+
+            checkboxes.at(1).simulate("click")
+
+            setTimeout(() => {
+              expect(refetchSpy).toHaveBeenCalledTimes(3)
+
+              expect(refetchSpy.mock.calls[0][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  categories: ["Work on Paper"],
+                })
+              )
+              expect(refetchSpy.mock.calls[1][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  categories: ["Work on Paper", "Sculpture"],
+                })
+              )
+              expect(refetchSpy.mock.calls[2][0]).toEqual(
+                expect.objectContaining({
+                  ...defualtRelayParams,
+                  categories: ["Sculpture"],
+                })
+              )
+
+              expect(trackEvent).toHaveBeenCalledTimes(3)
+              expect(trackEvent.mock.calls[0][0]).toEqual({
+                action_type: "Auction results filter params changed",
+                context_page: "Artist Auction Results",
+                changed: { categories: ["Work on Paper"] },
+                current: {
+                  categories: ["Work on Paper"],
+                  page: 1,
+                  sort: "DATE_DESC",
+                  organizations: [],
+                  sizes: [],
+                },
+              })
+              done()
+            })
+          })
+        })
         describe("auction house filter", () => {
           // TODO: Re-enable once we uncollapse auction house filters
           it.skip("triggers relay refetch with organization list", done => {
@@ -200,6 +254,7 @@ describe("AuctionResults", () => {
                   page: 1,
                   sort: "DATE_DESC",
                   organizations: [],
+                  categories: [],
                 },
               })
 

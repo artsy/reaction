@@ -16,7 +16,6 @@ export const collectRoutes: RouteConfig[] = [
     prepare: () => {
       CollectApp.preload()
     },
-    fetchIndicator: "overlay",
     prepareVariables: initializeVariablesWithFilterState,
     query: graphql`
       query collectRoutes_ArtworkFilterQuery(
@@ -81,7 +80,6 @@ export const collectRoutes: RouteConfig[] = [
     prepare: () => {
       CollectionsApp.preload()
     },
-    fetchIndicator: "overlay",
     query: graphql`
       query collectRoutes_MarketingCollectionsAppQuery {
         marketingCategories @principalField {
@@ -97,7 +95,6 @@ export const collectRoutes: RouteConfig[] = [
       CollectionApp.preload()
     },
     prepareVariables: initializeVariablesWithFilterState,
-    fetchIndicator: "overlay",
     query: CollectionAppQuery,
   },
 ]

@@ -8,7 +8,7 @@ export type ArtworkDetailsAdditionalInfo_artwork = {
     readonly publisher: string | null;
     readonly manufacturer: string | null;
     readonly image_rights: string | null;
-    readonly isBiddable: boolean | null;
+    readonly canRequestLotConditionsReport: boolean | null;
     readonly internalID: string;
     readonly framed: {
         readonly label: string | null;
@@ -98,7 +98,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "isBiddable",
+      "name": "canRequestLotConditionsReport",
       "args": null,
       "storageKey": null
     },
@@ -152,5 +152,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '0c49f0c238fa2268b741ee12e4c86538';
+(node as any).hash = '866bbb3484e7b8b12947081a9d28eb6a';
 export default node;

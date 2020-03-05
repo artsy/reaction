@@ -50,6 +50,46 @@ describe("ArtworkDetails", () => {
   }
   let wrapper
 
+  describe("ArtworkDetailsAdditionalInfo for a live sale artwork", () => {
+    it("displays a request lot condition report button when canRequestLotConditionsReport is true", async () => {
+      mockEnableRequestConditionReport.mockResolvedValue(true)
+
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        canRequestLotConditionsReport: true,
+      })
+
+      expect(wrapper.html()).toContain("Condition")
+      expect(wrapper.html()).not.toContain(
+        "Slight discoloration from sun exposure"
+      )
+    })
+
+    it("display condition description when canRequestLotConditionsReport is false but has condition description", async () => {
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        canRequestLotConditionsReport: false,
+        conditionDescription: {
+          label: "Condition details",
+          details: "Slight discoloration from sun exposure",
+        },
+      })
+
+      expect(wrapper.html()).toContain("Condition")
+      expect(wrapper.html()).toContain("Slight discoloration from sun exposure")
+    })
+
+    it("does not display the condition section at all when canRequestLotConditionsReport is false and condition Description is missing", async () => {
+      wrapper = await getWrapper({
+        ...ArtworkDetailsFixture,
+        canRequestLotConditionsReport: false,
+        conditionDescription: null,
+      })
+
+      expect(wrapper.html()).not.toContain("Condition")
+    })
+  })
+
   describe("ArtworkDetails for a gallery artwork that is missing some fields", () => {
     it("renders additional info with just what is present", async () => {
       wrapper = await getWrapper({

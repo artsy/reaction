@@ -40,7 +40,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 }) => {
   const filterContext = useAuctionResultsFilterContext()
 
-  const { sort, organizations, sizes } = filterContext.filters
+  const { sort, organizations, categories, sizes } = filterContext.filters
 
   const loadNext = () => {
     const { hasNextPage, endCursor } = pageInfo
@@ -61,6 +61,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         before: null,
         last: null,
         organizations,
+        categories,
         sizes,
         sort,
       },
@@ -215,6 +216,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           after: { type: "String" }
           before: { type: "String" }
           organizations: { type: "[String]" }
+          categories: { type: "[String]" }
           sizes: { type: "[ArtworkSizes]" }
         ) {
         slug
@@ -226,6 +228,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           last: $last
           sort: $sort
           organizations: $organizations
+          categories: $categories
           sizes: $sizes
         ) {
           ...AuctionResultsCount_results
@@ -264,6 +267,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $sort: AuctionResultSorts
       $artistID: String!
       $organizations: [String]
+      $categories: [String]
       $sizes: [ArtworkSizes]
     ) {
       artist(id: $artistID) {
@@ -275,6 +279,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             before: $before
             sort: $sort
             organizations: $organizations
+            categories: $categories
             sizes: $sizes
           )
       }
