@@ -142,45 +142,6 @@ describe("IdentityVerification route", () => {
           "Something went wrong. Please try again or contact verification@artsy.net."
         )
       })
-
-      xit("tracks mutation error", async () => {
-        const env = setupTestEnv()
-        const page = await env.buildPage()
-        const badResult = {
-          startIdentityVerification: {
-            startIdentityVerificationResponseOrError: {
-              mutationError: {
-                error: "something bad :|",
-                message: "oh noes",
-                detail: "beep boop beep",
-              },
-            },
-          },
-        }
-        env.mutations.useResultsOnce(badResult)
-
-        await page.clickStartVerification()
-
-        expect(mockPostEvent).toHaveBeenCalledWith({
-          action_type: "some-error-type",
-          context_page: "Identity Verification page",
-          context_page_owner_id: "identity-verification-id",
-        })
-      })
-
-      xit("tracks network failure error", async () => {
-        const env = setupTestEnv()
-        const page = await env.buildPage()
-        env.mutations.mockNetworkFailureOnce()
-
-        await page.clickStartVerification()
-
-        expect(mockPostEvent).toHaveBeenCalledWith({
-          action_type: "some-error-type",
-          context_page: "Identity Verification page",
-          // context_page_owner_id: "identity-verification-id",
-        })
-      })
     })
   })
 })
