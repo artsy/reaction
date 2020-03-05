@@ -1,3 +1,15 @@
+# v25.25.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Adds hooks to login modals for integration tests [#3234](https://github.com/artsy/reaction/pull/3234) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.24.3 (Wed Mar 04 2020)
 
 #### 🐛  Bug Fix
