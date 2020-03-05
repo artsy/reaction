@@ -1,3 +1,15 @@
+# v25.26.1 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Update attribute to follow pre-established testing patterns [#3236](https://github.com/artsy/reaction/pull/3236) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.26.0 (Thu Mar 05 2020)
 
 #### 🚀  Enhancement
