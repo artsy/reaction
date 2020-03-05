@@ -1,3 +1,15 @@
+# v25.26.2 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Begin ID Verification flow from collector verification app [#3232](https://github.com/artsy/reaction/pull/3232) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v25.26.1 (Thu Mar 05 2020)
 
 #### 🐛  Bug Fix
