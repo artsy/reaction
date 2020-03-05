@@ -26,6 +26,15 @@ export const AppShell = props => {
     }
   }, [routeConfig])
 
+  /**
+   * Let our end-to-end tests know that the app is hydrated and ready to go
+   */
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      document.body.setAttribute("data-test-ready", "")
+    }
+  }, [])
+
   return (
     <Box width="100%">
       <Box pb={6}>
