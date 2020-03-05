@@ -25,6 +25,7 @@ workflows:
             - yarn/workflow-queue
       - yarn/jest:
           args: --runInBand
+          only_test_changed: true
           important_files: src/setup_jest.ts .babelrc
           requires:
             - yarn/workflow-queue
