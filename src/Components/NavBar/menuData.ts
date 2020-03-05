@@ -1,9 +1,9 @@
-interface MenuData {
+export interface MenuData {
   title: string
   links: LinkData[]
 }
 
-type LinkData = SimpleLinkData | MenuLinkData
+type LinkData = MenuLinkData | SimpleLinkData
 
 // e.g. "Editorial"
 interface SimpleLinkData {

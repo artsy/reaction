@@ -19,15 +19,17 @@ import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
 import {
-  MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
+  NewMobileNavMenu as MobileNavMenu,
   NotificationsMenu,
   UserMenu,
 } from "./Menus"
 
 import { ModalType } from "Components/Authentication/Types"
 import { openAuthModal } from "Utils/openAuthModal"
+import { menuData } from "./menuData"
+
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 
@@ -228,7 +230,8 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          {/* <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} /> */}
+          <MobileNavMenu isOpen={showMobileMenu} menuData={menuData} />
         </>
       )}
     </header>
