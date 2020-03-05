@@ -27,8 +27,6 @@ import {
 import { FollowProfileButton_profile } from "__generated__/FollowProfileButton_profile.graphql"
 import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
 
-// Updating a file
-
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
 }
