@@ -30,9 +30,7 @@ export const AppShell = props => {
    * Let our end-to-end tests know that the app is hydrated and ready to go
    */
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.body.setAttribute("data-test-ready", "")
-    }
+    document.body.setAttribute("data-test-ready", "")
   }, [])
 
   return (
