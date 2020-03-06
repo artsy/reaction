@@ -16,7 +16,7 @@ import {
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { data as sd } from "sharify"
-import { userIsAdmin } from "Utils/user"
+import { userHasLabFeature, userIsAdmin } from "Utils/user"
 import * as authentication from "../Utils/authentication"
 
 export const UserMenu: React.FC = () => {
@@ -57,7 +57,7 @@ export const UserMenu: React.FC = () => {
           <TagIcon mr={1} /> Purchases
         </MenuItem>
       )}
-      {isAdmin && (
+      {userHasLabFeature(user, "User Conversations View") && (
         <MenuItem href="/user/conversations">
           <TagIcon mr={1} /> Inquiries
         </MenuItem>
