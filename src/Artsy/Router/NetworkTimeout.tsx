@@ -1,30 +1,30 @@
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { useEffect, useState } from "react"
 
-const RENDER_TIMEOUT = 12000
+const NETWORK_TIMEOUT_MS = 10000
 
 export const NetworkTimeout: React.FC = () => {
-  const [showModal, setShowModal] = useState(false)
+  const [showErrorModal, toggleErrorModal] = useState(false)
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (!showModal) {
-        setShowModal(true)
+      if (!showErrorModal) {
+        toggleErrorModal(true)
       }
-    }, RENDER_TIMEOUT)
+    }, NETWORK_TIMEOUT_MS)
 
     return () => {
       clearTimeout(timeout)
     }
   }, [])
 
-  if (!showModal) {
+  if (!showErrorModal) {
     return null
   }
 
   return (
     <ErrorModal
-      show={showModal}
+      show={showErrorModal}
       closeText="Retry"
       ctaAction={() => {
         location.reload()
