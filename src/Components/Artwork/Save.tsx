@@ -135,6 +135,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           id: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
+        kind: "artworks",
         intent: AuthModalIntent.SaveArtwork,
       })
     }

@@ -138,12 +138,11 @@ export const SmallArtistCard: SFC<Props> = props => (
 )
 
 const handleOpenAuth = props => {
-  const { name } = props.artist
   openAuthModal(props.mediator, {
-    copy: `Sign up to follow ${name}`,
     entity: props.artist,
     contextModule: Schema.ContextModule.ArtworkPage,
     intent: AuthModalIntent.FollowArtist,
+    kind: "artist",
   })
 }
 

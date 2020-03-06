@@ -22,6 +22,7 @@ const handleOpenAuth = (mediator, artist) => {
     entity: artist,
     contextModule: Schema.ContextModule.RecommendedArtists,
     intent: AuthModalIntent.FollowArtist,
+    kind: "artist",
   })
 }
 

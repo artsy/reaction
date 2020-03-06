@@ -13,6 +13,7 @@ export const ZeroState = props => {
       entity: artist,
       contextModule: AnalyticsSchema.ContextModule.ArtworkFilter,
       intent: AuthModalIntent.FollowArtist,
+      kind: "artist",
     })
   }
 
