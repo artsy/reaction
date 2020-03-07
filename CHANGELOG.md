@@ -1,3 +1,21 @@
+# v25.26.3 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3242](https://github.com/artsy/reaction/pull/3242) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.1 to v7.1.2 [#3219](https://github.com/artsy/reaction/pull/3219) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.26.2 (Thu Mar 05 2020)
 
 #### 🐛  Bug Fix
