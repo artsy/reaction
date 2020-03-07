@@ -1,3 +1,15 @@
+# v25.27.1 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Remove error boundary [#3243](https://github.com/artsy/reaction/pull/3243) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.0 (Sat Mar 07 2020)
 
 #### 🚀  Enhancement
