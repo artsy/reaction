@@ -1,3 +1,15 @@
+# v25.27.0 (Sat Mar 07 2020)
+
+#### 🚀  Enhancement
+
+- Move conversations behind lab feature flag [#3241](https://github.com/artsy/reaction/pull/3241) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.26.3 (Sat Mar 07 2020)
 
 #### 🐛  Bug Fix
