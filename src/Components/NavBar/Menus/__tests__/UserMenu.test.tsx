@@ -60,6 +60,22 @@ describe("UserMenu", () => {
     expect(authentication.logout).toHaveBeenCalledWith(mediator)
   })
 
+  describe("lab features", () => {
+    it("hides inquiries button if lab feature not enabled", () => {
+      const wrapper = getWrapper({
+        user: { type: "NotAdmin", lab_features: [] },
+      })
+      expect(wrapper.html()).not.toContain("Inquiries")
+    })
+
+    it("shows inquiries button if lab feature enabled", () => {
+      const wrapper = getWrapper({
+        user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
+      })
+      expect(wrapper.html()).toContain("Inquiries")
+    })
+  })
+
   describe("admin features", () => {
     it("hides admin button if not admin", () => {
       const wrapper = getWrapper({ user: { type: "NotAdmin" } })
@@ -79,16 +95,6 @@ describe("UserMenu", () => {
     it("shows purchases button if admin", () => {
       const wrapper = getWrapper({ user: { type: "Admin" } })
       expect(wrapper.html()).toContain("Purchases")
-    })
-
-    it("hides inquiries button if not admin", () => {
-      const wrapper = getWrapper({ user: { type: "NotAdmin" } })
-      expect(wrapper.html()).not.toContain("Inquiries")
-    })
-
-    it("shows inquiries button if admin", () => {
-      const wrapper = getWrapper({ user: { type: "Admin" } })
-      expect(wrapper.html()).toContain("Inquiries")
     })
 
     it("shows CMS button if admin", () => {
