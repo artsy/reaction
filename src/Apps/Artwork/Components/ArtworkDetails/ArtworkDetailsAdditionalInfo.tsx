@@ -9,8 +9,8 @@ import {
 import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 
-import { getENV } from "Utils/getENV"
 import { RequestConditionReportQueryRenderer } from "./RequestConditionReport"
 
 export interface ArtworkDetailsAdditionalInfoProps {
@@ -44,7 +44,7 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
         title: "Condition",
         value:
           canRequestLotConditionsReport &&
-          getENV("ENABLE_REQUEST_CONDITION_REPORT") ? (
+          sd.ENABLE_REQUEST_CONDITION_REPORT ? (
             <RequestConditionReportQueryRenderer artworkID={internalID} />
           ) : (
             conditionDescription && conditionDescription.details
