@@ -1,3 +1,69 @@
+# v25.27.1 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Remove error boundary [#3243](https://github.com/artsy/reaction/pull/3243) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.0 (Sat Mar 07 2020)
+
+#### 🚀  Enhancement
+
+- Move conversations behind lab feature flag [#3241](https://github.com/artsy/reaction/pull/3241) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.3 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3242](https://github.com/artsy/reaction/pull/3242) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.1 to v7.1.2 [#3219](https://github.com/artsy/reaction/pull/3219) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.26.2 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Begin ID Verification flow from collector verification app [#3232](https://github.com/artsy/reaction/pull/3232) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.26.1 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Update attribute to follow pre-established testing patterns [#3236](https://github.com/artsy/reaction/pull/3236) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.26.0 (Thu Mar 05 2020)
 
 #### 🚀  Enhancement

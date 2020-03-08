@@ -1,5 +1,4 @@
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
-import { ErrorBoundary } from "Components/ErrorBoundary"
 import React, { Fragment } from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
@@ -391,51 +390,32 @@ export class BaseCarousel extends React.Component<
     }
 
     return (
-      <ErrorBoundary
-        onCatch={() => {
-          /**
-           * If an error occurs when mounting / unmounting flickity, reload page.
-           *
-           * FIXME: Figure out how to diagnose `Failed to execute ‘removeChild’
-           * on ‘Node’: The node to be removed is not a child of this node.` error
-           *
-           * NOTE: To hack-fix error, apply a random `key={Math.random()} on
-           * offending container, or ensure component isn't rerendering needlessly.
-           */
-          console.warn(
-            "------------------ RELOAD carousel",
-            window.location.href
-          )
-          window.location.reload()
-        }}
+      <Flex
+        flexDirection="row"
+        position="relative"
+        justifyContent="space-around"
+        alignItems="center"
+        height={height}
       >
-        <Flex
-          flexDirection="row"
-          position="relative"
-          justifyContent="space-around"
-          alignItems="center"
-          height={height}
-        >
-          {this.renderLeftArrow()}
+        {this.renderLeftArrow()}
 
-          <CarouselContainer height={height} isMounted={isMounted}>
-            <FlickityCarousel
-              isMounted={isMounted}
-              ref={c => (this.carouselRef = c)}
-            >
-              {carouselImages.map((slide, slideIndex) => {
-                return (
-                  <Fragment key={slideIndex}>
-                    {render(slide, slideIndex)}
-                  </Fragment>
-                )
-              })}
-            </FlickityCarousel>
-          </CarouselContainer>
+        <CarouselContainer height={height} isMounted={isMounted}>
+          <FlickityCarousel
+            isMounted={isMounted}
+            ref={c => (this.carouselRef = c)}
+          >
+            {carouselImages.map((slide, slideIndex) => {
+              return (
+                <Fragment key={slideIndex}>
+                  {render(slide, slideIndex)}
+                </Fragment>
+              )
+            })}
+          </FlickityCarousel>
+        </CarouselContainer>
 
-          {this.renderRightArrow()}
-        </Flex>
-      </ErrorBoundary>
+        {this.renderRightArrow()}
+      </Flex>
     )
   }
 }
