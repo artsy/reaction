@@ -1,3 +1,15 @@
+# v25.27.2 (Sun Mar 08 2020)
+
+#### 🐛  Bug Fix
+
+- Replace getENV with sd for now [#3244](https://github.com/artsy/reaction/pull/3244) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v25.27.1 (Sat Mar 07 2020)
 
 #### 🐛  Bug Fix
