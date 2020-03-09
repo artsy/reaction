@@ -1,3 +1,24 @@
+# v25.27.3 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Update schema [#3249](https://github.com/artsy/reaction/pull/3249) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep lint-staged from ^10.0.8 to 10.0.8 [#3246](https://github.com/artsy/reaction/pull/3246) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update auto orb to v1.1.0 [#3237](https://github.com/artsy/reaction/pull/3237) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update lint-staged [#3245](https://github.com/artsy/reaction/pull/3245) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.27.2 (Sun Mar 08 2020)
 
 #### 🐛  Bug Fix
