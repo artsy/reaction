@@ -18,10 +18,10 @@ export const getMaxMinPrice = (
   ascending_artworks: SeoProductsForCollections_ascending_artworks
 ) => {
   const leastExpensive = getPriceRange(
-    ascending_artworks.edges[0].node.listPrice
+    ascending_artworks.edges[0]?.node?.listPrice
   )
   const mostExpensive = getPriceRange(
-    descending_artworks.edges[0].node.listPrice
+    descending_artworks.edges[0]?.node?.listPrice
   )
 
   return {
@@ -33,7 +33,9 @@ export const getMaxMinPrice = (
 const getPriceRange = (
   listPrice: SeoProductsForCollections_ascending_artworks["edges"][0]["node"]["listPrice"]
 ) => {
-  if (!listPrice) return { min: undefined, max: undefined }
+  if (!listPrice) {
+    return { min: undefined, max: undefined }
+  }
 
   switch (listPrice.__typename) {
     case "PriceRange":
