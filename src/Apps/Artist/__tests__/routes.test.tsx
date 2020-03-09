@@ -90,7 +90,7 @@ describe("Artist/routes", () => {
       })
     )
 
-    expect(redirect.url).toBe("juan-gris/works-for-sale")
+    expect(redirect.url).toBe("/artist/juan-gris/works-for-sale")
   })
 
   it("does not redirect from /cv", async () => {
@@ -144,7 +144,7 @@ describe("Artist/routes", () => {
       })
     )
 
-    expect(redirect.url).toBe("juan-gris/works-for-sale")
+    expect(redirect.url).toBe("/artist/juan-gris/works-for-sale")
   })
 })
 
