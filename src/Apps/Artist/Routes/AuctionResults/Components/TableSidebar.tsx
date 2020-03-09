@@ -6,9 +6,6 @@ import { AuctionFilters } from "./AuctionFilters"
 export const TableSidebar = () => {
   return (
     <Flex flexDirection="column">
-      <Row>
-        <Separator />
-      </Row>
       <AuctionFilters />
     </Flex>
   )
