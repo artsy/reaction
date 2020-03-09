@@ -29,7 +29,7 @@ const partnerArgs: AuthModalOptions = {
 const artworkArgs: AuthModalOptions = {
   contextModule: Schema.ContextModule.ArtworkPage,
   entity: {
-    id: "andy-warhol-skull",
+    slug: "andy-warhol-skull",
     name: "Skull",
   },
   intent: AuthModalIntent.SaveArtwork,

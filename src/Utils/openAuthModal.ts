@@ -6,9 +6,8 @@ import { data as sd } from "sharify"
 
 export interface AuthModalOptions extends ModalOptions {
   entity: {
-    slug?: string
+    slug: string
     name: string
-    id?: string
   }
   contextModule: Schema.ContextModule
   intent: AuthModalIntent
@@ -94,7 +93,7 @@ function getMobileIntentToSaveArtwork({
     copy: `Sign up to save artworks`,
     intent,
     kind: "artworks",
-    objectId: entity.id,
+    objectId: entity.slug,
   }
 }
 
@@ -138,7 +137,7 @@ function getDesktopIntentToSaveArtwork({
     afterSignUpAction: {
       action: "save",
       kind: "artworks",
-      objectId: entity.id,
+      objectId: entity.slug,
     },
   }
 }
