@@ -391,6 +391,7 @@ const handleOpenAuth = (mediator, artist) => {
     entity: artist,
     contextModule: Schema.ContextModule.ArtistPage,
     intent: AuthModalIntent.FollowArtist,
+    kind: "artist",
   })
 }
 

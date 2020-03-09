@@ -87,6 +87,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
       entity: artist,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,
+      kind: "artist",
     })
   }
 

@@ -57,6 +57,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       entity: partner,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowPartner,
+      kind: "profile",
     })
   }
 
