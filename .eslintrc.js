@@ -166,9 +166,6 @@ module.exports = {
       "error",
       {
         rules: {
-          "jsx-boolean-value": [true, "never"],
-          "jsx-no-string-ref": true,
-          "jsx-self-close": true,
           "no-import-un-mocked": true,
           "no-query-renderer-import": true,
           "no-reference-import": true,
@@ -178,6 +175,11 @@ module.exports = {
               artifactDirectory: "__generated__",
               makeRelative: false,
             },
+          ],
+          rulesDirectory: [
+            "./tslint",
+            "node_modules/tslint/lib/rules",
+            "node_modules/tslint-plugin-relay/build",
           ],
         },
       },
