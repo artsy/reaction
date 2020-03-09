@@ -1,3 +1,15 @@
+# v25.27.6 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Make hide grids function a bit safer [#3248](https://github.com/artsy/reaction/pull/3248) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.5 (Mon Mar 09 2020)
 
 #### 🐛  Bug Fix
