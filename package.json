@@ -168,7 +168,6 @@
     "stylelint-processor-styled-components": "1.5.1",
     "ts-loader": "^3.5.yarn 0",
     "ts-node": "8.2.0",
-    "tslint": "^6.0.0",
     "tslint-config-prettier": "1.13.0",
     "tslint-plugin-relay": "0.0.3",
     "tslint-react": "2.6.0",
@@ -301,7 +300,7 @@
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "tslint -c tslint.json --fix",
+      "eslint --quiet --ext ts,tsx,js,jsx --fix",
       "yarn prettier-write --",
       "git add"
     ],
@@ -311,7 +310,7 @@
   },
   "lint-changed": {
     "*.@(ts|tsx)": [
-      "tslint -c tslint.json",
+      "eslint --quiet --ext ts,tsx,js,jsx",
       "yarn prettier -c"
     ],
     "*.json": [
