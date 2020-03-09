@@ -131,7 +131,7 @@
     "jest-styled-components": "7.0.0-2",
     "json5": "2.1.0",
     "klaw-sync": "6.0.0",
-    "lint-staged": "4.3.0",
+    "lint-staged": "^10.0.8",
     "patch-package": "6.2.0",
     "postinstall-prepare": "1.0.1",
     "prettier": "1.19.1",
@@ -290,8 +290,7 @@
   "lint-staged": {
     "*.@(ts|tsx)": [
       "tslint -c tslint.json --fix",
-      "yarn prettier-write --",
-      "git add"
+      "yarn prettier-write --"
     ],
     "*.json": [
       "yarn prettier-write --"
