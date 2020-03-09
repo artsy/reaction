@@ -1,6 +1,5 @@
 import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
 import * as Artsy from "Artsy"
-import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import { extend } from "lodash"
 import React from "react"
 import {
@@ -21,7 +20,7 @@ interface Props
   gene?: FollowGeneButton_gene
   tracking?: TrackingProp
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: ModalType, config?: ModalOptions) => void
+  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
 }
 
 export class FollowGeneButton extends React.Component<Props> {
@@ -68,7 +67,7 @@ export class FollowGeneButton extends React.Component<Props> {
       this.trackFollow()
     } else {
       onOpenAuthModal &&
-        onOpenAuthModal(ModalType.signup, {
+        onOpenAuthModal("register", {
           contextModule: "intext tooltip",
           intent: "follow gene",
           copy: "Sign up to follow categories",
