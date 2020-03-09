@@ -1,3 +1,15 @@
+# v25.27.5 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] => Make `SEOProductsForCollections` safer [#3251](https://github.com/artsy/reaction/pull/3251) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.3 (Mon Mar 09 2020)
 
 #### 🐛  Bug Fix
