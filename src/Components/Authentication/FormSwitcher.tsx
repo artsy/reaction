@@ -12,7 +12,6 @@ import { MobileForgotPasswordForm } from "Components/Authentication/Mobile/Forgo
 import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
 import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
 import {
-  AfterSignUpAction,
   FormComponentType,
   InputValues,
   ModalOptions,
@@ -67,7 +66,6 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         destination,
         redirectTo,
         intent,
-        title,
         trigger,
         triggerSeconds,
       },
@@ -81,7 +79,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         action: "Auth impression",
         type,
         context_module: contextModule,
-        modal_copy: copy || title,
+        modal_copy: copy,
         trigger: trigger || "click",
         trigger_seconds: triggerSeconds,
         intent,
@@ -121,17 +119,6 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
   }
 
-  getAfterSignupAction = (options: ModalOptions): AfterSignUpAction => {
-    const { afterSignUpAction, action, kind, objectId } = options
-    return (
-      afterSignUpAction || {
-        action,
-        kind,
-        objectId,
-      }
-    )
-  }
-
   render() {
     const {
       error,
@@ -148,11 +135,10 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         accepted_terms_of_service: true,
         agreed_to_receive_emails: true,
         "signup-referer": options.signupReferer,
-        afterSignUpAction: this.getAfterSignupAction(options),
       },
-      options.redirectTo || options["redirect-to"]
+      options.redirectTo
         ? {
-            "redirect-to": options.redirectTo || options["redirect-to"],
+            "redirect-to": options.redirectTo,
           }
         : null,
       options.intent

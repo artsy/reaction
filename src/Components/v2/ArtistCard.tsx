@@ -142,7 +142,6 @@ const handleOpenAuth = props => {
     entity: props.artist,
     contextModule: Schema.ContextModule.ArtworkPage,
     intent: AuthModalIntent.FollowArtist,
-    kind: "artist",
   })
 }
 

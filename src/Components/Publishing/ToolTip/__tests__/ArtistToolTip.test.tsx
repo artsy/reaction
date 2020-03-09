@@ -89,7 +89,7 @@ describe("ArtistToolTip", () => {
       component.find(FollowArtistButton).simulate("click")
       const args = context.onOpenAuthModal.mock.calls[0]
 
-      expect(args[0]).toBe("signup")
+      expect(args[0]).toBe("register")
       expect(args[1].contextModule).toBe("intext tooltip")
       expect(args[1].intent).toBe("follow artist")
     })

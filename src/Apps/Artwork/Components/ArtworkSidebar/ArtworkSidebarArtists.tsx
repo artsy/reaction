@@ -34,7 +34,6 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
       entity: artist,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,
-      kind: "artist",
     })
   }
 
