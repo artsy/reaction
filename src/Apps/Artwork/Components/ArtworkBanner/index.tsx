@@ -22,6 +22,11 @@ export const ArtworkBanner: React.SFC<ArtworkBannerProps> = props => {
   switch (context.__typename) {
     case "Sale": {
       const auctionImage = get(sale, s => s.is_auction && s.cover_image.url)
+
+      if (!sale) {
+        return null
+      }
+
       return (
         <Banner
           imageUrl={auctionImage}
