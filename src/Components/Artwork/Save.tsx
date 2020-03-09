@@ -132,7 +132,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
       openAuthModal(this.props.mediator, {
         contextModule: Schema.ContextModule.ArtworkPage,
         entity: {
-          id: this.props.artwork.id,
+          id: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
         intent: AuthModalIntent.SaveArtwork,
