@@ -1,3 +1,15 @@
+# v25.27.10 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Type openAuthModal helpers [#3252](https://github.com/artsy/reaction/pull/3252) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v25.27.9 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix
