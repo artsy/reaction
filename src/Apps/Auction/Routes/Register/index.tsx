@@ -11,9 +11,8 @@ import {
   StripeWrappedRegistrationForm,
 } from "Apps/Auction/Components/RegistrationForm"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { track, useSystemContext } from "Artsy"
+import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { FormikActions } from "formik"
 import React from "react"
 import { Title } from "react-head"
@@ -100,7 +99,6 @@ export function createCreditCardAndUpdatePhone(relayEnvironment, phone, token) {
 
 export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
-  const { EXPERIMENTAL_APP_SHELL } = useSystemContext()
 
   const commonProperties = {
     auction_slug: sale.slug,
@@ -193,29 +191,19 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
       })
   }
 
-  // FIXME: Remove after A/B test completes
-  let NavBar
-  if (EXPERIMENTAL_APP_SHELL) {
-    NavBar = MinimalNavBar
-  } else {
-    NavBar = Box // pass-through; nav bar comes from the server right now
-  }
-
   return (
-    <NavBar to={`/auction/${sale.slug}`}>
-      <AppContainer>
-        <Title>Auction Registration</Title>
-        <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
-          <Serif size="10">Register to Bid on Artsy</Serif>
-          <Separator mt={1} mb={2} />
+    <AppContainer>
+      <Title>Auction Registration</Title>
+      <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
+        <Serif size="10">Register to Bid on Artsy</Serif>
+        <Separator mt={1} mb={2} />
 
-          <StripeWrappedRegistrationForm
-            onSubmit={handleSubmit}
-            trackSubmissionErrors={trackRegistrationFailed}
-          />
-        </Box>
-      </AppContainer>
-    </NavBar>
+        <StripeWrappedRegistrationForm
+          onSubmit={handleSubmit}
+          trackSubmissionErrors={trackRegistrationFailed}
+        />
+      </Box>
+    </AppContainer>
   )
 }
 

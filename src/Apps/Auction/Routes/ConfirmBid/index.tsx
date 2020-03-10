@@ -17,10 +17,9 @@ import { LotInfoFragmentContainer as LotInfo } from "Apps/Auction/Components/Lot
 import { bidderPositionQuery } from "Apps/Auction/Routes/ConfirmBid/BidderPositionQuery"
 import { createCreditCardAndUpdatePhone } from "Apps/Auction/Routes/Register"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { track, useSystemContext } from "Artsy"
+import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { useTracking } from "Artsy/Analytics/useTracking"
-import { MinimalNavBar } from "Components/NavBar/MinimalNavBar"
 import { FormikActions } from "formik"
 import { isEmpty } from "lodash"
 import React, { useEffect, useState } from "react"
@@ -62,7 +61,6 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
   let pollCount = 0
   let registrationTracked = false
 
-  const { router, EXPERIMENTAL_APP_SHELL } = useSystemContext()
   const { artwork, me, relay, stripe } = props
   const { saleArtwork } = artwork
   const { sale } = saleArtwork
@@ -281,14 +279,8 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
       pollCount += 1
     } else if (status === "WINNING") {
       trackConfirmBidSuccess(position.internalID, selectedBid)
-
       const href = `/artwork/${artwork.slug}`
-
-      if (EXPERIMENTAL_APP_SHELL) {
-        router.push(href)
-      } else {
-        window.location.assign(href)
-      }
+      window.location.assign(href)
     } else {
       actions.setStatus(messageHeader)
       actions.setSubmitting(false)
@@ -296,42 +288,32 @@ export const ConfirmBidRoute: React.FC<ConfirmBidProps> = props => {
     }
   }
 
-  // FIXME: Remove after A/B test completes
-  let NavBar
-  if (EXPERIMENTAL_APP_SHELL) {
-    NavBar = MinimalNavBar
-  } else {
-    NavBar = Box // pass-through; nav bar comes from the server right now
-  }
-
   return (
-    <NavBar to={`/artwork/${artwork.slug}`}>
-      <AppContainer>
-        <Title>Confirm Bid | Artsy</Title>
+    <AppContainer>
+      <Title>Confirm Bid | Artsy</Title>
 
-        <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
-          <Serif size="8">Confirm your bid</Serif>
+      <Box maxWidth={550} px={[2, 0]} mx="auto" mt={[1, 0]} mb={[1, 100]}>
+        <Serif size="8">Confirm your bid</Serif>
 
-          <Separator />
+        <Separator />
 
-          <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
+        <LotInfo artwork={artwork} saleArtwork={artwork.saleArtwork} />
 
-          <Separator />
+        <Separator />
 
-          <BidForm
-            artworkSlug={artwork.slug}
-            initialSelectedBid={getInitialSelectedBid(props.match.location)}
-            saleArtwork={saleArtwork}
-            onSubmit={handleSubmit}
-            onMaxBidSelect={trackMaxBidSelected}
-            me={me as any}
-            trackSubmissionErrors={errors =>
-              !isEmpty(errors) && trackConfirmBidFailed(errors)
-            }
-          />
-        </Box>
-      </AppContainer>
-    </NavBar>
+        <BidForm
+          artworkSlug={artwork.slug}
+          initialSelectedBid={getInitialSelectedBid(props.match.location)}
+          saleArtwork={saleArtwork}
+          onSubmit={handleSubmit}
+          onMaxBidSelect={trackMaxBidSelected}
+          me={me as any}
+          trackSubmissionErrors={errors =>
+            !isEmpty(errors) && trackConfirmBidFailed(errors)
+          }
+        />
+      </Box>
+    </AppContainer>
   )
 }
 
