@@ -1,6 +1,5 @@
+import { Flex } from "@artsy/palette"
 import React from "react"
-
-import { Flex, Row, Separator } from "@artsy/palette"
 import { AuctionFilters } from "./AuctionFilters"
 
 export const TableSidebar = () => {

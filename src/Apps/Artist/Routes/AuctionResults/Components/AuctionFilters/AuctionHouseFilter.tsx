@@ -3,8 +3,8 @@ import React from "react"
 import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
 
 const auctionHouses = [
-  { name: "Sotheby's" },
-  { name: "Christie's" },
+  { name: "Sotheby’s" },
+  { name: "Christie’s" },
   { name: "Phillips" },
 ]
 

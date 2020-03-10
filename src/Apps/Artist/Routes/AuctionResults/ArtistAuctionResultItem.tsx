@@ -37,6 +37,21 @@ const FullWidthBorderBox = styled(BorderBox)`
 const StyledImage = styled(Image)`
   max-height: 100%;
   max-width: 100%;
+
+  &:after {
+    content: "\f1c5"" " attr(alt);
+
+    color: white;
+
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
 `
 
 const Capitalize = styled.span`
@@ -128,13 +143,13 @@ const LargeAuctionItem: SFC<Props> = props => {
           width="80px"
           pr={2}
         >
-          <StyledImage src={imageUrl} preventRightClick />
+          {imageUrl && <StyledImage src={imageUrl} preventRightClick />}
         </Flex>
       </Col>
       <Col sm={4}>
         <Flex alignItems="center" height="100%" pl={1} pr={6}>
           <div>
-            <Sans size="3" weight="medium">
+            <Sans size="3t" weight="medium">
               {title}
               {title && date_text && ", "}
               {date_text}
@@ -149,7 +164,7 @@ const LargeAuctionItem: SFC<Props> = props => {
       <Col sm={2}>
         <Flex alignItems="center" height="100%" pr={2}>
           <div>
-            <Sans size="3" weight="medium">
+            <Sans size="3t" weight="medium">
               {sale_date_text}
             </Sans>
             <Sans size="2" color="black60">
@@ -190,7 +205,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
           width="80px"
           pr={2}
         >
-          <StyledImage src={imageUrl} preventRightClick />
+          {imageUrl && <StyledImage src={imageUrl} preventRightClick />}
         </Flex>
       </Col>
       <Col xs="6">
@@ -470,18 +485,20 @@ const renderLargeCollapse = (props, user, mediator) => {
           </Col>
         </Row>
 
-        <Row>
-          <Col sm={2}>
-            <Sans size="2" weight="medium">
-              Description
-            </Sans>
-          </Col>
-          <Col sm={10} pr="4.5%">
-            <Box pl={1}>
-              <Sans size="2">{description}</Sans>
-            </Box>
-          </Col>
-        </Row>
+        {description && (
+          <Row>
+            <Col sm={2}>
+              <Sans size="2" weight="medium">
+                Description
+              </Sans>
+            </Col>
+            <Col sm={10} pr="4.5%">
+              <Box pl={1}>
+                <Sans size="2">{description}</Sans>
+              </Box>
+            </Col>
+          </Row>
+        )}
       </Box>
     </Collapse>
   )
