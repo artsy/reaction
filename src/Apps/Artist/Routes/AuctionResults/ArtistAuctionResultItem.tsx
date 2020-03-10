@@ -11,6 +11,7 @@ import {
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { AnalyticsSchema, SystemContextProps } from "Artsy"
 import { Mediator, SystemContext } from "Artsy"
+import { DateTime } from "luxon"
 import React, { SFC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -81,7 +82,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
   return (
     <>
       <Media at="xs">
-        <FullWidthBorderBox mb={2} onClick={toggle}>
+        <FullWidthBorderBox mb={1} onClick={toggle}>
           <Row height="120px" p={2}>
             <ExtraSmallAuctionItem
               {...props}
@@ -97,7 +98,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
       </Media>
 
       <Media greaterThanOrEqual="sm">
-        <FullWidthBorderBox mb={2} onClick={toggle}>
+        <FullWidthBorderBox mb={1} onClick={toggle}>
           <Box p={2} minHeight="120px">
             <Row minHeight="80px">
               <LargeAuctionItem
@@ -128,11 +129,14 @@ const LargeAuctionItem: SFC<Props> = props => {
       sale_date_text,
       title,
       mediumText,
+      saleDate,
     },
     salePrice,
   } = getProps(props)
 
   const imageUrl = get(images, i => i.thumbnail.url, "")
+  const date = DateTime(saleDate)
+  console.log("woo", date)
   return (
     <>
       <Col sm={2}>
@@ -253,6 +257,7 @@ export const AuctionResultItemFragmentContainer = createFragmentContainer(
         categoryText
         description
         date_text: dateText
+        saleDate
         sale_date_text: saleDateText
         price_realized: priceRealized {
           display

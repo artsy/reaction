@@ -8,7 +8,6 @@ interface AuctionResultsCountProps {
 }
 
 export const AuctionResultsCount = ({ results }: AuctionResultsCountProps) => {
-  console.log("RESULTS", results)
   return (
     <Sans size="2" weight="medium">
       {`Showing ${results.totalCount.toLocaleString()} results`}
