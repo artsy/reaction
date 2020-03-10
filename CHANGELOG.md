@@ -1,3 +1,15 @@
+# v25.27.9 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove BidFlow from router [#3256](https://github.com/artsy/reaction/pull/3256) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.8 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix
