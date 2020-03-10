@@ -141,7 +141,6 @@ const LargeAuctionItem: SFC<Props> = props => {
           justifyContent="center"
           height="80px"
           width="80px"
-          pr={2}
         >
           {imageUrl && <StyledImage src={imageUrl} preventRightClick />}
         </Flex>
