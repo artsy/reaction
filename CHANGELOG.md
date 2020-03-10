@@ -1,3 +1,15 @@
+# v25.27.11 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Add Integrity-ready flag to boot [#3257](https://github.com/artsy/reaction/pull/3257) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.10 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix
