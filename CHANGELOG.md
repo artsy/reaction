@@ -1,3 +1,230 @@
+# v25.27.10 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Type openAuthModal helpers [#3252](https://github.com/artsy/reaction/pull/3252) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.27.9 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove BidFlow from router [#3256](https://github.com/artsy/reaction/pull/3256) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.8 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove auction routes [#3255](https://github.com/artsy/reaction/pull/3255) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.7 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist] Fix redirect [#3253](https://github.com/artsy/reaction/pull/3253) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.6 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Make hide grids function a bit safer [#3248](https://github.com/artsy/reaction/pull/3248) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.5 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] => Make `SEOProductsForCollections` safer [#3251](https://github.com/artsy/reaction/pull/3251) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.3 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Helpers for opening auth modals are strictly typed" [#3250](https://github.com/artsy/reaction/pull/3250) ([@eessex](https://github.com/eessex))
+- Helpers for opening auth modals are strictly typed [#3239](https://github.com/artsy/reaction/pull/3239) ([@eessex](https://github.com/eessex))
+- Update schema [#3249](https://github.com/artsy/reaction/pull/3249) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep lint-staged from ^10.0.8 to 10.0.8 [#3246](https://github.com/artsy/reaction/pull/3246) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update auto orb to v1.1.0 [#3237](https://github.com/artsy/reaction/pull/3237) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update lint-staged [#3245](https://github.com/artsy/reaction/pull/3245) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 5
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.27.2 (Sun Mar 08 2020)
+
+#### 🐛  Bug Fix
+
+- Replace getENV with sd for now [#3244](https://github.com/artsy/reaction/pull/3244) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.27.1 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Remove error boundary [#3243](https://github.com/artsy/reaction/pull/3243) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.0 (Sat Mar 07 2020)
+
+#### 🚀  Enhancement
+
+- Move conversations behind lab feature flag [#3241](https://github.com/artsy/reaction/pull/3241) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.3 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3242](https://github.com/artsy/reaction/pull/3242) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.1 to v7.1.2 [#3219](https://github.com/artsy/reaction/pull/3219) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.26.2 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Begin ID Verification flow from collector verification app [#3232](https://github.com/artsy/reaction/pull/3232) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.26.1 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Update attribute to follow pre-established testing patterns [#3236](https://github.com/artsy/reaction/pull/3236) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Add attribute to body when app is ready to be tested [#3233](https://github.com/artsy/reaction/pull/3233) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.1 to v3.0.2 [#3235](https://github.com/artsy/reaction/pull/3235) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.25.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Adds hooks to login modals for integration tests [#3234](https://github.com/artsy/reaction/pull/3234) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.24.3 (Wed Mar 04 2020)
+
+#### 🐛  Bug Fix
+
+- Only lint changed files [#3220](https://github.com/artsy/reaction/pull/3220) ([@zephraph](https://github.com/zephraph))
+- User does not see lot condition report request if it's disabled for a sale [#3223](https://github.com/artsy/reaction/pull/3223) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/lint-changed from ^3.0.1 to 3.0.1 [#3231](https://github.com/artsy/reaction/pull/3231) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Only lint changed files [#3230](https://github.com/artsy/reaction/pull/3230) ([@zephraph](https://github.com/zephraph))
+- Revert "Only lint changed files" [#3228](https://github.com/artsy/reaction/pull/3228) ([@zephraph](https://github.com/zephraph))
+- Update auto orb to v1.0.2 [#3225](https://github.com/artsy/reaction/pull/3225) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v25.24.2 (Mon Mar 02 2020)
 
 #### 🐛  Bug Fix

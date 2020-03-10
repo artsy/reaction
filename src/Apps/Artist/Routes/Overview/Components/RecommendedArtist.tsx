@@ -140,6 +140,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
 
 const ArrowContainer = styled(Box)`
   align-self: flex-start;
+
   ${ArrowButton} {
     height: 60%;
   }

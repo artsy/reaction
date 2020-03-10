@@ -127,23 +127,6 @@ function handleRedirect(redirect: Redirect, location: Location) {
     logger.warn(
       `Redirecting from ${location.pathname} to ${redirect.path} because '${redirect.reason}'`
     )
-
-    if (typeof window !== "undefined") {
-      // FIXME: Remove after A/B test completes
-      // @ts-ignore
-      if (window.sd.CLIENT_NAVIGATION_V4 === "experiment") {
-        // This path will only ever be reached on the client
-        // Perform a hard jump to login page as it doesn't exist within router
-        if (redirect.path.includes("/log_in?")) {
-          window.location.href = redirect.path
-        } else {
-          throw new RedirectException(redirect.path)
-        }
-      } else {
-        throw new RedirectException(redirect.path)
-      }
-    } else {
-      throw new RedirectException(redirect.path)
-    }
+    throw new RedirectException(redirect.path)
   }
 }
