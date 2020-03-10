@@ -1,3 +1,15 @@
+# v25.27.13 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Debug ErrorBoundry error on mobile [#3259](https://github.com/artsy/reaction/pull/3259) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.12 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix
