@@ -1,4 +1,3 @@
-import { ConversationApp_me } from "__generated__/ConversationApp_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { ConversationsFragmentContainer as Conversations } from "Apps/Conversation/Components/Conversations"
 import { SystemContext } from "Artsy"
@@ -6,7 +5,8 @@ import { ErrorPage } from "Components/ErrorPage"
 import React, { useContext } from "react"
 import { Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
-import { userIsAdmin } from "Utils/user"
+import { userHasLabFeature } from "Utils/user"
+import { ConversationApp_me } from "__generated__/ConversationApp_me.graphql"
 
 interface ConversationAppProps {
   me: ConversationApp_me
@@ -15,8 +15,8 @@ interface ConversationAppProps {
 export const ConversationApp: React.FC<ConversationAppProps> = props => {
   const { me } = props
   const { user } = useContext(SystemContext)
-  const isAdmin = userIsAdmin(user)
-  if (isAdmin) {
+  const isEnabled = userHasLabFeature(user, "User Conversations View")
+  if (isEnabled) {
     return (
       <AppContainer>
         <Title>My Inquiries | Artsy</Title>
@@ -24,7 +24,7 @@ export const ConversationApp: React.FC<ConversationAppProps> = props => {
       </AppContainer>
     )
   } else {
-    // not an admin
+    // not allowed to see this view
     return <ErrorPage code={404} />
   }
 }
