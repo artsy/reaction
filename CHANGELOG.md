@@ -1,3 +1,15 @@
+# v25.27.12 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Move conversations app to be behind lab feature instead of admin flag [#3258](https://github.com/artsy/reaction/pull/3258) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.27.11 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix
