@@ -15,15 +15,12 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
-import { SystemContextConsumer, useSystemContext } from "Artsy"
+import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { Router } from "found"
 import track from "react-tracking"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
-  router?: Router
-  EXPERIMENTAL_APP_SHELL?: boolean
 }
 
 export interface ArtworkSidebarBidActionState {
@@ -46,13 +43,7 @@ export class ArtworkSidebarBidAction extends React.Component<
   redirectToRegister = () => {
     const { sale } = this.props.artwork
     const href = `/auction-registration/${sale.slug}`
-
-    // TODO: Remove once A/B test completes
-    if (this.props.EXPERIMENTAL_APP_SHELL) {
-      this.props.router.push(href)
-    } else {
-      window.location.href = href
-    }
+    window.location.href = href
   }
 
   @track((props: ArtworkSidebarBidActionProps) => ({
@@ -75,13 +66,7 @@ export class ArtworkSidebarBidAction extends React.Component<
     const { slug, sale } = this.props.artwork
     const bid = this.state.selectedMaxBidCents || firstIncrement
     const href = `/auction/${sale.slug}/bid/${slug}?bid=${bid}`
-
-    // TODO: Remove once A/B test completes
-    if (this.props.EXPERIMENTAL_APP_SHELL) {
-      this.props.router.push(href)
-    } else {
-      window.location.href = href
-    }
+    window.location.href = href
   }
 
   @track({
@@ -231,14 +216,7 @@ export class ArtworkSidebarBidAction extends React.Component<
 
 export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
   (props: ArtworkSidebarBidActionProps) => {
-    const { router, EXPERIMENTAL_APP_SHELL } = useSystemContext()
-    return (
-      <ArtworkSidebarBidAction
-        {...props}
-        router={router}
-        EXPERIMENTAL_APP_SHELL={EXPERIMENTAL_APP_SHELL}
-      />
-    )
+    return <ArtworkSidebarBidAction {...props} />
   },
   {
     artwork: graphql`
