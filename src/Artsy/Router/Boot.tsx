@@ -44,6 +44,9 @@ export class Boot extends React.Component<BootProps> {
     if (env === "production") {
       Sentry.init({ dsn: sd.SENTRY_PUBLIC_DSN })
     }
+
+    // Let our end-to-end tests know that the app is hydrated and ready to go
+    document.body.setAttribute("data-test", "AppReady")
   }
 
   render() {
