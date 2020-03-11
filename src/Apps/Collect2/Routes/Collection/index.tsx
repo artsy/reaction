@@ -77,7 +77,10 @@ export class CollectionApp extends Component<CollectionAppProps> {
     const showCollectionHubs = collection.linkedCollections.length > 0
 
     const socialImage =
-      headerImage || fallbackHeaderImage?.edges[0]?.node?.image?.resized.url
+      headerImage ||
+      (fallbackHeaderImage?.edges &&
+        fallbackHeaderImage?.edges[0]?.node?.image?.resized.url)
+
     return (
       <AppContainer>
         <FrameWithRecentlyViewed>
