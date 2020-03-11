@@ -60,6 +60,7 @@ const ArtistApp = loadable(() => import("./ArtistApp"))
 const OverviewRoute = loadable(() => import("./Routes/Overview"))
 const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
 const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
+const ConsignRoute = loadable(() => import("./Routes/Consign"))
 const CVRoute = loadable(() => import("./Routes/CV"))
 const ArticlesRoute = loadable(() => import("./Routes/Articles"))
 const ShowsRoute = loadable(() => import("./Routes/Shows"))
@@ -226,6 +227,22 @@ export const routes: RouteConfig[] = [
       },
 
       // Routes not in tabs
+
+      {
+        path: "consign",
+        getComponent: () => ConsignRoute,
+        prepare: () => {
+          ConsignRoute.preload()
+        },
+        displayFullPage: true,
+        query: graphql`
+          query routes_ArtistConsignQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...Consign_artist
+            }
+          }
+        `,
+      },
       {
         path: "cv",
         getComponent: () => CVRoute,

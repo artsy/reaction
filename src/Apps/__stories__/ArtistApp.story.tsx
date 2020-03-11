@@ -173,3 +173,11 @@ storiesOf("Apps/Artist", module)
       />
     )
   })
+  .add("Artist-- Consign", () => {
+    return (
+      <MockRouter
+        routes={artistRoutes}
+        initialRoute="/artist/pablo-picasso/consign"
+      />
+    )
+  })
