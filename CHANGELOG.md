@@ -1,3 +1,15 @@
+# v25.27.14 (Wed Mar 11 2020)
+
+#### 🐛  Bug Fix
+
+- Update openseadragon to try to fix some mobile bugs [#3260](https://github.com/artsy/reaction/pull/3260) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.27.13 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix
