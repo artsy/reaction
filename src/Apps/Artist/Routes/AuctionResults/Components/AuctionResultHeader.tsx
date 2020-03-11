@@ -12,7 +12,9 @@ const AuctionResultHeader: React.FC<Props> = props => {
   const { artist } = props
   return (
     <Box pb={2}>
-      <Sans size="5t">Auction results</Sans>
+      <Sans size="5t" mb={1}>
+        Auction results
+      </Sans>
       <Serif size="3" color="black100">
         Filter past auction results to compare and evaluate {artist.name}'s
         market.

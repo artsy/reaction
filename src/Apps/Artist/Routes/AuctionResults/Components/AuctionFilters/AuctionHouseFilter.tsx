@@ -3,8 +3,8 @@ import React from "react"
 import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
 
 const auctionHouses = [
-  { name: "Sotheby’s" },
-  { name: "Christie’s" },
+  { name: "Sotheby's" },
+  { name: "Christie's" },
   { name: "Phillips" },
 ]
 
@@ -22,7 +22,7 @@ export const AuctionHouseFilter: React.FC = () => {
   }
 
   return (
-    <Toggle label="Auction house">
+    <Toggle label="Auction house" expanded>
       <Flex flexDirection="column" alignItems="left">
         <Box>
           {auctionHouses.map((checkbox, index) => {

@@ -126,7 +126,6 @@ const LargeAuctionItem: SFC<Props> = props => {
       images,
       date_text,
       organization,
-      sale_date_text,
       title,
       mediumText,
       saleDate,
@@ -135,8 +134,10 @@ const LargeAuctionItem: SFC<Props> = props => {
   } = getProps(props)
 
   const imageUrl = get(images, i => i.thumbnail.url, "")
-  const date = DateTime(saleDate)
-  console.log("woo", date)
+  const dateOfSale = DateTime.fromISO(saleDate).toLocaleString(
+    DateTime.DATE_MED
+  )
+
   return (
     <>
       <Col sm={2}>
@@ -168,7 +169,7 @@ const LargeAuctionItem: SFC<Props> = props => {
         <Flex alignItems="center" height="100%" pr={2}>
           <div>
             <Sans size="3t" weight="medium">
-              {sale_date_text}
+              {dateOfSale}
             </Sans>
             <Sans size="2" color="black60">
               {organization}
@@ -179,7 +180,13 @@ const LargeAuctionItem: SFC<Props> = props => {
       <Col sm={4}>
         <Flex alignItems="center" height="100%">
           <Flex width="90%" pr="10px" justifyContent="flex-end">
-            {renderPricing(salePrice, props.user, props.mediator, "lg")}
+            {renderPricing(
+              salePrice,
+              saleDate,
+              props.user,
+              props.mediator,
+              "lg"
+            )}
           </Flex>
           <Flex width="10%" justifyContent="flex-end">
             <div>{expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
@@ -193,10 +200,13 @@ const LargeAuctionItem: SFC<Props> = props => {
 const ExtraSmallAuctionItem: SFC<Props> = props => {
   const {
     expanded,
-    auctionResult: { images, date_text, sale_date_text, title },
+    auctionResult: { images, date_text, title, saleDate },
     salePrice,
   } = getProps(props)
   const imageUrl = get(images, i => i.thumbnail.url, "")
+  const dateOfSale = DateTime.fromISO(saleDate).toLocaleString(
+    DateTime.DATE_MED
+  )
 
   return (
     <>
@@ -214,14 +224,20 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
       <Col xs="6">
         <Flex alignItems="center" width="100%" height="100%">
           <Box>
-            {renderPricing(salePrice, props.user, props.mediator, "xs")}
+            {renderPricing(
+              salePrice,
+              saleDate,
+              props.user,
+              props.mediator,
+              "xs"
+            )}
             <Sans size="2" weight="medium" color="black60">
               {title}
               {title && date_text && ", "}
               {date_text}
             </Sans>
             <Sans size="2" color="black60" mt="5px">
-              Sold on {sale_date_text}
+              Sold on {dateOfSale}
             </Sans>
           </Box>
         </Flex>
@@ -258,7 +274,6 @@ export const AuctionResultItemFragmentContainer = createFragmentContainer(
         description
         date_text: dateText
         saleDate
-        sale_date_text: saleDateText
         price_realized: priceRealized {
           display
           cents_usd: centsUSD
@@ -301,10 +316,14 @@ const getProps = (props: Props) => {
   }
 }
 
-const renderPricing = (salePrice, user, mediator, size) => {
+const renderPricing = (salePrice, saleDate, user, mediator, size) => {
   const textSize = size === "xs" ? "2" : "3t"
   if (user) {
     const textAlign = size === "xs" ? "left" : "right"
+    const dateOfSale = DateTime.fromISO(saleDate)
+    const now = DateTime.local()
+    const awaitingResults = dateOfSale > now
+
     return (
       <Box textAlign={textAlign} mb="5px">
         {salePrice && (
@@ -319,7 +338,14 @@ const renderPricing = (salePrice, user, mediator, size) => {
             )}
           </>
         )}
-        {!salePrice && (
+        {!salePrice && awaitingResults && (
+          <Box textAlign={textAlign}>
+            <Sans mb="2px" size={textSize} weight="medium">
+              Awaiting results
+            </Sans>
+          </Box>
+        )}
+        {!salePrice && !awaitingResults && (
           <Box textAlign={textAlign}>
             <Sans mb="2px" size={textSize} weight="medium">
               Price not available
@@ -425,12 +451,16 @@ const renderLargeCollapse = (props, user, mediator) => {
       dimension_text,
       description,
       organization,
-      sale_date_text,
+      saleDate,
       categoryText,
     },
     salePrice,
     estimatedPrice,
   } = getProps(props)
+
+  const dateOfSale = DateTime.fromISO(saleDate).toLocaleString(
+    DateTime.DATE_MED
+  )
 
   return (
     <Collapse open={expanded}>
@@ -471,7 +501,7 @@ const renderLargeCollapse = (props, user, mediator) => {
           </Col>
           <Col sm={4}>
             <Box pl={1} pr={6}>
-              <Sans size="2">{sale_date_text}</Sans>
+              <Sans size="2">{dateOfSale}</Sans>
               <Sans size="2">{organization}</Sans>
               <Spacer pt={1} />
             </Box>
@@ -515,13 +545,17 @@ const renderSmallCollapse = (props, user, mediator) => {
       dimension_text,
       description,
       organization,
-      sale_date_text,
       categoryText,
       mediumText,
+      saleDate,
     },
     salePrice,
     estimatedPrice,
   } = getProps(props)
+
+  const dateOfSale = DateTime.fromISO(saleDate).toLocaleString(
+    DateTime.DATE_MED
+  )
 
   return (
     <Collapse open={expanded}>
@@ -572,7 +606,7 @@ const renderSmallCollapse = (props, user, mediator) => {
             </Sans>
           </Col>
           <Col xs={8}>
-            <Sans size="2">{sale_date_text}</Sans>
+            <Sans size="2">{dateOfSale}</Sans>
             <Sans size="2">{organization}</Sans>
           </Col>
         </Row>

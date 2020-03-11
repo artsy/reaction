@@ -16,7 +16,6 @@ export type ArtistAuctionResultItem_auctionResult = {
     readonly description: string | null;
     readonly date_text: string | null;
     readonly saleDate: string | null;
-    readonly sale_date_text: string | null;
     readonly price_realized: {
         readonly display: string | null;
         readonly cents_usd: number | null;
@@ -135,13 +134,6 @@ return {
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
-      "alias": "sale_date_text",
-      "name": "saleDateText",
-      "args": null,
-      "storageKey": null
-    },
-    {
       "kind": "LinkedField",
       "alias": "price_realized",
       "name": "priceRealized",
@@ -175,5 +167,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e0387e2811f1a2a583d94f53af7ec677';
+(node as any).hash = '3a2f0277ca44b0ac5b199a1c147fdc7f';
 export default node;
