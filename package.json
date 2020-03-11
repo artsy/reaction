@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "25.27.10",
+  "version": "25.27.14",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -190,7 +190,7 @@
     "luxon": "^1.15",
     "memoize-one": "^4.0.3",
     "numeral": "^2.0.4",
-    "openseadragon": "^2.3.1",
+    "openseadragon": "^2.4.2",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "rc-slider": "^8.6.2",

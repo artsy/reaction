@@ -1,3 +1,51 @@
+# v25.27.14 (Wed Mar 11 2020)
+
+#### 🐛  Bug Fix
+
+- Update openseadragon to try to fix some mobile bugs [#3260](https://github.com/artsy/reaction/pull/3260) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.27.13 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Debug ErrorBoundry error on mobile [#3259](https://github.com/artsy/reaction/pull/3259) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.12 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Move conversations app to be behind lab feature instead of admin flag [#3258](https://github.com/artsy/reaction/pull/3258) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.27.11 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Add Integrity-ready flag to boot [#3257](https://github.com/artsy/reaction/pull/3257) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.10 (Tue Mar 10 2020)
 
 #### 🐛  Bug Fix

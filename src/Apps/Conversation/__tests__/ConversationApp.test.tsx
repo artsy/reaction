@@ -1,13 +1,13 @@
-import {
-  ConversationAppTestQueryRawResponse,
-  ConversationAppTestQueryResponse,
-} from "__generated__/ConversationAppTestQuery.graphql"
 import { MockedConversation } from "Apps/__tests__/Fixtures/Conversation"
 import { SystemContextProvider } from "Artsy"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { graphql } from "react-relay"
+import {
+  ConversationAppTestQueryRawResponse,
+  ConversationAppTestQueryResponse,
+} from "__generated__/ConversationAppTestQuery.graphql"
 import { ConversationAppFragmentContainer } from "../ConversationApp"
 
 jest.unmock("react-relay")
@@ -49,8 +49,11 @@ const render = (me: ConversationAppTestQueryRawResponse["me"], user: User) =>
   })
 
 describe("Conversation app", () => {
-  describe("User with admin privilages", () => {
-    const userType = { type: "Admin" }
+  describe("User with feature enabled", () => {
+    const userType = {
+      type: "NotAdmin",
+      lab_features: ["User Conversations View"],
+    }
     describe("having previous conversations", () => {
       it("renders conversations with view details button", async () => {
         // TODO: revisit mocking and remove `artist_names` alias from PurchseHistory
@@ -82,7 +85,7 @@ describe("Conversation app", () => {
       })
     })
   })
-  describe("User without admin privilages", () => {
+  describe("User without the feature enabled", () => {
     it("gives error", async () => {
       const mockMe = {
         id: "111",
