@@ -10,7 +10,7 @@ import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthFromFollowSave } from "Utils/openAuthModal"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
@@ -18,7 +18,7 @@ interface RecommendedArtistProps {
 const HEIGHT = 150
 
 const handleOpenAuth = (mediator, artist) => {
-  openAuthModal(mediator, {
+  openAuthFromFollowSave(mediator, {
     entity: artist,
     contextModule: Schema.ContextModule.RecommendedArtists,
     intent: AuthModalIntent.FollowArtist,

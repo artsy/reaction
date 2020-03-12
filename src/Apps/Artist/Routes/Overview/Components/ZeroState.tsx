@@ -2,14 +2,14 @@ import { Link, Message } from "@artsy/palette"
 import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React from "react"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthFromFollowSave } from "Utils/openAuthModal"
 
 export const ZeroState = props => {
   const { mediator, user } = useSystemContext()
   const { is_followed, artist } = props
 
   function handleOpenAuth() {
-    openAuthModal(mediator, {
+    openAuthFromFollowSave(mediator, {
       entity: artist,
       contextModule: AnalyticsSchema.ContextModule.ArtworkFilter,
       intent: AuthModalIntent.FollowArtist,
