@@ -1,3 +1,15 @@
+# v25.27.16 (Thu Mar 12 2020)
+
+#### 🐛  Bug Fix
+
+- the default should be country of origin if the country select is locked to EU only [#3263](https://github.com/artsy/reaction/pull/3263) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v25.27.15 (Thu Mar 12 2020)
 
 #### 🐛  Bug Fix
