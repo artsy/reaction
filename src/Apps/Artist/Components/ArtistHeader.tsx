@@ -12,7 +12,7 @@ import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthFromFollowSave } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 import { userIsAdmin } from "Utils/user"
 import { ArtistIndicator } from "./ArtistIndicator"
@@ -387,7 +387,7 @@ export class SmallArtistHeader extends Component<Props> {
 }
 
 const handleOpenAuth = (mediator, artist) => {
-  openAuthFromFollowSave(mediator, {
+  openAuthToFollowSave(mediator, {
     entity: artist,
     contextModule: Schema.ContextModule.ArtistPage,
     intent: AuthModalIntent.FollowArtist,

@@ -25,7 +25,7 @@ export const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
   })
 }
 
-export const openAuthFromFollowSave = (
+export const openAuthToFollowSave = (
   mediator: Mediator,
   options: AuthModalOptions
 ) => {

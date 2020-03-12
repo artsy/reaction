@@ -6,7 +6,7 @@ import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthFromFollowSave } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 
 import {
@@ -138,7 +138,7 @@ export const SmallArtistCard: SFC<Props> = props => (
 )
 
 const handleOpenAuth = props => {
-  openAuthFromFollowSave(props.mediator, {
+  openAuthToFollowSave(props.mediator, {
     entity: props.artist,
     contextModule: Schema.ContextModule.ArtworkPage,
     intent: AuthModalIntent.FollowArtist,

@@ -8,7 +8,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { AuthModalIntent, openAuthFromFollowSave } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 
 export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
@@ -30,7 +30,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    openAuthFromFollowSave(mediator, {
+    openAuthToFollowSave(mediator, {
       entity: artist,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,

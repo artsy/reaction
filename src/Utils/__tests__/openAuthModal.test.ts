@@ -3,8 +3,8 @@ import { ModalType } from "Components/Authentication/Types"
 import {
   AuthModalIntent,
   AuthModalOptions,
-  openAuthFromFollowSave,
   openAuthModal,
+  openAuthToFollowSave,
 } from "../openAuthModal"
 
 jest.mock("sharify", () => ({ data: jest.fn() }))
@@ -65,10 +65,10 @@ describe("openAuth Helpers", () => {
     })
   })
 
-  describe("#openAuthFromFollowSave", () => {
+  describe("#openAuthToFollowSave", () => {
     describe("desktop", () => {
       it("transforms args for following artists", () => {
-        openAuthFromFollowSave(mediator, artistArgs)
+        openAuthToFollowSave(mediator, artistArgs)
 
         expect(mediator.trigger).toBeCalledWith("open:auth", {
           afterSignUpAction: {
@@ -83,7 +83,7 @@ describe("openAuth Helpers", () => {
       })
 
       it("transforms args for following partners", () => {
-        openAuthFromFollowSave(mediator, partnerArgs)
+        openAuthToFollowSave(mediator, partnerArgs)
 
         expect(mediator.trigger).toBeCalledWith("open:auth", {
           afterSignUpAction: {
@@ -98,7 +98,7 @@ describe("openAuth Helpers", () => {
       })
 
       it("transforms args for saving artworks", () => {
-        openAuthFromFollowSave(mediator, artworkArgs)
+        openAuthToFollowSave(mediator, artworkArgs)
 
         expect(mediator.trigger).toBeCalledWith("open:auth", {
           afterSignUpAction: {
@@ -119,7 +119,7 @@ describe("openAuth Helpers", () => {
       })
 
       it("transforms args for following artists", () => {
-        openAuthFromFollowSave(mediator, artistArgs)
+        openAuthToFollowSave(mediator, artistArgs)
         expect(window.location.assign).toBeCalledWith(
           "/sign_up?redirect-to=http://localhost/&action=follow&contextModule=Artist%20page&copy=Sign%20up%20to%20follow%20Andy%20Warhol&intent=follow%20artist&kind=artist&objectId=andy-warhol"
         )
@@ -127,7 +127,7 @@ describe("openAuth Helpers", () => {
       })
 
       it("transforms args for following partners", () => {
-        openAuthFromFollowSave(mediator, partnerArgs)
+        openAuthToFollowSave(mediator, partnerArgs)
         expect(window.location.assign).toBeCalledWith(
           "/sign_up?redirect-to=http://localhost/&action=follow&contextModule=About%20the%20Work%20%28Partner%29&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=follow%20partner&kind=profile&objectId=david-zwirner"
         )
@@ -135,7 +135,7 @@ describe("openAuth Helpers", () => {
       })
 
       it("transforms args for saving artworks", () => {
-        openAuthFromFollowSave(mediator, artworkArgs)
+        openAuthToFollowSave(mediator, artworkArgs)
         expect(window.location.assign).toBeCalledWith(
           "/sign_up?redirect-to=http://localhost/&action=save&contextModule=Artwork%20page&copy=Sign%20up%20to%20save%20artworks&intent=save%20artwork&kind=artworks&objectId=andy-warhol-skull"
         )

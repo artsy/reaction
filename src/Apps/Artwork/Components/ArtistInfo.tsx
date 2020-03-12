@@ -26,7 +26,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthFromFollowSave } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
@@ -83,7 +83,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    openAuthFromFollowSave(mediator, {
+    openAuthToFollowSave(mediator, {
       entity: artist,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,
