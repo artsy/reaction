@@ -1,13 +1,27 @@
+import { Box, Button, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
-import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignHeader: React.FC = props => {
   return (
-    <Box>
-      <Serif size="8">Sell Works by Kehinde Wiley</Serif>
-      <Sans size="3">With Artsy's expert guidance, selling is simple</Sans>
-      <Button>Request a price estimate</Button>
-    </Box>
+    <SectionContainer height={426} background="#EAE5E7">
+      <Box textAlign="center">
+        <Box>
+          <Serif size="12">
+            Sell Works by <br />
+            Kehinde Wiley
+          </Serif>
+        </Box>
+
+        <Box mt={3} mb={4}>
+          <Sans size="4t">With Artsy's expert guidance, selling is simple</Sans>
+        </Box>
+
+        <Box>
+          <Button>Request a price estimate</Button>
+        </Box>
+      </Box>
+    </SectionContainer>
   )
 }

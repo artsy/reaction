@@ -1,50 +1,78 @@
 import React from "react"
 
-import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
+import { Box, Button, color, Flex, Sans, Serif, Spacer } from "@artsy/palette"
+import { SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignMarketTrends: React.FC = props => {
   return (
-    <Box>
-      <Serif size="8">Market trends</Serif>
-      <Flex>
-        <Box>
-          <Box>
-            <Sans size="3">Highest realized price</Sans>
-          </Box>
-          <Box>
-            <Sans size="2">All time</Sans>
-          </Box>
-          <Box>
-            <Serif size="2">$300k</Serif>
-          </Box>
-        </Box>
-        <Box>
-          <Box>
-            <Sans size="3">Sell through rate</Sans>
-          </Box>
-          <Box>
-            <Sans size="2">Last 12 months</Sans>
-          </Box>
-          <Box>
-            <Serif size="2">86%</Serif>
-          </Box>
-        </Box>
-        <Box>
-          <Box>
-            <Sans size="3">Realized price over estimate</Sans>
-          </Box>
-          <Box>
-            <Sans size="2">Last 12 months</Sans>
-          </Box>
-          <Box>
-            <Serif size="2">176%</Serif>
-          </Box>
-        </Box>
-      </Flex>
+    <SectionContainer height={440} background="black100">
+      <Box textAlign="center" width="100%" px={6}>
+        <Serif size="10" color="white">
+          Market trends
+        </Serif>
 
-      <Box>
-        <Button variant="primaryBlack">Explore auction results</Button>
+        <Spacer mb={4} />
+
+        <Flex justifyContent="space-evenly">
+          <Box width={335} height={140}>
+            <Box>
+              <Sans size="6" weight="medium" color="white">
+                Highest realized price
+              </Sans>
+            </Box>
+            <Box>
+              <Sans size="4" color={color("black10")}>
+                All time
+              </Sans>
+            </Box>
+            <Box>
+              <Serif size="12" color="white">
+                $300k
+              </Serif>
+            </Box>
+          </Box>
+          <Box width={335} height={140}>
+            <Box>
+              <Sans size="6" weight="medium" color="white">
+                Sell through rate
+              </Sans>
+            </Box>
+            <Box>
+              <Sans size="4" color={color("black10")}>
+                Last 12 months
+              </Sans>
+            </Box>
+            <Box>
+              <Serif size="12" color="white">
+                86%
+              </Serif>
+            </Box>
+          </Box>
+          <Box width={335} height={140}>
+            <Box>
+              <Sans size="6" weight="medium" color="white">
+                Realized price over estimate
+              </Sans>
+            </Box>
+            <Box>
+              <Sans size="4" color={color("black10")}>
+                Last 12 months
+              </Sans>
+            </Box>
+            <Box>
+              <Serif size="12" color="white">
+                176%
+              </Serif>
+            </Box>
+          </Box>
+        </Flex>
+
+        <Spacer mt={4} />
+
+        <Box>
+          <Button variant="primaryWhite">Explore auction results</Button>
+        </Box>
       </Box>
-    </Box>
+    </SectionContainer>
   )
 }
