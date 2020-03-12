@@ -19,7 +19,13 @@ export enum AuthModalIntent {
   SaveArtwork = "save artwork",
 }
 
-export const openAuthModal = (
+export const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
+  mediator.trigger("open:auth", {
+    ...options,
+  })
+}
+
+export const openAuthFromFollowSave = (
   mediator: Mediator,
   options: AuthModalOptions
 ) => {
