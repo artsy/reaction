@@ -5,10 +5,10 @@ import { SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignHeader: React.FC = props => {
   return (
-    <SectionContainer height={426} background="#EAE5E7">
+    <SectionContainer height={[630, 426]} background="#EAE5E7">
       <Box textAlign="center">
         <Box>
-          <Serif size="12">
+          <Serif size={["10", "12"]}>
             Sell Works by <br />
             Kehinde Wiley
           </Serif>

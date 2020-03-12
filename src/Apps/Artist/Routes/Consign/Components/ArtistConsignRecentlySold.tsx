@@ -4,7 +4,7 @@ import { SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignRecentlySold: React.FC = props => {
   return (
-    <SectionContainer height={620}>
+    <SectionContainer height={["100%", 620]}>
       <Box textAlign="center">
         <Box>
           <Box>

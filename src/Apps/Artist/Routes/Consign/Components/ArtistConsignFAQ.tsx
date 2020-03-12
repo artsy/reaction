@@ -7,12 +7,7 @@ import { SectionContainer } from "./SectionContainer"
 
 const Question = ({ question, answer }) => {
   return (
-    <Box
-      width="100%"
-      maxWidth={["100%", 440]}
-      textAlign={["center", "inherit"]}
-      p={2}
-    >
+    <Box width="100%" maxWidth={["100%", 440]} p={[1, 2]}>
       <Box>
         <Sans size="4">{question}</Sans>
       </Box>
@@ -25,9 +20,9 @@ const Question = ({ question, answer }) => {
 
 export const ArtistConsignFAQ: React.FC = props => {
   return (
-    <SectionContainer height="100%" background="white100">
-      <Box width="100%" maxWidth={900}>
-        <Box textAlign="center" mt={6}>
+    <SectionContainer height="100%" background="white100" pb={0}>
+      <Box width="100%" maxWidth={["100%", 900]}>
+        <Box textAlign="center">
           <Serif size="10">Frequently asked questions</Serif>
         </Box>
 

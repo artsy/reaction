@@ -5,10 +5,10 @@ import { SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignSellArt: React.FC = props => {
   return (
-    <SectionContainer height={400} background="#EAE5E7">
+    <SectionContainer height={["100%", 400]} background="#EAE5E7">
       <Box textAlign="center">
         <Box>
-          <Serif size="12">
+          <Serif size={["10", "12"]}>
             Sell Art <br />
             From Your Collection
           </Serif>
