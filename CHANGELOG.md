@@ -1,3 +1,15 @@
+# v25.27.15 (Thu Mar 12 2020)
+
+#### 🐛  Bug Fix
+
+- Make countries list on the Address form render only EU countries if it's marked as euOrigin and domesticOnly [#3222](https://github.com/artsy/reaction/pull/3222) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v25.27.14 (Wed Mar 11 2020)
 
 #### 🐛  Bug Fix
