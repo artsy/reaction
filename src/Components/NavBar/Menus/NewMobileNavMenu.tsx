@@ -1,6 +1,6 @@
 import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
-import { SystemContext } from "Artsy"
-import React, { useContext, useState } from "react"
+import { useSystemContext } from "Artsy"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { MenuData } from "../menuData"
 import { MobileLink } from "./MobileLink"
@@ -16,7 +16,7 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
   } = props.menuData
 
   const [path, setPath] = useState([])
-  const { user } = useContext(SystemContext)
+  const { user } = useSystemContext()
 
   const push = entry => {
     setPath(prevState => {
@@ -60,7 +60,7 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
           <MobileLink href="/gallery-partnerships">
             Partner with Artsy
           </MobileLink>
-          {user ? <LoggedLinks /> : <AuthenticateLinks />}
+          {user ? <LoggedInLinks /> : <AuthenticateLinks />}
         </ul>
       </AnimatingMenuWrapper>
     </MenuViewport>
@@ -93,8 +93,6 @@ export const AnimatingMenuWrapper = styled.div<{
   transition: transform 0.15s;
 `
 
-AnimatingMenuWrapper.displayName = "AnimatingMenuWrapper"
-
 const Menu = ({
   isOpen,
   title,
@@ -112,7 +110,7 @@ const Menu = ({
           {title}
         </Sans>
       </Flex>
-      <ul>{links.map(link => renderLink({ link, path, push, pop }))}</ul>
+      <ul>{links.map(link => NavLink({ link, path, push, pop }))}</ul>
     </AnimatingMenuWrapper>
   )
 }
@@ -140,7 +138,7 @@ const BackLink = ({ pop }) => {
   )
 }
 
-const renderLink = ({ link, path, push, pop }) => {
+const NavLink = ({ link, path, push, pop }) => {
   const isSubMenu = !!link.menu
   if (isSubMenu) {
     return (
@@ -226,7 +224,7 @@ const AuthenticateLinks = () => {
   )
 }
 
-const LoggedLinks = () => {
+const LoggedInLinks = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
