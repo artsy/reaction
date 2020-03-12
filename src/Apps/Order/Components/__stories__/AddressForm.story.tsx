@@ -54,7 +54,7 @@ storiesOf("Apps/Order/Components", module).add("AddressForm", () => {
       </Section>
       <Section title="BlankDomesticEUOnly">
         <Flex flexDirection="column">
-          <TypicalAddressForm shippingCountry="GR" domesticOnly euOrigin />
+          <TypicalAddressForm shippingCountry="DE" domesticOnly euOrigin />
         </Flex>
       </Section>
       <Section title="Filled out">
