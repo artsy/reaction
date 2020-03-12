@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type AuctionResultHeader_artist = {
-    readonly name: string | null;
+    readonly slug: string;
     readonly " $refType": "AuctionResultHeader_artist";
 };
 export type AuctionResultHeader_artist$data = AuctionResultHeader_artist;
@@ -24,11 +24,11 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "name",
+      "name": "slug",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '3705a4553b3415bd32e1e992ed1f9d0f';
+(node as any).hash = 'f667052f3e1b95eb9b9c71a7cfff9078';
 export default node;
