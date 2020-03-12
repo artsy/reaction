@@ -5,11 +5,21 @@ import { PositionProps, SpaceProps } from "styled-system"
 export interface CountrySelectProps extends PositionProps, SpaceProps {
   selected?: string
   disabled?: boolean
+  euShippingOnly?: boolean
   onSelect?: (value) => void
 }
 
 export const CountrySelect = (props: CountrySelectProps) => {
-  return <LargeSelect {...props} options={COUNTRY_SELECT_OPTIONS} />
+  return (
+    <LargeSelect
+      {...props}
+      options={
+        props.euShippingOnly
+          ? EU_COUNTRY_SELECT_OPTIONS
+          : COUNTRY_SELECT_OPTIONS
+      }
+    />
+  )
 }
 
 const COUNTRY_SELECT_OPTIONS = [
@@ -18,7 +28,7 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Albania", value: "AL" },
   { text: "Algeria", value: "DZ" },
   { text: "American Samoa", value: "AS" },
-  { text: "AndorrA", value: "AD" },
+  { text: "Andorra", value: "AD" },
   { text: "Angola", value: "AO" },
   { text: "Anguilla", value: "AI" },
   { text: "Antarctica", value: "AQ" },
@@ -159,6 +169,7 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Moldova, Republic of", value: "MD" },
   { text: "Monaco", value: "MC" },
   { text: "Mongolia", value: "MN" },
+  { text: "Montenegro", value: "ME" },
   { text: "Montserrat", value: "MS" },
   { text: "Morocco", value: "MA" },
   { text: "Mozambique", value: "MZ" },
@@ -205,7 +216,7 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Sao Tome and Principe", value: "ST" },
   { text: "Saudi Arabia", value: "SA" },
   { text: "Senegal", value: "SN" },
-  { text: "Serbia and Montenegro", value: "CS" },
+  { text: "Serbia", value: "RS" },
   { text: "Seychelles", value: "SC" },
   { text: "Sierra Leone", value: "SL" },
   { text: "Singapore", value: "SG" },
@@ -256,6 +267,53 @@ const COUNTRY_SELECT_OPTIONS = [
   { text: "Yemen", value: "YE" },
   { text: "Zambia", value: "ZM" },
   { text: "Zimbabwe", value: "ZW" },
+]
+
+const EU_COUNTRY_SELECT_OPTIONS = [
+  { text: "Andorra", value: "AD" },
+  { text: "Armenia", value: "AM" },
+  { text: "Austria", value: "AT" },
+  { text: "Azerbaijan", value: "AZ" },
+  { text: "Belarus", value: "BY" },
+  { text: "Belgium", value: "BE" },
+  { text: "Bosnia and Herzegovina", value: "BA" },
+  { text: "Bulgaria", value: "BG" },
+  { text: "Croatia", value: "HR" },
+  { text: "Cyprus", value: "CY" },
+  { text: "Czech Republic", value: "CZ" },
+  { text: "Denmark", value: "DK" },
+  { text: "Estonia", value: "EE" },
+  { text: "Finland", value: "FI" },
+  { text: "France", value: "FR" },
+  { text: "Georgia", value: "GE" },
+  { text: "Germany", value: "DE" },
+  { text: "Hungary", value: "HU" },
+  { text: "Italy", value: "IT" },
+  { text: "Kazakhstan", value: "KZ" },
+  { text: "Latvia", value: "LV" },
+  { text: "Liechtenstein", value: "LI" },
+  { text: "Lithuania", value: "LT" },
+  { text: "Luxembourg", value: "LU" },
+  { text: "Moldova", value: "MD" },
+  { text: "Monaco", value: "MC" },
+  { text: "Montenegro", value: "ME" },
+  { text: "Netherlands", value: "NL" },
+  { text: "Macedonia", value: "MK" },
+  { text: "Norway", value: "NO" },
+  { text: "Poland", value: "PL" },
+  { text: "Portugal", value: "PT" },
+  { text: "Romania", value: "RO" },
+  { text: "Russia", value: "RU" },
+  { text: "San Marino", value: "SM" },
+  { text: "Serbia", value: "RS" },
+  { text: "Slovakia", value: "SK" },
+  { text: "Slovenia", value: "SI" },
+  { text: "Spain", value: "ES" },
+  { text: "Sweden", value: "SE" },
+  { text: "Switzerland", value: "CH" },
+  { text: "Turkey", value: "TR" },
+  { text: "Ukraine", value: "UA" },
+  { text: "Vatican City", value: "VA" },
 ]
 
 export const COUNTRY_CODE_TO_COUNTRY_NAME = COUNTRY_SELECT_OPTIONS.reduce(

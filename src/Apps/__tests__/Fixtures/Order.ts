@@ -68,6 +68,7 @@ export const UntouchedOrder = {
             shippingOrigin: "New York, NY",
             medium: "Oil and pencil on panel",
             onlyShipsDomestically: false,
+            euShippingOrigin: false,
             shippingCountry: "US",
             is_acquireable: true as boolean,
             is_offerable: false as boolean,

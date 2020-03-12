@@ -33,6 +33,7 @@ export type Shipping_order = {
                     readonly slug: string;
                     readonly pickup_available: boolean | null;
                     readonly onlyShipsDomestically: boolean | null;
+                    readonly euShippingOrigin: boolean | null;
                     readonly shippingCountry: string | null;
                 } | null;
             } | null;
@@ -226,6 +227,13 @@ return {
                     {
                       "kind": "ScalarField",
                       "alias": null,
+                      "name": "euShippingOrigin",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
                       "name": "shippingCountry",
                       "args": null,
                       "storageKey": null
@@ -251,5 +259,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f4a89928c1e8a5625d7eb9b5789d324a';
+(node as any).hash = '215f2663f765f7ae5046b82743647c4a';
 export default node;
