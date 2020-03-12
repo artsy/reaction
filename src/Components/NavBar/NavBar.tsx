@@ -26,9 +26,10 @@ import {
   UserMenu,
 } from "./Menus"
 
+import { ModalType } from "Components/Authentication/Types"
+import { openAuthModal } from "Utils/openAuthModal"
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
-import * as authentication from "./Utils/authentication"
 
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
@@ -168,12 +169,11 @@ export const NavBar: React.FC = track(
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Login,
+                  openAuthModal(mediator, {
+                    mode: ModalType.login,
+                    intent: "login",
+                    contextModule: AnalyticsSchema.ContextModule.Header,
                   })
-
-                  authentication.login(mediator)
                 }}
               >
                 Log in
@@ -181,12 +181,11 @@ export const NavBar: React.FC = track(
               <Spacer mr={1} />
               <Button
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Signup,
+                  openAuthModal(mediator, {
+                    mode: ModalType.signup,
+                    intent: "signup",
+                    contextModule: AnalyticsSchema.ContextModule.Header,
                   })
-
-                  authentication.signup(mediator)
                 }}
               >
                 Sign up
