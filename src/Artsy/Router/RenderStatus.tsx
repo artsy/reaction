@@ -8,6 +8,7 @@ import ElementsRenderer from "found/lib/ElementsRenderer"
 import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
+import { NetworkTimeout } from "./NetworkTimeout"
 
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
@@ -70,6 +71,8 @@ export const RenderPending = () => {
             }}
           />
         </Media>
+
+        <NetworkTimeout />
       </>
     )
   } else {
