@@ -1,5 +1,5 @@
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
-import React, { Fragment } from "react"
+import React from "react"
 import styled from "styled-components"
 import { left, LeftProps, right, RightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
@@ -405,11 +405,7 @@ export class BaseCarousel extends React.Component<
             ref={c => (this.carouselRef = c)}
           >
             {carouselImages.map((slide, slideIndex) => {
-              return (
-                <Fragment key={slideIndex}>
-                  {render(slide, slideIndex)}
-                </Fragment>
-              )
+              return <div key={slideIndex}>{render(slide, slideIndex)}</div>
             })}
           </FlickityCarousel>
         </CarouselContainer>
