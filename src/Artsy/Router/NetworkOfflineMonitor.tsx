@@ -1,14 +1,15 @@
-import { ModalDialog } from "Components/Modal/ModalDialog"
+import { Banner, Box } from "@artsy/palette"
+import { debounce } from "lodash"
 import React, { useEffect, useState } from "react"
 
 export const NetworkOfflineMonitor: React.FC = () => {
   const [showOfflineModal, toggleOfflineModal] = useState(false)
 
   const setOffline = () => {
-    toggleOfflineModal(true)
+    debounce(() => toggleOfflineModal(true), 100)
   }
   const setOnline = () => {
-    toggleOfflineModal(false)
+    debounce(() => toggleOfflineModal(false), 100)
   }
 
   useEffect(() => {
@@ -26,13 +27,12 @@ export const NetworkOfflineMonitor: React.FC = () => {
   }
 
   return (
-    <ModalDialog
-      show={showOfflineModal}
-      heading="Your network is offline"
-      primaryCta={{
-        text: "Dismiss",
-        action: () => setOnline(),
-      }}
-    />
+    <Box position="fixed" top={58} width="100%" style={{ opacity: 0.9 }}>
+      <Banner
+        backgroundColor="black10"
+        textColor="black100"
+        message="Network offline"
+      />
+    </Box>
   )
 }
