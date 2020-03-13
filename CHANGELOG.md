@@ -1,3 +1,15 @@
+# v25.27.17 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Attempt to fix Flickity error [#3265](https://github.com/artsy/reaction/pull/3265) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.16 (Thu Mar 12 2020)
 
 #### 🐛  Bug Fix
