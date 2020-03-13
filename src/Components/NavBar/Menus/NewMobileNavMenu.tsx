@@ -139,7 +139,6 @@ const NavLink = ({ link }) => {
 
 export const MobileSubmenuLink = ({ children, menu }) => {
   const { path, push } = useNavigation()
-  console.log("MenuLink got", path)
   return (
     <li>
       <Flex
