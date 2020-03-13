@@ -1,3 +1,15 @@
+# v25.28.0 (Fri Mar 13 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add <NetworkTimeout /> & <NetworkOfflineMonitor /> components [#3240](https://github.com/artsy/reaction/pull/3240) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.27.17 (Fri Mar 13 2020)
 
 #### 🐛  Bug Fix
