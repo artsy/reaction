@@ -65,7 +65,7 @@ export const AnimatingMenuWrapper = styled.div<{
   position: absolute;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   z-index: ${p => (p.isOpen ? 9999 : 0)};
 
   top: 0;
@@ -74,6 +74,9 @@ export const AnimatingMenuWrapper = styled.div<{
 
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
+  ul {
+    margin-bottom: 40px;
+  }
 `
 
 const Menu = ({ isOpen, title, links, showBacknav = true }) => {
