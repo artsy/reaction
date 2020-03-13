@@ -5,7 +5,7 @@ import { SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignSellArt: React.FC = props => {
   return (
-    <SectionContainer height={["100%", 400]} background="#EAE5E7">
+    <SectionContainer background="#EAE5E7">
       <Box textAlign="center">
         <Box>
           <Serif size={["10", "12"]}>

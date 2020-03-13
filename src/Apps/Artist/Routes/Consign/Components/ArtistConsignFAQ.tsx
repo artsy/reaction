@@ -20,7 +20,7 @@ const Question = ({ question, answer }) => {
 
 export const ArtistConsignFAQ: React.FC = props => {
   return (
-    <SectionContainer height="100%" background="white100" pb={0}>
+    <SectionContainer background="white100" pb={0}>
       <Box width="100%" maxWidth={["100%", 900]}>
         <Box textAlign="center">
           <Serif size="10">Frequently asked questions</Serif>

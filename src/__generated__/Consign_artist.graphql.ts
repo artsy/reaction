@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Consign_artist = {
-    readonly id: string;
+    readonly name: string | null;
     readonly " $refType": "Consign_artist";
 };
 export type Consign_artist$data = Consign_artist;
@@ -24,11 +24,11 @@ const node: ReaderFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "name",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = 'b2d2d1c5cde2f8cc2269d33d2a4366cb';
+(node as any).hash = '1c784fbe42ca703c6c717e19627f8391';
 export default node;

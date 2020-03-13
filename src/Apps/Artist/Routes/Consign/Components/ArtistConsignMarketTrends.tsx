@@ -1,5 +1,6 @@
 import { Box, Button, color, Flex, Sans, Serif } from "@artsy/palette"
 import React from "react"
+import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
 
 const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
@@ -28,9 +29,13 @@ const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
   )
 }
 
-export const ArtistConsignMarketTrends: React.FC = props => {
+interface ArtistConsignMarketTrendsProps {
+  artistConsignment: ArtistConsignment
+}
+
+export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = props => {
   return (
-    <SectionContainer height={["100%", 440]} background="black100">
+    <SectionContainer background="black100">
       <Box textAlign="center" width="100%" px={6}>
         <Serif size="10" color="white">
           Market trends

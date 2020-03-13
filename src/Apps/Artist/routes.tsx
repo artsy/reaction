@@ -1,15 +1,20 @@
 import loadable from "@loadable/component"
+import { Redirect, RedirectException, RouteConfig } from "found"
+import * as React from "react"
+import { graphql } from "react-relay"
+
 import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
+
+import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+
+import { hasOverviewContent } from "./Components/NavigationTabs"
+import { getConsignmentData } from "./Routes/Consign/Utils/getConsignmentData"
+
 import {
   ArtworkFilters,
   initialArtworkFilterState,
 } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
-import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
-import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { Redirect, RedirectException, RouteConfig } from "found"
-import * as React from "react"
-import { graphql } from "react-relay"
-import { hasOverviewContent } from "./Components/NavigationTabs"
 
 graphql`
   fragment routes_Artist on Artist {
@@ -236,12 +241,31 @@ export const routes: RouteConfig[] = [
         },
         displayFullPage: true,
         query: graphql`
-          query routes_ArtistConsignQuery($artistID: String!) {
+          query routes_ArtistConsignQuery(
+            $artistID: String!
+            $recentlySoldArtworkIDs: [String]!
+          ) {
             artist(id: $artistID) {
               ...Consign_artist
             }
+            artworksByInternalID(ids: $recentlySoldArtworkIDs) {
+              image {
+                aspectRatio
+              }
+              ...FillwidthItem_artwork
+            }
           }
         `,
+        prepareVariables: (params, props) => {
+          const pathname = props.location.pathname.replace("/consign", "")
+          const recentlySoldArtworkIDs =
+            getConsignmentData(pathname)?.metadata?.recentlySoldArtworkIDs ?? []
+
+          return {
+            ...params,
+            recentlySoldArtworkIDs,
+          }
+        },
       },
       {
         path: "cv",

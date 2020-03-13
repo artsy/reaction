@@ -177,7 +177,7 @@ storiesOf("Apps/Artist", module)
     return (
       <MockRouter
         routes={artistRoutes}
-        initialRoute="/artist/pablo-picasso/consign"
+        initialRoute="/artist/alex-katz/consign"
       />
     )
   })

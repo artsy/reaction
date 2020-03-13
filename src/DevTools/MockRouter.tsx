@@ -59,6 +59,7 @@ export class MockRouter extends React.Component<Props> {
         },
         context: {
           ...context,
+          testing: "hello",
           user,
           relayEnvironment,
         } as any,

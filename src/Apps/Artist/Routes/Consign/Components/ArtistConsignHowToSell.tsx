@@ -19,7 +19,7 @@ const Section: React.FC<{
   description: string
 }> = ({ icon, text, description }) => {
   return (
-    <Box width={335} height={170} my={[3, 0]}>
+    <Box width="33%" height={170} my={[3, 0]} mx={1}>
       <Box>{icon}</Box>
       <Box mt={1} mb={2}>
         <Sans size="5">{text}</Sans>
@@ -33,7 +33,7 @@ const Section: React.FC<{
 
 export const ArtistConsignHowtoSell: React.FC = props => {
   return (
-    <SectionContainer height={["100%", 480]} background="black10">
+    <SectionContainer background="black10">
       <Box textAlign="center">
         <Box>
           <Serif size="10">How to sell your collection with Artsy</Serif>
@@ -41,7 +41,11 @@ export const ArtistConsignHowtoSell: React.FC = props => {
 
         <Spacer my={2} />
 
-        <Flex flexDirection={["column", "row"]}>
+        <Flex
+          flexDirection={["column", "row"]}
+          alignItems="center"
+          justifyContent="center"
+        >
           <Section
             icon={<EditIcon width={30} height={30} />}
             text="Submit once"

@@ -22,7 +22,6 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
       px={2}
       pt={6}
       pb={6}
-      style={{ border: "1px solid gray" }}
       {...rest}
     >
       {children}

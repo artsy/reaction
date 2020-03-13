@@ -1,21 +1,17 @@
 import { Image } from "@artsy/palette"
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { SystemContextProps } from "Artsy"
+import { Mediator } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
-import Badge from "./Badge"
-import Metadata from "./Metadata"
-import SaveButton from "./Save"
-
-// @ts-ignore
-import { Mediator } from "Artsy"
-
-// @ts-ignore
-import styled, { StyledComponentClass } from "styled-components"
+import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { userIsAdmin } from "Utils/user"
+import Badge from "./Badge"
+import Metadata from "./Metadata"
+import SaveButton from "./Save"
 
 const logger = createLogger("FillwidthItem.tsx")
 
