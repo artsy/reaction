@@ -1,9 +1,13 @@
 import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
 import { useSystemContext } from "Artsy"
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { MenuData } from "../menuData"
 import { MobileLink } from "./MobileLink"
+import {
+  NavigatorContextProvider,
+  useNavigation,
+} from "./NavigatorContextProvider"
 
 interface Props {
   isOpen: boolean
@@ -15,55 +19,34 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
     links: [artworks, artists],
   } = props.menuData
 
-  const [path, setPath] = useState([])
   const { user } = useSystemContext()
 
-  const push = entry => {
-    setPath(prevState => {
-      return [...prevState, entry]
-    })
-  }
-
-  const pop = () => {
-    setPath(prevState => {
-      return prevState.slice(0, prevState.length - 1)
-    })
-  }
-
   return (
-    <MenuViewport>
-      <AnimatingMenuWrapper isOpen={props.isOpen}>
-        <ul>
-          <MobileSubmenuLink
-            menu={artworks.menu}
-            path={path}
-            push={push}
-            pop={pop}
-          >
-            {artworks.menu.title}
-          </MobileSubmenuLink>
+    <NavigatorContextProvider>
+      <MenuViewport>
+        <AnimatingMenuWrapper isOpen={props.isOpen}>
+          <ul>
+            <MobileSubmenuLink menu={artworks.menu}>
+              {artworks.menu.title}
+            </MobileSubmenuLink>
 
-          <MobileSubmenuLink
-            menu={artists.menu}
-            path={path}
-            push={push}
-            pop={pop}
-          >
-            {artists.menu.title}
-          </MobileSubmenuLink>
-          <MobileLink href="/auctions">Auctions</MobileLink>
-          <MobileLink href="/articles">Editorial</MobileLink>
-          <MobileLink href="/galleries">Galleries</MobileLink>
-          <MobileLink href="/fairs">Fairs</MobileLink>
-          <MobileLink href="/shows">Shows</MobileLink>
-          <MobileLink href="/institutions">Museums</MobileLink>
-          <MobileLink href="/gallery-partnerships">
-            Partner with Artsy
-          </MobileLink>
-          {user ? <LoggedInLinks /> : <AuthenticateLinks />}
-        </ul>
-      </AnimatingMenuWrapper>
-    </MenuViewport>
+            <MobileSubmenuLink menu={artists.menu}>
+              {artists.menu.title}
+            </MobileSubmenuLink>
+            <MobileLink href="/auctions">Auctions</MobileLink>
+            <MobileLink href="/articles">Editorial</MobileLink>
+            <MobileLink href="/galleries">Galleries</MobileLink>
+            <MobileLink href="/fairs">Fairs</MobileLink>
+            <MobileLink href="/shows">Shows</MobileLink>
+            <MobileLink href="/institutions">Museums</MobileLink>
+            <MobileLink href="/gallery-partnerships">
+              Partner with Artsy
+            </MobileLink>
+            {user ? <LoggedInLinks /> : <AuthenticateLinks />}
+          </ul>
+        </AnimatingMenuWrapper>
+      </MenuViewport>
+    </NavigatorContextProvider>
   )
 }
 
@@ -93,29 +76,22 @@ export const AnimatingMenuWrapper = styled.div<{
   transition: transform 0.15s;
 `
 
-const Menu = ({
-  isOpen,
-  title,
-  links,
-  path,
-  push,
-  pop,
-  showBacknav = true,
-}) => {
+const Menu = ({ isOpen, title, links, showBacknav = true }) => {
   return (
     <AnimatingMenuWrapper isOpen={isOpen}>
       <Flex position="relative">
-        {showBacknav && <BackLink pop={pop} />}
+        {showBacknav && <BackLink />}
         <Sans size={["5", "6"]} color={color("black100")} mx="auto">
           {title}
         </Sans>
       </Flex>
-      <ul>{links.map(link => NavLink({ link, path, push, pop }))}</ul>
+      <ul>{links.map(link => NavLink({ link }))}</ul>
     </AnimatingMenuWrapper>
   )
 }
 
-const BackLink = ({ pop }) => {
+const BackLink = () => {
+  const { pop } = useNavigation()
   return (
     <Box position="absolute" top="-6px">
       <a
@@ -138,18 +114,12 @@ const BackLink = ({ pop }) => {
   )
 }
 
-const NavLink = ({ link, path, push, pop }) => {
+const NavLink = ({ link }) => {
   const isSubMenu = !!link.menu
   if (isSubMenu) {
     return (
       <>
-        <MobileSubmenuLink
-          key={link.menu.title}
-          menu={link.menu}
-          path={path}
-          push={push}
-          pop={pop}
-        >
+        <MobileSubmenuLink key={link.menu.title} menu={link.menu}>
           {link.text}
         </MobileSubmenuLink>
         {link.dividerBelow && <Separator my={1} color={color("black10")} />}
@@ -167,7 +137,8 @@ const NavLink = ({ link, path, push, pop }) => {
   }
 }
 
-export const MobileSubmenuLink = ({ children, menu, path, push, pop }) => {
+export const MobileSubmenuLink = ({ children, menu }) => {
+  const { path, push } = useNavigation()
   console.log("MenuLink got", path)
   return (
     <li>
@@ -194,9 +165,6 @@ export const MobileSubmenuLink = ({ children, menu, path, push, pop }) => {
         isOpen={path.includes(menu.title)}
         title={menu.title}
         links={menu.links}
-        path={path}
-        push={push}
-        pop={pop}
       />
     </li>
   )
