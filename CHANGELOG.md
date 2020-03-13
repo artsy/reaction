@@ -1,3 +1,15 @@
+# v25.29.2 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix throttle invocation [#3267](https://github.com/artsy/reaction/pull/3267) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.29.1 (Fri Mar 13 2020)
 
 #### 🐛  Bug Fix
