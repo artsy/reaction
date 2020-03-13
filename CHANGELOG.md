@@ -1,3 +1,15 @@
+# v25.29.3 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3268](https://github.com/artsy/reaction/pull/3268) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.29.2 (Fri Mar 13 2020)
 
 #### 🐛  Bug Fix
