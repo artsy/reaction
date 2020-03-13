@@ -1,3 +1,15 @@
+# v25.29.0 (Fri Mar 13 2020)
+
+#### 🚀  Enhancement
+
+- [PUR-1818] Update header text for auction results page [#3262](https://github.com/artsy/reaction/pull/3262) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 1
+
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
 # v25.28.0 (Fri Mar 13 2020)
 
 #### 🚀  Enhancement
