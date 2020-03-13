@@ -2,7 +2,7 @@ import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
 import { useSystemContext } from "Artsy"
 import React from "react"
 import styled from "styled-components"
-import { MenuData } from "../menuData"
+import { MenuData, MenuLinkData } from "../menuData"
 import { MobileLink } from "./MobileLink"
 import {
   NavigatorContextProvider,
@@ -26,12 +26,12 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
       <MenuViewport>
         <AnimatingMenuWrapper isOpen={props.isOpen}>
           <ul>
-            <MobileSubmenuLink menu={artworks.menu}>
-              {artworks.menu.title}
+            <MobileSubmenuLink menu={(artworks as MenuLinkData).menu}>
+              {(artworks as MenuLinkData).menu.title}
             </MobileSubmenuLink>
 
-            <MobileSubmenuLink menu={artists.menu}>
-              {artists.menu.title}
+            <MobileSubmenuLink menu={(artists as MenuLinkData).menu}>
+              {(artists as MenuLinkData).menu.title}
             </MobileSubmenuLink>
             <MobileLink href="/auctions">Auctions</MobileLink>
             <MobileLink href="/articles">Editorial</MobileLink>

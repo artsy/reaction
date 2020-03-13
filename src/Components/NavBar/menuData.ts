@@ -13,7 +13,7 @@ interface SimpleLinkData {
 }
 
 // e.g. "Art Movement >"
-interface MenuLinkData {
+export interface MenuLinkData {
   text: string
   menu: MenuData
   dividerBelow?: boolean
