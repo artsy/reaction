@@ -1,3 +1,15 @@
+# v25.29.4 (Sat Mar 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Fix alignment in image [#3269](https://github.com/artsy/reaction/pull/3269) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.29.3 (Fri Mar 13 2020)
 
 #### 🐛  Bug Fix
