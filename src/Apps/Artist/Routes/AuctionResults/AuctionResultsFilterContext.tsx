@@ -6,6 +6,7 @@ export interface AuctionResultsFilters {
   sizes?: string[]
   page?: number
   sort?: string
+  createdYearRange?: [string, string]
 }
 
 interface AuctionResultsFiltersState extends AuctionResultsFilters {
@@ -121,6 +122,7 @@ const AuctionResultsFilterReducer = (
     "organizations",
     "categories",
     "sizes",
+    "createdYearRange",
   ]
 
   switch (action.type) {
@@ -139,6 +141,21 @@ const AuctionResultsFilterReducer = (
           filterState[name as any] = value || []
         }
       })
+
+      if (name === "createdYearRange") {
+        const [earliestYear, latestYear] = filterState?.createdYearRange || []
+        if (earliestYear && !latestYear) {
+          filterState.createdYearRange = [earliestYear, earliestYear]
+        } else if (!earliestYear && latestYear) {
+          filterState.createdYearRange = [latestYear, latestYear]
+        } else if (earliestYear && latestYear) {
+          if (earliestYear > latestYear) {
+            filterState.createdYearRange = [latestYear, earliestYear]
+          }
+        } else {
+          filterState.createdYearRange = undefined
+        }
+      }
 
       // primitive filter types
       const primitiveFilterTypes: Array<keyof AuctionResultsFilters> = [
