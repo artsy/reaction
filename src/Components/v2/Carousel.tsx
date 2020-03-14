@@ -405,7 +405,11 @@ export class BaseCarousel extends React.Component<
             ref={c => (this.carouselRef = c)}
           >
             {carouselImages.map((slide, slideIndex) => {
-              return <div key={slideIndex}>{render(slide, slideIndex)}</div>
+              return (
+                <Box style={{ margin: "auto" }} key={slideIndex}>
+                  {render(slide, slideIndex)}
+                </Box>
+              )
             })}
           </FlickityCarousel>
         </CarouselContainer>
