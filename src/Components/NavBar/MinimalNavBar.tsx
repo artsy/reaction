@@ -4,16 +4,11 @@ import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 
 interface MinimalNavBarProps {
-  children: React.ReactNode
-  logo?: React.ReactNode
   to: string
+  children: React.ReactNode
 }
 
-export const MinimalNavBar: React.FC<MinimalNavBarProps> = ({
-  children,
-  logo = <ArtsyLogoBlackIcon />,
-  to,
-}) => {
+export const MinimalNavBar: React.FC<MinimalNavBarProps> = props => {
   return (
     <Box
       zIndex={1000}
@@ -27,18 +22,18 @@ export const MinimalNavBar: React.FC<MinimalNavBarProps> = ({
       <AppContainer>
         <Box height={70} px={[2, 4]}>
           <RouterLink
-            to={to}
+            to={props.to}
             // TODO: figure out a minimal example of the underlying cause of this error
             // and submit an issue to TS 😓
             // @ts-ignore
             data-test="logoLink"
           >
-            {logo}
+            <ArtsyLogoBlackIcon />
           </RouterLink>
         </Box>
       </AppContainer>
 
-      {children}
+      {props.children}
     </Box>
   )
 }

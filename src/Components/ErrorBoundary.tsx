@@ -1,7 +1,5 @@
-import { ArtsyMarkIcon, Box } from "@artsy/palette"
-import { RouterLink } from "Artsy/Router/RouterLink"
+import { NavBar } from "Components/NavBar"
 import React from "react"
-import { data as sd } from "sharify"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { ErrorModal } from "./Modal/ErrorModal"
@@ -57,12 +55,10 @@ export class ErrorBoundary extends React.Component<Props, State> {
 /**
  * An error popup with the option to reload the page
  */
-const ErrorModalWithReload = ({ show }) => {
+const ErrorModalWithReload: React.FC<{ show: boolean }> = ({ show }) => {
   return (
-    <Box m={2}>
-      <RouterLink to={sd.APP_URL}>
-        <ArtsyMarkIcon height={40} width={40} />
-      </RouterLink>
+    <>
+      <NavBar />
       <ErrorModal
         show={show}
         detailText="Please check your network connection and try again."
@@ -71,6 +67,6 @@ const ErrorModalWithReload = ({ show }) => {
           location.reload()
         }}
       />
-    </Box>
+    </>
   )
 }
