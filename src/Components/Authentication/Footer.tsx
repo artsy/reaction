@@ -73,10 +73,21 @@ export const Footer = (props: FooterProps) => {
             justifyContent="center"
           >
             <FooterText>
+              {"Sign up using "}
               <Link color="black60" onClick={onFacebookLogin}>
-                Sign up using Facebook.
+                Apple
               </Link>{" "}
+              {" or "}
+              <Link color="black60" onClick={onFacebookLogin}>
+                Facebook
+              </Link>{" "}
+              {"."}
             </FooterText>
+          </Flex>
+          <Flex
+            flexDirection={inline ? "row" : "column"}
+            justifyContent="center"
+          >
             <FooterText>
               {"Already have an account? "}
               <Link
