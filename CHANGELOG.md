@@ -1,3 +1,15 @@
+# v25.30.1 (Mon Mar 16 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1758] add a fallback image when there is no headerImage [#3226](https://github.com/artsy/reaction/pull/3226) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.30.0 (Mon Mar 16 2020)
 
 #### 🚀  Enhancement
