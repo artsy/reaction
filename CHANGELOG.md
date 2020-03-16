@@ -1,3 +1,15 @@
+# v25.30.0 (Mon Mar 16 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add more safety around network failures with fallback UI [#3271](https://github.com/artsy/reaction/pull/3271) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.29.4 (Sat Mar 14 2020)
 
 #### 🐛  Bug Fix
