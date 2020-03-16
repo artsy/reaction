@@ -6,6 +6,16 @@ import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
 
+jest.mock("Components/NavBar", () => ({
+  NavBar: () => <div />,
+}))
+
+jest.mock("react-relay", () => ({
+  ReactRelayContext: {
+    Provider: ({ children }) => children,
+  },
+}))
+
 describe("buildClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {
     const { ClientApp } = await buildClientApp({
@@ -165,6 +175,7 @@ describe("buildClientApp", () => {
           ],
           context: { relayEnvironment },
         })
+
         mount(<ClientApp />)
       } catch (error) {
         expect(error.message).toMatch(/Oh noes/)
