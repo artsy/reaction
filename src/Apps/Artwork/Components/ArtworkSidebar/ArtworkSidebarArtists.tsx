@@ -37,7 +37,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     })
   }
 
-  renderSingleArtist = (artist: Artist, user, mediator) => {
+  private renderSingleArtist = (artist: Artist, user, mediator) => {
     return (
       <React.Fragment>
         {this.renderArtistName(artist)}

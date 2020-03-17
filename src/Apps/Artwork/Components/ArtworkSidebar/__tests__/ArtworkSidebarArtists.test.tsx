@@ -5,7 +5,7 @@ import {
   SingleFollowedArtist,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
 import { ArtworkSidebarArtistsFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
-import { SystemContextProvider } from "Artsy"
+import { Mediator, SystemContextProvider } from "Artsy"
 import { FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { renderRelayTree } from "DevTools"
 import React from "react"
@@ -14,7 +14,7 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarArtists", () => {
-  let mediator
+  let mediator: Mediator
   beforeEach(() => {
     mediator = { trigger: jest.fn() }
     window.location.assign = jest.fn()
@@ -48,7 +48,7 @@ describe("ArtworkSidebarArtists", () => {
   let wrapper
 
   describe("ArtworkSidebarArtists with one artist", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       wrapper = await getWrapper()
     })
 
@@ -59,14 +59,24 @@ describe("ArtworkSidebarArtists", () => {
 
     it("renders artist follow button for single artist", () => {
       expect(wrapper.find(FollowArtistButton)).toHaveLength(1)
+      expect(wrapper.find(FollowArtistButton).text()).not.toMatch("Following")
     })
 
-    xit("Opens auth with expected args when following an artist", () => {
+    it("Opens auth with expected args when following an artist", () => {
       wrapper
         .find(FollowArtistButton)
         .at(0)
         .simulate("click")
-      expect(mediator.trigger).toBeCalled()
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: "josef-albers",
+        },
+        copy: "Sign up to follow Josef Albers",
+        intent: "follow artist",
+        mode: "signup",
+      })
     })
   })
 
