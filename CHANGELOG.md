@@ -1,3 +1,15 @@
+# v25.32.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Build out new Artist/Consign landing page [#3261](https://github.com/artsy/reaction/pull/3261) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.31.1 (Tue Mar 17 2020)
 
 #### 🐛  Bug Fix
