@@ -1,21 +1,17 @@
 import { Image } from "@artsy/palette"
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { SystemContextProps } from "Artsy"
+import { Mediator } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
+import styled from "styled-components"
+import { get } from "Utils/get"
+import { getENV } from "Utils/getENV"
+import createLogger from "Utils/logger"
+import { userIsAdmin } from "Utils/user"
 import Badge from "./Badge"
 import Metadata from "./Metadata"
 import SaveButton from "./Save"
-
-// @ts-ignore
-import { Mediator } from "Artsy"
-
-// @ts-ignore
-import styled, { StyledComponentClass } from "styled-components"
-import { get } from "Utils/get"
-import createLogger from "Utils/logger"
-import { userIsAdmin } from "Utils/user"
 
 const logger = createLogger("FillwidthItem.tsx")
 
@@ -39,6 +35,8 @@ export interface FillwidthItemContainerProps
   artwork: FillwidthItem_artwork
   imageHeight?: number
   margin?: number
+  showExtended?: boolean
+  showMetadata?: boolean
   mediator?: Mediator
   onClick?: () => void
   targetHeight?: number
@@ -49,6 +47,10 @@ export interface FillwidthItemContainerProps
 export class FillwidthItemContainer extends React.Component<
   FillwidthItemContainerProps
 > {
+  static defaultProps = {
+    showMetadata: true,
+  }
+
   get imageWidth() {
     const {
       artwork: {
@@ -56,11 +58,17 @@ export class FillwidthItemContainer extends React.Component<
       },
     } = this.props
 
-    return Math.floor(this.imageHeight * aspect_ratio)
+    const imageWidth = Math.floor(this.imageHeight * aspect_ratio)
+    return imageWidth
   }
 
   get imageHeight() {
-    return this.props.imageHeight * window.devicePixelRatio
+    // During the SSR render pass we don't have access to window pixel data so
+    // default to high density screen.
+    const devicePixelRatio =
+      typeof window === "undefined" ? 2 : window.devicePixelRatio
+
+    return this.props.imageHeight * devicePixelRatio
   }
 
   getImageUrl() {
@@ -80,7 +88,7 @@ export class FillwidthItemContainer extends React.Component<
     const type = aspect_ratio ? "fit" : "fill"
 
     // tslint:disable-next-line:max-line-length
-    return `${sd.GEMINI_CLOUDFRONT_URL}/?resize_to=${type}&width=${
+    return `${getENV("GEMINI_CLOUDFRONT_URL")}/?resize_to=${type}&width=${
       this.imageWidth
     }&height=${
       this.imageHeight
@@ -91,11 +99,13 @@ export class FillwidthItemContainer extends React.Component<
     const {
       artwork,
       className,
-      targetHeight,
       imageHeight,
-      user,
-      mediator,
       lazyLoad,
+      mediator,
+      showExtended,
+      showMetadata,
+      targetHeight,
+      user,
     } = this.props
 
     let userSpread = {}
@@ -141,7 +151,7 @@ export class FillwidthItemContainer extends React.Component<
             style={{ position: "absolute", right: "5px", bottom: "5px" }}
           />
         </Placeholder>
-        <Metadata artwork={artwork} extended />
+        {showMetadata && <Metadata artwork={artwork} extended={showExtended} />}
       </div>
     )
   }
