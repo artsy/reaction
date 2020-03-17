@@ -101,7 +101,7 @@ export class ModalManager extends Component<
         case ModalType.signup:
           return "Sign up"
         case ModalType.forgot:
-          return "Forgot Password"
+          return "Reset your password"
         default:
           return "The art world online"
       }
