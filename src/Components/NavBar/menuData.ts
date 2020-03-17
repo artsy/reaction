@@ -6,7 +6,7 @@ export interface MenuData {
 type LinkData = MenuLinkData | SimpleLinkData
 
 // e.g. "Editorial"
-interface SimpleLinkData {
+export interface SimpleLinkData {
   text: string
   href: string
   dividerBelow?: boolean
