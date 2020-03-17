@@ -1,7 +1,7 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
-import { SectionContainer } from "./SectionContainer"
+import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
 interface ArtistConsignHeaderProps {
   artistName: string
@@ -9,7 +9,7 @@ interface ArtistConsignHeaderProps {
 
 export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => {
   return (
-    <SectionContainer background="#EAE5E7">
+    <SectionContainer background={LightPurpleColor}>
       <Box textAlign="center">
         <Box>
           <Serif size={["10", "12"]}>

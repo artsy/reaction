@@ -1,11 +1,11 @@
 import React from "react"
 
 import { Box, Button, Sans, Serif } from "@artsy/palette"
-import { SectionContainer } from "./SectionContainer"
+import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignSellArt: React.FC = props => {
   return (
-    <SectionContainer background="#EAE5E7">
+    <SectionContainer background={LightPurpleColor}>
       <Box textAlign="center">
         <Box>
           <Serif size={["10", "12"]}>
