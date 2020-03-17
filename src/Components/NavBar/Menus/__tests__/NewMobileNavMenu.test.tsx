@@ -1,8 +1,6 @@
 import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
-import { filter, map } from "lodash"
 import React from "react"
-// import { NavigatorContextProvider } from "../NavigatorContextProvider"
 
 import { menuData, SimpleLinkData } from "../../menuData"
 import { MobileLink } from "../MobileLink"
