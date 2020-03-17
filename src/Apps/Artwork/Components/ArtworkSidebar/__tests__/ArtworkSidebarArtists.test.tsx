@@ -22,7 +22,7 @@ describe("ArtworkSidebarArtists", () => {
 
   const getWrapper = async (
     response: ArtworkSidebarArtists_Test_QueryRawResponse["artwork"] = SingleFollowedArtist,
-    context = { mediator }
+    context = { mediator, user: null }
   ) => {
     return await renderRelayTree({
       Component: ({ artwork }: any) => {

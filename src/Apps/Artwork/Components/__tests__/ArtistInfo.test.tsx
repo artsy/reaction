@@ -32,6 +32,7 @@ describe("ArtistInfo", () => {
     context = {
       mediator: { trigger: jest.fn() },
       relay: { environment: {} } as RelayProp,
+      user: null,
     }
     props = { artist: ArtistInfoFixture }
   })

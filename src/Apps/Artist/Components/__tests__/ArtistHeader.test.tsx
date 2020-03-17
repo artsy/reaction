@@ -30,7 +30,7 @@ describe("ArtistHeader", () => {
 
   const getWrapper = async (
     response: ArtistHeader_Test_QueryRawResponse["artist"] = ArtistHeaderFixture,
-    context = { mediator, relayEnvironment: {} as Environment }
+    context = { mediator, relayEnvironment: {} as Environment, user: null }
   ) => {
     return await renderRelayTree({
       Component: ({ artist }: any) => {

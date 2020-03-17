@@ -32,7 +32,7 @@ jest.mock("Artsy/Analytics/useTracking", () => {
 })
 
 describe("collections header", () => {
-  const context = { mediator: { trigger: jest.fn() } }
+  const context = { mediator: { trigger: jest.fn() }, user: null }
   const props: Props = {
     artworks: collectionHeaderArtworks,
     collection: {
