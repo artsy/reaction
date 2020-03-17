@@ -121,21 +121,17 @@ const NavLink = ({ link }) => {
   const isSubMenu = !!link.menu
   if (isSubMenu) {
     return (
-      <>
-        <MobileSubmenuLink key={link.menu.title} menu={link.menu}>
-          {link.text}
-        </MobileSubmenuLink>
+      <React.Fragment key={link.menu.title}>
+        <MobileSubmenuLink menu={link.menu}>{link.text}</MobileSubmenuLink>
         {link.dividerBelow && <Separator my={1} color={color("black10")} />}
-      </>
+      </React.Fragment>
     )
   } else {
     return (
-      <>
-        <MobileLink key={link.href} href={link.href}>
-          {link.text}
-        </MobileLink>
+      <React.Fragment key={link.href}>
+        <MobileLink href={link.href}>{link.text}</MobileLink>
         {link.dividerBelow && <Separator my={1} color={color("black10")} />}
-      </>
+      </React.Fragment>
     )
   }
 }
@@ -176,20 +172,16 @@ const AuthenticateLinks = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <li>
-        <MobileLink
-          href={`/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
-        >
-          Sign Up
-        </MobileLink>
-      </li>
-      <li>
-        <MobileLink
-          href={`/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
-        >
-          Login
-        </MobileLink>
-      </li>
+      <MobileLink
+        href={`/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+      >
+        Sign Up
+      </MobileLink>
+      <MobileLink
+        href={`/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+      >
+        Login
+      </MobileLink>
     </Box>
   )
 }
@@ -198,12 +190,8 @@ const LoggedInLinks = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <li>
-        <MobileLink href="/works-for-you">Works for you </MobileLink>
-      </li>
-      <li>
-        <MobileLink href="/user/edit">Account</MobileLink>
-      </li>
+      <MobileLink href="/works-for-you">Works for you </MobileLink>
+      <MobileLink href="/user/edit">Account</MobileLink>
     </Box>
   )
 }
