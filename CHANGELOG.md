@@ -1,3 +1,15 @@
+# v25.31.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add generic error handler [#3272](https://github.com/artsy/reaction/pull/3272) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.30.1 (Mon Mar 16 2020)
 
 #### 🐛  Bug Fix
