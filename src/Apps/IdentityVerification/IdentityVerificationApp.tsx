@@ -1,4 +1,4 @@
-import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { Box, Button, Link, Sans, Serif } from "@artsy/palette"
 import { IdentityVerificationApp_me } from "__generated__/IdentityVerificationApp_me.graphql"
 import { IdentityVerificationAppStartFlowMutation } from "__generated__/IdentityVerificationAppStartFlowMutation.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -161,6 +161,11 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
         >
           Continue to verification
         </Button>
+
+        <Sans mt="4" size="4" color="black60">
+          For more information, see the{" "}
+          <Link href="/identity-verification-faq">FAQ</Link>.
+        </Sans>
       </Box>
     </AppContainer>
   )
