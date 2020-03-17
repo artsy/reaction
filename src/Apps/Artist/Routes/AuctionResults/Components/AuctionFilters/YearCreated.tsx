@@ -1,14 +1,6 @@
 import { Flex, LargeSelect, Spacer, Toggle } from "@artsy/palette"
-import { YearCreated_auctionResult } from "__generated__/YearCreated_auctionResult.graphql"
 import React, { useMemo } from "react"
-import { createFragmentContainer } from "react-relay"
-import { graphql } from "relay-runtime"
-import { DeFraged } from "Utils/typeSupport"
 import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
-
-interface YearCreatedProps {
-  auctionResult: DeFraged<YearCreated_auctionResult>
-}
 
 const buildDateRange = (startYear: number, endYear: number) =>
   [...Array(1 + endYear - startYear).keys()].map(yearNum => {
@@ -19,28 +11,25 @@ const buildDateRange = (startYear: number, endYear: number) =>
     }
   })
 
-export const YearCreated: React.FC<YearCreatedProps> = ({ auctionResult }) => {
-  // if (!auctionResult?.createdYearRange) {
-  //   console.error(
-  //     "Couldn't display year created filter due to lacking info from MP"
-  //   )
-  //   return null
-  // }
-  // TODO: Pull data from metaphysics
-  const { startAt, endAt } = auctionResult.createdYearRange || {
-    startAt: 1990,
-    endAt: 2001,
-  }
-  const fullDateRange = useMemo(() => buildDateRange(startAt, endAt), [
-    startAt,
-    endAt,
-  ])
+export const YearCreated: React.FC = () => {
   const filterContext = useAuctionResultsFilterContext()
-  const [earliestCreated, latestCreated] = filterContext?.filters
-    ?.createdYearRange || [
-    fullDateRange[0].text,
-    fullDateRange[fullDateRange.length - 1].text,
-  ]
+  const {
+    earliestCreatedYear,
+    latestCreatedYear,
+    createdAfterYear,
+    createdBeforeYear,
+  } = filterContext?.filters
+  if (
+    typeof earliestCreatedYear === undefined ||
+    typeof latestCreatedYear === undefined
+  ) {
+    console.error("Couldn't display year created filter due to missing data")
+    return null
+  }
+  const fullDateRange = useMemo(
+    () => buildDateRange(earliestCreatedYear, latestCreatedYear),
+    [earliestCreatedYear, latestCreatedYear]
+  )
 
   return (
     <Toggle label="Year Created" expanded>
@@ -49,45 +38,20 @@ export const YearCreated: React.FC<YearCreatedProps> = ({ auctionResult }) => {
           title="Earliest"
           options={fullDateRange}
           onSelect={year => {
-            if (year > latestCreated) {
-              filterContext.setFilter("createdYearRange", [year, year])
-            } else {
-              filterContext.setFilter("createdYearRange", [year, latestCreated])
-            }
+            filterContext.setFilter("createdAfterYear", year)
           }}
-          selected={`${earliestCreated}`}
+          selected={`${createdAfterYear}`}
         />
         <Spacer mr={1} />
         <LargeSelect
           title="Latest"
           options={fullDateRange}
           onSelect={year => {
-            if (year < earliestCreated) {
-              filterContext.setFilter("createdYearRange", [year, year])
-            } else {
-              filterContext.setFilter("createdYearRange", [
-                earliestCreated,
-                year,
-              ])
-            }
+            filterContext.setFilter("createdBeforeYear", year)
           }}
-          selected={`${latestCreated}`}
+          selected={`${createdBeforeYear}`}
         />
       </Flex>
     </Toggle>
   )
 }
-
-export const YearCreatedFragmentContainer = createFragmentContainer(
-  YearCreated,
-  {
-    auctionResult: graphql`
-      fragment YearCreated_auctionResult on AuctionResultConnection {
-        createdYearRange {
-          startAt
-          endAt
-        }
-      }
-    `,
-  }
-)

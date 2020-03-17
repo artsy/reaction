@@ -9,8 +9,7 @@ export const AuctionFilters: React.FC = () => {
     <>
       <MediumFilter />
       <SizeFilter />
-      {/* TODO: Wire up to metaphysics */}
-      <YearCreated auctionResult={{} as any} />
+      <YearCreated />
       <AuctionHouseFilter />
     </>
   )
