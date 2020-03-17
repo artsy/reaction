@@ -1,3 +1,15 @@
+# v25.31.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Expand openAuthModal helpers, update NavBar triggers [#3264](https://github.com/artsy/reaction/pull/3264) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v25.31.0 (Tue Mar 17 2020)
 
 #### 🚀  Enhancement
