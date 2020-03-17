@@ -40,12 +40,9 @@ describe("MobileNavMenu", () => {
 
       defaultLinks
         .concat([
+          ["/log_in?intent=signup&trigger=click&contextModule=Header", "Login"],
           [
-            "/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header",
-            "Login",
-          ],
-          [
-            "/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header",
+            "/sign_up?intent=signup&trigger=click&contextModule=Header",
             "Sign up",
           ],
         ])
