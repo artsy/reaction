@@ -1,3 +1,15 @@
+# v25.32.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Forgot form titles [#3273](https://github.com/artsy/reaction/pull/3273) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v25.32.0 (Tue Mar 17 2020)
 
 #### 🚀  Enhancement
