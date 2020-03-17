@@ -19,9 +19,10 @@ import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
 import {
+  MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
-  NewMobileNavMenu as MobileNavMenu,
+  NewMobileNavMenu,
   NotificationsMenu,
   UserMenu,
 } from "./Menus"
@@ -53,6 +54,9 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const canViewNewMobileNav = Boolean(
+    user?.lab_features?.includes("Updated Navigation")
+  )
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
   // Close mobile menu if dragging window from small size to desktop
@@ -230,8 +234,11 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          {/* <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} /> */}
-          <MobileNavMenu isOpen={showMobileMenu} menuData={menuData} />
+          {canViewNewMobileNav ? (
+            <NewMobileNavMenu isOpen={showMobileMenu} menuData={menuData} />
+          ) : (
+            <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          )}
         </>
       )}
     </header>
