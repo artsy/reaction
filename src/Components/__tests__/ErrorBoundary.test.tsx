@@ -33,14 +33,28 @@ describe("ErrorBoundary", () => {
       throw new Error("throw error")
       return null
     }
-    expect(() => {
-      mount(
-        <ErrorBoundary>
-          <ErrorComponent />
-        </ErrorBoundary>
-      )
-      expect(ErrorBoundary.prototype.componentDidCatch).toHaveBeenCalled()
-    }).toThrow()
+    mount(
+      <ErrorBoundary>
+        <ErrorComponent />
+      </ErrorBoundary>
+    )
+    expect(ErrorBoundary.prototype.componentDidCatch).toHaveBeenCalled()
+  })
+
+  it("shows error modal when genericError is true", () => {
+    const wrapper = mount(
+      <ErrorBoundary>
+        <div>erroneous render</div>
+      </ErrorBoundary>
+    )
+
+    wrapper.setState({
+      genericError: true,
+    })
+
+    wrapper.update()
+    expect(wrapper.text()).not.toContain("erroneous render")
+    expect(wrapper.find("ErrorModalWithReload").length).toEqual(1)
   })
 
   it("shows error modal when asyncChunkLoadError is true", () => {
@@ -64,7 +78,9 @@ describe("ErrorBoundary", () => {
       ErrorBoundary.getDerivedStateFromError({
         message: "generic error",
       })
-    ).toEqual(undefined)
+    ).toEqual({
+      genericError: true,
+    })
     expect(
       ErrorBoundary.getDerivedStateFromError({
         message: "Loading chunk c3495.js failed",

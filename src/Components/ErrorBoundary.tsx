@@ -13,11 +13,13 @@ interface Props {
 
 interface State {
   asyncChunkLoadError: boolean
+  genericError: boolean
 }
 
 export class ErrorBoundary extends React.Component<Props, State> {
   state = {
     asyncChunkLoadError: false,
+    genericError: false,
   }
 
   componentDidCatch(error, errorInfo) {
@@ -41,11 +43,27 @@ export class ErrorBoundary extends React.Component<Props, State> {
         asyncChunkLoadError: true,
       }
     }
+
+    return {
+      genericError: true,
+    }
   }
 
   render() {
-    if (this.state.asyncChunkLoadError) {
-      return <ErrorModalWithReload show={this.state.asyncChunkLoadError} />
+    const { asyncChunkLoadError, genericError } = this.state
+
+    switch (true) {
+      case asyncChunkLoadError: {
+        return (
+          <ErrorModalWithReload
+            message="Please check your network connection and try again."
+            show={asyncChunkLoadError}
+          />
+        )
+      }
+      case genericError: {
+        return <ErrorModalWithReload show={genericError} />
+      }
     }
 
     return this.props.children
@@ -55,13 +73,16 @@ export class ErrorBoundary extends React.Component<Props, State> {
 /**
  * An error popup with the option to reload the page
  */
-const ErrorModalWithReload: React.FC<{ show: boolean }> = ({ show }) => {
+const ErrorModalWithReload: React.FC<{ message?: string; show: boolean }> = ({
+  message,
+  show,
+}) => {
   return (
     <>
       <NavBar />
       <ErrorModal
         show={show}
-        detailText="Please check your network connection and try again."
+        detailText={message}
         closeText="Reload"
         ctaAction={() => {
           location.reload()
