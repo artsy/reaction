@@ -1,8 +1,11 @@
 import { Color, color, Flex, FlexProps } from "@artsy/palette"
 import React from "react"
 
+// Doesn't exist in design system
+const lightPurple = "#EAE5E7"
+
 interface SectionContainerProps extends FlexProps {
-  background?: Color | "#EAE5E7"
+  background?: Color | typeof lightPurple
 }
 
 export const SectionContainer: React.FC<SectionContainerProps> = ({
@@ -11,7 +14,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   ...rest
 }) => {
   // For sections with bg-colors outside of our design system
-  const bg = background === "#EAE5E7" ? "#EAE5E7" : color(background)
+  const bg = background === lightPurple ? lightPurple : color(background)
 
   return (
     <Flex

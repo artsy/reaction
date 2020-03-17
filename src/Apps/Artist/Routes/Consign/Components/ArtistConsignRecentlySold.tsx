@@ -12,7 +12,10 @@ interface ArtistConsignRecentlySoldProps {
   artworksByInternalID: routes_ArtistConsignQueryResponse["artworksByInternalID"]
 }
 
-export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = props => {
+export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = ({
+  artistConsignment,
+  artworksByInternalID,
+}) => {
   return (
     <SectionContainer>
       <Box textAlign="center">
@@ -32,17 +35,18 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
           <Spacer my={4} />
 
           <Flex
-            justifyContent="space-between"
+            justifyContent={["center", "space-between"]}
             flexWrap="wrap"
             alignItems="center"
           >
-            {props.artworksByInternalID.map(artwork => {
+            {artworksByInternalID.map((artwork, key) => {
               return (
-                <Box px={2}>
+                <Box p={2} key={key}>
                   <FillwidthItem
                     artwork={artwork}
                     targetHeight={150}
                     imageHeight={150}
+                    showExtended={false}
                     width={150 * artwork.image.aspectRatio}
                   />
                 </Box>

@@ -27,7 +27,7 @@ export function getConsignmentData(pathname: string): ArtistConsignment {
   const dataGroupedByURL = groupBy(staticCSVToJSONData, "url")
 
   const mappedData = Object.entries(dataGroupedByURL).reduce(
-    (acc, [key, value]) => {
+    (acc, [key, value], index) => {
       /**
        * The first item in the array contains metrics related to artist; the rest
        * are artworks to display
@@ -35,11 +35,11 @@ export function getConsignmentData(pathname: string): ArtistConsignment {
       const [meta, ...artworks] = value
 
       const recentlySoldArtworkIDs = flatten(
-        artworks.map(artwork => {
-          const ids = artwork[
-            "Artwork ids (recently sold) (comma separated)"
-          ].split(",")
-          return ids
+        artworks.map((artwork: any) => {
+          const id = artwork["Artwork ids (recently sold) (comma separated)"]
+          // FIXME: Add proper type
+          artwork.artworkID = id
+          return id
         })
       )
 

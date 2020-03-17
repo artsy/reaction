@@ -249,6 +249,7 @@ export const routes: RouteConfig[] = [
               ...Consign_artist
             }
             artworksByInternalID(ids: $recentlySoldArtworkIDs) {
+              internalID
               image {
                 aspectRatio
               }

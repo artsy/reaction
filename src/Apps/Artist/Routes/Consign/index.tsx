@@ -34,13 +34,12 @@ const ConsignRoute: React.FC<ConsignRouteProps> = props => {
   const isAuthorizedToView = userIsAdmin(user) && artistConsignment
 
   // Redirect back to artist overview if artist not found within hand-picked data
+  // FIXME: Move this check to the router level when we're ready launch
   useEffect(() => {
     if (!isAuthorizedToView) {
-      // props.router.replace(pathname)
+      props.router.replace(pathname)
     }
   }, [])
-
-  console.log(props)
 
   return (
     <Box>
