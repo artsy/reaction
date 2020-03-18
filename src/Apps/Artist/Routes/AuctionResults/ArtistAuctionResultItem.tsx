@@ -5,6 +5,7 @@ import {
   Col,
   Collapse,
   Link,
+  NoImageIcon,
   Row,
   Sans,
 } from "@artsy/palette"
@@ -20,6 +21,7 @@ import { Media } from "Utils/Responsive"
 import { Box, Button, Flex, Image, Separator, Spacer } from "@artsy/palette"
 import { useTracking } from "react-tracking"
 import { get } from "Utils/get"
+import { ImageWithFallback } from "./Components/ImageWithFallback"
 
 export interface Props extends SystemContextProps {
   expanded?: boolean
@@ -35,24 +37,9 @@ const FullWidthBorderBox = styled(BorderBox)`
   cursor: pointer;
 `
 
-const StyledImage = styled(Image)`
+const StyledImage = styled(ImageWithFallback)`
   max-height: 100%;
   max-width: 100%;
-
-  &:after {
-    content: "\f1c5"" " attr(alt);
-
-    color: white;
-
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-  }
 `
 
 const Capitalize = styled.span`
@@ -147,7 +134,13 @@ const LargeAuctionItem: SFC<Props> = props => {
           height="80px"
           width="80px"
         >
-          {imageUrl && <StyledImage src={imageUrl} preventRightClick />}
+          {imageUrl && (
+            <StyledImage
+              src={imageUrl}
+              Fallback={() => renderFallbackImage()}
+              preventRightClick
+            />
+          )}
         </Flex>
       </Col>
       <Col sm={4}>
@@ -216,9 +209,14 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
           justifyContent="center"
           height="80px"
           width="80px"
-          pr={2}
         >
-          {imageUrl && <StyledImage src={imageUrl} preventRightClick />}
+          {imageUrl && (
+            <StyledImage
+              Fallback={() => renderFallbackImage()}
+              src={imageUrl}
+              preventRightClick
+            />
+          )}
         </Flex>
       </Col>
       <Col xs="6">
@@ -442,6 +440,21 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
       </Link>
     )
   }
+}
+
+const renderFallbackImage = () => {
+  return (
+    <Box bg="black5" width="100%" height="100%">
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        width="100%"
+        height="100%"
+      >
+        <NoImageIcon width="28px" height="28px" fill="black30" />
+      </Flex>
+    </Box>
+  )
 }
 
 const renderLargeCollapse = (props, user, mediator) => {
