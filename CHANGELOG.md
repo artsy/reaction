@@ -1,3 +1,15 @@
+# v25.32.2 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Fix admin check on staging [#3275](https://github.com/artsy/reaction/pull/3275) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.32.1 (Tue Mar 17 2020)
 
 #### 🐛  Bug Fix
