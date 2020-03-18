@@ -1,5 +1,6 @@
 import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
-import { useSystemContext } from "Artsy"
+import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { track, useTracking } from "Artsy/Analytics"
 import React from "react"
 import styled from "styled-components"
 import { MenuData, MenuLinkData } from "../menuData"
@@ -20,6 +21,16 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
   } = props.menuData
 
   const { user } = useSystemContext()
+  const { trackEvent } = useTracking()
+
+  const handleClickTracking = (href: string, text: string) => {
+    trackEvent({
+      context_module: AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+      flow: "Header",
+      subject: text,
+      destination_path: href,
+    })
+  }
 
   return (
     <NavigatorContextProvider>
@@ -33,13 +44,63 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
             <MobileSubmenuLink menu={(artists as MenuLinkData).menu}>
               {(artists as MenuLinkData).menu.title}
             </MobileSubmenuLink>
-            <MobileLink href="/auctions">Auctions</MobileLink>
-            <MobileLink href="/articles">Editorial</MobileLink>
-            <MobileLink href="/galleries">Galleries</MobileLink>
-            <MobileLink href="/fairs">Fairs</MobileLink>
-            <MobileLink href="/shows">Shows</MobileLink>
-            <MobileLink href="/institutions">Museums</MobileLink>
-            <MobileLink href="/gallery-partnerships">
+            <MobileLink
+              href="/auctions"
+              onClick={() => {
+                handleClickTracking("/auctions", "Auctions")
+              }}
+            >
+              Auctions
+            </MobileLink>
+            <MobileLink
+              href="/articles"
+              onClick={() => {
+                handleClickTracking("/articles", "Editorial")
+              }}
+            >
+              Editorial
+            </MobileLink>
+            <MobileLink
+              href="/galleries"
+              onClick={() => {
+                handleClickTracking("/galleries", "Galleries")
+              }}
+            >
+              Galleries
+            </MobileLink>
+            <MobileLink
+              href="/fairs"
+              onClick={() => {
+                handleClickTracking("/fairs", "Fairs")
+              }}
+            >
+              Fairs
+            </MobileLink>
+            <MobileLink
+              href="/shows"
+              onClick={() => {
+                handleClickTracking("/shows", "Shows")
+              }}
+            >
+              Shows
+            </MobileLink>
+            <MobileLink
+              href="/institutions"
+              onClick={() => {
+                handleClickTracking("/institutions", "Museums")
+              }}
+            >
+              Museums
+            </MobileLink>
+            <MobileLink
+              href="/gallery-partnerships"
+              onClick={() => {
+                handleClickTracking(
+                  "/gallery-partnerships",
+                  "Partner with Artsy"
+                )
+              }}
+            >
               Partner with Artsy
             </MobileLink>
             {user ? <LoggedInLinks /> : <AuthenticateLinks />}
@@ -119,6 +180,8 @@ const BackLink = () => {
 
 const NavLink = ({ link }) => {
   const isSubMenu = !!link.menu
+  const { trackEvent } = useTracking()
+
   if (isSubMenu) {
     return (
       <React.Fragment key={link.menu.title}>
@@ -129,7 +192,20 @@ const NavLink = ({ link }) => {
   } else {
     return (
       <React.Fragment key={link.href}>
-        <MobileLink href={link.href}>{link.text}</MobileLink>
+        <MobileLink
+          href={link.href}
+          onClick={() => {
+            trackEvent({
+              context_module:
+                AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+              flow: "Header",
+              subject: link.text,
+              destination_path: link.href,
+            })
+          }}
+        >
+          {link.text}
+        </MobileLink>
         {link.dividerBelow && <Separator my={1} color={color("black10")} />}
       </React.Fragment>
     )
@@ -137,6 +213,7 @@ const NavLink = ({ link }) => {
 }
 
 export const MobileSubmenuLink = ({ children, menu }) => {
+  const { trackEvent } = useTracking()
   const { path, push } = useNavigation()
   return (
     <li>
@@ -169,16 +246,38 @@ export const MobileSubmenuLink = ({ children, menu }) => {
 }
 
 const AuthenticateLinks = () => {
+  const { trackEvent } = useTracking()
+
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
       <MobileLink
         href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
+        onClick={() => {
+          trackEvent({
+            context_module:
+              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            flow: "Header",
+            subject: "Sign Up",
+            destination_path:
+              "/sign_up?intent=signup&trigger=click&contextModule=Header",
+          })
+        }}
       >
         Sign Up
       </MobileLink>
       <MobileLink
         href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
+        onClick={() => {
+          trackEvent({
+            context_module:
+              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            flow: "Header",
+            subject: "Login",
+            destination_path:
+              "/log_in?intent=signup&trigger=click&contextModule=Header",
+          })
+        }}
       >
         Login
       </MobileLink>
@@ -187,11 +286,39 @@ const AuthenticateLinks = () => {
 }
 
 const LoggedInLinks = () => {
+  const { trackEvent } = useTracking()
+
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <MobileLink href="/works-for-you">Works for you </MobileLink>
-      <MobileLink href="/user/edit">Account</MobileLink>
+      <MobileLink
+        href="/works-for-you"
+        onClick={() => {
+          trackEvent({
+            context_module:
+              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            flow: "Header",
+            subject: "Works for you",
+            destination_path: "/works-for-you",
+          })
+        }}
+      >
+        Works for you{" "}
+      </MobileLink>
+      <MobileLink
+        href="/user/edit"
+        onClick={() => {
+          trackEvent({
+            context_module:
+              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            flow: "Header",
+            subject: "Account",
+            destination_path: "/user/edit",
+          })
+        }}
+      >
+        Account
+      </MobileLink>
     </Box>
   )
 }
