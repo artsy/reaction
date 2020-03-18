@@ -1,3 +1,15 @@
+# v25.32.3 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Ensure dynamic data is passed [#3276](https://github.com/artsy/reaction/pull/3276) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.32.2 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
