@@ -17,10 +17,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
   integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
 
-"@artsy/lint-changed@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-3.0.2.tgz#39ec3d0ba41a9679329f8fcde40523c71fa5bc29"
-  integrity sha512-lMtHcJJ+TvD+a4MGpwx0qt0KR5Gdknn/F2Ox6DAajemwILX3A4pMVoHgUb9ySdKlmJBdXj8MH6GfOzgU3NjPhQ==
+"@artsy/lint-changed@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-3.0.3.tgz#acf4d62075f526727ecc741c661922c5037b6ade"
+  integrity sha512-ELg1pgPgQ6pK7iVyOYhDMGWRaUWTa6ivWgzNcIAlPFiFPgCjiy8AJGTZmGHCDdIC37GBxDqWuLyleJPdt4HK/Q==
   dependencies:
     await-to-js "^2.1.1"
     kleur "^3.0.3"
