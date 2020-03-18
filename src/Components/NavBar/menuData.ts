@@ -1,19 +1,19 @@
-interface MenuData {
+export interface MenuData {
   title: string
   links: LinkData[]
 }
 
-type LinkData = SimpleLinkData | MenuLinkData
+type LinkData = MenuLinkData | SimpleLinkData
 
 // e.g. "Editorial"
-interface SimpleLinkData {
+export interface SimpleLinkData {
   text: string
   href: string
   dividerBelow?: boolean
 }
 
 // e.g. "Art Movement >"
-interface MenuLinkData {
+export interface MenuLinkData {
   text: string
   menu: MenuData
   dividerBelow?: boolean
