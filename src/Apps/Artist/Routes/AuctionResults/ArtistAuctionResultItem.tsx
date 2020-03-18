@@ -5,7 +5,7 @@ import {
   Col,
   Collapse,
   Link,
-  NoImageIcon,
+  NoArtworkIcon,
   Row,
   Sans,
 } from "@artsy/palette"
@@ -451,7 +451,7 @@ const renderFallbackImage = () => {
         width="100%"
         height="100%"
       >
-        <NoImageIcon width="28px" height="28px" fill="black30" />
+        <NoArtworkIcon width="28px" height="28px" fill="black30" />
       </Flex>
     </Box>
   )
