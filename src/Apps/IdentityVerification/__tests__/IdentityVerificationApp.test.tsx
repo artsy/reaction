@@ -53,6 +53,44 @@ describe("IdentityVerification route", () => {
     jest.resetAllMocks()
   })
   describe("for signed-in user", () => {
+    describe("unactionable end states", () => {
+      it("renders a message about an identity verification that is `passed`", async () => {
+        const env = setupTestEnv()
+
+        const page = await env.buildPage({
+          mockData: deepMerge(IdentityVerificationAppQueryResponseFixture, {
+            me: {
+              identityVerification: {
+                state: "passed",
+              },
+            },
+          }),
+        })
+
+        expect(page.text()).toContain("Identity verification complete")
+        expect(page.startVerificationButton.exists()).toBeFalsy()
+        expect(page.finishButton.exists()).toBeTruthy()
+      })
+
+      it("renders a message about an identity verification that is `failed`", async () => {
+        const env = setupTestEnv()
+
+        const page = await env.buildPage({
+          mockData: deepMerge(IdentityVerificationAppQueryResponseFixture, {
+            me: {
+              identityVerification: {
+                state: "failed",
+              },
+            },
+          }),
+        })
+
+        expect(page.text()).toContain("Identity verification failed")
+        expect(page.startVerificationButton.exists()).toBeFalsy()
+        expect(page.contactSupportButton.exists()).toBeTruthy()
+      })
+    })
+
     it("allows an identity verification instance's owner to view the landing page", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
@@ -80,6 +118,10 @@ describe("IdentityVerification route", () => {
     })
 
     describe("user enters verification flow", () => {
+      beforeEach(() => {
+        window.location.assign = jest.fn()
+      })
+
       it("user click on 'continue to verification' button is tracked", async () => {
         const env = setupTestEnv()
         const page = await env.buildPage()
@@ -95,12 +137,10 @@ describe("IdentityVerification route", () => {
       })
 
       it("user is redirected to the verification flow on a successful mutation", async () => {
-        window.location.assign = jest.fn()
         const env = setupTestEnv()
         const page = await env.buildPage()
 
         await page.clickStartVerification()
-
         expect(window.location.assign).toHaveBeenCalledWith("www.identity.biz")
       })
 
@@ -121,7 +161,6 @@ describe("IdentityVerification route", () => {
         env.mutations.useResultsOnce(badResult)
 
         await page.clickStartVerification()
-
         const errorModal = expectOne(page.find(ErrorModal))
         expect(errorModal.props().show).toBe(true)
         expect(page.text()).toContain(
@@ -134,13 +173,13 @@ describe("IdentityVerification route", () => {
         const page = await env.buildPage()
         env.mutations.mockNetworkFailureOnce()
 
-        await page.clickStartVerification()
-
-        const errorModal = expectOne(page.find(ErrorModal))
-        expect(errorModal.props().show).toBe(true)
-        expect(page.text()).toContain(
-          "Something went wrong. Please try again or contact verification@artsy.net."
-        )
+        page.clickStartVerification().then(() => {
+          const errorModal = expectOne(page.find(ErrorModal))
+          expect(errorModal.props().show).toBe(true)
+          expect(page.text()).toContain(
+            "Something went wrong. Please try again or contact verification@artsy.net."
+          )
+        })
       })
     })
   })
