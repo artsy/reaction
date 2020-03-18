@@ -1,10 +1,8 @@
 import { SystemContextProvider } from "Artsy"
-import * as authentication from "Components/NavBar/Utils/authentication"
 import { mount } from "enzyme"
 import React from "react"
 import { UserMenu } from "../UserMenu"
 
-jest.mock("Components/NavBar/Utils/authentication")
 jest.mock("Artsy/Analytics/useTracking", () => {
   return {
     useTracking: () => ({
@@ -57,7 +55,7 @@ describe("UserMenu", () => {
       .find("MenuItem")
       .last()
       .simulate("click")
-    expect(authentication.logout).toHaveBeenCalledWith(mediator)
+    expect(mediator.trigger).toBeCalledWith("auth:logout")
   })
 
   describe("lab features", () => {

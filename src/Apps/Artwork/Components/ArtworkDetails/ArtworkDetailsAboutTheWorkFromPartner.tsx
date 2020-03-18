@@ -25,7 +25,7 @@ import {
   StackableBorderBox,
 } from "@artsy/palette"
 import { FollowProfileButton_profile } from "__generated__/FollowProfileButton_profile.graphql"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
@@ -53,7 +53,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   }
 
   handleOpenAuth = (mediator, partner) => {
-    openAuthModal(mediator, {
+    openAuthToFollowSave(mediator, {
       entity: partner,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowPartner,

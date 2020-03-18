@@ -66,12 +66,12 @@ export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
       ) : (
         <>
           <MobileLink
-            href={`/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+            href={`/log_in?intent=signup&trigger=click&contextModule=Header`}
           >
             Login
           </MobileLink>
           <MobileLink
-            href={`/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+            href={`/sign_up?intent=signup&trigger=click&contextModule=Header`}
           >
             Sign up
           </MobileLink>

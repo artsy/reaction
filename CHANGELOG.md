@@ -1,3 +1,135 @@
+# v25.32.4 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Update artist name [#3277](https://github.com/artsy/reaction/pull/3277) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.3 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Ensure dynamic data is passed [#3276](https://github.com/artsy/reaction/pull/3276) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.2 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Fix admin check on staging [#3275](https://github.com/artsy/reaction/pull/3275) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Forgot form titles [#3273](https://github.com/artsy/reaction/pull/3273) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.32.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Build out new Artist/Consign landing page [#3261](https://github.com/artsy/reaction/pull/3261) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.31.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Expand openAuthModal helpers, update NavBar triggers [#3264](https://github.com/artsy/reaction/pull/3264) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.31.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add generic error handler [#3272](https://github.com/artsy/reaction/pull/3272) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.30.1 (Mon Mar 16 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1758] add a fallback image when there is no headerImage [#3226](https://github.com/artsy/reaction/pull/3226) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.30.0 (Mon Mar 16 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add more safety around network failures with fallback UI [#3271](https://github.com/artsy/reaction/pull/3271) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.4 (Sat Mar 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Fix alignment in image [#3269](https://github.com/artsy/reaction/pull/3269) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.3 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3268](https://github.com/artsy/reaction/pull/3268) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.29.2 (Fri Mar 13 2020)
 
 #### 🐛  Bug Fix

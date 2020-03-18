@@ -27,10 +27,11 @@ export function getUser(user: User | null | undefined): User | null {
 
 export function userHasLabFeature(user: User, featureName: string): boolean {
   const lab_features = get(user, u => u.lab_features, [])
-
-  return lab_features.includes(featureName)
+  const hasLabFeature = lab_features.includes(featureName)
+  return hasLabFeature
 }
 
 export function userIsAdmin(user?: User): boolean {
-  return user && user.type === "Admin" ? true : false
+  const isAdmin = Boolean(user && user.type === "Admin" ? true : false)
+  return isAdmin
 }

@@ -28,7 +28,7 @@ import { Header_collection } from "__generated__/Header_collection.graphql"
 import { useSystemContext } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Link } from "found"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 import { FeaturedArtists } from "./FeaturedArtists"
 
 export interface Props {
@@ -37,7 +37,7 @@ export interface Props {
 }
 
 const handleOpenAuth = (mediator, artist) => {
-  openAuthModal(mediator, {
+  openAuthToFollowSave(mediator, {
     entity: artist,
     contextModule: AnalyticsSchema.ContextModule.CollectionDescription,
     intent: AuthModalIntent.FollowArtist,

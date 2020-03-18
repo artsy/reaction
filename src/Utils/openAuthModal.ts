@@ -19,7 +19,11 @@ export enum AuthModalIntent {
   SaveArtwork = "save artwork",
 }
 
-export const openAuthModal = (
+export const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
+  mediator.trigger("open:auth", options)
+}
+
+export const openAuthToFollowSave = (
   mediator: Mediator,
   options: AuthModalOptions
 ) => {
@@ -97,22 +101,10 @@ function getMobileIntentToSaveArtwork({
   }
 }
 
-function getDesktopAuthIntent(options: AuthModalOptions): ModalOptions {
-  switch (options.intent) {
-    case AuthModalIntent.FollowArtist:
-    case AuthModalIntent.FollowPartner:
-      return getDesktopIntentToFollow(options)
-    case AuthModalIntent.SaveArtwork:
-      return getDesktopIntentToSaveArtwork(options)
-    default:
-      return undefined
-  }
-}
-
-export const getDesktopIntentToFollow = ({
+function getDesktopIntentToFollow({
   entity,
   intent,
-}: AuthModalOptions): ModalOptions => {
+}: AuthModalOptions): ModalOptions {
   const kind = intent === AuthModalIntent.FollowArtist ? "artist" : "profile"
   return {
     mode: ModalType.signup,
@@ -139,5 +131,17 @@ function getDesktopIntentToSaveArtwork({
       kind: "artworks",
       objectId: entity.slug,
     },
+  }
+}
+
+function getDesktopAuthIntent(options: AuthModalOptions): ModalOptions {
+  switch (options.intent) {
+    case AuthModalIntent.FollowArtist:
+    case AuthModalIntent.FollowPartner:
+      return getDesktopIntentToFollow(options)
+    case AuthModalIntent.SaveArtwork:
+      return getDesktopIntentToSaveArtwork(options)
+    default:
+      return undefined
   }
 }

@@ -22,7 +22,13 @@ export const NetworkOfflineMonitor: React.FC = () => {
   }
 
   return (
-    <Box position="fixed" top={58} width="100%" style={{ opacity: 0.9 }}>
+    <Box
+      position="fixed"
+      left={0}
+      top={58}
+      width="100%"
+      style={{ opacity: 0.9 }}
+    >
       <Banner
         backgroundColor="black10"
         textColor="black100"

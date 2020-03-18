@@ -69,7 +69,7 @@ export class ForgotPasswordForm extends Component<
               />
               {status && !status.success && <Error show>{status.error}</Error>}
               <SubmitButton disabled={isSubmitting}>
-                Send Reset Instructions
+                Send me reset instructions
               </SubmitButton>
               <Footer
                 handleTypeChange={() =>
