@@ -1,7 +1,6 @@
 import { SystemContextProvider } from "Artsy"
 import { mount } from "enzyme"
 import React from "react"
-
 import { menuData, SimpleLinkData } from "../../menuData"
 import { MobileLink } from "../MobileLink"
 import {
@@ -9,6 +8,12 @@ import {
   MobileSubmenuLink,
   NewMobileNavMenu,
 } from "../NewMobileNavMenu"
+
+jest.mock("Artsy/Analytics/useTracking", () => ({
+  useTracking: () => ({
+    trackEvent: x => x,
+  }),
+}))
 
 describe("MobileNavMenu", () => {
   const getWrapper = props => {

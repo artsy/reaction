@@ -1,6 +1,6 @@
 import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
 import { AnalyticsSchema, useSystemContext } from "Artsy"
-import { track, useTracking } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics"
 import React from "react"
 import styled from "styled-components"
 import { MenuData, MenuLinkData } from "../menuData"
@@ -221,6 +221,13 @@ export const MobileSubmenuLink = ({ children, menu }) => {
         py={0.5}
         flexDirection="row"
         onClick={() => {
+          trackEvent({
+            context_module:
+              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            flow: "Header",
+            subject: menu.text,
+            destination_path: menu.text,
+          })
           push(menu.title)
         }}
       >
