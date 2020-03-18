@@ -1,26 +1,16 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import { AppContainer } from "Apps/Components/AppContainer"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
+import { Title as HeadTitle } from "react-head"
 
-import { Meta, Title as HeadTitle } from "react-head"
-
-export const Processing = () => {
+export const Processing: React.FC = () => {
   return (
     <AppContainer>
       <HeadTitle>Artsy | ID Verification</HeadTitle>
 
-      <Meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-      />
-
       <Box px={[2, 3]} mb={6} mt={4}>
-        <Box
-          mx={["auto"]}
-          width={[335, "80%"]}
-          maxWidth={"400px"}
-          textAlign="center"
-        >
+        <Box mx="auto" width={[335, "80%"]} maxWidth="400px" textAlign="center">
           <Serif size="6" color="black100">
             Your verification is processing
           </Serif>
@@ -32,14 +22,11 @@ export const Processing = () => {
           <Sans size="4" color="black100" mt={2}>
             In the meantime, you can still browse on Artsy.
           </Sans>
-          <Button
-            block
-            width="100%"
-            mt={2}
-            onClick={() => (window.location.href = "/")}
-          >
-            Return home
-          </Button>
+          <RouterLink to="/">
+            <Button block width="100%" mt={2}>
+              Return home
+            </Button>
+          </RouterLink>
         </Box>
       </Box>
     </AppContainer>
