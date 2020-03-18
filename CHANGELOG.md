@@ -1,3 +1,15 @@
+# v25.32.9 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1702] new mobile nav menu [#3238](https://github.com/artsy/reaction/pull/3238) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.32.6 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
