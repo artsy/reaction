@@ -25,7 +25,7 @@ interface ConsignRouteProps {
   router: Router
 }
 
-const ConsignRoute: React.FC<ConsignRouteProps> = props => {
+export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
   const { artist } = props
   const { user } = useSystemContext()
   const pathname = props.match.location.pathname.replace("/consign", "")

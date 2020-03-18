@@ -1,6 +1,7 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
 interface ArtistConsignHeaderProps {
@@ -23,7 +24,9 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
         </Box>
 
         <Box>
-          <Button>Request a price estimate</Button>
+          <RouterLink to="/consign">
+            <Button>Request a price estimate</Button>
+          </RouterLink>
         </Box>
       </Box>
     </SectionContainer>
