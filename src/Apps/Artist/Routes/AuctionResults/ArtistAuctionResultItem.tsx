@@ -9,18 +9,19 @@ import {
   Row,
   Sans,
 } from "@artsy/palette"
+import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { AnalyticsSchema, SystemContextProps } from "Artsy"
 import { Mediator, SystemContext } from "Artsy"
+import { ModalType } from "Components/Authentication/Types"
 import { DateTime } from "luxon"
 import React, { SFC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-import { Media } from "Utils/Responsive"
-
-import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
 import { useTracking } from "react-tracking"
+import styled from "styled-components"
 import { get } from "Utils/get"
+import { openAuthModal } from "Utils/openAuthModal"
+import { Media } from "Utils/Responsive"
 import { ImageWithFallback } from "./Components/ImageWithFallback"
 
 export interface Props extends SystemContextProps {
@@ -362,8 +363,8 @@ const renderPricing = (salePrice, saleDate, user, mediator, size) => {
         mb={buttonMargin}
         onClick={() => {
           mediator &&
-            mediator.trigger("open:auth", {
-              mode: "register",
+            openAuthModal(mediator, {
+              mode: ModalType.login,
               copy: "Log in to see full auction records — for free",
             })
         }}
@@ -396,8 +397,8 @@ const renderEstimate = (estimatedPrice, user, mediator, size) => {
       <Link
         onClick={() => {
           mediator &&
-            mediator.trigger("open:auth", {
-              mode: "register",
+            openAuthModal(mediator, {
+              mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
             })
         }}
@@ -430,8 +431,8 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
       <Link
         onClick={() => {
           mediator &&
-            mediator.trigger("open:auth", {
-              mode: "register",
+            openAuthModal(mediator, {
+              mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
             })
         }}

@@ -42,4 +42,13 @@ describe("IdentityVerification/routes", () => {
 
     expect(status).toBe(200)
   })
+
+  it("renders the Identity Verification processing page", async () => {
+    const { status } = await render(
+      "/identity-verification/processing",
+      IdentityVerificationAppQueryResponseFixture
+    )
+
+    expect(status).toBe(200)
+  })
 })
