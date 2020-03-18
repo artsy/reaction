@@ -6,8 +6,8 @@ export interface AuctionResultsFilters {
   sizes?: string[]
   page?: number
   sort?: string
-  createdAfterYear?: string
-  createdBeforeYear?: string
+  createdAfterYear?: number
+  createdBeforeYear?: number
 
   /** Used to get the overall earliest created year for all lots of given artist */
   readonly earliestCreatedYear?: number
@@ -78,10 +78,10 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
   }
 
   if (filters.earliestCreatedYear) {
-    initialFilterState.createdAfterYear = `${filters.earliestCreatedYear}`
+    initialFilterState.createdAfterYear = filters.earliestCreatedYear
   }
   if (filters.latestCreatedYear) {
-    initialFilterState.createdBeforeYear = `${filters.latestCreatedYear}`
+    initialFilterState.createdBeforeYear = filters.latestCreatedYear
   }
 
   const [auctionResultsFilterState, dispatch] = useReducer(
@@ -177,16 +177,16 @@ const AuctionResultsFilterReducer = (
 
       if (name === "createdBeforeYear" && value) {
         if (!state.createdAfterYear) {
-          filterState.createdAfterYear = `${state.earliestCreatedYear}`
-        } else if (parseInt(state.createdAfterYear) > parseInt(value)) {
+          filterState.createdAfterYear = state.earliestCreatedYear
+        } else if (state.createdAfterYear > value) {
           filterState.createdAfterYear = value
         }
       }
 
       if (name === "createdAfterYear" && value) {
         if (!state.createdBeforeYear) {
-          filterState.createdBeforeYear = `${state.latestCreatedYear}`
-        } else if (parseInt(state.createdBeforeYear) < parseInt(value)) {
+          filterState.createdBeforeYear = state.latestCreatedYear
+        } else if (state.createdBeforeYear < value) {
           filterState.createdBeforeYear = value
         }
       }

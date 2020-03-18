@@ -37,8 +37,8 @@ export const YearCreated: React.FC = () => {
         <LargeSelect
           title="Earliest"
           options={fullDateRange}
-          onSelect={year => {
-            filterContext.setFilter("createdAfterYear", year)
+          onSelect={(year: string) => {
+            filterContext.setFilter("createdAfterYear", parseInt(year))
           }}
           selected={`${createdAfterYear}`}
         />
@@ -46,8 +46,8 @@ export const YearCreated: React.FC = () => {
         <LargeSelect
           title="Latest"
           options={fullDateRange}
-          onSelect={year => {
-            filterContext.setFilter("createdBeforeYear", year)
+          onSelect={(year: string) => {
+            filterContext.setFilter("createdBeforeYear", parseInt(year))
           }}
           selected={`${createdBeforeYear}`}
         />

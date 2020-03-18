@@ -75,10 +75,10 @@ describe("AuctionResultsFilterContext", () => {
           },
         })
         act(() => {
-          context.setFilter("createdAfterYear", "1990")
+          context.setFilter("createdAfterYear", 1990)
           setTimeout(() => {
-            expect(context.filters.createdAfterYear).toEqual("1990")
-            expect(context.filters.createdBeforeYear).toEqual("2000")
+            expect(context.filters.createdAfterYear).toEqual(1990)
+            expect(context.filters.createdBeforeYear).toEqual(2000)
             done()
           })
         })
@@ -91,10 +91,10 @@ describe("AuctionResultsFilterContext", () => {
           },
         })
         act(() => {
-          context.setFilter("createdAfterYear", "2001")
+          context.setFilter("createdAfterYear", 2001)
           setTimeout(() => {
-            expect(context.filters.createdAfterYear).toEqual("2001")
-            expect(context.filters.createdBeforeYear).toEqual("2001")
+            expect(context.filters.createdAfterYear).toEqual(2001)
+            expect(context.filters.createdBeforeYear).toEqual(2001)
             done()
           })
         })
@@ -109,10 +109,10 @@ describe("AuctionResultsFilterContext", () => {
           },
         })
         act(() => {
-          context.setFilter("createdBeforeYear", "2000")
+          context.setFilter("createdBeforeYear", 2000)
           setTimeout(() => {
-            expect(context.filters.createdBeforeYear).toEqual("2000")
-            expect(context.filters.createdAfterYear).toEqual("1990")
+            expect(context.filters.createdBeforeYear).toEqual(2000)
+            expect(context.filters.createdAfterYear).toEqual(1990)
             done()
           })
         })
@@ -121,14 +121,14 @@ describe("AuctionResultsFilterContext", () => {
       it("should set createdAfterYear to its value if createdAfterYear is greater", done => {
         getWrapper({
           filters: {
-            createdAfterYear: "2000",
+            createdAfterYear: 2000,
           },
         })
         act(() => {
-          context.setFilter("createdBeforeYear", "1990")
+          context.setFilter("createdBeforeYear", 1990)
           setTimeout(() => {
-            expect(context.filters.createdBeforeYear).toEqual("1990")
-            expect(context.filters.createdAfterYear).toEqual("1990")
+            expect(context.filters.createdBeforeYear).toEqual(1990)
+            expect(context.filters.createdAfterYear).toEqual(1990)
             done()
           })
         })
