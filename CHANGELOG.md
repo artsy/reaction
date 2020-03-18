@@ -1,3 +1,15 @@
+# v25.32.4 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Update artist name [#3277](https://github.com/artsy/reaction/pull/3277) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.32.3 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
