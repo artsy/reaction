@@ -1,3 +1,15 @@
+# v25.32.6 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [AUCT-930] static id verification processing page [#3274](https://github.com/artsy/reaction/pull/3274) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
 # v25.32.5 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
