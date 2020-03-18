@@ -7,6 +7,7 @@ interface FooterProps {
   handleTypeChange?: (modalType: ModalType) => void
   inline?: boolean
   mode?: ModalType
+  onAppleLogin?: (e: any) => void
   onFacebookLogin?: (e: any) => void
   showRecaptchaDisclaimer?: boolean
 }
@@ -16,6 +17,7 @@ export const Footer = (props: FooterProps) => {
     handleTypeChange,
     inline,
     mode,
+    onAppleLogin,
     onFacebookLogin,
     showRecaptchaDisclaimer,
   } = props
@@ -74,7 +76,7 @@ export const Footer = (props: FooterProps) => {
           >
             <FooterText>
               {"Sign up using "}
-              <Link color="black60" onClick={onFacebookLogin}>
+              <Link color="black60" onClick={onAppleLogin}>
                 Apple
               </Link>{" "}
               {" or "}

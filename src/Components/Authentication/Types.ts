@@ -29,6 +29,7 @@ export interface FormProps {
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void
   intent?: string
+  onAppleLogin?: (e: Event) => void
   onFacebookLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
   title?: string

@@ -14,6 +14,7 @@ import {
 
 export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string } & {
+    apple?: string
     facebook?: string
     twitter?: string
   }

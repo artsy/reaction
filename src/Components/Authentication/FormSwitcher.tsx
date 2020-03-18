@@ -26,12 +26,14 @@ export interface FormSwitcherProps {
   handleTypeChange?: (e: string) => void
   isMobile?: boolean
   isStatic?: boolean
+  onAppleLogin?: (e: Event) => void
   onFacebookLogin?: (e: Event) => void
   onTwitterLogin?: (e: Event) => void
   options: ModalOptions
   title?: string
   showRecaptchaDisclaimer?: boolean
   submitUrls?: { [P in ModalType]: string } & {
+    apple?: string
     facebook?: string
     twitter?: string
   }
@@ -199,6 +201,20 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
             handleSubmit={handleSubmit}
             intent={options.intent}
             onBackButtonClicked={onBackButtonClicked}
+            onAppleLogin={() => {
+              if (this.props.onSocialAuthEvent) {
+                this.props.onSocialAuthEvent({
+                  ...options,
+                  service: "apple",
+                })
+              }
+              if (typeof window !== "undefined") {
+                window.location.href =
+                  this.props.submitUrls.apple +
+                  `?${authQueryData}` +
+                  "&service=apple"
+              }
+            }}
             onFacebookLogin={() => {
               if (this.props.onSocialAuthEvent) {
                 this.props.onSocialAuthEvent({
@@ -206,7 +222,6 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
                   service: "facebook",
                 })
               }
-
               if (typeof window !== "undefined") {
                 window.location.href =
                   this.props.submitUrls.facebook +
