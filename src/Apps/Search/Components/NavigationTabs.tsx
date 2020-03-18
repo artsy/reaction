@@ -64,7 +64,7 @@ export class NavigationTabs extends React.Component<Props> {
         }}
         key={to}
       >
-        <Flex>
+        <Flex mr={[0, 2]}>
           {text}
           {count != null && (
             <Sans ml={0.5} size="3t" weight="regular">
