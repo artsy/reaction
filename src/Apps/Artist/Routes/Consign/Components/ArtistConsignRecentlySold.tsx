@@ -9,11 +9,13 @@ import { SectionContainer } from "./SectionContainer"
 
 interface ArtistConsignRecentlySoldProps {
   artistConsignment: ArtistConsignment
+  artistName: string
   artworksByInternalID: routes_ArtistConsignQueryResponse["artworksByInternalID"]
 }
 
 export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = ({
   artistConsignment,
+  artistName,
   artworksByInternalID,
 }) => {
   return (
@@ -28,7 +30,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
 
           <Box>
             <Sans size="6">
-              Works by Kehinde Wiley sold on Artsy in the past 12 months
+              Works by {artistName} sold on Artsy in the past 12 months
             </Sans>
           </Box>
 

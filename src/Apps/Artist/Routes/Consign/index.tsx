@@ -26,6 +26,7 @@ interface ConsignRouteProps {
 }
 
 const ConsignRoute: React.FC<ConsignRouteProps> = props => {
+  const { artist } = props
   const { user } = useSystemContext()
   const pathname = props.match.location.pathname.replace("/consign", "")
   const artistConsignment = getConsignmentData(pathname)
@@ -35,8 +36,6 @@ const ConsignRoute: React.FC<ConsignRouteProps> = props => {
   useEffect(() => {
     // FIXME: Ungate admin-only feature when ready to launch
     const isAuthorizedToView = Boolean(userIsAdmin(user) && artistConsignment)
-    console.error(isAuthorizedToView, artistConsignment)
-    console.log(userIsAdmin(user))
 
     if (!isAuthorizedToView) {
       props.router.replace(pathname)
@@ -45,12 +44,16 @@ const ConsignRoute: React.FC<ConsignRouteProps> = props => {
 
   return (
     <Box>
-      <ArtistConsignHeader artistName={props.artist.name} />
+      <ArtistConsignHeader artistName={artist.name} />
       <ArtistConsignRecentlySold
         artistConsignment={artistConsignment}
+        artistName={artist.name}
         artworksByInternalID={props.artworksByInternalID}
       />
-      <ArtistConsignPageViews artistConsignment={artistConsignment} />
+      <ArtistConsignPageViews
+        artistConsignment={artistConsignment}
+        artistName={artist.name}
+      />
       <ArtistConsignMarketTrends artistConsignment={artistConsignment} />
       <ArtistConsignHowtoSell />
       <ArtistConsignFAQ />

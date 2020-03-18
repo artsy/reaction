@@ -6,6 +6,7 @@ import { SectionContainer } from "./SectionContainer"
 
 interface ArtistConsignPageViewsProps {
   artistConsignment: ArtistConsignment
+  artistName: string
 }
 
 export const ArtistConsignPageViews: React.FC<ArtistConsignPageViewsProps> = props => {
@@ -14,8 +15,9 @@ export const ArtistConsignPageViews: React.FC<ArtistConsignPageViewsProps> = pro
       <Box textAlign="center">
         <Box>
           <Serif size="10">
-            Kehinde Wiley works have received more than 10,000 views on Artsy
-            this month
+            {props.artistName} works have received more than{" "}
+            {props.artistConsignment.metadata.roundedViews} views on Artsy this
+            month
           </Serif>
         </Box>
 
