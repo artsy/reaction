@@ -86,13 +86,24 @@ describe("Shipping", () => {
     expect(page.find(RadioGroup).length).toEqual(0)
   })
 
-  it("disables country select when onlyShipsDomestically is true", async () => {
+  it("disables country select when onlyShipsDomestically is true and artwork is not in EU local zone", async () => {
     const domesticShippingOnlyOrder = cloneDeep(testOrder) as any
     domesticShippingOnlyOrder.lineItems.edges[0].node.artwork.onlyShipsDomestically = true
+    domesticShippingOnlyOrder.lineItems.edges[0].node.artwork.euShippingOrigin = false
     const page = await buildPage({
       mockData: { order: domesticShippingOnlyOrder },
     })
     expect(page.find(CountrySelect).props().disabled).toBe(true)
+  })
+
+  it("does not disable select when onlyShipsDomestically is true but artwork is located in EU local zone", async () => {
+    const domesticShippingEUOrder = cloneDeep(testOrder) as any
+    domesticShippingEUOrder.lineItems.edges[0].node.artwork.onlyShipsDomestically = true
+    domesticShippingEUOrder.lineItems.edges[0].node.artwork.euShippingOrigin = true
+    const page = await buildPage({
+      mockData: { order: domesticShippingEUOrder },
+    })
+    expect(page.find(CountrySelect).props().disabled).toBe(false)
   })
 
   it("commits the mutation with the orderId", async () => {

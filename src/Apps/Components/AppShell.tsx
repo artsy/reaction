@@ -1,13 +1,20 @@
 import { Box } from "@artsy/palette"
+import { NetworkOfflineMonitor } from "Artsy/Router/NetworkOfflineMonitor"
 import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { NavBar } from "Components/NavBar"
+import { Match } from "found"
 import { isFunction } from "lodash"
 import React, { useEffect } from "react"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Components/AppShell")
 
-export const AppShell = props => {
+interface AppShellProps {
+  children: React.ReactNode
+  match: Match
+}
+
+export const AppShell: React.FC<AppShellProps> = props => {
   const { children, match } = props
   const routeConfig = findCurrentRoute(match)
 
@@ -44,6 +51,8 @@ export const AppShell = props => {
       <Box>
         <Box>{children}</Box>
       </Box>
+
+      <NetworkOfflineMonitor />
     </Box>
   )
 }

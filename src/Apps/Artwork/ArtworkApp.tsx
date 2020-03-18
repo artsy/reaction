@@ -24,7 +24,6 @@ import { Footer } from "Components/v2/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
 import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
-import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
 export interface Props {
@@ -122,9 +121,9 @@ export class ArtworkApp extends React.Component<Props> {
   }
 
   renderArtists() {
-    const artists = get(this.props, p => p.artwork.artists)
+    const artists = this.props.artwork?.artists
 
-    if (!artists.length) {
+    if (!artists?.length) {
       return null
     }
 

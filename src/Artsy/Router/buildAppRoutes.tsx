@@ -1,4 +1,4 @@
-import { RouteConfig, Router, withRouter } from "found"
+import { Match, RouteConfig, Router, withRouter } from "found"
 import { flatten } from "lodash"
 import React, { useEffect } from "react"
 
@@ -19,6 +19,8 @@ export function buildAppRoutes(routeList: RouteList[]): RouteConfig[] {
   const routes = getActiveRoutes(routeList)
 
   const Component: React.FC<{
+    children: React.ReactNode
+    match: Match
     router: Router
   }> = props => {
     const { router, setRouter } = useSystemContext()

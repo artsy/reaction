@@ -8,6 +8,7 @@ import { creatingCreditCardFailed } from "Apps/Order/Routes/__fixtures__/Mutatio
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
+  createRefetchContainer: component => component,
 }))
 
 jest.mock("react-stripe-elements", () => ({

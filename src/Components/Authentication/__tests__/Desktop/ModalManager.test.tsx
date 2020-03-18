@@ -95,6 +95,6 @@ describe("ModalManager", () => {
     expect(manager.getSubtitle()).toEqual("Sign up")
 
     manager.handleTypeChange("forgot")
-    expect(manager.getSubtitle()).toEqual("Forgot Password")
+    expect(manager.getSubtitle()).toEqual("Reset your password")
   })
 })

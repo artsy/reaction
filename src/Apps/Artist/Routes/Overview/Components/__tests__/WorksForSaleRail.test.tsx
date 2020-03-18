@@ -1,4 +1,3 @@
-// @ts-ignore
 import { Image } from "@artsy/palette"
 import { WorksForSaleRail_Test_QueryRawResponse } from "__generated__/WorksForSaleRail_Test_Query.graphql"
 import { WorksForSaleRailFragmentContainer as WorksForSaleRail } from "Apps/Artist/Routes/Overview/Components/WorksForSaleRail"

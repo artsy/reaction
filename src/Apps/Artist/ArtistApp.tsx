@@ -57,38 +57,47 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
 
         <Row>
           <Col>
+            {/*
+              Page with tabs
+             */}
             {route.displayNavigationTabs ? (
               <>
                 <NavigationTabs artist={artist} />
                 <Spacer mb={2} />
               </>
             ) : (
-              <>
-                <Flex flexDirection="row" alignItems="center">
-                  <ChevronIcon
-                    direction="left"
-                    color="black"
-                    height="18px"
-                    width="14px"
-                    top="-1px"
-                  />
-                  <Sans size="3" weight="medium" color="black100" ml="3px">
-                    <StyledLink
-                      to={`/artist/${artist.slug}`}
-                      onClick={() =>
-                        trackEvent({
-                          action_type: Schema.ActionType.Click,
-                          subject: "Back to artist link",
-                          destination_path: `/artist/${artist.slug}`,
-                        })
-                      }
-                    >
-                      {`Back to ${artist.name}`}
-                    </StyledLink>
-                  </Sans>
-                </Flex>
-                <Spacer mb={2} />
-              </>
+              /**
+               * If full page, then we take over the entire area; if not, then
+               * display the "Back to Artist link"
+               */
+              !route.displayFullPage && (
+                <>
+                  <Flex flexDirection="row" alignItems="center">
+                    <ChevronIcon
+                      direction="left"
+                      color="black"
+                      height="18px"
+                      width="14px"
+                      top="-1px"
+                    />
+                    <Sans size="3" weight="medium" color="black100" ml="3px">
+                      <StyledLink
+                        to={`/artist/${artist.slug}`}
+                        onClick={() =>
+                          trackEvent({
+                            action_type: Schema.ActionType.Click,
+                            subject: "Back to artist link",
+                            destination_path: `/artist/${artist.slug}`,
+                          })
+                        }
+                      >
+                        {`Back to ${artist.name}`}
+                      </StyledLink>
+                    </Sans>
+                  </Flex>
+                  <Spacer mb={2} />
+                </>
+              )
             )}
 
             <Box minHeight="30vh">{children}</Box>

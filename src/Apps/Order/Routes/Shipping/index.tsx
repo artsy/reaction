@@ -402,6 +402,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     touched={addressTouched}
                     onChange={this.onAddressChange}
                     domesticOnly={artwork.onlyShipsDomestically}
+                    euOrigin={artwork.euShippingOrigin}
                     shippingCountry={artwork.shippingCountry}
                     showPhoneNumberInput={false}
                   />
@@ -495,6 +496,7 @@ export const ShippingFragmentContainer = createFragmentContainer(
                 slug
                 pickup_available: pickupAvailable
                 onlyShipsDomestically
+                euShippingOrigin
                 shippingCountry
               }
             }

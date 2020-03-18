@@ -1,15 +1,20 @@
 import loadable from "@loadable/component"
+import { Redirect, RedirectException, RouteConfig } from "found"
+import * as React from "react"
+import { graphql } from "react-relay"
+
 import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
+
+import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+
+import { hasOverviewContent } from "./Components/NavigationTabs"
+import { getConsignmentData } from "./Routes/Consign/Utils/getConsignmentData"
+
 import {
   ArtworkFilters,
   initialArtworkFilterState,
 } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
-import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
-import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { Redirect, RedirectException, RouteConfig } from "found"
-import * as React from "react"
-import { graphql } from "react-relay"
-import { hasOverviewContent } from "./Components/NavigationTabs"
 
 graphql`
   fragment routes_Artist on Artist {
@@ -60,6 +65,7 @@ const ArtistApp = loadable(() => import("./ArtistApp"))
 const OverviewRoute = loadable(() => import("./Routes/Overview"))
 const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
 const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
+const ConsignRoute = loadable(() => import("./Routes/Consign"))
 const CVRoute = loadable(() => import("./Routes/CV"))
 const ArticlesRoute = loadable(() => import("./Routes/Articles"))
 const ShowsRoute = loadable(() => import("./Routes/Shows"))
@@ -226,6 +232,42 @@ export const routes: RouteConfig[] = [
       },
 
       // Routes not in tabs
+
+      {
+        path: "consign",
+        getComponent: () => ConsignRoute,
+        prepare: () => {
+          ConsignRoute.preload()
+        },
+        displayFullPage: true,
+        query: graphql`
+          query routes_ArtistConsignQuery(
+            $artistID: String!
+            $recentlySoldArtworkIDs: [String]!
+          ) {
+            artist(id: $artistID) {
+              ...Consign_artist
+            }
+            artworksByInternalID(ids: $recentlySoldArtworkIDs) {
+              internalID
+              image {
+                aspectRatio
+              }
+              ...FillwidthItem_artwork
+            }
+          }
+        `,
+        prepareVariables: (params, props) => {
+          const pathname = props.location.pathname.replace("/consign", "")
+          const recentlySoldArtworkIDs =
+            getConsignmentData(pathname)?.metadata?.recentlySoldArtworkIDs ?? []
+
+          return {
+            ...params,
+            recentlySoldArtworkIDs,
+          }
+        },
+      },
       {
         path: "cv",
         getComponent: () => CVRoute,

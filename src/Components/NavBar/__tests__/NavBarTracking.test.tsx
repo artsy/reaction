@@ -55,40 +55,6 @@ describe("NavBarTracking", () => {
         new_notification_count: 0,
       })
     })
-
-    it("tracks NavBar login button clicks", () => {
-      const wrapper = mount(
-        <Wrapper user={null}>
-          <NavBar />
-        </Wrapper>
-      )
-      wrapper
-        .find("Button")
-        .first()
-        .simulate("click")
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: AnalyticsSchema.ActionType.Click,
-        subject: AnalyticsSchema.Subject.Login,
-      })
-    })
-
-    it("tracks NavBar signup button clicks", () => {
-      const wrapper = mount(
-        <Wrapper user={null}>
-          <NavBar />
-        </Wrapper>
-      )
-      wrapper
-        .find("Button")
-        .last()
-        .simulate("click")
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: AnalyticsSchema.ActionType.Click,
-        subject: AnalyticsSchema.Subject.Signup,
-      })
-    })
   })
 
   describe("MoreNavMenu", () => {

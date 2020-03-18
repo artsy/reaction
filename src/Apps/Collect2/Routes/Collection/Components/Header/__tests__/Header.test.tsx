@@ -4,6 +4,8 @@ import {
   collectionHeaderArtworks,
   defaultCollectionHeaderArtworks,
 } from "Apps/Collect2/Routes/Collection/Components/Header/__tests__/fixtures/artworks"
+import { SystemContextProvider } from "Artsy"
+import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import React from "react"
@@ -30,6 +32,7 @@ jest.mock("Artsy/Analytics/useTracking", () => {
 })
 
 describe("collections header", () => {
+  const context = { mediator: { trigger: jest.fn() }, user: null }
   const props: Props = {
     artworks: collectionHeaderArtworks,
     collection: {
@@ -55,7 +58,9 @@ describe("collections header", () => {
   ) {
     return mount(
       <MockBoot breakpoint={breakpoint}>
-        <CollectionHeader {...theProps} />
+        <SystemContextProvider {...context}>
+          <CollectionHeader {...theProps} />
+        </SystemContextProvider>
       </MockBoot>
     )
   }
@@ -452,6 +457,24 @@ describe("collections header", () => {
       viewMore.simulate("click")
 
       expect(component.find(EntityHeader).length).toEqual(6)
+    })
+
+    it("opens auth modal with expected args when following an artist", () => {
+      const component = mountComponent(props)
+      component
+        .find(FollowArtistButton)
+        .first()
+        .simulate("click")
+      expect(context.mediator.trigger).toBeCalledWith("open:auth", {
+        mode: "signup",
+        copy: "Sign up to follow KAWS",
+        intent: "follow artist",
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: "kaws",
+        },
+      })
     })
   })
 })
