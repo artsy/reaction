@@ -35,7 +35,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
           <Spacer my={4} />
 
           <Flex
-            justifyContent={["center", "space-between"]}
+            justifyContent={["center", "center"]}
             flexWrap="wrap"
             alignItems="center"
           >

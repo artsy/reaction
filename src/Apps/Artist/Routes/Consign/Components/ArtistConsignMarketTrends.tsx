@@ -33,7 +33,13 @@ interface ArtistConsignMarketTrendsProps {
   artistConsignment: ArtistConsignment
 }
 
-export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = props => {
+export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = ({
+  artistConsignment,
+}) => {
+  const {
+    metadata: { highestRealized, str, realized },
+  } = artistConsignment
+
   return (
     <SectionContainer background="black100">
       <Box textAlign="center" width="100%" px={6}>
@@ -46,17 +52,17 @@ export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps>
             <Statistic
               top="Highest realized price"
               middle="All time"
-              bottom="$300k"
+              bottom={highestRealized}
             />
             <Statistic
               top="Sell through rate"
               middle="Last 12 months"
-              bottom="86%"
+              bottom={str}
             />
             <Statistic
               top="Realized price over estimate"
               middle="Last 12 months"
-              bottom="176%"
+              bottom={realized}
             />
           </Flex>
         </Box>
