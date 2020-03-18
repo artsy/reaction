@@ -1,3 +1,21 @@
+# v25.32.5 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Fix tab UI spacing [#3280](https://github.com/artsy/reaction/pull/3280) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.2 to v3.0.3 [#3278](https://github.com/artsy/reaction/pull/3278) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.32.4 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
