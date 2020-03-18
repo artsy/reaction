@@ -16,9 +16,11 @@ import { DateTime } from "luxon"
 import React, { SFC, useContext, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
+import { openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 
 import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
+import { ModalType } from "Components/Authentication/Types"
 import { useTracking } from "react-tracking"
 import { get } from "Utils/get"
 import { ImageWithFallback } from "./Components/ImageWithFallback"
@@ -362,8 +364,8 @@ const renderPricing = (salePrice, saleDate, user, mediator, size) => {
         mb={buttonMargin}
         onClick={() => {
           mediator &&
-            mediator.trigger("open:auth", {
-              mode: "register",
+            openAuthModal(mediator, {
+              mode: ModalType.login,
               copy: "Log in to see full auction records — for free",
             })
         }}
@@ -396,8 +398,8 @@ const renderEstimate = (estimatedPrice, user, mediator, size) => {
       <Link
         onClick={() => {
           mediator &&
-            mediator.trigger("open:auth", {
-              mode: "register",
+            openAuthModal(mediator, {
+              mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
             })
         }}
@@ -430,8 +432,8 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
       <Link
         onClick={() => {
           mediator &&
-            mediator.trigger("open:auth", {
-              mode: "register",
+            openAuthModal(mediator, {
+              mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
             })
         }}
