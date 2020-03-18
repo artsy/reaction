@@ -30,12 +30,14 @@ const ConsignRoute: React.FC<ConsignRouteProps> = props => {
   const pathname = props.match.location.pathname.replace("/consign", "")
   const artistConsignment = getConsignmentData(pathname)
 
-  // FIXME: Ungate admin-only feature when ready to launch
-  const isAuthorizedToView = userIsAdmin(user) && artistConsignment
-
   // Redirect back to artist overview if artist not found within hand-picked data
   // FIXME: Move this check to the router level when we're ready launch
   useEffect(() => {
+    // FIXME: Ungate admin-only feature when ready to launch
+    const isAuthorizedToView = Boolean(userIsAdmin(user) && artistConsignment)
+    console.error(isAuthorizedToView, artistConsignment)
+    console.log(userIsAdmin(user))
+
     if (!isAuthorizedToView) {
       props.router.replace(pathname)
     }
