@@ -201,18 +201,15 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
 export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
-    const {
-      startAt,
-      endAt,
-    } = props.artist?.auctionResultsConnection?.createdYearRange
+    const { startAt, endAt } =
+      props.artist.auctionResultsConnection.createdYearRange ?? {}
     // TODO: Remove once diffusion data is cleaned up
     const { birthday } = props.artist
-    const birthYear = DateTime.fromJSDate(new Date(birthday)).year
+    const birthYear = birthday && DateTime.fromJSDate(new Date(birthday)).year
     return (
       <AuctionResultsFilterContextProvider
         filters={{
-          earliestCreatedYear:
-            birthday && birthYear > startAt ? birthYear : startAt,
+          earliestCreatedYear: Math.max(birthYear, startAt),
           latestCreatedYear: endAt,
         }}
       >
@@ -232,6 +229,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           organizations: { type: "[String]" }
           categories: { type: "[String]" }
           sizes: { type: "[ArtworkSizes]" }
+          createdAfterYear: { type: "Int" }
+          createdBeforeYear: { type: "Int" }
         ) {
         slug
         birthday
@@ -245,6 +244,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           organizations: $organizations
           categories: $categories
           sizes: $sizes
+          earliestCreatedYear: $createdAfterYear
+          latestCreatedYear: $createdBeforeYear
         ) {
           ...AuctionResultsCount_results
           createdYearRange {
@@ -288,6 +289,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $organizations: [String]
       $categories: [String]
       $sizes: [ArtworkSizes]
+      $createdBeforeYear: Int
+      $createdAfterYear: Int
     ) {
       artist(id: $artistID) {
         ...ArtistAuctionResults_artist
@@ -300,6 +303,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             organizations: $organizations
             categories: $categories
             sizes: $sizes
+            createdAfterYear: $createdAfterYear
+            createdBeforeYear: $createdBeforeYear
           )
       }
     }

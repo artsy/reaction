@@ -98,6 +98,18 @@ const node: ReaderFragment = {
       "name": "sizes",
       "type": "[ArtworkSizes]",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "createdAfterYear",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "createdBeforeYear",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -138,6 +150,11 @@ const node: ReaderFragment = {
         },
         {
           "kind": "Variable",
+          "name": "earliestCreatedYear",
+          "variableName": "createdAfterYear"
+        },
+        {
+          "kind": "Variable",
           "name": "first",
           "variableName": "first"
         },
@@ -145,6 +162,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "last",
           "variableName": "last"
+        },
+        {
+          "kind": "Variable",
+          "name": "latestCreatedYear",
+          "variableName": "createdBeforeYear"
         },
         {
           "kind": "Variable",
@@ -336,5 +358,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '119e718403b9868b8bb1c0d72b866bdc';
+(node as any).hash = 'ccd3e6414b9ecf9cb988c5cb3cf64be7';
 export default node;
