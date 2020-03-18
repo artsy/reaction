@@ -1,3 +1,21 @@
+# v25.32.6 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [AUCT-930] static id verification processing page [#3274](https://github.com/artsy/reaction/pull/3274) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.2 to v7.2.0 [#3254](https://github.com/artsy/reaction/pull/3254) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.32.5 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
