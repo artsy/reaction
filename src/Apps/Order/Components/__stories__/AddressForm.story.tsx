@@ -2,7 +2,7 @@ import { Flex } from "@artsy/palette"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
-import { Address, AddressForm } from "../AddressForm"
+import { Address, AddressForm } from "../../../../Components/AddressForm"
 
 class TypicalAddressForm extends React.Component<
   {

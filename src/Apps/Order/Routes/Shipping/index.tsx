@@ -15,14 +15,6 @@ import {
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import {
-  Address,
-  AddressChangeHandler,
-  AddressErrors,
-  AddressForm,
-  AddressTouched,
-  emptyAddress,
-} from "Apps/Order/Components/AddressForm"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import {
   buyNowFlowSteps,
@@ -46,6 +38,14 @@ import {
 import { validatePresence } from "Apps/Order/Utils/formValidators"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import {
+  Address,
+  AddressChangeHandler,
+  AddressErrors,
+  AddressForm,
+  AddressTouched,
+  emptyAddress,
+} from "Components/AddressForm"
 import { Router } from "found"
 import { pick } from "lodash"
 import React, { Component } from "react"

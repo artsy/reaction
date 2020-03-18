@@ -16,12 +16,12 @@ jest.mock("react-stripe-elements", () => ({
   injectStripe: args => args,
 }))
 
-import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
+import { Address, AddressForm } from "Components/AddressForm"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"

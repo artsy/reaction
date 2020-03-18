@@ -1,5 +1,5 @@
 import { Checkbox } from "@artsy/palette"
-import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
+import { Address, AddressForm } from "Components/AddressForm"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 
 export const ValidFormValues = {
