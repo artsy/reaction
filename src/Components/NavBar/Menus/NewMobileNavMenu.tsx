@@ -173,12 +173,12 @@ const AuthenticateLinks = () => {
     <Box>
       <Separator my={1} color={color("black10")} />
       <MobileLink
-        href={`/sign_up?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+        href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
       >
         Sign Up
       </MobileLink>
       <MobileLink
-        href={`/log_in?intent=signup&signupIntent=signup&trigger=click&contextModule=Header`}
+        href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
       >
         Login
       </MobileLink>
