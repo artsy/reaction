@@ -18,7 +18,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
 
-import { Box, Button, Flex, Image, Separator, Spacer } from "@artsy/palette"
+import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
 import { useTracking } from "react-tracking"
 import { get } from "Utils/get"
 import { ImageWithFallback } from "./Components/ImageWithFallback"
