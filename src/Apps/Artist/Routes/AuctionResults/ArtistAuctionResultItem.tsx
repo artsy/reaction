@@ -139,7 +139,6 @@ const LargeAuctionItem: SFC<Props> = props => {
             <StyledImage
               src={imageUrl}
               Fallback={() => renderFallbackImage()}
-              preventRightClick
             />
           )}
         </Flex>
@@ -215,7 +214,6 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
             <StyledImage
               Fallback={() => renderFallbackImage()}
               src={imageUrl}
-              preventRightClick
             />
           )}
         </Flex>
