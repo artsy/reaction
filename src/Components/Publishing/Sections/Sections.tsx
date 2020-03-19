@@ -288,7 +288,6 @@ export class Sections extends Component<Props, State> {
     let displayMarkerInjected = false
     let indexAtFirstAd = null
     let textAndImageSection = 0
-    let standardArticleAdInjected = false
     const isStandardArticle = articleType === "standard"
 
     const articleSections = isTruncatedAt
@@ -313,7 +312,6 @@ export class Sections extends Component<Props, State> {
 
       // calculate if a section is a text + image set/collection
       if (
-        isStandardArticle &&
         prevSection?.type === "text" &&
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set")
@@ -343,7 +341,12 @@ export class Sections extends Component<Props, State> {
       }
 
       // render one ad on Standard articles after the 2nd image + text section
-      if (textAndImageSection === 2 && !standardArticleAdInjected && !isSuper) {
+      if (
+        textAndImageSection === 2 &&
+        quantityOfAdsRendered < 1 &&
+        !isSuper &&
+        isStandardArticle
+      ) {
         shouldInjectNewAds = true
       }
 
@@ -355,10 +358,14 @@ export class Sections extends Component<Props, State> {
 
         firstAdInjected = true
         indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
-        standardArticleAdInjected = true
+
+        console.log(
+          "Sections -> renderSections -> isStandardArticle",
+          isStandardArticle
+        )
 
         ad = (
-          <AdWrapper mt={marginTop} isStandardArticle>
+          <AdWrapper mt={marginTop} isStandardArticle={isStandardArticle}>
             <DisplayAd
               adUnit={this.getAdUnit(
                 placementCount,

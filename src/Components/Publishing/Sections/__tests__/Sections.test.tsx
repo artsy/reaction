@@ -55,7 +55,6 @@ describe("Sections", () => {
       article: StandardArticle,
       DisplayPanel: () => <div>hi!</div>,
       isMobile: true,
-      isThirdStandardAd: false,
     }
     ;(useTracking as jest.Mock).mockImplementation(() => {
       return {
@@ -171,7 +170,6 @@ describe("Sections", () => {
     })
 
     it("injects one additional display ad if standard", () => {
-      props.isThirdStandardAd = true
       props.isMobile = false
       const wrapper = mountWrapper(props)
 
