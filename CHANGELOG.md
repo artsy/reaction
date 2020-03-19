@@ -1,3 +1,15 @@
+# v25.32.10 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- User can navigate to IDV FAQ from the IDV landing page [#3282](https://github.com/artsy/reaction/pull/3282) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v25.32.9 (Wed Mar 18 2020)
 
 #### 🐛  Bug Fix
