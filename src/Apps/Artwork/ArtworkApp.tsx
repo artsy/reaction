@@ -21,15 +21,10 @@ import { PricingContextFragmentContainer as PricingContext } from "./Components/
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-<<<<<<< HEAD
-import { Footer } from "Components/Footer"
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
-=======
 import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import { useRouteTracking } from "Artsy/Analytics/useRouteTracking"
-import { Footer } from "Components/v2/Footer"
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
->>>>>>> [Bugfix] Fix artwork page to page tracking
+import { Footer } from "Components/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
 import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
 import { Media } from "Utils/Responsive"

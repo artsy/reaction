@@ -28,10 +28,6 @@ export const RenderPending = () => {
     setIsFetching(true)
   }
 
-  /**
-   * TODO: Add timeout here for when a request takes too long. Show generic error
-   * and notify Sentry.
-   */
   if (isFetching) {
     if (EXPERIMENTAL_APP_SHELL) {
       return (
@@ -81,11 +77,13 @@ export const RenderReady: React.FC<{
     setIsFetching(false)
   }
 
-  return (
-    <Renderer shouldUpdate>
-      <ElementsRenderer elements={props.elements} />
-    </Renderer>
-  )
+  if (!isFetching) {
+    return (
+      <Renderer shouldUpdate>
+        <ElementsRenderer elements={props.elements} />
+      </Renderer>
+    )
+  }
 }
 
 export const RenderError: React.FC<{
