@@ -69,6 +69,8 @@ export type SharedAuctionResultsFilterContextProps = Pick<
   onChange?: (filterState) => void
 }
 
+let auctionResultsFilterResetState: AuctionResultsFilters = initialAuctionResultsFilterState
+
 export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsFilterContextProps & {
   children: React.ReactNode
 }> = ({ children, filters = {}, onFilterClick }) => {
@@ -83,6 +85,8 @@ export const AuctionResultsFilterContextProvider: React.FC<SharedAuctionResultsF
   if (filters.latestCreatedYear) {
     initialFilterState.createdBeforeYear = filters.latestCreatedYear
   }
+
+  auctionResultsFilterResetState = initialFilterState
 
   const [auctionResultsFilterState, dispatch] = useReducer(
     AuctionResultsFilterReducer,
@@ -233,7 +237,7 @@ const AuctionResultsFilterReducer = (
      */
     case "RESET": {
       return {
-        ...initialAuctionResultsFilterState,
+        ...auctionResultsFilterResetState,
         reset: true,
       }
     }
