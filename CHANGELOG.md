@@ -1,3 +1,15 @@
+# v25.33.0 (Thu Mar 19 2020)
+
+#### 🚀  Enhancement
+
+- Add initial UI for years created filters on auction results [#3270](https://github.com/artsy/reaction/pull/3270) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.32.10 (Thu Mar 19 2020)
 
 #### 🐛  Bug Fix
