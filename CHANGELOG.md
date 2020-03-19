@@ -1,3 +1,15 @@
+# v25.33.1 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3288](https://github.com/artsy/reaction/pull/3288) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v25.33.0 (Thu Mar 19 2020)
 
 #### 🚀  Enhancement
