@@ -277,7 +277,6 @@
     "moduleNameMapper": {
       "^luxon$": "<rootDir>/node_modules/luxon",
       "^react$": "<rootDir>/node_modules/react",
-      "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
     }
   },

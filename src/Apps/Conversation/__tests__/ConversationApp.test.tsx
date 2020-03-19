@@ -1,13 +1,13 @@
+import {
+  ConversationAppTestQueryRawResponse,
+  ConversationAppTestQueryResponse,
+} from "__generated__/ConversationAppTestQuery.graphql"
 import { MockedConversation } from "Apps/__tests__/Fixtures/Conversation"
 import { SystemContextProvider } from "Artsy"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { graphql } from "react-relay"
-import {
-  ConversationAppTestQueryRawResponse,
-  ConversationAppTestQueryResponse,
-} from "__generated__/ConversationAppTestQuery.graphql"
 import { ConversationAppFragmentContainer } from "../ConversationApp"
 
 jest.unmock("react-relay")

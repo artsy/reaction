@@ -4,6 +4,7 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
   artist: {
     id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
     slug: "pablo-picasso",
+    birthday: "October 25, 1881",
     auctionResultsConnection: {
       pageInfo: { hasNextPage: true, endCursor: "YXJyYXljb25uZWN0aW9uOjk=" },
       pageCursors: {
@@ -22,6 +23,10 @@ export const AuctionResultsFixture: AuctionResults_Test_QueryRawResponse = {
         previous: null,
       },
       totalCount: 830,
+      createdYearRange: {
+        startAt: 1880,
+        endAt: 1973,
+      },
       edges: [
         {
           node: {
