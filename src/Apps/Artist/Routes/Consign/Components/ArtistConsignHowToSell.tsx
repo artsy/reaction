@@ -11,6 +11,7 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { SectionContainer } from "./SectionContainer"
 
 const Section: React.FC<{
@@ -69,7 +70,9 @@ export const ArtistConsignHowtoSell: React.FC = props => {
         <Spacer mt={6} />
 
         <Box>
-          <Button>Request a price estimate</Button>
+          <RouterLink to="/consign">
+            <Button>Request a price estimate</Button>
+          </RouterLink>
         </Box>
       </Box>
     </SectionContainer>

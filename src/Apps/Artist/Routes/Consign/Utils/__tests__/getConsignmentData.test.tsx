@@ -1,7 +1,14 @@
+import { artistConsignmentFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ConsignRouteFixture"
 import { getConsignmentData } from "../getConsignmentData"
 
-describe("getConsignmentData.test.tsx", () => {
+describe("getConsignmentData", () => {
+  it("returns undefined if artist pathname does not exist in CSV", () => {
+    expect(getConsignmentData("/artist/not-found")).toEqual(undefined)
+  })
+
   it("converts CSVtoJSON data into expected format", () => {
-    // expect(getConsignmentData())
+    expect(getConsignmentData("/artist/alex-katz")).toEqual(
+      artistConsignmentFixture
+    )
   })
 })

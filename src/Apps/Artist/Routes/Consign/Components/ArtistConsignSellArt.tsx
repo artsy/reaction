@@ -1,6 +1,7 @@
 import React from "react"
 
 import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignSellArt: React.FC = props => {
@@ -19,7 +20,9 @@ export const ArtistConsignSellArt: React.FC = props => {
         </Box>
 
         <Box>
-          <Button>Request a price estimate</Button>
+          <RouterLink to="/consign">
+            <Button>Request a price estimate</Button>
+          </RouterLink>
         </Box>
       </Box>
     </SectionContainer>
