@@ -207,7 +207,9 @@ export class Sections extends Component<Props, State> {
     const { isMobile } = this.props
 
     if (isStandard) {
-      return isMobile ? AdUnit.Mobile_InContentMR2 : AdUnit.Desktop_InContentLB2
+      return isMobile
+        ? AdUnit.Mobile_InContentMR2
+        : AdUnit.Desktop_TopLeaderboard
     }
 
     if (index === indexAtFirstAd) {
@@ -277,6 +279,7 @@ export class Sections extends Component<Props, State> {
       isTruncatedAt,
       hideAds,
     } = this.props
+
     const { layout: articleType } = article
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
@@ -310,7 +313,7 @@ export class Sections extends Component<Props, State> {
 
       // calculate if a section is a text + image set/collection
       if (
-        articleType === "standard" &&
+        isStandardArticle &&
         prevSection?.type === "text" &&
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set")
@@ -340,7 +343,7 @@ export class Sections extends Component<Props, State> {
       }
 
       // render one ad on Standard articles after the 2nd image + text section
-      if (textAndImageSection === 2 && standardArticleAdInjected === false) {
+      if (textAndImageSection === 2 && !standardArticleAdInjected && !isSuper) {
         shouldInjectNewAds = true
       }
 
@@ -355,7 +358,7 @@ export class Sections extends Component<Props, State> {
         standardArticleAdInjected = true
 
         ad = (
-          <AdWrapper mt={marginTop} isThirdStandardAd={isStandardArticle}>
+          <AdWrapper mt={marginTop} isStandardArticle>
             <DisplayAd
               adUnit={this.getAdUnit(
                 placementCount,
@@ -482,7 +485,7 @@ export const StyledSections = styled.div<{ layout: string }>`
     ${layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
 `
-const AdWrapper = styled(Box)<{ isThirdStandardAd: boolean }>`
-  width: ${p => (p.isThirdStandardAd ? "101vw" : "100vw")};
-  margin-left: ${p => (p.isThirdStandardAd ? "-4vw" : "calc(-50vw + 50%)")};
+const AdWrapper = styled(Box)<{ isStandardArticle: boolean }>`
+  width: ${p => (p.isStandardArticle ? "101vw" : "100vw")};
+  margin-left: ${p => (p.isStandardArticle ? "-4vw" : "calc(-50vw + 50%)")};
 `

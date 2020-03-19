@@ -152,6 +152,7 @@ export class StandardLayout extends React.Component<
                       article={article}
                       isMobile={isMobile}
                       showTooltips={showTooltips}
+                      {...this.props}
                     />
                     <Sidebar
                       emailSignupUrl={emailSignupUrl}
