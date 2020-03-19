@@ -199,8 +199,16 @@ export class Sections extends Component<Props, State> {
     return sectionComponent
   }
 
-  getAdUnit(index: number, indexAtFirstAd: number) {
+  getAdUnit(
+    index: number,
+    indexAtFirstAd: number,
+    isStandard: boolean
+  ): AdUnit {
     const { isMobile } = this.props
+
+    if (isStandard) {
+      return isMobile ? AdUnit.Mobile_InContentMR2 : AdUnit.Desktop_InContentLB2
+    }
 
     if (index === indexAtFirstAd) {
       return isMobile
@@ -244,22 +252,41 @@ export class Sections extends Component<Props, State> {
     return shouldAddTopMargin() ? "calc(100% - 96%)" : null
   }
 
+  getAdDimension(isStandard: boolean): AdDimension {
+    const { isMobile, isSponsored } = this.props
+
+    if (isMobile) {
+      if (isStandard) {
+        return AdDimension.Mobile_InContentMR2
+      }
+      if (isSponsored) {
+        return AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
+      }
+      return AdDimension.Mobile_Feature_InContentLeaderboard1
+    }
+
+    return AdDimension.Desktop_NewsLanding_Leaderboard1
+  }
+
   renderSections() {
     const {
       article,
       customWidth,
-      isMobile,
       isSponsored,
       isSuper,
       isTruncatedAt,
       hideAds,
     } = this.props
+    const { layout: articleType } = article
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
     let placementCount = 1
     let displayMarkerInjected = false
     let indexAtFirstAd = null
+    let textAndImageSection = 0
+    let standardArticleAdInjected = false
+    const isStandardArticle = articleType === "standard"
 
     const articleSections = isTruncatedAt
       ? clone(article.sections).slice(0, isTruncatedAt)
@@ -268,18 +295,31 @@ export class Sections extends Component<Props, State> {
     const renderedSections = articleSections.map((sectionItem, index) => {
       let section = sectionItem
       let ad = null
+      const prevSection = articleSections[index - 1]
       const shouldInject =
         shouldInjectMobileDisplay &&
         sectionItem.type === "text" &&
         !displayMarkerInjected
 
       /**
-       *  Possible data types for sectionItem.type are
-       *  callout, embed, social_embed, text, slideshow, image_set, and image_collection.
-       *  Here we want to inject the first ad after the first image_collection OR image_set data type.
+       *  Possible data types for "sectionItem.type" are : callout, embed, social_embed,
+       *  text, slideshow, image_set, and image_collection.
+       *  Depending on the article type we inject an ad after the first text + image_collection OR image_set
+       *  section (on Features) and after the 2nd text + image_collection OR image_set on Standard Articles.
        * */
+
+      // calculate if a section is a text + image set/collection
+      if (
+        articleType === "standard" &&
+        prevSection?.type === "text" &&
+        (sectionItem.type === "image_collection" ||
+          sectionItem.type === "image_set")
+      ) {
+        textAndImageSection++
+      }
+
       let shouldInjectNewAds =
-        article.layout === "feature" &&
+        articleType === "feature" &&
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set") &&
         !firstAdInjected &&
@@ -290,29 +330,38 @@ export class Sections extends Component<Props, State> {
         placementCount++
       }
 
-      if (placementCount % 6 === 0 && quantityOfAdsRendered < 2) {
-        // only render 2 ads on Features
+      // only render 2 ads on Features
+      if (
+        placementCount % 6 === 0 &&
+        quantityOfAdsRendered < 2 &&
+        articleType !== "standard"
+      ) {
+        shouldInjectNewAds = true
+      }
+
+      // render one ad on Standard articles after the 2nd image + text section
+      if (textAndImageSection === 2 && standardArticleAdInjected === false) {
         shouldInjectNewAds = true
       }
 
       if (shouldInjectNewAds) {
         quantityOfAdsRendered++
 
-        const adDimension = isMobile
-          ? isSponsored
-            ? AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
-            : AdDimension.Mobile_Feature_InContentLeaderboard1
-          : AdDimension.Desktop_NewsLanding_Leaderboard1
-
+        const adDimension = this.getAdDimension(isStandardArticle)
         const marginTop = this.getAdMarginTop(section)
 
         firstAdInjected = true
         indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
+        standardArticleAdInjected = true
 
         ad = (
-          <AdWrapper mt={marginTop}>
+          <AdWrapper mt={marginTop} isThirdStandardAd={isStandardArticle}>
             <DisplayAd
-              adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
+              adUnit={this.getAdUnit(
+                placementCount,
+                indexAtFirstAd,
+                isStandardArticle
+              )}
               adDimension={adDimension}
               targetingData={targetingData(
                 article,
@@ -343,7 +392,7 @@ export class Sections extends Component<Props, State> {
         return (
           <SectionContainer
             key={index}
-            articleLayout={article.layout}
+            articleLayout={articleType}
             section={section}
             customWidth={customWidth}
           >
@@ -433,7 +482,7 @@ export const StyledSections = styled.div<{ layout: string }>`
     ${layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
 `
-const AdWrapper = styled(Box)`
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+const AdWrapper = styled(Box)<{ isThirdStandardAd: boolean }>`
+  width: ${p => (p.isThirdStandardAd ? "101vw" : "100vw")};
+  margin-left: ${p => (p.isThirdStandardAd ? "-4vw" : "calc(-50vw + 50%)")};
 `

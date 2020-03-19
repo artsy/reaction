@@ -73,11 +73,11 @@ export class StandardLayout extends React.Component<
     return (
       <DisplayAd
         adUnit={
-          isMobileAd ? AdUnit.Mobile_InContentMR1 : AdUnit.Desktop_RightRail1
+          isMobileAd ? AdUnit.Mobile_InContentMR2 : AdUnit.Desktop_RightRail1
         }
         adDimension={
           isMobileAd
-            ? AdDimension.Mobile_InContentMR1
+            ? AdDimension.Mobile_InContentMR2
             : AdDimension.Desktop_RightRail1
         }
         targetingData={targetingData(article, "article")}
