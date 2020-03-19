@@ -359,11 +359,6 @@ export class Sections extends Component<Props, State> {
         firstAdInjected = true
         indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
 
-        console.log(
-          "Sections -> renderSections -> isStandardArticle",
-          isStandardArticle
-        )
-
         ad = (
           <AdWrapper mt={marginTop} isStandardArticle={isStandardArticle}>
             <DisplayAd
