@@ -18,6 +18,12 @@ export const RenderPending = () => {
     EXPERIMENTAL_APP_SHELL,
   } = useSystemContext()
 
+  /**
+   * First, set fetching to ensure that components that are listening for this
+   * value have a chance to respond to the fetching state. This is necessary
+   * because the `<Renderer>` component below will freeze all updates for the
+   * duration of the fetch.
+   */
   if (!isFetching) {
     setIsFetching(true)
   }
@@ -26,41 +32,43 @@ export const RenderPending = () => {
    * TODO: Add timeout here for when a request takes too long. Show generic error
    * and notify Sentry.
    */
-  if (EXPERIMENTAL_APP_SHELL) {
-    return (
-      <>
-        <Renderer>{null}</Renderer>
+  if (isFetching) {
+    if (EXPERIMENTAL_APP_SHELL) {
+      return (
+        <>
+          <Renderer>{null}</Renderer>
 
-        <PageLoader
-          className="reactionPageLoader" // positional styling comes from Force body.styl
-          showBackground={false}
-          style={{
-            position: "fixed",
-            left: 0,
-            top: -6,
-            zIndex: 1000,
-          }}
-        />
+          <PageLoader
+            className="reactionPageLoader" // positional styling comes from Force body.styl
+            showBackground={false}
+            style={{
+              position: "fixed",
+              left: 0,
+              top: -6,
+              zIndex: 1000,
+            }}
+          />
 
-        <NetworkTimeout />
-      </>
-    )
-  } else {
-    return (
-      <>
-        <Renderer>{null}</Renderer>
-        <PageLoader
-          className="reactionPageLoader" // positional styling comes from Force body.styl
-          showBackground={false}
-          style={{
-            position: "fixed",
-            left: 0,
-            top: -6,
-            zIndex: 1000,
-          }}
-        />
-      </>
-    )
+          <NetworkTimeout />
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Renderer>{null}</Renderer>
+          <PageLoader
+            className="reactionPageLoader" // positional styling comes from Force body.styl
+            showBackground={false}
+            style={{
+              position: "fixed",
+              left: 0,
+              top: -6,
+              zIndex: 1000,
+            }}
+          />
+        </>
+      )
+    }
   }
 }
 
