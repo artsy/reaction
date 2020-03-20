@@ -5,6 +5,7 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
   artist: {
     name: "Alex Katz",
     id: "alex-katz",
+    href: "/artist/alex-katz",
   },
   artworksByInternalID: [
     {

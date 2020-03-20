@@ -1,7 +1,7 @@
 import { Box, Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import React from "react"
 
-import { routes_ArtistConsignQueryResponse } from "__generated__/routes_ArtistConsignQuery.graphql"
+import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
 
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
@@ -10,7 +10,7 @@ import { SectionContainer } from "./SectionContainer"
 interface ArtistConsignRecentlySoldProps {
   artistConsignment: ArtistConsignment
   artistName: string
-  artworksByInternalID: routes_ArtistConsignQueryResponse["artworksByInternalID"]
+  artworksByInternalID: Consign_artworksByInternalID
 }
 
 export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = ({

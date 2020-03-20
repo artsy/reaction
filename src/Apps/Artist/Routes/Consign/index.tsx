@@ -4,7 +4,7 @@ import React, { useEffect } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { Consign_artist } from "__generated__/Consign_artist.graphql"
-import { routes_ArtistConsignQueryResponse } from "__generated__/routes_ArtistConsignQuery.graphql"
+import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
 
 import { useSystemContext } from "Artsy"
 import { userIsAdmin } from "Utils/user"
@@ -12,6 +12,7 @@ import { ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
 import { ArtistConsignHeader } from "./Components/ArtistConsignHeader"
 import { ArtistConsignHowtoSell } from "./Components/ArtistConsignHowToSell"
 import { ArtistConsignMarketTrends } from "./Components/ArtistConsignMarketTrends"
+import { ArtistConsignMeta } from "./Components/ArtistConsignMeta"
 import { ArtistConsignPageViews } from "./Components/ArtistConsignPageViews"
 import { ArtistConsignRecentlySold } from "./Components/ArtistConsignRecentlySold"
 import { ArtistConsignSellArt } from "./Components/ArtistConsignSellArt"
@@ -20,7 +21,7 @@ import { getConsignmentData } from "./Utils/getConsignmentData"
 
 interface ConsignRouteProps {
   artist: Consign_artist
-  artworksByInternalID: routes_ArtistConsignQueryResponse["artworksByInternalID"]
+  artworksByInternalID: Consign_artworksByInternalID
   match: Match
   router: Router
 }
@@ -42,8 +43,15 @@ export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
     }
   }, [])
 
+  const imageURL = artworksByInternalID[0]?.image.imageURL
+
   return (
     <Box>
+      <ArtistConsignMeta
+        artistName={artist.name}
+        artistHref={artist.href}
+        imageURL={imageURL}
+      />
       <ArtistConsignHeader artistName={artist.name} />
       <ArtistConsignRecentlySold
         artistConsignment={artistConsignment}
@@ -71,6 +79,17 @@ export const ConsignRouteFragmentContainer = createFragmentContainer(
     artist: graphql`
       fragment Consign_artist on Artist {
         name
+        href
+      }
+    `,
+    artworksByInternalID: graphql`
+      fragment Consign_artworksByInternalID on Artwork @relay(plural: true) {
+        internalID
+        image {
+          aspectRatio
+          imageURL
+        }
+        ...FillwidthItem_artwork
       }
     `,
   }

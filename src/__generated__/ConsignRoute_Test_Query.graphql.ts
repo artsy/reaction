@@ -21,6 +21,7 @@ export type ConsignRoute_Test_QueryResponse = {
 export type ConsignRoute_Test_QueryRawResponse = {
     readonly artist: ({
         readonly name: string | null;
+        readonly href: string | null;
         readonly id: string | null;
     }) | null;
     readonly artworksByInternalID: ReadonlyArray<({
@@ -118,6 +119,7 @@ fragment Badge_artwork on Artwork {
 
 fragment Consign_artist on Artist {
   name
+  href
 }
 
 fragment Contact_artwork on Artwork {
@@ -263,14 +265,14 @@ v5 = {
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "href",
   "args": null,
   "storageKey": null
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "href",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -361,7 +363,8 @@ return {
         "plural": false,
         "selections": [
           (v5/*: any*/),
-          (v6/*: any*/)
+          (v6/*: any*/),
+          (v7/*: any*/)
         ]
       },
       {
@@ -406,7 +409,7 @@ return {
               }
             ]
           },
-          (v7/*: any*/),
+          (v6/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -444,8 +447,8 @@ return {
             "concreteType": "Artist",
             "plural": true,
             "selections": [
-              (v6/*: any*/),
               (v7/*: any*/),
+              (v6/*: any*/),
               (v5/*: any*/)
             ]
           },
@@ -466,8 +469,8 @@ return {
             "plural": false,
             "selections": [
               (v5/*: any*/),
-              (v7/*: any*/),
               (v6/*: any*/),
+              (v7/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -500,7 +503,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              (v6/*: any*/),
+              (v7/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": "is_live_open",
@@ -578,7 +581,7 @@ return {
                 "plural": false,
                 "selections": (v9/*: any*/)
               },
-              (v6/*: any*/)
+              (v7/*: any*/)
             ]
           },
           {
@@ -588,7 +591,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          (v6/*: any*/),
+          (v7/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -632,7 +635,7 @@ return {
     "operationKind": "query",
     "name": "ConsignRoute_Test_Query",
     "id": null,
-    "text": "query ConsignRoute_Test_Query(\n  $artistID: String!\n  $recentlySoldArtworkIDs: [String]!\n) {\n  artist(id: $artistID) {\n    ...Consign_artist\n    id\n  }\n  artworksByInternalID(ids: $recentlySoldArtworkIDs) {\n    internalID\n    image {\n      aspectRatio\n    }\n    ...FillwidthItem_artwork\n    id\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Consign_artist on Artist {\n  name\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
+    "text": "query ConsignRoute_Test_Query(\n  $artistID: String!\n  $recentlySoldArtworkIDs: [String]!\n) {\n  artist(id: $artistID) {\n    ...Consign_artist\n    id\n  }\n  artworksByInternalID(ids: $recentlySoldArtworkIDs) {\n    internalID\n    image {\n      aspectRatio\n    }\n    ...FillwidthItem_artwork\n    id\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Consign_artist on Artist {\n  name\n  href\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
     "metadata": {}
   }
 };
