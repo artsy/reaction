@@ -1,3 +1,16 @@
+# v25.34.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Auction Results Visual Tweaks [#3284](https://github.com/artsy/reaction/pull/3284) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.34.1 (Fri Mar 20 2020)
 
 #### 🐛  Bug Fix
