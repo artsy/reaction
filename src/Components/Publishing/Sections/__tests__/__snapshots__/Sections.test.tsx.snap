@@ -679,8 +679,8 @@ exports[`Sections snapshots tests renders properly 1`] = `
 
 .c23 {
   margin-top: calc(100% - 96%);
-  width: 101vw;
-  margin-left: -4vw;
+  width: 100%;
+  margin-left: 0;
 }
 
 @media screen and (min-width:40em) {
@@ -1674,7 +1674,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             style={
               Object {
                 "height": 250,
-                "width": 970,
+                "width": 300,
               }
             }
           />
