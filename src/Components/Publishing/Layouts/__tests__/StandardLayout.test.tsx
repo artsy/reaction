@@ -133,14 +133,14 @@ describe("Standard Article", () => {
         .find(DisplayAd)
         .at(1)
         .props().adDimension
-    ).toBe("970x250")
+    ).toBe("300x250")
 
     expect(
       article
         .find(DisplayAd)
         .at(1)
         .props().adUnit
-    ).toBe("Desktop_TopLeaderboard")
+    ).toBe("Desktop_RightRail1")
 
     expect(
       article
@@ -188,7 +188,7 @@ describe("Standard Article", () => {
         .find(DisplayAd)
         .at(1)
         .props().adUnit
-    ).toBe("Mobile_InContentMR2")
+    ).toBe("Desktop_RightRail1")
 
     expect(
       article

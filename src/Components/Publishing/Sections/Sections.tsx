@@ -207,9 +207,7 @@ export class Sections extends Component<Props, State> {
     const { isMobile } = this.props
 
     if (isStandard) {
-      return isMobile
-        ? AdUnit.Mobile_InContentMR2
-        : AdUnit.Desktop_TopLeaderboard
+      return AdUnit.Desktop_RightRail1
     }
 
     if (index === indexAtFirstAd) {
@@ -257,10 +255,11 @@ export class Sections extends Component<Props, State> {
   getAdDimension(isStandard: boolean): AdDimension {
     const { isMobile, isSponsored } = this.props
 
+    if (isStandard) {
+      return AdDimension.Desktop_RightRail1
+    }
+
     if (isMobile) {
-      if (isStandard) {
-        return AdDimension.Mobile_InContentMR2
-      }
       if (isSponsored) {
         return AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
       }
@@ -360,7 +359,7 @@ export class Sections extends Component<Props, State> {
         indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
 
         ad = (
-          <AdWrapper mt={marginTop} isStandardArticle={isStandardArticle}>
+          <AdWrapper mt={marginTop} layout={articleType}>
             <DisplayAd
               adUnit={this.getAdUnit(
                 placementCount,
@@ -487,7 +486,7 @@ export const StyledSections = styled.div<{ layout: string }>`
     ${layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
 `
-const AdWrapper = styled(Box)<{ isStandardArticle: boolean }>`
-  width: ${p => (p.isStandardArticle ? "101vw" : "100vw")};
-  margin-left: ${p => (p.isStandardArticle ? "-4vw" : "calc(-50vw + 50%)")};
+const AdWrapper = styled(Box)<{ layout: string }>`
+  width: ${p => (p.layout === "standard" ? "100%" : "100vw")};
+  margin-left: ${p => (p.layout === "standard" ? "0" : "calc(-50vw + 50%)")};
 `

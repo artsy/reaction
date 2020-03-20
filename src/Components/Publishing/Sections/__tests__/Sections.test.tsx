@@ -284,7 +284,7 @@ describe("Sections", () => {
 
       const ad = ads.at(0).props()
 
-      expect(ad.adUnit).toBe("Mobile_InContentMR2")
+      expect(ad.adUnit).toBe("Desktop_RightRail1")
       expect(ad.adDimension).toBe("300x250")
     })
   })
