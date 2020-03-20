@@ -1,3 +1,15 @@
+# v25.34.1 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist/Consign] Add tests [#3279](https://github.com/artsy/reaction/pull/3279) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.34.0 (Fri Mar 20 2020)
 
 #### 🚀  Enhancement
