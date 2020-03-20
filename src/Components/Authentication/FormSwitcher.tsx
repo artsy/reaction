@@ -132,6 +132,19 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     )
   }
 
+  getEmailValue = (): string => {
+    const { values } = this.props
+    const isClient = typeof window !== "undefined"
+    let email
+
+    if (isClient) {
+      const searchQuery = window.location.search.slice(1)
+      email = qs.parse(searchQuery).email as string
+    }
+
+    return email || values.email || ""
+  }
+
   render() {
     const {
       error,
@@ -180,8 +193,9 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
 
     const { handleSubmit, onBackButtonClicked, values } = this.props
+
     const defaultValues = {
-      email: values.email || "",
+      email: this.getEmailValue(),
       password: values.password || "",
       name: values.name || "",
       accepted_terms_of_service: values.accepted_terms_of_service || false,
