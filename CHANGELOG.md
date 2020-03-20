@@ -1,3 +1,15 @@
+# v25.33.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Adds a 3rd Display Ad to Standard Articles [#3286](https://github.com/artsy/reaction/pull/3286) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v25.33.1 (Thu Mar 19 2020)
 
 #### 🐛  Bug Fix
