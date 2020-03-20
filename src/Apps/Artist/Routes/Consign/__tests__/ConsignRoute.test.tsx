@@ -1,6 +1,6 @@
 import { ConsignRouteFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ConsignRouteFixture"
 import { SystemContextProvider } from "Artsy"
-import { renderRelayTree } from "DevTools"
+import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "relay-runtime"
 import { ConsignRouteFragmentContainer } from "../index"
@@ -38,13 +38,15 @@ describe("ConsignRoute", () => {
     return await renderRelayTree({
       Component: ({ artist, artworksByInternalID }) => {
         return (
-          <SystemContextProvider user={{ type: "Admin" }}>
-            <ConsignRouteFragmentContainer
-              artist={artist}
-              artworksByInternalID={artworksByInternalID}
-              match={match}
-              router={router}
-            />
+          <SystemContextProvider>
+            <MockBoot user={{ type: "Admin" }}>
+              <ConsignRouteFragmentContainer
+                artist={artist}
+                artworksByInternalID={artworksByInternalID}
+                match={match}
+                router={router}
+              />
+            </MockBoot>
           </SystemContextProvider>
         )
       },
@@ -57,11 +59,7 @@ describe("ConsignRoute", () => {
             ...Consign_artist
           }
           artworksByInternalID(ids: $recentlySoldArtworkIDs) {
-            internalID
-            image {
-              aspectRatio
-            }
-            ...FillwidthItem_artwork
+            ...Consign_artworksByInternalID
           }
         }
       `,
@@ -98,6 +96,12 @@ describe("ConsignRoute", () => {
   describe("ArtistConsignRecentlySold", () => {
     it("includes artist name in recently sold", async () => {
       const wrapper = await getWrapper()
+      expect(
+        wrapper
+          .find("ArtistConsignRecentlySold")
+          .find("Subheader")
+          .text()
+      ).toContain("Alex Katz")
       expect(wrapper.find("ArtistConsignRecentlySold").text()).toContain(
         "Alex Katz"
       )

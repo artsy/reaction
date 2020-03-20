@@ -13,6 +13,7 @@ import {
 } from "@artsy/palette"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { SectionContainer } from "./SectionContainer"
+import { Subheader } from "./Subheader"
 
 const Section: React.FC<{
   icon: React.ReactNode
@@ -36,9 +37,7 @@ export const ArtistConsignHowtoSell: React.FC = props => {
   return (
     <SectionContainer height="100%" background="black10">
       <Box textAlign="center">
-        <Box>
-          <Serif size="10">How to sell your collection with Artsy</Serif>
-        </Box>
+        <Subheader>How to sell your collection with Artsy</Subheader>
 
         <Spacer my={2} />
 

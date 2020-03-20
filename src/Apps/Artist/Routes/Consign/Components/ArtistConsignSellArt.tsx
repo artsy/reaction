@@ -9,7 +9,7 @@ export const ArtistConsignSellArt: React.FC = props => {
     <SectionContainer background={LightPurpleColor}>
       <Box textAlign="center">
         <Box>
-          <Serif size={["10", "12"]}>
+          <Serif element="h2" size={["10", "12"]}>
             Sell Art <br />
             From Your Collection
           </Serif>

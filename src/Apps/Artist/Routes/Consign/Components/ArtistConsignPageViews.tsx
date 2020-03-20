@@ -1,8 +1,9 @@
 import React from "react"
 
-import { Box, Sans, Serif, Spacer } from "@artsy/palette"
+import { Box, Sans, Spacer } from "@artsy/palette"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
+import { Subheader } from "./Subheader"
 
 interface ArtistConsignPageViewsProps {
   artistConsignment: ArtistConsignment
@@ -13,13 +14,11 @@ export const ArtistConsignPageViews: React.FC<ArtistConsignPageViewsProps> = pro
   return (
     <SectionContainer background="black10">
       <Box textAlign="center">
-        <Box>
-          <Serif size="10">
-            {props.artistName} works have received more than{" "}
-            {props.artistConsignment.metadata.roundedViews} views on Artsy this
-            month
-          </Serif>
-        </Box>
+        <Subheader>
+          {props.artistName} works have received more than{" "}
+          {props.artistConsignment.metadata.roundedViews} views on Artsy this
+          month
+        </Subheader>
 
         <Spacer my={1} />
 
