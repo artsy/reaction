@@ -22,12 +22,15 @@ import {
   MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
+  NewMobileNavMenu,
   NotificationsMenu,
   UserMenu,
 } from "./Menus"
 
 import { ModalType } from "Components/Authentication/Types"
 import { openAuthModal } from "Utils/openAuthModal"
+import { menuData } from "./menuData"
+
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 
@@ -51,6 +54,9 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const canViewNewMobileNav = Boolean(
+    user?.lab_features?.includes("Updated Navigation")
+  )
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
   // Close mobile menu if dragging window from small size to desktop
@@ -228,7 +234,11 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          {canViewNewMobileNav ? (
+            <NewMobileNavMenu isOpen={showMobileMenu} menuData={menuData} />
+          ) : (
+            <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          )}
         </>
       )}
     </header>

@@ -163,6 +163,10 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   sizes: [],
+                  createdAfterYear: 1881,
+                  createdBeforeYear: 1973,
+                  earliestCreatedYear: 1881,
+                  latestCreatedYear: 1973,
                 },
               })
               done()
@@ -252,6 +256,10 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   categories: [],
+                  createdAfterYear: 1881,
+                  createdBeforeYear: 1973,
+                  earliestCreatedYear: 1881,
+                  latestCreatedYear: 1973,
                 },
               })
 

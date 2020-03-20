@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "25.32.8",
+  "version": "25.33.2",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -277,7 +277,6 @@
     "moduleNameMapper": {
       "^luxon$": "<rootDir>/node_modules/luxon",
       "^react$": "<rootDir>/node_modules/react",
-      "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
     }
   },

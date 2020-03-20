@@ -12,6 +12,7 @@ import { Box, Spacer } from "@artsy/palette"
 import { AnalyticsSchema } from "Artsy"
 import { LoadingArea } from "Components/v2/LoadingArea"
 import { isEqual } from "lodash"
+import { DateTime } from "luxon"
 import { useTracking } from "react-tracking"
 import { usePrevious } from "Utils/Hooks/usePrevious"
 import createLogger from "Utils/logger"
@@ -200,8 +201,18 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
 export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
+    const { startAt, endAt } =
+      props.artist.auctionResultsConnection.createdYearRange ?? {}
+    // TODO: Remove once diffusion data is cleaned up
+    const { birthday } = props.artist
+    const birthYear = birthday && DateTime.fromJSDate(new Date(birthday)).year
     return (
-      <AuctionResultsFilterContextProvider>
+      <AuctionResultsFilterContextProvider
+        filters={{
+          earliestCreatedYear: Math.max(birthYear, startAt),
+          latestCreatedYear: endAt,
+        }}
+      >
         <AuctionResultsContainer {...props} />
       </AuctionResultsFilterContextProvider>
     )
@@ -218,8 +229,11 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           organizations: { type: "[String]" }
           categories: { type: "[String]" }
           sizes: { type: "[ArtworkSizes]" }
+          createdAfterYear: { type: "Int" }
+          createdBeforeYear: { type: "Int" }
         ) {
         slug
+        birthday
         ...AuctionResultHeader_artist
         auctionResultsConnection(
           first: $first
@@ -230,8 +244,14 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           organizations: $organizations
           categories: $categories
           sizes: $sizes
+          earliestCreatedYear: $createdAfterYear
+          latestCreatedYear: $createdBeforeYear
         ) {
           ...AuctionResultsCount_results
+          createdYearRange {
+            startAt
+            endAt
+          }
           pageInfo {
             hasNextPage
             endCursor
@@ -269,6 +289,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $organizations: [String]
       $categories: [String]
       $sizes: [ArtworkSizes]
+      $createdBeforeYear: Int
+      $createdAfterYear: Int
     ) {
       artist(id: $artistID) {
         ...ArtistAuctionResults_artist
@@ -281,6 +303,8 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             organizations: $organizations
             categories: $categories
             sizes: $sizes
+            createdAfterYear: $createdAfterYear
+            createdBeforeYear: $createdBeforeYear
           )
       }
     }
