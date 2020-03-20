@@ -1,3 +1,17 @@
+# v25.34.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add Artist/Consign SEO/meta tags [#3292](https://github.com/artsy/reaction/pull/3292) ([@damassi](https://github.com/damassi))
+- Updates size on 3rd display ad on standard desktop [#3293](https://github.com/artsy/reaction/pull/3293) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.34.2 (Fri Mar 20 2020)
 
 #### 🐛  Bug Fix
