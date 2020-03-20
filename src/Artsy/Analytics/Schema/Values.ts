@@ -289,6 +289,7 @@ export enum ContextModule {
   HeaderUserDropdown = "HeaderUserDropdown",
   HeaderActivityDropdown = "HeaderActivityDropdown",
   HeaderArtworksDropdown = "HeaderArtworksDropdown",
+  HeaderArtistsDropdown = "HeaderArtistsDropdown",
 
   /**
    * Artist page

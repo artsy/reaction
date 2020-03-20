@@ -25,7 +25,8 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
 
   const handleClickTracking = (href: string, text: string) => {
     trackEvent({
-      context_module: AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_module: AnalyticsSchema.ContextModule.Header,
       flow: "Header",
       subject: text,
       destination_path: href,
@@ -154,33 +155,55 @@ const Menu = ({ isOpen, title, links, showBacknav = true }) => {
   )
 }
 
-const BackLink = () => {
+export const BackLink = () => {
+  const { trackEvent } = useTracking()
   const { pop } = useNavigation()
+  const contextModule = getContextModule()
+
   return (
-    <Box position="absolute" top="-6px">
-      <a
-        href="#"
-        onClick={e => {
-          e.preventDefault()
-          pop()
-        }}
-      >
-        <ChevronIcon
-          direction="left"
-          color={color("black100")}
-          height="10px"
-          width="10px"
-          top="7px"
-          left="5px"
-        />
-      </a>
+    <Box
+      position="absolute"
+      top="-6px"
+      onClick={e => {
+        e.preventDefault()
+        trackEvent({
+          action_type: AnalyticsSchema.ActionType.Click,
+          context_module: contextModule,
+          flow: "Header",
+          subject: "Back link",
+        })
+        pop()
+      }}
+    >
+      <ChevronIcon
+        direction="left"
+        color={color("black100")}
+        height="10px"
+        width="10px"
+        top="7px"
+        left="5px"
+      />
     </Box>
   )
+}
+
+const getContextModule = () => {
+  const { path } = useNavigation()
+  let contextModule
+  if (path[0] === "Artworks") {
+    contextModule = AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+  } else if (path[0] === "Artists") {
+    contextModule = AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+  } else {
+    contextModule = AnalyticsSchema.ContextModule.Header
+  }
+  return contextModule
 }
 
 const NavLink = ({ link }) => {
   const isSubMenu = !!link.menu
   const { trackEvent } = useTracking()
+  const contextModule = getContextModule()
 
   if (isSubMenu) {
     return (
@@ -196,8 +219,8 @@ const NavLink = ({ link }) => {
           href={link.href}
           onClick={() => {
             trackEvent({
-              context_module:
-                AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+              action_type: AnalyticsSchema.ActionType.Click,
+              context_module: contextModule,
               flow: "Header",
               subject: link.text,
               destination_path: link.href,
@@ -215,20 +238,21 @@ const NavLink = ({ link }) => {
 export const MobileSubmenuLink = ({ children, menu }) => {
   const { trackEvent } = useTracking()
   const { path, push } = useNavigation()
+  const contextModule = getContextModule()
+
   return (
     <li>
       <Flex
         py={0.5}
         flexDirection="row"
         onClick={() => {
-          trackEvent({
-            context_module:
-              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
-            flow: "Header",
-            subject: menu.text,
-            destination_path: menu.text,
-          })
           push(menu.title)
+          trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
+            context_module: contextModule,
+            flow: "Header",
+            subject: menu.title,
+          })
         }}
       >
         <Sans size={["5t", "6"]} color={color("black60")}>
@@ -262,6 +286,7 @@ const AuthenticateLinks = () => {
         href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
         onClick={() => {
           trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
             context_module:
               AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
             flow: "Header",
@@ -277,6 +302,7 @@ const AuthenticateLinks = () => {
         href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
         onClick={() => {
           trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
             context_module:
               AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
             flow: "Header",
@@ -302,6 +328,7 @@ const LoggedInLinks = () => {
         href="/works-for-you"
         onClick={() => {
           trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
             context_module:
               AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
             flow: "Header",
@@ -316,6 +343,7 @@ const LoggedInLinks = () => {
         href="/user/edit"
         onClick={() => {
           trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
             context_module:
               AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
             flow: "Header",
