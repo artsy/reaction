@@ -1,3 +1,15 @@
+# v25.34.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Updates size on 3rd display ad on standard desktop [#3293](https://github.com/artsy/reaction/pull/3293) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
 # v25.34.2 (Fri Mar 20 2020)
 
 #### 🐛  Bug Fix
