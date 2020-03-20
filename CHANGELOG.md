@@ -1,3 +1,15 @@
+# v25.34.0 (Fri Mar 20 2020)
+
+#### 🚀  Enhancement
+
+- Prepopulate email input from URL query string on forgot password page [#3291](https://github.com/artsy/reaction/pull/3291) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v25.33.3 (Fri Mar 20 2020)
 
 #### 🐛  Bug Fix
