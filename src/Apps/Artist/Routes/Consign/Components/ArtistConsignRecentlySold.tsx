@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Serif, Spacer } from "@artsy/palette"
+import { Box, Flex, Sans, Spacer } from "@artsy/palette"
 import React from "react"
 
 import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
@@ -6,6 +6,7 @@ import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByIn
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
+import { Subheader } from "./Subheader"
 
 interface ArtistConsignRecentlySoldProps {
   artistConsignment: ArtistConsignment
@@ -22,9 +23,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
     <SectionContainer>
       <Box textAlign="center">
         <Box>
-          <Box>
-            <Serif size="10">Recently sold on Artsy</Serif>
-          </Box>
+          <Subheader>Recently sold {artistName} works on Artsy</Subheader>
 
           <Spacer my={1} />
 

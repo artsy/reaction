@@ -3,6 +3,7 @@ import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
+import { Subheader } from "./Subheader"
 
 const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
   top,
@@ -46,9 +47,7 @@ export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps>
   return (
     <SectionContainer background="black100">
       <Box textAlign="center" width="100%" px={6}>
-        <Serif size="10" color="white">
-          Market trends
-        </Serif>
+        <Subheader color="white100">Market trends</Subheader>
 
         <Box my={[2, 4]}>
           <Flex justifyContent="space-evenly" flexDirection={["column", "row"]}>

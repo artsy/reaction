@@ -4,14 +4,16 @@ import { ArtistConsignment } from "Apps/Artist/Routes/Consign/Utils/getConsignme
 export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
   artist: {
     name: "Alex Katz",
-    id: "alex-katz",
     href: "/artist/alex-katz",
+    id: "QXJ0aXN0OjRkOGQxMjBjODc2YzY5N2FlMTAwMDA0Ng==",
   },
   artworksByInternalID: [
     {
       internalID: "5d9ca6fe8f1aee0011475cf7",
       image: {
         aspectRatio: 0.75,
+        imageURL:
+          "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/:version.jpg",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/large.jpg",
         aspect_ratio: 0.75,
@@ -62,6 +64,8 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5d126f9bba46ba0012c3134f",
       image: {
         aspectRatio: 0.75,
+        imageURL:
+          "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/:version.jpg",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/large.jpg",
         aspect_ratio: 0.75,
@@ -99,6 +103,8 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5cffddff404918000ec89beb",
       image: {
         aspectRatio: 1.7,
+        imageURL:
+          "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/:version.jpg",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/large.jpg",
         aspect_ratio: 1.7,
@@ -150,6 +156,8 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5aa2e90d7622dd49dc8b356c",
       image: {
         aspectRatio: 0.66,
+        imageURL:
+          "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/:version.jpg",
         url:
           "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/large.jpg",
         aspect_ratio: 0.66,

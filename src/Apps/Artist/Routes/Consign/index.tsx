@@ -47,11 +47,18 @@ export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
 
   return (
     <Box>
+      {/*
+        Header tags
+      */}
       <ArtistConsignMeta
         artistName={artist.name}
         artistHref={artist.href}
         imageURL={imageURL}
       />
+
+      {/*
+        Content
+      */}
       <ArtistConsignHeader artistName={artist.name} />
       <ArtistConsignRecentlySold
         artistConsignment={artistConsignment}

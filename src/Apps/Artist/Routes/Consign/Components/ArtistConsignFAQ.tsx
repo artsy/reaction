@@ -4,6 +4,7 @@ import { Box, Sans, Serif, Spacer } from "@artsy/palette"
 import styled from "styled-components"
 import { gridColumnGap, GridColumnGapProps, style } from "styled-system"
 import { SectionContainer } from "./SectionContainer"
+import { Subheader } from "./Subheader"
 
 const Question = ({ question, answer }) => {
   return (
@@ -23,7 +24,7 @@ export const ArtistConsignFAQ: React.FC = props => {
     <SectionContainer height="100%" background="white100" pb={0}>
       <Box width="100%" maxWidth={["100%", 900]}>
         <Box textAlign="center">
-          <Serif size="10">Frequently asked questions</Serif>
+          <Subheader>Frequently asked questions</Subheader>
         </Box>
 
         <Spacer my={2} />
