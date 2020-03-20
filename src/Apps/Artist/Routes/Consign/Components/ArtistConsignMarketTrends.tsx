@@ -1,4 +1,5 @@
 import { Box, Button, color, Flex, Sans, Serif } from "@artsy/palette"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
@@ -31,10 +32,12 @@ const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
 
 interface ArtistConsignMarketTrendsProps {
   artistConsignment: ArtistConsignment
+  artistID: string
 }
 
 export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = ({
   artistConsignment,
+  artistID,
 }) => {
   const {
     metadata: { highestRealized, str, realized },
@@ -68,7 +71,9 @@ export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps>
         </Box>
 
         <Box>
-          <Button variant="primaryWhite">Explore auction results</Button>
+          <RouterLink to={`/artist/${artistID}/auction-results`}>
+            <Button variant="primaryWhite">Explore auction results</Button>
+          </RouterLink>
         </Box>
       </Box>
     </SectionContainer>

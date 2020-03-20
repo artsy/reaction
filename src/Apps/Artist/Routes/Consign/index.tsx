@@ -25,11 +25,11 @@ interface ConsignRouteProps {
   router: Router
 }
 
-const ConsignRoute: React.FC<ConsignRouteProps> = props => {
-  const { artist } = props
+export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
+  const { artist, artworksByInternalID, match, router } = props
+  const artistPathName = match.location.pathname.replace("/consign", "")
+  const artistConsignment = getConsignmentData(artistPathName)
   const { user } = useSystemContext()
-  const pathname = props.match.location.pathname.replace("/consign", "")
-  const artistConsignment = getConsignmentData(pathname)
 
   // Redirect back to artist overview if artist not found within hand-picked data
   // FIXME: Move this check to the router level when we're ready launch
@@ -38,7 +38,7 @@ const ConsignRoute: React.FC<ConsignRouteProps> = props => {
     const isAuthorizedToView = Boolean(userIsAdmin(user) && artistConsignment)
 
     if (!isAuthorizedToView) {
-      props.router.replace(pathname)
+      router.replace(artistPathName)
     }
   }, [])
 
@@ -48,13 +48,16 @@ const ConsignRoute: React.FC<ConsignRouteProps> = props => {
       <ArtistConsignRecentlySold
         artistConsignment={artistConsignment}
         artistName={artist.name}
-        artworksByInternalID={props.artworksByInternalID}
+        artworksByInternalID={artworksByInternalID}
       />
       <ArtistConsignPageViews
         artistConsignment={artistConsignment}
         artistName={artist.name}
       />
-      <ArtistConsignMarketTrends artistConsignment={artistConsignment} />
+      <ArtistConsignMarketTrends
+        artistConsignment={artistConsignment}
+        artistID={match.params.artistID}
+      />
       <ArtistConsignHowtoSell />
       <ArtistConsignFAQ />
       <ArtistConsignSellArt />
