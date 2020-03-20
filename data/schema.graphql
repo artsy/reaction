@@ -3135,15 +3135,6 @@ type ConsignmentSubmissionConnection {
   pageInfo: PageInfo!
 }
 
-# An edge in a connection.
-type ConsignmentSubmissionEdge {
-  # The item at the end of the edge
-  node: ConsignmentSubmission
-
-  # A cursor for use in pagination
-  cursor: String!
-}
-
 enum ConsignmentSubmissionStateAggregation {
   APPROVED
   DRAFT
@@ -5104,15 +5095,6 @@ type Me implements Node {
 
   # A type-specific ID.
   internalID: ID!
-
-  # A list of the current user’s consignment submissions
-  consignmentSubmissionsConnection(
-    after: String
-    first: Int
-    before: String
-    last: Int
-    completed: Boolean = true
-  ): ConsignmentSubmissionConnection
 
   # A list of the current user’s inquiry requests
   artworkInquiriesConnection(
@@ -7276,29 +7258,6 @@ type StaticContent {
   content: String
 }
 
-enum SubmissionCategoryAggregation {
-  PAINTING
-  SCULPTURE
-  PHOTOGRAPHY
-  PRINT
-  DRAWING_COLLAGE_OR_OTHER_WORK_ON_PAPER
-  MIXED_MEDIA
-  PERFORMANCE_ART
-  INSTALLATION
-  VIDEO_FILM_ANIMATION
-  ARCHITECTURE
-  FASHION_DESIGN_AND_WEARABLE_ART
-  JEWELRY
-  DESIGN_DECORATIVE_ART
-  TEXTILE_ARTS
-  OTHER
-}
-
-enum SubmissionDimensionAggregation {
-  CM
-  IN
-}
-
 # An edge in a connection.
 type SubmissionEdge {
   # A cursor for use in pagination.
@@ -7306,13 +7265,6 @@ type SubmissionEdge {
 
   # The item at the end of the edge.
   node: ConsignmentSubmission
-}
-
-enum SubmissionStateAggregation {
-  DRAFT
-  SUBMITTED
-  APPROVED
-  REJECTED
 }
 
 type System {
