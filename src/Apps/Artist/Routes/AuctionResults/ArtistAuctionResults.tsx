@@ -41,7 +41,14 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 }) => {
   const filterContext = useAuctionResultsFilterContext()
 
-  const { sort, organizations, categories, sizes } = filterContext.filters
+  const {
+    sort,
+    organizations,
+    categories,
+    sizes,
+    createdAfterYear,
+    createdBeforeYear,
+  } = filterContext.filters
 
   const loadNext = () => {
     const { hasNextPage, endCursor } = pageInfo
@@ -65,6 +72,8 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         categories,
         sizes,
         sort,
+        createdBeforeYear,
+        createdAfterYear,
       },
       null,
       error => {
