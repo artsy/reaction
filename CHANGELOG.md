@@ -1,3 +1,15 @@
+# v25.34.5 (Sat Mar 21 2020)
+
+#### 🐛  Bug Fix
+
+- Fix broken pagination on auction results page [#3295](https://github.com/artsy/reaction/pull/3295) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.34.3 (Fri Mar 20 2020)
 
 #### 🐛  Bug Fix
