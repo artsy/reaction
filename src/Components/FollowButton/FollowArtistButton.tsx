@@ -1,7 +1,7 @@
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy"
-import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/v2/FollowArtistPopover"
+import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/FollowArtistPopover"
 import { extend } from "lodash"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"

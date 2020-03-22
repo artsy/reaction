@@ -1,4 +1,4 @@
-import { Slider } from "Components/v2/Lightbox/LightboxSlider"
+import { Slider } from "Components/Lightbox/LightboxSlider"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

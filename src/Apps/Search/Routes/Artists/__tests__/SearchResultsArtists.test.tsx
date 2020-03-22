@@ -1,6 +1,6 @@
 import { ZeroState } from "Apps/Search/Components/ZeroState"
 import { SystemContextProvider } from "Artsy"
-import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import { MockBoot } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"

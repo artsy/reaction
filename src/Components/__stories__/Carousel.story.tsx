@@ -4,7 +4,7 @@ import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
-import { Carousel, LargeCarousel, SmallCarousel } from "Components/v2/Carousel"
+import { Carousel, LargeCarousel, SmallCarousel } from "Components/Carousel"
 import { MockRelayRenderer } from "DevTools"
 import { graphql } from "react-relay"
 

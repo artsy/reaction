@@ -3,7 +3,7 @@ import { CollectionsAppTestQueryRawResponse } from "__generated__/CollectionsApp
 import { CategoriesFixture } from "Apps/__tests__/Fixtures/Collections"
 import { CollectionsAppFragmentContainer as CollectionsApp } from "Apps/Collect2/Routes/Collections"
 import { CollectionsGrid } from "Apps/Collect2/Routes/Collections/Components/CollectionsGrid"
-import { BreadCrumbList } from "Components/v2/Seo"
+import { BreadCrumbList } from "Components/Seo"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"

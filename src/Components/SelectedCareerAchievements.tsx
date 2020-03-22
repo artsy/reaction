@@ -5,8 +5,8 @@ import {
   highestCategory,
 } from "Apps/Artist/Components/MarketInsights/MarketInsights"
 
-import { ArtistInsight } from "Components/v2/ArtistInsight"
-import { ArtistInsightsModal } from "Components/v2/ArtistInsightsModal"
+import { ArtistInsight } from "Components/ArtistInsight"
+import { ArtistInsightsModal } from "Components/ArtistInsightsModal"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 

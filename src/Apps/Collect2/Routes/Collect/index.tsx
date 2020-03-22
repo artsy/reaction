@@ -12,14 +12,14 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
-import { BreadCrumbList } from "Components/v2/Seo"
+import { BreadCrumbList } from "Components/Seo"
 
 import { getMetadataForMedium } from "./Components/CollectMediumMetadata"
 
 import { Collect_marketingHubCollections } from "__generated__/Collect_marketingHubCollections.graphql"
 import { collectRoutes_ArtworkFilterQueryResponse } from "__generated__/collectRoutes_ArtworkFilterQuery.graphql"
+import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/CollectionsHubsNav"
 import { ArtworkFilter } from "Components/v2/ArtworkFilter"
-import { CollectionsHubsNavFragmentContainer as CollectionsHubsNav } from "Components/v2/CollectionsHubsNav"
 
 export interface CollectAppProps {
   match: Match

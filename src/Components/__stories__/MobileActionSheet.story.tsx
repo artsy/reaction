@@ -6,7 +6,7 @@ import {
   Spacer,
   StackableBorderBox,
 } from "@artsy/palette"
-import { MobileTopBar } from "Components/v2/MobileTopBar"
+import { MobileTopBar } from "Components/MobileTopBar"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

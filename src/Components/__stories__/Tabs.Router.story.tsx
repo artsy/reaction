@@ -1,4 +1,4 @@
-import { RouteTab, TabCarousel } from "Components/v2/RouteTabs"
+import { RouteTab, TabCarousel } from "Components/RouteTabs"
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

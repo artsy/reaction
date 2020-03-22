@@ -7,8 +7,8 @@ import { OfferInput } from "Apps/Order/Components/OfferInput"
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { ShippingSummaryItemFragmentContainer } from "Apps/Order/Components/ShippingSummaryItem"
 import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { ModalButton, ModalDialog } from "Components/Modal/ModalDialog"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 
 export class OrderAppTestPage extends RootTestPage {

@@ -2,7 +2,7 @@ import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 
 import { SystemContextProvider } from "Artsy"
-import { AuctionTimerQueryRenderer } from "Components/v2/AuctionTimer"
+import { AuctionTimerQueryRenderer } from "Components/AuctionTimer"
 import { Section } from "Utils/Section"
 
 storiesOf("Styleguide/Components", module).add("AuctionTimer", () => {

@@ -1,4 +1,4 @@
-import { ArtworkGridExample } from "Components/v2/ArtworkGridExample"
+import { ArtworkGridExample } from "Components/ArtworkGridExample"
 import React from "react"
 import { Media } from "Utils/Responsive"
 

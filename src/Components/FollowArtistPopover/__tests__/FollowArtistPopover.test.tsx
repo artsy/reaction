@@ -1,6 +1,6 @@
 import { Breakpoint } from "@artsy/palette"
 import { FollowArtistPopover_Test_QueryRawResponse } from "__generated__/FollowArtistPopover_Test_Query.graphql"
-import { FollowArtistPopoverFragmentContainer as FollowArtistPopover } from "Components/v2/FollowArtistPopover"
+import { FollowArtistPopoverFragmentContainer as FollowArtistPopover } from "Components/FollowArtistPopover"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"

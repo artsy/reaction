@@ -3,7 +3,7 @@ import { Collections_marketingCategories } from "__generated__/Collections_marke
 import { AppContainer } from "Apps/Components/AppContainer"
 import { withSystemContext } from "Artsy"
 import { FrameWithRecentlyViewed } from "Components/FrameWithRecentlyViewed"
-import { BreadCrumbList } from "Components/v2/Seo"
+import { BreadCrumbList } from "Components/Seo"
 import { Link, Router } from "found"
 import React, { Component, useState } from "react"
 import { Meta, Title } from "react-head"

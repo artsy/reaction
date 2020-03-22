@@ -1,5 +1,5 @@
 import { selectProps } from "Apps/__tests__/Fixtures/Select"
-import { CountrySelect } from "Components/v2/CountrySelect"
+import { CountrySelect } from "Components/CountrySelect"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

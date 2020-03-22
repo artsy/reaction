@@ -1,6 +1,6 @@
 import { Flex } from "@artsy/palette"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { StepSummaryItem } from "Components/v2/StepSummaryItem"
+import { CountdownTimer } from "Components/CountdownTimer"
+import { StepSummaryItem } from "Components/StepSummaryItem"
 import { DateTime } from "luxon"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
