@@ -1,3 +1,21 @@
+# v25.34.7 (Sun Mar 22 2020)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Move v2/Components > /Components & Collect2 > Collect [#3296](https://github.com/artsy/reaction/pull/3296) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.3 to v3.0.4 [#3298](https://github.com/artsy/reaction/pull/3298) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.34.6 (Sun Mar 22 2020)
 
 #### 🐛  Bug Fix
