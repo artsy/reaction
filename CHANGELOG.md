@@ -1,3 +1,15 @@
+# v25.34.6 (Sun Mar 22 2020)
+
+#### 🐛  Bug Fix
+
+- Update NetworkTimeout language [#3297](https://github.com/artsy/reaction/pull/3297) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.34.5 (Sat Mar 21 2020)
 
 #### 🐛  Bug Fix
