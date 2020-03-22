@@ -1,4 +1,3 @@
-import { NavBar } from "Components/NavBar"
 import React from "react"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
@@ -79,7 +78,6 @@ const ErrorModalWithReload: React.FC<{ message?: string; show: boolean }> = ({
 }) => {
   return (
     <>
-      <NavBar />
       <ErrorModal
         show={show}
         detailText={message}
