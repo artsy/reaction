@@ -33,6 +33,7 @@ export const NetworkTimeout: React.FC = () => {
 
   return (
     <ErrorModal
+      headerText="Network timeout"
       show={showErrorModal}
       closeText="Retry"
       ctaAction={() => {

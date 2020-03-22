@@ -2,10 +2,6 @@ import { ErrorBoundary } from "Components/ErrorBoundary"
 import { mount } from "enzyme"
 import React from "react"
 
-jest.mock("Components/NavBar", () => ({
-  NavBar: () => <div />,
-}))
-
 describe("ErrorBoundary", () => {
   const errorLog = console.error
 
