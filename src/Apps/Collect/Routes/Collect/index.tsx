@@ -5,8 +5,8 @@ import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
-import { SeoProductsForArtworks } from "Apps/Collect2/Components/SeoProductsForArtworks"
-import { buildUrlForCollectApp } from "Apps/Collect2/Utils/urlBuilder"
+import { SeoProductsForArtworks } from "Apps/Collect/Components/SeoProductsForArtworks"
+import { buildUrlForCollectApp } from "Apps/Collect/Utils/urlBuilder"
 import { AppContainer } from "Apps/Components/AppContainer"
 
 import { track } from "Artsy/Analytics"

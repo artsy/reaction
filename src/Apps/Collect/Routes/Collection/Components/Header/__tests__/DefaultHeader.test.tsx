@@ -1,8 +1,8 @@
-import { defaultCollectionHeaderArtworks } from "Apps/Collect2/Routes/Collection/Components/Header/__tests__/fixtures/artworks"
+import { defaultCollectionHeaderArtworks } from "Apps/Collect/Routes/Collection/Components/Header/__tests__/fixtures/artworks"
 import {
   CollectionDefaultHeader,
   getHeaderArtworks,
-} from "Apps/Collect2/Routes/Collection/Components/Header/DefaultHeader"
+} from "Apps/Collect/Routes/Collection/Components/Header/DefaultHeader"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"

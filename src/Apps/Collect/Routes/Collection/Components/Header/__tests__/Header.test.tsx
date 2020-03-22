@@ -3,7 +3,7 @@ import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import {
   collectionHeaderArtworks,
   defaultCollectionHeaderArtworks,
-} from "Apps/Collect2/Routes/Collection/Components/Header/__tests__/fixtures/artworks"
+} from "Apps/Collect/Routes/Collection/Components/Header/__tests__/fixtures/artworks"
 import { SystemContextProvider } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { MockBoot } from "DevTools/MockBoot"
