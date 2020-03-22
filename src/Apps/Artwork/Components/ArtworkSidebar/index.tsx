@@ -1,6 +1,6 @@
 import { Box, space, Spacer } from "@artsy/palette"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
-import { AuctionTimerFragmentContainer as AuctionTimer } from "Components/v2/AuctionTimer"
+import { AuctionTimerFragmentContainer as AuctionTimer } from "Components/AuctionTimer"
 import React, { Component, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"

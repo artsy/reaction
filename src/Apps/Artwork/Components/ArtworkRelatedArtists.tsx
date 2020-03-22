@@ -4,7 +4,7 @@ import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { useSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2/ArtistCard"
+import { ArtistCardFragmentContainer as ArtistCard } from "Components/ArtistCard"
 import React, { useState } from "react"
 import {
   createPaginationContainer,

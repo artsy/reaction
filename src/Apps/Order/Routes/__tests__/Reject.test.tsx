@@ -1,6 +1,6 @@
 import { RejectTestQueryRawResponse } from "__generated__/RejectTestQuery.graphql"
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
-import { StepSummaryItem } from "Components/v2/StepSummaryItem"
+import { StepSummaryItem } from "Components/StepSummaryItem"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { DateTime } from "luxon"
 import { commitMutation as _commitMutation, graphql } from "react-relay"

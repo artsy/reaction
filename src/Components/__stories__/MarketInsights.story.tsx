@@ -1,5 +1,5 @@
 import { artistResponse } from "Apps/__tests__/Fixtures/MarketInsights"
-import { MarketInsights } from "Components/v2/ArtistMarketInsights"
+import { MarketInsights } from "Components/ArtistMarketInsights"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

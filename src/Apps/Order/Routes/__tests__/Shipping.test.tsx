@@ -13,8 +13,8 @@ import {
   fillInPhoneNumber,
   validAddress,
 } from "Apps/Order/Routes/__tests__/Utils/addressForm"
+import { CountrySelect } from "Components/CountrySelect"
 import Input from "Components/Input"
-import { CountrySelect } from "Components/v2/CountrySelect"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {

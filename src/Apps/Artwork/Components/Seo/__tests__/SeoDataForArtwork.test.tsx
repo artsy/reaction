@@ -2,8 +2,8 @@ import { MockBoot, renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 
 import { SeoDataForArtwork_Test_QueryRawResponse } from "__generated__/SeoDataForArtwork_Test_Query.graphql"
-import { CreativeWork } from "Components/v2/Seo/CreativeWork"
-import { Product } from "Components/v2/Seo/Product"
+import { CreativeWork } from "Components/Seo/CreativeWork"
+import { Product } from "Components/Seo/Product"
 import React from "react"
 import {
   AVAILABILITY,
