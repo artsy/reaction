@@ -1,8 +1,4 @@
-import {
-  AuthContextModule,
-  AuthIntent,
-  AuthTrigger,
-} from "Artsy/Analytics/v2/Schema"
+import { AuthContextModule, AuthIntent } from "Artsy/Analytics/v2/Schema"
 import { FormikProps } from "formik"
 
 export enum ModalType {
@@ -33,7 +29,7 @@ export interface FormProps {
   values?: InputValues
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void
-  intent?: AuthIntent
+  intent: AuthIntent
   onFacebookLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
   title?: string
@@ -88,10 +84,6 @@ export interface ModalOptions {
    * the location where the modal was triggered.
    */
   contextModule?: AuthContextModule
-  /**
-   * the type of action that triggered the modal (eg: click, timed)
-   */
-  trigger?: AuthTrigger
   /**
    * the number of seconds before a modal was triggered
    */

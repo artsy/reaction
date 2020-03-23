@@ -25,7 +25,6 @@ describe("FormSwitcher", () => {
           destination: "/collect",
           intent: Schema.AuthIntent.followArtist,
           redirectTo: "/foo",
-          trigger: "timed",
           triggerSeconds: 1,
         }}
         isMobile={props.isMobile || false}
@@ -98,7 +97,7 @@ describe("FormSwitcher", () => {
         .simulate("click")
 
       expect((window.location.assign as any).mock.calls[0][0]).toEqual(
-        "/signup?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
+        "/signup?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&triggerSeconds=1"
       )
     })
 
