@@ -76,7 +76,7 @@ export function buildServerApp(
       const farceResults = await getFarceResult({
         url,
         historyMiddlewares,
-        routeConfig: createRouteConfig(routes),
+        routeConfig: createRouteConfig(routes, user),
         resolver,
         render: props => <Render {...props} />,
         matchContext: { user },
