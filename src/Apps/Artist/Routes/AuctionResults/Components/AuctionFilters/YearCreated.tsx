@@ -1,4 +1,5 @@
 import { Flex, LargeSelect, Spacer, Toggle } from "@artsy/palette"
+import { FilterResetLink } from "Components/FilterResetLink"
 import React, { useMemo } from "react"
 import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
 
@@ -26,13 +27,29 @@ export const YearCreated: React.FC = () => {
     console.error("Couldn't display year created filter due to missing data")
     return null
   }
+  const hasChanges =
+    earliestCreatedYear !== createdAfterYear ||
+    latestCreatedYear !== createdBeforeYear
   const fullDateRange = useMemo(
     () => buildDateRange(earliestCreatedYear, latestCreatedYear),
     [earliestCreatedYear, latestCreatedYear]
   )
+  const resetFilter = useMemo(
+    () => () => {
+      filterContext.setFilter("createdAfterYear", earliestCreatedYear)
+      filterContext.setFilter("createdBeforeYear", latestCreatedYear)
+    },
+    [earliestCreatedYear, latestCreatedYear]
+  )
 
   return (
-    <Toggle label="Year Created" expanded>
+    <Toggle
+      label="Year Created"
+      expanded
+      renderSecondaryAction={() => (
+        <FilterResetLink onReset={resetFilter} hasChanges={hasChanges} />
+      )}
+    >
       <Flex>
         <LargeSelect
           title="Earliest"
