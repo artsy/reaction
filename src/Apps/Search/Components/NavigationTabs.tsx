@@ -2,7 +2,7 @@ import { Flex, Sans } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouteTab, TabCarousel } from "Components/v2/RouteTabs"
+import { RouteTab, TabCarousel } from "Components/RouteTabs"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -64,7 +64,7 @@ export class NavigationTabs extends React.Component<Props> {
         }}
         key={to}
       >
-        <Flex>
+        <Flex mr={[0, 2]}>
           {text}
           {count != null && (
             <Sans ml={0.5} size="3t" weight="regular">

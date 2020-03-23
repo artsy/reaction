@@ -5,8 +5,8 @@ import { useSystemContext } from "Artsy"
 import React from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 
-import { Footer } from "Components/v2/Footer"
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
+import { Footer } from "Components/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
 
 export interface Props {
   name?: string

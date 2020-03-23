@@ -22,6 +22,7 @@ declare module "sharify" {
       readonly ARTIST_COLLECTIONS_RAIL_IDS: string[]
       readonly CLIENT_NAVIGATION_V4: "experiment" | "control" // TODO: Remove after A/B test.
       readonly CMS_URL: string
+      readonly CDN_URL: string
       readonly ENABLE_PRICE_TRANSPARENCY: string
       readonly ENABLE_REQUEST_CONDITION_REPORT: string
       readonly FACEBOOK_APP_NAMESPACE: string

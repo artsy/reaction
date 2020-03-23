@@ -1,5 +1,6 @@
 import { Link } from "@artsy/palette"
 import { AnalyticsSchema as Schema } from "Artsy/Analytics/v2"
+import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
@@ -47,6 +48,20 @@ describe("FormSwitcher", () => {
     it("forgot password form", () => {
       const wrapper = getWrapper({ type: ModalType.forgot })
       expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
+    })
+
+    it("prepopulates email input from URL query string", () => {
+      window.history.replaceState(
+        {},
+        "Reset your password",
+        "/forgot?email=user@example.com"
+      )
+
+      const wrapper = getWrapper({ type: ModalType.forgot })
+
+      expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
+      expect(wrapper.html()).toContain("user@example.com")
+      expect(wrapper.find(QuickInput).prop("value")).toEqual("user@example.com")
     })
   })
 

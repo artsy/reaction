@@ -10,6 +10,7 @@ import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetai
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
+
 import { RequestConditionReportQueryRenderer } from "./RequestConditionReport"
 
 export interface ArtworkDetailsAdditionalInfoProps {
@@ -27,7 +28,7 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
       manufacturer,
       image_rights,
       internalID,
-      isBiddable,
+      canRequestLotConditionsReport,
       framed,
       signatureInfo,
       conditionDescription,
@@ -42,7 +43,8 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
       {
         title: "Condition",
         value:
-          isBiddable && sd.ENABLE_REQUEST_CONDITION_REPORT ? (
+          canRequestLotConditionsReport &&
+          sd.ENABLE_REQUEST_CONDITION_REPORT ? (
             <RequestConditionReportQueryRenderer artworkID={internalID} />
           ) : (
             conditionDescription && conditionDescription.details
@@ -115,7 +117,7 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
         publisher
         manufacturer
         image_rights: imageRights
-        isBiddable
+        canRequestLotConditionsReport
         internalID
         framed {
           label

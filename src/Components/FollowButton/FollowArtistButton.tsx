@@ -1,7 +1,7 @@
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy"
-import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/v2/FollowArtistPopover"
+import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/FollowArtistPopover"
 import { extend } from "lodash"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -11,6 +11,7 @@ import { FollowButton } from "./Button"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
+import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import {
   commitMutation,
   createFragmentContainer,
@@ -25,7 +26,7 @@ interface Props
   artist?: FollowArtistButton_artist
   tracking?: TrackingProp
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
+  onOpenAuthModal?: (type: ModalType, config?: ModalOptions) => void
 
   /**
    * FIXME: Default is true due to legacy code. If false, use new @artsy/palette
@@ -86,7 +87,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
         intent: "follow artist",
         copy: "Sign up to follow artists",
       }
-      onOpenAuthModal("register", config)
+      onOpenAuthModal(ModalType.signup, config)
     }
   }
 

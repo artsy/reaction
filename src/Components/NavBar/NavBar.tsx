@@ -22,13 +22,17 @@ import {
   MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
+  NewMobileNavMenu,
   NotificationsMenu,
   UserMenu,
 } from "./Menus"
 
+import { ModalType } from "Components/Authentication/Types"
+import { openAuthModal } from "Utils/openAuthModal"
+import { menuData } from "./menuData"
+
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
-import * as authentication from "./Utils/authentication"
 
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
@@ -50,6 +54,9 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const canViewNewMobileNav = Boolean(
+    user?.lab_features?.includes("Updated Navigation")
+  )
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
   // Close mobile menu if dragging window from small size to desktop
@@ -168,12 +175,11 @@ export const NavBar: React.FC = track(
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Login,
+                  openAuthModal(mediator, {
+                    mode: ModalType.login,
+                    intent: "login",
+                    contextModule: AnalyticsSchema.ContextModule.Header,
                   })
-
-                  authentication.login(mediator)
                 }}
               >
                 Log in
@@ -181,12 +187,11 @@ export const NavBar: React.FC = track(
               <Spacer mr={1} />
               <Button
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Signup,
+                  openAuthModal(mediator, {
+                    mode: ModalType.signup,
+                    intent: "signup",
+                    contextModule: AnalyticsSchema.ContextModule.Header,
                   })
-
-                  authentication.signup(mediator)
                 }}
               >
                 Sign up
@@ -229,7 +234,11 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          {canViewNewMobileNav ? (
+            <NewMobileNavMenu isOpen={showMobileMenu} menuData={menuData} />
+          ) : (
+            <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          )}
         </>
       )}
     </header>

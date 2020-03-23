@@ -14,7 +14,7 @@ import {
 import { TrackingProp } from "react-tracking"
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"
 
@@ -129,10 +129,10 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
       })
       this.trackSave()
     } else {
-      openAuthModal(this.props.mediator, {
+      openAuthToFollowSave(this.props.mediator, {
         contextModule: Schema.ContextModule.ArtworkPage,
         entity: {
-          id: this.props.artwork.id,
+          slug: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
         intent: AuthModalIntent.SaveArtwork,

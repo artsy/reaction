@@ -14,9 +14,14 @@ const MIN_IMAGE_SIZE = 150
 
 class Badge extends React.Component<BadgeProps> {
   get stackedLayout() {
+    // During the SSR render pass we don't have access to window pixel data so
+    // default to high density screen.
+    const devicePixelRatio =
+      typeof window === "undefined" ? 2 : window.devicePixelRatio
+
     return get(
       this.props,
-      p => p.width / window.devicePixelRatio < MIN_IMAGE_SIZE,
+      p => p.width / devicePixelRatio < MIN_IMAGE_SIZE,
       false
     )
   }

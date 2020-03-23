@@ -14,6 +14,7 @@ import { MobileForgotPasswordForm } from "Components/Authentication/Mobile/Forgo
 import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
 import { MobileSignUpForm } from "Components/Authentication/Mobile/SignUpForm"
 import {
+  AfterSignUpAction,
   FormComponentType,
   InputValues,
   ModalOptions,
@@ -67,6 +68,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         copy,
         redirectTo,
         intent,
+        title,
         trigger,
         triggerSeconds,
       },
@@ -79,7 +81,7 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       {
         contextModule,
         intent,
-        copy,
+        copy: copy || title,
         trigger,
         triggerSeconds,
         type: AuthModalType[type],
@@ -121,6 +123,30 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
   }
 
+  getAfterSignupAction = (options: ModalOptions): AfterSignUpAction => {
+    const { afterSignUpAction, action, kind, objectId } = options
+    return (
+      afterSignUpAction || {
+        action,
+        kind,
+        objectId,
+      }
+    )
+  }
+
+  getEmailValue = (): string => {
+    const { values } = this.props
+    const isClient = typeof window !== "undefined"
+    let email
+
+    if (isClient) {
+      const searchQuery = window.location.search.slice(1)
+      email = qs.parse(searchQuery).email as string
+    }
+
+    return email || values.email || ""
+  }
+
   render() {
     const {
       error,
@@ -137,10 +163,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         accepted_terms_of_service: true,
         agreed_to_receive_emails: true,
         "signup-referer": options.signupReferer,
+        afterSignUpAction: this.getAfterSignupAction(options),
       },
-      options.redirectTo
+      options.redirectTo || options["redirect-to"]
         ? {
-            "redirect-to": options.redirectTo,
+            "redirect-to": options.redirectTo || options["redirect-to"],
           }
         : null,
       options.intent
@@ -168,8 +195,9 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
 
     const { handleSubmit, onBackButtonClicked, values } = this.props
+
     const defaultValues = {
-      email: values.email || "",
+      email: this.getEmailValue(),
       password: values.password || "",
       name: values.name || "",
       accepted_terms_of_service: values.accepted_terms_of_service || false,

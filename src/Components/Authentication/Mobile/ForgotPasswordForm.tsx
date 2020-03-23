@@ -42,7 +42,7 @@ export class MobileForgotPasswordForm extends React.Component<FormProps> {
             <MobileContainer>
               <MobileInnerWrapper>
                 <Form onSubmit={handleSubmit} height={270}>
-                  <MobileHeader>Reset your password</MobileHeader>
+                  <MobileHeader>{this.props.title}</MobileHeader>
                   <QuickInput
                     block
                     error={errors.email}

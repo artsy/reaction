@@ -35,7 +35,7 @@ describe("AuctionResults", () => {
   }
 
   const trackEvent = jest.fn()
-  beforeEach(() => {
+  beforeAll(() => {
     ;(useTracking as jest.Mock).mockImplementation(() => {
       return {
         trackEvent,
@@ -69,15 +69,12 @@ describe("AuctionResults", () => {
     })
 
     describe("collapsed details", () => {
-      beforeAll(() => {
+      it("opens the collapse", () => {
         wrapper
           .find("ArrowDownIcon")
           .first()
           .simulate("click")
         wrapper.update()
-      })
-
-      it("opens the collapse", () => {
         const html = wrapper.html()
         const data =
           AuctionResultsFixture.artist.auctionResultsConnection.edges[0].node
@@ -166,6 +163,10 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   sizes: [],
+                  createdAfterYear: 1881,
+                  createdBeforeYear: 1973,
+                  earliestCreatedYear: 1881,
+                  latestCreatedYear: 1973,
                 },
               })
               done()
@@ -255,6 +256,10 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   categories: [],
+                  createdAfterYear: 1881,
+                  createdBeforeYear: 1973,
+                  earliestCreatedYear: 1881,
+                  latestCreatedYear: 1973,
                 },
               })
 

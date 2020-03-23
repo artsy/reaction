@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "25.24.2",
+  "version": "25.35.1",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -38,7 +38,7 @@
     "storybook": "concurrently --raw --kill-others 'yarn relay --watch' 'start-storybook --quiet -s ./public -p 9001'",
     "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/master/_schemaV2.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema v2 ../reaction/data/",
-    "test": "jest",
+    "test": "ALLOW_CONSOLE_LOGS=true jest",
     "test:watch": "jest --watch --runInBand",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "type-check": "tsc --pretty",
@@ -51,7 +51,8 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
-    "@artsy/palette": "7.1.1",
+    "@artsy/lint-changed": "3.0.4",
+    "@artsy/palette": "7.4.0",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -130,7 +131,7 @@
     "jest-styled-components": "7.0.0-2",
     "json5": "2.1.0",
     "klaw-sync": "6.0.0",
-    "lint-staged": "4.3.0",
+    "lint-staged": "10.0.8",
     "patch-package": "6.2.0",
     "postinstall-prepare": "1.0.1",
     "prettier": "1.19.1",
@@ -189,7 +190,7 @@
     "luxon": "^1.15",
     "memoize-one": "^4.0.3",
     "numeral": "^2.0.4",
-    "openseadragon": "^2.3.1",
+    "openseadragon": "^2.4.2",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "rc-slider": "^8.6.2",
@@ -276,7 +277,6 @@
     "moduleNameMapper": {
       "^luxon$": "<rootDir>/node_modules/luxon",
       "^react$": "<rootDir>/node_modules/react",
-      "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
     }
   },
@@ -289,11 +289,19 @@
   "lint-staged": {
     "*.@(ts|tsx)": [
       "tslint -c tslint.json --fix",
-      "yarn prettier-write --",
-      "git add"
+      "yarn prettier-write --"
     ],
     "*.json": [
       "yarn prettier-write --"
+    ]
+  },
+  "lint-changed": {
+    "*.@(ts|tsx)": [
+      "tslint -c tslint.json",
+      "yarn prettier -c"
+    ],
+    "*.json": [
+      "yarn prettier -c"
     ]
   },
   "publishConfig": {

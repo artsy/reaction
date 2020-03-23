@@ -1,7 +1,7 @@
 import { MockRouter } from "DevTools/MockRouter"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
-import { collectRoutes } from "../Collect2/collectRoutes"
+import { collectRoutes } from "../Collect/collectRoutes"
 
 storiesOf("Apps/Collect", module)
   .add("Collect", () => {

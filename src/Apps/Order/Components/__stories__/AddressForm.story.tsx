@@ -5,7 +5,13 @@ import { Section } from "Utils/Section"
 import { Address, AddressForm } from "../AddressForm"
 
 class TypicalAddressForm extends React.Component<
-  { address?: Address },
+  {
+    address?: Address
+    billing?: boolean
+    domesticOnly?: boolean
+    euOrigin?: boolean
+    shippingCountry?: string
+  },
   Address
 > {
   constructor(props) {
@@ -24,6 +30,10 @@ class TypicalAddressForm extends React.Component<
         onChange={this.onChange}
         errors={{}}
         touched={{}}
+        billing={this.props.billing}
+        domesticOnly={this.props.domesticOnly}
+        euOrigin={this.props.euOrigin}
+        shippingCountry={this.props.shippingCountry}
       />
     )
   }
@@ -35,6 +45,16 @@ storiesOf("Apps/Order/Components", module).add("AddressForm", () => {
       <Section title="Blank">
         <Flex flexDirection="column">
           <TypicalAddressForm />
+        </Flex>
+      </Section>
+      <Section title="BlankDomesticOnly">
+        <Flex flexDirection="column">
+          <TypicalAddressForm shippingCountry="US" domesticOnly />
+        </Flex>
+      </Section>
+      <Section title="BlankDomesticEUOnly">
+        <Flex flexDirection="column">
+          <TypicalAddressForm shippingCountry="DE" domesticOnly euOrigin />
         </Flex>
       </Section>
       <Section title="Filled out">

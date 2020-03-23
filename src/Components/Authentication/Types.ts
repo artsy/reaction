@@ -41,7 +41,7 @@ export interface FormProps {
   showRecaptchaDisclaimer?: boolean
 }
 
-interface AfterSignUpAction {
+export interface AfterSignUpAction {
   action: "save" | "follow" | "editorialSignup"
   objectId?: string
   kind?: "artist" | "artworks" | "gene" | "profile" | "show"
@@ -104,6 +104,21 @@ export interface ModalOptions {
    * The image rendered with the modal
    */
   image?: string
+  /**
+   * MOBILE ONLY
+   * Used to construct afterSignupAction from query params
+   */
+  kind?: AfterSignUpAction["kind"]
+  /**
+   * MOBILE ONLY
+   * Used to construct afterSignupAction from query params
+   */
+  action?: AfterSignUpAction["action"]
+  /**
+   * MOBILE ONLY
+   * Used to construct afterSignupAction from query params
+   */
+  objectId?: AfterSignUpAction["objectId"]
 }
 
 export type FormComponentType =

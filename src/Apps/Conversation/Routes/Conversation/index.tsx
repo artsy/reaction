@@ -6,7 +6,7 @@ import { SystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { userIsAdmin } from "Utils/user"
+import { userHasLabFeature } from "Utils/user"
 
 interface ConversationRouteProps {
   me: Conversation_me
@@ -16,8 +16,8 @@ interface ConversationRouteProps {
 export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
   const { me } = props
   const { user } = useContext(SystemContext)
-  const isAdmin = userIsAdmin(user)
-  if (isAdmin) {
+  const isEnabled = userHasLabFeature(user, "User Conversations View")
+  if (isEnabled) {
     return (
       <AppContainer>
         <Title>My Inquiries | Artsy</Title>
@@ -29,7 +29,7 @@ export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
       </AppContainer>
     )
   } else {
-    // not an admin
+    // not allowed to see this view
     return <ErrorPage code={404} />
   }
 }

@@ -1,3 +1,720 @@
+# v25.35.1 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- Adds social_embed section type to ad insertion logic [#3301](https://github.com/artsy/reaction/pull/3301) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.3.0 to v7.4.0 [#3300](https://github.com/artsy/reaction/pull/3300) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.35.0 (Sun Mar 22 2020)
+
+#### 🚀  Enhancement
+
+- Bump [#3299](https://github.com/artsy/reaction/pull/3299) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- [Refactor] Move v2/Components > /Components & Collect2 > Collect [#3296](https://github.com/artsy/reaction/pull/3296) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.2.0 to v7.3.0 [#3287](https://github.com/artsy/reaction/pull/3287) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/lint-changed from 3.0.3 to v3.0.4 [#3298](https://github.com/artsy/reaction/pull/3298) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.34.6 (Sun Mar 22 2020)
+
+#### 🐛  Bug Fix
+
+- Update NetworkTimeout language [#3297](https://github.com/artsy/reaction/pull/3297) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.5 (Sat Mar 21 2020)
+
+#### 🐛  Bug Fix
+
+- Fix broken pagination on auction results page [#3295](https://github.com/artsy/reaction/pull/3295) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.34.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add Artist/Consign SEO/meta tags [#3292](https://github.com/artsy/reaction/pull/3292) ([@damassi](https://github.com/damassi))
+- Updates size on 3rd display ad on standard desktop [#3293](https://github.com/artsy/reaction/pull/3293) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Auction Results Visual Tweaks [#3284](https://github.com/artsy/reaction/pull/3284) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.34.1 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist/Consign] Add tests [#3279](https://github.com/artsy/reaction/pull/3279) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.0 (Fri Mar 20 2020)
+
+#### 🚀  Enhancement
+
+- Prepopulate email input from URL query string on forgot password page [#3291](https://github.com/artsy/reaction/pull/3291) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v25.33.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3290](https://github.com/artsy/reaction/pull/3290) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v25.33.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Adds a 3rd Display Ad to Standard Articles [#3286](https://github.com/artsy/reaction/pull/3286) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.33.1 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3288](https://github.com/artsy/reaction/pull/3288) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v25.33.0 (Thu Mar 19 2020)
+
+#### 🚀  Enhancement
+
+- Add initial UI for years created filters on auction results [#3270](https://github.com/artsy/reaction/pull/3270) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.32.10 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- User can navigate to IDV FAQ from the IDV landing page [#3282](https://github.com/artsy/reaction/pull/3282) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.32.9 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1702] new mobile nav menu [#3238](https://github.com/artsy/reaction/pull/3238) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.32.6 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update remaining mediator calls [#3283](https://github.com/artsy/reaction/pull/3283) ([@eessex](https://github.com/eessex))
+- [AUCT-930] static id verification processing page [#3274](https://github.com/artsy/reaction/pull/3274) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.2 to v7.2.0 [#3254](https://github.com/artsy/reaction/pull/3254) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.32.5 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Fix tab UI spacing [#3280](https://github.com/artsy/reaction/pull/3280) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.2 to v3.0.3 [#3278](https://github.com/artsy/reaction/pull/3278) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.32.4 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Update artist name [#3277](https://github.com/artsy/reaction/pull/3277) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.3 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Ensure dynamic data is passed [#3276](https://github.com/artsy/reaction/pull/3276) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.2 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Fix admin check on staging [#3275](https://github.com/artsy/reaction/pull/3275) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Forgot form titles [#3273](https://github.com/artsy/reaction/pull/3273) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.32.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Build out new Artist/Consign landing page [#3261](https://github.com/artsy/reaction/pull/3261) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.31.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Expand openAuthModal helpers, update NavBar triggers [#3264](https://github.com/artsy/reaction/pull/3264) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.31.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add generic error handler [#3272](https://github.com/artsy/reaction/pull/3272) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.30.1 (Mon Mar 16 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1758] add a fallback image when there is no headerImage [#3226](https://github.com/artsy/reaction/pull/3226) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.30.0 (Mon Mar 16 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add more safety around network failures with fallback UI [#3271](https://github.com/artsy/reaction/pull/3271) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.4 (Sat Mar 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Fix alignment in image [#3269](https://github.com/artsy/reaction/pull/3269) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.3 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3268](https://github.com/artsy/reaction/pull/3268) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.29.2 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix throttle invocation [#3267](https://github.com/artsy/reaction/pull/3267) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.1 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Remove mobile loader test [#3266](https://github.com/artsy/reaction/pull/3266) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.0 (Fri Mar 13 2020)
+
+#### 🚀  Enhancement
+
+- [PUR-1818] Update header text for auction results page [#3262](https://github.com/artsy/reaction/pull/3262) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 1
+
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v25.28.0 (Fri Mar 13 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add <NetworkTimeout /> & <NetworkOfflineMonitor /> components [#3240](https://github.com/artsy/reaction/pull/3240) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.17 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Attempt to fix Flickity error [#3265](https://github.com/artsy/reaction/pull/3265) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.16 (Thu Mar 12 2020)
+
+#### 🐛  Bug Fix
+
+- the default should be country of origin if the country select is locked to EU only [#3263](https://github.com/artsy/reaction/pull/3263) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.27.15 (Thu Mar 12 2020)
+
+#### 🐛  Bug Fix
+
+- Make countries list on the Address form render only EU countries if it's marked as euOrigin and domesticOnly [#3222](https://github.com/artsy/reaction/pull/3222) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.27.14 (Wed Mar 11 2020)
+
+#### 🐛  Bug Fix
+
+- Update openseadragon to try to fix some mobile bugs [#3260](https://github.com/artsy/reaction/pull/3260) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.27.13 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Debug ErrorBoundry error on mobile [#3259](https://github.com/artsy/reaction/pull/3259) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.12 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Move conversations app to be behind lab feature instead of admin flag [#3258](https://github.com/artsy/reaction/pull/3258) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.27.11 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Add Integrity-ready flag to boot [#3257](https://github.com/artsy/reaction/pull/3257) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.10 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Type openAuthModal helpers [#3252](https://github.com/artsy/reaction/pull/3252) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.27.9 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove BidFlow from router [#3256](https://github.com/artsy/reaction/pull/3256) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.8 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove auction routes [#3255](https://github.com/artsy/reaction/pull/3255) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.7 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist] Fix redirect [#3253](https://github.com/artsy/reaction/pull/3253) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.6 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Make hide grids function a bit safer [#3248](https://github.com/artsy/reaction/pull/3248) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.5 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] => Make `SEOProductsForCollections` safer [#3251](https://github.com/artsy/reaction/pull/3251) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.3 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Helpers for opening auth modals are strictly typed" [#3250](https://github.com/artsy/reaction/pull/3250) ([@eessex](https://github.com/eessex))
+- Helpers for opening auth modals are strictly typed [#3239](https://github.com/artsy/reaction/pull/3239) ([@eessex](https://github.com/eessex))
+- Update schema [#3249](https://github.com/artsy/reaction/pull/3249) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep lint-staged from ^10.0.8 to 10.0.8 [#3246](https://github.com/artsy/reaction/pull/3246) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update auto orb to v1.1.0 [#3237](https://github.com/artsy/reaction/pull/3237) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update lint-staged [#3245](https://github.com/artsy/reaction/pull/3245) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 5
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.27.2 (Sun Mar 08 2020)
+
+#### 🐛  Bug Fix
+
+- Replace getENV with sd for now [#3244](https://github.com/artsy/reaction/pull/3244) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.27.1 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Remove error boundary [#3243](https://github.com/artsy/reaction/pull/3243) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.0 (Sat Mar 07 2020)
+
+#### 🚀  Enhancement
+
+- Move conversations behind lab feature flag [#3241](https://github.com/artsy/reaction/pull/3241) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.3 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3242](https://github.com/artsy/reaction/pull/3242) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.1 to v7.1.2 [#3219](https://github.com/artsy/reaction/pull/3219) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.26.2 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Begin ID Verification flow from collector verification app [#3232](https://github.com/artsy/reaction/pull/3232) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.26.1 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Update attribute to follow pre-established testing patterns [#3236](https://github.com/artsy/reaction/pull/3236) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Add attribute to body when app is ready to be tested [#3233](https://github.com/artsy/reaction/pull/3233) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.1 to v3.0.2 [#3235](https://github.com/artsy/reaction/pull/3235) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.25.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Adds hooks to login modals for integration tests [#3234](https://github.com/artsy/reaction/pull/3234) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.24.3 (Wed Mar 04 2020)
+
+#### 🐛  Bug Fix
+
+- Only lint changed files [#3220](https://github.com/artsy/reaction/pull/3220) ([@zephraph](https://github.com/zephraph))
+- User does not see lot condition report request if it's disabled for a sale [#3223](https://github.com/artsy/reaction/pull/3223) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/lint-changed from ^3.0.1 to 3.0.1 [#3231](https://github.com/artsy/reaction/pull/3231) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Only lint changed files [#3230](https://github.com/artsy/reaction/pull/3230) ([@zephraph](https://github.com/zephraph))
+- Revert "Only lint changed files" [#3228](https://github.com/artsy/reaction/pull/3228) ([@zephraph](https://github.com/zephraph))
+- Update auto orb to v1.0.2 [#3225](https://github.com/artsy/reaction/pull/3225) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v25.24.2 (Mon Mar 02 2020)
 
 #### 🐛  Bug Fix

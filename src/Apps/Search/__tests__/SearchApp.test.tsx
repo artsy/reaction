@@ -4,7 +4,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { SearchApp } from "../SearchApp"
 
-jest.mock("Components/v2/RouteTabs", () => ({
+jest.mock("Components/RouteTabs", () => ({
   RouteTab: ({ children }) => children,
   TabCarousel: ({ tabs }) => tabs,
 }))

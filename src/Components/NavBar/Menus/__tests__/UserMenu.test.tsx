@@ -1,10 +1,8 @@
 import { SystemContextProvider } from "Artsy"
-import * as authentication from "Components/NavBar/Utils/authentication"
 import { mount } from "enzyme"
 import React from "react"
 import { UserMenu } from "../UserMenu"
 
-jest.mock("Components/NavBar/Utils/authentication")
 jest.mock("Artsy/Analytics/useTracking", () => {
   return {
     useTracking: () => ({
@@ -57,7 +55,23 @@ describe("UserMenu", () => {
       .find("MenuItem")
       .last()
       .simulate("click")
-    expect(authentication.logout).toHaveBeenCalledWith(mediator)
+    expect(mediator.trigger).toBeCalledWith("auth:logout")
+  })
+
+  describe("lab features", () => {
+    it("hides inquiries button if lab feature not enabled", () => {
+      const wrapper = getWrapper({
+        user: { type: "NotAdmin", lab_features: [] },
+      })
+      expect(wrapper.html()).not.toContain("Inquiries")
+    })
+
+    it("shows inquiries button if lab feature enabled", () => {
+      const wrapper = getWrapper({
+        user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
+      })
+      expect(wrapper.html()).toContain("Inquiries")
+    })
   })
 
   describe("admin features", () => {
@@ -79,16 +93,6 @@ describe("UserMenu", () => {
     it("shows purchases button if admin", () => {
       const wrapper = getWrapper({ user: { type: "Admin" } })
       expect(wrapper.html()).toContain("Purchases")
-    })
-
-    it("hides inquiries button if not admin", () => {
-      const wrapper = getWrapper({ user: { type: "NotAdmin" } })
-      expect(wrapper.html()).not.toContain("Inquiries")
-    })
-
-    it("shows inquiries button if admin", () => {
-      const wrapper = getWrapper({ user: { type: "Admin" } })
-      expect(wrapper.html()).toContain("Inquiries")
     })
 
     it("shows CMS button if admin", () => {

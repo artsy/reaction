@@ -44,6 +44,9 @@ export class Boot extends React.Component<BootProps> {
     if (env === "production") {
       Sentry.init({ dsn: sd.SENTRY_PUBLIC_DSN })
     }
+
+    // Let our end-to-end tests know that the app is hydrated and ready to go
+    document.body.setAttribute("data-test", "AppReady")
   }
 
   render() {
@@ -54,18 +57,18 @@ export class Boot extends React.Component<BootProps> {
     }
 
     return (
-      <ErrorBoundary>
+      <Theme>
         <HeadProvider headTags={headTags}>
           <StateProvider>
             <Artsy.SystemContextProvider {...contextProps}>
-              <MediaContextProvider onlyMatch={props.onlyMatchMediaQueries}>
-                <ResponsiveProvider
-                  mediaQueries={themeProps.mediaQueries}
-                  initialMatchingMediaQueries={
-                    props.onlyMatchMediaQueries as any
-                  }
-                >
-                  <Theme>
+              <ErrorBoundary>
+                <MediaContextProvider onlyMatch={props.onlyMatchMediaQueries}>
+                  <ResponsiveProvider
+                    mediaQueries={themeProps.mediaQueries}
+                    initialMatchingMediaQueries={
+                      props.onlyMatchMediaQueries as any
+                    }
+                  >
                     <Grid fluid>
                       <GlobalStyles suppressMultiMountWarning />
                       {children}
@@ -73,13 +76,13 @@ export class Boot extends React.Component<BootProps> {
                         <BreakpointVisualizer />
                       )}
                     </Grid>
-                  </Theme>
-                </ResponsiveProvider>
-              </MediaContextProvider>
+                  </ResponsiveProvider>
+                </MediaContextProvider>
+              </ErrorBoundary>
             </Artsy.SystemContextProvider>
           </StateProvider>
         </HeadProvider>
-      </ErrorBoundary>
+      </Theme>
     )
   }
 }

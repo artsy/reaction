@@ -1,5 +1,5 @@
 import { ArtistMeta_artist } from "__generated__/ArtistMeta_artist.graphql"
-import { Person as SeoDataForArtist } from "Components/v2/Seo/Person"
+import { Person as SeoDataForArtist } from "Components/Seo/Person"
 import { identity, pickBy } from "lodash"
 import React, { Component } from "react"
 import { Link, Meta, Title } from "react-head"

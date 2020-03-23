@@ -1,6 +1,7 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 
+import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import { BannerWrapper } from "Components/Publishing/Banner/Banner"
 import { PixelTracker } from "Components/Publishing/Display/ExternalTrackers"
 import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
@@ -48,7 +49,7 @@ export interface ArticleProps {
   tracking?: TrackingProp
   closeViewer?: () => void
   viewerIsOpen?: boolean
-  onOpenAuthModal?: (type: "register" | "login", config: object) => void
+  onOpenAuthModal?: (type: ModalType, config: ModalOptions) => void
   onExpand?: () => void
   shouldAdRender?: boolean
 }

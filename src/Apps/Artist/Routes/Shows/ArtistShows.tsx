@@ -1,6 +1,6 @@
 import { Box, Col, Flex, Row, Sans, Spacer } from "@artsy/palette"
 import { ArtistShows_artist } from "__generated__/ArtistShows_artist.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
@@ -8,7 +8,7 @@ import { Media } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
 import { ArtistShowListItem } from "./ArtistShowListItem"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/LoadingArea"
 
 interface ArtistShowsProps {
   relay: RelayRefetchProp

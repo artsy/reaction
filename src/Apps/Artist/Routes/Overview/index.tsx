@@ -19,9 +19,9 @@ import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Com
 import { useTracking, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArtistBioFragmentContainer as ArtistBio } from "Components/v2/ArtistBio"
-import { Carousel } from "Components/v2/Carousel"
-import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/v2/SelectedCareerAchievements"
+import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
+import { Carousel } from "Components/Carousel"
+import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/SelectedCareerAchievements"
 
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
 import { WorksForSaleRailQueryRenderer as WorksForSaleRail } from "Apps/Artist/Routes/Overview/Components/WorksForSaleRail"

@@ -162,14 +162,21 @@ describe("Sections", () => {
       expect(wrapper.getContentEndIndex()).toBe(11)
     })
 
-    it("it injects display ads if feature", () => {
+    it("injects display ads if feature", () => {
       props.article = FeatureArticle
       props.isMobile = false
       const wrapper = mountWrapper(props)
       expect(wrapper.find(DisplayAd).length).toBe(2)
     })
 
-    it("it does not inject display ads on features if hideAd props is passed", () => {
+    it("injects one additional display ad if standard", () => {
+      props.isMobile = false
+      const wrapper = mountWrapper(props)
+
+      expect(wrapper.find(DisplayAd).length).toBe(1)
+    })
+
+    it("does not inject display ads on features if hideAd props is passed", () => {
       props.article = FeatureArticle
       props.isMobile = false
       props.hideAds = true
@@ -177,7 +184,7 @@ describe("Sections", () => {
       expect(wrapper.find(DisplayAd).length).toBe(0)
     })
 
-    it("it injects display ads with correct targeting data if not sponsored feature", () => {
+    it("injects display ads with correct targeting data if not sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.isSponsored = false
@@ -196,7 +203,7 @@ describe("Sections", () => {
       })
     })
 
-    it("it injects display ads with correct targeting data if sponsored feature", () => {
+    it("injects display ads with correct targeting data if sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.isSponsored = true
@@ -215,7 +222,7 @@ describe("Sections", () => {
       })
     })
 
-    it("it injects display ads after correct sections if feature", () => {
+    it("injects display ads after correct sections if feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       const wrapper = mountWrapper(props)
@@ -232,7 +239,7 @@ describe("Sections", () => {
       expect(ad.adDimension).toBe("970x250")
     })
 
-    it("it injects display ads after correct sections if feature on mobile", () => {
+    it("injects display ads after correct sections if feature on mobile", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = true
       const wrapper = mountWrapper(props)
@@ -249,7 +256,7 @@ describe("Sections", () => {
       expect(ad.adDimension).toBe("300x50")
     })
 
-    it("it injects display ads after correct sections if sponsored feature on mobile", () => {
+    it("injects display ads after correct sections if sponsored feature on mobile", () => {
       props.article = SponsoredFeatureArticle
       props.isMobile = true
       props.isSponsored = true
@@ -264,6 +271,20 @@ describe("Sections", () => {
 
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB2")
+      expect(ad.adDimension).toBe("300x250")
+    })
+
+    it("injects correctly sized display ads if standard article on mobile", () => {
+      props.article = StandardArticle
+      props.isMobile = true
+      const wrapper = mountWrapper(props)
+
+      const ads = wrapper.find(DisplayAd)
+      expect(ads.length).toBe(1)
+
+      const ad = ads.at(0).props()
+
+      expect(ad.adUnit).toBe("Desktop_RightRail1")
       expect(ad.adDimension).toBe("300x250")
     })
   })

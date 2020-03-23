@@ -16,17 +16,17 @@ import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 
-import { ArtistBioFragmentContainer as ArtistBio } from "Components/v2/ArtistBio"
-import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/v2/ArtistMarketInsights"
-import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/v2/SelectedExhibitions"
+import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
+import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/ArtistMarketInsights"
+import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/SelectedExhibitions"
 
-import { MIN_EXHIBITIONS } from "Components/v2/SelectedExhibitions"
+import { MIN_EXHIBITIONS } from "Components/SelectedExhibitions"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
@@ -83,7 +83,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    openAuthModal(mediator, {
+    openAuthToFollowSave(mediator, {
       entity: artist,
       contextModule: Schema.ContextModule.ArtworkPage,
       intent: AuthModalIntent.FollowArtist,

@@ -4,9 +4,7 @@ import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NavBar } from "../NavBar"
-import * as authentication from "../Utils/authentication"
 
-jest.mock("../Utils/authentication")
 jest.mock("Components/Search/SearchBar", () => {
   return {
     SearchBarQueryRenderer: () => <div />,
@@ -108,7 +106,11 @@ describe("NavBar", () => {
         .find("Button")
         .first()
         .simulate("click")
-      expect(authentication.login).toHaveBeenCalledWith(mediator)
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        contextModule: "Header",
+        intent: "login",
+        mode: "login",
+      })
     })
 
     it("calls signup auth action on signup button click", () => {
@@ -117,7 +119,11 @@ describe("NavBar", () => {
         .find("Button")
         .last()
         .simulate("click")
-      expect(authentication.signup).toHaveBeenCalledWith(mediator)
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        contextModule: "Header",
+        intent: "signup",
+        mode: "signup",
+      })
     })
   })
 
@@ -138,6 +144,26 @@ describe("NavBar", () => {
       expect(wrapper.find("MobileNavMenu").length).toEqual(1)
       toggle()
       expect(wrapper.find("MobileNavMenu").length).toEqual(0)
+    })
+
+    it("toggles menu--new nav menu", () => {
+      const wrapper = getWrapper({
+        user: { lab_features: ["Updated Navigation"] },
+      })
+      expect(wrapper.find("MobileToggleIcon").length).toEqual(1)
+
+      const toggle = () =>
+        wrapper
+          .find("NavSection")
+          .find("NavItem")
+          .find("Link")
+          .last()
+          .simulate("click")
+
+      toggle()
+      expect(wrapper.find("NewMobileNavMenu").length).toEqual(1)
+      toggle()
+      expect(wrapper.find("NewMobileNavMenu").length).toEqual(0)
     })
   })
 })

@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   yarn: artsy/yarn@4.0.2
   codecov: codecov/codecov@1.0.5
-  auto: artsy/auto@1.0.2
+  auto: artsy/auto@1.1.0
 
 workflows:
   build_and_verify:
@@ -15,7 +15,9 @@ workflows:
       - yarn/relay:
           requires:
             - yarn/workflow-queue
-      - yarn/lint:
+      - yarn/run:
+          name: lint-changed
+          script: lint-changed
           requires:
             - yarn/workflow-queue
       - yarn/type-check:
@@ -37,7 +39,7 @@ workflows:
           requires:
             - yarn/jest
             - yarn/relay
-            - yarn/lint
+            - lint-changed
             - yarn/type-check
             - yarn/update-cache
       - auto/publish:
@@ -49,6 +51,6 @@ workflows:
           requires:
             - yarn/jest
             - yarn/relay
-            - yarn/lint
+            - lint-changed
             - yarn/type-check
             - yarn/update-cache

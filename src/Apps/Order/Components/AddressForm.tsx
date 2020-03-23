@@ -1,6 +1,6 @@
 import { Flex, Join, Sans, Serif, Spacer } from "@artsy/palette"
+import { CountrySelect } from "Components/CountrySelect"
 import Input from "Components/Input"
-import { CountrySelect } from "Components/v2/CountrySelect"
 import React from "react"
 import { TwoColumnSplit } from "./TwoColumnLayout"
 
@@ -37,6 +37,7 @@ export interface AddressFormProps {
   value?: Partial<Address>
   billing?: boolean
   domesticOnly?: boolean
+  euOrigin?: boolean
   showPhoneNumberInput?: boolean
   shippingCountry?: string
   errors: AddressErrors
@@ -93,7 +94,9 @@ export class AddressForm extends React.Component<
   }
 
   render() {
-    const lockCountryToOrigin = !this.props.billing && this.props.domesticOnly
+    const onlyLocalShipping = !this.props.billing && !!this.props.domesticOnly
+    const lockCountryToOrigin = onlyLocalShipping && !this.props.euOrigin
+    const lockCountriesToEU = onlyLocalShipping && this.props.euOrigin
 
     return (
       <Join separator={<Spacer mb={2} />}>
@@ -117,12 +120,13 @@ export class AddressForm extends React.Component<
             </Serif>
             <CountrySelect
               selected={
-                lockCountryToOrigin
+                lockCountryToOrigin || lockCountriesToEU
                   ? this.props.shippingCountry
                   : this.state.address.country
               }
               onSelect={this.changeValueHandler("country")}
               disabled={lockCountryToOrigin}
+              euShippingOnly={lockCountriesToEU}
             />
             {lockCountryToOrigin && (
               <>

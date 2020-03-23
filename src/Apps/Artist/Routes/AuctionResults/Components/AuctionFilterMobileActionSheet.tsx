@@ -1,5 +1,5 @@
 import { Box, Button, Sans } from "@artsy/palette"
-import { MobileTopBar } from "Components/v2/MobileTopBar"
+import { MobileTopBar } from "Components/MobileTopBar"
 import React, { SFC } from "react"
 import styled from "styled-components"
 import { useAuctionResultsFilterContext } from "../AuctionResultsFilterContext"

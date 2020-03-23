@@ -1,12 +1,12 @@
 import { Box, Col, Row } from "@artsy/palette"
 import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
 import { ArticleItem } from "./ArtistArticle"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/LoadingArea"
 
 const PAGE_SIZE = 10
 
