@@ -1,3 +1,18 @@
+# v25.35.2 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- cleanup stray text [#3306](https://github.com/artsy/reaction/pull/3306) ([@erikdstock](https://github.com/erikdstock))
+- Show a pass/fail message for a completed identity verification [#3294](https://github.com/artsy/reaction/pull/3294) ([@erikdstock](https://github.com/erikdstock))
+- Missing Image Fix [#3304](https://github.com/artsy/reaction/pull/3304) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.35.1 (Mon Mar 23 2020)
 
 #### 🐛  Bug Fix
