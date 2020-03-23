@@ -1,3 +1,15 @@
+# v25.35.2 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- Missing Image Fix [#3304](https://github.com/artsy/reaction/pull/3304) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.35.1 (Mon Mar 23 2020)
 
 #### 🐛  Bug Fix
