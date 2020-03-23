@@ -1,11 +1,8 @@
 import { IdentityVerificationAppTestQueryRawResponse } from "__generated__/IdentityVerificationAppTestQuery.graphql"
-import { routes_IdentityVerificationAppQueryResponse } from "__generated__/routes_IdentityVerificationAppQuery.graphql"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
-import { Location } from "found"
-import React from "react"
 import { graphql } from "react-relay"
 import { IdentityVerificationAppQueryResponseFixture } from "../__fixtures__/routes_IdentityVerificationAppQuery"
 import { IdentityVerificationAppFragmentContainer } from "../IdentityVerificationApp"
@@ -16,19 +13,13 @@ jest.unmock("react-tracking")
 jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
-const mockLocation: Partial<Location> = {}
+
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-const setupTestEnv = ({
-  location = mockLocation,
-}: {
-  location?: Partial<Location>
-} = {}) => {
+const setupTestEnv = () => {
   return createTestEnv({
     TestPage: IdentityVerificationAppTestPage,
-    Component: (props: routes_IdentityVerificationAppQueryResponse) => (
-      <IdentityVerificationAppFragmentContainer {...props} />
-    ),
+    Component: IdentityVerificationAppFragmentContainer,
     query: graphql`
       query IdentityVerificationAppTestQuery @raw_response_type {
         me {
@@ -141,7 +132,9 @@ describe("IdentityVerification route", () => {
         const page = await env.buildPage()
 
         await page.clickStartVerification()
-        expect(window.location.assign).toHaveBeenCalledWith("www.identity.biz")
+        expect(env.routes.mockPushRoute).toHaveBeenCalledWith(
+          "www.identity.biz"
+        )
       })
 
       it("user sees an error modal if the mutation fails", async () => {
@@ -173,13 +166,12 @@ describe("IdentityVerification route", () => {
         const page = await env.buildPage()
         env.mutations.mockNetworkFailureOnce()
 
-        page.clickStartVerification().then(() => {
-          const errorModal = expectOne(page.find(ErrorModal))
-          expect(errorModal.props().show).toBe(true)
-          expect(page.text()).toContain(
-            "Something went wrong. Please try again or contact verification@artsy.net."
-          )
-        })
+        await page.clickStartVerification()
+        const errorModal = expectOne(page.find(ErrorModal))
+        expect(errorModal.props().show).toBe(true)
+        expect(page.text()).toContain(
+          "Something went wrong. Please try again or contact verification@artsy.net."
+        )
       })
     })
   })

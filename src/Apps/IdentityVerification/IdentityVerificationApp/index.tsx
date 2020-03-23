@@ -1,8 +1,9 @@
 import { IdentityVerificationApp_me } from "__generated__/IdentityVerificationApp_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { ErrorPage } from "Components/ErrorPage"
+import { Router } from "found"
 import React from "react"
-import { Meta, Title as HeadTitle } from "react-head"
+import { Title as HeadTitle } from "react-head"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { CompleteFailed } from "./CompleteFailed"
 import { CompletePassed } from "./CompletePassed"
@@ -11,10 +12,10 @@ import { StartIdentityVerification } from "./StartIdentityVerification"
 interface Props {
   me: IdentityVerificationApp_me
   relay: RelayProp
+  router: Router
 }
 
-const IdentityVerificationApp: React.FC<Props> = props => {
-  const { me, relay } = props
+const IdentityVerificationApp: React.FC<Props> = ({ me, relay, router }) => {
   const { identityVerification } = me
 
   if (!identityVerification || identityVerification.userID !== me.internalID) {
@@ -30,8 +31,9 @@ const IdentityVerificationApp: React.FC<Props> = props => {
   } else {
     InnerComponent = () => (
       <StartIdentityVerification
-        relay={relay}
-        identityVerification={identityVerification}
+        relayEnvironment={relay.environment}
+        identityVerificationId={identityVerification.internalID}
+        onContinueToVerification={router.push}
       />
     )
   }

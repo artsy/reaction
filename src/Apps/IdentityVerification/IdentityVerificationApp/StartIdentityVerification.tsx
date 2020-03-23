@@ -3,7 +3,7 @@ import { StartIdentityVerificationMutation } from "__generated__/StartIdentityVe
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { useState } from "react"
-import { RelayProp } from "react-relay"
+import { Environment } from "react-relay"
 import { useTracking } from "react-tracking"
 import { commitMutation, graphql } from "relay-runtime"
 import createLogger from "Utils/logger"
@@ -11,15 +11,15 @@ import createLogger from "Utils/logger"
 const logger = createLogger("StartIdentityVerification.tsx")
 
 interface Props {
-  relay: RelayProp
-  identityVerification: {
-    internalID: string
-  }
+  relayEnvironment: Environment
+  identityVerificationId: string
+  onContinueToVerification: (url: string) => void
 }
 
 export const StartIdentityVerification: React.FC<Props> = ({
-  identityVerification,
-  relay: { environment },
+  identityVerificationId,
+  relayEnvironment,
+  onContinueToVerification,
 }) => {
   const [requesting, setRequesting] = useState(false)
   const [showErrorModal, setShowErrorModal] = useState(false)
@@ -27,7 +27,7 @@ export const StartIdentityVerification: React.FC<Props> = ({
 
   const trackClickedContinueToVerification = () => {
     trackEvent({
-      context_page_owner_id: identityVerification.internalID,
+      context_page_owner_id: identityVerificationId,
       action_type: Schema.ActionType.ClickedContinueToIdVerification,
       context_page: Schema.PageName.IdentityVerificationPage,
     })
@@ -35,7 +35,7 @@ export const StartIdentityVerification: React.FC<Props> = ({
 
   function startIdentityVerification() {
     const mutation = new Promise<string>((resolve, reject) => {
-      commitMutation<StartIdentityVerificationMutation>(environment, {
+      commitMutation<StartIdentityVerificationMutation>(relayEnvironment, {
         mutation: graphql`
           mutation StartIdentityVerificationMutation(
             $input: startIdentityVerificationMutationInput!
@@ -57,7 +57,7 @@ export const StartIdentityVerification: React.FC<Props> = ({
           }
         `,
         variables: {
-          input: { identityVerificationId: identityVerification.internalID },
+          input: { identityVerificationId },
         },
         onError: reject,
         onCompleted: (response, errors) => {
@@ -91,7 +91,7 @@ export const StartIdentityVerification: React.FC<Props> = ({
   }
 
   const handleMutationSuccess = (identityVerificationFlowUrl: string) => {
-    location.assign(identityVerificationFlowUrl)
+    onContinueToVerification(identityVerificationFlowUrl)
   }
 
   const handleMutationError = (error: Error) => {
@@ -109,40 +109,32 @@ export const StartIdentityVerification: React.FC<Props> = ({
       />
       <Box px={[2, 3]} mb={6} mt={4}>
         <Box
-          mx={["auto"]}
+          mx="auto"
           width={["100%", "80%"]}
-          maxWidth={"400px"}
+          maxWidth="400px"
           textAlign="center"
         >
-          <Serif size="6" color="black100">
-            Artsy identity verification
-          </Serif>
+          <Serif size="6">Artsy identity verification</Serif>
 
           <Box textAlign="left">
-            <Sans size="4" color="black100" mt={2} weight="medium">
+            <Sans size="4" mt={2} weight="medium">
               You’ll need
             </Sans>
-            <Sans size="4" color="black100">
-              • A camera on your phone or computer
-            </Sans>
-            <Sans size="4" color="black100">
-              • Your government ID{" "}
-            </Sans>
-            <Sans size="4" color="black100" mt={2} weight="medium">
+            <Sans size="4">• A camera on your phone or computer</Sans>
+            <Sans size="4">• Your government ID </Sans>
+            <Sans size="4" mt={2} weight="medium">
               Keep in mind
             </Sans>
-            <Sans size="4" color="black100">
-              • Verification will take 5–10 minutes
-            </Sans>
-            <Sans size="4" color="black100">
+            <Sans size="4">• Verification will take 5–10 minutes</Sans>
+            <Sans size="4">
               • The name on your ID must match the name on your payment method
             </Sans>
-            <Sans size="4" color="black100">
+            <Sans size="4">
               • Your ID and photo will only be used for verification purposes,
               and will not be shared
             </Sans>
             <br />
-            <Sans size="4" color="black100">
+            <Sans size="4">
               By clicking the button, you'll be redirected to our identity
               verification partner.
             </Sans>
