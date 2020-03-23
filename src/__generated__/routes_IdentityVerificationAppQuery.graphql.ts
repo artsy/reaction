@@ -13,7 +13,6 @@ export type routes_IdentityVerificationAppQueryResponse = {
 export type routes_IdentityVerificationAppQueryRawResponse = {
     readonly me: ({
         readonly internalID: string;
-        readonly name: string | null;
         readonly identityVerification: ({
             readonly internalID: string;
             readonly userID: string;
@@ -43,7 +42,6 @@ query routes_IdentityVerificationAppQuery(
 
 fragment IdentityVerificationApp_me_1Bmzm5 on Me {
   internalID
-  name
   identityVerification(id: $id) {
     internalID
     userID
@@ -126,13 +124,6 @@ return {
         "selections": [
           (v2/*: any*/),
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          },
-          {
             "kind": "LinkedField",
             "alias": null,
             "name": "identityVerification",
@@ -168,7 +159,7 @@ return {
     "operationKind": "query",
     "name": "routes_IdentityVerificationAppQuery",
     "id": null,
-    "text": "query routes_IdentityVerificationAppQuery(\n  $id: String!\n) {\n  me {\n    ...IdentityVerificationApp_me_1Bmzm5\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_1Bmzm5 on Me {\n  internalID\n  name\n  identityVerification(id: $id) {\n    internalID\n    userID\n    state\n    id\n  }\n}\n",
+    "text": "query routes_IdentityVerificationAppQuery(\n  $id: String!\n) {\n  me {\n    ...IdentityVerificationApp_me_1Bmzm5\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_1Bmzm5 on Me {\n  internalID\n  identityVerification(id: $id) {\n    internalID\n    userID\n    state\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

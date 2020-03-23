@@ -139,8 +139,7 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay, router }) => {
             </Sans>
             <Sans size="4">
               • A camera on your phone or computer
-              <br />
-              respont • Your government ID
+              <br />• Your government ID
             </Sans>
 
             <Sans size="4" mt="2" weight="medium">
