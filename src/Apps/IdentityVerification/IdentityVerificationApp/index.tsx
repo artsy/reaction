@@ -1,11 +1,11 @@
 import { Box, Button, Link, Sans, Serif } from "@artsy/palette"
 import { IdentityVerificationApp_me } from "__generated__/IdentityVerificationApp_me.graphql"
-import { IdentityVerificationAppStartFlowMutation } from "__generated__/IdentityVerificationAppStartFlowMutation.graphql"
+import { IdentityVerificationAppStartMutation } from "__generated__/IdentityVerificationAppStartMutation.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
-import { useTracking } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorPage } from "Components/ErrorPage"
 import { ErrorModal } from "Components/Modal/ErrorModal"
+import { Router } from "found"
 import React, { useState } from "react"
 import { Title as HeadTitle } from "react-head"
 import {
@@ -14,28 +14,34 @@ import {
   graphql,
   RelayProp,
 } from "react-relay"
+import { useTracking } from "react-tracking"
 import createLogger from "Utils/logger"
-
+import { CompleteFailed } from "./CompleteFailed"
+import { CompletePassed } from "./CompletePassed"
 const logger = createLogger("IdentityVerificationApp.tsx")
 
 interface Props {
   me: IdentityVerificationApp_me
   relay: RelayProp
+  router: Router
 }
 
-const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
+const IdentityVerificationApp: React.FC<Props> = ({ me, relay, router }) => {
   const { identityVerification } = me
-  const { environment } = relay
-
   const [requesting, setRequesting] = useState(false)
   const [showErrorModal, setShowErrorModal] = useState(false)
-
+  const { trackEvent } = useTracking()
   if (!identityVerification || identityVerification.userID !== me.internalID) {
     return <ErrorPage code={404} />
   }
 
-  const { trackEvent } = useTracking()
+  let AlternateComponent: React.FC = null
 
+  if (identityVerification.state === "failed") {
+    AlternateComponent = CompleteFailed
+  } else if (identityVerification.state === "passed") {
+    AlternateComponent = CompletePassed
+  }
   const trackClickedContinueToVerification = () => {
     trackEvent({
       context_page_owner_id: identityVerification.internalID,
@@ -44,11 +50,11 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
     })
   }
 
-  async function startIdentityVerification() {
+  function startIdentityVerification() {
     const mutation = new Promise<string>((resolve, reject) => {
-      commitMutation<IdentityVerificationAppStartFlowMutation>(environment, {
+      commitMutation<IdentityVerificationAppStartMutation>(relay.environment, {
         mutation: graphql`
-          mutation IdentityVerificationAppStartFlowMutation(
+          mutation IdentityVerificationAppStartMutation(
             $input: startIdentityVerificationMutationInput!
           ) {
             startIdentityVerification(input: $input) {
@@ -102,7 +108,7 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
   }
 
   const handleMutationSuccess = (identityVerificationFlowUrl: string) => {
-    location.assign(identityVerificationFlowUrl)
+    router.push(identityVerificationFlowUrl)
   }
 
   const handleMutationError = (error: Error) => {
@@ -113,60 +119,66 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
   return (
     <AppContainer>
       <HeadTitle>Artsy | ID Verification</HeadTitle>
+      {AlternateComponent ? (
+        <AlternateComponent />
+      ) : (
+        <>
+          <ErrorModal
+            show={showErrorModal}
+            contactEmail="verification@artsy.net"
+            onClose={() => setShowErrorModal(false)}
+          />
 
-      <ErrorModal
-        show={showErrorModal}
-        contactEmail="verification@artsy.net"
-        onClose={() => setShowErrorModal(false)}
-      />
+          <Box px="2" mb="6" mt="3" mx="auto" width="100%" maxWidth="400px">
+            <Serif size="6" textAlign="center">
+              Artsy identity verification
+            </Serif>
 
-      <Box px="2" mb="6" mt="3" mx="auto" width="100%" maxWidth="400px">
-        <Serif size="6" textAlign="center">
-          Artsy identity verification
-        </Serif>
+            <Sans size="4" mt="2" weight="medium">
+              You’ll need
+            </Sans>
+            <Sans size="4">
+              • A camera on your phone or computer
+              <br />
+              respont • Your government ID
+            </Sans>
 
-        <Sans size="4" mt="2" weight="medium">
-          You’ll need
-        </Sans>
-        <Sans size="4">
-          • A camera on your phone or computer
-          <br />• Your government ID
-        </Sans>
+            <Sans size="4" mt="2" weight="medium">
+              Keep in mind
+            </Sans>
+            <Sans size="4">
+              • Verification will take 5–10 minutes
+              <br />
+              • The name on your ID must match the name on your payment method
+              <br />
+              • Your ID and photo will only be used for verification purposes,
+              and will not be shared
+              <br />
+              <br />
+              By clicking the button, you'll be redirected to our identity
+              verification partner.
+            </Sans>
 
-        <Sans size="4" mt="2" weight="medium">
-          Keep in mind
-        </Sans>
-        <Sans size="4">
-          • Verification will take 5–10 minutes
-          <br />
-          • The name on your ID must match the name on your payment method
-          <br />
-          • Your ID and photo will only be used for verification purposes, and
-          will not be shared
-          <br />
-          <br />
-          By clicking the button, you'll be redirected to our identity
-          verification partner.
-        </Sans>
+            <Button
+              mt="4"
+              width="100%"
+              loading={requesting}
+              onClick={() => {
+                setRequesting(true)
+                trackClickedContinueToVerification()
+                startIdentityVerification()
+              }}
+            >
+              Continue to verification
+            </Button>
 
-        <Button
-          mt="4"
-          width="100%"
-          loading={requesting}
-          onClick={() => {
-            setRequesting(true)
-            trackClickedContinueToVerification()
-            startIdentityVerification()
-          }}
-        >
-          Continue to verification
-        </Button>
-
-        <Sans mt="4" size="4" color="black60">
-          For more information, see the{" "}
-          <Link href="/identity-verification-faq">FAQ</Link>.
-        </Sans>
-      </Box>
+            <Sans mt="4" size="4" color="black60">
+              For more information, see the{" "}
+              <Link href="/identity-verification-faq">FAQ</Link>.
+            </Sans>
+          </Box>
+        </>
+      )}
     </AppContainer>
   )
 }
@@ -178,10 +190,10 @@ export const IdentityVerificationAppFragmentContainer = createFragmentContainer(
       fragment IdentityVerificationApp_me on Me
         @argumentDefinitions(id: { type: "String!" }) {
         internalID
-        name
         identityVerification(id: $id) {
           internalID
           userID
+          state
         }
       }
     `,
