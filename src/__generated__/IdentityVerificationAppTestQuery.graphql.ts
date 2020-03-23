@@ -11,7 +11,6 @@ export type IdentityVerificationAppTestQueryResponse = {
 export type IdentityVerificationAppTestQueryRawResponse = {
     readonly me: ({
         readonly internalID: string;
-        readonly name: string | null;
         readonly identityVerification: ({
             readonly internalID: string;
             readonly userID: string;
@@ -39,7 +38,6 @@ query IdentityVerificationAppTestQuery {
 
 fragment IdentityVerificationApp_me_3zaPSf on Me {
   internalID
-  name
   identityVerification(id: "idv-id") {
     internalID
     userID
@@ -114,13 +112,6 @@ return {
         "selections": [
           (v1/*: any*/),
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          },
-          {
             "kind": "LinkedField",
             "alias": null,
             "name": "identityVerification",
@@ -156,7 +147,7 @@ return {
     "operationKind": "query",
     "name": "IdentityVerificationAppTestQuery",
     "id": null,
-    "text": "query IdentityVerificationAppTestQuery {\n  me {\n    ...IdentityVerificationApp_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_3zaPSf on Me {\n  internalID\n  name\n  identityVerification(id: \"idv-id\") {\n    internalID\n    userID\n    state\n    id\n  }\n}\n",
+    "text": "query IdentityVerificationAppTestQuery {\n  me {\n    ...IdentityVerificationApp_me_3zaPSf\n    id\n  }\n}\n\nfragment IdentityVerificationApp_me_3zaPSf on Me {\n  internalID\n  identityVerification(id: \"idv-id\") {\n    internalID\n    userID\n    state\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
