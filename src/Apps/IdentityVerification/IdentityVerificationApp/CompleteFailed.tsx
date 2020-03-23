@@ -1,7 +1,7 @@
 import { Box, Button, Link, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
-export const CompleteFailed = () => {
+export const CompleteFailed: React.FC = () => {
   return (
     <Box px={[2, 3]} mb={6} mt={4}>
       <Box

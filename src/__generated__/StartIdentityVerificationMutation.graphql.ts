@@ -5,10 +5,10 @@ export type startIdentityVerificationMutationInput = {
     readonly identityVerificationId: string;
     readonly clientMutationId?: string | null;
 };
-export type IdentityVerificationAppStartFlowMutationVariables = {
+export type StartIdentityVerificationMutationVariables = {
     input: startIdentityVerificationMutationInput;
 };
-export type IdentityVerificationAppStartFlowMutationResponse = {
+export type StartIdentityVerificationMutationResponse = {
     readonly startIdentityVerification: {
         readonly startIdentityVerificationResponseOrError: {
             readonly identityVerificationFlowUrl?: string | null;
@@ -20,15 +20,15 @@ export type IdentityVerificationAppStartFlowMutationResponse = {
         } | null;
     } | null;
 };
-export type IdentityVerificationAppStartFlowMutation = {
-    readonly response: IdentityVerificationAppStartFlowMutationResponse;
-    readonly variables: IdentityVerificationAppStartFlowMutationVariables;
+export type StartIdentityVerificationMutation = {
+    readonly response: StartIdentityVerificationMutationResponse;
+    readonly variables: StartIdentityVerificationMutationVariables;
 };
 
 
 
 /*
-mutation IdentityVerificationAppStartFlowMutation(
+mutation StartIdentityVerificationMutation(
   $input: startIdentityVerificationMutationInput!
 ) {
   startIdentityVerification(input: $input) {
@@ -120,7 +120,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "IdentityVerificationAppStartFlowMutation",
+    "name": "StartIdentityVerificationMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -153,7 +153,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "IdentityVerificationAppStartFlowMutation",
+    "name": "StartIdentityVerificationMutation",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -191,12 +191,12 @@ return {
   },
   "params": {
     "operationKind": "mutation",
-    "name": "IdentityVerificationAppStartFlowMutation",
+    "name": "StartIdentityVerificationMutation",
     "id": null,
-    "text": "mutation IdentityVerificationAppStartFlowMutation(\n  $input: startIdentityVerificationMutationInput!\n) {\n  startIdentityVerification(input: $input) {\n    startIdentityVerificationResponseOrError {\n      __typename\n      ... on StartIdentityVerificationSuccess {\n        identityVerificationFlowUrl\n      }\n      ... on StartIdentityVerificationFailure {\n        mutationError {\n          detail\n          error\n          message\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation StartIdentityVerificationMutation(\n  $input: startIdentityVerificationMutationInput!\n) {\n  startIdentityVerification(input: $input) {\n    startIdentityVerificationResponseOrError {\n      __typename\n      ... on StartIdentityVerificationSuccess {\n        identityVerificationFlowUrl\n      }\n      ... on StartIdentityVerificationFailure {\n        mutationError {\n          detail\n          error\n          message\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '374c1d95bf34f38f7a44b86d17bbb620';
+(node as any).hash = '3989044a5500f3f8e5b452f5fbe9d4ff';
 export default node;

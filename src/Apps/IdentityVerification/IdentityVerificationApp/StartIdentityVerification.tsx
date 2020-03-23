@@ -1,5 +1,5 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
-import { IdentityVerificationAppStartFlowMutation } from "__generated__/IdentityVerificationAppStartFlowMutation.graphql"
+import { StartIdentityVerificationMutation } from "__generated__/StartIdentityVerificationMutation.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { useState } from "react"
@@ -35,9 +35,9 @@ export const StartIdentityVerification: React.FC<Props> = ({
 
   async function startIdentityVerification() {
     const mutation = new Promise<string>((resolve, reject) => {
-      commitMutation<IdentityVerificationAppStartFlowMutation>(environment, {
+      commitMutation<StartIdentityVerificationMutation>(environment, {
         mutation: graphql`
-          mutation IdentityVerificationAppStartFlowMutation(
+          mutation StartIdentityVerificationMutation(
             $input: startIdentityVerificationMutationInput!
           ) {
             startIdentityVerification(input: $input) {
