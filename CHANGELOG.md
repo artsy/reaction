@@ -1,3 +1,15 @@
+# v25.36.0 (Mon Mar 23 2020)
+
+#### 🚀  Enhancement
+
+- Add year created filter reset link [#3302](https://github.com/artsy/reaction/pull/3302) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.35.2 (Mon Mar 23 2020)
 
 #### 🐛  Bug Fix
