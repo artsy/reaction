@@ -11,7 +11,7 @@ import {
   fillIn,
   fillInPhoneNumber,
   validAddress,
-} from "Apps/Order/Routes/__tests__/Utils/addressForm"
+} from "Components/__tests__/Utils/addressForm"
 import { Address } from "Components/AddressForm"
 import Input from "Components/Input"
 import { CountrySelect } from "Components/v2/CountrySelect"

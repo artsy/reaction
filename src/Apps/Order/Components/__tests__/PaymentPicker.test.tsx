@@ -7,12 +7,12 @@ import {
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
 import { creatingCreditCardSuccess } from "Apps/Order/Routes/__fixtures__/MutationResults"
+import { injectCommitMutation } from "Apps/Order/Utils/commitMutation"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
-} from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { injectCommitMutation } from "Apps/Order/Utils/commitMutation"
+} from "Components/__tests__/Utils/addressForm"
 import { Input } from "Components/Input"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { RootTestPage } from "DevTools/RootTestPage"
