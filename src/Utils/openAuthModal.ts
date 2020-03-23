@@ -9,7 +9,7 @@ export interface AuthModalOptions extends ModalOptions {
     slug: string
     name: string
   }
-  contextModule: Schema.ContextModule
+  contextModule: Schema.AuthContextModule
   intent: Schema.AuthIntent
 }
 

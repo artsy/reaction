@@ -17,7 +17,9 @@ export type AuthContextModule =
   | ContextModule.categoryRail
   | ContextModule.collectionDescription
   | ContextModule.featuredArtistsRail
+  | ContextModule.footer
   | ContextModule.header
+  | ContextModule.homeBanner
   | ContextModule.intextTooltip
   | ContextModule.otherWorksByArtistRail
   | ContextModule.otherWorksByGalleryRail
@@ -45,11 +47,14 @@ export enum AuthIntent {
   followGallery = "followGallery",
   followGene = "followGene",
   forgot = "forgot",
+  inquire = "inquire",
   login = "login",
   makeOffer = "makeOffer",
   registerToBid = "registerToBid",
   saveArtwork = "saveArtwork",
   signup = "signup",
+  viewAuctionResults = "viewAuctionResults",
+  viewEditorial = "viewEditorial",
 }
 
 /**
