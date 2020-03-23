@@ -1,3 +1,21 @@
+# v25.35.1 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- Adds social_embed section type to ad insertion logic [#3301](https://github.com/artsy/reaction/pull/3301) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.3.0 to v7.4.0 [#3300](https://github.com/artsy/reaction/pull/3300) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.35.0 (Sun Mar 22 2020)
 
 #### 🚀  Enhancement
