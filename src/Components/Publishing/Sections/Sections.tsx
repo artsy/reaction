@@ -309,11 +309,12 @@ export class Sections extends Component<Props, State> {
        *  section (on Features) and after the 2nd text + image_collection OR image_set on Standard Articles.
        * */
 
-      // calculate if a section is a text + image set/collection
+      // calculate if a section is a text + image set/collection/social_embed
       if (
         prevSection?.type === "text" &&
         (sectionItem.type === "image_collection" ||
-          sectionItem.type === "image_set")
+          sectionItem.type === "image_set" ||
+          sectionItem.type === "social_embed")
       ) {
         textAndImageSection++
       }
