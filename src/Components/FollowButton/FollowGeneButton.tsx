@@ -1,5 +1,6 @@
 import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
 import * as Artsy from "Artsy"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import { extend } from "lodash"
 import React from "react"
@@ -69,8 +70,8 @@ export class FollowGeneButton extends React.Component<Props> {
     } else {
       onOpenAuthModal &&
         onOpenAuthModal(ModalType.signup, {
-          contextModule: "intext tooltip",
-          intent: "follow gene",
+          contextModule: SchemaV2.ContextModule.intextTooltip,
+          intent: SchemaV2.AuthIntent.followGene,
           copy: "Sign up to follow categories",
         })
     }

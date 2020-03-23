@@ -468,7 +468,7 @@ describe("collections header", () => {
       expect(context.mediator.trigger).toBeCalledWith("open:auth", {
         mode: "signup",
         copy: "Sign up to follow KAWS",
-        intent: "follow artist",
+        intent: "followArtist",
         afterSignUpAction: {
           action: "follow",
           kind: "artist",

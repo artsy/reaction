@@ -52,12 +52,12 @@ describe("FollowGeneButton", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(testProps)
       component.find(FollowButtonDeprecated).simulate("click")
-      const args = testProps.onOpenAuthModal.mock.calls[0]
 
-      expect(args[0]).toBe("signup")
-      expect(args[1].contextModule).toBe("intext tooltip")
-      expect(args[1].intent).toBe("follow gene")
-      expect(args[1].copy).toBe("Sign up to follow categories")
+      expect(testProps.onOpenAuthModal).toBeCalledWith("signup", {
+        contextModule: "intextTooltip",
+        copy: "Sign up to follow categories",
+        intent: "followGene",
+      })
     })
 
     it("Follows an gene if current user", () => {

@@ -59,8 +59,8 @@ describe("FollowArtistButton", () => {
       const args = testProps.onOpenAuthModal.mock.calls[0]
 
       expect(args[0]).toBe("signup")
-      expect(args[1].contextModule).toBe("intext tooltip")
-      expect(args[1].intent).toBe("follow artist")
+      expect(args[1].contextModule).toBe("intextTooltip")
+      expect(args[1].intent).toBe("followArtist")
       expect(args[1].copy).toBe("Sign up to follow artists")
     })
 

@@ -1,12 +1,12 @@
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { Mediator } from "Artsy"
-import * as Schema from "Artsy/Analytics/Schema"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 
 import {
@@ -23,8 +23,9 @@ import {
 } from "@artsy/palette"
 import styled from "styled-components"
 
-interface Props {
+export interface ArtistCardProps {
   artist: ArtistCard_artist
+  contextModule: SchemaV2.ContextModule
   user: User
   mediator?: Mediator
   /** Lazy load the avatar image */
@@ -32,7 +33,7 @@ interface Props {
   onClick?: () => void
 }
 
-export class ArtistCard extends React.Component<Props> {
+export class ArtistCard extends React.Component<ArtistCardProps> {
   static defaultProps = {
     lazyLoad: false,
   }
@@ -63,7 +64,7 @@ const SingleLineTruncation = styled(Sans)`
   text-align: center;
 `
 
-export const LargeArtistCard: SFC<Props> = props => (
+export const LargeArtistCard: SFC<ArtistCardProps> = props => (
   <BorderBox hover flexDirection="column" width="100%" height="254px">
     <Flex flexDirection="column" flexGrow="0" alignItems="center" pt={1} mb={1}>
       {props.artist.image && (
@@ -101,7 +102,7 @@ export const LargeArtistCard: SFC<Props> = props => (
   </BorderBox>
 )
 
-export const SmallArtistCard: SFC<Props> = props => (
+export const SmallArtistCard: SFC<ArtistCardProps> = props => (
   <BorderBox hover width="100%">
     {props.artist.image && (
       <Box mr={2}>
@@ -137,11 +138,11 @@ export const SmallArtistCard: SFC<Props> = props => (
   </BorderBox>
 )
 
-const handleOpenAuth = props => {
+const handleOpenAuth = (props: ArtistCardProps) => {
   openAuthToFollowSave(props.mediator, {
     entity: props.artist,
-    contextModule: Schema.ContextModule.ArtworkPage,
-    intent: AuthModalIntent.FollowArtist,
+    contextModule: props.contextModule,
+    intent: SchemaV2.AuthIntent.followArtist,
   })
 }
 

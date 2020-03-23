@@ -107,7 +107,7 @@ describe("NavBar", () => {
         .first()
         .simulate("click")
       expect(mediator.trigger).toBeCalledWith("open:auth", {
-        contextModule: "Header",
+        contextModule: "header",
         intent: "login",
         mode: "login",
       })
@@ -120,7 +120,7 @@ describe("NavBar", () => {
         .last()
         .simulate("click")
       expect(mediator.trigger).toBeCalledWith("open:auth", {
-        contextModule: "Header",
+        contextModule: "header",
         intent: "signup",
         mode: "signup",
       })

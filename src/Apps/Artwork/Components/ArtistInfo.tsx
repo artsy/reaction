@@ -20,13 +20,14 @@ import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
 import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/ArtistMarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/SelectedExhibitions"
 
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { MIN_EXHIBITIONS } from "Components/SelectedExhibitions"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthToFollowSave } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 
 interface ArtistInfoProps {
   artist: ArtistInfo_artist
@@ -85,8 +86,8 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
   handleOpenAuth = (mediator, artist) => {
     openAuthToFollowSave(mediator, {
       entity: artist,
-      contextModule: Schema.ContextModule.ArtworkPage,
-      intent: AuthModalIntent.FollowArtist,
+      contextModule: SchemaV2.ContextModule.aboutTheWork,
+      intent: SchemaV2.AuthIntent.followArtist,
     })
   }
 

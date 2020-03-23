@@ -74,7 +74,7 @@ describe("ArtworkSidebarArtists", () => {
           objectId: "josef-albers",
         },
         copy: "Sign up to follow Josef Albers",
-        intent: "follow artist",
+        intent: "followArtist",
         mode: "signup",
       })
     })

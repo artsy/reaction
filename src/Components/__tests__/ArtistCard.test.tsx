@@ -1,17 +1,21 @@
-import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
-import { Mediator } from "Artsy"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
 import { set } from "lodash/fp"
 import React from "react"
 import { Breakpoint } from "Utils/Responsive"
-import { ArtistCard, LargeArtistCard, SmallArtistCard } from "../ArtistCard"
+import {
+  ArtistCard,
+  ArtistCardProps,
+  LargeArtistCard,
+  SmallArtistCard,
+} from "../ArtistCard"
 
 describe("ArtistCard", () => {
-  let props: { user: null; artist: ArtistCard_artist; mediator: Mediator }
+  let props: ArtistCardProps
 
-  const getWrapper = (breakpoint, passedProps = props) => {
+  const getWrapper = (breakpoint, passedProps: ArtistCardProps = props) => {
     return mount(
       <MockBoot breakpoint={breakpoint}>
         <ArtistCard {...passedProps} />
@@ -23,6 +27,7 @@ describe("ArtistCard", () => {
     props = {
       mediator: { trigger: jest.fn() },
       user: null,
+      contextModule: SchemaV2.ContextModule.artistsToFollowRail,
       artist: {
         image: {
           cropped: {
@@ -67,7 +72,7 @@ describe("ArtistCard", () => {
     expect(props.mediator.trigger).toBeCalledWith("open:auth", {
       mode: "signup",
       copy: "Sign up to follow Francesca DiMattio",
-      intent: "follow artist",
+      intent: "followArtist",
       afterSignUpAction: {
         action: "follow",
         kind: "artist",

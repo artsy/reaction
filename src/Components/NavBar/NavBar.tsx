@@ -36,6 +36,7 @@ import { NotificationsBadge } from "./NotificationsBadge"
 
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import Events from "Utils/Events"
 import { useMedia } from "Utils/Hooks/useMedia"
 
@@ -177,8 +178,8 @@ export const NavBar: React.FC = track(
                 onClick={() => {
                   openAuthModal(mediator, {
                     mode: ModalType.login,
-                    intent: "login",
-                    contextModule: AnalyticsSchema.ContextModule.Header,
+                    intent: SchemaV2.AuthIntent.login,
+                    contextModule: SchemaV2.ContextModule.header,
                   })
                 }}
               >
@@ -189,8 +190,8 @@ export const NavBar: React.FC = track(
                 onClick={() => {
                   openAuthModal(mediator, {
                     mode: ModalType.signup,
-                    intent: "signup",
-                    contextModule: AnalyticsSchema.ContextModule.Header,
+                    intent: SchemaV2.AuthIntent.signup,
+                    contextModule: SchemaV2.ContextModule.header,
                   })
                 }}
               >

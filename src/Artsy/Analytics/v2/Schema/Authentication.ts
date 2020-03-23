@@ -9,12 +9,16 @@ import { ContextModule } from "./ContextModule"
  */
 export type AuthContextModule =
   | ContextModule.aboutTheWork
+  | ContextModule.artistHeader
   | ContextModule.artistsToFollowRail
   | ContextModule.artworkGrid
+  | ContextModule.artworkSidebar
   | ContextModule.auctionRail
   | ContextModule.categoryRail
+  | ContextModule.collectionDescription
   | ContextModule.featuredArtistsRail
   | ContextModule.header
+  | ContextModule.intextTooltip
   | ContextModule.otherWorksByArtistRail
   | ContextModule.otherWorksByGalleryRail
   | ContextModule.relatedArtistsRail
