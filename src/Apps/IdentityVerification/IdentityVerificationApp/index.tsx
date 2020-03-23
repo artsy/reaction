@@ -39,10 +39,6 @@ const IdentityVerificationApp: React.FC<Props> = props => {
   return (
     <AppContainer>
       <HeadTitle>Artsy | ID Verification</HeadTitle>
-      <Meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=5 viewport-fit=cover"
-      />
       <InnerComponent />
     </AppContainer>
   )

@@ -33,7 +33,7 @@ export const StartIdentityVerification: React.FC<Props> = ({
     })
   }
 
-  async function startIdentityVerification() {
+  function startIdentityVerification() {
     const mutation = new Promise<string>((resolve, reject) => {
       commitMutation<StartIdentityVerificationMutation>(environment, {
         mutation: graphql`
