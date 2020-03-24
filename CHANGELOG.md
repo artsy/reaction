@@ -1,3 +1,15 @@
+# v25.36.1 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Artist/Consign QA [#3308](https://github.com/artsy/reaction/pull/3308) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.0 (Mon Mar 23 2020)
 
 #### 🚀  Enhancement
