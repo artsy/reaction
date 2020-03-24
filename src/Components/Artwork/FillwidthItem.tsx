@@ -163,7 +163,7 @@ export const FillwidthItem = styled(FillwidthItemContainer).attrs<
   display: inline-block;
   width: ${props => props.width}px;
   vertical-align: top;
-  margin-right: ${props => props.margin}px;
+  margin-right: ${props => props.margin || 0}px;
 
   .artwork-save {
     opacity: 0;

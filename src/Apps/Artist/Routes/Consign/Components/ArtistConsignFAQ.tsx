@@ -96,8 +96,8 @@ export const ArtistConsignFAQ: React.FC = props => {
             question="Want to learn more about selling with Artsy?"
             answer={
               <>
-                Read our full <a href="#todo">FAQ</a> or{" "}
-                <a href="#todo">contact us.</a>
+                Read our full <a href="/consign/#faq">FAQ</a> or{" "}
+                <a href="mailto:consign@artsty.net">contact us.</a>
               </>
             }
           />

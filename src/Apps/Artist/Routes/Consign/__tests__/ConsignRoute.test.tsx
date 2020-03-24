@@ -89,7 +89,7 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHeader")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
     })
   })
 
@@ -126,6 +126,11 @@ describe("ConsignRoute", () => {
     it("includes pageviews in header", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignPageViews").text()).toContain("3,500")
+    })
+
+    it("includes unique visitors in header", async () => {
+      const wrapper = await getWrapper()
+      expect(wrapper.find("ArtistConsignPageViews").text()).toContain("1,200")
     })
   })
 

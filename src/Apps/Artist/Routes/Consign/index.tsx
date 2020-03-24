@@ -1,13 +1,11 @@
 import { Box } from "@artsy/palette"
 import { Match, Router } from "found"
-import React, { useEffect } from "react"
+import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { Consign_artist } from "__generated__/Consign_artist.graphql"
 import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
 
-import { useSystemContext } from "Artsy"
-import { userIsAdmin } from "Utils/user"
 import { ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
 import { ArtistConsignHeader } from "./Components/ArtistConsignHeader"
 import { ArtistConsignHowtoSell } from "./Components/ArtistConsignHowToSell"
@@ -27,22 +25,9 @@ interface ConsignRouteProps {
 }
 
 export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
-  const { artist, artworksByInternalID, match, router } = props
+  const { artist, artworksByInternalID, match } = props
   const artistPathName = match.location.pathname.replace("/consign", "")
   const artistConsignment = getConsignmentData(artistPathName)
-  const { user } = useSystemContext()
-
-  // Redirect back to artist overview if artist not found within hand-picked data
-  // FIXME: Move this check to the router level when we're ready launch
-  useEffect(() => {
-    // FIXME: Ungate admin-only feature when ready to launch
-    const isAuthorizedToView = Boolean(userIsAdmin(user) && artistConsignment)
-
-    if (!isAuthorizedToView) {
-      router.replace(artistPathName)
-    }
-  }, [])
-
   const imageURL = artworksByInternalID[0]?.image.imageURL
 
   return (
