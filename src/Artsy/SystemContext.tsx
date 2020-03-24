@@ -1,5 +1,6 @@
-import React, { SFC, useContext, useState } from "react"
+import React, { SFC, useContext, useEffect, useState } from "react"
 import { Environment } from "relay-runtime"
+import { data as sd } from "sharify"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Router } from "found"
@@ -7,6 +8,8 @@ import { getUser } from "Utils/user"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void
+  on?: (event: string, cb?: (payload?: object) => void) => void
+  off?: (event: string) => void
 }
 
 /**
@@ -77,9 +80,28 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
 }) => {
   const [isFetching, setIsFetching] = useState(false)
   const [router, setRouter] = useState(null)
-  const user = getUser(props.user)
+  const [user, setUser] = useState(getUser(props.user))
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
+
+  /**
+   * We need to listen to login / signup events from the inquiry form on the
+   * artwork page. The inquiry form is old code, will eventually be replaced.
+   */
+  useEffect(() => {
+    if (props.mediator) {
+      props.mediator.on("auth:login:inquiry_form", loggedInUser => {
+        sd.CURRENT_USER = loggedInUser
+        setUser(loggedInUser)
+      })
+    }
+
+    return () => {
+      if (props.mediator) {
+        props.mediator.off("auth:login:inquiry_form")
+      }
+    }
+  }, [])
 
   const providerValues = {
     ...props,
