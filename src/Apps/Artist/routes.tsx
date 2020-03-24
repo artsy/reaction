@@ -246,14 +246,19 @@ export const routes: RouteConfig[] = [
           }
 
           const artistPathName = match.location.pathname.replace("/consign", "")
-          const hasConsignPage = !!getConsignmentData(artistPathName)
+          const artistConsignment = getConsignmentData(artistPathName)
+          const noConsignmentData = !Boolean(artistConsignment)
 
-          // Check to see if artist is within top 20 consignable artists, and if
-          // not, redirect to home route.
-          if (!hasConsignPage) {
+          if (noConsignmentData) {
             throw new RedirectException(artistPathName)
           } else {
-            return <Component {...props} match={match} />
+            return (
+              <Component
+                {...props}
+                match={match}
+                artistConsignment={artistConsignment}
+              />
+            )
           }
         },
         query: graphql`
