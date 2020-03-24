@@ -1,9 +1,12 @@
+import { AnalyticsSchema } from "Artsy"
+import { useTracking } from "Artsy/Analytics"
 import React, { useState } from "react"
 import styled from "styled-components"
 
 import { Box, color, Link, Sans } from "@artsy/palette"
 
 interface MobileLinkProps {
+  contextModule?: string
   children: React.ReactNode
   href?: string
   onClick?: (event?: React.MouseEvent<HTMLElement>) => void
@@ -12,10 +15,22 @@ interface MobileLinkProps {
 export const MobileLink: React.FC<MobileLinkProps> = ({
   href,
   children,
+  contextModule,
   ...props
 }) => {
   const [isPressed, setPressed] = useState(false)
   const bg = isPressed ? "black5" : "white100"
+  const { trackEvent } = useTracking()
+
+  const handleClickTracking = (linkHref: string) => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_module: contextModule,
+      flow: "Header",
+      subject: children.toString(),
+      destination_path: linkHref,
+    })
+  }
 
   return (
     <MobileLinkContainer
@@ -28,7 +43,11 @@ export const MobileLink: React.FC<MobileLinkProps> = ({
     >
       <Box>
         {href ? (
-          <Link href={href} underlineBehavior="none">
+          <Link
+            href={href}
+            underlineBehavior="none"
+            onClick={() => handleClickTracking(href)}
+          >
             <Sans size={["5t", "6"]} color={color("black60")}>
               {children}
             </Sans>
