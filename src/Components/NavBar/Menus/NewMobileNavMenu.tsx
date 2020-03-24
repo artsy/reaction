@@ -33,46 +33,13 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
             <MobileSubmenuLink menu={(artists as MenuLinkData).menu}>
               {(artists as MenuLinkData).menu.title}
             </MobileSubmenuLink>
-            <MobileLink
-              href="/auctions"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
-              Auctions
-            </MobileLink>
-            <MobileLink
-              href="/articles"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
-              Editorial
-            </MobileLink>
-            <MobileLink
-              href="/galleries"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
-              Galleries
-            </MobileLink>
-            <MobileLink
-              href="/fairs"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
-              Fairs
-            </MobileLink>
-            <MobileLink
-              href="/shows"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
-              Shows
-            </MobileLink>
-            <MobileLink
-              href="/institutions"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
-              Museums
-            </MobileLink>
-            <MobileLink
-              href="/gallery-partnerships"
-              contextModule={AnalyticsSchema.ContextModule.Header}
-            >
+            <MobileLink href="/auctions">Auctions</MobileLink>
+            <MobileLink href="/articles">Editorial</MobileLink>
+            <MobileLink href="/galleries">Galleries</MobileLink>
+            <MobileLink href="/fairs">Fairs</MobileLink>
+            <MobileLink href="/shows">Shows</MobileLink>
+            <MobileLink href="/institutions">Museums</MobileLink>
+            <MobileLink href="/gallery-partnerships">
               Partner with Artsy
             </MobileLink>
             {user ? <LoggedInLinks /> : <AuthenticateLinks />}
@@ -103,7 +70,7 @@ export const AnimatingMenuWrapper = styled.div<{
 
   top: 0;
   left: 0; /* might be simpler to just animate this instead of the transform3d business */
-  padding: 1em;
+  padding: 1em 20px;
 
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
@@ -134,7 +101,6 @@ export const BackLink = () => {
   return (
     <Box
       position="absolute"
-      top="-6px"
       onClick={e => {
         e.preventDefault()
         trackEvent({
@@ -149,10 +115,10 @@ export const BackLink = () => {
       <ChevronIcon
         direction="left"
         color={color("black100")}
-        height="10px"
-        width="10px"
-        top="7px"
-        left="5px"
+        height="14px"
+        width="14px"
+        top="5px"
+        left="-2px"
       />
     </Box>
   )
@@ -220,9 +186,9 @@ export const MobileSubmenuLink = ({ children, menu }) => {
         <ChevronIcon
           direction="right"
           color={color("black60")}
-          height="10px"
-          width="10px"
-          top="7px"
+          height="14px"
+          width="14px"
+          top="6px"
           left="5px"
         />
       </Flex>
@@ -241,13 +207,11 @@ const AuthenticateLinks = () => {
       <Separator my={1} color={color("black10")} />
       <MobileLink
         href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
-        contextModule={AnalyticsSchema.ContextModule.Header}
       >
         Sign Up
       </MobileLink>
       <MobileLink
         href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
-        contextModule={AnalyticsSchema.ContextModule.Header}
       >
         Login
       </MobileLink>
@@ -259,18 +223,8 @@ const LoggedInLinks = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <MobileLink
-        href="/works-for-you"
-        contextModule={AnalyticsSchema.ContextModule.Header}
-      >
-        Works for you
-      </MobileLink>
-      <MobileLink
-        href="/user/edit"
-        contextModule={AnalyticsSchema.ContextModule.Header}
-      >
-        Account
-      </MobileLink>
+      <MobileLink href="/works-for-you">Works for you</MobileLink>
+      <MobileLink href="/user/edit">Account</MobileLink>
     </Box>
   )
 }

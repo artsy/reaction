@@ -15,7 +15,7 @@ interface MobileLinkProps {
 export const MobileLink: React.FC<MobileLinkProps> = ({
   href,
   children,
-  contextModule,
+  contextModule = AnalyticsSchema.ContextModule.Header,
   ...props
 }) => {
   const [isPressed, setPressed] = useState(false)
