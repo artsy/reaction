@@ -108,28 +108,5 @@ describe("MobileNavMenu", () => {
         subject: "Artworks",
       })
     })
-
-    it("tracks MobileLink clicks", () => {
-      const animatingMenuWrapper = mount(
-        <SystemContextProvider user={null}>
-          <NewMobileNavMenu isOpen menuData={menuData} />
-        </SystemContextProvider>
-      ).find(AnimatingMenuWrapper)
-
-      const openWrapper = animatingMenuWrapper.filterWhere(
-        element => element.props().isOpen
-      )
-      const linkContainer = openWrapper.find("ul").at(0)
-      const mobileLinks = linkContainer.children(MobileLink)
-      mobileLinks.first().simulate("click")
-
-      expect(trackEvent).toHaveBeenCalledWith({
-        action_type: "Click",
-        context_module: "Header",
-        flow: "Header",
-        subject: "Auctions",
-        destination_path: "/auctions",
-      })
-    })
   })
 })
