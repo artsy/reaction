@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "25.32.5",
+  "version": "25.36.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -51,8 +51,8 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
-    "@artsy/lint-changed": "3.0.3",
-    "@artsy/palette": "7.1.2",
+    "@artsy/lint-changed": "3.0.4",
+    "@artsy/palette": "7.4.0",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -277,7 +277,6 @@
     "moduleNameMapper": {
       "^luxon$": "<rootDir>/node_modules/luxon",
       "^react$": "<rootDir>/node_modules/react",
-      "Assets(.*)$": "<rootDir>/src/Assets/$1",
       "^Components(.*)$": "<rootDir>/src/Components/$1"
     }
   },

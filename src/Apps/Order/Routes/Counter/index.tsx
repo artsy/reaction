@@ -19,7 +19,7 @@ import {
 } from "Apps/Order/Utils/commitMutation"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"

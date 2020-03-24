@@ -2,7 +2,7 @@ import { CreditCardSummaryItem_order } from "__generated__/CreditCardSummaryItem
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Components/v2/StepSummaryItem"
+} from "Components/StepSummaryItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { CreditCardDetails } from "./CreditCardDetails"

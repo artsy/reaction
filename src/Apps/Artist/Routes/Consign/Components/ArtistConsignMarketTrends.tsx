@@ -1,7 +1,9 @@
 import { Box, Button, color, Flex, Sans, Serif } from "@artsy/palette"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
+import { Subheader } from "./Subheader"
 
 const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
   top,
@@ -31,10 +33,12 @@ const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
 
 interface ArtistConsignMarketTrendsProps {
   artistConsignment: ArtistConsignment
+  artistID: string
 }
 
 export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = ({
   artistConsignment,
+  artistID,
 }) => {
   const {
     metadata: { highestRealized, str, realized },
@@ -43,9 +47,7 @@ export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps>
   return (
     <SectionContainer background="black100">
       <Box textAlign="center" width="100%" px={6}>
-        <Serif size="10" color="white">
-          Market trends
-        </Serif>
+        <Subheader color="white100">Market trends</Subheader>
 
         <Box my={[2, 4]}>
           <Flex justifyContent="space-evenly" flexDirection={["column", "row"]}>
@@ -68,7 +70,9 @@ export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps>
         </Box>
 
         <Box>
-          <Button variant="primaryWhite">Explore auction results</Button>
+          <RouterLink to={`/artist/${artistID}/auction-results`}>
+            <Button variant="primaryWhite">Explore auction results</Button>
+          </RouterLink>
         </Box>
       </Box>
     </SectionContainer>

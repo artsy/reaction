@@ -6,9 +6,9 @@ import { createFragmentContainer, graphql, RelayProp } from "react-relay"
 import { ArtworkFilterArtworkGrid2_filtered_artworks } from "__generated__/ArtworkFilterArtworkGrid2_filtered_artworks.graphql"
 import { useSystemContext } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import { get } from "Utils/get"
-import { LoadingArea } from "../LoadingArea"
-import { PaginationFragmentContainer as Pagination } from "../Pagination"
+import { LoadingArea } from "../../LoadingArea"
 import { Aggregations, useArtworkFilterContext } from "./ArtworkFilterContext"
 
 interface ArtworkFilterArtworkGridProps {

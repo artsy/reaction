@@ -17,20 +17,21 @@
   resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
   integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
 
-"@artsy/lint-changed@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-3.0.3.tgz#acf4d62075f526727ecc741c661922c5037b6ade"
-  integrity sha512-ELg1pgPgQ6pK7iVyOYhDMGWRaUWTa6ivWgzNcIAlPFiFPgCjiy8AJGTZmGHCDdIC37GBxDqWuLyleJPdt4HK/Q==
+"@artsy/lint-changed@3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-3.0.4.tgz#161104d7ec42decf3fed5f6d511d87c889a51d65"
+  integrity sha512-fl0FYKpl7ECdyIxecsTFHEp1ntoniLF0ecviNrz76uLLkBhng8aRz+AFy2w6ZLUgyPwyPvB8/lp+/OTYlkcUWA==
   dependencies:
     await-to-js "^2.1.1"
     kleur "^3.0.3"
     micromatch "^4.0.2"
     p-each-series "^2.1.0"
+    p-limit "^2.2.2"
 
-"@artsy/palette@7.1.2":
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-7.1.2.tgz#c561dea5fbb69df90b8c09a9e00361b3be7e9851"
-  integrity sha512-/g8NZGEIdGNOSV3rlYce4qFKhkk8xdWaxE/SgFBBpPJdE4OlUZDe9sBPJkjj5EIf8XZqd177uXq7Z9lm4qVYAg==
+"@artsy/palette@7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-7.4.0.tgz#f9dd2355890321bbf2a84fea5cb4bfb7855da9fe"
+  integrity sha512-BrdxJ4F28DnBg2yo/HUE3sIPsbTewfSQ9KtLEQA2hW5C+IBfEkhpyBhladJtP+5CPuZ5vrS00T7Tu0IAfTeDpg==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     d3-interpolate "^1.3.2"
@@ -11691,6 +11692,13 @@ p-limit@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.0.tgz#417c9941e6027a9abcba5092dd2904e255b5fbc2"
   integrity sha512-pZbTJpoUsCzV48Mc9Nh51VbwO0X9cuPFE8gYwx9BTCt9SF8/b7Zljd2fVgOxhIF/HDTKgpVzs+GPhyKfjLLFRQ==
+  dependencies:
+    p-try "^2.0.0"
+
+p-limit@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.2.tgz#61279b67721f5287aa1c13a9a7fbbc48c9291b1e"
+  integrity sha512-WGR+xHecKTr7EbUEhyLSh5Dube9JtdiG78ufaeLxTgpudf/20KqyMioIUZJAezlTIi6evxuoUs9YXc11cU+yzQ==
   dependencies:
     p-try "^2.0.0"
 

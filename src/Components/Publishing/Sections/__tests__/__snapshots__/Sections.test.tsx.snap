@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots tests renders properly 1`] = `
-.c31 {
+.c25 {
+  margin: auto;
+}
+
+.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +26,15 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: #C2C2C2;
 }
 
-.c32 {
+.c26 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
+.c36 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -30,25 +42,44 @@ exports[`Sections snapshots tests renders properly 1`] = `
   padding-bottom: 8px;
 }
 
-.c34 {
+.c38 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
 }
 
-.c35 {
+.c39 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 12px;
   line-height: 16px;
   padding-left: 20px;
 }
 
-.c41 {
+.c45 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 26px;
+}
+
+.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 1px;
+  padding-bottom: 4px;
+  padding-top: 32px;
+  margin: 0 auto;
+  border-top: none;
+  background: #F8F8F8;
+  text-align: center;
+  width: 100%;
+  visibility: hidden;
 }
 
 .c19 {
@@ -236,35 +267,35 @@ exports[`Sections snapshots tests renders properly 1`] = `
   height: auto;
 }
 
-.c23 {
+.c27 {
   margin-right: 0px;
   width: 100%;
   max-width: 100%;
 }
 
-.c23 img {
+.c27 img {
   max-width: 100%;
   height: auto;
 }
 
-.c25 {
+.c29 {
   margin-right: 10px;
   width: 216px;
   max-width: 100%;
 }
 
-.c25 img {
+.c29 img {
   max-width: 100%;
   height: auto;
 }
 
-.c26 {
+.c30 {
   margin-right: 0px;
   width: 222px;
   max-width: 100%;
 }
 
-.c26 img {
+.c30 img {
   max-width: 100%;
   height: auto;
 }
@@ -293,7 +324,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c27 {
+.c31 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -301,7 +332,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c38 {
+.c42 {
   box-sizing: border-box;
   margin: auto;
   margin-bottom: 40px;
@@ -309,7 +340,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 100%;
 }
 
-.c45 {
+.c49 {
   font-family: artsy-icons;
   color: black;
   font-size: 24px;
@@ -323,7 +354,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: black;
 }
 
-.c40 {
+.c44 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -336,26 +367,26 @@ exports[`Sections snapshots tests renders properly 1`] = `
   color: black;
 }
 
-.c40 a {
+.c44 a {
   color: black;
 }
 
-.c42 {
+.c46 {
   margin-right: 20px;
 }
 
-.c43 {
+.c47 {
   -webkit-text-decoration: none;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.c43 .c44 {
+.c47 .c48 {
   vertical-align: middle;
   margin: 0;
 }
 
-.c39 {
+.c43 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -365,23 +396,23 @@ exports[`Sections snapshots tests renders properly 1`] = `
   flex-direction: column;
 }
 
-.c24 {
+.c28 {
   width: 100%;
   height: 1000px;
 }
 
-.c36 {
+.c40 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c36 > svg {
+.c40 > svg {
   height: 98%;
 }
 
-.c30 {
+.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -398,19 +429,19 @@ exports[`Sections snapshots tests renders properly 1`] = `
   width: 100%;
 }
 
-.c33 {
+.c37 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c28 {
+.c32 {
   position: relative;
   width: 100%;
 }
 
-.c29 {
+.c33 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -423,17 +454,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
   cursor: pointer;
 }
 
-.c29:hover {
+.c33:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c29:hover path,
-.c29:hover polygon {
+.c33:hover path,
+.c33:hover polygon {
   fill: white;
 }
 
-.c37 {
+.c41 {
   height: auto;
   width: 100%;
 }
@@ -551,7 +582,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
   background-size: 1.25px 1px;
 }
 
-.c2 h2 .c46 {
+.c2 h2 .c50 {
   background-position: bottom !important;
 }
 
@@ -646,38 +677,44 @@ exports[`Sections snapshots tests renders properly 1`] = `
   max-width: 780px;
 }
 
+.c23 {
+  margin-top: calc(100% - 96%);
+  width: 100%;
+  margin-left: 0;
+}
+
 @media screen and (min-width:40em) {
-  .c32 {
+  .c36 {
     font-size: 18px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c32 {
+  .c36 {
     line-height: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c34 {
+  .c38 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c34 {
+  .c38 {
     line-height: 24px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c35 {
+  .c39 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c35 {
+  .c39 {
     line-height: 24px;
   }
 }
@@ -759,34 +796,34 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c23 {
+  .c27 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c23 img {
+  .c27 img {
     width: 100%;
   }
 }
 
 @media (max-width:600px) {
-  .c25 {
+  .c29 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c25 img {
+  .c29 img {
     width: 100%;
   }
 }
 
 @media (max-width:600px) {
-  .c26 {
+  .c30 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c26 img {
+  .c30 img {
     width: 100%;
   }
 }
@@ -828,25 +865,25 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 @media (max-width:1280px) {
-  .c27 {
+  .c31 {
     width: 680px;
   }
 }
 
 @media (max-width:900px) {
-  .c27 {
+  .c31 {
     padding: 0;
   }
 }
 
 @media (max-width:900px) {
-  .c38 {
+  .c42 {
     padding: 0 20px;
   }
 }
 
 @media (max-width:720px) {
-  .c24 {
+  .c28 {
     height: 1300px;
     width: 100%;
   }
@@ -1622,6 +1659,36 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
     </div>
+    <div
+      className="c23"
+    >
+      <div
+        className="c24"
+        height="1px"
+        onClick={[Function]}
+      >
+        <div
+          className="c25"
+        >
+          <div
+            style={
+              Object {
+                "height": 250,
+                "width": 300,
+              }
+            }
+          />
+          <div
+            className="c26"
+            color="black30"
+            fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+            fontSize="10px"
+          >
+            Advertisement
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div
     className="c1"
@@ -1646,7 +1713,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c23"
+        className="c27"
       >
         <div
           className="article-image"
@@ -1755,7 +1822,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     className="c3"
   >
     <iframe
-      className="c24"
+      className="c28"
       frameBorder="0"
       height={1000}
       scrolling="no"
@@ -1785,7 +1852,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       className="c5"
     >
       <div
-        className="c25"
+        className="c29"
         width={216}
       >
         <div
@@ -1963,7 +2030,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
         </div>
       </div>
       <div
-        className="c26"
+        className="c30"
         width={222}
       >
         <div
@@ -2070,23 +2137,23 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c27"
+    className="c31"
   >
     <div
-      className="c28"
+      className="c32"
     >
       <div
-        className="c29"
+        className="c33"
         onClick={[Function]}
       >
         <div
-          className="c30"
+          className="c34"
         >
           <div
-            className="c31"
+            className="c35"
           >
             <div
-              className="c32"
+              className="c36"
               fontFamily={
                 Object {
                   "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2103,10 +2170,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
               The Work of Bruce M. Sherman
             </div>
             <div
-              className="c33"
+              className="c37"
             >
               <div
-                className="c34"
+                className="c38"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2123,7 +2190,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                 View Slideshow
               </div>
               <div
-                className="c35"
+                className="c39"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize={
                   Array [
@@ -2141,7 +2208,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             suppressHydrationWarning={false}
           >
             <div
-              className="c36"
+              className="c40"
             >
               <svg
                 className="image-set"
@@ -2171,7 +2238,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       >
         <img
           alt="The Work of Bruce M. Sherman"
-          className="c37"
+          className="c41"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FCzofaZln2q-XhtXFqIio5A%252F07272017133815-0001%2B%2528dragged%2529%2Bcopy.jpg&width=800&quality=80"
         />
       </div>
@@ -2194,13 +2261,13 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c27"
+    className="c31"
   >
     <div
       className="c5"
     >
       <div
-        className="c23"
+        className="c27"
       >
         <div
           className="article-image"
@@ -2306,17 +2373,17 @@ exports[`Sections snapshots tests renders properly 1`] = `
     </div>
   </div>
   <div
-    className="c38"
+    className="c42"
   >
     <div
-      className="c39"
+      className="c43"
     >
       <div
-        className="c40"
+        className="c44"
         color="black"
       >
         <div
-          className="c41"
+          className="c45"
           fontFamily={
             Object {
               "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2326,7 +2393,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
           fontSize="16px"
         >
           <span
-            className="c42"
+            className="c46"
           >
             <span>
               <a
@@ -2339,11 +2406,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
           </span>
           <span>
             <a
-              className="c43"
+              className="c47"
               href="http://twitter.com/caseylesser"
             >
               <div
-                className="c44 c45"
+                className="c48 c49"
               >
                 
               </div>

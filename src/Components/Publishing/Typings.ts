@@ -30,6 +30,7 @@ export enum AdUnit {
 
   Mobile_TopLeaderboard = "Mobile_TopLeaderboard",
   Mobile_InContentMR1 = "Mobile_InContentMR1",
+  Mobile_InContentMR2 = "Mobile_InContentMR2",
   Mobile_InContentLB1 = "Mobile_InContentLB1",
   Mobile_InContentLB2 = "Mobile_InContentLB2",
 
@@ -55,6 +56,7 @@ export enum AdDimension {
   Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom = "970x250",
   Mobile_TopLeaderboard = "300x50",
   Mobile_InContentMR1 = "300x50",
+  Mobile_InContentMR2 = "300x250",
   Mobile_InContentLB1 = "300x50",
   Mobile_InContentLB2 = "300x50",
   Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom = "300x250",

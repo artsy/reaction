@@ -6,7 +6,7 @@ import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Components/v2/StepSummaryItem"
+} from "Components/StepSummaryItem"
 import { Omit } from "lodash"
 
 export interface TransactionDetailsSummaryItemProps

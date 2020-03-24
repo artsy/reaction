@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default header component renders a snapshot 1`] = `
+<header>
+  <div
+    className="sc-bdVaJa DefaultHeader__DefaultHeaderContainer-sc-1cy71or-0 gAnuRP"
+    height={
+      Array [
+        160,
+        160,
+        250,
+      ]
+    }
+    width={
+      Array [
+        "auto",
+        1,
+      ]
+    }
+  >
+    <div
+      className="sc-bwzfXH DefaultHeader__HeaderArtworks-sc-1cy71or-1 ixSBap"
+    >
+      <a
+        href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
+        onClick={[Function]}
+      >
+        <img
+          className="DefaultHeader__HeaderImage-sc-1cy71or-2 knqfmU Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
+          onContextMenu={[Function]}
+          src="https://resized-large.cloudfront.net"
+        />
+      </a>
+      <a
+        href="/artwork/carrie-mae-weems-untitled-woman-feeding-bird"
+        onClick={[Function]}
+      >
+        <img
+          className="DefaultHeader__HeaderImage-sc-1cy71or-2 knqfmU Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=219&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6EcgtVvPwlklnB96Xo582Q%2Flarge.jpg"
+        />
+      </a>
+      <a
+        href="/artwork/carrie-mae-weems-untitled-man-reading-newspaper-and-kitchen-table-series-book"
+        onClick={[Function]}
+      >
+        <img
+          className="DefaultHeader__HeaderImage-sc-1cy71or-2 knqfmU Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FgK6jwJ3DvAJwfRN86QVkXg%2Flarge.jpg"
+        />
+      </a>
+      <a
+        href="/artwork/carrie-mae-weems-untitled-woman-standing"
+        onClick={[Function]}
+      >
+        <img
+          className="DefaultHeader__HeaderImage-sc-1cy71or-2 knqfmU Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=213&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FclW8TSShyic1OZjPrQ2ZMQ%2Flarge.jpg"
+        />
+      </a>
+      <a
+        href="/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-makeup-from-kitchen-table-series-1"
+        onClick={[Function]}
+      >
+        <img
+          className="DefaultHeader__HeaderImage-sc-1cy71or-2 knqfmU Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=218&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F6im4v__40Y7_SkuaZTCVaQ%2Flarge.jpg"
+        />
+      </a>
+      <a
+        href="/artwork/carrie-mae-weems-untitled-brushing-hair"
+        onClick={[Function]}
+      >
+        <img
+          className="DefaultHeader__HeaderImage-sc-1cy71or-2 knqfmU Imageshared__BaseImage-sc-1dymtq1-0 ccPHGJ"
+          onContextMenu={[Function]}
+          src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=220&height=220&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FjUtnjk72Wp_WtNsFdvYzZg%2Flarge.jpg"
+        />
+      </a>
+    </div>
+  </div>
+</header>
+`;

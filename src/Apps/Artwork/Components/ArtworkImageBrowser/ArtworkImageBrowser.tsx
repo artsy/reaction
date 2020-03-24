@@ -1,6 +1,6 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
-import { BaseCarousel as Carousel } from "Components/v2/Carousel"
-import { Lightbox } from "Components/v2/Lightbox"
+import { BaseCarousel as Carousel } from "Components/Carousel"
+import { Lightbox } from "Components/Lightbox"
 import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"

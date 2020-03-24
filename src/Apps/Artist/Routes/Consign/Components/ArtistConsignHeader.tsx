@@ -1,6 +1,7 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
 interface ArtistConsignHeaderProps {
@@ -12,18 +13,22 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
     <SectionContainer background={LightPurpleColor}>
       <Box textAlign="center">
         <Box>
-          <Serif size={["10", "12"]}>
+          <Serif element="h1" size={["10", "12"]}>
             Sell Works by <br />
             {props.artistName}
           </Serif>
         </Box>
 
         <Box mt={3} mb={4}>
-          <Sans size="4t">With Artsy's expert guidance, selling is simple</Sans>
+          <Sans element="h2" size="4t">
+            With Artsy's expert guidance, selling is simple
+          </Sans>
         </Box>
 
         <Box>
-          <Button>Request a price estimate</Button>
+          <RouterLink to="/consign">
+            <Button>Request a price estimate</Button>
+          </RouterLink>
         </Box>
       </Box>
     </SectionContainer>

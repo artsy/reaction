@@ -1,4 +1,5 @@
 import { BorderBox, Flex, Title } from "@artsy/palette"
+import { Conversation_me } from "__generated__/Conversation_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { ConversationFragmentContainer as Conversation } from "Apps/Conversation/Components/Conversation"
 import { SystemContext } from "Artsy"
@@ -6,7 +7,6 @@ import { ErrorPage } from "Components/ErrorPage"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { userHasLabFeature } from "Utils/user"
-import { Conversation_me } from "__generated__/Conversation_me.graphql"
 
 interface ConversationRouteProps {
   me: Conversation_me

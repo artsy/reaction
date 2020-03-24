@@ -67,6 +67,74 @@ describe("AuctionResultsFilterContext", () => {
       })
     })
 
+    describe("#setFilter for createdAfterYear", () => {
+      it("should set createdBeforeYear if it is not already provided", done => {
+        getWrapper({
+          filters: {
+            latestCreatedYear: 2000,
+          },
+        })
+        act(() => {
+          context.setFilter("createdAfterYear", 1990)
+          setTimeout(() => {
+            expect(context.filters.createdAfterYear).toEqual(1990)
+            expect(context.filters.createdBeforeYear).toEqual(2000)
+            done()
+          })
+        })
+      })
+
+      it("should set createdBeforeYear to its value if createdBeforeYear is less", done => {
+        getWrapper({
+          filters: {
+            createdBeforeYear: 2000,
+          },
+        })
+        act(() => {
+          context.setFilter("createdAfterYear", 2001)
+          setTimeout(() => {
+            expect(context.filters.createdAfterYear).toEqual(2001)
+            expect(context.filters.createdBeforeYear).toEqual(2001)
+            done()
+          })
+        })
+      })
+    })
+
+    describe("#setFilter for createdBeforeYear", () => {
+      it("should set createdAfterYear if it is not already provided", done => {
+        getWrapper({
+          filters: {
+            earliestCreatedYear: 1990,
+          },
+        })
+        act(() => {
+          context.setFilter("createdBeforeYear", 2000)
+          setTimeout(() => {
+            expect(context.filters.createdBeforeYear).toEqual(2000)
+            expect(context.filters.createdAfterYear).toEqual(1990)
+            done()
+          })
+        })
+      })
+
+      it("should set createdAfterYear to its value if createdAfterYear is greater", done => {
+        getWrapper({
+          filters: {
+            createdAfterYear: 2000,
+          },
+        })
+        act(() => {
+          context.setFilter("createdBeforeYear", 1990)
+          setTimeout(() => {
+            expect(context.filters.createdBeforeYear).toEqual(1990)
+            expect(context.filters.createdAfterYear).toEqual(1990)
+            done()
+          })
+        })
+      })
+    })
+
     it("#unsetFilter", done => {
       getWrapper()
       act(() => {

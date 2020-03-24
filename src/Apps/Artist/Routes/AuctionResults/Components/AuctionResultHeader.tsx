@@ -14,7 +14,9 @@ const AuctionResultHeader: React.FC<Props> = props => {
 
   return (
     <Box pb={2}>
-      <Sans size="5t">Auction results</Sans>
+      <Sans size="5t" mb={1}>
+        Auction results
+      </Sans>
       <Serif size="3" color="black100">
         Filter auction results to compare past lots by medium, size, and more.
         Note that auction prices vary based on market specifics at the time of

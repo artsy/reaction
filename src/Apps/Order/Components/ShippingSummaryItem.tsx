@@ -3,7 +3,7 @@ import { ShippingSummaryItem_order } from "__generated__/ShippingSummaryItem_ord
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Components/v2/StepSummaryItem"
+} from "Components/StepSummaryItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ShippingAddressFragmentContainer as ShippingAddress } from "./ShippingAddress"

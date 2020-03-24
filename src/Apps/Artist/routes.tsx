@@ -249,11 +249,7 @@ export const routes: RouteConfig[] = [
               ...Consign_artist
             }
             artworksByInternalID(ids: $recentlySoldArtworkIDs) {
-              internalID
-              image {
-                aspectRatio
-              }
-              ...FillwidthItem_artwork
+              ...Consign_artworksByInternalID
             }
           }
         `,
