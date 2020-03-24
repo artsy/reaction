@@ -1,4 +1,4 @@
-import { Box, Flex, Sans, Spacer } from "@artsy/palette"
+import { Box, Flex, Spacer } from "@artsy/palette"
 import React from "react"
 
 import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
@@ -23,15 +23,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
     <SectionContainer>
       <Box textAlign="center">
         <Box>
-          <Subheader>Recently sold {artistName} works on Artsy</Subheader>
-
-          <Spacer my={1} />
-
-          <Box>
-            <Sans size="6">
-              Works by {artistName} sold on Artsy in the past 12 months
-            </Sans>
-          </Box>
+          <Subheader>Works by {artistName} recently sold on Artsy</Subheader>
 
           <Spacer my={4} />
 

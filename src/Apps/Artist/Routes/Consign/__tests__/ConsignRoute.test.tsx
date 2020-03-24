@@ -6,18 +6,9 @@ import { graphql } from "relay-runtime"
 import { ConsignRouteFragmentContainer } from "../index"
 
 import { ConsignRoute_Test_QueryRawResponse } from "__generated__/ConsignRoute_Test_Query.graphql"
+import { getConsignmentData } from "../Utils/getConsignmentData"
 
 jest.unmock("react-relay")
-
-jest.mock("Apps/Artist/Routes/Consign/Utils/getConsignmentData", () => ({
-  getConsignmentData: () => {
-    const {
-      artistConsignmentFixture,
-    } = require("Apps/__tests__/Fixtures/Artist/Routes/ConsignRouteFixture")
-
-    return artistConsignmentFixture
-  },
-}))
 
 describe("ConsignRoute", () => {
   const getWrapper = async (
@@ -35,6 +26,8 @@ describe("ConsignRoute", () => {
       replace: jest.fn(),
     }
 
+    const artistConsignment = getConsignmentData("/artist/alex-katz")
+
     return await renderRelayTree({
       Component: ({ artist, artworksByInternalID }) => {
         return (
@@ -43,6 +36,7 @@ describe("ConsignRoute", () => {
               <ConsignRouteFragmentContainer
                 artist={artist}
                 artworksByInternalID={artworksByInternalID}
+                artistConsignment={artistConsignment}
                 match={match}
                 router={router}
               />
@@ -89,7 +83,7 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHeader")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
     })
   })
 
@@ -126,6 +120,11 @@ describe("ConsignRoute", () => {
     it("includes pageviews in header", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignPageViews").text()).toContain("3,500")
+    })
+
+    it("includes unique visitors in header", async () => {
+      const wrapper = await getWrapper()
+      expect(wrapper.find("ArtistConsignPageViews").text()).toContain("1,200")
     })
   })
 

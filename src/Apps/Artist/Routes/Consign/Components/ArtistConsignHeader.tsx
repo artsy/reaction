@@ -26,7 +26,7 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
         </Box>
 
         <Box>
-          <RouterLink to="/consign">
+          <RouterLink to="/consign/submission">
             <Button>Request a price estimate</Button>
           </RouterLink>
         </Box>
