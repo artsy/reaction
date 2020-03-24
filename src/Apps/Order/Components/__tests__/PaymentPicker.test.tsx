@@ -18,7 +18,7 @@ import { createTestEnv } from "DevTools/createTestEnv"
 import { RootTestPage } from "DevTools/RootTestPage"
 import React from "react"
 import { graphql } from "react-relay"
-import { Address, AddressForm } from "../../../../Components/AddressForm"
+import { Address, AddressForm } from "Components/AddressForm"
 import { PaymentPicker, PaymentPickerFragmentContainer } from "../PaymentPicker"
 
 jest.unmock("react-relay")
