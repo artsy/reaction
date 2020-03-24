@@ -1,3 +1,15 @@
+# v25.36.2 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- Copy: Remove stray whitespace in verification failed view [#3310](https://github.com/artsy/reaction/pull/3310) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v25.36.1 (Tue Mar 24 2020)
 
 #### 🐛  Bug Fix
