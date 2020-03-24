@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { Box, color, Link, Sans } from "@artsy/palette"
 
 interface MobileLinkProps {
-  contextModule?: string
+  contextModule?: any
   children: React.ReactNode
   href?: string
   onClick?: (event?: React.MouseEvent<HTMLElement>) => void
@@ -21,13 +21,14 @@ export const MobileLink: React.FC<MobileLinkProps> = ({
   const [isPressed, setPressed] = useState(false)
   const bg = isPressed ? "black5" : "white100"
   const { trackEvent } = useTracking()
+  const text = children.toString()
 
   const handleClickTracking = (linkHref: string) => {
     trackEvent({
       action_type: AnalyticsSchema.ActionType.Click,
       context_module: contextModule,
       flow: "Header",
-      subject: children.toString(),
+      subject: text,
       destination_path: linkHref,
     })
   }
