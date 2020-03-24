@@ -1,6 +1,5 @@
 import React, { SFC, useContext, useEffect, useState } from "react"
 import { Environment } from "relay-runtime"
-import { data as sd } from "sharify"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Router } from "found"
@@ -91,7 +90,6 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   useEffect(() => {
     if (props.mediator) {
       props.mediator.on("auth:login:inquiry_form", loggedInUser => {
-        sd.CURRENT_USER = loggedInUser
         setUser(loggedInUser)
       })
     }
