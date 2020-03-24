@@ -20,7 +20,7 @@ export const CompleteFailed: React.FC = () => {
         <Sans size="4" mt={2} weight="medium">
           For assistance, please contact Artsy verification support at{" "}
           <Link href="mailto:verification@artsy.net">
-            verification @artsy.net
+            verification@artsy.net
           </Link>
           .
         </Sans>
