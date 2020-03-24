@@ -287,8 +287,7 @@ const AuthenticateLinks = () => {
         onClick={() => {
           trackEvent({
             action_type: AnalyticsSchema.ActionType.Click,
-            context_module:
-              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            context_module: AnalyticsSchema.ContextModule.Header,
             flow: "Header",
             subject: "Sign Up",
             destination_path:
@@ -303,8 +302,7 @@ const AuthenticateLinks = () => {
         onClick={() => {
           trackEvent({
             action_type: AnalyticsSchema.ActionType.Click,
-            context_module:
-              AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+            context_module: AnalyticsSchema.ContextModule.Header,
             flow: "Header",
             subject: "Login",
             destination_path:
