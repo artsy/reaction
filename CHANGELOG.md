@@ -1,3 +1,15 @@
+# v25.36.6 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Switch props.router.push back to window.locaion.assign for idv flow [#3312](https://github.com/artsy/reaction/pull/3312) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v25.36.5 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
