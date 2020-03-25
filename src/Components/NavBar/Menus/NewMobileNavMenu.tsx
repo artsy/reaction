@@ -75,7 +75,7 @@ export const AnimatingMenuWrapper = styled.div<{
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
   ul {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
   }
 `
 
