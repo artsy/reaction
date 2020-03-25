@@ -165,7 +165,7 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHowtoSell")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
     })
   })
 
@@ -175,11 +175,6 @@ describe("ConsignRoute", () => {
       expect(wrapper.find("ArtistConsignFAQ").html()).toContain(
         "mailto:consign@artsty.net"
       )
-    })
-
-    // FIXME: Wire up new FAQ page
-    xit("includes link to stand alone FAQ page", async () => {
-      //
     })
   })
 
@@ -191,7 +186,7 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignSellArt")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
     })
   })
 })

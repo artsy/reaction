@@ -20,7 +20,7 @@ export const ArtistConsignSellArt: React.FC = props => {
         </Box>
 
         <Box>
-          <RouterLink to="/consign">
+          <RouterLink to="/consign/submission">
             <Button>Request a price estimate</Button>
           </RouterLink>
         </Box>
