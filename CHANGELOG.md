@@ -1,3 +1,16 @@
+# v25.36.4 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Move AddressForm component out of the order app [#3305](https://github.com/artsy/reaction/pull/3305) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.36.3 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
