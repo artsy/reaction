@@ -228,6 +228,14 @@ describe("ArticleMeta", () => {
         "art, community"
       )
     })
+
+    it("does not render keyword meta tags if no keywords", () => {
+      props.article.keywords = []
+      const component = getWrapper()
+      expect(component.find("[name='keywords']")).toHaveLength(0)
+      expect(component.find("[property='news_keywords']")).toHaveLength(0)
+      expect(component.find("[property='article:tag']")).toHaveLength(0)
+    })
   })
 
   it("renders a single author", () => {
