@@ -142,24 +142,24 @@ export const menuData: MenuData = {
               title: "Price",
               links: [
                 {
-                  text: "Under $1,000",
-                  href: "/collect?price_range=50-1000",
-                },
-                {
-                  text: "$1,000–$5,000",
-                  href: "/collect?price_range=1000-5000",
-                },
-                {
-                  text: "$5,000–$10,000",
-                  href: "/collect?price_range=5000-10000",
+                  text: "$50,000 and Above",
+                  href: "/collect?price_range=50000-%2A",
                 },
                 {
                   text: "$10,000–$50,000",
                   href: "/collect?price_range=10000-50000",
                 },
                 {
-                  text: "$50,000 and Above",
-                  href: "/collect?price_range=50000-%2A",
+                  text: "$5,000–$10,000",
+                  href: "/collect?price_range=5000-10000",
+                },
+                {
+                  text: "$1,000–$5,000",
+                  href: "/collect?price_range=1000-5000",
+                },
+                {
+                  text: "Under $1,000",
+                  href: "/collect?price_range=50-1000",
                 },
               ],
             },
