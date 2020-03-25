@@ -75,7 +75,7 @@ export const AnimatingMenuWrapper = styled.div<{
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
   ul {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
 `
 
@@ -111,6 +111,8 @@ export const BackLink = () => {
         })
         pop()
       }}
+      width="30px"
+      height="30px"
     >
       <ChevronIcon
         direction="left"
