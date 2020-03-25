@@ -79,27 +79,9 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
 }) => {
   const [isFetching, setIsFetching] = useState(false)
   const [router, setRouter] = useState(null)
-  const [user, setUser] = useState(getUser(props.user))
+  const [user] = useState(getUser(props.user))
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
-
-  /**
-   * We need to listen to login / signup events from the inquiry form on the
-   * artwork page. The inquiry form is old code, will eventually be replaced.
-   */
-  useEffect(() => {
-    if (props.mediator) {
-      props.mediator.on("auth:login:inquiry_form", loggedInUser => {
-        setUser(loggedInUser)
-      })
-    }
-
-    return () => {
-      if (props.mediator) {
-        props.mediator.off("auth:login:inquiry_form")
-      }
-    }
-  }, [])
 
   const providerValues = {
     ...props,

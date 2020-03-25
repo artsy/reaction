@@ -1,7 +1,7 @@
 import { Box } from "@artsy/palette"
 import { NetworkOfflineMonitor } from "Artsy/Router/NetworkOfflineMonitor"
 import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
-import { useInquirySignInRedirect } from "Artsy/Router/Utils/useInquirySignInRedirect"
+import { useMaybeReloadAfterInquirySignIn } from "Artsy/Router/Utils/useMaybeReloadAfterInquirySignIn"
 import { NavBar } from "Components/NavBar"
 import { Match } from "found"
 import { isFunction } from "lodash"
@@ -42,7 +42,7 @@ export const AppShell: React.FC<AppShellProps> = props => {
   }, [])
 
   // TODO: When old backbone inquiry modal goes away, this can be removed
-  useInquirySignInRedirect()
+  useMaybeReloadAfterInquirySignIn()
 
   return (
     <Box width="100%">
