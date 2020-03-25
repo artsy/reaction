@@ -1,5 +1,6 @@
 import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
-import { useSystemContext } from "Artsy"
+import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics"
 import React from "react"
 import styled from "styled-components"
 import { MenuData, MenuLinkData } from "../menuData"
@@ -18,7 +19,6 @@ export const NewMobileNavMenu: React.FC<Props> = props => {
   const {
     links: [artworks, artists],
   } = props.menuData
-
   const { user } = useSystemContext()
 
   return (
@@ -70,7 +70,7 @@ export const AnimatingMenuWrapper = styled.div<{
 
   top: 0;
   left: 0; /* might be simpler to just animate this instead of the transform3d business */
-  padding: 1em;
+  padding: 1em 20px;
 
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
@@ -93,32 +93,54 @@ const Menu = ({ isOpen, title, links, showBacknav = true }) => {
   )
 }
 
-const BackLink = () => {
+export const BackLink = () => {
+  const { trackEvent } = useTracking()
   const { pop } = useNavigation()
+  const contextModule = getContextModule()
+
   return (
-    <Box position="absolute" top="-6px">
-      <a
-        href="#"
-        onClick={e => {
-          e.preventDefault()
-          pop()
-        }}
-      >
-        <ChevronIcon
-          direction="left"
-          color={color("black100")}
-          height="10px"
-          width="10px"
-          top="7px"
-          left="5px"
-        />
-      </a>
+    <Box
+      position="absolute"
+      onClick={e => {
+        e.preventDefault()
+        trackEvent({
+          action_type: AnalyticsSchema.ActionType.Click,
+          context_module: contextModule,
+          flow: "Header",
+          subject: "Back link",
+        })
+        pop()
+      }}
+    >
+      <ChevronIcon
+        direction="left"
+        color={color("black100")}
+        height="14px"
+        width="14px"
+        top="5px"
+        left="-2px"
+      />
     </Box>
   )
 }
 
+const getContextModule = () => {
+  const { path } = useNavigation()
+  let contextModule
+  if (path[0] === "Artworks") {
+    contextModule = AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+  } else if (path[0] === "Artists") {
+    contextModule = AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+  } else {
+    contextModule = AnalyticsSchema.ContextModule.Header
+  }
+  return contextModule
+}
+
 const NavLink = ({ link }) => {
   const isSubMenu = !!link.menu
+  const contextModule = getContextModule()
+
   if (isSubMenu) {
     return (
       <React.Fragment key={link.menu.title}>
@@ -129,7 +151,9 @@ const NavLink = ({ link }) => {
   } else {
     return (
       <React.Fragment key={link.href}>
-        <MobileLink href={link.href}>{link.text}</MobileLink>
+        <MobileLink href={link.href} contextModule={contextModule}>
+          {link.text}
+        </MobileLink>
         {link.dividerBelow && <Separator my={1} color={color("black10")} />}
       </React.Fragment>
     )
@@ -137,7 +161,10 @@ const NavLink = ({ link }) => {
 }
 
 export const MobileSubmenuLink = ({ children, menu }) => {
+  const { trackEvent } = useTracking()
   const { path, push } = useNavigation()
+  const contextModule = getContextModule()
+
   return (
     <li>
       <Flex
@@ -145,6 +172,12 @@ export const MobileSubmenuLink = ({ children, menu }) => {
         flexDirection="row"
         onClick={() => {
           push(menu.title)
+          trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
+            context_module: contextModule,
+            flow: "Header",
+            subject: menu.title,
+          })
         }}
       >
         <Sans size={["5t", "6"]} color={color("black60")}>
@@ -153,9 +186,9 @@ export const MobileSubmenuLink = ({ children, menu }) => {
         <ChevronIcon
           direction="right"
           color={color("black60")}
-          height="10px"
-          width="10px"
-          top="7px"
+          height="14px"
+          width="14px"
+          top="6px"
           left="5px"
         />
       </Flex>
@@ -190,7 +223,7 @@ const LoggedInLinks = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <MobileLink href="/works-for-you">Works for you </MobileLink>
+      <MobileLink href="/works-for-you">Works for you</MobileLink>
       <MobileLink href="/user/edit">Account</MobileLink>
     </Box>
   )
