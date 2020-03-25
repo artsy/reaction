@@ -33,7 +33,7 @@ export const menuData: MenuData = {
           },
           {
             text: "Trending this Month",
-            href: "/collection/trending-this-month",
+            href: "/collection/highlights-this-month",
           },
           {
             text: "Exclusively on Artsy",
@@ -41,7 +41,7 @@ export const menuData: MenuData = {
           },
           {
             text: "Closing Soon",
-            href: "/collection/unique-works",
+            href: "/collect?at_auction=true",
             dividerBelow: true,
           },
           {
@@ -70,7 +70,7 @@ export const menuData: MenuData = {
                   href: "/collection/photography",
                 },
                 {
-                  text: "Textile Art",
+                  text: "Textile Arts",
                   href: "/collection/textile-art",
                 },
                 {
@@ -142,24 +142,24 @@ export const menuData: MenuData = {
               title: "Price",
               links: [
                 {
-                  text: "Under $1,000",
-                  href: "/collect?price_range=50-1000",
-                },
-                {
-                  text: "$1,000–$5,000",
-                  href: "/collect?price_range=1000-5000",
-                },
-                {
-                  text: "$5,000–$10,000",
-                  href: "/collect?price_range=5000-10000",
+                  text: "$50,000 and Above",
+                  href: "/collect?price_range=50000-%2A",
                 },
                 {
                   text: "$10,000–$50,000",
                   href: "/collect?price_range=10000-50000",
                 },
                 {
-                  text: "$50,000 and Above",
-                  href: "/collect?price_range=50000-%2A",
+                  text: "$5,000–$10,000",
+                  href: "/collect?price_range=5000-10000",
+                },
+                {
+                  text: "$1,000–$5,000",
+                  href: "/collect?price_range=1000-5000",
+                },
+                {
+                  text: "Under $1,000",
+                  href: "/collect?price_range=50-1000",
                 },
               ],
             },
@@ -171,31 +171,31 @@ export const menuData: MenuData = {
               links: [
                 {
                   text: "New York City",
-                  href: "/new-york-spotlight",
+                  href: "/collection/new-york-spotlight",
                 },
                 {
                   text: "Los Angeles",
-                  href: "/los-angeles-spotlight",
+                  href: "/collection/los-angeles-spotlight",
                 },
                 {
                   text: "London",
-                  href: "/london-gallery-spotlight",
+                  href: "/collection/london-gallery-spotlight",
                 },
                 {
                   text: "Berlin",
-                  href: "/berlin-gallery-spotlight",
+                  href: "/collection/berlin-gallery-spotlight",
                 },
                 {
                   text: "Paris",
-                  href: "/paris-gallery-spotlight",
+                  href: "/collection/paris-gallery-spotlight",
                 },
                 {
                   text: "Hong Kong",
-                  href: "/hong-kong-gallery-spotlight",
+                  href: "/collection/hong-kong-gallery-spotlight",
                 },
                 {
                   text: "Mexico City",
-                  href: "/mexico-city-gallery-spotlight",
+                  href: "/collection/mexico-city-gallery-spotlight",
                 },
                 {
                   text: "More",
@@ -216,19 +216,19 @@ export const menuData: MenuData = {
         links: [
           {
             text: "Leading Women Artists of the 20th Century",
-            href: "/collection/leading-women-artists-of-the-20th-century",
+            href: "/collection/women-artists-20th-century",
           },
           {
             text: "Black Figurative Painters on the Rise",
-            href: "/collection/black-figurative-painters-on-the-rise",
+            href: "/collection/black-figurative-painters",
           },
           {
             text: "Contemporary Masters of Craft Techniques",
-            href: "/collection/contemporary-masters-of-craft-techniques",
+            href: "/collection/the-rise-of-craft",
           },
           {
             text: "Emerging Abstract Painters to Watch",
-            href: "/collection/emerging-abstract-painters-to-watch",
+            href: "/collection/emerging-abstract-painting",
             dividerBelow: true,
           },
           {
@@ -249,7 +249,7 @@ export const menuData: MenuData = {
                   href: "/collection/critically-acclaimed-artists",
                 },
                 {
-                  text: "Top Artists",
+                  text: "Blue Chip Artists",
                   href: "/collection/blue-chip-artists",
                 },
               ],
@@ -301,68 +301,68 @@ export const menuData: MenuData = {
               title: "Artist Nationality and Region",
               links: [
                 {
-                  text: "African",
-                  href: "/collection/african",
-                },
-                {
                   text: "American",
-                  href: "/collection/american",
-                },
-                {
-                  text: "Asian",
-                  href: "/collection/asian",
-                },
-                {
-                  text: "Australian & Oceanian",
-                  href: "/collection/australian-oceanian",
+                  href: "/collection/american-artists",
                 },
                 {
                   text: "British",
-                  href: "/collection/british",
+                  href: "/collection/british-artists",
                 },
                 {
                   text: "Canadian",
-                  href: "/collection/canadian",
+                  href: "/collection/canadian-artists",
                 },
                 {
                   text: "Chinese",
-                  href: "/collection/chinese",
-                },
-                {
-                  text: "European",
-                  href: "/collection/european",
+                  href: "/collection/chinese-artists",
                 },
                 {
                   text: "French",
-                  href: "/collection/french",
+                  href: "/collection/french-artists",
                 },
                 {
                   text: "German",
-                  href: "/collection/german",
+                  href: "/collection/german-artists",
                 },
                 {
                   text: "Italian",
-                  href: "/collection/italian",
+                  href: "/collection/italian-artists",
                 },
                 {
                   text: "Japanese",
-                  href: "/collection/japanese",
+                  href: "/collection/japanese-artists",
+                },
+                {
+                  text: "African",
+                  href: "/collection/african-artists",
+                },
+                {
+                  text: "Asian",
+                  href: "/collection/asian-artists",
+                },
+                {
+                  text: "Australian & Oceanian",
+                  href: "/collection/oceanian-artists",
+                },
+                {
+                  text: "European",
+                  href: "/collection/european-artists",
                 },
                 {
                   text: "Latin American",
-                  href: "/collection/latin-american",
+                  href: "/collection/latin-american-artists",
                 },
                 {
                   text: "Middle Eastern",
-                  href: "/collection/middle-eastern",
+                  href: "/collection/middle-eastern-artists",
                 },
                 {
                   text: "Scandinavian",
-                  href: "/collection/scandinavian",
+                  href: "/collection/scandinavian-artists",
                 },
                 {
                   text: "South Asian",
-                  href: "/collection/south-asian",
+                  href: "/collection/south-asian-artists",
                 },
               ],
             },
