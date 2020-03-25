@@ -1,3 +1,15 @@
+# v25.36.3 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] QA round 2 [#3311](https://github.com/artsy/reaction/pull/3311) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.2 (Tue Mar 24 2020)
 
 #### 🐛  Bug Fix
