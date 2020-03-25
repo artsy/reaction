@@ -63,7 +63,7 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab("Overview", route(user ? "/overview" : "/"), {
+        {this.renderTab("Overview", route(user ? "/overview" : ""), {
           exact: true,
         })}
         {statuses.artworks &&
