@@ -1,3 +1,15 @@
+# v25.36.9 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu ui qa [#3315](https://github.com/artsy/reaction/pull/3315) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.36.8 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
