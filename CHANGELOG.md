@@ -1,3 +1,15 @@
+# v25.36.10 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure year created check doesn't error on nulls [#3316](https://github.com/artsy/reaction/pull/3316) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.36.9 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
