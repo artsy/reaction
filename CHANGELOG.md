@@ -1,3 +1,15 @@
+# v25.36.5 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu analytics [#3289](https://github.com/artsy/reaction/pull/3289) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.36.4 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
