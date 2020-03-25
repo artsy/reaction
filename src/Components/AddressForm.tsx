@@ -120,7 +120,8 @@ export class AddressForm extends React.Component<
             </Serif>
             <CountrySelect
               selected={
-                lockCountryToOrigin || lockCountriesToEU
+                lockCountryToOrigin ||
+                (lockCountriesToEU && !this.state.address.country)
                   ? this.props.shippingCountry
                   : this.state.address.country
               }
@@ -128,11 +129,13 @@ export class AddressForm extends React.Component<
               disabled={lockCountryToOrigin}
               euShippingOnly={lockCountriesToEU}
             />
-            {lockCountryToOrigin && (
+            {(lockCountryToOrigin || lockCountriesToEU) && (
               <>
                 <Spacer m={0.5} />
                 <Sans size="2" color="black60">
-                  Domestic shipping only.
+                  {lockCountriesToEU
+                    ? "Continental Europe shipping only."
+                    : "Domestic shipping only."}
                 </Sans>
               </>
             )}
