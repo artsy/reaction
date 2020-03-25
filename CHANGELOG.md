@@ -1,3 +1,15 @@
+# v25.36.7 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- the Address Form component should respect country selection for Euro only shipping [#3313](https://github.com/artsy/reaction/pull/3313) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v25.36.6 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
