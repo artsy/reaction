@@ -1,4 +1,4 @@
-import React, { SFC, useContext, useEffect, useState } from "react"
+import React, { SFC, useContext, useState } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
