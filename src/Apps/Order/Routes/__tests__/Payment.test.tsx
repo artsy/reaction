@@ -7,8 +7,8 @@ import {
 } from "Apps/__tests__/Fixtures/Order"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
+import { AddressForm } from "Components/AddressForm"
 import * as paymentPickerMock from "../../Components/__mocks__/PaymentPicker"
-import { AddressForm } from "../../Components/AddressForm"
 import {
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,

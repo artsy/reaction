@@ -1,7 +1,7 @@
 import { Checkbox, LargeSelect } from "@artsy/palette"
 
 import { ValidFormValues } from "Apps/Auction/Routes/__tests__/Utils/RegisterTestPage"
-import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
+import { Address, AddressForm } from "Components/AddressForm"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 
 export class ConfirmBidTestPage extends RootTestPage {
