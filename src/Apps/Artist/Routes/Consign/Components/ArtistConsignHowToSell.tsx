@@ -69,7 +69,7 @@ export const ArtistConsignHowtoSell: React.FC = props => {
         <Spacer mt={6} />
 
         <Box>
-          <RouterLink to="/consign">
+          <RouterLink to="/consign/submission">
             <Button>Request a price estimate</Button>
           </RouterLink>
         </Box>
