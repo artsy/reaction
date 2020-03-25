@@ -21,8 +21,8 @@ export const YearCreated: React.FC = () => {
     createdBeforeYear,
   } = filterContext?.filters
   if (
-    typeof earliestCreatedYear === undefined ||
-    typeof latestCreatedYear === undefined
+    typeof earliestCreatedYear !== "number" ||
+    typeof latestCreatedYear !== "number"
   ) {
     console.error("Couldn't display year created filter due to missing data")
     return null
