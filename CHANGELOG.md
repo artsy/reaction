@@ -1,3 +1,15 @@
+# v25.36.11 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Mobile Nav Menu] adjust chevron position [#3319](https://github.com/artsy/reaction/pull/3319) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.36.10 (Wed Mar 25 2020)
 
 #### 🐛  Bug Fix
