@@ -101,15 +101,4 @@ describe("ArtistConsignButton", () => {
       expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
     })
   })
-
-  // TODO: Functionality doesn't yet exist
-  xdescribe("Target Supply Button", () => {
-    it("renders desktop version", async () => {
-      //
-    })
-
-    it("renders mobile version", async () => {
-      //
-    })
-  })
 })
