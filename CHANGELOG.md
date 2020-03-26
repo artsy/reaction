@@ -1,3 +1,15 @@
+# v25.36.12 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add tracking to Artist/Consign [#3318](https://github.com/artsy/reaction/pull/3318) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.11 (Thu Mar 26 2020)
 
 #### 🐛  Bug Fix
