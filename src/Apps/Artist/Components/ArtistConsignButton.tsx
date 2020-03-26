@@ -40,7 +40,7 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps> = prop
     <BorderBox p={1} width="100%">
       <Flex alignItems="center" width="100%" justifyContent="space-between">
         <Flex>
-          {isTop20 && <Image src={imageURL} width={50} height={50} />}
+          {isTop20 && imageURL && <Image src={imageURL} width={50} height={50} />}
           <Flex flexDirection="column" justifyContent="center" pl={1}>
             <Sans size="3t" weight="medium">
               {headline}
