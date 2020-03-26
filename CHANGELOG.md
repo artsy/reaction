@@ -1,3 +1,15 @@
+# v25.36.13 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add ArtistConsignButton [#3317](https://github.com/artsy/reaction/pull/3317) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.12 (Thu Mar 26 2020)
 
 #### 🐛  Bug Fix
