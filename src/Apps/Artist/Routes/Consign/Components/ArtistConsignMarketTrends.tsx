@@ -1,9 +1,66 @@
 import { Box, Button, color, Flex, Sans, Serif } from "@artsy/palette"
+import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { ArtistConsignment } from "../Utils/getConsignmentData"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
+
+interface ArtistConsignMarketTrendsProps {
+  artistConsignment: ArtistConsignment
+  artistID: string
+}
+
+export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = ({
+  artistConsignment,
+  artistID,
+}) => {
+  const tracking = useTracking()
+
+  const {
+    metadata: { highestRealized, str, realized },
+  } = artistConsignment
+
+  return (
+    <SectionContainer background="black100">
+      <Subheader color="white100">Market trends</Subheader>
+
+      <Box my={[2, 4]}>
+        <Flex flexDirection={["column", "row"]}>
+          <Statistic
+            top="Highest realized price"
+            middle="All time"
+            bottom={highestRealized}
+          />
+          <Statistic
+            top="Sell through rate"
+            middle="Last 12 months"
+            bottom={str}
+          />
+          <Statistic
+            top="Realized price over estimate"
+            middle="Last 12 months"
+            bottom={realized}
+          />
+        </Flex>
+      </Box>
+
+      <Box>
+        <RouterLink
+          to={`/artist/${artistID}/auction-results`}
+          onClick={() => {
+            tracking.trackEvent({
+              action_type: AnalyticsSchema.ActionType.Click,
+              subject: AnalyticsSchema.Subject.ExploreAuctionResults,
+            })
+          }}
+        >
+          <Button variant="primaryWhite">Explore auction results</Button>
+        </RouterLink>
+      </Box>
+    </SectionContainer>
+  )
+}
 
 const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
   top,
@@ -35,51 +92,5 @@ const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
         </Serif>
       </Box>
     </Flex>
-  )
-}
-
-interface ArtistConsignMarketTrendsProps {
-  artistConsignment: ArtistConsignment
-  artistID: string
-}
-
-export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = ({
-  artistConsignment,
-  artistID,
-}) => {
-  const {
-    metadata: { highestRealized, str, realized },
-  } = artistConsignment
-
-  return (
-    <SectionContainer background="black100">
-      <Subheader color="white100">Market trends</Subheader>
-
-      <Box my={[2, 4]}>
-        <Flex flexDirection={["column", "row"]}>
-          <Statistic
-            top="Highest realized price"
-            middle="All time"
-            bottom={highestRealized}
-          />
-          <Statistic
-            top="Sell through rate"
-            middle="Last 12 months"
-            bottom={str}
-          />
-          <Statistic
-            top="Realized price over estimate"
-            middle="Last 12 months"
-            bottom={realized}
-          />
-        </Flex>
-      </Box>
-
-      <Box>
-        <RouterLink to={`/artist/${artistID}/auction-results`}>
-          <Button variant="primaryWhite">Explore auction results</Button>
-        </RouterLink>
-      </Box>
-    </SectionContainer>
   )
 }

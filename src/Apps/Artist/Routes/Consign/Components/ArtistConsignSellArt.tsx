@@ -1,10 +1,13 @@
 import React from "react"
 
 import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
 export const ArtistConsignSellArt: React.FC = props => {
+  const tracking = useTracking()
+
   return (
     <SectionContainer background={LightPurpleColor}>
       <Box textAlign="center">
@@ -20,7 +23,17 @@ export const ArtistConsignSellArt: React.FC = props => {
         </Box>
 
         <Box>
-          <RouterLink to="/consign/submission">
+          <RouterLink
+            to="/consign/submission"
+            onClick={() => {
+              tracking.trackEvent({
+                action_type: AnalyticsSchema.ActionType.Click,
+                context_module:
+                  AnalyticsSchema.ContextModule.SellArtFromYourCollection,
+                subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+              })
+            }}
+          >
             <Button>Request a price estimate</Button>
           </RouterLink>
         </Box>
