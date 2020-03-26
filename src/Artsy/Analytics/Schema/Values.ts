@@ -276,6 +276,12 @@ export enum Subject {
    * CollectionHub
    */
   FeaturedCategories = "Featured Categories",
+
+  /**
+   * Consignments
+   */
+  RequestPriceEstimate = "Request a price estimate",
+  ExploreAuctionResults = "Explore Auction Results",
 }
 
 /**
@@ -357,6 +363,13 @@ export enum ContextModule {
    * CollectionHub Entry Point in home page
    */
   CollectionHubEntryPoint = "HubEntrypoint",
+
+  /**
+   * Consignments
+   */
+  HowToSellYourCollection = "How to sell your collection with Artsy",
+  SellArtFromYourCollection = "Sell Art From Your Collection",
+  SellWorksBy = "Sell Works by",
 
   /**
    * Other Collections Rail

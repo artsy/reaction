@@ -15,6 +15,7 @@ import { ArtistConsignPageViews } from "./Components/ArtistConsignPageViews"
 import { ArtistConsignRecentlySold } from "./Components/ArtistConsignRecentlySold"
 import { ArtistConsignSellArt } from "./Components/ArtistConsignSellArt"
 
+import { track } from "Artsy"
 import { ArtistConsignment } from "./Utils/getConsignmentData"
 
 interface ConsignRouteProps {
@@ -64,8 +65,12 @@ export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
   )
 }
 
+const TrackedConsignRoute = track()((props: ConsignRouteProps) => {
+  return <ConsignRoute {...props} />
+})
+
 export const ConsignRouteFragmentContainer = createFragmentContainer(
-  ConsignRoute,
+  TrackedConsignRoute,
   {
     artist: graphql`
       fragment Consign_artist on Artist {
