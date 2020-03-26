@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
+import { getMobileAuthLink } from "Utils/openAuthModal"
 
 import {
   Box,
@@ -15,6 +16,8 @@ import {
 
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ModalType } from "Components/Authentication/Types"
 
 interface MobileNavMenuProps {
   onNavItemClick?: () => void
@@ -25,6 +28,13 @@ export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
   const { trackEvent } = useTracking()
   const { user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const isLoggedIn = Boolean(user)
+
+  const authLink = (type: ModalType) => {
+    return getMobileAuthLink(type, {
+      intent: AuthIntent[type],
+      contextModule: ContextModule.header,
+    })
+  }
 
   const trackClick = event => {
     const link = event.target
@@ -65,16 +75,8 @@ export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
         </>
       ) : (
         <>
-          <MobileLink
-            href={`/log_in?intent=signup&trigger=click&contextModule=Header`}
-          >
-            Login
-          </MobileLink>
-          <MobileLink
-            href={`/sign_up?intent=signup&trigger=click&contextModule=Header`}
-          >
-            Sign up
-          </MobileLink>
+          <MobileLink href={authLink(ModalType.login)}>Login</MobileLink>
+          <MobileLink href={authLink(ModalType.signup)}>Sign up</MobileLink>
         </>
       )}
     </MobileNavContainer>

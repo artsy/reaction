@@ -40,11 +40,8 @@ describe("MobileNavMenu", () => {
 
       defaultLinks
         .concat([
-          ["/log_in?intent=signup&trigger=click&contextModule=Header", "Login"],
-          [
-            "/sign_up?intent=signup&trigger=click&contextModule=Header",
-            "Sign up",
-          ],
+          ["/log_in?intent=login&contextModule=header", "Login"],
+          ["/sign_up?intent=signup&contextModule=header", "Sign up"],
         ])
         .forEach(([href, linkLabel], index) => {
           const navLink = links.at(index)

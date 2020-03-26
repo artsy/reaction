@@ -1,7 +1,10 @@
 import { Box, ChevronIcon, color, Flex, Sans, Separator } from "@artsy/palette"
 import { useSystemContext } from "Artsy"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ModalType } from "Components/Authentication/Types"
 import React from "react"
 import styled from "styled-components"
+import { getMobileAuthLink } from "Utils/openAuthModal"
 import { MenuData, MenuLinkData } from "../menuData"
 import { MobileLink } from "./MobileLink"
 import {
@@ -74,6 +77,7 @@ export const AnimatingMenuWrapper = styled.div<{
 
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
+
   ul {
     margin-bottom: 40px;
   }
@@ -168,20 +172,19 @@ export const MobileSubmenuLink = ({ children, menu }) => {
   )
 }
 
+const authLink = (type: ModalType) => {
+  return getMobileAuthLink(type, {
+    intent: AuthIntent[type],
+    contextModule: ContextModule.header,
+  })
+}
+
 const AuthenticateLinks = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <MobileLink
-        href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
-      >
-        Sign Up
-      </MobileLink>
-      <MobileLink
-        href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
-      >
-        Login
-      </MobileLink>
+      <MobileLink href={authLink(ModalType.signup)}>Sign Up</MobileLink>
+      <MobileLink href={authLink(ModalType.login)}>Login</MobileLink>
     </Box>
   )
 }

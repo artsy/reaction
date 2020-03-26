@@ -14,6 +14,7 @@ export type AuthContextModule =
   | ContextModule.artworkGrid
   | ContextModule.artworkSidebar
   | ContextModule.auctionRail
+  | ContextModule.auctionResults
   | ContextModule.categoryRail
   | ContextModule.collectionDescription
   | ContextModule.featuredArtistsRail
@@ -49,8 +50,12 @@ export enum AuthIntent {
   forgot = "forgot",
   inquire = "inquire",
   login = "login",
+  loginToSeeEstimate = "loginToSeeEstimate",
+  loginToSeePrice = "loginToSeePrice",
+  loginToSeeRealizedPrice = "loginToSeeRealizedPrice",
   makeOffer = "makeOffer",
   registerToBid = "registerToBid",
+  requestConditionReport = "requestConditionReport",
   saveArtwork = "saveArtwork",
   signup = "signup",
   viewAuctionResults = "viewAuctionResults",

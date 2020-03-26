@@ -20,11 +20,11 @@ export type SubmitHandler = (
 ) => void
 
 export interface FormProps {
+  contextModule: AuthContextModule
   /**
    * any global error that comes from an external data source
    * (e.g. server)
    */
-  contextModule?: AuthContextModule
   error?: string
   values?: InputValues
   handleSubmit?: SubmitHandler
@@ -65,7 +65,7 @@ export interface ModalOptions {
   /**
    * the action taken that prompted user to signup or login.
    */
-  intent?: AuthIntent
+  intent: AuthIntent
   /**
    * the page before the page on which the sign up was triggered.
    */
@@ -83,7 +83,7 @@ export interface ModalOptions {
   /*
    * the location where the modal was triggered.
    */
-  contextModule?: AuthContextModule
+  contextModule: AuthContextModule
   /**
    * the number of seconds before a modal was triggered
    */

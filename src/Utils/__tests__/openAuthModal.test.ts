@@ -75,6 +75,7 @@ describe("openAuth Helpers", () => {
             kind: "artist",
             objectId: "andy-warhol",
           },
+          contextModule: "artistHeader",
           copy: "Sign up to follow Andy Warhol",
           intent: "followArtist",
           mode: "signup",
@@ -90,6 +91,7 @@ describe("openAuth Helpers", () => {
             kind: "profile",
             objectId: "david-zwirner",
           },
+          contextModule: "aboutTheWork",
           copy: "Sign up to follow David Zwirner",
           intent: "followGallery",
           mode: "signup",
@@ -105,6 +107,7 @@ describe("openAuth Helpers", () => {
             kind: "artworks",
             objectId: "andy-warhol-skull",
           },
+          contextModule: "artworkGrid",
           copy: "Sign up to save artworks",
           intent: "saveArtwork",
           mode: "signup",
@@ -120,7 +123,7 @@ describe("openAuth Helpers", () => {
       it("transforms args for following artists", () => {
         openAuthToFollowSave(mediator, artistArgs)
         expect(window.location.assign).toBeCalledWith(
-          "/sign_up?redirect-to=http://localhost/&action=follow&contextModule=artistHeader&copy=Sign%20up%20to%20follow%20Andy%20Warhol&intent=followArtist&kind=artist&objectId=andy-warhol"
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=follow&contextModule=artistHeader&copy=Sign%20up%20to%20follow%20Andy%20Warhol&intent=followArtist&kind=artist&objectId=andy-warhol"
         )
         expect(mediator.trigger).not.toBeCalled()
       })
@@ -128,7 +131,7 @@ describe("openAuth Helpers", () => {
       it("transforms args for following partners", () => {
         openAuthToFollowSave(mediator, partnerArgs)
         expect(window.location.assign).toBeCalledWith(
-          "/sign_up?redirect-to=http://localhost/&action=follow&contextModule=aboutTheWork&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=followGallery&kind=profile&objectId=david-zwirner"
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=follow&contextModule=aboutTheWork&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=followGallery&kind=profile&objectId=david-zwirner"
         )
         expect(mediator.trigger).not.toBeCalled()
       })
@@ -136,7 +139,7 @@ describe("openAuth Helpers", () => {
       it("transforms args for saving artworks", () => {
         openAuthToFollowSave(mediator, artworkArgs)
         expect(window.location.assign).toBeCalledWith(
-          "/sign_up?redirect-to=http://localhost/&action=save&contextModule=artworkGrid&copy=Sign%20up%20to%20save%20artworks&intent=saveArtwork&kind=artworks&objectId=andy-warhol-skull"
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=save&contextModule=artworkGrid&copy=Sign%20up%20to%20save%20artworks&intent=saveArtwork&kind=artworks&objectId=andy-warhol-skull"
         )
         expect(mediator.trigger).not.toBeCalled()
       })

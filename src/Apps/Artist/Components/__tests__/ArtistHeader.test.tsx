@@ -80,6 +80,7 @@ describe("ArtistHeader", () => {
         kind: "artist",
         objectId: "cecily-brown",
       },
+      contextModule: "artistHeader",
       copy: "Sign up to follow Cecily Brown",
       intent: "followArtist",
       mode: "signup",

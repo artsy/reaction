@@ -13,6 +13,7 @@ import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { AnalyticsSchema, SystemContextProps } from "Artsy"
 import { Mediator, SystemContext } from "Artsy"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { DateTime } from "luxon"
 import React, { SFC, useContext, useState } from "react"
@@ -364,8 +365,10 @@ const renderPricing = (salePrice, saleDate, user, mediator, size) => {
         onClick={() => {
           mediator &&
             openAuthModal(mediator, {
-              mode: ModalType.login,
+              mode: ModalType.signup,
               copy: "Log in to see full auction records — for free",
+              contextModule: ContextModule.auctionResults,
+              intent: AuthIntent.loginToSeePrice,
             })
         }}
       >
@@ -400,6 +403,8 @@ const renderEstimate = (estimatedPrice, user, mediator, size) => {
             openAuthModal(mediator, {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
+              contextModule: ContextModule.auctionResults,
+              intent: AuthIntent.loginToSeeEstimate,
             })
         }}
       >
@@ -434,6 +439,8 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
             openAuthModal(mediator, {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
+              contextModule: ContextModule.auctionResults,
+              intent: AuthIntent.loginToSeeRealizedPrice,
             })
         }}
       >

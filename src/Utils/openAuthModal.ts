@@ -1,7 +1,7 @@
 import * as Schema from "Artsy/Analytics/v2/Schema"
 import { Mediator } from "Artsy/SystemContext"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
-import { stringify } from "qs"
+import qs from "qs"
 import { data as sd } from "sharify"
 
 export interface AuthModalOptions extends ModalOptions {
@@ -45,9 +45,16 @@ export const openAuthToFollowSave = (
   }
 }
 
+export const getMobileAuthLink = (mode: ModalType, options: ModalOptions) => {
+  const path = mode === "login" ? "log_in" : "sign_up"
+  return `/${path}?${qs.stringify(options)}`
+}
+
 function openMobileAuth(intent) {
-  const params = stringify(intent)
-  const href = `/sign_up?redirect-to=${window.location}&${params}`
+  const href = getMobileAuthLink(ModalType.signup, {
+    redirectTo: window.location.href,
+    ...intent,
+  })
 
   window.location.assign(href)
 }
@@ -96,12 +103,14 @@ function getMobileIntentToSaveArtwork({
 }
 
 function getDesktopIntentToFollow({
+  contextModule,
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
   const kind = intent === Schema.AuthIntent.followArtist ? "artist" : "profile"
   return {
     mode: ModalType.signup,
+    contextModule,
     copy: `Sign up to follow ${entity.name}`,
     intent,
     afterSignUpAction: {
@@ -113,11 +122,13 @@ function getDesktopIntentToFollow({
 }
 
 function getDesktopIntentToSaveArtwork({
+  contextModule,
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
   return {
     mode: ModalType.signup,
+    contextModule,
     copy: `Sign up to save artworks`,
     intent,
     afterSignUpAction: {

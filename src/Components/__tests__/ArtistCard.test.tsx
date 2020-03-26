@@ -71,6 +71,7 @@ describe("ArtistCard", () => {
       .simulate("click")
     expect(props.mediator.trigger).toBeCalledWith("open:auth", {
       mode: "signup",
+      contextModule: "artistsToFollowRail",
       copy: "Sign up to follow Francesca DiMattio",
       intent: "followArtist",
       afterSignUpAction: {
