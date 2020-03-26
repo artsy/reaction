@@ -119,7 +119,7 @@ export const BackLink = () => {
         color={color("black100")}
         height="14px"
         width="14px"
-        top="5px"
+        top="6px"
         left="-2px"
       />
     </Box>
@@ -190,7 +190,7 @@ export const MobileSubmenuLink = ({ children, menu }) => {
           color={color("black60")}
           height="14px"
           width="14px"
-          top="6px"
+          top="7px"
           left="5px"
         />
       </Flex>
