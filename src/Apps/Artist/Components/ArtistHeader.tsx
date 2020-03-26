@@ -412,8 +412,8 @@ const renderAuctionHighlight = artist => {
 }
 
 const renderRepresentationStatus = artist => {
-  const { highlights } = artist
-  const { partnersConnection } = highlights
+  const { artistHightlights } = artist
+  const { partnersConnection } = artistHightlights
   if (
     partnersConnection &&
     partnersConnection.edges &&
@@ -442,7 +442,7 @@ export const ArtistHeaderFragmentContainer = createFragmentContainer(
             defaultValue: ["blue-chip", "top-established", "top-emerging"]
           }
         ) {
-        highlights {
+        artistHightlights: highlights {
           partnersConnection(
             first: 10
             displayOnPartnerProfile: true
