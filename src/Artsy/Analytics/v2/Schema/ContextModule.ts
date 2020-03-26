@@ -1,22 +1,31 @@
+/*
+ * the component where an action was triggered.
+ */
 export enum ContextModule {
   aboutTheWork = "aboutTheWork",
   artistHeader = "artistHeader",
   artistsToFollowRail = "artistsToFollowRail",
   artworkGrid = "artworkGrid",
   artworkSidebar = "artworkSidebar",
+  auctionInfo = "auctionInfo",
   auctionRail = "auctionRail",
   auctionResults = "auctionResults",
+  auctionsInfo = "auctionsInfo",
+  bannerPopUp = "bannerPopUp",
   categoryRail = "categoryRail",
   collectionDescription = "collectionDescription",
+  consignSubmissionFlow = "consignSubmissionFlow",
   featuredArtistsRail = "featuredArtistsRail",
   footer = "footer",
   header = "header",
-  homeBanner = "homeBanner",
   intextTooltip = "intextTooltip",
+  mainCarousel = "mainCarousel",
   otherWorksByArtistRail = "otherWorksByArtistRail",
   otherWorksByGalleryRail = "otherWorksByGalleryRail",
+  popUpModal = "popUpModal",
   relatedArtistsRail = "relatedArtistsRail",
   relatedWorksRail = "relatedWorksRail",
+  saveWorksCTA = "saveWorksCTA",
   worksByPopularArtistsRail = "worksByPopularArtistsRail",
   worksForSaleRail = "worksForSaleRail",
 }

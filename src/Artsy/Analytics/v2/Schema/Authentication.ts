@@ -13,19 +13,25 @@ export type AuthContextModule =
   | ContextModule.artistsToFollowRail
   | ContextModule.artworkGrid
   | ContextModule.artworkSidebar
+  | ContextModule.auctionInfo
   | ContextModule.auctionRail
   | ContextModule.auctionResults
+  | ContextModule.auctionsInfo
+  | ContextModule.bannerPopUp
   | ContextModule.categoryRail
   | ContextModule.collectionDescription
+  | ContextModule.consignSubmissionFlow
   | ContextModule.featuredArtistsRail
   | ContextModule.footer
   | ContextModule.header
-  | ContextModule.homeBanner
   | ContextModule.intextTooltip
+  | ContextModule.mainCarousel
   | ContextModule.otherWorksByArtistRail
   | ContextModule.otherWorksByGalleryRail
+  | ContextModule.popUpModal
   | ContextModule.relatedArtistsRail
   | ContextModule.relatedWorksRail
+  | ContextModule.saveWorksCTA
   | ContextModule.worksByPopularArtistsRail
   | ContextModule.worksForSaleRail
 
@@ -44,6 +50,7 @@ export enum AuthModalType {
 export enum AuthIntent {
   bid = "bid",
   buyNow = "buyNow",
+  consign = "consign",
   followArtist = "followArtist",
   followGallery = "followGallery",
   followGene = "followGene",
