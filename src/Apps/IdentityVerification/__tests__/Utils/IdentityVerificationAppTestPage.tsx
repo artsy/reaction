@@ -7,6 +7,16 @@ export class IdentityVerificationAppTestPage extends RootTestPage {
     )
   }
 
+  get finishButton() {
+    return this.find("button").filterWhere(btn => btn.text().includes("Finish"))
+  }
+
+  get contactSupportButton() {
+    return this.find("button").filterWhere(btn =>
+      btn.text().includes("Contact support")
+    )
+  }
+
   async clickStartVerification() {
     this.startVerificationButton.simulate("click")
     await this.update()

@@ -1,3 +1,175 @@
+# v25.36.12 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add tracking to Artist/Consign [#3318](https://github.com/artsy/reaction/pull/3318) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.11 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Mobile Nav Menu] adjust chevron position [#3319](https://github.com/artsy/reaction/pull/3319) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.10 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure year created check doesn't error on nulls [#3316](https://github.com/artsy/reaction/pull/3316) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.36.9 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu ui qa [#3315](https://github.com/artsy/reaction/pull/3315) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.8 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Video meta bug [#3314](https://github.com/artsy/reaction/pull/3314) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.36.7 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- the Address Form component should respect country selection for Euro only shipping [#3313](https://github.com/artsy/reaction/pull/3313) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.36.6 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Switch props.router.push back to window.locaion.assign for idv flow [#3312](https://github.com/artsy/reaction/pull/3312) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.5 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu analytics [#3289](https://github.com/artsy/reaction/pull/3289) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.4 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Move AddressForm component out of the order app [#3305](https://github.com/artsy/reaction/pull/3305) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.36.3 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] QA round 2 [#3311](https://github.com/artsy/reaction/pull/3311) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.2 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- Copy: Remove stray whitespace in verification failed view [#3310](https://github.com/artsy/reaction/pull/3310) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v25.36.1 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Artist/Consign QA [#3308](https://github.com/artsy/reaction/pull/3308) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.0 (Mon Mar 23 2020)
+
+#### 🚀  Enhancement
+
+- Add year created filter reset link [#3302](https://github.com/artsy/reaction/pull/3302) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.35.2 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- cleanup stray text [#3306](https://github.com/artsy/reaction/pull/3306) ([@erikdstock](https://github.com/erikdstock))
+- Show a pass/fail message for a completed identity verification [#3294](https://github.com/artsy/reaction/pull/3294) ([@erikdstock](https://github.com/erikdstock))
+- Missing Image Fix [#3304](https://github.com/artsy/reaction/pull/3304) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.35.1 (Mon Mar 23 2020)
 
 #### 🐛  Bug Fix

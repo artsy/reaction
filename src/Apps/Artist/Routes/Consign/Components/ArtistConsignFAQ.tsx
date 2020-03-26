@@ -6,19 +6,6 @@ import { gridColumnGap, GridColumnGapProps, style } from "styled-system"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 
-const Question = ({ question, answer }) => {
-  return (
-    <Box width="100%" maxWidth={["100%", 440]} p={[1, 2]}>
-      <Box>
-        <Sans size="4">{question}</Sans>
-      </Box>
-      <Box>
-        <Serif size="3">{answer}</Serif>
-      </Box>
-    </Box>
-  )
-}
-
 export const ArtistConsignFAQ: React.FC = props => {
   return (
     <SectionContainer height="100%" background="white100" pb={0}>
@@ -96,14 +83,26 @@ export const ArtistConsignFAQ: React.FC = props => {
             question="Want to learn more about selling with Artsy?"
             answer={
               <>
-                Read our full <a href="#todo">FAQ</a> or{" "}
-                <a href="#todo">contact us.</a>
+                Send us an <a href="mailto:consign@artsty.net">email</a>.
               </>
             }
           />
         </MasonryContainer>
       </Box>
     </SectionContainer>
+  )
+}
+
+const Question = ({ question, answer }) => {
+  return (
+    <Box width="100%" maxWidth={["100%", 440]} p={[1, 2]}>
+      <Box>
+        <Sans size="4">{question}</Sans>
+      </Box>
+      <Box>
+        <Serif size="3">{answer}</Serif>
+      </Box>
+    </Box>
   )
 }
 

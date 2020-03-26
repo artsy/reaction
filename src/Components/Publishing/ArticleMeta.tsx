@@ -95,7 +95,7 @@ export const ArticleMeta: React.SFC<{
         </>
       )}
 
-      {keywords.length && (
+      {keywords.length > 0 && (
         <>
           <meta property="news_keywords" content={keywords} />
           <meta name="keywords" content={keywords} />

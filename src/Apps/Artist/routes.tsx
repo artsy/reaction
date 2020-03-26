@@ -240,6 +240,31 @@ export const routes: RouteConfig[] = [
           ConsignRoute.preload()
         },
         displayFullPage: true,
+        render: ({ Component, props, match }) => {
+          if (!(Component && props)) {
+            return null
+          }
+
+          const artistPathName = match.location.pathname.replace("/consign", "")
+          const artistConsignment = getConsignmentData(artistPathName)
+          const noConsignmentData = !Boolean(artistConsignment)
+
+          // @ts-ignore
+          const me = props.me as any
+
+          // FIXME: remove admin check
+          if (noConsignmentData || me?.type !== "Admin") {
+            throw new RedirectException(artistPathName)
+          } else {
+            return (
+              <Component
+                {...props}
+                match={match}
+                artistConsignment={artistConsignment}
+              />
+            )
+          }
+        },
         query: graphql`
           query routes_ArtistConsignQuery(
             $artistID: String!
@@ -250,6 +275,9 @@ export const routes: RouteConfig[] = [
             }
             artworksByInternalID(ids: $recentlySoldArtworkIDs) {
               ...Consign_artworksByInternalID
+            }
+            me {
+              type
             }
           }
         `,

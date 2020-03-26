@@ -1,4 +1,4 @@
-import { Address } from "Apps/Order/Components/AddressForm"
+import { Address } from "Components/AddressForm"
 import { CountrySelect } from "Components/CountrySelect"
 import Input from "Components/Input"
 

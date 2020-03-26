@@ -1,6 +1,7 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import React from "react"
 
+import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { LightPurpleColor, SectionContainer } from "./SectionContainer"
 
@@ -9,6 +10,8 @@ interface ArtistConsignHeaderProps {
 }
 
 export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => {
+  const tracking = useTracking()
+
   return (
     <SectionContainer background={LightPurpleColor}>
       <Box textAlign="center">
@@ -26,7 +29,16 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
         </Box>
 
         <Box>
-          <RouterLink to="/consign">
+          <RouterLink
+            to="/consign/submission"
+            onClick={() => {
+              tracking.trackEvent({
+                action_type: AnalyticsSchema.ActionType.Click,
+                context_module: AnalyticsSchema.ContextModule.SellWorksBy,
+                subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+              })
+            }}
+          >
             <Button>Request a price estimate</Button>
           </RouterLink>
         </Box>

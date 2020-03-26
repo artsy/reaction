@@ -11,29 +11,14 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
+import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 
-const Section: React.FC<{
-  icon: React.ReactNode
-  text: string
-  description: string
-}> = ({ icon, text, description }) => {
-  return (
-    <Box width={["100%", "33%"]} height={["100%", 170]} my={[3, 0]} mx={1}>
-      <Box>{icon}</Box>
-      <Box mt={1} mb={2}>
-        <Sans size="5">{text}</Sans>
-      </Box>
-      <Box>
-        <Serif size="4">{description}</Serif>
-      </Box>
-    </Box>
-  )
-}
-
 export const ArtistConsignHowtoSell: React.FC = props => {
+  const tracking = useTracking()
+
   return (
     <SectionContainer height="100%" background="black10">
       <Box textAlign="center">
@@ -69,11 +54,39 @@ export const ArtistConsignHowtoSell: React.FC = props => {
         <Spacer mt={6} />
 
         <Box>
-          <RouterLink to="/consign">
+          <RouterLink
+            to="/consign/submission"
+            onClick={() => {
+              tracking.trackEvent({
+                action_type: AnalyticsSchema.ActionType.Click,
+                context_module:
+                  AnalyticsSchema.ContextModule.HowToSellYourCollection,
+                subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+              })
+            }}
+          >
             <Button>Request a price estimate</Button>
           </RouterLink>
         </Box>
       </Box>
     </SectionContainer>
+  )
+}
+
+const Section: React.FC<{
+  icon: React.ReactNode
+  text: string
+  description: string
+}> = ({ icon, text, description }) => {
+  return (
+    <Box width={["100%", "33%"]} height={["100%", 170]} my={[3, 0]} mx={1}>
+      <Box>{icon}</Box>
+      <Box mt={1} mb={2}>
+        <Sans size="5">{text}</Sans>
+      </Box>
+      <Box>
+        <Serif size="4">{description}</Serif>
+      </Box>
+    </Box>
   )
 }

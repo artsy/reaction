@@ -11,20 +11,26 @@ interface ArtistConsignPageViewsProps {
 }
 
 export const ArtistConsignPageViews: React.FC<ArtistConsignPageViewsProps> = props => {
+  const {
+    artistName,
+    artistConsignment: {
+      metadata: { roundedViews, roundedUniqueVisitors },
+    },
+  } = props
   return (
     <SectionContainer background="black10">
       <Box textAlign="center">
         <Subheader>
-          {props.artistName} works have received more than{" "}
-          {props.artistConsignment.metadata.roundedViews} views on Artsy this
-          month
+          {artistName} works have received more than {roundedViews} views on
+          Artsy this month
         </Subheader>
 
         <Spacer my={1} />
 
         <Box>
           <Sans size="6">
-            Over 60 Artsy collectors are looking for works by this artist
+            Over {roundedUniqueVisitors} Artsy collectors are looking for works
+            by this artist
           </Sans>
         </Box>
       </Box>

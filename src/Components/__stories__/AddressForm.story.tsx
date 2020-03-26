@@ -39,25 +39,37 @@ class TypicalAddressForm extends React.Component<
   }
 }
 
-storiesOf("Apps/Order/Components", module).add("AddressForm", () => {
-  return (
-    <>
-      <Section title="Blank">
+storiesOf("Components/AddressForm", module)
+  .add("Blank", () => {
+    return (
+      <Section>
         <Flex flexDirection="column">
           <TypicalAddressForm />
         </Flex>
       </Section>
-      <Section title="BlankDomesticOnly">
+    )
+  })
+  .add("Blank DomesticOnly", () => {
+    return (
+      <Section>
         <Flex flexDirection="column">
           <TypicalAddressForm shippingCountry="US" domesticOnly />
         </Flex>
       </Section>
-      <Section title="BlankDomesticEUOnly">
+    )
+  })
+  .add("Blank DomesticEUOnly", () => {
+    return (
+      <Section>
         <Flex flexDirection="column">
           <TypicalAddressForm shippingCountry="DE" domesticOnly euOrigin />
         </Flex>
       </Section>
-      <Section title="Filled out">
+    )
+  })
+  .add("Filled out", () => {
+    return (
+      <Section>
         <Flex flexDirection="column">
           <TypicalAddressForm
             address={{
@@ -73,6 +85,5 @@ storiesOf("Apps/Order/Components", module).add("AddressForm", () => {
           />
         </Flex>
       </Section>
-    </>
-  )
-})
+    )
+  })
