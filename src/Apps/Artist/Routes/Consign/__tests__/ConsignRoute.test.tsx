@@ -64,9 +64,12 @@ describe("ConsignRoute", () => {
       variables: {
         artistID: "alex-katz",
         recentlySoldArtworkIDs: [
+          "5dbc8e526a65d700114f8c2b",
           "5d9ca6fe8f1aee0011475cf7",
           "5d126f9bba46ba0012c3134f",
           "5cffddff404918000ec89beb",
+          "5ccb4516ec8701614303dd94",
+          "5ccb45163a7e934cc7818be5",
           "5aa2e90d7622dd49dc8b356c",
         ],
       },
@@ -136,6 +139,15 @@ describe("ConsignRoute", () => {
       expect(
         wrapper.find("ArtistConsignRecentlySold").find("FillwidthItem").length
       ).toEqual(4)
+    })
+
+    it("appends displays sold for <price> to artwork brick", async () => {
+      const wrapper = await getWrapper()
+      const html = wrapper.find("ArtistConsignRecentlySold").html()
+      const prices = ["$5,000", "$8,500", "$1,300", "$7,500"]
+      prices.forEach(price => {
+        expect(html).toContain(`Sold for ${price}`)
+      })
     })
   })
 
