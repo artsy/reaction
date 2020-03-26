@@ -3,6 +3,8 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ArtistConsignButton_artist = {
+    readonly internalID: string;
+    readonly slug: string;
     readonly name: string | null;
     readonly href: string | null;
     readonly image: {
@@ -27,6 +29,20 @@ const node: ReaderFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -83,5 +99,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '6e7d1acc55f65bdb49a761446150dd24';
+(node as any).hash = '4b90a122b0fb76a52ec3d2cda5b5ace6';
 export default node;

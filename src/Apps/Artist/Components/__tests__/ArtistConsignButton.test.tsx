@@ -1,5 +1,6 @@
 import { Breakpoint } from "@artsy/palette"
 import { ArtistConsignButtonQueryRawResponse } from "__generated__/ArtistConsignButtonQuery.graphql"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { cloneDeep } from "lodash"
 import React from "react"
@@ -7,8 +8,11 @@ import { graphql } from "react-relay"
 import { ArtistConsignButtonFragmentContainer } from "../ArtistConsignButton"
 
 jest.unmock("react-relay")
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("ArtistConsignButton", () => {
+  const trackEvent = jest.fn()
+
   const getWrapper = async ({
     breakpoint = "xs",
     response,
@@ -39,9 +43,24 @@ describe("ArtistConsignButton", () => {
     })
   }
 
+  beforeEach(() => {
+    const mockTracking = useTracking as jest.Mock
+    mockTracking.mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe("Top 20 Button", () => {
     const response = {
       artist: {
+        internalID: "fooBarBaz",
+        slug: "alex-katz",
         name: "Alex Katz",
         href: "/artist/alex-katz",
         image: {
@@ -54,6 +73,15 @@ describe("ArtistConsignButton", () => {
       },
     }
 
+    const analyticsEvent = {
+      context_page: "Artist",
+      context_page_owner_id: response.artist.internalID,
+      context_page_owner_slug: response.artist.slug,
+      context_page_owner_type: "Artist",
+      context_module: "ArtistConsignment",
+      subject: "Get Started",
+    }
+
     describe("desktop", () => {
       it("renders properly", async () => {
         const wrapper = await getWrapper({ breakpoint: "md", response })
@@ -72,6 +100,18 @@ describe("ArtistConsignButton", () => {
           response: responseWithoutImage,
         })
         expect(wrapper.find("Image").length).toEqual(0)
+      })
+
+      it("tracks clicks", async () => {
+        const wrapper = await getWrapper({
+          breakpoint: "md",
+          response,
+        })
+        wrapper.find("RouterLink").simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          ...analyticsEvent,
+          destination_path: "/artist/alex-katz/consign",
+        })
       })
     })
 
@@ -94,12 +134,26 @@ describe("ArtistConsignButton", () => {
         })
         expect(wrapper.find("Image").length).toEqual(0)
       })
+
+      it("tracks clicks", async () => {
+        const wrapper = await getWrapper({
+          breakpoint: "xs",
+          response,
+        })
+        wrapper.find("RouterLink").simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          ...analyticsEvent,
+          destination_path: "/artist/alex-katz/consign",
+        })
+      })
     })
   })
 
   describe("Default Button", () => {
     const response = {
       artist: {
+        internalID: "fooBarBaz",
+        slug: "alex-katz",
         name: "Andy Warhol",
         href: "/artist/andy-warhol",
         image: {
@@ -112,12 +166,33 @@ describe("ArtistConsignButton", () => {
       },
     }
 
+    const analyticsEvent = {
+      context_page: "Artist",
+      context_page_owner_id: response.artist.internalID,
+      context_page_owner_slug: response.artist.slug,
+      context_page_owner_type: "Artist",
+      context_module: "ArtistConsignment",
+      subject: "Get Started",
+    }
+
     describe("desktop", () => {
       it("renders properly", async () => {
         const wrapper = await getWrapper({ breakpoint: "md", response })
         expect(wrapper.find("Image").length).toEqual(0)
         expect(wrapper.text()).toContain("Sell art from your collection")
         expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
+      })
+
+      it("tracks clicks", async () => {
+        const wrapper = await getWrapper({
+          breakpoint: "md",
+          response,
+        })
+        wrapper.find("RouterLink").simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          ...analyticsEvent,
+          destination_path: "/consign",
+        })
       })
     })
 
@@ -127,6 +202,18 @@ describe("ArtistConsignButton", () => {
         expect(wrapper.find("Image").length).toEqual(0)
         expect(wrapper.text()).toContain("Sell art from your collection")
         expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
+      })
+
+      it("tracks clicks", async () => {
+        const wrapper = await getWrapper({
+          breakpoint: "xs",
+          response,
+        })
+        wrapper.find("RouterLink").simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          ...analyticsEvent,
+          destination_path: "/consign",
+        })
       })
     })
   })

@@ -12,6 +12,8 @@ export type ArtistConsignButton_Test_QueryResponse = {
 };
 export type ArtistConsignButton_Test_QueryRawResponse = {
     readonly artist: ({
+        readonly internalID: string;
+        readonly slug: string;
         readonly name: string | null;
         readonly href: string | null;
         readonly image: ({
@@ -41,6 +43,8 @@ query ArtistConsignButton_Test_Query(
 }
 
 fragment ArtistConsignButton_artist on Artist {
+  internalID
+  slug
   name
   href
   image {
@@ -111,6 +115,20 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "internalID",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "slug",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
             "name": "name",
             "args": null,
             "storageKey": null
@@ -177,7 +195,7 @@ return {
     "operationKind": "query",
     "name": "ArtistConsignButton_Test_Query",
     "id": null,
-    "text": "query ArtistConsignButton_Test_Query(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistConsignButton_artist\n    id\n  }\n}\n\nfragment ArtistConsignButton_artist on Artist {\n  name\n  href\n  image {\n    cropped(width: 75, height: 66) {\n      url\n    }\n  }\n}\n",
+    "text": "query ArtistConsignButton_Test_Query(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistConsignButton_artist\n    id\n  }\n}\n\nfragment ArtistConsignButton_artist on Artist {\n  internalID\n  slug\n  name\n  href\n  image {\n    cropped(width: 75, height: 66) {\n      url\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

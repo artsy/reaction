@@ -15,12 +15,31 @@ import {
   Image,
   Sans,
 } from "@artsy/palette"
+import { AnalyticsSchema, useTracking } from "Artsy"
 
 export interface ArtistConsignButtonProps {
   artist: ArtistConsignButton_artist
 }
 
-export const ArtistConsignButton: React.FC<ArtistConsignButtonProps> = props => {
+export const ArtistConsignButton: React.FC<ArtistConsignButtonProps> = ({
+  artist,
+}) => {
+  const tracking = useTracking()
+
+  const trackGetStartedClick = ({ destinationPath }) => {
+    tracking.trackEvent({
+      context_page: AnalyticsSchema.PageName.ArtistPage,
+      context_page_owner_id: artist.internalID,
+      context_page_owner_slug: artist.slug,
+      context_page_owner_type: AnalyticsSchema.OwnerType.Artist,
+      context_module: AnalyticsSchema.ContextModule.ArtistConsignment,
+      subject: AnalyticsSchema.Subject.GetStarted,
+      destination_path: destinationPath,
+    })
+  }
+
+  const props = { artist, trackGetStartedClick }
+
   return (
     <>
       <Media at="xs">
@@ -33,8 +52,13 @@ export const ArtistConsignButton: React.FC<ArtistConsignButtonProps> = props => 
   )
 }
 
-export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps> = props => {
-  const { artistHasOwnConsignRoute, imageURL, headline, consignLink } = getData(
+interface Tracking {
+  trackGetStartedClick: (props: { destinationPath: string }) => void
+}
+
+export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
+  Tracking> = props => {
+  const { artistHasOwnConsignRoute, imageURL, headline, consignURL } = getData(
     props
   )
 
@@ -57,7 +81,14 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps> = prop
           </Flex>
         </Flex>
         <Box>
-          <RouterLink to={consignLink}>
+          <RouterLink
+            to={consignURL}
+            onClick={() => {
+              props.trackGetStartedClick({
+                destinationPath: consignURL,
+              })
+            }}
+          >
             <Button variant="secondaryGray">Get started</Button>
           </RouterLink>
         </Box>
@@ -66,8 +97,9 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps> = prop
   )
 }
 
-export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps> = props => {
-  const { artistHasOwnConsignRoute, imageURL, headline, consignLink } = getData(
+export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
+  Tracking> = props => {
+  const { artistHasOwnConsignRoute, imageURL, headline, consignURL } = getData(
     props
   )
 
@@ -87,7 +119,14 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps> = prop
             </Sans>
           </Box>
           <Box>
-            <RouterLink to={consignLink}>
+            <RouterLink
+              to={consignURL}
+              onClick={() => {
+                props.trackGetStartedClick({
+                  destinationPath: consignURL,
+                })
+              }}
+            >
               <Button size="small" variant="secondaryGray">
                 Get started
               </Button>
@@ -108,13 +147,13 @@ function getData(props) {
   const headline = artistHasOwnConsignRoute
     ? `Sell your ${name}`
     : "Sell art from your collection"
-  const consignLink = artistHasOwnConsignRoute ? `${href}/consign` : "/consign"
+  const consignURL = artistHasOwnConsignRoute ? `${href}/consign` : "/consign"
 
   return {
     artistHasOwnConsignRoute,
     imageURL,
     headline,
-    consignLink,
+    consignURL,
   }
 }
 
@@ -123,6 +162,8 @@ export const ArtistConsignButtonFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment ArtistConsignButton_artist on Artist {
+        internalID
+        slug
         name
         href
         image {

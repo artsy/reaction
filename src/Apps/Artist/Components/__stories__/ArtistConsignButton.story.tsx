@@ -47,6 +47,7 @@ storiesOf("Apps/Artist/Components/ArtistConsignButton", module)
   .add("Large Button", () => {
     return (
       <ArtistConsignButtonLarge
+        trackGetStartedClick={(x: any) => x}
         artist={
           {
             name: "Alex Katz",
@@ -60,6 +61,7 @@ storiesOf("Apps/Artist/Components/ArtistConsignButton", module)
   .add("Small Button", () => {
     return (
       <ArtistConsignButtonSmall
+        trackGetStartedClick={(x: any) => x}
         artist={
           {
             name: "Alex Katz",

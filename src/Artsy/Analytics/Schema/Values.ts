@@ -251,6 +251,11 @@ export enum Subject {
   ConsignLearnMore = "learn more",
 
   /**
+   * Artist Page
+   */
+  GetStarted = "Get Started",
+
+  /**
    * Artwork Page
    */
   Classification = "Classification info",
@@ -292,6 +297,7 @@ export enum ContextModule {
   /**
    * Artist page
    */
+  ArtistConsignment = "ArtistConsignment",
   ArtistPage = "Artist page",
   AboutTheWork = "About the work",
   AboutTheWorkPartner = "About the Work (Partner)",
