@@ -1,6 +1,7 @@
 import { Breakpoint } from "@artsy/palette"
 import { ArtistConsignButtonQueryRawResponse } from "__generated__/ArtistConsignButtonQuery.graphql"
 import { MockBoot, renderRelayTree } from "DevTools"
+import { cloneDeep } from "lodash"
 import React from "react"
 import { graphql } from "react-relay"
 import { ArtistConsignButtonFragmentContainer } from "../ArtistConsignButton"
@@ -53,22 +54,46 @@ describe("ArtistConsignButton", () => {
       },
     }
 
-    it("renders desktop version", async () => {
-      const wrapper = await getWrapper({ breakpoint: "md", response })
-      expect(wrapper.find("Image").length).toEqual(1)
-      expect(wrapper.text()).toContain("Sell your Alex Katz")
-      expect(wrapper.find("RouterLink").html()).toContain(
-        `href="/artist/alex-katz/consign"`
-      )
+    describe("desktop", () => {
+      it("renders properly", async () => {
+        const wrapper = await getWrapper({ breakpoint: "md", response })
+        expect(wrapper.find("Image").length).toEqual(1)
+        expect(wrapper.text()).toContain("Sell your Alex Katz")
+        expect(wrapper.find("RouterLink").html()).toContain(
+          `href="/artist/alex-katz/consign"`
+        )
+      })
+
+      it("guards against missing imageURL", async () => {
+        const responseWithoutImage = cloneDeep(response)
+        responseWithoutImage.artist.image = null
+        const wrapper = await getWrapper({
+          breakpoint: "md",
+          response: responseWithoutImage,
+        })
+        expect(wrapper.find("Image").length).toEqual(0)
+      })
     })
 
-    it("renders mobile version", async () => {
-      const wrapper = await getWrapper({ breakpoint: "xs", response })
-      expect(wrapper.find("Image").length).toEqual(1)
-      expect(wrapper.text()).toContain("Sell your Alex Katz")
-      expect(wrapper.find("RouterLink").html()).toContain(
-        `href="/artist/alex-katz/consign"`
-      )
+    describe("mobile", () => {
+      it("renders properly", async () => {
+        const wrapper = await getWrapper({ breakpoint: "xs", response })
+        expect(wrapper.find("Image").length).toEqual(1)
+        expect(wrapper.text()).toContain("Sell your Alex Katz")
+        expect(wrapper.find("RouterLink").html()).toContain(
+          `href="/artist/alex-katz/consign"`
+        )
+      })
+
+      it("guards against missing imageURL", async () => {
+        const responseWithoutImage = cloneDeep(response)
+        responseWithoutImage.artist.image = null
+        const wrapper = await getWrapper({
+          breakpoint: "md",
+          response: responseWithoutImage,
+        })
+        expect(wrapper.find("Image").length).toEqual(0)
+      })
     })
   })
 
@@ -87,18 +112,22 @@ describe("ArtistConsignButton", () => {
       },
     }
 
-    it("renders desktop version", async () => {
-      const wrapper = await getWrapper({ breakpoint: "md", response })
-      expect(wrapper.find("Image").length).toEqual(0)
-      expect(wrapper.text()).toContain("Sell art from your collection")
-      expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
+    describe("desktop", () => {
+      it("renders properly", async () => {
+        const wrapper = await getWrapper({ breakpoint: "md", response })
+        expect(wrapper.find("Image").length).toEqual(0)
+        expect(wrapper.text()).toContain("Sell art from your collection")
+        expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
+      })
     })
 
-    it("renders mobile version", async () => {
-      const wrapper = await getWrapper({ breakpoint: "xs", response })
-      expect(wrapper.find("Image").length).toEqual(0)
-      expect(wrapper.text()).toContain("Sell art from your collection")
-      expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
+    describe("mobile", () => {
+      it("renders properly", async () => {
+        const wrapper = await getWrapper({ breakpoint: "xs", response })
+        expect(wrapper.find("Image").length).toEqual(0)
+        expect(wrapper.text()).toContain("Sell art from your collection")
+        expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
+      })
     })
   })
 })

@@ -34,13 +34,17 @@ export const ArtistConsignButton: React.FC<ArtistConsignButtonProps> = props => 
 }
 
 export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps> = props => {
-  const { isTop20, imageURL, headline, consignLink } = getData(props)
+  const { artistHasOwnConsignRoute, imageURL, headline, consignLink } = getData(
+    props
+  )
 
   return (
     <BorderBox p={1} width="100%">
       <Flex alignItems="center" width="100%" justifyContent="space-between">
         <Flex>
-          {isTop20 && imageURL && <Image src={imageURL} width={50} height={50} />}
+          {artistHasOwnConsignRoute && imageURL && (
+            <Image src={imageURL} width={50} height={50} />
+          )}
           <Flex flexDirection="column" justifyContent="center" pl={1}>
             <Sans size="3t" weight="medium">
               {headline}
@@ -63,12 +67,16 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps> = prop
 }
 
 export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps> = props => {
-  const { isTop20, imageURL, headline, consignLink } = getData(props)
+  const { artistHasOwnConsignRoute, imageURL, headline, consignLink } = getData(
+    props
+  )
 
   return (
     <BorderBox maxWidth={335} p={1}>
       <Flex alignItems="center">
-        {isTop20 && imageURL && <Image src={imageURL} width={75} height={66} />}
+        {artistHasOwnConsignRoute && imageURL && (
+          <Image src={imageURL} width={75} height={66} />
+        )}
         <Flex flexDirection="column" justifyContent="center" pl={1}>
           <Sans size="3t" weight="medium">
             {headline}
@@ -95,15 +103,15 @@ function getData(props) {
   const {
     artist: { href, name, image },
   } = props
-  const isTop20 = Boolean(getConsignmentData(href))
+  const artistHasOwnConsignRoute = Boolean(getConsignmentData(href))
   const imageURL = image?.cropped?.url
-  const headline = isTop20
+  const headline = artistHasOwnConsignRoute
     ? `Sell your ${name}`
     : "Sell art from your collection"
-  const consignLink = isTop20 ? `${href}/consign` : "/consign"
+  const consignLink = artistHasOwnConsignRoute ? `${href}/consign` : "/consign"
 
   return {
-    isTop20,
+    artistHasOwnConsignRoute,
     imageURL,
     headline,
     consignLink,
