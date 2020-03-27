@@ -26,6 +26,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
       px={4}
       pt={6}
       pb={6}
+      position="relative"
       {...rest}
     >
       {children}

@@ -1,4 +1,5 @@
 import { Box, Flex, Sans, Spacer } from "@artsy/palette"
+import { shuffle } from "lodash"
 import React from "react"
 
 import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
@@ -32,7 +33,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
             flexWrap="wrap"
             alignItems="center"
           >
-            {artworksByInternalID.map((artwork, key) => {
+            {shuffle(artworksByInternalID).map((artwork, key) => {
               const artworkData = artistConsignment.artworks.find(
                 consignmentArtwork => {
                   return consignmentArtwork.internalID === artwork.internalID
