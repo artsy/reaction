@@ -7,13 +7,22 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
     href: "/artist/alex-katz",
     id: "QXJ0aXN0OjRkOGQxMjBjODc2YzY5N2FlMTAwMDA0Ng==",
   },
+
   artworksByInternalID: [
     {
       internalID: "5d9ca6fe8f1aee0011475cf7",
       image: {
         aspectRatio: 0.75,
+        width: 1499,
+        height: 2000,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/medium.jpg",
+        resized: {
+          width: 296,
+          height: 395,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=296&height=395&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FJB8GqSuSHtsDHDIQ9nyPUw%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/large.jpg",
         aspect_ratio: 0.75,
@@ -64,8 +73,16 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5d126f9bba46ba0012c3134f",
       image: {
         aspectRatio: 0.75,
+        width: 2237,
+        height: 3000,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/medium.jpg",
+        resized: {
+          width: 294,
+          height: 394,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=294&height=394&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FNcjBjx9Xz_pTqQp1G0gXWQ%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/large.jpg",
         aspect_ratio: 0.75,
@@ -103,8 +120,16 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5cffddff404918000ec89beb",
       image: {
         aspectRatio: 1.7,
+        width: 6395,
+        height: 3756,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/medium.jpg",
+        resized: {
+          width: 672,
+          height: 395,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=672&height=395&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F2PzNL_vTOOx3Py9zfe7upw%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/large.jpg",
         aspect_ratio: 1.7,
@@ -156,8 +181,16 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5aa2e90d7622dd49dc8b356c",
       image: {
         aspectRatio: 0.66,
+        width: 500,
+        height: 754,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/medium.jpg",
+        resized: {
+          width: 261,
+          height: 395,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=261&height=395&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FWNHtB_gQLN3HxPW4nNGAjA%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/large.jpg",
         aspect_ratio: 0.66,

@@ -181,3 +181,16 @@ storiesOf("Apps/Artist", module)
       />
     )
   })
+  .add("Artist-- Consign - nina", () => {
+    return (
+      <MockRouter
+        routes={artistRoutes}
+        initialRoute="/artist/nina-chanel-abney/consign"
+      />
+    )
+  })
+  .add("Artist-- Consign - banksy", () => {
+    return (
+      <MockRouter routes={artistRoutes} initialRoute="/artist/banksy/consign" />
+    )
+  })
