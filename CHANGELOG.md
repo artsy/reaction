@@ -1,3 +1,15 @@
+# v25.39.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove shuffle on recently sold [#3326](https://github.com/artsy/reaction/pull/3326) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.39.0 (Fri Mar 27 2020)
 
 #### 🚀  Enhancement
