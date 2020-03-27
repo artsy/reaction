@@ -37,6 +37,20 @@ describe("ErrorBoundary", () => {
     expect(ErrorBoundary.prototype.componentDidCatch).toHaveBeenCalled()
   })
 
+  it("updates `errorStack` state with stack trace", () => {
+    const ErrorComponent = () => {
+      throw new Error("throw error")
+      return null
+    }
+    const wrapper = mount(
+      <ErrorBoundary>
+        <ErrorComponent />
+      </ErrorBoundary>
+    )
+    const state = wrapper.state() as any
+    expect(state.errorStack).toContain("Error: throw error")
+  })
+
   it("shows error modal when genericError is true", () => {
     const wrapper = mount(
       <ErrorBoundary>
