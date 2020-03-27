@@ -13,12 +13,14 @@ interface Props {
 interface State {
   asyncChunkLoadError: boolean
   genericError: boolean
+  errorStack: string
 }
 
 export class ErrorBoundary extends React.Component<Props, State> {
   state = {
     asyncChunkLoadError: false,
     genericError: false,
+    errorStack: "",
   }
 
   componentDidCatch(error, errorInfo) {
@@ -30,6 +32,8 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   static getDerivedStateFromError(error) {
+    const errorStack = error.stack
+
     /**
      * Check to see if there's been a network error while asynchronously loading
      * a dynamic webpack split chunk bundle. Can happen if a user is navigating
@@ -40,16 +44,18 @@ export class ErrorBoundary extends React.Component<Props, State> {
     if (error.message.match(/Loading chunk .* failed/)) {
       return {
         asyncChunkLoadError: true,
+        errorStack,
       }
     }
 
     return {
       genericError: true,
+      errorStack,
     }
   }
 
   render() {
-    const { asyncChunkLoadError, genericError } = this.state
+    const { asyncChunkLoadError, genericError, errorStack } = this.state
 
     switch (true) {
       case asyncChunkLoadError: {
@@ -61,7 +67,9 @@ export class ErrorBoundary extends React.Component<Props, State> {
         )
       }
       case genericError: {
-        return <ErrorModalWithReload show={genericError} />
+        return (
+          <ErrorModalWithReload show={genericError} errorStack={errorStack} />
+        )
       }
     }
 
@@ -72,15 +80,17 @@ export class ErrorBoundary extends React.Component<Props, State> {
 /**
  * An error popup with the option to reload the page
  */
-const ErrorModalWithReload: React.FC<{ message?: string; show: boolean }> = ({
-  message,
-  show,
-}) => {
+const ErrorModalWithReload: React.FC<{
+  message?: string
+  show: boolean
+  errorStack?: string
+}> = ({ message, show, errorStack }) => {
   return (
     <>
       <ErrorModal
         show={show}
         detailText={message}
+        errorStack={errorStack}
         closeText="Reload"
         ctaAction={() => {
           location.reload()
