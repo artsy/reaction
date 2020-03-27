@@ -27,11 +27,15 @@ export const Footer = (props: FooterProps) => {
       return (
         <Flex flexDirection={inline ? "row" : "column"} justifyContent="center">
           <FooterText>
-            {"Log in using "}
+            {"Login using "}
+            <Link color="black60" onClick={onAppleLogin}>
+              Apple
+            </Link>{" "}
+            {" or "}
             <Link color="black60" onClick={onFacebookLogin}>
               Facebook
-            </Link>
-            {". "}
+            </Link>{" "}
+            {"."}
           </FooterText>
           <FooterText>
             {"Don’t have an account? "}

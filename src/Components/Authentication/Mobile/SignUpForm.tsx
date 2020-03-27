@@ -221,6 +221,24 @@ class TrackedMobileSignUpForm extends Component<
                 </SubmitButton>
                 <Footer
                   mode={"signup" as ModalType}
+                  onAppleLogin={e => {
+                    if (!values.accepted_terms_of_service) {
+                      this.setState(
+                        {
+                          isSocialSignUp: true,
+                        },
+                        () => {
+                          setTouched({
+                            accepted_terms_of_service: true,
+                          })
+                        }
+                      )
+                    } else {
+                      if (this.props.onAppleLogin) {
+                        this.props.onAppleLogin(e)
+                      }
+                    }
+                  }}
                   onFacebookLogin={e => {
                     if (!values.accepted_terms_of_service) {
                       this.setState(

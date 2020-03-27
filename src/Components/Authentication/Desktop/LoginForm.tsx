@@ -95,6 +95,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                   this.props.handleTypeChange(ModalType.signup)
                 }
                 mode={"login" as ModalType}
+                onAppleLogin={this.props.onAppleLogin}
                 onFacebookLogin={this.props.onFacebookLogin}
                 inline
               />
