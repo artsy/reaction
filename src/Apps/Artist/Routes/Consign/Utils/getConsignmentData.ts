@@ -7,7 +7,11 @@ import { flatten, groupBy } from "lodash"
 import { staticCSVToJSONData } from "./staticCSVToJSONData"
 
 export interface ArtistConsignment {
-  artworks: object[]
+  artworks: Array<{
+    internalID: string
+    realizedPrice: string
+    [key: string]: string
+  }>
   metadata: {
     highestRealized: string
     realized: string
@@ -37,8 +41,9 @@ export function getConsignmentData(pathname: string): ArtistConsignment {
       const recentlySoldArtworkIDs = flatten(
         artworks.map((artwork: any) => {
           const id = artwork["Artwork ids (recently sold) (comma separated)"]
-          // FIXME: Add proper type
-          artwork.artworkID = id
+          const realizedPrice = artwork["Realized Price (in dollars)"]
+          artwork.internalID = id
+          artwork.realizedPrice = realizedPrice
           return id
         })
       )
