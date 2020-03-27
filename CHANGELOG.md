@@ -1,3 +1,17 @@
+# v25.36.14 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add "Sold for" price data [#3321](https://github.com/artsy/reaction/pull/3321) ([@damassi](https://github.com/damassi))
+- [FX-1877] launch new mobile nav menu [#3320](https://github.com/artsy/reaction/pull/3320) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.13 (Thu Mar 26 2020)
 
 #### 🐛  Bug Fix
