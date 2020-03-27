@@ -1,3 +1,15 @@
+# v25.37.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Launch Consign Page / Update FAQ [#3324](https://github.com/artsy/reaction/pull/3324) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.14 (Fri Mar 27 2020)
 
 #### 🐛  Bug Fix
