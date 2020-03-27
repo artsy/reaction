@@ -75,32 +75,6 @@ if (typeof window !== "undefined") {
   ArtistApp.preload()
 }
 
-const routesMiddleware = (originalRoutes, user): RouteConfig[] => {
-  if (user) {
-    originalRoutes[0].children[0].path = "/overview"
-    originalRoutes[0].children.push(
-      new Redirect({
-        from: "/",
-        to: "/artist/:artistID/works-for-sale",
-      })
-    )
-  }
-
-  // Redirect all unhandled tabs to the artist page.
-  // Note: there is a deep-linked standalone auction-lot page
-  // in Force, under /artist/:artistID/auction-result/:id.
-  // That app needs to be mounted before this app for that to work,
-  // and not get caught here.
-
-  originalRoutes[0].children.push(
-    new Redirect({
-      from: "*",
-      to: "/artist/:artistID",
-    }) as any
-  )
-
-  return originalRoutes
-}
 // FIXME:
 // * `render` functions requires casting
 // * `Redirect` needs to be casted, as it’s not compatible with `RouteConfig`
@@ -108,7 +82,7 @@ export const routes: RouteConfig[] = [
   {
     path: "/artist/:artistID",
     getComponent: () => ArtistApp,
-    routesMiddleware,
+    // routesMiddleware,
     prepare: () => {
       ArtistApp.preload()
     },
@@ -149,9 +123,27 @@ export const routes: RouteConfig[] = [
     children: [
       // Routes in tabs
       {
-        path: "/",
-        optionalParam: "overview",
+        path: ":regexParam(\\overview)?",
         getComponent: () => OverviewRoute,
+        render: ({ Component, props, match }) => {
+          const { user } = match.context
+          const { pathname } = match.location
+          const { artistID } = match.params
+
+          if (user) {
+            if (pathname.includes("/overview")) {
+              return <Component {...props} />
+            } else {
+              throw new RedirectException(`/artist/${artistID}/works-for-sale`)
+            }
+          } else {
+            if (pathname.includes("/overview")) {
+              throw new RedirectException(`/artist/${artistID}`)
+            } else {
+              return <Component {...props} />
+            }
+          }
+        },
         prepare: () => {
           OverviewRoute.preload()
         },
@@ -334,6 +326,10 @@ export const routes: RouteConfig[] = [
           }
         `,
       },
+      new Redirect({
+        from: "*",
+        to: "/artist/:artistID",
+      }) as any,
     ],
   },
 ]
