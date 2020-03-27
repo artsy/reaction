@@ -26,3 +26,6 @@ yalc.lock
 coverage*
 reports*
 2
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.*.json
