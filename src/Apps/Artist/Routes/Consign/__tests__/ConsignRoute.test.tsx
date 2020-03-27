@@ -243,6 +243,19 @@ describe("ConsignRoute", () => {
         "mailto:consign@artsty.net"
       )
     })
+
+    it("tracks event", async () => {
+      const wrapper = await getWrapper()
+      wrapper
+        .find("ArtistConsignFAQ")
+        .find("[data-test='submitOnFAQ']")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        context_module: "FAQ",
+        subject: "submit works you’re interested in selling here",
+      })
+    })
   })
 
   describe("ArtistConsignSellArt", () => {
