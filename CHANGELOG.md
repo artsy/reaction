@@ -1,3 +1,15 @@
+# v25.39.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add stack trace in development [#3325](https://github.com/artsy/reaction/pull/3325) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.38.1 (Fri Mar 27 2020)
 
 #### 🐛  Bug Fix
