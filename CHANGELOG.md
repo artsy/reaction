@@ -1,3 +1,15 @@
+# v25.38.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add images to Artist/Consign header [#3322](https://github.com/artsy/reaction/pull/3322) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.37.0 (Fri Mar 27 2020)
 
 #### 🚀  Enhancement
