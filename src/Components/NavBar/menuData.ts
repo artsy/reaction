@@ -3,7 +3,7 @@ export interface MenuData {
   links: LinkData[]
 }
 
-type LinkData = MenuLinkData | SimpleLinkData
+export type LinkData = MenuLinkData | SimpleLinkData
 
 // e.g. "Editorial"
 export interface SimpleLinkData {

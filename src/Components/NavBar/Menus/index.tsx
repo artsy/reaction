@@ -1,5 +1,4 @@
 export * from "./MobileNavMenu"
-export * from "./NewMobileNavMenu"
 export * from "./MoreNavMenu"
 export * from "./NotificationsMenu"
 export * from "./UserMenu"

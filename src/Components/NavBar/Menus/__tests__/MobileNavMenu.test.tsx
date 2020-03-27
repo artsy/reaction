@@ -1,72 +1,112 @@
 import { SystemContextProvider } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
-import { MobileNavMenu } from "../MobileNavMenu"
+import { menuData, SimpleLinkData } from "../../menuData"
+import { MobileLink } from "../MobileLink"
+import {
+  AnimatingMenuWrapper,
+  BackLink,
+  MobileNavMenu,
+  MobileSubmenuLink,
+} from "../MobileNavMenu"
 
-jest.mock("Artsy/Analytics/useTracking", () => ({
-  useTracking: () => ({
-    trackEvent: x => x,
-  }),
-}))
-
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({ sm: false }),
-}))
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("MobileNavMenu", () => {
+  const trackEvent = jest.fn()
   const getWrapper = props => {
     return mount(
       <SystemContextProvider user={props.user}>
-        <MobileNavMenu />
+        <MobileNavMenu isOpen menuData={menuData} />
       </SystemContextProvider>
     )
   }
 
-  const defaultLinks = [
-    ["/collect", "Artworks"],
-    ["/auctions", "Auctions"],
-    ["/galleries", "Galleries"],
-    ["/fairs", "Fairs"],
-    ["/articles", "Editorial"],
-    ["/artists", "Artists"],
-    ["/shows", "Shows"],
-    ["/institutions", "Museums"],
-  ]
+  beforeEach(() => {
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return { trackEvent }
+    })
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
   describe("nav structure", () => {
     it("renders the correct items when logged out", () => {
       const wrapper = getWrapper({ user: null })
-      const links = wrapper.find("MobileLink")
+      const animatingMenuWrapper = wrapper.find(AnimatingMenuWrapper)
 
-      defaultLinks
-        .concat([
-          ["/log_in?intent=signup&trigger=click&contextModule=Header", "Login"],
-          [
-            "/sign_up?intent=signup&trigger=click&contextModule=Header",
-            "Sign up",
-          ],
-        ])
-        .forEach(([href, linkLabel], index) => {
-          const navLink = links.at(index)
-          expect(href).toEqual(navLink.prop("href"))
-          expect(linkLabel).toEqual(navLink.text())
+      const openWrapper = animatingMenuWrapper.filterWhere(
+        element => element.props().isOpen
+      )
+      const linkContainer = openWrapper.find("ul").at(0)
+      const mobileSubmenuLinks = linkContainer.children(MobileSubmenuLink)
+
+      expect(mobileSubmenuLinks.length).toBe(2)
+
+      let linkText = mobileSubmenuLinks.first().text()
+      expect(linkText).toContain("Artworks")
+      expect(linkText).not.toContain("New This Week")
+
+      linkText = mobileSubmenuLinks.last().text()
+      expect(linkText).toContain("Artists")
+      expect(linkText).not.toContain("Career Stages")
+
+      const simpleLinks = linkContainer.children(MobileLink)
+
+      expect(simpleLinks.length).toBe(7)
+      ;(menuData.links as SimpleLinkData[])
+        .slice(2)
+        .map(({ href, text }, index) => {
+          const simpleLink = simpleLinks.at(index)
+          expect(href).toEqual(simpleLink.prop("href"))
+          expect(text).toEqual(simpleLink.text())
         })
+
+      linkText = linkContainer.text()
+      expect(linkText).toContain("Sign Up")
+      expect(linkText).not.toContain("Works for you")
+    })
+  })
+
+  describe("Analytics tracking", () => {
+    it("tracks back button click", () => {
+      const wrapper = mount(
+        <SystemContextProvider user={null}>
+          <MobileNavMenu isOpen menuData={menuData} />
+        </SystemContextProvider>
+      )
+
+      const backLink = wrapper.find(BackLink)
+      backLink.first().simulate("click")
+      expect(trackEvent).toBeCalledWith({
+        action_type: "Click",
+        context_module: "Header",
+        flow: "Header",
+        subject: "Back link",
+      })
     })
 
-    it("renders correct items when logged in", () => {
-      const wrapper = getWrapper({ user: true })
-      const links = wrapper.find("MobileLink")
+    it("tracks MobileSubmenuLink click", () => {
+      const wrapper = mount(
+        <SystemContextProvider user={null}>
+          <MobileNavMenu isOpen menuData={menuData} />
+        </SystemContextProvider>
+      )
 
-      defaultLinks
-        .concat([
-          ["/works-for-you", "Works for you"],
-          ["/user/edit", "Account"],
-        ])
-        .forEach(([href, linkLabel], index) => {
-          const navLink = links.at(index)
-          expect(href).toEqual(navLink.prop("href"))
-          expect(linkLabel).toEqual(navLink.text())
-        })
+      const mobileSubmenuLinks = wrapper
+        .find(MobileSubmenuLink)
+        .first()
+        .find("Flex")
+      mobileSubmenuLinks.first().simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        context_module: "Header",
+        flow: "Header",
+        subject: "Artworks",
+      })
     })
   })
 })
