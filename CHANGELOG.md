@@ -1,3 +1,20 @@
+# v25.37.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Launch Consign Page / Update FAQ [#3324](https://github.com/artsy/reaction/pull/3324) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- gitignore node diagnostic reports [#3323](https://github.com/artsy/reaction/pull/3323) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v25.36.14 (Fri Mar 27 2020)
 
 #### 🐛  Bug Fix
