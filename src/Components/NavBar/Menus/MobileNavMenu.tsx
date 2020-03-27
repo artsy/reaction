@@ -12,7 +12,7 @@ import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
 import React from "react"
 import styled from "styled-components"
-import { MenuData, MenuLinkData } from "../menuData"
+import { LinkData, MenuData, MenuLinkData } from "../menuData"
 import { MobileLink } from "./MobileLink"
 import {
   NavigatorContextProvider,
@@ -88,7 +88,19 @@ export const AnimatingMenuWrapper = styled.div<{
   }
 `
 
-const Menu = ({ isOpen, title, links, showBacknav = true }) => {
+interface MenuProps {
+  isOpen: boolean
+  title: string
+  links: LinkData[]
+  showBacknav?: boolean
+}
+
+const Menu: React.FC<MenuProps> = ({
+  isOpen,
+  title,
+  links,
+  showBacknav = true,
+}) => {
   return (
     <AnimatingMenuWrapper isOpen={isOpen}>
       <Flex position="relative">
@@ -102,10 +114,10 @@ const Menu = ({ isOpen, title, links, showBacknav = true }) => {
   )
 }
 
-export const BackLink = () => {
+export const BackLink: React.FC = () => {
   const { trackEvent } = useTracking()
   const { pop } = useNavigation()
-  const contextModule = getContextModule()
+  const contextModule = getTrackingContextModule()
 
   return (
     <Box
@@ -135,7 +147,7 @@ export const BackLink = () => {
   )
 }
 
-const getContextModule = () => {
+const getTrackingContextModule = () => {
   const { path } = useNavigation()
   let contextModule
   if (path[0] === "Artworks") {
@@ -148,9 +160,9 @@ const getContextModule = () => {
   return contextModule
 }
 
-const NavLink = ({ link }) => {
+const NavLink: React.FC<any> = ({ link }) => {
   const isSubMenu = !!link.menu
-  const contextModule = getContextModule()
+  const contextModule = getTrackingContextModule()
 
   if (isSubMenu) {
     return (
@@ -171,10 +183,10 @@ const NavLink = ({ link }) => {
   }
 }
 
-export const MobileSubmenuLink = ({ children, menu }) => {
+export const MobileSubmenuLink: React.FC<any> = ({ children, menu }) => {
   const { trackEvent } = useTracking()
   const { path, push } = useNavigation()
-  const contextModule = getContextModule()
+  const contextModule = getTrackingContextModule()
 
   return (
     <li>
@@ -212,7 +224,7 @@ export const MobileSubmenuLink = ({ children, menu }) => {
   )
 }
 
-const AuthenticateLinks = () => {
+const AuthenticateLinks: React.FC = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
@@ -230,7 +242,7 @@ const AuthenticateLinks = () => {
   )
 }
 
-const LoggedInLinks = () => {
+const LoggedInLinks: React.FC = () => {
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
