@@ -1,3 +1,15 @@
+# v25.39.2 (Sun Mar 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Fix padding on mobile [#3327](https://github.com/artsy/reaction/pull/3327) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.39.1 (Fri Mar 27 2020)
 
 #### 🐛  Bug Fix
