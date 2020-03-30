@@ -23,6 +23,7 @@ import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
 import { Carousel } from "Components/Carousel"
 import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/SelectedCareerAchievements"
 
+import { ArtistConsignButtonFragmentContainer as ArtistConsignButton } from "Apps/Artist/Components/ArtistConsignButton"
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
 import { WorksForSaleRailQueryRenderer as WorksForSaleRail } from "Apps/Artist/Routes/Overview/Components/WorksForSaleRail"
 import { pMedia } from "Components/Helpers"
@@ -95,20 +96,6 @@ const TruncatedLine = styled.div`
   overflow: hidden;
   white-space: nowrap;
 `
-
-interface ConsignLinkProps {
-  consignLinkAction: () => void
-}
-
-const ConsignLink: React.FC<ConsignLinkProps> = props => (
-  <Sans size="2" color="black60">
-    Want to sell a work by this artist?{" "}
-    <a href="/consign" onClick={props.consignLinkAction}>
-      Consign with Artsy
-    </a>
-    .
-  </Sans>
-)
 
 // Exported just for tests
 export const FeaturedArticlesItem = styled(Flex)`
@@ -226,10 +213,8 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                 )}
                 {showConsignable && (
                   <>
-                    <Spacer mb={1} />
-                    <ConsignLink
-                      consignLinkAction={this.handleConsignClick.bind(this)}
-                    />
+                    <Spacer mb={3} />
+                    <ArtistConsignButton artist={artist} />
                   </>
                 )}
               </>
@@ -267,14 +252,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                   this.setState({ isReadMoreExpanded: true })
                 }}
                 bio={artist}
-              />
-            </>
-          )}
-          {showConsignable && (
-            <>
-              <Spacer mb={1} />
-              <ConsignLink
-                consignLinkAction={this.handleConsignClick.bind(this)}
               />
             </>
           )}
@@ -467,6 +444,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...Genes_artist
         ...FollowArtistButton_artist
         ...WorksForSaleRail_artist
+        ...ArtistConsignButton_artist
         slug
         id
         statuses {

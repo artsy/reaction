@@ -1,3 +1,22 @@
+# v25.39.3 (Mon Mar 30 2020)
+
+#### 🐛  Bug Fix
+
+- [HotFix] Comment out NewsNav date [#3328](https://github.com/artsy/reaction/pull/3328) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.4.0 to v7.6.0 [#3309](https://github.com/artsy/reaction/pull/3309) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.39.2 (Sun Mar 29 2020)
 
 #### 🐛  Bug Fix
