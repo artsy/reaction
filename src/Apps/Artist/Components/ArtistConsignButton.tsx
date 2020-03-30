@@ -63,37 +63,40 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
   )
 
   return (
-    <BorderBox p={1} width="100%">
-      <Flex alignItems="center" width="100%" justifyContent="space-between">
-        <Flex>
-          {artistHasOwnConsignRoute && imageURL && (
-            <Image src={imageURL} width={50} height={50} />
-          )}
-          <Flex flexDirection="column" justifyContent="center" pl={1}>
-            <Sans size="3t" weight="medium">
-              {headline}
-            </Sans>
-            <Box position="relative">
-              <Sans size="3t" color={color("black60")}>
-                Consign with Artsy
+    <RouterLink
+      to={consignURL}
+      style={{
+        textDecoration: "none",
+      }}
+      onClick={() => {
+        props.trackGetStartedClick({
+          destinationPath: consignURL,
+        })
+      }}
+    >
+      <BorderBox p={1} width="100%">
+        <Flex alignItems="center" width="100%" justifyContent="space-between">
+          <Flex>
+            {artistHasOwnConsignRoute && imageURL && (
+              <Image src={imageURL} width={50} height={50} />
+            )}
+            <Flex flexDirection="column" justifyContent="center" pl={1}>
+              <Sans size="3t" weight="medium">
+                {headline}
               </Sans>
-            </Box>
+              <Box position="relative">
+                <Sans size="3t" color={color("black60")}>
+                  Consign with Artsy
+                </Sans>
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
-        <Box>
-          <RouterLink
-            to={consignURL}
-            onClick={() => {
-              props.trackGetStartedClick({
-                destinationPath: consignURL,
-              })
-            }}
-          >
+          <Box>
             <Button variant="secondaryGray">Get started</Button>
-          </RouterLink>
-        </Box>
-      </Flex>
-    </BorderBox>
+          </Box>
+        </Flex>
+      </BorderBox>
+    </RouterLink>
   )
 }
 
@@ -104,37 +107,40 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
   )
 
   return (
-    <BorderBox maxWidth={335} p={1}>
-      <Flex alignItems="center">
-        {artistHasOwnConsignRoute && imageURL && (
-          <Image src={imageURL} width={75} height={66} />
-        )}
-        <Flex flexDirection="column" justifyContent="center" pl={1}>
-          <Sans size="3t" weight="medium">
-            {headline}
-          </Sans>
-          <Box top="-2px" position="relative">
-            <Sans size="3t" color={color("black60")}>
-              Consign with Artsy
+    <RouterLink
+      to={consignURL}
+      style={{
+        textDecoration: "none",
+      }}
+      onClick={() => {
+        props.trackGetStartedClick({
+          destinationPath: consignURL,
+        })
+      }}
+    >
+      <BorderBox maxWidth={335} p={1}>
+        <Flex alignItems="center">
+          {artistHasOwnConsignRoute && imageURL && (
+            <Image src={imageURL} width={75} height={66} />
+          )}
+          <Flex flexDirection="column" justifyContent="center" pl={1}>
+            <Sans size="3t" weight="medium">
+              {headline}
             </Sans>
-          </Box>
-          <Box>
-            <RouterLink
-              to={consignURL}
-              onClick={() => {
-                props.trackGetStartedClick({
-                  destinationPath: consignURL,
-                })
-              }}
-            >
+            <Box top="-2px" position="relative">
+              <Sans size="3t" color={color("black60")}>
+                Consign with Artsy
+              </Sans>
+            </Box>
+            <Box>
               <Button size="small" variant="secondaryGray">
                 Get started
               </Button>
-            </RouterLink>
-          </Box>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-    </BorderBox>
+      </BorderBox>
+    </RouterLink>
   )
 }
 

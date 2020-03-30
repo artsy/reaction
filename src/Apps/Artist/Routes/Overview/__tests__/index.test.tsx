@@ -210,7 +210,7 @@ describe("OverviewRoute", () => {
   })
 
   describe("ConsignButton", () => {
-    it("shows a consign button", () => {
+    it("shows a default consign button", () => {
       const wrapper = getWrapper({
         ...defaultArtist,
       })
