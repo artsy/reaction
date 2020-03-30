@@ -1,3 +1,15 @@
+# v25.39.4 (Mon Mar 30 2020)
+
+#### 🐛  Bug Fix
+
+- Remove UI patch [#3330](https://github.com/artsy/reaction/pull/3330) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.39.3 (Mon Mar 30 2020)
 
 #### 🐛  Bug Fix
