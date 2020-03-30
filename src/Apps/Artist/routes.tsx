@@ -128,7 +128,7 @@ export const routes: RouteConfig[] = [
           if (!(Component && props)) {
             return null
           }
-          const { user } = match.context
+          const { me: user } = props as any
           const { pathname } = match.location
           const { artistID } = match.params
 
@@ -152,6 +152,9 @@ export const routes: RouteConfig[] = [
         displayNavigationTabs: true,
         query: graphql`
           query routes_OverviewQuery($artistID: String!) @raw_response_type {
+            me {
+              id
+            }
             artist(id: $artistID) {
               ...Overview_artist
             }
