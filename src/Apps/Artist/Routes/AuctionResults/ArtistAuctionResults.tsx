@@ -12,7 +12,6 @@ import { Box, Spacer } from "@artsy/palette"
 import { AnalyticsSchema } from "Artsy"
 import { LoadingArea } from "Components/LoadingArea"
 import { isEqual } from "lodash"
-import { DateTime } from "luxon"
 import { useTracking } from "react-tracking"
 import { usePrevious } from "Utils/Hooks/usePrevious"
 import createLogger from "Utils/logger"
@@ -212,13 +211,10 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
     const { startAt, endAt } =
       props.artist.auctionResultsConnection.createdYearRange ?? {}
-    // TODO: Remove once diffusion data is cleaned up
-    const { birthday } = props.artist
-    const birthYear = birthday && DateTime.fromJSDate(new Date(birthday)).year
     return (
       <AuctionResultsFilterContextProvider
         filters={{
-          earliestCreatedYear: Math.max(birthYear, startAt),
+          earliestCreatedYear: startAt,
           latestCreatedYear: endAt,
         }}
       >
@@ -242,7 +238,6 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           createdBeforeYear: { type: "Int" }
         ) {
         slug
-        birthday
         ...AuctionResultHeader_artist
         auctionResultsConnection(
           first: $first
