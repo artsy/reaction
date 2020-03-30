@@ -183,6 +183,11 @@ const overviewArtist: routes_ArtistTopLevelQueryRawResponse["artist"] = {
       edges: [],
     },
   },
+  artistHightlights: {
+    partnersConnection: {
+      edges: [],
+    },
+  },
   insights: [],
   name: "Juan Gris",
   nationality: "",

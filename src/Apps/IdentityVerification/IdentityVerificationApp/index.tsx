@@ -5,7 +5,6 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import * as Schema from "Artsy/Analytics/Schema"
 import { ErrorPage } from "Components/ErrorPage"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { Router } from "found"
 import React, { useState } from "react"
 import { Title as HeadTitle } from "react-head"
 import {
@@ -23,10 +22,9 @@ const logger = createLogger("IdentityVerificationApp.tsx")
 interface Props {
   me: IdentityVerificationApp_me
   relay: RelayProp
-  router: Router
 }
 
-const IdentityVerificationApp: React.FC<Props> = ({ me, relay, router }) => {
+const IdentityVerificationApp: React.FC<Props> = ({ me, relay }) => {
   const { identityVerification } = me
   const [requesting, setRequesting] = useState(false)
   const [showErrorModal, setShowErrorModal] = useState(false)
@@ -108,7 +106,7 @@ const IdentityVerificationApp: React.FC<Props> = ({ me, relay, router }) => {
   }
 
   const handleMutationSuccess = (identityVerificationFlowUrl: string) => {
-    router.push(identityVerificationFlowUrl)
+    window.location.assign(identityVerificationFlowUrl)
   }
 
   const handleMutationError = (error: Error) => {

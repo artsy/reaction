@@ -23,15 +23,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
     <SectionContainer>
       <Box textAlign="center">
         <Box>
-          <Subheader>Recently sold {artistName} works on Artsy</Subheader>
-
-          <Spacer my={1} />
-
-          <Box>
-            <Sans size="6">
-              Works by {artistName} sold on Artsy in the past 12 months
-            </Sans>
-          </Box>
+          <Subheader>Works by {artistName} recently sold on Artsy</Subheader>
 
           <Spacer my={4} />
 
@@ -41,8 +33,13 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
             alignItems="center"
           >
             {artworksByInternalID.map((artwork, key) => {
+              const artworkData = artistConsignment.artworks.find(
+                consignmentArtwork => {
+                  return consignmentArtwork.internalID === artwork.internalID
+                }
+              )
               return (
-                <Box p={2} key={key}>
+                <Box p={2} key={key} textAlign="left">
                   <FillwidthItem
                     artwork={artwork}
                     targetHeight={150}
@@ -50,6 +47,9 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
                     showExtended={false}
                     width={150 * artwork.image.aspectRatio}
                   />
+                  <Sans size="2" weight="medium">
+                    Sold for {artworkData.realizedPrice}
+                  </Sans>
                 </Box>
               )
             })}

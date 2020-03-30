@@ -1,3 +1,251 @@
+# v25.39.2 (Sun Mar 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Fix padding on mobile [#3327](https://github.com/artsy/reaction/pull/3327) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove shuffle on recently sold [#3326](https://github.com/artsy/reaction/pull/3326) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add stack trace in development [#3325](https://github.com/artsy/reaction/pull/3325) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.38.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add images to Artist/Consign header [#3322](https://github.com/artsy/reaction/pull/3322) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.37.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Launch Consign Page / Update FAQ [#3324](https://github.com/artsy/reaction/pull/3324) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- gitignore node diagnostic reports [#3323](https://github.com/artsy/reaction/pull/3323) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.14 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add "Sold for" price data [#3321](https://github.com/artsy/reaction/pull/3321) ([@damassi](https://github.com/damassi))
+- [FX-1877] launch new mobile nav menu [#3320](https://github.com/artsy/reaction/pull/3320) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.13 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add ArtistConsignButton [#3317](https://github.com/artsy/reaction/pull/3317) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.12 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add tracking to Artist/Consign [#3318](https://github.com/artsy/reaction/pull/3318) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.11 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Mobile Nav Menu] adjust chevron position [#3319](https://github.com/artsy/reaction/pull/3319) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.10 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure year created check doesn't error on nulls [#3316](https://github.com/artsy/reaction/pull/3316) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.36.9 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu ui qa [#3315](https://github.com/artsy/reaction/pull/3315) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.8 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Video meta bug [#3314](https://github.com/artsy/reaction/pull/3314) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.36.7 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- the Address Form component should respect country selection for Euro only shipping [#3313](https://github.com/artsy/reaction/pull/3313) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.36.6 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Switch props.router.push back to window.locaion.assign for idv flow [#3312](https://github.com/artsy/reaction/pull/3312) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.5 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu analytics [#3289](https://github.com/artsy/reaction/pull/3289) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.4 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Move AddressForm component out of the order app [#3305](https://github.com/artsy/reaction/pull/3305) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.36.3 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] QA round 2 [#3311](https://github.com/artsy/reaction/pull/3311) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.2 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- Copy: Remove stray whitespace in verification failed view [#3310](https://github.com/artsy/reaction/pull/3310) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v25.36.1 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Artist/Consign QA [#3308](https://github.com/artsy/reaction/pull/3308) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.0 (Mon Mar 23 2020)
+
+#### 🚀  Enhancement
+
+- Add year created filter reset link [#3302](https://github.com/artsy/reaction/pull/3302) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.35.2 (Mon Mar 23 2020)
 
 #### 🐛  Bug Fix

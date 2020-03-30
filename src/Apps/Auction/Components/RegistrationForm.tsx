@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { CreditCardInstructions } from "Apps/Auction/Components/CreditCardInstructions"
-import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+import { Address, AddressForm } from "Components/AddressForm"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { Form, Formik, FormikActions, FormikProps } from "formik"

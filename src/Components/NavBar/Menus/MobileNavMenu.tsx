@@ -1,144 +1,256 @@
-import React, { useContext, useState } from "react"
-import styled from "styled-components"
-
 import {
   Box,
+  ChevronIcon,
   CloseIcon,
   color,
   Flex,
-  Link,
   MenuIcon,
   Sans,
   Separator,
-  space,
 } from "@artsy/palette"
+import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics"
+import React from "react"
+import styled from "styled-components"
+import { LinkData, MenuData, MenuLinkData } from "../menuData"
+import { MobileLink } from "./MobileLink"
+import {
+  NavigatorContextProvider,
+  useNavigation,
+} from "./NavigatorContextProvider"
 
-import { AnalyticsSchema, SystemContext } from "Artsy"
-import { useTracking } from "Artsy/Analytics/useTracking"
-
-interface MobileNavMenuProps {
-  onNavItemClick?: () => void
+interface Props {
+  isOpen: boolean
+  menuData: MenuData
 }
 
-export const MobileNavMenu: React.FC<MobileNavMenuProps> = props => {
-  const { onNavItemClick } = props
-  const { trackEvent } = useTracking()
-  const { user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
-  const isLoggedIn = Boolean(user)
-
-  const trackClick = event => {
-    const link = event.target
-    const text = link.innerText
-    const href = link.parentNode.getAttribute("href")
-
-    trackEvent({
-      action_type: AnalyticsSchema.ActionType.Click,
-      subject: text,
-      destination_path: href,
-    })
-
-    // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-    if (EXPERIMENTAL_APP_SHELL && href === "/collect") {
-      onNavItemClick()
-    }
-  }
+export const MobileNavMenu: React.FC<Props> = props => {
+  const {
+    links: [artworks, artists],
+  } = props.menuData
+  const { user } = useSystemContext()
 
   return (
-    <MobileNavContainer py={1} flexDirection="column" onClick={trackClick}>
-      <MobileLink href="/collect">Artworks</MobileLink>
-      <MobileLink href="/auctions">Auctions</MobileLink>
-      <MobileLink href="/galleries">Galleries</MobileLink>
-      <MobileLink href="/fairs">Fairs</MobileLink>
-      <MobileLink href="/articles">Editorial</MobileLink>
-      <MobileLink href="/artists">Artists</MobileLink>
-      <MobileLink href="/shows">Shows</MobileLink>
-      <MobileLink href="/institutions">Museums</MobileLink>
+    <NavigatorContextProvider>
+      <MenuViewport>
+        <AnimatingMenuWrapper isOpen={props.isOpen}>
+          <ul>
+            <MobileSubmenuLink menu={(artworks as MenuLinkData).menu}>
+              {(artworks as MenuLinkData).menu.title}
+            </MobileSubmenuLink>
 
-      <Box px={2}>
-        <Separator my={1} />
-      </Box>
-
-      {isLoggedIn ? (
-        <>
-          <MobileLink href="/works-for-you">Works for you</MobileLink>
-          <MobileLink href="/user/edit">Account</MobileLink>
-        </>
-      ) : (
-        <>
-          <MobileLink
-            href={`/log_in?intent=signup&trigger=click&contextModule=Header`}
-          >
-            Login
-          </MobileLink>
-          <MobileLink
-            href={`/sign_up?intent=signup&trigger=click&contextModule=Header`}
-          >
-            Sign up
-          </MobileLink>
-        </>
-      )}
-    </MobileNavContainer>
+            <MobileSubmenuLink menu={(artists as MenuLinkData).menu}>
+              {(artists as MenuLinkData).menu.title}
+            </MobileSubmenuLink>
+            <MobileLink href="/auctions">Auctions</MobileLink>
+            <MobileLink href="/articles">Editorial</MobileLink>
+            <MobileLink href="/galleries">Galleries</MobileLink>
+            <MobileLink href="/fairs">Fairs</MobileLink>
+            <MobileLink href="/shows">Shows</MobileLink>
+            <MobileLink href="/institutions">Museums</MobileLink>
+            <MobileLink href="/gallery-partnerships">
+              Partner with Artsy
+            </MobileLink>
+            {user ? <LoggedInLinks /> : <AuthenticateLinks />}
+          </ul>
+        </AnimatingMenuWrapper>
+      </MenuViewport>
+    </NavigatorContextProvider>
   )
 }
 
-interface MobileLinkProps {
-  children: React.ReactNode
-  href?: string
-  onClick?: (event?: React.MouseEvent<HTMLElement>) => void
-}
-
-const MobileLink: React.FC<MobileLinkProps> = ({
-  href,
-  children,
-  ...props
-}) => {
-  const [isPressed, setPressed] = useState(false)
-  const bg = isPressed ? "black5" : "white100"
-
-  return (
-    <MobileLinkContainer
-      py={0.5}
-      style={{ cursor: "pointer" }}
-      bg={bg}
-      onTouchStart={() => setPressed(true)}
-      onTouchEnd={() => setPressed(false)}
-      {...props}
-    >
-      <Box px={2} py={[0, 0.5]}>
-        {href ? (
-          <Link href={href} underlineBehavior="none">
-            <Sans size={["5t", "6"]}>{children}</Sans>
-          </Link>
-        ) : (
-          <Sans size={["5t", "6"]}>{children}</Sans>
-        )}
-      </Box>
-    </MobileLinkContainer>
-  )
-}
-
-const MobileNavContainer = styled(Flex)`
-  background-color: white;
-  border-bottom: 1px solid ${color("black10")};
+const MenuViewport = styled.nav`
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
-  user-select: none;
-  overflow-y: scroll;
-  z-index: 2;
-  width: 100%;
-  height: calc(100vh - ${space(6)}px);
-  -webkit-overflow-scrolling: touch;
 `
 
-const MobileLinkContainer = styled(Box)<{ disableHover?: boolean }>`
-  background-color: white;
-  transition: 0.3s linear;
-  cursor: pointer;
+export const AnimatingMenuWrapper = styled.div<{
+  isOpen: boolean
+}>`
+  background: white;
 
-  &:hover {
-    background-color: ${p =>
-      p.disableHover ? "transparent" : color("black5")};
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  z-index: ${p => (p.isOpen ? 9999 : 0)};
+
+  top: 0;
+  left: 0; /* might be simpler to just animate this instead of the transform3d business */
+  padding: 1em 20px;
+
+  transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
+  transition: transform 0.15s;
+  ul {
+    margin-bottom: 100px;
   }
 `
+
+interface MenuProps {
+  isOpen: boolean
+  title: string
+  links: LinkData[]
+  showBacknav?: boolean
+}
+
+const Menu: React.FC<MenuProps> = ({
+  isOpen,
+  title,
+  links,
+  showBacknav = true,
+}) => {
+  return (
+    <AnimatingMenuWrapper isOpen={isOpen}>
+      <Flex position="relative">
+        {showBacknav && <BackLink />}
+        <Sans size={["5", "6"]} color={color("black100")} mx="auto">
+          {title}
+        </Sans>
+      </Flex>
+      <ul>{links.map(link => NavLink({ link }))}</ul>
+    </AnimatingMenuWrapper>
+  )
+}
+
+export const BackLink: React.FC = () => {
+  const { trackEvent } = useTracking()
+  const { pop } = useNavigation()
+  const contextModule = getTrackingContextModule()
+
+  return (
+    <Box
+      position="absolute"
+      onClick={e => {
+        e.preventDefault()
+        trackEvent({
+          action_type: AnalyticsSchema.ActionType.Click,
+          context_module: contextModule,
+          flow: "Header",
+          subject: "Back link",
+        })
+        pop()
+      }}
+      width="30px"
+      height="30px"
+    >
+      <ChevronIcon
+        direction="left"
+        color={color("black100")}
+        height="14px"
+        width="14px"
+        top="6px"
+        left="-2px"
+      />
+    </Box>
+  )
+}
+
+const getTrackingContextModule = () => {
+  const { path } = useNavigation()
+  let contextModule
+  if (path[0] === "Artworks") {
+    contextModule = AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+  } else if (path[0] === "Artists") {
+    contextModule = AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+  } else {
+    contextModule = AnalyticsSchema.ContextModule.Header
+  }
+  return contextModule
+}
+
+const NavLink: React.FC<any> = ({ link }) => {
+  const isSubMenu = !!link.menu
+  const contextModule = getTrackingContextModule()
+
+  if (isSubMenu) {
+    return (
+      <React.Fragment key={link.menu.title}>
+        <MobileSubmenuLink menu={link.menu}>{link.text}</MobileSubmenuLink>
+        {link.dividerBelow && <Separator my={1} color={color("black10")} />}
+      </React.Fragment>
+    )
+  } else {
+    return (
+      <React.Fragment key={link.href}>
+        <MobileLink href={link.href} contextModule={contextModule}>
+          {link.text}
+        </MobileLink>
+        {link.dividerBelow && <Separator my={1} color={color("black10")} />}
+      </React.Fragment>
+    )
+  }
+}
+
+export const MobileSubmenuLink: React.FC<any> = ({ children, menu }) => {
+  const { trackEvent } = useTracking()
+  const { path, push } = useNavigation()
+  const contextModule = getTrackingContextModule()
+
+  return (
+    <li>
+      <Flex
+        py={0.5}
+        flexDirection="row"
+        onClick={() => {
+          push(menu.title)
+          trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
+            context_module: contextModule,
+            flow: "Header",
+            subject: menu.title,
+          })
+        }}
+      >
+        <Sans size={["5t", "6"]} color={color("black60")}>
+          {children}
+        </Sans>
+        <ChevronIcon
+          direction="right"
+          color={color("black60")}
+          height="14px"
+          width="14px"
+          top="7px"
+          left="5px"
+        />
+      </Flex>
+      <Menu
+        isOpen={path.includes(menu.title)}
+        title={menu.title}
+        links={menu.links}
+      />
+    </li>
+  )
+}
+
+const AuthenticateLinks: React.FC = () => {
+  return (
+    <Box>
+      <Separator my={1} color={color("black10")} />
+      <MobileLink
+        href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
+      >
+        Sign Up
+      </MobileLink>
+      <MobileLink
+        href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
+      >
+        Login
+      </MobileLink>
+    </Box>
+  )
+}
+
+const LoggedInLinks: React.FC = () => {
+  return (
+    <Box>
+      <Separator my={1} color={color("black10")} />
+      <MobileLink href="/works-for-you">Works for you</MobileLink>
+      <MobileLink href="/user/edit">Account</MobileLink>
+    </Box>
+  )
+}
 
 export const MobileToggleIcon: React.FC<{ open: boolean }> = ({ open }) => {
   const style = { transform: "scale(1.5)", top: 2 }

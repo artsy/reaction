@@ -141,7 +141,7 @@ export class FillwidthItemContainer extends React.Component<
             />
           </ImageLink>
 
-          <Badge artwork={artwork} width={this.imageWidth} />
+          {showExtended && <Badge artwork={artwork} width={this.imageWidth} />}
 
           <SaveButton
             {...userSpread}
@@ -163,7 +163,7 @@ export const FillwidthItem = styled(FillwidthItemContainer).attrs<
   display: inline-block;
   width: ${props => props.width}px;
   vertical-align: top;
-  margin-right: ${props => props.margin}px;
+  margin-right: ${props => props.margin || 0}px;
 
   .artwork-save {
     opacity: 0;

@@ -4,6 +4,7 @@ import { storiesOf } from "storybook/storiesOf"
 import { Box } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { NavBar } from "Components/NavBar"
+import { menuData } from "Components/NavBar/menuData"
 import * as Menus from "Components/NavBar/Menus"
 
 const NavBarArea = props => {
@@ -80,7 +81,7 @@ storiesOf("Components/NavBar/Menus", module)
     return <Menus.UserMenu />
   })
   .add("MobileNavMenu", () => {
-    return <Menus.MobileNavMenu />
+    return <Menus.MobileNavMenu isOpen menuData={menuData} />
   })
 
 const Container = ({ children }) => {

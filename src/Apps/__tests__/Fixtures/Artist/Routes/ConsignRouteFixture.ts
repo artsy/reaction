@@ -7,13 +7,22 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
     href: "/artist/alex-katz",
     id: "QXJ0aXN0OjRkOGQxMjBjODc2YzY5N2FlMTAwMDA0Ng==",
   },
+
   artworksByInternalID: [
     {
       internalID: "5d9ca6fe8f1aee0011475cf7",
       image: {
         aspectRatio: 0.75,
+        width: 1499,
+        height: 2000,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/medium.jpg",
+        resized: {
+          width: 296,
+          height: 395,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=296&height=395&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FJB8GqSuSHtsDHDIQ9nyPUw%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/JB8GqSuSHtsDHDIQ9nyPUw/large.jpg",
         aspect_ratio: 0.75,
@@ -64,8 +73,16 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5d126f9bba46ba0012c3134f",
       image: {
         aspectRatio: 0.75,
+        width: 2237,
+        height: 3000,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/medium.jpg",
+        resized: {
+          width: 294,
+          height: 394,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=294&height=394&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FNcjBjx9Xz_pTqQp1G0gXWQ%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/NcjBjx9Xz_pTqQp1G0gXWQ/large.jpg",
         aspect_ratio: 0.75,
@@ -103,8 +120,16 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5cffddff404918000ec89beb",
       image: {
         aspectRatio: 1.7,
+        width: 6395,
+        height: 3756,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/medium.jpg",
+        resized: {
+          width: 672,
+          height: 395,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=672&height=395&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F2PzNL_vTOOx3Py9zfe7upw%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/2PzNL_vTOOx3Py9zfe7upw/large.jpg",
         aspect_ratio: 1.7,
@@ -156,8 +181,16 @@ export const ConsignRouteFixture: ConsignRoute_Test_QueryRawResponse = {
       internalID: "5aa2e90d7622dd49dc8b356c",
       image: {
         aspectRatio: 0.66,
+        width: 500,
+        height: 754,
         imageURL:
-          "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/:version.jpg",
+          "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/medium.jpg",
+        resized: {
+          width: 261,
+          height: 395,
+          url:
+            "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=261&height=395&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FWNHtB_gQLN3HxPW4nNGAjA%2Flarge.jpg",
+        },
         url:
           "https://d32dm0rphc51dk.cloudfront.net/WNHtB_gQLN3HxPW4nNGAjA/large.jpg",
         aspect_ratio: 0.66,
@@ -204,7 +237,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
         "https://www.artsy.net/artwork/alex-katz-olympic-swimmer-37",
       "Artwork ids (recently sold) (comma separated)":
         "5dbc8e526a65d700114f8c2b",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$1,300",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -212,7 +245,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5dbc8e526a65d700114f8c2b",
+      internalID: "5dbc8e526a65d700114f8c2b",
+      realizedPrice: "$1,300",
     },
     {
       url: "/artist/alex-katz",
@@ -222,7 +256,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
         "https://www.artsy.net/artwork/alex-katz-luna-park-2-maravell-67-schroder-68",
       "Artwork ids (recently sold) (comma separated)":
         "5d9ca6fe8f1aee0011475cf7",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$5,000",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -230,7 +264,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5d9ca6fe8f1aee0011475cf7",
+      internalID: "5d9ca6fe8f1aee0011475cf7",
+      realizedPrice: "$5,000",
     },
     {
       url: "/artist/alex-katz",
@@ -239,7 +274,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "Artwork URL": "https://www.artsy.net/artwork/alex-katz-rose-bud-30",
       "Artwork ids (recently sold) (comma separated)":
         "5d126f9bba46ba0012c3134f",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$8,500",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -247,7 +282,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5d126f9bba46ba0012c3134f",
+      internalID: "5d126f9bba46ba0012c3134f",
+      realizedPrice: "$8,500",
     },
     {
       url: "/artist/alex-katz",
@@ -257,7 +293,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
         "https://www.artsy.net/artwork/alex-katz-fog-and-night-from-the-northern-landscapes-series",
       "Artwork ids (recently sold) (comma separated)":
         "5cffddff404918000ec89beb",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$1,300",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -265,7 +301,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5cffddff404918000ec89beb",
+      internalID: "5cffddff404918000ec89beb",
+      realizedPrice: "$1,300",
     },
     {
       url: "/artist/alex-katz",
@@ -274,7 +311,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "Artwork URL": "https://www.artsy.net/artwork/alex-katz-susan-3",
       "Artwork ids (recently sold) (comma separated)":
         "5ccb4516ec8701614303dd94",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$2,000",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -282,7 +319,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5ccb4516ec8701614303dd94",
+      internalID: "5ccb4516ec8701614303dd94",
+      realizedPrice: "$2,000",
     },
     {
       url: "/artist/alex-katz",
@@ -291,7 +329,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "Artwork URL": "https://www.artsy.net/artwork/alex-katz-self-portrait-1",
       "Artwork ids (recently sold) (comma separated)":
         "5ccb45163a7e934cc7818be5",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$12,000",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -299,7 +337,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5ccb45163a7e934cc7818be5",
+      internalID: "5ccb45163a7e934cc7818be5",
+      realizedPrice: "$12,000",
     },
     {
       url: "/artist/alex-katz",
@@ -308,7 +347,7 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "Artwork URL": "https://www.artsy.net/artwork/alex-katz-laura-1-49",
       "Artwork ids (recently sold) (comma separated)":
         "5aa2e90d7622dd49dc8b356c",
-      "Realized Price": "",
+      "Realized Price (in dollars)": "$7,500",
       "views to content from that artist (last month)": "",
       "ROUNDED views to content from that artist (last month)": "",
       "unique visitors to content from artist (last month)": "",
@@ -316,7 +355,8 @@ export const artistConsignmentFixture: ArtistConsignment = {
       "STR (last 12 months)": "",
       "Realized / estimate": "",
       "Highest realized price": "",
-      artworkID: "5aa2e90d7622dd49dc8b356c",
+      internalID: "5aa2e90d7622dd49dc8b356c",
+      realizedPrice: "$7,500",
     },
   ],
   metadata: {

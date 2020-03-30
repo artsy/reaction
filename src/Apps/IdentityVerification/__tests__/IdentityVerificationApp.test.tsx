@@ -132,9 +132,7 @@ describe("IdentityVerification route", () => {
         const page = await env.buildPage()
 
         await page.clickStartVerification()
-        expect(env.routes.mockPushRoute).toHaveBeenCalledWith(
-          "www.identity.biz"
-        )
+        expect(window.location.assign).toHaveBeenCalledWith("www.identity.biz")
       })
 
       it("user sees an error modal if the mutation fails", async () => {

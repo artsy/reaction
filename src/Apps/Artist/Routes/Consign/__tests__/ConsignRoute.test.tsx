@@ -1,25 +1,20 @@
 import { ConsignRouteFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ConsignRouteFixture"
 import { SystemContextProvider } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "relay-runtime"
 import { ConsignRouteFragmentContainer } from "../index"
 
 import { ConsignRoute_Test_QueryRawResponse } from "__generated__/ConsignRoute_Test_Query.graphql"
+import { getConsignmentData } from "../Utils/getConsignmentData"
 
 jest.unmock("react-relay")
-
-jest.mock("Apps/Artist/Routes/Consign/Utils/getConsignmentData", () => ({
-  getConsignmentData: () => {
-    const {
-      artistConsignmentFixture,
-    } = require("Apps/__tests__/Fixtures/Artist/Routes/ConsignRouteFixture")
-
-    return artistConsignmentFixture
-  },
-}))
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("ConsignRoute", () => {
+  const trackEvent = jest.fn()
+
   const getWrapper = async (
     response: ConsignRoute_Test_QueryRawResponse = ConsignRouteFixture
   ) => {
@@ -35,6 +30,8 @@ describe("ConsignRoute", () => {
       replace: jest.fn(),
     }
 
+    const artistConsignment = getConsignmentData("/artist/alex-katz")
+
     return await renderRelayTree({
       Component: ({ artist, artworksByInternalID }) => {
         return (
@@ -43,6 +40,7 @@ describe("ConsignRoute", () => {
               <ConsignRouteFragmentContainer
                 artist={artist}
                 artworksByInternalID={artworksByInternalID}
+                artistConsignment={artistConsignment}
                 match={match}
                 router={router}
               />
@@ -66,9 +64,12 @@ describe("ConsignRoute", () => {
       variables: {
         artistID: "alex-katz",
         recentlySoldArtworkIDs: [
+          "5dbc8e526a65d700114f8c2b",
           "5d9ca6fe8f1aee0011475cf7",
           "5d126f9bba46ba0012c3134f",
           "5cffddff404918000ec89beb",
+          "5ccb4516ec8701614303dd94",
+          "5ccb45163a7e934cc7818be5",
           "5aa2e90d7622dd49dc8b356c",
         ],
       },
@@ -76,10 +77,30 @@ describe("ConsignRoute", () => {
     })
   }
 
+  beforeEach(() => {
+    const mockTracking = useTracking as jest.Mock
+    mockTracking.mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe("ArtistConsignHeader", () => {
     it("displays artist name in header", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignHeader").text()).toContain("Alex Katz")
+    })
+
+    it("displays two images in header", async () => {
+      const wrapper = await getWrapper()
+      expect(
+        wrapper.find("ArtistConsignHeader").find("ResponsiveImage").length
+      ).toEqual(4) // actually 2, but second set of images creates border
     })
 
     it("links out to consign page", async () => {
@@ -89,7 +110,20 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHeader")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
+    })
+
+    it("tracks event", async () => {
+      const wrapper = await getWrapper()
+      wrapper
+        .find("ArtistConsignHeader")
+        .find("RouterLink")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        subject: "Request a price estimate",
+        context_module: "Sell Works by",
+      })
     })
   })
 
@@ -113,6 +147,15 @@ describe("ConsignRoute", () => {
         wrapper.find("ArtistConsignRecentlySold").find("FillwidthItem").length
       ).toEqual(4)
     })
+
+    it("appends displays sold for <price> to artwork brick", async () => {
+      const wrapper = await getWrapper()
+      const html = wrapper.find("ArtistConsignRecentlySold").html()
+      const prices = ["$5,000", "$8,500", "$1,300", "$7,500"]
+      prices.forEach(price => {
+        expect(html).toContain(`Sold for ${price}`)
+      })
+    })
   })
 
   describe("ArtistConsignPageViews", () => {
@@ -126,6 +169,11 @@ describe("ConsignRoute", () => {
     it("includes pageviews in header", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignPageViews").text()).toContain("3,500")
+    })
+
+    it("includes unique visitors in header", async () => {
+      const wrapper = await getWrapper()
+      expect(wrapper.find("ArtistConsignPageViews").text()).toContain("1,200")
     })
   })
 
@@ -156,6 +204,18 @@ describe("ConsignRoute", () => {
           .html()
       ).toContain(`href="/artist/alex-katz/auction-results"`)
     })
+
+    it("tracks event", async () => {
+      const wrapper = await getWrapper()
+      wrapper
+        .find("ArtistConsignMarketTrends")
+        .find("RouterLink")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        subject: "Explore Auction Results",
+      })
+    })
   })
 
   describe("ArtistConsignHowtoSell", () => {
@@ -166,7 +226,20 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHowtoSell")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
+    })
+
+    it("tracks event", async () => {
+      const wrapper = await getWrapper()
+      wrapper
+        .find("ArtistConsignHowtoSell")
+        .find("RouterLink")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        context_module: "How to sell your collection with Artsy",
+        subject: "Request a price estimate",
+      })
     })
   })
 
@@ -178,9 +251,17 @@ describe("ConsignRoute", () => {
       )
     })
 
-    // FIXME: Wire up new FAQ page
-    xit("includes link to stand alone FAQ page", async () => {
-      //
+    it("tracks event", async () => {
+      const wrapper = await getWrapper()
+      wrapper
+        .find("ArtistConsignFAQ")
+        .find("[data-test='submitOnFAQ']")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        context_module: "FAQ",
+        subject: "submit works you’re interested in selling here",
+      })
     })
   })
 
@@ -192,7 +273,20 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignSellArt")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign"`)
+      ).toContain(`href="/consign/submission"`)
+    })
+
+    it("tracks event", async () => {
+      const wrapper = await getWrapper()
+      wrapper
+        .find("ArtistConsignSellArt")
+        .find("RouterLink")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "Click",
+        context_module: "Sell Art From Your Collection",
+        subject: "Request a price estimate",
+      })
     })
   })
 })

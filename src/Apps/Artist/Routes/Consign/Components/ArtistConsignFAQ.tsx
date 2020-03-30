@@ -1,25 +1,15 @@
 import React from "react"
 
 import { Box, Sans, Serif, Spacer } from "@artsy/palette"
+import { AnalyticsSchema, useTracking } from "Artsy"
 import styled from "styled-components"
 import { gridColumnGap, GridColumnGapProps, style } from "styled-system"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 
-const Question = ({ question, answer }) => {
-  return (
-    <Box width="100%" maxWidth={["100%", 440]} p={[1, 2]}>
-      <Box>
-        <Sans size="4">{question}</Sans>
-      </Box>
-      <Box>
-        <Serif size="3">{answer}</Serif>
-      </Box>
-    </Box>
-  )
-}
-
 export const ArtistConsignFAQ: React.FC = props => {
+  const tracking = useTracking()
+
   return (
     <SectionContainer height="100%" background="white100" pb={0}>
       <Box width="100%" maxWidth={["100%", 900]}>
@@ -31,79 +21,139 @@ export const ArtistConsignFAQ: React.FC = props => {
 
         <MasonryContainer columnCount={[1, 2]} gridColumnGap={20} mb={6}>
           <Question
-            question="Why sell with Artsy?"
+            question="How do Consignments on Artsy work?"
             answer={
               <>
-                Artsy wants to make it seamless and worthwhile to consign and
-                resell art. Our experts ensure that you receive the most
-                competitive offers and sales terms.
+                Artsy helps you find the best sales solution for works in your
+                collection. We review the works you’re interested in selling,
+                determine the strength of the secondary market demand, and
+                suggest an appropriate sales strategy. This can involve matching
+                you with the right seller (e.g., an auction house or a gallery),
+                selling qualified works via Artsy’s online marketplace, or
+                selling the work privately through our network of trusted
+                partners and collectors. This service is free, and the nominal,
+                pre-agreed seller’s commission is due only when your work sells.
+                Artsy specialists guide you along the way and help you choose
+                the right sales strategy. To get started, submit works you’re
+                interested in selling{" "}
+                <a
+                  data-test="submitOnFAQ"
+                  onClick={() => {
+                    tracking.trackEvent({
+                      action_type: AnalyticsSchema.ActionType.Click,
+                      context_module: AnalyticsSchema.ContextModule.FAQ,
+                      subject:
+                        AnalyticsSchema.Subject.SubmitWorksInterestedInSelling,
+                    })
+                  }}
+                  href="https://www.artsy.net/consign/submission"
+                >
+                  here
+                </a>
+                .
+              </>
+            }
+          />
+
+          <Question
+            question="What happens once I submit a work to Artsy Consignments?"
+            answer={
+              <>
+                If your work is approved by our specialists, you will receive an
+                email notification within 7 business days. Approved works will
+                be shared with our network of partners for them to review and
+                propose offers, which takes 1–2 weeks from approval. Artsy will
+                notify you of any offers, guide you in choosing the best selling
+                option, and help you finalize a consignment agreement and
+                logistics.
+              </>
+            }
+          />
+
+          <Question
+            question="Where can I see my work on Artsy?"
+            answer={
+              <>
+                By submitting your consignment, you do not automatically list
+                your artwork on Artsy. With Artsy Consignments, you have
+                multiple options for selling your work, which include consigning
+                via Artsy’s trusted network of auction and gallery partners,
+                listing your work on the Artsy marketplace, or selling the work
+                privately. Once your work is approved, Artsy specialists will
+                walk you through your best options.
               </>
             }
           />
           <Question
-            question="What happens once I submit a work?"
+            question="Which auction houses and galleries are in Artsy’s consignment partner network?"
             answer={
               <>
-                First, Artsy will review your submission, and notify you if it
-                is accepted. Once accepted we will share it with our network of
-                interested sellers. Once a seller makes an offer, you can review
-                and respond to the consignment proposal via email. Finally, if
-                you would like to move forward, we will help you coordinate the
-                handoff every step of the way.
+                Artsy partners with international auction houses, including
+                Phillips, Bonhams, Piasa, Heritage, Forum, and Tate Ward, as
+                well as leading art galleries such as Gagosian, Alan Cristea,
+                Mitchell-Innes & Nash, and Stern Pissarro.
               </>
             }
           />
           <Question
-            question="What are the fees?"
+            question="I’m an artist. Can I submit my own work to consign?"
             answer={
               <>
-                There is no fee to submit, or for Artsy’s consultation services.
-                If you decide to sell the work, we will help you negotiate
-                additional fees like commission, shipping, insurance, and
-                photography.
+                At this time, Artsy Consignments is only able to accommodate
+                works by artists with an established demand and a resale market
+                consistent with our partners’ current interests and needs. As
+                such, we do not accept submissions from artists of their own
+                work.
               </>
             }
           />
           <Question
-            question="What types of artworks do you accept?"
+            question="How can I edit my submission?"
             answer={
               <>
-                To determine if your work qualifies, our expert staff assesses
-                if your artist’s work has sufficient resale market and demand
-                (the number, recency, and value of auction results). Then we
-                review important authenticity, provenance information and
-                artwork details you provided. We require several images (front,
-                back, signature), unframed dimensions, provenance, and a
-                Certificate of Authenticity, as well as any additional
-                documentation. Generally, we accept artworks valued at $5,000 or
-                more.
+                If you wish to edit your submission or update missing
+                information, please email us at{" "}
+                <a href="mailto:consign@artsty.net">consign@artsty.net</a> with
+                your submission ID number, and we will update the submission on
+                your behalf.
               </>
             }
           />
           <Question
-            question="How quickly will I hear from Artsy?"
+            question="Need more assistance?"
             answer={
               <>
-                If your work is approved, expect to hear from us within 7
-                business days. To learn about the status of your consignment
-                submission, please email{" "}
-                <a href="mailto:consign@artsty.net">consign@artsty.net</a> or
-                call +1 646 797 3423.
-              </>
-            }
-          />
-          <Question
-            question="Want to learn more about selling with Artsy?"
-            answer={
-              <>
-                Read our full <a href="#todo">FAQ</a> or{" "}
-                <a href="#todo">contact us.</a>
+                Contact us at{" "}
+                <a href="mailto:consign@artsty.net">consign@artsty.net</a>.
               </>
             }
           />
         </MasonryContainer>
       </Box>
     </SectionContainer>
+  )
+}
+
+const Question: React.FC<{ question: string; answer: JSX.Element }> = ({
+  question,
+  answer,
+}) => {
+  return (
+    <Box
+      width="100%"
+      maxWidth={["100%", 440]}
+      p={[1, 2]}
+      style={{
+        breakInside: "avoid",
+      }}
+    >
+      <Box>
+        <Sans size="4">{question}</Sans>
+      </Box>
+      <Box>
+        <Serif size="3">{answer}</Serif>
+      </Box>
+    </Box>
   )
 }
 
