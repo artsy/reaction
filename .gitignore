@@ -27,3 +27,6 @@ coverage*
 tsconfig.tsbuildinfo
 reports*
 2
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.*.json

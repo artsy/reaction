@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer } from "@artsy/palette"
+import { Box, Flex, Sans, Spacer } from "@artsy/palette"
 import React from "react"
 
 import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
@@ -33,8 +33,13 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
             alignItems="center"
           >
             {artworksByInternalID.map((artwork, key) => {
+              const artworkData = artistConsignment.artworks.find(
+                consignmentArtwork => {
+                  return consignmentArtwork.internalID === artwork.internalID
+                }
+              )
               return (
-                <Box p={2} key={key}>
+                <Box p={2} key={key} textAlign="left">
                   <FillwidthItem
                     artwork={artwork}
                     targetHeight={150}
@@ -42,6 +47,9 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
                     showExtended={false}
                     width={150 * artwork.image.aspectRatio}
                   />
+                  <Sans size="2" weight="medium">
+                    Sold for {artworkData.realizedPrice}
+                  </Sans>
                 </Box>
               )
             })}

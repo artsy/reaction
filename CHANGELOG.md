@@ -1,3 +1,94 @@
+# v25.39.2 (Sun Mar 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Fix padding on mobile [#3327](https://github.com/artsy/reaction/pull/3327) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove shuffle on recently sold [#3326](https://github.com/artsy/reaction/pull/3326) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add stack trace in development [#3325](https://github.com/artsy/reaction/pull/3325) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.38.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add images to Artist/Consign header [#3322](https://github.com/artsy/reaction/pull/3322) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.37.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Launch Consign Page / Update FAQ [#3324](https://github.com/artsy/reaction/pull/3324) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- gitignore node diagnostic reports [#3323](https://github.com/artsy/reaction/pull/3323) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.14 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add "Sold for" price data [#3321](https://github.com/artsy/reaction/pull/3321) ([@damassi](https://github.com/damassi))
+- [FX-1877] launch new mobile nav menu [#3320](https://github.com/artsy/reaction/pull/3320) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.13 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add ArtistConsignButton [#3317](https://github.com/artsy/reaction/pull/3317) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.36.12 (Thu Mar 26 2020)
 
 #### 🐛  Bug Fix

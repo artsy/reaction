@@ -132,7 +132,7 @@ describe("ArtistHeader", () => {
   it("hides auction record indicator when data is not present", async () => {
     const artist = {
       ...ArtistHeaderFixture,
-      highlights: { partnersConnection: null },
+      artistHightlights: { partnersConnection: null },
     }
     const wrapper = await getWrapper(artist)
     const html = wrapper.html()

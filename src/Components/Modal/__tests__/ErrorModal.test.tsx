@@ -55,6 +55,13 @@ describe("ErrorModal", () => {
       )
     })
 
+    it("Renders error stack", () => {
+      props.errorStack = "An error stack"
+      const component = getWrapper(props)
+      const text = component.text()
+      expect(text).toContain("An error stack")
+    })
+
     it("Renders with a specified props for header, detail, and the close button", () => {
       props.headerText = "Custom header"
       props.detailText = "A custom error detail."

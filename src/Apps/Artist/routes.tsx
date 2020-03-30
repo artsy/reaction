@@ -249,11 +249,7 @@ export const routes: RouteConfig[] = [
           const artistConsignment = getConsignmentData(artistPathName)
           const noConsignmentData = !Boolean(artistConsignment)
 
-          // @ts-ignore
-          const me = props.me as any
-
-          // FIXME: remove admin check
-          if (noConsignmentData || me?.type !== "Admin") {
+          if (noConsignmentData) {
             throw new RedirectException(artistPathName)
           } else {
             return (
@@ -275,9 +271,6 @@ export const routes: RouteConfig[] = [
             }
             artworksByInternalID(ids: $recentlySoldArtworkIDs) {
               ...Consign_artworksByInternalID
-            }
-            me {
-              type
             }
           }
         `,

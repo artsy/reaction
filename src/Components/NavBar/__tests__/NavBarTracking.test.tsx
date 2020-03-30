@@ -5,7 +5,7 @@ import { AnalyticsSchema, SystemContextProvider } from "Artsy"
 
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { QueryRenderer as _QueryRenderer } from "react-relay"
-import { MobileNavMenu, MoreNavMenu, UserMenu } from "../Menus"
+import { MoreNavMenu, UserMenu } from "../Menus"
 import { NavBar } from "../NavBar"
 import { NavItem } from "../NavItem"
 
@@ -169,32 +169,6 @@ describe("NavBarTracking", () => {
       expect(trackEvent).toBeCalledWith({
         action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
-      })
-    })
-
-    it("tracks mobile dropdown clicks", () => {
-      const wrapper = mount(
-        <Wrapper>
-          <MobileNavMenu />
-        </Wrapper>
-      )
-
-      wrapper
-        .find("MobileLink")
-        .at(1)
-        .simulate("click", {
-          target: {
-            innerText: "Artists",
-            parentNode: {
-              getAttribute: () => "/artists",
-            },
-          },
-        })
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: AnalyticsSchema.ActionType.Click,
-        subject: "Artists",
-        destination_path: "/artists",
       })
     })
   })

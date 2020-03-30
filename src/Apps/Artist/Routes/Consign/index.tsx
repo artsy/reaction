@@ -44,7 +44,11 @@ export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
       {/*
         Content
       */}
-      <ArtistConsignHeader artistName={artist.name} />
+      <ArtistConsignHeader
+        artistConsignment={artistConsignment}
+        artistName={artist.name}
+        artworksByInternalID={artworksByInternalID}
+      />
       <ArtistConsignRecentlySold
         artistConsignment={artistConsignment}
         artistName={artist.name}
@@ -83,7 +87,16 @@ export const ConsignRouteFragmentContainer = createFragmentContainer(
         internalID
         image {
           aspectRatio
-          imageURL
+          width
+          height
+
+          imageURL: url(version: "medium")
+
+          resized(height: 395) {
+            width
+            height
+            url
+          }
         }
         ...FillwidthItem_artwork
       }

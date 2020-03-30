@@ -145,25 +145,5 @@ describe("NavBar", () => {
       toggle()
       expect(wrapper.find("MobileNavMenu").length).toEqual(0)
     })
-
-    it("toggles menu--new nav menu", () => {
-      const wrapper = getWrapper({
-        user: { lab_features: ["Updated Navigation"] },
-      })
-      expect(wrapper.find("MobileToggleIcon").length).toEqual(1)
-
-      const toggle = () =>
-        wrapper
-          .find("NavSection")
-          .find("NavItem")
-          .find("Link")
-          .last()
-          .simulate("click")
-
-      toggle()
-      expect(wrapper.find("NewMobileNavMenu").length).toEqual(1)
-      toggle()
-      expect(wrapper.find("NewMobileNavMenu").length).toEqual(0)
-    })
   })
 })

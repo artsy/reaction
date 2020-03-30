@@ -6,7 +6,14 @@ export type Consign_artworksByInternalID = ReadonlyArray<{
     readonly internalID: string;
     readonly image: {
         readonly aspectRatio: number;
+        readonly width: number | null;
+        readonly height: number | null;
         readonly imageURL: string | null;
+        readonly resized: {
+            readonly width: number | null;
+            readonly height: number | null;
+            readonly url: string | null;
+        } | null;
     } | null;
     readonly " $fragmentRefs": FragmentRefs<"FillwidthItem_artwork">;
     readonly " $refType": "Consign_artworksByInternalID";
@@ -19,7 +26,22 @@ export type Consign_artworksByInternalID$key = ReadonlyArray<{
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "width",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "height",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "Consign_artworksByInternalID",
   "type": "Artwork",
@@ -51,12 +73,46 @@ const node: ReaderFragment = {
           "args": null,
           "storageKey": null
         },
+        (v0/*: any*/),
+        (v1/*: any*/),
         {
           "kind": "ScalarField",
+          "alias": "imageURL",
+          "name": "url",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "version",
+              "value": "medium"
+            }
+          ],
+          "storageKey": "url(version:\"medium\")"
+        },
+        {
+          "kind": "LinkedField",
           "alias": null,
-          "name": "imageURL",
-          "args": null,
-          "storageKey": null
+          "name": "resized",
+          "storageKey": "resized(height:395)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "height",
+              "value": 395
+            }
+          ],
+          "concreteType": "ResizedImageUrl",
+          "plural": false,
+          "selections": [
+            (v0/*: any*/),
+            (v1/*: any*/),
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "url",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         }
       ]
     },
@@ -67,5 +123,6 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '70e5ab8af91f3990cdbe85e04fa61f52';
+})();
+(node as any).hash = '9407863d8a3f3170ea1560281d28a880';
 export default node;

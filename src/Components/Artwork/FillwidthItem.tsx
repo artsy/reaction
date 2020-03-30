@@ -141,7 +141,7 @@ export class FillwidthItemContainer extends React.Component<
             />
           </ImageLink>
 
-          <Badge artwork={artwork} width={this.imageWidth} />
+          {showExtended && <Badge artwork={artwork} width={this.imageWidth} />}
 
           <SaveButton
             {...userSpread}
