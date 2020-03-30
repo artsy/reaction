@@ -82,7 +82,6 @@ export const routes: RouteConfig[] = [
   {
     path: "/artist/:artistID",
     getComponent: () => ArtistApp,
-    // routesMiddleware,
     prepare: () => {
       ArtistApp.preload()
     },
@@ -126,6 +125,9 @@ export const routes: RouteConfig[] = [
         path: ":regexParam(\\overview)?",
         getComponent: () => OverviewRoute,
         render: ({ Component, props, match }) => {
+          if (!(Component && props)) {
+            return null
+          }
           const { user } = match.context
           const { pathname } = match.location
           const { artistID } = match.params
