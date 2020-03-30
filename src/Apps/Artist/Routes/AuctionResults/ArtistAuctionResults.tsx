@@ -212,13 +212,10 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
   (props: AuctionResultsProps) => {
     const { startAt, endAt } =
       props.artist.auctionResultsConnection.createdYearRange ?? {}
-    // TODO: Remove once diffusion data is cleaned up
-    const { birthday } = props.artist
-    const birthYear = birthday && DateTime.fromJSDate(new Date(birthday)).year
     return (
       <AuctionResultsFilterContextProvider
         filters={{
-          earliestCreatedYear: Math.max(birthYear, startAt),
+          earliestCreatedYear: startAt,
           latestCreatedYear: endAt,
         }}
       >
