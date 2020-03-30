@@ -238,7 +238,6 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           createdBeforeYear: { type: "Int" }
         ) {
         slug
-        birthday
         ...AuctionResultHeader_artist
         auctionResultsConnection(
           first: $first
