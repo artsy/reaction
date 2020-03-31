@@ -1,3 +1,34 @@
+# v25.41.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update Artist/Consign to support MP-based data [#3331](https://github.com/artsy/reaction/pull/3331) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.40.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- Land on Work for Sale tab when coming from internal links [#3332](https://github.com/artsy/reaction/pull/3332) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- [Artist] Add ConsignButton to Artist/Overview page [#3329](https://github.com/artsy/reaction/pull/3329) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Remove UI patch [#3330](https://github.com/artsy/reaction/pull/3330) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v25.39.3 (Mon Mar 30 2020)
 
 #### 🐛  Bug Fix

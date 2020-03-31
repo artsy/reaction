@@ -12,6 +12,9 @@ export type ArtistConsignButtonQueryResponse = {
 };
 export type ArtistConsignButtonQueryRawResponse = {
     readonly artist: ({
+        readonly targetSupply: ({
+            readonly isInMicrofunnel: boolean | null;
+        }) | null;
         readonly internalID: string;
         readonly slug: string;
         readonly name: string | null;
@@ -43,6 +46,9 @@ query ArtistConsignButtonQuery(
 }
 
 fragment ArtistConsignButton_artist on Artist {
+  targetSupply {
+    isInMicrofunnel
+  }
   internalID
   slug
   name
@@ -112,6 +118,24 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "targetSupply",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtistTargetSupply",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "isInMicrofunnel",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -195,7 +219,7 @@ return {
     "operationKind": "query",
     "name": "ArtistConsignButtonQuery",
     "id": null,
-    "text": "query ArtistConsignButtonQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistConsignButton_artist\n    id\n  }\n}\n\nfragment ArtistConsignButton_artist on Artist {\n  internalID\n  slug\n  name\n  href\n  image {\n    cropped(width: 75, height: 66) {\n      url\n    }\n  }\n}\n",
+    "text": "query ArtistConsignButtonQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistConsignButton_artist\n    id\n  }\n}\n\nfragment ArtistConsignButton_artist on Artist {\n  targetSupply {\n    isInMicrofunnel\n  }\n  internalID\n  slug\n  name\n  href\n  image {\n    cropped(width: 75, height: 66) {\n      url\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

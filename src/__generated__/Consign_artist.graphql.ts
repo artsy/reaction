@@ -3,8 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Consign_artist = {
-    readonly name: string | null;
-    readonly href: string | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistConsignMeta_artist" | "ArtistConsignHeader_artist" | "ArtistConsignRecentlySold_artist" | "ArtistConsignPageViews_artist" | "ArtistConsignMarketTrends_artist">;
     readonly " $refType": "Consign_artist";
 };
 export type Consign_artist$data = Consign_artist;
@@ -23,20 +22,31 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtistConsignMeta_artist",
+      "args": null
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "ArtistConsignHeader_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtistConsignRecentlySold_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtistConsignPageViews_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtistConsignMarketTrends_artist",
+      "args": null
     }
   ]
 };
-(node as any).hash = 'adb79af57fe64db6681525c5605ed15e';
+(node as any).hash = '9a8df95942530fb1e47cc23ba3f98609';
 export default node;

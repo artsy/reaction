@@ -108,6 +108,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
     return (
       <>
         {artists.map((artist, index) => {
+          const worksForSaleHref = artist.href + "/works-for-sale"
           return (
             <Box key={index}>
               <GenericSearchResultItem
@@ -115,7 +116,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
                 description={artist.bio}
                 imageUrl={artist.imageUrl}
                 entityType="Artist"
-                href={artist.href}
+                href={worksForSaleHref}
                 index={index}
                 term={term}
                 id={artist.internalID}

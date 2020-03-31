@@ -1,26 +1,23 @@
 import { Box, Button, Sans, Serif } from "@artsy/palette"
-import React from "react"
-
-import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
-
-import { ArtistConsignment } from "Apps/Artist/Routes/Consign/Utils/getConsignmentData"
-import { AnalyticsSchema, useTracking } from "Artsy"
-import { RouterLink } from "Artsy/Router/RouterLink"
-import { Media } from "Utils/Responsive"
-
+import { ArtistConsignHeader_artist } from "__generated__/ArtistConsignHeader_artist.graphql"
 import {
   LightPurpleColor,
   SectionContainer,
 } from "Apps/Artist/Routes/Consign/Components/SectionContainer"
-import { HeaderImages } from "./HeaderImages"
+import { AnalyticsSchema, useTracking } from "Artsy"
+import { RouterLink } from "Artsy/Router/RouterLink"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import { Media } from "Utils/Responsive"
+import { ArtistConsignHeaderImagesFragmentContainer as ArtistConsignHeaderImages } from "./ArtistConsignHeaderImages"
 
 interface ArtistConsignHeaderProps {
-  artistConsignment: ArtistConsignment
-  artistName: string
-  artworksByInternalID: Consign_artworksByInternalID
+  artist: ArtistConsignHeader_artist
 }
 
-export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => {
+export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
+  artist,
+}) => {
   const tracking = useTracking()
 
   return (
@@ -34,7 +31,7 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
               width="100%"
               height="100%"
             >
-              <HeaderImages artworksByInternalID={props.artworksByInternalID} />
+              <ArtistConsignHeaderImages artist={artist} />
             </Box>
           )
         }}
@@ -44,7 +41,7 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
         <Box>
           <Serif element="h1" size={["10", "12"]}>
             Sell Works by <br />
-            {props.artistName}
+            {artist.name}
           </Serif>
         </Box>
 
@@ -72,3 +69,15 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = props => 
     </SectionContainer>
   )
 }
+
+export const ArtistConsignHeaderFragmentContainer = createFragmentContainer(
+  ArtistConsignHeader,
+  {
+    artist: graphql`
+      fragment ArtistConsignHeader_artist on Artist {
+        ...ArtistConsignHeaderImages_artist
+        name
+      }
+    `,
+  }
+)

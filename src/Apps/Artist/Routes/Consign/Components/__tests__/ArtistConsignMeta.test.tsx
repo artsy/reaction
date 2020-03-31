@@ -9,33 +9,47 @@ jest.mock("Utils/getENV", () => ({
 
 describe("ArtistConsignMeta", () => {
   const props = {
-    artistName: "Alex Katz",
-    artistHref: "/artist/alex-katz",
-    imageURL: "path/to/image.jpg",
+    artist: {
+      name: "Alex Katz",
+      href: "/artist/alex-katz",
+      targetSupply: {
+        microfunnel: {
+          artworks: [
+            {
+              artwork: {
+                image: {
+                  imageURL: "path/to/image.jpg",
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
   }
   const getWrapper = (passedProps = {}) => {
     return mount(
       <MockBoot>
-        <ArtistConsignMeta {...props} {...passedProps} />
+        <ArtistConsignMeta {...(props as any)} {...passedProps} />
       </MockBoot>
     )
   }
 
   it("outputs correct title tags", () => {
     const wrapper = getWrapper()
-    expect(wrapper.find("Title").debug()).toContain(props.artistName) // use `debug` to assert on component tree, vs html tree
+    expect(wrapper.find("Title").debug()).toContain(props.artist.name) // use `debug` to assert on component tree, vs html tree
     expect(
       wrapper
         .find("Meta")
         .findWhere(c => c.props().property === "og:title")
         .debug()
-    ).toContain(props.artistName)
+    ).toContain(props.artist.name)
     expect(
       wrapper
         .find("Meta")
         .findWhere(c => c.props().property === "og:title")
         .debug()
-    ).toContain(props.artistName)
+    ).toContain(props.artist.name)
   })
 
   it("outputs correct description tags", () => {
@@ -45,23 +59,23 @@ describe("ArtistConsignMeta", () => {
         .find("Meta")
         .findWhere(c => c.props().name === "description")
         .debug()
-    ).toContain(props.artistName)
+    ).toContain(props.artist.name)
     expect(
       wrapper
         .find("Meta")
         .findWhere(c => c.props().property === "twitter:description")
         .debug()
-    ).toContain(props.artistName)
+    ).toContain(props.artist.name)
     expect(
       wrapper
         .find("Meta")
         .findWhere(c => c.props().property === "og:description")
         .debug()
-    ).toContain(props.artistName)
+    ).toContain(props.artist.name)
   })
 
   it("outputs correct URL tags", () => {
-    const consignHref = `https://artsy.net${props.artistHref}/consign`
+    const consignHref = `https://artsy.net${props.artist.href}/consign`
     const wrapper = getWrapper()
     expect(
       wrapper
@@ -79,7 +93,23 @@ describe("ArtistConsignMeta", () => {
 
   describe("image tags", () => {
     it("does not output image tag if image not available", () => {
-      const wrapper = getWrapper({ imageURL: null })
+      const wrapper = getWrapper({
+        artist: {
+          targetSupply: {
+            microfunnel: {
+              artworks: [
+                {
+                  artwork: {
+                    image: {
+                      imageURL: null,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      })
       expect(
         wrapper.find("Meta").findWhere(c => c.props().name === "thumbnail")
           .length
@@ -93,7 +123,7 @@ describe("ArtistConsignMeta", () => {
           .find("Meta")
           .findWhere(c => c.props().name === "thumbnail")
           .debug()
-      ).toContain(props.imageURL)
+      ).toContain("path/to/image.jpg")
     })
   })
 })
