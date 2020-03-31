@@ -2,7 +2,6 @@ import { Grid, injectGlobalStyles, Theme, themeProps } from "@artsy/palette"
 import * as Sentry from "@sentry/browser"
 import * as Artsy from "Artsy"
 import { track } from "Artsy/Analytics"
-import { ErrorBoundary } from "Components/ErrorBoundary"
 import { RouteConfig } from "found"
 import React from "react"
 import { HeadProvider } from "react-head"
@@ -11,6 +10,7 @@ import { data as sd } from "sharify"
 import { Provider as StateProvider } from "unstated"
 import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
+import { ErrorBoundary } from "./ErrorBoundary"
 
 import {
   MatchingMediaQueries,
