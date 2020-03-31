@@ -1,3 +1,15 @@
+# v25.41.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update Artist/Consign to support MP-based data [#3331](https://github.com/artsy/reaction/pull/3331) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.40.0 (Tue Mar 31 2020)
 
 #### 🚀  Enhancement
