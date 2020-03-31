@@ -52,6 +52,11 @@ export const ArtworkFromTimedAuctionRegistrationOpen: ArtworkSidebarBidAction_Te
   myLotStanding: null,
 }
 
+export const NotIDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
+  id: "user-id",
+  identityVerified: false,
+}
+
 export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
   slug: "artwork_from_open_non_live_auction",
   id: "sdfsdfsdf2",
@@ -130,30 +135,36 @@ export const ArtworkFromLiveAuctionRegistrationClosed: ArtworkSidebarBidAction_T
   myLotStanding: null,
 }
 
-export const ArtworkFromClosedAuction: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
-  slug: "artwork_from_closed_auction",
-  id: "sdfsdfsdf2",
-  internalID: "sdf12345",
-  sale: {
-    id: "sdfsdfsdf3",
-    slug: "cool-sale",
-    registrationStatus: null,
-    is_preview: false,
-    is_open: false,
-    is_live_open: false,
-    is_closed: true,
-    is_registration_closed: false,
+export const ArtworkFromClosedAuction: ArtworkSidebarBidAction_Test_QueryRawResponse = {
+  artwork: {
+    slug: "artwork_from_closed_auction",
+    id: "sdfsdfsdf2",
+    internalID: "sdf12345",
+    sale: {
+      id: "sdfsdfsdf3",
+      slug: "cool-sale",
+      registrationStatus: null,
+      is_preview: false,
+      is_open: false,
+      is_live_open: false,
+      is_closed: true,
+      is_registration_closed: false,
+    },
+    sale_artwork: {
+      id: "sdfsdfsdf",
+      increments: [
+        { cents: 425000, display: "£4,250" },
+        { cents: 450000, display: "£4,500" },
+        { cents: 475000, display: "£4,750" },
+        { cents: 500000, display: "£5,000" },
+      ],
+    },
+    myLotStanding: null,
   },
-  sale_artwork: {
-    id: "sdfsdfsdf",
-    increments: [
-      { cents: 425000, display: "£4,250" },
-      { cents: 450000, display: "£4,500" },
-      { cents: 475000, display: "£4,750" },
-      { cents: 500000, display: "£5,000" },
-    ],
+  me: {
+    id: "user-id",
+    identityVerified: false,
   },
-  myLotStanding: null,
 }
 
 export const NotRegisteredToBid = {
@@ -176,7 +187,7 @@ export const BidderPendingApproval = {
 export const RegisteredBidder = {
   myLotStanding: null,
   sale: {
-    registrationStatus: { id: "bidder_approved", qualified_for_bidding: true },
+    registrationStatus: { id: "bidder-id", qualified_for_bidding: true },
   },
 }
 
