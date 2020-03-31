@@ -16,10 +16,12 @@ export type RegisterValidTestQueryRawResponse = {
         readonly slug: string;
         readonly internalID: string;
         readonly status: string | null;
+        readonly requireIdentityVerification: boolean | null;
         readonly id: string | null;
     }) | null;
     readonly me: ({
         readonly internalID: string;
+        readonly identityVerified: boolean | null;
         readonly id: string | null;
     }) | null;
 };
@@ -45,12 +47,14 @@ query RegisterValidTestQuery {
 
 fragment Register_me on Me {
   internalID
+  identityVerified
 }
 
 fragment Register_sale on Sale {
   slug
   internalID
   status
+  requireIdentityVerification
 }
 */
 
@@ -148,6 +152,13 @@ return {
             "args": null,
             "storageKey": null
           },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "requireIdentityVerification",
+            "args": null,
+            "storageKey": null
+          },
           (v2/*: any*/)
         ]
       },
@@ -161,6 +172,13 @@ return {
         "plural": false,
         "selections": [
           (v1/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "identityVerified",
+            "args": null,
+            "storageKey": null
+          },
           (v2/*: any*/)
         ]
       }
@@ -170,7 +188,7 @@ return {
     "operationKind": "query",
     "name": "RegisterValidTestQuery",
     "id": null,
-    "text": "query RegisterValidTestQuery {\n  sale(id: \"example-auction-id\") {\n    ...Register_sale\n    id\n  }\n  me {\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_me on Me {\n  internalID\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n}\n",
+    "text": "query RegisterValidTestQuery {\n  sale(id: \"example-auction-id\") {\n    ...Register_sale\n    id\n  }\n  me {\n    ...Register_me\n    id\n  }\n}\n\nfragment Register_me on Me {\n  internalID\n  identityVerified\n}\n\nfragment Register_sale on Sale {\n  slug\n  internalID\n  status\n  requireIdentityVerification\n}\n",
     "metadata": {}
   }
 };
