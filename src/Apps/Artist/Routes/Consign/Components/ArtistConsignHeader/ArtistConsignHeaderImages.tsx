@@ -78,7 +78,6 @@ export const getRandomImages = (artworks: Artworks, loop: number = 0) => {
     }
 
     const [leftImage, rightImage] = sampleSize(artworks, 2)
-    console.log(leftImage)
 
     if (widthExceedsHeight(leftImage)) {
       return getRandomImages(artworks, loop++)

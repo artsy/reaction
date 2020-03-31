@@ -9,7 +9,6 @@ import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilt
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 
 import { hasOverviewContent } from "./Components/NavigationTabs"
-import { getConsignmentData } from "./Routes/Consign/Utils/getConsignmentData"
 
 import {
   ArtworkFilters,
@@ -258,10 +257,11 @@ export const routes: RouteConfig[] = [
         query: graphql`
           query routes_ArtistConsignQuery($artistID: String!) {
             artist(id: $artistID) {
+              ...Consign_artist
+
               targetSupply {
                 isInMicrofunnel
               }
-              ...Consign_artist
             }
           }
         `,

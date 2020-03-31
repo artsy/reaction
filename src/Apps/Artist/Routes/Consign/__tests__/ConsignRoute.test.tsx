@@ -7,7 +7,6 @@ import { graphql } from "relay-runtime"
 import { ConsignRouteFragmentContainer } from "../index"
 
 import { ConsignRoute_Test_QueryRawResponse } from "__generated__/ConsignRoute_Test_Query.graphql"
-import { getConsignmentData } from "../Utils/getConsignmentData"
 
 jest.unmock("react-relay")
 jest.mock("Artsy/Analytics/useTracking")
@@ -18,31 +17,12 @@ describe("ConsignRoute", () => {
   const getWrapper = async (
     response: ConsignRoute_Test_QueryRawResponse = ConsignRouteFixture
   ) => {
-    const match: any = {
-      location: {
-        pathname: "/artist/alex-katz/consign",
-      },
-      params: {
-        artistID: "alex-katz",
-      },
-    }
-    const router: any = {
-      replace: jest.fn(),
-    }
-
-    const artistConsignment = getConsignmentData("/artist/alex-katz")
-
     return await renderRelayTree({
       Component: ({ artist, artworksByInternalID }) => {
         return (
           <SystemContextProvider>
             <MockBoot user={{ type: "Admin" }}>
-              <ConsignRouteFragmentContainer
-                artist={artist}
-                artistConsignment={artistConsignment}
-                match={match}
-                router={router}
-              />
+              <ConsignRouteFragmentContainer artist={artist} />
             </MockBoot>
           </SystemContextProvider>
         )
@@ -51,20 +31,15 @@ describe("ConsignRoute", () => {
         query ConsignRoute_Test_Query($artistID: String!) @raw_response_type {
           artist(id: $artistID) {
             ...Consign_artist
+
+            targetSupply {
+              isInMicrofunnel
+            }
           }
         }
       `,
       variables: {
         artistID: "alex-katz",
-        recentlySoldArtworkIDs: [
-          "5dbc8e526a65d700114f8c2b",
-          "5d9ca6fe8f1aee0011475cf7",
-          "5d126f9bba46ba0012c3134f",
-          "5cffddff404918000ec89beb",
-          "5ccb4516ec8701614303dd94",
-          "5ccb45163a7e934cc7818be5",
-          "5aa2e90d7622dd49dc8b356c",
-        ],
       },
       mockData: response,
     })
@@ -84,7 +59,7 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignHeader", () => {
-    it("displays artist name in header", async () => {
+    it.only("displays artist name in header", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignHeader").text()).toContain("Alex Katz")
     })

@@ -7,16 +7,22 @@ export type ConsignRoute_Test_QueryVariables = {
 };
 export type ConsignRoute_Test_QueryResponse = {
     readonly artist: {
+        readonly targetSupply: {
+            readonly isInMicrofunnel: boolean | null;
+        } | null;
         readonly " $fragmentRefs": FragmentRefs<"Consign_artist">;
     } | null;
 };
 export type ConsignRoute_Test_QueryRawResponse = {
     readonly artist: ({
+        readonly name: string | null;
+        readonly href: string | null;
         readonly targetSupply: ({
             readonly microfunnel: ({
                 readonly artworks: ReadonlyArray<({
                     readonly artwork: ({
                         readonly image: ({
+                            readonly imageURL: string | null;
                             readonly resized: ({
                                 readonly width: number | null;
                                 readonly height: number | null;
@@ -24,8 +30,8 @@ export type ConsignRoute_Test_QueryRawResponse = {
                             }) | null;
                             readonly url: string | null;
                             readonly aspect_ratio: number;
-                            readonly imageURL: string | null;
                         }) | null;
+                        readonly id: string | null;
                         readonly href: string | null;
                         readonly title: string | null;
                         readonly date: string | null;
@@ -65,7 +71,6 @@ export type ConsignRoute_Test_QueryRawResponse = {
                             readonly id: string | null;
                         }) | null;
                         readonly is_inquireable: boolean | null;
-                        readonly id: string;
                         readonly internalID: string;
                         readonly slug: string;
                         readonly is_saved: boolean | null;
@@ -140,9 +145,8 @@ export type ConsignRoute_Test_QueryRawResponse = {
                     readonly realized: string | null;
                 }) | null;
             }) | null;
+            readonly isInMicrofunnel: boolean | null;
         }) | null;
-        readonly name: string | null;
-        readonly href: string | null;
         readonly id: string | null;
     }) | null;
 };
@@ -160,6 +164,9 @@ query ConsignRoute_Test_Query(
 ) {
   artist(id: $artistID) {
     ...Consign_artist
+    targetSupply {
+      isInMicrofunnel
+    }
     id
   }
 }
@@ -197,6 +204,23 @@ fragment ArtistConsignMarketTrends_artist on Artist {
         highestRealized
         str
         realized
+      }
+    }
+  }
+}
+
+fragment ArtistConsignMeta_artist on Artist {
+  name
+  href
+  targetSupply {
+    microfunnel {
+      artworks {
+        artwork {
+          image {
+            imageURL: url(version: "medium")
+          }
+          id
+        }
       }
     }
   }
@@ -247,24 +271,11 @@ fragment Badge_artwork on Artwork {
 }
 
 fragment Consign_artist on Artist {
+  ...ArtistConsignMeta_artist
   ...ArtistConsignHeader_artist
   ...ArtistConsignRecentlySold_artist
   ...ArtistConsignPageViews_artist
   ...ArtistConsignMarketTrends_artist
-  name
-  href
-  targetSupply {
-    microfunnel {
-      artworks {
-        artwork {
-          image {
-            imageURL: url(version: "medium")
-          }
-          id
-        }
-      }
-    }
-  }
 }
 
 fragment Contact_artwork on Artwork {
@@ -376,18 +387,39 @@ v1 = [
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "width",
+  "name": "isInMicrofunnel",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "height",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
 v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "href",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "width",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "height",
+  "args": null,
+  "storageKey": null
+},
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "url",
@@ -400,102 +432,88 @@ v4 = {
   ],
   "storageKey": "url(version:\"large\")"
 },
-v5 = {
+v8 = {
   "kind": "ScalarField",
   "alias": "aspect_ratio",
   "name": "aspectRatio",
   "args": null,
   "storageKey": null
 },
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "href",
-  "args": null,
-  "storageKey": null
-},
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "title",
-  "args": null,
-  "storageKey": null
-},
-v8 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "date",
-  "args": null,
-  "storageKey": null
-},
 v9 = {
-  "kind": "ScalarField",
-  "alias": "sale_message",
-  "name": "saleMessage",
-  "args": null,
-  "storageKey": null
-},
-v10 = {
-  "kind": "ScalarField",
-  "alias": "cultural_maker",
-  "name": "culturalMaker",
-  "args": null,
-  "storageKey": null
-},
-v11 = [
-  {
-    "kind": "Literal",
-    "name": "shallow",
-    "value": true
-  }
-],
-v12 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v13 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "title",
   "args": null,
   "storageKey": null
 },
-v14 = {
+v11 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "date",
+  "args": null,
+  "storageKey": null
+},
+v12 = {
+  "kind": "ScalarField",
+  "alias": "sale_message",
+  "name": "saleMessage",
+  "args": null,
+  "storageKey": null
+},
+v13 = {
+  "kind": "ScalarField",
+  "alias": "cultural_maker",
+  "name": "culturalMaker",
+  "args": null,
+  "storageKey": null
+},
+v14 = [
+  {
+    "kind": "Literal",
+    "name": "shallow",
+    "value": true
+  }
+],
+v15 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "artists",
   "storageKey": "artists(shallow:true)",
-  "args": (v11/*: any*/),
+  "args": (v14/*: any*/),
   "concreteType": "Artist",
   "plural": true,
   "selections": [
-    (v12/*: any*/),
-    (v6/*: any*/),
-    (v13/*: any*/)
+    (v9/*: any*/),
+    (v4/*: any*/),
+    (v3/*: any*/)
   ]
 },
-v15 = {
+v16 = {
   "kind": "ScalarField",
   "alias": "collecting_institution",
   "name": "collectingInstitution",
   "args": null,
   "storageKey": null
 },
-v16 = {
+v17 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "partner",
   "storageKey": "partner(shallow:true)",
-  "args": (v11/*: any*/),
+  "args": (v14/*: any*/),
   "concreteType": "Partner",
   "plural": false,
   "selections": [
-    (v13/*: any*/),
-    (v6/*: any*/),
-    (v12/*: any*/),
+    (v3/*: any*/),
+    (v4/*: any*/),
+    (v9/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -505,7 +523,7 @@ v16 = {
     }
   ]
 },
-v17 = {
+v18 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "sale",
@@ -528,7 +546,7 @@ v17 = {
       "args": null,
       "storageKey": null
     },
-    (v12/*: any*/),
+    (v9/*: any*/),
     {
       "kind": "ScalarField",
       "alias": "is_live_open",
@@ -559,7 +577,7 @@ v17 = {
     }
   ]
 },
-v18 = [
+v19 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -568,7 +586,7 @@ v18 = [
     "storageKey": null
   }
 ],
-v19 = {
+v20 = {
   "kind": "LinkedField",
   "alias": "sale_artwork",
   "name": "saleArtwork",
@@ -603,7 +621,7 @@ v19 = {
       "args": null,
       "concreteType": "SaleArtworkHighestBid",
       "plural": false,
-      "selections": (v18/*: any*/)
+      "selections": (v19/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -613,54 +631,54 @@ v19 = {
       "args": null,
       "concreteType": "SaleArtworkOpeningBid",
       "plural": false,
-      "selections": (v18/*: any*/)
+      "selections": (v19/*: any*/)
     },
-    (v12/*: any*/)
+    (v9/*: any*/)
   ]
 },
-v20 = {
+v21 = {
   "kind": "ScalarField",
   "alias": "is_inquireable",
   "name": "isInquireable",
   "args": null,
   "storageKey": null
 },
-v21 = {
+v22 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v22 = {
+v23 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "slug",
   "args": null,
   "storageKey": null
 },
-v23 = {
+v24 = {
   "kind": "ScalarField",
   "alias": "is_saved",
   "name": "isSaved",
   "args": null,
   "storageKey": null
 },
-v24 = {
+v25 = {
   "kind": "ScalarField",
   "alias": "is_biddable",
   "name": "isBiddable",
   "args": null,
   "storageKey": null
 },
-v25 = {
+v26 = {
   "kind": "ScalarField",
   "alias": "is_acquireable",
   "name": "isAcquireable",
   "args": null,
   "storageKey": null
 },
-v26 = {
+v27 = {
   "kind": "ScalarField",
   "alias": "is_offerable",
   "name": "isOfferable",
@@ -686,6 +704,18 @@ return {
         "plural": false,
         "selections": [
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "targetSupply",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "ArtistTargetSupply",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/)
+            ]
+          },
+          {
             "kind": "FragmentSpread",
             "name": "Consign_artist",
             "args": null
@@ -708,6 +738,8 @@ return {
         "concreteType": "Artist",
         "plural": false,
         "selections": [
+          (v3/*: any*/),
+          (v4/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -754,6 +786,19 @@ return {
                             "plural": false,
                             "selections": [
                               {
+                                "kind": "ScalarField",
+                                "alias": "imageURL",
+                                "name": "url",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "version",
+                                    "value": "medium"
+                                  }
+                                ],
+                                "storageKey": "url(version:\"medium\")"
+                              },
+                              {
                                 "kind": "LinkedField",
                                 "alias": null,
                                 "name": "resized",
@@ -768,8 +813,8 @@ return {
                                 "concreteType": "ResizedImageUrl",
                                 "plural": false,
                                 "selections": [
-                                  (v2/*: any*/),
-                                  (v3/*: any*/),
+                                  (v5/*: any*/),
+                                  (v6/*: any*/),
                                   {
                                     "kind": "ScalarField",
                                     "alias": null,
@@ -779,41 +824,28 @@ return {
                                   }
                                 ]
                               },
-                              (v4/*: any*/),
-                              (v5/*: any*/),
-                              {
-                                "kind": "ScalarField",
-                                "alias": "imageURL",
-                                "name": "url",
-                                "args": [
-                                  {
-                                    "kind": "Literal",
-                                    "name": "version",
-                                    "value": "medium"
-                                  }
-                                ],
-                                "storageKey": "url(version:\"medium\")"
-                              }
+                              (v7/*: any*/),
+                              (v8/*: any*/)
                             ]
                           },
-                          (v6/*: any*/),
-                          (v7/*: any*/),
-                          (v8/*: any*/),
                           (v9/*: any*/),
+                          (v4/*: any*/),
                           (v10/*: any*/),
-                          (v14/*: any*/),
+                          (v11/*: any*/),
+                          (v12/*: any*/),
+                          (v13/*: any*/),
                           (v15/*: any*/),
                           (v16/*: any*/),
                           (v17/*: any*/),
-                          (v19/*: any*/),
+                          (v18/*: any*/),
                           (v20/*: any*/),
-                          (v12/*: any*/),
                           (v21/*: any*/),
                           (v22/*: any*/),
                           (v23/*: any*/),
                           (v24/*: any*/),
                           (v25/*: any*/),
-                          (v26/*: any*/)
+                          (v26/*: any*/),
+                          (v27/*: any*/)
                         ]
                       }
                     ]
@@ -858,30 +890,30 @@ return {
                                 "args": null,
                                 "storageKey": null
                               },
-                              (v2/*: any*/),
-                              (v3/*: any*/),
-                              (v4/*: any*/),
-                              (v5/*: any*/)
+                              (v5/*: any*/),
+                              (v6/*: any*/),
+                              (v7/*: any*/),
+                              (v8/*: any*/)
                             ]
                           },
-                          (v6/*: any*/),
-                          (v7/*: any*/),
-                          (v8/*: any*/),
-                          (v9/*: any*/),
+                          (v4/*: any*/),
                           (v10/*: any*/),
-                          (v14/*: any*/),
+                          (v11/*: any*/),
+                          (v12/*: any*/),
+                          (v13/*: any*/),
                           (v15/*: any*/),
                           (v16/*: any*/),
                           (v17/*: any*/),
-                          (v19/*: any*/),
+                          (v18/*: any*/),
                           (v20/*: any*/),
-                          (v12/*: any*/),
                           (v21/*: any*/),
+                          (v9/*: any*/),
                           (v22/*: any*/),
                           (v23/*: any*/),
                           (v24/*: any*/),
                           (v25/*: any*/),
-                          (v26/*: any*/)
+                          (v26/*: any*/),
+                          (v27/*: any*/)
                         ]
                       },
                       {
@@ -940,12 +972,11 @@ return {
                     ]
                   }
                 ]
-              }
+              },
+              (v2/*: any*/)
             ]
           },
-          (v13/*: any*/),
-          (v6/*: any*/),
-          (v12/*: any*/)
+          (v9/*: any*/)
         ]
       }
     ]
@@ -954,10 +985,10 @@ return {
     "operationKind": "query",
     "name": "ConsignRoute_Test_Query",
     "id": null,
-    "text": "query ConsignRoute_Test_Query(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Consign_artist\n    id\n  }\n}\n\nfragment ArtistConsignHeaderImages_artist on Artist {\n  targetSupply {\n    microfunnel {\n      artworks {\n        artwork {\n          image {\n            resized(height: 395) {\n              width\n              height\n              url\n            }\n          }\n          ...FillwidthItem_artwork\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment ArtistConsignHeader_artist on Artist {\n  ...ArtistConsignHeaderImages_artist\n  name\n}\n\nfragment ArtistConsignMarketTrends_artist on Artist {\n  href\n  targetSupply {\n    microfunnel {\n      metadata {\n        highestRealized\n        str\n        realized\n      }\n    }\n  }\n}\n\nfragment ArtistConsignPageViews_artist on Artist {\n  name\n  targetSupply {\n    microfunnel {\n      metadata {\n        roundedViews\n        roundedUniqueVisitors\n      }\n    }\n  }\n}\n\nfragment ArtistConsignRecentlySold_artist on Artist {\n  targetSupply {\n    microfunnel {\n      randomArtworks: artworks(randomize: true) {\n        artwork {\n          image {\n            aspectRatio\n            width\n            height\n          }\n          ...FillwidthItem_artwork\n          id\n        }\n        realizedPrice\n      }\n    }\n  }\n  name\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Consign_artist on Artist {\n  ...ArtistConsignHeader_artist\n  ...ArtistConsignRecentlySold_artist\n  ...ArtistConsignPageViews_artist\n  ...ArtistConsignMarketTrends_artist\n  name\n  href\n  targetSupply {\n    microfunnel {\n      artworks {\n        artwork {\n          image {\n            imageURL: url(version: \"medium\")\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
+    "text": "query ConsignRoute_Test_Query(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Consign_artist\n    targetSupply {\n      isInMicrofunnel\n    }\n    id\n  }\n}\n\nfragment ArtistConsignHeaderImages_artist on Artist {\n  targetSupply {\n    microfunnel {\n      artworks {\n        artwork {\n          image {\n            resized(height: 395) {\n              width\n              height\n              url\n            }\n          }\n          ...FillwidthItem_artwork\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment ArtistConsignHeader_artist on Artist {\n  ...ArtistConsignHeaderImages_artist\n  name\n}\n\nfragment ArtistConsignMarketTrends_artist on Artist {\n  href\n  targetSupply {\n    microfunnel {\n      metadata {\n        highestRealized\n        str\n        realized\n      }\n    }\n  }\n}\n\nfragment ArtistConsignMeta_artist on Artist {\n  name\n  href\n  targetSupply {\n    microfunnel {\n      artworks {\n        artwork {\n          image {\n            imageURL: url(version: \"medium\")\n          }\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment ArtistConsignPageViews_artist on Artist {\n  name\n  targetSupply {\n    microfunnel {\n      metadata {\n        roundedViews\n        roundedUniqueVisitors\n      }\n    }\n  }\n}\n\nfragment ArtistConsignRecentlySold_artist on Artist {\n  targetSupply {\n    microfunnel {\n      randomArtworks: artworks(randomize: true) {\n        artwork {\n          image {\n            aspectRatio\n            width\n            height\n          }\n          ...FillwidthItem_artwork\n          id\n        }\n        realizedPrice\n      }\n    }\n  }\n  name\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Consign_artist on Artist {\n  ...ArtistConsignMeta_artist\n  ...ArtistConsignHeader_artist\n  ...ArtistConsignRecentlySold_artist\n  ...ArtistConsignPageViews_artist\n  ...ArtistConsignMarketTrends_artist\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FillwidthItem_artwork on Artwork {\n  image {\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '541891a0b41ba9e11103d14405aa5dfd';
+(node as any).hash = 'a33f6eb2c6dcb855a3f59256719bce01';
 export default node;
