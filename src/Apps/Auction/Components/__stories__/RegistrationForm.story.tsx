@@ -20,6 +20,7 @@ storiesOf("Apps/Auction/Components", module).add("RegistrationForm", () => {
         trackSubmissionErrors={errors =>
           console.warn("Tracking errors: ", errors)
         }
+        needsIdentityVerification={false}
       />
     </Section>
   )
