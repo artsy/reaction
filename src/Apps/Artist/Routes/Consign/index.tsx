@@ -21,7 +21,7 @@ export interface ConsignRouteProps {
 
 export const ConsignRoute: React.FC<ConsignRouteProps> = ({ artist }) => {
   return (
-    <Box minHeight={1000}>
+    <Box>
       <ArtistConsignMeta artist={artist} />
       <ArtistConsignHeader artist={artist} />
       <ArtistConsignRecentlySold artist={artist} />
