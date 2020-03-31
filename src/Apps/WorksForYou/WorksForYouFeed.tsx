@@ -84,6 +84,7 @@ export class WorksForYouFeed extends Component<Props, State> {
           ({ node }, index) => {
             const avatarImageUrl = get(node, p => p.image.resized.url)
             const meta = `${node.summary}, ${node.published_at}`
+            const worksForSaleHref = node.href + "/works-for-sale"
 
             return (
               <Box key={index}>
@@ -91,7 +92,7 @@ export class WorksForYouFeed extends Component<Props, State> {
                   name={node.artists}
                   meta={meta}
                   imageUrl={avatarImageUrl}
-                  href={node.href}
+                  href={worksForSaleHref}
                 />
 
                 <Spacer mb={3} />

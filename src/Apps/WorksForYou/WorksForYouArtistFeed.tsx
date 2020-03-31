@@ -58,6 +58,7 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
       (forSale
         ? get(artist, p => p.counts.for_sale_artworks.toLocaleString(), "")
         : get(artist, p => p.counts.artworks.toLocaleString(), "")) + " Works"
+    const worksForSaleHref = artist.href + "/works-for-sale"
 
     return (
       <>
@@ -65,7 +66,7 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
           name={artist.name}
           meta={meta}
           imageUrl={avatarImageUrl}
-          href={artist.href}
+          href={worksForSaleHref}
         />
 
         <Spacer mb={3} />
