@@ -1,16 +1,19 @@
 import { Box, Flex, ResponsiveImage } from "@artsy/palette"
-import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
+import { ArtistConsignHeaderImages_artist } from "__generated__/ArtistConsignHeaderImages_artist.graphql"
 import { sampleSize } from "lodash"
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 
+type Artworks = ArtistConsignHeaderImages_artist["targetSupply"]["microfunnel"]["artworks"]
+
 interface HeaderImageProps {
-  artworksByInternalID: Consign_artworksByInternalID
+  artist: ArtistConsignHeaderImages_artist
 }
 
-export const HeaderImages: React.FC<HeaderImageProps> = props => {
+export const ArtistConsignHeaderImages: React.FC<HeaderImageProps> = props => {
   const { error, leftImage, rightImage } = getRandomImages(
-    props.artworksByInternalID
+    props.artist.targetSupply.microfunnel.artworks
   )
   if (error) {
     return null
@@ -32,37 +35,61 @@ export const HeaderImages: React.FC<HeaderImageProps> = props => {
   )
 }
 
+export const ArtistConsignHeaderImagesFragmentContainer = createFragmentContainer(
+  ArtistConsignHeaderImages,
+  {
+    artist: graphql`
+      fragment ArtistConsignHeaderImages_artist on Artist {
+        targetSupply {
+          microfunnel {
+            artworks {
+              artwork {
+                image {
+                  resized(height: 395) {
+                    width
+                    height
+                    url
+                  }
+                }
+                ...FillwidthItem_artwork
+              }
+            }
+          }
+        }
+      }
+    `,
+  }
+)
+
 /**
  * Iterate over "Recently Purchased" artworks and randomly select two. If there
  * are no images found, or the dimension requirements are not suitable, return
  * an error indicator and bail.
  */
-export const getRandomImages = (
-  artworksByInternalID: Consign_artworksByInternalID,
-  loop: number = 0
-) => {
+export const getRandomImages = (artworks: Artworks, loop: number = 0) => {
   try {
     if (loop > 100) {
       throw new Error("No suitable images found, exiting")
     }
 
     // Layout requires that we only use vertically oriented images
-    const widthExceedsHeight = ({ image }) => {
-      return image.resized.width > image.resized.height
+    const widthExceedsHeight = ({ artwork }) => {
+      return artwork.image.resized.width > artwork.image.resized.height
     }
 
-    const [leftImage, rightImage] = sampleSize(artworksByInternalID, 2)
+    const [leftImage, rightImage] = sampleSize(artworks, 2)
+    console.log(leftImage)
 
     if (widthExceedsHeight(leftImage)) {
-      return getRandomImages(artworksByInternalID, loop++)
+      return getRandomImages(artworks, loop++)
     }
     if (widthExceedsHeight(rightImage)) {
-      return getRandomImages(artworksByInternalID, loop++)
+      return getRandomImages(artworks, loop++)
     }
 
     return {
-      leftImage,
-      rightImage,
+      leftImage: leftImage.artwork,
+      rightImage: rightImage.artwork,
     }
   } catch {
     return {
@@ -95,7 +122,7 @@ export const getRandomImages = (
  */
 
 interface ImageProps {
-  image: HeaderImageProps["artworksByInternalID"][0]["image"]
+  image: Artworks[0]["artwork"]["image"]
 }
 
 const LeftImageBorder: React.FC<ImageProps> = ({ image }) => {

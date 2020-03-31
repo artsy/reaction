@@ -2,24 +2,29 @@ import { Box, Button, color, Flex, Sans, Serif } from "@artsy/palette"
 import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
-import { ArtistConsignment } from "../Utils/getConsignmentData"
+import { createFragmentContainer, graphql } from "react-relay"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 
+import { ArtistConsignMarketTrends_artist } from "__generated__/ArtistConsignMarketTrends_artist.graphql"
+
 interface ArtistConsignMarketTrendsProps {
-  artistConsignment: ArtistConsignment
-  artistID: string
+  artist: ArtistConsignMarketTrends_artist
 }
 
-export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = ({
-  artistConsignment,
-  artistID,
-}) => {
+export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps> = props => {
   const tracking = useTracking()
 
   const {
-    metadata: { highestRealized, str, realized },
-  } = artistConsignment
+    artist: {
+      href,
+      targetSupply: {
+        microfunnel: {
+          metadata: { highestRealized, str, realized },
+        },
+      },
+    },
+  } = props
 
   return (
     <SectionContainer background="black100">
@@ -47,7 +52,7 @@ export const ArtistConsignMarketTrends: React.FC<ArtistConsignMarketTrendsProps>
 
       <Box>
         <RouterLink
-          to={`/artist/${artistID}/auction-results`}
+          to={`${href}/auction-results`}
           onClick={() => {
             tracking.trackEvent({
               action_type: AnalyticsSchema.ActionType.Click,
@@ -94,3 +99,23 @@ const Statistic: React.FC<{ top: string; middle: string; bottom: string }> = ({
     </Flex>
   )
 }
+
+export const ArtistConsignMarketTrendsFragmentContainer = createFragmentContainer(
+  ArtistConsignMarketTrends,
+  {
+    artist: graphql`
+      fragment ArtistConsignMarketTrends_artist on Artist {
+        href
+        targetSupply {
+          microfunnel {
+            metadata {
+              highestRealized
+              str
+              realized
+            }
+          }
+        }
+      }
+    `,
+  }
+)

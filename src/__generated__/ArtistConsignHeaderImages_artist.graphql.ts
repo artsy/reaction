@@ -2,52 +2,40 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type Consign_artist = {
-    readonly name: string | null;
-    readonly href: string | null;
+export type ArtistConsignHeaderImages_artist = {
     readonly targetSupply: {
         readonly microfunnel: {
             readonly artworks: ReadonlyArray<{
                 readonly artwork: {
                     readonly image: {
-                        readonly imageURL: string | null;
+                        readonly resized: {
+                            readonly width: number | null;
+                            readonly height: number | null;
+                            readonly url: string | null;
+                        } | null;
                     } | null;
+                    readonly " $fragmentRefs": FragmentRefs<"FillwidthItem_artwork">;
                 } | null;
             } | null> | null;
         } | null;
     } | null;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistConsignHeader_artist" | "ArtistConsignRecentlySold_artist" | "ArtistConsignPageViews_artist" | "ArtistConsignMarketTrends_artist">;
-    readonly " $refType": "Consign_artist";
+    readonly " $refType": "ArtistConsignHeaderImages_artist";
 };
-export type Consign_artist$data = Consign_artist;
-export type Consign_artist$key = {
-    readonly " $data"?: Consign_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"Consign_artist">;
+export type ArtistConsignHeaderImages_artist$data = ArtistConsignHeaderImages_artist;
+export type ArtistConsignHeaderImages_artist$key = {
+    readonly " $data"?: ArtistConsignHeaderImages_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistConsignHeaderImages_artist">;
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "Consign_artist",
+  "name": "ArtistConsignHeaderImages_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "href",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -94,19 +82,49 @@ const node: ReaderFragment = {
                       "plural": false,
                       "selections": [
                         {
-                          "kind": "ScalarField",
-                          "alias": "imageURL",
-                          "name": "url",
+                          "kind": "LinkedField",
+                          "alias": null,
+                          "name": "resized",
+                          "storageKey": "resized(height:395)",
                           "args": [
                             {
                               "kind": "Literal",
-                              "name": "version",
-                              "value": "medium"
+                              "name": "height",
+                              "value": 395
                             }
                           ],
-                          "storageKey": "url(version:\"medium\")"
+                          "concreteType": "ResizedImageUrl",
+                          "plural": false,
+                          "selections": [
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "width",
+                              "args": null,
+                              "storageKey": null
+                            },
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "height",
+                              "args": null,
+                              "storageKey": null
+                            },
+                            {
+                              "kind": "ScalarField",
+                              "alias": null,
+                              "name": "url",
+                              "args": null,
+                              "storageKey": null
+                            }
+                          ]
                         }
                       ]
+                    },
+                    {
+                      "kind": "FragmentSpread",
+                      "name": "FillwidthItem_artwork",
+                      "args": null
                     }
                   ]
                 }
@@ -115,28 +133,8 @@ const node: ReaderFragment = {
           ]
         }
       ]
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtistConsignHeader_artist",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtistConsignRecentlySold_artist",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtistConsignPageViews_artist",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtistConsignMarketTrends_artist",
-      "args": null
     }
   ]
 };
-(node as any).hash = 'db0965ab64e4b600ce430f8979bc92d5';
+(node as any).hash = 'f7f772023dc79dc472421a1b53b4cffd';
 export default node;

@@ -39,7 +39,6 @@ describe("ConsignRoute", () => {
             <MockBoot user={{ type: "Admin" }}>
               <ConsignRouteFragmentContainer
                 artist={artist}
-                artworksByInternalID={artworksByInternalID}
                 artistConsignment={artistConsignment}
                 match={match}
                 router={router}
@@ -49,15 +48,9 @@ describe("ConsignRoute", () => {
         )
       },
       query: graphql`
-        query ConsignRoute_Test_Query(
-          $artistID: String!
-          $recentlySoldArtworkIDs: [String]!
-        ) @raw_response_type {
+        query ConsignRoute_Test_Query($artistID: String!) @raw_response_type {
           artist(id: $artistID) {
             ...Consign_artist
-          }
-          artworksByInternalID(ids: $recentlySoldArtworkIDs) {
-            ...Consign_artworksByInternalID
           }
         }
       `,

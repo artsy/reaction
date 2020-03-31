@@ -246,44 +246,25 @@ export const routes: RouteConfig[] = [
           }
 
           const artistPathName = match.location.pathname.replace("/consign", "")
-          const artistConsignment = getConsignmentData(artistPathName)
-          const noConsignmentData = !Boolean(artistConsignment)
+          const isInMicrofunnel = (props as any).artist.targetSupply
+            .isInMicrofunnel
 
-          if (noConsignmentData) {
-            throw new RedirectException(artistPathName)
+          if (isInMicrofunnel) {
+            return <Component {...props} />
           } else {
-            return (
-              <Component
-                {...props}
-                match={match}
-                artistConsignment={artistConsignment}
-              />
-            )
+            throw new RedirectException(artistPathName)
           }
         },
         query: graphql`
-          query routes_ArtistConsignQuery(
-            $artistID: String!
-            $recentlySoldArtworkIDs: [String]!
-          ) {
+          query routes_ArtistConsignQuery($artistID: String!) {
             artist(id: $artistID) {
+              targetSupply {
+                isInMicrofunnel
+              }
               ...Consign_artist
-            }
-            artworksByInternalID(ids: $recentlySoldArtworkIDs) {
-              ...Consign_artworksByInternalID
             }
           }
         `,
-        prepareVariables: (params, props) => {
-          const pathname = props.location.pathname.replace("/consign", "")
-          const recentlySoldArtworkIDs =
-            getConsignmentData(pathname)?.metadata?.recentlySoldArtworkIDs ?? []
-
-          return {
-            ...params,
-            recentlySoldArtworkIDs,
-          }
-        },
       },
       {
         path: "cv",
