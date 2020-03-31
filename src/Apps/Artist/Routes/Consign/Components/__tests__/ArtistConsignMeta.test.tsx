@@ -92,6 +92,22 @@ describe("ArtistConsignMeta", () => {
   })
 
   describe("image tags", () => {
+    it("doesn't blow up if no images", () => {
+      const wrapper = getWrapper({
+        artist: {
+          targetSupply: {
+            microfunnel: {
+              artworks: null,
+            },
+          },
+        },
+      })
+      expect(
+        wrapper.find("Meta").findWhere(c => c.props().name === "thumbnail")
+          .length
+      ).toEqual(0)
+    })
+
     it("does not output image tag if image not available", () => {
       const wrapper = getWrapper({
         artist: {

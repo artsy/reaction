@@ -15,6 +15,10 @@ interface ArtistConsignRecentlySoldProps {
 export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = ({
   artist,
 }) => {
+  if (!artist.targetSupply.microfunnel.randomArtworks) {
+    return null
+  }
+
   return (
     <SectionContainer>
       <Box textAlign="center">

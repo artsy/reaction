@@ -2,6 +2,7 @@ import { ConsignRouteFixture } from "Apps/__tests__/Fixtures/Artist/Routes/Consi
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
+import { cloneDeep } from "lodash"
 import React from "react"
 import { graphql } from "relay-runtime"
 import { ConsignRouteFragmentContainer } from "../index"
@@ -96,6 +97,13 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignRecentlySold", () => {
+    it("returns null if no recently sold images", async () => {
+      const artistWithoutArtworks = cloneDeep(ConsignRouteFixture) as any
+      artistWithoutArtworks.artist.targetSupply.microfunnel.artworks = null
+      const wrapper = await getWrapper(artistWithoutArtworks)
+      expect(wrapper.find("ArtistConsignRecentlySold")).toEqual({})
+    })
+
     it("includes artist name in recently sold", async () => {
       const wrapper = await getWrapper()
       expect(
