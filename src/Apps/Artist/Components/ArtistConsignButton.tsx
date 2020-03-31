@@ -4,7 +4,6 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistConsignButton_artist } from "__generated__/ArtistConsignButton_artist.graphql"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { Media } from "Utils/Responsive"
-import { getConsignmentData } from "../Routes/Consign/Utils/getConsignmentData"
 
 import {
   BorderBox,
@@ -58,9 +57,7 @@ interface Tracking {
 
 export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
   Tracking> = props => {
-  const { artistHasOwnConsignRoute, imageURL, headline, consignURL } = getData(
-    props
-  )
+  const { isInMicrofunnel, imageURL, headline, consignURL } = getData(props)
 
   return (
     <RouterLink
@@ -77,7 +74,7 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
       <BorderBox p={1} width="100%">
         <Flex alignItems="center" width="100%" justifyContent="space-between">
           <Flex>
-            {artistHasOwnConsignRoute && imageURL && (
+            {isInMicrofunnel && imageURL && (
               <Image src={imageURL} width={50} height={50} />
             )}
             <Flex flexDirection="column" justifyContent="center" pl={1}>
@@ -102,9 +99,7 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
 
 export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
   Tracking> = props => {
-  const { artistHasOwnConsignRoute, imageURL, headline, consignURL } = getData(
-    props
-  )
+  const { isInMicrofunnel, imageURL, headline, consignURL } = getData(props)
 
   return (
     <RouterLink
@@ -120,7 +115,7 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
     >
       <BorderBox maxWidth={335} p={1}>
         <Flex alignItems="center">
-          {artistHasOwnConsignRoute && imageURL && (
+          {isInMicrofunnel && imageURL && (
             <Image src={imageURL} width={75} height={66} />
           )}
           <Flex flexDirection="column" justifyContent="center" pl={1}>
@@ -146,17 +141,23 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
 
 function getData(props) {
   const {
-    artist: { href, name, image },
+    artist: {
+      targetSupply: { isInMicrofunnel },
+      href,
+      name,
+      image,
+    },
   } = props
-  const artistHasOwnConsignRoute = Boolean(getConsignmentData(href))
   const imageURL = image?.cropped?.url
-  const headline = artistHasOwnConsignRoute
+  const headline = isInMicrofunnel
     ? `Sell your ${name}`
     : "Sell art from your collection"
-  const consignURL = artistHasOwnConsignRoute ? `${href}/consign` : "/consign"
+  const consignURL = isInMicrofunnel ? `${href}/consign` : "/consign"
+
+  console.log(isInMicrofunnel)
 
   return {
-    artistHasOwnConsignRoute,
+    isInMicrofunnel,
     imageURL,
     headline,
     consignURL,
@@ -168,6 +169,10 @@ export const ArtistConsignButtonFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment ArtistConsignButton_artist on Artist {
+        targetSupply {
+          isInMicrofunnel
+        }
+
         internalID
         slug
         name

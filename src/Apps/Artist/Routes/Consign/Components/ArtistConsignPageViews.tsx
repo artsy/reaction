@@ -1,28 +1,34 @@
 import React from "react"
 
 import { Box, Sans, Spacer } from "@artsy/palette"
-import { ArtistConsignment } from "../Utils/getConsignmentData"
+import { createFragmentContainer, graphql } from "react-relay"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 
+import { ArtistConsignPageViews_artist } from "__generated__/ArtistConsignPageViews_artist.graphql"
+
 interface ArtistConsignPageViewsProps {
-  artistConsignment: ArtistConsignment
-  artistName: string
+  artist: ArtistConsignPageViews_artist
 }
 
 export const ArtistConsignPageViews: React.FC<ArtistConsignPageViewsProps> = props => {
   const {
-    artistName,
-    artistConsignment: {
-      metadata: { roundedViews, roundedUniqueVisitors },
+    artist: {
+      name,
+      targetSupply: {
+        microfunnel: {
+          metadata: { roundedViews, roundedUniqueVisitors },
+        },
+      },
     },
   } = props
+
   return (
     <SectionContainer background="black10">
       <Box textAlign="center">
         <Subheader>
-          {artistName} works have received more than {roundedViews} views on
-          Artsy this month
+          {name} works have received more than {roundedViews} views on Artsy
+          this month
         </Subheader>
 
         <Spacer my={1} />
@@ -37,3 +43,22 @@ export const ArtistConsignPageViews: React.FC<ArtistConsignPageViewsProps> = pro
     </SectionContainer>
   )
 }
+
+export const ArtistConsignPageViewsFragmentContainer = createFragmentContainer(
+  ArtistConsignPageViews,
+  {
+    artist: graphql`
+      fragment ArtistConsignPageViews_artist on Artist {
+        name
+        targetSupply {
+          microfunnel {
+            metadata {
+              roundedViews
+              roundedUniqueVisitors
+            }
+          }
+        }
+      }
+    `,
+  }
+)

@@ -1,67 +1,32 @@
 import { Box } from "@artsy/palette"
-import { Match, Router } from "found"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { Consign_artist } from "__generated__/Consign_artist.graphql"
-import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
 
 import { ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
-import { ArtistConsignHeader } from "./Components/ArtistConsignHeader"
+import { ArtistConsignHeaderFragmentContainer as ArtistConsignHeader } from "./Components/ArtistConsignHeader"
 import { ArtistConsignHowtoSell } from "./Components/ArtistConsignHowToSell"
-import { ArtistConsignMarketTrends } from "./Components/ArtistConsignMarketTrends"
-import { ArtistConsignMeta } from "./Components/ArtistConsignMeta"
-import { ArtistConsignPageViews } from "./Components/ArtistConsignPageViews"
-import { ArtistConsignRecentlySold } from "./Components/ArtistConsignRecentlySold"
+import { ArtistConsignMarketTrendsFragmentContainer as ArtistConsignMarketTrends } from "./Components/ArtistConsignMarketTrends"
+import { ArtistConsignMetaFragmentContainer as ArtistConsignMeta } from "./Components/ArtistConsignMeta"
+import { ArtistConsignPageViewsFragmentContainer as ArtistConsignPageViews } from "./Components/ArtistConsignPageViews"
+import { ArtistConsignRecentlySoldFragmentContainer as ArtistConsignRecentlySold } from "./Components/ArtistConsignRecentlySold"
 import { ArtistConsignSellArt } from "./Components/ArtistConsignSellArt"
 
 import { track } from "Artsy"
-import { ArtistConsignment } from "./Utils/getConsignmentData"
 
-interface ConsignRouteProps {
+export interface ConsignRouteProps {
   artist: Consign_artist
-  artworksByInternalID: Consign_artworksByInternalID
-  artistConsignment: ArtistConsignment
-  match: Match
-  router: Router
 }
 
-export const ConsignRoute: React.FC<ConsignRouteProps> = props => {
-  const { artist, artistConsignment, artworksByInternalID, match } = props
-  const imageURL = artworksByInternalID[0]?.image.imageURL
-
+export const ConsignRoute: React.FC<ConsignRouteProps> = ({ artist }) => {
   return (
     <Box>
-      {/*
-        Header tags
-      */}
-      <ArtistConsignMeta
-        artistName={artist.name}
-        artistHref={artist.href}
-        imageURL={imageURL}
-      />
-
-      {/*
-        Content
-      */}
-      <ArtistConsignHeader
-        artistConsignment={artistConsignment}
-        artistName={artist.name}
-        artworksByInternalID={artworksByInternalID}
-      />
-      <ArtistConsignRecentlySold
-        artistConsignment={artistConsignment}
-        artistName={artist.name}
-        artworksByInternalID={artworksByInternalID}
-      />
-      <ArtistConsignPageViews
-        artistConsignment={artistConsignment}
-        artistName={artist.name}
-      />
-      <ArtistConsignMarketTrends
-        artistConsignment={artistConsignment}
-        artistID={match.params.artistID}
-      />
+      <ArtistConsignMeta artist={artist} />
+      <ArtistConsignHeader artist={artist} />
+      <ArtistConsignRecentlySold artist={artist} />
+      <ArtistConsignPageViews artist={artist} />
+      <ArtistConsignMarketTrends artist={artist} />
       <ArtistConsignHowtoSell />
       <ArtistConsignFAQ />
       <ArtistConsignSellArt />
@@ -78,27 +43,11 @@ export const ConsignRouteFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment Consign_artist on Artist {
-        name
-        href
-      }
-    `,
-    artworksByInternalID: graphql`
-      fragment Consign_artworksByInternalID on Artwork @relay(plural: true) {
-        internalID
-        image {
-          aspectRatio
-          width
-          height
-
-          imageURL: url(version: "medium")
-
-          resized(height: 395) {
-            width
-            height
-            url
-          }
-        }
-        ...FillwidthItem_artwork
+        ...ArtistConsignMeta_artist
+        ...ArtistConsignHeader_artist
+        ...ArtistConsignRecentlySold_artist
+        ...ArtistConsignPageViews_artist
+        ...ArtistConsignMarketTrends_artist
       }
     `,
   }
