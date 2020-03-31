@@ -59,7 +59,7 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignHeader", () => {
-    it.only("displays artist name in header", async () => {
+    it("displays artist name in header", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignHeader").text()).toContain("Alex Katz")
     })
@@ -119,7 +119,7 @@ describe("ConsignRoute", () => {
     it("appends displays sold for <price> to artwork brick", async () => {
       const wrapper = await getWrapper()
       const html = wrapper.find("ArtistConsignRecentlySold").html()
-      const prices = ["$5,000", "$8,500", "$1,300", "$7,500"]
+      const prices = ["$5,000", "$8,500", "$1,300"]
       prices.forEach(price => {
         expect(html).toContain(`Sold for ${price}`)
       })
