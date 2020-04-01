@@ -1,3 +1,15 @@
+# v25.41.2 (Wed Apr 01 2020)
+
+#### 🐛  Bug Fix
+
+- Display information about identity verification on credit card form [#3334](https://github.com/artsy/reaction/pull/3334) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
 # v25.41.1 (Tue Mar 31 2020)
 
 #### 🐛  Bug Fix
