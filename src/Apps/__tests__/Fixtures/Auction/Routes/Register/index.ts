@@ -13,6 +13,7 @@ export const RegisterQueryResponseFixture: DeFragedRegisterQueryResponse = {
   me: {
     hasQualifiedCreditCards: false,
     internalID: "userid",
+    identityVerified: false,
   },
   sale: {
     isAuction: true,
@@ -23,5 +24,6 @@ export const RegisterQueryResponseFixture: DeFragedRegisterQueryResponse = {
     registrationStatus: null,
     internalID: "id123",
     status: "open",
+    requireIdentityVerification: false,
   },
 }

@@ -1,4 +1,3 @@
-import { RegisterValidTestQueryRawResponse } from "__generated__/RegisterValidTestQuery.graphql"
 import React from "react"
 import { graphql } from "react-relay"
 
@@ -8,7 +7,12 @@ import { ModalButton } from "Components/Modal/ModalDialog"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 
-import { RegisterQueryResponseFixture } from "../../__fixtures__/routes_RegisterQuery"
+import { routes_RegisterQueryRawResponse } from "__generated__/routes_RegisterQuery.graphql"
+import {
+  RegisterQueryResponseFixture,
+  RegisterQueryResponseFixtureWithoutVerificationNeeded,
+  RegisterQueryResponseFixtureWithVerifiedUser,
+} from "../../__fixtures__/routes_RegisterQuery"
 import { createBidderSuccessful } from "../__fixtures__/MutationResults/createBidder"
 import {
   createCreditCardAndUpdatePhoneFailed,
@@ -53,7 +57,9 @@ jest.mock("sharify", () => ({
   },
 }))
 
-const setupTestEnv = () => {
+const setupTestEnv = (
+  defaultData: routes_RegisterQueryRawResponse = RegisterQueryResponseFixture
+) => {
   return createTestEnv({
     TestPage: RegisterTestPage,
     Component: RegisterRouteFragmentContainer,
@@ -67,7 +73,7 @@ const setupTestEnv = () => {
         }
       }
     `,
-    defaultData: RegisterQueryResponseFixture as RegisterValidTestQueryRawResponse,
+    defaultData,
     defaultMutationResults: {
       createCreditCard: {},
       createBidder: {},
@@ -118,6 +124,35 @@ describe("Routes/Register ", () => {
 
     expect(env.mutations.mockFetch).not.toBeCalled()
     expect(window.location.assign).not.toBeCalled()
+  })
+
+  it("displays the identity verification message on the credit card form if a sale requires it and user isn't verified", async () => {
+    const env = setupTestEnv()
+    const page = await env.buildPage()
+
+    expect(page.text()).toContain(
+      "This auction requires Artsy to verify your identity before bidding."
+    )
+  })
+
+  it("does not display the identity verification message on the credit card form if a sale requires it and user is verified", async () => {
+    const env = setupTestEnv(RegisterQueryResponseFixtureWithVerifiedUser)
+    const page = await env.buildPage()
+
+    expect(page.text()).not.toContain(
+      "This auction requires Artsy to verify your identity before bidding."
+    )
+  })
+
+  it("does not display the identity verification message on the credit card form if a sale does not require it", async () => {
+    const env = setupTestEnv(
+      RegisterQueryResponseFixtureWithoutVerificationNeeded
+    )
+    const page = await env.buildPage()
+
+    expect(page.text()).not.toContain(
+      "This auction requires Artsy to verify your identity before bidding."
+    )
   })
 
   it("successfully adds a credit card and registers the user as a bidder", async () => {

@@ -26,7 +26,11 @@ export interface FormValues {
   agreeToTerms: boolean
 }
 
-const InnerForm: React.FC<FormikProps<FormValues>> = props => {
+interface InnerFormProps extends FormikProps<FormValues> {
+  needsIdentityVerification: boolean
+}
+
+const InnerForm: React.FC<InnerFormProps> = props => {
   const {
     touched,
     errors,
@@ -34,6 +38,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
     values,
     setFieldValue,
     setFieldTouched,
+    needsIdentityVerification,
   } = props
 
   return (
@@ -62,6 +67,19 @@ const InnerForm: React.FC<FormikProps<FormValues>> = props => {
           />
         </Box>
       </Box>
+
+      {needsIdentityVerification && (
+        <>
+          <Serif size="4t" pb={2}>
+            This auction requires Artsy to verify your identity before bidding.
+          </Serif>
+
+          <Serif size="4t">
+            After you register, you’ll receive an email with a link to complete
+            identity verification.
+          </Serif>
+        </>
+      )}
 
       <Flex mt={4} mb={2} flexDirection="column" justifyContent="center">
         <Box mx="auto">
@@ -163,6 +181,7 @@ export interface RegistrationFormProps
   extends ReactStripeElements.InjectedStripeProps {
   onSubmit: (formikActions: FormikActions<object>, result: FormResult) => void
   trackSubmissionErrors: TrackErrors
+  needsIdentityVerification: boolean
 }
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
@@ -228,7 +247,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
                 cb={props.trackSubmissionErrors}
                 formikProps={formikProps}
               />
-              <InnerForm {...formikProps} />
+              <InnerForm
+                {...formikProps}
+                needsIdentityVerification={props.needsIdentityVerification}
+              />
               <ErrorModal
                 show={formikProps.status === "submissionFailed"}
                 onClose={() => {

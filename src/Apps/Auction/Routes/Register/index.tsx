@@ -99,6 +99,8 @@ export function createCreditCardAndUpdatePhone(relayEnvironment, phone, token) {
 
 export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
+  const needsIdentityVerification =
+    sale.requireIdentityVerification && !me.identityVerified
 
   const commonProperties = {
     auction_slug: sale.slug,
@@ -201,6 +203,7 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         <StripeWrappedRegistrationForm
           onSubmit={handleSubmit}
           trackSubmissionErrors={trackRegistrationFailed}
+          needsIdentityVerification={needsIdentityVerification}
         />
       </Box>
     </AppContainer>
@@ -223,11 +226,13 @@ export const RegisterRouteFragmentContainer = createFragmentContainer(
         slug
         internalID
         status
+        requireIdentityVerification
       }
     `,
     me: graphql`
       fragment Register_me on Me {
         internalID
+        identityVerified
       }
     `,
   }
