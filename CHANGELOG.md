@@ -1,3 +1,26 @@
+# v25.42.0 (Wed Apr 01 2020)
+
+#### 🚀  Enhancement
+
+- Redirect logged in users to the works for sale tab [#3307](https://github.com/artsy/reaction/pull/3307) ([@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- Organize MobileNav into folder [#3335](https://github.com/artsy/reaction/pull/3335) ([@damassi](https://github.com/damassi))
+- Display information about identity verification on credit card form [#3334](https://github.com/artsy/reaction/pull/3334) ([@bhoggard](https://github.com/bhoggard))
+
+#### ⚠️  Pushed to master
+
+- Forcing a reaction release  ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.41.1 (Tue Mar 31 2020)
 
 #### 🐛  Bug Fix
