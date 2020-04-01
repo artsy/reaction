@@ -10,9 +10,9 @@ import {
 } from "@artsy/palette"
 import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
+import { LinkData, MenuData, MenuLinkData } from "Components/NavBar/menuData"
 import React from "react"
 import styled from "styled-components"
-import { LinkData, MenuData, MenuLinkData } from "../menuData"
 import { MobileLink } from "./MobileLink"
 import {
   NavigatorContextProvider,
