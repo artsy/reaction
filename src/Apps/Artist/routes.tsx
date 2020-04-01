@@ -118,6 +118,15 @@ export const routes: RouteConfig[] = [
       )
 
       const canShowOverview = showArtistInsights || hasArtistContent
+      /**
+       * The logic is as follows
+       *
+       * 1. If a user is logged in / redirects for /works-for-sale
+       * 2. If a user is logged in /overview opens the overview tab (which also links off to /overview)
+       * 3. If a user is not logged in / leads to the overview tab
+       * 4. If a user is not logged in /overview redirects to / and therefore the overview tab
+       * 5. If there's insufficient data, all tabs redirect to /works-for-sale
+       */
 
       if (user && !pathname.includes("/overview")) {
         throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
