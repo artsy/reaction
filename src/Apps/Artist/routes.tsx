@@ -86,6 +86,9 @@ export const routes: RouteConfig[] = [
     },
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) @raw_response_type {
+        me {
+          id
+        }
         artist(id: $artistID) @principalField {
           ...ArtistApp_artist
           ...routes_Artist @relay(mask: false)
@@ -93,67 +96,53 @@ export const routes: RouteConfig[] = [
       }
     `,
     render: ({ Component, props, match }) => {
-      if (Component && props) {
-        const { artist } = props as any
-
-        if (!artist) {
-          return null
-        }
-
-        const showArtistInsights =
-          showMarketInsights(artist) ||
-          (artist.insights && artist.insights.length > 0)
-        const hasArtistContent = hasOverviewContent(artist)
-
-        const alreadyAtWorksForSalePath = match.location.pathname.includes(
-          `${artist.slug}/works-for-sale`
-        )
-
-        const canShowOverview = showArtistInsights || hasArtistContent
-
-        if (!canShowOverview && !alreadyAtWorksForSalePath) {
-          throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
-        }
-
-        return <Component {...props} />
+      if (!(Component && props)) {
+        return null
       }
+
+      const { artist, me: user } = props as any
+      const { pathname } = match.location
+
+      if (!artist) {
+        return null
+      }
+
+      const showArtistInsights =
+        showMarketInsights(artist) ||
+        (artist.insights && artist.insights.length > 0)
+      const hasArtistContent = hasOverviewContent(artist)
+
+      const alreadyAtWorksForSalePath = pathname.includes(
+        `${artist.slug}/works-for-sale`
+      )
+
+      const canShowOverview = showArtistInsights || hasArtistContent
+
+      if (user && !pathname.includes("/overview")) {
+        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+      }
+
+      if (!user && pathname.includes("/overview") && canShowOverview) {
+        throw new RedirectException(`/artist/${artist.slug}`)
+      }
+
+      if (!canShowOverview && !alreadyAtWorksForSalePath) {
+        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+      }
+
+      return <Component {...props} />
     },
     children: [
       // Routes in tabs
       {
         path: ":regexParam(\\overview)?",
         getComponent: () => OverviewRoute,
-        render: ({ Component, props, match }) => {
-          if (!(Component && props)) {
-            return null
-          }
-          const { me: user } = props as any
-          const { pathname } = match.location
-          const { artistID } = match.params
-
-          if (user) {
-            if (pathname.includes("/overview")) {
-              return <Component {...props} />
-            } else {
-              throw new RedirectException(`/artist/${artistID}/works-for-sale`)
-            }
-          } else {
-            if (pathname.includes("/overview")) {
-              throw new RedirectException(`/artist/${artistID}`)
-            } else {
-              return <Component {...props} />
-            }
-          }
-        },
         prepare: () => {
           OverviewRoute.preload()
         },
         displayNavigationTabs: true,
         query: graphql`
           query routes_OverviewQuery($artistID: String!) @raw_response_type {
-            me {
-              id
-            }
             artist(id: $artistID) {
               ...Overview_artist
             }
