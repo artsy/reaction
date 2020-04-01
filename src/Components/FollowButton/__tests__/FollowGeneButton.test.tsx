@@ -57,6 +57,11 @@ describe("FollowGeneButton", () => {
         contextModule: "intextTooltip",
         copy: "Sign up to follow categories",
         intent: "followGene",
+        afterSignUpAction: {
+          action: "follow",
+          kind: "gene",
+          objectId: "modernism",
+        },
       })
     })
 

@@ -62,7 +62,7 @@ function openMobileAuth(intent) {
 function getMobileAuthIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
     case Schema.AuthIntent.followArtist:
-    case Schema.AuthIntent.followGallery:
+    case Schema.AuthIntent.followPartner:
       return getMobileIntentToFollow(options)
     case Schema.AuthIntent.saveArtwork:
       return getMobileIntentToSaveArtwork(options)
@@ -142,7 +142,7 @@ function getDesktopIntentToSaveArtwork({
 function getDesktopAuthIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
     case Schema.AuthIntent.followArtist:
-    case Schema.AuthIntent.followGallery:
+    case Schema.AuthIntent.followPartner:
       return getDesktopIntentToFollow(options)
     case Schema.AuthIntent.saveArtwork:
       return getDesktopIntentToSaveArtwork(options)

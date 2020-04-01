@@ -1,5 +1,4 @@
 import { ContextModule } from "./ContextModule"
-
 /*
  * Shared schema for authentication events
  */
@@ -10,28 +9,45 @@ import { ContextModule } from "./ContextModule"
 export type AuthContextModule =
   | ContextModule.aboutTheWork
   | ContextModule.artistHeader
+  | ContextModule.artistRecentlySold
+  | ContextModule.artistsTab
   | ContextModule.artistsToFollowRail
   | ContextModule.artworkGrid
+  | ContextModule.artworkImage
   | ContextModule.artworkSidebar
   | ContextModule.auctionInfo
   | ContextModule.auctionRail
   | ContextModule.auctionResults
   | ContextModule.auctionsInfo
   | ContextModule.bannerPopUp
+  | ContextModule.browseFair
   | ContextModule.categoryRail
   | ContextModule.collectionDescription
   | ContextModule.consignSubmissionFlow
+  | ContextModule.currentShowsRail
+  | ContextModule.fairInfo
+  | ContextModule.fairsHeader
   | ContextModule.featuredArtistsRail
   | ContextModule.footer
+  | ContextModule.geneHeader
   | ContextModule.header
   | ContextModule.intextTooltip
+  | ContextModule.liveAuctionsRail
   | ContextModule.mainCarousel
   | ContextModule.otherWorksByArtistRail
-  | ContextModule.otherWorksByGalleryRail
+  | ContextModule.otherWorksFromPartnerRail
+  | ContextModule.otherWorksFromShowRail
+  | ContextModule.otherWorksInAuctionRail
+  | ContextModule.partnerHeader
+  | ContextModule.pastFairs
   | ContextModule.popUpModal
+  | ContextModule.recentlyViewedRail
   | ContextModule.relatedArtistsRail
   | ContextModule.relatedWorksRail
   | ContextModule.saveWorksCTA
+  | ContextModule.showHeader
+  | ContextModule.showInfo
+  | ContextModule.tagHeader
   | ContextModule.worksByPopularArtistsRail
   | ContextModule.worksForSaleRail
 
@@ -52,7 +68,7 @@ export enum AuthIntent {
   buyNow = "buyNow",
   consign = "consign",
   followArtist = "followArtist",
-  followGallery = "followGallery",
+  followPartner = "followPartner",
   followGene = "followGene",
   forgot = "forgot",
   inquire = "inquire",

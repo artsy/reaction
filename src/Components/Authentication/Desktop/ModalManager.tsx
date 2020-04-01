@@ -48,7 +48,7 @@ export class ModalManager extends Component<
 > {
   state: ModalManagerState = {
     currentType: null,
-    options: null,
+    options: {} as ModalOptions,
     switchedForms: false,
   }
 
@@ -67,7 +67,7 @@ export class ModalManager extends Component<
   closeModal = () => {
     this.setState({
       currentType: null,
-      options: null,
+      options: {} as ModalOptions,
     })
     document.body.style.overflowY = "auto"
     this.props.onModalClose && this.props.onModalClose()

@@ -4,6 +4,7 @@ import { WorksForSaleRailRendererQuery } from "__generated__/WorksForSaleRailRen
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
@@ -39,6 +40,7 @@ const WorksForSaleRail: React.FC<WorksForSaleRailProps & {
         return (
           <FillwidthItem
             artwork={artwork.node}
+            contextModule={ContextModule.worksForSaleRail}
             targetHeight={HEIGHT}
             imageHeight={HEIGHT}
             width={HEIGHT * aspect_ratio}
@@ -70,6 +72,7 @@ const WorksForSaleRail: React.FC<WorksForSaleRailProps & {
 
 const ArrowContainer = styled(Box)`
   align-self: flex-start;
+
   ${ArrowButton} {
     height: 60%;
   }

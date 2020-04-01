@@ -31,6 +31,7 @@ import {
   ShareIcon,
   Spacer,
 } from "@artsy/palette"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { userIsAdmin } from "Utils/user"
 import { ArtworkPopoutPanel } from "./ArtworkPopoutPanel"
 
@@ -117,7 +118,13 @@ export class ArtworkActions extends React.Component<
   }
 
   renderSaveButton() {
-    return <SaveButton artwork={this.props.artwork} render={Save(this.props)} />
+    return (
+      <SaveButton
+        contextModule={ContextModule.artworkImage}
+        artwork={this.props.artwork}
+        render={Save(this.props)}
+      />
+    )
   }
 
   renderViewInRoomButton() {

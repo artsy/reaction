@@ -1,4 +1,5 @@
 import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { find } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -14,6 +15,7 @@ interface Props extends React.HTMLAttributes<FillwidthContainer> {
   gutter?: number
   size?: any
   artworks: Fillwidth_artworks
+  contextModule: ContextModule
 }
 
 class FillwidthContainer extends React.Component<Props, null> {
@@ -22,12 +24,13 @@ class FillwidthContainer extends React.Component<Props, null> {
     dimensions: FillWidthItemDimensions[],
     i: number
   ) {
-    const { gutter } = this.props
+    const { gutter, contextModule } = this.props
     const artworkSize = find(dimensions, ["id", artwork.id])
 
     return (
       <FillwidthItem
         artwork={artwork}
+        contextModule={contextModule}
         key={"artwork--" + artwork.id}
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}

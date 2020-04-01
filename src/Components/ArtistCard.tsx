@@ -25,7 +25,7 @@ import styled from "styled-components"
 
 export interface ArtistCardProps {
   artist: ArtistCard_artist
-  contextModule: SchemaV2.ContextModule
+  contextModule: SchemaV2.AuthContextModule
   user: User
   mediator?: Mediator
   /** Lazy load the avatar image */

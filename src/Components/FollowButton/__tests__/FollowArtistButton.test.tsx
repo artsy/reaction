@@ -56,12 +56,17 @@ describe("FollowArtistButton", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(testProps)
       component.find(FollowButtonDeprecated).simulate("click")
-      const args = testProps.onOpenAuthModal.mock.calls[0]
 
-      expect(args[0]).toBe("signup")
-      expect(args[1].contextModule).toBe("intextTooltip")
-      expect(args[1].intent).toBe("followArtist")
-      expect(args[1].copy).toBe("Sign up to follow artists")
+      expect(testProps.onOpenAuthModal).toBeCalledWith("signup", {
+        contextModule: "intextTooltip",
+        copy: "Sign up to follow artists",
+        intent: "followArtist",
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: "damon-zucconi",
+        },
+      })
     })
 
     it("Follows an artist if current user", () => {

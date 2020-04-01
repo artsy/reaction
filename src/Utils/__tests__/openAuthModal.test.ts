@@ -24,7 +24,7 @@ const partnerArgs: AuthModalOptions = {
     slug: "david-zwirner",
     name: "David Zwirner",
   },
-  intent: SchemaV2.AuthIntent.followGallery,
+  intent: SchemaV2.AuthIntent.followPartner,
 }
 
 const artworkArgs: AuthModalOptions = {
@@ -93,7 +93,7 @@ describe("openAuth Helpers", () => {
           },
           contextModule: "aboutTheWork",
           copy: "Sign up to follow David Zwirner",
-          intent: "followGallery",
+          intent: "followPartner",
           mode: "signup",
         })
       })
@@ -131,7 +131,7 @@ describe("openAuth Helpers", () => {
       it("transforms args for following partners", () => {
         openAuthToFollowSave(mediator, partnerArgs)
         expect(window.location.assign).toBeCalledWith(
-          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=follow&contextModule=aboutTheWork&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=followGallery&kind=profile&objectId=david-zwirner"
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=follow&contextModule=aboutTheWork&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=followPartner&kind=profile&objectId=david-zwirner"
         )
         expect(mediator.trigger).not.toBeCalled()
       })

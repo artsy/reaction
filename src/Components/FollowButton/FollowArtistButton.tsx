@@ -78,17 +78,21 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
-    const { user, onOpenAuthModal } = this.props
+    const { artist, user, onOpenAuthModal } = this.props
 
     if (user && user.id) {
       this.followArtistForUser(user)
     } else if (onOpenAuthModal) {
-      const config = {
+      onOpenAuthModal(ModalType.signup, {
         contextModule: SchemaV2.ContextModule.intextTooltip,
         intent: SchemaV2.AuthIntent.followArtist,
         copy: "Sign up to follow artists",
-      }
-      onOpenAuthModal(ModalType.signup, config)
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: artist.internalID,
+        },
+      })
     }
   }
 

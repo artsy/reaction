@@ -1,5 +1,6 @@
 import { Box, Flex, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
@@ -21,6 +22,7 @@ const MockFillWidthItem = ({ artwork }) => {
           imageHeight={200}
           width={200 * aspect_ratio}
           margin={20}
+          contextModule={ContextModule.header}
         />
       )}
       mockData={{ artwork }}

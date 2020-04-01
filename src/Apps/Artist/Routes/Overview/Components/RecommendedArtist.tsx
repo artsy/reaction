@@ -109,6 +109,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
           return (
             <FillwidthItem
               artwork={artwork.node}
+              contextModule={SchemaV2.ContextModule.relatedArtistsRail}
               targetHeight={HEIGHT}
               imageHeight={HEIGHT}
               width={HEIGHT * aspect_ratio}

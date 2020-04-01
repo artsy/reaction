@@ -40,7 +40,7 @@ export interface Props {
 const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: SchemaV2.ContextModule.collectionDescription,
+    contextModule: SchemaV2.ContextModule.featuredArtistsRail,
     intent: SchemaV2.AuthIntent.followArtist,
   })
 }

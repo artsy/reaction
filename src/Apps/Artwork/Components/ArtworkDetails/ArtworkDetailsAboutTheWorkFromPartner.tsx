@@ -57,7 +57,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     openAuthToFollowSave(mediator, {
       entity: partner,
       contextModule: SchemaV2.ContextModule.aboutTheWork,
-      intent: SchemaV2.AuthIntent.followGallery,
+      intent: SchemaV2.AuthIntent.followPartner,
     })
   }
 

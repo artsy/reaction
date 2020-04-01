@@ -73,6 +73,11 @@ export class FollowGeneButton extends React.Component<Props> {
           contextModule: SchemaV2.ContextModule.intextTooltip,
           intent: SchemaV2.AuthIntent.followGene,
           copy: "Sign up to follow categories",
+          afterSignUpAction: {
+            action: "follow",
+            kind: "gene",
+            objectId: gene.internalID,
+          },
         })
     }
   }

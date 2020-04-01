@@ -2,6 +2,7 @@ import { color, Image as BaseImage } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy"
 import { withSystemContext } from "Artsy"
+import { AuthContextModule, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { isFunction } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -31,6 +32,7 @@ const Image = styled(BaseImage)`
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   artwork: GridItem_artwork
+  contextModule?: AuthContextModule
   lazyLoad?: boolean
   mediator?: Mediator
   onClick?: () => void
@@ -133,6 +135,9 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
           {this.canHover && (
             <SaveButton
               className="artwork-save"
+              contextModule={
+                this.props.contextModule || ContextModule.artworkGrid
+              }
               artwork={artwork}
               style={{
                 position: "absolute",
