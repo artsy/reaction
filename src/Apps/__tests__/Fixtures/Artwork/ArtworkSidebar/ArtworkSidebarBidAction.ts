@@ -57,6 +57,11 @@ export const NotIDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] =
   identityVerified: false,
 }
 
+export const IDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
+  id: "user-id",
+  identityVerified: true,
+}
+
 export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
   slug: "artwork_from_open_non_live_auction",
   id: "sdfsdfsdf2",

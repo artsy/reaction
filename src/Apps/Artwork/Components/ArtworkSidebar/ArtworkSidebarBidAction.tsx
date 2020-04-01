@@ -15,12 +15,14 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
+import { ArtworkSidebarBidAction_me } from "__generated__/ArtworkSidebarBidAction_me.graphql"
 import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import track from "react-tracking"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
+  me: ArtworkSidebarBidAction_me
 }
 
 export interface ArtworkSidebarBidActionState {
@@ -87,7 +89,7 @@ export class ArtworkSidebarBidAction extends React.Component<
   }
 
   render() {
-    const { artwork } = this.props
+    const { artwork, me } = this.props
 
     if (artwork.sale.is_closed) return null
 
@@ -104,9 +106,13 @@ export class ArtworkSidebarBidAction extends React.Component<
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
     const hasMyBids = !!(myLotStanding && myLotStanding.most_recent_bid)
 
+    // TODO: actual query for me
+    const saleRequiresIdentityVerification: boolean = true
+    const needsIdentityVerification: boolean = !me.identityVerified
+
     if (artwork.sale.is_preview) {
       return (
-        <>
+        <div>
           {!registrationAttempted && (
             <Button
               width="100%"
@@ -117,17 +123,25 @@ export class ArtworkSidebarBidAction extends React.Component<
               Register to bid
             </Button>
           )}
+
           {registrationAttempted && !registeredToBid && (
             <Button width="100%" size="large" mt={1} disabled>
               Registration pending
             </Button>
           )}
+
           {registrationAttempted && registeredToBid && (
             <Button width="100%" size="large" mt={1} disabled>
               Registration complete
             </Button>
           )}
-        </>
+
+          {saleRequiresIdentityVerification && needsIdentityVerification && (
+            <Sans size="2" color="black60" pb={1} textAlign="center">
+              Identity verification required to bid.
+            </Sans>
+          )}
+        </div>
       )
     }
 

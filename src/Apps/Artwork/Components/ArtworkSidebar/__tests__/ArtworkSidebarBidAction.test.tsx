@@ -7,6 +7,7 @@ import {
   ArtworkFromTimedAuctionRegistrationClosed,
   ArtworkFromTimedAuctionRegistrationOpen,
   BidderPendingApproval,
+  IDVedUser,
   NotIDVedUser,
   NotRegisteredToBid,
   RegistedBidderWithBids,
@@ -90,6 +91,55 @@ describe("ArtworkSidebarBidAction", () => {
         it.todo("displays 'Identity verification required to bid.'")
       })
       describe("when there is a logged in user", () => {
+        describe("when the user has not attempted to register to bid", () => {
+          describe("when the user is identity verified", () => {
+            it("does not display 'Identity verification required to bid.'", async () => {
+              const artwork = merge(
+                ArtworkFromAuctionPreview,
+                NotRegisteredToBid
+              )
+
+              const wrapper = await getWrapper({
+                artwork,
+                me: IDVedUser,
+              })
+
+              expect(wrapper.text()).not.toContain(
+                "Identity verification required to bid."
+              )
+            })
+          })
+          describe("when the user is not identity verified", () => {
+            it("displays 'Identity verification required to bid.'", async () => {
+              const artwork = merge(
+                ArtworkFromAuctionPreview,
+                NotRegisteredToBid
+              )
+
+              const wrapper = await getWrapper({
+                artwork,
+                me: NotIDVedUser,
+              })
+
+              expect(wrapper.text()).toContain(
+                "Identity verification required to bid."
+              )
+            })
+            it("displays a 'Register to bid' button", async () => {
+              const artwork = merge(
+                ArtworkFromAuctionPreview,
+                NotRegisteredToBid
+              )
+
+              const wrapper = await getWrapper({
+                artwork,
+                me: NotIDVedUser,
+              })
+
+              expect(wrapper.text()).toContain("Register to bid")
+            })
+          })
+        })
         describe("when the user has attempted to register to bid", () => {
           describe("when the user is identity verified", () => {
             it.todo("displays a 'Bid' button, not a 'Register to Bid' button")
@@ -112,7 +162,6 @@ describe("ArtworkSidebarBidAction", () => {
                 "Identity verification required to bid."
               )
             })
-            it.todo("displays a 'Register to bid' button, not a 'Bid' button")
           })
         })
       })
