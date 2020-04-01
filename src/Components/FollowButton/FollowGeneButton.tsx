@@ -39,6 +39,7 @@ export class FollowGeneButton extends React.Component<Props> {
 
   handleFollow = () => {
     const { gene, user, relay, onOpenAuthModal } = this.props
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
 
     if (user && user.id) {
       commitMutation<FollowGeneButtonMutation>(relay.environment, {
@@ -76,7 +77,7 @@ export class FollowGeneButton extends React.Component<Props> {
           afterSignUpAction: {
             action: "follow",
             kind: "gene",
-            objectId: gene.internalID,
+            objectId: (gene && gene.internalID) || trackingData.entity_slug,
           },
         })
     }

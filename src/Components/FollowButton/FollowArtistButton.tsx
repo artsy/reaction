@@ -79,6 +79,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
     const { artist, user, onOpenAuthModal } = this.props
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
 
     if (user && user.id) {
       this.followArtistForUser(user)
@@ -90,7 +91,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
         afterSignUpAction: {
           action: "follow",
           kind: "artist",
-          objectId: artist.internalID,
+          objectId: (artist && artist.internalID) || trackingData.entity_slug,
         },
       })
     }

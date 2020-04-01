@@ -90,6 +90,11 @@ describe("ArtistToolTip", () => {
       component.find(FollowArtistButton).simulate("click")
 
       expect(context.onOpenAuthModal).toBeCalledWith("signup", {
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: "nick-mauss",
+        },
         contextModule: "intextTooltip",
         copy: "Sign up to follow artists",
         intent: "followArtist",
