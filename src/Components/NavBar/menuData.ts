@@ -440,7 +440,7 @@ export const menuData: MenuData = {
       href: "/institutions",
     },
     {
-      text: "Partner with Artsy",
+      text: "Artsy for Galleries",
       href: "/gallery-partnerships",
     },
     // TODO: links here for logged-in vs. logged-out state

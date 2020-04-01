@@ -49,7 +49,7 @@ export const MobileNavMenu: React.FC<Props> = props => {
             <MobileLink href="/shows">Shows</MobileLink>
             <MobileLink href="/institutions">Museums</MobileLink>
             <MobileLink href="/gallery-partnerships">
-              Partner with Artsy
+              Artsy for Galleries
             </MobileLink>
             {user ? <LoggedInLinks /> : <AuthenticateLinks />}
           </ul>
