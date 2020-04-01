@@ -199,7 +199,6 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
     creditCard: undefined,
     agreeToTerms: false,
   }
-  const { needsIdentityVerification } = props
 
   function createTokenAndSubmit(
     values: FormValues,
@@ -250,7 +249,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
               />
               <InnerForm
                 {...formikProps}
-                needsIdentityVerification={needsIdentityVerification}
+                needsIdentityVerification={props.needsIdentityVerification}
               />
               <ErrorModal
                 show={formikProps.status === "submissionFailed"}
