@@ -1,30 +1,30 @@
 import { Box, Flex, Sans, Spacer } from "@artsy/palette"
 import React from "react"
 
-import { Consign_artworksByInternalID } from "__generated__/Consign_artworksByInternalID.graphql"
+import { ArtistConsignRecentlySold_artist } from "__generated__/ArtistConsignRecentlySold_artist.graphql"
 
 import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
-import { ArtistConsignment } from "../Utils/getConsignmentData"
+import { createFragmentContainer, graphql } from "react-relay"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 
 interface ArtistConsignRecentlySoldProps {
-  artistConsignment: ArtistConsignment
-  artistName: string
-  artworksByInternalID: Consign_artworksByInternalID
+  artist: ArtistConsignRecentlySold_artist
 }
 
 export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = ({
-  artistConsignment,
-  artistName,
-  artworksByInternalID,
+  artist,
 }) => {
+  if (!artist.targetSupply.microfunnel.randomArtworks) {
+    return null
+  }
+
   return (
     <SectionContainer>
       <Box textAlign="center">
         <Box>
-          <Subheader>Works by {artistName} recently sold on Artsy</Subheader>
+          <Subheader>Works by {artist.name} recently sold on Artsy</Subheader>
 
           <Spacer my={4} />
 
@@ -33,31 +33,55 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
             flexWrap="wrap"
             alignItems="center"
           >
-            {artworksByInternalID.map((artwork, key) => {
-              const artworkData = artistConsignment.artworks.find(
-                consignmentArtwork => {
-                  return consignmentArtwork.internalID === artwork.internalID
-                }
-              )
-              return (
-                <Box p={2} key={key} textAlign="left">
-                  <FillwidthItem
-                    artwork={artwork}
-                    targetHeight={150}
-                    imageHeight={150}
-                    showExtended={false}
-                    width={150 * artwork.image.aspectRatio}
-                    contextModule={ContextModule.artistRecentlySold}
-                  />
-                  <Sans size="2" weight="medium">
-                    Sold for {artworkData.realizedPrice}
-                  </Sans>
-                </Box>
-              )
-            })}
+            {artist.targetSupply.microfunnel.randomArtworks.map(
+              ({ artwork, realizedPrice }, key) => {
+                return (
+                  <Box p={2} key={key} textAlign="left">
+                    <FillwidthItem
+                      artwork={artwork}
+                      targetHeight={150}
+                      imageHeight={150}
+                      showExtended={false}
+                      width={150 * artwork.image.aspectRatio}
+                      contextModule={ContextModule.artistRecentlySold}
+                    />
+                    <Sans size="2" weight="medium">
+                      Sold for {realizedPrice}
+                    </Sans>
+                  </Box>
+                )
+              }
+            )}
           </Flex>
         </Box>
       </Box>
     </SectionContainer>
   )
 }
+
+export const ArtistConsignRecentlySoldFragmentContainer = createFragmentContainer(
+  ArtistConsignRecentlySold,
+  {
+    artist: graphql`
+      fragment ArtistConsignRecentlySold_artist on Artist {
+        targetSupply {
+          microfunnel {
+            randomArtworks: artworks(randomize: true) {
+              artwork {
+                image {
+                  aspectRatio
+                  width
+                  height
+                }
+                ...FillwidthItem_artwork
+              }
+              realizedPrice
+            }
+          }
+        }
+
+        name
+      }
+    `,
+  }
+)

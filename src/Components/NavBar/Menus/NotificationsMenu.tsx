@@ -53,9 +53,10 @@ export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = p
     <>
       {notifications.map(({ node }, index) => {
         const { artists, href, image, summary } = node
+        const worksForSaleHref = href + "/works-for-sale"
         return (
           <MenuItem
-            href={href}
+            href={worksForSaleHref}
             key={index}
             onClick={() => {
               handleClick(href, AnalyticsSchema.Subject.Notification)

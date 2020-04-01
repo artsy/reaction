@@ -1,3 +1,65 @@
+# v25.41.1 (Tue Mar 31 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Guard against missing data [#3333](https://github.com/artsy/reaction/pull/3333) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.41.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update Artist/Consign to support MP-based data [#3331](https://github.com/artsy/reaction/pull/3331) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.40.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- Land on Work for Sale tab when coming from internal links [#3332](https://github.com/artsy/reaction/pull/3332) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- [Artist] Add ConsignButton to Artist/Overview page [#3329](https://github.com/artsy/reaction/pull/3329) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Remove UI patch [#3330](https://github.com/artsy/reaction/pull/3330) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.39.3 (Mon Mar 30 2020)
+
+#### 🐛  Bug Fix
+
+- [HotFix] Comment out NewsNav date [#3328](https://github.com/artsy/reaction/pull/3328) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.4.0 to v7.6.0 [#3309](https://github.com/artsy/reaction/pull/3309) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v25.39.2 (Sun Mar 29 2020)
 
 #### 🐛  Bug Fix

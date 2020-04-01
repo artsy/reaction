@@ -2,12 +2,12 @@ import { ConsignRouteFixture } from "Apps/__tests__/Fixtures/Artist/Routes/Consi
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
+import { cloneDeep } from "lodash"
 import React from "react"
 import { graphql } from "relay-runtime"
 import { ConsignRouteFragmentContainer } from "../index"
 
 import { ConsignRoute_Test_QueryRawResponse } from "__generated__/ConsignRoute_Test_Query.graphql"
-import { getConsignmentData } from "../Utils/getConsignmentData"
 
 jest.unmock("react-relay")
 jest.mock("Artsy/Analytics/useTracking")
@@ -18,60 +18,29 @@ describe("ConsignRoute", () => {
   const getWrapper = async (
     response: ConsignRoute_Test_QueryRawResponse = ConsignRouteFixture
   ) => {
-    const match: any = {
-      location: {
-        pathname: "/artist/alex-katz/consign",
-      },
-      params: {
-        artistID: "alex-katz",
-      },
-    }
-    const router: any = {
-      replace: jest.fn(),
-    }
-
-    const artistConsignment = getConsignmentData("/artist/alex-katz")
-
     return await renderRelayTree({
       Component: ({ artist, artworksByInternalID }) => {
         return (
           <SystemContextProvider>
             <MockBoot user={{ type: "Admin" }}>
-              <ConsignRouteFragmentContainer
-                artist={artist}
-                artworksByInternalID={artworksByInternalID}
-                artistConsignment={artistConsignment}
-                match={match}
-                router={router}
-              />
+              <ConsignRouteFragmentContainer artist={artist} />
             </MockBoot>
           </SystemContextProvider>
         )
       },
       query: graphql`
-        query ConsignRoute_Test_Query(
-          $artistID: String!
-          $recentlySoldArtworkIDs: [String]!
-        ) @raw_response_type {
+        query ConsignRoute_Test_Query($artistID: String!) @raw_response_type {
           artist(id: $artistID) {
             ...Consign_artist
-          }
-          artworksByInternalID(ids: $recentlySoldArtworkIDs) {
-            ...Consign_artworksByInternalID
+
+            targetSupply {
+              isInMicrofunnel
+            }
           }
         }
       `,
       variables: {
         artistID: "alex-katz",
-        recentlySoldArtworkIDs: [
-          "5dbc8e526a65d700114f8c2b",
-          "5d9ca6fe8f1aee0011475cf7",
-          "5d126f9bba46ba0012c3134f",
-          "5cffddff404918000ec89beb",
-          "5ccb4516ec8701614303dd94",
-          "5ccb45163a7e934cc7818be5",
-          "5aa2e90d7622dd49dc8b356c",
-        ],
       },
       mockData: response,
     })
@@ -128,6 +97,13 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignRecentlySold", () => {
+    it("returns null if no recently sold images", async () => {
+      const artistWithoutArtworks = cloneDeep(ConsignRouteFixture) as any
+      artistWithoutArtworks.artist.targetSupply.microfunnel.artworks = null
+      const wrapper = await getWrapper(artistWithoutArtworks)
+      expect(wrapper.find("ArtistConsignRecentlySold")).toEqual({})
+    })
+
     it("includes artist name in recently sold", async () => {
       const wrapper = await getWrapper()
       expect(
@@ -151,7 +127,7 @@ describe("ConsignRoute", () => {
     it("appends displays sold for <price> to artwork brick", async () => {
       const wrapper = await getWrapper()
       const html = wrapper.find("ArtistConsignRecentlySold").html()
-      const prices = ["$5,000", "$8,500", "$1,300", "$7,500"]
+      const prices = ["$5,000", "$8,500", "$1,300"]
       prices.forEach(price => {
         expect(html).toContain(`Sold for ${price}`)
       })

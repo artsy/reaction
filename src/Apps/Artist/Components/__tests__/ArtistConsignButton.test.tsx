@@ -59,6 +59,9 @@ describe("ArtistConsignButton", () => {
   describe("Top 20 Button", () => {
     const response = {
       artist: {
+        targetSupply: {
+          isInMicrofunnel: true,
+        },
         internalID: "fooBarBaz",
         slug: "alex-katz",
         name: "Alex Katz",
@@ -152,6 +155,9 @@ describe("ArtistConsignButton", () => {
   describe("Default Button", () => {
     const response = {
       artist: {
+        targetSupply: {
+          isInMicrofunnel: false,
+        },
         internalID: "fooBarBaz",
         slug: "alex-katz",
         name: "Andy Warhol",

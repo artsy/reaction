@@ -164,9 +164,9 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   sizes: [],
-                  createdAfterYear: 1881,
+                  createdAfterYear: 1880,
                   createdBeforeYear: 1973,
-                  earliestCreatedYear: 1881,
+                  earliestCreatedYear: 1880,
                   latestCreatedYear: 1973,
                 },
               })
@@ -257,9 +257,9 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   categories: [],
-                  createdAfterYear: 1881,
+                  createdAfterYear: 1880,
                   createdBeforeYear: 1973,
-                  earliestCreatedYear: 1881,
+                  earliestCreatedYear: 1880,
                   latestCreatedYear: 1973,
                 },
               })
@@ -286,7 +286,7 @@ describe("AuctionResults", () => {
                 ...defaultRelayParams,
                 createdAfterYear: 1900,
                 createdBeforeYear: 1960,
-                earliestCreatedYear: 1881,
+                earliestCreatedYear: 1880,
                 latestCreatedYear: 1973,
               })
             )

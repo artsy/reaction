@@ -9,7 +9,6 @@ import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilt
 import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
 
 import { hasOverviewContent } from "./Components/NavigationTabs"
-import { getConsignmentData } from "./Routes/Consign/Utils/getConsignmentData"
 
 import {
   ArtworkFilters,
@@ -73,6 +72,7 @@ const ShowsRoute = loadable(() => import("./Routes/Shows"))
 // Artist pages tend to load almost instantly, so just preload it up front
 if (typeof window !== "undefined") {
   ArtistApp.preload()
+  ConsignRoute.preload()
 }
 
 // FIXME:
@@ -98,7 +98,7 @@ export const routes: RouteConfig[] = [
         const { artist } = props as any
 
         if (!artist) {
-          return null
+          return undefined
         }
 
         const showArtistInsights =
@@ -242,48 +242,30 @@ export const routes: RouteConfig[] = [
         displayFullPage: true,
         render: ({ Component, props, match }) => {
           if (!(Component && props)) {
-            return null
+            return undefined
           }
 
           const artistPathName = match.location.pathname.replace("/consign", "")
-          const artistConsignment = getConsignmentData(artistPathName)
-          const noConsignmentData = !Boolean(artistConsignment)
+          const isInMicrofunnel = (props as any).artist.targetSupply
+            .isInMicrofunnel
 
-          if (noConsignmentData) {
-            throw new RedirectException(artistPathName)
+          if (isInMicrofunnel) {
+            return <Component {...props} />
           } else {
-            return (
-              <Component
-                {...props}
-                match={match}
-                artistConsignment={artistConsignment}
-              />
-            )
+            throw new RedirectException(artistPathName)
           }
         },
         query: graphql`
-          query routes_ArtistConsignQuery(
-            $artistID: String!
-            $recentlySoldArtworkIDs: [String]!
-          ) {
+          query routes_ArtistConsignQuery($artistID: String!) {
             artist(id: $artistID) {
               ...Consign_artist
-            }
-            artworksByInternalID(ids: $recentlySoldArtworkIDs) {
-              ...Consign_artworksByInternalID
+
+              targetSupply {
+                isInMicrofunnel
+              }
             }
           }
         `,
-        prepareVariables: (params, props) => {
-          const pathname = props.location.pathname.replace("/consign", "")
-          const recentlySoldArtworkIDs =
-            getConsignmentData(pathname)?.metadata?.recentlySoldArtworkIDs ?? []
-
-          return {
-            ...params,
-            recentlySoldArtworkIDs,
-          }
-        },
       },
       {
         path: "cv",

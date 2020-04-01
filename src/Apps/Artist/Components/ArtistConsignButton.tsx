@@ -4,7 +4,6 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ArtistConsignButton_artist } from "__generated__/ArtistConsignButton_artist.graphql"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { Media } from "Utils/Responsive"
-import { getConsignmentData } from "../Routes/Consign/Utils/getConsignmentData"
 
 import {
   BorderBox,
@@ -58,99 +57,107 @@ interface Tracking {
 
 export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
   Tracking> = props => {
-  const { artistHasOwnConsignRoute, imageURL, headline, consignURL } = getData(
-    props
-  )
+  const { isInMicrofunnel, imageURL, headline, consignURL } = getData(props)
 
   return (
-    <BorderBox p={1} width="100%">
-      <Flex alignItems="center" width="100%" justifyContent="space-between">
-        <Flex>
-          {artistHasOwnConsignRoute && imageURL && (
-            <Image src={imageURL} width={50} height={50} />
-          )}
-          <Flex flexDirection="column" justifyContent="center" pl={1}>
-            <Sans size="3t" weight="medium">
-              {headline}
-            </Sans>
-            <Box position="relative">
-              <Sans size="3t" color={color("black60")}>
-                Consign with Artsy
+    <RouterLink
+      to={consignURL}
+      style={{
+        textDecoration: "none",
+      }}
+      onClick={() => {
+        props.trackGetStartedClick({
+          destinationPath: consignURL,
+        })
+      }}
+    >
+      <BorderBox p={1} width="100%">
+        <Flex alignItems="center" width="100%" justifyContent="space-between">
+          <Flex>
+            {isInMicrofunnel && imageURL && (
+              <Image src={imageURL} width={50} height={50} />
+            )}
+            <Flex flexDirection="column" justifyContent="center" pl={1}>
+              <Sans size="3t" weight="medium">
+                {headline}
               </Sans>
-            </Box>
+              <Box position="relative">
+                <Sans size="3t" color={color("black60")}>
+                  Consign with Artsy
+                </Sans>
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
-        <Box>
-          <RouterLink
-            to={consignURL}
-            onClick={() => {
-              props.trackGetStartedClick({
-                destinationPath: consignURL,
-              })
-            }}
-          >
+          <Box>
             <Button variant="secondaryGray">Get started</Button>
-          </RouterLink>
-        </Box>
-      </Flex>
-    </BorderBox>
+          </Box>
+        </Flex>
+      </BorderBox>
+    </RouterLink>
   )
 }
 
 export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
   Tracking> = props => {
-  const { artistHasOwnConsignRoute, imageURL, headline, consignURL } = getData(
-    props
-  )
+  const { isInMicrofunnel, imageURL, headline, consignURL } = getData(props)
 
   return (
-    <BorderBox maxWidth={335} p={1}>
-      <Flex alignItems="center">
-        {artistHasOwnConsignRoute && imageURL && (
-          <Image src={imageURL} width={75} height={66} />
-        )}
-        <Flex flexDirection="column" justifyContent="center" pl={1}>
-          <Sans size="3t" weight="medium">
-            {headline}
-          </Sans>
-          <Box top="-2px" position="relative">
-            <Sans size="3t" color={color("black60")}>
-              Consign with Artsy
+    <RouterLink
+      to={consignURL}
+      style={{
+        textDecoration: "none",
+      }}
+      onClick={() => {
+        props.trackGetStartedClick({
+          destinationPath: consignURL,
+        })
+      }}
+    >
+      <BorderBox maxWidth={335} p={1}>
+        <Flex alignItems="center">
+          {isInMicrofunnel && imageURL && (
+            <Image src={imageURL} width={75} height={66} />
+          )}
+          <Flex flexDirection="column" justifyContent="center" pl={1}>
+            <Sans size="3t" weight="medium">
+              {headline}
             </Sans>
-          </Box>
-          <Box>
-            <RouterLink
-              to={consignURL}
-              onClick={() => {
-                props.trackGetStartedClick({
-                  destinationPath: consignURL,
-                })
-              }}
-            >
+            <Box top="-2px" position="relative">
+              <Sans size="3t" color={color("black60")}>
+                Consign with Artsy
+              </Sans>
+            </Box>
+            <Box>
               <Button size="small" variant="secondaryGray">
                 Get started
               </Button>
-            </RouterLink>
-          </Box>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-    </BorderBox>
+      </BorderBox>
+    </RouterLink>
   )
 }
 
 function getData(props) {
   const {
-    artist: { href, name, image },
+    artist: {
+      targetSupply: { isInMicrofunnel },
+      href,
+      name,
+      image,
+    },
   } = props
-  const artistHasOwnConsignRoute = Boolean(getConsignmentData(href))
   const imageURL = image?.cropped?.url
-  const headline = artistHasOwnConsignRoute
+  const headline = isInMicrofunnel
     ? `Sell your ${name}`
     : "Sell art from your collection"
-  const consignURL = artistHasOwnConsignRoute ? `${href}/consign` : "/consign"
+  const consignURL = isInMicrofunnel ? `${href}/consign` : "/consign"
+
+  console.log(isInMicrofunnel)
 
   return {
-    artistHasOwnConsignRoute,
+    isInMicrofunnel,
     imageURL,
     headline,
     consignURL,
@@ -162,6 +169,10 @@ export const ArtistConsignButtonFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment ArtistConsignButton_artist on Artist {
+        targetSupply {
+          isInMicrofunnel
+        }
+
         internalID
         slug
         name

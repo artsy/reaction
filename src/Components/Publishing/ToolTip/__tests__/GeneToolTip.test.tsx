@@ -48,6 +48,11 @@ describe("GeneTooltip", () => {
       component.find(FollowGeneButton).simulate("click")
 
       expect(context.onOpenAuthModal).toBeCalledWith("signup", {
+        afterSignUpAction: {
+          action: "follow",
+          kind: "gene",
+          objectId: "capitalist-realism",
+        },
         contextModule: "intextTooltip",
         copy: "Sign up to follow categories",
         intent: "followGene",

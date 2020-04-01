@@ -209,6 +209,15 @@ describe("OverviewRoute", () => {
     })
   })
 
+  describe("ConsignButton", () => {
+    it("shows a default consign button", () => {
+      const wrapper = getWrapper({
+        ...defaultArtist,
+      })
+      expect(wrapper.find("ArtistConsignButton").length).toEqual(1)
+    })
+  })
+
   describe("Artist Recommendations", () => {
     it("Does not display recommendations if related.artists is empty", () => {
       const wrapper = getWrapper(defaultArtist)
@@ -239,6 +248,9 @@ describe("OverviewRoute", () => {
 })
 
 const defaultArtist: routes_OverviewQueryRawResponse["artist"] = {
+  targetSupply: {
+    isInMicrofunnel: false,
+  },
   is_consignable: true,
   id: "opaque-artist-id",
   slug: "juan-gris",
@@ -251,6 +263,11 @@ const defaultArtist: routes_OverviewQueryRawResponse["artist"] = {
     auction_artworks: 40,
     artworks: 50,
     has_make_offer_artworks: true,
+  },
+  image: {
+    cropped: {
+      url: "/some/image.jpg",
+    },
   },
   articlesConnection: {
     edges: [
