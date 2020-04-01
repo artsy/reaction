@@ -19,6 +19,7 @@ import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
 
+// TODO: Can we make this typed?
 const merge: (...args: object[]) => any = _merge
 
 describe("ArtworkSidebarBidAction", () => {
@@ -52,7 +53,7 @@ describe("ArtworkSidebarBidAction", () => {
     })
   })
 
-  describe.only("for auction preview", () => {
+  describe("for auction preview", () => {
     it("and not registered bidder", async () => {
       const wrapper = await getWrapper({
         artwork: ArtworkFromAuctionPreview,
@@ -84,30 +85,35 @@ describe("ArtworkSidebarBidAction", () => {
     })
 
     describe("when the sale requires identity verification", () => {
-      xdescribe("when there is no logged in user", () => {
-        it("displays a 'Register to bid' button, not a 'Bid' button")
-        it("displays 'Identity verification required to bid.'")
+      describe("when there is no logged in user", () => {
+        it.todo("displays a 'Register to bid' button, not a 'Bid' button")
+        it.todo("displays 'Identity verification required to bid.'")
       })
       describe("when there is a logged in user", () => {
-        xdescribe("when the user is identity verified", () => {
-          it("displays a 'Bid' button, not a 'Register to Bid' button")
-          it("does not display 'Identity verification required to bid.'")
-          it("does not display a FAQ link")
-        })
-        describe("when the user is not identity verified", () => {
-          it("displays 'Identity verification required to bid.'", async () => {
-            const artwork = merge(ArtworkFromAuctionPreview)
-
-            const wrapper = await getWrapper({
-              artwork,
-              me: NotIDVedUser,
-            })
-
-            expect(wrapper.text()).toContain(
-              "Identity verification required to bid."
-            )
+        describe("when the user has attempted to register to bid", () => {
+          describe("when the user is identity verified", () => {
+            it.todo("displays a 'Bid' button, not a 'Register to Bid' button")
+            it.todo("does not display 'Identity verification required to bid.'")
+            it.todo("does not display a FAQ link")
           })
-          it.todo("displays a 'Register to bid' button, not a 'Bid' button")
+          describe("when the user is not identity verified", () => {
+            it("displays 'Identity verification required to bid.'", async () => {
+              const artwork = merge(
+                ArtworkFromAuctionPreview,
+                BidderPendingApproval
+              )
+
+              const wrapper = await getWrapper({
+                artwork,
+                me: NotIDVedUser,
+              })
+
+              expect(wrapper.text()).toContain(
+                "Identity verification required to bid."
+              )
+            })
+            it.todo("displays a 'Register to bid' button, not a 'Bid' button")
+          })
         })
       })
     })
@@ -116,7 +122,6 @@ describe("ArtworkSidebarBidAction", () => {
   describe("for open auction", () => {
     it("with open registration and not registered bidder ", async () => {
       const artwork = merge(
-        {},
         ArtworkFromTimedAuctionRegistrationOpen,
         NotRegisteredToBid
       )
@@ -133,33 +138,33 @@ describe("ArtworkSidebarBidAction", () => {
 
     it("with closed registration and not registered bidder ", async () => {
       const artwork = merge(
-        {},
         ArtworkFromTimedAuctionRegistrationClosed,
         NotRegisteredToBid
       )
-      const wrapper = await getWrapper(artwork)
+      const wrapper = await getWrapper({
+        artwork,
+        me: NotIDVedUser,
+      })
 
       expect(wrapper.text()).toContain("Registration closed")
     })
 
     it("with bidder registration pending approval", async () => {
       const artwork = merge(
-        {},
         ArtworkFromTimedAuctionRegistrationOpen,
         BidderPendingApproval
       )
-      const wrapper = await getWrapper(artwork)
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Registration pending")
     })
 
     it("with registered bidder", async () => {
       const artwork = merge(
-        {},
         ArtworkFromTimedAuctionRegistrationOpen,
         RegisteredBidder
       )
-      const wrapper = await getWrapper(artwork)
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Place max bid")
       expect(wrapper.text()).toContain("$900")
@@ -168,11 +173,10 @@ describe("ArtworkSidebarBidAction", () => {
 
     it("with registered bidder with bids", async () => {
       const artwork = merge(
-        {},
         ArtworkFromTimedAuctionRegistrationOpen,
         RegistedBidderWithBids
       )
-      const wrapper = await getWrapper(artwork)
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Place max bid")
       expect(wrapper.text()).toContain("$900")
@@ -183,22 +187,21 @@ describe("ArtworkSidebarBidAction", () => {
   describe("for live auction", () => {
     it("with open registration and not registered bidder ", async () => {
       const artwork = merge(
-        {},
         ArtworkFromLiveAuctionRegistrationOpen,
         NotRegisteredToBid
       )
-      const wrapper = await getWrapper(artwork)
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Enter live bidding")
     })
 
     it("with closed registration and not registered bidder ", async () => {
       const artwork = merge(
-        {},
         ArtworkFromLiveAuctionRegistrationClosed,
         NotRegisteredToBid
       )
-      const wrapper = await getWrapper(artwork)
+
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Registration closed")
       expect(wrapper.text()).toContain("Watch live bidding")
@@ -206,22 +209,21 @@ describe("ArtworkSidebarBidAction", () => {
 
     it("with bidder registration pending approval", async () => {
       const artwork = merge(
-        {},
         ArtworkFromLiveAuctionRegistrationOpen,
         BidderPendingApproval
       )
-      const wrapper = await getWrapper(artwork)
+
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Enter live bidding")
     })
 
     it("with registered bidder", async () => {
       const artwork = merge(
-        {},
         ArtworkFromLiveAuctionRegistrationOpen,
         RegisteredBidder
       )
-      const wrapper = await getWrapper(artwork)
+      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
       expect(wrapper.text()).toContain("Enter live bidding")
     })
