@@ -12,10 +12,10 @@ import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
 import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
+import { LinkData, MenuData, MenuLinkData } from "Components/NavBar/menuData"
 import React from "react"
 import styled from "styled-components"
 import { getMobileAuthLink } from "Utils/openAuthModal"
-import { LinkData, MenuData, MenuLinkData } from "../menuData"
 import { MobileLink } from "./MobileLink"
 import {
   NavigatorContextProvider,

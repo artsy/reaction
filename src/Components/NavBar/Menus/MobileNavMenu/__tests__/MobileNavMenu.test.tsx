@@ -1,15 +1,15 @@
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
+import { menuData, SimpleLinkData } from "Components/NavBar/menuData"
 import { mount } from "enzyme"
 import React from "react"
-import { menuData, SimpleLinkData } from "../../menuData"
-import { MobileLink } from "../MobileLink"
 import {
   AnimatingMenuWrapper,
   BackLink,
   MobileNavMenu,
   MobileSubmenuLink,
-} from "../MobileNavMenu"
+} from "../../MobileNavMenu"
+import { MobileLink } from "../MobileLink"
 
 jest.mock("Artsy/Analytics/useTracking")
 

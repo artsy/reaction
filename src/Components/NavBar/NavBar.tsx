@@ -27,8 +27,8 @@ import {
 } from "./Menus"
 
 import { ModalType } from "Components/Authentication/Types"
+import { menuData } from "Components/NavBar/menuData"
 import { openAuthModal } from "Utils/openAuthModal"
-import { menuData } from "./menuData"
 
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
