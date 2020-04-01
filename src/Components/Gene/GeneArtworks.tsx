@@ -18,6 +18,7 @@ import TotalCount from "../ArtworkFilter/TotalCount"
 import BorderedPulldown from "../BorderedPulldown"
 
 import { GeneArtworks_gene } from "__generated__/GeneArtworks_gene.graphql"
+import { Mediator } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import { Filters } from "."
 import Spinner from "../Spinner"
@@ -30,6 +31,7 @@ interface Props extends Filters {
   onArtistModeToggleSelected: () => void
   sort?: string
   relay: RelayPaginationProp
+  mediator: Mediator
 }
 
 interface State {
@@ -190,6 +192,7 @@ export class GeneArtworks extends React.Component<Props, State> {
             columnCount={4}
             itemMargin={40}
             onLoadMore={() => this.loadMoreArtworks()}
+            mediator={this.props.mediator}
           />
           <SpinnerContainer>
             {this.state.loading ? <Spinner /> : ""}

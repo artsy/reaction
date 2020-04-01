@@ -1,4 +1,6 @@
 import { ArtistRow_artist } from "__generated__/ArtistRow_artist.graphql"
+import { Mediator } from "Artsy"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -9,11 +11,12 @@ import TextLink from "../TextLink"
 
 interface Props extends React.HTMLProps<ArtistRow> {
   artist: ArtistRow_artist
+  mediator: Mediator
 }
 
 export class ArtistRow extends React.Component<Props, null> {
   render() {
-    const { artist } = this.props
+    const { artist, mediator } = this.props
     return (
       <Container>
         <Header>
@@ -24,7 +27,11 @@ export class ArtistRow extends React.Component<Props, null> {
           </TextLink>
           <Follow artist={artist} />
         </Header>
-        <Fillwidth artworks={artist.artworks} />
+        <Fillwidth
+          artworks={artist.artworks}
+          contextModule={ContextModule.featuredArtistsRail}
+          mediator={mediator}
+        />
       </Container>
     )
   }

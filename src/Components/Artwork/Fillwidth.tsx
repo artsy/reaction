@@ -1,4 +1,5 @@
 import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
+import { Mediator } from "Artsy"
 import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { find } from "lodash"
 import React from "react"
@@ -16,6 +17,7 @@ interface Props extends React.HTMLAttributes<FillwidthContainer> {
   size?: any
   artworks: Fillwidth_artworks
   contextModule: ContextModule
+  mediator?: Mediator
 }
 
 class FillwidthContainer extends React.Component<Props, null> {
@@ -24,7 +26,7 @@ class FillwidthContainer extends React.Component<Props, null> {
     dimensions: FillWidthItemDimensions[],
     i: number
   ) {
-    const { gutter, contextModule } = this.props
+    const { gutter, contextModule, mediator } = this.props
     const artworkSize = find(dimensions, ["id", artwork.id])
 
     return (
@@ -36,6 +38,7 @@ class FillwidthContainer extends React.Component<Props, null> {
         imageHeight={artworkSize.height}
         width={artworkSize.width}
         margin={i === dimensions.length - 1 ? 0 : gutter}
+        mediator={mediator}
       />
     )
   }

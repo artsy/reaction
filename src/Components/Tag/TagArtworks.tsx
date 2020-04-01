@@ -1,4 +1,5 @@
 import { TagArtworks_tag } from "__generated__/TagArtworks_tag.graphql"
+import { Mediator } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import {
@@ -16,6 +17,7 @@ import BorderedPulldown from "../BorderedPulldown"
 import Spinner from "../Spinner"
 
 interface Props extends Filters {
+  mediator: Mediator
   relay: RelayPaginationProp
   tag: TagArtworks_tag
   onDropdownSelected: (slice: string, value: string) => void
@@ -149,6 +151,7 @@ export class TagArtworks extends React.Component<Props, State> {
             columnCount={4}
             itemMargin={40}
             onLoadMore={() => this.loadMoreArtworks()}
+            mediator={this.props.mediator}
           />
           <SpinnerContainer>
             {this.state.loading ? <Spinner /> : ""}

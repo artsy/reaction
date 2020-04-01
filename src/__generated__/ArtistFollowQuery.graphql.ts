@@ -30,6 +30,7 @@ query ArtistFollowQuery(
 fragment Follow_artist on Artist {
   id
   internalID
+  name
   is_followed: isFollowed
 }
 */
@@ -107,6 +108,13 @@ return {
           },
           {
             "kind": "ScalarField",
+            "alias": null,
+            "name": "name",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
             "alias": "is_followed",
             "name": "isFollowed",
             "args": null,
@@ -120,7 +128,7 @@ return {
     "operationKind": "query",
     "name": "ArtistFollowQuery",
     "id": null,
-    "text": "query ArtistFollowQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Follow_artist\n    id\n  }\n}\n\nfragment Follow_artist on Artist {\n  id\n  internalID\n  is_followed: isFollowed\n}\n",
+    "text": "query ArtistFollowQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Follow_artist\n    id\n  }\n}\n\nfragment Follow_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n}\n",
     "metadata": {}
   }
 };

@@ -9,6 +9,7 @@
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
 import { FollowArtistMutation } from "__generated__/FollowArtistMutation.graphql"
 import * as Artsy from "Artsy"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import React from "react"
 import {
   commitMutation,
@@ -17,7 +18,9 @@ import {
   RelayProp,
 } from "react-relay"
 import styled from "styled-components"
+import { getMobileAuthLink, openAuthToFollowSave } from "Utils/openAuthModal"
 import colors from "../Assets/Colors"
+import { ModalType } from "./Authentication/Types"
 import Icon from "./Icon"
 
 const SIZE = 32
@@ -63,7 +66,7 @@ export const StyledFollowButton = styled.div`
 
 export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
-    const { artist, user, relay } = this.props
+    const { artist, user, relay, mediator } = this.props
     if (user && user.id) {
       commitMutation<FollowArtistMutation>(relay.environment, {
         mutation: graphql`
@@ -93,7 +96,27 @@ export class FollowButton extends React.Component<Props, null> {
         },
       })
     } else {
-      window.location.href = "/login"
+      const options = {
+        contextModule: ContextModule.relatedArtistsRail,
+        intent: AuthIntent.followArtist,
+      }
+
+      if (mediator) {
+        openAuthToFollowSave(mediator, {
+          entity: {
+            slug: artist.internalID,
+            name: artist.name,
+          },
+          ...options,
+        })
+      } else {
+        window.location.href = getMobileAuthLink(ModalType.signup, {
+          kind: "artist",
+          objectId: artist.internalID,
+          action: "follow",
+          ...options,
+        })
+      }
     }
   }
 
@@ -125,6 +148,7 @@ export default createFragmentContainer(Artsy.withSystemContext(FollowButton), {
     fragment Follow_artist on Artist {
       id
       internalID
+      name
       is_followed: isFollowed
     }
   `,

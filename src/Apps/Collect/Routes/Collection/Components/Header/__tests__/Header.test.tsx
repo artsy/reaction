@@ -467,7 +467,7 @@ describe("collections header", () => {
         .simulate("click")
       expect(context.mediator.trigger).toBeCalledWith("open:auth", {
         mode: "signup",
-        contextModule: "collectionDescription",
+        contextModule: "featuredArtistsRail",
         copy: "Sign up to follow KAWS",
         intent: "followArtist",
         afterSignUpAction: {
