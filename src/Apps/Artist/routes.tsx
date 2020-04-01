@@ -72,6 +72,7 @@ const ShowsRoute = loadable(() => import("./Routes/Shows"))
 // Artist pages tend to load almost instantly, so just preload it up front
 if (typeof window !== "undefined") {
   ArtistApp.preload()
+  ConsignRoute.preload()
 }
 
 // FIXME:
@@ -104,7 +105,7 @@ export const routes: RouteConfig[] = [
       const { pathname } = match.location
 
       if (!artist) {
-        return null
+        return undefined
       }
 
       const showArtistInsights =
@@ -255,7 +256,7 @@ export const routes: RouteConfig[] = [
         displayFullPage: true,
         render: ({ Component, props, match }) => {
           if (!(Component && props)) {
-            return null
+            return undefined
           }
 
           const artistPathName = match.location.pathname.replace("/consign", "")

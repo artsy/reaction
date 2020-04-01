@@ -1,3 +1,15 @@
+# v25.41.1 (Tue Mar 31 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Guard against missing data [#3333](https://github.com/artsy/reaction/pull/3333) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.41.0 (Tue Mar 31 2020)
 
 #### 🚀  Enhancement

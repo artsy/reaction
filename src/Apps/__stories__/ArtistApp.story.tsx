@@ -189,8 +189,11 @@ storiesOf("Apps/Artist", module)
       />
     )
   })
-  .add("Artist-- Consign - banksy", () => {
+  .add("Artist-- Consign - no recently sold", () => {
     return (
-      <MockRouter routes={artistRoutes} initialRoute="/artist/banksy/consign" />
+      <MockRouter
+        routes={artistRoutes}
+        initialRoute="/artist/genieve-figgis/consign"
+      />
     )
   })

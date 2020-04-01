@@ -4,6 +4,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { getENV } from "Utils/getENV"
 
 import { ArtistConsignMeta_artist } from "__generated__/ArtistConsignMeta_artist.graphql"
+import { get } from "Utils/get"
 
 interface ArtistConsignMeta {
   artist: ArtistConsignMeta_artist
@@ -11,16 +12,14 @@ interface ArtistConsignMeta {
 
 export const ArtistConsignMeta: React.FC<ArtistConsignMeta> = props => {
   const {
-    artist: {
-      name,
-      href,
-      targetSupply: {
-        microfunnel: { artworks },
-      },
-    },
+    artist: { name, href, targetSupply },
   } = props
 
-  const imageURL = artworks[0].artwork.image.imageURL
+  const imageURL = get(
+    targetSupply,
+    p => p.microfunnel.artworks[0].artwork.image.imageURL
+  )
+
   const appURL = getENV("APP_URL")
   const title = `Sell Works by ${name}`
   const description = `Learn more about the market for ${name} works and receive a price estimate. Submit a work from ${name} for consignment, and our experts will guide you through selling with an auction house, gallery, or private collector.`
