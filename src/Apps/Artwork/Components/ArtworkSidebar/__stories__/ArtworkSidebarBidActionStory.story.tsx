@@ -6,6 +6,7 @@ import {
   ArtworkFromTimedAuctionRegistrationClosed,
   ArtworkFromTimedAuctionRegistrationOpen,
   BidderPendingApproval,
+  NotIDVedUser,
   NotRegisteredToBid,
   RegistedBidderWithBids,
   RegisteredBidder,
@@ -25,16 +26,19 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
       <Section title="Auction Preview / Bidder not registered">
         <BidAction
           artwork={merge({}, ArtworkFromAuctionPreview, NotRegisteredToBid)}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Auction preview / Bidder pending approval">
         <BidAction
           artwork={merge({}, ArtworkFromAuctionPreview, BidderPendingApproval)}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Auction preview / Registed bidder">
         <BidAction
           artwork={merge({}, ArtworkFromAuctionPreview, RegisteredBidder)}
+          me={NotIDVedUser as any}
         />
       </Section>
 
@@ -46,6 +50,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromTimedAuctionRegistrationOpen,
             NotRegisteredToBid
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction / Closed Registration / Bidder not registered">
@@ -55,6 +60,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromTimedAuctionRegistrationClosed,
             NotRegisteredToBid
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Open registration / Registered bidder">
@@ -64,6 +70,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromTimedAuctionRegistrationOpen,
             RegisteredBidder
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Closed Registration / Registered bidder">
@@ -73,6 +80,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromTimedAuctionRegistrationClosed,
             RegisteredBidder
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Open registration / Registered bidder with bids">
@@ -82,6 +90,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromTimedAuctionRegistrationOpen,
             RegistedBidderWithBids
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Timed Auction or Prebidding for Live auction /  Closed Registration / Registered bidder with bids">
@@ -91,6 +100,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromTimedAuctionRegistrationClosed,
             RegistedBidderWithBids
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
 
@@ -102,6 +112,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromLiveAuctionRegistrationOpen,
             NotRegisteredToBid
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Live auction / Closed registration / Bidder not registered">
@@ -111,6 +122,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromLiveAuctionRegistrationClosed,
             NotRegisteredToBid
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Live auction / Open registration / Bidder pending approval">
@@ -120,6 +132,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromLiveAuctionRegistrationOpen,
             BidderPendingApproval
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Live auction / Closed registration / Bidder pending approval">
@@ -129,6 +142,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromLiveAuctionRegistrationClosed,
             BidderPendingApproval
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Live auction / Open registration / Registered Bidder">
@@ -138,6 +152,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromLiveAuctionRegistrationOpen,
             RegisteredBidder
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
       <Section title="Live auction / Closed registration / Registered Bidder">
@@ -147,6 +162,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
             ArtworkFromLiveAuctionRegistrationClosed,
             RegisteredBidder
           )}
+          me={NotIDVedUser as any}
         />
       </Section>
 
@@ -154,6 +170,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
       <Section title="Auction closed">
         <BidAction
           artwork={merge({}, ArtworkFromClosedAuction, RegisteredBidder)}
+          me={NotIDVedUser as any}
         />
       </Section>
     </React.Fragment>
