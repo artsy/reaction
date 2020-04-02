@@ -1,3 +1,15 @@
+# v25.42.1 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Redirect logged in users to the works for sale tab" [#3337](https://github.com/artsy/reaction/pull/3337) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.42.0 (Wed Apr 01 2020)
 
 #### 🚀  Enhancement
