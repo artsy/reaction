@@ -1,3 +1,15 @@
+# v25.42.3 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure consign button shows for all artists [#3340](https://github.com/artsy/reaction/pull/3340) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.42.2 (Thu Apr 02 2020)
 
 #### 🐛  Bug Fix
