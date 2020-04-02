@@ -53,7 +53,7 @@ describe("Artist/routes", () => {
   it("shouldn't redirect from /works-for-sale when user logged in", async () => {
     const { redirect } = await render(
       "/artist/juan-gris/works-for-sale",
-      mockResolver(overviewArtist)
+      mockResolver(overviewArtist, { id: "123" })
     )
 
     expect(redirect).toBe(undefined)
