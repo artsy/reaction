@@ -1,3 +1,15 @@
+# v25.42.2 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1885] restructure the main nav menu [#3336](https://github.com/artsy/reaction/pull/3336) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v25.42.1 (Thu Apr 02 2020)
 
 #### 🐛  Bug Fix
