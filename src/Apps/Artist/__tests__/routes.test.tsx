@@ -41,6 +41,24 @@ describe("Artist/routes", () => {
     expect(redirect).toBe(undefined)
   })
 
+  it("redirects trailing a trailing slash on the artist page back to the root", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/",
+      mockResolver(overviewArtist)
+    )
+
+    expect(redirect.url).toBe("/artist/juan-gris")
+  })
+
+  it("shouldn't redirect from /works-for-sale when user logged in", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/works-for-sale",
+      mockResolver(overviewArtist)
+    )
+
+    expect(redirect).toBe(undefined)
+  })
+
   it("doesn't redirect from /auction-results to /works-for-sale if auction-results", async () => {
     const { redirect } = await render(
       "/artist/juan-gris/auction-results",
