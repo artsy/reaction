@@ -123,7 +123,10 @@ export const routes: RouteConfig[] = [
        *
        * 1. If a user somehow ends up at /artist/<slug>/ redirect to /artist/<slug> because the former causes weird issues
        * 2. If a user is logged in / redirects for /works-for-sale
-       * 3. If there's insufficient data, all tabs redirect to /works-for-sale
+       * 3. If a user is logged in /overview opens the overview tab (which also links off to /overview)
+       * 4. If a user is not logged in / leads to the overview tab
+       * 5. If a user is not logged in /overview redirects to / and therefore the overview tab
+       * 6. If there's insufficient data, all tabs redirect to /works-for-sale
        */
       if (pathname === `/artist/${artist.slug}/`) {
         throw new RedirectException(`/artist/${artist.slug}`)
@@ -131,6 +134,10 @@ export const routes: RouteConfig[] = [
 
       if (user && pathname === `/artist/${artist.slug}`) {
         throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+      }
+
+      if (!user && pathname.includes("/overview") && canShowOverview) {
+        throw new RedirectException(`/artist/${artist.slug}`)
       }
 
       if (!canShowOverview && !alreadyAtWorksForSalePath) {
