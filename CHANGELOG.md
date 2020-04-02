@@ -1,3 +1,15 @@
+# v25.42.6 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Add missing `action` call to ArtworkConsignButton [#3341](https://github.com/artsy/reaction/pull/3341) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.42.5 (Thu Apr 02 2020)
 
 #### 🐛  Bug Fix
