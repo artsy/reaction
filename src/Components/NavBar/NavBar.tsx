@@ -89,18 +89,8 @@ export const NavBar: React.FC = track(
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
             <NavItem href="/collect">Artworks</NavItem>
+            <NavItem href="/artists">Artists</NavItem>
             <NavItem href="/auctions">Auctions</NavItem>
-            <NavItem href="/galleries">Galleries</NavItem>
-
-            {/**
-              Only show Fairs at `xlg`
-            */}
-            <NavItem
-              href="/art-fairs"
-              display={["none", "none", "none", "none", "block"]}
-            >
-              Fairs
-            </NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
               Menu={() => {

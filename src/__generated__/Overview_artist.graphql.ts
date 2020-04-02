@@ -19,7 +19,6 @@ export type Overview_artist = {
     } | null;
     readonly href: string | null;
     readonly name: string | null;
-    readonly is_consignable: boolean | null;
     readonly biographyBlurb: {
         readonly text: string | null;
     } | null;
@@ -239,13 +238,6 @@ return {
     },
     (v3/*: any*/),
     (v4/*: any*/),
-    {
-      "kind": "ScalarField",
-      "alias": "is_consignable",
-      "name": "isConsignable",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -730,5 +722,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8fd6ad871ac1627419e0a34ea74d541f';
+(node as any).hash = 'ce0637f455881ec87586fa7b001d8155';
 export default node;

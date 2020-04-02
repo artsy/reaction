@@ -27,6 +27,7 @@ export const ArtistConsignButton: React.FC<ArtistConsignButtonProps> = ({
 
   const trackGetStartedClick = ({ destinationPath }) => {
     tracking.trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
       context_page: AnalyticsSchema.PageName.ArtistPage,
       context_page_owner_id: artist.internalID,
       context_page_owner_slug: artist.slug,
@@ -75,9 +76,11 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
         <Flex alignItems="center" width="100%" justifyContent="space-between">
           <Flex>
             {isInMicrofunnel && imageURL && (
-              <Image src={imageURL} width={50} height={50} />
+              <Box pr={1}>
+                <Image src={imageURL} width={50} height={50} />
+              </Box>
             )}
-            <Flex flexDirection="column" justifyContent="center" pl={1}>
+            <Flex flexDirection="column" justifyContent="center">
               <Sans size="3t" weight="medium">
                 {headline}
               </Sans>
@@ -113,12 +116,14 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
         })
       }}
     >
-      <BorderBox maxWidth={335} p={1}>
+      <BorderBox p={1}>
         <Flex alignItems="center">
           {isInMicrofunnel && imageURL && (
-            <Image src={imageURL} width={75} height={66} />
+            <Box pr={1}>
+              <Image src={imageURL} width={75} height={66} />
+            </Box>
           )}
-          <Flex flexDirection="column" justifyContent="center" pl={1}>
+          <Flex flexDirection="column" justifyContent="center">
             <Sans size="3t" weight="medium">
               {headline}
             </Sans>
@@ -153,8 +158,6 @@ function getData(props) {
     ? `Sell your ${name}`
     : "Sell art from your collection"
   const consignURL = isInMicrofunnel ? `${href}/consign` : "/consign"
-
-  console.log(isInMicrofunnel)
 
   return {
     isInMicrofunnel,

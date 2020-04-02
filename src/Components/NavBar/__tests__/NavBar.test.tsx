@@ -52,9 +52,8 @@ describe("NavBar", () => {
   describe("desktop", () => {
     const defaultLinks = [
       ["/collect", "Artworks"],
+      ["/artists", "Artists"],
       ["/auctions", "Auctions"],
-      ["/galleries", "Galleries"],
-      ["/art-fairs", "Fairs"],
       ["/articles", "Editorial"],
     ]
 

@@ -50,11 +50,8 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
               url: sd.APP_URL + pathname,
             }
 
-            // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-            if (sd.CLIENT_NAVIGATION_V4 === "experiment") {
-              if (referrer) {
-                trackingData.referrer = sd.APP_URL + referrer
-              }
+            if (referrer) {
+              trackingData.referrer = sd.APP_URL + referrer
             }
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.

@@ -77,6 +77,7 @@ describe("ArtistConsignButton", () => {
     }
 
     const analyticsEvent = {
+      action_type: "Click",
       context_page: "Artist",
       context_page_owner_id: response.artist.internalID,
       context_page_owner_slug: response.artist.slug,
@@ -173,6 +174,7 @@ describe("ArtistConsignButton", () => {
     }
 
     const analyticsEvent = {
+      action_type: "Click",
       context_page: "Artist",
       context_page_owner_id: response.artist.internalID,
       context_page_owner_slug: response.artist.slug,

@@ -1,3 +1,86 @@
+# v25.42.5 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Fix redirect loop when user logged in on artist page [#3338](https://github.com/artsy/reaction/pull/3338) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.42.4 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Use "Artsy for Galleries" instead of "Partner with Artsy" naming in mobile nav [#3339](https://github.com/artsy/reaction/pull/3339) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.42.3 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure consign button shows for all artists [#3340](https://github.com/artsy/reaction/pull/3340) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.42.2 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1885] restructure the main nav menu [#3336](https://github.com/artsy/reaction/pull/3336) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.42.1 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Redirect logged in users to the works for sale tab" [#3337](https://github.com/artsy/reaction/pull/3337) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.42.0 (Wed Apr 01 2020)
+
+#### 🚀  Enhancement
+
+- Redirect logged in users to the works for sale tab [#3307](https://github.com/artsy/reaction/pull/3307) ([@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- Organize MobileNav into folder [#3335](https://github.com/artsy/reaction/pull/3335) ([@damassi](https://github.com/damassi))
+- Display information about identity verification on credit card form [#3334](https://github.com/artsy/reaction/pull/3334) ([@bhoggard](https://github.com/bhoggard))
+
+#### ⚠️  Pushed to master
+
+- Forcing a reaction release  ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.41.1 (Tue Mar 31 2020)
 
 #### 🐛  Bug Fix

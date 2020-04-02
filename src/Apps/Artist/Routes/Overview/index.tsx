@@ -158,7 +158,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biographyBlurb.text)
-    const showConsignable = Boolean(artist.is_consignable)
     const showRelatedCategories =
       get(artist, a => a.related.genes.edges.length, 0) > 0
 
@@ -211,12 +210,9 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                     <Spacer mb={2} />
                   </>
                 )}
-                {showConsignable && (
-                  <>
-                    <Spacer mb={3} />
-                    <ArtistConsignButton artist={artist} />
-                  </>
-                )}
+
+                <Spacer mb={3} />
+                <ArtistConsignButton artist={artist} />
               </>
             </Col>
 
@@ -253,6 +249,8 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                 }}
                 bio={artist}
               />
+              <Spacer mb={2} />
+              <ArtistConsignButton artist={artist} />
             </>
           )}
         </Media>
@@ -265,9 +263,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
 
         {artist.statuses.artworks && (
           <>
-            <Media at="xs">
-              {(showArtistBio || showConsignable) && <Separator my={3} />}
-            </Media>
+            <Media at="xs">{showArtistBio && <Separator my={3} />}</Media>
 
             <Media greaterThan="xs">
               <Separator my={3} />
@@ -461,7 +457,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         }
         href
         name
-        is_consignable: isConsignable
         # NOTE: The following are used to determine whether sections
         # should be rendered.
         biographyBlurb(format: HTML, partnerBio: true) {
