@@ -87,9 +87,6 @@ export const routes: RouteConfig[] = [
     },
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) @raw_response_type {
-        me {
-          id
-        }
         artist(id: $artistID) @principalField {
           ...ArtistApp_artist
           ...routes_Artist @relay(mask: false)
@@ -97,55 +94,35 @@ export const routes: RouteConfig[] = [
       }
     `,
     render: ({ Component, props, match }) => {
-      if (!(Component && props)) {
-        return null
+      if (Component && props) {
+        const { artist } = props as any
+
+        if (!artist) {
+          return undefined
+        }
+
+        const showArtistInsights =
+          showMarketInsights(artist) ||
+          (artist.insights && artist.insights.length > 0)
+        const hasArtistContent = hasOverviewContent(artist)
+
+        const alreadyAtWorksForSalePath = match.location.pathname.includes(
+          `${artist.slug}/works-for-sale`
+        )
+
+        const canShowOverview = showArtistInsights || hasArtistContent
+
+        if (!canShowOverview && !alreadyAtWorksForSalePath) {
+          throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+        }
+
+        return <Component {...props} />
       }
-
-      const { artist, me: user } = props as any
-      const { pathname } = match.location
-
-      if (!artist) {
-        return undefined
-      }
-
-      const showArtistInsights =
-        showMarketInsights(artist) ||
-        (artist.insights && artist.insights.length > 0)
-      const hasArtistContent = hasOverviewContent(artist)
-
-      const alreadyAtWorksForSalePath = pathname.includes(
-        `${artist.slug}/works-for-sale`
-      )
-
-      const canShowOverview = showArtistInsights || hasArtistContent
-      /**
-       * The logic is as follows
-       *
-       * 1. If a user is logged in / redirects for /works-for-sale
-       * 2. If a user is logged in /overview opens the overview tab (which also links off to /overview)
-       * 3. If a user is not logged in / leads to the overview tab
-       * 4. If a user is not logged in /overview redirects to / and therefore the overview tab
-       * 5. If there's insufficient data, all tabs redirect to /works-for-sale
-       */
-
-      if (user && !pathname.includes("/overview")) {
-        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
-      }
-
-      if (!user && pathname.includes("/overview") && canShowOverview) {
-        throw new RedirectException(`/artist/${artist.slug}`)
-      }
-
-      if (!canShowOverview && !alreadyAtWorksForSalePath) {
-        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
-      }
-
-      return <Component {...props} />
     },
     children: [
       // Routes in tabs
       {
-        path: ":regexParam(\\overview)?",
+        path: "/",
         getComponent: () => OverviewRoute,
         prepare: () => {
           OverviewRoute.preload()
