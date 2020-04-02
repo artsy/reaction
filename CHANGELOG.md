@@ -1,3 +1,15 @@
+# v25.42.5 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Fix redirect loop when user logged in on artist page [#3338](https://github.com/artsy/reaction/pull/3338) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v25.42.4 (Thu Apr 02 2020)
 
 #### 🐛  Bug Fix
