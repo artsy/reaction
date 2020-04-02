@@ -31,6 +31,7 @@ interface Props
   style?: any
   relay: RelayProp
   artist: Follow_artist
+  contextModule: ContextModule
 }
 
 export const StyledFollowButton = styled.div`
@@ -66,7 +67,7 @@ export const StyledFollowButton = styled.div`
 
 export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
-    const { artist, user, relay, mediator } = this.props
+    const { artist, user, relay, mediator, contextModule } = this.props
     if (user && user.id) {
       commitMutation<FollowArtistMutation>(relay.environment, {
         mutation: graphql`
@@ -97,7 +98,7 @@ export class FollowButton extends React.Component<Props, null> {
       })
     } else {
       const options = {
-        contextModule: ContextModule.relatedArtistsRail,
+        contextModule: contextModule || ContextModule.relatedArtistsRail,
         intent: AuthIntent.followArtist,
       }
 

@@ -25,7 +25,10 @@ export class ArtistRow extends React.Component<Props, null> {
               {artist.name}
             </Text>
           </TextLink>
-          <Follow artist={artist} />
+          <Follow
+            artist={artist}
+            contextModule={ContextModule.featuredArtistsRail}
+          />
         </Header>
         <Fillwidth
           artworks={artist.artworks}
