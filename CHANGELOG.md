@@ -1,3 +1,15 @@
+# v25.42.4 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Use "Artsy for Galleries" instead of "Partner with Artsy" naming in mobile nav [#3339](https://github.com/artsy/reaction/pull/3339) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v25.42.3 (Thu Apr 02 2020)
 
 #### 🐛  Bug Fix
