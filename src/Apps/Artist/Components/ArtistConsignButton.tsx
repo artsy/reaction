@@ -27,6 +27,7 @@ export const ArtistConsignButton: React.FC<ArtistConsignButtonProps> = ({
 
   const trackGetStartedClick = ({ destinationPath }) => {
     tracking.trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
       context_page: AnalyticsSchema.PageName.ArtistPage,
       context_page_owner_id: artist.internalID,
       context_page_owner_slug: artist.slug,
