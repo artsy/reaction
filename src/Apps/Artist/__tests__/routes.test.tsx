@@ -82,6 +82,17 @@ describe("Artist/routes", () => {
     expect(redirect.url).toBe("/artist/juan-gris/works-for-sale")
   })
 
+  it("redirects from /overview to / if the user is not logged in", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/overview",
+      mockResolver({
+        ...overviewArtist,
+      })
+    )
+
+    expect(redirect.url).toBe("/artist/juan-gris")
+  })
+
   it("renders the /works-for-sale page if there is no data", async () => {
     const { redirect } = await render(
       "/artist/juan-gris/works-for-sale",
