@@ -107,6 +107,8 @@ describe("RequestConditionReport ", () => {
       expect(mediator.trigger).toHaveBeenCalledWith("open:auth", {
         mode: "login",
         redirectTo: "http://localhost/",
+        contextModule: "aboutTheWork",
+        intent: "requestConditionReport",
       })
 
       expect(mockPostEvent).toHaveBeenCalledWith({

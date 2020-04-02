@@ -3,6 +3,7 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { FillwidthQuery } from "__generated__/FillwidthQuery.graphql"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
 import Fillwidth from "../Artwork/Fillwidth"
 
@@ -20,7 +21,14 @@ function FillwidthExample(props: { artistID: string }) {
       `}
       variables={{ artistID: props.artistID }}
       render={readyState => {
-        return readyState.props && <Fillwidth {...readyState.props.artist} />
+        return (
+          readyState.props && (
+            <Fillwidth
+              {...readyState.props.artist}
+              contextModule={ContextModule.header}
+            />
+          )
+        )
       }}
     />
   )

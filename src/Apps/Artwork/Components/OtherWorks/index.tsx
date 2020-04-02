@@ -6,6 +6,7 @@ import { RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid } fr
 import { Mediator, SystemContextProps, withSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -53,6 +54,23 @@ const contextGridTypeToContextModule = contextGridType => {
   }
 }
 
+const contextGridTypeToV2ContextModule = contextGridType => {
+  switch (contextGridType) {
+    case "ArtistArtworkGrid": {
+      return SchemaV2.ContextModule.otherWorksByArtistRail
+    }
+    case "PartnerArtworkGrid": {
+      return SchemaV2.ContextModule.otherWorksFromPartnerRail
+    }
+    case "AuctionArtworkGrid": {
+      return SchemaV2.ContextModule.otherWorksInAuctionRail
+    }
+    case "ShowArtworkGrid": {
+      return SchemaV2.ContextModule.otherWorksFromShowRail
+    }
+  }
+}
+
 export const OtherWorks = track()(
   (props: { artwork: OtherWorks_artwork } & SystemContextProps) => {
     const { context, contextGrids, sale } = props.artwork
@@ -70,6 +88,9 @@ export const OtherWorks = track()(
                   columnCount={[2, 3, 4]}
                   preloadImageCount={0}
                   mediator={props.mediator}
+                  contextModule={contextGridTypeToV2ContextModule(
+                    grid.__typename
+                  )}
                   onBrickClick={() =>
                     tracking.trackEvent({
                       type: Schema.Type.ArtworkBrick,

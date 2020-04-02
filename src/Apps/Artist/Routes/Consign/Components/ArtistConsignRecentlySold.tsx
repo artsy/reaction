@@ -3,6 +3,7 @@ import React from "react"
 
 import { ArtistConsignRecentlySold_artist } from "__generated__/ArtistConsignRecentlySold_artist.graphql"
 
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { createFragmentContainer, graphql } from "react-relay"
 import { SectionContainer } from "./SectionContainer"
@@ -42,6 +43,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
                       imageHeight={150}
                       showExtended={false}
                       width={150 * artwork.image.aspectRatio}
+                      contextModule={ContextModule.artistRecentlySold}
                     />
                     <Sans size="2" weight="medium">
                       Sold for {realizedPrice}

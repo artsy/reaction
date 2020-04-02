@@ -4,6 +4,7 @@ import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import Button from "../Buttons/Default"
 
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import {
   Footer,
   TermsOfServiceCheckbox,
@@ -69,7 +70,10 @@ storiesOf("Components/Authentication/Mobile", module)
         type={ModalType.login}
         handleSubmit={submit}
         isMobile
-        options={{}}
+        options={{
+          contextModule: ContextModule.header,
+          intent: AuthIntent.login,
+        }}
       />
     </MobileContainer>
   ))
@@ -79,7 +83,10 @@ storiesOf("Components/Authentication/Mobile", module)
         type={ModalType.forgot}
         handleSubmit={submit}
         isMobile
-        options={{}}
+        options={{
+          contextModule: ContextModule.header,
+          intent: AuthIntent.forgot,
+        }}
       />
     </MobileContainer>
   ))
@@ -89,7 +96,10 @@ storiesOf("Components/Authentication/Mobile", module)
         type={ModalType.signup}
         handleSubmit={submit}
         isMobile
-        options={{}}
+        options={{
+          contextModule: ContextModule.header,
+          intent: AuthIntent.signup,
+        }}
       />
     </MobileContainer>
   ))

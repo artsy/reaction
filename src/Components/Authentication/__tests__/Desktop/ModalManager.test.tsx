@@ -3,6 +3,7 @@ import { ModalType } from "Components/Authentication/Types"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import {
   ModalManager,
   ModalManagerProps,
@@ -39,6 +40,8 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.login,
+      contextModule: ContextModule.header,
     })
 
     expect(manager.state.currentType).toEqual("login")
@@ -61,6 +64,8 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.login,
+      contextModule: ContextModule.header,
     })
 
     expect(document.body.style.overflowY).toEqual("hidden")
@@ -72,6 +77,8 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.login,
+      contextModule: ContextModule.header,
     })
 
     manager.handleTypeChange("signup")
@@ -87,7 +94,9 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.signup,
       copy: "Foobar",
+      contextModule: ContextModule.header,
     })
     expect(manager.getSubtitle()).toEqual("Foobar")
 

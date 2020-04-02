@@ -136,8 +136,9 @@ describe("ArtistInfo", () => {
       .simulate("click")
     expect(context.mediator.trigger).toBeCalledWith("open:auth", {
       mode: "signup",
+      contextModule: "aboutTheWork",
       copy: "Sign up to follow Pablo Picasso",
-      intent: "follow artist",
+      intent: "followArtist",
       afterSignUpAction: {
         action: "follow",
         kind: "artist",

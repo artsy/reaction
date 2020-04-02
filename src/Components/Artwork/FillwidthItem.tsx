@@ -2,6 +2,7 @@ import { Image } from "@artsy/palette"
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { SystemContextProps } from "Artsy"
 import { Mediator } from "Artsy"
+import { AuthContextModule } from "Artsy/Analytics/v2/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
@@ -33,6 +34,7 @@ export interface FillwidthItemContainerProps
   extends SystemContextProps,
     React.HTMLProps<FillwidthItemContainer> {
   artwork: FillwidthItem_artwork
+  contextModule: AuthContextModule
   imageHeight?: number
   margin?: number
   showExtended?: boolean
@@ -99,6 +101,7 @@ export class FillwidthItemContainer extends React.Component<
     const {
       artwork,
       className,
+      contextModule,
       imageHeight,
       lazyLoad,
       mediator,
@@ -146,6 +149,7 @@ export class FillwidthItemContainer extends React.Component<
           <SaveButton
             {...userSpread}
             mediator={mediator}
+            contextModule={contextModule}
             className="artwork-save"
             artwork={artwork}
             style={{ position: "absolute", right: "5px", bottom: "5px" }}

@@ -48,10 +48,7 @@ export class ModalManager extends Component<
 > {
   state: ModalManagerState = {
     currentType: null,
-    options: {
-      copy: null,
-      redirectTo: "/",
-    },
+    options: {} as ModalOptions,
     switchedForms: false,
   }
 
@@ -70,7 +67,7 @@ export class ModalManager extends Component<
   closeModal = () => {
     this.setState({
       currentType: null,
-      options: {},
+      options: {} as ModalOptions,
     })
     document.body.style.overflowY = "auto"
     this.props.onModalClose && this.props.onModalClose()
@@ -106,7 +103,7 @@ export class ModalManager extends Component<
           return "The art world online"
       }
     } else {
-      return options.copy || "The art world online"
+      return (options && options.copy) || "The art world online"
     }
   }
 
@@ -126,7 +123,7 @@ export class ModalManager extends Component<
         onClose={this.closeModal}
         subtitle={this.getSubtitle()}
         type={currentType}
-        image={options.image}
+        image={options && options.image}
       >
         <FormSwitcher
           type={currentType}

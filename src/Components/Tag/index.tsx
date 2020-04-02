@@ -99,7 +99,7 @@ class TagContents extends React.Component<Props, State> {
   }
 
   render() {
-    const { tagID, relayEnvironment } = this.props
+    const { tagID, relayEnvironment, mediator } = this.props
     const { forSale, medium, priceRange, dimensionRange, sort } = this.state
     return (
       <QueryRenderer<TagContentsArtworksQuery>
@@ -139,6 +139,7 @@ class TagContents extends React.Component<Props, State> {
                 dimensionRange={dimensionRange}
                 tag={props.tag}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
+                mediator={mediator}
               />
             )
           } else {

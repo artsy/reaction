@@ -1,7 +1,7 @@
-import * as Schema from "Artsy/Analytics/Schema"
+import * as Schema from "Artsy/Analytics/v2/Schema"
 import { Mediator } from "Artsy/SystemContext"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
-import { stringify } from "qs"
+import qs from "qs"
 import { data as sd } from "sharify"
 
 export interface AuthModalOptions extends ModalOptions {
@@ -9,14 +9,8 @@ export interface AuthModalOptions extends ModalOptions {
     slug: string
     name: string
   }
-  contextModule: Schema.ContextModule
-  intent: AuthModalIntent
-}
-
-export enum AuthModalIntent {
-  FollowArtist = "follow artist",
-  FollowPartner = "follow partner",
-  SaveArtwork = "save artwork",
+  contextModule: Schema.AuthContextModule
+  intent: Schema.AuthIntent
 }
 
 export const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
@@ -51,19 +45,26 @@ export const openAuthToFollowSave = (
   }
 }
 
+export const getMobileAuthLink = (mode: ModalType, options: ModalOptions) => {
+  const path = mode === "login" ? "log_in" : "sign_up"
+  return `/${path}?${qs.stringify(options)}`
+}
+
 function openMobileAuth(intent) {
-  const params = stringify(intent)
-  const href = `/sign_up?redirect-to=${window.location}&${params}`
+  const href = getMobileAuthLink(ModalType.signup, {
+    redirectTo: window.location.href,
+    ...intent,
+  })
 
   window.location.assign(href)
 }
 
 function getMobileAuthIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
-    case AuthModalIntent.FollowArtist:
-    case AuthModalIntent.FollowPartner:
+    case Schema.AuthIntent.followArtist:
+    case Schema.AuthIntent.followPartner:
       return getMobileIntentToFollow(options)
-    case AuthModalIntent.SaveArtwork:
+    case Schema.AuthIntent.saveArtwork:
       return getMobileIntentToSaveArtwork(options)
     default:
       return undefined
@@ -75,7 +76,7 @@ function getMobileIntentToFollow({
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === AuthModalIntent.FollowArtist ? "artist" : "profile"
+  const kind = intent === Schema.AuthIntent.followArtist ? "artist" : "profile"
   return {
     action: "follow",
     contextModule,
@@ -102,12 +103,14 @@ function getMobileIntentToSaveArtwork({
 }
 
 function getDesktopIntentToFollow({
+  contextModule,
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === AuthModalIntent.FollowArtist ? "artist" : "profile"
+  const kind = intent === Schema.AuthIntent.followArtist ? "artist" : "profile"
   return {
     mode: ModalType.signup,
+    contextModule,
     copy: `Sign up to follow ${entity.name}`,
     intent,
     afterSignUpAction: {
@@ -119,11 +122,13 @@ function getDesktopIntentToFollow({
 }
 
 function getDesktopIntentToSaveArtwork({
+  contextModule,
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
   return {
     mode: ModalType.signup,
+    contextModule,
     copy: `Sign up to save artworks`,
     intent,
     afterSignUpAction: {
@@ -136,10 +141,10 @@ function getDesktopIntentToSaveArtwork({
 
 function getDesktopAuthIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
-    case AuthModalIntent.FollowArtist:
-    case AuthModalIntent.FollowPartner:
+    case Schema.AuthIntent.followArtist:
+    case Schema.AuthIntent.followPartner:
       return getDesktopIntentToFollow(options)
-    case AuthModalIntent.SaveArtwork:
+    case Schema.AuthIntent.saveArtwork:
       return getDesktopIntentToSaveArtwork(options)
     default:
       return undefined

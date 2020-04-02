@@ -29,6 +29,7 @@ import {
   RequestConditionReportMutationResponse,
 } from "__generated__/RequestConditionReportMutation.graphql"
 import { RequestConditionReportQuery } from "__generated__/RequestConditionReportQuery.graphql"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 
 const logger = createLogger(
@@ -104,6 +105,8 @@ export const RequestConditionReport: React.FC<RequestConditionReportProps> = pro
     openAuthModal(mediator, {
       mode: ModalType.login,
       redirectTo: location.href,
+      contextModule: ContextModule.aboutTheWork,
+      intent: AuthIntent.requestConditionReport,
     })
   }
 

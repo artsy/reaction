@@ -73,8 +73,9 @@ describe("ArtworkSidebarArtists", () => {
           kind: "artist",
           objectId: "josef-albers",
         },
+        contextModule: "artworkSidebar",
         copy: "Sign up to follow Josef Albers",
-        intent: "follow artist",
+        intent: "followArtist",
         mode: "signup",
       })
     })

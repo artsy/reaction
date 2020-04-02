@@ -5,9 +5,9 @@ import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
+import { AddressForm } from "Components/AddressForm"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
-import { AddressForm } from "Components/AddressForm"
 import * as paymentPickerMock from "../../Components/__mocks__/PaymentPicker"
 import {
   settingOrderPaymentFailed,

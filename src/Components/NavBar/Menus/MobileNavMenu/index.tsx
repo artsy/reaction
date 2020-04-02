@@ -10,15 +10,17 @@ import {
 } from "@artsy/palette"
 import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ModalType } from "Components/Authentication/Types"
 import { LinkData, MenuData, MenuLinkData } from "Components/NavBar/menuData"
 import React from "react"
 import styled from "styled-components"
+import { getMobileAuthLink } from "Utils/openAuthModal"
 import { MobileLink } from "./MobileLink"
 import {
   NavigatorContextProvider,
   useNavigation,
 } from "./NavigatorContextProvider"
-
 interface Props {
   isOpen: boolean
   menuData: MenuData
@@ -83,6 +85,7 @@ export const AnimatingMenuWrapper = styled.div<{
 
   transform: translate3d(${p => (p.isOpen ? "0" : "100%")}, 0, 0);
   transition: transform 0.15s;
+
   ul {
     margin-bottom: 100px;
   }
@@ -225,19 +228,18 @@ export const MobileSubmenuLink: React.FC<any> = ({ children, menu }) => {
 }
 
 const AuthenticateLinks: React.FC = () => {
+  const authLink = (type: ModalType) => {
+    return getMobileAuthLink(type, {
+      intent: AuthIntent[type],
+      contextModule: ContextModule.header,
+    })
+  }
+
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
-      <MobileLink
-        href={"/sign_up?intent=signup&trigger=click&contextModule=Header"}
-      >
-        Sign Up
-      </MobileLink>
-      <MobileLink
-        href={"/log_in?intent=signup&trigger=click&contextModule=Header"}
-      >
-        Login
-      </MobileLink>
+      <MobileLink href={authLink(ModalType.signup)}>Sign Up</MobileLink>
+      <MobileLink href={authLink(ModalType.login)}>Login</MobileLink>
     </Box>
   )
 }

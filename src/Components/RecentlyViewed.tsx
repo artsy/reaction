@@ -4,6 +4,7 @@ import { RecentlyViewedQuery } from "__generated__/RecentlyViewedQuery.graphql"
 import { SystemContext, SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
@@ -66,6 +67,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
                         user={user}
                         mediator={mediator}
                         onClick={this.trackClick.bind(this)}
+                        contextModule={ContextModule.recentlyViewedRail}
                       />
                     )
                   }}

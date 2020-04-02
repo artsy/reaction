@@ -1,4 +1,6 @@
 import { Theme } from "@artsy/palette"
+import { authImpression } from "Artsy/Analytics/v2/Events"
+import { AuthModalType } from "Artsy/Analytics/v2/Schema"
 import qs from "querystring"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -23,7 +25,7 @@ import {
 export interface FormSwitcherProps {
   error?: string
   handleSubmit: SubmitHandler
-  handleTypeChange?: (e: string) => void
+  handleTypeChange?: (e: ModalType) => void
   isMobile?: boolean
   isStatic?: boolean
   onFacebookLogin?: (e: Event) => void
@@ -64,11 +66,9 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       options: {
         contextModule,
         copy,
-        destination,
         redirectTo,
         intent,
         title,
-        trigger,
         triggerSeconds,
       },
       type,
@@ -78,14 +78,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     // Analytics
     const event = Object.assign(
       {
-        action: "Auth impression",
-        type,
-        context_module: contextModule,
-        modal_copy: copy || title,
-        trigger: trigger || "click",
-        trigger_seconds: triggerSeconds,
+        contextModule,
         intent,
-        auth_redirect: redirectTo || destination,
+        copy: copy || title,
+        triggerSeconds,
+        type: AuthModalType[type],
       },
       type === "signup"
         ? {
@@ -93,8 +90,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
           }
         : null
     )
+
+    const trackingArgs = authImpression(event)
+
     if (tracking) {
-      tracking.trackEvent(event)
+      tracking.trackEvent(trackingArgs)
     }
   }
 
