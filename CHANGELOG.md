@@ -1,3 +1,15 @@
+# v26.0.0 (Thu Apr 02 2020)
+
+#### 💥  Breaking Change
+
+- Analytics schema v2 - authImpression event [#3193](https://github.com/artsy/reaction/pull/3193) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v25.42.6 (Thu Apr 02 2020)
 
 #### 🐛  Bug Fix
