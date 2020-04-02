@@ -214,7 +214,7 @@ describe("OverviewRoute", () => {
       const wrapper = getWrapper({
         ...defaultArtist,
       })
-      expect(wrapper.find("ArtistConsignButton").length).toEqual(1)
+      expect(wrapper.find("ArtistConsignButton").length).toEqual(2)
     })
   })
 
@@ -251,7 +251,6 @@ const defaultArtist: routes_OverviewQueryRawResponse["artist"] = {
   targetSupply: {
     isInMicrofunnel: false,
   },
-  is_consignable: true,
   id: "opaque-artist-id",
   slug: "juan-gris",
   name: "Juan Gris",
