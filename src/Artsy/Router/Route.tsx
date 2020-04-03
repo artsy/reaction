@@ -22,12 +22,12 @@ interface RenderArgProps {
 }
 
 function createRender({
-  fetchIndicator = "spinner",
+  fetchIndicator = "overlay",
   render,
 }: CreateRenderProps) {
   return (renderArgs: RenderArgProps) => {
     const { Component, props, error } = renderArgs
-    if (error && error instanceof HttpError) {
+    if (error) {
       throw error
     }
 
@@ -71,9 +71,15 @@ function createRender({
           };
         */
 
-        return
+        /**
+         * Its an odd requirement, but the way in which one triggers RenderStatus
+         * component updates is to return undefined.
+         */
+        return undefined
+
+        // If for some reason something else is passed, fall back to the spinner
       } else {
-        return
+        return <RouteSpinner />
       }
     }
 
