@@ -65,7 +65,7 @@ export class ArtworkSidebarBidAction extends React.Component<
   redirectToBid(firstIncrement: number) {
     const { slug, sale } = this.props.artwork
     const bid = this.state.selectedMaxBidCents || firstIncrement
-    const href = `/auction/${sale.slug}/bid/${slug}?bid=${bid}&contextModule=artworkSidebar`
+    const href = `/auction/${sale.slug}/bid/${slug}?bid=${bid}`
     window.location.href = href
   }
 
