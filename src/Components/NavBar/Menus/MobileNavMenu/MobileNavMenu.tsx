@@ -141,6 +141,9 @@ export const BackLink: React.FC = () => {
       }}
       width="30px"
       height="30px"
+      style={{
+        cursor: "pointer",
+      }}
     >
       <ChevronIcon
         direction="left"
@@ -200,6 +203,9 @@ export const MobileSubmenuLink: React.FC<any> = ({ children, menu }) => {
       <Flex
         py={0.5}
         flexDirection="row"
+        style={{
+          cursor: "pointer",
+        }}
         onClick={() => {
           push(menu.title)
           trackEvent({
