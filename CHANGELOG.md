@@ -1,3 +1,15 @@
+# v26.0.3 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- [Route] Log generic errors but throw on HttpError [#3344](https://github.com/artsy/reaction/pull/3344) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.0.2 (Fri Apr 03 2020)
 
 #### 🐛  Bug Fix
