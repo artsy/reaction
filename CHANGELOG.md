@@ -1,3 +1,15 @@
+# v26.0.1 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Use app shell top-loader by default [#3342](https://github.com/artsy/reaction/pull/3342) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.0.0 (Thu Apr 02 2020)
 
 #### 💥  Breaking Change
