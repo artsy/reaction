@@ -1,3 +1,15 @@
+# v26.0.2 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- Remove contextModule from auction redirect [#3343](https://github.com/artsy/reaction/pull/3343) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.0.1 (Fri Apr 03 2020)
 
 #### 🐛  Bug Fix
