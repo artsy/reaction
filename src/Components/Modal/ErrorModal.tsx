@@ -2,6 +2,7 @@ import { Box, Link } from "@artsy/palette"
 import React from "react"
 import { getENV } from "Utils/getENV"
 import { ModalDialog } from "./ModalDialog"
+import { ModalWidth } from "./ModalWrapper"
 
 interface ErrorModalProps {
   show?: boolean
@@ -40,12 +41,15 @@ export class ErrorModal extends React.Component<ErrorModalProps> {
     } = this.props
     const emailAddress = contactEmail ? contactEmail : "support@artsy.net"
     const showErrorStack = errorStack && getENV("NODE_ENV") !== "production"
+    const width =
+      getENV("NODE_ENV") === "development" ? ModalWidth.Wide : ModalWidth.Narrow
 
     return (
       <ModalDialog
         show={show}
         onClose={onClose}
         heading={headerText}
+        width={width}
         detail={
           <>
             {detailText || (
@@ -57,7 +61,7 @@ export class ErrorModal extends React.Component<ErrorModalProps> {
 
             {showErrorStack && (
               <Box py={3}>
-                <Box>{errorStack}</Box>
+                <Box style={{ whiteSpace: "pre-wrap" }}>{errorStack}</Box>
               </Box>
             )}
           </>
