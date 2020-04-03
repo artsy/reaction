@@ -4,6 +4,7 @@
  */
 
 import { RouteSpinner } from "Artsy/Relay/renderWithLoadProgress"
+import { HttpError } from "found"
 import BaseRoute from "found/lib/Route"
 import React from "react"
 
@@ -27,7 +28,14 @@ function createRender({
   return (renderArgs: RenderArgProps) => {
     const { Component, props, error } = renderArgs
     if (error) {
-      throw error
+      if (error instanceof HttpError) {
+        throw error
+      }
+      console.error(
+        "[Artsy/Router/Route] Non HttpError rendering route:",
+        error
+      )
+      return null
     }
 
     if (render) {
