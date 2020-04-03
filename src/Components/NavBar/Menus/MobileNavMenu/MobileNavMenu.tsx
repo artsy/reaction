@@ -24,17 +24,21 @@ import {
 interface Props {
   isOpen: boolean
   menuData: MenuData
+  onNavButtonClick?: (event) => void
 }
 
 export const MobileNavMenu: React.FC<Props> = props => {
   const {
-    links: [artworks, artists],
-  } = props.menuData
+    menuData: {
+      links: [artworks, artists],
+    },
+    onNavButtonClick,
+  } = props
   const { user } = useSystemContext()
 
   return (
     <NavigatorContextProvider>
-      <MenuViewport>
+      <MenuViewport onClick={onNavButtonClick}>
         <AnimatingMenuWrapper isOpen={props.isOpen}>
           <ul>
             <MobileSubmenuLink menu={(artworks as MenuLinkData).menu}>
