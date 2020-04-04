@@ -191,68 +191,87 @@ describe("ArtworkSidebarBidAction", () => {
     })
   })
 
-  describe("for open auction", () => {
-    it("with open registration and not registered bidder ", async () => {
-      const artwork = merge(
-        ArtworkFromTimedAuctionRegistrationOpen,
-        NotRegisteredToBid
-      )
-      const data: ArtworkSidebarBidAction_Test_QueryRawResponse = {
-        artwork,
-        me: NotIDVedUser,
-      }
-      const wrapper = await getWrapper(data)
+  describe("for an online-only (timed) auction", () => {
+    describe("with registration open", () => {
+      it("allows the user to place a max bid when the user has not tried to register", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationOpen,
+          NotRegisteredToBid
+        )
+        const data: ArtworkSidebarBidAction_Test_QueryRawResponse = {
+          artwork,
+          me: NotIDVedUser,
+        }
+        const wrapper = await getWrapper(data)
 
-      expect(wrapper.text()).toContain("Place max bid")
-      expect(wrapper.text()).toContain("$900")
-      expect(wrapper.text()).toContain("Bid")
-    })
-
-    it("with closed registration and not registered bidder ", async () => {
-      const artwork = merge(
-        ArtworkFromTimedAuctionRegistrationClosed,
-        NotRegisteredToBid
-      )
-      const wrapper = await getWrapper({
-        artwork,
-        me: NotIDVedUser,
+        expect(wrapper.text()).toContain("Place max bid")
+        expect(wrapper.text()).toContain("$900")
+        expect(wrapper.text()).toContain("Bid")
       })
 
-      expect(wrapper.text()).toContain("Registration closed")
+      it("allows the user to place a max bid when the user is a registered bidder", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationOpen,
+          RegisteredBidder
+        )
+        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+        expect(wrapper.text()).toContain("Place max bid")
+        expect(wrapper.text()).toContain("$900")
+        expect(wrapper.text()).toContain("Bid")
+      })
+
+      it("allows the user to increase their max bid after an initial max bid", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationOpen,
+          RegistedBidderWithBids
+        )
+        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+        expect(wrapper.text()).toContain("Place max bid")
+        expect(wrapper.text()).toContain("$900")
+        expect(wrapper.text()).toContain("Increase max bid")
+      })
+
+      it("displays 'Registration Pending' when the user is a pending bidder", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationOpen,
+          BidderPendingApproval
+        )
+        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+        expect(wrapper.text()).toContain("Registration pending")
+      })
     })
 
-    it("with bidder registration pending approval", async () => {
-      const artwork = merge(
-        ArtworkFromTimedAuctionRegistrationOpen,
-        BidderPendingApproval
-      )
-      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+    describe("with registration closed", () => {
+      it("displays 'Registration Closed' and doesn't allow the user to bid unless already registered", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationClosed,
+          NotRegisteredToBid
+        )
+        const wrapper = await getWrapper({
+          artwork,
+          me: NotIDVedUser,
+        })
 
-      expect(wrapper.text()).toContain("Registration pending")
-    })
+        expect(wrapper.text()).toContain("Registration closed")
+      })
 
-    it("with registered bidder", async () => {
-      const artwork = merge(
-        ArtworkFromTimedAuctionRegistrationOpen,
-        RegisteredBidder
-      )
-      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+      it("allows users to place bids if they are already a registered bidder", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationClosed,
+          RegisteredBidder
+        )
+        const wrapper = await getWrapper({
+          artwork,
+          me: NotIDVedUser,
+        })
 
-      expect(wrapper.text()).toContain("Place max bid")
-      expect(wrapper.text()).toContain("$900")
-      expect(wrapper.text()).toContain("Bid")
-    })
-
-    it("with registered bidder with bids", async () => {
-      const artwork = merge(
-        ArtworkFromTimedAuctionRegistrationOpen,
-        RegistedBidderWithBids
-      )
-      const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
-
-      expect(wrapper.text()).toContain("Place max bid")
-      expect(wrapper.text()).toContain("$900")
-      expect(wrapper.text()).toContain("Increase max bid")
+        expect(wrapper.text()).toContain("Place max bid")
+        expect(wrapper.text()).toContain("$900")
+        expect(wrapper.text()).toContain("Bid")
+      })
     })
   })
 

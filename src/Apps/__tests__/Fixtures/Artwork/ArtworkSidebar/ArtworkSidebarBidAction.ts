@@ -54,24 +54,8 @@ export const ArtworkFromTimedAuctionRegistrationOpen: ArtworkSidebarBidAction_Te
   myLotStanding: null,
 }
 
-export const SaleRequiringIDV: Partial<ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"]["sale"]> = {
-  requireIdentityVerification: true,
-}
-
-export const NotIDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
-  id: "user-id",
-  identityVerified: false,
-}
-
-export const IDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
-  id: "user-id",
-  identityVerified: true,
-}
-
-export const NoUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = null
-
 export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
-  slug: "artwork_from_open_non_live_auction",
+  slug: "artwork_from_registration_closed_timed_auction",
   id: "sdfsdfsdf2",
   internalID: "sdf12345",
   sale: {
@@ -88,14 +72,30 @@ export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_
   sale_artwork: {
     id: "sdfsdfsdf",
     increments: [
-      { cents: 750000, display: "$7,500" },
-      { cents: 800000, display: "$8,000" },
-      { cents: 850000, display: "$8,500" },
-      { cents: 900000, display: "$9,000" },
+      { cents: 90000, display: "$900" },
+      { cents: 95000, display: "$950" },
+      { cents: 100000, display: "$1,000" },
+      { cents: 110000, display: "$1,100" },
     ],
   },
   myLotStanding: null,
 }
+
+export const SaleRequiringIDV: Partial<ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"]["sale"]> = {
+  requireIdentityVerification: true,
+}
+
+export const NotIDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
+  id: "user-id",
+  identityVerified: false,
+}
+
+export const IDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
+  id: "user-id",
+  identityVerified: true,
+}
+
+export const NoUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = null
 
 export const ArtworkFromLiveAuctionRegistrationOpen: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
   slug: "artwork_from_open_live_auction_open_registration",
