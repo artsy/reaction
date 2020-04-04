@@ -29,6 +29,22 @@ export interface ArtworkSidebarBidActionState {
   selectedMaxBidCents?: number
 }
 
+const RegisterToBidButton = (props: { onClickFx: (e: any) => void }) => {
+  return (
+    <Button width="100%" size="large" mt={1} onClick={() => props.onClickFx}>
+      Register to bid
+    </Button>
+  )
+}
+
+const IdentityVerificationDisclaimer = () => {
+  return (
+    <Sans size="2" color="black60" pb={1} textAlign="center">
+      Identity verification required to bid.
+    </Sans>
+  )
+}
+
 @track()
 export class ArtworkSidebarBidAction extends React.Component<
   ArtworkSidebarBidActionProps,
@@ -106,22 +122,22 @@ export class ArtworkSidebarBidAction extends React.Component<
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
     const hasMyBids = !!(myLotStanding && myLotStanding.most_recent_bid)
 
-    const saleRequiresIdentityVerification: boolean =
-      artwork.sale.requireIdentityVerification
-    const needsIdentityVerification: boolean = !me?.identityVerified
+    /*
+     * Note: If the user is already registered to bid, then the sale doesn't
+     * requireIdentityVerification OR the user was manually approved by an
+     * admin. In either case, they don't need identity verification at this
+     * time.
+     */
+    const userNeedsIdentityVerification: boolean =
+      !registeredToBid &&
+      artwork.sale.requireIdentityVerification &&
+      !me?.identityVerified
 
     if (artwork.sale.is_preview) {
       return (
         <div>
           {!registrationAttempted && (
-            <Button
-              width="100%"
-              size="large"
-              mt={1}
-              onClick={() => this.redirectToRegister()}
-            >
-              Register to bid
-            </Button>
+            <RegisterToBidButton onClickFx={this.redirectToRegister} />
           )}
 
           {registrationAttempted && !registeredToBid && (
@@ -136,11 +152,7 @@ export class ArtworkSidebarBidAction extends React.Component<
             </Button>
           )}
 
-          {saleRequiresIdentityVerification && needsIdentityVerification && (
-            <Sans size="2" color="black60" pb={1} textAlign="center">
-              Identity verification required to bid.
-            </Sans>
-          )}
+          {userNeedsIdentityVerification && <IdentityVerificationDisclaimer />}
         </div>
       )
     }
