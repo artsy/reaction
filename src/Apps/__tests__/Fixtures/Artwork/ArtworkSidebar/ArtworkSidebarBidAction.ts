@@ -13,6 +13,7 @@ export const ArtworkFromAuctionPreview: ArtworkSidebarBidAction_Test_QueryRawRes
     is_live_open: false,
     is_closed: false,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -39,6 +40,7 @@ export const ArtworkFromTimedAuctionRegistrationOpen: ArtworkSidebarBidAction_Te
     is_live_open: false,
     is_closed: false,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -52,6 +54,10 @@ export const ArtworkFromTimedAuctionRegistrationOpen: ArtworkSidebarBidAction_Te
   myLotStanding: null,
 }
 
+export const SaleRequiringIDV: Partial<ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"]["sale"]> = {
+  requireIdentityVerification: true,
+}
+
 export const NotIDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
   id: "user-id",
   identityVerified: false,
@@ -61,6 +67,8 @@ export const IDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
   id: "user-id",
   identityVerified: true,
 }
+
+export const NoUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = null
 
 export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
   slug: "artwork_from_open_non_live_auction",
@@ -75,6 +83,7 @@ export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_
     is_live_open: false,
     is_closed: false,
     is_registration_closed: true,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -101,6 +110,7 @@ export const ArtworkFromLiveAuctionRegistrationOpen: ArtworkSidebarBidAction_Tes
     is_live_open: true,
     is_closed: false,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -127,6 +137,7 @@ export const ArtworkFromLiveAuctionRegistrationClosed: ArtworkSidebarBidAction_T
     is_live_open: true,
     is_closed: false,
     is_registration_closed: true,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -154,6 +165,7 @@ export const ArtworkFromClosedAuction: ArtworkSidebarBidAction_Test_QueryRawResp
       is_live_open: false,
       is_closed: true,
       is_registration_closed: false,
+      requireIdentityVerification: false,
     },
     sale_artwork: {
       id: "sdfsdfsdf",

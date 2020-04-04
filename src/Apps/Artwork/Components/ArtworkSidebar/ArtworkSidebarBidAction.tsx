@@ -106,9 +106,9 @@ export class ArtworkSidebarBidAction extends React.Component<
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
     const hasMyBids = !!(myLotStanding && myLotStanding.most_recent_bid)
 
-    // TODO: actual query for me
-    const saleRequiresIdentityVerification: boolean = true
-    const needsIdentityVerification: boolean = !me.identityVerified
+    const saleRequiresIdentityVerification: boolean =
+      artwork.sale.requireIdentityVerification
+    const needsIdentityVerification: boolean = !me?.identityVerified
 
     if (artwork.sale.is_preview) {
       return (
@@ -254,6 +254,7 @@ export const ArtworkSidebarBidActionFragmentContainer = createFragmentContainer(
           is_live_open: isLiveOpen
           is_closed: isClosed
           is_registration_closed: isRegistrationClosed
+          requireIdentityVerification
         }
         sale_artwork: saleArtwork {
           increments {
