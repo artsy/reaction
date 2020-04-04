@@ -187,9 +187,14 @@ export class ArtworkSidebarBidAction extends React.Component<
     if (artwork.sale.is_open) {
       if (registrationAttempted && !registeredToBid) {
         return (
-          <Button width="100%" size="large" disabled>
-            Registration pending
-          </Button>
+          <div>
+            <Button width="100%" size="large" disabled>
+              Registration pending
+            </Button>
+            {userNeedsIdentityVerification && (
+              <IdentityVerificationDisclaimer />
+            )}
+          </div>
         )
       }
       if (artwork.sale.is_registration_closed && !registeredToBid) {
@@ -211,31 +216,37 @@ export class ArtworkSidebarBidAction extends React.Component<
         text: increment.display,
       }))
 
-      return (
-        <Box>
-          <Separator mb={2} />
-          <Flex width="100%" flexDirection="row">
-            <Serif size="3t" color="black100" mr={1}>
-              Place max bid
-            </Serif>
-            <Tooltip
-              content="Set the maximum amount you would like Artsy to bid up to
-            on your behalf"
+      if (userNeedsIdentityVerification) {
+        return (
+          <div>
+            <RegisterToBidButton onClickFx={this.redirectToRegister} />
+            <IdentityVerificationDisclaimer />
+          </div>
+        )
+      } else {
+        return (
+          <Box>
+            <Separator mb={2} />
+            <Flex width="100%" flexDirection="row">
+              <Serif size="3t" color="black100" mr={1}>
+                Place max bid
+              </Serif>
+              <Tooltip content="Set the maximum amount you would like Artsy to bid up to on your behalf">
+                <HelpIcon />
+              </Tooltip>
+            </Flex>
+            <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
+            <Spacer mb={2} />
+            <Button
+              width="100%"
+              size="large"
+              onClick={() => this.redirectToBid(firstIncrement.cents)}
             >
-              <HelpIcon />
-            </Tooltip>
-          </Flex>
-          <LargeSelect options={selectOptions} onSelect={this.setMaxBid} />
-          <Spacer mb={2} />
-          <Button
-            width="100%"
-            size="large"
-            onClick={() => this.redirectToBid(firstIncrement.cents)}
-          >
-            {hasMyBids ? "Increase max bid" : "Bid"}
-          </Button>
-        </Box>
-      )
+              {hasMyBids ? "Increase max bid" : "Bid"}
+            </Button>
+          </Box>
+        )
+      }
     }
   }
 }
