@@ -95,6 +95,7 @@ export class Route extends BaseRoute {
 
     super({
       ...props,
+      sarah: "hi",
       render: createRender(props),
     })
   }

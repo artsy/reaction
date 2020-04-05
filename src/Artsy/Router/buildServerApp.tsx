@@ -78,6 +78,7 @@ export function buildServerApp(
         historyMiddlewares,
         routeConfig: createRouteConfig(routes),
         resolver,
+        matchContext: context,
         render: props => <Render {...props} />,
       })
 

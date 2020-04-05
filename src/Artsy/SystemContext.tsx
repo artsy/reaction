@@ -48,6 +48,11 @@ export interface SystemContextProps {
   searchQuery?: string
 
   /**
+   * Useful for passing arbitrary data from Force.
+   */
+  injectedData?: any
+
+  /**
    * Toggle for setting global fetch state, typically set in the `RenderStatus.tsx`
    */
   setIsFetching?: (isFetching: boolean) => void
