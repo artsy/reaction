@@ -12,6 +12,12 @@ import { MobileLoginForm } from "../Mobile/LoginForm"
 import { MobileSignUpForm } from "../Mobile/SignUpForm"
 import { ModalType } from "../Types"
 
+jest.mock("sharify", () => ({
+  data: {
+    ENABLE_SIGN_IN_WITH_APPLE: true,
+  },
+}))
+
 describe("FormSwitcher", () => {
   const getWrapper = (props: any = {}) =>
     mount(
@@ -87,6 +93,7 @@ describe("FormSwitcher", () => {
     beforeEach(() => {
       window.location.assign = jest.fn()
     })
+
     it("redirects to a url if static or mobile", () => {
       const wrapper = getWrapper({
         type: ModalType.login,

@@ -1,5 +1,6 @@
 import { Box, Flex, Link } from "@artsy/palette"
 import React from "react"
+import { data as sd } from "sharify"
 import { CaptchaTerms, FooterText } from "./commonElements"
 import { ModalType } from "./Types"
 
@@ -24,19 +25,30 @@ export const Footer = (props: FooterProps) => {
 
   switch (mode) {
     case "login": {
+      const thirdPartyLogin = sd.ENABLE_SIGN_IN_WITH_APPLE ? (
+        <FooterText>
+          {"Login using "}
+          <Link color="black60" onClick={onAppleLogin}>
+            Apple
+          </Link>{" "}
+          {" or "}
+          <Link color="black60" onClick={onFacebookLogin}>
+            Facebook
+          </Link>{" "}
+          {"."}
+        </FooterText>
+      ) : (
+        <FooterText>
+          {"Log in using "}
+          <Link color="black60" onClick={onFacebookLogin}>
+            Facebook
+          </Link>
+          {". "}
+        </FooterText>
+      )
       return (
         <Flex flexDirection={inline ? "row" : "column"} justifyContent="center">
-          <FooterText>
-            {"Login using "}
-            <Link color="black60" onClick={onAppleLogin}>
-              Apple
-            </Link>{" "}
-            {" or "}
-            <Link color="black60" onClick={onFacebookLogin}>
-              Facebook
-            </Link>{" "}
-            {"."}
-          </FooterText>
+          {thirdPartyLogin}
           <FooterText>
             {"Don’t have an account? "}
             <Link
@@ -72,23 +84,32 @@ export const Footer = (props: FooterProps) => {
       )
     }
     default: {
+      const thirdPartySignUp = sd.ENABLE_SIGN_IN_WITH_APPLE ? (
+        <FooterText>
+          {"Sign up using "}
+          <Link color="black60" onClick={onAppleLogin}>
+            Apple
+          </Link>{" "}
+          {" or "}
+          <Link color="black60" onClick={onFacebookLogin}>
+            Facebook
+          </Link>{" "}
+          {"."}
+        </FooterText>
+      ) : (
+        <FooterText>
+          <Link color="black60" onClick={onFacebookLogin}>
+            Sign up using Facebook.
+          </Link>{" "}
+        </FooterText>
+      )
       return (
         <Box>
           <Flex
             flexDirection={inline ? "row" : "column"}
             justifyContent="center"
           >
-            <FooterText>
-              {"Sign up using "}
-              <Link color="black60" onClick={onAppleLogin}>
-                Apple
-              </Link>{" "}
-              {" or "}
-              <Link color="black60" onClick={onFacebookLogin}>
-                Facebook
-              </Link>{" "}
-              {"."}
-            </FooterText>
+            {thirdPartySignUp}
           </Flex>
           <Flex
             flexDirection={inline ? "row" : "column"}
