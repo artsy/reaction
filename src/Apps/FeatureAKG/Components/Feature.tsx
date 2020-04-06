@@ -19,6 +19,10 @@ interface FeatureProps {
 const Feature: React.FC<FeatureProps> = props => {
   const { injectedData } = useSystemContext()
 
+  if (injectedData === undefined) {
+    return null
+  }
+
   const resizedUrl = resize(injectedData.hero_video_src, {
     width: 1190,
     quality: 80,
@@ -30,6 +34,11 @@ const Feature: React.FC<FeatureProps> = props => {
   const selectedWorks = injectedData.selected_works
   const featuredArtists = injectedData.featured_artists
   const featuredRails = injectedData.browse
+
+  const showRails =
+    featuredRails?.collections_rail?.items?.length ||
+    featuredRails?.auctions_rail?.items?.length ||
+    featuredRails?.fairs_rail?.items?.length
 
   return (
     <>
@@ -51,35 +60,42 @@ const Feature: React.FC<FeatureProps> = props => {
       </Section>
 
       {/* Editorial */}
-      <Section title={editorial.title} subtitle={editorial.subtitle}>
-        <FeaturedArticles {...editorial} articles={props.viewer.articles} />
-      </Section>
+      {editorial?.article_ids?.length && (
+        <Section title={editorial.title} subtitle={editorial.subtitle}>
+          <FeaturedArticles {...editorial} articles={props.viewer.articles} />
+        </Section>
+      )}
 
       {/* Video 1 */}
 
       {/* Selected works */}
-      <Section title={selectedWorks.title} subtitle={selectedWorks.subtitle}>
-        <SelectedWorks
-          {...selectedWorks}
-          selectedWorks={props.viewer.selectedWorks}
-        />
-      </Section>
+      {selectedWorks?.set_id && (
+        <Section title={selectedWorks.title} subtitle={selectedWorks.subtitle}>
+          <SelectedWorks
+            {...selectedWorks}
+            selectedWorks={props.viewer.selectedWorks}
+          />
+        </Section>
+      )}
 
       {/* Video 2 */}
 
       {/* Featured Artists */}
-      <Section
-        title={featuredArtists.title}
-        subtitle={featuredArtists.subtitle}
-      >
-        <FeaturedArtists {...featuredArtists} />
-      </Section>
+      {featuredArtists?.artists?.length && (
+        <Section
+          title={featuredArtists.title}
+          subtitle={featuredArtists.subtitle}
+        >
+          <FeaturedArtists {...featuredArtists} />
+        </Section>
+      )}
 
       {/* Browse */}
-      <Section title={featuredRails.title} subtitle={featuredRails.subtitle}>
-        {/* <FeaturedRails {...featuredRails} /> */}
-        <FeaturedRails {...featuredRails} viewer={props.viewer} />
-      </Section>
+      {showRails && (
+        <Section title={featuredRails.title} subtitle={featuredRails.subtitle}>
+          <FeaturedRails {...featuredRails} viewer={props.viewer} />
+        </Section>
+      )}
     </>
   )
 }

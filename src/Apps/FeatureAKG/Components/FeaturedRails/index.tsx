@@ -17,15 +17,9 @@ interface FeaturedRailsProps {
 }
 
 const FeaturedRails: React.FC<FeaturedRailsProps> = props => {
-  const hasCollectionsRail =
-    props.collections_rail?.items?.length &&
-    props.collections_rail?.items?.length > 0
-
-  const hasAuctionsRail =
-    props.auctions_rail?.items?.length && props.auctions_rail?.items?.length > 0
-
-  const hasFairsRail =
-    props.fairs_rail?.items?.length && props.fairs_rail?.items?.length > 0
+  const hasCollectionsRail = props.collections_rail?.items?.length
+  const hasAuctionsRail = props.auctions_rail?.items?.length
+  const hasFairsRail = props.fairs_rail?.items?.length
 
   return (
     <Box>

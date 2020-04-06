@@ -4,6 +4,11 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type SelectedWorks_selectedWorks = {
     readonly itemsConnection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly id: string;
+            } | null;
+        } | null> | null;
         readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
     } | null;
     readonly " $refType": "SelectedWorks_selectedWorks";
@@ -33,6 +38,35 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "ArtworkEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Artwork",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "id",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
+            }
+          ]
+        },
+        {
           "kind": "FragmentSpread",
           "name": "ArtworkGrid_artworks",
           "args": null
@@ -41,5 +75,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'bb0029e03343940dad0ef07441e466f9';
+(node as any).hash = '5c764216b99303163e4d20936dd4e633';
 export default node;

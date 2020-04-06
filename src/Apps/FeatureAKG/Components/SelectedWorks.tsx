@@ -13,6 +13,10 @@ interface SelectedWorksProps {
 const SelectedWorks: React.FC<SelectedWorksProps> = props => {
   const { mediator } = useSystemContext()
 
+  if (!props.selectedWorks.itemsConnection?.edges?.length) {
+    return null
+  }
+
   return (
     <Box maxWidth="720px" style={{ margin: "0 auto" }}>
       <ArtworkGrid
@@ -32,6 +36,13 @@ export const SelectedWorksFragmentContainer = createFragmentContainer(
       fragment SelectedWorks_selectedWorks on OrderedSet {
         itemsConnection {
           ...ArtworkGrid_artworks
+
+          # So we know whether or not to render the grid.
+          edges {
+            node {
+              id
+            }
+          }
         }
       }
     `,

@@ -28,21 +28,19 @@ export const routes: RouteConfig[] = [
     `,
     prepareVariables: (_params, props) => {
       const data = props.context.injectedData
+      const collectionIDs = data?.browse?.collections_rail?.items
+      const fairIDs = data?.browse?.fairs_rail?.items
+      const auctionIDs = data?.browse?.auctions_rail?.items
 
       return {
-        articleIDs: data.editorial.article_ids,
-        selectedWorksSetID: data.selected_works.set_id,
-        collectionRailItemIDs: data.browse.collections_rail.items.map(
-          item => item.id
-        ),
-        auctionRailItemIDs: data.browse.auctions_rail.items.map(
-          item => item.id
-        ),
-        fairRailItemIDs: data.browse.fairs_rail.items.map(item => item.id),
+        articleIDs: data?.editorial?.article_ids,
+        selectedWorksSetID: data?.selected_works?.set_id,
+        collectionRailItemIDs:
+          collectionIDs.length && collectionIDs.map(item => item.id),
+        auctionRailItemIDs:
+          auctionIDs.length && auctionIDs.map(item => item.id),
+        fairRailItemIDs: fairIDs.length && fairIDs.map(item => item.id),
       }
-    },
-    cacheConfig: {
-      force: true,
     },
   },
 ]

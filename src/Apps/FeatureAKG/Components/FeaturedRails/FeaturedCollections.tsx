@@ -4,7 +4,7 @@ import {
   FeaturedRailCarousel,
   RailMetadata,
 } from "Apps/FeatureAKG/Components/FeaturedRails"
-import { find } from "lodash"
+import { compact, find } from "lodash"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
@@ -23,19 +23,29 @@ const FeaturedCollectionsRail: React.FC<FeaturedCollectionsRailProps> = props =>
       items,
       item => item.id === collection.slug
     )
-    return {
-      ...collection,
-      imageSrc: matchingCollectionFromSpreadsheet.image_src,
-      subtitle: "Collection",
-      href: `/collection/${collection.slug}`,
+    if (matchingCollectionFromSpreadsheet) {
+      return {
+        ...collection,
+        imageSrc: matchingCollectionFromSpreadsheet.image_src,
+        subtitle: "Collection",
+        href: `/collection/${collection.slug}`,
+      }
+    } else {
+      return null
     }
   })
 
-  return (
-    <FeaturedRail title={title} subtitle={subtitle}>
-      <FeaturedRailCarousel itemsForCarousel={itemsForCarousel} />
-    </FeaturedRail>
-  )
+  // This will happen if we have IDs in our spreadsheet that don't match
+  // data we fetch for.
+  if (compact(itemsForCarousel).length > 0) {
+    return (
+      <FeaturedRail title={title} subtitle={subtitle}>
+        <FeaturedRailCarousel itemsForCarousel={itemsForCarousel} />
+      </FeaturedRail>
+    )
+  } else {
+    return null
+  }
 }
 
 export const FeaturedCollectionsRailFragmentContainer = createFragmentContainer(

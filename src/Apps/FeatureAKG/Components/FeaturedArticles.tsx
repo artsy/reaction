@@ -20,6 +20,10 @@ interface FeaturedArticlesProps {
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
   const articles = props.articles
 
+  if (!articles?.length) {
+    return null
+  }
+
   // @ts-ignore
   const firstArticle = articles.shift()
 

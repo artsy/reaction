@@ -4,7 +4,7 @@ import {
   FeaturedRailCarousel,
   RailMetadata,
 } from "Apps/FeatureAKG/Components/FeaturedRails"
-import { find } from "lodash"
+import { compact, find } from "lodash"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
@@ -23,20 +23,28 @@ const FeaturedAuctionsRail: React.FC<FeaturedAuctionsRailProps> = props => {
       items,
       item => item.id === auction.node.slug
     )
-    return {
-      ...auction,
-      imageSrc: matchingAuctionFromSpreadsheet.image_src,
-      subtitle: "Benefit Auction",
-      title: auction.node.name,
-      href: auction.node.href,
+    if (matchingAuctionFromSpreadsheet) {
+      return {
+        ...auction,
+        imageSrc: matchingAuctionFromSpreadsheet.image_src,
+        subtitle: "Benefit Auction",
+        title: auction.node.name,
+        href: auction.node.href,
+      }
+    } else {
+      return null
     }
   })
 
-  return (
-    <FeaturedRail title={title} subtitle={subtitle}>
-      <FeaturedRailCarousel itemsForCarousel={itemsForCarousel} />
-    </FeaturedRail>
-  )
+  if (compact(itemsForCarousel).length > 0) {
+    return (
+      <FeaturedRail title={title} subtitle={subtitle}>
+        <FeaturedRailCarousel itemsForCarousel={itemsForCarousel} />
+      </FeaturedRail>
+    )
+  } else {
+    return null
+  }
 }
 
 export const FeaturedAuctionsRailFragmentContainer = createFragmentContainer(
