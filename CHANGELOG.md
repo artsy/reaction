@@ -1,3 +1,15 @@
+# v26.2.0 (Mon Apr 06 2020)
+
+#### 🚀  Enhancement
+
+- Adds the Art Keeps Going feature app + content [#3348](https://github.com/artsy/reaction/pull/3348) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.1.2 (Mon Apr 06 2020)
 
 #### 🐛  Bug Fix
