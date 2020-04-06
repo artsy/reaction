@@ -1,3 +1,17 @@
+# v26.1.2 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Clear cache on mutation [#3352](https://github.com/artsy/reaction/pull/3352) ([@damassi](https://github.com/damassi))
+- #trivial data-test attrs for SignUpForm [#3350](https://github.com/artsy/reaction/pull/3350) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.1.1 (Mon Apr 06 2020)
 
 #### 🐛  Bug Fix
