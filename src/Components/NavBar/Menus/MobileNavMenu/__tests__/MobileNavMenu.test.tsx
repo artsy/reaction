@@ -8,7 +8,7 @@ import {
   BackLink,
   MobileNavMenu,
   MobileSubmenuLink,
-} from "../../MobileNavMenu"
+} from "../../MobileNavMenu/MobileNavMenu"
 import { MobileLink } from "../MobileLink"
 
 jest.mock("Artsy/Analytics/useTracking")

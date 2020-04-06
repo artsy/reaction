@@ -154,7 +154,6 @@ export const routes: RouteConfig[] = [
         prepare: () => {
           OverviewRoute.preload()
         },
-        fetchIndicator: "spinner",
         displayNavigationTabs: true,
         query: graphql`
           query routes_OverviewQuery($artistID: String!) @raw_response_type {
@@ -170,7 +169,6 @@ export const routes: RouteConfig[] = [
         prepare: () => {
           WorksForSaleRoute.preload()
         },
-        fetchIndicator: "spinner",
         displayNavigationTabs: true,
         query: graphql`
           query routes_WorksQuery(
@@ -250,7 +248,6 @@ export const routes: RouteConfig[] = [
         prepare: () => {
           AuctionResultsRoute.preload()
         },
-        fetchIndicator: "spinner",
         displayNavigationTabs: true,
         query: graphql`
           query routes_AuctionResultsQuery($artistID: String!) {

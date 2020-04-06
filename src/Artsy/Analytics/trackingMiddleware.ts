@@ -65,11 +65,11 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
             }
 
             analytics.page(trackingData, { integrations: { Marketo: false } })
-          }
 
-          // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-          if (sd.CLIENT_NAVIGATION_V4) {
-            trackExperimentViewed("client_navigation_v4")
+            // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
+            if (sd.CLIENT_NAVIGATION_V5) {
+              trackExperimentViewed("client_navigation_v5")
+            }
           }
 
           // Reset timers that track time on page since we're tracking each order

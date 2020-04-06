@@ -1,7 +1,7 @@
+import { ErrorModal } from "Components/Modal/ErrorModal"
 import React from "react"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
-import { ErrorModal } from "./Modal/ErrorModal"
 
 const logger = createLogger()
 

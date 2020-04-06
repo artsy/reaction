@@ -1,6 +1,6 @@
-import { ErrorBoundary } from "Components/ErrorBoundary"
 import { mount } from "enzyme"
 import React from "react"
+import { ErrorBoundary } from "../ErrorBoundary"
 
 describe("ErrorBoundary", () => {
   const errorLog = console.error

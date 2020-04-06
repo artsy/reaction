@@ -49,7 +49,7 @@ export const NavBar: React.FC = track(
   }
 )(() => {
   const { trackEvent } = useTracking()
-  const { mediator, user } = useContext(SystemContext)
+  const { mediator, user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
@@ -63,6 +63,22 @@ export const NavBar: React.FC = track(
       toggleMobileNav(false)
     }
   }, [isMobile])
+
+  /**
+   * Check to see if we're clicking a link that lives within the new app shell
+   * and close the navbar.
+   *
+   * TODO: Find a less naive way to check if route is in appshell
+   */
+  const handleMobileNavClick = event => {
+    // FIXME: Remove once experimental A/B test completes
+    if (EXPERIMENTAL_APP_SHELL) {
+      // Includes /collect or /collections
+      if (event.target?.parentNode?.href?.includes("/collect")) {
+        toggleMobileNav(false)
+      }
+    }
+  }
 
   return (
     <header>
@@ -222,7 +238,11 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu isOpen={showMobileMenu} menuData={menuData} />
+          <MobileNavMenu
+            isOpen={showMobileMenu}
+            menuData={menuData}
+            onNavButtonClick={handleMobileNavClick}
+          />
         </>
       )}
     </header>

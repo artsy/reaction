@@ -16,11 +16,11 @@ describe("Auction/routes", () => {
   // FIXME: Remove after A/B test runs
   beforeEach(() => {
     // @ts-ignore
-    window.sd = { CLIENT_NAVIGATION_V4: "experiment" }
+    window.sd = { CLIENT_NAVIGATION_V5: "experiment" }
   })
   beforeEach(() => {
     // @ts-ignore
-    delete window.sd.CLIENT_NAVIGATION_V4
+    delete window.sd.CLIENT_NAVIGATION_V5
   })
 
   async function render(

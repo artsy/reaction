@@ -2,6 +2,7 @@ import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
 import React, { useContext } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 
 import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
@@ -20,6 +21,8 @@ import { PricingContextFragmentContainer as PricingContext } from "./Components/
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
+import { useRouteTracking } from "Artsy/Analytics/useRouteTracking"
 import { Footer } from "Components/Footer"
 import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
 import { RouterContext } from "found"
@@ -31,6 +34,7 @@ export interface Props {
   tracking?: TrackingProp
   routerPathname: string
   referrer: string
+  shouldTrackPageView: boolean
 }
 
 declare const window: any
@@ -45,6 +49,16 @@ export class ArtworkApp extends React.Component<Props> {
    * data that remains consistent with the rest of the app.
    */
   componentDidMount() {
+    this.track()
+  }
+
+  componentDidUpdate() {
+    if (this.props.shouldTrackPageView) {
+      this.track()
+    }
+  }
+
+  track() {
     this.trackPageview()
     this.trackProductView()
     this.trackLotView()
@@ -70,6 +84,11 @@ export class ArtworkApp extends React.Component<Props> {
 
     if (typeof window.analytics !== "undefined") {
       window.analytics.page(properties, { integrations: { Marketo: false } })
+
+      // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
+      if (sd.CLIENT_NAVIGATION_V5) {
+        trackExperimentViewed("client_navigation_v5")
+      }
     }
   }
 
@@ -250,8 +269,15 @@ export const ArtworkAppFragmentContainer = createFragmentContainer(
     } = useContext(RouterContext)
 
     const referrer = state && state.previousHref
+    const shouldTrackPageView = useRouteTracking()
+
     return (
-      <ArtworkApp {...props} routerPathname={pathname} referrer={referrer} />
+      <ArtworkApp
+        {...props}
+        routerPathname={pathname}
+        referrer={referrer}
+        shouldTrackPageView={shouldTrackPageView}
+      />
     )
   },
   {
