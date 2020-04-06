@@ -1,3 +1,15 @@
+# v26.1.2 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial data-test attrs for SignUpForm [#3350](https://github.com/artsy/reaction/pull/3350) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.1.1 (Mon Apr 06 2020)
 
 #### 🐛  Bug Fix
