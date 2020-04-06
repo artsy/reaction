@@ -50,7 +50,10 @@ describe("ArtworkSidebarBidAction", () => {
 
   describe("for closed auction", () => {
     it("does not display anything", async () => {
-      const wrapper = await getWrapper(ArtworkFromClosedAuction)
+      const wrapper = await getWrapper({
+        artwork: ArtworkFromClosedAuction,
+        me: NotIDVedUser,
+      })
 
       expect(wrapper.html()).toBe(null)
     })

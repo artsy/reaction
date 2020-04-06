@@ -151,37 +151,31 @@ export const ArtworkFromLiveAuctionRegistrationClosed: ArtworkSidebarBidAction_T
   myLotStanding: null,
 }
 
-export const ArtworkFromClosedAuction: ArtworkSidebarBidAction_Test_QueryRawResponse = {
-  artwork: {
-    slug: "artwork_from_closed_auction",
-    id: "sdfsdfsdf2",
-    internalID: "sdf12345",
-    sale: {
-      id: "sdfsdfsdf3",
-      slug: "cool-sale",
-      registrationStatus: null,
-      is_preview: false,
-      is_open: false,
-      is_live_open: false,
-      is_closed: true,
-      is_registration_closed: false,
-      requireIdentityVerification: false,
-    },
-    sale_artwork: {
-      id: "sdfsdfsdf",
-      increments: [
-        { cents: 425000, display: "£4,250" },
-        { cents: 450000, display: "£4,500" },
-        { cents: 475000, display: "£4,750" },
-        { cents: 500000, display: "£5,000" },
-      ],
-    },
-    myLotStanding: null,
+export const ArtworkFromClosedAuction: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
+  slug: "artwork_from_closed_auction",
+  id: "sdfsdfsdf2",
+  internalID: "sdf12345",
+  sale: {
+    id: "sdfsdfsdf3",
+    slug: "cool-sale",
+    registrationStatus: null,
+    is_preview: false,
+    is_open: false,
+    is_live_open: false,
+    is_closed: true,
+    is_registration_closed: false,
+    requireIdentityVerification: false,
   },
-  me: {
-    id: "user-id",
-    identityVerified: false,
+  sale_artwork: {
+    id: "sdfsdfsdf",
+    increments: [
+      { cents: 425000, display: "£4,250" },
+      { cents: 450000, display: "£4,500" },
+      { cents: 475000, display: "£4,750" },
+      { cents: 500000, display: "£5,000" },
+    ],
   },
+  myLotStanding: null,
 }
 
 export const NotRegisteredToBid = {
