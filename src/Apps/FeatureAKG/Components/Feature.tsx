@@ -10,7 +10,8 @@ import { useSystemContext } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { crop, resize } from "Utils/resizer"
+import { crop } from "Utils/resizer"
+import { Media } from "Utils/Responsive"
 
 interface FeatureProps {
   viewer: Feature_viewer
@@ -23,17 +24,14 @@ const Feature: React.FC<FeatureProps> = props => {
     return null
   }
 
-  const resizedUrl = resize(injectedData.hero_video_src, {
-    width: 1190,
-    quality: 80,
-    convert_to: "jpg",
-  })
-
   const featuredThisWeek = injectedData.featured_this_week
   const editorial = injectedData.editorial
   const selectedWorks = injectedData.selected_works
   const featuredArtists = injectedData.featured_artists
   const featuredRails = injectedData.browse
+  const heroVideo = injectedData.hero_video
+  const video1 = injectedData.video_1
+  const video2 = injectedData.video_2
 
   const showRails =
     featuredRails?.collections_rail?.items?.length ||
@@ -42,9 +40,20 @@ const Feature: React.FC<FeatureProps> = props => {
 
   return (
     <>
-      <Box width="100%">
-        <Image src={resizedUrl} />
-      </Box>
+      <Media greaterThanOrEqual="md">
+        {heroVideo?.large_src && (
+          <Box textAlign="center">
+            <Video src={heroVideo.large_src} />
+          </Box>
+        )}
+      </Media>
+      <Media lessThan="md">
+        {heroVideo?.small_src && (
+          <Box textAlign="center">
+            <Video src={heroVideo.small_src} />
+          </Box>
+        )}
+      </Media>
       <Box pt="3" maxWidth="475px" m="0 auto">
         <Sans size="4" mx="3" weight="medium">
           {injectedData.description}
@@ -67,6 +76,12 @@ const Feature: React.FC<FeatureProps> = props => {
       )}
 
       {/* Video 1 */}
+      <Media greaterThanOrEqual="md">
+        {video1?.large_src && <VideoSection src={video1.large_src} />}
+      </Media>
+      <Media lessThan="md">
+        {video1?.small_src && <VideoSection src={video1.small_src} />}
+      </Media>
 
       {/* Selected works */}
       {selectedWorks?.set_id && (
@@ -79,6 +94,12 @@ const Feature: React.FC<FeatureProps> = props => {
       )}
 
       {/* Video 2 */}
+      <Media greaterThanOrEqual="md">
+        {video2?.large_src && <VideoSection src={video2.large_src} />}
+      </Media>
+      <Media lessThan="md">
+        {video2?.small_src && <VideoSection src={video2.small_src} />}
+      </Media>
 
       {/* Featured Artists */}
       {featuredArtists?.artists?.length && (
@@ -149,6 +170,24 @@ const Section: React.FC<SectionProps> = props => {
         {props.children}
       </Box>
     </Box>
+  )
+}
+
+const VideoSection: React.FC<{ src: string }> = props => {
+  // Constrain the height, add 1px for the border
+  return (
+    <Box mb="-40px" height="591px">
+      <SectionSeparator mt="4" />
+      <Box textAlign="center">
+        <Video src={props.src} />
+      </Box>
+    </Box>
+  )
+}
+
+const Video: React.FC<{ src: string }> = props => {
+  return (
+    <video autoPlay loop muted playsInline controls={false} src={props.src} />
   )
 }
 
