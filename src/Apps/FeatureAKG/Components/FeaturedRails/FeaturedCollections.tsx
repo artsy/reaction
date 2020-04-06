@@ -4,7 +4,7 @@ import {
   FeaturedRailCarousel,
   RailMetadata,
 } from "Apps/FeatureAKG/Components/FeaturedRails"
-import { compact, find } from "lodash"
+import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
@@ -19,10 +19,10 @@ const FeaturedCollectionsRail: React.FC<FeaturedCollectionsRailProps> = props =>
   const { collections } = props
 
   const itemsForCarousel = collections.map(collection => {
-    const matchingCollectionFromSpreadsheet = find(
-      items,
+    const matchingCollectionFromSpreadsheet = items.find(
       item => item.id === collection.slug
     )
+
     if (matchingCollectionFromSpreadsheet) {
       return {
         ...collection,

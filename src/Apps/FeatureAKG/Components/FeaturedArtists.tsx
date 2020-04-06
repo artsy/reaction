@@ -13,7 +13,7 @@ export const FeaturedArtists: React.FC<FeaturedArtistsProps> = props => {
       justifyContent={["center", "space-between"]}
       flexWrap="wrap"
       maxWidth="720px"
-      style={{ margin: "0 auto" }}
+      m="0 auto"
     >
       {props.artists.map((artist, index) => {
         return (

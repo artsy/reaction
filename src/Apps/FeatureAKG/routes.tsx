@@ -2,10 +2,15 @@ import loadable from "@loadable/component"
 import { RouteConfig } from "found"
 import { graphql } from "react-relay"
 
+const FeatureApp = loadable(() => import("./FeatureApp"))
+
 export const routes: RouteConfig[] = [
   {
     path: "/campaign/art-keeps-going",
-    getComponent: () => loadable(() => import("./FeatureApp")),
+    getComponent: () => FeatureApp,
+    prepare: () => {
+      FeatureApp.preload()
+    },
     query: graphql`
       query routes_FeatureQuery(
         $articleIDs: [String]!
@@ -28,9 +33,9 @@ export const routes: RouteConfig[] = [
     `,
     prepareVariables: (_params, props) => {
       const data = props.context.injectedData
-      const collectionIDs = data?.browse?.collections_rail?.items
-      const fairIDs = data?.browse?.fairs_rail?.items
-      const auctionIDs = data?.browse?.auctions_rail?.items
+      const collectionIDs = data?.browse?.collections_rail?.items ?? []
+      const fairIDs = data?.browse?.fairs_rail?.items ?? []
+      const auctionIDs = data?.browse?.auctions_rail?.items ?? []
 
       return {
         articleIDs: data?.editorial?.article_ids,

@@ -19,7 +19,7 @@ interface FeatureProps {
 const Feature: React.FC<FeatureProps> = props => {
   const { injectedData } = useSystemContext()
 
-  if (injectedData === undefined) {
+  if (!injectedData) {
     return null
   }
 
@@ -45,7 +45,7 @@ const Feature: React.FC<FeatureProps> = props => {
       <Box width="100%">
         <Image src={resizedUrl} />
       </Box>
-      <Box pt="3" maxWidth="475px" style={{ margin: "0 auto" }}>
+      <Box pt="3" maxWidth="475px" m="0 auto">
         <Sans size="4" mx="3" weight="medium">
           {injectedData.description}
         </Sans>
