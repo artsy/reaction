@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   color,
+  EnvelopeIcon,
   Flex,
   Link,
   SoloIcon,
@@ -54,6 +55,7 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const hasPartnerAccess = user && Boolean(user.has_partner_access)
 
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
@@ -153,6 +155,18 @@ export const NavBar: React.FC = track(
                     )
                   }}
                 </NavItem>
+                {hasPartnerAccess && (
+                  <NavItem>
+                    {({ hover }) => {
+                      return (
+                        <EnvelopeIcon
+                          top={3}
+                          fill={hover ? "purple100" : "black80"}
+                        />
+                      )
+                    }}
+                  </NavItem>
+                )}
                 <NavItem Menu={UserMenu}>
                   {({ hover }) => {
                     if (hover) {
