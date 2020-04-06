@@ -3,6 +3,7 @@ import { MockBoot, renderRelayTree } from "DevTools"
 import React from "react"
 import { graphql } from "relay-runtime"
 
+import { Breakpoint } from "@artsy/palette"
 import { FeatureAKGRoute_Test_QueryRawResponse } from "__generated__/FeatureAKGRoute_Test_Query.graphql"
 import { FeatureAppFragmentContainer } from "../FeatureApp"
 
@@ -29,12 +30,13 @@ describe("FeatureAKG", () => {
   const getWrapper = async (
     response: FeatureAKGRoute_Test_QueryRawResponse = ArtKeepsGoingFixture,
     variables = defaultVariables,
-    injectedData = defaultData
+    injectedData = defaultData,
+    breakpoint: Breakpoint = "xl"
   ) => {
     return await renderRelayTree({
       Component: ({ viewer }) => {
         return (
-          <MockBoot context={{ injectedData }}>
+          <MockBoot breakpoint={breakpoint} context={{ injectedData }}>
             <FeatureAppFragmentContainer viewer={viewer} />
           </MockBoot>
         )
@@ -90,6 +92,101 @@ describe("FeatureAKG", () => {
 
     it("displays the correct number of sections", () => {
       expect(defaultWrapper.find("Section").length).toEqual(5)
+    })
+  })
+
+  describe("Videos", () => {
+    it("displays the large videos at the large breakpoint", () => {
+      expect(defaultWrapper.html()).toContain("video_1_large")
+      expect(defaultWrapper.html()).toContain("video_2_large")
+      expect(defaultWrapper.html()).toContain("hero_video_large")
+
+      // Does not display small videos
+      expect(defaultWrapper.html()).not.toContain("video_1_small")
+      expect(defaultWrapper.html()).not.toContain("video_2_small")
+      expect(defaultWrapper.html()).not.toContain("hero_video_small")
+    })
+
+    it("displays the small videos at the small breakpoint", async () => {
+      const smallWrapper = await getWrapper(
+        ArtKeepsGoingFixture,
+        defaultVariables,
+        defaultData,
+        "sm"
+      )
+      expect(smallWrapper.html()).not.toContain("video_1_large")
+      expect(smallWrapper.html()).not.toContain("video_2_large")
+      expect(smallWrapper.html()).not.toContain("hero_video_large")
+
+      // Does not display small videos
+      expect(smallWrapper.html()).toContain("video_1_small")
+      expect(smallWrapper.html()).toContain("video_2_small")
+      expect(smallWrapper.html()).toContain("hero_video_small")
+    })
+
+    it("displays no videos if none specified at the large breakpoint", async () => {
+      const largeWrapperData = {
+        ...defaultData,
+        video_1: {
+          ...defaultData.video_1,
+          large_src: null,
+        },
+        video_2: {
+          ...defaultData.video_2,
+          large_src: null,
+        },
+        hero_video: {
+          ...defaultData.hero_video,
+          large_src: null,
+        },
+      }
+
+      const largeWrapper = await getWrapper(
+        ArtKeepsGoingFixture,
+        defaultVariables,
+        largeWrapperData
+      )
+      expect(largeWrapper.html()).not.toContain("video_1_large")
+      expect(largeWrapper.html()).not.toContain("video_2_large")
+      expect(largeWrapper.html()).not.toContain("hero_video_large")
+
+      // Does not display small videos
+      expect(largeWrapper.html()).not.toContain("video_1_small")
+      expect(largeWrapper.html()).not.toContain("video_2_small")
+      expect(largeWrapper.html()).not.toContain("hero_video_small")
+    })
+
+    it("displays no videos if none specified at the small breakpoint", async () => {
+      const smallWrapperData = {
+        ...defaultData,
+        video_1: {
+          ...defaultData.video_1,
+          small_src: null,
+        },
+        video_2: {
+          ...defaultData.video_2,
+          small_src: null,
+        },
+        hero_video: {
+          ...defaultData.hero_video,
+          small_src: null,
+        },
+      }
+
+      const smallWrapper = await getWrapper(
+        ArtKeepsGoingFixture,
+        defaultVariables,
+        smallWrapperData,
+        "sm"
+      )
+      expect(smallWrapper.html()).not.toContain("video_1_large")
+      expect(smallWrapper.html()).not.toContain("video_2_large")
+      expect(smallWrapper.html()).not.toContain("hero_video_large")
+
+      // Does not display small videos
+      expect(smallWrapper.html()).not.toContain("video_1_small")
+      expect(smallWrapper.html()).not.toContain("video_2_small")
+      expect(smallWrapper.html()).not.toContain("hero_video_small")
     })
   })
 
@@ -567,15 +664,23 @@ const defaultData = {
     subtitle: null,
     title: "Featured This Week",
   },
-  hero_video_src:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/The-Last-Supper-Restored-Da-Vinci_32x16.jpg/1600px-The-Last-Supper-Restored-Da-Vinci_32x16.jpg",
   selected_works: {
     set_id: "56e057c8139b213d70002393",
     subtitle: "10% of all proceeds to go to Charity Name",
     title: "Selected Works",
   },
-  video_1_src: null,
-  video_2_src: null,
+  video_1: {
+    small_src: "http://files.artsy.net/video_1_small.mp4",
+    large_src: "http://files.artsy.net/video_1_large.mp4",
+  },
+  video_2: {
+    small_src: "http://files.artsy.net/video_2_small.mp4",
+    large_src: "http://files.artsy.net/video_2_large.mp4",
+  },
+  hero_video: {
+    small_src: "http://files.artsy.net/hero_video_small.mp4",
+    large_src: "http://files.artsy.net/hero_video_large.mp4",
+  },
 }
 
 const ArtKeepsGoingFixture: FeatureAKGRoute_Test_QueryRawResponse = {
