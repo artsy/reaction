@@ -1,3 +1,4 @@
+import { Link } from "@artsy/palette"
 import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
 import { mount, shallow } from "enzyme"
 import { Formik } from "formik"
@@ -98,12 +99,48 @@ describe("SignUpForm", () => {
     props.values = SignupValues
     const wrapper = getWrapper()
     const input = wrapper.find(Formik)
+
     input.simulate("submit")
     wrapper.update()
 
     setTimeout(() => {
       const submitButton = wrapper.find(`SubmitButton`)
       expect((submitButton.props() as any).loading).toEqual(true)
+      done()
+    })
+  })
+
+  it("calls apple callback on tapping link", done => {
+    props.onAppleLogin = jest.fn()
+    props.values = SignupValues
+    const wrapper = getWrapper()
+
+    wrapper
+      .find(Link)
+      .at(2)
+      .simulate("click")
+
+    setTimeout(() => {
+      expect(props.onAppleLogin).toBeCalled()
+      done()
+    })
+  })
+
+  it("does not call apple callback without accepting terms of service", done => {
+    props.onAppleLogin = jest.fn()
+    props.values = SignupValues
+    props.values.accepted_terms_of_service = false
+    const wrapper = getWrapper()
+
+    wrapper
+      .find(Link)
+      .at(2)
+      .simulate("click")
+
+    wrapper.update()
+
+    setTimeout(() => {
+      expect(props.onAppleLogin).not.toBeCalled()
       done()
     })
   })

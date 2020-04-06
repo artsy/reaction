@@ -223,10 +223,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
                 })
               }
               if (typeof window !== "undefined") {
-                window.location.href =
+                const href =
                   this.props.submitUrls.apple +
                   `?${authQueryData}` +
                   "&service=apple"
+                window.location.assign(href)
               }
             }}
             onFacebookLogin={() => {
@@ -237,10 +238,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
                 })
               }
               if (typeof window !== "undefined") {
-                window.location.href =
+                const href =
                   this.props.submitUrls.facebook +
                   `?${authQueryData}` +
                   "&service=facebook"
+                window.location.assign(href)
               }
             }}
             showRecaptchaDisclaimer={showRecaptchaDisclaimer}
