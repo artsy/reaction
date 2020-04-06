@@ -62,7 +62,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
           }
 
           return (
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} data-test="SignUpForm">
               <QuickInput
                 block
                 error={touched.email && errors.email}
