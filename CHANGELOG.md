@@ -1,3 +1,15 @@
+# v26.1.0 (Mon Apr 06 2020)
+
+#### 🚀  Enhancement
+
+- HOLD => [Clientside Nav] Bump A/B test to v5 [#3285](https://github.com/artsy/reaction/pull/3285) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.0.3 (Fri Apr 03 2020)
 
 #### 🐛  Bug Fix
