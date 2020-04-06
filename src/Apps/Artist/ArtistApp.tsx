@@ -82,7 +82,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
                     />
                     <Sans size="3" weight="medium" color="black100" ml="3px">
                       <StyledLink
-                        to={`/artist/${artist.slug}`}
+                        to={`/artist/${artist.slug}/overview`}
                         onClick={() =>
                           trackEvent({
                             action_type: Schema.ActionType.Click,
