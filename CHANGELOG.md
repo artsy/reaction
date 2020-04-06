@@ -1,3 +1,15 @@
+# v26.2.1 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- Adds video support for the Art Keeps Going campaign [#3354](https://github.com/artsy/reaction/pull/3354) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.2.0 (Mon Apr 06 2020)
 
 #### 🚀  Enhancement
