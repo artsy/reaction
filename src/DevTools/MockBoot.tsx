@@ -6,12 +6,19 @@ export const MockBoot: React.SFC<{
   breakpoint?: Breakpoint
   headTags?: JSX.Element[]
   user?: User
-}> = ({ breakpoint = "xl", headTags, children, user = null }) => {
+  context?: any
+}> = ({
+  breakpoint = "xl",
+  headTags,
+  children,
+  user = null,
+  context = null,
+}) => {
   return (
     <Boot
       onlyMatchMediaQueries={[breakpoint]}
       headTags={headTags}
-      context={null as any}
+      context={context}
       user={user}
       relayEnvironment={null as any}
       routes={null as any}
