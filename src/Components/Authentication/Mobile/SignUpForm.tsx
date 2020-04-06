@@ -179,7 +179,7 @@ class TrackedMobileSignUpForm extends Component<
           const { currentStep, isLastStep } = wizard
 
           return (
-            <MobileContainer>
+            <MobileContainer data-test="SignUpForm">
               <ProgressIndicator percentComplete={wizard.progressPercentage} />
               <MobileInnerWrapper>
                 <BackButton
