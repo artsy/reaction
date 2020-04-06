@@ -750,7 +750,14 @@ type Artist implements Node & Searchable & EntityWithFilterArtworksConnectionInt
   statuses: ArtistStatuses
   targetSupply: ArtistTargetSupply
   years: String
-  marketingCollections(size: Int): [MarketingCollection]
+  marketingCollections(
+    slugs: [String!]
+    category: String
+    randomizationSeed: String
+    size: Int
+    isFeaturedArtistContent: Boolean
+    showOnEditorial: Boolean
+  ): [MarketingCollection]
 }
 
 type ArtistArtworkGrid implements ArtworkContextGrid {
@@ -4059,6 +4066,19 @@ type FairSponsoredContent {
   pressReleaseUrl: String
 }
 
+type FeaturedLink {
+  # A globally unique ID.
+  id: ID!
+
+  # A type-specific ID likely used as a database ID.
+  internalID: String
+  href: String
+  image: Image
+  initials(length: Int = 3): String
+  subtitle: String
+  title: String
+}
+
 type Feedback {
   # A globally unique ID.
   id: ID!
@@ -5594,6 +5614,30 @@ type OpeningHoursText {
 
 union OpeningHoursUnion = OpeningHoursArray | OpeningHoursText
 
+type OrderedSet {
+  # A globally unique ID.
+  id: ID!
+
+  # A type-specific ID.
+  internalID: ID!
+  cached: Int
+  description: String
+  key: String
+  itemType: String
+  items: [OrderedSetItem]
+
+  # Returns a connection of the items. Only Artwork supported right now.
+  itemsConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): ArtworkConnection
+  name: String
+}
+
+union OrderedSetItem = Artist | Artwork | FeaturedLink | Gene
+
 union OrderParty = Partner | User
 
 type organizer {
@@ -5979,6 +6023,26 @@ type Query {
   # List of all artwork attribution classes
   artworkAttributionClasses: [AttributionClass]
 
+  # An Article
+  article(
+    # The ID of the Article
+    id: String!
+  ): Article
+
+  # A list of Articles
+  articles(
+    auctionID: String
+
+    #
+    #         Only return articles matching specified ids.
+    #         Accepts list of ids.
+    #
+    ids: [String]
+    published: Boolean = true
+    showID: String
+    sort: ArticleSorts
+  ): [Article]
+
   # An Artwork
   artwork(
     # The slug or ID of the Artwork
@@ -6080,6 +6144,25 @@ type Query {
     # The slug or ID of the Fair
     id: String!
   ): Fair
+
+  # A list of Fairs
+  fairs(
+    fairOrganizerID: String
+    hasFullFeature: Boolean
+    hasHomepageSection: Boolean
+    hasListing: Boolean
+
+    #
+    #         Only return fairs matching specified ids.
+    #         Accepts list of ids.
+    #
+    ids: [String]
+    near: Near
+    page: Int
+    size: Int
+    sort: FairSorts
+    status: EventStatus
+  ): [Fair]
   gene(
     # The slug or ID of the Gene
     id: String!
@@ -6107,6 +6190,12 @@ type Query {
     id: ID!
   ): Node
 
+  # An OrderedSet
+  orderedSet(
+    # The ID of the OrderedSet
+    id: String!
+  ): OrderedSet
+
   # A Partner
   partner(
     # The slug or ID of the Partner
@@ -6121,6 +6210,12 @@ type Query {
 
   # A list of Sales
   salesConnection(
+    #
+    #         Only return sales matching specified ids.
+    #         Accepts list of ids.
+    #
+    ids: [String]
+
     # Limit by auction.
     isAuction: Boolean = true
 
@@ -6310,6 +6405,7 @@ type Query {
   # Find PartnerStats
   analyticsPartnerStats(partnerId: String!): AnalyticsPartnerStats
   marketingCollections(
+    slugs: [String!]
     category: String
     randomizationSeed: String
     size: Int
@@ -7624,6 +7720,26 @@ type Viewer {
   # List of all artwork attribution classes
   artworkAttributionClasses: [AttributionClass]
 
+  # An Article
+  article(
+    # The ID of the Article
+    id: String!
+  ): Article
+
+  # A list of Articles
+  articles(
+    auctionID: String
+
+    #
+    #         Only return articles matching specified ids.
+    #         Accepts list of ids.
+    #
+    ids: [String]
+    published: Boolean = true
+    showID: String
+    sort: ArticleSorts
+  ): [Article]
+
   # An Artwork
   artwork(
     # The slug or ID of the Artwork
@@ -7725,6 +7841,25 @@ type Viewer {
     # The slug or ID of the Fair
     id: String!
   ): Fair
+
+  # A list of Fairs
+  fairs(
+    fairOrganizerID: String
+    hasFullFeature: Boolean
+    hasHomepageSection: Boolean
+    hasListing: Boolean
+
+    #
+    #         Only return fairs matching specified ids.
+    #         Accepts list of ids.
+    #
+    ids: [String]
+    near: Near
+    page: Int
+    size: Int
+    sort: FairSorts
+    status: EventStatus
+  ): [Fair]
   gene(
     # The slug or ID of the Gene
     id: String!
@@ -7752,6 +7887,12 @@ type Viewer {
     id: ID!
   ): Node
 
+  # An OrderedSet
+  orderedSet(
+    # The ID of the OrderedSet
+    id: String!
+  ): OrderedSet
+
   # A Partner
   partner(
     # The slug or ID of the Partner
@@ -7766,6 +7907,12 @@ type Viewer {
 
   # A list of Sales
   salesConnection(
+    #
+    #         Only return sales matching specified ids.
+    #         Accepts list of ids.
+    #
+    ids: [String]
+
     # Limit by auction.
     isAuction: Boolean = true
 
@@ -7826,6 +7973,15 @@ type Viewer {
     # ID of the user
     id: String
   ): User
+  marketingCollections(
+    slugs: [String!]
+    category: String
+    randomizationSeed: String
+    size: Int
+    isFeaturedArtistContent: Boolean
+    showOnEditorial: Boolean
+    artistID: String
+  ): [MarketingCollection]
 }
 
 type YearRange {

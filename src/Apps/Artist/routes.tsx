@@ -91,6 +91,7 @@ export const routes: RouteConfig[] = [
           id
         }
         artist(id: $artistID) @principalField {
+          internalID
           ...ArtistApp_artist
           ...routes_Artist @relay(mask: false)
         }

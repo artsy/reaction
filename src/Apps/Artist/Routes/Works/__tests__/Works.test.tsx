@@ -1,4 +1,5 @@
 import { Works_Test_QueryRawResponse } from "__generated__/Works_Test_Query.graphql"
+import { ArtistCollectionsRailFragmentContainer as ArtistCollectionsRail } from "Apps/Artist/Components/ArtistCollectionsRail/ArtistCollectionsRail"
 import { ArtistArtworkFilterRefetchContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtistArtworkFilter"
 import { WorksRouteFragmentContainer as WorksRoute } from "Apps/Artist/Routes/Works"
 import { MockBoot, renderRelayTree } from "DevTools"
@@ -56,9 +57,21 @@ describe("Works Route", () => {
     })
 
     it("renders correct sections", () => {
+      expect(wrapper.find(ArtistCollectionsRail).length).toEqual(1)
       expect(wrapper.find(ArtworkFilter).length).toEqual(1)
       expect(wrapper.html()).toContain("Mock ArtistRecommendations")
-      expect(wrapper.html()).toContain("Mock ArtistCollectionRail")
+    })
+  })
+
+  describe("Artist Collections Rail", () => {
+    it("does not render rail if artist.collections is empty", async () => {
+      wrapper = await getWrapper("xl", {
+        artist: {
+          ...defaultWorks.artist,
+          collections: [],
+        },
+      })
+      expect(wrapper.find(ArtistCollectionsRail).length).toEqual(0)
     })
   })
 
@@ -121,6 +134,69 @@ const defaultWorks: Works_Test_QueryRawResponse = {
       artworks: 4995,
       has_make_offer_artworks: true,
     },
+    collections: [
+      {
+        headerImage: "",
+        slug: "banksy-girl-with-balloon",
+        title: "Banksy: Girl with Balloon",
+        price_guidance: 75000,
+        artworksConnection: {
+          edges: [
+            {
+              node: {
+                artist: {
+                  name: "Banksy",
+                  id: "QXJ0aXN0OjRkZDE1ODRkZTAwOTFlMDAwMTAwMjA3Yw==",
+                },
+                title: "Girl with Balloon (Unsigned)",
+                image: {
+                  resized: {
+                    url:
+                      "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=262&height=353&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fh29RjKvIQMaxZHcWx6Ws9g%2Flarge.jpg",
+                  },
+                },
+                id: "QXJ0d29yazo1ZTcyNGUwZTQwYmZhMjAwMGUxZTM0ZjA=",
+              },
+            },
+            {
+              node: {
+                artist: {
+                  name: "Banksy",
+                  id: "QXJ0aXN0OjRkZDE1ODRkZTAwOTFlMDAwMTAwMjA3Yw==",
+                },
+                title: "Girl With Balloon (Unsigned)",
+                image: {
+                  resized: {
+                    url:
+                      "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=262&height=377&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FGelUGc-Z9pasoDBQxZLxwg%2Flarge.jpg",
+                  },
+                },
+                id: "QXJ0d29yazo1ZTVkM2U2ODFlM2Y0MzAwMGU0ODI2ZmU=",
+              },
+            },
+            {
+              node: {
+                artist: {
+                  name: "Banksy",
+                  id: "QXJ0aXN0OjRkZDE1ODRkZTAwOTFlMDAwMTAwMjA3Yw==",
+                },
+                title: "Girl with Balloon",
+                image: {
+                  resized: {
+                    url:
+                      "https://d7hftxdivxxvm.cloudfront.net?resize_to=fit&width=262&height=350&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FIIqkOV1aZDEsEaciki1ZRw%2Flarge.jpg",
+                  },
+                },
+                id: "QXJ0d29yazo1ZTAzMzE2NjVjMDBiZjAwMTM4MzUwODg=",
+              },
+            },
+          ],
+          id:
+            "ZmlsdGVyQXJ0d29ya3NDb25uZWN0aW9uOnsiYWdncmVnYXRpb25zIjpbInRvdGFsIl0sImFydGlzdF9pZHMiOlsiNGRkMTU4NGRlMDA5MWUwMDAxMDAyMDdjIl0sImdlbmVfaWRzIjpbXSwia2V5d29yZCI6Ikdpcmwgd2l0aCBCYWxsb29uIiwia2V5d29yZF9tYXRjaF9leGFjdCI6dHJ1ZSwicGFnZSI6MSwic2l6ZSI6Mywic29ydCI6Ii1kZWNheWVkX21lcmNoIn0=",
+        },
+        id: "5beb5aca1338c043ac8ae226",
+      },
+    ],
     filtered_artworks: {
       id:
         "ZmlsdGVyQXJ0d29ya3NDb25uZWN0aW9uOnsiYWdncmVnYXRpb25zIjpbInRvdGFsIl0sImFydGlzdF9pZCI6IjRkOGI5MmIzNGViNjhhMWIyYzAwMDNmNCIsInBhZ2UiOjEsInNpemUiOjMwLCJzb3J0IjoiLXBhcnRuZXJfdXBkYXRlZF9hdCJ9",

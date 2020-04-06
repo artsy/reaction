@@ -1,6 +1,6 @@
 import { Box, Col, Row, Separator } from "@artsy/palette"
 import { Works_artist } from "__generated__/Works_artist.graphql"
-import { ArtistCollectionsRailContent as ArtistCollectionsRail } from "Apps/Artist/Components/ArtistCollectionsRail"
+import { ArtistCollectionsRailFragmentContainer as ArtistCollectionsRail } from "Apps/Artist/Components/ArtistCollectionsRail/ArtistCollectionsRail"
 import { ArtistArtworkFilterRefetchContainer as ArtworkFilter } from "Apps/Artist/Routes/Overview/Components/ArtistArtworkFilter"
 import { ArtistRecommendationsQueryRenderer as ArtistRecommendations } from "Apps/Artist/Routes/Overview/Components/ArtistRecommendations"
 import React from "react"
@@ -22,12 +22,14 @@ export const WorksRoute: React.FC<WorksRouteProps> = props => {
 
   return (
     <>
-      <Box>
-        <ArtistCollectionsRail
-          artistID={artist.internalID}
-          includeTopSpacer={false}
-        />
-      </Box>
+      {props.artist.collections.length > 0 && (
+        <Box>
+          <ArtistCollectionsRail
+            collections={props.artist.collections}
+            includeTopSpacer={false}
+          />
+        </Box>
+      )}
 
       <Row>
         <Col>
@@ -36,6 +38,7 @@ export const WorksRoute: React.FC<WorksRouteProps> = props => {
           <ArtworkFilter
             artist={artist}
             sidebarAggregations={sidebarAggregations}
+            showTopBorder={artist.collections.length > 0}
           />
         </Col>
       </Row>
@@ -76,6 +79,15 @@ export const WorksRouteFragmentContainer = createFragmentContainer(WorksRoute, {
         width: { type: "String" }
       ) {
       internalID
+
+      ... on Artist {
+        collections: marketingCollections(
+          isFeaturedArtistContent: true
+          size: 16
+        ) {
+          ...ArtistCollectionsRail_collections
+        }
+      }
 
       related {
         artistsConnection(first: 1) {

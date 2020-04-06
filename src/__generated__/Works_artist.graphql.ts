@@ -5,6 +5,9 @@ export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS
 import { FragmentRefs } from "relay-runtime";
 export type Works_artist = {
     readonly internalID: string;
+    readonly collections: ReadonlyArray<{
+        readonly " $fragmentRefs": FragmentRefs<"ArtistCollectionsRail_collections">;
+    } | null> | null;
     readonly related: {
         readonly artistsConnection: {
             readonly edges: ReadonlyArray<{
@@ -172,6 +175,33 @@ return {
       "name": "internalID",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": "collections",
+      "name": "marketingCollections",
+      "storageKey": "marketingCollections(isFeaturedArtistContent:true,size:16)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "isFeaturedArtistContent",
+          "value": true
+        },
+        {
+          "kind": "Literal",
+          "name": "size",
+          "value": 16
+        }
+      ],
+      "concreteType": "MarketingCollection",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtistCollectionsRail_collections",
+          "args": null
+        }
+      ]
     },
     {
       "kind": "LinkedField",
@@ -385,5 +415,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '6af1a5b23990ff0078e21cbef30eff9b';
+(node as any).hash = 'b7af424c088cddafc14e06aaae5898d5';
 export default node;

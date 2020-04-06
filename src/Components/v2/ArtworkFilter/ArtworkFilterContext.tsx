@@ -107,6 +107,9 @@ export interface ArtworkFilterContextProps {
   resetFilters: () => void
   setFilter: (name: keyof ArtworkFilters, value: any) => void
   unsetFilter: (name: keyof ArtworkFilters) => void
+
+  // Misc
+  showTopBorder?: boolean
 }
 
 /**
@@ -121,6 +124,7 @@ export const ArtworkFilterContext = React.createContext<
   rangeToTuple: null,
   resetFilters: null,
   setFilter: null,
+  showTopBorder: true,
   sortOptions: [],
   unsetFilter: null,
   ZeroState: null,
@@ -139,6 +143,7 @@ export type SharedArtworkFilterContextProps = Pick<
   | "sortOptions"
   | "onArtworkBrickClick"
   | "onFilterClick"
+  | "showTopBorder"
   | "ZeroState"
 > & {
   onChange?: (filterState) => void
@@ -155,6 +160,7 @@ export const ArtworkFilterContextProvider: React.FC<SharedArtworkFilterContextPr
   onChange,
   onFilterClick,
   sortOptions,
+  showTopBorder,
   ZeroState,
 }) => {
   const initialFilterState = {
@@ -191,6 +197,9 @@ export const ArtworkFilterContextProvider: React.FC<SharedArtworkFilterContextPr
     setAggregations,
     counts: artworkCounts,
     setCounts,
+
+    // Misc
+    showTopBorder,
 
     // Components
     ZeroState,

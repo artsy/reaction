@@ -13,10 +13,17 @@ interface ArtistArtworkFilterProps {
   relay: RelayRefetchProp
   sidebarAggregations: Works_artist["sidebarAggregations"]
   match?: Match
+  showTopBorder?: boolean
 }
 
 const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
-  const { match, relay, artist, sidebarAggregations } = props
+  const {
+    match,
+    relay,
+    artist,
+    sidebarAggregations,
+    showTopBorder = true,
+  } = props
   const { filtered_artworks } = artist
 
   const hasFilter = filtered_artworks && filtered_artworks.id
@@ -37,6 +44,7 @@ const ArtistArtworkFilter: React.FC<ArtistArtworkFilterProps> = props => {
       ]}
       aggregations={sidebarAggregations.aggregations as any}
       counts={artist.counts}
+      showTopBorder={showTopBorder}
       onChange={updateUrl}
     >
       <BaseArtworkFilter

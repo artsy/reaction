@@ -210,9 +210,12 @@ export const BaseArtworkFilter: React.FC<{
           </Box>
           <Box width="75%">
             <Box mb={2}>
-              <Box pb={2} mt={0.5}>
-                <Separator />
-              </Box>
+              {filterContext.showTopBorder && (
+                <Box pb={2} mt={0.5}>
+                  <Separator />
+                </Box>
+              )}
+
               <SortFilter />
             </Box>
 
