@@ -27,7 +27,7 @@ export const Footer = (props: FooterProps) => {
     case "login": {
       const thirdPartyLogin = sd.ENABLE_SIGN_IN_WITH_APPLE ? (
         <FooterText>
-          {"Login using "}
+          {"Log in using "}
           <Link color="black60" onClick={onAppleLogin}>
             Apple
           </Link>{" "}
