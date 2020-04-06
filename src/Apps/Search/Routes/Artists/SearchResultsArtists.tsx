@@ -109,6 +109,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
       <>
         {artists.map((artist, index) => {
           const worksForSaleHref = artist.href + "/works-for-sale"
+          console.log("WFS HREF", worksForSaleHref)
           return (
             <Box key={index}>
               <GenericSearchResultItem

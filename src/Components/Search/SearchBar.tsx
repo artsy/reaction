@@ -30,6 +30,7 @@ import { Media } from "Utils/Responsive"
 import { SearchInputContainer } from "./SearchInputContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
+const regex = new RegExp(/\/artist\/*/, "i")
 
 export interface Props extends SystemContextProps {
   relay: RelayRefetchProp
@@ -244,7 +245,7 @@ export class SearchBar extends Component<Props, State> {
     ) => ({
       action_type: Schema.ActionType.SelectedItemFromSearch,
       query: state.term,
-      destination_path: href,
+      destination_path: regex.test(href) ? href + "/works-for-sale" : href,
       item_type: displayType,
       item_id: id,
       item_number: suggestionIndex,
@@ -256,6 +257,7 @@ export class SearchBar extends Component<Props, State> {
     },
   }) {
     this.userClickedOnDescendant = true
+    const newHref = regex.test(href) ? href + "/works-for-sale" : href
 
     if (this.enableExperimentalAppShell) {
       if (this.props.router) {
@@ -264,23 +266,23 @@ export class SearchBar extends Component<Props, State> {
         // @ts-ignore (matchRoutes not found; need to update DT types)
         const isSupportedInRouter = !!this.props.router.matcher.matchRoutes(
           routes,
-          href
+          newHref
         )
 
         // Check if url exists within the global router context
         if (isSupportedInRouter) {
-          this.props.router.push(href)
+          this.props.router.push(newHref)
           this.onBlur({})
         } else {
-          window.location.assign(href)
+          window.location.assign(newHref)
         }
         // Outside of router context
       } else {
-        window.location.assign(href)
+        window.location.assign(newHref)
       }
       // New router not enabled
     } else {
-      window.location.assign(href)
+      window.location.assign(newHref)
     }
   }
 
@@ -332,10 +334,12 @@ export class SearchBar extends Component<Props, State> {
 
   renderDefaultSuggestion = (edge, { query, isHighlighted }) => {
     const { displayLabel, displayType, href } = edge.node
+    const newHref = regex.test(href) ? href + "/works-for-sale" : href
+
     return (
       <SuggestionItem
         display={displayLabel}
-        href={href}
+        href={newHref}
         isHighlighted={isHighlighted}
         label={displayType}
         query={query}
