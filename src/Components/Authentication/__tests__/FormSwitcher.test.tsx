@@ -93,7 +93,7 @@ describe("FormSwitcher", () => {
 
       wrapper
         .find(Link)
-        .at(1)
+        .at(2)
         .simulate("click")
 
       expect((window.location.assign as any).mock.calls[0][0]).toEqual(
@@ -108,7 +108,7 @@ describe("FormSwitcher", () => {
 
       wrapper
         .find(Link)
-        .at(2)
+        .at(3)
         .simulate("click")
 
       expect((wrapper.state() as any).type).toMatch("signup")
