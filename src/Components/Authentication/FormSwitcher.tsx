@@ -34,9 +34,9 @@ export interface FormSwitcherProps {
   options: ModalOptions
   title?: string
   showRecaptchaDisclaimer?: boolean
-  submitUrls?: { [P in ModalType]: string } & {
-    apple?: string
-    facebook?: string
+  submitUrls: { [P in ModalType]: string } & {
+    apple: string
+    facebook: string
     twitter?: string
   }
   tracking?: TrackingProp
