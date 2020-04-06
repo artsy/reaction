@@ -98,6 +98,7 @@ export function createRelaySSREnvironment(config: Config = {}) {
     cacheMiddleware({
       size: 100, // max 100 requests
       ttl: 900000, // 15 minutes
+      clearOnMutation: true,
       onInit: queryResponseCache => {
         if (!isServer) {
           hydrateCacheFromSSR(queryResponseCache)
