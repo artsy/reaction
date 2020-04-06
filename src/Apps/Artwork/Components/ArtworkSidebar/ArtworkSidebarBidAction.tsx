@@ -177,6 +177,10 @@ export class ArtworkSidebarBidAction extends React.Component<
                     ? "Watch live bidding"
                     : "Enter live bidding"}
                 </Button>
+                {!artwork.sale.is_registration_closed &&
+                  userNeedsIdentityVerification && (
+                    <IdentityVerificationDisclaimer />
+                  )}
               </Box>
             )
           }}

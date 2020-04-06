@@ -462,5 +462,75 @@ describe("ArtworkSidebarBidAction", () => {
         expect(wrapper.text()).toContain("Enter live bidding")
       })
     })
+
+    describe("when the sale requires identity verification", () => {
+      describe("when registration is open", () => {
+        describe("when the user is not identity verified", () => {
+          it("displays that identity verification is required to bid", async () => {
+            const artwork = merge(
+              ArtworkFromLiveAuctionRegistrationOpen,
+              { sale: SaleRequiringIDV },
+              NotRegisteredToBid
+            )
+
+            const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+            expect(wrapper.text()).toContain(
+              "Identity verification required to bid."
+            )
+          })
+        })
+
+        describe("when user is identity verified", () => {
+          it("does not display that identity verification is required to bid", async () => {
+            const artwork = merge(
+              ArtworkFromLiveAuctionRegistrationOpen,
+              { sale: SaleRequiringIDV },
+              NotRegisteredToBid
+            )
+
+            const wrapper = await getWrapper({ artwork, me: IDVedUser })
+
+            expect(wrapper.text()).not.toContain(
+              "Identity verification required to bid."
+            )
+          })
+        })
+      })
+
+      describe("when registration is closed", () => {
+        describe("when the user is identity verified", () => {
+          it("does not display that identity verification is required to bid", async () => {
+            const artwork = merge(
+              ArtworkFromLiveAuctionRegistrationClosed,
+              { sale: SaleRequiringIDV },
+              NotRegisteredToBid
+            )
+
+            const wrapper = await getWrapper({ artwork, me: IDVedUser })
+
+            expect(wrapper.text()).not.toContain(
+              "Identity verification required to bid."
+            )
+          })
+        })
+
+        describe("when the user is not identity verified", () => {
+          it("does not display that identity verification is required to bid", async () => {
+            const artwork = merge(
+              ArtworkFromLiveAuctionRegistrationClosed,
+              { sale: SaleRequiringIDV },
+              NotRegisteredToBid
+            )
+
+            const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+            expect(wrapper.text()).not.toContain(
+              "Identity verification required to bid."
+            )
+          })
+        })
+      })
+    })
   })
 })
