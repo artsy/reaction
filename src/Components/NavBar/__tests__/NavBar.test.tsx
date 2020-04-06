@@ -86,7 +86,7 @@ describe("NavBar", () => {
     })
 
     it("renders logged in items", () => {
-      const wrapper = getWrapper({ user: { has_partner_access: null } })
+      const wrapper = getWrapper({ user: true })
       expect(wrapper.html()).not.toContain("Log in")
       expect(wrapper.html()).not.toContain("Sign up")
       expect(wrapper.find(BellIcon).length).toEqual(1)

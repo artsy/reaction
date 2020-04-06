@@ -39,6 +39,7 @@ import { track, useTracking } from "Artsy/Analytics"
 import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import Events from "Utils/Events"
 import { useMedia } from "Utils/Hooks/useMedia"
+import { userHasLabFeature } from "Utils/user"
 
 export const NavBar: React.FC = track(
   {
@@ -55,7 +56,10 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
-  const hasPartnerAccess = user && Boolean(user.has_partner_access)
+  const conversationsEnabled = userHasLabFeature(
+    user,
+    "User Conversations View"
+  )
 
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
@@ -155,7 +159,7 @@ export const NavBar: React.FC = track(
                     )
                   }}
                 </NavItem>
-                {hasPartnerAccess && (
+                {conversationsEnabled && (
                   <NavItem>
                     {({ hover }) => {
                       return (
