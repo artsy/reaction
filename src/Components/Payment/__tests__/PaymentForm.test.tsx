@@ -8,6 +8,7 @@ import { creatingCreditCardFailed } from "Apps/Order/Routes/__fixtures__/Mutatio
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
+  createRefetchContainer: component => component,
 }))
 
 jest.mock("react-stripe-elements", () => ({
@@ -15,12 +16,12 @@ jest.mock("react-stripe-elements", () => ({
   injectStripe: args => args,
 }))
 
-import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
-} from "Apps/Order/Routes/__tests__/Utils/addressForm"
+} from "Components/__tests__/Utils/addressForm"
+import { Address, AddressForm } from "Components/AddressForm"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"

@@ -1,7 +1,8 @@
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy"
-import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/v2/FollowArtistPopover"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
+import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/FollowArtistPopover"
 import { extend } from "lodash"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -77,17 +78,22 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
-    const { user, onOpenAuthModal } = this.props
+    const { artist, user, onOpenAuthModal } = this.props
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
 
     if (user && user.id) {
       this.followArtistForUser(user)
     } else if (onOpenAuthModal) {
-      const config = {
-        contextModule: "intext tooltip",
-        intent: "follow artist",
+      onOpenAuthModal(ModalType.signup, {
+        contextModule: SchemaV2.ContextModule.intextTooltip,
+        intent: SchemaV2.AuthIntent.followArtist,
         copy: "Sign up to follow artists",
-      }
-      onOpenAuthModal(ModalType.signup, config)
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: (artist && artist.internalID) || trackingData.entity_slug,
+        },
+      })
     }
   }
 

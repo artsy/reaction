@@ -1,41 +1,42 @@
-import * as Schema from "Artsy/Analytics/Schema"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
+import { ModalType } from "Components/Authentication/Types"
 import {
-  AuthModalIntent,
   AuthModalOptions,
   openAuthModal,
+  openAuthToFollowSave,
 } from "../openAuthModal"
 
 jest.mock("sharify", () => ({ data: jest.fn() }))
 const sd = require("sharify").data
 
 const artistArgs: AuthModalOptions = {
-  contextModule: Schema.ContextModule.ArtistPage,
+  contextModule: SchemaV2.ContextModule.artistHeader,
   entity: {
     slug: "andy-warhol",
     name: "Andy Warhol",
   },
-  intent: AuthModalIntent.FollowArtist,
+  intent: SchemaV2.AuthIntent.followArtist,
 }
 
 const partnerArgs: AuthModalOptions = {
-  contextModule: Schema.ContextModule.AboutTheWorkPartner,
+  contextModule: SchemaV2.ContextModule.aboutTheWork,
   entity: {
     slug: "david-zwirner",
     name: "David Zwirner",
   },
-  intent: AuthModalIntent.FollowPartner,
+  intent: SchemaV2.AuthIntent.followPartner,
 }
 
 const artworkArgs: AuthModalOptions = {
-  contextModule: Schema.ContextModule.ArtworkPage,
+  contextModule: SchemaV2.ContextModule.artworkGrid,
   entity: {
     slug: "andy-warhol-skull",
     name: "Skull",
   },
-  intent: AuthModalIntent.SaveArtwork,
+  intent: SchemaV2.AuthIntent.saveArtwork,
 }
 
-describe("openAuthModal", () => {
+describe("openAuth Helpers", () => {
   let mediator
 
   beforeEach(() => {
@@ -45,80 +46,103 @@ describe("openAuthModal", () => {
     window.location.assign = jest.fn()
   })
 
-  describe("desktop", () => {
-    it("transforms args for following artists", () => {
-      openAuthModal(mediator, artistArgs)
-
-      expect(mediator.trigger).toBeCalledWith("open:auth", {
-        afterSignUpAction: {
-          action: "follow",
-          kind: "artist",
-          objectId: "andy-warhol",
-        },
-        copy: "Sign up to follow Andy Warhol",
-        intent: "follow artist",
-        mode: "signup",
+  describe("#openAuthModal", () => {
+    it("calls the mediator with expected args", () => {
+      openAuthModal(mediator, {
+        mode: ModalType.signup,
+        intent: SchemaV2.AuthIntent.signup,
+        contextModule: SchemaV2.ContextModule.header,
+        copy: "Sign up to do cool stuff",
       })
-    })
-
-    it("transforms args for following partners", () => {
-      openAuthModal(mediator, partnerArgs)
 
       expect(mediator.trigger).toBeCalledWith("open:auth", {
-        afterSignUpAction: {
-          action: "follow",
-          kind: "profile",
-          objectId: "david-zwirner",
-        },
-        copy: "Sign up to follow David Zwirner",
-        intent: "follow partner",
-        mode: "signup",
-      })
-    })
-
-    it("transforms args for saving artworks", () => {
-      openAuthModal(mediator, artworkArgs)
-
-      expect(mediator.trigger).toBeCalledWith("open:auth", {
-        afterSignUpAction: {
-          action: "save",
-          kind: "artworks",
-          objectId: "andy-warhol-skull",
-        },
-        copy: "Sign up to save artworks",
-        intent: "save artwork",
+        contextModule: "header",
+        copy: "Sign up to do cool stuff",
+        intent: "signup",
         mode: "signup",
       })
     })
   })
 
-  describe("mobile", () => {
-    beforeEach(() => {
-      sd.IS_MOBILE = true
+  describe("#openAuthToFollowSave", () => {
+    describe("desktop", () => {
+      it("transforms args for following artists", () => {
+        openAuthToFollowSave(mediator, artistArgs)
+
+        expect(mediator.trigger).toBeCalledWith("open:auth", {
+          afterSignUpAction: {
+            action: "follow",
+            kind: "artist",
+            objectId: "andy-warhol",
+          },
+          contextModule: "artistHeader",
+          copy: "Sign up to follow Andy Warhol",
+          intent: "followArtist",
+          mode: "signup",
+        })
+      })
+
+      it("transforms args for following partners", () => {
+        openAuthToFollowSave(mediator, partnerArgs)
+
+        expect(mediator.trigger).toBeCalledWith("open:auth", {
+          afterSignUpAction: {
+            action: "follow",
+            kind: "profile",
+            objectId: "david-zwirner",
+          },
+          contextModule: "aboutTheWork",
+          copy: "Sign up to follow David Zwirner",
+          intent: "followPartner",
+          mode: "signup",
+        })
+      })
+
+      it("transforms args for saving artworks", () => {
+        openAuthToFollowSave(mediator, artworkArgs)
+
+        expect(mediator.trigger).toBeCalledWith("open:auth", {
+          afterSignUpAction: {
+            action: "save",
+            kind: "artworks",
+            objectId: "andy-warhol-skull",
+          },
+          contextModule: "artworkGrid",
+          copy: "Sign up to save artworks",
+          intent: "saveArtwork",
+          mode: "signup",
+        })
+      })
     })
 
-    it("transforms args for following artists", () => {
-      openAuthModal(mediator, artistArgs)
-      expect(window.location.assign).toBeCalledWith(
-        "/sign_up?redirect-to=http://localhost/&action=follow&contextModule=Artist%20page&copy=Sign%20up%20to%20follow%20Andy%20Warhol&intent=follow%20artist&kind=artist&objectId=andy-warhol"
-      )
-      expect(mediator.trigger).not.toBeCalled()
-    })
+    describe("mobile", () => {
+      beforeEach(() => {
+        sd.IS_MOBILE = true
+      })
 
-    it("transforms args for following partners", () => {
-      openAuthModal(mediator, partnerArgs)
-      expect(window.location.assign).toBeCalledWith(
-        "/sign_up?redirect-to=http://localhost/&action=follow&contextModule=About%20the%20Work%20%28Partner%29&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=follow%20partner&kind=profile&objectId=david-zwirner"
-      )
-      expect(mediator.trigger).not.toBeCalled()
-    })
+      it("transforms args for following artists", () => {
+        openAuthToFollowSave(mediator, artistArgs)
+        expect(window.location.assign).toBeCalledWith(
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=follow&contextModule=artistHeader&copy=Sign%20up%20to%20follow%20Andy%20Warhol&intent=followArtist&kind=artist&objectId=andy-warhol"
+        )
+        expect(mediator.trigger).not.toBeCalled()
+      })
 
-    it("transforms args for saving artworks", () => {
-      openAuthModal(mediator, artworkArgs)
-      expect(window.location.assign).toBeCalledWith(
-        "/sign_up?redirect-to=http://localhost/&action=save&contextModule=Artwork%20page&copy=Sign%20up%20to%20save%20artworks&intent=save%20artwork&kind=artworks&objectId=andy-warhol-skull"
-      )
-      expect(mediator.trigger).not.toBeCalled()
+      it("transforms args for following partners", () => {
+        openAuthToFollowSave(mediator, partnerArgs)
+        expect(window.location.assign).toBeCalledWith(
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=follow&contextModule=aboutTheWork&copy=Sign%20up%20to%20follow%20David%20Zwirner&intent=followPartner&kind=profile&objectId=david-zwirner"
+        )
+        expect(mediator.trigger).not.toBeCalled()
+      })
+
+      it("transforms args for saving artworks", () => {
+        openAuthToFollowSave(mediator, artworkArgs)
+        expect(window.location.assign).toBeCalledWith(
+          "/sign_up?redirectTo=http%3A%2F%2Flocalhost%2F&action=save&contextModule=artworkGrid&copy=Sign%20up%20to%20save%20artworks&intent=saveArtwork&kind=artworks&objectId=andy-warhol-skull"
+        )
+        expect(mediator.trigger).not.toBeCalled()
+      })
     })
   })
 })

@@ -26,12 +26,16 @@ import {
   UserMenu,
 } from "./Menus"
 
+import { ModalType } from "Components/Authentication/Types"
+import { menuData } from "Components/NavBar/menuData"
+import { openAuthModal } from "Utils/openAuthModal"
+
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
-import * as authentication from "./Utils/authentication"
 
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import Events from "Utils/Events"
 import { useMedia } from "Utils/Hooks/useMedia"
 
@@ -45,11 +49,12 @@ export const NavBar: React.FC = track(
   }
 )(() => {
   const { trackEvent } = useTracking()
-  const { mediator, user } = useContext(SystemContext)
+  const { mediator, user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
   // Close mobile menu if dragging window from small size to desktop
@@ -58,6 +63,22 @@ export const NavBar: React.FC = track(
       toggleMobileNav(false)
     }
   }, [isMobile])
+
+  /**
+   * Check to see if we're clicking a link that lives within the new app shell
+   * and close the navbar.
+   *
+   * TODO: Find a less naive way to check if route is in appshell
+   */
+  const handleMobileNavClick = event => {
+    // FIXME: Remove once experimental A/B test completes
+    if (EXPERIMENTAL_APP_SHELL) {
+      // Includes /collect or /collections
+      if (event.target?.parentNode?.href?.includes("/collect")) {
+        toggleMobileNav(false)
+      }
+    }
+  }
 
   return (
     <header>
@@ -84,18 +105,8 @@ export const NavBar: React.FC = track(
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
             <NavItem href="/collect">Artworks</NavItem>
+            <NavItem href="/artists">Artists</NavItem>
             <NavItem href="/auctions">Auctions</NavItem>
-            <NavItem href="/galleries">Galleries</NavItem>
-
-            {/**
-              Only show Fairs at `xlg`
-            */}
-            <NavItem
-              href="/art-fairs"
-              display={["none", "none", "none", "none", "block"]}
-            >
-              Fairs
-            </NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
               Menu={() => {
@@ -168,12 +179,11 @@ export const NavBar: React.FC = track(
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Login,
+                  openAuthModal(mediator, {
+                    mode: ModalType.login,
+                    intent: SchemaV2.AuthIntent.login,
+                    contextModule: SchemaV2.ContextModule.header,
                   })
-
-                  authentication.login(mediator)
                 }}
               >
                 Log in
@@ -181,12 +191,11 @@ export const NavBar: React.FC = track(
               <Spacer mr={1} />
               <Button
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Signup,
+                  openAuthModal(mediator, {
+                    mode: ModalType.signup,
+                    intent: SchemaV2.AuthIntent.signup,
+                    contextModule: SchemaV2.ContextModule.header,
                   })
-
-                  authentication.signup(mediator)
                 }}
               >
                 Sign up
@@ -229,7 +238,11 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu onNavItemClick={() => toggleMobileNav(false)} />
+          <MobileNavMenu
+            isOpen={showMobileMenu}
+            menuData={menuData}
+            onNavButtonClick={handleMobileNavClick}
+          />
         </>
       )}
     </header>

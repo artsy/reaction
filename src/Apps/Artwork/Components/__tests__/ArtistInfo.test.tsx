@@ -1,8 +1,10 @@
 import { ArtistInfoFixture } from "Apps/__tests__/Fixtures/Artwork/ArtistInfo"
+import { SystemContextProvider } from "Artsy"
 import { mockTracking } from "Artsy/Analytics"
+import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { mount } from "enzyme"
 import React from "react"
-import { graphql } from "react-relay"
+import { graphql, RelayProp } from "react-relay"
 import { ArtistInfo } from "../ArtistInfo"
 
 jest.unmock("react-tracking")
@@ -16,18 +18,28 @@ graphql`
 `
 
 describe("ArtistInfo", () => {
-  const getWrapper = props => {
-    return mount(<ArtistInfo {...props} />)
+  let props
+  let context
+  const getWrapper = (passedProps = props) => {
+    return mount(
+      <SystemContextProvider {...context}>
+        <ArtistInfo {...passedProps} />
+      </SystemContextProvider>
+    )
   }
 
-  let testProps
   beforeEach(() => {
-    testProps = { artist: ArtistInfoFixture }
+    context = {
+      mediator: { trigger: jest.fn() },
+      relay: { environment: {} } as RelayProp,
+      user: null,
+    }
+    props = { artist: ArtistInfoFixture }
   })
 
   describe("ArtistInfo for artwork with complete artist info", () => {
     it("renders a correct component tree", () => {
-      const component = getWrapper(testProps)
+      const component = getWrapper()
       expect(component.find("EntityHeader").length).toBe(1)
       expect(component.find("ArtistBio").length).toBe(1)
       expect(component.find("Button").length).toBe(1)
@@ -37,7 +49,7 @@ describe("ArtistInfo", () => {
     })
 
     it("shows artist insights when the 'Show artist insights' button is clicked", () => {
-      const component = getWrapper(testProps)
+      const component = getWrapper()
       component.find("Button").simulate("click")
       expect(component.find("MarketInsights").length).toBe(1)
       expect(component.find("SelectedExhibitions").length).toBe(1)
@@ -113,6 +125,25 @@ describe("ArtistInfo", () => {
       const component = getWrapper({ artist })
       component.find("Button").simulate("click")
       expect(component.find("SelectedExhibitions").html()).toBe(null)
+    })
+  })
+
+  it("opens auth modal with expected args when following an artist", () => {
+    const component = getWrapper()
+    component
+      .find(FollowArtistButton)
+      .first()
+      .simulate("click")
+    expect(context.mediator.trigger).toBeCalledWith("open:auth", {
+      mode: "signup",
+      contextModule: "aboutTheWork",
+      copy: "Sign up to follow Pablo Picasso",
+      intent: "followArtist",
+      afterSignUpAction: {
+        action: "follow",
+        kind: "artist",
+        objectId: "pablo-picasso",
+      },
     })
   })
 

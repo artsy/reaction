@@ -27,7 +27,7 @@ export const SizeFilter: React.FC = () => {
         <Sans size="2" color="black60">
           This is based on the artwork’s average dimension.
         </Sans>
-        <Box mt={0.5}>
+        <Box mt={0.25}>
           {sizeMap.map((checkbox, index) => {
             const { name, displayName } = checkbox
             const props = {

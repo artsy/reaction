@@ -4,7 +4,7 @@ import { hasSections as showMarketInsights } from "Apps/Artist/Components/Market
 import { SystemContextProps, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouteTab, RouteTabs } from "Components/v2/RouteTabs"
+import { RouteTab, RouteTabs } from "Components/RouteTabs"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -51,6 +51,7 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const {
       artist: { slug, statuses, counts },
+      user,
     } = this.props
 
     const route = path => `/artist/${slug}${path}`
@@ -62,7 +63,7 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab("Overview", route(""), {
+        {this.renderTab("Overview", route(user ? "/overview" : ""), {
           exact: true,
         })}
         {statuses.artworks &&

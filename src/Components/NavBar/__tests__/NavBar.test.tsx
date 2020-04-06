@@ -4,9 +4,7 @@ import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NavBar } from "../NavBar"
-import * as authentication from "../Utils/authentication"
 
-jest.mock("../Utils/authentication")
 jest.mock("Components/Search/SearchBar", () => {
   return {
     SearchBarQueryRenderer: () => <div />,
@@ -54,9 +52,8 @@ describe("NavBar", () => {
   describe("desktop", () => {
     const defaultLinks = [
       ["/collect", "Artworks"],
+      ["/artists", "Artists"],
       ["/auctions", "Auctions"],
-      ["/galleries", "Galleries"],
-      ["/art-fairs", "Fairs"],
       ["/articles", "Editorial"],
     ]
 
@@ -108,7 +105,11 @@ describe("NavBar", () => {
         .find("Button")
         .first()
         .simulate("click")
-      expect(authentication.login).toHaveBeenCalledWith(mediator)
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        contextModule: "header",
+        intent: "login",
+        mode: "login",
+      })
     })
 
     it("calls signup auth action on signup button click", () => {
@@ -117,7 +118,11 @@ describe("NavBar", () => {
         .find("Button")
         .last()
         .simulate("click")
-      expect(authentication.signup).toHaveBeenCalledWith(mediator)
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        contextModule: "header",
+        intent: "signup",
+        mode: "signup",
+      })
     })
   })
 

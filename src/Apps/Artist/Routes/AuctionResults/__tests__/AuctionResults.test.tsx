@@ -4,6 +4,7 @@ import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "App
 import { MockBoot, renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import React from "react"
+import { act } from "react-dom/test-utils"
 import { graphql } from "react-relay"
 import { useTracking } from "react-tracking"
 import { Breakpoint } from "Utils/Responsive"
@@ -35,7 +36,7 @@ describe("AuctionResults", () => {
   }
 
   const trackEvent = jest.fn()
-  beforeEach(() => {
+  beforeAll(() => {
     ;(useTracking as jest.Mock).mockImplementation(() => {
       return {
         trackEvent,
@@ -69,15 +70,12 @@ describe("AuctionResults", () => {
     })
 
     describe("collapsed details", () => {
-      beforeAll(() => {
+      it("opens the collapse", () => {
         wrapper
           .find("ArrowDownIcon")
           .first()
           .simulate("click")
         wrapper.update()
-      })
-
-      it("opens the collapse", () => {
         const html = wrapper.html()
         const data =
           AuctionResultsFixture.artist.auctionResultsConnection.edges[0].node
@@ -88,7 +86,7 @@ describe("AuctionResults", () => {
     })
 
     describe("user interactions", () => {
-      const defualtRelayParams = {
+      const defaultRelayParams = {
         first: 10,
         after: null,
         artistID: "pablo-picasso",
@@ -114,7 +112,7 @@ describe("AuctionResults", () => {
           expect(refetchSpy).toHaveBeenCalledTimes(1)
           expect(refetchSpy.mock.calls[0][0]).toEqual(
             expect.objectContaining({
-              ...defualtRelayParams,
+              ...defaultRelayParams,
               after: "YXJyYXljb25uZWN0aW9uOjk=",
             })
           )
@@ -138,19 +136,19 @@ describe("AuctionResults", () => {
 
               expect(refetchSpy.mock.calls[0][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   categories: ["Work on Paper"],
                 })
               )
               expect(refetchSpy.mock.calls[1][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   categories: ["Work on Paper", "Sculpture"],
                 })
               )
               expect(refetchSpy.mock.calls[2][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   categories: ["Sculpture"],
                 })
               )
@@ -166,6 +164,10 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   sizes: [],
+                  createdAfterYear: 1880,
+                  createdBeforeYear: 1973,
+                  earliestCreatedYear: 1880,
+                  latestCreatedYear: 1973,
                 },
               })
               done()
@@ -190,19 +192,19 @@ describe("AuctionResults", () => {
 
               expect(refetchSpy.mock.calls[0][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   organizations: ["Christie's"],
                 })
               )
               expect(refetchSpy.mock.calls[1][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   organizations: ["Christie's", "Phillips"],
                 })
               )
               expect(refetchSpy.mock.calls[2][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   organizations: ["Phillips"],
                 })
               )
@@ -227,19 +229,19 @@ describe("AuctionResults", () => {
 
               expect(refetchSpy.mock.calls[0][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   sizes: ["MEDIUM"],
                 })
               )
               expect(refetchSpy.mock.calls[1][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   sizes: ["MEDIUM", "LARGE"],
                 })
               )
               expect(refetchSpy.mock.calls[2][0]).toEqual(
                 expect.objectContaining({
-                  ...defualtRelayParams,
+                  ...defaultRelayParams,
                   sizes: ["LARGE"],
                 })
               )
@@ -255,11 +257,39 @@ describe("AuctionResults", () => {
                   sort: "DATE_DESC",
                   organizations: [],
                   categories: [],
+                  createdAfterYear: 1880,
+                  createdBeforeYear: 1973,
+                  earliestCreatedYear: 1880,
+                  latestCreatedYear: 1973,
                 },
               })
 
               done()
             })
+          })
+        })
+        describe("year created filter", () => {
+          const value = v => ({ target: { value: `${v}` } })
+          it("triggers relay refetch with created years and tracks events", () => {
+            const filter = wrapper.find("YearCreated")
+            const selects = filter.find("select")
+
+            act(() => {
+              selects.at(0).simulate("change", value(1900))
+              selects.at(1).simulate("change", value(1960))
+            })
+
+            expect(refetchSpy).toHaveBeenCalledTimes(2)
+
+            expect(refetchSpy.mock.calls[1][0]).toEqual(
+              expect.objectContaining({
+                ...defaultRelayParams,
+                createdAfterYear: 1900,
+                createdBeforeYear: 1960,
+                earliestCreatedYear: 1880,
+                latestCreatedYear: 1973,
+              })
+            )
           })
         })
       })
@@ -277,7 +307,7 @@ describe("AuctionResults", () => {
             expect(refetchSpy).toHaveBeenCalledTimes(1)
             expect(refetchSpy.mock.calls[0][0]).toEqual(
               expect.objectContaining({
-                ...defualtRelayParams,
+                ...defaultRelayParams,
                 sort: "ESTIMATE_AND_DATE_DESC",
               })
             )

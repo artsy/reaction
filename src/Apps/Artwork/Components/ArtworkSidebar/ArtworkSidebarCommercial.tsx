@@ -16,6 +16,8 @@ import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSide
 import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ModalType } from "Components/Authentication/Types"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import currency from "currency.js"
 import { Router } from "found"
@@ -29,6 +31,7 @@ import {
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
+import { openAuthModal } from "Utils/openAuthModal"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
 type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
@@ -249,9 +252,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         }
       })
     } else {
-      mediator.trigger("open:auth", {
-        mode: "login",
+      openAuthModal(mediator, {
+        mode: ModalType.login,
         redirectTo: location.href,
+        contextModule: ContextModule.artworkSidebar,
+        intent: AuthIntent.buyNow,
       })
     }
   }
@@ -338,9 +343,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         }
       })
     } else {
-      mediator.trigger("open:auth", {
-        mode: "login",
+      openAuthModal(mediator, {
+        mode: ModalType.login,
         redirectTo: location.href,
+        contextModule: ContextModule.artworkSidebar,
+        intent: AuthIntent.makeOffer,
       })
     }
   }

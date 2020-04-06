@@ -1,6 +1,6 @@
-import { data as sd } from "sharify"
+import { data as sd, GlobalData } from "sharify"
 
-export function getENV(ENV_VAR) {
+export function getENV(ENV_VAR: keyof GlobalData) {
   let envVar
   if (typeof window === "undefined") {
     envVar = process.env[ENV_VAR]

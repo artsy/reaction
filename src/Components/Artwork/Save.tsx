@@ -2,7 +2,7 @@ import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import * as Artsy from "Artsy"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { extend, isNull } from "lodash"
 import React from "react"
 import {
@@ -14,7 +14,7 @@ import {
 import { TrackingProp } from "react-tracking"
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"
 
@@ -28,6 +28,7 @@ export interface SaveProps
   extends Artsy.SystemContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
+  contextModule: SchemaV2.AuthContextModule
   style?: any
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
@@ -129,13 +130,13 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
       })
       this.trackSave()
     } else {
-      openAuthModal(this.props.mediator, {
-        contextModule: Schema.ContextModule.ArtworkPage,
+      openAuthToFollowSave(this.props.mediator, {
+        contextModule: this.props.contextModule,
         entity: {
           slug: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
-        intent: AuthModalIntent.SaveArtwork,
+        intent: SchemaV2.AuthIntent.saveArtwork,
       })
     }
   }

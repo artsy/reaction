@@ -8,8 +8,8 @@ import { Router } from "found"
 import React, { Component } from "react"
 
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
-import { StepSummaryItem } from "Components/v2/StepSummaryItem"
+import { CountdownTimer } from "Components/CountdownTimer"
+import { StepSummaryItem } from "Components/StepSummaryItem"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 

@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ArtistHeader_artist = {
-    readonly highlights: {
+    readonly artistHightlights: {
         readonly partnersConnection: {
             readonly edges: ReadonlyArray<{
                 readonly node: {
@@ -85,7 +85,7 @@ return {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": null,
+      "alias": "artistHightlights",
       "name": "highlights",
       "storageKey": null,
       "args": null,
@@ -393,5 +393,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'aa217d83bdfddc9bba710789717e44e6';
+(node as any).hash = 'ae811fc1342c868c7f512c4e371c7a38';
 export default node;

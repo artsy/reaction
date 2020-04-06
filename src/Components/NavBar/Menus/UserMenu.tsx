@@ -17,7 +17,6 @@ import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { data as sd } from "sharify"
 import { userHasLabFeature, userIsAdmin } from "Utils/user"
-import * as authentication from "../Utils/authentication"
 
 export const UserMenu: React.FC = () => {
   const { trackEvent } = useTracking()
@@ -74,7 +73,7 @@ export const UserMenu: React.FC = () => {
       <MenuItem
         onClick={event => {
           event.preventDefault() // `href` is only for tracking purposes
-          authentication.logout(mediator)
+          mediator.trigger("auth:logout")
         }}
       >
         <PowerIcon mr={1} /> Log out

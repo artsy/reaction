@@ -3,7 +3,7 @@ import { OfferSummaryItem_order } from "__generated__/OfferSummaryItem_order.gra
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Components/v2/StepSummaryItem"
+} from "Components/StepSummaryItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 

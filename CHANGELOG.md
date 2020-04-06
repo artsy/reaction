@@ -1,3 +1,817 @@
+# v26.1.0 (Mon Apr 06 2020)
+
+#### 🚀  Enhancement
+
+- HOLD => [Clientside Nav] Bump A/B test to v5 [#3285](https://github.com/artsy/reaction/pull/3285) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.0.3 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- [Route] Log generic errors but throw on HttpError [#3344](https://github.com/artsy/reaction/pull/3344) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.0.2 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- Remove contextModule from auction redirect [#3343](https://github.com/artsy/reaction/pull/3343) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.0.1 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Use app shell top-loader by default [#3342](https://github.com/artsy/reaction/pull/3342) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.0.0 (Thu Apr 02 2020)
+
+#### 💥  Breaking Change
+
+- Analytics schema v2 - authImpression event [#3193](https://github.com/artsy/reaction/pull/3193) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.42.6 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Add missing `action` call to ArtworkConsignButton [#3341](https://github.com/artsy/reaction/pull/3341) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.42.5 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Fix redirect loop when user logged in on artist page [#3338](https://github.com/artsy/reaction/pull/3338) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.42.4 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Use "Artsy for Galleries" instead of "Partner with Artsy" naming in mobile nav [#3339](https://github.com/artsy/reaction/pull/3339) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.42.3 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure consign button shows for all artists [#3340](https://github.com/artsy/reaction/pull/3340) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.42.2 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1885] restructure the main nav menu [#3336](https://github.com/artsy/reaction/pull/3336) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.42.1 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Redirect logged in users to the works for sale tab" [#3337](https://github.com/artsy/reaction/pull/3337) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.42.0 (Wed Apr 01 2020)
+
+#### 🚀  Enhancement
+
+- Redirect logged in users to the works for sale tab [#3307](https://github.com/artsy/reaction/pull/3307) ([@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- Organize MobileNav into folder [#3335](https://github.com/artsy/reaction/pull/3335) ([@damassi](https://github.com/damassi))
+- Display information about identity verification on credit card form [#3334](https://github.com/artsy/reaction/pull/3334) ([@bhoggard](https://github.com/bhoggard))
+
+#### ⚠️  Pushed to master
+
+- Forcing a reaction release  ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.41.1 (Tue Mar 31 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Guard against missing data [#3333](https://github.com/artsy/reaction/pull/3333) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.41.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update Artist/Consign to support MP-based data [#3331](https://github.com/artsy/reaction/pull/3331) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.40.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- Land on Work for Sale tab when coming from internal links [#3332](https://github.com/artsy/reaction/pull/3332) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- [Artist] Add ConsignButton to Artist/Overview page [#3329](https://github.com/artsy/reaction/pull/3329) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Remove UI patch [#3330](https://github.com/artsy/reaction/pull/3330) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.39.3 (Mon Mar 30 2020)
+
+#### 🐛  Bug Fix
+
+- [HotFix] Comment out NewsNav date [#3328](https://github.com/artsy/reaction/pull/3328) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.4.0 to v7.6.0 [#3309](https://github.com/artsy/reaction/pull/3309) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.39.2 (Sun Mar 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Fix padding on mobile [#3327](https://github.com/artsy/reaction/pull/3327) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove shuffle on recently sold [#3326](https://github.com/artsy/reaction/pull/3326) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add stack trace in development [#3325](https://github.com/artsy/reaction/pull/3325) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.38.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add images to Artist/Consign header [#3322](https://github.com/artsy/reaction/pull/3322) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.37.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Launch Consign Page / Update FAQ [#3324](https://github.com/artsy/reaction/pull/3324) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- gitignore node diagnostic reports [#3323](https://github.com/artsy/reaction/pull/3323) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.14 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add "Sold for" price data [#3321](https://github.com/artsy/reaction/pull/3321) ([@damassi](https://github.com/damassi))
+- [FX-1877] launch new mobile nav menu [#3320](https://github.com/artsy/reaction/pull/3320) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.13 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add ArtistConsignButton [#3317](https://github.com/artsy/reaction/pull/3317) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.12 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add tracking to Artist/Consign [#3318](https://github.com/artsy/reaction/pull/3318) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.11 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Mobile Nav Menu] adjust chevron position [#3319](https://github.com/artsy/reaction/pull/3319) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.10 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure year created check doesn't error on nulls [#3316](https://github.com/artsy/reaction/pull/3316) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.36.9 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu ui qa [#3315](https://github.com/artsy/reaction/pull/3315) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.8 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Video meta bug [#3314](https://github.com/artsy/reaction/pull/3314) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.36.7 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- the Address Form component should respect country selection for Euro only shipping [#3313](https://github.com/artsy/reaction/pull/3313) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.36.6 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Switch props.router.push back to window.locaion.assign for idv flow [#3312](https://github.com/artsy/reaction/pull/3312) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.5 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu analytics [#3289](https://github.com/artsy/reaction/pull/3289) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.4 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Move AddressForm component out of the order app [#3305](https://github.com/artsy/reaction/pull/3305) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.36.3 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] QA round 2 [#3311](https://github.com/artsy/reaction/pull/3311) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.2 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- Copy: Remove stray whitespace in verification failed view [#3310](https://github.com/artsy/reaction/pull/3310) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v25.36.1 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Artist/Consign QA [#3308](https://github.com/artsy/reaction/pull/3308) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.0 (Mon Mar 23 2020)
+
+#### 🚀  Enhancement
+
+- Add year created filter reset link [#3302](https://github.com/artsy/reaction/pull/3302) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.35.2 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- cleanup stray text [#3306](https://github.com/artsy/reaction/pull/3306) ([@erikdstock](https://github.com/erikdstock))
+- Show a pass/fail message for a completed identity verification [#3294](https://github.com/artsy/reaction/pull/3294) ([@erikdstock](https://github.com/erikdstock))
+- Missing Image Fix [#3304](https://github.com/artsy/reaction/pull/3304) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.35.1 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- Adds social_embed section type to ad insertion logic [#3301](https://github.com/artsy/reaction/pull/3301) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.3.0 to v7.4.0 [#3300](https://github.com/artsy/reaction/pull/3300) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.35.0 (Sun Mar 22 2020)
+
+#### 🚀  Enhancement
+
+- Bump [#3299](https://github.com/artsy/reaction/pull/3299) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- [Refactor] Move v2/Components > /Components & Collect2 > Collect [#3296](https://github.com/artsy/reaction/pull/3296) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.2.0 to v7.3.0 [#3287](https://github.com/artsy/reaction/pull/3287) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/lint-changed from 3.0.3 to v3.0.4 [#3298](https://github.com/artsy/reaction/pull/3298) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.34.6 (Sun Mar 22 2020)
+
+#### 🐛  Bug Fix
+
+- Update NetworkTimeout language [#3297](https://github.com/artsy/reaction/pull/3297) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.5 (Sat Mar 21 2020)
+
+#### 🐛  Bug Fix
+
+- Fix broken pagination on auction results page [#3295](https://github.com/artsy/reaction/pull/3295) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.34.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add Artist/Consign SEO/meta tags [#3292](https://github.com/artsy/reaction/pull/3292) ([@damassi](https://github.com/damassi))
+- Updates size on 3rd display ad on standard desktop [#3293](https://github.com/artsy/reaction/pull/3293) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Auction Results Visual Tweaks [#3284](https://github.com/artsy/reaction/pull/3284) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.34.1 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist/Consign] Add tests [#3279](https://github.com/artsy/reaction/pull/3279) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.0 (Fri Mar 20 2020)
+
+#### 🚀  Enhancement
+
+- Prepopulate email input from URL query string on forgot password page [#3291](https://github.com/artsy/reaction/pull/3291) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v25.33.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3290](https://github.com/artsy/reaction/pull/3290) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v25.33.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Adds a 3rd Display Ad to Standard Articles [#3286](https://github.com/artsy/reaction/pull/3286) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.33.1 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3288](https://github.com/artsy/reaction/pull/3288) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v25.33.0 (Thu Mar 19 2020)
+
+#### 🚀  Enhancement
+
+- Add initial UI for years created filters on auction results [#3270](https://github.com/artsy/reaction/pull/3270) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.32.10 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- User can navigate to IDV FAQ from the IDV landing page [#3282](https://github.com/artsy/reaction/pull/3282) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.32.9 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1702] new mobile nav menu [#3238](https://github.com/artsy/reaction/pull/3238) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.32.6 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update remaining mediator calls [#3283](https://github.com/artsy/reaction/pull/3283) ([@eessex](https://github.com/eessex))
+- [AUCT-930] static id verification processing page [#3274](https://github.com/artsy/reaction/pull/3274) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.2 to v7.2.0 [#3254](https://github.com/artsy/reaction/pull/3254) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.32.5 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Fix tab UI spacing [#3280](https://github.com/artsy/reaction/pull/3280) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.2 to v3.0.3 [#3278](https://github.com/artsy/reaction/pull/3278) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.32.4 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Update artist name [#3277](https://github.com/artsy/reaction/pull/3277) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.3 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Ensure dynamic data is passed [#3276](https://github.com/artsy/reaction/pull/3276) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.2 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Fix admin check on staging [#3275](https://github.com/artsy/reaction/pull/3275) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Forgot form titles [#3273](https://github.com/artsy/reaction/pull/3273) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.32.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Build out new Artist/Consign landing page [#3261](https://github.com/artsy/reaction/pull/3261) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.31.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Expand openAuthModal helpers, update NavBar triggers [#3264](https://github.com/artsy/reaction/pull/3264) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.31.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add generic error handler [#3272](https://github.com/artsy/reaction/pull/3272) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.30.1 (Mon Mar 16 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1758] add a fallback image when there is no headerImage [#3226](https://github.com/artsy/reaction/pull/3226) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.30.0 (Mon Mar 16 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add more safety around network failures with fallback UI [#3271](https://github.com/artsy/reaction/pull/3271) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v25.29.4 (Sat Mar 14 2020)
 
 #### 🐛  Bug Fix

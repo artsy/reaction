@@ -24,5 +24,9 @@ storybook_build
 .yalc
 yalc.lock
 coverage*
+tsconfig.tsbuildinfo
 reports*
 2
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.*.json

@@ -1,4 +1,6 @@
 import { Theme } from "@artsy/palette"
+import { authImpression } from "Artsy/Analytics/v2/Events"
+import { AuthModalType } from "Artsy/Analytics/v2/Schema"
 import qs from "querystring"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
@@ -23,7 +25,7 @@ import {
 export interface FormSwitcherProps {
   error?: string
   handleSubmit: SubmitHandler
-  handleTypeChange?: (e: string) => void
+  handleTypeChange?: (e: ModalType) => void
   isMobile?: boolean
   isStatic?: boolean
   onAppleLogin?: (e: Event) => void
@@ -66,11 +68,9 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
       options: {
         contextModule,
         copy,
-        destination,
         redirectTo,
         intent,
         title,
-        trigger,
         triggerSeconds,
       },
       type,
@@ -80,14 +80,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     // Analytics
     const event = Object.assign(
       {
-        action: "Auth impression",
-        type,
-        context_module: contextModule,
-        modal_copy: copy || title,
-        trigger: trigger || "click",
-        trigger_seconds: triggerSeconds,
+        contextModule,
         intent,
-        auth_redirect: redirectTo || destination,
+        copy: copy || title,
+        triggerSeconds,
+        type: AuthModalType[type],
       },
       type === "signup"
         ? {
@@ -95,8 +92,11 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
           }
         : null
     )
+
+    const trackingArgs = authImpression(event)
+
     if (tracking) {
-      tracking.trackEvent(event)
+      tracking.trackEvent(trackingArgs)
     }
   }
 
@@ -132,6 +132,19 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
         objectId,
       }
     )
+  }
+
+  getEmailValue = (): string => {
+    const { values } = this.props
+    const isClient = typeof window !== "undefined"
+    let email
+
+    if (isClient) {
+      const searchQuery = window.location.search.slice(1)
+      email = qs.parse(searchQuery).email as string
+    }
+
+    return email || values.email || ""
   }
 
   render() {
@@ -182,8 +195,9 @@ export class FormSwitcher extends React.Component<FormSwitcherProps, State> {
     }
 
     const { handleSubmit, onBackButtonClicked, values } = this.props
+
     const defaultValues = {
-      email: values.email || "",
+      email: this.getEmailValue(),
       password: values.password || "",
       name: values.name || "",
       accepted_terms_of_service: values.accepted_terms_of_service || false,

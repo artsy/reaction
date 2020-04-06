@@ -20,6 +20,7 @@ import {
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import createLogger from "Utils/logger"
+import { openAuthModal } from "Utils/openAuthModal"
 
 import { RequestConditionReport_artwork } from "__generated__/RequestConditionReport_artwork.graphql"
 import { RequestConditionReport_me } from "__generated__/RequestConditionReport_me.graphql"
@@ -28,6 +29,8 @@ import {
   RequestConditionReportMutationResponse,
 } from "__generated__/RequestConditionReportMutation.graphql"
 import { RequestConditionReportQuery } from "__generated__/RequestConditionReportQuery.graphql"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ModalType } from "Components/Authentication/Types"
 
 const logger = createLogger(
   "Apps/Artwork/Components/ArtworkDetails/RequestConditionReport"
@@ -93,15 +96,17 @@ export const RequestConditionReport: React.FC<RequestConditionReportProps> = pro
   }
 
   const handleLoginClick = () => {
+    // TODO: do we need this tracking?
     trackEvent({
       action_type: Schema.ActionType.Click,
       subject: Schema.Subject.Login,
       sale_artwork_id: artwork.saleArtwork.internalID,
     })
-
-    mediator.trigger("open:auth", {
-      mode: "login",
+    openAuthModal(mediator, {
+      mode: ModalType.login,
       redirectTo: location.href,
+      contextModule: ContextModule.aboutTheWork,
+      intent: AuthIntent.requestConditionReport,
     })
   }
 

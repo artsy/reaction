@@ -3,14 +3,15 @@ import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
+import { ArrowButton, Carousel } from "Components/Carousel"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
@@ -18,10 +19,10 @@ interface RecommendedArtistProps {
 const HEIGHT = 150
 
 const handleOpenAuth = (mediator, artist) => {
-  openAuthModal(mediator, {
+  openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: Schema.ContextModule.RecommendedArtists,
-    intent: AuthModalIntent.FollowArtist,
+    contextModule: SchemaV2.ContextModule.relatedArtistsRail,
+    intent: SchemaV2.AuthIntent.followArtist,
   })
 }
 
@@ -108,6 +109,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
           return (
             <FillwidthItem
               artwork={artwork.node}
+              contextModule={SchemaV2.ContextModule.relatedArtistsRail}
               targetHeight={HEIGHT}
               imageHeight={HEIGHT}
               width={HEIGHT * aspect_ratio}

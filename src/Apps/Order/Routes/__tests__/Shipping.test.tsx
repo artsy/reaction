@@ -6,15 +6,15 @@ import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
-import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
   fillInPhoneNumber,
   validAddress,
-} from "Apps/Order/Routes/__tests__/Utils/addressForm"
+} from "Components/__tests__/Utils/addressForm"
+import { Address } from "Components/AddressForm"
+import { CountrySelect } from "Components/CountrySelect"
 import Input from "Components/Input"
-import { CountrySelect } from "Components/v2/CountrySelect"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {

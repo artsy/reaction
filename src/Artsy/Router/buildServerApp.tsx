@@ -79,7 +79,6 @@ export function buildServerApp(
         routeConfig: createRouteConfig(routes),
         resolver,
         render: props => <Render {...props} />,
-        matchContext: { user },
       })
 
       if (isRedirect(farceResults)) {

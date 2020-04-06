@@ -126,7 +126,7 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   renderArtists() {
-    const { geneID, relayEnvironment } = this.props
+    const { geneID, relayEnvironment, mediator } = this.props
     return (
       <QueryRenderer<GeneContentsArtistsQuery>
         environment={relayEnvironment}
@@ -145,6 +145,7 @@ class GeneContents extends React.Component<Props, State> {
                 onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
                 gene={props.gene}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
+                mediator={mediator}
               />
             )
           } else {
@@ -156,7 +157,7 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   renderArtworks() {
-    const { geneID, relayEnvironment } = this.props
+    const { geneID, relayEnvironment, mediator } = this.props
     const { forSale, medium, priceRange, dimensionRange, sort } = this.state
     return (
       <QueryRenderer<GeneContentsArtworksQuery>
@@ -204,6 +205,7 @@ class GeneContents extends React.Component<Props, State> {
                 dimensionRange={dimensionRange}
                 gene={props.gene}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
+                mediator={mediator}
               />
             )
           } else {

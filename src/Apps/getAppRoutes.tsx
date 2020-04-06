@@ -1,6 +1,6 @@
 import { routes as artistRoutes } from "Apps/Artist/routes"
 import { routes as artworkRoutes } from "Apps/Artwork/routes"
-import { collectRoutes } from "Apps/Collect2/collectRoutes"
+import { collectRoutes } from "Apps/Collect/collectRoutes"
 import { conversationRoutes } from "Apps/Conversation/routes"
 import { routes as identityVerificationRoutes } from "Apps/IdentityVerification/routes"
 import { routes as orderRoutes } from "Apps/Order/routes"

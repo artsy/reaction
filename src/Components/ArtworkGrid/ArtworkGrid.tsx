@@ -1,6 +1,7 @@
 import { Flex } from "@artsy/palette"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy"
+import { AuthContextModule } from "Artsy/Analytics/v2/Schema"
 import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import { isEqual } from "lodash"
 import memoizeOnce from "memoize-one"
@@ -20,6 +21,7 @@ type Artwork = ArtworkGrid_artworks["edges"][0]["node"]
 export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
+  contextModule?: AuthContextModule
   columnCount?: number | number[]
   preloadImageCount?: number
   itemMargin?: number
@@ -102,7 +104,7 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: number,
     sectionedArtworks: SectionedArtworks
   ) {
-    const { preloadImageCount } = this.props
+    const { contextModule, preloadImageCount } = this.props
     const spacerStyle = {
       height: this.props.itemMargin,
     }
@@ -122,6 +124,7 @@ export class ArtworkGridContainer extends React.Component<
         const artwork = sectionedArtworks[column][row]
         artworkComponents.push(
           <GridItem
+            contextModule={contextModule}
             artwork={artwork}
             key={artwork.id}
             mediator={this.props.mediator}

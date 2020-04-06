@@ -1,15 +1,19 @@
 import loadable from "@loadable/component"
+import { Redirect, RedirectException, RouteConfig } from "found"
+import * as React from "react"
+import { graphql } from "react-relay"
+
 import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
+
+import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+
+import { hasOverviewContent } from "./Components/NavigationTabs"
+
 import {
   ArtworkFilters,
   initialArtworkFilterState,
 } from "Components/v2/ArtworkFilter/ArtworkFilterContext"
-import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
-import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
-import { Redirect, RedirectException, RouteConfig } from "found"
-import * as React from "react"
-import { graphql } from "react-relay"
-import { hasOverviewContent } from "./Components/NavigationTabs"
 
 graphql`
   fragment routes_Artist on Artist {
@@ -60,6 +64,7 @@ const ArtistApp = loadable(() => import("./ArtistApp"))
 const OverviewRoute = loadable(() => import("./Routes/Overview"))
 const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
 const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
+const ConsignRoute = loadable(() => import("./Routes/Consign"))
 const CVRoute = loadable(() => import("./Routes/CV"))
 const ArticlesRoute = loadable(() => import("./Routes/Articles"))
 const ShowsRoute = loadable(() => import("./Routes/Shows"))
@@ -67,6 +72,7 @@ const ShowsRoute = loadable(() => import("./Routes/Shows"))
 // Artist pages tend to load almost instantly, so just preload it up front
 if (typeof window !== "undefined") {
   ArtistApp.preload()
+  ConsignRoute.preload()
 }
 
 // FIXME:
@@ -81,6 +87,9 @@ export const routes: RouteConfig[] = [
     },
     query: graphql`
       query routes_ArtistTopLevelQuery($artistID: String!) @raw_response_type {
+        me {
+          id
+        }
         artist(id: $artistID) @principalField {
           ...ArtistApp_artist
           ...routes_Artist @relay(mask: false)
@@ -88,35 +97,59 @@ export const routes: RouteConfig[] = [
       }
     `,
     render: ({ Component, props, match }) => {
-      if (Component && props) {
-        const { artist } = props as any
-
-        if (!artist) {
-          return null
-        }
-
-        const showArtistInsights =
-          showMarketInsights(artist) ||
-          (artist.insights && artist.insights.length > 0)
-        const hasArtistContent = hasOverviewContent(artist)
-
-        const alreadyAtWorksForSalePath = match.location.pathname.includes(
-          `${artist.slug}/works-for-sale`
-        )
-
-        const canShowOverview = showArtistInsights || hasArtistContent
-
-        if (!canShowOverview && !alreadyAtWorksForSalePath) {
-          throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
-        }
-
-        return <Component {...props} />
+      if (!(Component && props)) {
+        return null
       }
+
+      const { artist, me: user } = props as any
+      const { pathname } = match.location
+
+      if (!artist) {
+        return undefined
+      }
+
+      const showArtistInsights =
+        showMarketInsights(artist) ||
+        (artist.insights && artist.insights.length > 0)
+      const hasArtistContent = hasOverviewContent(artist)
+
+      const alreadyAtWorksForSalePath = pathname.includes(
+        `${artist.slug}/works-for-sale`
+      )
+
+      const canShowOverview = showArtistInsights || hasArtistContent
+      /**
+       * The logic is as follows
+       *
+       * 1. If a user somehow ends up at /artist/<slug>/ redirect to /artist/<slug> because the former causes weird issues
+       * 2. If a user is logged in / redirects for /works-for-sale
+       * 3. If a user is logged in /overview opens the overview tab (which also links off to /overview)
+       * 4. If a user is not logged in / leads to the overview tab
+       * 5. If a user is not logged in /overview redirects to / and therefore the overview tab
+       * 6. If there's insufficient data, all tabs redirect to /works-for-sale
+       */
+      if (pathname === `/artist/${artist.slug}/`) {
+        throw new RedirectException(`/artist/${artist.slug}`)
+      }
+
+      if (user && pathname === `/artist/${artist.slug}`) {
+        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+      }
+
+      if (!user && pathname.includes("/overview") && canShowOverview) {
+        throw new RedirectException(`/artist/${artist.slug}`)
+      }
+
+      if (!canShowOverview && !alreadyAtWorksForSalePath) {
+        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+      }
+
+      return <Component {...props} />
     },
     children: [
       // Routes in tabs
       {
-        path: "/",
+        path: ":regexParam(\\overview)?",
         getComponent: () => OverviewRoute,
         prepare: () => {
           OverviewRoute.preload()
@@ -226,6 +259,41 @@ export const routes: RouteConfig[] = [
       },
 
       // Routes not in tabs
+
+      {
+        path: "consign",
+        getComponent: () => ConsignRoute,
+        prepare: () => {
+          ConsignRoute.preload()
+        },
+        displayFullPage: true,
+        render: ({ Component, props, match }) => {
+          if (!(Component && props)) {
+            return undefined
+          }
+
+          const artistPathName = match.location.pathname.replace("/consign", "")
+          const isInMicrofunnel = (props as any).artist.targetSupply
+            .isInMicrofunnel
+
+          if (isInMicrofunnel) {
+            return <Component {...props} />
+          } else {
+            throw new RedirectException(artistPathName)
+          }
+        },
+        query: graphql`
+          query routes_ArtistConsignQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...Consign_artist
+
+              targetSupply {
+                isInMicrofunnel
+              }
+            }
+          }
+        `,
+      },
       {
         path: "cv",
         getComponent: () => CVRoute,

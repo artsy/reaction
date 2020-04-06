@@ -5,6 +5,10 @@ import { FragmentRefs } from "relay-runtime";
 export type ArtistAuctionResults_artist = {
     readonly slug: string;
     readonly auctionResultsConnection: {
+        readonly createdYearRange: {
+            readonly startAt: number | null;
+            readonly endAt: number | null;
+        } | null;
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
@@ -93,6 +97,18 @@ const node: ReaderFragment = {
       "name": "sizes",
       "type": "[ArtworkSizes]",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "createdAfterYear",
+      "type": "Int",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "createdBeforeYear",
+      "type": "Int",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -126,6 +142,11 @@ const node: ReaderFragment = {
         },
         {
           "kind": "Variable",
+          "name": "earliestCreatedYear",
+          "variableName": "createdAfterYear"
+        },
+        {
+          "kind": "Variable",
           "name": "first",
           "variableName": "first"
         },
@@ -133,6 +154,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "last",
           "variableName": "last"
+        },
+        {
+          "kind": "Variable",
+          "name": "latestCreatedYear",
+          "variableName": "createdBeforeYear"
         },
         {
           "kind": "Variable",
@@ -153,6 +179,31 @@ const node: ReaderFragment = {
       "concreteType": "AuctionResultConnection",
       "plural": false,
       "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "createdYearRange",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "YearRange",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "startAt",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "endAt",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -299,5 +350,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '2d6d3f74318eaab24e94dd2e0b267622';
+(node as any).hash = '6f8944f3a8b58c263cd259174ad63d40';
 export default node;

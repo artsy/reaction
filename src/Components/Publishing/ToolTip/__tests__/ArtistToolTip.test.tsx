@@ -69,13 +69,14 @@ describe("ArtistToolTip", () => {
       .find(TitleDate)
       .at(0)
       .simulate("click")
-    const trackingData = testProps.tracking.trackEvent.mock.calls[0][0]
 
-    expect(trackingData.action).toBe("Click")
-    expect(trackingData.flow).toBe("tooltip")
-    expect(trackingData.type).toBe("artist stub")
-    expect(trackingData.contextModule).toBe("intext tooltip")
-    expect(trackingData.destination_path).toBe("/artist/nick-mauss")
+    expect(testProps.tracking.trackEvent).toBeCalledWith({
+      action: "Click",
+      contextModule: "intext tooltip",
+      destination_path: "/artist/nick-mauss",
+      flow: "tooltip",
+      type: "artist stub",
+    })
   })
 
   describe("Open Auth Modal", () => {
@@ -87,11 +88,17 @@ describe("ArtistToolTip", () => {
       }
       const component = getWrapper({ artist }, context)
       component.find(FollowArtistButton).simulate("click")
-      const args = context.onOpenAuthModal.mock.calls[0]
 
-      expect(args[0]).toBe("signup")
-      expect(args[1].contextModule).toBe("intext tooltip")
-      expect(args[1].intent).toBe("follow artist")
+      expect(context.onOpenAuthModal).toBeCalledWith("signup", {
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: "nick-mauss",
+        },
+        contextModule: "intextTooltip",
+        copy: "Sign up to follow artists",
+        intent: "followArtist",
+      })
     })
   })
 })

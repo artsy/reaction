@@ -13,6 +13,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import createLogger from "Utils/logger"
 
+import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
@@ -106,6 +107,7 @@ class RelatedWorksArtworkGrid extends React.Component<
                     <Spinner />
                   ) : (
                     <ArtworkGrid
+                      contextModule={ContextModule.relatedWorksRail}
                       artworks={artworksConnection}
                       columnCount={[2, 3, 4]}
                       preloadImageCount={0}

@@ -19,10 +19,11 @@ import { GenesFragmentContainer as Genes } from "Apps/Artist/Routes/Overview/Com
 import { useTracking, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArtistBioFragmentContainer as ArtistBio } from "Components/v2/ArtistBio"
-import { Carousel } from "Components/v2/Carousel"
-import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/v2/SelectedCareerAchievements"
+import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
+import { Carousel } from "Components/Carousel"
+import { SelectedCareerAchievementsFragmentContainer as SelectedCareerAchievements } from "Components/SelectedCareerAchievements"
 
+import { ArtistConsignButtonFragmentContainer as ArtistConsignButton } from "Apps/Artist/Components/ArtistConsignButton"
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
 import { WorksForSaleRailQueryRenderer as WorksForSaleRail } from "Apps/Artist/Routes/Overview/Components/WorksForSaleRail"
 import { pMedia } from "Components/Helpers"
@@ -96,20 +97,6 @@ const TruncatedLine = styled.div`
   white-space: nowrap;
 `
 
-interface ConsignLinkProps {
-  consignLinkAction: () => void
-}
-
-const ConsignLink: React.FC<ConsignLinkProps> = props => (
-  <Sans size="2" color="black60">
-    Want to sell a work by this artist?{" "}
-    <a href="/consign" onClick={props.consignLinkAction}>
-      Consign with Artsy
-    </a>
-    .
-  </Sans>
-)
-
 // Exported just for tests
 export const FeaturedArticlesItem = styled(Flex)`
   min-width: 300px;
@@ -171,7 +158,6 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
     const showArtistInsights =
       showMarketInsights(this.props.artist) || artist.insights.length > 0
     const showArtistBio = Boolean(artist.biographyBlurb.text)
-    const showConsignable = Boolean(artist.is_consignable)
     const showRelatedCategories =
       get(artist, a => a.related.genes.edges.length, 0) > 0
 
@@ -224,14 +210,9 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                     <Spacer mb={2} />
                   </>
                 )}
-                {showConsignable && (
-                  <>
-                    <Spacer mb={1} />
-                    <ConsignLink
-                      consignLinkAction={this.handleConsignClick.bind(this)}
-                    />
-                  </>
-                )}
+
+                <Spacer mb={3} />
+                <ArtistConsignButton artist={artist} />
               </>
             </Col>
 
@@ -268,14 +249,8 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
                 }}
                 bio={artist}
               />
-            </>
-          )}
-          {showConsignable && (
-            <>
-              <Spacer mb={1} />
-              <ConsignLink
-                consignLinkAction={this.handleConsignClick.bind(this)}
-              />
+              <Spacer mb={2} />
+              <ArtistConsignButton artist={artist} />
             </>
           )}
         </Media>
@@ -288,9 +263,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
 
         {artist.statuses.artworks && (
           <>
-            <Media at="xs">
-              {(showArtistBio || showConsignable) && <Separator my={3} />}
-            </Media>
+            <Media at="xs">{showArtistBio && <Separator my={3} />}</Media>
 
             <Media greaterThan="xs">
               <Separator my={3} />
@@ -467,6 +440,7 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         ...Genes_artist
         ...FollowArtistButton_artist
         ...WorksForSaleRail_artist
+        ...ArtistConsignButton_artist
         slug
         id
         statuses {
@@ -483,7 +457,6 @@ export const OverviewRouteFragmentContainer = createFragmentContainer(
         }
         href
         name
-        is_consignable: isConsignable
         # NOTE: The following are used to determine whether sections
         # should be rendered.
         biographyBlurb(format: HTML, partnerBio: true) {

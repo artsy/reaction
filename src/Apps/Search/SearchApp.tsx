@@ -8,8 +8,8 @@ import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 
-import { Footer } from "Components/v2/Footer"
-import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/v2/RecentlyViewed"
+import { Footer } from "Components/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
 
 import { RouterState, withRouter } from "found"
 import React, { useEffect, useState } from "react"

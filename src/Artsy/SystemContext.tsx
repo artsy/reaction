@@ -7,6 +7,8 @@ import { getUser } from "Utils/user"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void
+  on?: (event: string, cb?: (payload?: object) => void) => void
+  off?: (event: string) => void
 }
 
 /**
@@ -77,7 +79,7 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
 }) => {
   const [isFetching, setIsFetching] = useState(false)
   const [router, setRouter] = useState(null)
-  const user = getUser(props.user)
+  const [user] = useState(getUser(props.user))
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
 

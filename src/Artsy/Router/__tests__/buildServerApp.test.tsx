@@ -239,14 +239,14 @@ describe("buildServerApp", () => {
         }),
       })
       const relayEnvironment = createRelaySSREnvironment({ relayNetwork })
-      // try {
-      await getWrapper({
-        url: "/relay",
-        context: { relayEnvironment },
-      })
-      // } catch (error) {
-      // expect(error.message).toMatch(/Oh noes/)
-      // }
+      try {
+        await getWrapper({
+          url: "/relay",
+          context: { relayEnvironment },
+        })
+      } catch (error) {
+        expect(error.message).toMatch(/Oh noes/)
+      }
     })
   })
 })

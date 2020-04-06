@@ -19,7 +19,6 @@ export type Overview_artist = {
     } | null;
     readonly href: string | null;
     readonly name: string | null;
-    readonly is_consignable: boolean | null;
     readonly biographyBlurb: {
         readonly text: string | null;
     } | null;
@@ -88,7 +87,7 @@ export type Overview_artist = {
     readonly insights: ReadonlyArray<{
         readonly type: string | null;
     } | null> | null;
-    readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio" | "CurrentEvent_artist" | "MarketInsights_artist" | "SelectedCareerAchievements_artist" | "Genes_artist" | "FollowArtistButton_artist" | "WorksForSaleRail_artist">;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio" | "CurrentEvent_artist" | "MarketInsights_artist" | "SelectedCareerAchievements_artist" | "Genes_artist" | "FollowArtistButton_artist" | "WorksForSaleRail_artist" | "ArtistConsignButton_artist">;
     readonly " $refType": "Overview_artist";
 };
 export type Overview_artist$data = Overview_artist;
@@ -239,13 +238,6 @@ return {
     },
     (v3/*: any*/),
     (v4/*: any*/),
-    {
-      "kind": "ScalarField",
-      "alias": "is_consignable",
-      "name": "isConsignable",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -721,9 +713,14 @@ return {
       "kind": "FragmentSpread",
       "name": "WorksForSaleRail_artist",
       "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtistConsignButton_artist",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = 'd49804f9b186cd7f560a0747696f38fd';
+(node as any).hash = 'ce0637f455881ec87586fa7b001d8155';
 export default node;

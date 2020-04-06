@@ -2,8 +2,8 @@ import { Box, Separator } from "@artsy/palette"
 import { SearchResultsArtists_viewer } from "__generated__/SearchResultsArtists_viewer.graphql"
 import { GenericSearchResultItem } from "Apps/Search/Components/GenericSearchResultItem"
 import { ZeroState } from "Apps/Search/Components/ZeroState"
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
-import { PaginationFragmentContainer as Pagination } from "Components/v2/Pagination"
+import { LoadingArea, LoadingAreaState } from "Components/LoadingArea"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import { RouterState, withRouter } from "found"
 import qs from "qs"
 import React from "react"
@@ -108,6 +108,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
     return (
       <>
         {artists.map((artist, index) => {
+          const worksForSaleHref = artist.href + "/works-for-sale"
           return (
             <Box key={index}>
               <GenericSearchResultItem
@@ -115,7 +116,7 @@ export class SearchResultsArtistsRoute extends React.Component<Props, State> {
                 description={artist.bio}
                 imageUrl={artist.imageUrl}
                 entityType="Artist"
-                href={artist.href}
+                href={worksForSaleHref}
                 index={index}
                 term={term}
                 id={artist.internalID}

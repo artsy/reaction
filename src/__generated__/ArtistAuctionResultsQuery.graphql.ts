@@ -14,6 +14,8 @@ export type ArtistAuctionResultsQueryVariables = {
     organizations?: ReadonlyArray<string | null> | null;
     categories?: ReadonlyArray<string | null> | null;
     sizes?: ReadonlyArray<ArtworkSizes | null> | null;
+    createdBeforeYear?: number | null;
+    createdAfterYear?: number | null;
 };
 export type ArtistAuctionResultsQueryResponse = {
     readonly artist: {
@@ -38,9 +40,11 @@ query ArtistAuctionResultsQuery(
   $organizations: [String]
   $categories: [String]
   $sizes: [ArtworkSizes]
+  $createdBeforeYear: Int
+  $createdAfterYear: Int
 ) {
   artist(id: $artistID) {
-    ...ArtistAuctionResults_artist_3L8Kmx
+    ...ArtistAuctionResults_artist_4Fv9NF
     id
   }
 }
@@ -58,7 +62,7 @@ fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
   categoryText
   description
   date_text: dateText
-  sale_date_text: saleDateText
+  saleDate
   price_realized: priceRealized {
     display
     cents_usd: centsUSD
@@ -68,11 +72,15 @@ fragment ArtistAuctionResultItem_auctionResult on AuctionResult {
   }
 }
 
-fragment ArtistAuctionResults_artist_3L8Kmx on Artist {
+fragment ArtistAuctionResults_artist_4Fv9NF on Artist {
   slug
   ...AuctionResultHeader_artist
-  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, categories: $categories, sizes: $sizes) {
+  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, categories: $categories, sizes: $sizes, earliestCreatedYear: $createdAfterYear, latestCreatedYear: $createdBeforeYear) {
     ...AuctionResultsCount_results
+    createdYearRange {
+      startAt
+      endAt
+    }
     pageInfo {
       hasNextPage
       endCursor
@@ -185,6 +193,18 @@ var v0 = [
     "name": "sizes",
     "type": "[ArtworkSizes]",
     "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "createdBeforeYear",
+    "type": "Int",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "createdAfterYear",
+    "type": "Int",
+    "defaultValue": null
   }
 ],
 v1 = [
@@ -194,65 +214,63 @@ v1 = [
     "variableName": "artistID"
   }
 ],
-v2 = [
-  {
-    "kind": "Variable",
-    "name": "after",
-    "variableName": "after"
-  },
-  {
-    "kind": "Variable",
-    "name": "before",
-    "variableName": "before"
-  },
-  {
-    "kind": "Variable",
-    "name": "categories",
-    "variableName": "categories"
-  },
-  {
-    "kind": "Variable",
-    "name": "first",
-    "variableName": "first"
-  },
-  {
-    "kind": "Variable",
-    "name": "last",
-    "variableName": "last"
-  },
-  {
-    "kind": "Variable",
-    "name": "organizations",
-    "variableName": "organizations"
-  },
-  {
-    "kind": "Variable",
-    "name": "sizes",
-    "variableName": "sizes"
-  },
-  {
-    "kind": "Variable",
-    "name": "sort",
-    "variableName": "sort"
-  }
-],
+v2 = {
+  "kind": "Variable",
+  "name": "after",
+  "variableName": "after"
+},
 v3 = {
+  "kind": "Variable",
+  "name": "before",
+  "variableName": "before"
+},
+v4 = {
+  "kind": "Variable",
+  "name": "categories",
+  "variableName": "categories"
+},
+v5 = {
+  "kind": "Variable",
+  "name": "first",
+  "variableName": "first"
+},
+v6 = {
+  "kind": "Variable",
+  "name": "last",
+  "variableName": "last"
+},
+v7 = {
+  "kind": "Variable",
+  "name": "organizations",
+  "variableName": "organizations"
+},
+v8 = {
+  "kind": "Variable",
+  "name": "sizes",
+  "variableName": "sizes"
+},
+v9 = {
+  "kind": "Variable",
+  "name": "sort",
+  "variableName": "sort"
+},
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "page",
   "args": null,
   "storageKey": null
 },
-v5 = [
-  (v3/*: any*/),
-  (v4/*: any*/),
+v12 = [
+  (v10/*: any*/),
+  (v11/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -261,14 +279,14 @@ v5 = [
     "storageKey": null
   }
 ],
-v6 = {
+v13 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "display",
   "args": null,
   "storageKey": null
 },
-v7 = {
+v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -296,7 +314,26 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "ArtistAuctionResults_artist",
-            "args": (v2/*: any*/)
+            "args": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
+              {
+                "kind": "Variable",
+                "name": "createdAfterYear",
+                "variableName": "createdAfterYear"
+              },
+              {
+                "kind": "Variable",
+                "name": "createdBeforeYear",
+                "variableName": "createdBeforeYear"
+              },
+              (v5/*: any*/),
+              (v6/*: any*/),
+              (v7/*: any*/),
+              (v8/*: any*/),
+              (v9/*: any*/)
+            ]
           }
         ]
       }
@@ -328,7 +365,26 @@ return {
             "alias": null,
             "name": "auctionResultsConnection",
             "storageKey": null,
-            "args": (v2/*: any*/),
+            "args": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
+              {
+                "kind": "Variable",
+                "name": "earliestCreatedYear",
+                "variableName": "createdAfterYear"
+              },
+              (v5/*: any*/),
+              (v6/*: any*/),
+              {
+                "kind": "Variable",
+                "name": "latestCreatedYear",
+                "variableName": "createdBeforeYear"
+              },
+              (v7/*: any*/),
+              (v8/*: any*/),
+              (v9/*: any*/)
+            ],
             "concreteType": "AuctionResultConnection",
             "plural": false,
             "selections": [
@@ -338,6 +394,31 @@ return {
                 "name": "totalCount",
                 "args": null,
                 "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "createdYearRange",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "YearRange",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "startAt",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "endAt",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
               },
               {
                 "kind": "LinkedField",
@@ -381,7 +462,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": (v5/*: any*/)
+                    "selections": (v12/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -391,7 +472,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": (v5/*: any*/)
+                    "selections": (v12/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -401,7 +482,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": (v5/*: any*/)
+                    "selections": (v12/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -412,8 +493,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      (v3/*: any*/),
-                      (v4/*: any*/)
+                      (v10/*: any*/),
+                      (v11/*: any*/)
                     ]
                   }
                 ]
@@ -516,8 +597,8 @@ return {
                       },
                       {
                         "kind": "ScalarField",
-                        "alias": "sale_date_text",
-                        "name": "saleDateText",
+                        "alias": null,
+                        "name": "saleDate",
                         "args": null,
                         "storageKey": null
                       },
@@ -530,7 +611,7 @@ return {
                         "concreteType": "AuctionResultPriceRealized",
                         "plural": false,
                         "selections": [
-                          (v6/*: any*/),
+                          (v13/*: any*/),
                           {
                             "kind": "ScalarField",
                             "alias": "cents_usd",
@@ -549,17 +630,17 @@ return {
                         "concreteType": "AuctionLotEstimate",
                         "plural": false,
                         "selections": [
-                          (v6/*: any*/)
+                          (v13/*: any*/)
                         ]
                       },
-                      (v7/*: any*/)
+                      (v14/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          (v7/*: any*/)
+          (v14/*: any*/)
         ]
       }
     ]
@@ -568,10 +649,10 @@ return {
     "operationKind": "query",
     "name": "ArtistAuctionResultsQuery",
     "id": null,
-    "text": "query ArtistAuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n  $organizations: [String]\n  $categories: [String]\n  $sizes: [ArtworkSizes]\n) {\n  artist(id: $artistID) {\n    ...ArtistAuctionResults_artist_3L8Kmx\n    id\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text: dimensionText\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  mediumText\n  categoryText\n  description\n  date_text: dateText\n  sale_date_text: saleDateText\n  price_realized: priceRealized {\n    display\n    cents_usd: centsUSD\n  }\n  estimate {\n    display\n  }\n}\n\nfragment ArtistAuctionResults_artist_3L8Kmx on Artist {\n  slug\n  ...AuctionResultHeader_artist\n  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, categories: $categories, sizes: $sizes) {\n    ...AuctionResultsCount_results\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        title\n        dimension_text: dimensionText\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text: dateText\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment AuctionResultHeader_artist on Artist {\n  slug\n}\n\nfragment AuctionResultsCount_results on AuctionResultConnection {\n  totalCount\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
+    "text": "query ArtistAuctionResultsQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $sort: AuctionResultSorts\n  $artistID: String!\n  $organizations: [String]\n  $categories: [String]\n  $sizes: [ArtworkSizes]\n  $createdBeforeYear: Int\n  $createdAfterYear: Int\n) {\n  artist(id: $artistID) {\n    ...ArtistAuctionResults_artist_4Fv9NF\n    id\n  }\n}\n\nfragment ArtistAuctionResultItem_auctionResult on AuctionResult {\n  title\n  dimension_text: dimensionText\n  organization\n  images {\n    thumbnail {\n      url\n    }\n  }\n  mediumText\n  categoryText\n  description\n  date_text: dateText\n  saleDate\n  price_realized: priceRealized {\n    display\n    cents_usd: centsUSD\n  }\n  estimate {\n    display\n  }\n}\n\nfragment ArtistAuctionResults_artist_4Fv9NF on Artist {\n  slug\n  ...AuctionResultHeader_artist\n  auctionResultsConnection(first: $first, after: $after, before: $before, last: $last, sort: $sort, organizations: $organizations, categories: $categories, sizes: $sizes, earliestCreatedYear: $createdAfterYear, latestCreatedYear: $createdBeforeYear) {\n    ...AuctionResultsCount_results\n    createdYearRange {\n      startAt\n      endAt\n    }\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    totalCount\n    edges {\n      node {\n        title\n        dimension_text: dimensionText\n        images {\n          thumbnail {\n            url\n          }\n        }\n        description\n        date_text: dateText\n        ...ArtistAuctionResultItem_auctionResult\n        id\n      }\n    }\n  }\n}\n\nfragment AuctionResultHeader_artist on Artist {\n  slug\n}\n\nfragment AuctionResultsCount_results on AuctionResultConnection {\n  totalCount\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'd2ea0fd7125d370f96f35608d94882e5';
+(node as any).hash = '3533ba4f21376e649037ad3c69678e74';
 export default node;

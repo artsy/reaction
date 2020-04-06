@@ -1,11 +1,8 @@
 import { IdentityVerificationAppTestQueryRawResponse } from "__generated__/IdentityVerificationAppTestQuery.graphql"
-import { routes_IdentityVerificationAppQueryResponse } from "__generated__/routes_IdentityVerificationAppQuery.graphql"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import deepMerge from "deepmerge"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
-import { Location } from "found"
-import React from "react"
 import { graphql } from "react-relay"
 import { IdentityVerificationAppQueryResponseFixture } from "../__fixtures__/routes_IdentityVerificationAppQuery"
 import { IdentityVerificationAppFragmentContainer } from "../IdentityVerificationApp"
@@ -16,19 +13,13 @@ jest.unmock("react-tracking")
 jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
-const mockLocation: Partial<Location> = {}
+
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-const setupTestEnv = ({
-  location = mockLocation,
-}: {
-  location?: Partial<Location>
-} = {}) => {
+const setupTestEnv = () => {
   return createTestEnv({
     TestPage: IdentityVerificationAppTestPage,
-    Component: (props: routes_IdentityVerificationAppQueryResponse) => (
-      <IdentityVerificationAppFragmentContainer {...props} />
-    ),
+    Component: IdentityVerificationAppFragmentContainer,
     query: graphql`
       query IdentityVerificationAppTestQuery @raw_response_type {
         me {
@@ -53,6 +44,44 @@ describe("IdentityVerification route", () => {
     jest.resetAllMocks()
   })
   describe("for signed-in user", () => {
+    describe("unactionable end states", () => {
+      it("renders a message about an identity verification that is `passed`", async () => {
+        const env = setupTestEnv()
+
+        const page = await env.buildPage({
+          mockData: deepMerge(IdentityVerificationAppQueryResponseFixture, {
+            me: {
+              identityVerification: {
+                state: "passed",
+              },
+            },
+          }),
+        })
+
+        expect(page.text()).toContain("Identity verification complete")
+        expect(page.startVerificationButton.exists()).toBeFalsy()
+        expect(page.finishButton.exists()).toBeTruthy()
+      })
+
+      it("renders a message about an identity verification that is `failed`", async () => {
+        const env = setupTestEnv()
+
+        const page = await env.buildPage({
+          mockData: deepMerge(IdentityVerificationAppQueryResponseFixture, {
+            me: {
+              identityVerification: {
+                state: "failed",
+              },
+            },
+          }),
+        })
+
+        expect(page.text()).toContain("Identity verification failed")
+        expect(page.startVerificationButton.exists()).toBeFalsy()
+        expect(page.contactSupportButton.exists()).toBeTruthy()
+      })
+    })
+
     it("allows an identity verification instance's owner to view the landing page", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
@@ -80,6 +109,10 @@ describe("IdentityVerification route", () => {
     })
 
     describe("user enters verification flow", () => {
+      beforeEach(() => {
+        window.location.assign = jest.fn()
+      })
+
       it("user click on 'continue to verification' button is tracked", async () => {
         const env = setupTestEnv()
         const page = await env.buildPage()
@@ -95,12 +128,10 @@ describe("IdentityVerification route", () => {
       })
 
       it("user is redirected to the verification flow on a successful mutation", async () => {
-        window.location.assign = jest.fn()
         const env = setupTestEnv()
         const page = await env.buildPage()
 
         await page.clickStartVerification()
-
         expect(window.location.assign).toHaveBeenCalledWith("www.identity.biz")
       })
 
@@ -121,7 +152,6 @@ describe("IdentityVerification route", () => {
         env.mutations.useResultsOnce(badResult)
 
         await page.clickStartVerification()
-
         const errorModal = expectOne(page.find(ErrorModal))
         expect(errorModal.props().show).toBe(true)
         expect(page.text()).toContain(
@@ -135,7 +165,6 @@ describe("IdentityVerification route", () => {
         env.mutations.mockNetworkFailureOnce()
 
         await page.clickStartVerification()
-
         const errorModal = expectOne(page.find(ErrorModal))
         expect(errorModal.props().show).toBe(true)
         expect(page.text()).toContain(

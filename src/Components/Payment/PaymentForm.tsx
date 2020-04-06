@@ -1,15 +1,15 @@
 import { Box, Button, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { PaymentFormCreateCreditCardMutation } from "__generated__/PaymentFormCreateCreditCardMutation.graphql"
 import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
+import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+import { validateAddress } from "Apps/Order/Utils/formValidators"
 import {
   Address,
   AddressErrors,
   AddressForm,
   AddressTouched,
   emptyAddress,
-} from "Apps/Order/Components/AddressForm"
-import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
-import { validateAddress } from "Apps/Order/Utils/formValidators"
+} from "Components/AddressForm"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { Component } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"

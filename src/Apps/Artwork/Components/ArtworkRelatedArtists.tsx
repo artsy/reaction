@@ -4,7 +4,8 @@ import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { useSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2/ArtistCard"
+import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
+import { ArtistCardFragmentContainer as ArtistCard } from "Components/ArtistCard"
 import React, { useState } from "react"
 import {
   createPaginationContainer,
@@ -63,6 +64,7 @@ export const ArtworkRelatedArtists: React.FC<ArtworkRelatedArtistsProps> = track
                 <ArtistCard
                   lazyLoad
                   artist={node}
+                  contextModule={SchemaV2.ContextModule.relatedArtistsRail}
                   mediator={mediator}
                   user={user}
                   onClick={() => {

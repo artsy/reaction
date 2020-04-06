@@ -1,4 +1,4 @@
-import { SystemContextProvider } from "Artsy"
+import { Mediator, SystemContextProvider } from "Artsy"
 import { buildAppRoutes } from "Artsy/Router/buildAppRoutes"
 import { buildClientApp } from "Artsy/Router/client"
 import { mount } from "enzyme"
@@ -19,6 +19,12 @@ jest.mock("Artsy/Analytics/useTracking", () => ({
 }))
 
 describe("AppShell", () => {
+  const mediator: Mediator = {
+    trigger: jest.fn(),
+    on: jest.fn(),
+    off: jest.fn(),
+  }
+
   it("renders a NavBar", async () => {
     const { ClientApp } = await buildClientApp({
       history: {
@@ -38,7 +44,7 @@ describe("AppShell", () => {
     })
 
     const wrapper = mount(
-      <SystemContextProvider>
+      <SystemContextProvider mediator={mediator}>
         <ClientApp />
       </SystemContextProvider>
     )
@@ -67,7 +73,7 @@ describe("AppShell", () => {
     })
 
     mount(
-      <SystemContextProvider>
+      <SystemContextProvider mediator={mediator}>
         <ClientApp />
       </SystemContextProvider>
     )

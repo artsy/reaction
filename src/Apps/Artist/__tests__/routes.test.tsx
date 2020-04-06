@@ -25,9 +25,11 @@ describe("Artist/routes", () => {
   }
 
   const mockResolver = (
-    data: routes_ArtistTopLevelQueryRawResponse["artist"]
+    artist: routes_ArtistTopLevelQueryRawResponse["artist"],
+    me: routes_ArtistTopLevelQueryRawResponse["me"] = null
   ) => ({
-    artist: data,
+    artist,
+    me,
   })
 
   it("renders the overview page if there is sufficient data", async () => {
@@ -37,6 +39,58 @@ describe("Artist/routes", () => {
     )
 
     expect(redirect).toBe(undefined)
+  })
+
+  it("redirects trailing a trailing slash on the artist page back to the root", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/",
+      mockResolver(overviewArtist)
+    )
+
+    expect(redirect.url).toBe("/artist/juan-gris")
+  })
+
+  it("shouldn't redirect from /works-for-sale when user logged in", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/works-for-sale",
+      mockResolver(overviewArtist, { id: "123" })
+    )
+
+    expect(redirect).toBe(undefined)
+  })
+
+  it("doesn't redirect from /auction-results to /works-for-sale if auction-results", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/auction-results",
+      mockResolver({
+        ...overviewArtist,
+        statuses: {
+          ...overviewArtist.statuses,
+          auctionLots: true,
+        },
+      })
+    )
+    expect(redirect).toBe(undefined)
+  })
+
+  it("redirects from / to /works-for-sale if the user is logged in", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris",
+      mockResolver(overviewArtist, { id: "123" })
+    )
+
+    expect(redirect.url).toBe("/artist/juan-gris/works-for-sale")
+  })
+
+  it("redirects from /overview to / if the user is not logged in", async () => {
+    const { redirect } = await render(
+      "/artist/juan-gris/overview",
+      mockResolver({
+        ...overviewArtist,
+      })
+    )
+
+    expect(redirect.url).toBe("/artist/juan-gris")
   })
 
   it("renders the /works-for-sale page if there is no data", async () => {
@@ -125,9 +179,6 @@ describe("Artist/routes", () => {
       "/artist/juan-gris/cv",
       mockResolver({
         ...overviewArtist,
-        highlights: {
-          partnersConnection: null,
-        },
         statuses: {
           shows: false,
           articles: false,
@@ -179,6 +230,11 @@ const overviewArtist: routes_ArtistTopLevelQueryRawResponse["artist"] = {
   },
   internalID: "4d8b928e4eb68a1b2c000222",
   highlights: {
+    partnersConnection: {
+      edges: [],
+    },
+  },
+  artistHightlights: {
     partnersConnection: {
       edges: [],
     },

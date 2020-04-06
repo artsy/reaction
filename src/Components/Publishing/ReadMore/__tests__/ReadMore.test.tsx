@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import {
   FullscreenViewerContext,
@@ -14,6 +15,7 @@ import React from "react"
 import { ReadMoreWrapper } from "../ReadMoreWrapper"
 
 jest.useFakeTimers()
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("ReadMore", () => {
   const getWrapper = (_readMoreProps, _sectionsProps) => {
@@ -28,6 +30,8 @@ describe("ReadMore", () => {
 
   let readMoreProps
   let sectionsProps
+  const trackEvent = jest.fn()
+
   beforeEach(() => {
     Element.prototype.getBoundingClientRect = jest.fn(() => {
       return {
@@ -42,6 +46,11 @@ describe("ReadMore", () => {
     sectionsProps = {
       article: StandardArticle,
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   it("finds the optimal truncation height", () => {

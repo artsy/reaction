@@ -22,7 +22,7 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"

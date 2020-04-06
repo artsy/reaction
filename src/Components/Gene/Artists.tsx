@@ -1,4 +1,5 @@
 import { Artists_gene } from "__generated__/Artists_gene.graphql"
+import { Mediator } from "Artsy"
 import { avantgarde } from "Assets/Fonts"
 import * as React from "react"
 import {
@@ -21,6 +22,7 @@ interface Props {
   gene: Artists_gene
   onDropdownSelected: (slice: string, value: string) => void
   onForSaleToggleSelected: () => void
+  mediator: Mediator
 }
 
 interface State {
@@ -133,7 +135,13 @@ export class Artists extends React.Component<Props, State> {
     const artists = this.props.gene.artists
 
     const artistRows = artists.edges.map(edge => {
-      return <ArtistRow artist={edge.node} key={edge.node.id} />
+      return (
+        <ArtistRow
+          artist={edge.node}
+          key={edge.node.id}
+          mediator={this.props.mediator}
+        />
+      )
     })
 
     const loadMoreButton = (

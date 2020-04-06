@@ -4,18 +4,42 @@ import {
   ArtistHeaderFragmentContainer as ArtistHeader,
   WorksForSaleButton,
 } from "Apps/Artist/Components/ArtistHeader"
+import { Mediator, SystemContextProvider } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
+import { FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { renderRelayTree } from "DevTools"
-import { graphql } from "react-relay"
+import React from "react"
+import { Environment, graphql } from "react-relay"
 import { ArtistIndicator } from "../ArtistIndicator"
 
 jest.unmock("react-relay")
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("ArtistHeader", () => {
+  let mediator: Mediator
+  let trackEvent
+  beforeEach(() => {
+    trackEvent = jest.fn()
+    mediator = { trigger: jest.fn() }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
+
   const getWrapper = async (
-    response: ArtistHeader_Test_QueryRawResponse["artist"] = ArtistHeaderFixture
+    response: ArtistHeader_Test_QueryRawResponse["artist"] = ArtistHeaderFixture,
+    context = { mediator, relayEnvironment: {} as Environment, user: null }
   ) => {
     return await renderRelayTree({
-      Component: ArtistHeader,
+      Component: ({ artist }: any) => {
+        return (
+          <SystemContextProvider {...context}>
+            <ArtistHeader artist={artist} />
+          </SystemContextProvider>
+        )
+      },
       query: graphql`
         query ArtistHeader_Test_Query @raw_response_type {
           artist(id: "cecily-brown") {
@@ -42,6 +66,25 @@ describe("ArtistHeader", () => {
     const html = wrapper.html()
     expect(html).toContain(">Following<")
     expect(html).not.toContain(">Follow<")
+  })
+
+  it("opens auth modal with expected args when following an artist", async () => {
+    const wrapper = await getWrapper()
+    wrapper
+      .find(FollowArtistButton)
+      .at(0)
+      .simulate("click")
+    expect(mediator.trigger).toBeCalledWith("open:auth", {
+      afterSignUpAction: {
+        action: "follow",
+        kind: "artist",
+        objectId: "cecily-brown",
+      },
+      contextModule: "artistHeader",
+      copy: "Sign up to follow Cecily Brown",
+      intent: "followArtist",
+      mode: "signup",
+    })
   })
 
   it("renders blue chip indicator when data is present", async () => {
@@ -89,7 +132,7 @@ describe("ArtistHeader", () => {
   it("hides auction record indicator when data is not present", async () => {
     const artist = {
       ...ArtistHeaderFixture,
-      highlights: { partnersConnection: null },
+      artistHightlights: { partnersConnection: null },
     }
     const wrapper = await getWrapper(artist)
     const html = wrapper.html()

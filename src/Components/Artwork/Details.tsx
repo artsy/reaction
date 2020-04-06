@@ -112,6 +112,10 @@ export class Details extends React.Component<Props, null> {
   }
 
   saleInfoLine() {
+    if (!this.props.showSaleLine) {
+      return null
+    }
+
     return (
       <>
         <Sans
