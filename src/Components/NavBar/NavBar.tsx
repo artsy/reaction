@@ -20,6 +20,7 @@ import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
 import {
+  DropDownNavMenu,
   MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
@@ -110,7 +111,22 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            <NavItem href="/collect">Artworks</NavItem>
+            <NavItem
+              isFullScreenDropDown
+              Menu={() => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      paddingTop={2}
+                      paddingBottom={2}
+                    />
+                  </Box>
+                )
+              }}
+            >
+              Artworks
+            </NavItem>
             <NavItem href="/artists">Artists</NavItem>
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
