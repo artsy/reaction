@@ -110,7 +110,7 @@ export const FeatureFragmentContainer = createFragmentContainer(Feature, {
         auctionRailItemIDs: { type: "[String!]" }
         fairRailItemIDs: { type: "[String!]" }
       ) {
-      articles: articlesByInternalID(ids: $articleIDs) {
+      articles: articles(ids: $articleIDs) {
         ...FeaturedArticles_articles
       }
       selectedWorks: orderedSet(id: $selectedWorksSetID) {

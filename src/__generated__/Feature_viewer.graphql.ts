@@ -60,8 +60,8 @@ const node: ReaderFragment = {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "articles",
-      "name": "articlesByInternalID",
+      "alias": null,
+      "name": "articles",
       "storageKey": null,
       "args": [
         {
@@ -125,5 +125,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '688067701d20b665137a722832d7f93d';
+(node as any).hash = 'dfc88dd7080fc43af865a73bc7f87dab';
 export default node;

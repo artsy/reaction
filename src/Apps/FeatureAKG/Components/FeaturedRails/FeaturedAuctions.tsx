@@ -18,6 +18,10 @@ const FeaturedAuctionsRail: React.FC<FeaturedAuctionsRailProps> = props => {
   const { title, subtitle, items } = props.railMetadata
   const { auctions } = props
 
+  if (!auctions?.edges?.length) {
+    return null
+  }
+
   const itemsForCarousel = auctions.edges.map(auction => {
     const matchingAuctionFromSpreadsheet = find(
       items,

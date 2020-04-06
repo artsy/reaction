@@ -34,7 +34,7 @@ export const SelectedWorksFragmentContainer = createFragmentContainer(
   {
     selectedWorks: graphql`
       fragment SelectedWorks_selectedWorks on OrderedSet {
-        itemsConnection {
+        itemsConnection(first: 6) {
           ...ArtworkGrid_artworks
 
           # So we know whether or not to render the grid.

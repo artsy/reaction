@@ -83,7 +83,7 @@ const node: ReaderFragment = {
         },
         {
           "kind": "Variable",
-          "name": "id",
+          "name": "ids",
           "variableName": "auctionRailItemIDs"
         }
       ],
@@ -121,5 +121,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'df62f26959d750a2d837805c31b755f4';
+(node as any).hash = '8799ba37c99a8e0cd277b261a3a57e23';
 export default node;

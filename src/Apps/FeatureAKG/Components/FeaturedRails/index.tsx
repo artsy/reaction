@@ -69,7 +69,7 @@ export const FeaturedRailsFragmentContainer = createFragmentContainer(
         collections: marketingCollections(slugs: $collectionRailItemIDs) {
           ...FeaturedCollections_collections
         }
-        auctions: salesConnection(first: 50, id: $auctionRailItemIDs) {
+        auctions: salesConnection(first: 50, ids: $auctionRailItemIDs) {
           ...FeaturedAuctions_auctions
         }
         fairs: fairs(ids: $fairRailItemIDs) {
