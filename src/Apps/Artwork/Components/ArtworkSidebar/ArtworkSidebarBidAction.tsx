@@ -164,28 +164,39 @@ export class ArtworkSidebarBidAction extends React.Component<
       return (
         <SystemContextConsumer>
           {({ user }) => {
-            return (
-              <Box>
-                {sale.is_registration_closed && !registeredToBid && (
+            const successfulRegistrationNotPossible: boolean =
+              sale.is_registration_closed && !registeredToBid
+            if (successfulRegistrationNotPossible) {
+              return (
+                <div>
                   <Sans size="2" color="black60" pb={1} textAlign="center">
                     Registration closed
                   </Sans>
-                )}
-                <Button
-                  width="100%"
-                  size="large"
-                  onClick={() => this.redirectToLiveBidding(user)}
-                >
-                  {sale.is_registration_closed && !registeredToBid
-                    ? "Watch live bidding"
-                    : "Enter live bidding"}
-                </Button>
-                {!sale.is_registration_closed &&
-                  userNeedsIdentityVerification && (
+                  <Button
+                    width="100%"
+                    size="large"
+                    onClick={() => this.redirectToLiveBidding(user)}
+                  >
+                    Watch live bidding
+                  </Button>
+                </div>
+              )
+            } else {
+              return (
+                <div>
+                  <Button
+                    width="100%"
+                    size="large"
+                    onClick={() => this.redirectToLiveBidding(user)}
+                  >
+                    Enter live bidding
+                  </Button>
+                  {userNeedsIdentityVerification && (
                     <IdentityVerificationDisclaimer />
                   )}
-              </Box>
-            )
+                </div>
+              )
+            }
           }}
         </SystemContextConsumer>
       )
