@@ -105,14 +105,17 @@ export class ArtworkSidebarBidAction extends React.Component<
   }
 
   render() {
-    const { artwork, me } = this.props
+    const {
+      artwork,
+      artwork: { sale },
+      me,
+    } = this.props
 
-    if (artwork.sale.is_closed) return null
+    if (sale.is_closed) return null
 
-    const registrationAttempted = !!artwork.sale.registrationStatus
+    const registrationAttempted = !!sale.registrationStatus
     const registeredToBid =
-      registrationAttempted &&
-      artwork.sale.registrationStatus.qualified_for_bidding
+      registrationAttempted && sale.registrationStatus.qualified_for_bidding
 
     /**
      * NOTE: This is making an incorrect assumption that there could only ever
@@ -130,10 +133,10 @@ export class ArtworkSidebarBidAction extends React.Component<
      */
     const userNeedsIdentityVerification: boolean =
       !registeredToBid &&
-      artwork.sale.requireIdentityVerification &&
+      sale.requireIdentityVerification &&
       !me?.identityVerified
 
-    if (artwork.sale.is_preview) {
+    if (sale.is_preview) {
       return (
         <div>
           {!registrationAttempted && (
@@ -157,13 +160,13 @@ export class ArtworkSidebarBidAction extends React.Component<
       )
     }
 
-    if (artwork.sale.is_live_open) {
+    if (sale.is_live_open) {
       return (
         <SystemContextConsumer>
           {({ user }) => {
             return (
               <Box>
-                {artwork.sale.is_registration_closed && !registeredToBid && (
+                {sale.is_registration_closed && !registeredToBid && (
                   <Sans size="2" color="black60" pb={1} textAlign="center">
                     Registration closed
                   </Sans>
@@ -173,11 +176,11 @@ export class ArtworkSidebarBidAction extends React.Component<
                   size="large"
                   onClick={() => this.redirectToLiveBidding(user)}
                 >
-                  {artwork.sale.is_registration_closed && !registeredToBid
+                  {sale.is_registration_closed && !registeredToBid
                     ? "Watch live bidding"
                     : "Enter live bidding"}
                 </Button>
-                {!artwork.sale.is_registration_closed &&
+                {!sale.is_registration_closed &&
                   userNeedsIdentityVerification && (
                     <IdentityVerificationDisclaimer />
                   )}
@@ -188,7 +191,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       )
     }
 
-    if (artwork.sale.is_open) {
+    if (sale.is_open) {
       if (registrationAttempted && !registeredToBid) {
         return (
           <div>
@@ -201,7 +204,7 @@ export class ArtworkSidebarBidAction extends React.Component<
           </div>
         )
       }
-      if (artwork.sale.is_registration_closed && !registeredToBid) {
+      if (sale.is_registration_closed && !registeredToBid) {
         return (
           <Button width="100%" size="large" disabled>
             Registration closed
