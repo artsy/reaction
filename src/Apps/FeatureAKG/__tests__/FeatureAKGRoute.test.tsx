@@ -25,6 +25,9 @@ describe("FeatureAKG", () => {
     ],
     auctionRailItemIDs: ["auction1", "auction2", "auction3", "auction4"],
     fairRailItemIDs: ["fair1", "fair2", "fair3", "fair4"],
+    hasCollectionRailItems: true,
+    hasAuctionRailItems: true,
+    hasFairRailItems: true,
   }
 
   const getWrapper = async (
@@ -48,6 +51,9 @@ describe("FeatureAKG", () => {
           $collectionRailItemIDs: [String!]
           $auctionRailItemIDs: [String!]
           $fairRailItemIDs: [String!]
+          $hasCollectionRailItems: Boolean!
+          $hasAuctionRailItems: Boolean!
+          $hasFairRailItems: Boolean!
         ) @raw_response_type {
           viewer {
             ...FeatureApp_viewer
@@ -57,6 +63,9 @@ describe("FeatureAKG", () => {
                 collectionRailItemIDs: $collectionRailItemIDs
                 auctionRailItemIDs: $auctionRailItemIDs
                 fairRailItemIDs: $fairRailItemIDs
+                hasCollectionRailItems: $hasCollectionRailItems
+                hasAuctionRailItems: $hasAuctionRailItems
+                hasFairRailItems: $hasFairRailItems
               )
           }
         }
@@ -112,7 +121,7 @@ describe("FeatureAKG", () => {
         ArtKeepsGoingFixture,
         defaultVariables,
         defaultData,
-        "sm"
+        "xs"
       )
       expect(smallWrapper.html()).not.toContain("video_1_large")
       expect(smallWrapper.html()).not.toContain("video_2_large")
@@ -177,7 +186,7 @@ describe("FeatureAKG", () => {
         ArtKeepsGoingFixture,
         defaultVariables,
         smallWrapperData,
-        "sm"
+        "xs"
       )
       expect(smallWrapper.html()).not.toContain("video_1_large")
       expect(smallWrapper.html()).not.toContain("video_2_large")
@@ -692,6 +701,8 @@ const ArtKeepsGoingFixture: FeatureAKGRoute_Test_QueryRawResponse = {
         publishedAt: "April 20, 2013",
         thumbnailImage: {
           cropped: {
+            width: 1,
+            height: 1,
             url:
               "https://d32dm0rphc51dk.cloudfront.net/PCuKcu_h43P0IfBpXNkNcQ/large.jpg",
           },
@@ -710,6 +721,8 @@ const ArtKeepsGoingFixture: FeatureAKGRoute_Test_QueryRawResponse = {
         publishedAt: "April 20, 2013",
         thumbnailImage: {
           cropped: {
+            width: 1,
+            height: 1,
             url:
               "https://d32dm0rphc51dk.cloudfront.net/PCuKcu_h43P0IfBpXNkNcQ/large.jpg",
           },
@@ -728,6 +741,8 @@ const ArtKeepsGoingFixture: FeatureAKGRoute_Test_QueryRawResponse = {
         publishedAt: "April 20, 2013",
         thumbnailImage: {
           cropped: {
+            width: 1,
+            height: 1,
             url:
               "https://d32dm0rphc51dk.cloudfront.net/PCuKcu_h43P0IfBpXNkNcQ/large.jpg",
           },
@@ -746,6 +761,8 @@ const ArtKeepsGoingFixture: FeatureAKGRoute_Test_QueryRawResponse = {
         publishedAt: "April 20, 2013",
         thumbnailImage: {
           cropped: {
+            width: 1,
+            height: 1,
             url:
               "https://d32dm0rphc51dk.cloudfront.net/PCuKcu_h43P0IfBpXNkNcQ/large.jpg",
           },

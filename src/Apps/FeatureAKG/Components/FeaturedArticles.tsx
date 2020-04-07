@@ -1,4 +1,13 @@
-import { Box, Col, Flex, Grid, Image, Row, Sans } from "@artsy/palette"
+import {
+  Box,
+  Col,
+  Flex,
+  Grid,
+  Image,
+  ResponsiveImage,
+  Row,
+  Sans,
+} from "@artsy/palette"
 import { FeaturedArticles_articles } from "__generated__/FeaturedArticles_articles.graphql"
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
 import { RouterLink } from "Artsy/Router/RouterLink"
@@ -25,6 +34,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
   }
 
   const firstArticle = articles.shift()
+  const firstArticleImage = firstArticle?.thumbnailImage?.cropped
 
   return (
     <Grid fluid>
@@ -32,10 +42,12 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
         <Col md={6}>
           <Box pr={[0, 0, 1]}>
             <StyledLink to={firstArticle.href}>
-              <Image
-                src={firstArticle.thumbnailImage.cropped.url}
-                width="100%"
-              />
+              {firstArticleImage && (
+                <ResponsiveImage
+                  src={firstArticle.thumbnailImage.cropped.url}
+                  ratio={firstArticleImage.height / firstArticleImage.width}
+                />
+              )}
               <Sans size={["4t", "4t", "6"]} my={1}>
                 {firstArticle.thumbnailTitle}
               </Sans>
@@ -96,6 +108,8 @@ export const FeaturedArticlesFragmentContainer = createFragmentContainer(
         publishedAt(format: "MMM Do, YYYY")
         thumbnailImage {
           cropped(width: 780, height: 520) {
+            width
+            height
             url
           }
         }

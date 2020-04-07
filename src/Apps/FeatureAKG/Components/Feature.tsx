@@ -1,4 +1,4 @@
-import { Box, Image, Sans, Serif } from "@artsy/palette"
+import { Box, ResponsiveImage, Sans, Serif } from "@artsy/palette"
 import { Feature_viewer } from "__generated__/Feature_viewer.graphql"
 import { FeaturedArticlesFragmentContainer as FeaturedArticles } from "Apps/FeatureAKG/Components/FeaturedArticles"
 import { FeaturedArtists } from "Apps/FeatureAKG/Components/FeaturedArtists"
@@ -34,22 +34,22 @@ const Feature: React.FC<FeatureProps> = props => {
   const video2 = injectedData.video_2
 
   const showRails =
-    featuredRails?.collections_rail?.items?.length ||
-    featuredRails?.auctions_rail?.items?.length ||
-    featuredRails?.fairs_rail?.items?.length
+    !!featuredRails?.collections_rail?.items?.length ||
+    !!featuredRails?.auctions_rail?.items?.length ||
+    !!featuredRails?.fairs_rail?.items?.length
 
   return (
     <>
-      <Media greaterThanOrEqual="md">
+      <Media greaterThanOrEqual="sm">
         {heroVideo?.large_src && (
-          <Box textAlign="center" mb="-10px">
+          <Box textAlign="center" mb={-1}>
             <Video src={heroVideo.large_src} />
           </Box>
         )}
       </Media>
-      <Media lessThan="md">
+      <Media at="xs">
         {heroVideo?.small_src && (
-          <Box textAlign="center" mb="-10px">
+          <Box textAlign="center" mb={-1}>
             <Video src={heroVideo.small_src} />
           </Box>
         )}
@@ -77,11 +77,21 @@ const Feature: React.FC<FeatureProps> = props => {
       )}
 
       {/* Video 1 */}
-      <Media greaterThanOrEqual="md">
-        {video1?.large_src && <ImageSection src={video1.large_src} />}
+      <Media greaterThanOrEqual="sm">
+        {video1?.large_src && (
+          <ImageSection
+            src={video1.large_src}
+            aspectRatio={video1.large_aspect_ratio}
+          />
+        )}
       </Media>
-      <Media lessThan="md">
-        {video1?.small_src && <ImageSection src={video1.small_src} />}
+      <Media at="xs">
+        {video1?.small_src && (
+          <ImageSection
+            src={video1.small_src}
+            aspectRatio={video1.small_aspect_ratio}
+          />
+        )}
       </Media>
 
       {/* Selected works */}
@@ -100,18 +110,28 @@ const Feature: React.FC<FeatureProps> = props => {
           title={featuredArtists.title}
           subtitle={featuredArtists.subtitle}
         >
-          <Box mb="-30px">
+          <Box mb={-3} mx={[-1, 0]}>
             <FeaturedArtists {...featuredArtists} />
           </Box>
         </Section>
       )}
 
       {/* Video 2 */}
-      <Media greaterThanOrEqual="md">
-        {video2?.large_src && <ImageSection src={video2.large_src} />}
+      <Media greaterThanOrEqual="sm">
+        {video2?.large_src && (
+          <ImageSection
+            src={video2.large_src}
+            aspectRatio={video2.large_aspect_ratio}
+          />
+        )}
       </Media>
-      <Media lessThan="md">
-        {video2?.small_src && <ImageSection src={video2.small_src} />}
+      <Media at="xs">
+        {video2?.small_src && (
+          <ImageSection
+            src={video2.small_src}
+            aspectRatio={video2.small_aspect_ratio}
+          />
+        )}
       </Media>
 
       {/* Browse */}
@@ -133,6 +153,9 @@ export const FeatureFragmentContainer = createFragmentContainer(Feature, {
         collectionRailItemIDs: { type: "[String!]" }
         auctionRailItemIDs: { type: "[String!]" }
         fairRailItemIDs: { type: "[String!]" }
+        hasCollectionRailItems: { type: "Boolean!" }
+        hasAuctionRailItems: { type: "Boolean!" }
+        hasFairRailItems: { type: "Boolean!" }
       ) {
       articles: articles(ids: $articleIDs) {
         ...FeaturedArticles_articles
@@ -145,6 +168,9 @@ export const FeatureFragmentContainer = createFragmentContainer(Feature, {
           collectionRailItemIDs: $collectionRailItemIDs
           auctionRailItemIDs: $auctionRailItemIDs
           fairRailItemIDs: $fairRailItemIDs
+          hasCollectionRailItems: $hasCollectionRailItems
+          hasAuctionRailItems: $hasAuctionRailItems
+          hasFairRailItems: $hasFairRailItems
         )
     }
   `,
@@ -179,12 +205,12 @@ const Section: React.FC<SectionProps> = props => {
 const Video: React.FC<{ src: string }> = props => {
   return (
     <StyledVideo
+      src={props.src}
       autoPlay
       loop
       muted
       playsInline
       controls={false}
-      src={props.src}
     />
   )
 }
@@ -194,10 +220,10 @@ const StyledVideo = styled("video")`
   height: auto;
 `
 
-const ImageSection: React.FC<{ src: string }> = props => {
+const ImageSection: React.FC<{ src: string; aspectRatio: number }> = props => {
   return (
     <BorderedSection>
-      <Image src={props.src} width="100%" height="auto" />
+      <ResponsiveImage lazyLoad src={props.src} ratio={props.aspectRatio} />
     </BorderedSection>
   )
 }
@@ -232,7 +258,7 @@ export const FeaturedContentLink: React.FC<FeaturedLinkType> = props => {
   return (
     <StyledLink to={props.url}>
       <Box position="relative">
-        <Image src={croppedUrl} width="100%" height="auto" />
+        <ResponsiveImage src={croppedUrl} ratio={height / width} />
         <ImageOverlayText maxWidth="150px">
           <BlockText size="2" color="white">
             {props.title}

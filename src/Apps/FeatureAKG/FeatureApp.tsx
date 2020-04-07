@@ -38,6 +38,9 @@ export const FeatureAppFragmentContainer = createFragmentContainer(FeatureApp, {
         collectionRailItemIDs: { type: "[String!]" }
         auctionRailItemIDs: { type: "[String!]" }
         fairRailItemIDs: { type: "[String!]" }
+        hasCollectionRailItems: { type: "Boolean!" }
+        hasAuctionRailItems: { type: "Boolean!" }
+        hasFairRailItems: { type: "Boolean!" }
       ) {
       ...Feature_viewer
         @arguments(
@@ -46,6 +49,9 @@ export const FeatureAppFragmentContainer = createFragmentContainer(FeatureApp, {
           collectionRailItemIDs: $collectionRailItemIDs
           auctionRailItemIDs: $auctionRailItemIDs
           fairRailItemIDs: $fairRailItemIDs
+          hasCollectionRailItems: $hasCollectionRailItems
+          hasAuctionRailItems: $hasAuctionRailItems
+          hasFairRailItems: $hasFairRailItems
         )
     }
   `,

@@ -55,6 +55,24 @@ const node: ReaderFragment = {
       "name": "fairRailItemIDs",
       "type": "[String!]",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasCollectionRailItems",
+      "type": "Boolean!",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasAuctionRailItems",
+      "type": "Boolean!",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasFairRailItems",
+      "type": "Boolean!",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -120,10 +138,25 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "fairRailItemIDs",
           "variableName": "fairRailItemIDs"
+        },
+        {
+          "kind": "Variable",
+          "name": "hasAuctionRailItems",
+          "variableName": "hasAuctionRailItems"
+        },
+        {
+          "kind": "Variable",
+          "name": "hasCollectionRailItems",
+          "variableName": "hasCollectionRailItems"
+        },
+        {
+          "kind": "Variable",
+          "name": "hasFairRailItems",
+          "variableName": "hasFairRailItems"
         }
       ]
     }
   ]
 };
-(node as any).hash = 'dfc88dd7080fc43af865a73bc7f87dab';
+(node as any).hash = '308da696148367711e40c557c82521e0';
 export default node;

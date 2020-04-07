@@ -18,6 +18,9 @@ export const routes: RouteConfig[] = [
         $collectionRailItemIDs: [String!]
         $auctionRailItemIDs: [String!]
         $fairRailItemIDs: [String!]
+        $hasCollectionRailItems: Boolean!
+        $hasAuctionRailItems: Boolean!
+        $hasFairRailItems: Boolean!
       ) {
         viewer {
           ...FeatureApp_viewer
@@ -27,6 +30,9 @@ export const routes: RouteConfig[] = [
               collectionRailItemIDs: $collectionRailItemIDs
               auctionRailItemIDs: $auctionRailItemIDs
               fairRailItemIDs: $fairRailItemIDs
+              hasCollectionRailItems: $hasCollectionRailItems
+              hasAuctionRailItems: $hasAuctionRailItems
+              hasFairRailItems: $hasFairRailItems
             )
         }
       }
@@ -36,15 +42,19 @@ export const routes: RouteConfig[] = [
       const collectionIDs = data?.browse?.collections_rail?.items ?? []
       const fairIDs = data?.browse?.fairs_rail?.items ?? []
       const auctionIDs = data?.browse?.auctions_rail?.items ?? []
+      const hasCollectionRailItems = !!collectionIDs.length
+      const hasAuctionRailItems = !!auctionIDs.length
+      const hasFairRailItems = !!fairIDs.length
 
       return {
         articleIDs: data?.editorial?.article_ids,
         selectedWorksSetID: data?.selected_works?.set_id,
-        collectionRailItemIDs:
-          collectionIDs.length && collectionIDs.map(item => item.id),
-        auctionRailItemIDs:
-          auctionIDs.length && auctionIDs.map(item => item.id),
-        fairRailItemIDs: fairIDs.length && fairIDs.map(item => item.id),
+        collectionRailItemIDs: collectionIDs.map(item => item.id),
+        auctionRailItemIDs: auctionIDs.map(item => item.id),
+        fairRailItemIDs: fairIDs.map(item => item.id),
+        hasCollectionRailItems,
+        hasAuctionRailItems,
+        hasFairRailItems,
       }
     },
   },
