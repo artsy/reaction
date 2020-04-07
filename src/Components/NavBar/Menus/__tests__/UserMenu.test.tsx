@@ -58,22 +58,6 @@ describe("UserMenu", () => {
     expect(mediator.trigger).toBeCalledWith("auth:logout")
   })
 
-  describe("lab features", () => {
-    it("hides inquiries button if lab feature not enabled", () => {
-      const wrapper = getWrapper({
-        user: { type: "NotAdmin", lab_features: [] },
-      })
-      expect(wrapper.html()).not.toContain("Inquiries")
-    })
-
-    it("shows inquiries button if lab feature enabled", () => {
-      const wrapper = getWrapper({
-        user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
-      })
-      expect(wrapper.html()).toContain("Inquiries")
-    })
-  })
-
   describe("admin features", () => {
     it("hides admin button if not admin", () => {
       const wrapper = getWrapper({ user: { type: "NotAdmin" } })

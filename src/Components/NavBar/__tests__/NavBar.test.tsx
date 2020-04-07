@@ -1,4 +1,4 @@
-import { BellIcon, SoloIcon } from "@artsy/palette"
+import { BellIcon, EnvelopeIcon, SoloIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
@@ -91,6 +91,22 @@ describe("NavBar", () => {
       expect(wrapper.html()).not.toContain("Sign up")
       expect(wrapper.find(BellIcon).length).toEqual(1)
       expect(wrapper.find(SoloIcon).length).toEqual(1)
+    })
+
+    describe("lab features", () => {
+      it("hides inquiries icon if lab feature not enabled", () => {
+        const wrapper = getWrapper({
+          user: { type: "NotAdmin", lab_features: [] },
+        })
+        expect(wrapper.find(EnvelopeIcon).length).toEqual(0)
+      })
+
+      it("shows inquiries icon if lab feature enabled", () => {
+        const wrapper = getWrapper({
+          user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
+        })
+        expect(wrapper.find(EnvelopeIcon).length).toEqual(1)
+      })
     })
   })
 
