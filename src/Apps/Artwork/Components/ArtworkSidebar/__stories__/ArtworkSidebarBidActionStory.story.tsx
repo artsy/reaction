@@ -10,6 +10,7 @@ import {
   NotRegisteredToBid,
   RegistedBidderWithBids,
   RegisteredBidder,
+  SaleRequiringIDV,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarBidAction"
 import { ArtworkSidebarBidAction as BidAction } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarBidAction"
 import { merge as _merge } from "lodash"
@@ -53,6 +54,19 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
           me={NotIDVedUser as any}
         />
       </Section>
+
+      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / Bidder not registered">
+        <BidAction
+          artwork={merge(
+            {},
+            ArtworkFromTimedAuctionRegistrationOpen,
+            { sale: SaleRequiringIDV },
+            NotRegisteredToBid
+          )}
+          me={NotIDVedUser as any}
+        />
+      </Section>
+
       <Section title="Timed Auction or Prebidding for Live auction / Closed Registration / Bidder not registered">
         <BidAction
           artwork={merge(
