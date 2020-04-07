@@ -245,7 +245,7 @@ export class SearchBar extends Component<Props, State> {
     ) => ({
       action_type: Schema.ActionType.SelectedItemFromSearch,
       query: state.term,
-      destination_path: regex.test(href) ? href + "/works-for-sale" : href,
+      destination_path: displayType === "Artist" ? `${href}/works-for-sale` : href,
       item_type: displayType,
       item_id: id,
       item_number: suggestionIndex,
