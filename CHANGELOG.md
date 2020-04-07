@@ -1,3 +1,15 @@
+# v26.4.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- Add desktop menu item for navigating to conversations [#3357](https://github.com/artsy/reaction/pull/3357) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.3.1 (Tue Apr 07 2020)
 
 #### 🐛  Bug Fix
