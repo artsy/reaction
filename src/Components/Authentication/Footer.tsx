@@ -35,7 +35,7 @@ export const Footer = (props: FooterProps) => {
           <Link color="black60" onClick={onFacebookLogin}>
             Facebook
           </Link>{" "}
-          {"."}
+          {". "}
         </FooterText>
       ) : (
         <FooterText>
@@ -94,7 +94,7 @@ export const Footer = (props: FooterProps) => {
           <Link color="black60" onClick={onFacebookLogin}>
             Facebook
           </Link>{" "}
-          {"."}
+          {". "}
         </FooterText>
       ) : (
         <FooterText>
