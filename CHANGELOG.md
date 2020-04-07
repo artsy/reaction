@@ -1,3 +1,15 @@
+# v26.3.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- [MX-216] - Sign in with apple [#3281](https://github.com/artsy/reaction/pull/3281) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v26.2.2 (Tue Apr 07 2020)
 
 #### 🐛  Bug Fix
