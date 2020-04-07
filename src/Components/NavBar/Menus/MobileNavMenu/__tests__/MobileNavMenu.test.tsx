@@ -71,6 +71,22 @@ describe("MobileNavMenu", () => {
     })
   })
 
+  describe("lab features", () => {
+    it("hides inbox menu option if lab feature not enabled", () => {
+      const wrapper = getWrapper({
+        user: { type: "NotAdmin", lab_features: [] },
+      })
+      expect(wrapper.html()).not.toContain("Inbox")
+    })
+
+    it("shows inbox menu option if lab feature enabled", () => {
+      const wrapper = getWrapper({
+        user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
+      })
+      expect(wrapper.html()).toContain("Inbox")
+    })
+  })
+
   describe("Analytics tracking", () => {
     it("tracks back button click", () => {
       const wrapper = mount(
