@@ -1,3 +1,4 @@
+import { EnvelopeIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { menuData, SimpleLinkData } from "Components/NavBar/menuData"
