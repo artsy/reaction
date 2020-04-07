@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   color,
+  EnvelopeIcon,
   Flex,
   Link,
   SoloIcon,
@@ -38,6 +39,7 @@ import { track, useTracking } from "Artsy/Analytics"
 import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import Events from "Utils/Events"
 import { useMedia } from "Utils/Hooks/useMedia"
+import { userHasLabFeature } from "Utils/user"
 
 export const NavBar: React.FC = track(
   {
@@ -54,6 +56,10 @@ export const NavBar: React.FC = track(
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const conversationsEnabled = userHasLabFeature(
+    user,
+    "User Conversations View"
+  )
 
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
@@ -153,6 +159,18 @@ export const NavBar: React.FC = track(
                     )
                   }}
                 </NavItem>
+                {conversationsEnabled && (
+                  <NavItem href="/user/conversations">
+                    {({ hover }) => {
+                      return (
+                        <EnvelopeIcon
+                          top={3}
+                          fill={hover ? "purple100" : "black80"}
+                        />
+                      )
+                    }}
+                  </NavItem>
+                )}
                 <NavItem Menu={UserMenu}>
                   {({ hover }) => {
                     if (hover) {
