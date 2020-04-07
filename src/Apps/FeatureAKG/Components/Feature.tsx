@@ -5,6 +5,8 @@ import { FeaturedArtists } from "Apps/FeatureAKG/Components/FeaturedArtists"
 import { FeaturedRailsFragmentContainer as FeaturedRails } from "Apps/FeatureAKG/Components/FeaturedRails"
 import { FeaturedThisWeek } from "Apps/FeatureAKG/Components/FeaturedThisWeek"
 import { SelectedWorksFragmentContainer as SelectedWorks } from "Apps/FeatureAKG/Components/SelectedWorks"
+import { AnalyticsSchema, ContextModule } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { useSystemContext } from "Artsy/SystemContext"
 import React from "react"
@@ -56,7 +58,7 @@ const Feature: React.FC<FeatureProps> = props => {
       </Media>
       <SectionSeparator />
       <Box pt="4" maxWidth="475px" m="0 auto">
-        <Sans size="4" mx="3" weight="medium">
+        <Sans size="4" mx={[3, 0]} weight="medium">
           {injectedData.description}
         </Sans>
       </Box>
@@ -223,7 +225,7 @@ const StyledVideo = styled("video")`
 const ImageSection: React.FC<{ src: string; aspectRatio: number }> = props => {
   return (
     <BorderedSection>
-      <ResponsiveImage lazyLoad src={props.src} ratio={props.aspectRatio} />
+      <ResponsiveImage src={props.src} ratio={props.aspectRatio} />
     </BorderedSection>
   )
 }
@@ -242,21 +244,34 @@ export interface FeaturedLinkType {
   url: string
   byline?: string
   size?: "medium" | "large"
+  contextModule: ContextModule
 }
 
 export const FeaturedContentLink: React.FC<FeaturedLinkType> = props => {
+  const devicePixelRatio = 2
   const size = props.size ? props.size : "medium"
 
   const width = size === "medium" ? 350 : 470
   const height = size === "medium" ? 435 : 490
 
   const croppedUrl = crop(props.image_src, {
-    width,
-    height,
+    width: width * devicePixelRatio,
+    height: height * devicePixelRatio,
   })
 
+  const tracking = useTracking()
+
   return (
-    <StyledLink to={props.url}>
+    <StyledLink
+      to={props.url}
+      onClick={() =>
+        tracking.trackEvent({
+          action_type: AnalyticsSchema.ActionType.Click,
+          context_module: props.contextModule,
+          destination_path: props.url,
+        })
+      }
+    >
       <Box position="relative">
         <ResponsiveImage src={croppedUrl} ratio={height / width} />
         <ImageOverlayText maxWidth="150px">

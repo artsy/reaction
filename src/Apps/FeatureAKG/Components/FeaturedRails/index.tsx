@@ -4,6 +4,8 @@ import { StyledLink } from "Apps/Artist/Components/StyledLink"
 import { FeaturedAuctionsRailFragmentContainer as FeaturedAuctions } from "Apps/FeatureAKG/Components/FeaturedRails/FeaturedAuctions"
 import { FeaturedCollectionsRailFragmentContainer as FeaturedCollections } from "Apps/FeatureAKG/Components/FeaturedRails/FeaturedCollections"
 import { FeaturedFairsRailFragmentContainer as FeaturedFairs } from "Apps/FeatureAKG/Components/FeaturedRails/FeaturedFairs"
+import { AnalyticsSchema, ContextModule } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { Carousel } from "Components/Carousel"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -121,10 +123,16 @@ interface FeaturedRailCarouselProps {
     subtitle: string
     href: string
   }>
+  contextModule: ContextModule
 }
 
 export const FeaturedRailCarousel: React.FC<FeaturedRailCarouselProps> = props => {
   const { itemsForCarousel } = props
+  const devicePixelRatio = 2
+  const imgWidth = 245
+  const imgHeight = 270
+
+  const tracking = useTracking()
 
   return (
     <Carousel
@@ -133,14 +141,28 @@ export const FeaturedRailCarousel: React.FC<FeaturedRailCarouselProps> = props =
       options={{ pageDots: false }}
       render={item => {
         const croppedImageUrl = crop(item.imageSrc, {
-          width: 245,
-          height: 270,
+          width: imgWidth * devicePixelRatio,
+          height: imgHeight * devicePixelRatio,
         })
 
         return (
           <Box mr={1} maxWidth="245px">
-            <StyledLink to={item.href}>
-              <Image lazyLoad src={croppedImageUrl} width={245} height={270} />
+            <StyledLink
+              to={item.href}
+              onClick={() => {
+                tracking.trackEvent({
+                  action_type: AnalyticsSchema.ActionType.Click,
+                  context_module: props.contextModule,
+                  destination_path: item.href,
+                })
+              }}
+            >
+              <Image
+                lazyLoad
+                src={croppedImageUrl}
+                width={imgWidth}
+                height={imgHeight}
+              />
               <Sans size="2" weight="medium" mt={1}>
                 {item.title}
               </Sans>

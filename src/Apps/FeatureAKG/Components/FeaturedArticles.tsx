@@ -10,6 +10,8 @@ import {
 } from "@artsy/palette"
 import { FeaturedArticles_articles } from "__generated__/FeaturedArticles_articles.graphql"
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
+import { AnalyticsSchema } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
@@ -36,12 +38,24 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
   const firstArticle = articles.shift()
   const firstArticleImage = firstArticle?.thumbnailImage?.cropped
 
+  const tracking = useTracking()
+  const trackClick = (destinationPath: string) => {
+    tracking.trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_module: AnalyticsSchema.ContextModule.Editorial,
+      destination_path: destinationPath,
+    })
+  }
+
   return (
     <Grid fluid>
       <Row>
         <Col md={6}>
           <Box pr={[0, 0, 1]}>
-            <StyledLink to={firstArticle.href}>
+            <StyledLink
+              to={firstArticle.href}
+              onClick={() => trackClick(firstArticle.href)}
+            >
               {firstArticleImage && (
                 <ResponsiveImage
                   src={firstArticle.thumbnailImage.cropped.url}
@@ -64,7 +78,10 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
           {articles.map((article, index) => {
             return (
               <Box ml={[0, 0, 1]} key={`article-${index}`}>
-                <StyledLink to={article.href}>
+                <StyledLink
+                  to={article.href}
+                  onClick={() => trackClick(article.href)}
+                >
                   <Flex width="100%" justifyContent="space-between">
                     <Box width="70%" maxWidth={["none", "400px"]} mr={[1, 2]}>
                       <Sans size={["2", "3t"]} mb="5px">
@@ -77,8 +94,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
                     <Box maxWidth={["90px", "120px"]}>
                       <Image
                         src={article.tinyImage.cropped.url}
-                        width="100%"
-                        lazyLoad
+                        width="60px"
                         height={60}
                       />
                     </Box>
@@ -88,7 +104,17 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
               </Box>
             )
           })}
-          <RouterLink to={props.view_more_url}>
+          <RouterLink
+            to={props.view_more_url}
+            onClick={() => {
+              tracking.trackEvent({
+                action_type: AnalyticsSchema.ActionType.Click,
+                context_module: AnalyticsSchema.ContextModule.Editorial,
+                destination_path: props.view_more_url,
+                subject: "View more",
+              })
+            }}
+          >
             <Sans size="2" ml={[0, 0, 1]}>
               View more
             </Sans>
@@ -107,14 +133,14 @@ export const FeaturedArticlesFragmentContainer = createFragmentContainer(
         thumbnailTitle
         publishedAt(format: "MMM Do, YYYY")
         thumbnailImage {
-          cropped(width: 780, height: 520) {
+          cropped(width: 1170, height: 780) {
             width
             height
             url
           }
         }
         tinyImage: thumbnailImage {
-          cropped(width: 60, height: 60) {
+          cropped(width: 120, height: 120) {
             url
           }
         }

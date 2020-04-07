@@ -4,6 +4,7 @@ import {
   FeaturedRailCarousel,
   RailMetadata,
 } from "Apps/FeatureAKG/Components/FeaturedRails"
+import { AnalyticsSchema } from "Artsy"
 import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
@@ -38,7 +39,10 @@ const FeaturedFairsRail: React.FC<FeaturedFairsRailProps> = props => {
   if (compact(itemsForCarousel).length > 0) {
     return (
       <FeaturedRail title={title} subtitle={subtitle}>
-        <FeaturedRailCarousel itemsForCarousel={itemsForCarousel} />
+        <FeaturedRailCarousel
+          itemsForCarousel={itemsForCarousel}
+          contextModule={AnalyticsSchema.ContextModule.BrowseFairs}
+        />
       </FeaturedRail>
     )
   } else {

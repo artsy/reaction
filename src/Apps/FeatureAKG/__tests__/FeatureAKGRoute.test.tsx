@@ -11,8 +11,6 @@ jest.unmock("react-relay")
 jest.mock("Artsy/Analytics/useTracking")
 
 describe("FeatureAKG", () => {
-  let defaultWrapper
-
   const trackEvent = jest.fn()
   const defaultVariables = {
     articleIDs: ["article1", "article2", "article3", "article4"],
@@ -75,10 +73,6 @@ describe("FeatureAKG", () => {
     })
   }
 
-  beforeAll(async () => {
-    defaultWrapper = await getWrapper()
-  })
-
   beforeEach(() => {
     const mockTracking = useTracking as jest.Mock
     mockTracking.mockImplementation(() => {
@@ -93,431 +87,541 @@ describe("FeatureAKG", () => {
   })
 
   describe("Page content", () => {
-    it("displays the description from the context data", async () => {
+    it("displays the description and sections from the context data", async () => {
+      const defaultWrapper = await getWrapper()
       expect(defaultWrapper.html()).toContain(
         "Art-world spaces have paused, museums and galleries have closed their doors"
       )
-    })
-
-    it("displays the correct number of sections", () => {
       expect(defaultWrapper.find("Section").length).toEqual(5)
     })
-  })
 
-  describe("Videos", () => {
-    it("displays the large videos at the large breakpoint", () => {
-      expect(defaultWrapper.html()).toContain("video_1_large")
-      expect(defaultWrapper.html()).toContain("video_2_large")
-      expect(defaultWrapper.html()).toContain("hero_video_large")
+    describe("Videos", () => {
+      it("displays the large videos at the large breakpoint", async () => {
+        const defaultWrapper = await getWrapper()
+        expect(defaultWrapper.html()).toContain("video_1_large")
+        expect(defaultWrapper.html()).toContain("video_2_large")
+        expect(defaultWrapper.html()).toContain("hero_video_large")
 
-      // Does not display small videos
-      expect(defaultWrapper.html()).not.toContain("video_1_small")
-      expect(defaultWrapper.html()).not.toContain("video_2_small")
-      expect(defaultWrapper.html()).not.toContain("hero_video_small")
+        // Does not display small videos
+        expect(defaultWrapper.html()).not.toContain("video_1_small")
+        expect(defaultWrapper.html()).not.toContain("video_2_small")
+        expect(defaultWrapper.html()).not.toContain("hero_video_small")
+      })
+
+      it("displays the small videos at the small breakpoint", async () => {
+        const smallWrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          defaultData,
+          "xs"
+        )
+        expect(smallWrapper.html()).not.toContain("video_1_large")
+        expect(smallWrapper.html()).not.toContain("video_2_large")
+        expect(smallWrapper.html()).not.toContain("hero_video_large")
+
+        // Does not display small videos
+        expect(smallWrapper.html()).toContain("video_1_small")
+        expect(smallWrapper.html()).toContain("video_2_small")
+        expect(smallWrapper.html()).toContain("hero_video_small")
+      })
+
+      it("displays no videos if none specified at the large breakpoint", async () => {
+        const largeWrapperData = {
+          ...defaultData,
+          video_1: {
+            ...defaultData.video_1,
+            large_src: null,
+          },
+          video_2: {
+            ...defaultData.video_2,
+            large_src: null,
+          },
+          hero_video: {
+            ...defaultData.hero_video,
+            large_src: null,
+          },
+        }
+
+        const largeWrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          largeWrapperData
+        )
+        expect(largeWrapper.html()).not.toContain("video_1_large")
+        expect(largeWrapper.html()).not.toContain("video_2_large")
+        expect(largeWrapper.html()).not.toContain("hero_video_large")
+
+        // Does not display small videos
+        expect(largeWrapper.html()).not.toContain("video_1_small")
+        expect(largeWrapper.html()).not.toContain("video_2_small")
+        expect(largeWrapper.html()).not.toContain("hero_video_small")
+      })
+
+      it("displays no videos if none specified at the small breakpoint", async () => {
+        const smallWrapperData = {
+          ...defaultData,
+          video_1: {
+            ...defaultData.video_1,
+            small_src: null,
+          },
+          video_2: {
+            ...defaultData.video_2,
+            small_src: null,
+          },
+          hero_video: {
+            ...defaultData.hero_video,
+            small_src: null,
+          },
+        }
+
+        const smallWrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          smallWrapperData,
+          "xs"
+        )
+        expect(smallWrapper.html()).not.toContain("video_1_large")
+        expect(smallWrapper.html()).not.toContain("video_2_large")
+        expect(smallWrapper.html()).not.toContain("hero_video_large")
+
+        // Does not display small videos
+        expect(smallWrapper.html()).not.toContain("video_1_small")
+        expect(smallWrapper.html()).not.toContain("video_2_small")
+        expect(smallWrapper.html()).not.toContain("hero_video_small")
+      })
     })
 
-    it("displays the small videos at the small breakpoint", async () => {
-      const smallWrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        defaultData,
-        "xs"
-      )
-      expect(smallWrapper.html()).not.toContain("video_1_large")
-      expect(smallWrapper.html()).not.toContain("video_2_large")
-      expect(smallWrapper.html()).not.toContain("hero_video_large")
+    describe("Featured this week", () => {
+      it("displays both featured items", async () => {
+        const defaultWrapper = await getWrapper()
+        expect(defaultWrapper.html()).toContain("Featured This Week")
 
-      // Does not display small videos
-      expect(smallWrapper.html()).toContain("video_1_small")
-      expect(smallWrapper.html()).toContain("video_2_small")
-      expect(smallWrapper.html()).toContain("hero_video_small")
+        const featuredThisWeekSection = defaultWrapper.find("Section").at(0)
+        expect(
+          featuredThisWeekSection.find("FeaturedContentLink").length
+        ).toEqual(2)
+        expect(featuredThisWeekSection.text()).toContain(
+          "Artworks to buy in a crisis"
+        )
+        expect(featuredThisWeekSection.text()).toContain(
+          "Benefit Auction For Good"
+        )
+      })
+
+      it("tracks a click event", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedContentLink")
+          .at(0)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "FeaturedThisWeek",
+          destination_path:
+            "https://staging.artsy.net/collection/impressionist-and-modern",
+        })
+      })
     })
 
-    it("displays no videos if none specified at the large breakpoint", async () => {
-      const largeWrapperData = {
-        ...defaultData,
-        video_1: {
-          ...defaultData.video_1,
-          large_src: null,
-        },
-        video_2: {
-          ...defaultData.video_2,
-          large_src: null,
-        },
-        hero_video: {
-          ...defaultData.hero_video,
-          large_src: null,
-        },
-      }
+    describe("Editorial", () => {
+      it("displays a featured article and 3 other articles", async () => {
+        const defaultWrapper = await getWrapper()
+        expect(defaultWrapper.html()).toContain("Editorial")
+        expect(
+          defaultWrapper.find("FeaturedArticles").find("StyledLink").length
+        ).toEqual(4)
+        expect(defaultWrapper.find("FeaturedArticles").text()).toContain(
+          "View more"
+        )
+      })
 
-      const largeWrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        largeWrapperData
-      )
-      expect(largeWrapper.html()).not.toContain("video_1_large")
-      expect(largeWrapper.html()).not.toContain("video_2_large")
-      expect(largeWrapper.html()).not.toContain("hero_video_large")
+      it("tracks clicking the featured article", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedArticles")
+          .find("StyledLink")
+          .at(0)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "Editorial",
+          destination_path: "/article/article-1",
+        })
+      })
 
-      // Does not display small videos
-      expect(largeWrapper.html()).not.toContain("video_1_small")
-      expect(largeWrapper.html()).not.toContain("video_2_small")
-      expect(largeWrapper.html()).not.toContain("hero_video_small")
+      it("tracks clicking a standard article", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedArticles")
+          .find("StyledLink")
+          .at(1)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "Editorial",
+          destination_path: "/article/article-2",
+        })
+      })
+
+      it("tracks clicking the view more link", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedArticles")
+          .find("RouterLink")
+          .at(4)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "Editorial",
+          destination_path: "/articles",
+          subject: "View more",
+        })
+      })
+      it("does not show the section if there are no articles", async () => {
+        const injectedData = {
+          ...defaultData,
+          editorial: {
+            ...defaultData.editorial,
+            article_ids: null,
+          },
+        }
+
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
+
+        expect(wrapper.find("Section").length).toEqual(4)
+        expect(wrapper.html()).not.toContain("Editorial")
+      })
+
+      it("does not show the section if there is an empty array in the articles input", async () => {
+        const injectedData = {
+          ...defaultData,
+          editorial: {
+            ...defaultData.editorial,
+            article_ids: [],
+          },
+        }
+
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
+
+        expect(wrapper.find("Section").length).toEqual(4)
+        expect(wrapper.html()).not.toContain("Editorial")
+      })
+
+      it("handles the case where none of the articles are returned from the API", async () => {
+        const noArticlesData = {
+          ...ArtKeepsGoingFixture,
+          viewer: {
+            ...ArtKeepsGoingFixture.viewer,
+            articles: [],
+          },
+        }
+
+        const wrapper = await getWrapper(noArticlesData, defaultVariables)
+
+        // In this case we'll still render the section, but it should just be
+        // empty and not error out.
+        expect(wrapper.find("Section").length).toEqual(5)
+        expect(
+          wrapper.find("FeaturedArticles").find("StyledLink").length
+        ).toEqual(0)
+      })
     })
 
-    it("displays no videos if none specified at the small breakpoint", async () => {
-      const smallWrapperData = {
-        ...defaultData,
-        video_1: {
-          ...defaultData.video_1,
-          small_src: null,
-        },
-        video_2: {
-          ...defaultData.video_2,
-          small_src: null,
-        },
-        hero_video: {
-          ...defaultData.hero_video,
-          small_src: null,
-        },
-      }
+    describe("Selected works", () => {
+      it("displays a grid of artworks", async () => {
+        const defaultWrapper = await getWrapper()
+        expect(defaultWrapper.html()).toContain("Selected Works")
+        expect(defaultWrapper.find("ArtworkGrid").length).toEqual(1)
+      })
+      it("doesn't show the section if there are no selected works returned from the API", async () => {
+        const noSelectedWorksData = {
+          ...ArtKeepsGoingFixture,
+          viewer: {
+            ...ArtKeepsGoingFixture.viewer,
+            selectedWorks: {
+              id: "sadsfs",
+              itemsConnection: {
+                edges: [],
+              },
+            },
+          },
+        }
 
-      const smallWrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        smallWrapperData,
-        "xs"
-      )
-      expect(smallWrapper.html()).not.toContain("video_1_large")
-      expect(smallWrapper.html()).not.toContain("video_2_large")
-      expect(smallWrapper.html()).not.toContain("hero_video_large")
+        const wrapper = await getWrapper(noSelectedWorksData, defaultVariables)
 
-      // Does not display small videos
-      expect(smallWrapper.html()).not.toContain("video_1_small")
-      expect(smallWrapper.html()).not.toContain("video_2_small")
-      expect(smallWrapper.html()).not.toContain("hero_video_small")
-    })
-  })
+        // In this case we'll still render the section, but it should just be
+        // empty and not error out.
+        expect(wrapper.find("Section").length).toEqual(5)
+        expect(wrapper.find("ArtworkGrid").length).toEqual(0)
+      })
 
-  describe("Featured this week", () => {
-    it("displays both featured items", async () => {
-      expect(defaultWrapper.html()).toContain("Featured This Week")
+      it("doesn't show the section if there is no set_id", async () => {
+        const injectedData = {
+          ...defaultData,
+          selected_works: {
+            ...defaultData.selected_works,
+            set_id: null,
+          },
+        }
 
-      const featuredThisWeekSection = defaultWrapper.find("Section").at(0)
-      expect(
-        featuredThisWeekSection.find("FeaturedContentLink").length
-      ).toEqual(2)
-      expect(featuredThisWeekSection.text()).toContain(
-        "Artworks to buy in a crisis"
-      )
-      expect(featuredThisWeekSection.text()).toContain(
-        "Benefit Auction For Good"
-      )
-    })
-  })
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
 
-  describe("Editorial", () => {
-    it("displays a featured article and 3 other articles", () => {
-      expect(defaultWrapper.html()).toContain("Editorial")
-      expect(
-        defaultWrapper.find("FeaturedArticles").find("StyledLink").length
-      ).toEqual(4)
-      expect(defaultWrapper.find("FeaturedArticles").text()).toContain(
-        "View more"
-      )
-    })
-    it.todo("tracks clicking the featured article")
-    it.todo("tracks clicking a standard article")
-    it.todo("tracks clicking the view more link")
-    it("does not show the section if there are no articles", async () => {
-      const injectedData = {
-        ...defaultData,
-        editorial: {
-          ...defaultData.editorial,
-          article_ids: null,
-        },
-      }
-
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
-
-      expect(wrapper.find("Section").length).toEqual(4)
-      expect(wrapper.html()).not.toContain("Editorial")
+        expect(wrapper.find("Section").length).toEqual(4)
+        expect(wrapper.html()).not.toContain("Selected Works")
+      })
     })
 
-    it("does not show the section if there is an empty array in the articles input", async () => {
-      const injectedData = {
-        ...defaultData,
-        editorial: {
-          ...defaultData.editorial,
-          article_ids: [],
-        },
-      }
+    describe("Featured artists", () => {
+      it("displays all of the featured artists", async () => {
+        const defaultWrapper = await getWrapper()
+        expect(defaultWrapper.html()).toContain("Featured Artists")
 
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
+        const featuredArtistsSection = defaultWrapper.find("Section").at(3)
+        expect(
+          featuredArtistsSection.find("FeaturedContentLink").length
+        ).toEqual(4)
+      })
 
-      expect(wrapper.find("Section").length).toEqual(4)
-      expect(wrapper.html()).not.toContain("Editorial")
+      it("doesn't show the section if there are no featured artists", async () => {
+        const injectedData = {
+          ...defaultData,
+          featured_artists: {
+            ...defaultData.featured_artists,
+            artists: [],
+          },
+        }
+
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
+
+        expect(wrapper.find("Section").length).toEqual(4)
+        expect(wrapper.html()).not.toContain("Featured Artists")
+      })
+      it("tracks clicking on an artist", async () => {
+        const defaultWrapper = await getWrapper()
+
+        defaultWrapper
+          .find("FeaturedArtists")
+          .find("FeaturedContentLink")
+          .at(0)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "FeaturedArtists",
+          destination_path: "https://artsy.net/artist/nicolas-party",
+        })
+      })
     })
 
-    it("handles the case where none of the articles are returned from the API", async () => {
-      const noArticlesData = {
-        ...ArtKeepsGoingFixture,
-        viewer: {
-          ...ArtKeepsGoingFixture.viewer,
-          articles: [],
-        },
-      }
+    describe("Browse", () => {
+      it("displays all three rails", async () => {
+        const defaultWrapper = await getWrapper()
+        expect(defaultWrapper.html()).toContain("Browse")
+        expect(defaultWrapper.find("FeaturedRailCarousel").length).toEqual(3)
+        expect(defaultWrapper.find("FeaturedRails").text()).toContain(
+          "Collections"
+        )
+        expect(defaultWrapper.find("FeaturedRails").text()).toContain(
+          "Benefit Auctions"
+        )
+        expect(defaultWrapper.find("FeaturedRails").text()).toContain("Fairs")
+      })
 
-      const wrapper = await getWrapper(noArticlesData, defaultVariables)
+      it("doesn't display the collections rail if there are no matching collections", async () => {
+        const noCollectionsData = {
+          ...ArtKeepsGoingFixture,
+          viewer: {
+            ...ArtKeepsGoingFixture.viewer,
+            collections: [],
+          },
+        }
 
-      // In this case we'll still render the section, but it should just be
-      // empty and not error out.
-      expect(wrapper.find("Section").length).toEqual(5)
-      expect(
-        wrapper.find("FeaturedArticles").find("StyledLink").length
-      ).toEqual(0)
-    })
-  })
+        const wrapper = await getWrapper(noCollectionsData, defaultVariables)
+        expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
+        expect(wrapper.find("FeaturedRails").text()).not.toContain(
+          "Collections"
+        )
+      })
 
-  describe("Selected works", () => {
-    it("displays a grid of artworks", () => {
-      expect(defaultWrapper.html()).toContain("Selected Works")
-      expect(defaultWrapper.find("ArtworkGrid").length).toEqual(1)
-    })
-    it("doesn't show the section if there are no selected works returned from the API", async () => {
-      const noSelectedWorksData = {
-        ...ArtKeepsGoingFixture,
-        viewer: {
-          ...ArtKeepsGoingFixture.viewer,
-          selectedWorks: {
-            id: "sadsfs",
-            itemsConnection: {
+      it("doesn't display the auctions rail if there are no matching auctions", async () => {
+        const noAuctionsData = {
+          ...ArtKeepsGoingFixture,
+          viewer: {
+            ...ArtKeepsGoingFixture.viewer,
+            auctions: {
               edges: [],
             },
           },
-        },
-      }
+        }
 
-      const wrapper = await getWrapper(noSelectedWorksData, defaultVariables)
-
-      // In this case we'll still render the section, but it should just be
-      // empty and not error out.
-      expect(wrapper.find("Section").length).toEqual(5)
-      expect(wrapper.find("ArtworkGrid").length).toEqual(0)
-    })
-
-    it("doesn't show the section if there is no set_id", async () => {
-      const injectedData = {
-        ...defaultData,
-        selected_works: {
-          ...defaultData.selected_works,
-          set_id: null,
-        },
-      }
-
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
-
-      expect(wrapper.find("Section").length).toEqual(4)
-      expect(wrapper.html()).not.toContain("Selected Works")
-    })
-    it.todo("tracks clicking on a work")
-  })
-
-  describe("Featured artists", () => {
-    it("displays all of the featured artists", () => {
-      expect(defaultWrapper.html()).toContain("Featured Artists")
-
-      const featuredArtistsSection = defaultWrapper.find("Section").at(3)
-      expect(featuredArtistsSection.find("FeaturedContentLink").length).toEqual(
-        4
-      )
-    })
-
-    it("doesn't show the section if there are no featured artists", async () => {
-      const injectedData = {
-        ...defaultData,
-        featured_artists: {
-          ...defaultData.featured_artists,
-          artists: [],
-        },
-      }
-
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
-
-      expect(wrapper.find("Section").length).toEqual(4)
-      expect(wrapper.html()).not.toContain("Featured Artists")
-    })
-    it.todo("tracks clicking on an artist")
-  })
-
-  describe("Browse", () => {
-    it("displays all three rails", () => {
-      expect(defaultWrapper.html()).toContain("Browse")
-      expect(defaultWrapper.find("FeaturedRailCarousel").length).toEqual(3)
-      expect(defaultWrapper.find("FeaturedRails").text()).toContain(
-        "Collections"
-      )
-      expect(defaultWrapper.find("FeaturedRails").text()).toContain(
-        "Benefit Auctions"
-      )
-      expect(defaultWrapper.find("FeaturedRails").text()).toContain("Fairs")
-    })
-
-    it("doesn't display the collections rail if there are no matching collections", async () => {
-      const noCollectionsData = {
-        ...ArtKeepsGoingFixture,
-        viewer: {
-          ...ArtKeepsGoingFixture.viewer,
-          collections: [],
-        },
-      }
-
-      const wrapper = await getWrapper(noCollectionsData, defaultVariables)
-      expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
-      expect(wrapper.find("FeaturedRails").text()).not.toContain("Collections")
-    })
-
-    it("doesn't display the auctions rail if there are no matching auctions", async () => {
-      const noAuctionsData = {
-        ...ArtKeepsGoingFixture,
-        viewer: {
-          ...ArtKeepsGoingFixture.viewer,
-          auctions: {
-            edges: [],
+        const wrapper = await getWrapper(noAuctionsData, defaultVariables)
+        expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
+        expect(wrapper.find("FeaturedRails").text()).not.toContain(
+          "Benefit Auctions"
+        )
+      })
+      it("doesn't display the fairs rail if there are no matching fairs", async () => {
+        const noFairsData = {
+          ...ArtKeepsGoingFixture,
+          viewer: {
+            ...ArtKeepsGoingFixture.viewer,
+            fairs: [],
           },
-        },
-      }
+        }
 
-      const wrapper = await getWrapper(noAuctionsData, defaultVariables)
-      expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
-      expect(wrapper.find("FeaturedRails").text()).not.toContain(
-        "Benefit Auctions"
-      )
-    })
-    it("doesn't display the fairs rail if there are no matching fairs", async () => {
-      const noFairsData = {
-        ...ArtKeepsGoingFixture,
-        viewer: {
-          ...ArtKeepsGoingFixture.viewer,
-          fairs: [],
-        },
-      }
+        const wrapper = await getWrapper(noFairsData, defaultVariables)
+        expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
+        expect(wrapper.find("FeaturedRails").text()).not.toContain("Fairs")
+      })
 
-      const wrapper = await getWrapper(noFairsData, defaultVariables)
-      expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
-      expect(wrapper.find("FeaturedRails").text()).not.toContain("Fairs")
-    })
-
-    it("doesn't attempt to display the collections rail if there is no manual data", async () => {
-      const injectedData = {
-        ...defaultData,
-        browse: {
-          ...defaultData.browse,
-          collections_rail: {
-            ...defaultData.browse.collections_rail,
-            items: [],
+      it("doesn't attempt to display the collections rail if there is no manual data", async () => {
+        const injectedData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            collections_rail: {
+              ...defaultData.browse.collections_rail,
+              items: [],
+            },
           },
-        },
-      }
+        }
 
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
 
-      expect(wrapper.find("FeaturedCollectionsRail").length).toEqual(0)
-    })
+        expect(wrapper.find("FeaturedCollectionsRail").length).toEqual(0)
+      })
 
-    it("doesn't attempt to display the auctions rail if there is no manual data", async () => {
-      const injectedData = {
-        ...defaultData,
-        browse: {
-          ...defaultData.browse,
-          auctions_rail: {
-            ...defaultData.browse.auctions_rail,
-            items: [],
+      it("doesn't attempt to display the auctions rail if there is no manual data", async () => {
+        const injectedData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            auctions_rail: {
+              ...defaultData.browse.auctions_rail,
+              items: [],
+            },
           },
-        },
-      }
+        }
 
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
 
-      expect(wrapper.find("FeaturedAuctionsRail").length).toEqual(0)
-    })
+        expect(wrapper.find("FeaturedAuctionsRail").length).toEqual(0)
+      })
 
-    it("doesn't attempt to display the fairs rail if there is no manual data", async () => {
-      const injectedData = {
-        ...defaultData,
-        browse: {
-          ...defaultData.browse,
-          fairs_rail: {
-            ...defaultData.browse.fairs_rail,
-            items: [],
+      it("doesn't attempt to display the fairs rail if there is no manual data", async () => {
+        const injectedData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            fairs_rail: {
+              ...defaultData.browse.fairs_rail,
+              items: [],
+            },
           },
-        },
-      }
+        }
 
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
 
-      expect(wrapper.find("FeaturedFairsRail").length).toEqual(0)
-    })
+        expect(wrapper.find("FeaturedFairsRail").length).toEqual(0)
+      })
 
-    it.todo("tracks clicking on a collection")
-    it.todo("tracks clicking on an auction")
-    it.todo("tracks clicking on a fair")
-    it("doesn't show the section if there are no rails", async () => {
-      const injectedData = {
-        ...defaultData,
-        browse: {
-          ...defaultData.browse,
-          fairs_rail: {
-            ...defaultData.browse.fairs_rail,
-            items: [],
+      it("tracks clicking on a collection", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedCollectionsRail")
+          .find("StyledLink")
+          .at(0)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "BrowseCollections",
+          destination_path: "/collection/jean-michel-basquiat-crowns",
+        })
+      })
+      it("tracks clicking on an auction", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedAuctionsRail")
+          .find("StyledLink")
+          .at(0)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "BrowseAuctions",
+          destination_path: "/auction/auction-1",
+        })
+      })
+
+      it("tracks clicking on a fair", async () => {
+        const defaultWrapper = await getWrapper()
+        defaultWrapper
+          .find("FeaturedFairsRail")
+          .find("StyledLink")
+          .at(0)
+          .simulate("click")
+        expect(trackEvent).toHaveBeenCalledWith({
+          action_type: "Click",
+          context_module: "BrowseFairs",
+          destination_path: "/fair/fair-1",
+        })
+      })
+
+      it("doesn't show the section if there are no rails", async () => {
+        const injectedData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            fairs_rail: {
+              ...defaultData.browse.fairs_rail,
+              items: [],
+            },
+            auctions_rail: {
+              ...defaultData.browse.auctions_rail,
+              items: [],
+            },
+            collections_rail: {
+              ...defaultData.browse.collections_rail,
+              items: [],
+            },
           },
-          auctions_rail: {
-            ...defaultData.browse.auctions_rail,
-            items: [],
-          },
-          collections_rail: {
-            ...defaultData.browse.collections_rail,
-            items: [],
-          },
-        },
-      }
+        }
 
-      const wrapper = await getWrapper(
-        ArtKeepsGoingFixture,
-        defaultVariables,
-        injectedData
-      )
+        const wrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          injectedData
+        )
 
-      expect(wrapper.find("Section").length).toEqual(4)
-      expect(wrapper.html()).not.toContain("Browse")
+        expect(wrapper.find("Section").length).toEqual(4)
+        expect(wrapper.html()).not.toContain("Browse")
+      })
     })
   })
 })
@@ -603,7 +707,7 @@ const defaultData = {
     ],
     subtitle: null,
     title: "Editorial",
-    view_more_url: null,
+    view_more_url: "/articles",
   },
   featured_artists: {
     artists: [
@@ -733,7 +837,7 @@ const ArtKeepsGoingFixture: FeatureAKGRoute_Test_QueryRawResponse = {
               "https://d32dm0rphc51dk.cloudfront.net/PCuKcu_h43P0IfBpXNkNcQ/large.jpg",
           },
         },
-        href: "/article/article-1",
+        href: "/article/article-2",
       },
       {
         id: "articleid-3",
