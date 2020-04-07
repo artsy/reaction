@@ -160,7 +160,7 @@ export const NavBar: React.FC = track(
                   }}
                 </NavItem>
                 {conversationsEnabled && (
-                  <NavItem>
+                  <NavItem href="/user/conversations">
                     {({ hover }) => {
                       return (
                         <EnvelopeIcon
