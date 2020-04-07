@@ -153,6 +153,7 @@ class MobileLoginFormWithSystemContext extends Component<
                 <Footer
                   mode={"login" as ModalType}
                   handleTypeChange={this.props.handleTypeChange}
+                  onAppleLogin={this.props.onAppleLogin}
                   onFacebookLogin={this.props.onFacebookLogin}
                 />
               </MobileInnerWrapper>

@@ -14,7 +14,8 @@ import {
 
 export interface ModalManagerProps {
   submitUrls?: { [P in ModalType]: string } & {
-    facebook?: string
+    apple: string
+    facebook: string
     twitter?: string
   }
   csrf?: string

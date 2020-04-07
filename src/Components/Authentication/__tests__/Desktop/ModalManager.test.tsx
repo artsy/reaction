@@ -15,6 +15,8 @@ const getWrapper = (
   const wrapper = mount(
     <ModalManager
       submitUrls={{
+        apple: "/users/auth/apple",
+        facebook: "/users/auth/facebook",
         login: "/login",
         signup: "/signup",
         forgot: "/forgot",

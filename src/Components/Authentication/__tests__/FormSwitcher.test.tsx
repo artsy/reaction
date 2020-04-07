@@ -12,6 +12,12 @@ import { MobileLoginForm } from "../Mobile/LoginForm"
 import { MobileSignUpForm } from "../Mobile/SignUpForm"
 import { ModalType } from "../Types"
 
+jest.mock("sharify", () => ({
+  data: {
+    ENABLE_SIGN_IN_WITH_APPLE: true,
+  },
+}))
+
 describe("FormSwitcher", () => {
   const getWrapper = (props: any = {}) =>
     mount(
@@ -27,6 +33,8 @@ describe("FormSwitcher", () => {
           redirectTo: "/foo",
           triggerSeconds: 1,
         }}
+        submitUrls={props.submitURLs}
+        onSocialAuthEvent={props.onSocialAuthEvent}
         isMobile={props.isMobile || false}
         isStatic={props.isStatic || false}
         handleTypeChange={jest.fn()}
@@ -85,6 +93,7 @@ describe("FormSwitcher", () => {
     beforeEach(() => {
       window.location.assign = jest.fn()
     })
+
     it("redirects to a url if static or mobile", () => {
       const wrapper = getWrapper({
         type: ModalType.login,
@@ -93,7 +102,7 @@ describe("FormSwitcher", () => {
 
       wrapper
         .find(Link)
-        .at(1)
+        .at(2)
         .simulate("click")
 
       expect((window.location.assign as any).mock.calls[0][0]).toEqual(
@@ -108,11 +117,47 @@ describe("FormSwitcher", () => {
 
       wrapper
         .find(Link)
-        .at(2)
+        .at(3)
         .simulate("click")
 
       expect((wrapper.state() as any).type).toMatch("signup")
       expect(wrapper.props().handleTypeChange).toBeCalled()
+    })
+  })
+
+  describe("Third party sign in", () => {
+    beforeEach(() => {
+      window.location.assign = jest.fn()
+    })
+
+    it("fires social auth event and redirects", () => {
+      const wrapper = getWrapper({
+        type: ModalType.login,
+        submitURLs: {
+          apple: "/users/auth/apple",
+          facebook: "/users/auth/facebook",
+          twitter: "/users/auth/twitter",
+          login: "/login",
+          signup: "/signup",
+          forgot: "/forgot",
+        },
+        onSocialAuthEvent: jest.fn(),
+      })
+
+      wrapper
+        .find(Link)
+        .at(1)
+        .simulate("click")
+
+      expect(wrapper.props().onSocialAuthEvent).toHaveBeenCalledWith(
+        expect.objectContaining({
+          service: "apple",
+        })
+      )
+
+      expect((window.location.assign as any).mock.calls[0][0]).toEqual(
+        "/users/auth/apple?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&triggerSeconds=1&accepted_terms_of_service=true&agreed_to_receive_emails=true&signup-referer=&afterSignUpAction=&redirect-to=%2Ffoo&signup-intent=followArtist&service=apple"
+      )
     })
   })
 

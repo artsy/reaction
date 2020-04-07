@@ -45,6 +45,8 @@ class ModalContainer extends Component<any> {
         <ModalManager
           ref={ref => (this.manager = ref)}
           submitUrls={{
+            apple: "/users/auth/apple",
+            facebook: "/users/auth/facebook",
             login: "/login",
             signup: "/signup",
             forgot: "/forgot",

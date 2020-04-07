@@ -115,6 +115,15 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
                 handleTypeChange={() =>
                   this.props.handleTypeChange(ModalType.login)
                 }
+                onAppleLogin={e => {
+                  if (!values.accepted_terms_of_service) {
+                    setTouched({
+                      accepted_terms_of_service: true,
+                    })
+                  } else {
+                    this.props.onAppleLogin(e)
+                  }
+                }}
                 onFacebookLogin={e => {
                   if (!values.accepted_terms_of_service) {
                     setTouched({
