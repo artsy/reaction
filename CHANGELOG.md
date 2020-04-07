@@ -1,3 +1,15 @@
+# v26.4.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3358](https://github.com/artsy/reaction/pull/3358) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.4.0 (Tue Apr 07 2020)
 
 #### 🚀  Enhancement
