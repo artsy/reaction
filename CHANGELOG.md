@@ -1,3 +1,15 @@
+# v26.2.2 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Update `back to <artist>` links to point directly to the overview page [#3353](https://github.com/artsy/reaction/pull/3353) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.2.1 (Mon Apr 06 2020)
 
 #### 🐛  Bug Fix
