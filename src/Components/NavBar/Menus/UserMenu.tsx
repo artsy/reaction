@@ -16,7 +16,7 @@ import {
 import { AnalyticsSchema, SystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { data as sd } from "sharify"
-import { userHasLabFeature, userIsAdmin } from "Utils/user"
+import { userIsAdmin } from "Utils/user"
 
 export const UserMenu: React.FC = () => {
   const { trackEvent } = useTracking()
@@ -54,6 +54,11 @@ export const UserMenu: React.FC = () => {
       {isAdmin && (
         <MenuItem href="/user/purchases">
           <TagIcon mr={1} /> Purchases
+        </MenuItem>
+      )}
+      {userHasLabFeature(user, "User Conversations View") && (
+        <MenuItem href="/user/conversations">
+          <TagIcon mr={1} /> Inquiries
         </MenuItem>
       )}
       <MenuItem href="/user/saves">
