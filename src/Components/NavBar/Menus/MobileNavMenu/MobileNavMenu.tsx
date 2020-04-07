@@ -8,12 +8,12 @@ import {
   Sans,
   Separator,
 } from "@artsy/palette"
-import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { AnalyticsSchema, SystemContext, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
 import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { LinkData, MenuData, MenuLinkData } from "Components/NavBar/menuData"
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { getMobileAuthLink } from "Utils/openAuthModal"
 import { MobileLink } from "./MobileLink"
@@ -255,11 +255,21 @@ const AuthenticateLinks: React.FC = () => {
 }
 
 const LoggedInLinks: React.FC = () => {
+  const { mediator } = useContext(SystemContext)
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
       <MobileLink href="/works-for-you">Works for you</MobileLink>
       <MobileLink href="/user/edit">Account</MobileLink>
+      <MobileLink
+        href="#"
+        onClick={event => {
+          event.preventDefault()
+          mediator.trigger("auth:logout")
+        }}
+      >
+        Log out
+      </MobileLink>
     </Box>
   )
 }
