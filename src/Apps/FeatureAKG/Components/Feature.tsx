@@ -42,19 +42,20 @@ const Feature: React.FC<FeatureProps> = props => {
     <>
       <Media greaterThanOrEqual="md">
         {heroVideo?.large_src && (
-          <Box textAlign="center">
+          <Box textAlign="center" mb="-10px">
             <Video src={heroVideo.large_src} />
           </Box>
         )}
       </Media>
       <Media lessThan="md">
         {heroVideo?.small_src && (
-          <Box textAlign="center">
+          <Box textAlign="center" mb="-10px">
             <Video src={heroVideo.small_src} />
           </Box>
         )}
       </Media>
-      <Box pt="3" maxWidth="475px" m="0 auto">
+      <SectionSeparator />
+      <Box pt="4" maxWidth="475px" m="0 auto">
         <Sans size="4" mx="3" weight="medium">
           {injectedData.description}
         </Sans>
@@ -77,10 +78,10 @@ const Feature: React.FC<FeatureProps> = props => {
 
       {/* Video 1 */}
       <Media greaterThanOrEqual="md">
-        {video1?.large_src && <VideoSection src={video1.large_src} />}
+        {video1?.large_src && <ImageSection src={video1.large_src} />}
       </Media>
       <Media lessThan="md">
-        {video1?.small_src && <VideoSection src={video1.small_src} />}
+        {video1?.small_src && <ImageSection src={video1.small_src} />}
       </Media>
 
       {/* Selected works */}
@@ -93,23 +94,25 @@ const Feature: React.FC<FeatureProps> = props => {
         </Section>
       )}
 
-      {/* Video 2 */}
-      <Media greaterThanOrEqual="md">
-        {video2?.large_src && <VideoSection src={video2.large_src} />}
-      </Media>
-      <Media lessThan="md">
-        {video2?.small_src && <VideoSection src={video2.small_src} />}
-      </Media>
-
       {/* Featured Artists */}
       {featuredArtists?.artists?.length && (
         <Section
           title={featuredArtists.title}
           subtitle={featuredArtists.subtitle}
         >
-          <FeaturedArtists {...featuredArtists} />
+          <Box mb="-30px">
+            <FeaturedArtists {...featuredArtists} />
+          </Box>
         </Section>
       )}
+
+      {/* Video 2 */}
+      <Media greaterThanOrEqual="md">
+        {video2?.large_src && <ImageSection src={video2.large_src} />}
+      </Media>
+      <Media lessThan="md">
+        {video2?.small_src && <ImageSection src={video2.small_src} />}
+      </Media>
 
       {/* Browse */}
       {showRails && (
@@ -173,23 +176,37 @@ const Section: React.FC<SectionProps> = props => {
   )
 }
 
-const VideoSection: React.FC<{ src: string }> = props => {
-  // Constrain the height, add 1px for the border
+const Video: React.FC<{ src: string }> = props => {
   return (
-    <Box mb="-40px" height="591px">
-      <SectionSeparator mt="4" />
-      <Box textAlign="center">
-        <Video src={props.src} />
-      </Box>
-    </Box>
+    <StyledVideo
+      autoPlay
+      loop
+      muted
+      playsInline
+      controls={false}
+      src={props.src}
+    />
   )
 }
 
-const Video: React.FC<{ src: string }> = props => {
+const StyledVideo = styled("video")`
+  width: 100%;
+  height: auto;
+`
+
+const ImageSection: React.FC<{ src: string }> = props => {
   return (
-    <video autoPlay loop muted playsInline controls={false} src={props.src} />
+    <BorderedSection>
+      <Image src={props.src} width="100%" height="auto" />
+    </BorderedSection>
   )
 }
+
+const BorderedSection = styled(Box)`
+  border-top: 1px solid black;
+  margin-bottom: -40px;
+  margin-top: 40px;
+`
 
 export interface FeaturedLinkType {
   image_src: string
@@ -215,7 +232,7 @@ export const FeaturedContentLink: React.FC<FeaturedLinkType> = props => {
   return (
     <StyledLink to={props.url}>
       <Box position="relative">
-        <Image src={croppedUrl} width="100%" />
+        <Image src={croppedUrl} width="100%" height="auto" />
         <ImageOverlayText maxWidth="150px">
           <BlockText size="2" color="white">
             {props.title}
@@ -262,5 +279,5 @@ const ImageOverlayText = styled(Box)`
 `
 
 const SectionSeparator = styled(Box)`
-  border: 1px solid #000000;
+  border-top: 1px solid #000000;
 `

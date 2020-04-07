@@ -20,7 +20,7 @@ export const FeaturedArtists: React.FC<FeaturedArtistsProps> = props => {
           <Box
             minWidth="300px"
             maxWidth="350px"
-            mb={2}
+            mb={3}
             mx={[1, 0]}
             key={`featured-artist-${index}`}
           >

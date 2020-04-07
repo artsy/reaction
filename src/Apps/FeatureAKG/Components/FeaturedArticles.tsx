@@ -36,7 +36,7 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
                 src={firstArticle.thumbnailImage.cropped.url}
                 width="100%"
               />
-              <Sans size={["4t", "4t", "5t"]} my={1}>
+              <Sans size={["4t", "4t", "6"]} my={1}>
                 {firstArticle.thumbnailTitle}
               </Sans>
               <Sans size="2" color="black60">
@@ -63,7 +63,12 @@ const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
                       </Sans>
                     </Box>
                     <Box maxWidth={["90px", "120px"]}>
-                      <Image src={article.tinyImage.cropped.url} width="100%" />
+                      <Image
+                        src={article.tinyImage.cropped.url}
+                        width="100%"
+                        lazyLoad
+                        height={60}
+                      />
                     </Box>
                   </Flex>
                 </StyledLink>
@@ -106,5 +111,5 @@ export const FeaturedArticlesFragmentContainer = createFragmentContainer(
 )
 
 const ArticleSeparator = styled(Box)`
-  border: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
 `

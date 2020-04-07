@@ -31,7 +31,7 @@ const FeaturedAuctionsRail: React.FC<FeaturedAuctionsRailProps> = props => {
       return {
         ...auction,
         imageSrc: matchingAuctionFromSpreadsheet.image_src,
-        subtitle: "Benefit Auction",
+        subtitle: "Auction",
         title: auction.node.name,
         href: auction.node.href,
       }

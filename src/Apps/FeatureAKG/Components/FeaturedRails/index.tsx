@@ -96,16 +96,14 @@ export const FeaturedRail: React.FC<FeaturedRailProps> = props => {
 
   return (
     <Box>
-      {title && (
-        <Sans size="4" mb={1}>
-          {title}
-        </Sans>
-      )}
-      {subtitle && (
-        <Sans size="2" color="black60" mb={1}>
-          {subtitle}
-        </Sans>
-      )}
+      <Box mb={1}>
+        {title && <Sans size="4">{title}</Sans>}
+        {subtitle && (
+          <Sans size="2" color="black60">
+            {subtitle}
+          </Sans>
+        )}
+      </Box>
       {children}
     </Box>
   )
