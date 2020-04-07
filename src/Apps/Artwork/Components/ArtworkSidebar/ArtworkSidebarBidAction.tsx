@@ -4,6 +4,7 @@ import {
   Flex,
   HelpIcon,
   LargeSelect,
+  Link,
   Sans,
   Separator,
   Serif,
@@ -39,8 +40,9 @@ const RegisterToBidButton = (props: { onClickFx: (e: any) => void }) => {
 
 const IdentityVerificationDisclaimer = () => {
   return (
-    <Sans size="2" color="black60" pb={1} textAlign="center">
-      Identity verification required to bid.
+    <Sans mt="1" size="3" color="black60" pb={1} textAlign="center">
+      Identity verification required to bid.{" "}
+      <Link href="/identity-verification-faq">FAQ</Link>
     </Sans>
   )
 }
