@@ -1,3 +1,15 @@
+# v26.5.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- Add inbox to mobile nav menu [#3359](https://github.com/artsy/reaction/pull/3359) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.4.1 (Tue Apr 07 2020)
 
 #### 🐛  Bug Fix
