@@ -30,7 +30,6 @@ import { Media } from "Utils/Responsive"
 import { SearchInputContainer } from "./SearchInputContainer"
 
 const logger = createLogger("Components/Search/SearchBar")
-const regex = new RegExp(/\/artist\/*/, "i")
 
 export interface Props extends SystemContextProps {
   relay: RelayRefetchProp
@@ -245,7 +244,8 @@ export class SearchBar extends Component<Props, State> {
     ) => ({
       action_type: Schema.ActionType.SelectedItemFromSearch,
       query: state.term,
-      destination_path: displayType === "Artist" ? `${href}/works-for-sale` : href,
+      destination_path:
+        displayType === "Artist" ? `${href}/works-for-sale` : href,
       item_type: displayType,
       item_id: id,
       item_number: suggestionIndex,
@@ -257,7 +257,7 @@ export class SearchBar extends Component<Props, State> {
     },
   }) {
     this.userClickedOnDescendant = true
-    const newHref = regex.test(href) ? href + "/works-for-sale" : href
+    const newHref = displayType === "Artist" ? `${href}/works-for-sale` : href
 
     if (this.enableExperimentalAppShell) {
       if (this.props.router) {
@@ -334,7 +334,7 @@ export class SearchBar extends Component<Props, State> {
 
   renderDefaultSuggestion = (edge, { query, isHighlighted }) => {
     const { displayLabel, displayType, href } = edge.node
-    const newHref = regex.test(href) ? href + "/works-for-sale" : href
+    const newHref = displayType === "Artist" ? `${href}/works-for-sale` : href
 
     return (
       <SuggestionItem
