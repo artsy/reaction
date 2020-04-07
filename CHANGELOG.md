@@ -1,3 +1,15 @@
+# v26.3.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Visual fixes based on QA [#3356](https://github.com/artsy/reaction/pull/3356) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.3.0 (Tue Apr 07 2020)
 
 #### 🚀  Enhancement
