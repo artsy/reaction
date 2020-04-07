@@ -56,11 +56,6 @@ export const UserMenu: React.FC = () => {
           <TagIcon mr={1} /> Purchases
         </MenuItem>
       )}
-      {userHasLabFeature(user, "User Conversations View") && (
-        <MenuItem href="/user/conversations">
-          <TagIcon mr={1} /> Inquiries
-        </MenuItem>
-      )}
       <MenuItem href="/user/saves">
         <HeartIcon mr={1} /> Saves & Follows
       </MenuItem>
