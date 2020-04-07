@@ -7,6 +7,8 @@ export type FeaturedArticles_articles = ReadonlyArray<{
     readonly publishedAt: string | null;
     readonly thumbnailImage: {
         readonly cropped: {
+            readonly width: number | null;
+            readonly height: number | null;
             readonly url: string | null;
         } | null;
     } | null;
@@ -27,15 +29,13 @@ export type FeaturedArticles_articles$key = ReadonlyArray<{
 
 
 const node: ReaderFragment = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "url",
-    "args": null,
-    "storageKey": null
-  }
-];
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Fragment",
   "name": "FeaturedArticles_articles",
@@ -93,7 +93,23 @@ return {
           ],
           "concreteType": "CroppedImageUrl",
           "plural": false,
-          "selections": (v0/*: any*/)
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "width",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "height",
+              "args": null,
+              "storageKey": null
+            },
+            (v0/*: any*/)
+          ]
         }
       ]
     },
@@ -125,7 +141,9 @@ return {
           ],
           "concreteType": "CroppedImageUrl",
           "plural": false,
-          "selections": (v0/*: any*/)
+          "selections": [
+            (v0/*: any*/)
+          ]
         }
       ]
     },
@@ -139,5 +157,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'a2d143d3746d10af09d1849f1ec3d0ec';
+(node as any).hash = 'e8085521d6af112294c21c016648022d';
 export default node;

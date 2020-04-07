@@ -17,9 +17,9 @@ interface FeaturedRailsProps {
 }
 
 const FeaturedRails: React.FC<FeaturedRailsProps> = props => {
-  const hasCollectionsRail = props.collections_rail?.items?.length
-  const hasAuctionsRail = props.auctions_rail?.items?.length
-  const hasFairsRail = props.fairs_rail?.items?.length
+  const hasCollectionsRail = !!props.collections_rail?.items?.length
+  const hasAuctionsRail = !!props.auctions_rail?.items?.length
+  const hasFairsRail = !!props.fairs_rail?.items?.length
 
   return (
     <Box>
@@ -65,14 +65,19 @@ export const FeaturedRailsFragmentContainer = createFragmentContainer(
           collectionRailItemIDs: { type: "[String!]" }
           auctionRailItemIDs: { type: "[String!]" }
           fairRailItemIDs: { type: "[String!]" }
+          hasCollectionRailItems: { type: "Boolean!" }
+          hasAuctionRailItems: { type: "Boolean!" }
+          hasFairRailItems: { type: "Boolean!" }
         ) {
-        collections: marketingCollections(slugs: $collectionRailItemIDs) {
+        collections: marketingCollections(slugs: $collectionRailItemIDs)
+          @include(if: $hasCollectionRailItems) {
           ...FeaturedCollections_collections
         }
-        auctions: salesConnection(first: 50, ids: $auctionRailItemIDs) {
+        auctions: salesConnection(first: 50, ids: $auctionRailItemIDs)
+          @include(if: $hasAuctionRailItems) {
           ...FeaturedAuctions_auctions
         }
-        fairs: fairs(ids: $fairRailItemIDs) {
+        fairs: fairs(ids: $fairRailItemIDs) @include(if: $hasFairRailItems) {
           ...FeaturedFairs_fairs
         }
       }
@@ -96,16 +101,14 @@ export const FeaturedRail: React.FC<FeaturedRailProps> = props => {
 
   return (
     <Box>
-      {title && (
-        <Sans size="4" mb={1}>
-          {title}
-        </Sans>
-      )}
-      {subtitle && (
-        <Sans size="2" color="black60" mb={1}>
-          {subtitle}
-        </Sans>
-      )}
+      <Box mb={1}>
+        {title && <Sans size="4">{title}</Sans>}
+        {subtitle && (
+          <Sans size="2" color="black60">
+            {subtitle}
+          </Sans>
+        )}
+      </Box>
       {children}
     </Box>
   )
@@ -137,7 +140,7 @@ export const FeaturedRailCarousel: React.FC<FeaturedRailCarouselProps> = props =
         return (
           <Box mr={1} maxWidth="245px">
             <StyledLink to={item.href}>
-              <Image src={croppedImageUrl} />
+              <Image lazyLoad src={croppedImageUrl} width={245} height={270} />
               <Sans size="2" weight="medium" mt={1}>
                 {item.title}
               </Sans>

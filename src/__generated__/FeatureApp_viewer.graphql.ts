@@ -49,6 +49,24 @@ const node: ReaderFragment = {
       "name": "fairRailItemIDs",
       "type": "[String!]",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasCollectionRailItems",
+      "type": "Boolean!",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasAuctionRailItems",
+      "type": "Boolean!",
+      "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "hasFairRailItems",
+      "type": "Boolean!",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -78,6 +96,21 @@ const node: ReaderFragment = {
         },
         {
           "kind": "Variable",
+          "name": "hasAuctionRailItems",
+          "variableName": "hasAuctionRailItems"
+        },
+        {
+          "kind": "Variable",
+          "name": "hasCollectionRailItems",
+          "variableName": "hasCollectionRailItems"
+        },
+        {
+          "kind": "Variable",
+          "name": "hasFairRailItems",
+          "variableName": "hasFairRailItems"
+        },
+        {
+          "kind": "Variable",
           "name": "selectedWorksSetID",
           "variableName": "selectedWorksSetID"
         }
@@ -85,5 +118,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '4aad02f49ba75ee3589d321b0eb93fdc';
+(node as any).hash = 'e0ab6e7bde3c87a7ce50273e9cf6756c';
 export default node;

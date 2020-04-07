@@ -8,6 +8,9 @@ export type FeatureAKGRoute_Test_QueryVariables = {
     collectionRailItemIDs?: ReadonlyArray<string> | null;
     auctionRailItemIDs?: ReadonlyArray<string> | null;
     fairRailItemIDs?: ReadonlyArray<string> | null;
+    hasCollectionRailItems: boolean;
+    hasAuctionRailItems: boolean;
+    hasFairRailItems: boolean;
 };
 export type FeatureAKGRoute_Test_QueryResponse = {
     readonly viewer: {
@@ -21,6 +24,8 @@ export type FeatureAKGRoute_Test_QueryRawResponse = {
             readonly publishedAt: string | null;
             readonly thumbnailImage: ({
                 readonly cropped: ({
+                    readonly width: number | null;
+                    readonly height: number | null;
                     readonly url: string | null;
                 }) | null;
             }) | null;
@@ -95,12 +100,12 @@ export type FeatureAKGRoute_Test_QueryRawResponse = {
             }) | null;
             readonly id: string | null;
         }) | null;
-        readonly collections: ReadonlyArray<({
+        readonly collections?: ReadonlyArray<({
             readonly slug: string;
             readonly title: string;
             readonly id: string | null;
         }) | null> | null;
-        readonly auctions: ({
+        readonly auctions?: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({
                     readonly slug: string;
@@ -110,7 +115,7 @@ export type FeatureAKGRoute_Test_QueryRawResponse = {
                 }) | null;
             }) | null> | null;
         }) | null;
-        readonly fairs: ReadonlyArray<({
+        readonly fairs?: ReadonlyArray<({
             readonly internalID: string;
             readonly name: string | null;
             readonly href: string | null;
@@ -133,9 +138,12 @@ query FeatureAKGRoute_Test_Query(
   $collectionRailItemIDs: [String!]
   $auctionRailItemIDs: [String!]
   $fairRailItemIDs: [String!]
+  $hasCollectionRailItems: Boolean!
+  $hasAuctionRailItems: Boolean!
+  $hasFairRailItems: Boolean!
 ) {
   viewer {
-    ...FeatureApp_viewer_4BGqiO
+    ...FeatureApp_viewer_2x5Kr1
   }
 }
 
@@ -233,11 +241,11 @@ fragment Details_artwork on Artwork {
   }
 }
 
-fragment FeatureApp_viewer_4BGqiO on Viewer {
-  ...Feature_viewer_4BGqiO
+fragment FeatureApp_viewer_2x5Kr1 on Viewer {
+  ...Feature_viewer_2x5Kr1
 }
 
-fragment Feature_viewer_4BGqiO on Viewer {
+fragment Feature_viewer_2x5Kr1 on Viewer {
   articles(ids: $articleIDs) {
     ...FeaturedArticles_articles
     id
@@ -246,7 +254,7 @@ fragment Feature_viewer_4BGqiO on Viewer {
     ...SelectedWorks_selectedWorks
     id
   }
-  ...FeaturedRails_viewer_4j6FBi
+  ...FeaturedRails_viewer_1Tm9K3
 }
 
 fragment FeaturedArticles_articles on Article {
@@ -254,6 +262,8 @@ fragment FeaturedArticles_articles on Article {
   publishedAt(format: "MMM Do, YYYY")
   thumbnailImage {
     cropped(width: 780, height: 520) {
+      width
+      height
       url
     }
   }
@@ -287,15 +297,15 @@ fragment FeaturedFairs_fairs on Fair {
   href
 }
 
-fragment FeaturedRails_viewer_4j6FBi on Viewer {
-  collections: marketingCollections(slugs: $collectionRailItemIDs) {
+fragment FeaturedRails_viewer_1Tm9K3 on Viewer {
+  collections: marketingCollections(slugs: $collectionRailItemIDs) @include(if: $hasCollectionRailItems) {
     ...FeaturedCollections_collections
     id
   }
-  auctions: salesConnection(first: 50, ids: $auctionRailItemIDs) {
+  auctions: salesConnection(first: 50, ids: $auctionRailItemIDs) @include(if: $hasAuctionRailItems) {
     ...FeaturedAuctions_auctions
   }
-  fairs(ids: $fairRailItemIDs) {
+  fairs(ids: $fairRailItemIDs) @include(if: $hasFairRailItems) {
     ...FeaturedFairs_fairs
     id
   }
@@ -373,17 +383,33 @@ var v0 = [
     "name": "fairRailItemIDs",
     "type": "[String!]",
     "defaultValue": null
-  }
-],
-v1 = [
+  },
   {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "url",
-    "args": null,
-    "storageKey": null
+    "kind": "LocalArgument",
+    "name": "hasCollectionRailItems",
+    "type": "Boolean!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "hasAuctionRailItems",
+    "type": "Boolean!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "hasFairRailItems",
+    "type": "Boolean!",
+    "defaultValue": null
   }
 ],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
+},
 v2 = {
   "kind": "ScalarField",
   "alias": null,
@@ -486,6 +512,21 @@ return {
               },
               {
                 "kind": "Variable",
+                "name": "hasAuctionRailItems",
+                "variableName": "hasAuctionRailItems"
+              },
+              {
+                "kind": "Variable",
+                "name": "hasCollectionRailItems",
+                "variableName": "hasCollectionRailItems"
+              },
+              {
+                "kind": "Variable",
+                "name": "hasFairRailItems",
+                "variableName": "hasFairRailItems"
+              },
+              {
+                "kind": "Variable",
                 "name": "selectedWorksSetID",
                 "variableName": "selectedWorksSetID"
               }
@@ -572,7 +613,23 @@ return {
                     ],
                     "concreteType": "CroppedImageUrl",
                     "plural": false,
-                    "selections": (v1/*: any*/)
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "width",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "height",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      (v1/*: any*/)
+                    ]
                   }
                 ]
               },
@@ -604,7 +661,9 @@ return {
                     ],
                     "concreteType": "CroppedImageUrl",
                     "plural": false,
-                    "selections": (v1/*: any*/)
+                    "selections": [
+                      (v1/*: any*/)
+                    ]
                   }
                 ]
               },
@@ -930,67 +989,81 @@ return {
             ]
           },
           {
-            "kind": "LinkedField",
-            "alias": "collections",
-            "name": "marketingCollections",
-            "storageKey": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "slugs",
-                "variableName": "collectionRailItemIDs"
-              }
-            ],
-            "concreteType": "MarketingCollection",
-            "plural": true,
-            "selections": [
-              (v4/*: any*/),
-              (v6/*: any*/),
-              (v3/*: any*/)
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": "auctions",
-            "name": "salesConnection",
-            "storageKey": null,
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 50
-              },
-              {
-                "kind": "Variable",
-                "name": "ids",
-                "variableName": "auctionRailItemIDs"
-              }
-            ],
-            "concreteType": "SaleConnection",
-            "plural": false,
+            "kind": "Condition",
+            "passingValue": true,
+            "condition": "hasCollectionRailItems",
             "selections": [
               {
                 "kind": "LinkedField",
-                "alias": null,
-                "name": "edges",
+                "alias": "collections",
+                "name": "marketingCollections",
                 "storageKey": null,
-                "args": null,
-                "concreteType": "SaleEdge",
+                "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "slugs",
+                    "variableName": "collectionRailItemIDs"
+                  }
+                ],
+                "concreteType": "MarketingCollection",
                 "plural": true,
+                "selections": [
+                  (v4/*: any*/),
+                  (v6/*: any*/),
+                  (v3/*: any*/)
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Condition",
+            "passingValue": true,
+            "condition": "hasAuctionRailItems",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": "auctions",
+                "name": "salesConnection",
+                "storageKey": null,
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "first",
+                    "value": 50
+                  },
+                  {
+                    "kind": "Variable",
+                    "name": "ids",
+                    "variableName": "auctionRailItemIDs"
+                  }
+                ],
+                "concreteType": "SaleConnection",
+                "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "node",
+                    "name": "edges",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Sale",
-                    "plural": false,
+                    "concreteType": "SaleEdge",
+                    "plural": true,
                     "selections": [
-                      (v4/*: any*/),
-                      (v8/*: any*/),
-                      (v2/*: any*/),
-                      (v3/*: any*/)
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "node",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sale",
+                        "plural": false,
+                        "selections": [
+                          (v4/*: any*/),
+                          (v8/*: any*/),
+                          (v2/*: any*/),
+                          (v3/*: any*/)
+                        ]
+                      }
                     ]
                   }
                 ]
@@ -998,24 +1071,31 @@ return {
             ]
           },
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "fairs",
-            "storageKey": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "ids",
-                "variableName": "fairRailItemIDs"
-              }
-            ],
-            "concreteType": "Fair",
-            "plural": true,
+            "kind": "Condition",
+            "passingValue": true,
+            "condition": "hasFairRailItems",
             "selections": [
-              (v5/*: any*/),
-              (v8/*: any*/),
-              (v2/*: any*/),
-              (v3/*: any*/)
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "fairs",
+                "storageKey": null,
+                "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "ids",
+                    "variableName": "fairRailItemIDs"
+                  }
+                ],
+                "concreteType": "Fair",
+                "plural": true,
+                "selections": [
+                  (v5/*: any*/),
+                  (v8/*: any*/),
+                  (v2/*: any*/),
+                  (v3/*: any*/)
+                ]
+              }
             ]
           }
         ]
@@ -1026,10 +1106,10 @@ return {
     "operationKind": "query",
     "name": "FeatureAKGRoute_Test_Query",
     "id": null,
-    "text": "query FeatureAKGRoute_Test_Query(\n  $articleIDs: [String]!\n  $selectedWorksSetID: String!\n  $collectionRailItemIDs: [String!]\n  $auctionRailItemIDs: [String!]\n  $fairRailItemIDs: [String!]\n) {\n  viewer {\n    ...FeatureApp_viewer_4BGqiO\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnectionInterface {\n  edges {\n    __typename\n    node {\n      id\n      slug\n      href\n      image {\n        aspect_ratio: aspectRatio\n      }\n      ...GridItem_artwork\n    }\n    ... on Node {\n      id\n    }\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FeatureApp_viewer_4BGqiO on Viewer {\n  ...Feature_viewer_4BGqiO\n}\n\nfragment Feature_viewer_4BGqiO on Viewer {\n  articles(ids: $articleIDs) {\n    ...FeaturedArticles_articles\n    id\n  }\n  selectedWorks: orderedSet(id: $selectedWorksSetID) {\n    ...SelectedWorks_selectedWorks\n    id\n  }\n  ...FeaturedRails_viewer_4j6FBi\n}\n\nfragment FeaturedArticles_articles on Article {\n  thumbnailTitle\n  publishedAt(format: \"MMM Do, YYYY\")\n  thumbnailImage {\n    cropped(width: 780, height: 520) {\n      url\n    }\n  }\n  tinyImage: thumbnailImage {\n    cropped(width: 60, height: 60) {\n      url\n    }\n  }\n  href\n}\n\nfragment FeaturedAuctions_auctions on SaleConnection {\n  edges {\n    node {\n      slug\n      name\n      href\n      id\n    }\n  }\n}\n\nfragment FeaturedCollections_collections on MarketingCollection {\n  slug\n  title\n}\n\nfragment FeaturedFairs_fairs on Fair {\n  internalID\n  name\n  href\n}\n\nfragment FeaturedRails_viewer_4j6FBi on Viewer {\n  collections: marketingCollections(slugs: $collectionRailItemIDs) {\n    ...FeaturedCollections_collections\n    id\n  }\n  auctions: salesConnection(first: 50, ids: $auctionRailItemIDs) {\n    ...FeaturedAuctions_auctions\n  }\n  fairs(ids: $fairRailItemIDs) {\n    ...FeaturedFairs_fairs\n    id\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  internalID\n  title\n  image_title: imageTitle\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n\nfragment SelectedWorks_selectedWorks on OrderedSet {\n  itemsConnection(first: 6) {\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query FeatureAKGRoute_Test_Query(\n  $articleIDs: [String]!\n  $selectedWorksSetID: String!\n  $collectionRailItemIDs: [String!]\n  $auctionRailItemIDs: [String!]\n  $fairRailItemIDs: [String!]\n  $hasCollectionRailItems: Boolean!\n  $hasAuctionRailItems: Boolean!\n  $hasFairRailItems: Boolean!\n) {\n  viewer {\n    ...FeatureApp_viewer_2x5Kr1\n  }\n}\n\nfragment ArtworkGrid_artworks on ArtworkConnectionInterface {\n  edges {\n    __typename\n    node {\n      id\n      slug\n      href\n      image {\n        aspect_ratio: aspectRatio\n      }\n      ...GridItem_artwork\n    }\n    ... on Node {\n      id\n    }\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FeatureApp_viewer_2x5Kr1 on Viewer {\n  ...Feature_viewer_2x5Kr1\n}\n\nfragment Feature_viewer_2x5Kr1 on Viewer {\n  articles(ids: $articleIDs) {\n    ...FeaturedArticles_articles\n    id\n  }\n  selectedWorks: orderedSet(id: $selectedWorksSetID) {\n    ...SelectedWorks_selectedWorks\n    id\n  }\n  ...FeaturedRails_viewer_1Tm9K3\n}\n\nfragment FeaturedArticles_articles on Article {\n  thumbnailTitle\n  publishedAt(format: \"MMM Do, YYYY\")\n  thumbnailImage {\n    cropped(width: 780, height: 520) {\n      width\n      height\n      url\n    }\n  }\n  tinyImage: thumbnailImage {\n    cropped(width: 60, height: 60) {\n      url\n    }\n  }\n  href\n}\n\nfragment FeaturedAuctions_auctions on SaleConnection {\n  edges {\n    node {\n      slug\n      name\n      href\n      id\n    }\n  }\n}\n\nfragment FeaturedCollections_collections on MarketingCollection {\n  slug\n  title\n}\n\nfragment FeaturedFairs_fairs on Fair {\n  internalID\n  name\n  href\n}\n\nfragment FeaturedRails_viewer_1Tm9K3 on Viewer {\n  collections: marketingCollections(slugs: $collectionRailItemIDs) @include(if: $hasCollectionRailItems) {\n    ...FeaturedCollections_collections\n    id\n  }\n  auctions: salesConnection(first: 50, ids: $auctionRailItemIDs) @include(if: $hasAuctionRailItems) {\n    ...FeaturedAuctions_auctions\n  }\n  fairs(ids: $fairRailItemIDs) @include(if: $hasFairRailItems) {\n    ...FeaturedFairs_fairs\n    id\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  internalID\n  title\n  image_title: imageTitle\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n\nfragment SelectedWorks_selectedWorks on OrderedSet {\n  itemsConnection(first: 6) {\n    ...ArtworkGrid_artworks\n    edges {\n      node {\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '8b22b62704095814763dbb46b3b32c72';
+(node as any).hash = 'ce1bb20889f855995d8c6a96f8d7e02c';
 export default node;

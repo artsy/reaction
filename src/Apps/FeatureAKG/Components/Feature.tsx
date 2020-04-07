@@ -1,4 +1,4 @@
-import { Box, Image, Sans, Serif } from "@artsy/palette"
+import { Box, ResponsiveImage, Sans, Serif } from "@artsy/palette"
 import { Feature_viewer } from "__generated__/Feature_viewer.graphql"
 import { FeaturedArticlesFragmentContainer as FeaturedArticles } from "Apps/FeatureAKG/Components/FeaturedArticles"
 import { FeaturedArtists } from "Apps/FeatureAKG/Components/FeaturedArtists"
@@ -34,27 +34,28 @@ const Feature: React.FC<FeatureProps> = props => {
   const video2 = injectedData.video_2
 
   const showRails =
-    featuredRails?.collections_rail?.items?.length ||
-    featuredRails?.auctions_rail?.items?.length ||
-    featuredRails?.fairs_rail?.items?.length
+    !!featuredRails?.collections_rail?.items?.length ||
+    !!featuredRails?.auctions_rail?.items?.length ||
+    !!featuredRails?.fairs_rail?.items?.length
 
   return (
     <>
-      <Media greaterThanOrEqual="md">
+      <Media greaterThanOrEqual="sm">
         {heroVideo?.large_src && (
-          <Box textAlign="center">
+          <Box textAlign="center" mb={-1}>
             <Video src={heroVideo.large_src} />
           </Box>
         )}
       </Media>
-      <Media lessThan="md">
+      <Media at="xs">
         {heroVideo?.small_src && (
-          <Box textAlign="center">
+          <Box textAlign="center" mb={-1}>
             <Video src={heroVideo.small_src} />
           </Box>
         )}
       </Media>
-      <Box pt="3" maxWidth="475px" m="0 auto">
+      <SectionSeparator />
+      <Box pt="4" maxWidth="475px" m="0 auto">
         <Sans size="4" mx="3" weight="medium">
           {injectedData.description}
         </Sans>
@@ -76,11 +77,21 @@ const Feature: React.FC<FeatureProps> = props => {
       )}
 
       {/* Video 1 */}
-      <Media greaterThanOrEqual="md">
-        {video1?.large_src && <VideoSection src={video1.large_src} />}
+      <Media greaterThanOrEqual="sm">
+        {video1?.large_src && (
+          <ImageSection
+            src={video1.large_src}
+            aspectRatio={video1.large_aspect_ratio}
+          />
+        )}
       </Media>
-      <Media lessThan="md">
-        {video1?.small_src && <VideoSection src={video1.small_src} />}
+      <Media at="xs">
+        {video1?.small_src && (
+          <ImageSection
+            src={video1.small_src}
+            aspectRatio={video1.small_aspect_ratio}
+          />
+        )}
       </Media>
 
       {/* Selected works */}
@@ -93,23 +104,35 @@ const Feature: React.FC<FeatureProps> = props => {
         </Section>
       )}
 
-      {/* Video 2 */}
-      <Media greaterThanOrEqual="md">
-        {video2?.large_src && <VideoSection src={video2.large_src} />}
-      </Media>
-      <Media lessThan="md">
-        {video2?.small_src && <VideoSection src={video2.small_src} />}
-      </Media>
-
       {/* Featured Artists */}
       {featuredArtists?.artists?.length && (
         <Section
           title={featuredArtists.title}
           subtitle={featuredArtists.subtitle}
         >
-          <FeaturedArtists {...featuredArtists} />
+          <Box mb={-3} mx={[-1, 0]}>
+            <FeaturedArtists {...featuredArtists} />
+          </Box>
         </Section>
       )}
+
+      {/* Video 2 */}
+      <Media greaterThanOrEqual="sm">
+        {video2?.large_src && (
+          <ImageSection
+            src={video2.large_src}
+            aspectRatio={video2.large_aspect_ratio}
+          />
+        )}
+      </Media>
+      <Media at="xs">
+        {video2?.small_src && (
+          <ImageSection
+            src={video2.small_src}
+            aspectRatio={video2.small_aspect_ratio}
+          />
+        )}
+      </Media>
 
       {/* Browse */}
       {showRails && (
@@ -130,6 +153,9 @@ export const FeatureFragmentContainer = createFragmentContainer(Feature, {
         collectionRailItemIDs: { type: "[String!]" }
         auctionRailItemIDs: { type: "[String!]" }
         fairRailItemIDs: { type: "[String!]" }
+        hasCollectionRailItems: { type: "Boolean!" }
+        hasAuctionRailItems: { type: "Boolean!" }
+        hasFairRailItems: { type: "Boolean!" }
       ) {
       articles: articles(ids: $articleIDs) {
         ...FeaturedArticles_articles
@@ -142,6 +168,9 @@ export const FeatureFragmentContainer = createFragmentContainer(Feature, {
           collectionRailItemIDs: $collectionRailItemIDs
           auctionRailItemIDs: $auctionRailItemIDs
           fairRailItemIDs: $fairRailItemIDs
+          hasCollectionRailItems: $hasCollectionRailItems
+          hasAuctionRailItems: $hasAuctionRailItems
+          hasFairRailItems: $hasFairRailItems
         )
     }
   `,
@@ -173,23 +202,37 @@ const Section: React.FC<SectionProps> = props => {
   )
 }
 
-const VideoSection: React.FC<{ src: string }> = props => {
-  // Constrain the height, add 1px for the border
+const Video: React.FC<{ src: string }> = props => {
   return (
-    <Box mb="-40px" height="591px">
-      <SectionSeparator mt="4" />
-      <Box textAlign="center">
-        <Video src={props.src} />
-      </Box>
-    </Box>
+    <StyledVideo
+      src={props.src}
+      autoPlay
+      loop
+      muted
+      playsInline
+      controls={false}
+    />
   )
 }
 
-const Video: React.FC<{ src: string }> = props => {
+const StyledVideo = styled("video")`
+  width: 100%;
+  height: auto;
+`
+
+const ImageSection: React.FC<{ src: string; aspectRatio: number }> = props => {
   return (
-    <video autoPlay loop muted playsInline controls={false} src={props.src} />
+    <BorderedSection>
+      <ResponsiveImage lazyLoad src={props.src} ratio={props.aspectRatio} />
+    </BorderedSection>
   )
 }
+
+const BorderedSection = styled(Box)`
+  border-top: 1px solid black;
+  margin-bottom: -40px;
+  margin-top: 40px;
+`
 
 export interface FeaturedLinkType {
   image_src: string
@@ -215,7 +258,7 @@ export const FeaturedContentLink: React.FC<FeaturedLinkType> = props => {
   return (
     <StyledLink to={props.url}>
       <Box position="relative">
-        <Image src={croppedUrl} width="100%" />
+        <ResponsiveImage src={croppedUrl} ratio={height / width} />
         <ImageOverlayText maxWidth="150px">
           <BlockText size="2" color="white">
             {props.title}
@@ -262,5 +305,5 @@ const ImageOverlayText = styled(Box)`
 `
 
 const SectionSeparator = styled(Box)`
-  border: 1px solid #000000;
+  border-top: 1px solid #000000;
 `
