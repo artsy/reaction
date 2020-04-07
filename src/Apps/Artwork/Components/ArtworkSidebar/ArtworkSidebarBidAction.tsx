@@ -168,7 +168,7 @@ export class ArtworkSidebarBidAction extends React.Component<
               sale.is_registration_closed && !registeredToBid
             if (successfulRegistrationNotPossible) {
               return (
-                <div>
+                <Box>
                   <Sans size="2" color="black60" pb={1} textAlign="center">
                     Registration closed
                   </Sans>
@@ -179,7 +179,7 @@ export class ArtworkSidebarBidAction extends React.Component<
                   >
                     Watch live bidding
                   </Button>
-                </div>
+                </Box>
               )
             } else {
               return (
@@ -205,14 +205,14 @@ export class ArtworkSidebarBidAction extends React.Component<
     if (sale.is_open) {
       if (registrationAttempted && !registeredToBid) {
         return (
-          <div>
+          <Box>
             <Button width="100%" size="large" disabled>
               Registration pending
             </Button>
             {userNeedsIdentityVerification && (
               <IdentityVerificationDisclaimer />
             )}
-          </div>
+          </Box>
         )
       }
       if (sale.is_registration_closed && !registeredToBid) {
