@@ -1,4 +1,5 @@
-import ActionTypes from "farce/lib/ActionTypes"
+import FarceActionTypes from "farce/lib/ActionTypes"
+import { ActionTypes as FoundActionTypes } from "found"
 import { trackingMiddleware } from "../trackingMiddleware"
 
 declare const global: any
@@ -8,6 +9,8 @@ jest.mock("sharify", () => ({
     APP_URL: "http://testing.com",
   },
 }))
+
+jest.mock("lodash/debounce", () => x => x)
 
 describe("trackingMiddleware", () => {
   const analytics = window.analytics
@@ -24,9 +27,30 @@ describe("trackingMiddleware", () => {
     window.analytics = analytics
   })
 
+  it("tracks pageview on initial load", () => {
+    const tracker = trackingMiddleware()
+    tracker(store)(noop)({
+      type: FarceActionTypes.INIT,
+    })
+    tracker(store)(noop)({
+      type: FarceActionTypes.CREATE_HREF,
+      payload: {
+        pathname: "/foo",
+      },
+    })
+
+    expect(global.analytics.page).toBeCalledWith(
+      {
+        path: "/foo",
+        url: "http://testing.com/foo",
+      },
+      { integrations: { Marketo: false } }
+    )
+  })
+
   it("tracks pageviews", () => {
     trackingMiddleware()(store)(noop)({
-      type: ActionTypes.UPDATE_LOCATION,
+      type: FoundActionTypes.RESOLVE_MATCH,
       payload: {
         pathname: "/foo",
       },
@@ -43,7 +67,7 @@ describe("trackingMiddleware", () => {
 
   it("does not track pageviews for other events", () => {
     trackingMiddleware()(store)(noop)({
-      type: ActionTypes.PUSH,
+      type: FarceActionTypes.PUSH,
       payload: {
         pathname: "/bar",
       },
@@ -55,7 +79,7 @@ describe("trackingMiddleware", () => {
     trackingMiddleware({
       excludePaths: ["/artwork/"],
     })(store)(noop)({
-      type: ActionTypes.UPDATE_LOCATION,
+      type: FoundActionTypes.RESOLVE_MATCH,
       payload: {
         pathname: "/artwork/some-id",
       },
@@ -66,10 +90,11 @@ describe("trackingMiddleware", () => {
   // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
   describe("referrers", () => {
     it("tracks collect, collection and collections", () => {
+      const tracker = trackingMiddleware()
       const pathsToTest = ["/collect", "/collection/foo", "/collections"]
 
       pathsToTest.forEach(pathToTest => {
-        trackingMiddleware()({
+        tracker({
           getState: () => {
             return {
               found: {
@@ -82,7 +107,14 @@ describe("trackingMiddleware", () => {
             }
           },
         })(noop)({
-          type: ActionTypes.UPDATE_LOCATION,
+          type: FarceActionTypes.UPDATE_LOCATION,
+          payload: {
+            pathname: pathToTest,
+          },
+        })
+
+        tracker(store)(noop)({
+          type: FoundActionTypes.RESOLVE_MATCH,
           payload: {
             pathname: pathToTest,
           },

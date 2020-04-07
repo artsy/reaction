@@ -17,6 +17,8 @@ storiesOf("Apps", module).add("AppShell", () => {
           // @ts-ignore
           COLLECTION_HUBS: "experiment",
           mediator: {
+            on: x => x,
+            off: x => x,
             trigger: x => x,
           },
         }}
