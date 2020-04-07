@@ -267,7 +267,7 @@ const LoggedInLinks: React.FC = () => {
       <Separator my={1} color={color("black10")} />
       {conversationsEnabled && (
         <MobileLink href="/user/conversations">
-          <EnvelopeIcon fill={"black80"} top={3} mr={10} />
+          <EnvelopeIcon fill={"black60"} top={3} mr={10} />
           Inbox
         </MobileLink>
       )}
