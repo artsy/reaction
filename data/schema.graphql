@@ -701,6 +701,7 @@ type Artist implements Node & Searchable & EntityWithFilterArtworksConnectionInt
   isFollowed: Boolean
   isPublic: Boolean
   isShareable: Boolean
+  isTargetSupply: Boolean
   displayLabel: String
   location: String
   meta: ArtistMeta
@@ -968,7 +969,10 @@ type ArtistStatuses {
 }
 
 type ArtistTargetSupply {
-  # Returns whether an artist is in within the microfunnel list.
+  # True if artist is in target supply list.
+  isTargetSupply: Boolean
+
+  # True if an artist is in within the microfunnel list.
   isInMicrofunnel: Boolean
   microfunnel: ArtistTargetSupplyMicrofunnel
 }
@@ -5295,8 +5299,6 @@ type Me implements Node {
 
   # Sale Artworks search results
   lotsByFollowedArtistsConnection(
-    includeArtworksByFollowedArtists: Boolean
-    artistIDs: [String]
     aggregations: [SaleArtworkAggregation]
     liveSale: Boolean
     isAuction: Boolean
@@ -5304,8 +5306,6 @@ type Me implements Node {
     estimateRange: String
     saleID: ID
     sort: String
-    page: Int
-    size: Int
     after: String
     first: Int
     before: String
@@ -6053,6 +6053,9 @@ type Query {
     id: String!
   ): Artwork
 
+  # A list of artworks by internalID.
+  artworksByInternalID(ids: [String]!): [Artwork]
+
   # Artworks Elastic Search results
   artworksConnection(
     acquireable: Boolean
@@ -6208,31 +6211,6 @@ type Query {
     # The slug or ID of the Sale
     id: String!
   ): Sale
-
-  # A Sale Artwork
-  saleArtwork(
-    # The slug or ID of the SaleArtwork
-    id: String!
-  ): SaleArtwork
-
-  # Sale Artworks search results
-  saleArtworksConnection(
-    includeArtworksByFollowedArtists: Boolean
-    artistIDs: [String]
-    aggregations: [SaleArtworkAggregation]
-    liveSale: Boolean
-    isAuction: Boolean
-    geneIDs: [String]
-    estimateRange: String
-    saleID: ID
-    sort: String
-    page: Int
-    size: Int
-    after: String
-    first: Int
-    before: String
-    last: Int
-  ): SaleArtworksConnection
 
   # A list of Sales
   salesConnection(
@@ -7772,6 +7750,9 @@ type Viewer {
     id: String!
   ): Artwork
 
+  # A list of artworks by internalID.
+  artworksByInternalID(ids: [String]!): [Artwork]
+
   # Artworks Elastic Search results
   artworksConnection(
     acquireable: Boolean
@@ -7927,31 +7908,6 @@ type Viewer {
     # The slug or ID of the Sale
     id: String!
   ): Sale
-
-  # A Sale Artwork
-  saleArtwork(
-    # The slug or ID of the SaleArtwork
-    id: String!
-  ): SaleArtwork
-
-  # Sale Artworks search results
-  saleArtworksConnection(
-    includeArtworksByFollowedArtists: Boolean
-    artistIDs: [String]
-    aggregations: [SaleArtworkAggregation]
-    liveSale: Boolean
-    isAuction: Boolean
-    geneIDs: [String]
-    estimateRange: String
-    saleID: ID
-    sort: String
-    page: Int
-    size: Int
-    after: String
-    first: Int
-    before: String
-    last: Int
-  ): SaleArtworksConnection
 
   # A list of Sales
   salesConnection(

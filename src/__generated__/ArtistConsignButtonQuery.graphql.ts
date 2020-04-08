@@ -14,6 +14,7 @@ export type ArtistConsignButtonQueryRawResponse = {
     readonly artist: ({
         readonly targetSupply: ({
             readonly isInMicrofunnel: boolean | null;
+            readonly isTargetSupply: boolean | null;
         }) | null;
         readonly internalID: string;
         readonly slug: string;
@@ -48,13 +49,14 @@ query ArtistConsignButtonQuery(
 fragment ArtistConsignButton_artist on Artist {
   targetSupply {
     isInMicrofunnel
+    isTargetSupply
   }
   internalID
   slug
   name
   href
   image {
-    cropped(width: 75, height: 66) {
+    cropped(width: 66, height: 66) {
       url
     }
   }
@@ -133,6 +135,13 @@ return {
                 "name": "isInMicrofunnel",
                 "args": null,
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "isTargetSupply",
+                "args": null,
+                "storageKey": null
               }
             ]
           },
@@ -177,7 +186,7 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "cropped",
-                "storageKey": "cropped(height:66,width:75)",
+                "storageKey": "cropped(height:66,width:66)",
                 "args": [
                   {
                     "kind": "Literal",
@@ -187,7 +196,7 @@ return {
                   {
                     "kind": "Literal",
                     "name": "width",
-                    "value": 75
+                    "value": 66
                   }
                 ],
                 "concreteType": "CroppedImageUrl",
@@ -219,7 +228,7 @@ return {
     "operationKind": "query",
     "name": "ArtistConsignButtonQuery",
     "id": null,
-    "text": "query ArtistConsignButtonQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistConsignButton_artist\n    id\n  }\n}\n\nfragment ArtistConsignButton_artist on Artist {\n  targetSupply {\n    isInMicrofunnel\n  }\n  internalID\n  slug\n  name\n  href\n  image {\n    cropped(width: 75, height: 66) {\n      url\n    }\n  }\n}\n",
+    "text": "query ArtistConsignButtonQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...ArtistConsignButton_artist\n    id\n  }\n}\n\nfragment ArtistConsignButton_artist on Artist {\n  targetSupply {\n    isInMicrofunnel\n    isTargetSupply\n  }\n  internalID\n  slug\n  name\n  href\n  image {\n    cropped(width: 66, height: 66) {\n      url\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
