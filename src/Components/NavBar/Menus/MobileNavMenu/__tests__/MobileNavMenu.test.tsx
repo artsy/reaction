@@ -15,10 +15,13 @@ import { MobileLink } from "../MobileLink"
 jest.mock("Artsy/Analytics/useTracking")
 
 describe("MobileNavMenu", () => {
+  const mediator = {
+    trigger: jest.fn(),
+  }
   const trackEvent = jest.fn()
   const getWrapper = props => {
     return mount(
-      <SystemContextProvider user={props.user}>
+      <SystemContextProvider mediator={mediator} user={props.user}>
         <MobileNavMenu isOpen menuData={menuData} />
       </SystemContextProvider>
     )
@@ -32,6 +35,15 @@ describe("MobileNavMenu", () => {
 
   afterEach(() => {
     jest.clearAllMocks()
+  })
+
+  it("calls logout auth action on logout menu click", () => {
+    const wrapper = getWrapper({ user: { type: "NotAdmin" } })
+    wrapper
+      .find("MobileLink")
+      .last()
+      .simulate("click")
+    expect(mediator.trigger).toBeCalledWith("auth:logout")
   })
 
   describe("nav structure", () => {

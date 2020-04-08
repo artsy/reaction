@@ -257,7 +257,7 @@ const AuthenticateLinks: React.FC = () => {
 }
 
 const LoggedInLinks: React.FC = () => {
-  const { user } = useSystemContext()
+  const { mediator, user } = useSystemContext()
   const conversationsEnabled = userHasLabFeature(
     user,
     "User Conversations View"
@@ -273,6 +273,15 @@ const LoggedInLinks: React.FC = () => {
       )}
       <MobileLink href="/works-for-you">Works for you</MobileLink>
       <MobileLink href="/user/edit">Account</MobileLink>
+      <MobileLink
+        href="#"
+        onClick={event => {
+          event.preventDefault()
+          mediator.trigger("auth:logout")
+        }}
+      >
+        Log out
+      </MobileLink>
     </Box>
   )
 }
