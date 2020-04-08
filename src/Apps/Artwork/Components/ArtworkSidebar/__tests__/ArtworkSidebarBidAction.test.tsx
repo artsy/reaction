@@ -359,6 +359,19 @@ describe("ArtworkSidebarBidAction", () => {
         expect(wrapper.text()).toContain("Registration closed")
       })
 
+      it("displays registration pending if the user is a pending bidder", async () => {
+        const artwork = merge(
+          ArtworkFromTimedAuctionRegistrationClosed,
+          BidderPendingApproval
+        )
+        const wrapper = await getWrapper({
+          artwork,
+          me: NotIDVedUser,
+        })
+
+        expect(wrapper.text()).toContain("Registration pending")
+      })
+
       it("allows users to place bids if they are already a registered bidder", async () => {
         const artwork = merge(
           ArtworkFromTimedAuctionRegistrationClosed,
@@ -374,21 +387,68 @@ describe("ArtworkSidebarBidAction", () => {
         expect(wrapper.text()).toContain("Bid")
       })
 
-      it("does not display anything about identity verification even if sale requires it and user is not identity verified", async () => {
-        const artwork = merge(
-          ArtworkFromTimedAuctionRegistrationClosed,
-          NotRegisteredToBid,
-          { sale: SaleRequiringIDV }
-        )
+      describe("when the sale requires identity verification", () => {
+        describe("when the user has not tried to register", () => {
+          it("does not display anything about identity verification even if the user is not identity verified", async () => {
+            const artwork = merge(
+              ArtworkFromTimedAuctionRegistrationClosed,
+              NotRegisteredToBid,
+              { sale: SaleRequiringIDV }
+            )
 
-        const wrapper = await getWrapper({
-          artwork,
-          me: NotIDVedUser,
+            const wrapper = await getWrapper({
+              artwork,
+              me: NotIDVedUser,
+            })
+
+            expect(wrapper.text()).toContain("Registration closed")
+            expect(wrapper.text()).not.toContain(
+              "Identity verification required to bid."
+            )
+          })
         })
 
-        expect(wrapper.text()).not.toContain(
-          "Identity verification required to bid."
-        )
+        describe("when the user is a pending bidder", () => {
+          describe("when the user is not identity verified", () => {
+            it("displays that identity verification is required to bid", async () => {
+              const artwork = merge(
+                ArtworkFromTimedAuctionRegistrationClosed,
+                BidderPendingApproval,
+                { sale: SaleRequiringIDV }
+              )
+
+              const wrapper = await getWrapper({
+                artwork,
+                me: NotIDVedUser,
+              })
+
+              expect(wrapper.text()).toContain("Registration pending")
+              expect(wrapper.text()).toContain(
+                "Identity verification required to bid."
+              )
+            })
+          })
+
+          describe("when the user is identity verified", () => {
+            it("does not display that identity verification is required to bid", async () => {
+              const artwork = merge(
+                ArtworkFromTimedAuctionRegistrationClosed,
+                BidderPendingApproval,
+                { sale: SaleRequiringIDV }
+              )
+
+              const wrapper = await getWrapper({
+                artwork,
+                me: IDVedUser,
+              })
+
+              expect(wrapper.text()).toContain("Registration pending")
+              expect(wrapper.text()).not.toContain(
+                "Identity verification required to bid."
+              )
+            })
+          })
+        })
       })
     })
   })
