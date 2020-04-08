@@ -1,3 +1,21 @@
+# v26.7.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Add log out link back to mWeb [#3360](https://github.com/artsy/reaction/pull/3360) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.6.0 to v7.8.0 [#3346](https://github.com/artsy/reaction/pull/3346) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.7.0 (Wed Apr 08 2020)
 
 #### 🚀  Enhancement
