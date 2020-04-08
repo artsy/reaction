@@ -60,8 +60,8 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   return (
     <Menu onClick={trackClick} width={width}>
       <ItemsContainer>
-        <OuterLinkContainer py={4}>
-          <Box mr={3} width={150}>
+        <OuterLinkContainer py={4} mr={[4, 4, 4, 6]}>
+          <Box mr={[2, 2, 3, 3]} width={[110, 110, 110, 135, 150]}>
             {menu.links.map(menuItem => {
               if (!menuItem.menu) {
                 return (
@@ -100,7 +100,6 @@ const MenuItemContainer = styled(Box)``
 
 const OuterLinkContainer = styled(Box)`
   border-right: 1px solid ${color("black10")};
-  margin-right: 60px;
   ${MenuItemContainer} {
     &:last-child {
       margin-top: 130px;

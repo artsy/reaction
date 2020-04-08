@@ -10,7 +10,7 @@ export const DropDownSection: React.FC<DropDownSectionProps> = ({
   section,
 }) => {
   return (
-    <Box width={150} py={4} mr={3}>
+    <Box width={[110, 110, 110, 135, 150]} py={4} mr={[2, 2, 3, 3]}>
       <Sans size="2" mb={1}>
         {section.text}
       </Sans>
