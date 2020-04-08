@@ -29,7 +29,7 @@ import {
 } from "./Menus"
 
 import { ModalType } from "Components/Authentication/Types"
-import { menuData } from "Components/NavBar/menuData"
+import { menuData, MenuLinkData } from "Components/NavBar/menuData"
 import { openAuthModal } from "Utils/openAuthModal"
 
 import { NavItem } from "./NavItem"
@@ -61,6 +61,9 @@ export const NavBar: React.FC = track(
     user,
     "User Conversations View"
   )
+  const {
+    links: [artworks],
+  } = menuData
 
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
@@ -120,6 +123,7 @@ export const NavBar: React.FC = track(
                       width="100vw"
                       paddingTop={2}
                       paddingBottom={2}
+                      menu={(artworks as MenuLinkData).menu}
                     />
                   </Box>
                 )
