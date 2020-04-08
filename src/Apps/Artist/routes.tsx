@@ -120,10 +120,6 @@ export const routes: RouteConfig[] = [
         throw new RedirectException(`/artist/${artist.slug}`)
       }
 
-      if (pathname.includes("/overview") && canShowOverview) {
-        throw new RedirectException(`/artist/${artist.slug}`)
-      }
-
       if (!canShowOverview && !alreadyAtWorksForSalePath) {
         throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
       }
@@ -133,7 +129,7 @@ export const routes: RouteConfig[] = [
     children: [
       // Routes in tabs
       {
-        path: ":regexParam(\\overview)?",
+        path: "/",
         getComponent: () => OverviewRoute,
         prepare: () => {
           OverviewRoute.preload()
