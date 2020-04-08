@@ -92,15 +92,6 @@ describe("ArtworkSidebarBidAction", () => {
       })
 
       describe("when there is no logged in user", () => {
-        it("displays a 'Register to bid' button, not a 'Bid' button", async () => {
-          const me = NoUser
-          const artwork = merge(SaleWithArtwork, NotRegisteredToBid)
-
-          const wrapper = await getWrapper({ artwork, me })
-
-          expect(wrapper.text()).toContain("Register to bid")
-        })
-
         it("displays 'Identity verification required to bid.'", async () => {
           const me = NoUser
           const artwork = merge(SaleWithArtwork, NotRegisteredToBid)
@@ -112,6 +103,7 @@ describe("ArtworkSidebarBidAction", () => {
           )
         })
       })
+
       describe("when there is a logged in user", () => {
         describe("when the user has not attempted to register to bid", () => {
           describe("when the user is identity verified", () => {

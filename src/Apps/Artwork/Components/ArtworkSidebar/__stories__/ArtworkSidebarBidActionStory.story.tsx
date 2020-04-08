@@ -6,6 +6,7 @@ import {
   ArtworkFromTimedAuctionRegistrationClosed,
   ArtworkFromTimedAuctionRegistrationOpen,
   BidderPendingApproval,
+  IDVedUser,
   NotIDVedUser,
   NotRegisteredToBid,
   RegistedBidderWithBids,
@@ -30,15 +31,80 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
           me={NotIDVedUser as any}
         />
       </Section>
+
       <Section title="Auction preview / Bidder pending approval">
         <BidAction
           artwork={merge({}, ArtworkFromAuctionPreview, BidderPendingApproval)}
           me={NotIDVedUser as any}
         />
       </Section>
+
       <Section title="Auction preview / Registed bidder">
         <BidAction
           artwork={merge({}, ArtworkFromAuctionPreview, RegisteredBidder)}
+          me={NotIDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / No User">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, {
+            sale: SaleRequiringIDV,
+          })}
+          me={null}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / No Bidder / Not Identity Verified">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, NotRegisteredToBid, {
+            sale: SaleRequiringIDV,
+          })}
+          me={NotIDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / No Bidder / Identity Verified">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, NotRegisteredToBid, {
+            sale: SaleRequiringIDV,
+          })}
+          me={IDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / Bidder Pending / Not Identity Verified">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, BidderPendingApproval, {
+            sale: SaleRequiringIDV,
+          })}
+          me={NotIDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / Bidder Pending / Identity Verified">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, BidderPendingApproval, {
+            sale: SaleRequiringIDV,
+          })}
+          me={IDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / Bidder Approved / Identity Verified">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, RegisteredBidder, {
+            sale: SaleRequiringIDV,
+          })}
+          me={IDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Auction Preview / Requires Identity Verification / Bidder Approved / Not Identity Verified">
+        <BidAction
+          artwork={merge({}, ArtworkFromAuctionPreview, RegisteredBidder, {
+            sale: SaleRequiringIDV,
+          })}
           me={NotIDVedUser as any}
         />
       </Section>
