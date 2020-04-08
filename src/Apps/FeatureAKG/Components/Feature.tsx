@@ -12,7 +12,7 @@ import { useSystemContext } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { crop } from "Utils/resizer"
+import { crop, resize } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
 
 interface FeatureProps {
@@ -40,19 +40,35 @@ const Feature: React.FC<FeatureProps> = props => {
     !!featuredRails?.auctions_rail?.items?.length ||
     !!featuredRails?.fairs_rail?.items?.length
 
+  const resizedSmallPlaceholder = resize(heroVideo.small_placeholder_src, {
+    width: 600,
+    convert_to: "jpg",
+  })
+
+  const resizedLargePlaceholder = resize(heroVideo.large_placeholder_src, {
+    width: 1500,
+    convert_to: "jpg",
+  })
+
   return (
     <>
       <Media greaterThanOrEqual="sm">
         {heroVideo?.large_src && (
           <Box textAlign="center" mb={-1}>
-            <Video src={heroVideo.large_src} />
+            <Video
+              src={heroVideo.large_src}
+              placeholder={resizedLargePlaceholder}
+            />
           </Box>
         )}
       </Media>
       <Media at="xs">
         {heroVideo?.small_src && (
           <Box textAlign="center" mb={-1}>
-            <Video src={heroVideo.small_src} />
+            <Video
+              src={heroVideo.small_src}
+              placeholder={resizedSmallPlaceholder}
+            />
           </Box>
         )}
       </Media>
@@ -204,7 +220,7 @@ const Section: React.FC<SectionProps> = props => {
   )
 }
 
-const Video: React.FC<{ src: string }> = props => {
+const Video: React.FC<{ src: string; placeholder: string }> = props => {
   return (
     <StyledVideo
       src={props.src}
@@ -213,6 +229,7 @@ const Video: React.FC<{ src: string }> = props => {
       muted
       playsInline
       controls={false}
+      poster={props.placeholder}
     />
   )
 }
@@ -257,6 +274,7 @@ export const FeaturedContentLink: React.FC<FeaturedLinkType> = props => {
   const croppedUrl = crop(props.image_src, {
     width: width * devicePixelRatio,
     height: height * devicePixelRatio,
+    convert_to: "jpg",
   })
 
   const tracking = useTracking()
