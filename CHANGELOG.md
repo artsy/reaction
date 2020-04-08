@@ -1,3 +1,15 @@
+# v26.7.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- Search bar artist results link to works-for-sale page [#3351](https://github.com/artsy/reaction/pull/3351) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.6.0 (Wed Apr 08 2020)
 
 #### 🚀  Enhancement
