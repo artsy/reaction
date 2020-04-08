@@ -1,3 +1,15 @@
+# v26.8.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Update ArtistConsignButton with targetSupply check [#3364](https://github.com/artsy/reaction/pull/3364) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.7.1 (Wed Apr 08 2020)
 
 #### 🐛  Bug Fix
