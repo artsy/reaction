@@ -13,9 +13,10 @@ export const crop = (
     width: number
     height: number
     quality?: number
+    convert_to?: string
   }
 ) => {
-  const { width, height, quality } = options
+  const { width, height, quality, convert_to } = options
 
   // dont call gemini with empty src
   if (!src) return null
@@ -37,6 +38,7 @@ export const crop = (
     width,
     height,
     quality: quality || 80,
+    convert_to,
   }
 
   return [GEMINI_CLOUDFRONT_URL, qs.stringify(config)].join("?")
