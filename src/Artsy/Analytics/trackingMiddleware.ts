@@ -114,11 +114,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
         break
       }
 
-      /**
-       * When the URL bar updates a new state transition has begun, but not yet
-       * committed into the store. Grab the pathname and store as a referrer.
-       */
       case FarceActionTypes.UPDATE_LOCATION: {
+        // When the URL bar updates a new state transition has begun, but not yet
+        // committed into the store. Grab the pathname and store as a referrer.
         referrer = get(
           store.getState(),
           state => state.found.match.location.pathname
