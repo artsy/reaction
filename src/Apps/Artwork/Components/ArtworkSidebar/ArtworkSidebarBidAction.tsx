@@ -166,9 +166,10 @@ export class ArtworkSidebarBidAction extends React.Component<
       return (
         <SystemContextConsumer>
           {({ user }) => {
-            const successfulRegistrationNotPossible: boolean =
+            const notApprovedBidderBeforeRegistrationClosed: boolean =
               sale.is_registration_closed && !registeredToBid
-            if (successfulRegistrationNotPossible) {
+
+            if (notApprovedBidderBeforeRegistrationClosed) {
               return (
                 <Box>
                   <Sans size="2" color="black60" pb={1} textAlign="center">

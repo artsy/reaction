@@ -32,7 +32,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Auction preview / Bidder pending approval">
+      <Section title="Auction preview / Bidder pending Approval">
         <BidAction
           artwork={merge({}, ArtworkFromAuctionPreview, BidderPendingApproval)}
           me={NotIDVedUser as any}
@@ -110,7 +110,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
       </Section>
 
       {/* Auction in Open state and live bidding is not started */}
-      <Section title="Timed Auction or Prebidding for Live auction / Open registration / No User">
+      <Section title="Timed Auction or Prebidding for Live auction / Open Registration / No User">
         <BidAction
           artwork={merge(
             {},
@@ -121,7 +121,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / Open registration / No Bidder">
+      <Section title="Timed Auction or Prebidding for Live auction / Open Registration / No Bidder">
         <BidAction
           artwork={merge(
             {},
@@ -132,7 +132,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / No User">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / No User">
         <BidAction
           artwork={merge(
             {},
@@ -144,7 +144,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / No Bidder / Not Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / No Bidder / Not Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -156,7 +156,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / No Bidder / Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / No Bidder / Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -168,7 +168,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / Bidder Pending / Not Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / Bidder Pending / Not Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -180,7 +180,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / Bidder Pending / Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / Bidder Pending / Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -192,7 +192,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / Bidder Approved / Not Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / Bidder Approved / Not Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -204,7 +204,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Open registration / Bidder Approved / Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Open Registration / Bidder Approved / Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -216,7 +216,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Closed Registration / Bidder Approved / Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Closed Registration / Bidder Approved / Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -228,7 +228,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Closed Registration / Bidder Pending / Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Closed Registration / Bidder Pending / Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -240,7 +240,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / IDV Required / Closed Registration / Bidder Pending / Not Identity Verified">
+      <Section title="Timed Auction or Prebidding for Live auction / Requires Identity Verification / Closed Registration / Bidder Pending / Not Identity Verified">
         <BidAction
           artwork={merge(
             {},
@@ -263,7 +263,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / Open registration / Registered bidder">
+      <Section title="Timed Auction or Prebidding for Live auction / Open Registration / Registered bidder">
         <BidAction
           artwork={merge(
             {},
@@ -285,7 +285,7 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
-      <Section title="Timed Auction or Prebidding for Live auction / Open registration / Registered bidder with bids">
+      <Section title="Timed Auction or Prebidding for Live auction / Open Registration / Registered bidder with bids">
         <BidAction
           artwork={merge(
             {},
@@ -307,8 +307,30 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
         />
       </Section>
 
+      <Section title="Live auction / Open Registration / No User">
+        <BidAction
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationOpen,
+            NotRegisteredToBid
+          )}
+          me={null}
+        />
+      </Section>
+
+      <Section title="Live auction / Requires Identity Verification / Open Registration / No User">
+        <BidAction
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationOpen,
+            { sale: SaleRequiringIDV },
+            NotRegisteredToBid
+          )}
+          me={null}
+        />
+      </Section>
       {/* Auction in Open state and live bidding is in progress */}
-      <Section title="Live auction / Open registration / Bidder not registered">
+      <Section title="Live auction / Open Registration / No Bidder">
         <BidAction
           artwork={merge(
             {},
@@ -318,17 +340,20 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
           me={NotIDVedUser as any}
         />
       </Section>
-      <Section title="Live auction / Closed registration / Bidder not registered">
+
+      <Section title="Live auction / Requires Identity Verification / Open Registration / No Bidder / Not Identity Verified">
         <BidAction
           artwork={merge(
             {},
-            ArtworkFromLiveAuctionRegistrationClosed,
+            ArtworkFromLiveAuctionRegistrationOpen,
+            { sale: SaleRequiringIDV },
             NotRegisteredToBid
           )}
           me={NotIDVedUser as any}
         />
       </Section>
-      <Section title="Live auction / Open registration / Bidder pending approval">
+
+      <Section title="Live auction / Open Registration / Bidder Pending Approval">
         <BidAction
           artwork={merge(
             {},
@@ -338,17 +363,32 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
           me={NotIDVedUser as any}
         />
       </Section>
-      <Section title="Live auction / Closed registration / Bidder pending approval">
+
+      <Section title="Live auction / Requires Identity Verification / Open Registration / Bidder Pending Approval / Not Identity Verified">
         <BidAction
           artwork={merge(
             {},
-            ArtworkFromLiveAuctionRegistrationClosed,
+            ArtworkFromLiveAuctionRegistrationOpen,
+            { sale: SaleRequiringIDV },
             BidderPendingApproval
           )}
           me={NotIDVedUser as any}
         />
       </Section>
-      <Section title="Live auction / Open registration / Registered Bidder">
+
+      <Section title="Live auction / Requires Identity Verification / Open Registration / Bidder Pending Approval / Identity Verified">
+        <BidAction
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationOpen,
+            { sale: SaleRequiringIDV },
+            BidderPendingApproval
+          )}
+          me={IDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Live auction / Open Registration / Registered Bidder">
         <BidAction
           artwork={merge(
             {},
@@ -358,7 +398,30 @@ storiesOf("Apps/Artwork/Components/Sidebar", module).add("BidAction", () => {
           me={NotIDVedUser as any}
         />
       </Section>
-      <Section title="Live auction / Closed registration / Registered Bidder">
+
+      <Section title="Live auction / Closed registration / No Bidder">
+        <BidAction
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationClosed,
+            NotRegisteredToBid
+          )}
+          me={NotIDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Live auction / Closed registration / Bidder Pending Approval">
+        <BidAction
+          artwork={merge(
+            {},
+            ArtworkFromLiveAuctionRegistrationClosed,
+            BidderPendingApproval
+          )}
+          me={NotIDVedUser as any}
+        />
+      </Section>
+
+      <Section title="Live auction / Closed Registration / Registered Bidder">
         <BidAction
           artwork={merge(
             {},

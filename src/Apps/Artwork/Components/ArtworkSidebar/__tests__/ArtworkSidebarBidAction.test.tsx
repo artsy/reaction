@@ -454,67 +454,85 @@ describe("ArtworkSidebarBidAction", () => {
   })
 
   describe("for live auction", () => {
-    describe("when user is not registered to bid and registration is open", () => {
-      it("displays that the user can enter live bidding", async () => {
-        const artwork = merge(
-          ArtworkFromLiveAuctionRegistrationOpen,
-          NotRegisteredToBid
-        )
-        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+    describe("when registration is open", () => {
+      describe("when user is not registered to bid", () => {
+        it("displays that the user can enter live bidding", async () => {
+          const artwork = merge(
+            ArtworkFromLiveAuctionRegistrationOpen,
+            NotRegisteredToBid
+          )
+          const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
-        expect(wrapper.text()).toContain("Enter live bidding")
+          expect(wrapper.text()).toContain("Enter live bidding")
+        })
+      })
+
+      describe("when the user is pending bidder approval", () => {
+        it("displays that the user can enter live bidding", async () => {
+          const artwork = merge(
+            ArtworkFromLiveAuctionRegistrationOpen,
+            BidderPendingApproval
+          )
+
+          const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+          expect(wrapper.text()).toContain("Enter live bidding")
+        })
+      })
+
+      describe("when user is registered to bid", () => {
+        it("displays that the user can enter live bidding", async () => {
+          const artwork = merge(
+            ArtworkFromLiveAuctionRegistrationOpen,
+            RegisteredBidder
+          )
+          const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+
+          expect(wrapper.text()).toContain("Enter live bidding")
+        })
       })
     })
 
-    describe("when user is not registered to bid and registration is closed", () => {
-      it("displays that registration is closed, but user can watch live bidding", async () => {
-        const artwork = merge(
-          ArtworkFromLiveAuctionRegistrationClosed,
-          NotRegisteredToBid
-        )
+    describe("when registration is closed", () => {
+      describe("when user is not registered to bid", () => {
+        it("displays that registration is closed, but user can watch live bidding", async () => {
+          const artwork = merge(
+            ArtworkFromLiveAuctionRegistrationClosed,
+            NotRegisteredToBid
+          )
 
-        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+          const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
-        expect(wrapper.text()).toContain("Registration closed")
-        expect(wrapper.text()).toContain("Watch live bidding")
+          expect(wrapper.text()).toContain("Registration closed")
+          expect(wrapper.text()).toContain("Watch live bidding")
+        })
       })
-    })
 
-    // TODO: This behavior that this test is testing seems wrong. If the bidder
-    // is pending approval, they won't be qualified for bidding and therefore can't
-    // bid yet...
-    describe("when the user is pending bidder approval and registration is still open", () => {
-      it("[confirm me] displays that the user can enter live bidding", async () => {
-        const artwork = merge(
-          ArtworkFromLiveAuctionRegistrationOpen,
-          BidderPendingApproval
-        )
+      describe("when the user is pending bidder approval", () => {
+        it("displays that registration is closed, but user can watch live bidding", async () => {
+          const artwork = merge(
+            ArtworkFromLiveAuctionRegistrationClosed,
+            BidderPendingApproval
+          )
 
-        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+          const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
-        expect(wrapper.text()).toContain("Enter live bidding")
+          expect(wrapper.text()).toContain("Registration closed")
+          expect(wrapper.text()).toContain("Watch live bidding")
+        })
       })
-    })
-    describe("when user is registered to bid and registration is still open", () => {
-      it("displays that the user can enter live bidding", async () => {
-        const artwork = merge(
-          ArtworkFromLiveAuctionRegistrationOpen,
-          RegisteredBidder
-        )
-        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
-        expect(wrapper.text()).toContain("Enter live bidding")
-      })
-    })
-    describe("most common for live auctions: when user is registered to bid and registration is closed", () => {
-      it("displays that the user can enter live bidding", async () => {
-        const artwork = merge(
-          ArtworkFromLiveAuctionRegistrationClosed,
-          RegisteredBidder
-        )
-        const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
+      describe("most common for live auctions: when user is registered to bid", () => {
+        it("displays that the user can enter live bidding", async () => {
+          const artwork = merge(
+            ArtworkFromLiveAuctionRegistrationClosed,
+            RegisteredBidder
+          )
+          const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
-        expect(wrapper.text()).toContain("Enter live bidding")
+          expect(wrapper.text()).toContain("Enter live bidding")
+          expect(wrapper.text()).not.toContain("Registration closed")
+        })
       })
     })
 
@@ -530,6 +548,7 @@ describe("ArtworkSidebarBidAction", () => {
 
             const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
+            expect(wrapper.text()).toContain("Enter live bidding")
             expect(wrapper.text()).toContain(
               "Identity verification required to bid."
             )
@@ -546,6 +565,7 @@ describe("ArtworkSidebarBidAction", () => {
 
             const wrapper = await getWrapper({ artwork, me: IDVedUser })
 
+            expect(wrapper.text()).toContain("Enter live bidding")
             expect(wrapper.text()).not.toContain(
               "Identity verification required to bid."
             )
@@ -564,6 +584,7 @@ describe("ArtworkSidebarBidAction", () => {
 
             const wrapper = await getWrapper({ artwork, me: IDVedUser })
 
+            expect(wrapper.text()).toContain("Watch live bidding")
             expect(wrapper.text()).not.toContain(
               "Identity verification required to bid."
             )
@@ -580,6 +601,7 @@ describe("ArtworkSidebarBidAction", () => {
 
             const wrapper = await getWrapper({ artwork, me: NotIDVedUser })
 
+            expect(wrapper.text()).toContain("Watch live bidding")
             expect(wrapper.text()).not.toContain(
               "Identity verification required to bid."
             )
