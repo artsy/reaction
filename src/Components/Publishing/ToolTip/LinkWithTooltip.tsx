@@ -201,6 +201,7 @@ export class LinkWithTooltip extends Component<Props, State> {
         }}
         ref={link => (this.link = link)}
         show={showWithFade}
+        data-test="linkWithTooltip"
       >
         <PrimaryLink
           color={color}

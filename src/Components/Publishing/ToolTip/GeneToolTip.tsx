@@ -50,7 +50,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
     }
 
     return (
-      <Wrapper>
+      <Wrapper data-test="geneTooltip">
         <GeneContainer
           href={getFullArtsyHref(href)}
           target="_blank"
