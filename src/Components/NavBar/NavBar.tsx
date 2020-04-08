@@ -61,6 +61,9 @@ export const NavBar: React.FC = track(
     user,
     "User Conversations View"
   )
+  const canViewNewDropDown = Boolean(
+    user?.lab_features?.includes("Updated Navigation")
+  )
   const {
     links: [artworks],
   } = menuData
@@ -114,23 +117,28 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            <NavItem
-              isFullScreenDropDown
-              Menu={() => {
-                return (
-                  <Box>
-                    <DropDownNavMenu
-                      width="100vw"
-                      paddingTop={2}
-                      paddingBottom={2}
-                      menu={(artworks as MenuLinkData).menu}
-                    />
-                  </Box>
-                )
-              }}
-            >
-              Artworks
-            </NavItem>
+            {canViewNewDropDown ? (
+              <NavItem
+                isFullScreenDropDown
+                Menu={() => {
+                  return (
+                    <Box>
+                      <DropDownNavMenu
+                        width="100vw"
+                        paddingTop={2}
+                        paddingBottom={2}
+                        menu={(artworks as MenuLinkData).menu}
+                      />
+                    </Box>
+                  )
+                }}
+              >
+                Artworks
+              </NavItem>
+            ) : (
+              <NavItem href="/collect">Artworks</NavItem>
+            )}
+
             <NavItem href="/artists">Artists</NavItem>
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
