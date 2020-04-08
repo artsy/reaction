@@ -25,11 +25,9 @@ describe("Artist/routes", () => {
   }
 
   const mockResolver = (
-    artist: routes_ArtistTopLevelQueryRawResponse["artist"],
-    me: routes_ArtistTopLevelQueryRawResponse["me"] = null
+    artist: routes_ArtistTopLevelQueryRawResponse["artist"]
   ) => ({
     artist,
-    me,
   })
 
   it("renders the overview page if there is sufficient data", async () => {
@@ -48,15 +46,6 @@ describe("Artist/routes", () => {
     )
 
     expect(redirect.url).toBe("/artist/juan-gris")
-  })
-
-  it("shouldn't redirect from /works-for-sale when user logged in", async () => {
-    const { redirect } = await render(
-      "/artist/juan-gris/works-for-sale",
-      mockResolver(overviewArtist, { id: "123" })
-    )
-
-    expect(redirect).toBe(undefined)
   })
 
   it("doesn't redirect from /auction-results to /works-for-sale if auction-results", async () => {
