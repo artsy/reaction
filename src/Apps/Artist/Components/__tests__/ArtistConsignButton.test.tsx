@@ -106,7 +106,7 @@ describe("ArtistConsignButton", () => {
           response: targetSupplyResponse,
         })
         expect(wrapper.find("Image").length).toEqual(1)
-        expect(wrapper.text()).toContain("Sell your Alex Katz")
+        expect(wrapper.text()).toContain("Sell art from your collection")
         expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
       })
 
@@ -152,7 +152,7 @@ describe("ArtistConsignButton", () => {
           response: targetSupplyResponse,
         })
         expect(wrapper.find("Image").length).toEqual(1)
-        expect(wrapper.text()).toContain("Sell your Alex Katz")
+        expect(wrapper.text()).toContain("Sell art from your collection")
         expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
       })
 

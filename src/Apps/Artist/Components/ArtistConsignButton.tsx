@@ -149,10 +149,9 @@ function getData(props) {
   } = props
   const imageURL = image?.cropped?.url
   const showImage = imageURL && (isInMicrofunnel || isTargetSupply)
-  const headline =
-    isInMicrofunnel || isTargetSupply
-      ? `Sell your ${name}`
-      : "Sell art from your collection"
+  const headline = isInMicrofunnel
+    ? `Sell your ${name}`
+    : "Sell art from your collection"
   const consignURL = isInMicrofunnel ? `${href}/consign` : "/consign"
 
   return {
