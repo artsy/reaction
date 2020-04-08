@@ -30,9 +30,9 @@ export interface ArtworkSidebarBidActionState {
   selectedMaxBidCents?: number
 }
 
-const RegisterToBidButton = (props: { onClickFx: (e: any) => void }) => {
+const RegisterToBidButton = (props: { onClick: () => void }) => {
   return (
-    <Button width="100%" size="large" mt={1} onClick={() => props.onClickFx}>
+    <Button width="100%" size="large" mt={1} onClick={props.onClick}>
       Register to bid
     </Button>
   )
@@ -142,7 +142,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       return (
         <div>
           {!registrationAttempted && (
-            <RegisterToBidButton onClickFx={this.redirectToRegister} />
+            <RegisterToBidButton onClick={this.redirectToRegister} />
           )}
 
           {registrationAttempted && !registeredToBid && (
@@ -240,7 +240,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       if (userNeedsIdentityVerification) {
         return (
           <div>
-            <RegisterToBidButton onClickFx={this.redirectToRegister} />
+            <RegisterToBidButton onClick={this.redirectToRegister} />
             <IdentityVerificationDisclaimer />
           </div>
         )
