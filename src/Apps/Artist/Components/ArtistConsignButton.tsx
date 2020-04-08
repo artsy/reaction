@@ -58,7 +58,7 @@ interface Tracking {
 
 export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
   Tracking> = props => {
-  const { isInMicrofunnel, imageURL, headline, consignURL } = getData(props)
+  const { showImage, imageURL, headline, consignURL } = getData(props)
 
   return (
     <RouterLink
@@ -72,13 +72,11 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
         })
       }}
     >
-      <BorderBox p={1} width="100%">
+      <BorderBox width="100%" p={1}>
         <Flex alignItems="center" width="100%" justifyContent="space-between">
           <Flex>
-            {isInMicrofunnel && imageURL && (
-              <Box pr={1}>
-                <Image src={imageURL} width={50} height={50} />
-              </Box>
+            {showImage && (
+              <Image src={imageURL} width={50} height={50} mr={1} />
             )}
             <Flex flexDirection="column" justifyContent="center">
               <Sans size="3t" weight="medium">
@@ -102,7 +100,7 @@ export const ArtistConsignButtonLarge: React.FC<ArtistConsignButtonProps &
 
 export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
   Tracking> = props => {
-  const { isInMicrofunnel, imageURL, headline, consignURL } = getData(props)
+  const { showImage, imageURL, headline, consignURL } = getData(props)
 
   return (
     <RouterLink
@@ -118,11 +116,7 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
     >
       <BorderBox p={1}>
         <Flex alignItems="center">
-          {isInMicrofunnel && imageURL && (
-            <Box pr={1}>
-              <Image src={imageURL} width={75} height={66} />
-            </Box>
-          )}
+          {showImage && <Image src={imageURL} mr={2} />}
           <Flex flexDirection="column" justifyContent="center">
             <Sans size="3t" weight="medium">
               {headline}
@@ -147,20 +141,21 @@ export const ArtistConsignButtonSmall: React.FC<ArtistConsignButtonProps &
 function getData(props) {
   const {
     artist: {
-      targetSupply: { isInMicrofunnel },
+      targetSupply: { isInMicrofunnel, isTargetSupply },
       href,
       name,
       image,
     },
   } = props
   const imageURL = image?.cropped?.url
+  const showImage = imageURL && (isInMicrofunnel || isTargetSupply)
   const headline = isInMicrofunnel
     ? `Sell your ${name}`
     : "Sell art from your collection"
   const consignURL = isInMicrofunnel ? `${href}/consign` : "/consign"
 
   return {
-    isInMicrofunnel,
+    showImage,
     imageURL,
     headline,
     consignURL,
@@ -174,6 +169,7 @@ export const ArtistConsignButtonFragmentContainer = createFragmentContainer(
       fragment ArtistConsignButton_artist on Artist {
         targetSupply {
           isInMicrofunnel
+          isTargetSupply
         }
 
         internalID
@@ -181,7 +177,7 @@ export const ArtistConsignButtonFragmentContainer = createFragmentContainer(
         name
         href
         image {
-          cropped(width: 75, height: 66) {
+          cropped(width: 66, height: 66) {
             url
           }
         }

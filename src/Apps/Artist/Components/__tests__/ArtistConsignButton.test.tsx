@@ -56,11 +56,12 @@ describe("ArtistConsignButton", () => {
     jest.clearAllMocks()
   })
 
-  describe("Top 20 Button", () => {
+  describe("Top 20 (Microfunnel) and Target Supply Button", () => {
     const response = {
       artist: {
         targetSupply: {
           isInMicrofunnel: true,
+          isTargetSupply: true,
         },
         internalID: "fooBarBaz",
         slug: "alex-katz",
@@ -87,13 +88,26 @@ describe("ArtistConsignButton", () => {
     }
 
     describe("desktop", () => {
-      it("renders properly", async () => {
+      it("renders properly when in microfunnel", async () => {
         const wrapper = await getWrapper({ breakpoint: "md", response })
         expect(wrapper.find("Image").length).toEqual(1)
         expect(wrapper.text()).toContain("Sell your Alex Katz")
         expect(wrapper.find("RouterLink").html()).toContain(
           `href="/artist/alex-katz/consign"`
         )
+      })
+
+      it("renders properly when target supply", async () => {
+        const targetSupplyResponse = cloneDeep(response)
+        targetSupplyResponse.artist.targetSupply.isInMicrofunnel = false
+        targetSupplyResponse.artist.targetSupply.isTargetSupply = true
+        const wrapper = await getWrapper({
+          breakpoint: "md",
+          response: targetSupplyResponse,
+        })
+        expect(wrapper.find("Image").length).toEqual(1)
+        expect(wrapper.text()).toContain("Sell art from your collection")
+        expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
       })
 
       it("guards against missing imageURL", async () => {
@@ -120,13 +134,26 @@ describe("ArtistConsignButton", () => {
     })
 
     describe("mobile", () => {
-      it("renders properly", async () => {
+      it("renders properly when in microfunnel", async () => {
         const wrapper = await getWrapper({ breakpoint: "xs", response })
         expect(wrapper.find("Image").length).toEqual(1)
         expect(wrapper.text()).toContain("Sell your Alex Katz")
         expect(wrapper.find("RouterLink").html()).toContain(
           `href="/artist/alex-katz/consign"`
         )
+      })
+
+      it("renders properly when target supply", async () => {
+        const targetSupplyResponse = cloneDeep(response)
+        targetSupplyResponse.artist.targetSupply.isInMicrofunnel = false
+        targetSupplyResponse.artist.targetSupply.isTargetSupply = true
+        const wrapper = await getWrapper({
+          breakpoint: "xs",
+          response: targetSupplyResponse,
+        })
+        expect(wrapper.find("Image").length).toEqual(1)
+        expect(wrapper.text()).toContain("Sell art from your collection")
+        expect(wrapper.find("RouterLink").html()).toContain(`href="/consign"`)
       })
 
       it("guards against missing imageURL", async () => {
@@ -158,6 +185,7 @@ describe("ArtistConsignButton", () => {
       artist: {
         targetSupply: {
           isInMicrofunnel: false,
+          isTargetSupply: false,
         },
         internalID: "fooBarBaz",
         slug: "alex-katz",
