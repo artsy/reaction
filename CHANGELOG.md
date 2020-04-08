@@ -1,3 +1,15 @@
+# v26.6.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- Convert images to JPG and add poster for video [#3365](https://github.com/artsy/reaction/pull/3365) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.5.2 (Wed Apr 08 2020)
 
 #### 🐛  Bug Fix
