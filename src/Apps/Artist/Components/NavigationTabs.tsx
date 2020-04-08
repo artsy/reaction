@@ -51,7 +51,6 @@ export class NavigationTabs extends React.Component<Props> {
   renderTabs() {
     const {
       artist: { slug, statuses, counts },
-      user,
     } = this.props
 
     const route = path => `/artist/${slug}${path}`
@@ -63,7 +62,7 @@ export class NavigationTabs extends React.Component<Props> {
 
     return (
       <>
-        {this.renderTab("Overview", route(user ? "/overview" : ""), {
+        {this.renderTab("Overview", route(""), {
           exact: true,
         })}
         {statuses.artworks &&
