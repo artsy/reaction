@@ -1,3 +1,18 @@
+# v26.8.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Use auth helpers for minimalCTABanner tracking args [#3366](https://github.com/artsy/reaction/pull/3366) ([@eessex](https://github.com/eessex))
+- Revert /works-for-sale redirect [#3368](https://github.com/artsy/reaction/pull/3368) ([@zephraph](https://github.com/zephraph))
+- #trivial - add data-test attrs [#3367](https://github.com/artsy/reaction/pull/3367) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.8.0 (Wed Apr 08 2020)
 
 #### 🚀  Enhancement
