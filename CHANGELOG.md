@@ -1,3 +1,15 @@
+# v26.8.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial - add data-test attrs [#3367](https://github.com/artsy/reaction/pull/3367) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.8.0 (Wed Apr 08 2020)
 
 #### 🚀  Enhancement
