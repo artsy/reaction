@@ -70,7 +70,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
     }
 
     return (
-      <Wrapper data-test="geneTooltip">
+      <Wrapper data-test="artistTooltip">
         <ArtistContainer>
           {images && (
             <Images href={href} onClick={this.trackClick}>
