@@ -1,3 +1,75 @@
+# v26.7.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- Search bar artist results link to works-for-sale page [#3351](https://github.com/artsy/reaction/pull/3351) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.6.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- Convert images to JPG and add poster for video [#3365](https://github.com/artsy/reaction/pull/3365) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.5.2 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3362](https://github.com/artsy/reaction/pull/3362) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.5.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Adds tracking for Art Keeps Going + some other visual improvements [#3361](https://github.com/artsy/reaction/pull/3361) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.5.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- Add inbox to mobile nav menu [#3359](https://github.com/artsy/reaction/pull/3359) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.4.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3358](https://github.com/artsy/reaction/pull/3358) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.4.0 (Tue Apr 07 2020)
 
 #### 🚀  Enhancement

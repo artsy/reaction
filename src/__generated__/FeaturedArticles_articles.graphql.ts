@@ -78,17 +78,17 @@ return {
           "kind": "LinkedField",
           "alias": null,
           "name": "cropped",
-          "storageKey": "cropped(height:520,width:780)",
+          "storageKey": "cropped(height:780,width:1170)",
           "args": [
             {
               "kind": "Literal",
               "name": "height",
-              "value": 520
+              "value": 780
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 780
+              "value": 1170
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -126,17 +126,17 @@ return {
           "kind": "LinkedField",
           "alias": null,
           "name": "cropped",
-          "storageKey": "cropped(height:60,width:60)",
+          "storageKey": "cropped(height:120,width:120)",
           "args": [
             {
               "kind": "Literal",
               "name": "height",
-              "value": 60
+              "value": 120
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 60
+              "value": 120
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -157,5 +157,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'e8085521d6af112294c21c016648022d';
+(node as any).hash = 'c35619012178f50363dab1e735a3b8ad';
 export default node;

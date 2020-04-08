@@ -3,19 +3,21 @@ import {
   ChevronIcon,
   CloseIcon,
   color,
+  EnvelopeIcon,
   Flex,
   MenuIcon,
   Sans,
   Separator,
 } from "@artsy/palette"
-import { AnalyticsSchema, SystemContext, useSystemContext } from "Artsy"
+import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
 import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { LinkData, MenuData, MenuLinkData } from "Components/NavBar/menuData"
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components"
 import { getMobileAuthLink } from "Utils/openAuthModal"
+import { userHasLabFeature } from "Utils/user"
 import { MobileLink } from "./MobileLink"
 import {
   NavigatorContextProvider,
@@ -255,10 +257,20 @@ const AuthenticateLinks: React.FC = () => {
 }
 
 const LoggedInLinks: React.FC = () => {
-  const { mediator } = useContext(SystemContext)
+  const { mediator, user } = useSystemContext()
+  const conversationsEnabled = userHasLabFeature(
+    user,
+    "User Conversations View"
+  )
   return (
     <Box>
       <Separator my={1} color={color("black10")} />
+      {conversationsEnabled && (
+        <MobileLink href="/user/conversations">
+          <EnvelopeIcon fill={"black60"} top={3} mr={10} />
+          Inbox
+        </MobileLink>
+      )}
       <MobileLink href="/works-for-you">Works for you</MobileLink>
       <MobileLink href="/user/edit">Account</MobileLink>
       <MobileLink

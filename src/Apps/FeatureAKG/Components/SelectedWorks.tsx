@@ -1,6 +1,7 @@
 import { Box } from "@artsy/palette"
 import { SelectedWorks_selectedWorks } from "__generated__/SelectedWorks_selectedWorks.graphql"
-import { useSystemContext } from "Artsy"
+import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
@@ -13,9 +14,11 @@ interface SelectedWorksProps {
 const SelectedWorks: React.FC<SelectedWorksProps> = props => {
   const { mediator } = useSystemContext()
 
-  if (!props.selectedWorks.itemsConnection?.edges?.length) {
+  if (!props.selectedWorks?.itemsConnection?.edges?.length) {
     return null
   }
+
+  const tracking = useTracking()
 
   return (
     <Box maxWidth="720px" style={{ margin: "0 auto" }}>
@@ -24,6 +27,13 @@ const SelectedWorks: React.FC<SelectedWorksProps> = props => {
         columnCount={[2, 3]}
         preloadImageCount={0}
         mediator={mediator}
+        onBrickClick={artwork => {
+          tracking.trackEvent({
+            action_type: AnalyticsSchema.ActionType.Click,
+            context_module: AnalyticsSchema.ContextModule.SelectedWorks,
+            destination_path: artwork.href,
+          })
+        }}
       />
     </Box>
   )

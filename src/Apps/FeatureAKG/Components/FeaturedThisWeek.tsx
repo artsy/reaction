@@ -1,4 +1,5 @@
 import { Box, Col, Grid, Row } from "@artsy/palette"
+import { AnalyticsSchema } from "Artsy"
 import React from "react"
 import { FeaturedContentLink, FeaturedLinkType } from "./Feature"
 
@@ -24,6 +25,7 @@ export const FeaturedThisWeek: React.FC<FeaturedThisWeekProps> = props => {
             <FeaturedContentLink
               key={`featured-content-link-1`}
               size="large"
+              contextModule={AnalyticsSchema.ContextModule.FeaturedThisWeek}
               {...featured_item_1}
             />
           </Box>
@@ -33,6 +35,7 @@ export const FeaturedThisWeek: React.FC<FeaturedThisWeekProps> = props => {
             <FeaturedContentLink
               key={`featured-content-link-2`}
               size="large"
+              contextModule={AnalyticsSchema.ContextModule.FeaturedThisWeek}
               {...featured_item_2}
             />
           </Box>

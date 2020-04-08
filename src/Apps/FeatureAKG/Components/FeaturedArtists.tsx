@@ -1,4 +1,5 @@
 import { Box, Flex } from "@artsy/palette"
+import { AnalyticsSchema } from "Artsy"
 import React from "react"
 import { FeaturedContentLink, FeaturedLinkType } from "./Feature"
 
@@ -23,7 +24,11 @@ export const FeaturedArtists: React.FC<FeaturedArtistsProps> = props => {
             mx={[1, 0]}
             key={`featured-artist-${index}`}
           >
-            <FeaturedContentLink size="medium" {...artist} />
+            <FeaturedContentLink
+              size="medium"
+              contextModule={AnalyticsSchema.ContextModule.FeaturedArtists}
+              {...artist}
+            />
           </Box>
         )
       })}

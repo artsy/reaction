@@ -5,12 +5,14 @@ import { FeaturedArtists } from "Apps/FeatureAKG/Components/FeaturedArtists"
 import { FeaturedRailsFragmentContainer as FeaturedRails } from "Apps/FeatureAKG/Components/FeaturedRails"
 import { FeaturedThisWeek } from "Apps/FeatureAKG/Components/FeaturedThisWeek"
 import { SelectedWorksFragmentContainer as SelectedWorks } from "Apps/FeatureAKG/Components/SelectedWorks"
+import { AnalyticsSchema, ContextModule } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { useSystemContext } from "Artsy/SystemContext"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { crop } from "Utils/resizer"
+import { crop, resize } from "Utils/resizer"
 import { Media } from "Utils/Responsive"
 
 interface FeatureProps {
@@ -38,25 +40,41 @@ const Feature: React.FC<FeatureProps> = props => {
     !!featuredRails?.auctions_rail?.items?.length ||
     !!featuredRails?.fairs_rail?.items?.length
 
+  const resizedSmallPlaceholder = resize(heroVideo.small_placeholder_src, {
+    width: 600,
+    convert_to: "jpg",
+  })
+
+  const resizedLargePlaceholder = resize(heroVideo.large_placeholder_src, {
+    width: 1500,
+    convert_to: "jpg",
+  })
+
   return (
     <>
       <Media greaterThanOrEqual="sm">
         {heroVideo?.large_src && (
           <Box textAlign="center" mb={-1}>
-            <Video src={heroVideo.large_src} />
+            <Video
+              src={heroVideo.large_src}
+              placeholder={resizedLargePlaceholder}
+            />
           </Box>
         )}
       </Media>
       <Media at="xs">
         {heroVideo?.small_src && (
           <Box textAlign="center" mb={-1}>
-            <Video src={heroVideo.small_src} />
+            <Video
+              src={heroVideo.small_src}
+              placeholder={resizedSmallPlaceholder}
+            />
           </Box>
         )}
       </Media>
       <SectionSeparator />
       <Box pt="4" maxWidth="475px" m="0 auto">
-        <Sans size="4" mx="3" weight="medium">
+        <Sans size="4" mx={[3, 0]} weight="medium">
           {injectedData.description}
         </Sans>
       </Box>
@@ -202,7 +220,7 @@ const Section: React.FC<SectionProps> = props => {
   )
 }
 
-const Video: React.FC<{ src: string }> = props => {
+const Video: React.FC<{ src: string; placeholder: string }> = props => {
   return (
     <StyledVideo
       src={props.src}
@@ -211,6 +229,7 @@ const Video: React.FC<{ src: string }> = props => {
       muted
       playsInline
       controls={false}
+      poster={props.placeholder}
     />
   )
 }
@@ -223,7 +242,7 @@ const StyledVideo = styled("video")`
 const ImageSection: React.FC<{ src: string; aspectRatio: number }> = props => {
   return (
     <BorderedSection>
-      <ResponsiveImage lazyLoad src={props.src} ratio={props.aspectRatio} />
+      <ResponsiveImage src={props.src} ratio={props.aspectRatio} />
     </BorderedSection>
   )
 }
@@ -242,21 +261,35 @@ export interface FeaturedLinkType {
   url: string
   byline?: string
   size?: "medium" | "large"
+  contextModule: ContextModule
 }
 
 export const FeaturedContentLink: React.FC<FeaturedLinkType> = props => {
+  const devicePixelRatio = 2
   const size = props.size ? props.size : "medium"
 
   const width = size === "medium" ? 350 : 470
   const height = size === "medium" ? 435 : 490
 
   const croppedUrl = crop(props.image_src, {
-    width,
-    height,
+    width: width * devicePixelRatio,
+    height: height * devicePixelRatio,
+    convert_to: "jpg",
   })
 
+  const tracking = useTracking()
+
   return (
-    <StyledLink to={props.url}>
+    <StyledLink
+      to={props.url}
+      onClick={() =>
+        tracking.trackEvent({
+          action_type: AnalyticsSchema.ActionType.Click,
+          context_module: props.contextModule,
+          destination_path: props.url,
+        })
+      }
+    >
       <Box position="relative">
         <ResponsiveImage src={croppedUrl} ratio={height / width} />
         <ImageOverlayText maxWidth="150px">

@@ -398,6 +398,17 @@ export enum ContextModule {
    * Ad Server
    */
   AdServer = "AdServer",
+
+  /**
+   * Art Keeps Going Campaign
+   */
+  FeaturedThisWeek = "FeaturedThisWeek",
+  Editorial = "Editorial",
+  SelectedWorks = "SelectedWorks",
+  FeaturedArtists = "FeaturedArtists",
+  BrowseCollections = "BrowseCollections",
+  BrowseAuctions = "BrowseAuctions",
+  BrowseFairs = "BrowseFairs",
 }
 
 export enum Flow {
