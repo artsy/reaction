@@ -253,7 +253,7 @@ export class SearchBar extends Component<Props, State> {
   )
   onSuggestionSelected({
     suggestion: {
-      node: { href },
+      node: { href, displayType },
     },
   }) {
     this.userClickedOnDescendant = true
