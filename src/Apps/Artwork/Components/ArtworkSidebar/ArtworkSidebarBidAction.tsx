@@ -140,24 +140,30 @@ export class ArtworkSidebarBidAction extends React.Component<
       !me?.identityVerified
 
     if (sale.is_preview) {
-      return (
-        <Box>
-          {!registrationAttempted && (
-            <RegisterToBidButton onClick={this.redirectToRegister} />
-          )}
+      let PreviewAction: React.FC
 
-          {registrationAttempted && !registeredToBid && (
-            <Button width="100%" size="large" mt={1} disabled>
-              Registration pending
-            </Button>
-          )}
-
-          {registrationAttempted && registeredToBid && (
+      if (registrationAttempted) {
+        if (registeredToBid) {
+          PreviewAction = () => (
             <Button width="100%" size="large" mt={1} disabled>
               Registration complete
             </Button>
-          )}
-
+          )
+        } else {
+          PreviewAction = () => (
+            <Button width="100%" size="large" mt={1} disabled>
+              Registration pending
+            </Button>
+          )
+        }
+      } else {
+        PreviewAction = () => (
+          <RegisterToBidButton onClick={this.redirectToRegister} />
+        )
+      }
+      return (
+        <Box>
+          <PreviewAction />
           {userNeedsIdentityVerification && <IdentityVerificationDisclaimer />}
         </Box>
       )
