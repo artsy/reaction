@@ -29,15 +29,17 @@ export interface ArtworkSidebarBidActionState {
   selectedMaxBidCents?: number
 }
 
-const RegisterToBidButton = (props: { onClick: () => void }) => {
+const RegisterToBidButton: React.FC<{ onClick: () => void }> = ({
+  onClick,
+}) => {
   return (
-    <Button width="100%" size="large" mt={1} onClick={props.onClick}>
+    <Button width="100%" size="large" mt={1} onClick={onClick}>
       Register to bid
     </Button>
   )
 }
 
-const IdentityVerificationDisclaimer = () => {
+const IdentityVerificationDisclaimer: React.FC = () => {
   return (
     <Sans mt="1" size="3" color="black60" pb={1} textAlign="center">
       Identity verification required to bid.{" "}
