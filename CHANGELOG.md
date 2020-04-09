@@ -1,3 +1,16 @@
+# v26.8.3 (Thu Apr 09 2020)
+
+#### 🐛  Bug Fix
+
+- Fix snapshots [#3372](https://github.com/artsy/reaction/pull/3372) ([@damassi](https://github.com/damassi))
+- Sync schema [#3371](https://github.com/artsy/reaction/pull/3371) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.8.1 (Wed Apr 08 2020)
 
 #### 🐛  Bug Fix
