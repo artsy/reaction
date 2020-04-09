@@ -17,13 +17,10 @@ import {
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarBidAction"
 import { ArtworkSidebarBidActionFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarBidAction"
 import { renderRelayTree } from "DevTools"
-import { merge as _merge } from "lodash"
+import { merge } from "lodash"
 import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
-
-// TODO: Can we make this typed?
-const merge: (...args: object[]) => any = _merge
 
 describe("ArtworkSidebarBidAction", () => {
   const getWrapper = async (
