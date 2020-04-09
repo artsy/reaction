@@ -701,7 +701,6 @@ type Artist implements Node & Searchable & EntityWithFilterArtworksConnectionInt
   isFollowed: Boolean
   isPublic: Boolean
   isShareable: Boolean
-  isTargetSupply: Boolean
   displayLabel: String
   location: String
   meta: ArtistMeta
@@ -972,7 +971,7 @@ type ArtistTargetSupply {
   # True if artist is in target supply list.
   isTargetSupply: Boolean
 
-  # True if an artist is in within the microfunnel list.
+  # True if an artist is in the microfunnel list.
   isInMicrofunnel: Boolean
   microfunnel: ArtistTargetSupplyMicrofunnel
 }
@@ -3119,6 +3118,28 @@ type ConsignmentOffer {
   state: String
 }
 
+type ConsignmentPageCursor {
+  # first cursor on the page
+  cursor: String!
+
+  # is this the current page?
+  isCurrent: Boolean!
+
+  # page number out of totalPages
+  page: Int!
+}
+
+type ConsignmentPageCursors {
+  around: [ConsignmentPageCursor!]!
+
+  # optional, may be included in field around
+  first: ConsignmentPageCursor
+
+  # optional, may be included in field around
+  last: ConsignmentPageCursor
+  previous: ConsignmentPageCursor
+}
+
 # Consignment Submission
 type ConsignmentSubmission {
   additionalInfo: String
@@ -3196,9 +3217,12 @@ type ConsignmentSubmissionConnection {
 
   # A list of nodes.
   nodes: [ConsignmentSubmission]
+  pageCursors: ConsignmentPageCursors
 
   # Information to aid in pagination.
   pageInfo: PageInfo!
+  totalCount: Int
+  totalPages: Int
 }
 
 enum ConsignmentSubmissionStateAggregation {
@@ -8079,29 +8103,20 @@ type ViewingRoom {
 
   # Datetime when the viewing room is viewable
   startAt: ISO8601DateTime
-  subsectionsConnection(
-    # Returns the elements in the list that come after the specified cursor.
-    after: String
-
-    # Returns the elements in the list that come before the specified cursor.
-    before: String
-
-    # Returns the first _n_ elements from the list.
-    first: Int
-
-    # Returns the last _n_ elements from the list.
-    last: Int
-  ): ViewingRoomSubsectionConnection
+  subsections: [ViewingRoomSubsection!]
   timeZone: String
 
   # Viewing room name
   title: String!
 }
 
-# Title, image, text, and caption for a viewing room section
+# An artwork associated with a viewing room. Note that the full artwork is stitched in in Metaphysics!
 type ViewingRoomArtwork {
+  artworkID: String!
+
   # Unique ID
   internalID: ID!
+  artwork: Artwork
 }
 
 # The connection type for ViewingRoomArtwork.
@@ -8141,27 +8156,6 @@ type ViewingRoomSubsection {
 
   # Section header
   title: String
-}
-
-# The connection type for ViewingRoomSubsection.
-type ViewingRoomSubsectionConnection {
-  # A list of edges.
-  edges: [ViewingRoomSubsectionEdge]
-
-  # A list of nodes.
-  nodes: [ViewingRoomSubsection]
-
-  # Information to aid in pagination.
-  pageInfo: PageInfo!
-}
-
-# An edge in a connection.
-type ViewingRoomSubsectionEdge {
-  # A cursor for use in pagination.
-  cursor: String!
-
-  # The item at the end of the edge.
-  node: ViewingRoomSubsection
 }
 
 type YearRange {
