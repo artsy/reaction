@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 export type ContentKey =
   | "registrationConfirmed"
   | "registrationPending"
+  | "registrationPendingUnverified"
   | "bidPending"
 
 interface Props {
@@ -35,6 +36,32 @@ const RegistrationPending: ModalContent = ({ onClick }) => {
     </>
   )
 }
+
+const RegistrationPendingUnverified: ModalContent = ({ onClick }) => {
+  return (
+    <>
+      <RegistrationPendingHeader />
+      <Serif my={3} size="3t">
+        This auction requires Artsy to verify your identity before bidding.
+        <br />
+        <br />
+        For details about identity verification, please see the
+        <a
+          target="_blank"
+          href="https://www.artsy.net/identity-verification-faq"
+        >
+          FAQ
+        </a>
+        or contact verification@artsy.net.
+        <br />
+        <br />A link to complete identity verification has been sent to your
+        email.
+      </Serif>
+      <ViewWorksButton onClick={onClick} />
+    </>
+  )
+}
+
 const RegistrationComplete: ModalContent = ({ onClick }) => {
   return (
     <>
@@ -55,6 +82,7 @@ const RegistrationComplete: ModalContent = ({ onClick }) => {
 const contentFor: { [key in ContentKey]: ModalContent } = {
   registrationConfirmed: RegistrationComplete,
   registrationPending: RegistrationPending,
+  registrationPendingUnverified: RegistrationPendingUnverified,
   bidPending: BidPending,
 }
 

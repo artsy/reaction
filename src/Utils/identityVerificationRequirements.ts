@@ -25,8 +25,8 @@ export const bidderNeedsIdentityVerification = ({
   bidder,
 }: {
   sale: IdentityVerificationRequireable
-  user: IdentityVerifiable | null
-  bidder: Bidder | null
+  user?: IdentityVerifiable
+  bidder?: Bidder
 }) => {
   return (
     !bidder?.qualified_for_bidding &&
