@@ -87,13 +87,12 @@ describe("ArtworkSidebarBidAction", () => {
     })
 
     describe("when the sale requires identity verification", () => {
-      const SaleWithArtwork = merge(ArtworkFromAuctionPreview, {
-        sale: SaleRequiringIDV,
-      })
-
       describe("when there is no logged in user", () => {
-        it("displays 'Identity verification required to bid.'", async () => {
+        it("displays that identity verification is required to bid", async () => {
           const me = NoUser
+          const SaleWithArtwork = merge(ArtworkFromAuctionPreview, {
+            sale: SaleRequiringIDV,
+          })
           const artwork = merge(SaleWithArtwork, NotRegisteredToBid)
 
           const wrapper = await getWrapper({ artwork, me })
@@ -107,9 +106,12 @@ describe("ArtworkSidebarBidAction", () => {
       describe("when there is a logged in user", () => {
         describe("when the user has not attempted to register to bid", () => {
           describe("when the user is identity verified", () => {
-            it("does not display 'Identity verification required to bid.'", async () => {
-              const artwork = merge(SaleWithArtwork, NotRegisteredToBid)
+            it("does not display that identity verification is required to bid", async () => {
               const me = IDVedUser
+              const SaleWithArtwork = merge(ArtworkFromAuctionPreview, {
+                sale: SaleRequiringIDV,
+              })
+              const artwork = merge(SaleWithArtwork, NotRegisteredToBid)
               const wrapper = await getWrapper({ artwork, me })
 
               expect(wrapper.text()).not.toContain(
@@ -119,7 +121,7 @@ describe("ArtworkSidebarBidAction", () => {
           })
 
           describe("when the user is not identity verified", () => {
-            it("displays 'Identity verification required to bid.'", async () => {
+            it("displays that identity verification is required to bid", async () => {
               const artwork = merge(
                 ArtworkFromAuctionPreview,
                 NotRegisteredToBid,
@@ -153,9 +155,12 @@ describe("ArtworkSidebarBidAction", () => {
 
         describe("when the user has attempted to register to bid", () => {
           describe("when the user is identity verified", () => {
-            it("does not display 'Identity verification required to bid.'", async () => {
-              const artwork = merge(SaleWithArtwork, BidderPendingApproval)
+            it("does not display that identity verification is required to bid", async () => {
               const me = IDVedUser
+              const SaleWithArtwork = merge(ArtworkFromAuctionPreview, {
+                sale: SaleRequiringIDV,
+              })
+              const artwork = merge(SaleWithArtwork, BidderPendingApproval)
               const wrapper = await getWrapper({ artwork, me })
 
               expect(wrapper.text()).not.toContain(
@@ -165,7 +170,7 @@ describe("ArtworkSidebarBidAction", () => {
           })
 
           describe("when the user is not identity verified", () => {
-            it("displays 'Identity verification required to bid.'", async () => {
+            it("displays that identity verification is required to bid", async () => {
               const artwork = merge(
                 ArtworkFromAuctionPreview,
                 BidderPendingApproval
@@ -254,7 +259,7 @@ describe("ArtworkSidebarBidAction", () => {
               expect(wrapper.text()).not.toContain("Place max bid")
             })
 
-            it("displays 'Identity verification required to bid.'", async () => {
+            it("displays that identity verification is required to bid", async () => {
               const artwork = merge(
                 ArtworkFromTimedAuctionRegistrationOpen,
                 NotRegisteredToBid,
@@ -282,7 +287,7 @@ describe("ArtworkSidebarBidAction", () => {
               expect(wrapper.text()).toContain("Registration pending")
             })
 
-            it("displays 'Identity verification required to bid.'", async () => {
+            it("displays that identity verification is required to bid", async () => {
               const artwork = merge(
                 ArtworkFromTimedAuctionRegistrationOpen,
                 BidderPendingApproval,
