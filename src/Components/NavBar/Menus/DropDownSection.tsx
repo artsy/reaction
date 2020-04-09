@@ -17,8 +17,8 @@ export const DropDownSection: React.FC<DropDownSectionProps> = ({
       {section.menu.links.map((menuItem: SimpleLinkData) => {
         return (
           <MenuItem
-            paddingX={0}
-            paddingY={0.5}
+            px={0}
+            py={0.5}
             href={menuItem.href}
             textColor={color("black60")}
             textWeight="regular"

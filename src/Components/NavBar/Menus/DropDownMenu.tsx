@@ -67,8 +67,8 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
                 return (
                   <MenuItemContainer mb={1}>
                     <MenuItem
-                      paddingX={0}
-                      paddingY={0}
+                      px={0}
+                      py={0}
                       href={menuItem.href}
                       textColor={color("black60")}
                       textWeight="regular"
