@@ -139,7 +139,7 @@ export class ArtworkSidebarBidAction extends React.Component<
 
     if (sale.is_preview) {
       return (
-        <div>
+        <Box>
           {!registrationAttempted && (
             <RegisterToBidButton onClick={this.redirectToRegister} />
           )}
@@ -157,7 +157,7 @@ export class ArtworkSidebarBidAction extends React.Component<
           )}
 
           {userNeedsIdentityVerification && <IdentityVerificationDisclaimer />}
-        </div>
+        </Box>
       )
     }
 
@@ -182,7 +182,7 @@ export class ArtworkSidebarBidAction extends React.Component<
         )
       } else {
         return (
-          <div>
+          <Box>
             <Button
               width="100%"
               size="large"
@@ -193,7 +193,7 @@ export class ArtworkSidebarBidAction extends React.Component<
             {userNeedsIdentityVerification && (
               <IdentityVerificationDisclaimer />
             )}
-          </div>
+          </Box>
         )
       }
     }
@@ -232,10 +232,10 @@ export class ArtworkSidebarBidAction extends React.Component<
 
       if (userNeedsIdentityVerification) {
         return (
-          <div>
+          <Box>
             <RegisterToBidButton onClick={this.redirectToRegister} />
             <IdentityVerificationDisclaimer />
-          </div>
+          </Box>
         )
       } else {
         return (
