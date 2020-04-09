@@ -65,7 +65,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
             {menu.links.map(menuItem => {
               if (!menuItem.menu) {
                 return (
-                  <MenuItemContainer mb={1}>
+                  <MenuItemContainer mb={1} key={menuItem.text}>
                     <MenuItem
                       px={0}
                       py={0}
@@ -96,7 +96,7 @@ const ItemsContainer = styled(Flex)`
   margin: auto auto;
 `
 
-const MenuItemContainer = styled(Box)``
+export const MenuItemContainer = styled(Box)``
 
 const OuterLinkContainer = styled(Box)`
   border-right: 1px solid ${color("black10")};

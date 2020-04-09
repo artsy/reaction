@@ -17,6 +17,7 @@ export const DropDownSection: React.FC<DropDownSectionProps> = ({
       {section.menu.links.map((menuItem: SimpleLinkData) => {
         return (
           <MenuItem
+            key={menuItem.text}
             px={0}
             py={0.5}
             href={menuItem.href}
