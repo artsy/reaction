@@ -17,7 +17,6 @@ import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
 import { ArtworkSidebarBidAction_me } from "__generated__/ArtworkSidebarBidAction_me.graphql"
-import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 import track from "react-tracking"
 
@@ -96,10 +95,10 @@ export class ArtworkSidebarBidAction extends React.Component<
     context_module: Schema.ContextModule.Sidebar,
     action_type: Schema.ActionType.Click,
   })
-  redirectToLiveBidding(user) {
+  redirectToLiveBidding(me: ArtworkSidebarBidAction_me | null) {
     const { slug } = this.props.artwork.sale
     const liveUrl = `${sd.PREDICTION_URL}/${slug}`
-    if (user) {
+    if (me) {
       window.location.href = `${liveUrl}/login`
     } else {
       window.location.href = liveUrl
@@ -163,46 +162,40 @@ export class ArtworkSidebarBidAction extends React.Component<
     }
 
     if (sale.is_live_open) {
-      return (
-        <SystemContextConsumer>
-          {({ user }) => {
-            const notApprovedBidderBeforeRegistrationClosed: boolean =
-              sale.is_registration_closed && !registeredToBid
+      const notApprovedBidderBeforeRegistrationClosed: boolean =
+        sale.is_registration_closed && !registeredToBid
 
-            if (notApprovedBidderBeforeRegistrationClosed) {
-              return (
-                <Box>
-                  <Sans size="2" color="black60" pb={1} textAlign="center">
-                    Registration closed
-                  </Sans>
-                  <Button
-                    width="100%"
-                    size="large"
-                    onClick={() => this.redirectToLiveBidding(user)}
-                  >
-                    Watch live bidding
-                  </Button>
-                </Box>
-              )
-            } else {
-              return (
-                <div>
-                  <Button
-                    width="100%"
-                    size="large"
-                    onClick={() => this.redirectToLiveBidding(user)}
-                  >
-                    Enter live bidding
-                  </Button>
-                  {userNeedsIdentityVerification && (
-                    <IdentityVerificationDisclaimer />
-                  )}
-                </div>
-              )
-            }
-          }}
-        </SystemContextConsumer>
-      )
+      if (notApprovedBidderBeforeRegistrationClosed) {
+        return (
+          <Box>
+            <Sans size="2" color="black60" pb={1} textAlign="center">
+              Registration closed
+            </Sans>
+            <Button
+              width="100%"
+              size="large"
+              onClick={() => this.redirectToLiveBidding(me)}
+            >
+              Watch live bidding
+            </Button>
+          </Box>
+        )
+      } else {
+        return (
+          <div>
+            <Button
+              width="100%"
+              size="large"
+              onClick={() => this.redirectToLiveBidding(me)}
+            >
+              Enter live bidding
+            </Button>
+            {userNeedsIdentityVerification && (
+              <IdentityVerificationDisclaimer />
+            )}
+          </div>
+        )
+      }
     }
 
     if (sale.is_open) {
