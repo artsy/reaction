@@ -7,8 +7,6 @@ import { DropDownSection } from "./DropDownSection"
 
 interface DropDownNavMenuProps {
   width?: string
-  paddingTop?: number
-  paddingBottom?: number
   menu: any
 }
 

@@ -125,8 +125,6 @@ export const NavBar: React.FC = track(
                     <Box>
                       <DropDownNavMenu
                         width="100vw"
-                        paddingTop={2}
-                        paddingBottom={2}
                         menu={(artworks as MenuLinkData).menu}
                       />
                     </Box>
