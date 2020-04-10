@@ -1,3 +1,15 @@
+# v26.8.5 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Bump timeout [#3374](https://github.com/artsy/reaction/pull/3374) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.8.4 (Fri Apr 10 2020)
 
 #### 🐛  Bug Fix
