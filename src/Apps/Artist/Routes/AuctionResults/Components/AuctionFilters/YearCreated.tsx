@@ -1,7 +1,12 @@
 import { Flex, LargeSelect, Spacer, Toggle } from "@artsy/palette"
 import { FilterResetLink } from "Components/FilterResetLink"
 import React, { useMemo } from "react"
+import createLogger from "Utils/logger"
 import { useAuctionResultsFilterContext } from "../../AuctionResultsFilterContext"
+
+const log = createLogger(
+  "Artist/Routes/AuctionResults/Components/AuctionFilters/YearCreated.tsx"
+)
 
 const buildDateRange = (startYear: number, endYear: number) =>
   [...Array(1 + endYear - startYear).keys()].map(yearNum => {
@@ -24,7 +29,7 @@ export const YearCreated: React.FC = () => {
     typeof earliestCreatedYear !== "number" ||
     typeof latestCreatedYear !== "number"
   ) {
-    console.error("Couldn't display year created filter due to missing data")
+    log.error("Couldn't display year created filter due to missing data")
     return null
   }
   const hasChanges =
