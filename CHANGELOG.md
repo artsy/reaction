@@ -1,3 +1,24 @@
+# v26.8.6 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Bump palette [#3380](https://github.com/artsy/reaction/pull/3380) ([@damassi](https://github.com/damassi))
+- Use logger instead of console.error to capture missing data reports [#3379](https://github.com/artsy/reaction/pull/3379) ([@zephraph](https://github.com/zephraph))
+- [Clientside Nav] Move Pageloader from Palette [#3377](https://github.com/artsy/reaction/pull/3377) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/palette from 8 to 8.0.0 [#3381](https://github.com/artsy/reaction/pull/3381) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.8.5 (Fri Apr 10 2020)
 
 #### 🐛  Bug Fix
