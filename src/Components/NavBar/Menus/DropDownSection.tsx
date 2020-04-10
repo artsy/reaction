@@ -9,6 +9,8 @@ interface DropDownSectionProps {
 export const DropDownSection: React.FC<DropDownSectionProps> = ({
   section,
 }) => {
+  if (!section) return null
+
   return (
     <Box width={[110, 110, 110, 135, 150]} py={4} mr={[2, 2, 3, 3]}>
       <Sans size="2" mb={1}>

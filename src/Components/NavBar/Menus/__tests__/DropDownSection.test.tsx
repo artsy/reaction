@@ -15,8 +15,8 @@ describe("DropDownMenu", () => {
     }
   )[0] as MenuLinkData
 
-  const getWrapper = () => {
-    return mount(<DropDownSection section={mediumLinks} />)
+  const getWrapper = links => {
+    return mount(<DropDownSection section={links} />)
   }
 
   beforeEach(() => {
@@ -30,7 +30,7 @@ describe("DropDownMenu", () => {
   })
 
   it("renders simple links", () => {
-    const wrapper = getWrapper()
+    const wrapper = getWrapper(mediumLinks)
     const menuItems = wrapper.find(MenuItem)
 
     expect(menuItems.length).toBe(8)
@@ -38,5 +38,12 @@ describe("DropDownMenu", () => {
     expect(menuItems.first().prop("href")).toContain("/collection/painting")
     expect(menuItems.last().text()).toContain("Design")
     expect(menuItems.last().prop("href")).toContain("/collection/design")
+  })
+
+  it("does not render DropDownSection when section is undefined", () => {
+    const wrapper = getWrapper(undefined)
+    const menuItems = wrapper.find(MenuItem)
+
+    expect(menuItems.length).toBe(0)
   })
 })
