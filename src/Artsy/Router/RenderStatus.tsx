@@ -1,13 +1,14 @@
 import React from "react"
 import StaticContainer from "react-static-container"
 
-import { Box, PageLoader } from "@artsy/palette"
+import { Box } from "@artsy/palette"
 import { useSystemContext } from "Artsy"
 import { ErrorPage } from "Components/ErrorPage"
 import ElementsRenderer from "found/lib/ElementsRenderer"
 import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 import { NetworkTimeout } from "./NetworkTimeout"
+import { PageLoader } from "./PageLoader"
 
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
@@ -37,6 +38,7 @@ export const RenderPending = () => {
           <PageLoader
             className="reactionPageLoader" // positional styling comes from Force body.styl
             showBackground={false}
+            step={20} // speed of progress bar, randomized between 1/x to simulate variable progress
             style={{
               position: "fixed",
               left: 0,
