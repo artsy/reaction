@@ -5,7 +5,7 @@ import createLogger from "Utils/logger"
 
 const logger = createLogger("Artsy/Router/NetworkTimeout")
 
-const NETWORK_TIMEOUT_MS = 10000
+const NETWORK_TIMEOUT_MS = 15000
 
 export const NetworkTimeout: React.FC = () => {
   const [showErrorModal, toggleErrorModal] = useState(false)
