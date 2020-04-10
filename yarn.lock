@@ -28,7 +28,7 @@
     p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
-"@artsy/palette@8":
+"@artsy/palette@8.0.0":
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-8.0.0.tgz#a57d67ba430de5eeeaf8dbcfdc1bb7128abf5b73"
   integrity sha512-tl4VkBDXueWAQWEf1NTVHWgkUs21fMhL4scnvzmEHigc4HyRwtXrH2Qi/d8Edixp/H31KX2+CYCUrkq77n1Aqg==
