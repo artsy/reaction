@@ -1,3 +1,15 @@
+# v26.8.4 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove inbox icon from menu [#3375](https://github.com/artsy/reaction/pull/3375) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.8.3 (Thu Apr 09 2020)
 
 #### 🐛  Bug Fix
