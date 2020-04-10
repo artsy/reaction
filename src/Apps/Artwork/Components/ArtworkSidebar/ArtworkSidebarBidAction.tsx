@@ -13,12 +13,12 @@ import {
 } from "@artsy/palette"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 
 import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBidAction_artwork.graphql"
 import { ArtworkSidebarBidAction_me } from "__generated__/ArtworkSidebarBidAction_me.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import track from "react-tracking"
+import { getENV } from "Utils/getENV"
 import { bidderNeedsIdentityVerification } from "Utils/identityVerificationRequirements"
 
 export interface ArtworkSidebarBidActionProps {
@@ -100,7 +100,7 @@ export class ArtworkSidebarBidAction extends React.Component<
   })
   redirectToLiveBidding(me: ArtworkSidebarBidAction_me | null) {
     const { slug } = this.props.artwork.sale
-    const liveUrl = `${sd.PREDICTION_URL}/${slug}`
+    const liveUrl = `${getENV("PREDICTION_URL")}/${slug}`
     if (me) {
       window.location.href = `${liveUrl}/login`
     } else {
