@@ -19,6 +19,7 @@ import { ArtworkSidebarBidAction_artwork } from "__generated__/ArtworkSidebarBid
 import { ArtworkSidebarBidAction_me } from "__generated__/ArtworkSidebarBidAction_me.graphql"
 import * as Schema from "Artsy/Analytics/Schema"
 import track from "react-tracking"
+import { bidderNeedsIdentityVerification } from "Utils/identityVerificationRequirements"
 
 export interface ArtworkSidebarBidActionProps {
   artwork: ArtworkSidebarBidAction_artwork
@@ -128,16 +129,11 @@ export class ArtworkSidebarBidAction extends React.Component<
     const myLotStanding = artwork.myLotStanding && artwork.myLotStanding[0]
     const hasMyBids = !!(myLotStanding && myLotStanding.most_recent_bid)
 
-    /*
-     * Note: If the user is already registered to bid, then the sale doesn't
-     * requireIdentityVerification OR the user was manually approved by an
-     * admin. In either case, they don't need identity verification at this
-     * time.
-     */
-    const userNeedsIdentityVerification: boolean =
-      !qualifiedForBidding &&
-      sale.requireIdentityVerification &&
-      !me?.identityVerified
+    const userNeedsIdentityVerification = bidderNeedsIdentityVerification({
+      sale,
+      user: me,
+      bidder: sale.registrationStatus,
+    })
 
     if (sale.is_preview) {
       let PreviewAction: React.FC
