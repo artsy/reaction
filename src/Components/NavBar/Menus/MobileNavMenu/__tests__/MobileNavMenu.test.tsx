@@ -1,4 +1,3 @@
-import { EnvelopeIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { menuData, SimpleLinkData } from "Components/NavBar/menuData"
@@ -90,7 +89,6 @@ describe("MobileNavMenu", () => {
         user: { type: "NotAdmin", lab_features: [] },
       })
       expect(wrapper.html()).not.toContain("Inbox")
-      expect(wrapper.find(EnvelopeIcon).length).toEqual(0)
     })
 
     it("shows inbox menu option if lab feature enabled", () => {
@@ -98,7 +96,6 @@ describe("MobileNavMenu", () => {
         user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
       })
       expect(wrapper.html()).toContain("Inbox")
-      expect(wrapper.find(EnvelopeIcon).length).toEqual(1)
     })
   })
 
