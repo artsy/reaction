@@ -57,8 +57,8 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
 
   return (
     <Menu onClick={trackClick} width={width}>
-      <ItemsContainer>
-        <OuterLinkContainer py={4} mr={[4, 4, 4, 6]}>
+      <Flex justifyContent="center">
+        <SimpleLinksContainer py={4} mr={[4, 4, 4, 6]}>
           <Box mr={[2, 2, 3, 3]} width={[110, 110, 110, 135, 150]}>
             {menu.links.map(menuItem => {
               if (!menuItem.menu) {
@@ -79,24 +79,20 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
               }
             })}
           </Box>
-        </OuterLinkContainer>
+        </SimpleLinksContainer>
         <DropDownSection section={mediumLinks} />
         <DropDownSection section={genreLinks} />
         <DropDownSection section={rarityLinks} />
         <DropDownSection section={priceLinks} />
         <DropDownSection section={sellerLocationLinks} />
-      </ItemsContainer>
+      </Flex>
     </Menu>
   )
 }
 
-const ItemsContainer = styled(Flex)`
-  margin: auto auto;
-`
-
 export const MenuItemContainer = styled(Box)``
 
-const OuterLinkContainer = styled(Box)`
+const SimpleLinksContainer = styled(Box)`
   border-right: 1px solid ${color("black10")};
   ${MenuItemContainer} {
     &:last-child {
