@@ -3,7 +3,6 @@ import {
   ChevronIcon,
   CloseIcon,
   color,
-  EnvelopeIcon,
   Flex,
   MenuIcon,
   Sans,
@@ -266,10 +265,7 @@ const LoggedInLinks: React.FC = () => {
     <Box>
       <Separator my={1} color={color("black10")} />
       {conversationsEnabled && (
-        <MobileLink href="/user/conversations">
-          <EnvelopeIcon fill={"black60"} top={3} mr={10} />
-          Inbox
-        </MobileLink>
+        <MobileLink href="/user/conversations">Inbox</MobileLink>
       )}
       <MobileLink href="/works-for-you">Works for you</MobileLink>
       <MobileLink href="/user/edit">Account</MobileLink>
