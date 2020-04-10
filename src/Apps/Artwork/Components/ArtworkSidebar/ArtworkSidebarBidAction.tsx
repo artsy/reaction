@@ -117,7 +117,7 @@ export class ArtworkSidebarBidAction extends React.Component<
     if (sale.is_closed) return null
 
     const registrationAttempted = !!sale.registrationStatus
-    const registeredToBid =
+    const qualifiedForBidding =
       registrationAttempted && sale.registrationStatus.qualified_for_bidding
 
     /**
@@ -135,7 +135,7 @@ export class ArtworkSidebarBidAction extends React.Component<
      * time.
      */
     const userNeedsIdentityVerification: boolean =
-      !registeredToBid &&
+      !qualifiedForBidding &&
       sale.requireIdentityVerification &&
       !me?.identityVerified
 
@@ -143,7 +143,7 @@ export class ArtworkSidebarBidAction extends React.Component<
       let PreviewAction: React.FC
 
       if (registrationAttempted) {
-        if (registeredToBid) {
+        if (qualifiedForBidding) {
           PreviewAction = () => (
             <Button width="100%" size="large" mt={1} disabled>
               Registration complete
@@ -171,7 +171,7 @@ export class ArtworkSidebarBidAction extends React.Component<
 
     if (sale.is_live_open) {
       const notApprovedBidderBeforeRegistrationClosed: boolean =
-        sale.is_registration_closed && !registeredToBid
+        sale.is_registration_closed && !qualifiedForBidding
 
       if (notApprovedBidderBeforeRegistrationClosed) {
         return (
@@ -207,7 +207,7 @@ export class ArtworkSidebarBidAction extends React.Component<
     }
 
     if (sale.is_open) {
-      if (registrationAttempted && !registeredToBid) {
+      if (registrationAttempted && !qualifiedForBidding) {
         return (
           <Box>
             <Button width="100%" size="large" disabled>
@@ -219,7 +219,7 @@ export class ArtworkSidebarBidAction extends React.Component<
           </Box>
         )
       }
-      if (sale.is_registration_closed && !registeredToBid) {
+      if (sale.is_registration_closed && !qualifiedForBidding) {
         return (
           <Button width="100%" size="large" disabled>
             Registration closed
