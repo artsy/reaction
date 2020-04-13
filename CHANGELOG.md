@@ -1,3 +1,15 @@
+# v26.12.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Remove ENABLE_REQUEST_CONDITION_REPORT feature flag [#3386](https://github.com/artsy/reaction/pull/3386) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.10.0 (Mon Apr 13 2020)
 
 #### 🚀  Enhancement
