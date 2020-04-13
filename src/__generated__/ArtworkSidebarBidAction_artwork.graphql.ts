@@ -22,6 +22,7 @@ export type ArtworkSidebarBidAction_artwork = {
         readonly is_live_open: boolean | null;
         readonly is_closed: boolean | null;
         readonly is_registration_closed: boolean | null;
+        readonly requireIdentityVerification: boolean | null;
     } | null;
     readonly sale_artwork: {
         readonly increments: ReadonlyArray<{
@@ -171,6 +172,13 @@ return {
           "name": "isRegistrationClosed",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "requireIdentityVerification",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -207,5 +215,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'b10043f886f4c50e3f843434f87a8a88';
+(node as any).hash = '5880223b32e8a4a3808623584d46c8bb';
 export default node;

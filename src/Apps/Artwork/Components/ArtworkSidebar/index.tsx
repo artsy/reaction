@@ -14,6 +14,7 @@ import { ArtworkSidebarMetadataFragmentContainer as Metadata } from "./ArtworkSi
 import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./ArtworkSidebarPartnerInfo"
 
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
+import { ArtworkSidebar_me } from "__generated__/ArtworkSidebar_me.graphql"
 import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
 import { SystemContext } from "Artsy"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
@@ -23,6 +24,7 @@ import { VerifiedSellerFragmentContainer as VerifiedSeller } from "../TrustSigna
 
 export interface ArtworkSidebarProps {
   artwork: ArtworkSidebar_artwork
+  me: ArtworkSidebar_me
 }
 
 const ArtworkSidebarContainer = Box
@@ -40,7 +42,7 @@ const TrustSignalsContainer = styled.div`
 
 export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
   render() {
-    const { artwork } = this.props
+    const { artwork, me } = this.props
 
     return (
       <ArtworkSidebarContainer>
@@ -53,7 +55,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
             <Spacer mb={2} />
             <AuctionPartnerInfo artwork={artwork} />
             <CurrentBidInfo artwork={artwork} />
-            <BidAction artwork={artwork} />
+            <BidAction artwork={artwork} me={me} />
             {!artwork.sale.is_closed && (
               <Box py={2}>
                 <AuctionTimer sale={artwork.sale} />
@@ -101,6 +103,11 @@ export const ArtworkSidebarFragmentContainer = createFragmentContainer(
           is_closed: isClosed
           ...AuctionTimer_sale
         }
+      }
+    `,
+    me: graphql`
+      fragment ArtworkSidebar_me on Me {
+        ...ArtworkSidebarBidAction_me
       }
     `,
   }
