@@ -3,7 +3,7 @@ import React from "react"
 
 export const VanguardFooter = () => {
   return (
-    <Box background="white" pb={80}>
+    <Box bg="white" pb={80}>
       <Box
         maxWidth={["100vw", 1000]}
         px={["10vw", "10vw", "10vw", "10vw", 4]}

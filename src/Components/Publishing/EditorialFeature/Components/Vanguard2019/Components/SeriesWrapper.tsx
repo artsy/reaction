@@ -27,7 +27,7 @@ export const VanguardSeriesWrapper: React.SFC<{
     <Box id={slugifiedTitle} position="relative">
       <Box
         pt={50}
-        background={color("white100")}
+        bg="white100"
         zIndex={-10}
         position="relative"
         // prevents overlapping nav on jump-link
@@ -45,7 +45,7 @@ export const VanguardSeriesWrapper: React.SFC<{
         {isVideo && <VanguardVideoHeader svg={slugifiedTitle} url={url} />}
       </Box>
 
-      <Box background={color("white100")}>
+      <Box bg="white100">
         <Box
           mx="auto"
           maxWidth={["90vw", "80vw", "80vw", "65%"]}

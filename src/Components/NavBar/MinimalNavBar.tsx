@@ -12,7 +12,7 @@ export const MinimalNavBar: React.FC<MinimalNavBarProps> = props => {
   return (
     <Box
       zIndex={1000}
-      background="white"
+      bg="white"
       position="absolute"
       left={0}
       top={0}

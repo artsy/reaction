@@ -19,7 +19,7 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
 
   return (
     <Flex
-      background={bg}
+      bg={bg}
       flexDirection="column"
       justifyContent="center"
       alignItems="center"

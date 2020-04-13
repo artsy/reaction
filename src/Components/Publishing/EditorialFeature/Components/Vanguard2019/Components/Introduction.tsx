@@ -34,7 +34,7 @@ export const VanguardIntroduction: React.SFC<{
         </Media>
       </Box>
 
-      <Box background={color("white100")} pt={[80, 100, 150]}>
+      <Box bg="white100" pt={[80, 100, 150]}>
         <Box mx="auto" maxWidth={980} px={4}>
           <Flex flexDirection="column" alignItems="center" pb={50}>
             <Media greaterThanOrEqual="xl">
