@@ -1,3 +1,24 @@
+# v26.10.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Add data-test attribute on ForgotPassword forms
+
+Similar to the `data-test` attribute on the login and signup forms, this
+allows us to query `ForgotPasswordForm` elements in the DOM during
+Cypress integration testing. [#3384](https://github.com/artsy/reaction/pull/3384) ([@dblandin](https://github.com/dblandin))
+
+#### 🐛  Bug Fix
+
+- #trivial Add integrity data attrs [#3385](https://github.com/artsy/reaction/pull/3385) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.9.0 (Mon Apr 13 2020)
 
 #### 🚀  Enhancement
