@@ -100,6 +100,7 @@ export const featuredArtistsEntityCollection: (
                     size="2"
                     weight="medium"
                     color="black"
+                    data-test="followArtistButton"
                     style={{
                       cursor: "pointer",
                       textDecoration: "underline",
