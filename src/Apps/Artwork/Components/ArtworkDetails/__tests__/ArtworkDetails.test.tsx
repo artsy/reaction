@@ -10,16 +10,6 @@ import { graphql } from "react-relay"
 
 jest.mock("Artsy/Analytics/useTracking")
 jest.unmock("react-relay")
-
-const mockEnableRequestConditionReport = jest.fn()
-
-jest.mock("sharify", () => ({
-  data: {
-    get ENABLE_REQUEST_CONDITION_REPORT() {
-      return mockEnableRequestConditionReport()
-    },
-  },
-}))
 ;(useTracking as jest.Mock).mockImplementation(() => {
   return {}
 })
@@ -52,8 +42,6 @@ describe("ArtworkDetails", () => {
 
   describe("ArtworkDetailsAdditionalInfo for a live sale artwork", () => {
     it("displays a request lot condition report button when canRequestLotConditionsReport is true", async () => {
-      mockEnableRequestConditionReport.mockResolvedValue(true)
-
       wrapper = await getWrapper({
         ...ArtworkDetailsFixture,
         canRequestLotConditionsReport: true,
