@@ -167,6 +167,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
 
     return (
       <div
+        data-test="saveButton"
         className={this.props.className}
         style={fullStyle}
         {...this.mixinButtonActions()}

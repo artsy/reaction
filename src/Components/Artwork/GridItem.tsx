@@ -109,7 +109,7 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
       <div
         className={`${className} ${trackableClassName}`}
         data-id={artwork.internalID}
-        data-test="ArtworkGridItem"
+        data-test="artworkGridItem"
         style={style}
       >
         <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
