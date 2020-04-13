@@ -1,3 +1,15 @@
+# v26.9.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Make Artwork Bid Actions Identity Verification Aware [#3345](https://github.com/artsy/reaction/pull/3345) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
 # v26.8.6 (Fri Apr 10 2020)
 
 #### 🐛  Bug Fix
