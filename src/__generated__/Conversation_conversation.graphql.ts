@@ -27,6 +27,8 @@ export type Conversation_conversation = {
             readonly node: {
                 readonly id: string;
                 readonly internalID: string;
+                readonly createdAt: string | null;
+                readonly isFromUser: boolean | null;
                 readonly " $fragmentRefs": FragmentRefs<"Message_message">;
             } | null;
         } | null> | null;
@@ -265,6 +267,20 @@ return {
               "selections": [
                 (v0/*: any*/),
                 (v1/*: any*/),
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "createdAt",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "isFromUser",
+                  "args": null,
+                  "storageKey": null
+                },
                 (v3/*: any*/),
                 {
                   "kind": "FragmentSpread",
@@ -378,5 +394,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'bcf380e0b952c72dddca48ab44031d10';
+(node as any).hash = '804cbe21587bb9598e69e62d4aab6e1d';
 export default node;

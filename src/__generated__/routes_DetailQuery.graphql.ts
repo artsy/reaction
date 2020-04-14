@@ -43,7 +43,7 @@ fragment Conversation_conversation on Conversation {
   initialMessage
   lastMessageID
   unread
-  messages(first: 30, sort: ASC) {
+  messages(first: 30, sort: DESC) {
     pageInfo {
       startCursor
       endCursor
@@ -54,6 +54,8 @@ fragment Conversation_conversation on Conversation {
       node {
         id
         internalID
+        createdAt
+        isFromUser
         ...Message_message
         __typename
       }
@@ -162,7 +164,7 @@ v5 = [
   {
     "kind": "Literal",
     "name": "sort",
-    "value": "ASC"
+    "value": "DESC"
   }
 ],
 v6 = {
@@ -304,7 +306,7 @@ return {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "messages",
-                "storageKey": "messages(first:30,sort:\"ASC\")",
+                "storageKey": "messages(first:30,sort:\"DESC\")",
                 "args": (v5/*: any*/),
                 "concreteType": "MessageConnection",
                 "plural": false,
@@ -371,13 +373,6 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "body",
-                            "args": null,
-                            "storageKey": null
-                          },
-                          {
-                            "kind": "ScalarField",
-                            "alias": null,
                             "name": "createdAt",
                             "args": null,
                             "storageKey": null
@@ -386,6 +381,13 @@ return {
                             "kind": "ScalarField",
                             "alias": null,
                             "name": "isFromUser",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "body",
                             "args": null,
                             "storageKey": null
                           },
@@ -561,7 +563,7 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Conversation_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 30, sort: ASC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      node {\n        id\n        internalID\n        ...Message_message\n        __typename\n      }\n      cursor\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversation_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n  attachments {\n    id\n    internalID\n    contentType\n    fileName\n    downloadURL\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Conversation_me_3oGfhn\n    id\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 30, sort: DESC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      node {\n        id\n        internalID\n        createdAt\n        isFromUser\n        ...Message_message\n        __typename\n      }\n      cursor\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversation_me_3oGfhn on Me {\n  conversation(id: $conversationID) {\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n  attachments {\n    id\n    internalID\n    contentType\n    fileName\n    downloadURL\n  }\n}\n",
     "metadata": {}
   }
 };
