@@ -59,7 +59,7 @@ describe("AuctionRegistrationModal", () => {
     )
   })
 
-  it("shows an IDV registration message if the sale requires IDV and the user is verified", async () => {
+  it("shows an IDV registration message if the sale requires IDV and the user is not verified", async () => {
     const wrapper = await mountComponent({
       auction: {
         name: "IDV Sale",
