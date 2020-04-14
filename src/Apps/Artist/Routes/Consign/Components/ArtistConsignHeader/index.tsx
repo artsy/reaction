@@ -58,6 +58,7 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
               tracking.trackEvent({
                 action_type: AnalyticsSchema.ActionType.Click,
                 context_module: AnalyticsSchema.ContextModule.SellWorksBy,
+                flow: AnalyticsSchema.Flow.Consignments,
                 subject: AnalyticsSchema.Subject.RequestPriceEstimate,
               })
             }}
