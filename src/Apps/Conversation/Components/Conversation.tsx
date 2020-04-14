@@ -1,4 +1,4 @@
-import { Flex, Image, Serif } from "@artsy/palette"
+import { color, Flex, Image, Sans, Serif } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { DateTime } from "luxon"
 import React from "react"
@@ -16,17 +16,26 @@ const Item: React.FC<ItemProps> = props => {
   const { item } = props
   if (item.__typename === "Artwork") {
     return (
-      <Flex width="350px">
-        <Flex height="auto" alignItems="center" mr={2}>
-          <Image src={item.image.url} width="55px" />
-        </Flex>
-        <Flex flexDirection="column" justifyContent="center">
-          <Serif size="2" weight="semibold">
+      <Flex
+        flexDirection="column"
+        width="350px"
+        p={1}
+        style={{ alignSelf: "flex-end" }}
+      >
+        <Image src={item.image.url} borderRadius="15px 15px 0 0" />
+        <Flex
+          p={1}
+          flexDirection="column"
+          justifyContent="center"
+          background={color("black100")}
+          borderRadius="0 0 15px 15px"
+        >
+          <Sans size="4" weight="medium" color="white100">
             {item.artistNames}
-          </Serif>
-          <Serif italic size="2" color="black60" lineHeight={1.3}>
-            {item.title}, {item.date}
-          </Serif>
+          </Sans>
+          <Sans size="2" color="white100">
+            {item.title} / {item.date}
+          </Sans>
         </Flex>
       </Flex>
     )
