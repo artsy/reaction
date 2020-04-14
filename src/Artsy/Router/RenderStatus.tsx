@@ -38,7 +38,7 @@ export const RenderPending = () => {
           <PageLoader
             className="reactionPageLoader" // positional styling comes from Force body.styl
             showBackground={false}
-            step={20} // speed of progress bar, randomized between 1/x to simulate variable progress
+            step={10} // speed of progress bar, randomized between 1/x to simulate variable progress
             style={{
               position: "fixed",
               left: 0,
