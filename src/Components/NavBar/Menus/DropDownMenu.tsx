@@ -29,32 +29,6 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
     })
   }
 
-  // const getSubMenu = text => {
-  //   menu.links.filter(item => {
-  //     return item.text === text
-  //   })[0]
-  // }
-
-  const mediumLinks = menu.links.filter(item => {
-    return item.text === "Medium"
-  })[0]
-
-  const genreLinks = menu.links.filter(item => {
-    return item.text === "Genre"
-  })[0]
-
-  const rarityLinks = menu.links.filter(item => {
-    return item.text === "Rarity"
-  })[0]
-
-  const priceLinks = menu.links.filter(item => {
-    return item.text === "Price"
-  })[0]
-
-  const sellerLocationLinks = menu.links.filter(item => {
-    return item.text === "Seller Location"
-  })[0]
-
   return (
     <Menu onClick={trackClick} width={width}>
       <Flex justifyContent="center">
@@ -80,11 +54,13 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
             })}
           </Box>
         </SimpleLinksContainer>
-        <DropDownSection section={mediumLinks} />
-        <DropDownSection section={genreLinks} />
-        <DropDownSection section={rarityLinks} />
-        <DropDownSection section={priceLinks} />
-        <DropDownSection section={sellerLocationLinks} />
+
+        {/* We use splice here to ignore the first 4 links which are simple links and handled above */}
+        {menu.links.slice(4).map(subMenu => {
+          if (subMenu.menu) {
+            return <DropDownSection key={subMenu.text} section={subMenu} />
+          }
+        })}
       </Flex>
     </Menu>
   )
