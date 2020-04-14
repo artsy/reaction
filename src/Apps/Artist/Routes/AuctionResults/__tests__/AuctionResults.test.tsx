@@ -168,6 +168,7 @@ describe("AuctionResults", () => {
                   createdBeforeYear: 1973,
                   earliestCreatedYear: 1880,
                   latestCreatedYear: 1973,
+                  allowEmptyCreatedDates: true,
                 },
               })
               done()
@@ -261,6 +262,7 @@ describe("AuctionResults", () => {
                   createdBeforeYear: 1973,
                   earliestCreatedYear: 1880,
                   latestCreatedYear: 1973,
+                  allowEmptyCreatedDates: true,
                 },
               })
 

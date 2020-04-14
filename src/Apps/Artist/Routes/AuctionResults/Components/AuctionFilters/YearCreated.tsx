@@ -1,4 +1,4 @@
-import { Flex, LargeSelect, Spacer, Toggle } from "@artsy/palette"
+import { Checkbox, Flex, LargeSelect, Spacer, Toggle } from "@artsy/palette"
 import { FilterResetLink } from "Components/FilterResetLink"
 import React, { useMemo } from "react"
 import createLogger from "Utils/logger"
@@ -24,6 +24,7 @@ export const YearCreated: React.FC = () => {
     latestCreatedYear,
     createdAfterYear,
     createdBeforeYear,
+    allowEmptyCreatedDates,
   } = filterContext?.filters
   if (
     typeof earliestCreatedYear !== "number" ||
@@ -74,6 +75,15 @@ export const YearCreated: React.FC = () => {
           selected={`${createdBeforeYear}`}
         />
       </Flex>
+      <Spacer mt={0.5} />
+      <Checkbox
+        selected={allowEmptyCreatedDates}
+        onSelect={(allowEmpty: boolean) => {
+          filterContext.setFilter("allowEmptyCreatedDates", allowEmpty)
+        }}
+      >
+        Include unspecified dates
+      </Checkbox>
     </Toggle>
   )
 }
