@@ -117,7 +117,7 @@ export class VanguardArtistWrapper extends React.Component<
     return (
       <FullScreenProvider onSlideshowStateChange={onSlideshowStateChange}>
         <ArtistWrapper
-          background={backgroundColor}
+          bg={backgroundColor}
           pt={50}
           isExpanded={isExpanded}
           id={slugifiedTitle}

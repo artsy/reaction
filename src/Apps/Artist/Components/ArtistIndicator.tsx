@@ -1,4 +1,4 @@
-import { color, Flex, Sans } from "@artsy/palette"
+import { Flex, Sans } from "@artsy/palette"
 import React from "react"
 
 import {
@@ -39,13 +39,7 @@ export class ArtistIndicator extends React.Component<ArtistIndicatorProps> {
 
     return (
       <StyledLink to={link}>
-        <RoundedFlex
-          background={color("black5")}
-          width="auto"
-          py={5}
-          px={10}
-          mt={1}
-        >
+        <RoundedFlex bg="black5" width="auto" py={5} px={10} mt={1}>
           {this.renderIcon(type)}
           <Sans pt="2px" size="2">
             {label}
