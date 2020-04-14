@@ -1,3 +1,15 @@
+# v26.14.2 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Slow down top bar a bit [#3394](https://github.com/artsy/reaction/pull/3394) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.14.1 (Tue Apr 14 2020)
 
 #### 🐛  Bug Fix
