@@ -420,6 +420,7 @@ export enum Flow {
   ArtworkPriceContext = "Artwork Price Context",
   Auctions = "Auctions",
   BuyNow = "Buy now",
+  Consignments = "Consignments",
   MakeOffer = "Make offer",
   Header = "Header",
 }
