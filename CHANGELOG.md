@@ -1,3 +1,15 @@
+# v26.14.1 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial Add test attr for integrity [#3392](https://github.com/artsy/reaction/pull/3392) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.13.0 (Tue Apr 14 2020)
 
 #### 🚀  Enhancement
