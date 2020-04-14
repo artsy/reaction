@@ -155,7 +155,6 @@ export const NavBar: React.FC = track(
               <NavItem href="/artists">Artists</NavItem>
             )}
 
-            {/* <NavItem href="/artists">Artists</NavItem> */}
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
