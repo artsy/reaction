@@ -28,10 +28,10 @@
     p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
-"@artsy/palette@9.0.0-canary.667.10250.0":
-  version "9.0.0-canary.667.10250.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-9.0.0-canary.667.10250.0.tgz#a27f29b72eaf38a7f41a25d46a6915a97a57bf2f"
-  integrity sha512-Z9y7jawAHItwIr+QomODPvd2cjIv6znntJtW6ENUKUm2wShxjTi0vgYHsH4g2xmBEUb6a3k8RqYh2rGYaRq5fA==
+"@artsy/palette@9.0.0-canary.667.10289.0":
+  version "9.0.0-canary.667.10289.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-9.0.0-canary.667.10289.0.tgz#ae25a7b3cd5bb085475d7b2b4903036c6c161d79"
+  integrity sha512-SAj6wWHY8pLQNOL2gLQ2iJa50qK2mz+p+vfRc99S/9tpK7WLrYVOiNsrppig31mcCiBtyvJh8xAUzCdw0vMPDg==
   dependencies:
     "@styled-system/theme-get" "^5.1.2"
     babel-plugin-styled-components "^1.10.0"
