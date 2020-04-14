@@ -18,7 +18,7 @@ interface AttachmentProps {
   item: Message_message["attachments"][0]
 }
 
-const Attachment: React.FC<AttachmentProps> = props => {
+export const Attachment: React.FC<AttachmentProps> = props => {
   const { item } = props
   if (item.contentType.startsWith("image")) {
     return (
