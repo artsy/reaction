@@ -26,7 +26,7 @@ import {
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import { Header_collection } from "__generated__/Header_collection.graphql"
 import { useSystemContext } from "Artsy"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
+import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Link } from "found"
 import { openAuthToFollowSave } from "Utils/openAuthModal"
@@ -40,8 +40,8 @@ export interface Props {
 const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: SchemaV2.ContextModule.featuredArtistsRail,
-    intent: SchemaV2.AuthIntent.followArtist,
+    contextModule: ContextModule.featuredArtistsRail,
+    intent: AuthIntent.followArtist,
   })
 }
 
@@ -72,7 +72,12 @@ export const featuredArtistsEntityCollection: (
   return artists.map((artist, index) => {
     const hasArtistMetaData = artist.nationality && artist.birthday
     return (
-      <Box width={["100%", "33%", "33%", "25%"]} key={index} pb={20}>
+      <Box
+        width={["100%", "33%", "33%", "25%"]}
+        key={index}
+        pb={20}
+        data-test={ContextModule.featuredArtistsRail}
+      >
         <EntityHeader
           imageUrl={artist.image.resized.url}
           name={artist.name}
