@@ -79,7 +79,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHeader")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=/artist/alex-katz/consign"`
+      )
     })
 
     it("tracks event", async () => {
@@ -203,7 +205,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHowtoSell")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=/artist/alex-katz/consign"`
+      )
     })
 
     it("tracks event", async () => {
@@ -251,7 +255,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignSellArt")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=/artist/alex-katz/consign"`
+      )
     })
 
     it("tracks event", async () => {
