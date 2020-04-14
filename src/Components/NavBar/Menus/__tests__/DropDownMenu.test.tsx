@@ -1,3 +1,4 @@
+import { ContextModule } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
@@ -11,7 +12,10 @@ describe("DropDownMenu", () => {
   const trackEvent = jest.fn()
   const getWrapper = () => {
     return mount(
-      <DropDownNavMenu menu={(menuData.links[0] as MenuLinkData).menu} />
+      <DropDownNavMenu
+        menu={(menuData.links[0] as MenuLinkData).menu}
+        contextModule={ContextModule.HeaderArtworksDropdown}
+      />
     )
   }
 

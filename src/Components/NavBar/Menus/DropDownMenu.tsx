@@ -1,5 +1,5 @@
 import { Box, color, Flex, Menu, MenuItem } from "@artsy/palette"
-import { AnalyticsSchema } from "Artsy"
+import { AnalyticsSchema, ContextModule } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import React from "react"
 import styled from "styled-components"
@@ -8,11 +8,13 @@ import { DropDownSection } from "./DropDownSection"
 interface DropDownNavMenuProps {
   width?: string
   menu: any
+  contextModule: ContextModule
 }
 
 export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   width = "100%",
   menu,
+  contextModule,
 }) => {
   const { trackEvent } = useTracking()
 
@@ -23,7 +25,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
 
     trackEvent({
       action_type: AnalyticsSchema.ActionType.Click,
-      context_module: AnalyticsSchema.ContextModule.HeaderArtworksDropdown,
+      context_module: contextModule,
       subject: text,
       destination_path: href,
     })

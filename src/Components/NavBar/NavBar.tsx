@@ -124,6 +124,9 @@ export const NavBar: React.FC = track(
                       <DropDownNavMenu
                         width="100vw"
                         menu={(artworks as MenuLinkData).menu}
+                        contextModule={
+                          AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+                        }
                       />
                     </Box>
                   )
@@ -144,6 +147,9 @@ export const NavBar: React.FC = track(
                       <DropDownNavMenu
                         width="100vw"
                         menu={(artists as MenuLinkData).menu}
+                        contextModule={
+                          AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+                        }
                       />
                     </Box>
                   )
