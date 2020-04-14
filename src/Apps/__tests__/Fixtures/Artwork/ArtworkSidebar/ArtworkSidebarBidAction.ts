@@ -13,6 +13,7 @@ export const ArtworkFromAuctionPreview: ArtworkSidebarBidAction_Test_QueryRawRes
     is_live_open: false,
     is_closed: false,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -39,6 +40,7 @@ export const ArtworkFromTimedAuctionRegistrationOpen: ArtworkSidebarBidAction_Te
     is_live_open: false,
     is_closed: false,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -53,7 +55,7 @@ export const ArtworkFromTimedAuctionRegistrationOpen: ArtworkSidebarBidAction_Te
 }
 
 export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
-  slug: "artwork_from_open_non_live_auction",
+  slug: "artwork_from_registration_closed_timed_auction",
   id: "sdfsdfsdf2",
   internalID: "sdf12345",
   sale: {
@@ -65,18 +67,35 @@ export const ArtworkFromTimedAuctionRegistrationClosed: ArtworkSidebarBidAction_
     is_live_open: false,
     is_closed: false,
     is_registration_closed: true,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
     increments: [
-      { cents: 750000, display: "$7,500" },
-      { cents: 800000, display: "$8,000" },
-      { cents: 850000, display: "$8,500" },
-      { cents: 900000, display: "$9,000" },
+      { cents: 90000, display: "$900" },
+      { cents: 95000, display: "$950" },
+      { cents: 100000, display: "$1,000" },
+      { cents: 110000, display: "$1,100" },
     ],
   },
   myLotStanding: null,
 }
+
+export const SaleRequiringIDV: Partial<ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"]["sale"]> = {
+  requireIdentityVerification: true,
+}
+
+export const NotIDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
+  id: "user-id",
+  identityVerified: false,
+}
+
+export const IDVedUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = {
+  id: "user-id",
+  identityVerified: true,
+}
+
+export const NoUser: ArtworkSidebarBidAction_Test_QueryRawResponse["me"] = null
 
 export const ArtworkFromLiveAuctionRegistrationOpen: ArtworkSidebarBidAction_Test_QueryRawResponse["artwork"] = {
   slug: "artwork_from_open_live_auction_open_registration",
@@ -91,6 +110,7 @@ export const ArtworkFromLiveAuctionRegistrationOpen: ArtworkSidebarBidAction_Tes
     is_live_open: true,
     is_closed: false,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -117,6 +137,7 @@ export const ArtworkFromLiveAuctionRegistrationClosed: ArtworkSidebarBidAction_T
     is_live_open: true,
     is_closed: false,
     is_registration_closed: true,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -143,6 +164,7 @@ export const ArtworkFromClosedAuction: ArtworkSidebarBidAction_Test_QueryRawResp
     is_live_open: false,
     is_closed: true,
     is_registration_closed: false,
+    requireIdentityVerification: false,
   },
   sale_artwork: {
     id: "sdfsdfsdf",
@@ -176,7 +198,7 @@ export const BidderPendingApproval = {
 export const RegisteredBidder = {
   myLotStanding: null,
   sale: {
-    registrationStatus: { id: "bidder_approved", qualified_for_bidding: true },
+    registrationStatus: { id: "bidder-id", qualified_for_bidding: true },
   },
 }
 

@@ -9,7 +9,6 @@ import {
 import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { data as sd } from "sharify"
 
 import { RequestConditionReportQueryRenderer } from "./RequestConditionReport"
 
@@ -42,13 +41,11 @@ export class ArtworkDetailsAdditionalInfo extends React.Component<
       },
       {
         title: "Condition",
-        value:
-          canRequestLotConditionsReport &&
-          sd.ENABLE_REQUEST_CONDITION_REPORT ? (
-            <RequestConditionReportQueryRenderer artworkID={internalID} />
-          ) : (
-            conditionDescription && conditionDescription.details
-          ),
+        value: canRequestLotConditionsReport ? (
+          <RequestConditionReportQueryRenderer artworkID={internalID} />
+        ) : (
+          conditionDescription && conditionDescription.details
+        ),
       },
 
       {

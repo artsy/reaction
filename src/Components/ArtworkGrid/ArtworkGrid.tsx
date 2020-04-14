@@ -1,7 +1,7 @@
 import { Flex } from "@artsy/palette"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy"
-import { AuthContextModule } from "Artsy/Analytics/v2/Schema"
+import { AuthContextModule, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import { isEqual } from "lodash"
 import memoizeOnce from "memoize-one"
@@ -210,7 +210,7 @@ export class ArtworkGridContainer extends React.Component<
     )
 
     return (
-      <div className={className} data-test="ArtworkGrid">
+      <div className={className} data-test={ContextModule.artworkGrid}>
         {hasArtworks ? artworkGrids : emptyState}
       </div>
     )

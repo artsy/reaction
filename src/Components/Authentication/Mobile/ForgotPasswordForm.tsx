@@ -41,7 +41,11 @@ export class MobileForgotPasswordForm extends React.Component<FormProps> {
           return (
             <MobileContainer>
               <MobileInnerWrapper>
-                <Form onSubmit={handleSubmit} height={270}>
+                <Form
+                  onSubmit={handleSubmit}
+                  height={270}
+                  data-test="ForgotPasswordForm"
+                >
                   <MobileHeader>{this.props.title}</MobileHeader>
                   <QuickInput
                     block
