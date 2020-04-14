@@ -226,7 +226,7 @@
     "react-waypoint": "^7.3.3",
     "relay-mock-network-layer": "^2.0.0",
     "relay-runtime": "^7.1.0",
-    "serialize-javascript": "^1.5.0",
+    "serialize-javascript": "^2.1.1",
     "sharify": "^0.1.6",
     "styled-system": "^3.1.11",
     "superagent": "^3.6.3",
