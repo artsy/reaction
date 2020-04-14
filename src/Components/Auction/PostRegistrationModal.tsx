@@ -48,7 +48,7 @@ const RegistrationPendingUnverified: ModalContent = ({ onClick }) => {
         For details about identity verification, please see the
         <a
           target="_blank"
-          href="https://www.artsy.net/identity-verification-faq"
+          href="/identity-verification-faq"
         >
           FAQ
         </a>
