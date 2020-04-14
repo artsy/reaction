@@ -61,11 +61,9 @@ export const NavBar: React.FC = track(
     user,
     "User Conversations View"
   )
-  const canViewNewDropDown = Boolean(
-    user?.lab_features?.includes("Updated Navigation")
-  )
+  const canViewNewDropDown = userHasLabFeature(user, "Updated Navigation")
   const {
-    links: [artworks],
+    links: [artworks, artists],
   } = menuData
 
   const getNotificationCount = () => cookie.get("notification-count") || 0
@@ -137,7 +135,27 @@ export const NavBar: React.FC = track(
               <NavItem href="/collect">Artworks</NavItem>
             )}
 
-            <NavItem href="/artists">Artists</NavItem>
+            {canViewNewDropDown ? (
+              <NavItem
+                isFullScreenDropDown
+                Menu={() => {
+                  return (
+                    <Box>
+                      <DropDownNavMenu
+                        width="100vw"
+                        menu={(artists as MenuLinkData).menu}
+                      />
+                    </Box>
+                  )
+                }}
+              >
+                Artists
+              </NavItem>
+            ) : (
+              <NavItem href="/artists">Artists</NavItem>
+            )}
+
+            {/* <NavItem href="/artists">Artists</NavItem> */}
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
