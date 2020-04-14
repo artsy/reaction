@@ -1,21 +1,9 @@
-import {
-  Box,
-  Col,
-  Flex,
-  Image,
-  Link,
-  Row,
-  Sans,
-  Separator,
-  Serif,
-  StackableBorderBox,
-} from "@artsy/palette"
+import { Box, Flex, Link, Row, Sans, Separator } from "@artsy/palette"
 import { ConversationSnippet_conversation } from "__generated__/ConversationSnippet_conversation.graphql"
 import {
   ImageWithFallback,
   renderFallbackImage,
 } from "Apps/Artist/Routes/AuctionResults/Components/ImageWithFallback"
-import { Truncator } from "Components/Truncator"
 import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
@@ -87,8 +75,8 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
               renderFallbackImage()
             )}
           </StyledFlex>
-          <Flex alignItems="center" ml="10px" height="100%" width="100%">
-            <Box width="100%">
+          <Flex pt="20px" pl="10px" width="100%" height="100%">
+            <Box width="100%" mb="2px">
               <Row>
                 <Flex width="100%" justifyContent="space-between">
                   <Flex>
