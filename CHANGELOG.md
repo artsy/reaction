@@ -1,3 +1,41 @@
+# v26.13.0 (Tue Apr 14 2020)
+
+#### 🚀  Enhancement
+
+- Add 2FA user settings component [#3387](https://github.com/artsy/reaction/pull/3387) ([@dblandin](https://github.com/dblandin))
+- Update conversations UI to be closer to design spec [#3389](https://github.com/artsy/reaction/pull/3389) ([@zephraph](https://github.com/zephraph))
+- Update metaphysics schema [#3390](https://github.com/artsy/reaction/pull/3390) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Upgrade storybook and related dependencies
+
+`yarn upgrade @storybook/*` [#3388](https://github.com/artsy/reaction/pull/3388) ([@dblandin](https://github.com/dblandin))
+- Remove trailing separator char from Storybook story path
+
+Follow-up to https://github.com/artsy/reaction/pull/3388
+
+Starting at some version between v5.1.10 and v5.3.18 of Storybook,
+separator chars like `/` should only be used to separate path parts and
+not present at the end of a path string, otherwise the UI breaks. /shrug
+
+```
+Error: Invalid part '', leading to id === parentId
+('publishing-tooltips'), inside kind 'Publishing/ToolTips/'
+
+Did you create a path that uses the separator char accidentally, such as
+'Vue <docs/>' where '/' is a separator char? See
+https://github.com/storybookjs/storybook/issues/6128
+``` [#3391](https://github.com/artsy/reaction/pull/3391) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.12.0 (Mon Apr 13 2020)
 
 #### 🚀  Enhancement
