@@ -1,3 +1,25 @@
+# v26.13.0 (Tue Apr 14 2020)
+
+#### 🚀  Enhancement
+
+- Add 2FA user settings component [#3387](https://github.com/artsy/reaction/pull/3387) ([@dblandin](https://github.com/dblandin))
+- Update conversations UI to be closer to design spec [#3389](https://github.com/artsy/reaction/pull/3389) ([@zephraph](https://github.com/zephraph))
+- Update metaphysics schema [#3390](https://github.com/artsy/reaction/pull/3390) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Upgrade storybook and related dependencies
+
+`yarn upgrade @storybook/*` [#3388](https://github.com/artsy/reaction/pull/3388) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.12.0 (Mon Apr 13 2020)
 
 #### 🚀  Enhancement
