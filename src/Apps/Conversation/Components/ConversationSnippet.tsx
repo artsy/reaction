@@ -24,8 +24,12 @@ import styled from "styled-components"
 import truncate from "trunc-html"
 
 const StyledImage = styled(ImageWithFallback)`
-  max-height: 100%;
-  max-width: 100%;
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+`
+const StyledFlex = styled(Flex)`
+  float: left;
 `
 
 interface ConversationSnippetProps {
@@ -72,55 +76,54 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         href={`/user/conversations/${conversation.internalID}`}
         underlineBehavior="none"
       >
-        <Row height="120px" px={2} pt={2}>
-          <Col xs="3">
-            <Flex
-              alignItems="center"
-              justifyContent="center"
-              height="80px"
-              width="80px"
-            >
-              {imageURL ? (
-                <StyledImage
-                  src={imageURL}
-                  Fallback={() => renderFallbackImage()}
-                />
-              ) : (
-                renderFallbackImage()
-              )}
-            </Flex>
-          </Col>
-          <Col xs="9">
-            <Flex alignItems="center" width="100%" height="100%">
-              <Box>
-                <Row>
-                  <Sans
-                    size="3"
-                    weight="medium"
-                    mr="5px"
-                    color={conversation.unread ? "black" : "black60"}
-                  >
-                    {partnerName}
-                  </Sans>
-                  <Sans size="3" weight="medium" color={"black60"}>
-                    {conversation.items.length}
-                  </Sans>
-                </Row>
-                <Row>
-                  <Sans
-                    size="3"
-                    weight="medium"
-                    color={conversation.unread ? "black" : "black60"}
-                  >
-                    {truncatedText}
-                  </Sans>
-                </Row>
-              </Box>
-            </Flex>
-          </Col>
-          <Separator mt={2} />
-        </Row>
+        <Flex alignItems="center" px="10px" width="100%" height="120px">
+          <StyledFlex alignItems="center" height="80px" width="80px">
+            {imageURL ? (
+              <StyledImage
+                src={imageURL}
+                Fallback={() => renderFallbackImage()}
+              />
+            ) : (
+              renderFallbackImage()
+            )}
+          </StyledFlex>
+          <Flex alignItems="center" ml="10px" height="100%" width="100%">
+            <Box width="100%">
+              <Row>
+                <Flex width="100%" justifyContent="space-between">
+                  <Flex>
+                    <Sans
+                      size="3"
+                      weight="medium"
+                      mr="5px"
+                      color={conversation.unread ? "black" : "black60"}
+                    >
+                      {partnerName}
+                    </Sans>
+                    <Sans size="3" color={"black30"}>
+                      {conversation.items.length}
+                    </Sans>
+                  </Flex>
+                  <Flex>
+                    <Sans size="3" mr="5px" color={"black30"}>
+                      2 hours ago
+                    </Sans>
+                  </Flex>
+                </Flex>
+              </Row>
+              <Row>
+                <Sans
+                  size="3t"
+                  color={conversation.unread ? "black" : "black60"}
+                >
+                  {truncatedText}
+                </Sans>
+              </Row>
+            </Box>
+          </Flex>
+        </Flex>
       </Link>
+      <Separator mx="10px" />
     </Box>
   )
 }
