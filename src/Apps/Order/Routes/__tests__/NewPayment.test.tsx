@@ -39,7 +39,10 @@ jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
-window.location.assign = jest.fn()
+Object.defineProperty(window, "location", {
+  writable: true,
+  value: { assign: jest.fn() },
+})
 
 const testOrder: NewPaymentTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,

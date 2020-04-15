@@ -91,7 +91,10 @@ describe("FormSwitcher", () => {
 
   describe("#handleTypeChange", () => {
     beforeEach(() => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn(), search: "" },
+      })
     })
 
     it("redirects to a url if static or mobile", () => {
@@ -105,7 +108,7 @@ describe("FormSwitcher", () => {
         .at(2)
         .simulate("click")
 
-      expect((window.location.assign as any).mock.calls[0][0]).toEqual(
+      expect(window.location.assign).toHaveBeenCalledWith(
         "/signup?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&triggerSeconds=1"
       )
     })
@@ -127,7 +130,10 @@ describe("FormSwitcher", () => {
 
   describe("Third party sign in", () => {
     beforeEach(() => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn(), search: "" },
+      })
     })
 
     it("fires social auth event and redirects", () => {

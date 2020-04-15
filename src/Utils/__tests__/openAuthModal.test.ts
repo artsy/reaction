@@ -43,7 +43,10 @@ describe("openAuth Helpers", () => {
     mediator = {
       trigger: jest.fn(),
     }
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { href: "http://localhost/", assign: jest.fn() },
+    })
   })
 
   describe("#openAuthModal", () => {
