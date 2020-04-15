@@ -3268,7 +3268,7 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
-"@types/qrcode.react@^1.0.0":
+"@types/qrcode.react@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/qrcode.react/-/qrcode.react-1.0.0.tgz#9eff4d4a93eb32fcd65e26ea046f2efc52764431"
   integrity sha512-CyH8QizAyp/G2RTz+2W0qIp/qbJMNC6a8aossG+zN42Rmx3loQlgBCWFatjKJ3NeJaX99e22SJ75yU2EVHlu3g==
@@ -5476,7 +5476,7 @@ caniuse-lite@^1.0.30001038, caniuse-lite@^1.0.30001039:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001041.tgz#c2ea138dafc6fe03877921ddcddd4a02a14daf76"
   integrity sha512-fqDtRCApddNrQuBxBS7kEiSGdBsgO4wiVw4G/IClfqzfhW45MbTumfN4cuUJGTM0YGFNn97DCXPJ683PS6zwvA==
 
-canvas@^2.6.1:
+canvas@2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/canvas/-/canvas-2.6.1.tgz#0d087dd4d60f5a5a9efa202757270abea8bef89e"
   integrity sha512-S98rKsPcuhfTcYbtF53UIJhcbgIAK533d1kJKMwsMwAIFgfd58MOyxRud3kktlzWiEkFliaJtvyZCBtud/XVEA==
@@ -10444,7 +10444,7 @@ jest-each@^24.9.0:
     jest-util "^24.9.0"
     pretty-format "^24.9.0"
 
-jest-environment-jsdom-sixteen@^1.0.3:
+jest-environment-jsdom-sixteen@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom-sixteen/-/jest-environment-jsdom-sixteen-1.0.3.tgz#e222228fac537ef15cca5ad470b19b47d9690165"
   integrity sha512-CwMqDUUfSl808uGPWXlNA1UFkWFgRmhHvyAjhCmCry6mYq4b/nn80MMN7tglqo5XgrANIs/w+mzINPzbZ4ZZrQ==
