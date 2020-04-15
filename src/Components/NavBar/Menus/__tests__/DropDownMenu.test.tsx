@@ -1,3 +1,4 @@
+import { MenuItem } from "@artsy/palette"
 import { ContextModule } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
@@ -45,5 +46,20 @@ describe("DropDownMenu", () => {
     const dropDownSection = wrapper.find(DropDownSection)
 
     expect(dropDownSection.length).toBe(5)
+  })
+
+  xit("tracks analytics click events correctly", () => {
+    const wrapper = getWrapper()
+    wrapper
+      .find(MenuItem)
+      .first()
+      .simulate("click")
+
+    expect(trackEvent).toHaveBeenCalledWith({
+      action_type: "Click",
+      context_module: "HeaderArtworksDropdown",
+      subject: "New this Week",
+      destination_path: "/collection/new-this-week",
+    })
   })
 })
