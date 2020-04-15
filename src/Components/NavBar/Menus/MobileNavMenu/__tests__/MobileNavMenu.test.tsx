@@ -1,4 +1,3 @@
-import { EnvelopeIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { menuData, SimpleLinkData } from "Components/NavBar/menuData"
@@ -15,10 +14,13 @@ import { MobileLink } from "../MobileLink"
 jest.mock("Artsy/Analytics/useTracking")
 
 describe("MobileNavMenu", () => {
+  const mediator = {
+    trigger: jest.fn(),
+  }
   const trackEvent = jest.fn()
   const getWrapper = props => {
     return mount(
-      <SystemContextProvider user={props.user}>
+      <SystemContextProvider mediator={mediator} user={props.user}>
         <MobileNavMenu isOpen menuData={menuData} />
       </SystemContextProvider>
     )
@@ -32,6 +34,15 @@ describe("MobileNavMenu", () => {
 
   afterEach(() => {
     jest.clearAllMocks()
+  })
+
+  it("calls logout auth action on logout menu click", () => {
+    const wrapper = getWrapper({ user: { type: "NotAdmin" } })
+    wrapper
+      .find("MobileLink")
+      .last()
+      .simulate("click")
+    expect(mediator.trigger).toBeCalledWith("auth:logout")
   })
 
   describe("nav structure", () => {
@@ -78,7 +89,6 @@ describe("MobileNavMenu", () => {
         user: { type: "NotAdmin", lab_features: [] },
       })
       expect(wrapper.html()).not.toContain("Inbox")
-      expect(wrapper.find(EnvelopeIcon).length).toEqual(0)
     })
 
     it("shows inbox menu option if lab feature enabled", () => {
@@ -86,7 +96,6 @@ describe("MobileNavMenu", () => {
         user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
       })
       expect(wrapper.html()).toContain("Inbox")
-      expect(wrapper.find(EnvelopeIcon).length).toEqual(1)
     })
   })
 

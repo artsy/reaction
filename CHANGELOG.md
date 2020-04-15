@@ -1,3 +1,225 @@
+# v26.14.3 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add `flow: consignments` to tracking [#3396](https://github.com/artsy/reaction/pull/3396) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.14.2 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Slow down top bar a bit [#3394](https://github.com/artsy/reaction/pull/3394) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.14.1 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial Add test attr for integrity [#3392](https://github.com/artsy/reaction/pull/3392) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.13.0 (Tue Apr 14 2020)
+
+#### 🚀  Enhancement
+
+- Add 2FA user settings component [#3387](https://github.com/artsy/reaction/pull/3387) ([@dblandin](https://github.com/dblandin))
+- Update conversations UI to be closer to design spec [#3389](https://github.com/artsy/reaction/pull/3389) ([@zephraph](https://github.com/zephraph))
+- Update metaphysics schema [#3390](https://github.com/artsy/reaction/pull/3390) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Upgrade storybook and related dependencies
+
+`yarn upgrade @storybook/*` [#3388](https://github.com/artsy/reaction/pull/3388) ([@dblandin](https://github.com/dblandin))
+- Remove trailing separator char from Storybook story path
+
+Follow-up to https://github.com/artsy/reaction/pull/3388
+
+Starting at some version between v5.1.10 and v5.3.18 of Storybook,
+separator chars like `/` should only be used to separate path parts and
+not present at the end of a path string, otherwise the UI breaks. /shrug
+
+```
+Error: Invalid part '', leading to id === parentId
+('publishing-tooltips'), inside kind 'Publishing/ToolTips/'
+
+Did you create a path that uses the separator char accidentally, such as
+'Vue <docs/>' where '/' is a separator char? See
+https://github.com/storybookjs/storybook/issues/6128
+``` [#3391](https://github.com/artsy/reaction/pull/3391) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.12.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Remove ENABLE_REQUEST_CONDITION_REPORT feature flag [#3386](https://github.com/artsy/reaction/pull/3386) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.10.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Add data-test attribute on ForgotPassword forms
+
+Similar to the `data-test` attribute on the login and signup forms, this
+allows us to query `ForgotPasswordForm` elements in the DOM during
+Cypress integration testing. [#3384](https://github.com/artsy/reaction/pull/3384) ([@dblandin](https://github.com/dblandin))
+
+#### 🐛  Bug Fix
+
+- #trivial Add integrity data attrs [#3385](https://github.com/artsy/reaction/pull/3385) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.9.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Make Artwork Bid Actions Identity Verification Aware [#3345](https://github.com/artsy/reaction/pull/3345) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v26.8.6 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Bump palette [#3380](https://github.com/artsy/reaction/pull/3380) ([@damassi](https://github.com/damassi))
+- Use logger instead of console.error to capture missing data reports [#3379](https://github.com/artsy/reaction/pull/3379) ([@zephraph](https://github.com/zephraph))
+- [Clientside Nav] Move Pageloader from Palette [#3377](https://github.com/artsy/reaction/pull/3377) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/palette from 8 to 8.0.0 [#3381](https://github.com/artsy/reaction/pull/3381) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.8.5 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Bump timeout [#3374](https://github.com/artsy/reaction/pull/3374) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.8.4 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove inbox icon from menu [#3375](https://github.com/artsy/reaction/pull/3375) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.8.3 (Thu Apr 09 2020)
+
+#### 🐛  Bug Fix
+
+- Fix snapshots [#3372](https://github.com/artsy/reaction/pull/3372) ([@damassi](https://github.com/damassi))
+- Sync schema [#3371](https://github.com/artsy/reaction/pull/3371) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.8.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Use auth helpers for minimalCTABanner tracking args [#3366](https://github.com/artsy/reaction/pull/3366) ([@eessex](https://github.com/eessex))
+- Revert /works-for-sale redirect [#3368](https://github.com/artsy/reaction/pull/3368) ([@zephraph](https://github.com/zephraph))
+- #trivial - add data-test attrs [#3367](https://github.com/artsy/reaction/pull/3367) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.8.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Update ArtistConsignButton with targetSupply check [#3364](https://github.com/artsy/reaction/pull/3364) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.7.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Add log out link back to mWeb [#3360](https://github.com/artsy/reaction/pull/3360) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.6.0 to v7.8.0 [#3346](https://github.com/artsy/reaction/pull/3346) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.7.0 (Wed Apr 08 2020)
 
 #### 🚀  Enhancement

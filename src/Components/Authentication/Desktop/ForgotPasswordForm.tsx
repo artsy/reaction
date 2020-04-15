@@ -54,7 +54,11 @@ export class ForgotPasswordForm extends Component<
           }
 
           return (
-            <Form onSubmit={handleSubmit} height={180}>
+            <Form
+              onSubmit={handleSubmit}
+              height={180}
+              data-test="ForgotPasswordForm"
+            >
               <QuickInput
                 block
                 error={touched.email && errors.email}

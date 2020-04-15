@@ -3,7 +3,6 @@ import {
   ChevronIcon,
   CloseIcon,
   color,
-  EnvelopeIcon,
   Flex,
   MenuIcon,
   Sans,
@@ -257,7 +256,7 @@ const AuthenticateLinks: React.FC = () => {
 }
 
 const LoggedInLinks: React.FC = () => {
-  const { user } = useSystemContext()
+  const { mediator, user } = useSystemContext()
   const conversationsEnabled = userHasLabFeature(
     user,
     "User Conversations View"
@@ -266,13 +265,19 @@ const LoggedInLinks: React.FC = () => {
     <Box>
       <Separator my={1} color={color("black10")} />
       {conversationsEnabled && (
-        <MobileLink href="/user/conversations">
-          <EnvelopeIcon fill={"black60"} top={3} mr={10} />
-          Inbox
-        </MobileLink>
+        <MobileLink href="/user/conversations">Inbox</MobileLink>
       )}
       <MobileLink href="/works-for-you">Works for you</MobileLink>
       <MobileLink href="/user/edit">Account</MobileLink>
+      <MobileLink
+        href="#"
+        onClick={event => {
+          event.preventDefault()
+          mediator.trigger("auth:logout")
+        }}
+      >
+        Log out
+      </MobileLink>
     </Box>
   )
 }

@@ -57,6 +57,7 @@ export class ToolTip extends React.Component<Props> {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         positionLeft={positionLeft}
+        data-test="tooltipWrapper"
       >
         <Content orientation={orientation} arrowLeft={arrowLeft}>
           {orientation === "down" && (

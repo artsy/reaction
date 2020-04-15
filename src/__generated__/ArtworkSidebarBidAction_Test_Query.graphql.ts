@@ -7,6 +7,9 @@ export type ArtworkSidebarBidAction_Test_QueryResponse = {
     readonly artwork: {
         readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarBidAction_artwork">;
     } | null;
+    readonly me: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarBidAction_me">;
+    } | null;
 };
 export type ArtworkSidebarBidAction_Test_QueryRawResponse = {
     readonly artwork: ({
@@ -31,6 +34,7 @@ export type ArtworkSidebarBidAction_Test_QueryRawResponse = {
             readonly is_live_open: boolean | null;
             readonly is_closed: boolean | null;
             readonly is_registration_closed: boolean | null;
+            readonly requireIdentityVerification: boolean | null;
             readonly id: string | null;
         }) | null;
         readonly sale_artwork: ({
@@ -40,6 +44,10 @@ export type ArtworkSidebarBidAction_Test_QueryRawResponse = {
             }) | null> | null;
             readonly id: string | null;
         }) | null;
+        readonly id: string | null;
+    }) | null;
+    readonly me: ({
+        readonly identityVerified: boolean | null;
         readonly id: string | null;
     }) | null;
 };
@@ -55,6 +63,10 @@ export type ArtworkSidebarBidAction_Test_Query = {
 query ArtworkSidebarBidAction_Test_Query {
   artwork(id: "auction_artwork") {
     ...ArtworkSidebarBidAction_artwork
+    id
+  }
+  me {
+    ...ArtworkSidebarBidAction_me
     id
   }
 }
@@ -81,6 +93,7 @@ fragment ArtworkSidebarBidAction_artwork on Artwork {
     is_live_open: isLiveOpen
     is_closed: isClosed
     is_registration_closed: isRegistrationClosed
+    requireIdentityVerification
     id
   }
   sale_artwork: saleArtwork {
@@ -90,6 +103,10 @@ fragment ArtworkSidebarBidAction_artwork on Artwork {
     }
     id
   }
+}
+
+fragment ArtworkSidebarBidAction_me on Me {
+  identityVerified
 }
 */
 
@@ -143,6 +160,22 @@ return {
           {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarBidAction_artwork",
+            "args": null
+          }
+        ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "me",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Me",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "ArtworkSidebarBidAction_me",
             "args": null
           }
         ]
@@ -276,6 +309,13 @@ return {
                 "args": null,
                 "storageKey": null
               },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "requireIdentityVerification",
+                "args": null,
+                "storageKey": null
+              },
               (v2/*: any*/)
             ]
           },
@@ -312,6 +352,25 @@ return {
           },
           (v2/*: any*/)
         ]
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "me",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Me",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "identityVerified",
+            "args": null,
+            "storageKey": null
+          },
+          (v2/*: any*/)
+        ]
       }
     ]
   },
@@ -319,10 +378,10 @@ return {
     "operationKind": "query",
     "name": "ArtworkSidebarBidAction_Test_Query",
     "id": null,
-    "text": "query ArtworkSidebarBidAction_Test_Query {\n  artwork(id: \"auction_artwork\") {\n    ...ArtworkSidebarBidAction_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarBidAction_artwork on Artwork {\n  myLotStanding(live: true) {\n    most_recent_bid: mostRecentBid {\n      max_bid: maxBid {\n        cents\n      }\n      id\n    }\n  }\n  slug\n  internalID\n  sale {\n    slug\n    registrationStatus {\n      qualified_for_bidding: qualifiedForBidding\n      id\n    }\n    is_preview: isPreview\n    is_open: isOpen\n    is_live_open: isLiveOpen\n    is_closed: isClosed\n    is_registration_closed: isRegistrationClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    increments {\n      cents\n      display\n    }\n    id\n  }\n}\n",
+    "text": "query ArtworkSidebarBidAction_Test_Query {\n  artwork(id: \"auction_artwork\") {\n    ...ArtworkSidebarBidAction_artwork\n    id\n  }\n  me {\n    ...ArtworkSidebarBidAction_me\n    id\n  }\n}\n\nfragment ArtworkSidebarBidAction_artwork on Artwork {\n  myLotStanding(live: true) {\n    most_recent_bid: mostRecentBid {\n      max_bid: maxBid {\n        cents\n      }\n      id\n    }\n  }\n  slug\n  internalID\n  sale {\n    slug\n    registrationStatus {\n      qualified_for_bidding: qualifiedForBidding\n      id\n    }\n    is_preview: isPreview\n    is_open: isOpen\n    is_live_open: isLiveOpen\n    is_closed: isClosed\n    is_registration_closed: isRegistrationClosed\n    requireIdentityVerification\n    id\n  }\n  sale_artwork: saleArtwork {\n    increments {\n      cents\n      display\n    }\n    id\n  }\n}\n\nfragment ArtworkSidebarBidAction_me on Me {\n  identityVerified\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '809770da03ce16f5c9b1deeb5a067742';
+(node as any).hash = '4fd030f92a386cdc149fa85d858e09d7';
 export default node;

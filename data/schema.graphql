@@ -488,6 +488,18 @@ type AnalyticsVisitorsByReferral {
   value: Int!
 }
 
+# App Authenticator Two-Factor Authentication factor
+type AppSecondFactor implements SecondFactor {
+  createdAt: ISO8601DateTime!
+  disabledAt: ISO8601DateTime
+  enabled: Boolean!
+  enabledAt: ISO8601DateTime
+  internalID: ID!
+  kind: SecondFactorKind!
+  name: String
+  updatedAt: ISO8601DateTime!
+}
+
 type Article implements Node {
   # A globally unique ID.
   id: ID!
@@ -968,7 +980,10 @@ type ArtistStatuses {
 }
 
 type ArtistTargetSupply {
-  # Returns whether an artist is in within the microfunnel list.
+  # True if artist is in target supply list.
+  isTargetSupply: Boolean
+
+  # True if an artist is in the microfunnel list.
   isInMicrofunnel: Boolean
   microfunnel: ArtistTargetSupplyMicrofunnel
 }
@@ -1500,6 +1515,17 @@ type Author {
   internalID: ID!
   name: String
   profileHandle: String
+}
+
+# Backup Two-Factor Authentication factor
+type BackupSecondFactor implements SecondFactor {
+  createdAt: ISO8601DateTime!
+  disabledAt: ISO8601DateTime
+  enabled: Boolean!
+  enabledAt: ISO8601DateTime
+  internalID: ID!
+  kind: SecondFactorKind!
+  updatedAt: ISO8601DateTime!
 }
 
 type Bidder implements Node {
@@ -3115,6 +3141,28 @@ type ConsignmentOffer {
   state: String
 }
 
+type ConsignmentPageCursor {
+  # first cursor on the page
+  cursor: String!
+
+  # is this the current page?
+  isCurrent: Boolean!
+
+  # page number out of totalPages
+  page: Int!
+}
+
+type ConsignmentPageCursors {
+  around: [ConsignmentPageCursor!]!
+
+  # optional, may be included in field around
+  first: ConsignmentPageCursor
+
+  # optional, may be included in field around
+  last: ConsignmentPageCursor
+  previous: ConsignmentPageCursor
+}
+
 # Consignment Submission
 type ConsignmentSubmission {
   additionalInfo: String
@@ -3192,9 +3240,12 @@ type ConsignmentSubmissionConnection {
 
   # A list of nodes.
   nodes: [ConsignmentSubmission]
+  pageCursors: ConsignmentPageCursors
 
   # Information to aid in pagination.
   pageInfo: PageInfo!
+  totalCount: Int
+  totalPages: Int
 }
 
 enum ConsignmentSubmissionStateAggregation {
@@ -5276,6 +5327,7 @@ type Me implements Node {
   followsAndSaves: FollowsAndSaves
   hasCreditCards: Boolean
   hasQualifiedCreditCards: Boolean
+  hasSecondFactorEnabled: Boolean!
 
   # An invoice
   invoice(
@@ -5350,6 +5402,7 @@ type Me implements Node {
 
   # A count of unread notifications.
   unreadNotificationsCount: Int!
+  secondFactors(kinds: [SecondFactorKind]): [SecondFactor]
   orders(
     first: Int
     last: Int
@@ -5444,6 +5497,9 @@ type Money {
     convertTo: String
   ): Float!
 }
+
+# A money object with amount in minor currency and a currency code, or an error object
+union MoneyOrErrorUnion = Error
 
 type Mutation {
   # Create an account request
@@ -6325,6 +6381,14 @@ type Query {
   # Find partners by IDs
   _unused_gravity_partners(ids: [ID!]!): [DoNotUseThisPartner!]
 
+  # List enabled Two-Factor Authentication factors
+  _unused_gravity_secondFactors(
+    kinds: [SecondFactorKind!] = [app, sms, backup]
+  ): [SecondFactor!]!
+
+  # Find a viewing room by ID
+  viewingRoom(id: ID!): ViewingRoom
+
   # Find list of competing orders
   commerceCompetingOrders(
     # Returns the elements in the list that come after the specified cursor.
@@ -7047,6 +7111,28 @@ enum SearchMode {
   SITE
 }
 
+interface SecondFactor {
+  createdAt: ISO8601DateTime!
+  disabledAt: ISO8601DateTime
+  enabled: Boolean!
+  enabledAt: ISO8601DateTime
+  internalID: ID!
+  kind: SecondFactorKind!
+  updatedAt: ISO8601DateTime!
+}
+
+# Two-Factor Authentication (2FA) Method
+enum SecondFactorKind {
+  # App authenticator 2FA method
+  app
+
+  # Backup 2FA method
+  backup
+
+  # SMS 2FA method
+  sms
+}
+
 # A piece that can be sold
 interface Sellable {
   dimensions: dimensions
@@ -7432,6 +7518,19 @@ enum ShowSorts {
   SORTABLE_NAME_ASC
   SORTABLE_NAME_DESC
   PARTNER_ASC
+}
+
+# SMS Two-Factor Authentication factor
+type SmsSecondFactor implements SecondFactor {
+  createdAt: ISO8601DateTime!
+  disabledAt: ISO8601DateTime
+  enabled: Boolean!
+  enabledAt: ISO8601DateTime
+  internalID: ID!
+  kind: SecondFactorKind!
+  lastDeliveredAt: ISO8601DateTime
+  maskedPhone: String
+  updatedAt: ISO8601DateTime!
 }
 
 enum sort {
@@ -8030,6 +8129,98 @@ type Viewer {
     showOnEditorial: Boolean
     artistID: String
   ): [MarketingCollection]
+}
+
+# An artwork viewing room
+type ViewingRoom {
+  artworksConnection(
+    # Returns the elements in the list that come after the specified cursor.
+    after: String
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String
+
+    # Returns the first _n_ elements from the list.
+    first: Int
+
+    # Returns the last _n_ elements from the list.
+    last: Int
+  ): ViewingRoomArtworkConnection
+
+  # Body copy
+  body: String
+
+  # Datetime after which the viewing room is no longer viewable
+  endAt: ISO8601DateTime
+
+  # Image URL for hero image on viewing room home screen
+  heroImageURL: String
+
+  # Unique ID for this room
+  internalID: ID!
+
+  # Introductory paragraph
+  introStatement: String
+
+  # ID of the partner associated with this viewing room
+  partnerID: String!
+  pullQuote: String
+
+  # Datetime when the viewing room is viewable
+  startAt: ISO8601DateTime
+  subsections: [ViewingRoomSubsection!]
+  timeZone: String
+
+  # Viewing room name
+  title: String!
+}
+
+# An artwork associated with a viewing room. Note that the full artwork is stitched in in Metaphysics!
+type ViewingRoomArtwork {
+  artworkID: String!
+
+  # Unique ID
+  internalID: ID!
+  artwork: Artwork
+}
+
+# The connection type for ViewingRoomArtwork.
+type ViewingRoomArtworkConnection {
+  # A list of edges.
+  edges: [ViewingRoomArtworkEdge]
+
+  # A list of nodes.
+  nodes: [ViewingRoomArtwork]
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+}
+
+# An edge in a connection.
+type ViewingRoomArtworkEdge {
+  # A cursor for use in pagination.
+  cursor: String!
+
+  # The item at the end of the edge.
+  node: ViewingRoomArtwork
+}
+
+# Title, image, text, and caption for a viewing room section
+type ViewingRoomSubsection {
+  # Body copy
+  body: String
+
+  # Image caption
+  caption: String
+
+  # Image URL
+  imageURL: String
+
+  # Unique ID for this subsection
+  internalID: ID!
+
+  # Section header
+  title: String
 }
 
 type YearRange {

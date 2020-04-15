@@ -250,6 +250,7 @@ describe("OverviewRoute", () => {
 const defaultArtist: routes_OverviewQueryRawResponse["artist"] = {
   targetSupply: {
     isInMicrofunnel: false,
+    isTargetSupply: false,
   },
   id: "opaque-artist-id",
   slug: "juan-gris",

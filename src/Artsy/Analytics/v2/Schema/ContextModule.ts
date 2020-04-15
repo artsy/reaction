@@ -29,6 +29,7 @@ export enum ContextModule {
   intextTooltip = "intextTooltip",
   liveAuctionsRail = "liveAuctionsRail",
   mainCarousel = "mainCarousel",
+  minimalCTABanner = "minimalCTABanner",
   otherWorksByArtistRail = "otherWorksByArtistRail",
   otherWorksFromPartnerRail = "otherWorksFromPartnerRail",
   otherWorksFromShowRail = "otherWorksFromShowRail",

@@ -15,6 +15,9 @@ export const routes = [
         artwork(id: $artworkID) @principalField {
           ...ArtworkApp_artwork
         }
+        me {
+          ...ArtworkApp_me
+        }
       }
     `,
     cacheConfig: {

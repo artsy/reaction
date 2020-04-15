@@ -34,6 +34,7 @@ export type AuthContextModule =
   | ContextModule.intextTooltip
   | ContextModule.liveAuctionsRail
   | ContextModule.mainCarousel
+  | ContextModule.minimalCTABanner
   | ContextModule.otherWorksByArtistRail
   | ContextModule.otherWorksFromPartnerRail
   | ContextModule.otherWorksFromShowRail
