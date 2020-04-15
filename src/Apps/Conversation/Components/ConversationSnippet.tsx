@@ -10,6 +10,7 @@ import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
 import styled from "styled-components"
 import truncate from "trunc-html"
+import { TimeSince } from "./TimeSince"
 
 const StyledImage = styled(ImageWithFallback)`
   object-fit: cover;
@@ -47,7 +48,6 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
     imageURL = item.coverImage && item.coverImage.url
     title = item.name
   }
-  const date = DateTime.fromISO(conversation.lastMessageAt).toRelative()
 
   const partnerName = conversation.to.name
 
@@ -55,8 +55,6 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
     conversation.lastMessage && conversation.lastMessage.replace(/\n/g, " ")
 
   const truncatedText = truncate(conversationText, 100).html
-  console.log("CONVERSATION", conversation)
-  console.log("truncatedText", truncatedText)
 
   return (
     <Box>
@@ -64,7 +62,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         href={`/user/conversations/${conversation.internalID}`}
         underlineBehavior="none"
       >
-        <Flex alignItems="center" px="10px" width="100%" height="120px">
+        <Flex alignItems="center" px={1} width="100%" height="120px">
           <StyledFlex alignItems="center" height="80px" width="80px">
             {imageURL ? (
               <StyledImage
@@ -75,7 +73,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
               renderFallbackImage()
             )}
           </StyledFlex>
-          <Flex pt="20px" pl="10px" width="100%" height="100%">
+          <Flex pt={2} pl={1} width="100%" height="100%">
             <Box width="100%">
               <Row mb="2px">
                 <Flex width="100%" justifyContent="space-between">
@@ -94,7 +92,11 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                   </Flex>
                   <Flex>
                     <Sans size="3" mr="5px" color={"black30"}>
-                      2 hours ago
+                      <TimeSince
+                        time={conversation.lastMessageAt}
+                        size="3"
+                        exact
+                      />
                     </Sans>
                   </Flex>
                 </Flex>
@@ -111,7 +113,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
           </Flex>
         </Flex>
       </Link>
-      <Separator mx="10px" width="auto" />
+      <Separator mx={1} width="auto" />
     </Box>
   )
 }
