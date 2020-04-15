@@ -1,3 +1,32 @@
+# v26.15.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1852] Add checkbox and filtering for lots with nil date information [#3397](https://github.com/artsy/reaction/pull/3397) ([@jpotts244](https://github.com/jpotts244))
+- Update Jest to use JSDOM v16 [#3400](https://github.com/artsy/reaction/pull/3400) ([@dblandin](https://github.com/dblandin))
+- Add mocked enrollment UI for the 2FA App Authenticator method
+
+Introduce the 2FA App Authenticator enrollment UI. Hooks up the modal
+and form components including basic validation.
+
+The OTP code `123456` will mimic a successful enrollment. Anything else
+will mimic an invalid OTP code. [#3398](https://github.com/artsy/reaction/pull/3398) ([@dblandin](https://github.com/dblandin))
+- Update window.location mocks to use Object.defineProperty
+
+Following the Jest update to use JSDOM v16, update window.location mocks
+to use `Object.defineProperty` to get past this error:
+
+```
+TypeError: Cannot assign to read only property 'assign' of object '[object Location]'
+``` [#3400](https://github.com/artsy/reaction/pull/3400) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
 # v26.14.3 (Tue Apr 14 2020)
 
 #### 🐛  Bug Fix
