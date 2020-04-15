@@ -13,7 +13,7 @@ export interface Props {
   artworkCount: number
 }
 
-const MORE_TABS = ["tag", "city", "feature"]
+const MORE_TABS = ["tag", "city", "feature", "page"]
 
 const TAB_NAME_MAP = {
   artist: "Artists",
