@@ -1,4 +1,4 @@
-import { color, Flex, Image, Sans, Serif } from "@artsy/palette"
+import { color, Flex, Image, Link, Sans, Serif } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { DateTime } from "luxon"
 import React from "react"
@@ -16,28 +16,30 @@ const Item: React.FC<ItemProps> = props => {
   const { item } = props
   if (item.__typename === "Artwork") {
     return (
-      <Flex
-        flexDirection="column"
-        width="350px"
-        p={1}
+      <Link
+        href={item.href}
+        underlineBehavior="none"
         style={{ alignSelf: "flex-end" }}
+        my={1}
       >
-        <Image src={item.image.url} borderRadius="15px 15px 0 0" />
-        <Flex
-          p={1}
-          flexDirection="column"
-          justifyContent="center"
-          background={color("black100")}
-          borderRadius="0 0 15px 15px"
-        >
-          <Sans size="4" weight="medium" color="white100">
-            {item.artistNames}
-          </Sans>
-          <Sans size="2" color="white100">
-            {item.title} / {item.date}
-          </Sans>
+        <Flex flexDirection="column" width="350px">
+          <Image src={item.image.url} borderRadius="15px 15px 0 0" />
+          <Flex
+            p={1}
+            flexDirection="column"
+            justifyContent="center"
+            background={color("black100")}
+            borderRadius="0 0 15px 15px"
+          >
+            <Sans size="4" weight="medium" color="white100">
+              {item.artistNames}
+            </Sans>
+            <Sans size="2" color="white100">
+              {item.title} / {item.date}
+            </Sans>
+          </Flex>
         </Flex>
-      </Flex>
+      </Link>
     )
   } else if (item.__typename === "Show") {
     // it's a partnerShow
@@ -102,7 +104,7 @@ export interface ConversationProps {
 const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
   return (
-    <Flex flexDirection="column" width="100%">
+    <Flex flexDirection="column" width="100%" px={1}>
       {conversation.items.map((i, idx) => (
         <Item
           item={i.item}
@@ -204,6 +206,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
               date
               title
               artistNames
+              href
               image {
                 url
               }

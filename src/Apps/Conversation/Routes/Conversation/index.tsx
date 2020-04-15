@@ -1,4 +1,4 @@
-import { BorderBox, Flex, Title } from "@artsy/palette"
+import { Title } from "@artsy/palette"
 import { Conversation_me } from "__generated__/Conversation_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { ConversationFragmentContainer as Conversation } from "Apps/Conversation/Components/Conversation"
@@ -20,12 +20,8 @@ export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
   if (isEnabled) {
     return (
       <AppContainer>
-        <Title>My Inquiries | Artsy</Title>
-        <BorderBox>
-          <Flex flexDirection="column">
-            <Conversation conversation={me.conversation} />
-          </Flex>
-        </BorderBox>
+        <Title>Inbox | Artsy</Title>
+        <Conversation conversation={me.conversation} />
       </AppContainer>
     )
   } else {
