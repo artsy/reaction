@@ -25,7 +25,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
         const { pathname } = payload
         const referrer = get(
           store.getState(),
-          state => state.found.match.location.pathname
+          state =>
+            state.found.match.location.pathname +
+            state.found.match.location.search
         )
 
         // Pluck segment analytics instance from force

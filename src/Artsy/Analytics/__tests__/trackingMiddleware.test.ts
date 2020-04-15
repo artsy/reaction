@@ -76,6 +76,7 @@ describe("trackingMiddleware", () => {
                 match: {
                   location: {
                     pathname: "/referrer",
+                    search: "?with=queryparams",
                   },
                 },
               },
@@ -91,14 +92,14 @@ describe("trackingMiddleware", () => {
         expect(global.analytics.page).toBeCalledWith(
           {
             path: pathToTest,
-            referrer: `http://testing.com/referrer`,
+            referrer: `http://testing.com/referrer?with=queryparams`,
             url: `http://testing.com${pathToTest}`,
           },
           { integrations: { Marketo: false } }
         )
 
         expect(window.analytics.__artsyReferrer).toEqual(
-          "http://testing.com/referrer"
+          "http://testing.com/referrer?with=queryparams"
         )
       })
     })
