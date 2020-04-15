@@ -11,6 +11,7 @@ jest.mock("Artsy/Analytics/useTracking")
 
 describe("DropDownMenu", () => {
   const trackEvent = jest.fn()
+
   const getWrapper = () => {
     return mount(
       <DropDownNavMenu
@@ -48,12 +49,10 @@ describe("DropDownMenu", () => {
     expect(dropDownSection.length).toBe(5)
   })
 
-  xit("tracks analytics click events correctly", () => {
+  it("tracks analytics click events correctly", () => {
     const wrapper = getWrapper()
-    wrapper
-      .find(MenuItem)
-      .first()
-      .simulate("click")
+    const menuItem = wrapper.find(MenuItem).first()
+    menuItem.simulate("click")
 
     expect(trackEvent).toHaveBeenCalledWith({
       action_type: "Click",

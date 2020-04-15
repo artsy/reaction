@@ -20,8 +20,8 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
 
   const trackClick = event => {
     const link = event.target
-    const text = link.innerText
-    const href = link.parentNode.parentNode.getAttribute("href")
+    const text = link.textContent
+    const href = link.getAttribute("href")
 
     trackEvent({
       action_type: AnalyticsSchema.ActionType.Click,
