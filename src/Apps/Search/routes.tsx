@@ -27,7 +27,7 @@ const tabsToEntitiesMap = {
   categories: ["GENE"],
   articles: ["ARTICLE"],
   auctions: ["SALE"],
-  more: ["TAG", "CITY", "FEATURE"],
+  more: ["TAG", "CITY", "FEATURE", "PAGE"],
 }
 
 const entityTabs = Object.entries(tabsToEntitiesMap).map(([key, entities]) => {
