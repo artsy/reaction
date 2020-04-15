@@ -1,3 +1,15 @@
+# v26.17.2 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix referrer edgecase [#3407](https://github.com/artsy/reaction/pull/3407) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.17.1 (Wed Apr 15 2020)
 
 #### 🐛  Bug Fix
