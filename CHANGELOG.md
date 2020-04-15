@@ -1,3 +1,15 @@
+# v26.17.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- Update artwork preview in conversation [#3393](https://github.com/artsy/reaction/pull/3393) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.16.0 (Wed Apr 15 2020)
 
 #### 🚀  Enhancement
