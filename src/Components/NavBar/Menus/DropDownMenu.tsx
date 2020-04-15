@@ -57,8 +57,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
           </Box>
         </SimpleLinksContainer>
 
-        {/* We use splice here to ignore the first 4 links which are simple links and handled above */}
-        {menu.links.slice(4).map(subMenu => {
+        {menu.links.map(subMenu => {
           if (subMenu.menu) {
             return <DropDownSection key={subMenu.text} section={subMenu} />
           }
