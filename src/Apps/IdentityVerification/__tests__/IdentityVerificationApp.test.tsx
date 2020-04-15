@@ -110,7 +110,10 @@ describe("IdentityVerification route", () => {
 
     describe("user enters verification flow", () => {
       beforeEach(() => {
-        window.location.assign = jest.fn()
+        Object.defineProperty(window, "location", {
+          writable: true,
+          value: { assign: jest.fn() },
+        })
       })
 
       it("user click on 'continue to verification' button is tracked", async () => {

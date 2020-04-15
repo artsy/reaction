@@ -26,7 +26,10 @@ require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
 const realSetInterval = global.setInterval
 
-window.location.assign = jest.fn()
+Object.defineProperty(window, "location", {
+  writable: true,
+  value: { assign: jest.fn() },
+})
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
