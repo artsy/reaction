@@ -126,6 +126,7 @@
     "husky": "1.3.1",
     "immer": "1.12.1",
     "jest": "24.9.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-junit": "6.4.0",
     "jest-raw-loader": "1.0.1",
     "jest-styled-components": "7.0.0-2",
@@ -273,6 +274,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/setup_jest.ts"
     ],
+    "testEnvironment": "jest-environment-jsdom-sixteen",
     "testURL": "http://localhost/",
     "moduleNameMapper": {
       "^luxon$": "<rootDir>/node_modules/luxon",
