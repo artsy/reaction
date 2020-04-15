@@ -96,6 +96,10 @@ describe("trackingMiddleware", () => {
           },
           { integrations: { Marketo: false } }
         )
+
+        expect(window.analytics.__artsyReferrer).toEqual(
+          "http://testing.com/referrer"
+        )
       })
     })
   })
