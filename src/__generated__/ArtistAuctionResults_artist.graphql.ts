@@ -109,6 +109,12 @@ const node: ReaderFragment = {
       "name": "createdBeforeYear",
       "type": "Int",
       "defaultValue": null
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "allowEmptyCreatedDates",
+      "type": "Boolean",
+      "defaultValue": null
     }
   ],
   "selections": [
@@ -129,6 +135,11 @@ const node: ReaderFragment = {
           "kind": "Variable",
           "name": "after",
           "variableName": "after"
+        },
+        {
+          "kind": "Variable",
+          "name": "allowEmptyCreatedDates",
+          "variableName": "allowEmptyCreatedDates"
         },
         {
           "kind": "Variable",
@@ -350,5 +361,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '6f8944f3a8b58c263cd259174ad63d40';
+(node as any).hash = '64781867ff4cd19aac913f6c8a5c8dec';
 export default node;

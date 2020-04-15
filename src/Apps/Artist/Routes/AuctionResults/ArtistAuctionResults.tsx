@@ -47,6 +47,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
     sizes,
     createdAfterYear,
     createdBeforeYear,
+    allowEmptyCreatedDates,
   } = filterContext.filters
 
   const loadNext = () => {
@@ -73,6 +74,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
         sort,
         createdBeforeYear,
         createdAfterYear,
+        allowEmptyCreatedDates,
       },
       null,
       error => {
@@ -236,6 +238,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           sizes: { type: "[ArtworkSizes]" }
           createdAfterYear: { type: "Int" }
           createdBeforeYear: { type: "Int" }
+          allowEmptyCreatedDates: { type: "Boolean" }
         ) {
         slug
         ...AuctionResultHeader_artist
@@ -250,6 +253,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
           sizes: $sizes
           earliestCreatedYear: $createdAfterYear
           latestCreatedYear: $createdBeforeYear
+          allowEmptyCreatedDates: $allowEmptyCreatedDates
         ) {
           ...AuctionResultsCount_results
           createdYearRange {
@@ -295,6 +299,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
       $sizes: [ArtworkSizes]
       $createdBeforeYear: Int
       $createdAfterYear: Int
+      $allowEmptyCreatedDates: Boolean
     ) {
       artist(id: $artistID) {
         ...ArtistAuctionResults_artist
@@ -309,6 +314,7 @@ export const ArtistAuctionResultsRefetchContainer = createRefetchContainer(
             sizes: $sizes
             createdAfterYear: $createdAfterYear
             createdBeforeYear: $createdBeforeYear
+            allowEmptyCreatedDates: $allowEmptyCreatedDates
           )
       }
     }
