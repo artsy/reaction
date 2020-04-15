@@ -5,7 +5,6 @@ import {
   Col,
   Collapse,
   Link,
-  NoArtworkIcon,
   Row,
   Sans,
 } from "@artsy/palette"

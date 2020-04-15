@@ -4,7 +4,6 @@ import {
   ImageWithFallback,
   renderFallbackImage,
 } from "Apps/Artist/Routes/AuctionResults/Components/ImageWithFallback"
-import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
@@ -40,13 +39,13 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
   const item = conversation.items[0].item
 
   let imageURL
-  let title
+
   if (item.__typename === "Artwork") {
     imageURL = item.image && item.image.url
-    title = item.title
+    const title = item.title
   } else if (item.__typename === "Show") {
     imageURL = item.coverImage && item.coverImage.url
-    title = item.name
+    const title = item.name
   }
 
   const partnerName = conversation.to.name

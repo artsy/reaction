@@ -1,4 +1,4 @@
-import { Box, Sans, Separator, Serif } from "@artsy/palette"
+import { Box, Sans, Separator } from "@artsy/palette"
 import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
