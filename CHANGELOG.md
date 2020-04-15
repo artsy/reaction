@@ -1,3 +1,26 @@
+# v26.16.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- Expose static pages in search results/autocomplete [#3403](https://github.com/artsy/reaction/pull/3403) ([@sweir27](https://github.com/sweir27))
+- Add mocked UI for the 2FA backup codes
+
+Introduce the 2FA backup codes UI. Hook up the modal and 'Set up' /
+'Regenerate' controls. [#3399](https://github.com/artsy/reaction/pull/3399) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3401](https://github.com/artsy/reaction/pull/3401) ([@renovate-bot](https://github.com/renovate-bot))
+- Bump timeout of "ArtworkFilter/desktop/renders default UI items" spec [#3402](https://github.com/artsy/reaction/pull/3402) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.15.0 (Wed Apr 15 2020)
 
 #### 🚀  Enhancement
