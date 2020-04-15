@@ -15,9 +15,11 @@ import { SystemContextProps, useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
+import { AppSecondFactorMethod } from "./Components/AppSecondFactorMethod"
+import { BackupSecondFactorMethod } from "./Components/BackupSecondFactorMethod"
+
 import { UserSettingsTwoFactorAuthentication_me } from "__generated__/UserSettingsTwoFactorAuthentication_me.graphql"
 import { UserSettingsTwoFactorAuthenticationQuery } from "__generated__/UserSettingsTwoFactorAuthenticationQuery.graphql"
-import { AppSecondFactorMethod } from "./Components/AppSecondFactorMethod"
 
 export interface UserSettingsTwoFactorAuthenticationProps
   extends SystemContextProps {
@@ -54,43 +56,6 @@ const SmsFactorMethod: React.FC<SecondFactorMethodProps> = props => {
               </Button>
               <Button ml={1} variant="secondaryGray">
                 Edit
-              </Button>
-            </>
-          ) : (
-            <Button>Set up</Button>
-          )}
-        </Flex>
-      </Flex>
-    </BorderBox>
-  )
-}
-
-const BackupSecondFactorMethod: React.FC<SecondFactorMethodProps> = props => {
-  const { me } = props
-
-  return (
-    <BorderBox p={2} {...props}>
-      <Flex flexDirection="row" justifyContent="space-between" width="100%">
-        <Flex flexDirection="column" width="345px">
-          <Sans size="4t" color="black100">
-            Backup codes
-          </Sans>
-          <Serif size="3t" color="black60">
-            Generate one-time backup codes to access your account. Keep these
-            safe.
-          </Serif>
-        </Flex>
-        <Flex alignItems="center">
-          {me.backupSecondFactors.length ? (
-            <>
-              <Sans color="black60" size="3" weight="medium">
-                {me.backupSecondFactors.length} remaining
-              </Sans>
-              <Button ml={1} variant="secondaryOutline">
-                Show
-              </Button>
-              <Button ml={1} variant="secondaryGray">
-                Regenerate
               </Button>
             </>
           ) : (
