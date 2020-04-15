@@ -1,7 +1,8 @@
+import { Box } from "@artsy/palette"
 import { storiesOf } from "@storybook/react"
 import React from "react"
 
-import { UserSettingsTwoFactorAuthenticationFragmentContainer } from "../index"
+import { UserSettingsTwoFactorAuthenticationFragmentContainer } from "../UserSettingsTwoFactorAuthentication"
 
 import { SystemContextProvider, useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -30,10 +31,12 @@ const UserSettingsTwoFactorAuthenticationStoryQueryRenderer: React.FC = () => {
   )
 }
 
-storiesOf("Settings", module).add("Two-factor Authentication", () => {
+storiesOf("Settings/2FA", module).add("Setup", () => {
   return (
     <SystemContextProvider>
-      <UserSettingsTwoFactorAuthenticationStoryQueryRenderer />
+      <Box maxWidth="800px">
+        <UserSettingsTwoFactorAuthenticationStoryQueryRenderer />
+      </Box>
     </SystemContextProvider>
   )
 })
