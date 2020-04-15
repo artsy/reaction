@@ -1,9 +1,9 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
 import { Box, EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { ArrowButton, Carousel } from "Components/Carousel"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
@@ -21,8 +21,8 @@ const HEIGHT = 150
 const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: SchemaV2.ContextModule.relatedArtistsRail,
-    intent: SchemaV2.AuthIntent.followArtist,
+    contextModule: ContextModule.relatedArtistsRail,
+    intent: AuthIntent.followArtist,
   })
 }
 
@@ -109,7 +109,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
           return (
             <FillwidthItem
               artwork={artwork.node}
-              contextModule={SchemaV2.ContextModule.relatedArtistsRail}
+              contextModule={ContextModule.relatedArtistsRail}
               targetHeight={HEIGHT}
               imageHeight={HEIGHT}
               width={HEIGHT * aspect_ratio}

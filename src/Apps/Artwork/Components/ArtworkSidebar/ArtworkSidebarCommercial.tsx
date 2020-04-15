@@ -1,3 +1,4 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
 import {
   Box,
   Button,
@@ -16,7 +17,6 @@ import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSide
 import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import currency from "currency.js"

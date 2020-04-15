@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "Artsy/Analytics/v2/Schema"
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion/dist/Schema"
 import { FormikProps } from "formik"
 
 export enum ModalType {

@@ -3,7 +3,7 @@ import React from "react"
 
 import { ArtistConsignRecentlySold_artist } from "__generated__/ArtistConsignRecentlySold_artist.graphql"
 
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ContextModule } from "@artsy/cohesion/dist/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
 import { createFragmentContainer, graphql } from "react-relay"
 import { SectionContainer } from "./SectionContainer"

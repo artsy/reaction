@@ -1,6 +1,6 @@
+import { ContextModule } from "@artsy/cohesion/dist/Schema"
 import { Box, Flex, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"

@@ -6,10 +6,10 @@
  * and two specialised components that use composition to achieve the desired functionality.
  */
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
 import { FollowArtistMutation } from "__generated__/FollowArtistMutation.graphql"
 import * as Artsy from "Artsy"
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import React from "react"
 import {
   commitMutation,

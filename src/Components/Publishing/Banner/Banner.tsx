@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { debounce } from "lodash"
 import React, { Component } from "react"

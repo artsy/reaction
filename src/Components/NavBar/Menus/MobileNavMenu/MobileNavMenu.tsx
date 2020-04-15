@@ -1,3 +1,4 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
 import {
   Box,
   ChevronIcon,
@@ -10,7 +11,6 @@ import {
 } from "@artsy/palette"
 import { AnalyticsSchema, useSystemContext } from "Artsy"
 import { useTracking } from "Artsy/Analytics"
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { LinkData, MenuData, MenuLinkData } from "Components/NavBar/menuData"
 import React from "react"

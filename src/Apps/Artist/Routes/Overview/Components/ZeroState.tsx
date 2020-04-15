@@ -1,6 +1,6 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
 import { Link, Message } from "@artsy/palette"
 import { useSystemContext } from "Artsy"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import React from "react"
 import { openAuthToFollowSave } from "Utils/openAuthModal"
@@ -12,8 +12,8 @@ export const ZeroState = props => {
   function handleOpenAuth() {
     openAuthToFollowSave(mediator, {
       entity: artist,
-      contextModule: SchemaV2.ContextModule.worksForSaleRail,
-      intent: SchemaV2.AuthIntent.followArtist,
+      contextModule: ContextModule.worksForSaleRail,
+      intent: AuthIntent.followArtist,
     })
   }
 
