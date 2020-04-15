@@ -2,17 +2,26 @@ import { Box, BoxProps, Sans, SansSize } from "@artsy/palette"
 import { DateTime } from "luxon"
 import React from "react"
 
-const daysSinceDate = (time: string | DateTime) => {
+const daysSinceDate = (time: string | DateTime): number => {
+  if (!time) {
+    return null
+  }
   const date = typeof time === "string" ? DateTime.fromISO(time) : time
   return Math.floor(Math.abs(date.diffNow("days").toObject().days))
 }
 
 export const fromToday = (time: string | DateTime) => {
+  if (!time) {
+    return false
+  }
   const date = typeof time === "string" ? DateTime.fromISO(time) : time
   return daysSinceDate(date) === 0
 }
 
 const exactDate = (time: string) => {
+  if (!time) {
+    return null
+  }
   const date = DateTime.fromISO(time)
   const daysSince = daysSinceDate(date)
   console.log("days since", daysSince)
@@ -27,7 +36,10 @@ const exactDate = (time: string) => {
   }
 }
 
-const relativeDate = (time: string) => DateTime.fromISO(time).toRelative()
+const relativeDate = (time: string) => {
+  if (!time) return null
+  return DateTime.fromISO(time).toRelative()
+}
 
 interface TimeSinceProps extends Omit<BoxProps, "color"> {
   size?: SansSize
@@ -42,10 +54,12 @@ export const TimeSince: React.FC<TimeSinceProps> = ({
   ...props
 }) => {
   return (
-    <Box {...props}>
-      <Sans size={size} color="black30">
-        {exact ? exactDate(time) : relativeDate(time)}
-      </Sans>
-    </Box>
+    time && (
+      <Box {...props}>
+        <Sans size={size} color="black30">
+          {exact ? exactDate(time) : relativeDate(time)}
+        </Sans>
+      </Box>
+    )
   )
 }
