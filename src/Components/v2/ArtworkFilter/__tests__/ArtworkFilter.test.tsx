@@ -53,7 +53,7 @@ describe("ArtworkFilter", () => {
       expect(wrapper.find("ArtworkFilterArtworkGrid").length).toEqual(1)
       expect(wrapper.find("SortFilter").length).toEqual(1)
       expect(wrapper.find("Pagination").length).toEqual(1)
-    }, 10000)
+    })
 
     it("triggers #onFilterClick on filter click, passing back the changed value and current filter state", async () => {
       const onFilterClick = jest.fn()
