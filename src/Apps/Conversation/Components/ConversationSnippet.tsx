@@ -42,10 +42,8 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
 
   if (item.__typename === "Artwork") {
     imageURL = item.image && item.image.url
-    const title = item.title
   } else if (item.__typename === "Show") {
     imageURL = item.coverImage && item.coverImage.url
-    const title = item.name
   }
 
   const partnerName = conversation.to.name
