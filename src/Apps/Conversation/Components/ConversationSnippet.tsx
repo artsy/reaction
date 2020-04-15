@@ -76,8 +76,8 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
             )}
           </StyledFlex>
           <Flex pt="20px" pl="10px" width="100%" height="100%">
-            <Box width="100%" mb="2px">
-              <Row>
+            <Box width="100%">
+              <Row mb="2px">
                 <Flex width="100%" justifyContent="space-between">
                   <Flex>
                     <Sans
@@ -89,7 +89,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                       {partnerName}
                     </Sans>
                     <Sans size="3" color={"black30"}>
-                      {conversation.items.length}
+                      (message count)
                     </Sans>
                   </Flex>
                   <Flex>
@@ -111,7 +111,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
           </Flex>
         </Flex>
       </Link>
-      <Separator mx="10px" />
+      <Separator mx="10px" width="auto" />
     </Box>
   )
 }
