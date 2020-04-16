@@ -1,3 +1,26 @@
+# v26.18.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Use @artsy/cohesion [#3411](https://github.com/artsy/reaction/pull/3411) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Fix conversation page from erroring out due to null timestamp [#3406](https://github.com/artsy/reaction/pull/3406) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update auto orb from 1.1.0 to v1.2.0 [#3409](https://github.com/artsy/reaction/pull/3409) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.17.3 (Wed Apr 15 2020)
 
 #### 🐛  Bug Fix
