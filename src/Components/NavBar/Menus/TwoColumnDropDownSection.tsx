@@ -9,6 +9,10 @@ interface TwoColumnDropDownSectionProps {
 export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> = ({
   section,
 }) => {
+  // The data for nationality and region are represented in a single array, but
+  // visually they should be shown as two distinct columns. This is the only
+  // section that behaves this way so we've created a separate component for it.
+
   return (
     <Flex>
       <Box width={[110, 110, 110, 135, 150]} py={4} mr={[2, 2, 3, 3]}>
