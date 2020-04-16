@@ -8,6 +8,7 @@ import { UserSettingsTwoFactorAuthenticationFragmentContainer } from "../UserSet
 import { UserSettingsTestPage } from "./Utils/UserSettingsTestPage"
 
 jest.unmock("react-relay")
+HTMLCanvasElement.prototype.getContext = jest.fn()
 
 const setupTestEnv = () => {
   return createTestEnv({

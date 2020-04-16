@@ -1,7 +1,7 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/FollowArtistPopover"
 import { extend } from "lodash"
 import React from "react"
@@ -85,8 +85,8 @@ export class FollowArtistButton extends React.Component<Props, State> {
       this.followArtistForUser(user)
     } else if (onOpenAuthModal) {
       onOpenAuthModal(ModalType.signup, {
-        contextModule: SchemaV2.ContextModule.intextTooltip,
-        intent: SchemaV2.AuthIntent.followArtist,
+        contextModule: ContextModule.intextTooltip,
+        intent: AuthIntent.followArtist,
         copy: "Sign up to follow artists",
         afterSignUpAction: {
           action: "follow",

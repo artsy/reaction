@@ -1,5 +1,5 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Link } from "@artsy/palette"
-import { AnalyticsSchema as Schema } from "Artsy/Analytics/v2"
 import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
@@ -26,10 +26,10 @@ describe("FormSwitcher", () => {
         handleSubmit={jest.fn()}
         tracking={props.tracking}
         options={{
-          contextModule: Schema.ContextModule.header,
+          contextModule: ContextModule.header,
           copy: "Foo Bar",
           destination: "/collect",
-          intent: Schema.AuthIntent.followArtist,
+          intent: AuthIntent.followArtist,
           redirectTo: "/foo",
           triggerSeconds: 1,
         }}

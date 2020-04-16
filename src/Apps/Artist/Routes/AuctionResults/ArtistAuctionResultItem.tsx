@@ -1,3 +1,4 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -13,7 +14,6 @@ import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { AnalyticsSchema, SystemContextProps } from "Artsy"
 import { Mediator, SystemContext } from "Artsy"
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { DateTime } from "luxon"
 import React, { SFC, useContext, useState } from "react"

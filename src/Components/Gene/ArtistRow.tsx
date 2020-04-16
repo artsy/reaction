@@ -1,6 +1,6 @@
+import { ContextModule } from "@artsy/cohesion"
 import { ArtistRow_artist } from "__generated__/ArtistRow_artist.graphql"
 import { Mediator } from "Artsy"
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"

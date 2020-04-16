@@ -39,6 +39,14 @@ describe("AuctionRegistrationModal", () => {
     )
   })
 
+  it("renders a registration pending modal with an IDV message", async () => {
+    const wrapper = await mountModal("registrationPendingUnverified")
+
+    expect(wrapper.find(Modal).text()).toMatch(
+      "This auction requires Artsy to verify your identity before bidding."
+    )
+  })
+
   it("renders a bid pending modal", async () => {
     const wrapper = await mountModal("bidPending")
 

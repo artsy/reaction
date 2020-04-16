@@ -136,7 +136,9 @@ const Conversation: React.FC<ConversationProps> = props => {
                     key={message.internalID}
                     isFirst={groupIndex + messageIndex === 0}
                     showTimeSince={
-                      today && messageGroup.length - 1 === messageIndex
+                      message.createdAt &&
+                      today &&
+                      messageGroup.length - 1 === messageIndex
                     }
                     mb={
                       nextMessage &&

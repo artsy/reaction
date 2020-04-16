@@ -15,6 +15,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import Events from "Utils/Events"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   Box,
   EntityHeader,
@@ -25,7 +26,6 @@ import {
   StackableBorderBox,
 } from "@artsy/palette"
 import { FollowProfileButton_profile } from "__generated__/FollowProfileButton_profile.graphql"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { openAuthToFollowSave } from "Utils/openAuthModal"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
@@ -56,8 +56,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   handleOpenAuth = (mediator, partner) => {
     openAuthToFollowSave(mediator, {
       entity: partner,
-      contextModule: SchemaV2.ContextModule.aboutTheWork,
-      intent: SchemaV2.AuthIntent.followPartner,
+      contextModule: ContextModule.aboutTheWork,
+      intent: AuthIntent.followPartner,
     })
   }
 

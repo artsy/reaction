@@ -3,7 +3,7 @@ import { ModalType } from "Components/Authentication/Types"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   ModalManager,
   ModalManagerProps,

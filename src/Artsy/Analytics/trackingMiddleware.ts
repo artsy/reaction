@@ -25,7 +25,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
         const { pathname } = payload
         const referrer = get(
           store.getState(),
-          state => state.found.match.location.pathname
+          state =>
+            state.found.match.location.pathname +
+            state.found.match.location.search
         )
 
         // Pluck segment analytics instance from force
@@ -41,13 +43,14 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           })
 
           if (!foundExcludedPath) {
+            const url = sd.APP_URL + pathname
             const trackingData: {
               path: string
               referrer?: string
               url: string
             } = {
               path: pathname,
-              url: sd.APP_URL + pathname,
+              url,
             }
 
             if (referrer) {
@@ -64,11 +67,30 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
               trackingData.referrer = sd.APP_URL + referrer
             }
 
-            analytics.page(trackingData, { integrations: { Marketo: false } })
+            /**
+             * Store a global reference to the referrer. Since we're in an SPA
+             * context we'll need to use this to track referrers statefully across
+             * pages, since we don't do a hard reload.
+             *
+             * Attaching to the analytics object in the absence of a more
+             * "global" location.
+             *
+             * For our new reaction apps, all tracking goes through this location:
+             * https://github.com/damassi/force/blob/399919f7ef053701f0ed3b20b32dddf0490459b0/src/desktop/assets/analytics.coffee#L41
+             * which will read __artsyReferrer and update referrer appropriately.
+             */
+            const finalReferrer = trackingData.referrer
+            analytics.__artsyReferrer = finalReferrer
+
+            analytics.page(trackingData, {
+              integrations: {
+                Marketo: false,
+              },
+            })
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
             if (sd.CLIENT_NAVIGATION_V5) {
-              trackExperimentViewed("client_navigation_v5")
+              trackExperimentViewed("client_navigation_v5", trackingData)
             }
           }
 
