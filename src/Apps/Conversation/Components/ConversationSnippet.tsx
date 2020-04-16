@@ -64,10 +64,16 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
             {imageURL ? (
               <StyledImage
                 src={imageURL}
-                Fallback={() => renderFallbackImage()}
+                Fallback={() => (
+                  <Flex width="80px" height="80px">
+                    {renderFallbackImage()}
+                  </Flex>
+                )}
               />
             ) : (
-              renderFallbackImage()
+              <Flex width="80px" height="80px">
+                {renderFallbackImage()}
+              </Flex>
             )}
           </StyledFlex>
           <Flex pt={2} pl={1} width="100%" height="100%">
@@ -88,13 +94,12 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                     </Sans>
                   </Flex>
                   <Flex>
-                    <Sans size="3" mr="5px" color={"black30"}>
-                      <TimeSince
-                        time={conversation.lastMessageAt}
-                        size="3"
-                        exact
-                      />
-                    </Sans>
+                    <TimeSince
+                      time={conversation.lastMessageAt}
+                      size="3"
+                      exact
+                      mr="5px"
+                    />
                   </Flex>
                 </Flex>
               </Row>
