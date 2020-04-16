@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "@artsy/cohesion/dist/Schema"
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import * as Artsy from "Artsy"

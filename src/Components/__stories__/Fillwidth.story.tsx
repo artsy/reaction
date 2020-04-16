@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
 
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { FillwidthQuery } from "__generated__/FillwidthQuery.graphql"
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
 import Fillwidth from "../Artwork/Fillwidth"

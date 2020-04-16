@@ -22,7 +22,7 @@ import { ErrorModal } from "Components/Modal/ErrorModal"
 import createLogger from "Utils/logger"
 import { openAuthModal } from "Utils/openAuthModal"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { RequestConditionReport_artwork } from "__generated__/RequestConditionReport_artwork.graphql"
 import { RequestConditionReport_me } from "__generated__/RequestConditionReport_me.graphql"
 import {

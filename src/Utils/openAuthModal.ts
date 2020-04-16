@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "@artsy/cohesion/dist/Schema"
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { Mediator } from "Artsy/SystemContext"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import qs from "qs"

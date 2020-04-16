@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { Box, Flex, Image } from "@artsy/palette"
 import { artworkBricks, images } from "Apps/__tests__/Fixtures/Carousel"
 import { FillwidthItem } from "Components/Artwork/FillwidthItem"

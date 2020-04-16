@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks"

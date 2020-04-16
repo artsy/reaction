@@ -34,7 +34,7 @@ import { openAuthModal } from "Utils/openAuthModal"
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import Events from "Utils/Events"

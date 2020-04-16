@@ -1,4 +1,4 @@
-import { AuthContextModule, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthContextModule, ContextModule } from "@artsy/cohesion"
 import { Flex } from "@artsy/palette"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy"

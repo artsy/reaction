@@ -1,4 +1,4 @@
-import { AuthContextModule, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthContextModule, ContextModule } from "@artsy/cohesion"
 import { color, Image as BaseImage } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy"

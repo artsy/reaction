@@ -1,4 +1,4 @@
-import { AuthContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthContextModule } from "@artsy/cohesion"
 import { Image } from "@artsy/palette"
 import { FillwidthItem_artwork } from "__generated__/FillwidthItem_artwork.graphql"
 import { SystemContextProps } from "Artsy"

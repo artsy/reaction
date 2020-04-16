@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Link } from "@artsy/palette"
 import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"

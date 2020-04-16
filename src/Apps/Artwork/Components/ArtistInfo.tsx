@@ -20,7 +20,7 @@ import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
 import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/ArtistMarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/SelectedExhibitions"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { MIN_EXHIBITIONS } from "Components/SelectedExhibitions"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"

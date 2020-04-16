@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "@artsy/cohesion/dist/Schema"
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { Mediator } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"

@@ -13,7 +13,7 @@ import { slugify } from "underscore.string"
 import { Media } from "Utils/Responsive"
 import { ArtworkSharePanelFragmentContainer as ArtworkSharePanel } from "./ArtworkSharePanel"
 
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import {
   BellFillIcon,
   BellIcon,

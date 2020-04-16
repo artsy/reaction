@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.2.tgz#b79f6fd0d0bda0c5e0764ced55e014cf58174d6f"
   integrity sha512-mJyuKNDMYZcgc2oLIkvmpVIr1RexklV71JmU+to5qs3Y9pv5dsj4WHl8+wf9g74EQNOyhWH2SYMGBm1JoPYh/Q==
 
-"@artsy/cohesion@0.0.3-canary.9.123.0":
-  version "0.0.3-canary.9.123.0"
-  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-0.0.3-canary.9.123.0.tgz#7f6c12252050ae26d098d02fa3347c40fb2d2774"
-  integrity sha512-giaxOPXkgFv0Ck8cVTrk3AHgjipGHHKwN66Am9WUy+fF6eiAocMqsBmquw1u2W0d+REDVKIF7jJXecKGUiOO+g==
+"@artsy/cohesion@0.0.3-canary.9.142.0":
+  version "0.0.3-canary.9.142.0"
+  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-0.0.3-canary.9.142.0.tgz#43902a8f5420491fbdf607d0bce1844babc3abac"
+  integrity sha512-F0yqgFVeYP8JBRjIpZkD1hLE43L8FFp4qxQG3hLMKsjpGRx1nCxpZT8aeyb9bKo9eAXxMD5pHOw/vrcg6qpH6A==
 
 "@artsy/detect-responsive-traits@^0.0.5":
   version "0.0.5"

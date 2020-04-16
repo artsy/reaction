@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { ModalType } from "Components/Authentication/Types"
 import {
   AuthModalOptions,

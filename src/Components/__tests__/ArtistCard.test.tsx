@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"

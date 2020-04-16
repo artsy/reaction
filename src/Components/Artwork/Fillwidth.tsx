@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
 import { Mediator } from "Artsy"
 import { find } from "lodash"

@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { Box } from "@artsy/palette"
 import { WorksForSaleRail_artist } from "__generated__/WorksForSaleRail_artist.graphql"
 import { WorksForSaleRailRendererQuery } from "__generated__/WorksForSaleRailRendererQuery.graphql"

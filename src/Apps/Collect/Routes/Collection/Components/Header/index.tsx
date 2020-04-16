@@ -23,7 +23,7 @@ import {
   Spacer,
 } from "@artsy/palette"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion/dist/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import { Header_collection } from "__generated__/Header_collection.graphql"
 import { useSystemContext } from "Artsy"

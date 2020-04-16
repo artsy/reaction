@@ -1,5 +1,4 @@
-import { authImpression } from "@artsy/cohesion/dist/Events"
-import { AuthModalType } from "@artsy/cohesion/dist/Schema"
+import { authImpression, AuthModalType } from "@artsy/cohesion"
 import { Theme } from "@artsy/palette"
 import qs from "querystring"
 import React from "react"

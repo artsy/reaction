@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion/dist/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { ArtistRow_artist } from "__generated__/ArtistRow_artist.graphql"
 import { Mediator } from "Artsy"
 import React from "react"
