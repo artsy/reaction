@@ -27,8 +27,8 @@ describe("UserMenu", () => {
   // Label also includes SVG image title
   const defaultLinks = [
     ["/user/saves", "Save Saves & Follows"],
-    ["/profile/edit", "user Collector Profile"],
-    ["/user/edit", "settings Settings"],
+    ["/profile/edit", "User Collector Profile"],
+    ["/user/edit", "Settings Settings"],
   ]
 
   it("renders correct menu items", () => {

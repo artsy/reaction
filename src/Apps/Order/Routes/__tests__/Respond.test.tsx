@@ -147,7 +147,7 @@ describe("The respond page", () => {
 
     it("shows the stepper", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"Respondnavigate rightReview"`
+        `"RespondNavigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Respond")
     })
