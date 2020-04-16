@@ -296,9 +296,9 @@ export const menuData: MenuData = {
             },
           },
           {
-            text: "Artist Nationality and Region",
+            text: "Artist Nationality & Region",
             menu: {
-              title: "Artist Nationality and Region",
+              title: "Artist Nationality & Region",
               links: [
                 {
                   text: "American",

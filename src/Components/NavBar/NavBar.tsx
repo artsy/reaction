@@ -20,6 +20,7 @@ import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
 import {
+  DropDownNavMenu,
   MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
@@ -28,7 +29,7 @@ import {
 } from "./Menus"
 
 import { ModalType } from "Components/Authentication/Types"
-import { menuData } from "Components/NavBar/menuData"
+import { menuData, MenuLinkData } from "Components/NavBar/menuData"
 import { openAuthModal } from "Utils/openAuthModal"
 
 import { NavItem } from "./NavItem"
@@ -60,6 +61,10 @@ export const NavBar: React.FC = track(
     user,
     "User Conversations View"
   )
+  const canViewNewDropDown = userHasLabFeature(user, "Updated Navigation")
+  const {
+    links: [artworks, artists],
+  } = menuData
 
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
@@ -110,8 +115,52 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            <NavItem href="/collect">Artworks</NavItem>
-            <NavItem href="/artists">Artists</NavItem>
+            {canViewNewDropDown ? (
+              <NavItem
+                isFullScreenDropDown
+                Menu={() => {
+                  return (
+                    <Box>
+                      <DropDownNavMenu
+                        width="100vw"
+                        menu={(artworks as MenuLinkData).menu}
+                        contextModule={
+                          AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+                        }
+                      />
+                    </Box>
+                  )
+                }}
+              >
+                Artworks
+              </NavItem>
+            ) : (
+              <NavItem href="/collect">Artworks</NavItem>
+            )}
+
+            {canViewNewDropDown ? (
+              <NavItem
+                isFullScreenDropDown
+                Menu={() => {
+                  return (
+                    <Box>
+                      <DropDownNavMenu
+                        width="100vw"
+                        menu={(artists as MenuLinkData).menu}
+                        contextModule={
+                          AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+                        }
+                      />
+                    </Box>
+                  )
+                }}
+              >
+                Artists
+              </NavItem>
+            ) : (
+              <NavItem href="/artists">Artists</NavItem>
+            )}
+
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
