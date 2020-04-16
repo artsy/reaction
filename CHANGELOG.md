@@ -1,3 +1,15 @@
+# v26.21.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Update desktop nav menu [#3369](https://github.com/artsy/reaction/pull/3369) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v26.19.0 (Thu Apr 16 2020)
 
 #### 🚀  Enhancement
