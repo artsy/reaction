@@ -97,7 +97,6 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                     <TimeSince
                       time={conversation.lastMessageAt}
                       size="3"
-                      exact
                       mr="5px"
                     />
                   </Flex>
