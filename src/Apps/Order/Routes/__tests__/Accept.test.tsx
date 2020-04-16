@@ -102,7 +102,7 @@ describe("Accept seller offer", () => {
 
     it("Shows the stepper", async () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkRespond navigate rightReview"`
+        `"CheckRespond Navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe(`Review`)
     })
