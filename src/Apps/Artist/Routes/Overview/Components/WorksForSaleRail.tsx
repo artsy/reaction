@@ -35,6 +35,7 @@ const WorksForSaleRail: React.FC<WorksForSaleRailProps & {
       height="240px"
       data={artistData}
       options={{ pageDots: false }}
+      contextModule={ContextModule.worksForSaleRail}
       render={artwork => {
         const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
         return (

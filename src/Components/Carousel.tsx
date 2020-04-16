@@ -1,3 +1,4 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
@@ -44,6 +45,11 @@ interface CarouselProps {
    * The width of the carousel
    */
   width?: string
+
+  /**
+   * For analytics, describes the context for rail content
+   */
+  contextModule?: ContextModule
 
   /**
    * Callback when forward / backward arrows are clicked
@@ -99,7 +105,7 @@ export class Carousel extends React.Component<CarouselProps> {
 
   render() {
     return (
-      <Box width="100%">
+      <Box width="100%" data-test={this.props.contextModule}>
         <Media greaterThan="xs">
           <LargeCarousel {...this.props} />
         </Media>
