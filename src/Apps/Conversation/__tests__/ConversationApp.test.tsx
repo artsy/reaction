@@ -55,7 +55,7 @@ describe("Conversation app", () => {
       lab_features: ["User Conversations View"],
     }
     describe("having previous conversations", () => {
-      it("renders conversations with view details button", async () => {
+      it("renders conversations", async () => {
         // TODO: revisit mocking and remove `artist_names` alias from PurchseHistory
         const mockMe = {
           id: "111",
@@ -66,9 +66,9 @@ describe("Conversation app", () => {
         }
         const component = await render(mockMe, userType)
         const text = component.text()
-        expect(text).toContain("ConversationsAshkan Gallery-Title 1")
-        const btn = component.find("ArrowRightCircleIcon")
-        expect(btn.length).toBe(1)
+        expect(text).toContain(
+          "InboxAshkan Gallery(message count)Mon, Feb 17, 5:51 PM"
+        )
       })
     })
     describe("without previous conversations", () => {
