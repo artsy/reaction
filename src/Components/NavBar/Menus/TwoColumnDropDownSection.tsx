@@ -12,6 +12,8 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
   // The data for nationality and region are represented in a single array, but
   // visually they should be shown as two distinct columns. This is the only
   // section that behaves this way so we've created a separate component for it.
+  const nationalities = section.menu.links.slice(0, 8)
+  const regions = section.menu.links.slice(-8)
 
   return (
     <Flex>
@@ -20,7 +22,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
           {section.text}
         </Sans>
         {section.menu &&
-          section.menu.links.slice(0, 8).map((menuItem: SimpleLinkData) => {
+          nationalities.map((menuItem: SimpleLinkData) => {
             return (
               <MenuItem
                 key={menuItem.text}
@@ -38,7 +40,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
       </Box>
       <Box width={[110, 110, 110, 135, 150]} pt="66px" pb={4} mr={[2, 2, 3, 3]}>
         {section.menu &&
-          section.menu.links.slice(-8).map((menuItem: SimpleLinkData) => {
+          regions.map((menuItem: SimpleLinkData) => {
             return (
               <MenuItem
                 key={menuItem.text}
