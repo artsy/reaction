@@ -1,3 +1,22 @@
+# v26.19.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Update conversation inbox visuals on mobile [#3404](https://github.com/artsy/reaction/pull/3404) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v8.1.1 [#3382](https://github.com/artsy/reaction/pull/3382) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.18.0 (Thu Apr 16 2020)
 
 #### 🚀  Enhancement
