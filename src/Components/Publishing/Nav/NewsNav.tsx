@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import colors from "../../../Assets/Colors"
 import { pMedia } from "../../Helpers"
-import { /*NewsDateHeader*/ NewsText } from "../News/NewsDateHeader"
+import { NewsDateHeader, NewsText } from "../News/NewsDateHeader"
 
 interface Props {
   date?: string
@@ -10,12 +10,11 @@ interface Props {
 }
 
 export const NewsNav: React.SFC<Props> = props => {
-  const { /*date*/ positionTop } = props
+  const { date, positionTop } = props
   return (
     <NewsNavContainer positionTop={positionTop}>
       <MaxWidthContainer>
-        {/* FIXME: Reenable once date update bug is resolved */}
-        {/* {date && <NewsDateHeader date={date} />} */}
+        {date && <NewsDateHeader date={date} />}
         <Title>News</Title>
       </MaxWidthContainer>
     </NewsNavContainer>
@@ -24,12 +23,11 @@ export const NewsNav: React.SFC<Props> = props => {
 
 const Title = styled(NewsText)`
   text-align: center;
-  /* FIXME: Uncomment once date update bug is resolved */
-  /* position: absolute; */
-  /* left: 30px; */
-  /* ${pMedia.sm`
+  position: absolute;
+  left: 30px;
+  ${pMedia.sm`
     left: 20px;
-  `}; */
+  `};
 `
 
 const MaxWidthContainer = styled.div`
