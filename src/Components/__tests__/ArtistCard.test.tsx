@@ -1,4 +1,4 @@
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
@@ -27,7 +27,7 @@ describe("ArtistCard", () => {
     props = {
       mediator: { trigger: jest.fn() },
       user: null,
-      contextModule: SchemaV2.ContextModule.artistsToFollowRail,
+      contextModule: ContextModule.artistsToFollowRail,
       artist: {
         image: {
           cropped: {

@@ -1,6 +1,6 @@
+import { ContextModule } from "@artsy/cohesion"
 import { TagArtworks_tag } from "__generated__/TagArtworks_tag.graphql"
 import { Mediator } from "Artsy"
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import {

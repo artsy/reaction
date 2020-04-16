@@ -1,6 +1,6 @@
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { Mediator } from "Artsy"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Truncator } from "Components/Truncator"
 import React, { SFC } from "react"
@@ -25,7 +25,7 @@ import styled from "styled-components"
 
 export interface ArtistCardProps {
   artist: ArtistCard_artist
-  contextModule: SchemaV2.AuthContextModule
+  contextModule: AuthContextModule
   user: User
   mediator?: Mediator
   /** Lazy load the avatar image */
@@ -142,7 +142,7 @@ const handleOpenAuth = (props: ArtistCardProps) => {
   openAuthToFollowSave(props.mediator, {
     entity: props.artist,
     contextModule: props.contextModule,
-    intent: SchemaV2.AuthIntent.followArtist,
+    intent: AuthIntent.followArtist,
   })
 }
 

@@ -1,3 +1,4 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Box, Button, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
@@ -5,7 +6,6 @@ import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { Carousel } from "Components/Carousel"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
@@ -390,8 +390,8 @@ export class SmallArtistHeader extends Component<Props> {
 const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: SchemaV2.ContextModule.artistHeader,
-    intent: SchemaV2.AuthIntent.followArtist,
+    contextModule: ContextModule.artistHeader,
+    intent: AuthIntent.followArtist,
   })
 }
 

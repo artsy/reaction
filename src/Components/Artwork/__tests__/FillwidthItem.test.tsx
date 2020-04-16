@@ -1,4 +1,4 @@
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { render } from "enzyme"
 import React from "react"
 import { FillwidthItem } from "../FillwidthItem"
