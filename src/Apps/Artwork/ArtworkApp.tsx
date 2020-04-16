@@ -72,24 +72,28 @@ export class ArtworkApp extends React.Component<Props> {
       referrer,
     } = this.props
 
+    const path = window.location.pathname
     // FIXME: This breaks our global pageview tracking in the router level.
     // Can these props be tracked on mount using our typical @track() or
     // trackEvent() patterns as used in other apps?
     const properties = {
-      path: window.location.pathname,
+      path,
       acquireable: is_acquireable,
       offerable: is_offerable,
       availability,
       price_listed: !!listPrice,
       referrer,
+      url: sd.APP_URL + path,
     }
 
     if (typeof window.analytics !== "undefined") {
+      // See trackingMiddleware.ts
+      window.analytics.__artsyReferrer = referrer
       window.analytics.page(properties, { integrations: { Marketo: false } })
 
       // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
       if (sd.CLIENT_NAVIGATION_V5) {
-        trackExperimentViewed("client_navigation_v5")
+        trackExperimentViewed("client_navigation_v5", properties)
       }
     }
   }

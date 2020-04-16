@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react"
 
 import { Box, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
+import { bidderNeedsIdentityVerification } from "Utils/identityVerificationRequirements"
 import { ConditionsOfSaleCheckbox } from "./ConditionsOfSaleCheckbox"
 
 // For convenience even though sale is for now a single value
 interface Sale {
   name: string
+  requireIdentityVerification: boolean
+}
+
+interface Me {
+  identityVerified: boolean
 }
 
 export type SubmitRegistrationHandler = (opts: {
@@ -18,6 +24,8 @@ export type SubmitRegistrationHandler = (opts: {
 interface Props {
   /** The auction attributes */
   auction: Sale
+  /** The me attributes */
+  me: Me
   /** Any cleanup that needs to happen when the modal closes */
   onClose: () => void
   /** Handle a successful submission (commence registration) */
@@ -26,6 +34,7 @@ interface Props {
 
 export const AuctionRegistrationModal: React.FC<Props> = ({
   auction,
+  me,
   onClose,
   onSubmit,
 }) => {
@@ -69,10 +78,25 @@ export const AuctionRegistrationModal: React.FC<Props> = ({
     <Modal show={show} onClose={closeModal}>
       <Box pt={[3, 0]} textAlign="center">
         <Serif size="6">Register for {auction.name}</Serif>
-        <Serif my={3} size="4">
-          Welcome back. To complete your registration, please confirm that you
-          agree to the Conditions of Sale.
-        </Serif>
+
+        {bidderNeedsIdentityVerification({ sale: auction, user: me }) ? (
+          <>
+            <Serif my={3} size="4">
+              This auction requires Artsy to verify your identity before
+              bidding.
+            </Serif>
+            <Serif my={3} size="4">
+              After you register, you’ll receive an email with a link to
+              complete identity verification.
+            </Serif>
+          </>
+        ) : (
+          <Serif my={3} size="4">
+            Welcome back. To complete your registration, please confirm that you
+            agree to the Conditions of Sale.
+          </Serif>
+        )}
+
         <Flex my={4} flexDirection="column" justifyContent="center">
           <Box mx="auto">
             <ConditionsOfSaleCheckbox

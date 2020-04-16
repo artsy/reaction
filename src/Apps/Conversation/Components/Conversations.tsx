@@ -1,4 +1,4 @@
-import { Box, Sans, Serif } from "@artsy/palette"
+import { Box, Sans, Separator } from "@artsy/palette"
 import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -14,7 +14,10 @@ const Conversations: React.FC<ConversationsProps> = props => {
   const conversations = me.conversationsConnection.edges
   return (
     <Box px={1}>
-      <Serif size="5">Conversations</Serif>
+      <Sans size="6" weight="medium" ml={1}>
+        Inbox
+      </Sans>
+      <Separator mt={2} />
       {conversations.length ? (
         conversations.map(edge => (
           <ConversationSnippet conversation={edge.node} key={edge.cursor} />

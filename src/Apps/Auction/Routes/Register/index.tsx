@@ -24,6 +24,7 @@ import {
 } from "react-relay"
 import { TrackingProp } from "react-tracking"
 import { data as sd } from "sharify"
+import { bidderNeedsIdentityVerification } from "Utils/identityVerificationRequirements"
 import createLogger from "Utils/logger"
 
 const logger = createLogger("Apps/Auction/Routes/Register")
@@ -99,8 +100,6 @@ export function createCreditCardAndUpdatePhone(relayEnvironment, phone, token) {
 
 export const RegisterRoute: React.FC<RegisterProps> = props => {
   const { me, relay, sale, tracking } = props
-  const needsIdentityVerification =
-    sale.requireIdentityVerification && !me.identityVerified
 
   const commonProperties = {
     auction_slug: sale.slug,
@@ -203,7 +202,10 @@ export const RegisterRoute: React.FC<RegisterProps> = props => {
         <StripeWrappedRegistrationForm
           onSubmit={handleSubmit}
           trackSubmissionErrors={trackRegistrationFailed}
-          needsIdentityVerification={needsIdentityVerification}
+          needsIdentityVerification={bidderNeedsIdentityVerification({
+            sale,
+            user: me,
+          })}
         />
       </Box>
     </AppContainer>

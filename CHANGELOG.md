@@ -1,3 +1,73 @@
+# v26.18.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Use @artsy/cohesion [#3411](https://github.com/artsy/reaction/pull/3411) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Fix conversation page from erroring out due to null timestamp [#3406](https://github.com/artsy/reaction/pull/3406) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update auto orb from 1.1.0 to v1.2.0 [#3409](https://github.com/artsy/reaction/pull/3409) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.17.3 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add search to referrer [#3410](https://github.com/artsy/reaction/pull/3410) ([@damassi](https://github.com/damassi))
+- [AUCT-952] Bidder sees copy in "about to register" and "registration pending" modals with information about identity verification [#3373](https://github.com/artsy/reaction/pull/3373) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Rollback JSDOM v16 upgrade
+
+We unfortunately discovered that some other specs are taking longer and
+hitting timeouts so we're going to postpone this library upgrade for
+now.
+
+Partially revert https://github.com/artsy/reaction/pull/3400
+
+Back out the library update but keep the `Object.defineProperty` mock
+updates which are backwards-compatible and should make a future upgrade
+attempt easier.
+
+Also remove the timeout bump added in
+https://github.com/artsy/reaction/pull/3402.
+
+Related issue thread on Jest 25 performance:
+https://github.com/facebook/jest/issues/9457 [#3408](https://github.com/artsy/reaction/pull/3408) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v26.17.2 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix referrer edgecase [#3407](https://github.com/artsy/reaction/pull/3407) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.17.1 (Wed Apr 15 2020)
 
 #### 🐛  Bug Fix

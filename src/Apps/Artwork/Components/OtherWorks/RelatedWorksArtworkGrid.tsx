@@ -13,7 +13,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import createLogger from "Utils/logger"
 
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
+import { ContextModule } from "@artsy/cohesion"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"

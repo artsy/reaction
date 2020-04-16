@@ -1,3 +1,4 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -5,7 +6,6 @@ import {
   Col,
   Collapse,
   Link,
-  NoArtworkIcon,
   Row,
   Sans,
 } from "@artsy/palette"
@@ -13,7 +13,6 @@ import { Box, Button, Flex, Separator, Spacer } from "@artsy/palette"
 import { ArtistAuctionResultItem_auctionResult } from "__generated__/ArtistAuctionResultItem_auctionResult.graphql"
 import { AnalyticsSchema, SystemContextProps } from "Artsy"
 import { Mediator, SystemContext } from "Artsy"
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 import { DateTime } from "luxon"
 import React, { SFC, useContext, useState } from "react"
@@ -23,7 +22,10 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 import { openAuthModal } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
-import { ImageWithFallback } from "./Components/ImageWithFallback"
+import {
+  ImageWithFallback,
+  renderFallbackImage,
+} from "./Components/ImageWithFallback"
 
 export interface Props extends SystemContextProps {
   expanded?: boolean
@@ -450,21 +452,6 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
       </Link>
     )
   }
-}
-
-const renderFallbackImage = () => {
-  return (
-    <Box bg="black5" width="100%" height="100%">
-      <Flex
-        alignItems="center"
-        justifyContent="center"
-        width="100%"
-        height="100%"
-      >
-        <NoArtworkIcon width="28px" height="28px" fill="black30" />
-      </Flex>
-    </Box>
-  )
 }
 
 const renderLargeCollapse = (props, user, mediator) => {

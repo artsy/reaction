@@ -22,6 +22,7 @@ import { ErrorModal } from "Components/Modal/ErrorModal"
 import createLogger from "Utils/logger"
 import { openAuthModal } from "Utils/openAuthModal"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { RequestConditionReport_artwork } from "__generated__/RequestConditionReport_artwork.graphql"
 import { RequestConditionReport_me } from "__generated__/RequestConditionReport_me.graphql"
 import {
@@ -29,7 +30,6 @@ import {
   RequestConditionReportMutationResponse,
 } from "__generated__/RequestConditionReportMutation.graphql"
 import { RequestConditionReportQuery } from "__generated__/RequestConditionReportQuery.graphql"
-import { AuthIntent, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ModalType } from "Components/Authentication/Types"
 
 const logger = createLogger(

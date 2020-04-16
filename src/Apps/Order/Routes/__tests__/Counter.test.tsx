@@ -96,7 +96,7 @@ describe("Submit Pending Counter Offer", () => {
 
     it("Shows the stepper", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkRespond navigate rightReview"`
+        `"CheckRespond Navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })

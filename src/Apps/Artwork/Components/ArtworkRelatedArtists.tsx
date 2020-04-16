@@ -1,10 +1,10 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { useSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { ArtistCardFragmentContainer as ArtistCard } from "Components/ArtistCard"
 import React, { useState } from "react"
 import {
@@ -64,7 +64,7 @@ export const ArtworkRelatedArtists: React.FC<ArtworkRelatedArtistsProps> = track
                 <ArtistCard
                   lazyLoad
                   artist={node}
-                  contextModule={SchemaV2.ContextModule.relatedArtistsRail}
+                  contextModule={ContextModule.relatedArtistsRail}
                   mediator={mediator}
                   user={user}
                   onClick={() => {
