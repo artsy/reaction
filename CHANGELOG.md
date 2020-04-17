@@ -1,3 +1,15 @@
+# v26.21.2 (Fri Apr 17 2020)
+
+#### 🐛  Bug Fix
+
+- Reverts Hotfix; Brings back dynamic nav bar on /news pages [#3413](https://github.com/artsy/reaction/pull/3413) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.21.1 (Fri Apr 17 2020)
 
 #### 🐛  Bug Fix
