@@ -32,7 +32,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   }
 
   return (
-    <Menu onClick={trackClick} width={width}>
+    <Menu onClick={trackClick} width={width} margin={0}>
       <Flex justifyContent="center">
         <SimpleLinksContainer py={4} mr={[4, 4, 4, 6]}>
           <Box mr={[2, 2, 3, 3]} width={[110, 110, 110, 135, 150]}>
