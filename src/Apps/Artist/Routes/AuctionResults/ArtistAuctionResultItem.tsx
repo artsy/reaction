@@ -370,13 +370,13 @@ const renderPricing = (salePrice, saleDate, user, mediator, size) => {
           mediator &&
             openAuthModal(mediator, {
               mode: ModalType.signup,
-              copy: "Log in to see full auction records — for free",
+              copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.loginToSeePrice,
+              intent: AuthIntent.seePriceAuctionRecords,
             })
         }}
       >
-        Log in to see price
+        Sign up to see price
       </Button>
     )
   }
@@ -408,11 +408,11 @@ const renderEstimate = (estimatedPrice, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.loginToSeeEstimate,
+              intent: AuthIntent.seeEstimateAuctionRecords,
             })
         }}
       >
-        <Sans size="2">Log in to see estimate</Sans>
+        <Sans size="2">Sign up to see estimate</Sans>
       </Link>
     )
   }
@@ -444,11 +444,11 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.loginToSeeRealizedPrice,
+              intent: AuthIntent.seeRealizedPriceAuctionRecords,
             })
         }}
       >
-        <Sans size="2">Log in to see realized price</Sans>
+        <Sans size="2">Sign up to see realized price</Sans>
       </Link>
     )
   }
