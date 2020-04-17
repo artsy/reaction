@@ -40,6 +40,7 @@ export type Conversation_conversation = {
             readonly date: string | null;
             readonly title: string | null;
             readonly artistNames: string | null;
+            readonly href: string | null;
             readonly image: {
                 readonly url: string | null;
             } | null;
@@ -346,6 +347,13 @@ return {
                   "storageKey": null
                 },
                 {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "href",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
                   "kind": "LinkedField",
                   "alias": null,
                   "name": "image",
@@ -394,5 +402,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '804cbe21587bb9598e69e62d4aab6e1d';
+(node as any).hash = 'd96c31a26e875921ff2d4fafb22c9a4f';
 export default node;
