@@ -14,7 +14,8 @@ storiesOf("Components/Auction", module).add("AuctionRegistrationModal", () => {
       <AuctionRegistrationModal
         onSubmit={submitHandler}
         onClose={() => null}
-        auction={{ name: "Big Time Sale" }}
+        auction={{ name: "Big Time Sale", requireIdentityVerification: false }}
+        me={{ identityVerified: false }}
       />
     </>
   )

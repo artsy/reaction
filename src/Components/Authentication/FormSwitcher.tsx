@@ -1,6 +1,5 @@
+import { authImpression, AuthModalType } from "@artsy/cohesion"
 import { Theme } from "@artsy/palette"
-import { authImpression } from "Artsy/Analytics/v2/Events"
-import { AuthModalType } from "Artsy/Analytics/v2/Schema"
 import qs from "querystring"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"

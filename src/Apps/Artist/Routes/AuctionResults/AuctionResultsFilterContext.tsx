@@ -8,6 +8,7 @@ export interface AuctionResultsFilters {
   sort?: string
   createdAfterYear?: number
   createdBeforeYear?: number
+  allowEmptyCreatedDates?: boolean
 
   /** Used to get the overall earliest created year for all lots of given artist */
   readonly earliestCreatedYear?: number
@@ -27,6 +28,7 @@ export const initialAuctionResultsFilterState: AuctionResultsFilters = {
   sizes: [],
   page: 1,
   sort: "DATE_DESC",
+  allowEmptyCreatedDates: true,
 }
 
 /**
@@ -172,6 +174,7 @@ const AuctionResultsFilterReducer = (
         "page",
         "createdAfterYear",
         "createdBeforeYear",
+        "allowEmptyCreatedDates",
       ]
       primitiveFilterTypes.forEach(filter => {
         if (name === filter) {

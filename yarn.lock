@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.2.tgz#b79f6fd0d0bda0c5e0764ced55e014cf58174d6f"
   integrity sha512-mJyuKNDMYZcgc2oLIkvmpVIr1RexklV71JmU+to5qs3Y9pv5dsj4WHl8+wf9g74EQNOyhWH2SYMGBm1JoPYh/Q==
 
+"@artsy/cohesion@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-0.0.3.tgz#5d72b326ba2a5cb2c55c0f9be6907a2ef2bc6efa"
+  integrity sha512-A03aJmbwNnaTQceruZKjE1L2hCYDkshHM62rxl5BEQ6UmxhqmYRxqr5QEUk3n8Rz5l3rmdPNp2Fx4F6KL6HKmQ==
+
 "@artsy/detect-responsive-traits@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.0.5.tgz#abf85959f8567816babec6f582b744f58c98b726"
@@ -28,10 +33,10 @@
     p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
-"@artsy/palette@8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-8.0.0.tgz#a57d67ba430de5eeeaf8dbcfdc1bb7128abf5b73"
-  integrity sha512-tl4VkBDXueWAQWEf1NTVHWgkUs21fMhL4scnvzmEHigc4HyRwtXrH2Qi/d8Edixp/H31KX2+CYCUrkq77n1Aqg==
+"@artsy/palette@8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-8.1.1.tgz#0297462ade54b21c945173616a92ffd62eb64f36"
+  integrity sha512-McLyxPvqIPJbsecRoGjzeHGe9oMkBnE0pWIF7wPieaQ+xecOZedm5T7X6/XoKBpZeHf3SX74hzzdiLBeLdH0hQ==
   dependencies:
     babel-plugin-styled-components "^1.10.0"
     d3-interpolate "^1.3.2"
@@ -3239,6 +3244,13 @@
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
+
+"@types/qrcode.react@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/qrcode.react/-/qrcode.react-1.0.0.tgz#9eff4d4a93eb32fcd65e26ea046f2efc52764431"
+  integrity sha512-CyH8QizAyp/G2RTz+2W0qIp/qbJMNC6a8aossG+zN42Rmx3loQlgBCWFatjKJ3NeJaX99e22SJ75yU2EVHlu3g==
+  dependencies:
+    "@types/react" "*"
 
 "@types/qs@6.5.3":
   version "6.5.3"
@@ -14054,6 +14066,20 @@ q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
+
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8=
+
+qrcode.react@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-1.0.0.tgz#7e8889db3b769e555e8eb463d4c6de221c36d5de"
+  integrity sha512-jBXleohRTwvGBe1ngV+62QvEZ/9IZqQivdwzo9pJM4LQMoCM2VnvNBnKdjvGnKyDZ/l0nCDgsPod19RzlPvm/Q==
+  dependencies:
+    loose-envify "^1.4.0"
+    prop-types "^15.6.0"
+    qr.js "0.0.0"
 
 qs@6.5.1:
   version "6.5.1"

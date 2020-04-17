@@ -107,7 +107,10 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOrderWithVersionMismatchFailure)
       await page.clickSubmit()
@@ -119,7 +122,10 @@ describe("Review", () => {
     })
 
     it("shows a modal with a helpful error message if a user has not entered shipping and payment information", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOrderWithMissingInfo)
 
@@ -151,7 +157,10 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOrderWithNoInventoryFailure)
       await page.clickSubmit()
@@ -184,7 +193,7 @@ describe("Review", () => {
 
     it("shows an active offer stepper if the order is an Offer Order", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkOffer navigate rightcheckShipping navigate rightcheckPayment navigate rightReview"`
+        `"CheckOffer Navigate rightCheckShipping Navigate rightCheckPayment Navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })
@@ -233,7 +242,10 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOfferOrderWithVersionMismatchFailure)
 
@@ -247,7 +259,10 @@ describe("Review", () => {
     })
 
     it("shows a modal if there is a payment_method_confirmation_failed", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOfferOrderFailedConfirmation)
 

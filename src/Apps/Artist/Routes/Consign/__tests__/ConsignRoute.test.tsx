@@ -90,8 +90,9 @@ describe("ConsignRoute", () => {
         .simulate("click")
       expect(trackEvent).toHaveBeenCalledWith({
         action_type: "Click",
-        subject: "Request a price estimate",
         context_module: "Sell Works by",
+        flow: "Consignments",
+        subject: "Request a price estimate",
       })
     })
   })
@@ -214,6 +215,7 @@ describe("ConsignRoute", () => {
       expect(trackEvent).toHaveBeenCalledWith({
         action_type: "Click",
         context_module: "How to sell your collection with Artsy",
+        flow: "Consignments",
         subject: "Request a price estimate",
       })
     })
@@ -261,6 +263,7 @@ describe("ConsignRoute", () => {
       expect(trackEvent).toHaveBeenCalledWith({
         action_type: "Click",
         context_module: "Sell Art From Your Collection",
+        flow: "Consignments",
         subject: "Request a price estimate",
       })
     })

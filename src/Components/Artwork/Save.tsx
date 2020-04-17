@@ -1,8 +1,8 @@
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import * as Artsy from "Artsy"
 import { track } from "Artsy/Analytics"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import { extend, isNull } from "lodash"
 import React from "react"
 import {
@@ -28,7 +28,7 @@ export interface SaveProps
   extends Artsy.SystemContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
-  contextModule: SchemaV2.AuthContextModule
+  contextModule: AuthContextModule
   style?: any
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
@@ -136,7 +136,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           slug: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
-        intent: SchemaV2.AuthIntent.saveArtwork,
+        intent: AuthIntent.saveArtwork,
       })
     }
   }

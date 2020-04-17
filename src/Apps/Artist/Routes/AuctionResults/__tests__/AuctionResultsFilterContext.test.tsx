@@ -67,6 +67,23 @@ describe("AuctionResultsFilterContext", () => {
       })
     })
 
+    describe("#setFilter for allowEmptyCreatedDates", () => {
+      it("should set allowEmptyCreatedDates to false", done => {
+        getWrapper({
+          filters: {
+            allowEmptyCreatedDates: true,
+          },
+        })
+        act(() => {
+          context.setFilter("allowEmptyCreatedDates", false)
+          setTimeout(() => {
+            expect(context.filters.allowEmptyCreatedDates).toEqual(false)
+            done()
+          })
+        })
+      })
+    })
+
     describe("#setFilter for createdAfterYear", () => {
       it("should set createdBeforeYear if it is not already provided", done => {
         getWrapper({

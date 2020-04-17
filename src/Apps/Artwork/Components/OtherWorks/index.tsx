@@ -1,3 +1,4 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Box, Join, Spacer } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
 import { OtherAuctionsQueryRenderer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
@@ -6,7 +7,6 @@ import { RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid } fr
 import { Mediator, SystemContextProps, withSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
 import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -57,16 +57,16 @@ const contextGridTypeToContextModule = contextGridType => {
 const contextGridTypeToV2ContextModule = contextGridType => {
   switch (contextGridType) {
     case "ArtistArtworkGrid": {
-      return SchemaV2.ContextModule.otherWorksByArtistRail
+      return ContextModule.otherWorksByArtistRail
     }
     case "PartnerArtworkGrid": {
-      return SchemaV2.ContextModule.otherWorksFromPartnerRail
+      return ContextModule.otherWorksFromPartnerRail
     }
     case "AuctionArtworkGrid": {
-      return SchemaV2.ContextModule.otherWorksInAuctionRail
+      return ContextModule.otherWorksInAuctionRail
     }
     case "ShowArtworkGrid": {
-      return SchemaV2.ContextModule.otherWorksFromShowRail
+      return ContextModule.otherWorksFromShowRail
     }
   }
 }

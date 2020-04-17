@@ -128,7 +128,10 @@ describe("ArtworkSidebarCommercial", () => {
   })
 
   it("creates a Buy Now order and redirects to the order page", () => {
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn() },
+    })
     const component = getWrapper(ArtworkBuyNow)
 
     commitMutation.mockImplementationOnce((_environment, { onCompleted }) => {
@@ -142,7 +145,10 @@ describe("ArtworkSidebarCommercial", () => {
   })
 
   it("displays an error modal when a Buy Now mutation fails", () => {
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn() },
+    })
     const component = getWrapper(ArtworkBuyNow)
 
     commitMutation.mockImplementationOnce((_environment, { onCompleted }) => {
@@ -166,7 +172,10 @@ describe("ArtworkSidebarCommercial", () => {
   })
 
   it("creates a Make Offer order and redirects to the order offer page", () => {
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn() },
+    })
     const component = getWrapper(ArtworkMakeOffer)
 
     commitMutation.mockImplementationOnce((_environment, { onCompleted }) => {
@@ -180,7 +189,10 @@ describe("ArtworkSidebarCommercial", () => {
   })
 
   it("displays an error modal when a Make Offer mutation fails", () => {
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn() },
+    })
     const component = getWrapper(ArtworkMakeOffer)
 
     commitMutation.mockImplementationOnce((_environment, { onCompleted }) => {

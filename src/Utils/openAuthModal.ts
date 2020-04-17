@@ -1,4 +1,4 @@
-import * as Schema from "Artsy/Analytics/v2/Schema"
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { Mediator } from "Artsy/SystemContext"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import qs from "qs"
@@ -9,8 +9,8 @@ export interface AuthModalOptions extends ModalOptions {
     slug: string
     name: string
   }
-  contextModule: Schema.AuthContextModule
-  intent: Schema.AuthIntent
+  contextModule: AuthContextModule
+  intent: AuthIntent
 }
 
 export const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
@@ -61,10 +61,10 @@ function openMobileAuth(intent) {
 
 function getMobileAuthIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
-    case Schema.AuthIntent.followArtist:
-    case Schema.AuthIntent.followPartner:
+    case AuthIntent.followArtist:
+    case AuthIntent.followPartner:
       return getMobileIntentToFollow(options)
-    case Schema.AuthIntent.saveArtwork:
+    case AuthIntent.saveArtwork:
       return getMobileIntentToSaveArtwork(options)
     default:
       return undefined
@@ -76,7 +76,7 @@ function getMobileIntentToFollow({
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === Schema.AuthIntent.followArtist ? "artist" : "profile"
+  const kind = intent === AuthIntent.followArtist ? "artist" : "profile"
   return {
     action: "follow",
     contextModule,
@@ -107,7 +107,7 @@ function getDesktopIntentToFollow({
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === Schema.AuthIntent.followArtist ? "artist" : "profile"
+  const kind = intent === AuthIntent.followArtist ? "artist" : "profile"
   return {
     mode: ModalType.signup,
     contextModule,
@@ -141,10 +141,10 @@ function getDesktopIntentToSaveArtwork({
 
 function getDesktopAuthIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
-    case Schema.AuthIntent.followArtist:
-    case Schema.AuthIntent.followPartner:
+    case AuthIntent.followArtist:
+    case AuthIntent.followPartner:
       return getDesktopIntentToFollow(options)
-    case Schema.AuthIntent.saveArtwork:
+    case AuthIntent.saveArtwork:
       return getDesktopIntentToSaveArtwork(options)
     default:
       return undefined

@@ -1,4 +1,4 @@
-import { Flex, Image, Serif } from "@artsy/palette"
+import { color, Flex, Image, Link, Sans, Serif } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { DateTime } from "luxon"
 import React from "react"
@@ -16,19 +16,30 @@ const Item: React.FC<ItemProps> = props => {
   const { item } = props
   if (item.__typename === "Artwork") {
     return (
-      <Flex width="350px">
-        <Flex height="auto" alignItems="center" mr={2}>
-          <Image src={item.image.url} width="55px" />
+      <Link
+        href={item.href}
+        underlineBehavior="none"
+        style={{ alignSelf: "flex-end" }}
+        my={1}
+      >
+        <Flex flexDirection="column" width="350px">
+          <Image src={item.image.url} borderRadius="15px 15px 0 0" />
+          <Flex
+            p={1}
+            flexDirection="column"
+            justifyContent="center"
+            background={color("black100")}
+            borderRadius="0 0 15px 15px"
+          >
+            <Sans size="4" weight="medium" color="white100">
+              {item.artistNames}
+            </Sans>
+            <Sans size="2" color="white100">
+              {item.title} / {item.date}
+            </Sans>
+          </Flex>
         </Flex>
-        <Flex flexDirection="column" justifyContent="center">
-          <Serif size="2" weight="semibold">
-            {item.artistNames}
-          </Serif>
-          <Serif italic size="2" color="black60" lineHeight={1.3}>
-            {item.title}, {item.date}
-          </Serif>
-        </Flex>
-      </Flex>
+      </Link>
     )
   } else if (item.__typename === "Show") {
     // it's a partnerShow
@@ -93,7 +104,7 @@ export interface ConversationProps {
 const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
   return (
-    <Flex flexDirection="column" width="100%">
+    <Flex flexDirection="column" width="100%" px={1}>
       {conversation.items.map((i, idx) => (
         <Item
           item={i.item}
@@ -127,7 +138,9 @@ const Conversation: React.FC<ConversationProps> = props => {
                     key={message.internalID}
                     isFirst={groupIndex + messageIndex === 0}
                     showTimeSince={
-                      today && messageGroup.length - 1 === messageIndex
+                      message.createdAt &&
+                      today &&
+                      messageGroup.length - 1 === messageIndex
                     }
                     mb={
                       nextMessage &&
@@ -195,6 +208,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
               date
               title
               artistNames
+              href
               image {
                 url
               }

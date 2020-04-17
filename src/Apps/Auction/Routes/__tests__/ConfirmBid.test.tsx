@@ -138,8 +138,10 @@ describe("Routes/ConfirmBid", () => {
     // tslint:disable-next-line:no-empty
     window.Stripe = () => {}
 
-    window.location.assign = jest.fn()
-    window.location.search = ""
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn(), search: "" },
+    })
   })
 
   afterEach(() => {

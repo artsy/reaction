@@ -1,1 +1,0 @@
-export { authImpression } from "./AuthImpression"

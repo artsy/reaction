@@ -15,7 +15,10 @@ interface NavItemProps extends BoxProps {
   className?: string
   href?: string
   onClick?: () => void
+  isFullScreenDropDown?: boolean
 }
+
+type Position = React.CSSProperties["position"]
 
 export const NavItem: React.FC<NavItemProps> = ({
   Menu,
@@ -26,6 +29,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   display = "block",
   href,
   onClick,
+  isFullScreenDropDown,
 }) => {
   const navItemLabel = children
   const { trackEvent } = useTracking()
@@ -36,6 +40,8 @@ export const NavItem: React.FC<NavItemProps> = ({
   const getAnimation = h => ({
     opacity: h ? 0 : 1,
     transform: `translate3d(0, ${h ? -90 : -65}px, 0)`,
+    position: isFullScreenDropDown ? ("absolute" as Position) : "static",
+    left: "0px",
   })
   const animatedStyle = useSpring({
     from: getAnimation(hover),
@@ -75,7 +81,6 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <Box
-      position="relative"
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
     >
@@ -110,7 +115,7 @@ export const NavItem: React.FC<NavItemProps> = ({
 
       {showMenu && (
         <animated.div style={animatedStyle}>
-          <MenuContainer top={space(6)}>
+          <MenuContainer top={space(6)} isFullScreen={isFullScreenDropDown}>
             <Menu />
           </MenuContainer>
         </animated.div>
@@ -121,8 +126,8 @@ export const NavItem: React.FC<NavItemProps> = ({
   )
 }
 
-const MenuContainer = styled(Box)`
+const MenuContainer = styled(Box)<{ isFullScreen?: boolean }>`
   position: absolute;
   margin-top: -1px; /* Offset border */
-  transform: translateX(-78%);
+  transform: translateX(${p => (p.isFullScreen ? 0 : "-78%")});
 `

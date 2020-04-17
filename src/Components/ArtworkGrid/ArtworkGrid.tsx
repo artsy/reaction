@@ -1,7 +1,7 @@
+import { AuthContextModule, ContextModule } from "@artsy/cohesion"
 import { Flex } from "@artsy/palette"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy"
-import { AuthContextModule, ContextModule } from "Artsy/Analytics/v2/Schema"
 import { ArtworkGridEmptyState } from "Components/ArtworkGrid/ArtworkGridEmptyState"
 import { isEqual } from "lodash"
 import memoizeOnce from "memoize-one"

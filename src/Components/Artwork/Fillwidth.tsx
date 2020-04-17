@@ -1,6 +1,6 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
 import { Mediator } from "Artsy"
-import { ContextModule } from "Artsy/Analytics/v2/Schema"
 import { find } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

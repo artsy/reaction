@@ -30,6 +30,7 @@ export const ArtistConsignSellArt: React.FC = props => {
                 action_type: AnalyticsSchema.ActionType.Click,
                 context_module:
                   AnalyticsSchema.ContextModule.SellArtFromYourCollection,
+                flow: AnalyticsSchema.Flow.Consignments,
                 subject: AnalyticsSchema.Subject.RequestPriceEstimate,
               })
             }}

@@ -1,4 +1,4 @@
-import * as SchemaV2 from "Artsy/Analytics/v2/Schema"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { ModalType } from "Components/Authentication/Types"
 import {
   AuthModalOptions,
@@ -10,30 +10,30 @@ jest.mock("sharify", () => ({ data: jest.fn() }))
 const sd = require("sharify").data
 
 const artistArgs: AuthModalOptions = {
-  contextModule: SchemaV2.ContextModule.artistHeader,
+  contextModule: ContextModule.artistHeader,
   entity: {
     slug: "andy-warhol",
     name: "Andy Warhol",
   },
-  intent: SchemaV2.AuthIntent.followArtist,
+  intent: AuthIntent.followArtist,
 }
 
 const partnerArgs: AuthModalOptions = {
-  contextModule: SchemaV2.ContextModule.aboutTheWork,
+  contextModule: ContextModule.aboutTheWork,
   entity: {
     slug: "david-zwirner",
     name: "David Zwirner",
   },
-  intent: SchemaV2.AuthIntent.followPartner,
+  intent: AuthIntent.followPartner,
 }
 
 const artworkArgs: AuthModalOptions = {
-  contextModule: SchemaV2.ContextModule.artworkGrid,
+  contextModule: ContextModule.artworkGrid,
   entity: {
     slug: "andy-warhol-skull",
     name: "Skull",
   },
-  intent: SchemaV2.AuthIntent.saveArtwork,
+  intent: AuthIntent.saveArtwork,
 }
 
 describe("openAuth Helpers", () => {
@@ -43,15 +43,18 @@ describe("openAuth Helpers", () => {
     mediator = {
       trigger: jest.fn(),
     }
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { href: "http://localhost/", assign: jest.fn() },
+    })
   })
 
   describe("#openAuthModal", () => {
     it("calls the mediator with expected args", () => {
       openAuthModal(mediator, {
         mode: ModalType.signup,
-        intent: SchemaV2.AuthIntent.signup,
-        contextModule: SchemaV2.ContextModule.header,
+        intent: AuthIntent.signup,
+        contextModule: ContextModule.header,
         copy: "Sign up to do cool stuff",
       })
 

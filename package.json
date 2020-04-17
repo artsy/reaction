@@ -1,13 +1,13 @@
 {
   "name": "@artsy/reaction",
-  "version": "26.14.2",
+  "version": "26.21.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@artsy/palette": "^4.16.0 || ^5.0.0 || ^7.0.0",
+    "@artsy/palette": "^4.16.0 || ^5.0.0 || ^7.0.0 || ^8.0.0",
     "@sentry/browser": "^4.2.3",
     "flickity": "2.1.2",
     "react": "^16.13.1",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
     "@artsy/lint-changed": "3.0.4",
-    "@artsy/palette": "8.0.0",
+    "@artsy/palette": "8.1.1",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -85,6 +85,7 @@
     "@types/lodash": "4.14.111",
     "@types/memoize-one": "3.1.1",
     "@types/prop-types": "15.7.1",
+    "@types/qrcode.react": "1.0.0",
     "@types/qs": "6.5.3",
     "@types/react": "16.8.7",
     "@types/react-dom": "16.8.4",
@@ -169,6 +170,7 @@
     "yalc": "1.0.0-pre.34"
   },
   "dependencies": {
+    "@artsy/cohesion": "0.0.3",
     "@artsy/detect-responsive-traits": "^0.0.5",
     "@artsy/fresnel": "^1.0.13",
     "@artsy/react-html-parser": "^3.0.2",
@@ -192,6 +194,7 @@
     "numeral": "^2.0.4",
     "openseadragon": "^2.4.2",
     "prop-types": "^15.5.10",
+    "qrcode.react": "^1.0.0",
     "qs": "^6.5.0",
     "rc-slider": "^8.6.2",
     "react-autosuggest": "^9.4.3",

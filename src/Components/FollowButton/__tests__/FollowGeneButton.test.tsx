@@ -20,7 +20,10 @@ describe("FollowGeneButton", () => {
     )
   }
 
-  window.location.assign = jest.fn()
+  Object.defineProperty(window, "location", {
+    writable: true,
+    value: { assign: jest.fn() },
+  })
 
   let testProps
   beforeEach(() => {

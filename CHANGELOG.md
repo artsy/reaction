@@ -1,3 +1,192 @@
+# v26.21.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Update desktop nav menu [#3369](https://github.com/artsy/reaction/pull/3369) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v26.19.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Update conversation inbox visuals on mobile [#3404](https://github.com/artsy/reaction/pull/3404) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v8.1.1 [#3382](https://github.com/artsy/reaction/pull/3382) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.18.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Use @artsy/cohesion [#3411](https://github.com/artsy/reaction/pull/3411) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Fix conversation page from erroring out due to null timestamp [#3406](https://github.com/artsy/reaction/pull/3406) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update auto orb from 1.1.0 to v1.2.0 [#3409](https://github.com/artsy/reaction/pull/3409) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.17.3 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add search to referrer [#3410](https://github.com/artsy/reaction/pull/3410) ([@damassi](https://github.com/damassi))
+- [AUCT-952] Bidder sees copy in "about to register" and "registration pending" modals with information about identity verification [#3373](https://github.com/artsy/reaction/pull/3373) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Rollback JSDOM v16 upgrade
+
+We unfortunately discovered that some other specs are taking longer and
+hitting timeouts so we're going to postpone this library upgrade for
+now.
+
+Partially revert https://github.com/artsy/reaction/pull/3400
+
+Back out the library update but keep the `Object.defineProperty` mock
+updates which are backwards-compatible and should make a future upgrade
+attempt easier.
+
+Also remove the timeout bump added in
+https://github.com/artsy/reaction/pull/3402.
+
+Related issue thread on Jest 25 performance:
+https://github.com/facebook/jest/issues/9457 [#3408](https://github.com/artsy/reaction/pull/3408) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v26.17.2 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix referrer edgecase [#3407](https://github.com/artsy/reaction/pull/3407) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.17.1 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3405](https://github.com/artsy/reaction/pull/3405) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.17.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- Update artwork preview in conversation [#3393](https://github.com/artsy/reaction/pull/3393) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.16.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- Expose static pages in search results/autocomplete [#3403](https://github.com/artsy/reaction/pull/3403) ([@sweir27](https://github.com/sweir27))
+- Add mocked UI for the 2FA backup codes
+
+Introduce the 2FA backup codes UI. Hook up the modal and 'Set up' /
+'Regenerate' controls. [#3399](https://github.com/artsy/reaction/pull/3399) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3401](https://github.com/artsy/reaction/pull/3401) ([@renovate-bot](https://github.com/renovate-bot))
+- Bump timeout of "ArtworkFilter/desktop/renders default UI items" spec [#3402](https://github.com/artsy/reaction/pull/3402) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.15.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1852] Add checkbox and filtering for lots with nil date information [#3397](https://github.com/artsy/reaction/pull/3397) ([@jpotts244](https://github.com/jpotts244))
+- Update Jest to use JSDOM v16 [#3400](https://github.com/artsy/reaction/pull/3400) ([@dblandin](https://github.com/dblandin))
+- Add mocked enrollment UI for the 2FA App Authenticator method
+
+Introduce the 2FA App Authenticator enrollment UI. Hooks up the modal
+and form components including basic validation.
+
+The OTP code `123456` will mimic a successful enrollment. Anything else
+will mimic an invalid OTP code. [#3398](https://github.com/artsy/reaction/pull/3398) ([@dblandin](https://github.com/dblandin))
+- Update window.location mocks to use Object.defineProperty
+
+Following the Jest update to use JSDOM v16, update window.location mocks
+to use `Object.defineProperty` to get past this error:
+
+```
+TypeError: Cannot assign to read only property 'assign' of object '[object Location]'
+``` [#3400](https://github.com/artsy/reaction/pull/3400) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v26.14.3 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add `flow: consignments` to tracking [#3396](https://github.com/artsy/reaction/pull/3396) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.14.2 (Tue Apr 14 2020)
 
 #### 🐛  Bug Fix

@@ -1,17 +1,24 @@
-import {
-  ArrowRightCircleIcon,
-  Box,
-  Flex,
-  Image,
-  Link,
-  Serif,
-  StackableBorderBox,
-} from "@artsy/palette"
+import { Box, Flex, Link, Row, Sans, Separator } from "@artsy/palette"
 import { ConversationSnippet_conversation } from "__generated__/ConversationSnippet_conversation.graphql"
-import { DateTime } from "luxon"
+import {
+  ImageWithFallback,
+  renderFallbackImage,
+} from "Apps/Artist/Routes/AuctionResults/Components/ImageWithFallback"
 import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
+import styled from "styled-components"
+import truncate from "trunc-html"
+import { TimeSince } from "./TimeSince"
+
+const StyledImage = styled(ImageWithFallback)`
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+`
+const StyledFlex = styled(Flex)`
+  float: left;
+`
 
 interface ConversationSnippetProps {
   conversation: ConversationSnippet_conversation
@@ -32,59 +39,82 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
   const item = conversation.items[0].item
 
   let imageURL
-  let title
+
   if (item.__typename === "Artwork") {
     imageURL = item.image && item.image.url
-    title = item.title
   } else if (item.__typename === "Show") {
     imageURL = item.coverImage && item.coverImage.url
-    title = item.name
   }
-  const date = DateTime.fromISO(conversation.lastMessageAt).toRelative()
 
   const partnerName = conversation.to.name
 
   const conversationText =
     conversation.lastMessage && conversation.lastMessage.replace(/\n/g, " ")
 
+  const truncatedText = truncate(conversationText, 100).html
+
   return (
-    <Box py={1}>
-      <StackableBorderBox
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
+    <Box>
+      <Link
+        href={`/user/conversations/${conversation.internalID}`}
+        underlineBehavior="none"
       >
-        <Flex>
-          <Flex height="auto" alignItems="center" mr={2}>
-            <Image src={imageURL} width="55px" />
-          </Flex>
-          <Flex flexDirection="column" justifyContent="center">
-            <Link
-              href={`/user/conversations/${conversation.internalID}`}
-              underlineBehavior="hover"
-            >
-              <Flex flexDirection="row">
-                <Serif size="2">{partnerName}</Serif>
-                <Serif size="2" ml={0.5} mr={0.5}>
-                  -
-                </Serif>
-                <Serif italic size="2" color="black60">
-                  {title && title.trim()}, {date}
-                </Serif>
+        <Flex alignItems="center" px={1} width="100%" height="120px">
+          <StyledFlex alignItems="center" height="80px" width="80px">
+            {imageURL ? (
+              <StyledImage
+                src={imageURL}
+                Fallback={() => (
+                  <Flex width="80px" height="80px">
+                    {renderFallbackImage()}
+                  </Flex>
+                )}
+              />
+            ) : (
+              <Flex width="80px" height="80px">
+                {renderFallbackImage()}
               </Flex>
-            </Link>
-            {conversationText}
+            )}
+          </StyledFlex>
+          <Flex pt={2} pl={1} width="100%" height="100%">
+            <Box width="100%">
+              <Row mb="2px">
+                <Flex width="100%" justifyContent="space-between">
+                  <Flex>
+                    <Sans
+                      size="3"
+                      weight="medium"
+                      mr="5px"
+                      color={conversation.unread ? "black" : "black60"}
+                    >
+                      {partnerName}
+                    </Sans>
+                    <Sans size="3" color={"black30"}>
+                      (message count)
+                    </Sans>
+                  </Flex>
+                  <Flex>
+                    <TimeSince
+                      time={conversation.lastMessageAt}
+                      size="3"
+                      mr="5px"
+                    />
+                  </Flex>
+                </Flex>
+              </Row>
+              <Row>
+                <Sans
+                  size="3t"
+                  color={conversation.unread ? "black" : "black60"}
+                >
+                  {truncatedText}
+                </Sans>
+              </Row>
+            </Box>
           </Flex>
         </Flex>
-        <Flex>
-          <Link
-            href={`/user/conversations/${conversation.internalID}`}
-            underlineBehavior="hover"
-          >
-            <ArrowRightCircleIcon height="28px" width="24px" />
-          </Link>
-        </Flex>
-      </StackableBorderBox>
+      </Link>
+      <Separator mx={1} width="auto" />
     </Box>
   )
 }
