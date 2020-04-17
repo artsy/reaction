@@ -1,3 +1,15 @@
+# v26.21.1 (Fri Apr 17 2020)
+
+#### 🐛  Bug Fix
+
+- Fix conversation page layout, link off to image [#3412](https://github.com/artsy/reaction/pull/3412) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.21.0 (Thu Apr 16 2020)
 
 #### 🚀  Enhancement
