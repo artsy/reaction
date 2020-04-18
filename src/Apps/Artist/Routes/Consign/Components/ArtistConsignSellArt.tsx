@@ -34,7 +34,10 @@ const ArtistConsignSellArt: React.FC<ArtistConsignSellArtProps> = ({
 
         <Box>
           <RouterLink
-            to={getConsignSubmissionUrl(artist.href)}
+            to={getConsignSubmissionUrl({
+              contextPath: artist.href,
+              subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+            })}
             onClick={() => {
               tracking.trackEvent({
                 action_type: AnalyticsSchema.ActionType.Click,

@@ -4,7 +4,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import { Consign_artist } from "__generated__/Consign_artist.graphql"
 
-import { ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
+import { ArtistConsignFAQFragmentContainer as ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
 import { ArtistConsignHeaderFragmentContainer as ArtistConsignHeader } from "./Components/ArtistConsignHeader"
 import { ArtistConsignHowtoSellFragmentContainer as ArtistConsignHowtoSell } from "./Components/ArtistConsignHowToSell"
 import { ArtistConsignMarketTrendsFragmentContainer as ArtistConsignMarketTrends } from "./Components/ArtistConsignMarketTrends"
@@ -28,7 +28,7 @@ export const ConsignRoute: React.FC<ConsignRouteProps> = ({ artist }) => {
       <ArtistConsignPageViews artist={artist} />
       <ArtistConsignMarketTrends artist={artist} />
       <ArtistConsignHowtoSell artist={artist} />
-      <ArtistConsignFAQ />
+      <ArtistConsignFAQ artist={artist} />
       <ArtistConsignSellArt artist={artist} />
     </Box>
   )
@@ -49,6 +49,7 @@ export const ConsignRouteFragmentContainer = createFragmentContainer(
         ...ArtistConsignPageViews_artist
         ...ArtistConsignMarketTrends_artist
         ...ArtistConsignHowToSell_artist
+        ...ArtistConsignFAQ_artist
         ...ArtistConsignSellArt_artist
       }
     `,

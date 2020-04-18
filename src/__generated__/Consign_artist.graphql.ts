@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type Consign_artist = {
-    readonly " $fragmentRefs": FragmentRefs<"ArtistConsignMeta_artist" | "ArtistConsignHeader_artist" | "ArtistConsignRecentlySold_artist" | "ArtistConsignPageViews_artist" | "ArtistConsignMarketTrends_artist" | "ArtistConsignHowToSell_artist" | "ArtistConsignSellArt_artist">;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistConsignMeta_artist" | "ArtistConsignHeader_artist" | "ArtistConsignRecentlySold_artist" | "ArtistConsignPageViews_artist" | "ArtistConsignMarketTrends_artist" | "ArtistConsignHowToSell_artist" | "ArtistConsignFAQ_artist" | "ArtistConsignSellArt_artist">;
     readonly " $refType": "Consign_artist";
 };
 export type Consign_artist$data = Consign_artist;
@@ -53,10 +53,15 @@ const node: ReaderFragment = {
     },
     {
       "kind": "FragmentSpread",
+      "name": "ArtistConsignFAQ_artist",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "ArtistConsignSellArt_artist",
       "args": null
     }
   ]
 };
-(node as any).hash = '103d9c682dae4f222178d7736413d4f0';
+(node as any).hash = '9f723d20ef4f7c755733a715e40e129d';
 export default node;
