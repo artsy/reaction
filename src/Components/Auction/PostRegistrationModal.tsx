@@ -45,13 +45,10 @@ const RegistrationPendingUnverified: ModalContent = ({ onClick }) => {
         This auction requires Artsy to verify your identity before bidding.
         <br />
         <br />
-        For details about identity verification, please see the
-        <a
-          target="_blank"
-          href="/identity-verification-faq"
-        >
+        For details about identity verification, please see the{" "}
+        <a target="_blank" href="/identity-verification-faq">
           FAQ
-        </a>
+        </a>{" "}
         or contact verification@artsy.net.
         <br />
         <br />A link to complete identity verification has been sent to your
