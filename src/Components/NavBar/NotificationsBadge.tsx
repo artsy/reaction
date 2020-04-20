@@ -1,4 +1,4 @@
-import { Box, color, Flex, Sans } from "@artsy/palette"
+import { Box, color, Flex, Sans, space } from "@artsy/palette"
 import { NotificationsMenuQueryResponse } from "__generated__/NotificationsMenuQuery.graphql"
 import { SystemContext } from "Artsy"
 import cookie from "cookies-js"
@@ -109,6 +109,6 @@ const Container = styled(Flex)`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 12px;
-  right: 0;
+  top: ${space(1)}px;
+  right: 48px;
 `

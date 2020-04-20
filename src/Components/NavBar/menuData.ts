@@ -159,7 +159,7 @@ export const menuData: MenuData = {
                 },
                 {
                   text: "Under $1,000",
-                  href: "/collect?price_range=50-1000",
+                  href: "/collect?price_range=%2A-1000",
                 },
               ],
             },
