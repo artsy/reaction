@@ -142,7 +142,7 @@ export class LargeArtistHeader extends Component<Props> {
 
     return (
       <HorizontalPadding>
-        <Box width="100%">
+        <Box width="100%" data-test={ContextModule.artistHeader}>
           {hasImages && (
             <>
               <Carousel
@@ -278,7 +278,7 @@ export class SmallArtistHeader extends Component<Props> {
     const isAdmin = userIsAdmin(user)
 
     return (
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" data-test={ContextModule.artistHeader}>
         {hasImages && (
           <Fragment>
             <Carousel
