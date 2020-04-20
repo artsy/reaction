@@ -80,7 +80,7 @@ describe("ConsignRoute", () => {
           .find("RouterLink")
           .html()
       ).toContain(
-        `href="/consign/submission?contextPath=/artist/alex-katz/consign"`
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
       )
     })
 
@@ -206,7 +206,7 @@ describe("ConsignRoute", () => {
           .find("RouterLink")
           .html()
       ).toContain(
-        `href="/consign/submission?contextPath=/artist/alex-katz/consign"`
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
       )
     })
 
@@ -256,7 +256,7 @@ describe("ConsignRoute", () => {
           .find("RouterLink")
           .html()
       ).toContain(
-        `href="/consign/submission?contextPath=/artist/alex-katz/consign"`
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
       )
     })
 

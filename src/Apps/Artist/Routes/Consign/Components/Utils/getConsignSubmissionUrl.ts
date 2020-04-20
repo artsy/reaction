@@ -6,5 +6,7 @@ export function getConsignSubmissionUrl(props: {
   contextPath: string
   subject: string
 }) {
-  return `/consign/submission?contextPath=${props.contextPath}/consign&subject=${props.subject}`
+  return `/consign/submission?contextPath=${encodeURIComponent(
+    props.contextPath + `/consign`
+  )}&subject=${encodeURIComponent(props.subject)}`
 }

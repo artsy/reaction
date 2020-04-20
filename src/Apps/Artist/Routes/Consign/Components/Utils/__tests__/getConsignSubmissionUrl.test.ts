@@ -4,9 +4,11 @@ describe("getConsignSubmissionUrl", () => {
   it("encodes correct query parameters", () => {
     expect(
       getConsignSubmissionUrl({
-        contextPath: "/foo/bar",
+        contextPath: "/artist/pablo-picasso",
         subject: "baz",
       })
-    ).toEqual("/consign/submission?contextPath=/foo/bar&subject=baz")
+    ).toEqual(
+      "/consign/submission?contextPath=%2Fartist%2Fpablo-picasso%2Fconsign&subject=baz"
+    )
   })
 })
