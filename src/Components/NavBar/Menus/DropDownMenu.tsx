@@ -17,6 +17,10 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   contextModule,
 }) => {
   const { trackEvent } = useTracking()
+  const viewAllTopMargin = {
+    HeaderArtworksDropdown: "130px",
+    HeaderArtistsDropdown: "90px",
+  }
 
   const trackClick = event => {
     const link = event.target
@@ -32,9 +36,13 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   }
 
   return (
-    <Menu onClick={trackClick} width={width}>
+    <Menu onClick={trackClick} width={width} m={0} py={0}>
       <Flex justifyContent="center">
-        <SimpleLinksContainer py={4} mr={[4, 4, 4, 6]}>
+        <SimpleLinksContainer
+          py={4}
+          mr={[4, 4, 4, 6]}
+          viewAllTopMargin={viewAllTopMargin[contextModule]}
+        >
           <Box mr={[2, 2, 3, 3]} width={[110, 110, 110, 135, 150]}>
             {menu.links.map(menuItem => {
               if (!menuItem.menu) {
@@ -69,13 +77,15 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
 
 export const MenuItemContainer = styled(Box)``
 
-const SimpleLinksContainer = styled(Box)`
+const SimpleLinksContainer = styled(Box)<{ viewAllTopMargin: string }>`
   border-right: 1px solid ${color("black10")};
   ${MenuItemContainer} {
     &:last-child {
-      margin-top: 130px;
+      margin-top: ${p => p.viewAllTopMargin};
       text-decoration: underline;
-      color: ${color("black100")};
+      div div {
+        color: ${color("black100")};
+      }
     }
   }
 `

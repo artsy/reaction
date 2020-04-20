@@ -7,6 +7,7 @@ import {
   BellIcon,
   Box,
   Button,
+  ChevronIcon,
   color,
   EnvelopeIcon,
   Flex,
@@ -132,7 +133,17 @@ export const NavBar: React.FC = track(
                   )
                 }}
               >
-                Artworks
+                <Flex>
+                  Artworks
+                  <ChevronIcon
+                    direction="down"
+                    color={color("black100")}
+                    height="15px"
+                    width="15px"
+                    top="5px"
+                    left="4px"
+                  />
+                </Flex>
               </NavItem>
             ) : (
               <NavItem href="/collect">Artworks</NavItem>
@@ -155,7 +166,17 @@ export const NavBar: React.FC = track(
                   )
                 }}
               >
-                Artists
+                <Flex>
+                  Artists
+                  <ChevronIcon
+                    direction="down"
+                    color={color("black100")}
+                    height="15px"
+                    width="15px"
+                    top="5px"
+                    left="4px"
+                  />
+                </Flex>
               </NavItem>
             ) : (
               <NavItem href="/artists">Artists</NavItem>
@@ -172,7 +193,17 @@ export const NavBar: React.FC = track(
                 )
               }}
             >
-              More
+              <Flex>
+                More
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
             </NavItem>
           </NavSection>
 
