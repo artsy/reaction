@@ -86,7 +86,7 @@ export class NavigationTabs extends React.Component<Props> {
     return (
       showTabs && (
         <>
-          <Flex mx={[-2, 0]}>
+          <Flex mx={[-2, 0]} data-test="navigationTabs">
             <RouteTabs>{this.renderTabs()}</RouteTabs>
           </Flex>
         </>
