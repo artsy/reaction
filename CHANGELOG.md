@@ -1,3 +1,17 @@
+# v26.21.7 (Mon Apr 20 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1905] Fix notification badge placement [#3423](https://github.com/artsy/reaction/pull/3423) ([@xtina-starr](https://github.com/xtina-starr))
+- Update metaphysics schema [#3424](https://github.com/artsy/reaction/pull/3424) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v26.21.6 (Mon Apr 20 2020)
 
 #### 🐛  Bug Fix
