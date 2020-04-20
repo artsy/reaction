@@ -1,3 +1,24 @@
+# v26.21.4 (Mon Apr 20 2020)
+
+#### 🐛  Bug Fix
+
+- Add whitespace to before/after FAQ link [#3421](https://github.com/artsy/reaction/pull/3421) ([@yuki24](https://github.com/yuki24))
+- Add data-test attrs for artist page [#3420](https://github.com/artsy/reaction/pull/3420) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 8.1.1 to v8.1.3 [#3418](https://github.com/artsy/reaction/pull/3418) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 0.0.3 to v0.1.0 [#3415](https://github.com/artsy/reaction/pull/3415) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
 # v26.21.3 (Fri Apr 17 2020)
 
 #### 🐛  Bug Fix
