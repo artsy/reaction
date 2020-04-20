@@ -1,3 +1,15 @@
+# v26.21.6 (Mon Apr 20 2020)
+
+#### 🐛  Bug Fix
+
+- Style updates to new nav drop down menu [#3416](https://github.com/artsy/reaction/pull/3416) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v26.21.4 (Mon Apr 20 2020)
 
 #### 🐛  Bug Fix
