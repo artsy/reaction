@@ -1,3 +1,15 @@
+# v26.22.4 (Tue Apr 21 2020)
+
+#### 🐛  Bug Fix
+
+- auction results auth intent conforms to schema [#3433](https://github.com/artsy/reaction/pull/3433) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.22.2 (Tue Apr 21 2020)
 
 #### 🐛  Bug Fix
