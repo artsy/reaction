@@ -207,7 +207,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
   )
 
   return (
-    <>
+    <Box data-test={ContextModule.auctionResults}>
       <Col xs="4">
         <Flex
           alignItems="center"
@@ -256,7 +256,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
           <div>{expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
         </Flex>
       </Col>
-    </>
+    </Box>
   )
 }
 

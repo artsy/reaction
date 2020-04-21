@@ -61,7 +61,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
   ) as object[]
 
   return (
-    <>
+    <Box data-test={ContextModule.relatedArtistsRail}>
       <EntityHeader
         mt={4}
         imageUrl={get(artist, a => a.image.cropped.url, "")}
@@ -85,6 +85,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
                   size="2"
                   weight="medium"
                   color="black"
+                  data-test="followButton"
                   style={{
                     cursor: "pointer",
                     textDecoration: "underline",
@@ -103,7 +104,6 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
       <Carousel
         height="240px"
         data={artistData}
-        contextModule={ContextModule.relatedArtistsRail}
         options={{ pageDots: false }}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
@@ -137,7 +137,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
           )
         }}
       />
-    </>
+    </Box>
   )
 }
 
