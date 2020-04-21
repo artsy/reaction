@@ -1,3 +1,15 @@
+# v26.22.0 (Tue Apr 21 2020)
+
+#### 🚀  Enhancement
+
+- Update metaphysics schema [#3425](https://github.com/artsy/reaction/pull/3425) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
 # v26.21.7 (Mon Apr 20 2020)
 
 #### 🐛  Bug Fix
