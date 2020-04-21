@@ -1,3 +1,21 @@
+# v26.22.1 (Tue Apr 21 2020)
+
+#### 🐛  Bug Fix
+
+- Fixes static year in footer [#3428](https://github.com/artsy/reaction/pull/3428) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 0.1.0 to v0.2.0 [#3422](https://github.com/artsy/reaction/pull/3422) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.22.0 (Tue Apr 21 2020)
 
 #### 🚀  Enhancement
