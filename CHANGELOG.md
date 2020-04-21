@@ -1,3 +1,15 @@
+# v26.22.2 (Tue Apr 21 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial - Artist page data-test attrs [#3427](https://github.com/artsy/reaction/pull/3427) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.22.1 (Tue Apr 21 2020)
 
 #### 🐛  Bug Fix
