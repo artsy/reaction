@@ -2,18 +2,15 @@ import { BorderBox, Button, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
 
-import { UserSettingsTwoFactorAuthentication_me } from "__generated__/UserSettingsTwoFactorAuthentication_me.graphql"
+import { TwoFactorAuthentication_me } from "__generated__/TwoFactorAuthentication_me.graphql"
 import { FormikActions } from "formik"
-import {
-  AppSecondFactorSetupModal,
-  FormValues,
-} from "./AppSecondFactorSetupModal"
+import { AppSecondFactorModal, FormValues } from "./Modal"
 
-interface SecondFactorMethodProps extends BorderBoxProps {
-  me: UserSettingsTwoFactorAuthentication_me
+interface AppSecondFactorProps extends BorderBoxProps {
+  me: TwoFactorAuthentication_me
 }
 
-export const AppSecondFactorMethod: React.FC<SecondFactorMethodProps> = props => {
+export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   const { me } = props
   const [showSetupModal, setShowSetupModal] = useState(false)
 
@@ -59,7 +56,7 @@ export const AppSecondFactorMethod: React.FC<SecondFactorMethodProps> = props =>
           )}
         </Flex>
       </Flex>
-      <AppSecondFactorSetupModal
+      <AppSecondFactorModal
         show={showSetupModal}
         handleSubmit={handleSubmit}
         onClose={() => setShowSetupModal(false)}
