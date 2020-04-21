@@ -4,7 +4,15 @@ import QRCode from "qrcode.react"
 import React from "react"
 import * as Yup from "yup"
 
-import { ModalProps } from "Components/Modal/Modal"
+// TODO: Replace with ModalProps from artsy/palette
+// https://github.com/artsy/palette/blob/master/packages/palette/src/elements/Modal/Modal.tsx#L18
+interface ModalProps {
+  FixedButton?: JSX.Element
+  onClose: () => void
+  show?: boolean
+  title?: string
+  forcedScroll?: boolean
+}
 
 export interface FormValues {
   name: string
@@ -23,13 +31,18 @@ const validationSchema = Yup.object().shape({
   code: Yup.string().matches(presenceRegex, "Enter a code"),
 })
 
-interface AppSecondFactorSetupModalProps extends ModalProps {
+interface AppSecondFactorModalProps extends ModalProps {
   handleSubmit: (values: FormValues, actions: FormikActions<object>) => void
 }
 
-export const AppSecondFactorSetupModal: React.FC<AppSecondFactorSetupModalProps> = props => {
+export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props => {
   return (
-    <Modal title="Enable 2FA" show={props.show} onClose={props.onClose}>
+    <Modal
+      title="Enable 2FA"
+      show={props.show}
+      onClose={props.onClose}
+      forcedScroll={false}
+    >
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
@@ -68,7 +81,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = ({
           title="Device Name"
         />
       </Box>
-      <Sans mt={220} color="black60" size="3">
+      <Sans mt={2} color="black60" size="3">
         Use your app to scan the code below. If you can’t use a barcode, enter
         the secret code manually.
       </Sans>

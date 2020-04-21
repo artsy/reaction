@@ -2,53 +2,28 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type UserSettingsTwoFactorAuthenticationTestQueryVariables = {};
-export type UserSettingsTwoFactorAuthenticationTestQueryResponse = {
+export type TwoFactorAuthenticationTestQueryVariables = {};
+export type TwoFactorAuthenticationTestQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"UserSettingsTwoFactorAuthentication_me">;
+        readonly " $fragmentRefs": FragmentRefs<"TwoFactorAuthentication_me">;
     } | null;
 };
-export type UserSettingsTwoFactorAuthenticationTestQueryRawResponse = {
-    readonly me: ({
-        readonly hasSecondFactorEnabled: boolean;
-        readonly appSecondFactors: ReadonlyArray<({
-            readonly __typename: "AppSecondFactor";
-            readonly name: string | null;
-        } | {
-            readonly __typename: string | null;
-        }) | null> | null;
-        readonly smsSecondFactors: ReadonlyArray<({
-            readonly __typename: "SmsSecondFactor";
-            readonly maskedPhone: string | null;
-        } | {
-            readonly __typename: string | null;
-        }) | null> | null;
-        readonly backupSecondFactors: ReadonlyArray<({
-            readonly __typename: "BackupSecondFactor";
-            readonly internalID: string;
-        } | {
-            readonly __typename: string | null;
-        }) | null> | null;
-        readonly id: string | null;
-    }) | null;
-};
-export type UserSettingsTwoFactorAuthenticationTestQuery = {
-    readonly response: UserSettingsTwoFactorAuthenticationTestQueryResponse;
-    readonly variables: UserSettingsTwoFactorAuthenticationTestQueryVariables;
-    readonly rawResponse: UserSettingsTwoFactorAuthenticationTestQueryRawResponse;
+export type TwoFactorAuthenticationTestQuery = {
+    readonly response: TwoFactorAuthenticationTestQueryResponse;
+    readonly variables: TwoFactorAuthenticationTestQueryVariables;
 };
 
 
 
 /*
-query UserSettingsTwoFactorAuthenticationTestQuery {
+query TwoFactorAuthenticationTestQuery {
   me {
-    ...UserSettingsTwoFactorAuthentication_me
+    ...TwoFactorAuthentication_me
     id
   }
 }
 
-fragment UserSettingsTwoFactorAuthentication_me on Me {
+fragment TwoFactorAuthentication_me on Me {
   hasSecondFactorEnabled
   appSecondFactors: secondFactors(kinds: [app]) {
     __typename
@@ -59,13 +34,13 @@ fragment UserSettingsTwoFactorAuthentication_me on Me {
   smsSecondFactors: secondFactors(kinds: [sms]) {
     __typename
     ... on SmsSecondFactor {
-      maskedPhone
+      formattedPhoneNumber
     }
   }
   backupSecondFactors: secondFactors(kinds: [backup]) {
     __typename
     ... on BackupSecondFactor {
-      internalID
+      __typename
     }
   }
 }
@@ -83,7 +58,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "UserSettingsTwoFactorAuthenticationTestQuery",
+    "name": "TwoFactorAuthenticationTestQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -99,7 +74,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "UserSettingsTwoFactorAuthentication_me",
+            "name": "TwoFactorAuthentication_me",
             "args": null
           }
         ]
@@ -108,7 +83,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "UserSettingsTwoFactorAuthenticationTestQuery",
+    "name": "TwoFactorAuthenticationTestQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -185,7 +160,7 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "maskedPhone",
+                    "name": "formattedPhoneNumber",
                     "args": null,
                     "storageKey": null
                   }
@@ -215,13 +190,7 @@ return {
                 "kind": "InlineFragment",
                 "type": "BackupSecondFactor",
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "internalID",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v0/*: any*/)
                 ]
               }
             ]
@@ -239,12 +208,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "UserSettingsTwoFactorAuthenticationTestQuery",
+    "name": "TwoFactorAuthenticationTestQuery",
     "id": null,
-    "text": "query UserSettingsTwoFactorAuthenticationTestQuery {\n  me {\n    ...UserSettingsTwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment UserSettingsTwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      maskedPhone\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      internalID\n    }\n  }\n}\n",
+    "text": "query TwoFactorAuthenticationTestQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      formattedPhoneNumber\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '91618bb75c820454f020aa03ce829c2d';
+(node as any).hash = '8ded02d6af31b16f5b5d61ee6f71e552';
 export default node;

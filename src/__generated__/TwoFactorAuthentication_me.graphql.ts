@@ -2,30 +2,34 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type UserSettingsTwoFactorAuthentication_me = {
+export type TwoFactorAuthentication_me = {
     readonly hasSecondFactorEnabled: boolean;
     readonly appSecondFactors: ReadonlyArray<{
         readonly name?: string | null;
     } | null> | null;
     readonly smsSecondFactors: ReadonlyArray<{
-        readonly maskedPhone?: string | null;
+        readonly formattedPhoneNumber?: string | null;
     } | null> | null;
-    readonly backupSecondFactors: ReadonlyArray<{
-        readonly internalID?: string;
-    } | null> | null;
-    readonly " $refType": "UserSettingsTwoFactorAuthentication_me";
+    readonly backupSecondFactors: ReadonlyArray<({
+        readonly __typename: "BackupSecondFactor";
+    } | {
+        /*This will never be '%other', but we need some
+        value in case none of the concrete values match.*/
+        readonly __typename: "%other";
+    }) | null> | null;
+    readonly " $refType": "TwoFactorAuthentication_me";
 };
-export type UserSettingsTwoFactorAuthentication_me$data = UserSettingsTwoFactorAuthentication_me;
-export type UserSettingsTwoFactorAuthentication_me$key = {
-    readonly " $data"?: UserSettingsTwoFactorAuthentication_me$data;
-    readonly " $fragmentRefs": FragmentRefs<"UserSettingsTwoFactorAuthentication_me">;
+export type TwoFactorAuthentication_me$data = TwoFactorAuthentication_me;
+export type TwoFactorAuthentication_me$key = {
+    readonly " $data"?: TwoFactorAuthentication_me$data;
+    readonly " $fragmentRefs": FragmentRefs<"TwoFactorAuthentication_me">;
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "UserSettingsTwoFactorAuthentication_me",
+  "name": "TwoFactorAuthentication_me",
   "type": "Me",
   "metadata": null,
   "argumentDefinitions": [],
@@ -93,7 +97,7 @@ const node: ReaderFragment = {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "maskedPhone",
+              "name": "formattedPhoneNumber",
               "args": null,
               "storageKey": null
             }
@@ -125,7 +129,7 @@ const node: ReaderFragment = {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "internalID",
+              "name": "__typename",
               "args": null,
               "storageKey": null
             }
@@ -135,5 +139,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '77c536be3614df58057d4b5f554206d6';
+(node as any).hash = '69f781d22dff05170a3200697c7ed96c';
 export default node;
