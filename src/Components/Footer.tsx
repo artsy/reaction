@@ -166,7 +166,7 @@ const UnstyledLink = styled.a`
 
 const PolicyLinks = () => (
   <>
-    <Serif size="2">© 2018 Artsy</Serif>
+    <Serif size="2">© {new Date().getFullYear()} Artsy</Serif>
     <Spacer mr={1} />
     <UnstyledLink href="https://www.artsy.net/terms">
       <Serif size="2">Terms of Use</Serif>
