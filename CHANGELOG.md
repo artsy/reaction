@@ -1,3 +1,15 @@
+# v26.23.0 (Wed Apr 22 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Add context path query param [#3419](https://github.com/artsy/reaction/pull/3419) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.22.4 (Tue Apr 21 2020)
 
 #### 🐛  Bug Fix
