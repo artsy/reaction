@@ -129,7 +129,9 @@ const Conversation: React.FC<ConversationProps> = props => {
         justifyContent="space-between"
         width="100%"
       >
-        <ArrowLeftIcon />
+        <Link href={`/user/conversations`} underlineBehavior="none">
+          <ArrowLeftIcon />
+        </Link>
         <Sans size="3t" weight="medium">
           Inquiry with {conversation.to.name}
         </Sans>
