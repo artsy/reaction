@@ -6,6 +6,7 @@ import { Media } from "Utils/Responsive"
 
 import {
   ArtsyMarkIcon,
+  breakpoints,
   FacebookIcon,
   Flex,
   InstagramIcon,
@@ -51,6 +52,8 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
         flexDirection={props.flexDirection}
         justifyContent="space-between"
         width="100%"
+        maxWidth={breakpoints.xl}
+        m="auto"
       >
         <Flex flexDirection="column" mb={1}>
           <Sans size="2" weight="medium">

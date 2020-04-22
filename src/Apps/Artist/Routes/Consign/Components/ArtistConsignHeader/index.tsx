@@ -1,4 +1,4 @@
-import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { ArtistConsignHeader_artist } from "__generated__/ArtistConsignHeader_artist.graphql"
 import {
   LightPurpleColor,
@@ -23,22 +23,23 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
 
   return (
     <SectionContainer background={LightPurpleColor}>
-      <Media greaterThan="xs">
+      <Media greaterThan="sm">
         {classNames => {
           return (
-            <Box
+            <Flex
               className={classNames}
               position="absolute"
-              width="100%"
+              width="70%"
               height="100%"
+              justifyContent="center"
             >
               <ArtistConsignHeaderImages artist={artist} />
-            </Box>
+            </Flex>
           )
         }}
       </Media>
 
-      <Box textAlign="center">
+      <Box textAlign="center" position="relative" zIndex={1}>
         <Box>
           <Serif element="h1" size={["10", "12"]}>
             Sell Works by <br />

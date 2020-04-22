@@ -1,7 +1,6 @@
 import { Grid, injectGlobalStyles, Theme, themeProps } from "@artsy/palette"
 import * as Sentry from "@sentry/browser"
 import { SystemContextProvider, track } from "Artsy"
-import { SystemContextConsumer } from "Artsy/SystemContext"
 import { RouteConfig } from "found"
 import React, { useEffect } from "react"
 import { HeadProvider } from "react-head"
@@ -70,19 +69,13 @@ export const Boot = track(null, {
                   mediaQueries={themeProps.mediaQueries}
                   initialMatchingMediaQueries={onlyMatchMediaQueries as any}
                 >
-                  <SystemContextConsumer>
-                    {({ appMaxWidth }) => {
-                      return (
-                        <Grid fluid maxWidth={appMaxWidth}>
-                          <GlobalStyles />
-                          {children}
-                          {process.env.NODE_ENV === "development" && (
-                            <BreakpointVisualizer />
-                          )}
-                        </Grid>
-                      )
-                    }}
-                  </SystemContextConsumer>
+                  <Grid fluid maxWidth="100%">
+                    <GlobalStyles />
+                    {children}
+                    {process.env.NODE_ENV === "development" && (
+                      <BreakpointVisualizer />
+                    )}
+                  </Grid>
                 </ResponsiveProvider>
               </MediaContextProvider>
             </ErrorBoundary>

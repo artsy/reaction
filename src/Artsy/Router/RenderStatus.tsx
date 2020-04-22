@@ -13,7 +13,7 @@ import { PageLoader } from "./PageLoader"
 const logger = createLogger("Artsy/Router/Utils/RenderStatus")
 
 export const RenderPending = () => {
-  const { isFetching, dispatch, EXPERIMENTAL_APP_SHELL } = useSystemContext()
+  const { isFetching, setFetching, EXPERIMENTAL_APP_SHELL } = useSystemContext()
 
   /**
    * First, set fetching to ensure that components that are listening for this
@@ -22,10 +22,7 @@ export const RenderPending = () => {
    * duration of the fetch.
    */
   if (!isFetching) {
-    dispatch({
-      type: "setFetching",
-      payload: true,
-    })
+    setFetching(true)
   }
 
   if (isFetching) {
@@ -72,13 +69,10 @@ export const RenderPending = () => {
 export const RenderReady: React.FC<{
   elements: React.ReactNode
 }> = props => {
-  const { isFetching, dispatch } = useSystemContext()
+  const { isFetching, setFetching } = useSystemContext()
 
   if (isFetching) {
-    dispatch({
-      type: "setFetching",
-      payload: false,
-    })
+    setFetching(false)
   }
 
   if (!isFetching) {
@@ -95,13 +89,10 @@ export const RenderError: React.FC<{
 }> = props => {
   logger.error(props.error.data)
 
-  const { isFetching, dispatch } = useSystemContext()
+  const { isFetching, setFetching } = useSystemContext()
 
   if (isFetching) {
-    dispatch({
-      type: "setFetching",
-      payload: false,
-    })
+    setFetching(false)
   }
 
   const message =
