@@ -238,7 +238,8 @@
     "semi": false,
     "singleQuote": false,
     "trailingComma": "es5",
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
   },
   "jest": {
     "cacheDirectory": ".cache/jest",

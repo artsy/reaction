@@ -5,6 +5,7 @@ import { createMockNetworkLayer } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
+import { Boot } from "../Boot"
 
 jest.mock("Components/NavBar", () => ({
   NavBar: () => <div />,
@@ -87,7 +88,7 @@ describe("buildClientApp", () => {
     const wrapper = mount(<ClientApp />)
     expect(
       (wrapper
-        .find("Boot")
+        .find(Boot)
         .props() as any).relayEnvironment.relaySSRMiddleware.cache.values()
     ).toContain("found window cache")
   })
@@ -98,13 +99,12 @@ describe("buildClientApp", () => {
         <SystemContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
+              "dispatch",
               "isFetching",
               "mediator",
               "relayEnvironment",
               "router",
               "routes",
-              "setIsFetching",
-              "setRouter",
               "user",
             ])
             setImmediate(done)
