@@ -49,14 +49,14 @@ export enum ActionType {
    * TODO: Check if ‘Tap’ and this can be combined.
    */
   Click = "Click",
-
+  ClickedBid = 'Clicked "Bid"',
   /**
    * A click on 'Buy Now' or 'Make offer' buttons.
    */
   ClickedBuyNow = "Clicked buy now",
-  ClickedMakeOffer = "Clicked make offer",
+  ClickedConsign = "Clicked consign",
   ClickedContactGallery = 'Clicked "Contact Gallery"',
-  ClickedBid = 'Clicked "Bid"',
+  ClickedMakeOffer = "Clicked make offer",
 
   /**
    * Triggers a pageview in force, skips segment
@@ -285,8 +285,10 @@ export enum Subject {
   /**
    * Consignments
    */
-  RequestPriceEstimate = "Request a price estimate",
   ExploreAuctionResults = "Explore Auction Results",
+  Here = "here",
+  RequestPriceEstimate = "Request a price estimate",
+  SubmitForReview = "Submit for review",
   SubmitWorksInterestedInSelling = "submit works you’re interested in selling here",
 }
 

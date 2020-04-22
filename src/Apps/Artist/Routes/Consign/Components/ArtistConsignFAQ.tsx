@@ -1,13 +1,19 @@
-import React from "react"
-
 import { Box, Sans, Serif, Spacer } from "@artsy/palette"
+import { ArtistConsignFAQ_artist } from "__generated__/ArtistConsignFAQ_artist.graphql"
 import { AnalyticsSchema, useTracking } from "Artsy"
+import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
 import { gridColumnGap, GridColumnGapProps, style } from "styled-system"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
+import { getConsignSubmissionUrl } from "./Utils/getConsignSubmissionUrl"
 
-export const ArtistConsignFAQ: React.FC = props => {
+interface ArtistConsignFAQProps {
+  artist: ArtistConsignFAQ_artist
+}
+
+const ArtistConsignFAQ: React.FC<ArtistConsignFAQProps> = props => {
   const tracking = useTracking()
 
   return (
@@ -46,7 +52,10 @@ export const ArtistConsignFAQ: React.FC = props => {
                         AnalyticsSchema.Subject.SubmitWorksInterestedInSelling,
                     })
                   }}
-                  href="https://www.artsy.net/consign/submission"
+                  href={getConsignSubmissionUrl({
+                    contextPath: props.artist.href,
+                    subject: AnalyticsSchema.Subject.Here,
+                  })}
                 >
                   here
                 </a>
@@ -133,6 +142,17 @@ export const ArtistConsignFAQ: React.FC = props => {
     </SectionContainer>
   )
 }
+
+export const ArtistConsignFAQFragmentContainer = createFragmentContainer(
+  ArtistConsignFAQ,
+  {
+    artist: graphql`
+      fragment ArtistConsignFAQ_artist on Artist {
+        href
+      }
+    `,
+  }
+)
 
 const Question: React.FC<{ question: string; answer: JSX.Element }> = ({
   question,

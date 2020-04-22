@@ -1,11 +1,21 @@
 import React from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+
+import { ArtistConsignSellArt_artist } from "__generated__/ArtistConsignSellArt_artist.graphql"
 
 import { Box, Button, Sans, Serif } from "@artsy/palette"
 import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { LightPurpleColor, SectionContainer } from "./SectionContainer"
+import { getConsignSubmissionUrl } from "./Utils/getConsignSubmissionUrl"
 
-export const ArtistConsignSellArt: React.FC = props => {
+interface ArtistConsignSellArtProps {
+  artist: ArtistConsignSellArt_artist
+}
+
+const ArtistConsignSellArt: React.FC<ArtistConsignSellArtProps> = ({
+  artist,
+}) => {
   const tracking = useTracking()
 
   return (
@@ -24,7 +34,10 @@ export const ArtistConsignSellArt: React.FC = props => {
 
         <Box>
           <RouterLink
-            to="/consign/submission"
+            to={getConsignSubmissionUrl({
+              contextPath: artist.href,
+              subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+            })}
             onClick={() => {
               tracking.trackEvent({
                 action_type: AnalyticsSchema.ActionType.Click,
@@ -42,3 +55,14 @@ export const ArtistConsignSellArt: React.FC = props => {
     </SectionContainer>
   )
 }
+
+export const ArtistConsignSellArtFragmentContainer = createFragmentContainer(
+  ArtistConsignSellArt,
+  {
+    artist: graphql`
+      fragment ArtistConsignSellArt_artist on Artist {
+        href
+      }
+    `,
+  }
+)

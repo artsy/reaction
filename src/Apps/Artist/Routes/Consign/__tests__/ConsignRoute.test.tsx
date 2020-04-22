@@ -79,7 +79,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHeader")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
+      )
     })
 
     it("tracks event", async () => {
@@ -203,7 +205,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHowtoSell")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
+      )
     })
 
     it("tracks event", async () => {
@@ -251,7 +255,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignSellArt")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
+      )
     })
 
     it("tracks event", async () => {

@@ -9,6 +9,7 @@ import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
+import { getConsignSubmissionUrl } from "../Utils/getConsignSubmissionUrl"
 import { ArtistConsignHeaderImagesFragmentContainer as ArtistConsignHeaderImages } from "./ArtistConsignHeaderImages"
 
 interface ArtistConsignHeaderProps {
@@ -53,7 +54,10 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
 
         <Box>
           <RouterLink
-            to="/consign/submission"
+            to={getConsignSubmissionUrl({
+              contextPath: artist.href,
+              subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+            })}
             onClick={() => {
               tracking.trackEvent({
                 action_type: AnalyticsSchema.ActionType.Click,
@@ -78,6 +82,7 @@ export const ArtistConsignHeaderFragmentContainer = createFragmentContainer(
       fragment ArtistConsignHeader_artist on Artist {
         ...ArtistConsignHeaderImages_artist
         name
+        href
       }
     `,
   }
