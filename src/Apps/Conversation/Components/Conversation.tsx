@@ -23,7 +23,7 @@ const StyledHeader = styled(Flex)`
   background: white;
   border-bottom: 1px solid ${color("black10")};
   height: 55px;
-  top: 60px;
+  top: 59px;
 `
 
 interface ItemProps {
