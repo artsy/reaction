@@ -1,13 +1,9 @@
-import React, { Dispatch, SFC, useContext, useReducer } from "react"
+import { Router } from "found"
+import React, { SFC, useContext, useState } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { getUser } from "Utils/user"
-import {
-  Action as SystemContextAction,
-  State as SystemContextState,
-  systemContextReducer,
-} from "./systemContextState"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void
@@ -16,10 +12,36 @@ export interface Mediator {
 }
 
 /**
+ * FIXME: Use a proper state management library. Ran into problems with useReducer
+ * leading to an infinite loop.
+ */
+export type SystemContextState = Partial<{
+  /**
+   * Toggle for setting global fetch state, typically set in RenderStatus
+   */
+  isFetching: boolean
+  setFetching: (isFetching: boolean) => void
+
+  /**
+   * The current router instance
+   */
+  router: Router
+  setRouter: (router: Router) => void
+
+  /**
+   * The currently signed-in user.
+   *
+   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * and `USER_ACCESS_TOKEN` environment variables if available.
+   */
+  user: User
+  setUser: (user: User) => void
+}>
+
+/**
  * Globally accessible SystemContext values for use in Artsy apps
  */
 export interface SystemContextProps extends SystemContextState {
-  dispatch?: Dispatch<SystemContextAction>
   /**
    * Is the user opening a Reaction page from the mobile app
    */
@@ -69,21 +91,21 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
-  const [state, dispatch] = useReducer(systemContextReducer, {
-    isFetching: false,
-    router: null,
-    user: getUser(props.user),
-  })
+  const [isFetching, setFetching] = useState(false)
+  const [router, setRouter] = useState(null)
+  const [user, setUser] = useState(getUser(props.user))
 
-  const { user } = state
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
   const providerValues = {
     ...props,
-    ...state,
-    dispatch,
+    isFetching,
+    setFetching,
+    router,
+    setRouter,
     relayEnvironment,
     user,
+    setUser,
   }
 
   return (

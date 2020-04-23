@@ -16,7 +16,7 @@ interface ArtistConsignRecentlySoldProps {
 export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps> = ({
   artist,
 }) => {
-  if (!artist.targetSupply.microfunnel.randomArtworks) {
+  if (!artist.targetSupply.microfunnel.artworks) {
     return null
   }
 
@@ -33,7 +33,7 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
             flexWrap="wrap"
             alignItems="center"
           >
-            {artist.targetSupply.microfunnel.randomArtworks.map(
+            {artist.targetSupply.microfunnel.artworks.map(
               ({ artwork, realizedPrice }, key) => {
                 return (
                   <Box p={2} key={key} textAlign="left">
@@ -66,7 +66,7 @@ export const ArtistConsignRecentlySoldFragmentContainer = createFragmentContaine
       fragment ArtistConsignRecentlySold_artist on Artist {
         targetSupply {
           microfunnel {
-            randomArtworks: artworks(randomize: true) {
+            artworks {
               artwork {
                 image {
                   aspectRatio

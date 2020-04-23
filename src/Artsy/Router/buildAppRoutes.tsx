@@ -23,15 +23,12 @@ export function buildAppRoutes(routeList: RouteList[]): RouteConfig[] {
     match: Match
     router: Router
   }> = props => {
-    const { router, dispatch } = useSystemContext()
+    const { router, setRouter } = useSystemContext()
 
     // Store global reference to router instance
     useEffect(() => {
       if (props.router !== router) {
-        dispatch({
-          type: "setRouter",
-          payload: props.router,
-        })
+        setRouter(props.router)
       }
 
       interceptLinks({

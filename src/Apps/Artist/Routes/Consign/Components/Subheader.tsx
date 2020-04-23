@@ -11,7 +11,7 @@ export const Subheader: React.FC<SubheaderProps> = ({
   color = "black100",
 }) => {
   return (
-    <Box>
+    <Box maxWidth="80%" m="auto">
       <Serif element="h2" size="10" color={color}>
         {children}
       </Serif>

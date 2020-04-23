@@ -36,13 +36,18 @@ export interface ArtistAppProps {
 
 export const ArtistApp: React.FC<ArtistAppProps> = props => {
   const { artist, children } = props
-
   const { trackEvent } = useTracking()
-
   const route = findCurrentRoute(props.match)
+  let HorizontalPaddingArea = HorizontalPadding
+  let maxWidth
+
+  if (route.displayFullPage) {
+    maxWidth = "100%"
+    HorizontalPaddingArea = Box
+  }
 
   return (
-    <AppContainer>
+    <AppContainer maxWidth={maxWidth}>
       <ArtistMeta artist={artist} />
       {route.displayNavigationTabs && (
         <Row>
@@ -52,9 +57,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
         </Row>
       )}
 
-      <HorizontalPadding>
-        <Spacer mb={3} />
-
+      <HorizontalPaddingArea>
         <Row>
           <Col>
             {/*
@@ -62,6 +65,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
              */}
             {route.displayNavigationTabs ? (
               <>
+                <Spacer mb={3} />
                 <NavigationTabs artist={artist} />
                 <Spacer mb={2} />
               </>
@@ -121,7 +125,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
             <Footer />
           </Col>
         </Row>
-      </HorizontalPadding>
+      </HorizontalPaddingArea>
     </AppContainer>
   )
 }

@@ -24,9 +24,9 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
       justifyContent="center"
       alignItems="center"
       px={[2, 4]}
-      pt={6}
-      pb={6}
+      py={6}
       position="relative"
+      top={-1}
       {...rest}
     >
       {children}
