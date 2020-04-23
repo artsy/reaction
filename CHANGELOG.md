@@ -1,3 +1,15 @@
+# v26.24.0 (Thu Apr 23 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Modernize SystemContext, make app shell width configurable [#3436](https://github.com/artsy/reaction/pull/3436) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.23.0 (Wed Apr 22 2020)
 
 #### 🚀  Enhancement
