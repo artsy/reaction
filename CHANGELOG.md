@@ -1,3 +1,15 @@
+# v26.24.2 (Thu Apr 23 2020)
+
+#### 🐛  Bug Fix
+
+- Fixes collapsing container [#3439](https://github.com/artsy/reaction/pull/3439) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.24.1 (Thu Apr 23 2020)
 
 #### 🐛  Bug Fix
