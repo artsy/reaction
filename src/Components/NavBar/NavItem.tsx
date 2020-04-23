@@ -130,6 +130,6 @@ export const NavItem: React.FC<NavItemProps> = ({
 
 const MenuContainer = styled(Box)<{ isFullScreen?: boolean }>`
   position: absolute;
-  margin-top: -1px; /* Offset border */
+  margin-top: ${p => (p.isFullScreen ? "1px" : "-1px")}; /* Offset border */
   transform: translateX(${p => (p.isFullScreen ? 0 : "-78%")});
 `
