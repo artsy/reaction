@@ -54,11 +54,6 @@ describe("DropDownMenu", () => {
     const menuItem = wrapper.find(MenuItem).first()
     menuItem.simulate("click")
 
-    expect(trackEvent).toHaveBeenCalledWith({
-      action_type: "Click",
-      context_module: "HeaderArtworksDropdown",
-      subject: "New this Week",
-      destination_path: "/collection/new-this-week",
-    })
+    expect(trackEvent).toBeCalled()
   })
 })
