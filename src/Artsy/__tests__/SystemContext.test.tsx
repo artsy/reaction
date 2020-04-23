@@ -41,11 +41,10 @@ describe("Artsy context", () => {
         <Artsy.SystemContextConsumer>
           {props => {
             expect(Object.keys(props).sort()).toEqual([
+              "dispatch",
               "isFetching",
               "relayEnvironment",
               "router",
-              "setIsFetching",
-              "setRouter",
               "user",
             ])
             setImmediate(done)

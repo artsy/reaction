@@ -1,9 +1,13 @@
-import React, { SFC, useContext, useState } from "react"
+import React, { Dispatch, SFC, useContext, useReducer } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Router } from "found"
 import { getUser } from "Utils/user"
+import {
+  Action as SystemContextAction,
+  State as SystemContextState,
+  systemContextReducer,
+} from "./systemContextState"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void
@@ -14,14 +18,12 @@ export interface Mediator {
 /**
  * Globally accessible SystemContext values for use in Artsy apps
  */
-export interface SystemContextProps {
-  /** Is the user opening a Reaction page from the mobile app */
-  isEigen?: boolean
-
+export interface SystemContextProps extends SystemContextState {
+  dispatch?: Dispatch<SystemContextAction>
   /**
-   * Trigger for global fetching indicator
+   * Is the user opening a Reaction page from the mobile app
    */
-  isFetching?: boolean
+  isEigen?: boolean
 
   /**
    * A PubSub hub, which should only be used for communicating with Force.
@@ -43,30 +45,15 @@ export interface SystemContextProps {
   relayEnvironment?: Environment
 
   /**
-   * When in AppShell router context, store a reference to router instance
+   * The current search query.
+   * FIXME: Move this to a more appropriate place
    */
-  router?: Router
-
   searchQuery?: string
 
   /**
    * Useful for passing arbitrary data from Force.
    */
   injectedData?: any
-
-  /**
-   * Toggle for setting global fetch state, typically set in the `RenderStatus.tsx`
-   */
-  setIsFetching?: (isFetching: boolean) => void
-  setRouter?: (router: Router) => void
-
-  /**
-   * The currently signed-in user.
-   *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID`
-   * and `USER_ACCESS_TOKEN` environment variables if available.
-   */
-  user?: User
 
   // TODO: Remove once A/B test completes
   EXPERIMENTAL_APP_SHELL?: boolean
@@ -82,19 +69,20 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
-  const [isFetching, setIsFetching] = useState(false)
-  const [router, setRouter] = useState(null)
-  const [user] = useState(getUser(props.user))
+  const [state, dispatch] = useReducer(systemContextReducer, {
+    isFetching: false,
+    router: null,
+    user: getUser(props.user),
+  })
+
+  const { user } = state
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
-
   const providerValues = {
     ...props,
-    isFetching,
+    ...state,
+    dispatch,
     relayEnvironment,
-    router,
-    setIsFetching,
-    setRouter,
     user,
   }
 

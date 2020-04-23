@@ -1,8 +1,17 @@
-import { breakpoints } from "@artsy/palette"
-import styled from "styled-components"
+import { Box, breakpoints } from "@artsy/palette"
+import { useSystemContext } from "Artsy"
+import React from "react"
 
-export const AppContainer = styled.div`
-  width: 100%;
-  max-width: ${breakpoints.xl}px;
-  margin: auto;
-`
+interface AppContainerProps {
+  children: React.ReactNode
+}
+
+export const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
+  const { appMaxWidth = breakpoints.xl } = useSystemContext()
+
+  return (
+    <Box width="100%" maxWidth={appMaxWidth} m="auto">
+      {children}
+    </Box>
+  )
+}
