@@ -1,6 +1,7 @@
 import { Grid, injectGlobalStyles, Theme, themeProps } from "@artsy/palette"
 import * as Sentry from "@sentry/browser"
 import { SystemContextProvider, track } from "Artsy"
+import { SystemContextConsumer } from "Artsy/SystemContext"
 import { RouteConfig } from "found"
 import React, { useEffect } from "react"
 import { HeadProvider } from "react-head"
@@ -12,7 +13,6 @@ import Events from "Utils/Events"
 import { getENV } from "Utils/getENV"
 import { ErrorBoundary } from "./ErrorBoundary"
 
-import { useSystemContext } from "Artsy/SystemContext"
 import {
   MatchingMediaQueries,
   MediaContextProvider,
@@ -34,7 +34,6 @@ const { GlobalStyles } = injectGlobalStyles()
 export const Boot = track(null, {
   dispatch: Events.postEvent,
 })((props: BootProps) => {
-  const { appMaxWidth } = useSystemContext()
   /**
    * Let our end-to-end tests know that the app is hydrated and ready to go; and
    * if in prod, initialize Sentry.
@@ -71,13 +70,19 @@ export const Boot = track(null, {
                   mediaQueries={themeProps.mediaQueries}
                   initialMatchingMediaQueries={onlyMatchMediaQueries as any}
                 >
-                  <Grid fluid maxWidth={appMaxWidth}>
-                    <GlobalStyles />
-                    {children}
-                    {process.env.NODE_ENV === "development" && (
-                      <BreakpointVisualizer />
-                    )}
-                  </Grid>
+                  <SystemContextConsumer>
+                    {({ appMaxWidth }) => {
+                      return (
+                        <Grid fluid maxWidth={appMaxWidth}>
+                          <GlobalStyles />
+                          {children}
+                          {process.env.NODE_ENV === "development" && (
+                            <BreakpointVisualizer />
+                          )}
+                        </Grid>
+                      )
+                    }}
+                  </SystemContextConsumer>
                 </ResponsiveProvider>
               </MediaContextProvider>
             </ErrorBoundary>
