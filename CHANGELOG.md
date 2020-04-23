@@ -1,3 +1,15 @@
+# v26.25.0 (Thu Apr 23 2020)
+
+#### 🚀  Enhancement
+
+- Add a header to the conversation view on mobile [#3435](https://github.com/artsy/reaction/pull/3435) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.24.2 (Thu Apr 23 2020)
 
 #### 🐛  Bug Fix
