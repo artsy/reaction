@@ -1,3 +1,15 @@
+# v26.25.1 (Thu Apr 23 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add full-screen support to /consign [#3440](https://github.com/artsy/reaction/pull/3440) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.25.0 (Thu Apr 23 2020)
 
 #### 🚀  Enhancement
