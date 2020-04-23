@@ -9,6 +9,7 @@ import {
   Serif,
 } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer, RelayProp } from "react-relay"
@@ -129,9 +130,9 @@ const Conversation: React.FC<ConversationProps> = props => {
         justifyContent="space-between"
         width="100%"
       >
-        <Link href={`/user/conversations`} underlineBehavior="none">
+        <RouterLink to={`/user/conversations`}>
           <ArrowLeftIcon />
-        </Link>
+        </RouterLink>
         <Sans size="3t" weight="medium">
           Inquiry with {conversation.to.name}
         </Sans>
