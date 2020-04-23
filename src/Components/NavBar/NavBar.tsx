@@ -118,6 +118,7 @@ export const NavBar: React.FC = track(
           <NavSection>
             {canViewNewDropDown ? (
               <NavItem
+                label="Artworks"
                 isFullScreenDropDown
                 Menu={() => {
                   return (
@@ -151,6 +152,7 @@ export const NavBar: React.FC = track(
 
             {canViewNewDropDown ? (
               <NavItem
+                label="Artists"
                 isFullScreenDropDown
                 Menu={() => {
                   return (
@@ -185,6 +187,7 @@ export const NavBar: React.FC = track(
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
+              label="More"
               Menu={() => {
                 return (
                   <Box mr={-150}>
