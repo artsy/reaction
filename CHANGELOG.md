@@ -1,3 +1,15 @@
+# v26.24.1 (Thu Apr 23 2020)
+
+#### 🐛  Bug Fix
+
+- Fix useSystemContext invocation [#3438](https://github.com/artsy/reaction/pull/3438) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.24.0 (Thu Apr 23 2020)
 
 #### 🚀  Enhancement
