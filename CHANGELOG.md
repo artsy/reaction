@@ -1,3 +1,17 @@
+# v26.26.0 (Fri Apr 24 2020)
+
+#### 🚀  Enhancement
+
+- Fix up TypeScript types [#3430](https://github.com/artsy/reaction/pull/3430) ([@dblandin](https://github.com/dblandin))
+- Hookup App+SMS 2FA UI to live data [#3430](https://github.com/artsy/reaction/pull/3430) ([@dblandin](https://github.com/dblandin))
+- Hookup 2FA backup code UI to live data [#3429](https://github.com/artsy/reaction/pull/3429) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.25.1 (Thu Apr 23 2020)
 
 #### 🐛  Bug Fix
