@@ -11,7 +11,13 @@ import {
   AppEnabledWithoutBackupCodesQueryResponse,
   BackupSecondFactors,
   BackupSecondFactorsMutationResponse,
-} from "../Components/BackupSecondFactor/__tests__/fixtures"
+  CreateAppSecondFactorMutationSuccessResponse,
+  CreateSmsSecondFactorMutationSuccessResponse,
+  DeliverSecondFactorMutationSuccessResponse,
+  EnableSecondFactorMutationSuccessResponse,
+  UpdateAppSecondFactorMutationSuccessResponse,
+  UpdateSmsSecondFactorMutationSuccessResponse,
+} from "./fixtures"
 import { TwoFactorAuthenticationTestPage } from "./Utils/TwoFactorAuthenticationTestPage"
 
 jest.unmock("react-relay")
@@ -32,6 +38,13 @@ const setupTestEnv = () => {
     `,
     defaultMutationResults: {
       createBackupSecondFactors: {},
+      createSmsSecondFactor: {},
+      updateSmsSecondFactor: {},
+      createAppSecondFactor: {},
+      updateAppSecondFactor: {},
+      deliverSecondFactor: {},
+      enableSecondFactor: {},
+      disableSecondFactor: {},
     },
     defaultData: {
       me: {
@@ -51,6 +64,47 @@ describe("TwoFactorAuthentication ", () => {
 
     expect(page.text()).toContain("Two-factor Authentication")
     expect(page.text()).toContain("Set up")
+  })
+
+  describe("AppSecondFactor", () => {
+    it("prompts to setup if not enabled", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      expect(page.appSetupButton.exists).toBeTruthy
+    })
+
+    it("creates an enabled App Authenticator 2FA factor", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      env.mutations.useResultsOnce(CreateAppSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(UpdateAppSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(EnableSecondFactorMutationSuccessResponse)
+
+      await page.clickAppSetupButton()
+    })
+  })
+
+  describe("SmsSecondFactor", () => {
+    it("prompts to setup if not enabled", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      expect(page.smsSetupButton.exists).toBeTruthy
+    })
+
+    it("creates an enabled SMS 2FA factor", async () => {
+      const env = setupTestEnv()
+      const page = await env.buildPage()
+
+      env.mutations.useResultsOnce(CreateSmsSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(DeliverSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(UpdateSmsSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(EnableSecondFactorMutationSuccessResponse)
+
+      await page.clickSmsSetupButton()
+    })
   })
 
   describe("BackupSecondFactor", () => {

@@ -9,6 +9,14 @@ export class TwoFactorAuthenticationTestPage extends RootTestPage {
     )
   }
 
+  get smsSetupButton() {
+    return expectOne(
+      this.find("SmsSecondFactor")
+        .find("Button")
+        .filterWhere(btn => btn.text().includes("Set up"))
+    )
+  }
+
   get backupShowButton() {
     return expectOne(
       this.find("BackupSecondFactor")
@@ -47,6 +55,11 @@ export class TwoFactorAuthenticationTestPage extends RootTestPage {
 
   async clickAppSetupButton() {
     this.appSetupButton.simulate("click")
+    await this.update()
+  }
+
+  async clickSmsSetupButton() {
+    this.smsSetupButton.simulate("click")
     await this.update()
   }
 

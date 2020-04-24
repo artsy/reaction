@@ -24,7 +24,9 @@ export const DeliverSecondFactor = (
           ) @raw_response_type {
             deliverSecondFactor(input: $input) {
               secondFactorOrErrors {
-                __typename
+                ... on SecondFactor {
+                  __typename
+                }
 
                 ... on Errors {
                   errors {

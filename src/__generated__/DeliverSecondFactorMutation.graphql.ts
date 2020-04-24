@@ -11,7 +11,7 @@ export type DeliverSecondFactorMutationVariables = {
 export type DeliverSecondFactorMutationResponse = {
     readonly deliverSecondFactor: {
         readonly secondFactorOrErrors: {
-            readonly __typename: "Errors";
+            readonly __typename?: "Errors";
             readonly errors: ReadonlyArray<{
                 readonly message: string;
                 readonly code: string;
@@ -55,6 +55,9 @@ mutation DeliverSecondFactorMutation(
   deliverSecondFactor(input: $input) {
     secondFactorOrErrors {
       __typename
+      ... on SecondFactor {
+        __typename
+      }
       ... on Errors {
         errors {
           message
@@ -179,10 +182,10 @@ return {
     "operationKind": "mutation",
     "name": "DeliverSecondFactorMutation",
     "id": null,
-    "text": "mutation DeliverSecondFactorMutation(\n  $input: DeliverSecondFactorInput!\n) {\n  deliverSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation DeliverSecondFactorMutation(\n  $input: DeliverSecondFactorInput!\n) {\n  deliverSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on SecondFactor {\n        __typename\n      }\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '6c539b1b55cf04795496094fc5272807';
+(node as any).hash = 'c402298ce18beafd017a078d05736694';
 export default node;
