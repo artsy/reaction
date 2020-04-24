@@ -7,10 +7,10 @@ import { useSystemContext } from "Artsy"
 import { BackupSecondFactorModalContentQueryRenderer as ModalContent } from "./BackupSecondFactorModalContent"
 import { CreateBackupSecondFactors } from "./Mutation/CreateBackupSecondFactors"
 
-import { TwoFactorAuthentication_me } from "__generated__/TwoFactorAuthentication_me.graphql"
+import { BackupSecondFactor_me } from "__generated__/BackupSecondFactor_me.graphql"
 
 interface BackupSecondFactorProps extends BorderBoxProps {
-  me: TwoFactorAuthentication_me
+  me: BackupSecondFactor_me
 }
 
 export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {

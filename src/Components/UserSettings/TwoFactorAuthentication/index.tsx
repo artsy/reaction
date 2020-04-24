@@ -6,12 +6,12 @@ import { SystemContextProps, useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
-import { AppSecondFactor } from "./Components/AppSecondFactor"
-import { BackupSecondFactor } from "./Components/BackupSecondFactor"
+import { AppSecondFactorFragmentContainer as AppSecondFactor } from "./Components/AppSecondFactor"
+import { BackupSecondFactorFragmentContainer as BackupSecondFactor } from "./Components/BackupSecondFactor"
+import { SmsSecondFactorFragmentContainer as SmsSecondFactor } from "./Components/SmsSecondFactor"
 
 import { TwoFactorAuthentication_me } from "__generated__/TwoFactorAuthentication_me.graphql"
 import { TwoFactorAuthenticationQuery } from "__generated__/TwoFactorAuthenticationQuery.graphql"
-import { SmsSecondFactor } from "./Components/SmsSecondFactor"
 
 export interface TwoFactorAuthenticationProps extends SystemContextProps {
   me: TwoFactorAuthentication_me
@@ -37,8 +37,8 @@ const TwoFactorAuthentication: React.FC<TwoFactorAuthenticationProps> = props =>
         Set up an additional layer of security by requiring a security code in
         addition to your password to log in to your Artsy account.
       </Serif>
-      <AppSecondFactor mt={3} me={me} relay={relay} />
-      <SmsSecondFactor mt={2} me={me} relay={relay} />
+      <AppSecondFactor mt={3} me={me} relayRefetch={relay} />
+      <SmsSecondFactor mt={2} me={me} relayRefetch={relay} />
       {me.hasSecondFactorEnabled && <BackupSecondFactor mt={2} me={me} />}
     </Box>
   )
@@ -51,26 +51,14 @@ export const TwoFactorAuthenticationRefetchContainer = createRefetchContainer(
       fragment TwoFactorAuthentication_me on Me {
         hasSecondFactorEnabled
 
-        appSecondFactors: secondFactors(kinds: [app]) {
-          internalID
-          ... on AppSecondFactor {
-            name
-          }
-        }
-
-        smsSecondFactors: secondFactors(kinds: [sms]) {
-          internalID
-          ... on SmsSecondFactor {
-            formattedPhoneNumber
-          }
-        }
-
-        ...BackupSecondFactor_me @relay(mask: false)
+        ...AppSecondFactor_me
+        ...SmsSecondFactor_me
+        ...BackupSecondFactor_me
       }
     `,
   },
   graphql`
-    query TwoFactorAuthenticationRefetchQuery @raw_response_type {
+    query TwoFactorAuthenticationRefetchQuery {
       me {
         ...TwoFactorAuthentication_me
       }

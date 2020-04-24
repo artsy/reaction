@@ -1,29 +1,26 @@
 import { BorderBox, Button, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
-import React, { useState } from "react"
-import { graphql, RelayRefetchProp } from "react-relay"
-
-import { TwoFactorAuthentication_me } from "__generated__/TwoFactorAuthentication_me.graphql"
 import { FormikActions } from "formik"
-import { AppSecondFactorModal, FormValues } from "./Modal"
-
-interface AppSecondFactorProps extends BorderBoxProps {
-  me: TwoFactorAuthentication_me
-  relay?: RelayRefetchProp
-}
+import React, { useState } from "react"
+import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { useSystemContext } from "Artsy"
+import { AppSecondFactorModal, FormValues } from "./Modal"
 
-import { AppSecondFactorMethodSecondFactor } from "__generated__/AppSecondFactorMethodSecondFactor.graphql"
+import { AppSecondFactor_me } from "__generated__/AppSecondFactor_me.graphql"
+
+interface AppSecondFactorProps extends BorderBoxProps {
+  me: AppSecondFactor_me
+  relayRefetch?: RelayRefetchProp
+}
+
 import { DisableSecondFactor } from "../Mutation/DisableSecondFactor"
 import { EnableSecondFactor } from "../Mutation/EnableSecondFactor"
 import { CreateAppSecondFactor } from "./Mutation/CreateAppSecondFactor"
 import { UpdateAppSecondFactor } from "./Mutation/UpdateAppSecondFactor"
 
-export type AppSecondFactorType = AppSecondFactorMethodSecondFactor
-
 export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
-  const { me, relay } = props
+  const { me, relayRefetch } = props
   const [showSetupModal, setShowSetupModal] = useState(false)
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
 
@@ -54,7 +51,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
         actions.setError(enableFactorOrErrors.errors[0].message)
       } else {
         setShowSetupModal(false)
-        relay.refetch({})
+        relayRefetch.refetch({})
       }
     })
   }
@@ -78,6 +75,10 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   }
 
   function handleDisable() {
+    if (me.appSecondFactors[0].__typename !== "AppSecondFactor") {
+      return
+    }
+
     DisableSecondFactor(relayEnvironment, {
       secondFactorID: me.appSecondFactors[0].internalID,
     }).then(response => {
@@ -87,20 +88,10 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
       ) {
         console.error(response.disableSecondFactor.secondFactorOrErrors.errors)
       } else {
-        relay.refetch({})
+        relayRefetch.refetch({})
       }
     })
   }
-
-  graphql`
-    fragment AppSecondFactorMethodSecondFactor on AppSecondFactor {
-      __typename
-      internalID
-      name
-      otpProvisioningURI
-      otpSecret
-    }
-  `
 
   return (
     <BorderBox p={2} {...props}>
@@ -118,7 +109,8 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
           </Serif>
         </Flex>
         <Flex alignItems="center">
-          {me.appSecondFactors.length ? (
+          {me.appSecondFactors.length &&
+          me.appSecondFactors[0].__typename === "AppSecondFactor" ? (
             <>
               <Sans color="black60" size="3" weight="medium">
                 {me.appSecondFactors[0].name}
@@ -144,3 +136,20 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
     </BorderBox>
   )
 }
+
+export const AppSecondFactorFragmentContainer = createFragmentContainer(
+  AppSecondFactor,
+  {
+    me: graphql`
+      fragment AppSecondFactor_me on Me {
+        appSecondFactors: secondFactors(kinds: [app]) {
+          ... on AppSecondFactor {
+            __typename
+            internalID
+            name
+          }
+        }
+      }
+    `,
+  }
+)
