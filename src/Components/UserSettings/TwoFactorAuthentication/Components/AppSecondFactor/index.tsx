@@ -1,6 +1,7 @@
 import { BorderBox, Button, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
+import { graphql, RelayRefetchProp } from "react-relay"
 
 import { TwoFactorAuthentication_me } from "__generated__/TwoFactorAuthentication_me.graphql"
 import { FormikActions } from "formik"
@@ -8,20 +9,97 @@ import { AppSecondFactorModal, FormValues } from "./Modal"
 
 interface AppSecondFactorProps extends BorderBoxProps {
   me: TwoFactorAuthentication_me
+  relay?: RelayRefetchProp
 }
 
-export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
-  const { me } = props
-  const [showSetupModal, setShowSetupModal] = useState(false)
+import { useSystemContext } from "Artsy"
 
-  const handleSubmit = (values: FormValues, actions: FormikActions<object>) => {
-    if (values.code === "123456") {
-      setShowSetupModal(false)
-    } else {
-      actions.setSubmitting(false)
-      actions.setFieldError("code", "Invalid two-factor authentication code.")
-    }
+import { AppSecondFactorMethodSecondFactor } from "__generated__/AppSecondFactorMethodSecondFactor.graphql"
+import { DisableSecondFactor } from "../Mutation/DisableSecondFactor"
+import { EnableSecondFactor } from "../Mutation/EnableSecondFactor"
+import { CreateAppSecondFactor } from "./Mutation/CreateAppSecondFactor"
+import { UpdateAppSecondFactor } from "./Mutation/UpdateAppSecondFactor"
+
+export type AppSecondFactorType = AppSecondFactorMethodSecondFactor
+
+export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
+  const { me, relay } = props
+  const [showSetupModal, setShowSetupModal] = useState(false)
+  const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
+
+  const { relayEnvironment } = useSystemContext()
+
+  function handleSubmit(values: FormValues, actions: FormikActions<object>) {
+    const update = UpdateAppSecondFactor(relayEnvironment, {
+      secondFactorID: stagedSecondFactor.internalID,
+      attributes: { name: values.name },
+    })
+
+    const enable = EnableSecondFactor(relayEnvironment, {
+      secondFactorID: stagedSecondFactor.internalID,
+      code: values.code,
+    })
+
+    Promise.all([update, enable]).then(result => {
+      const updateFactorOrErrors =
+        result[0].updateAppSecondFactor.secondFactorOrErrors
+      const enableFactorOrErrors =
+        result[1].enableSecondFactor.secondFactorOrErrors
+
+      if (updateFactorOrErrors.__typename === "Errors") {
+        actions.setSubmitting(false)
+        actions.setError(updateFactorOrErrors[0].message)
+      } else if (enableFactorOrErrors.__typename === "Errors") {
+        actions.setSubmitting(false)
+        actions.setError(enableFactorOrErrors[0].message)
+      } else {
+        setShowSetupModal(false)
+        relay.refetch({})
+      }
+    })
   }
+
+  function handleSetup() {
+    CreateAppSecondFactor(relayEnvironment, { attributes: {} }).then(
+      response => {
+        if (
+          response.createAppSecondFactor.secondFactorOrErrors.__typename ===
+          "Errors"
+        ) {
+          console.error(response.createAppSecondFactor.secondFactorOrErrors)
+        } else {
+          setStagedSecondFactor(
+            response.createAppSecondFactor.secondFactorOrErrors
+          )
+          setShowSetupModal(true)
+        }
+      }
+    )
+  }
+  function handleDisable() {
+    DisableSecondFactor(relayEnvironment, {
+      secondFactorID: me.appSecondFactors[0].internalID,
+    }).then(response => {
+      if (
+        response.disableSecondFactor.secondFactorOrErrors.__typename ===
+        "Errors"
+      ) {
+        console.error(response.disableSecondFactor.secondFactorOrErrors)
+      } else {
+        relay.refetch({})
+      }
+    })
+  }
+
+  graphql`
+    fragment AppSecondFactorMethodSecondFactor on AppSecondFactor {
+      __typename
+      internalID
+      name
+      otpProvisioningURI
+      otpSecret
+    }
+  `
 
   return (
     <BorderBox p={2} {...props}>
@@ -44,20 +122,21 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
               <Sans color="black60" size="3" weight="medium">
                 {me.appSecondFactors[0].name}
               </Sans>
-              <Button ml={1} variant="secondaryOutline">
+              <Button onClick={handleDisable} ml={1} variant="secondaryOutline">
                 Disable
               </Button>
-              <Button ml={1} variant="secondaryGray">
+              <Button onClick={handleSetup} ml={1} variant="secondaryGray">
                 Edit
               </Button>
             </>
           ) : (
-            <Button onClick={() => setShowSetupModal(true)}>Set up</Button>
+            <Button onClick={handleSetup}>Set up</Button>
           )}
         </Flex>
       </Flex>
       <AppSecondFactorModal
         show={showSetupModal}
+        secondFactor={stagedSecondFactor}
         handleSubmit={handleSubmit}
         onClose={() => setShowSetupModal(false)}
       />

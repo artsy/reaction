@@ -14,48 +14,60 @@ interface ModalProps {
   forcedScroll?: boolean
 }
 
+import { AppSecondFactorType } from "../AppSecondFactor"
+
 export interface FormValues {
   name: string
   code: string
 }
 
-const initialValues: FormValues = {
-  name: "",
-  code: "",
-}
-
-const presenceRegex = /.*\S.*/
+const presenceRegex = /.*\S+.*/
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().matches(presenceRegex, "Enter a name"),
-  code: Yup.string().matches(presenceRegex, "Enter a code"),
+  name: Yup.string()
+    .required("Enter a name")
+    .matches(presenceRegex, "Enter a name"),
+  code: Yup.string()
+    .required("Enter a code")
+    .matches(presenceRegex, "Enter a code"),
 })
 
 interface AppSecondFactorModalProps extends ModalProps {
   handleSubmit: (values: FormValues, actions: FormikActions<object>) => void
+  secondFactor: AppSecondFactorType
 }
 
 export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props => {
+  const { secondFactor, handleSubmit } = props
+
+  if (!secondFactor) {
+    return null
+  }
+
   return (
     <Modal
+      forcedScroll={false}
       title="Enable 2FA"
       show={props.show}
       onClose={props.onClose}
-      forcedScroll={false}
     >
       <Formik
         validationSchema={validationSchema}
-        initialValues={initialValues}
-        onSubmit={props.handleSubmit}
+        initialValues={{ name: secondFactor.name || "", code: "" }}
+        onSubmit={handleSubmit}
         render={(formikProps: FormikProps<FormValues>) => (
-          <InnerForm {...formikProps} />
+          <InnerForm secondFactor={secondFactor} {...formikProps} />
         )}
       />
     </Modal>
   )
 }
 
-const InnerForm: React.FC<FormikProps<FormValues>> = ({
+interface InnerFormProps extends FormikProps<FormValues> {
+  secondFactor: AppSecondFactorType
+}
+
+const InnerForm: React.FC<InnerFormProps> = ({
   errors,
   handleBlur,
   handleChange,
@@ -63,6 +75,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = ({
   isSubmitting,
   touched,
   values,
+  secondFactor,
 }) => {
   return (
     <Box mt={2}>
@@ -76,7 +89,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = ({
           error={touched.name && errors.name}
           value={values.name}
           onBlur={handleBlur}
-          placeholder="My iPhone"
+          placeholder="My Phone"
           onChange={handleChange}
           title="Device Name"
         />
@@ -86,11 +99,11 @@ const InnerForm: React.FC<FormikProps<FormValues>> = ({
         the secret code manually.
       </Sans>
       <Box mt={2} textAlign="center">
-        <QRCode
-          size={256}
-          value="otpauth://totp/Artsy:user@example.com?secret=secret&issuer=Artsy"
-        />
+        <QRCode size={256} value={secondFactor.otpProvisioningURI} />
       </Box>
+      <Sans mt={2} color="black60" size="3t">
+        secret: {secondFactor.otpSecret}
+      </Sans>
       <Sans mt={2} color="black60" size="3">
         Enter the six-digit code from the application to complete the
         configuration.
@@ -103,7 +116,7 @@ const InnerForm: React.FC<FormikProps<FormValues>> = ({
           name="code"
           value={values.code}
           onChange={handleChange}
-          placeholder="123456"
+          title="Authentication Code"
         />
       </Box>
       <Flex alignItems="center">

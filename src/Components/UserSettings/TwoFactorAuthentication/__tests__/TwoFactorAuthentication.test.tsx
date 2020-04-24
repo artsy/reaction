@@ -5,7 +5,7 @@ import { createTestEnv } from "DevTools/createTestEnv"
 
 import { TwoFactorAuthenticationQueryResponse } from "__generated__/TwoFactorAuthenticationQuery.graphql"
 import { createMockFetchQuery } from "DevTools"
-import { TwoFactorAuthenticationFragmentContainer } from ".."
+import { TwoFactorAuthenticationRefetchContainer } from ".."
 import {
   AppEnabledWithBackupCodesQueryResponse,
   BackupSecondFactors,
@@ -20,7 +20,7 @@ const setupTestEnv = () => {
   return createTestEnv({
     TestPage: TwoFactorAuthenticationTestPage,
     Component: (props: TwoFactorAuthenticationQueryResponse) => (
-      <TwoFactorAuthenticationFragmentContainer {...props} />
+      <TwoFactorAuthenticationRefetchContainer {...props} />
     ),
     query: graphql`
       query TwoFactorAuthenticationTestQuery {
@@ -56,6 +56,8 @@ describe("TwoFactorAuthentication ", () => {
     it("prompts to setup if no codes are available", async () => {
       const env = setupTestEnv()
       const page = await env.buildPage()
+
+      console.info(page.text())
 
       expect(page.backupSetupButton.exists).toBeTruthy
     })

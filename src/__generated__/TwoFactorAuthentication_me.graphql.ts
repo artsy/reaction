@@ -5,9 +5,11 @@ import { FragmentRefs } from "relay-runtime";
 export type TwoFactorAuthentication_me = {
     readonly hasSecondFactorEnabled: boolean;
     readonly appSecondFactors: ReadonlyArray<{
+        readonly internalID: string;
         readonly name?: string | null;
     } | null> | null;
     readonly smsSecondFactors: ReadonlyArray<{
+        readonly internalID: string;
         readonly formattedPhoneNumber?: string | null;
     } | null> | null;
     readonly backupSecondFactors: ReadonlyArray<({
@@ -27,7 +29,15 @@ export type TwoFactorAuthentication_me$key = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
+  "args": null,
+  "storageKey": null
+};
+return {
   "kind": "Fragment",
   "name": "TwoFactorAuthentication_me",
   "type": "Me",
@@ -58,6 +68,7 @@ const node: ReaderFragment = {
       "concreteType": null,
       "plural": true,
       "selections": [
+        (v0/*: any*/),
         {
           "kind": "InlineFragment",
           "type": "AppSecondFactor",
@@ -90,6 +101,7 @@ const node: ReaderFragment = {
       "concreteType": null,
       "plural": true,
       "selections": [
+        (v0/*: any*/),
         {
           "kind": "InlineFragment",
           "type": "SmsSecondFactor",
@@ -139,5 +151,6 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '69f781d22dff05170a3200697c7ed96c';
+})();
+(node as any).hash = '95e1ad922a6aa80afea1dff99a906000';
 export default node;
