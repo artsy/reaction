@@ -50,18 +50,21 @@ export const getFeaturedArtists = (
   collection: Header_collection,
   merchandisableArtists: Header_artworks["merchandisableArtists"]
 ): Header_artworks["merchandisableArtists"] => {
-  if (collection.query.artistIDs.length > 0) {
+  if (collection.query.artistIDs?.length > 0) {
     return filter(merchandisableArtists, artist =>
       collection.query.artistIDs.includes(artist.internalID)
     )
   }
 
-  if (merchandisableArtists.length > 0) {
+  if (merchandisableArtists?.length > 0) {
     const filteredArtistsIds = merchandisableArtists.filter(artist => {
       return !collection.featuredArtistExclusionIds.includes(artist.internalID)
     })
     return take(filteredArtistsIds, artistsCount)
   }
+
+  // No artists
+  return []
 }
 
 export const featuredArtistsEntityCollection: (
