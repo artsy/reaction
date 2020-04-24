@@ -1,3 +1,15 @@
+# v26.27.1 (Fri Apr 24 2020)
+
+#### 🐛  Bug Fix
+
+- Hide recently viewed on marketing page [#3442](https://github.com/artsy/reaction/pull/3442) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.26.0 (Fri Apr 24 2020)
 
 #### 🚀  Enhancement
