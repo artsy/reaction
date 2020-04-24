@@ -28,8 +28,6 @@ export const CreateSmsSecondFactor = (
 
                 ... on SmsSecondFactor {
                   internalID
-                  phoneNumber
-                  countryCode
                 }
 
                 ... on Errors {

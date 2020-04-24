@@ -6,7 +6,7 @@ import { BackupSecondFactor } from ".."
 import {
   AppEnabledWithBackupCodesQueryResponse,
   DisabledQueryResponse,
-} from "./fixtures"
+} from "../../../__tests__/fixtures"
 
 describe("BackupSecondFactor", () => {
   let props

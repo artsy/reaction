@@ -17,8 +17,6 @@ export type CreateSmsSecondFactorMutationResponse = {
         readonly secondFactorOrErrors: {
             readonly __typename: "SmsSecondFactor";
             readonly internalID: string;
-            readonly phoneNumber: string | null;
-            readonly countryCode: string | null;
         } | {
             readonly __typename: "Errors";
             readonly errors: ReadonlyArray<{
@@ -39,8 +37,6 @@ export type CreateSmsSecondFactorMutationRawResponse = {
         readonly secondFactorOrErrors: {
             readonly __typename: "SmsSecondFactor";
             readonly internalID: string;
-            readonly phoneNumber: string | null;
-            readonly countryCode: string | null;
         } | {
             readonly __typename: "Errors";
             readonly errors: ReadonlyArray<{
@@ -71,8 +67,6 @@ mutation CreateSmsSecondFactorMutation(
       __typename
       ... on SmsSecondFactor {
         internalID
-        phoneNumber
-        countryCode
       }
       ... on Errors {
         errors {
@@ -136,20 +130,6 @@ v1 = [
                 "kind": "ScalarField",
                 "alias": null,
                 "name": "internalID",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "phoneNumber",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "countryCode",
                 "args": null,
                 "storageKey": null
               }
@@ -225,10 +205,10 @@ return {
     "operationKind": "mutation",
     "name": "CreateSmsSecondFactorMutation",
     "id": null,
-    "text": "mutation CreateSmsSecondFactorMutation(\n  $input: CreateSmsSecondFactorInput!\n) {\n  createSmsSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on SmsSecondFactor {\n        internalID\n        phoneNumber\n        countryCode\n      }\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation CreateSmsSecondFactorMutation(\n  $input: CreateSmsSecondFactorInput!\n) {\n  createSmsSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on SmsSecondFactor {\n        internalID\n      }\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '3635c13d2891d8e5104eee1bb7730ef4';
+(node as any).hash = '2338529ea8cab5fd4ddd92cc338d8713';
 export default node;

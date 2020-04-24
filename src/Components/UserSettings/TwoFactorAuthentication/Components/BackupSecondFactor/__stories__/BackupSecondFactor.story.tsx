@@ -9,7 +9,7 @@ import {
   AppEnabledWithBackupCodesQueryResponse,
   DisabledQueryResponse,
   MutationResponse,
-} from "../__tests__/fixtures"
+} from "../../../__tests__/fixtures"
 
 const query = graphql`
   query BackupSecondFactorStoryQuery {
