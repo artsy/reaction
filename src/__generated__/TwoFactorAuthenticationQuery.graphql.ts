@@ -13,15 +13,19 @@ export type TwoFactorAuthenticationQueryRawResponse = {
         readonly hasSecondFactorEnabled: boolean;
         readonly appSecondFactors: ReadonlyArray<({
             readonly __typename: "AppSecondFactor";
+            readonly internalID: string;
             readonly name: string | null;
         } | {
             readonly __typename: string | null;
+            readonly internalID: string;
         }) | null> | null;
         readonly smsSecondFactors: ReadonlyArray<({
             readonly __typename: "SmsSecondFactor";
+            readonly internalID: string;
             readonly formattedPhoneNumber: string | null;
         } | {
             readonly __typename: string | null;
+            readonly internalID: string;
         }) | null> | null;
         readonly backupSecondFactors: ReadonlyArray<({
             readonly __typename: "BackupSecondFactor";
@@ -51,12 +55,14 @@ fragment TwoFactorAuthentication_me on Me {
   hasSecondFactorEnabled
   appSecondFactors: secondFactors(kinds: [app]) {
     __typename
+    internalID
     ... on AppSecondFactor {
       name
     }
   }
   smsSecondFactors: secondFactors(kinds: [sms]) {
     __typename
+    internalID
     ... on SmsSecondFactor {
       formattedPhoneNumber
     }
@@ -75,6 +81,13 @@ var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "internalID",
   "args": null,
   "storageKey": null
 };
@@ -144,6 +157,7 @@ return {
             "plural": true,
             "selections": [
               (v0/*: any*/),
+              (v1/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "AppSecondFactor",
@@ -177,6 +191,7 @@ return {
             "plural": true,
             "selections": [
               (v0/*: any*/),
+              (v1/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "SmsSecondFactor",
@@ -234,7 +249,7 @@ return {
     "operationKind": "query",
     "name": "TwoFactorAuthenticationQuery",
     "id": null,
-    "text": "query TwoFactorAuthenticationQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      formattedPhoneNumber\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n",
+    "text": "query TwoFactorAuthenticationQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    internalID\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    internalID\n    ... on SmsSecondFactor {\n      formattedPhoneNumber\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

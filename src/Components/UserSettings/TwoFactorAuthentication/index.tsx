@@ -1,6 +1,6 @@
 import { Box, Flex, Serif } from "@artsy/palette"
 import React from "react"
-import { createFragmentContainer, graphql } from "react-relay"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { SystemContextProps, useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -15,10 +15,11 @@ import { SmsSecondFactor } from "./Components/SmsSecondFactor"
 
 export interface TwoFactorAuthenticationProps extends SystemContextProps {
   me: TwoFactorAuthentication_me
+  relay: RelayRefetchProp
 }
 
 const TwoFactorAuthentication: React.FC<TwoFactorAuthenticationProps> = props => {
-  const { me } = props
+  const { me, relay } = props
 
   return (
     <Box>
@@ -36,14 +37,14 @@ const TwoFactorAuthentication: React.FC<TwoFactorAuthenticationProps> = props =>
         Set up an additional layer of security by requiring a security code in
         addition to your password to log in to your Artsy account.
       </Serif>
-      <AppSecondFactor mt={3} me={me} />
+      <AppSecondFactor mt={3} me={me} relay={relay} />
       <SmsSecondFactor mt={2} me={me} />
-      <BackupSecondFactor mt={2} me={me} />
+      {me.hasSecondFactorEnabled && <BackupSecondFactor mt={2} me={me} />}
     </Box>
   )
 }
 
-export const TwoFactorAuthenticationFragmentContainer = createFragmentContainer(
+export const TwoFactorAuthenticationRefetchContainer = createRefetchContainer(
   TwoFactorAuthentication,
   {
     me: graphql`
@@ -51,12 +52,14 @@ export const TwoFactorAuthenticationFragmentContainer = createFragmentContainer(
         hasSecondFactorEnabled
 
         appSecondFactors: secondFactors(kinds: [app]) {
+          internalID
           ... on AppSecondFactor {
             name
           }
         }
 
         smsSecondFactors: secondFactors(kinds: [sms]) {
+          internalID
           ... on SmsSecondFactor {
             formattedPhoneNumber
           }
@@ -65,7 +68,14 @@ export const TwoFactorAuthenticationFragmentContainer = createFragmentContainer(
         ...BackupSecondFactor_me @relay(mask: false)
       }
     `,
-  }
+  },
+  graphql`
+    query TwoFactorAuthenticationRefetchQuery @raw_response_type {
+      me {
+        ...TwoFactorAuthentication_me
+      }
+    }
+  `
 )
 
 export const TwoFactorAuthenticationQueryRenderer = () => {
@@ -86,7 +96,7 @@ export const TwoFactorAuthenticationQueryRenderer = () => {
           }
         }
       `}
-      render={renderWithLoadProgress(TwoFactorAuthenticationFragmentContainer)}
+      render={renderWithLoadProgress(TwoFactorAuthenticationRefetchContainer)}
     />
   )
 }

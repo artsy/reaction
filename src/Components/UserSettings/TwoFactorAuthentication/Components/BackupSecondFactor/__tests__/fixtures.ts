@@ -37,7 +37,9 @@ export const AppEnabledWithBackupCodesQueryResponse: TwoFactorAuthenticationQuer
   me: {
     id: "id",
     hasSecondFactorEnabled: true,
-    appSecondFactors: [{ __typename: "AppSecondFactor", name: "Test Device" }],
+    appSecondFactors: [
+      { __typename: "AppSecondFactor", internalID: "id", name: "Test Device" },
+    ],
     smsSecondFactors: [],
     backupSecondFactors: BackupSecondFactors,
   },

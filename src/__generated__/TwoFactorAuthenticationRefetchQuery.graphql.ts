@@ -2,21 +2,49 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type TwoFactorAuthenticationTestQueryVariables = {};
-export type TwoFactorAuthenticationTestQueryResponse = {
+export type TwoFactorAuthenticationRefetchQueryVariables = {};
+export type TwoFactorAuthenticationRefetchQueryResponse = {
     readonly me: {
         readonly " $fragmentRefs": FragmentRefs<"TwoFactorAuthentication_me">;
     } | null;
 };
-export type TwoFactorAuthenticationTestQuery = {
-    readonly response: TwoFactorAuthenticationTestQueryResponse;
-    readonly variables: TwoFactorAuthenticationTestQueryVariables;
+export type TwoFactorAuthenticationRefetchQueryRawResponse = {
+    readonly me: ({
+        readonly hasSecondFactorEnabled: boolean;
+        readonly appSecondFactors: ReadonlyArray<({
+            readonly __typename: "AppSecondFactor";
+            readonly internalID: string;
+            readonly name: string | null;
+        } | {
+            readonly __typename: string | null;
+            readonly internalID: string;
+        }) | null> | null;
+        readonly smsSecondFactors: ReadonlyArray<({
+            readonly __typename: "SmsSecondFactor";
+            readonly internalID: string;
+            readonly formattedPhoneNumber: string | null;
+        } | {
+            readonly __typename: string | null;
+            readonly internalID: string;
+        }) | null> | null;
+        readonly backupSecondFactors: ReadonlyArray<({
+            readonly __typename: "BackupSecondFactor";
+        } | {
+            readonly __typename: string | null;
+        }) | null> | null;
+        readonly id: string | null;
+    }) | null;
+};
+export type TwoFactorAuthenticationRefetchQuery = {
+    readonly response: TwoFactorAuthenticationRefetchQueryResponse;
+    readonly variables: TwoFactorAuthenticationRefetchQueryVariables;
+    readonly rawResponse: TwoFactorAuthenticationRefetchQueryRawResponse;
 };
 
 
 
 /*
-query TwoFactorAuthenticationTestQuery {
+query TwoFactorAuthenticationRefetchQuery {
   me {
     ...TwoFactorAuthentication_me
     id
@@ -67,7 +95,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "TwoFactorAuthenticationTestQuery",
+    "name": "TwoFactorAuthenticationRefetchQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -92,7 +120,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "TwoFactorAuthenticationTestQuery",
+    "name": "TwoFactorAuthenticationRefetchQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -219,12 +247,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "TwoFactorAuthenticationTestQuery",
+    "name": "TwoFactorAuthenticationRefetchQuery",
     "id": null,
-    "text": "query TwoFactorAuthenticationTestQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    internalID\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    internalID\n    ... on SmsSecondFactor {\n      formattedPhoneNumber\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n",
+    "text": "query TwoFactorAuthenticationRefetchQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    internalID\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    internalID\n    ... on SmsSecondFactor {\n      formattedPhoneNumber\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '8ded02d6af31b16f5b5d61ee6f71e552';
+(node as any).hash = '35b728552a19fda16ac2d1a421e12cee';
 export default node;
