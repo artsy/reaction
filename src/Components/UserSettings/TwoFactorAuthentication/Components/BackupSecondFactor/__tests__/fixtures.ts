@@ -45,6 +45,18 @@ export const AppEnabledWithBackupCodesQueryResponse: TwoFactorAuthenticationQuer
   },
 }
 
+export const AppEnabledWithoutBackupCodesQueryResponse: TwoFactorAuthenticationQueryRawResponse = {
+  me: {
+    id: "id",
+    hasSecondFactorEnabled: true,
+    appSecondFactors: [
+      { __typename: "AppSecondFactor", internalID: "id", name: "Test Device" },
+    ],
+    smsSecondFactors: [],
+    backupSecondFactors: [],
+  },
+}
+
 export const BackupSecondFactorModalContentQueryResponse: BackupSecondFactorModalContentQueryRawResponse = {
   me: {
     id: "id",
