@@ -8,6 +8,7 @@ import { SystemContextProvider } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { MockBoot } from "DevTools/MockBoot"
 import { mount } from "enzyme"
+import { cloneDeep } from "lodash"
 import React from "react"
 import sharify from "sharify"
 import { CollectionHeader, getFeaturedArtists, Props } from "../index"
@@ -64,6 +65,15 @@ describe("collections header", () => {
       </MockBoot>
     )
   }
+
+  it("doesnt blow up if missing merchandisableArtists or artistIDs", () => {
+    const noArtistsOrIDs = cloneDeep(props) as any
+    noArtistsOrIDs.collection.query.artistIDs = null
+    noArtistsOrIDs.artworks.merchandisableArtists = null
+    expect(() => {
+      mountComponent(noArtistsOrIDs)
+    }).not.toThrowError()
+  })
 
   it("renders the default collections header when there is no header image", () => {
     const component = mountComponent({
