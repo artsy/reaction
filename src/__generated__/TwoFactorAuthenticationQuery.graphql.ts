@@ -17,7 +17,6 @@ export type TwoFactorAuthenticationQueryRawResponse = {
             readonly name: string | null;
         } | {
             readonly __typename: string | null;
-            readonly internalID: string;
         }) | null> | null;
         readonly smsSecondFactors: ReadonlyArray<({
             readonly __typename: "SmsSecondFactor";
@@ -25,7 +24,6 @@ export type TwoFactorAuthenticationQueryRawResponse = {
             readonly formattedPhoneNumber: string | null;
         } | {
             readonly __typename: string | null;
-            readonly internalID: string;
         }) | null> | null;
         readonly backupSecondFactors: ReadonlyArray<({
             readonly __typename: "BackupSecondFactor";
@@ -51,28 +49,42 @@ query TwoFactorAuthenticationQuery {
   }
 }
 
-fragment TwoFactorAuthentication_me on Me {
-  hasSecondFactorEnabled
+fragment AppSecondFactor_me on Me {
   appSecondFactors: secondFactors(kinds: [app]) {
     __typename
-    internalID
     ... on AppSecondFactor {
+      __typename
+      internalID
       name
     }
   }
-  smsSecondFactors: secondFactors(kinds: [sms]) {
-    __typename
-    internalID
-    ... on SmsSecondFactor {
-      formattedPhoneNumber
-    }
-  }
+}
+
+fragment BackupSecondFactor_me on Me {
   backupSecondFactors: secondFactors(kinds: [backup]) {
     __typename
     ... on BackupSecondFactor {
       __typename
     }
   }
+}
+
+fragment SmsSecondFactor_me on Me {
+  smsSecondFactors: secondFactors(kinds: [sms]) {
+    __typename
+    ... on SmsSecondFactor {
+      __typename
+      internalID
+      formattedPhoneNumber
+    }
+  }
+}
+
+fragment TwoFactorAuthentication_me on Me {
+  hasSecondFactorEnabled
+  ...AppSecondFactor_me
+  ...SmsSecondFactor_me
+  ...BackupSecondFactor_me
 }
 */
 
@@ -157,11 +169,12 @@ return {
             "plural": true,
             "selections": [
               (v0/*: any*/),
-              (v1/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "AppSecondFactor",
                 "selections": [
+                  (v0/*: any*/),
+                  (v1/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -191,11 +204,12 @@ return {
             "plural": true,
             "selections": [
               (v0/*: any*/),
-              (v1/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "SmsSecondFactor",
                 "selections": [
+                  (v0/*: any*/),
+                  (v1/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -249,7 +263,7 @@ return {
     "operationKind": "query",
     "name": "TwoFactorAuthenticationQuery",
     "id": null,
-    "text": "query TwoFactorAuthenticationQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    internalID\n    ... on AppSecondFactor {\n      name\n    }\n  }\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    internalID\n    ... on SmsSecondFactor {\n      formattedPhoneNumber\n    }\n  }\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n",
+    "text": "query TwoFactorAuthenticationQuery {\n  me {\n    ...TwoFactorAuthentication_me\n    id\n  }\n}\n\nfragment AppSecondFactor_me on Me {\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      __typename\n      internalID\n      name\n    }\n  }\n}\n\nfragment BackupSecondFactor_me on Me {\n  backupSecondFactors: secondFactors(kinds: [backup]) {\n    __typename\n    ... on BackupSecondFactor {\n      __typename\n    }\n  }\n}\n\nfragment SmsSecondFactor_me on Me {\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      __typename\n      internalID\n      formattedPhoneNumber\n    }\n  }\n}\n\nfragment TwoFactorAuthentication_me on Me {\n  hasSecondFactorEnabled\n  ...AppSecondFactor_me\n  ...SmsSecondFactor_me\n  ...BackupSecondFactor_me\n}\n",
     "metadata": {}
   }
 };

@@ -2,7 +2,7 @@ import { BorderBox, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import { FormikActions } from "formik"
 import React, { useState } from "react"
-import { RelayRefetchProp } from "react-relay"
+import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { useSystemContext } from "Artsy"
 import { FormValues } from "Components/Wizard/types"
@@ -13,15 +13,15 @@ import { SmsSecondFactorModal } from "./Modal"
 import { CreateSmsSecondFactor } from "./Mutation/CreateSmsSecondFactor"
 import { UpdateSmsSecondFactor } from "./Mutation/UpdateSmsSecondFactor"
 
-import { TwoFactorAuthentication_me } from "__generated__/TwoFactorAuthentication_me.graphql"
+import { SmsSecondFactor_me } from "__generated__/SmsSecondFactor_me.graphql"
 
 interface SmsSecondFactorProps extends BorderBoxProps {
-  me: TwoFactorAuthentication_me
-  relay: RelayRefetchProp
+  me: SmsSecondFactor_me
+  relayRefetch?: RelayRefetchProp
 }
 
 export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
-  const { me, relay } = props
+  const { me, relayRefetch } = props
   const { relayEnvironment } = useSystemContext()
   const [showSetupModal, setShowSetupModal] = useState(false)
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
@@ -51,7 +51,7 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
         actions.setError(enableFactorOrErrors.errors[0].message)
       } else {
         setShowSetupModal(false)
-        relay.refetch({})
+        relayRefetch.refetch({})
       }
     })
   }
@@ -75,6 +75,10 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
   }
 
   function handleDisable() {
+    if (me.smsSecondFactors[0].__typename !== "SmsSecondFactor") {
+      return
+    }
+
     DisableSecondFactor(relayEnvironment, {
       secondFactorID: me.smsSecondFactors[0].internalID,
     }).then(response => {
@@ -84,7 +88,7 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
       ) {
         console.error(response.disableSecondFactor.secondFactorOrErrors)
       } else {
-        relay.refetch({})
+        relayRefetch.refetch({})
       }
     })
   }
@@ -101,7 +105,8 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
           </Serif>
         </Flex>
         <Flex alignItems="center">
-          {me.smsSecondFactors.length ? (
+          {me.smsSecondFactors.length &&
+          me.smsSecondFactors[0].__typename === "SmsSecondFactor" ? (
             <>
               <Sans color="black60" size="3" weight="medium">
                 {me.smsSecondFactors[0].formattedPhoneNumber}
@@ -127,3 +132,20 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     </BorderBox>
   )
 }
+
+export const SmsSecondFactorFragmentContainer = createFragmentContainer(
+  SmsSecondFactor,
+  {
+    me: graphql`
+      fragment SmsSecondFactor_me on Me {
+        smsSecondFactors: secondFactors(kinds: [sms]) {
+          ... on SmsSecondFactor {
+            __typename
+            internalID
+            formattedPhoneNumber
+          }
+        }
+      }
+    `,
+  }
+)

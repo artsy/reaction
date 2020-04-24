@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Input, Modal, Sans } from "@artsy/palette"
+import { CreateAppSecondFactorMutationResponse } from "__generated__/CreateAppSecondFactorMutation.graphql"
 import { Formik, FormikActions, FormikProps } from "formik"
 import QRCode from "qrcode.react"
 import React from "react"
@@ -13,8 +14,6 @@ interface ModalProps {
   title?: string
   forcedScroll?: boolean
 }
-
-import { AppSecondFactorType } from "../AppSecondFactor"
 
 export interface FormValues {
   name: string
@@ -34,13 +33,13 @@ const validationSchema = Yup.object().shape({
 
 interface AppSecondFactorModalProps extends ModalProps {
   handleSubmit: (values: FormValues, actions: FormikActions<object>) => void
-  secondFactor: AppSecondFactorType
+  secondFactor: CreateAppSecondFactorMutationResponse["createAppSecondFactor"]["secondFactorOrErrors"]
 }
 
 export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props => {
   const { secondFactor, handleSubmit } = props
 
-  if (!secondFactor) {
+  if (!secondFactor || secondFactor.__typename !== "AppSecondFactor") {
     return null
   }
 
@@ -64,7 +63,7 @@ export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props =
 }
 
 interface InnerFormProps extends FormikProps<FormValues> {
-  secondFactor: AppSecondFactorType
+  secondFactor: CreateAppSecondFactorMutationResponse["createAppSecondFactor"]["secondFactorOrErrors"]
 }
 
 const InnerForm: React.FC<InnerFormProps> = ({
@@ -77,6 +76,10 @@ const InnerForm: React.FC<InnerFormProps> = ({
   values,
   secondFactor,
 }) => {
+  if (secondFactor.__typename !== "AppSecondFactor") {
+    return null
+  }
+
   return (
     <Box mt={2}>
       <Sans color="black60" size="3">

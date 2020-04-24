@@ -3,6 +3,7 @@ import { FormikActions } from "formik"
 import React from "react"
 import * as Yup from "yup"
 
+import { CreateSmsSecondFactorMutationResponse } from "__generated__/CreateSmsSecondFactorMutation.graphql"
 import { useSystemContext } from "Artsy"
 import { Step, Wizard } from "Components/Wizard"
 import { FormValues, StepElement } from "Components/Wizard/types"
@@ -20,14 +21,14 @@ interface ModalProps {
 
 interface SmsSecondFactorModalProps extends ModalProps {
   handleSubmit: (values: FormValues, actions: FormikActions<object>) => void
-  secondFactor: any
+  secondFactor: CreateSmsSecondFactorMutationResponse["createSmsSecondFactor"]["secondFactorOrErrors"]
 }
 
 export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props => {
   const { secondFactor, handleSubmit } = props
   const { relayEnvironment } = useSystemContext()
 
-  if (!secondFactor) {
+  if (!secondFactor || secondFactor.__typename !== "SmsSecondFactor") {
     return null
   }
 
