@@ -76,7 +76,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
                */
               !route.displayFullPage && (
                 <>
-                  <Flex flexDirection="row" alignItems="center">
+                  <Flex flexDirection="row" alignItems="center" my={3}>
                     <ChevronIcon
                       direction="left"
                       color="black"
@@ -108,17 +108,24 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
           </Col>
         </Row>
 
-        {typeof window !== "undefined" && (
-          <LazyLoadComponent threshold={1000}>
-            <Row>
-              <Col>
-                <RecentlyViewed />
-              </Col>
-            </Row>
-          </LazyLoadComponent>
+        {/* Fullpage is typically a stand-alone marketing page  */}
+        {!route.displayFullPage && typeof window !== "undefined" && (
+          <>
+            <LazyLoadComponent threshold={1000}>
+              <Row>
+                <Col>
+                  <RecentlyViewed />
+                </Col>
+              </Row>
+            </LazyLoadComponent>
+          </>
         )}
 
-        <Separator mt={6} mb={3} />
+        {route.displayFullPage ? (
+          <Spacer mb={3} />
+        ) : (
+          <Separator mt={6} mb={3} />
+        )}
 
         <Row>
           <Col>
