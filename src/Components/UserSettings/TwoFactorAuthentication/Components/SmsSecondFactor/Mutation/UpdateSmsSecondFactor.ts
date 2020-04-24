@@ -24,8 +24,15 @@ export const UpdateSmsSecondFactor = (
           ) @raw_response_type {
             updateSmsSecondFactor(input: $input) {
               secondFactorOrErrors {
-                ... on SecondFactor {
-                  internalID
+                __typename
+
+                ... on Errors {
+                  errors {
+                    message
+                    code
+                    path
+                    data
+                  }
                 }
               }
             }

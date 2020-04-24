@@ -38,7 +38,7 @@ const TwoFactorAuthentication: React.FC<TwoFactorAuthenticationProps> = props =>
         addition to your password to log in to your Artsy account.
       </Serif>
       <AppSecondFactor mt={3} me={me} relay={relay} />
-      <SmsSecondFactor mt={2} me={me} />
+      <SmsSecondFactor mt={2} me={me} relay={relay} />
       {me.hasSecondFactorEnabled && <BackupSecondFactor mt={2} me={me} />}
     </Box>
   )

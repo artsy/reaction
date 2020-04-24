@@ -8,6 +8,7 @@ import { createMockFetchQuery } from "DevTools"
 import { TwoFactorAuthenticationRefetchContainer } from ".."
 import {
   AppEnabledWithBackupCodesQueryResponse,
+  AppEnabledWithoutBackupCodesQueryResponse,
   BackupSecondFactors,
   BackupSecondFactorsMutationResponse,
 } from "../Components/BackupSecondFactor/__tests__/fixtures"
@@ -55,16 +56,18 @@ describe("TwoFactorAuthentication ", () => {
   describe("BackupSecondFactor", () => {
     it("prompts to setup if no codes are available", async () => {
       const env = setupTestEnv()
-      const page = await env.buildPage()
-
-      console.info(page.text())
+      const page = await env.buildPage({
+        mockData: AppEnabledWithoutBackupCodesQueryResponse,
+      })
 
       expect(page.backupSetupButton.exists).toBeTruthy
     })
 
     it("creates backup codes and displays codes in a modal", async done => {
       const env = setupTestEnv()
-      const page = await env.buildPage()
+      const page = await env.buildPage({
+        mockData: AppEnabledWithoutBackupCodesQueryResponse,
+      })
 
       expect(page.backupSetupButton.exists).toBeTruthy
 

@@ -1,25 +1,16 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type CreateSmsSecondFactorInput = {
-    readonly attributes: SmsSecondFactorAttributes;
+export type DeliverSecondFactorInput = {
     readonly clientMutationId?: string | null;
+    readonly secondFactorID: string;
 };
-export type SmsSecondFactorAttributes = {
-    readonly countryCode?: string | null;
-    readonly phoneNumber?: string | null;
+export type DeliverSecondFactorMutationVariables = {
+    input: DeliverSecondFactorInput;
 };
-export type CreateSmsSecondFactorMutationVariables = {
-    input: CreateSmsSecondFactorInput;
-};
-export type CreateSmsSecondFactorMutationResponse = {
-    readonly createSmsSecondFactor: {
+export type DeliverSecondFactorMutationResponse = {
+    readonly deliverSecondFactor: {
         readonly secondFactorOrErrors: {
-            readonly __typename: "SmsSecondFactor";
-            readonly internalID: string;
-            readonly phoneNumber: string | null;
-            readonly countryCode: string | null;
-        } | {
             readonly __typename: "Errors";
             readonly errors: ReadonlyArray<{
                 readonly message: string;
@@ -34,14 +25,9 @@ export type CreateSmsSecondFactorMutationResponse = {
         };
     } | null;
 };
-export type CreateSmsSecondFactorMutationRawResponse = {
-    readonly createSmsSecondFactor: ({
+export type DeliverSecondFactorMutationRawResponse = {
+    readonly deliverSecondFactor: ({
         readonly secondFactorOrErrors: {
-            readonly __typename: "SmsSecondFactor";
-            readonly internalID: string;
-            readonly phoneNumber: string | null;
-            readonly countryCode: string | null;
-        } | {
             readonly __typename: "Errors";
             readonly errors: ReadonlyArray<{
                 readonly message: string;
@@ -54,26 +40,21 @@ export type CreateSmsSecondFactorMutationRawResponse = {
         };
     }) | null;
 };
-export type CreateSmsSecondFactorMutation = {
-    readonly response: CreateSmsSecondFactorMutationResponse;
-    readonly variables: CreateSmsSecondFactorMutationVariables;
-    readonly rawResponse: CreateSmsSecondFactorMutationRawResponse;
+export type DeliverSecondFactorMutation = {
+    readonly response: DeliverSecondFactorMutationResponse;
+    readonly variables: DeliverSecondFactorMutationVariables;
+    readonly rawResponse: DeliverSecondFactorMutationRawResponse;
 };
 
 
 
 /*
-mutation CreateSmsSecondFactorMutation(
-  $input: CreateSmsSecondFactorInput!
+mutation DeliverSecondFactorMutation(
+  $input: DeliverSecondFactorInput!
 ) {
-  createSmsSecondFactor(input: $input) {
+  deliverSecondFactor(input: $input) {
     secondFactorOrErrors {
       __typename
-      ... on SmsSecondFactor {
-        internalID
-        phoneNumber
-        countryCode
-      }
       ... on Errors {
         errors {
           message
@@ -92,7 +73,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "CreateSmsSecondFactorInput!",
+    "type": "DeliverSecondFactorInput!",
     "defaultValue": null
   }
 ],
@@ -100,7 +81,7 @@ v1 = [
   {
     "kind": "LinkedField",
     "alias": null,
-    "name": "createSmsSecondFactor",
+    "name": "deliverSecondFactor",
     "storageKey": null,
     "args": [
       {
@@ -109,7 +90,7 @@ v1 = [
         "variableName": "input"
       }
     ],
-    "concreteType": "CreateSmsSecondFactorPayload",
+    "concreteType": "DeliverSecondFactorPayload",
     "plural": false,
     "selections": [
       {
@@ -127,33 +108,6 @@ v1 = [
             "name": "__typename",
             "args": null,
             "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "SmsSecondFactor",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "internalID",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "phoneNumber",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "countryCode",
-                "args": null,
-                "storageKey": null
-              }
-            ]
           },
           {
             "kind": "InlineFragment",
@@ -209,7 +163,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "CreateSmsSecondFactorMutation",
+    "name": "DeliverSecondFactorMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -217,18 +171,18 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "CreateSmsSecondFactorMutation",
+    "name": "DeliverSecondFactorMutation",
     "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "mutation",
-    "name": "CreateSmsSecondFactorMutation",
+    "name": "DeliverSecondFactorMutation",
     "id": null,
-    "text": "mutation CreateSmsSecondFactorMutation(\n  $input: CreateSmsSecondFactorInput!\n) {\n  createSmsSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on SmsSecondFactor {\n        internalID\n        phoneNumber\n        countryCode\n      }\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation DeliverSecondFactorMutation(\n  $input: DeliverSecondFactorInput!\n) {\n  deliverSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '3635c13d2891d8e5104eee1bb7730ef4';
+(node as any).hash = '6c539b1b55cf04795496094fc5272807';
 export default node;

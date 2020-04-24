@@ -48,10 +48,10 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
 
       if (updateFactorOrErrors.__typename === "Errors") {
         actions.setSubmitting(false)
-        actions.setError(updateFactorOrErrors[0].message)
+        actions.setError(updateFactorOrErrors.errors[0].message)
       } else if (enableFactorOrErrors.__typename === "Errors") {
         actions.setSubmitting(false)
-        actions.setError(enableFactorOrErrors[0].message)
+        actions.setError(enableFactorOrErrors.errors[0].message)
       } else {
         setShowSetupModal(false)
         relay.refetch({})
@@ -76,6 +76,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
       }
     )
   }
+
   function handleDisable() {
     DisableSecondFactor(relayEnvironment, {
       secondFactorID: me.appSecondFactors[0].internalID,
@@ -84,7 +85,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
         response.disableSecondFactor.secondFactorOrErrors.__typename ===
         "Errors"
       ) {
-        console.error(response.disableSecondFactor.secondFactorOrErrors)
+        console.error(response.disableSecondFactor.secondFactorOrErrors.errors)
       } else {
         relay.refetch({})
       }

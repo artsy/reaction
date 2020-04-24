@@ -24,8 +24,21 @@ export const CreateSmsSecondFactor = (
           ) @raw_response_type {
             createSmsSecondFactor(input: $input) {
               secondFactorOrErrors {
-                ... on SecondFactor {
+                __typename
+
+                ... on SmsSecondFactor {
                   internalID
+                  phoneNumber
+                  countryCode
+                }
+
+                ... on Errors {
+                  errors {
+                    message
+                    code
+                    path
+                    data
+                  }
                 }
               }
             }
