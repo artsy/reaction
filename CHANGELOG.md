@@ -1,3 +1,15 @@
+# v26.27.2 (Fri Apr 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Make /collection/id Header safer [#3443](https://github.com/artsy/reaction/pull/3443) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.27.1 (Fri Apr 24 2020)
 
 #### 🐛  Bug Fix
