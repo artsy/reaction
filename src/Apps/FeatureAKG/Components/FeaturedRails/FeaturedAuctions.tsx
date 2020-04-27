@@ -45,7 +45,7 @@ const FeaturedAuctionsRail: React.FC<FeaturedAuctionsRailProps> = props => {
     return (
       <FeaturedRail title={title} subtitle={subtitle}>
         <FeaturedRailCarousel
-          itemsForCarousel={itemsForCarousel}
+          itemsForCarousel={compact(itemsForCarousel)}
           contextModule={AnalyticsSchema.ContextModule.BrowseAuctions}
         />
       </FeaturedRail>

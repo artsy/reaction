@@ -40,7 +40,7 @@ const FeaturedFairsRail: React.FC<FeaturedFairsRailProps> = props => {
     return (
       <FeaturedRail title={title} subtitle={subtitle}>
         <FeaturedRailCarousel
-          itemsForCarousel={itemsForCarousel}
+          itemsForCarousel={compact(itemsForCarousel)}
           contextModule={AnalyticsSchema.ContextModule.BrowseFairs}
         />
       </FeaturedRail>
