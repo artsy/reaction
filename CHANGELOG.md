@@ -1,3 +1,17 @@
+# v26.27.4 (Mon Apr 27 2020)
+
+#### 🐛  Bug Fix
+
+- Make AKG page more resilient towards mismatched data [#3446](https://github.com/artsy/reaction/pull/3446) ([@sweir27](https://github.com/sweir27))
+- Update metaphysics schema [#3444](https://github.com/artsy/reaction/pull/3444) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.27.3 (Mon Apr 27 2020)
 
 #### 🐛  Bug Fix
