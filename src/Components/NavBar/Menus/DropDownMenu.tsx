@@ -25,7 +25,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   const trackClick = event => {
     const link = event.target
     const text = link.textContent
-    const href = link.getAttribute("href")
+    const href = link.parentNode.parentNode.getAttribute("href")
 
     trackEvent({
       action_type: AnalyticsSchema.ActionType.Click,
@@ -40,7 +40,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
       <Flex justifyContent="center">
         <SimpleLinksContainer
           py={4}
-          mr={[4, 4, 4, 6]}
+          mr={[3, 3, 3, "50px"]}
           viewAllTopMargin={viewAllTopMargin[contextModule]}
         >
           <Box mr={[2, 2, 3, 3]} width={[110, 110, 110, 135, 150]}>
@@ -49,7 +49,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
                 return (
                   <MenuItemContainer mb={1} key={menuItem.text}>
                     <MenuItem
-                      px={0}
+                      px={1}
                       py={0}
                       href={menuItem.href}
                       textColor={color("black60")}

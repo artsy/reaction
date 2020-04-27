@@ -16,6 +16,7 @@ interface NavItemProps extends BoxProps {
   href?: string
   onClick?: () => void
   isFullScreenDropDown?: boolean
+  label?: string
 }
 
 type Position = React.CSSProperties["position"]
@@ -30,6 +31,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   href,
   onClick,
   isFullScreenDropDown,
+  label,
 }) => {
   const navItemLabel = children
   const { trackEvent } = useTracking()
@@ -66,10 +68,10 @@ export const NavItem: React.FC<NavItemProps> = ({
   }
 
   const trackHover = () => {
-    if (isString(navItemLabel))
+    if (isString(navItemLabel) || label)
       trackEvent({
         action_type: AnalyticsSchema.ActionType.Hover,
-        subject: navItemLabel,
+        subject: navItemLabel.toString() || label,
       })
   }
 
@@ -128,6 +130,6 @@ export const NavItem: React.FC<NavItemProps> = ({
 
 const MenuContainer = styled(Box)<{ isFullScreen?: boolean }>`
   position: absolute;
-  margin-top: -1px; /* Offset border */
+  margin-top: ${p => (p.isFullScreen ? "1px" : "-1px")}; /* Offset border */
   transform: translateX(${p => (p.isFullScreen ? 0 : "-78%")});
 `

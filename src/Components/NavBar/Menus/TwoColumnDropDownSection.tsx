@@ -18,7 +18,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
   return (
     <Flex>
       <Box width={[110, 110, 110, 135, 150]} py={4} mr={[2, 2, 3, 3]}>
-        <Sans size="2" mb={1}>
+        <Sans size="2" mb={1} px={1}>
           {section.text}
         </Sans>
         {section.menu &&
@@ -26,7 +26,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
             return (
               <MenuItem
                 key={menuItem.text}
-                px={0}
+                px={1}
                 py={0.5}
                 href={menuItem.href}
                 textColor={color("black60")}
@@ -44,7 +44,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
             return (
               <MenuItem
                 key={menuItem.text}
-                px={0}
+                px={1}
                 py={0.5}
                 href={menuItem.href}
                 textColor={color("black60")}
