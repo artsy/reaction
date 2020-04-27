@@ -20,16 +20,16 @@ import FlickityType, { Options as FlickityOptions } from "flickity"
  * - For LazyLoad use Palette's Image lazyLoad prop instead of Flickities
  */
 
-interface CarouselProps {
+interface CarouselProps<T> {
   /**
    * This is designed to handle any shape of data passed, as long as its an array
    */
-  data: any
+  data: Readonly<T[]>
 
   /**
    * Passes CarouselRef
    */
-  setCarouselRef?: (CarouselRef) => void
+  setCarouselRef?: (CarouselRef: FlickityType) => void
 
   /**
    * If this carousel contains only one visible image on render set to true (for SSR)
@@ -63,7 +63,7 @@ interface CarouselProps {
   /**
    * The render callback returns an image to display
    */
-  render: (slide, slideIndex: number) => React.ReactNode
+  render: (slide: T, slideIndex: number) => React.ReactNode
 
   /**
    * Flickity options
@@ -97,7 +97,7 @@ type ArrowProps = (props: {
   flickity: FlickityType
 }) => React.ReactNode
 
-export class Carousel extends React.Component<CarouselProps> {
+export class Carousel<T> extends React.Component<CarouselProps<T>> {
   static defaultProps = {
     height: "300px",
     oneSlideVisible: false,
@@ -117,7 +117,7 @@ export class Carousel extends React.Component<CarouselProps> {
   }
 }
 
-export const LargeCarousel: React.FC<CarouselProps> = props => {
+export const LargeCarousel = <T,>(props: CarouselProps<T>) => {
   return (
     <BaseCarousel
       showArrows
@@ -136,7 +136,7 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
   )
 }
 
-export const SmallCarousel: React.FC<CarouselProps> = props => {
+export const SmallCarousel = <T,>(props: CarouselProps<T>) => {
   // Only render pageDots and enable draggable if more than one slide
   const hasMultipleSlides = props.data.length > 1
 
@@ -166,8 +166,8 @@ interface BaseCarouselState {
   isMounted: boolean
 }
 
-export class BaseCarousel extends React.Component<
-  CarouselProps,
+export class BaseCarousel<T> extends React.Component<
+  CarouselProps<T>,
   BaseCarouselState
 > {
   state = {

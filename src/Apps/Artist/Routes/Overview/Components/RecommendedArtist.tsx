@@ -54,11 +54,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
   onArtworkClicked: () => void
 }> = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
-  const artistData = get(
-    artist,
-    a => a.artworks_connection.edges,
-    []
-  ) as object[]
+  const artistData = get(artist, a => a.artworks_connection.edges, [])
 
   return (
     <Box data-test={ContextModule.relatedArtistsRail}>

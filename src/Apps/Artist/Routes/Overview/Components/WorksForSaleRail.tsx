@@ -24,11 +24,7 @@ const WorksForSaleRail: React.FC<WorksForSaleRailProps & {
 }> = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
 
-  const artistData = get(
-    artist,
-    a => a.artworksConnection.edges,
-    []
-  ) as object[]
+  const artistData = get(artist, a => a.artworksConnection.edges, [])
 
   return (
     <Carousel
