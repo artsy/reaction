@@ -32,6 +32,7 @@ export const DropDownSection: React.FC<DropDownSectionProps> = ({
                   textColor={color("black60")}
                   textWeight="regular"
                   fontSize="3t"
+                  hasLighterTextColor
                 >
                   {menuItem.text}
                 </MenuItem>

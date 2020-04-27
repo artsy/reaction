@@ -55,6 +55,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
                       textColor={color("black60")}
                       textWeight="regular"
                       fontSize="3t"
+                      hasLighterTextColor
                     >
                       {menuItem.text}
                     </MenuItem>

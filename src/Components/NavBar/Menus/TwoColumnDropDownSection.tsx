@@ -32,6 +32,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
                 textColor={color("black60")}
                 textWeight="regular"
                 fontSize="3t"
+                hasLighterTextColor
               >
                 {menuItem.text}
               </MenuItem>
@@ -50,6 +51,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
                 textColor={color("black60")}
                 textWeight="regular"
                 fontSize="3t"
+                hasLighterTextColor
               >
                 {menuItem.text}
               </MenuItem>
