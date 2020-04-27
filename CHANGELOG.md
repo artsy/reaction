@@ -1,3 +1,21 @@
+# v26.27.6 (Mon Apr 27 2020)
+
+#### 🐛  Bug Fix
+
+- Improves Carousel typings [#3450](https://github.com/artsy/reaction/pull/3450) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 8.2.0 to v8.2.1 [#3449](https://github.com/artsy/reaction/pull/3449) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.27.4 (Mon Apr 27 2020)
 
 #### 🐛  Bug Fix
