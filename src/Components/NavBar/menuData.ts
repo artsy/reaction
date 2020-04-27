@@ -440,6 +440,10 @@ export const menuData: MenuData = {
       href: "/institutions",
     },
     {
+      text: "Consign",
+      href: "/consign",
+    },
+    {
       text: "Artsy for Galleries",
       href: "/gallery-partnerships",
     },
