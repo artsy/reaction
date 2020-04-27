@@ -70,7 +70,7 @@ export class ArtistCollectionsRail extends React.Component<
               contain: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={collections as object[]} // type required by slider
+            data={collections}
             render={(slide, index: number) => {
               return (
                 <ArtistCollectionEntity

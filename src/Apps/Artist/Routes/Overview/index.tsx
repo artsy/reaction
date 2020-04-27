@@ -324,7 +324,7 @@ export class OverviewRoute extends React.Component<OverviewRouteProps, {}> {
               options={{
                 pageDots: false,
               }}
-              data={currentShows as object[]}
+              data={currentShows}
               render={slide => {
                 return (
                   <Box maxWidth="240px" pr={2}>

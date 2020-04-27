@@ -282,7 +282,7 @@ export class SmallArtistHeader extends Component<Props> {
         {hasImages && (
           <Fragment>
             <Carousel
-              data={carousel.images as object[]}
+              data={carousel.images}
               height="180px"
               options={{ pageDots: false }}
               render={slide => {
