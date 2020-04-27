@@ -62,7 +62,6 @@ export const NavBar: React.FC = track(
     user,
     "User Conversations View"
   )
-  const canViewNewDropDown = userHasLabFeature(user, "Updated Navigation")
   const {
     links: [artworks, artists],
   } = menuData
@@ -116,73 +115,65 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            {canViewNewDropDown ? (
-              <NavItem
-                label="Artworks"
-                isFullScreenDropDown
-                Menu={() => {
-                  return (
-                    <Box>
-                      <DropDownNavMenu
-                        width="100vw"
-                        menu={(artworks as MenuLinkData).menu}
-                        contextModule={
-                          AnalyticsSchema.ContextModule.HeaderArtworksDropdown
-                        }
-                      />
-                    </Box>
-                  )
-                }}
-              >
-                <Flex>
-                  Artworks
-                  <ChevronIcon
-                    direction="down"
-                    color={color("black100")}
-                    height="15px"
-                    width="15px"
-                    top="5px"
-                    left="4px"
-                  />
-                </Flex>
-              </NavItem>
-            ) : (
-              <NavItem href="/collect">Artworks</NavItem>
-            )}
+            <NavItem
+              label="Artworks"
+              isFullScreenDropDown
+              Menu={() => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      menu={(artworks as MenuLinkData).menu}
+                      contextModule={
+                        AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+                      }
+                    />
+                  </Box>
+                )
+              }}
+            >
+              <Flex>
+                Artworks
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
+            </NavItem>
 
-            {canViewNewDropDown ? (
-              <NavItem
-                label="Artists"
-                isFullScreenDropDown
-                Menu={() => {
-                  return (
-                    <Box>
-                      <DropDownNavMenu
-                        width="100vw"
-                        menu={(artists as MenuLinkData).menu}
-                        contextModule={
-                          AnalyticsSchema.ContextModule.HeaderArtistsDropdown
-                        }
-                      />
-                    </Box>
-                  )
-                }}
-              >
-                <Flex>
-                  Artists
-                  <ChevronIcon
-                    direction="down"
-                    color={color("black100")}
-                    height="15px"
-                    width="15px"
-                    top="5px"
-                    left="4px"
-                  />
-                </Flex>
-              </NavItem>
-            ) : (
-              <NavItem href="/artists">Artists</NavItem>
-            )}
+            <NavItem
+              label="Artists"
+              isFullScreenDropDown
+              Menu={() => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      menu={(artists as MenuLinkData).menu}
+                      contextModule={
+                        AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+                      }
+                    />
+                  </Box>
+                )
+              }}
+            >
+              <Flex>
+                Artists
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
+            </NavItem>
 
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
