@@ -1,3 +1,15 @@
+# v26.27.3 (Mon Apr 27 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1908] Navbar menu qa [#3441](https://github.com/artsy/reaction/pull/3441) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v26.27.2 (Fri Apr 24 2020)
 
 #### 🐛  Bug Fix
