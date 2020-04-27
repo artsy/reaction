@@ -83,20 +83,6 @@ describe("ConsignRoute", () => {
         `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
       )
     })
-
-    it("tracks event", async () => {
-      const wrapper = await getWrapper()
-      wrapper
-        .find("ArtistConsignHeader")
-        .find("RouterLink")
-        .simulate("click")
-      expect(trackEvent).toHaveBeenCalledWith({
-        action_type: "Click",
-        context_module: "Sell Works by",
-        flow: "Consignments",
-        subject: "Request a price estimate",
-      })
-    })
   })
 
   describe("ArtistConsignRecentlySold", () => {
@@ -209,20 +195,6 @@ describe("ConsignRoute", () => {
         `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
       )
     })
-
-    it("tracks event", async () => {
-      const wrapper = await getWrapper()
-      wrapper
-        .find("ArtistConsignHowtoSell")
-        .find("RouterLink")
-        .simulate("click")
-      expect(trackEvent).toHaveBeenCalledWith({
-        action_type: "Click",
-        context_module: "How to sell your collection with Artsy",
-        flow: "Consignments",
-        subject: "Request a price estimate",
-      })
-    })
   })
 
   describe("ArtistConsignFAQ", () => {
@@ -258,20 +230,6 @@ describe("ConsignRoute", () => {
       ).toContain(
         `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
       )
-    })
-
-    it("tracks event", async () => {
-      const wrapper = await getWrapper()
-      wrapper
-        .find("ArtistConsignSellArt")
-        .find("RouterLink")
-        .simulate("click")
-      expect(trackEvent).toHaveBeenCalledWith({
-        action_type: "Click",
-        context_module: "Sell Art From Your Collection",
-        flow: "Consignments",
-        subject: "Request a price estimate",
-      })
     })
   })
 })

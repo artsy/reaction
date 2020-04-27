@@ -14,7 +14,7 @@ import {
 
 import { ArtistConsignHowToSell_artist } from "__generated__/ArtistConsignHowToSell_artist.graphql"
 
-import { AnalyticsSchema, useTracking } from "Artsy"
+import { AnalyticsSchema } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { createFragmentContainer, graphql } from "react-relay"
 import { SectionContainer } from "./SectionContainer"
@@ -28,8 +28,6 @@ interface ArtistConsignHowtoSellProps {
 const ArtistConsignHowtoSell: React.FC<ArtistConsignHowtoSellProps> = ({
   artist,
 }) => {
-  const tracking = useTracking()
-
   return (
     <SectionContainer height="100%" background="black10">
       <Box textAlign="center">
@@ -70,15 +68,6 @@ const ArtistConsignHowtoSell: React.FC<ArtistConsignHowtoSellProps> = ({
               contextPath: artist.href,
               subject: AnalyticsSchema.Subject.RequestPriceEstimate,
             })}
-            onClick={() => {
-              tracking.trackEvent({
-                action_type: AnalyticsSchema.ActionType.Click,
-                context_module:
-                  AnalyticsSchema.ContextModule.HowToSellYourCollection,
-                flow: AnalyticsSchema.Flow.Consignments,
-                subject: AnalyticsSchema.Subject.RequestPriceEstimate,
-              })
-            }}
           >
             <Button>Request a price estimate</Button>
           </RouterLink>
