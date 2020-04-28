@@ -1,9 +1,9 @@
 import { MenuItem } from "@artsy/palette"
 import { ContextModule } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
+import { menuData, MenuLinkData } from "Components/NavBar/menuData"
 import { mount } from "enzyme"
 import React from "react"
-import { menuData, MenuLinkData } from "../../menuData"
 import { DropDownNavMenu, MenuItemContainer } from "../DropDownMenu"
 import { DropDownSection } from "../DropDownSection"
 
@@ -12,11 +12,12 @@ jest.mock("Artsy/Analytics/useTracking")
 describe("DropDownMenu", () => {
   const trackEvent = jest.fn()
 
-  const getWrapper = () => {
+  const getWrapper = (passedProps = {}) => {
     return mount(
       <DropDownNavMenu
         menu={(menuData.links[0] as MenuLinkData).menu}
         contextModule={ContextModule.HeaderArtworksDropdown}
+        {...passedProps}
       />
     )
   }
@@ -55,5 +56,14 @@ describe("DropDownMenu", () => {
     menuItem.simulate("click")
 
     expect(trackEvent).toBeCalled()
+  })
+
+  it("calls onClick prop", () => {
+    const spy = jest.fn()
+    const wrapper = getWrapper({ onClick: spy })
+    const menuItem = wrapper.find(MenuItem).first()
+    menuItem.simulate("click")
+
+    expect(spy).toHaveBeenCalled()
   })
 })

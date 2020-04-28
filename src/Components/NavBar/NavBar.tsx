@@ -120,7 +120,7 @@ export const NavBar: React.FC = track(
               <NavItem
                 label="Artworks"
                 isFullScreenDropDown
-                Menu={() => {
+                Menu={({ setIsVisible }) => {
                   return (
                     <Box>
                       <DropDownNavMenu
@@ -129,6 +129,11 @@ export const NavBar: React.FC = track(
                         contextModule={
                           AnalyticsSchema.ContextModule.HeaderArtworksDropdown
                         }
+                        onClick={() => {
+                          if (EXPERIMENTAL_APP_SHELL) {
+                            setIsVisible(false)
+                          }
+                        }}
                       />
                     </Box>
                   )
@@ -154,7 +159,7 @@ export const NavBar: React.FC = track(
               <NavItem
                 label="Artists"
                 isFullScreenDropDown
-                Menu={() => {
+                Menu={({ setIsVisible }) => {
                   return (
                     <Box>
                       <DropDownNavMenu
@@ -163,6 +168,11 @@ export const NavBar: React.FC = track(
                         contextModule={
                           AnalyticsSchema.ContextModule.HeaderArtistsDropdown
                         }
+                        onClick={() => {
+                          if (EXPERIMENTAL_APP_SHELL) {
+                            setIsVisible(false)
+                          }
+                        }}
                       />
                     </Box>
                   )

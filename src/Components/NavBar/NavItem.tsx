@@ -7,7 +7,9 @@ import { animated, config, useSpring } from "react-spring"
 import styled from "styled-components"
 
 interface NavItemProps extends BoxProps {
-  Menu?: React.FC
+  Menu?: React.FC<{
+    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>
+  }>
   Overlay?: React.FC<{
     hover: boolean
   }>
@@ -35,7 +37,7 @@ export const NavItem: React.FC<NavItemProps> = ({
 }) => {
   const navItemLabel = children
   const { trackEvent } = useTracking()
-  const [hover, toggleHover] = useState(active)
+  const [hover, setIsVisible] = useState(active)
   const showMenu = Boolean(Menu && hover)
   const showOverlay = Boolean(Overlay)
   const hoverColor = hover ? "purple100" : "black80"
@@ -83,8 +85,8 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <Box
-      onMouseEnter={() => toggleHover(true)}
-      onMouseLeave={() => toggleHover(false)}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
     >
       <Link
         href={href}
@@ -115,10 +117,31 @@ export const NavItem: React.FC<NavItemProps> = ({
         </Sans>
       </Link>
 
+      {/* Very hacky fix to prevent mouse out from triggering a close on the
+          first Artworks nav item. Create a box, position and extend it out a
+          ways and then hide it.
+
+          FIXME: Come up with a better way to do this
+       */}
+      {isFullScreenDropDown && label === "Artworks" && showMenu && (
+        <Box
+          position="absolute"
+          style={{
+            background: "green",
+            zIndex: 1,
+            width: 300,
+            height: 50,
+            marginTop: -50, // using margin because we can't use relative positioning here
+            marginLeft: -220,
+            opacity: 0,
+          }}
+        />
+      )}
+
       {showMenu && (
         <animated.div style={animatedStyle}>
           <MenuContainer top={space(6)} isFullScreen={isFullScreenDropDown}>
-            <Menu />
+            <Menu setIsVisible={setIsVisible} />
           </MenuContainer>
         </animated.div>
       )}
