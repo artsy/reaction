@@ -14,7 +14,7 @@ const Conversations: React.FC<ConversationsProps> = props => {
   const { me } = props
   const conversations = me.conversationsConnection.edges
   return (
-    <Box px={1} height="calc(100vh - 180px)" style={{ overflow: "hidden" }}>
+    <Box px={1} height="calc(100vh - 180px)">
       <Sans size="6" weight="medium" ml={1}>
         Inbox
       </Sans>
