@@ -1,3 +1,15 @@
+# v26.27.11 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Add toggle menu support & fix mouse out hitarea on "Artworks" nav [#3454](https://github.com/artsy/reaction/pull/3454) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.27.10 (Tue Apr 28 2020)
 
 #### 🐛  Bug Fix
