@@ -7,8 +7,8 @@ import { MockRelayRenderer } from "DevTools"
 import { BackupSecondFactorFragmentContainer } from ".."
 import {
   AppEnabledWithBackupCodesQueryResponse,
+  CreateBackupSecondFactorsMutationSuccessResponse,
   DisabledQueryResponse,
-  MutationResponse,
 } from "../../../__tests__/fixtures"
 
 const MockBackupSecondFactor = ({ mockData }) => {
@@ -16,7 +16,7 @@ const MockBackupSecondFactor = ({ mockData }) => {
     <MockRelayRenderer
       Component={BackupSecondFactorFragmentContainer}
       mockData={mockData}
-      mockMutationResults={MutationResponse}
+      mockMutationResults={CreateBackupSecondFactorsMutationSuccessResponse}
       query={graphql`
         query BackupSecondFactorStoryQuery {
           me {

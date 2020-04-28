@@ -3,22 +3,23 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
 
-import { DisabledQueryResponse } from "Components/UserSettings/TwoFactorAuthentication/__tests__/fixtures"
+import {
+  CreateAppSecondFactorMutationSuccessResponse,
+  DisabledQueryResponse,
+  EnableAppSecondFactorMutationSuccessResponse,
+  UpdateAppSecondFactorMutationSuccessResponse,
+} from "Components/UserSettings/TwoFactorAuthentication/__tests__/fixtures"
 import { MockRelayRenderer } from "DevTools"
+import { merge } from "lodash"
 import { AppSecondFactorFragmentContainer } from ".."
 
-const MockAppSecondFactor = ({ mockData }) => {
+const MockAppSecondFactor = ({ mockData, mockMutationResults, query }) => {
   return (
     <MockRelayRenderer
+      mockMutationResults={mockMutationResults}
       Component={AppSecondFactorFragmentContainer}
       mockData={mockData}
-      query={graphql`
-        query AppSecondFactorStoryQuery {
-          me {
-            ...AppSecondFactor_me
-          }
-        }
-      `}
+      query={query}
     />
   )
 }
@@ -26,11 +27,27 @@ const MockAppSecondFactor = ({ mockData }) => {
 storiesOf(
   "UserSettings/TwoFactorAuthentication/Components/AppSecondFactor",
   module
-).add("Disabled", () => {
+).add("Success", () => {
+  const mockMutationResults = merge(
+    CreateAppSecondFactorMutationSuccessResponse,
+    UpdateAppSecondFactorMutationSuccessResponse,
+    EnableAppSecondFactorMutationSuccessResponse
+  )
+
   return (
     <Theme>
       <Box maxWidth="800px">
-        <MockAppSecondFactor mockData={DisabledQueryResponse} />
+        <MockAppSecondFactor
+          mockData={DisabledQueryResponse}
+          mockMutationResults={mockMutationResults}
+          query={graphql`
+            query AppSecondFactorStorySuccessQuery {
+              me {
+                ...AppSecondFactor_me
+              }
+            }
+          `}
+        />
       </Box>
     </Theme>
   )

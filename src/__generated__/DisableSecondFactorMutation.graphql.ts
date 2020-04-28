@@ -11,12 +11,14 @@ export type DisableSecondFactorMutationVariables = {
 export type DisableSecondFactorMutationResponse = {
     readonly disableSecondFactor: {
         readonly secondFactorOrErrors: {
-            readonly __typename?: "Errors";
+            readonly __typename: "AppSecondFactor";
+        } | {
+            readonly __typename: "SmsSecondFactor";
+        } | {
+            readonly __typename: "Errors";
             readonly errors: ReadonlyArray<{
                 readonly message: string;
                 readonly code: string;
-                readonly path: ReadonlyArray<string> | null;
-                readonly data: unknown | null;
             }>;
         } | {
             /*This will never be '%other', but we need some
@@ -28,15 +30,17 @@ export type DisableSecondFactorMutationResponse = {
 export type DisableSecondFactorMutationRawResponse = {
     readonly disableSecondFactor: ({
         readonly secondFactorOrErrors: {
+            readonly __typename: "AppSecondFactor";
+        } | {
+            readonly __typename: "SmsSecondFactor";
+        } | {
             readonly __typename: "Errors";
             readonly errors: ReadonlyArray<{
                 readonly message: string;
                 readonly code: string;
-                readonly path: ReadonlyArray<string> | null;
-                readonly data: unknown | null;
             }>;
         } | {
-            readonly __typename: string;
+            readonly __typename: string | null;
         };
     }) | null;
 };
@@ -55,15 +59,17 @@ mutation DisableSecondFactorMutation(
   disableSecondFactor(input: $input) {
     secondFactorOrErrors {
       __typename
-      ... on SecondFactor {
+      ... on AppSecondFactor {
+        __typename
+      }
+      ... on SmsSecondFactor {
         __typename
       }
       ... on Errors {
+        __typename
         errors {
           message
           code
-          path
-          data
         }
       }
     }
@@ -82,86 +88,63 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "disableSecondFactor",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input"
-      }
-    ],
-    "concreteType": "DisableSecondFactorPayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "secondFactorOrErrors",
-        "storageKey": null,
-        "args": null,
-        "concreteType": null,
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__typename",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "Errors",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "errors",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Error",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "message",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "code",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "path",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "data",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = [
+  (v2/*: any*/)
+],
+v4 = {
+  "kind": "InlineFragment",
+  "type": "AppSecondFactor",
+  "selections": (v3/*: any*/)
+},
+v5 = {
+  "kind": "InlineFragment",
+  "type": "SmsSecondFactor",
+  "selections": (v3/*: any*/)
+},
+v6 = {
+  "kind": "InlineFragment",
+  "type": "Errors",
+  "selections": [
+    (v2/*: any*/),
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "errors",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Error",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "message",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -170,22 +153,75 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "disableSecondFactor",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "DisableSecondFactorPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "secondFactorOrErrors",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "DisableSecondFactorMutation",
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "disableSecondFactor",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "DisableSecondFactorPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "secondFactorOrErrors",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "params": {
     "operationKind": "mutation",
     "name": "DisableSecondFactorMutation",
     "id": null,
-    "text": "mutation DisableSecondFactorMutation(\n  $input: DisableSecondFactorInput!\n) {\n  disableSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on SecondFactor {\n        __typename\n      }\n      ... on Errors {\n        errors {\n          message\n          code\n          path\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation DisableSecondFactorMutation(\n  $input: DisableSecondFactorInput!\n) {\n  disableSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on AppSecondFactor {\n        __typename\n      }\n      ... on SmsSecondFactor {\n        __typename\n      }\n      ... on Errors {\n        __typename\n        errors {\n          message\n          code\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'bf58288b435d50e46f140b02adef6f1e';
+(node as any).hash = 'bdacff640561201d956f43229eaf2b1c';
 export default node;

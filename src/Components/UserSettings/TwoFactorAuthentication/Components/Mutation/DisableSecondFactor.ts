@@ -13,7 +13,18 @@ export const DisableSecondFactor = (
     async (resolve, reject) => {
       commitMutation<DisableSecondFactorMutation>(environment, {
         onCompleted: data => {
-          resolve(data)
+          const response = data.disableSecondFactor.secondFactorOrErrors
+
+          switch (response.__typename) {
+            case "AppSecondFactor":
+              resolve(data)
+              break
+            case "SmsSecondFactor":
+              resolve(data)
+              break
+            case "Errors":
+              reject(response.errors)
+          }
         },
         onError: error => {
           reject(error)
@@ -24,16 +35,19 @@ export const DisableSecondFactor = (
           ) @raw_response_type {
             disableSecondFactor(input: $input) {
               secondFactorOrErrors {
-                ... on SecondFactor {
+                ... on AppSecondFactor {
+                  __typename
+                }
+
+                ... on SmsSecondFactor {
                   __typename
                 }
 
                 ... on Errors {
+                  __typename
                   errors {
                     message
                     code
-                    path
-                    data
                   }
                 }
               }

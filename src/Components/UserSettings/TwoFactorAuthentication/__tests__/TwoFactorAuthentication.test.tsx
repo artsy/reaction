@@ -10,11 +10,12 @@ import {
   AppEnabledWithBackupCodesQueryResponse,
   AppEnabledWithoutBackupCodesQueryResponse,
   BackupSecondFactors,
-  BackupSecondFactorsMutationResponse,
   CreateAppSecondFactorMutationSuccessResponse,
+  CreateBackupSecondFactorsMutationSuccessResponse,
   CreateSmsSecondFactorMutationSuccessResponse,
-  DeliverSecondFactorMutationSuccessResponse,
-  EnableSecondFactorMutationSuccessResponse,
+  DeliverSmsSecondFactorMutationSuccessResponse,
+  EnableAppSecondFactorMutationSuccessResponse,
+  EnableSmsSecondFactorMutationSuccessResponse,
   UpdateAppSecondFactorMutationSuccessResponse,
   UpdateSmsSecondFactorMutationSuccessResponse,
 } from "./fixtures"
@@ -80,7 +81,7 @@ describe("TwoFactorAuthentication ", () => {
 
       env.mutations.useResultsOnce(CreateAppSecondFactorMutationSuccessResponse)
       env.mutations.useResultsOnce(UpdateAppSecondFactorMutationSuccessResponse)
-      env.mutations.useResultsOnce(EnableSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(EnableAppSecondFactorMutationSuccessResponse)
 
       await page.clickAppSetupButton()
     })
@@ -99,9 +100,11 @@ describe("TwoFactorAuthentication ", () => {
       const page = await env.buildPage()
 
       env.mutations.useResultsOnce(CreateSmsSecondFactorMutationSuccessResponse)
-      env.mutations.useResultsOnce(DeliverSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(
+        DeliverSmsSecondFactorMutationSuccessResponse
+      )
       env.mutations.useResultsOnce(UpdateSmsSecondFactorMutationSuccessResponse)
-      env.mutations.useResultsOnce(EnableSecondFactorMutationSuccessResponse)
+      env.mutations.useResultsOnce(EnableSmsSecondFactorMutationSuccessResponse)
 
       await page.clickSmsSetupButton()
     })
@@ -125,7 +128,9 @@ describe("TwoFactorAuthentication ", () => {
 
       expect(page.backupSetupButton.exists).toBeTruthy
 
-      env.mutations.useResultsOnce(BackupSecondFactorsMutationResponse)
+      env.mutations.useResultsOnce(
+        CreateBackupSecondFactorsMutationSuccessResponse
+      )
       env.mockQuery.mockImplementation(
         createMockFetchQuery({
           mockData: AppEnabledWithBackupCodesQueryResponse,
@@ -174,7 +179,9 @@ describe("TwoFactorAuthentication ", () => {
 
       expect(page.backupRegenerateButton.exists).toBeTruthy
 
-      env.mutations.useResultsOnce(BackupSecondFactorsMutationResponse)
+      env.mutations.useResultsOnce(
+        CreateBackupSecondFactorsMutationSuccessResponse
+      )
 
       await page.clickBackupRegenerateButton()
 

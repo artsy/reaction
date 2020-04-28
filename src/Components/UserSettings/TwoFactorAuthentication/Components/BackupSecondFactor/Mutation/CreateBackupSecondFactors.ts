@@ -10,7 +10,15 @@ export const CreateBackupSecondFactors = (environment: Environment) => {
     async (resolve, reject) => {
       commitMutation<CreateBackupSecondFactorsMutation>(environment, {
         onCompleted: data => {
-          resolve(data)
+          const response = data.createBackupSecondFactors.secondFactorsOrErrors
+
+          switch (response.__typename) {
+            case "BackupSecondFactors":
+              resolve(data)
+              break
+            case "Errors":
+              reject(response.errors)
+          }
         },
         onError: error => {
           reject(error)
@@ -22,8 +30,17 @@ export const CreateBackupSecondFactors = (environment: Environment) => {
             createBackupSecondFactors(input: $input) {
               secondFactorsOrErrors {
                 ... on BackupSecondFactors {
+                  __typename
                   secondFactors {
                     code
+                  }
+                }
+
+                ... on Errors {
+                  __typename
+                  errors {
+                    code
+                    message
                   }
                 }
               }

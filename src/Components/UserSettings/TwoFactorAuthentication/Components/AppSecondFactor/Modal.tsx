@@ -1,19 +1,13 @@
 import { Box, Button, Flex, Input, Modal, Sans } from "@artsy/palette"
 import { CreateAppSecondFactorMutationResponse } from "__generated__/CreateAppSecondFactorMutation.graphql"
+import { useSystemContext } from "Artsy"
 import { Formik, FormikActions, FormikProps } from "formik"
 import QRCode from "qrcode.react"
-import React from "react"
+import React, { useState } from "react"
 import * as Yup from "yup"
-
-// TODO: Replace with ModalProps from artsy/palette
-// https://github.com/artsy/palette/blob/master/packages/palette/src/elements/Modal/Modal.tsx#L18
-interface ModalProps {
-  FixedButton?: JSX.Element
-  onClose: () => void
-  show?: boolean
-  title?: string
-  forcedScroll?: boolean
-}
+import { ApiError } from "../../ApiError"
+import { EnableSecondFactor } from "../Mutation/EnableSecondFactor"
+import { UpdateAppSecondFactor } from "./Mutation/UpdateAppSecondFactor"
 
 export interface FormValues {
   name: string
@@ -31,22 +25,73 @@ const validationSchema = Yup.object().shape({
     .matches(presenceRegex, "Enter a code"),
 })
 
-interface AppSecondFactorModalProps extends ModalProps {
-  handleSubmit: (values: FormValues, actions: FormikActions<object>) => void
+interface AppSecondFactorModalProps {
+  onClose: () => void
+  show?: boolean
+  onComplete: () => void
   secondFactor: CreateAppSecondFactorMutationResponse["createAppSecondFactor"]["secondFactorOrErrors"]
 }
 
 export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props => {
-  const { secondFactor, handleSubmit } = props
+  const { secondFactor, onComplete } = props
+  const { relayEnvironment } = useSystemContext()
 
   if (!secondFactor || secondFactor.__typename !== "AppSecondFactor") {
     return null
   }
 
+  const handleMutationError = (
+    actions: FormikActions<FormValues>,
+    errors: ApiError[]
+  ) => {
+    if (!Array.isArray(errors)) {
+      throw errors
+    }
+
+    let statusMessage = ""
+
+    errors.forEach(error => {
+      if (error.code === "invalid_otp") {
+        actions.setFieldError("code", error.message)
+      } else {
+        statusMessage += `${error.message}\n`
+      }
+    })
+
+    if (statusMessage.length) {
+      actions.setStatus({ message: statusMessage })
+    }
+  }
+
+  const handleSubmit = async (
+    values: FormValues,
+    actions: FormikActions<FormValues>
+  ) => {
+    try {
+      await UpdateAppSecondFactor(relayEnvironment, {
+        secondFactorID: secondFactor.internalID,
+        attributes: {
+          name: values.name,
+        },
+      })
+
+      await EnableSecondFactor(relayEnvironment, {
+        secondFactorID: secondFactor.internalID,
+        code: values.code,
+      })
+
+      actions.setSubmitting(false)
+      onComplete()
+    } catch (error) {
+      actions.setSubmitting(false)
+      handleMutationError(actions, error)
+    }
+  }
+
   return (
     <Modal
       forcedScroll={false}
-      title="Enable 2FA"
+      title="Set up with app"
       show={props.show}
       onClose={props.onClose}
     >
@@ -76,6 +121,8 @@ const InnerForm: React.FC<InnerFormProps> = ({
   values,
   secondFactor,
 }) => {
+  const [showSecret, setShowSecret] = useState(false)
+
   if (secondFactor.__typename !== "AppSecondFactor") {
     return null
   }
@@ -92,9 +139,8 @@ const InnerForm: React.FC<InnerFormProps> = ({
           error={touched.name && errors.name}
           value={values.name}
           onBlur={handleBlur}
-          placeholder="My Phone"
+          placeholder="Device Name"
           onChange={handleChange}
-          title="Device Name"
         />
       </Box>
       <Sans mt={2} color="black60" size="3">
@@ -105,7 +151,17 @@ const InnerForm: React.FC<InnerFormProps> = ({
         <QRCode size={256} value={secondFactor.otpProvisioningURI} />
       </Box>
       <Sans mt={2} color="black60" size="3t">
-        secret: {secondFactor.otpSecret}
+        {showSecret ? (
+          `secret: ${secondFactor.otpSecret}`
+        ) : (
+          <Button
+            size="small"
+            variant="secondaryGray"
+            onClick={() => setShowSecret(true)}
+          >
+            Show secret
+          </Button>
+        )}
       </Sans>
       <Sans mt={2} color="black60" size="3">
         Enter the six-digit code from the application to complete the
@@ -119,7 +175,7 @@ const InnerForm: React.FC<InnerFormProps> = ({
           name="code"
           value={values.code}
           onChange={handleChange}
-          title="Authentication Code"
+          placeholder="Authentication Code"
         />
       </Box>
       <Flex alignItems="center">

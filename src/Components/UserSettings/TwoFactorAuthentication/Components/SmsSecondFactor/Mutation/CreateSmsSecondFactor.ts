@@ -13,7 +13,15 @@ export const CreateSmsSecondFactor = (
     async (resolve, reject) => {
       commitMutation<CreateSmsSecondFactorMutation>(environment, {
         onCompleted: data => {
-          resolve(data)
+          const response = data.createSmsSecondFactor.secondFactorOrErrors
+
+          switch (response.__typename) {
+            case "SmsSecondFactor":
+              resolve(data)
+              break
+            case "Errors":
+              reject(response.errors)
+          }
         },
         onError: error => {
           reject(error)
@@ -24,18 +32,16 @@ export const CreateSmsSecondFactor = (
           ) @raw_response_type {
             createSmsSecondFactor(input: $input) {
               secondFactorOrErrors {
-                __typename
-
                 ... on SmsSecondFactor {
+                  __typename
                   internalID
                 }
 
                 ... on Errors {
+                  __typename
                   errors {
                     message
                     code
-                    path
-                    data
                   }
                 }
               }
