@@ -1,3 +1,30 @@
+# v26.27.7 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove client-side tracking [#3453](https://github.com/artsy/reaction/pull/3453) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3452](https://github.com/artsy/reaction/pull/3452) ([@artsyit](https://github.com/artsyit))
+- [NavBar Drop Down QA] add a new prop to control background color [#3447](https://github.com/artsy/reaction/pull/3447) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### ⚠️  Pushed to `master`
+
+- Bump for force reaction release ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 0.2.0 to v0.2.8 [#3434](https://github.com/artsy/reaction/pull/3434) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 6
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.27.6 (Mon Apr 27 2020)
 
 #### 🐛  Bug Fix
