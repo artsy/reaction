@@ -67,6 +67,9 @@ export class StatusRoute extends Component<StatusProps> {
                 <>
                   Thank you for your purchase. You will receive a confirmation
                   email by {stateExpiresAt}.
+                  <br />
+                  Disruptions caused by COVID-19 may cause delays — we
+                  appreciate your understanding.
                 </>
               ),
             }
@@ -77,11 +80,17 @@ export class StatusRoute extends Component<StatusProps> {
             <>
               Thank you for your purchase. You will be notified when the work
               has shipped, typically within 5–7 business days.
+              <br />
+              Disruptions caused by COVID-19 may cause delays — we appreciate
+              your understanding.
             </>
           ) : (
             <>
               Thank you for your purchase. A specialist will contact you within
               2 business days to coordinate pickup.
+              <br />
+              Disruptions caused by COVID-19 may cause delays — we appreciate
+              your understanding.
             </>
           ),
         }
