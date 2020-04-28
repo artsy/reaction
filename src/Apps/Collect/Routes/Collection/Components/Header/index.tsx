@@ -1,15 +1,5 @@
-import { EntityHeader, ReadMore, space } from "@artsy/palette"
-import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect/Routes/Collection/Components/Header/DefaultHeader"
-import { AnalyticsSchema } from "Artsy/Analytics"
-import { unica } from "Assets/Fonts"
-import { filter, take } from "lodash"
-import React, { FC } from "react"
-import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-import { slugify } from "underscore.string"
-import { resize } from "Utils/resizer"
-import { Responsive } from "Utils/Responsive"
-
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { breakpoints, EntityHeader, ReadMore } from "@artsy/palette"
 import {
   Box,
   Col,
@@ -22,14 +12,23 @@ import {
   Serif,
   Spacer,
 } from "@artsy/palette"
-
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
 import { Header_collection } from "__generated__/Header_collection.graphql"
+import { CollectionDefaultHeaderFragmentContainer as CollectionDefaultHeader } from "Apps/Collect/Routes/Collection/Components/Header/DefaultHeader"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { useSystemContext } from "Artsy"
+import { AnalyticsSchema } from "Artsy/Analytics"
+import { unica } from "Assets/Fonts"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { Link } from "found"
+import { filter, take } from "lodash"
+import React, { FC } from "react"
+import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
+import { slugify } from "underscore.string"
 import { openAuthToFollowSave } from "Utils/openAuthModal"
+import { resize } from "Utils/resizer"
+import { Responsive } from "Utils/Responsive"
 import { FeaturedArtists } from "./FeaturedArtists"
 
 export interface Props {
@@ -147,14 +146,6 @@ const imageHeightSizes = {
   sm: 250,
 }
 
-const defaultHeaderImageHeight = {
-  xs: 140,
-  sm: 140,
-  md: 220,
-  lg: 220,
-  xl: 220,
-}
-
 export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
   const { user, mediator } = useSystemContext()
   const hasMultipleArtists =
@@ -197,20 +188,16 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
         return (
           <header>
             <Flex flexDirection="column">
-              <Box mt={[0, "-12px"]}>
+              <Box>
                 {resizedHeaderImage ? (
                   <CollectionSingleImageHeader
-                    position={["relative", "absolute"]}
-                    left={["auto", 0]}
-                    width={["auto", 1]}
                     p={2}
-                    mt={0}
-                    mb={3}
                     headerImageUrl={resizedHeaderImage}
                     height={imageHeight}
                     key="singleImageHeader"
                   >
                     <Overlay />
+
                     {collection.credit && (
                       <ImageCaption
                         dangerouslySetInnerHTML={{ __html: collection.credit }}
@@ -220,60 +207,68 @@ export const CollectionHeader: FC<Props> = ({ artworks, collection }) => {
                 ) : (
                   <CollectionDefaultHeader
                     headerArtworks={artworks}
-                    defaultHeaderImageHeight={defaultHeaderImageHeight[size]}
-                    collection_id={collection.id}
-                    collection_slug={collection.slug}
+                    collectionId={collection.id}
+                    collectionSlug={collection.slug}
                     key={collection.slug}
                   />
                 )}
-                <MetaContainer
-                  mb={2}
-                  mt={[
-                    0,
-                    imageHeightSizes.xs + space(3),
-                    imageHeightSizes.sm + space(3),
-                  ]}
+
+                <Box
+                  mt={[2, 3]}
+                  maxWidth={breakpoints.xl}
+                  mx="auto"
+                  width="100%"
                 >
-                  <BreadcrumbContainer size={["2", "3"]} mt={[2, 0]}>
-                    <Link to="/collect">All works</Link> /{" "}
-                    <Link to={categoryTarget}>{collection.category}</Link>
-                  </BreadcrumbContainer>
-                  <Spacer mt={1} />
-                  <Serif size={["6", "10"]} element="h1">
-                    {collection.title}
-                  </Serif>
-                </MetaContainer>
-                <Grid>
-                  <Row>
-                    <Col sm="12" md="8">
-                      <Flex>
-                        <ExtendedSerif size="3">
-                          {smallerScreen ? (
-                            <ReadMore
-                              maxChars={chars}
-                              content={htmlUnsafeDescription || ""}
+                  <HorizontalPadding>
+                    <MetaContainer my={2}>
+                      <BreadcrumbContainer size={["2", "3"]} mt={[2, 0]}>
+                        <Link to="/collect">All works</Link> /{" "}
+                        <Link to={categoryTarget}>{collection.category}</Link>
+                      </BreadcrumbContainer>
+
+                      <Spacer mt={1} />
+
+                      <Serif size={["6", "10"]} element="h1">
+                        {collection.title}
+                      </Serif>
+                    </MetaContainer>
+
+                    <Grid>
+                      <Row>
+                        <Col sm="12" md="8">
+                          <Flex>
+                            <ExtendedSerif size="3">
+                              {smallerScreen ? (
+                                <ReadMore
+                                  maxChars={chars}
+                                  content={htmlUnsafeDescription || ""}
+                                />
+                              ) : (
+                                htmlUnsafeDescription
+                              )}
+                              {collection.description && <Spacer mt={2} />}
+                            </ExtendedSerif>
+                          </Flex>
+                        </Col>
+
+                        <Col sm={12} md={12}>
+                          {featuredArtists && hasMultipleArtists && (
+                            <FeaturedArtists
+                              breakpointSize={size}
+                              featuredArtists={featuredArtists}
+                              hasMultipleArtists={hasMultipleArtists}
                             />
-                          ) : (
-                            htmlUnsafeDescription
                           )}
-                          {collection.description && <Spacer mt={2} />}
-                        </ExtendedSerif>
-                      </Flex>
-                    </Col>
-                    <Col sm={12} md={12}>
-                      {featuredArtists && hasMultipleArtists && (
-                        <FeaturedArtists
-                          breakpointSize={size}
-                          featuredArtists={featuredArtists}
-                          hasMultipleArtists={hasMultipleArtists}
-                        />
-                      )}
-                    </Col>
-                  </Row>
-                </Grid>
+                        </Col>
+                      </Row>
+                    </Grid>
+                  </HorizontalPadding>
+                </Box>
+
                 <Spacer mb={1} />
               </Box>
             </Flex>
+
             <Spacer mb={2} />
           </header>
         )
