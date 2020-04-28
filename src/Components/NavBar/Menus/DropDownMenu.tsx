@@ -9,12 +9,14 @@ interface DropDownNavMenuProps {
   width?: string
   menu: any
   contextModule: ContextModule
+  onClick?: () => void
 }
 
 export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
   width = "100%",
   menu,
   contextModule,
+  onClick,
 }) => {
   const { trackEvent } = useTracking()
   const viewAllTopMargin = {
@@ -22,7 +24,7 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
     HeaderArtistsDropdown: "90px",
   }
 
-  const trackClick = event => {
+  const handleClick = event => {
     const link = event.target
     const text = link.textContent
     const href = link.parentNode.parentNode.getAttribute("href")
@@ -33,10 +35,14 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
       subject: text,
       destination_path: href,
     })
+
+    if (onClick) {
+      onClick()
+    }
   }
 
   return (
-    <Menu onClick={trackClick} width={width} m={0} py={0}>
+    <Menu onClick={handleClick} width={width} m={0} py={0}>
       <Flex justifyContent="center">
         <SimpleLinksContainer
           py={4}
