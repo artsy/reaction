@@ -1,3 +1,15 @@
+# v26.27.10 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "[Consignments] Remove client-side tracking" [#3456](https://github.com/artsy/reaction/pull/3456) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.27.7 (Tue Apr 28 2020)
 
 #### 🐛  Bug Fix
