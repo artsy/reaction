@@ -1,10 +1,14 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
+import { Mediator } from "Artsy"
 import { find } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../Utils/fillwidth"
+import fillwidthDimensions, {
+  FillWidthItemDimensions,
+} from "../../Utils/fillwidth"
 import FillwidthItem from "./FillwidthItem"
 
 interface Props extends React.HTMLAttributes<FillwidthContainer> {
@@ -12,21 +16,29 @@ interface Props extends React.HTMLAttributes<FillwidthContainer> {
   gutter?: number
   size?: any
   artworks: Fillwidth_artworks
+  contextModule: ContextModule
+  mediator?: Mediator
 }
 
 class FillwidthContainer extends React.Component<Props, null> {
-  renderArtwork(artwork, dimensions, i) {
-    const { gutter } = this.props
-    const artworkSize = find(dimensions, ["__id", artwork.__id])
+  renderArtwork(
+    artwork: Fillwidth_artworks["edges"][number]["node"],
+    dimensions: FillWidthItemDimensions[],
+    i: number
+  ) {
+    const { gutter, contextModule, mediator } = this.props
+    const artworkSize = find(dimensions, ["id", artwork.id])
 
     return (
       <FillwidthItem
         artwork={artwork}
-        key={"artwork--" + artwork.__id}
+        contextModule={contextModule}
+        key={"artwork--" + artwork.id}
         targetHeight={artworkSize.height}
         imageHeight={artworkSize.height}
         width={artworkSize.width}
         margin={i === dimensions.length - 1 ? 0 : gutter}
+        mediator={mediator}
       />
     )
   }
@@ -73,9 +85,9 @@ export default createFragmentContainer(Fillwidth, {
     fragment Fillwidth_artworks on ArtworkConnection {
       edges {
         node {
-          __id
+          id
           image {
-            aspect_ratio
+            aspect_ratio: aspectRatio
           }
           ...FillwidthItem_artwork
         }

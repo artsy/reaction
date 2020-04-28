@@ -1,31 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Badge_artwork$ref: unique symbol;
-export type Badge_artwork$ref = typeof _Badge_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Badge_artwork = {
     readonly is_biddable: boolean | null;
     readonly is_acquireable: boolean | null;
     readonly is_offerable: boolean | null;
     readonly href: string | null;
-    readonly sale: ({
+    readonly sale: {
         readonly is_preview: boolean | null;
         readonly display_timely_at: string | null;
-    }) | null;
-    readonly " $refType": Badge_artwork$ref;
+    } | null;
+    readonly " $refType": "Badge_artwork";
+};
+export type Badge_artwork$data = Badge_artwork;
+export type Badge_artwork$key = {
+    readonly " $data"?: Badge_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"Badge_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Badge_artwork",
   "type": "Artwork",
@@ -34,22 +30,22 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_biddable",
+      "alias": "is_biddable",
+      "name": "isBiddable",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_acquireable",
+      "alias": "is_acquireable",
+      "name": "isAcquireable",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_offerable",
+      "alias": "is_offerable",
+      "name": "isOfferable",
       "args": null,
       "storageKey": null
     },
@@ -71,24 +67,21 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_preview",
+          "alias": "is_preview",
+          "name": "isPreview",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "display_timely_at",
+          "alias": "display_timely_at",
+          "name": "displayTimelyAt",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '2acc89282c0f63455bd559089466e8f5';
+(node as any).hash = 'a9121adc9215e13663c65a5f61e8d209';
 export default node;

@@ -1,4 +1,5 @@
-import React, { SFC, useContext, useMemo } from "react"
+import { Router } from "found"
+import React, { SFC, useContext, useState } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
@@ -6,13 +7,44 @@ import { getUser } from "Utils/user"
 
 export interface Mediator {
   trigger: (action: string, config?: object) => void
+  on?: (event: string, cb?: (payload?: object) => void) => void
+  off?: (event: string) => void
 }
+
+/**
+ * FIXME: Use a proper state management library. Ran into problems with useReducer
+ * leading to an infinite loop.
+ */
+export type SystemContextState = Partial<{
+  /**
+   * Toggle for setting global fetch state, typically set in RenderStatus
+   */
+  isFetching: boolean
+  setFetching: (isFetching: boolean) => void
+
+  /**
+   * The current router instance
+   */
+  router: Router
+  setRouter: (router: Router) => void
+
+  /**
+   * The currently signed-in user.
+   *
+   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * and `USER_ACCESS_TOKEN` environment variables if available.
+   */
+  user: User
+  setUser: (user: User) => void
+}>
 
 /**
  * Globally accessible SystemContext values for use in Artsy apps
  */
-export interface SystemContextProps {
-  /** Is the user opening a Reaction page from the mobile app */
+export interface SystemContextProps extends SystemContextState {
+  /**
+   * Is the user opening a Reaction page from the mobile app
+   */
   isEigen?: boolean
 
   /**
@@ -24,7 +56,6 @@ export interface SystemContextProps {
    * FIXME: Ask alloy how to pass one-off props like this in from force
    */
   notificationCount?: number
-  searchQuery?: string
 
   /**
    * A configured environment object that can be used for any Relay operations
@@ -36,12 +67,18 @@ export interface SystemContextProps {
   relayEnvironment?: Environment
 
   /**
-   * The currently signed-in user.
-   *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID`
-   * and `USER_ACCESS_TOKEN` environment variables if available.
+   * The current search query.
+   * FIXME: Move this to a more appropriate place
    */
-  user?: User
+  searchQuery?: string
+
+  /**
+   * Useful for passing arbitrary data from Force.
+   */
+  injectedData?: any
+
+  // TODO: Remove once A/B test completes
+  EXPERIMENTAL_APP_SHELL?: boolean
 }
 
 export const SystemContext = React.createContext<SystemContextProps>({})
@@ -54,18 +91,22 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
-  const user = getUser(props.user)
+  const [isFetching, setFetching] = useState(false)
+  const [router, setRouter] = useState(null)
+  const [user, setUser] = useState(getUser(props.user))
 
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
-
-  const providerValues = useMemo(() => {
-    return {
-      ...props,
-      relayEnvironment,
-      user,
-    }
-  }, [props.relayEnvironment, props.user])
+  const providerValues = {
+    ...props,
+    isFetching,
+    setFetching,
+    router,
+    setRouter,
+    relayEnvironment,
+    user,
+    setUser,
+  }
 
   return (
     <SystemContext.Provider value={providerValues}>

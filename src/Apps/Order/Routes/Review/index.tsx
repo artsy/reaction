@@ -18,12 +18,12 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
+import { data as sd } from "sharify"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
@@ -41,38 +41,94 @@ export interface ReviewProps {
   isCommittingMutation: boolean
 }
 
+export interface ReviewState {
+  stripe: stripe.Stripe
+}
+
 const logger = createLogger("Order/Routes/Review/index.tsx")
 
 @track()
-export class ReviewRoute extends Component<ReviewProps> {
+export class ReviewRoute extends Component<ReviewProps, ReviewState> {
+  state = { stripe: null }
+  componentDidMount() {
+    if (window.Stripe) {
+      this.setState({
+        stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+      })
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", () => {
+        // Create Stripe instance once Stripe.js loads
+        this.setState({
+          stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+        })
+      })
+    }
+  }
+
   @track<ReviewProps>(props => ({
     action_type:
       props.order.mode === "BUY"
         ? Schema.ActionType.SubmittedOrder
         : Schema.ActionType.SubmittedOffer,
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     products: [
       {
-        product_id: props.order.lineItems.edges[0].node.artwork._id,
+        product_id: props.order.lineItems.edges[0].node.artwork.internalID,
         quantity: 1,
         price: props.order.itemsTotal,
       },
     ],
   }))
-  async onSubmit() {
+  async onSubmit(setupIntentId?: null) {
     try {
       const orderOrError =
         this.props.order.mode === "BUY"
-          ? (await this.submitBuyOrder()).ecommerceSubmitOrder.orderOrError
-          : (await this.submitOffer()).ecommerceSubmitOrderWithOffer
+          ? (await this.submitBuyOrder()).commerceSubmitOrder.orderOrError
+          : (await this.submitOffer(setupIntentId)).commerceSubmitOrderWithOffer
               .orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
         return
+      } else if (
+        this.props.order.mode === "BUY" &&
+        orderOrError.actionData &&
+        orderOrError.actionData.clientSecret
+      ) {
+        this.state.stripe
+          .handleCardAction(orderOrError.actionData.clientSecret)
+          .then(result => {
+            if (result.error) {
+              this.props.dialog.showErrorDialog({
+                title: "An error occurred",
+                message: result.error.message,
+              })
+              return
+            } else {
+              this.onSubmit()
+            }
+          })
+      } else if (
+        this.props.order.mode === "OFFER" &&
+        orderOrError.actionData &&
+        orderOrError.actionData.clientSecret
+      ) {
+        this.state.stripe
+          .handleCardSetup(orderOrError.actionData.clientSecret)
+          .then(result => {
+            if (result.error) {
+              this.props.dialog.showErrorDialog({
+                title: "An error occurred",
+                message: result.error.message,
+              })
+              return
+            } else {
+              this.onSubmit(result.setupIntent.id)
+            }
+          })
+      } else {
+        this.props.router.push(`/orders/${this.props.order.internalID}/status`)
       }
-
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -83,19 +139,25 @@ export class ReviewRoute extends Component<ReviewProps> {
     return this.props.commitMutation<ReviewSubmitOrderMutation>({
       variables: {
         input: {
-          orderId: this.props.order.id,
+          id: this.props.order.internalID,
         },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
-        mutation ReviewSubmitOrderMutation($input: SubmitOrderInput!) {
-          ecommerceSubmitOrder(input: $input) {
+        mutation ReviewSubmitOrderMutation($input: CommerceSubmitOrderInput!) {
+          commerceSubmitOrder(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderRequiresAction {
+                actionData {
+                  clientSecret
+                }
+              }
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -109,25 +171,32 @@ export class ReviewRoute extends Component<ReviewProps> {
     })
   }
 
-  submitOffer() {
+  submitOffer(setupIntentId: string | null) {
     return this.props.commitMutation<ReviewSubmitOfferOrderMutation>({
       variables: {
         input: {
-          offerId: this.props.order.myLastOffer.id,
+          offerId: this.props.order.myLastOffer.internalID,
+          confirmedSetupIntentId: setupIntentId,
         },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ReviewSubmitOfferOrderMutation(
-          $input: SubmitOrderWithOfferInput!
+          $input: CommerceSubmitOrderWithOfferInput!
         ) {
-          ecommerceSubmitOrderWithOffer(input: $input) {
+          commerceSubmitOrderWithOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderRequiresAction {
+                actionData {
+                  clientSecret
+                }
+              }
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -192,6 +261,14 @@ export class ReviewRoute extends Component<ReviewProps> {
         }
         break
       }
+      case "payment_method_confirmation_failed": {
+        await this.props.dialog.showErrorDialog({
+          title: "Your card was declined",
+          message:
+            "We couldn't authorize your credit card. Please enter another payment method or contact your bank for more information.",
+        })
+        break
+      }
       case "artwork_version_mismatch": {
         await this.props.dialog.showErrorDialog({
           title: "Work has been updated",
@@ -212,14 +289,14 @@ export class ReviewRoute extends Component<ReviewProps> {
   artistId() {
     return get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artists[0].id
+      o => o.lineItems.edges[0].node.artwork.artists[0].slug
     )
   }
 
   routeToArtworkPage() {
     const artworkId = get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.id
+      o => o.lineItems.edges[0].node.artwork.slug
     )
     // Don't confirm whether or not you want to leave the page
     this.props.route.onTransition = () => null
@@ -235,15 +312,15 @@ export class ReviewRoute extends Component<ReviewProps> {
   }
 
   onChangeOffer = () => {
-    this.props.router.push(`/orders/${this.props.order.id}/offer`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/offer`)
   }
 
   onChangePayment = () => {
-    this.props.router.push(`/orders/${this.props.order.id}/payment`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/payment`)
   }
 
   onChangeShipping = () => {
-    this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/shipping`)
   }
 
   render() {
@@ -287,9 +364,7 @@ export class ReviewRoute extends Component<ReviewProps> {
                     />
                   </Flex>
                   <Media greaterThan="xs">
-                    <ItemReview
-                      artwork={order.lineItems.edges[0].node.artwork}
-                    />
+                    <ItemReview lineItem={order.lineItems.edges[0].node} />
                     <Spacer mb={3} />
                     <Button
                       size="large"
@@ -334,30 +409,30 @@ export class ReviewRoute extends Component<ReviewProps> {
 }
 
 export const ReviewFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(ReviewRoute))),
+  injectCommitMutation(injectDialog(ReviewRoute)),
   {
     order: graphql`
-      fragment Review_order on Order {
-        id
+      fragment Review_order on CommerceOrder {
+        internalID
         mode
         itemsTotal(precision: 2)
         lineItems {
           edges {
             node {
+              ...ItemReview_lineItem
               artwork {
-                id
-                _id
+                slug
+                internalID
                 artists {
-                  id
+                  slug
                 }
-                ...ItemReview_artwork
               }
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           myLastOffer {
-            id
+            internalID
           }
         }
         ...ArtworkSummaryItem_order
@@ -369,3 +444,6 @@ export const ReviewFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default ReviewFragmentContainer

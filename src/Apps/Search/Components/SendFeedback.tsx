@@ -45,6 +45,7 @@ class SendFeedbackForm extends React.Component<SystemContextProps, State> {
     const { message, name, email } = this.state
 
     commitMutation<SendFeedbackSearchResultsMutation>(relayEnvironment, {
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation SendFeedbackSearchResultsMutation(
           $input: SendFeedbackMutationInput!

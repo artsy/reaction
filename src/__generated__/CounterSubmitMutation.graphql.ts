@@ -1,28 +1,29 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
-export type submitPendingOfferInput = {
-    readonly offerId: string;
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+export type CommerceSubmitPendingOfferInput = {
     readonly clientMutationId?: string | null;
+    readonly offerId: string;
 };
 export type CounterSubmitMutationVariables = {
-    readonly input: submitPendingOfferInput;
+    input: CommerceSubmitPendingOfferInput;
 };
 export type CounterSubmitMutationResponse = {
-    readonly ecommerceSubmitPendingOffer: ({
-        readonly orderOrError: ({
-            readonly order?: ({
-                readonly state: string | null;
-                readonly awaitingResponseFrom?: OrderParticipantEnum | null;
-            }) | null;
-            readonly error?: ({
+    readonly commerceSubmitPendingOffer: {
+        readonly orderOrError: {
+            readonly order?: {
+                readonly state: CommerceOrderStateEnum;
+                readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
+            };
+            readonly error?: {
                 readonly type: string;
                 readonly code: string;
                 readonly data: string | null;
-            }) | null;
-        }) | null;
-    }) | null;
+            };
+        };
+    } | null;
 };
 export type CounterSubmitMutation = {
     readonly response: CounterSubmitMutationResponse;
@@ -33,22 +34,22 @@ export type CounterSubmitMutation = {
 
 /*
 mutation CounterSubmitMutation(
-  $input: submitPendingOfferInput!
+  $input: CommerceSubmitPendingOfferInput!
 ) {
-  ecommerceSubmitPendingOffer(input: $input) {
+  commerceSubmitPendingOffer(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationSuccess {
+      ... on CommerceOrderWithMutationSuccess {
         order {
           __typename
           state
-          ... on OfferOrder {
+          ... on CommerceOfferOrder {
             awaitingResponseFrom
           }
-          __id
+          id
         }
       }
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           type
           code
@@ -65,7 +66,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "submitPendingOfferInput!",
+    "type": "CommerceSubmitPendingOfferInput!",
     "defaultValue": null
   }
 ],
@@ -73,13 +74,32 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "submitPendingOfferInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "state",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOfferOrder",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "awaitingResponseFrom",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v4 = {
+  "kind": "InlineFragment",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -87,7 +107,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -115,34 +135,7 @@ v2 = {
     }
   ]
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "state",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
 v5 = {
-  "kind": "InlineFragment",
-  "type": "OfferOrder",
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "awaitingResponseFrom",
-      "args": null,
-      "storageKey": null
-    }
-  ]
-},
-v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
@@ -151,25 +144,20 @@ v6 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "CounterSubmitMutation",
-  "id": null,
-  "text": "mutation CounterSubmitMutation(\n  $input: submitPendingOfferInput!\n) {\n  ecommerceSubmitPendingOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          ... on OfferOrder {\n            awaitingResponseFrom\n          }\n          __id\n        }\n      }\n      ... on OrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "CounterSubmitMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSubmitPendingOffer",
+        "name": "commerceSubmitPendingOffer",
         "storageKey": null,
-        "args": v1,
-        "concreteType": "submitPendingOfferPayload",
+        "args": (v1/*: any*/),
+        "concreteType": "CommerceSubmitPendingOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -181,10 +169,9 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   {
                     "kind": "LinkedField",
@@ -195,13 +182,13 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v3,
-                      v4,
-                      v5
+                      (v2/*: any*/),
+                      (v3/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v4/*: any*/)
             ]
           }
         ]
@@ -211,15 +198,15 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "CounterSubmitMutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSubmitPendingOffer",
+        "name": "commerceSubmitPendingOffer",
         "storageKey": null,
-        "args": v1,
-        "concreteType": "submitPendingOfferPayload",
+        "args": (v1/*: any*/),
+        "concreteType": "CommerceSubmitPendingOfferPayload",
         "plural": false,
         "selections": [
           {
@@ -231,11 +218,10 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v6,
-              v2,
+              (v5/*: any*/),
               {
                 "kind": "InlineFragment",
-                "type": "OrderWithMutationSuccess",
+                "type": "CommerceOrderWithMutationSuccess",
                 "selections": [
                   {
                     "kind": "LinkedField",
@@ -246,21 +232,35 @@ return {
                     "concreteType": null,
                     "plural": false,
                     "selections": [
-                      v6,
-                      v3,
-                      v4,
-                      v5
+                      (v5/*: any*/),
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      (v3/*: any*/)
                     ]
                   }
                 ]
-              }
+              },
+              (v4/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "CounterSubmitMutation",
+    "id": null,
+    "text": "mutation CounterSubmitMutation(\n  $input: CommerceSubmitPendingOfferInput!\n) {\n  commerceSubmitPendingOffer(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationSuccess {\n        order {\n          __typename\n          state\n          ... on CommerceOfferOrder {\n            awaitingResponseFrom\n          }\n          id\n        }\n      }\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          type\n          code\n          data\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '519236c531b3a3899043ee97c452894d';
+(node as any).hash = '498e2167e61dc5b2ecbb9fa2738cf453';
 export default node;

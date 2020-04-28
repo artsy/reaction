@@ -1,4 +1,5 @@
 import { BorderedRadio, Button } from "@artsy/palette"
+import { RespondTestQueryRawResponse } from "__generated__/RespondTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
@@ -19,18 +20,16 @@ jest.mock("Utils/Events", () => ({
 }))
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Apps/Order/Utils/trackPageView")
-
 jest.mock("Utils/getCurrentTimeAsIsoString")
 jest.mock("Utils/logger")
 
 const NOW = "2018-12-05T13:47:16.446Z"
+const realSetInterval = global.setInterval
 
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
 jest.unmock("react-relay")
 
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 import { graphql } from "react-relay"
@@ -95,13 +94,18 @@ describe("The respond page", () => {
     Component: RespondFragmentContainer,
     defaultData: {
       order: testOrder,
-    },
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
+    } as RespondTestQueryRawResponse,
     defaultMutationResults: {
       ...buyerCounterOfferSuccess,
     },
     query: graphql`
-      query RespondTestQuery {
-        order: ecommerceOrder(id: "unused") {
+      query RespondTestQuery @raw_response_type {
+        order: commerceOrder(id: "unused") {
           ...Respond_order
         }
       }
@@ -116,6 +120,7 @@ describe("The respond page", () => {
   describe("the page layout", () => {
     let page: RespondTestPage
     beforeAll(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage({
         mockData: {
           order: {
@@ -128,6 +133,10 @@ describe("The respond page", () => {
       })
     })
 
+    afterAll(() => {
+      global.setInterval = realSetInterval
+    })
+
     it("shows the countdown timer", () => {
       expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
@@ -138,7 +147,7 @@ describe("The respond page", () => {
 
     it("shows the stepper", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"Respondnavigate rightReview"`
+        `"RespondNavigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Respond")
     })
@@ -209,7 +218,13 @@ describe("The respond page", () => {
 
   describe("taking action", () => {
     let page: RespondTestPage
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
+    })
+
     beforeEach(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage()
     })
 
@@ -218,7 +233,7 @@ describe("The respond page", () => {
       await page.clickSubmit()
 
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/accept`
+        `/orders/${testOrder.internalID}/review/accept`
       )
     })
 
@@ -227,11 +242,18 @@ describe("The respond page", () => {
       await page.clickSubmit()
 
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/review/decline`
+        `/orders/${testOrder.internalID}/review/decline`
       )
     })
 
     describe("countering the seller's offer", () => {
+      beforeAll(() => {
+        global.setInterval = jest.fn()
+      })
+
+      afterAll(() => {
+        global.setInterval = realSetInterval
+      })
       it("doesn't work if nothing was typed in", async () => {
         await page.selectCounterRadio()
         expect(page.offerInput.props().showError).toBe(false)
@@ -260,10 +282,33 @@ describe("The respond page", () => {
         expect(mutations.lastFetchVariables).toMatchObject({
           input: {
             offerId: "myoffer-id",
-            offerPrice: {
-              amount: 9000,
-              currencyCode: "USD",
+            amountCents: 9000 * 100,
+          },
+        })
+        expect(routes.mockPushRoute).toHaveBeenCalledWith(
+          "/orders/2939023/review/counter"
+        )
+      })
+
+      it("works when a valid number is inputted for a non-usd currency", async () => {
+        const nonUSDPage = await buildPage({
+          mockData: {
+            order: {
+              ...testOrder,
+              currencyCode: "GBP",
             },
+          },
+        })
+        await nonUSDPage.selectCounterRadio()
+        await nonUSDPage.setOfferAmount(9000)
+
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(0)
+        await nonUSDPage.clickSubmit()
+        expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
+        expect(mutations.lastFetchVariables).toMatchObject({
+          input: {
+            offerId: "myoffer-id",
+            amountCents: 9000 * 100,
           },
         })
         expect(routes.mockPushRoute).toHaveBeenCalledWith(
@@ -299,6 +344,13 @@ describe("The respond page", () => {
     })
 
     describe("The 'amount too small' speed bump", () => {
+      beforeAll(() => {
+        global.setInterval = jest.fn()
+      })
+
+      afterAll(() => {
+        global.setInterval = realSetInterval
+      })
       it("shows if the offer amount is too small", async () => {
         await page.selectCounterRadio()
         await page.setOfferAmount(1000)
@@ -323,6 +375,13 @@ describe("The respond page", () => {
     })
 
     describe("The 'amount too high' speed bump", () => {
+      beforeAll(() => {
+        global.setInterval = jest.fn()
+      })
+
+      afterAll(() => {
+        global.setInterval = realSetInterval
+      })
       it("shows if the offer amount is too high", async () => {
         await page.selectCounterRadio()
         await page.setOfferAmount(17000)
@@ -347,14 +406,18 @@ describe("The respond page", () => {
     })
   })
 
-  describe("Analaytics", () => {
+  describe("Analytics", () => {
     let page: RespondTestPage
     beforeEach(async () => {
       page = await buildPage()
     })
 
-    it("tracks a pageview", () => {
-      expect(trackPageView).toHaveBeenCalledTimes(1)
+    beforeAll(() => {
+      global.setInterval = jest.fn()
+    })
+
+    afterAll(() => {
+      global.setInterval = realSetInterval
     })
 
     it("tracks the offer input focus", async () => {

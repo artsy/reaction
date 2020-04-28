@@ -10,9 +10,7 @@ export { InstantArticleEmailSignup } from "./Email/InstantArticleEmailSignup"
 export { Image } from "./Sections/Image"
 export { ImageCollection } from "./Sections/ImageCollection"
 export { ImageSetPreview } from "./Sections/ImageSetPreview"
-export {
-  ImageSetPreviewClassic,
-} from "./Sections/ImageSetPreview/ImageSetPreviewClassic"
+export { ImageSetPreviewClassic } from "./Sections/ImageSetPreview/ImageSetPreviewClassic"
 export { Nav } from "./Nav/Nav"
 export { SeriesLayout } from "./Layouts/SeriesLayout"
 export { Text } from "./Sections/Text"
@@ -22,12 +20,8 @@ export { VideoCover } from "./Video/VideoCover"
 export { VideoAbout } from "./Video/VideoAbout"
 export { PartnerInline } from "./Partner/PartnerInline"
 export { PartnerBlock } from "./Partner/PartnerBlock"
-export {
-  RelatedArticlesCanvas,
-} from "./RelatedArticles/Canvas/RelatedArticlesCanvas"
-export {
-  RelatedArticlesPanel,
-} from "./RelatedArticles/Panel/RelatedArticlesPanel"
+export { RelatedArticlesCanvas } from "./RelatedArticles/Canvas/RelatedArticlesCanvas"
+export { RelatedArticlesPanel } from "./RelatedArticles/Panel/RelatedArticlesPanel"
 
 // Icon SVGs
 export { IconArtist } from "./Icon/IconArtist"
@@ -55,34 +49,9 @@ export { IconRemove } from "./Icon/IconRemove"
 export { IconUnorderedList } from "./Icon/IconUnorderedList"
 export { IconLock } from "./Icon/IconLock"
 
-// Test Fixtures
-import {
-  ClassicArticle,
-  FeatureArticle,
-  ImageHeavyStandardArticle,
-  SeriesArticle,
-  SeriesArticleSponsored,
-  ShortStandardArticle,
-  StandardArticle,
-  VideoArticle,
-  VideoArticleSponsored,
-} from "./Fixtures/Articles"
-
 // FIXME: Refactor out SizeMe; see https://github.com/ctrlplusb/react-sizeme#server-side-rendering
 import sizeMe from "react-sizeme"
 sizeMe.noPlaceholders = true
-
-export const Fixtures = {
-  ClassicArticle,
-  FeatureArticle,
-  ImageHeavyStandardArticle,
-  SeriesArticle,
-  SeriesArticleSponsored,
-  ShortStandardArticle,
-  StandardArticle,
-  VideoArticle,
-  VideoArticleSponsored,
-}
 
 // Constants
 import * as AllConstants from "./Constants"

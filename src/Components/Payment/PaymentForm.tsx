@@ -1,20 +1,20 @@
 import { Box, Button, Flex, Join, Serif, Spacer } from "@artsy/palette"
 import { PaymentFormCreateCreditCardMutation } from "__generated__/PaymentFormCreateCreditCardMutation.graphql"
 import { UserSettingsPayments_me } from "__generated__/UserSettingsPayments_me.graphql"
+import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
+import { validateAddress } from "Apps/Order/Utils/formValidators"
 import {
   Address,
   AddressErrors,
   AddressForm,
   AddressTouched,
   emptyAddress,
-} from "Apps/Order/Components/AddressForm"
-import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
-import { validateAddress } from "Apps/Order/Utils/formValidators"
+} from "Components/AddressForm"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import React, { Component } from "react"
 import { commitMutation, graphql, RelayProp } from "react-relay"
 import { injectStripe, ReactStripeElements } from "react-stripe-elements"
-import { ConnectionHandler } from "relay-runtime"
+import { ConnectionHandler, RecordSourceSelectorProxy } from "relay-runtime"
 import { ErrorWithMetadata } from "Utils/errors"
 import createLogger from "Utils/logger"
 import { Responsive } from "Utils/Responsive"
@@ -179,14 +179,18 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
     }
   }
 
-  onCreditCardAdded(me, store, data): void {
+  onCreditCardAdded(
+    me: UserSettingsPayments_me,
+    store: RecordSourceSelectorProxy<any>,
+    data: PaymentFormCreateCreditCardMutation["response"]
+  ): void {
     const {
       createCreditCard: { creditCardOrError },
     } = data
 
     // Explicitly update the relay store to be aware of the new credit card
     if (creditCardOrError.creditCardEdge) {
-      const meStore = store.get(me.__id)
+      const meStore = store.get(me.id)
       const connection = ConnectionHandler.getConnection(
         meStore,
         "UserSettingsPayments_creditCards"
@@ -233,6 +237,7 @@ class PaymentForm extends Component<PaymentFormProps, PaymentFormState> {
           }
         },
         onError: this.onMutationError.bind(this),
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation PaymentFormCreateCreditCardMutation(
             $input: CreditCardInput!

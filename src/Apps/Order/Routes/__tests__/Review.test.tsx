@@ -1,19 +1,22 @@
+import { ReviewTestQueryRawResponse } from "__generated__/ReviewTestQuery.graphql"
 import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
   OfferOrderWithShippingDetailsAndNote,
 } from "Apps/__tests__/Fixtures/Order"
 import { OfferSummaryItemFragmentContainer } from "Apps/Order/Components/OfferSummaryItem"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 import { graphql } from "react-relay"
 import {
+  submitOfferOrderFailedConfirmation,
   submitOfferOrderSuccess,
+  submitOfferOrderWithActionRequired,
   submitOfferOrderWithFailure,
   submitOfferOrderWithNoInventoryFailure,
   submitOfferOrderWithVersionMismatchFailure,
   submitOrderSuccess,
+  submitOrderWithActionRequired,
   submitOrderWithFailure,
   submitOrderWithFailureCardDeclined,
   submitOrderWithFailureInsufficientFunds,
@@ -24,10 +27,12 @@ import {
 import { ReviewFragmentContainer } from "../Review"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
-const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
+const testOrder: ReviewTestQueryRawResponse["order"] = {
+  ...BuyOrderWithShippingDetails,
+  internalID: "1234",
+}
 
 class ReviewTestPage extends OrderAppTestPage {
   get offerSummary() {
@@ -35,7 +40,19 @@ class ReviewTestPage extends OrderAppTestPage {
   }
 }
 
+const handleCardAction = jest.fn()
+const handleCardSetup = jest.fn()
+
 describe("Review", () => {
+  beforeAll(() => {
+    // @ts-ignore
+    window.Stripe = () => {
+      return { handleCardAction, handleCardSetup }
+    }
+
+    window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
+  })
+
   const { buildPage, mutations, routes } = createTestEnv({
     Component: ReviewFragmentContainer,
     defaultData: {
@@ -46,8 +63,8 @@ describe("Review", () => {
       ...submitOfferOrderSuccess,
     },
     query: graphql`
-      query ReviewTestQuery {
-        order: ecommerceOrder(id: "unused") {
+      query ReviewTestQuery @raw_response_type {
+        order: commerceOrder(id: "unused") {
           ...Review_order
         }
       }
@@ -90,7 +107,10 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOrderWithVersionMismatchFailure)
       await page.clickSubmit()
@@ -102,7 +122,10 @@ describe("Review", () => {
     })
 
     it("shows a modal with a helpful error message if a user has not entered shipping and payment information", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOrderWithMissingInfo)
 
@@ -134,7 +157,10 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOrderWithNoInventoryFailure)
       await page.clickSubmit()
@@ -143,6 +169,12 @@ describe("Review", () => {
         "Sorry, the work is no longer available."
       )
       expect(window.location.assign).toBeCalledWith("/artist/artistId")
+    })
+    it("shows SCA modal when required", async () => {
+      mutations.useResultsOnce(submitOrderWithActionRequired)
+
+      await page.clickSubmit()
+      expect(handleCardAction).toBeCalledWith("client-secret")
     })
   })
 
@@ -153,7 +185,7 @@ describe("Review", () => {
         mockData: {
           order: {
             ...OfferOrderWithShippingDetails,
-            id: "offer-order-id",
+            internalID: "offer-order-id",
           },
         },
       })
@@ -161,7 +193,7 @@ describe("Review", () => {
 
     it("shows an active offer stepper if the order is an Offer Order", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkOffer navigate rightcheckShipping navigate rightcheckPayment navigate rightReview"`
+        `"CheckOffer Navigate rightCheckShipping Navigate rightCheckPayment Navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })
@@ -210,7 +242,10 @@ describe("Review", () => {
     })
 
     it("shows a modal that redirects to the artwork page if there is an artwork_version_mismatch", async () => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
 
       mutations.useResultsOnce(submitOfferOrderWithVersionMismatchFailure)
 
@@ -223,20 +258,36 @@ describe("Review", () => {
       expect(window.location.assign).toBeCalledWith("/artwork/artworkId")
     })
 
+    it("shows a modal if there is a payment_method_confirmation_failed", async () => {
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn() },
+      })
+
+      mutations.useResultsOnce(submitOfferOrderFailedConfirmation)
+
+      await page.clickSubmit()
+
+      await page.expectAndDismissErrorDialogMatching(
+        "Your card was declined",
+        "We couldn't authorize your credit card. Please enter another payment method or contact your bank for more information."
+      )
+    })
+
     it("shows a modal that redirects to the artist page if there is an insufficient inventory", async () => {
-      window.location.assign = jest.fn()
       mutations.useResultsOnce(submitOfferOrderWithNoInventoryFailure)
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "Not available",
         "Sorry, the work is no longer available."
       )
-      expect(window.location.assign).toBeCalledWith("/artist/artistId")
     })
-  })
 
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+    it("shows SCA modal when required", async () => {
+      mutations.useResultsOnce(submitOfferOrderWithActionRequired)
+
+      await page.clickSubmit()
+      expect(handleCardSetup).toBeCalledWith("client-secret")
+    })
   })
 })

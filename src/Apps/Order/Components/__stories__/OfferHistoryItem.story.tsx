@@ -16,7 +16,7 @@ import { Section } from "Utils/Section"
 import { OfferHistoryItemFragmentContainer as OfferHistoryItem } from "../OfferHistoryItem"
 const orderQuery = graphql`
   query OfferHistoryItemStoryQuery {
-    order: ecommerceOrder(id: "foo") {
+    order: commerceOrder(id: "foo") {
       ...OfferHistoryItem_order
     }
   }

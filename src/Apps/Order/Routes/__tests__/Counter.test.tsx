@@ -1,10 +1,9 @@
+import { CounterTestQueryRawResponse } from "__generated__/CounterTestQuery.graphql"
 import {
-  Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { DateTime } from "luxon"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
@@ -16,19 +15,21 @@ import {
 import { CounterFragmentContainer } from "../Counter"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 jest.unmock("react-relay")
 
-const testOrder = {
+const realSetInterval = global.setInterval
+
+const testOrder: CounterTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
     .toString(),
   lastOffer: {
     ...OfferWithTotals,
+    internalID: "lastOffer",
     id: "lastOffer",
     createdAt: DateTime.fromISO(NOW)
       .minus({ days: 1 })
@@ -37,23 +38,20 @@ const testOrder = {
   },
   myLastOffer: {
     ...OfferWithTotals,
+    internalID: "myLastOffer",
     id: "myLastOffer",
-    createdAt: DateTime.fromISO(NOW)
-      .minus({ days: 1 })
-      .toString(),
     amount: "$your.offer",
     fromParticipant: "BUYER",
   },
   offers: { edges: Offers },
-  buyer: Buyer,
 }
 
 describe("Submit Pending Counter Offer", () => {
   const { buildPage, mutations, routes } = createTestEnv({
     Component: CounterFragmentContainer,
     query: graphql`
-      query CounterTestQuery {
-        order(id: "") {
+      query CounterTestQuery @raw_response_type {
+        order: commerceOrder(id: "") {
           ...Counter_order
         }
       }
@@ -63,13 +61,19 @@ describe("Submit Pending Counter Offer", () => {
     },
     defaultData: {
       order: testOrder,
-    },
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
+    } as CounterTestQueryRawResponse,
     TestPage: OrderAppTestPage,
   })
 
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage({
         mockData: {
           order: {
@@ -82,13 +86,17 @@ describe("Submit Pending Counter Offer", () => {
       })
     })
 
+    afterAll(() => {
+      global.setInterval = realSetInterval
+    })
+
     it("shows the countdown timer", () => {
       expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
 
     it("Shows the stepper", () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkRespond navigate rightReview"`
+        `"CheckRespond Navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Review")
     })
@@ -133,13 +141,18 @@ describe("Submit Pending Counter Offer", () => {
   describe("mutation", () => {
     let page: OrderAppTestPage
     beforeEach(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage()
+    })
+
+    afterEach(() => {
+      global.setInterval = realSetInterval
     })
 
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 
@@ -166,13 +179,6 @@ describe("Submit Pending Counter Offer", () => {
       mutations.mockNetworkFailureOnce()
       await page.clickSubmit()
       await page.expectAndDismissDefaultErrorDialog()
-    })
-  })
-
-  describe("analytics", () => {
-    it("tracks a pageview", async () => {
-      await buildPage()
-      expect(trackPageView).toHaveBeenCalledTimes(1)
     })
   })
 })

@@ -6,30 +6,30 @@ export type UpdateMyProfileInput = {
     readonly email?: string | null;
     readonly phone?: string | null;
     readonly location?: EditableLocation | null;
-    readonly collector_level?: number | null;
-    readonly price_range_min?: number | null;
-    readonly price_range_max?: number | null;
+    readonly collectorLevel?: number | null;
+    readonly priceRangeMin?: number | null;
+    readonly priceRangeMax?: number | null;
     readonly clientMutationId?: string | null;
 };
 export type EditableLocation = {
     readonly address?: string | null;
-    readonly address_2?: string | null;
+    readonly address2?: string | null;
     readonly city?: string | null;
     readonly country?: string | null;
     readonly summary?: string | null;
-    readonly postal_code?: string | null;
+    readonly postalCode?: string | null;
     readonly state?: string | null;
-    readonly state_code?: string | null;
+    readonly stateCode?: string | null;
 };
 export type BudgetUpdateMyUserProfileMutationVariables = {
-    readonly input: UpdateMyProfileInput;
+    input: UpdateMyProfileInput;
 };
 export type BudgetUpdateMyUserProfileMutationResponse = {
-    readonly updateMyUserProfile: ({
-        readonly user: ({
+    readonly updateMyUserProfile: {
+        readonly user: {
             readonly name: string;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
 };
 export type BudgetUpdateMyUserProfileMutation = {
     readonly response: BudgetUpdateMyUserProfileMutationResponse;
@@ -45,7 +45,7 @@ mutation BudgetUpdateMyUserProfileMutation(
   updateMyUserProfile(input: $input) {
     user {
       name
-      __id
+      id
     }
   }
 }
@@ -62,69 +62,95 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "updateMyUserProfile",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input",
-        "type": "UpdateMyProfileInput!"
-      }
-    ],
-    "concreteType": "UpdateMyProfilePayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "user",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "User",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__id",
-            "args": null,
-            "storageKey": null
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "BudgetUpdateMyUserProfileMutation",
-  "id": null,
-  "text": "mutation BudgetUpdateMyUserProfileMutation(\n  $input: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $input) {\n    user {\n      name\n      __id\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "BudgetUpdateMyUserProfileMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "updateMyUserProfile",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "UpdateMyProfilePayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "user",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "User",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "BudgetUpdateMyUserProfileMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "updateMyUserProfile",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "UpdateMyProfilePayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "user",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "User",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "id",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "BudgetUpdateMyUserProfileMutation",
+    "id": null,
+    "text": "mutation BudgetUpdateMyUserProfileMutation(\n  $input: UpdateMyProfileInput!\n) {\n  updateMyUserProfile(input: $input) {\n    user {\n      name\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

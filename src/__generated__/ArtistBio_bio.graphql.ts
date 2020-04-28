@@ -1,18 +1,22 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtistBio_bio$ref: unique symbol;
-export type ArtistBio_bio$ref = typeof _ArtistBio_bio$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistBio_bio = {
-    readonly biography_blurb: ({
+    readonly biographyBlurb: {
         readonly text: string | null;
-    }) | null;
-    readonly " $refType": ArtistBio_bio$ref;
+    } | null;
+    readonly " $refType": "ArtistBio_bio";
+};
+export type ArtistBio_bio$data = ArtistBio_bio;
+export type ArtistBio_bio$key = {
+    readonly " $data"?: ArtistBio_bio$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistBio_bio",
   "type": "Artist",
@@ -22,20 +26,18 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "biography_blurb",
-      "storageKey": "biography_blurb(format:\"HTML\",partner_bio:true)",
+      "name": "biographyBlurb",
+      "storageKey": "biographyBlurb(format:\"HTML\",partnerBio:true)",
       "args": [
         {
           "kind": "Literal",
           "name": "format",
-          "value": "HTML",
-          "type": "Format"
+          "value": "HTML"
         },
         {
           "kind": "Literal",
-          "name": "partner_bio",
-          "value": true,
-          "type": "Boolean"
+          "name": "partnerBio",
+          "value": true
         }
       ],
       "concreteType": "ArtistBlurb",
@@ -49,15 +51,8 @@ const node: ConcreteFragment = {
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'e736551112eb378b9d7e96216c0fcb23';
+(node as any).hash = '8d3d6cad9783dad9b00e24bb96e77b1a';
 export default node;

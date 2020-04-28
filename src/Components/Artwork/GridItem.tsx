@@ -1,3 +1,4 @@
+import { AuthContextModule, ContextModule } from "@artsy/cohesion"
 import { color, Image as BaseImage } from "@artsy/palette"
 import { GridItem_artwork } from "__generated__/GridItem_artwork.graphql"
 import { Mediator } from "Artsy"
@@ -31,6 +32,7 @@ const Image = styled(BaseImage)`
 
 interface Props extends React.HTMLProps<ArtworkGridItemContainer> {
   artwork: GridItem_artwork
+  contextModule?: AuthContextModule
   lazyLoad?: boolean
   mediator?: Mediator
   onClick?: () => void
@@ -106,7 +108,8 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
     return (
       <div
         className={`${className} ${trackableClassName}`}
-        data-id={artwork._id}
+        data-id={artwork.internalID}
+        data-test="artworkGridItem"
         style={style}
       >
         <Placeholder style={{ paddingBottom: artwork.image.placeholder }}>
@@ -132,6 +135,9 @@ class ArtworkGridItemContainer extends React.Component<Props, State> {
           {this.canHover && (
             <SaveButton
               className="artwork-save"
+              contextModule={
+                this.props.contextModule || ContextModule.artworkGrid
+              }
               artwork={artwork}
               style={{
                 position: "absolute",
@@ -163,13 +169,13 @@ export const ArtworkGridItem = styled(ArtworkGridItemContainer)`
 export default createFragmentContainer(withSystemContext(ArtworkGridItem), {
   artwork: graphql`
     fragment GridItem_artwork on Artwork {
-      _id
+      internalID
       title
-      image_title
+      image_title: imageTitle
       image {
         placeholder
         url(version: "large")
-        aspect_ratio
+        aspect_ratio: aspectRatio
       }
       href
       ...Metadata_artwork

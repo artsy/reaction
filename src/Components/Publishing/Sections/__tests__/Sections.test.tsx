@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import {
   FeatureArticle,
@@ -6,12 +7,17 @@ import {
   StandardArticle,
 } from "Components/Publishing/Fixtures/Articles"
 import { WrapperWithFullscreenContext } from "Components/Publishing/Fixtures/Helpers"
+import {
+  ImageCollection,
+  ImageCollectionProps,
+} from "Components/Publishing/Sections/ImageCollection"
 import { SectionData } from "Components/Publishing/Typings"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { cloneDeep, defer } from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
+import { SectionContainer } from "../SectionContainer"
 import { Sections } from "../Sections"
 
 jest.mock("isomorphic-fetch")
@@ -26,6 +32,8 @@ jest.mock("react-dom/server", () => ({
   renderToStaticMarkup: x => x,
 }))
 
+jest.mock("Artsy/Analytics/useTracking")
+
 declare const global: any
 const renderSnapshot = props => {
   return renderer
@@ -38,15 +46,22 @@ const mountWrapper = props => {
 }
 
 describe("Sections", () => {
+  const trackEvent = jest.fn()
+
   let props
-  beforeEach(
-    () =>
-      (props = {
-        article: StandardArticle,
-        DisplayPanel: () => <div>hi!</div>,
-        isMobile: true,
-      })
-  )
+
+  beforeEach(() => {
+    props = {
+      article: StandardArticle,
+      DisplayPanel: () => <div>hi!</div>,
+      isMobile: true,
+    }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
+  })
 
   describe("snapshots tests", () => {
     it("renders properly", () => {
@@ -147,14 +162,29 @@ describe("Sections", () => {
       expect(wrapper.getContentEndIndex()).toBe(11)
     })
 
-    it("it injects display ads if feature", () => {
+    it("injects display ads if feature", () => {
       props.article = FeatureArticle
       props.isMobile = false
       const wrapper = mountWrapper(props)
       expect(wrapper.find(DisplayAd).length).toBe(2)
     })
 
-    it("it injects display ads with correct targeting data if not sponsored feature", () => {
+    it("injects one additional display ad if standard", () => {
+      props.isMobile = false
+      const wrapper = mountWrapper(props)
+
+      expect(wrapper.find(DisplayAd).length).toBe(1)
+    })
+
+    it("does not inject display ads on features if hideAd props is passed", () => {
+      props.article = FeatureArticle
+      props.isMobile = false
+      props.hideAds = true
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(DisplayAd).length).toBe(0)
+    })
+
+    it("injects display ads with correct targeting data if not sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.isSponsored = false
@@ -169,10 +199,11 @@ describe("Sections", () => {
         is_testing: true,
         page_type: "feature",
         post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Creativity",
       })
     })
 
-    it("it injects display ads with correct targeting data if sponsored feature", () => {
+    it("injects display ads with correct targeting data if sponsored feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       props.isSponsored = true
@@ -187,10 +218,11 @@ describe("Sections", () => {
         is_testing: true,
         page_type: "sponsorfeature",
         post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Creativity",
       })
     })
 
-    it("it injects display ads after correct sections if feature", () => {
+    it("injects display ads after correct sections if feature", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = false
       const wrapper = mountWrapper(props)
@@ -207,7 +239,7 @@ describe("Sections", () => {
       expect(ad.adDimension).toBe("970x250")
     })
 
-    it("it injects display ads after correct sections if feature on mobile", () => {
+    it("injects display ads after correct sections if feature on mobile", () => {
       props.article = NonSponsoredFeatureArticle
       props.isMobile = true
       const wrapper = mountWrapper(props)
@@ -224,7 +256,7 @@ describe("Sections", () => {
       expect(ad.adDimension).toBe("300x50")
     })
 
-    it("it injects display ads after correct sections if sponsored feature on mobile", () => {
+    it("injects display ads after correct sections if sponsored feature on mobile", () => {
       props.article = SponsoredFeatureArticle
       props.isMobile = true
       props.isSponsored = true
@@ -240,6 +272,74 @@ describe("Sections", () => {
       ad = ads.at(1).props()
       expect(ad.adUnit).toBe("Mobile_InContentLB2")
       expect(ad.adDimension).toBe("300x250")
+    })
+
+    it("injects correctly sized display ads if standard article on mobile", () => {
+      props.article = StandardArticle
+      props.isMobile = true
+      const wrapper = mountWrapper(props)
+
+      const ads = wrapper.find(DisplayAd)
+      expect(ads.length).toBe(1)
+
+      const ad = ads.at(0).props()
+
+      expect(ad.adUnit).toBe("Desktop_RightRail1")
+      expect(ad.adDimension).toBe("300x250")
+    })
+  })
+
+  describe("isTruncatedAt", () => {
+    it("shows all sections by default", () => {
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(SectionContainer).length).toBe(19)
+    })
+
+    it("limits sections to isTruncatedAt index when passed", () => {
+      props.isTruncatedAt = 3
+      const wrapper = mountWrapper(props)
+      expect(wrapper.find(SectionContainer).length).toBe(4)
+    })
+  })
+
+  describe("Images targetHeight", () => {
+    it("Returns default targetHeight and size", () => {
+      props.article = FeatureArticle
+
+      const wrapper = mountWrapper(props)
+      const imageProps = wrapper
+        .find(ImageCollection)
+        .at(0)
+        .props() as ImageCollectionProps
+      expect(imageProps.targetHeight).toBe(500)
+      expect(imageProps.size.width).toBe(680)
+    })
+
+    it("Returns default targetHeight if mobile and customWidth is passed", () => {
+      props.article = FeatureArticle
+      props.customWidth = 900
+
+      const wrapper = mountWrapper(props)
+      const imageProps = wrapper
+        .find(ImageCollection)
+        .at(0)
+        .props() as ImageCollectionProps
+      expect(imageProps.targetHeight).toBe(500)
+      expect(imageProps.size.width).toBe(900)
+    })
+
+    it("Increases image targetHeight and size if a wide customWidth is passed", () => {
+      props.article = FeatureArticle
+      props.customWidth = 900
+      props.isMobile = false
+
+      const wrapper = mountWrapper(props)
+      const imageProps = wrapper
+        .find(ImageCollection)
+        .at(0)
+        .props() as ImageCollectionProps
+      expect(imageProps.targetHeight).toBe(750)
+      expect(imageProps.size.width).toBe(900)
     })
   })
 

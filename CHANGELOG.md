@@ -1,3 +1,7500 @@
+# v26.27.11 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Add toggle menu support & fix mouse out hitarea on "Artworks" nav [#3454](https://github.com/artsy/reaction/pull/3454) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.27.10 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "[Consignments] Remove client-side tracking" [#3456](https://github.com/artsy/reaction/pull/3456) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.27.7 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove client-side tracking [#3453](https://github.com/artsy/reaction/pull/3453) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3452](https://github.com/artsy/reaction/pull/3452) ([@artsyit](https://github.com/artsyit))
+- [NavBar Drop Down QA] add a new prop to control background color [#3447](https://github.com/artsy/reaction/pull/3447) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### ⚠️  Pushed to `master`
+
+- Bump for force reaction release ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 0.2.0 to v0.2.8 [#3434](https://github.com/artsy/reaction/pull/3434) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 6
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.27.6 (Mon Apr 27 2020)
+
+#### 🐛  Bug Fix
+
+- Improves Carousel typings [#3450](https://github.com/artsy/reaction/pull/3450) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 8.2.0 to v8.2.1 [#3449](https://github.com/artsy/reaction/pull/3449) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.27.4 (Mon Apr 27 2020)
+
+#### 🐛  Bug Fix
+
+- Make AKG page more resilient towards mismatched data [#3446](https://github.com/artsy/reaction/pull/3446) ([@sweir27](https://github.com/sweir27))
+- Update metaphysics schema [#3444](https://github.com/artsy/reaction/pull/3444) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.27.3 (Mon Apr 27 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1908] Navbar menu qa [#3441](https://github.com/artsy/reaction/pull/3441) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v26.27.2 (Fri Apr 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Make /collection/id Header safer [#3443](https://github.com/artsy/reaction/pull/3443) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.27.1 (Fri Apr 24 2020)
+
+#### 🐛  Bug Fix
+
+- Hide recently viewed on marketing page [#3442](https://github.com/artsy/reaction/pull/3442) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.26.0 (Fri Apr 24 2020)
+
+#### 🚀  Enhancement
+
+- Fix up TypeScript types [#3430](https://github.com/artsy/reaction/pull/3430) ([@dblandin](https://github.com/dblandin))
+- Hookup App+SMS 2FA UI to live data [#3430](https://github.com/artsy/reaction/pull/3430) ([@dblandin](https://github.com/dblandin))
+- Hookup 2FA backup code UI to live data [#3429](https://github.com/artsy/reaction/pull/3429) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.25.1 (Thu Apr 23 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add full-screen support to /consign [#3440](https://github.com/artsy/reaction/pull/3440) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.25.0 (Thu Apr 23 2020)
+
+#### 🚀  Enhancement
+
+- Add a header to the conversation view on mobile [#3435](https://github.com/artsy/reaction/pull/3435) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.24.2 (Thu Apr 23 2020)
+
+#### 🐛  Bug Fix
+
+- Fixes collapsing container [#3439](https://github.com/artsy/reaction/pull/3439) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
+# v26.24.1 (Thu Apr 23 2020)
+
+#### 🐛  Bug Fix
+
+- Fix useSystemContext invocation [#3438](https://github.com/artsy/reaction/pull/3438) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.24.0 (Thu Apr 23 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Modernize SystemContext, make app shell width configurable [#3436](https://github.com/artsy/reaction/pull/3436) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.23.0 (Wed Apr 22 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Add context path query param [#3419](https://github.com/artsy/reaction/pull/3419) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.22.4 (Tue Apr 21 2020)
+
+#### 🐛  Bug Fix
+
+- auction results auth intent conforms to schema [#3433](https://github.com/artsy/reaction/pull/3433) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.22.2 (Tue Apr 21 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial - Artist page data-test attrs [#3427](https://github.com/artsy/reaction/pull/3427) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Move cohesion to be a dev dep of reaction [#3431](https://github.com/artsy/reaction/pull/3431) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.22.1 (Tue Apr 21 2020)
+
+#### 🐛  Bug Fix
+
+- Fixes static year in footer [#3428](https://github.com/artsy/reaction/pull/3428) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 0.1.0 to v0.2.0 [#3422](https://github.com/artsy/reaction/pull/3422) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.22.0 (Tue Apr 21 2020)
+
+#### 🚀  Enhancement
+
+- Update metaphysics schema [#3425](https://github.com/artsy/reaction/pull/3425) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.21.7 (Mon Apr 20 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1905] Fix notification badge placement [#3423](https://github.com/artsy/reaction/pull/3423) ([@xtina-starr](https://github.com/xtina-starr))
+- Update metaphysics schema [#3424](https://github.com/artsy/reaction/pull/3424) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v26.21.6 (Mon Apr 20 2020)
+
+#### 🐛  Bug Fix
+
+- Style updates to new nav drop down menu [#3416](https://github.com/artsy/reaction/pull/3416) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v26.21.4 (Mon Apr 20 2020)
+
+#### 🐛  Bug Fix
+
+- Add whitespace to before/after FAQ link [#3421](https://github.com/artsy/reaction/pull/3421) ([@yuki24](https://github.com/yuki24))
+- Add data-test attrs for artist page [#3420](https://github.com/artsy/reaction/pull/3420) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 8.1.1 to v8.1.3 [#3418](https://github.com/artsy/reaction/pull/3418) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 0.0.3 to v0.1.0 [#3415](https://github.com/artsy/reaction/pull/3415) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v26.21.3 (Fri Apr 17 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3417](https://github.com/artsy/reaction/pull/3417) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.21.2 (Fri Apr 17 2020)
+
+#### 🐛  Bug Fix
+
+- Reverts Hotfix; Brings back dynamic nav bar on /news pages [#3413](https://github.com/artsy/reaction/pull/3413) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.21.1 (Fri Apr 17 2020)
+
+#### 🐛  Bug Fix
+
+- Fix conversation page layout, link off to image [#3412](https://github.com/artsy/reaction/pull/3412) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.21.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Update desktop nav menu [#3369](https://github.com/artsy/reaction/pull/3369) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v26.19.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Update conversation inbox visuals on mobile [#3404](https://github.com/artsy/reaction/pull/3404) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v8.1.1 [#3382](https://github.com/artsy/reaction/pull/3382) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.18.0 (Thu Apr 16 2020)
+
+#### 🚀  Enhancement
+
+- Use @artsy/cohesion [#3411](https://github.com/artsy/reaction/pull/3411) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Fix conversation page from erroring out due to null timestamp [#3406](https://github.com/artsy/reaction/pull/3406) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update auto orb from 1.1.0 to v1.2.0 [#3409](https://github.com/artsy/reaction/pull/3409) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.17.3 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add search to referrer [#3410](https://github.com/artsy/reaction/pull/3410) ([@damassi](https://github.com/damassi))
+- [AUCT-952] Bidder sees copy in "about to register" and "registration pending" modals with information about identity verification [#3373](https://github.com/artsy/reaction/pull/3373) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Rollback JSDOM v16 upgrade
+
+We unfortunately discovered that some other specs are taking longer and
+hitting timeouts so we're going to postpone this library upgrade for
+now.
+
+Partially revert https://github.com/artsy/reaction/pull/3400
+
+Back out the library update but keep the `Object.defineProperty` mock
+updates which are backwards-compatible and should make a future upgrade
+attempt easier.
+
+Also remove the timeout bump added in
+https://github.com/artsy/reaction/pull/3402.
+
+Related issue thread on Jest 25 performance:
+https://github.com/facebook/jest/issues/9457 [#3408](https://github.com/artsy/reaction/pull/3408) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v26.17.2 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix referrer edgecase [#3407](https://github.com/artsy/reaction/pull/3407) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.17.1 (Wed Apr 15 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3405](https://github.com/artsy/reaction/pull/3405) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.17.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- Update artwork preview in conversation [#3393](https://github.com/artsy/reaction/pull/3393) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.16.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- Expose static pages in search results/autocomplete [#3403](https://github.com/artsy/reaction/pull/3403) ([@sweir27](https://github.com/sweir27))
+- Add mocked UI for the 2FA backup codes
+
+Introduce the 2FA backup codes UI. Hook up the modal and 'Set up' /
+'Regenerate' controls. [#3399](https://github.com/artsy/reaction/pull/3399) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3401](https://github.com/artsy/reaction/pull/3401) ([@renovate-bot](https://github.com/renovate-bot))
+- Bump timeout of "ArtworkFilter/desktop/renders default UI items" spec [#3402](https://github.com/artsy/reaction/pull/3402) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.15.0 (Wed Apr 15 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1852] Add checkbox and filtering for lots with nil date information [#3397](https://github.com/artsy/reaction/pull/3397) ([@jpotts244](https://github.com/jpotts244))
+- Update Jest to use JSDOM v16 [#3400](https://github.com/artsy/reaction/pull/3400) ([@dblandin](https://github.com/dblandin))
+- Add mocked enrollment UI for the 2FA App Authenticator method
+
+Introduce the 2FA App Authenticator enrollment UI. Hooks up the modal
+and form components including basic validation.
+
+The OTP code `123456` will mimic a successful enrollment. Anything else
+will mimic an invalid OTP code. [#3398](https://github.com/artsy/reaction/pull/3398) ([@dblandin](https://github.com/dblandin))
+- Update window.location mocks to use Object.defineProperty
+
+Following the Jest update to use JSDOM v16, update window.location mocks
+to use `Object.defineProperty` to get past this error:
+
+```
+TypeError: Cannot assign to read only property 'assign' of object '[object Location]'
+``` [#3400](https://github.com/artsy/reaction/pull/3400) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v26.14.3 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add `flow: consignments` to tracking [#3396](https://github.com/artsy/reaction/pull/3396) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.14.2 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Slow down top bar a bit [#3394](https://github.com/artsy/reaction/pull/3394) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.14.1 (Tue Apr 14 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial Add test attr for integrity [#3392](https://github.com/artsy/reaction/pull/3392) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.13.0 (Tue Apr 14 2020)
+
+#### 🚀  Enhancement
+
+- Add 2FA user settings component [#3387](https://github.com/artsy/reaction/pull/3387) ([@dblandin](https://github.com/dblandin))
+- Update conversations UI to be closer to design spec [#3389](https://github.com/artsy/reaction/pull/3389) ([@zephraph](https://github.com/zephraph))
+- Update metaphysics schema [#3390](https://github.com/artsy/reaction/pull/3390) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Upgrade storybook and related dependencies
+
+`yarn upgrade @storybook/*` [#3388](https://github.com/artsy/reaction/pull/3388) ([@dblandin](https://github.com/dblandin))
+- Remove trailing separator char from Storybook story path
+
+Follow-up to https://github.com/artsy/reaction/pull/3388
+
+Starting at some version between v5.1.10 and v5.3.18 of Storybook,
+separator chars like `/` should only be used to separate path parts and
+not present at the end of a path string, otherwise the UI breaks. /shrug
+
+```
+Error: Invalid part '', leading to id === parentId
+('publishing-tooltips'), inside kind 'Publishing/ToolTips/'
+
+Did you create a path that uses the separator char accidentally, such as
+'Vue <docs/>' where '/' is a separator char? See
+https://github.com/storybookjs/storybook/issues/6128
+``` [#3391](https://github.com/artsy/reaction/pull/3391) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.12.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Remove ENABLE_REQUEST_CONDITION_REPORT feature flag [#3386](https://github.com/artsy/reaction/pull/3386) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.10.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Add data-test attribute on ForgotPassword forms
+
+Similar to the `data-test` attribute on the login and signup forms, this
+allows us to query `ForgotPasswordForm` elements in the DOM during
+Cypress integration testing. [#3384](https://github.com/artsy/reaction/pull/3384) ([@dblandin](https://github.com/dblandin))
+
+#### 🐛  Bug Fix
+
+- #trivial Add integrity data attrs [#3385](https://github.com/artsy/reaction/pull/3385) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.9.0 (Mon Apr 13 2020)
+
+#### 🚀  Enhancement
+
+- Make Artwork Bid Actions Identity Verification Aware [#3345](https://github.com/artsy/reaction/pull/3345) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v26.8.6 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Bump palette [#3380](https://github.com/artsy/reaction/pull/3380) ([@damassi](https://github.com/damassi))
+- Use logger instead of console.error to capture missing data reports [#3379](https://github.com/artsy/reaction/pull/3379) ([@zephraph](https://github.com/zephraph))
+- [Clientside Nav] Move Pageloader from Palette [#3377](https://github.com/artsy/reaction/pull/3377) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/palette from 8 to 8.0.0 [#3381](https://github.com/artsy/reaction/pull/3381) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.8.5 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Bump timeout [#3374](https://github.com/artsy/reaction/pull/3374) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.8.4 (Fri Apr 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove inbox icon from menu [#3375](https://github.com/artsy/reaction/pull/3375) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.8.3 (Thu Apr 09 2020)
+
+#### 🐛  Bug Fix
+
+- Fix snapshots [#3372](https://github.com/artsy/reaction/pull/3372) ([@damassi](https://github.com/damassi))
+- Sync schema [#3371](https://github.com/artsy/reaction/pull/3371) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.8.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Use auth helpers for minimalCTABanner tracking args [#3366](https://github.com/artsy/reaction/pull/3366) ([@eessex](https://github.com/eessex))
+- Revert /works-for-sale redirect [#3368](https://github.com/artsy/reaction/pull/3368) ([@zephraph](https://github.com/zephraph))
+- #trivial - add data-test attrs [#3367](https://github.com/artsy/reaction/pull/3367) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.8.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Update ArtistConsignButton with targetSupply check [#3364](https://github.com/artsy/reaction/pull/3364) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.7.1 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Add log out link back to mWeb [#3360](https://github.com/artsy/reaction/pull/3360) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.6.0 to v7.8.0 [#3346](https://github.com/artsy/reaction/pull/3346) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.7.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- Search bar artist results link to works-for-sale page [#3351](https://github.com/artsy/reaction/pull/3351) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.6.0 (Wed Apr 08 2020)
+
+#### 🚀  Enhancement
+
+- Convert images to JPG and add poster for video [#3365](https://github.com/artsy/reaction/pull/3365) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.5.2 (Wed Apr 08 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3362](https://github.com/artsy/reaction/pull/3362) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.5.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Adds tracking for Art Keeps Going + some other visual improvements [#3361](https://github.com/artsy/reaction/pull/3361) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.5.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- Add inbox to mobile nav menu [#3359](https://github.com/artsy/reaction/pull/3359) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.4.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3358](https://github.com/artsy/reaction/pull/3358) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.4.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- Add desktop menu item for navigating to conversations [#3357](https://github.com/artsy/reaction/pull/3357) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.3.1 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Visual fixes based on QA [#3356](https://github.com/artsy/reaction/pull/3356) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.3.0 (Tue Apr 07 2020)
+
+#### 🚀  Enhancement
+
+- [MX-216] - Sign in with apple [#3281](https://github.com/artsy/reaction/pull/3281) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
+# v26.2.2 (Tue Apr 07 2020)
+
+#### 🐛  Bug Fix
+
+- Update `back to <artist>` links to point directly to the overview page [#3353](https://github.com/artsy/reaction/pull/3353) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.2.1 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- Adds video support for the Art Keeps Going campaign [#3354](https://github.com/artsy/reaction/pull/3354) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.2.0 (Mon Apr 06 2020)
+
+#### 🚀  Enhancement
+
+- Adds the Art Keeps Going feature app + content [#3348](https://github.com/artsy/reaction/pull/3348) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v26.1.2 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Clear cache on mutation [#3352](https://github.com/artsy/reaction/pull/3352) ([@damassi](https://github.com/damassi))
+- #trivial data-test attrs for SignUpForm [#3350](https://github.com/artsy/reaction/pull/3350) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.1.1 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3349](https://github.com/artsy/reaction/pull/3349) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.1.0 (Mon Apr 06 2020)
+
+#### 🚀  Enhancement
+
+- HOLD => [Clientside Nav] Bump A/B test to v5 [#3285](https://github.com/artsy/reaction/pull/3285) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.0.3 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- [Route] Log generic errors but throw on HttpError [#3344](https://github.com/artsy/reaction/pull/3344) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.0.2 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- Remove contextModule from auction redirect [#3343](https://github.com/artsy/reaction/pull/3343) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.0.1 (Fri Apr 03 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Use app shell top-loader by default [#3342](https://github.com/artsy/reaction/pull/3342) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.0.0 (Thu Apr 02 2020)
+
+#### 💥  Breaking Change
+
+- Analytics schema v2 - authImpression event [#3193](https://github.com/artsy/reaction/pull/3193) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.42.6 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Add missing `action` call to ArtworkConsignButton [#3341](https://github.com/artsy/reaction/pull/3341) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.42.5 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Fix redirect loop when user logged in on artist page [#3338](https://github.com/artsy/reaction/pull/3338) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.42.4 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Use "Artsy for Galleries" instead of "Partner with Artsy" naming in mobile nav [#3339](https://github.com/artsy/reaction/pull/3339) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.42.3 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure consign button shows for all artists [#3340](https://github.com/artsy/reaction/pull/3340) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.42.2 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1885] restructure the main nav menu [#3336](https://github.com/artsy/reaction/pull/3336) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.42.1 (Thu Apr 02 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Redirect logged in users to the works for sale tab" [#3337](https://github.com/artsy/reaction/pull/3337) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.42.0 (Wed Apr 01 2020)
+
+#### 🚀  Enhancement
+
+- Redirect logged in users to the works for sale tab [#3307](https://github.com/artsy/reaction/pull/3307) ([@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- Organize MobileNav into folder [#3335](https://github.com/artsy/reaction/pull/3335) ([@damassi](https://github.com/damassi))
+- Display information about identity verification on credit card form [#3334](https://github.com/artsy/reaction/pull/3334) ([@bhoggard](https://github.com/bhoggard))
+
+#### ⚠️  Pushed to master
+
+- Forcing a reaction release  ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.41.1 (Tue Mar 31 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Guard against missing data [#3333](https://github.com/artsy/reaction/pull/3333) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.41.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Update Artist/Consign to support MP-based data [#3331](https://github.com/artsy/reaction/pull/3331) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.40.0 (Tue Mar 31 2020)
+
+#### 🚀  Enhancement
+
+- Land on Work for Sale tab when coming from internal links [#3332](https://github.com/artsy/reaction/pull/3332) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- [Artist] Add ConsignButton to Artist/Overview page [#3329](https://github.com/artsy/reaction/pull/3329) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Remove UI patch [#3330](https://github.com/artsy/reaction/pull/3330) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.39.3 (Mon Mar 30 2020)
+
+#### 🐛  Bug Fix
+
+- [HotFix] Comment out NewsNav date [#3328](https://github.com/artsy/reaction/pull/3328) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.4.0 to v7.6.0 [#3309](https://github.com/artsy/reaction/pull/3309) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.39.2 (Sun Mar 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Fix padding on mobile [#3327](https://github.com/artsy/reaction/pull/3327) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Remove shuffle on recently sold [#3326](https://github.com/artsy/reaction/pull/3326) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.39.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add stack trace in development [#3325](https://github.com/artsy/reaction/pull/3325) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.38.1 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add images to Artist/Consign header [#3322](https://github.com/artsy/reaction/pull/3322) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.37.0 (Fri Mar 27 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Launch Consign Page / Update FAQ [#3324](https://github.com/artsy/reaction/pull/3324) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- gitignore node diagnostic reports [#3323](https://github.com/artsy/reaction/pull/3323) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.14 (Fri Mar 27 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add "Sold for" price data [#3321](https://github.com/artsy/reaction/pull/3321) ([@damassi](https://github.com/damassi))
+- [FX-1877] launch new mobile nav menu [#3320](https://github.com/artsy/reaction/pull/3320) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.13 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add ArtistConsignButton [#3317](https://github.com/artsy/reaction/pull/3317) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.12 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add tracking to Artist/Consign [#3318](https://github.com/artsy/reaction/pull/3318) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.11 (Thu Mar 26 2020)
+
+#### 🐛  Bug Fix
+
+- [Mobile Nav Menu] adjust chevron position [#3319](https://github.com/artsy/reaction/pull/3319) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.10 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure year created check doesn't error on nulls [#3316](https://github.com/artsy/reaction/pull/3316) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.36.9 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu ui qa [#3315](https://github.com/artsy/reaction/pull/3315) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.8 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Video meta bug [#3314](https://github.com/artsy/reaction/pull/3314) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.36.7 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- the Address Form component should respect country selection for Euro only shipping [#3313](https://github.com/artsy/reaction/pull/3313) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.36.6 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Switch props.router.push back to window.locaion.assign for idv flow [#3312](https://github.com/artsy/reaction/pull/3312) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.36.5 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Mobile nav menu analytics [#3289](https://github.com/artsy/reaction/pull/3289) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.36.4 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- Move AddressForm component out of the order app [#3305](https://github.com/artsy/reaction/pull/3305) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.36.3 (Wed Mar 25 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] QA round 2 [#3311](https://github.com/artsy/reaction/pull/3311) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.2 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- Copy: Remove stray whitespace in verification failed view [#3310](https://github.com/artsy/reaction/pull/3310) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v25.36.1 (Tue Mar 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Artist/Consign QA [#3308](https://github.com/artsy/reaction/pull/3308) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.36.0 (Mon Mar 23 2020)
+
+#### 🚀  Enhancement
+
+- Add year created filter reset link [#3302](https://github.com/artsy/reaction/pull/3302) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.35.2 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- cleanup stray text [#3306](https://github.com/artsy/reaction/pull/3306) ([@erikdstock](https://github.com/erikdstock))
+- Show a pass/fail message for a completed identity verification [#3294](https://github.com/artsy/reaction/pull/3294) ([@erikdstock](https://github.com/erikdstock))
+- Missing Image Fix [#3304](https://github.com/artsy/reaction/pull/3304) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.35.1 (Mon Mar 23 2020)
+
+#### 🐛  Bug Fix
+
+- Adds social_embed section type to ad insertion logic [#3301](https://github.com/artsy/reaction/pull/3301) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.3.0 to v7.4.0 [#3300](https://github.com/artsy/reaction/pull/3300) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.35.0 (Sun Mar 22 2020)
+
+#### 🚀  Enhancement
+
+- Bump [#3299](https://github.com/artsy/reaction/pull/3299) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- [Refactor] Move v2/Components > /Components & Collect2 > Collect [#3296](https://github.com/artsy/reaction/pull/3296) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.2.0 to v7.3.0 [#3287](https://github.com/artsy/reaction/pull/3287) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/lint-changed from 3.0.3 to v3.0.4 [#3298](https://github.com/artsy/reaction/pull/3298) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.34.6 (Sun Mar 22 2020)
+
+#### 🐛  Bug Fix
+
+- Update NetworkTimeout language [#3297](https://github.com/artsy/reaction/pull/3297) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.5 (Sat Mar 21 2020)
+
+#### 🐛  Bug Fix
+
+- Fix broken pagination on auction results page [#3295](https://github.com/artsy/reaction/pull/3295) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.34.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Add Artist/Consign SEO/meta tags [#3292](https://github.com/artsy/reaction/pull/3292) ([@damassi](https://github.com/damassi))
+- Updates size on 3rd display ad on standard desktop [#3293](https://github.com/artsy/reaction/pull/3293) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Auction Results Visual Tweaks [#3284](https://github.com/artsy/reaction/pull/3284) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.34.1 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist/Consign] Add tests [#3279](https://github.com/artsy/reaction/pull/3279) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.34.0 (Fri Mar 20 2020)
+
+#### 🚀  Enhancement
+
+- Prepopulate email input from URL query string on forgot password page [#3291](https://github.com/artsy/reaction/pull/3291) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v25.33.3 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3290](https://github.com/artsy/reaction/pull/3290) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v25.33.2 (Fri Mar 20 2020)
+
+#### 🐛  Bug Fix
+
+- Adds a 3rd Display Ad to Standard Articles [#3286](https://github.com/artsy/reaction/pull/3286) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v25.33.1 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- Update MP schema [#3288](https://github.com/artsy/reaction/pull/3288) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
+# v25.33.0 (Thu Mar 19 2020)
+
+#### 🚀  Enhancement
+
+- Add initial UI for years created filters on auction results [#3270](https://github.com/artsy/reaction/pull/3270) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.32.10 (Thu Mar 19 2020)
+
+#### 🐛  Bug Fix
+
+- User can navigate to IDV FAQ from the IDV landing page [#3282](https://github.com/artsy/reaction/pull/3282) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.32.9 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1702] new mobile nav menu [#3238](https://github.com/artsy/reaction/pull/3238) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.32.6 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update remaining mediator calls [#3283](https://github.com/artsy/reaction/pull/3283) ([@eessex](https://github.com/eessex))
+- [AUCT-930] static id verification processing page [#3274](https://github.com/artsy/reaction/pull/3274) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.2 to v7.2.0 [#3254](https://github.com/artsy/reaction/pull/3254) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.32.5 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Fix tab UI spacing [#3280](https://github.com/artsy/reaction/pull/3280) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.2 to v3.0.3 [#3278](https://github.com/artsy/reaction/pull/3278) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.32.4 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Update artist name [#3277](https://github.com/artsy/reaction/pull/3277) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.3 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Ensure dynamic data is passed [#3276](https://github.com/artsy/reaction/pull/3276) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.2 (Wed Mar 18 2020)
+
+#### 🐛  Bug Fix
+
+- Fix admin check on staging [#3275](https://github.com/artsy/reaction/pull/3275) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.32.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Forgot form titles [#3273](https://github.com/artsy/reaction/pull/3273) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.32.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [Consignments] Build out new Artist/Consign landing page [#3261](https://github.com/artsy/reaction/pull/3261) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.31.1 (Tue Mar 17 2020)
+
+#### 🐛  Bug Fix
+
+- Expand openAuthModal helpers, update NavBar triggers [#3264](https://github.com/artsy/reaction/pull/3264) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.31.0 (Tue Mar 17 2020)
+
+#### 🚀  Enhancement
+
+- [ErrorBoundary] Add generic error handler [#3272](https://github.com/artsy/reaction/pull/3272) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.30.1 (Mon Mar 16 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1758] add a fallback image when there is no headerImage [#3226](https://github.com/artsy/reaction/pull/3226) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.30.0 (Mon Mar 16 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add more safety around network failures with fallback UI [#3271](https://github.com/artsy/reaction/pull/3271) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.4 (Sat Mar 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Fix alignment in image [#3269](https://github.com/artsy/reaction/pull/3269) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.3 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3268](https://github.com/artsy/reaction/pull/3268) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.29.2 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix throttle invocation [#3267](https://github.com/artsy/reaction/pull/3267) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.1 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Remove mobile loader test [#3266](https://github.com/artsy/reaction/pull/3266) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.29.0 (Fri Mar 13 2020)
+
+#### 🚀  Enhancement
+
+- [PUR-1818] Update header text for auction results page [#3262](https://github.com/artsy/reaction/pull/3262) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 1
+
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v25.28.0 (Fri Mar 13 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add <NetworkTimeout /> & <NetworkOfflineMonitor /> components [#3240](https://github.com/artsy/reaction/pull/3240) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.17 (Fri Mar 13 2020)
+
+#### 🐛  Bug Fix
+
+- Attempt to fix Flickity error [#3265](https://github.com/artsy/reaction/pull/3265) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.16 (Thu Mar 12 2020)
+
+#### 🐛  Bug Fix
+
+- the default should be country of origin if the country select is locked to EU only [#3263](https://github.com/artsy/reaction/pull/3263) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.27.15 (Thu Mar 12 2020)
+
+#### 🐛  Bug Fix
+
+- Make countries list on the Address form render only EU countries if it's marked as euOrigin and domesticOnly [#3222](https://github.com/artsy/reaction/pull/3222) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v25.27.14 (Wed Mar 11 2020)
+
+#### 🐛  Bug Fix
+
+- Update openseadragon to try to fix some mobile bugs [#3260](https://github.com/artsy/reaction/pull/3260) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.27.13 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Debug ErrorBoundry error on mobile [#3259](https://github.com/artsy/reaction/pull/3259) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.12 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Move conversations app to be behind lab feature instead of admin flag [#3258](https://github.com/artsy/reaction/pull/3258) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.27.11 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Add Integrity-ready flag to boot [#3257](https://github.com/artsy/reaction/pull/3257) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.10 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Type openAuthModal helpers [#3252](https://github.com/artsy/reaction/pull/3252) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.27.9 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove BidFlow from router [#3256](https://github.com/artsy/reaction/pull/3256) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.8 (Tue Mar 10 2020)
+
+#### 🐛  Bug Fix
+
+- Remove auction routes [#3255](https://github.com/artsy/reaction/pull/3255) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.7 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist] Fix redirect [#3253](https://github.com/artsy/reaction/pull/3253) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.6 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Make hide grids function a bit safer [#3248](https://github.com/artsy/reaction/pull/3248) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.5 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] => Make `SEOProductsForCollections` safer [#3251](https://github.com/artsy/reaction/pull/3251) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.3 (Mon Mar 09 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "Helpers for opening auth modals are strictly typed" [#3250](https://github.com/artsy/reaction/pull/3250) ([@eessex](https://github.com/eessex))
+- Helpers for opening auth modals are strictly typed [#3239](https://github.com/artsy/reaction/pull/3239) ([@eessex](https://github.com/eessex))
+- Update schema [#3249](https://github.com/artsy/reaction/pull/3249) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep lint-staged from ^10.0.8 to 10.0.8 [#3246](https://github.com/artsy/reaction/pull/3246) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update auto orb to v1.1.0 [#3237](https://github.com/artsy/reaction/pull/3237) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update lint-staged [#3245](https://github.com/artsy/reaction/pull/3245) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 5
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.27.2 (Sun Mar 08 2020)
+
+#### 🐛  Bug Fix
+
+- Replace getENV with sd for now [#3244](https://github.com/artsy/reaction/pull/3244) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.27.1 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Remove error boundary [#3243](https://github.com/artsy/reaction/pull/3243) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.27.0 (Sat Mar 07 2020)
+
+#### 🚀  Enhancement
+
+- Move conversations behind lab feature flag [#3241](https://github.com/artsy/reaction/pull/3241) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.3 (Sat Mar 07 2020)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#3242](https://github.com/artsy/reaction/pull/3242) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.1 to v7.1.2 [#3219](https://github.com/artsy/reaction/pull/3219) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.26.2 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Begin ID Verification flow from collector verification app [#3232](https://github.com/artsy/reaction/pull/3232) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.26.1 (Thu Mar 05 2020)
+
+#### 🐛  Bug Fix
+
+- Update attribute to follow pre-established testing patterns [#3236](https://github.com/artsy/reaction/pull/3236) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.26.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Add attribute to body when app is ready to be tested [#3233](https://github.com/artsy/reaction/pull/3233) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/lint-changed from 3.0.1 to v3.0.2 [#3235](https://github.com/artsy/reaction/pull/3235) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.25.0 (Thu Mar 05 2020)
+
+#### 🚀  Enhancement
+
+- Adds hooks to login modals for integration tests [#3234](https://github.com/artsy/reaction/pull/3234) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.24.3 (Wed Mar 04 2020)
+
+#### 🐛  Bug Fix
+
+- Only lint changed files [#3220](https://github.com/artsy/reaction/pull/3220) ([@zephraph](https://github.com/zephraph))
+- User does not see lot condition report request if it's disabled for a sale [#3223](https://github.com/artsy/reaction/pull/3223) ([@yuki24](https://github.com/yuki24))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/lint-changed from ^3.0.1 to 3.0.1 [#3231](https://github.com/artsy/reaction/pull/3231) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Only lint changed files [#3230](https://github.com/artsy/reaction/pull/3230) ([@zephraph](https://github.com/zephraph))
+- Revert "Only lint changed files" [#3228](https://github.com/artsy/reaction/pull/3228) ([@zephraph](https://github.com/zephraph))
+- Update auto orb to v1.0.2 [#3225](https://github.com/artsy/reaction/pull/3225) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v25.24.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- Update AB test name to CLIENT_NAVIGATION_V4 [#3224](https://github.com/artsy/reaction/pull/3224) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.24.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Visual QA [#3217](https://github.com/artsy/reaction/pull/3217) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.24.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1765] Add medium (categories) filter to auction results [#3211](https://github.com/artsy/reaction/pull/3211) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.23.2 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Add more tests [#3221](https://github.com/artsy/reaction/pull/3221) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.23.1 (Mon Mar 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Artist] Visual QA [#3218](https://github.com/artsy/reaction/pull/3218) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.23.0 (Mon Mar 02 2020)
+
+#### 🚀  Enhancement
+
+- Collector Verification App [#3186](https://github.com/artsy/reaction/pull/3186) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v25.22.1 (Sat Feb 29 2020)
+
+#### 🐛  Bug Fix
+
+- [Search] Dont split bundles [#3214](https://github.com/artsy/reaction/pull/3214) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update yarn orb to track tests via circle again [#3215](https://github.com/artsy/reaction/pull/3215) ([@zephraph](https://github.com/zephraph))
+- Update dep typescript from 3.8.2 to v3.8.3 [#3213](https://github.com/artsy/reaction/pull/3213) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dep @types/loadable__component from ^5.10.0 to 5.10.0 [#3212](https://github.com/artsy/reaction/pull/3212) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.22.0 (Fri Feb 28 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Add async bundle preloading pattern to router [#3207](https://github.com/artsy/reaction/pull/3207) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.21.4 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1828] Update typography and spacing in mobile menu [#3209](https://github.com/artsy/reaction/pull/3209) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.21.3 (Fri Feb 28 2020)
+
+#### 🐛  Bug Fix
+
+- Only render "RelatedCollections" that have artworks [#3208](https://github.com/artsy/reaction/pull/3208) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update yarn orb to v4.0.1 [#3206](https://github.com/artsy/reaction/pull/3206) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.21.2 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- [step 2] Update schema to use MP's schema at mp@rename-wizard-to-flow [#3205](https://github.com/artsy/reaction/pull/3205) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v25.21.1 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Bump Node to v12 to have parity with Force [#3204](https://github.com/artsy/reaction/pull/3204) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.21.0 (Thu Feb 27 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Nav] Move to more conventional A/B test structure [#3203](https://github.com/artsy/reaction/pull/3203) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Add data file to describe new menu structure (for mobile and desktop) [#3199](https://github.com/artsy/reaction/pull/3199) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 2
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.20.3 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Add data file to describe new menu structure (for mobile and desktop) [#3199](https://github.com/artsy/reaction/pull/3199) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.20.2 (Thu Feb 27 2020)
+
+#### 🐛  Bug Fix
+
+- Log recaptcha misses on signup [#3202](https://github.com/artsy/reaction/pull/3202) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v25.20.1 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- use `formattedNationalityAndBirthday` in artist header [#3201](https://github.com/artsy/reaction/pull/3201) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.20.0 (Wed Feb 26 2020)
+
+#### 🚀  Enhancement
+
+- Handle "works for sale" copy and tabs on artwork page if no works for sale [#3197](https://github.com/artsy/reaction/pull/3197) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.19.0 (Wed Feb 26 2020)
+
+#### 🚀  Enhancement
+
+- Link header badges to Auction Result / Career Highlights [#3200](https://github.com/artsy/reaction/pull/3200) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v25.18.3 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Update field used for notifications badge count [#3190](https://github.com/artsy/reaction/pull/3190) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.18.2 (Wed Feb 26 2020)
+
+#### 🐛  Bug Fix
+
+- Fix issue where expanding auction result changed page [#3198](https://github.com/artsy/reaction/pull/3198) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 7.1.0 to v7.1.1 [#3194](https://github.com/artsy/reaction/pull/3194) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Pin dependencies [#3195](https://github.com/artsy/reaction/pull/3195) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.18.1 (Mon Feb 24 2020)
+
+#### 🐛  Bug Fix
+
+- Simplify A/B test lookup via `express-http-context` [#3191](https://github.com/artsy/reaction/pull/3191) ([@damassi](https://github.com/damassi) [@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v25.18.0 (Mon Feb 24 2020)
+
+#### 🚀  Enhancement
+
+- Add attachments to each message [#3192](https://github.com/artsy/reaction/pull/3192) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.5 to v3.8.2 [#3183](https://github.com/artsy/reaction/pull/3183) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@ds300](https://github.com/ds300) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 5
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.17.1 (Fri Feb 21 2020)
+
+#### 🐛  Bug Fix
+
+- [QueryRenderers] Delay showing spinner [#3185](https://github.com/artsy/reaction/pull/3185) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.15.0 (Fri Feb 21 2020)
+
+#### 🚀  Enhancement
+
+- [BundleSplitting] Reenable [#3189](https://github.com/artsy/reaction/pull/3189) ([@damassi](https://github.com/damassi))
+- [BundleSplitting] Comment out for now [#3188](https://github.com/artsy/reaction/pull/3188) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Fix conversation detail link [#3187](https://github.com/artsy/reaction/pull/3187) ([@ashkan18](https://github.com/ashkan18))
+
+#### ⚠️  Pushed to master
+
+- [BundleSplitting] Comment out for now  ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v7.1.0 [#3149](https://github.com/artsy/reaction/pull/3149) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.14.1 (Fri Feb 21 2020)
+
+#### 🐛  Bug Fix
+
+- @damassi => [ClientSide Routing] Launch v3 of the AB test [#3184](https://github.com/artsy/reaction/pull/3184) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v25.14.0 (Thu Feb 20 2020)
+
+#### 🚀  Enhancement
+
+- Show My Conversations [#3173](https://github.com/artsy/reaction/pull/3173) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v25.13.1 (Thu Feb 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Nav] Fix double track on artwork page [#3181](https://github.com/artsy/reaction/pull/3181) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.13.0 (Thu Feb 20 2020)
+
+#### 🚀  Enhancement
+
+- [FX-1752] Add "Consign" to desktop global nav More menu; nav code cleanup [#3158](https://github.com/artsy/reaction/pull/3158) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.12.0 (Thu Feb 20 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1790] Add auction result filter instrumentation [#3178](https://github.com/artsy/reaction/pull/3178) ([@sepans](https://github.com/sepans))
+
+#### 🏠  Internal
+
+- Remove weird 2 file generated by yarn integrate [#3180](https://github.com/artsy/reaction/pull/3180) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.11.6 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Remove dd-trace [#3176](https://github.com/artsy/reaction/pull/3176) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.11.5 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1793] Fix artwork filter events being tracked twice. [#3175](https://github.com/artsy/reaction/pull/3175) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.11.4 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Pass data-test down through RouterLink #trivial [#3177](https://github.com/artsy/reaction/pull/3177) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.11.3 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Use data-link instead of classname for integration test [#3174](https://github.com/artsy/reaction/pull/3174) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.11.2 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Migrate "Promoted Content" banner from Force [#3169](https://github.com/artsy/reaction/pull/3169) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Note that canaries are auto published [#3172](https://github.com/artsy/reaction/pull/3172) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.11.1 (Wed Feb 19 2020)
+
+#### 🐛  Bug Fix
+
+- Add integrity classname [#3171](https://github.com/artsy/reaction/pull/3171) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Add canary deployment to reaction PRs [#3168](https://github.com/artsy/reaction/pull/3168) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.11.0 (Tue Feb 18 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Routing] Wire in Auctions app [#3163](https://github.com/artsy/reaction/pull/3163) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.10.0 (Tue Feb 18 2020)
+
+#### 🚀  Enhancement
+
+- [Clientside Routing] Wire in Order app [#3162](https://github.com/artsy/reaction/pull/3162) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @artsy/auto-config from ^1.0.2 to 1.0.2 [#3167](https://github.com/artsy/reaction/pull/3167) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.9.5 (Tue Feb 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update yarn orb to v3 [#3166](https://github.com/artsy/reaction/pull/3166) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3157](https://github.com/artsy/reaction/pull/3157) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v25.9.4 (Sat Feb 15 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Ensure all search-bar nav items navigate properly [#3161](https://github.com/artsy/reaction/pull/3161) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.9.3 (Sat Feb 15 2020)
+
+#### 🐛  Bug Fix
+
+- Bundle split search; fix SSR search input [#3160](https://github.com/artsy/reaction/pull/3160) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.9.2 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Prefix injected split tag scripts with CDN_URL [#3159](https://github.com/artsy/reaction/pull/3159) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.9.1 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1749] Add auction result size filter [#3153](https://github.com/artsy/reaction/pull/3153) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.9.0 (Fri Feb 14 2020)
+
+#### 🚀  Enhancement
+
+- Take 2: [Refactor] Implement route-level bundle splitting [#3151](https://github.com/artsy/reaction/pull/3151) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.8.4 (Fri Feb 14 2020)
+
+#### 🐛  Bug Fix
+
+- Collapse auction results filter for reasons [#3155](https://github.com/artsy/reaction/pull/3155) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update README with info on publishing canary [#3156](https://github.com/artsy/reaction/pull/3156) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.8.3 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1807] update MP schema and use new size arg to limit relatedCollections [#3154](https://github.com/artsy/reaction/pull/3154) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.8.2 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- Add Auction result header description [#3152](https://github.com/artsy/reaction/pull/3152) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.8.1 (Thu Feb 13 2020)
+
+#### 🐛  Bug Fix
+
+- Revert "[Refactor] Implement route-level bundle splitting" [#3150](https://github.com/artsy/reaction/pull/3150) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.8.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- Auction results auction-house filter [#3131](https://github.com/artsy/reaction/pull/3131) ([@sepans](https://github.com/sepans))
+
+#### 🐛  Bug Fix
+
+- Remove deprecated fonts from classic articles, fix bylines [#3143](https://github.com/artsy/reaction/pull/3143) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.7.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- [Refactor] Implement route-level bundle splitting [#3137](https://github.com/artsy/reaction/pull/3137) ([@damassi](https://github.com/damassi) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.6.0 (Wed Feb 12 2020)
+
+#### 🚀  Enhancement
+
+- As a user I see the updated list view of auction results and i can expand the result [#3139](https://github.com/artsy/reaction/pull/3139) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.5.10 (Wed Feb 12 2020)
+
+
+
+---
+
+# v25.5.9 (Wed Feb 12 2020)
+
+#### 🐛  Bug Fix
+
+- Updates MP schema [#3145](https://github.com/artsy/reaction/pull/3145) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.5.8 (Mon Feb 10 2020)
+
+#### 🐛  Bug Fix
+
+- [Clientside Routing] Update mobile page loader to be more obvious [#3141](https://github.com/artsy/reaction/pull/3141) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.7 (Mon Feb 10 2020)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Ensure nav closed on clienside routes [#3140](https://github.com/artsy/reaction/pull/3140) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.6 (Sun Feb 09 2020)
+
+#### 🐛  Bug Fix
+
+- [Analytics] Path is relative [#3142](https://github.com/artsy/reaction/pull/3142) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.5 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [AUCT-870] - Add lot viewed analytics [#3134](https://github.com/artsy/reaction/pull/3134) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
+# v25.5.4 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Fix artwork page 1-off [#3138](https://github.com/artsy/reaction/pull/3138) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.3 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Make path absolute [#3136](https://github.com/artsy/reaction/pull/3136) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.2 (Fri Feb 07 2020)
+
+#### 🐛  Bug Fix
+
+- [Tracking Bugfix] Fix url and referrer tracking [#3135](https://github.com/artsy/reaction/pull/3135) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.5.1 (Thu Feb 06 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure PNG → JPG in Collection Hubs's related rail [#3133](https://github.com/artsy/reaction/pull/3133) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.5.0 (Wed Feb 05 2020)
+
+#### 🚀  Enhancement
+
+- Updates artist page design to match vision [#3058](https://github.com/artsy/reaction/pull/3058) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v25.4.1 (Wed Feb 05 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1773] Adjust default jpeg quality for cropped images [#3117](https://github.com/artsy/reaction/pull/3117) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v25.4.0 (Wed Feb 05 2020)
+
+#### 🚀  Enhancement
+
+- [Tracking] Consolidate page-view tracking within new trackingMiddleware [#3126](https://github.com/artsy/reaction/pull/3126) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update URL for storybooks documentation [#3130](https://github.com/artsy/reaction/pull/3130) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v25.3.2 (Tue Feb 04 2020)
+
+
+
+---
+
+# v25.3.1 (Tue Feb 04 2020)
+
+#### 🐛  Bug Fix
+
+- Remove Node verson requirement [#3128](https://github.com/artsy/reaction/pull/3128) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v25.3.0 (Tue Feb 04 2020)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1720] Adds pagination to purchases page [#3123](https://github.com/artsy/reaction/pull/3123) ([@sepans](https://github.com/sepans))
+
+#### 🐛  Bug Fix
+
+- Resize category rail [#3127](https://github.com/artsy/reaction/pull/3127) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v25.2.1 (Mon Feb 03 2020)
+
+#### 🐛  Bug Fix
+
+- @eessex => Fix SSR on article pages [#3125](https://github.com/artsy/reaction/pull/3125) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v25.2.0 (Mon Feb 03 2020)
+
+#### 🚀  Enhancement
+
+- Update the auction result layout [#3118](https://github.com/artsy/reaction/pull/3118) ([@zephraph](https://github.com/zephraph))
+- [PUR-1727] Return category data for medium field [#3121](https://github.com/artsy/reaction/pull/3121) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v25.1.2 (Sun Feb 02 2020)
+
+#### 🐛  Bug Fix
+
+- Avoid performance hit by not importing all components from v2 [#3119](https://github.com/artsy/reaction/pull/3119) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v25.1.1 (Fri Jan 31 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1684] use resizer for featured collection image [#3114](https://github.com/artsy/reaction/pull/3114) ([@xtina-starr](https://github.com/xtina-starr))
+- [FX-1675] Resize collection header artist images [#3115](https://github.com/artsy/reaction/pull/3115) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v25.1.0 (Thu Jan 30 2020)
+
+#### 🚀  Enhancement
+
+- [PUR-1727] Add medium field to artwork details [#3116](https://github.com/artsy/reaction/pull/3116) ([@jpotts244](https://github.com/jpotts244))
+
+#### Authors: 1
+
+- Jacqueline Potts ([@jpotts244](https://github.com/jpotts244))
+
+---
+
+# v25.0.0 (Thu Jan 30 2020)
+
+#### 💥  Breaking Change
+
+- Rename 'repcaptcha' to 'recaptcha', add new types [#3113](https://github.com/artsy/reaction/pull/3113) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v24.4.1 (Thu Jan 30 2020)
+
+#### 🐛  Bug Fix
+
+- User should not be able to advance to the payment page without entering a phone number with their shipping address [#3112](https://github.com/artsy/reaction/pull/3112) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- @zephraph => [TSLint] Rule to warn about using QueryRenderer [#3108](https://github.com/artsy/reaction/pull/3108) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.4.0 (Tue Jan 28 2020)
+
+#### 🚀  Enhancement
+
+- Use open:auth with redirectTo option to skip signup onboarding [#3110](https://github.com/artsy/reaction/pull/3110) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v24.3.1 (Tue Jan 28 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1692] Reorder mobile nav items to match desktop [#3109](https://github.com/artsy/reaction/pull/3109) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v24.3.0 (Tue Jan 28 2020)
+
+#### 🚀  Enhancement
+
+- PURCHASE-1656: Add phone number field to Address for pickup [#3104](https://github.com/artsy/reaction/pull/3104) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.2.0 (Mon Jan 27 2020)
+
+#### 🚀  Enhancement
+
+- Allow users to request a condition report for an artwork in a sale [#3099](https://github.com/artsy/reaction/pull/3099) ([@dblandin](https://github.com/dblandin))
+- Add systemContextProps argument to createTestEnv [#3099](https://github.com/artsy/reaction/pull/3099) ([@dblandin](https://github.com/dblandin))
+- Update analytic event payloads for RequestConditionReport
+
+Paired with @abhitip @mikehrom on updates to these event payloads. [#3099](https://github.com/artsy/reaction/pull/3099) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v24.1.8 (Fri Jan 24 2020)
+
+#### 🐛  Bug Fix
+
+- [Schema] Update schema to latest [#3107](https://github.com/artsy/reaction/pull/3107) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.1.7 (Thu Jan 23 2020)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Analytics] Proper structure for experiment viewed event [#3106](https://github.com/artsy/reaction/pull/3106) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.1.6 (Thu Jan 23 2020)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] More explicitly track AB test events [#3105](https://github.com/artsy/reaction/pull/3105) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.1.5 (Wed Jan 22 2020)
+
+#### 🐛  Bug Fix
+
+- Add cypress test attrs for artwork grid [#3103](https://github.com/artsy/reaction/pull/3103) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v24.1.3 (Wed Jan 22 2020)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Client Side Routing] Reenable AB test [#3092](https://github.com/artsy/reaction/pull/3092) ([@mzikherman](https://github.com/mzikherman))
+- Fix double image load issue by updating lazy load library [#3102](https://github.com/artsy/reaction/pull/3102) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Bump handlebars from 4.1.2 to 4.5.3 [#3073](https://github.com/artsy/reaction/pull/3073) ([@mzikherman](https://github.com/mzikherman))
+- Update dep @artsy/palette from 5.1.13 to v5.1.16 [#3093](https://github.com/artsy/reaction/pull/3093) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v24.1.2 (Tue Jan 21 2020)
+
+#### 🐛  Bug Fix
+
+- Add `data-test` tags to offer response radio btns [#3101](https://github.com/artsy/reaction/pull/3101) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v24.1.1 (Sat Jan 18 2020)
+
+
+
+---
+
+# v24.1.0 (Fri Jan 17 2020)
+
+#### 🚀  Enhancement
+
+- My purchases #hackaton2020 [#3096](https://github.com/artsy/reaction/pull/3096) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🐛  Bug Fix
+
+- Put admin check in front of purchases page [#3088](https://github.com/artsy/reaction/pull/3088) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.0.28 (Fri Jan 17 2020)
+
+#### 🐛  Bug Fix
+
+- MX-104 - Fix double capitalized letters in iOS inputs [#3095](https://github.com/artsy/reaction/pull/3095) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v24.0.27 (Fri Jan 17 2020)
+
+#### 🐛  Bug Fix
+
+- Wrap main page header in header tags [#3097](https://github.com/artsy/reaction/pull/3097) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.4 to v3.7.5 [#3098](https://github.com/artsy/reaction/pull/3098) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v24.0.26 (Wed Jan 15 2020)
+
+#### 🐛  Bug Fix
+
+- Fix spacing issue in follow button on related artists component [#3094](https://github.com/artsy/reaction/pull/3094) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v24.0.25 (Mon Jan 13 2020)
+
+#### 🐛  Bug Fix
+
+- @damassi => [PageView Tracking] Ensure pageviews are counted for navigation in the same page type [#3091](https://github.com/artsy/reaction/pull/3091) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.24 (Mon Jan 13 2020)
+
+#### 🐛  Bug Fix
+
+- Reset pagination on artwork filter updates [#3090](https://github.com/artsy/reaction/pull/3090) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v24.0.23 (Mon Jan 13 2020)
+
+#### 🐛  Bug Fix
+
+- Add `data-test` attribute to Order code so we can use it in integrity [#3089](https://github.com/artsy/reaction/pull/3089) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v24.0.22 (Wed Jan 08 2020)
+
+#### 🐛  Bug Fix
+
+- Grow 1378 Add AggregateOffer schema for Collections pages [#3007](https://github.com/artsy/reaction/pull/3007) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v24.0.21 (Tue Jan 07 2020)
+
+#### 🐛  Bug Fix
+
+- @damassi => [PageView Tracking] Correct for over-tracking on tabbed routes [#3086](https://github.com/artsy/reaction/pull/3086) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.20 (Tue Jan 07 2020)
+
+#### 🐛  Bug Fix
+
+- Only render one breakpoint for mobile googlebot [#3085](https://github.com/artsy/reaction/pull/3085) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v24.0.19 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- Remove react-responsive-media and add fresnel [#3084](https://github.com/artsy/reaction/pull/3084) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v24.0.18 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- [GROW-1725] Fix global nav bar spacing [#3082](https://github.com/artsy/reaction/pull/3082) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v24.0.17 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- Fix artwork grid preloading too many images [#3080](https://github.com/artsy/reaction/pull/3080) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v24.0.16 (Mon Jan 06 2020)
+
+#### 🐛  Bug Fix
+
+- Prevent right click on auction results images [#3083](https://github.com/artsy/reaction/pull/3083) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v24.0.15 (Fri Jan 03 2020)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [RouterLink] Tweak check to decide whether to route [#3081](https://github.com/artsy/reaction/pull/3081) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 5.1.12 to v5.1.13 [#3079](https://github.com/artsy/reaction/pull/3079) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v24.0.14 (Fri Jan 03 2020)
+
+#### 🐛  Bug Fix
+
+- Update `react-lazy-load-image-component` version [#3078](https://github.com/artsy/reaction/pull/3078) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v24.0.13 (Fri Jan 03 2020)
+
+#### 🐛  Bug Fix
+
+- Add "no-switch-case-fall-through" tslint rule [#3077](https://github.com/artsy/reaction/pull/3077) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v24.0.12 (Thu Jan 02 2020)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] Correctly trigger pageviews using componentDidUpdate [#3076](https://github.com/artsy/reaction/pull/3076) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.3 to v3.7.4 [#3068](https://github.com/artsy/reaction/pull/3068) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v24.0.11 (Mon Dec 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove showing follower numbers twice on mobile [#3074](https://github.com/artsy/reaction/pull/3074) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v24.0.10 (Tue Dec 24 2019)
+
+#### 🐛  Bug Fix
+
+- Fix link in buy now benefit auctions to link to sale, not partner [#3070](https://github.com/artsy/reaction/pull/3070) (barry@hoggard.org)
+
+#### Authors: 1
+
+- Barry Hoggard (barry@hoggard.org)
+
+---
+
+# v24.0.9 (Tue Dec 24 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CCPARequest] Proper cta styling for Force integration [#3072](https://github.com/artsy/reaction/pull/3072) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.8 (Mon Dec 23 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [CCPA] Initial start for CCPA modals [#3069](https://github.com/artsy/reaction/pull/3069) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.7 (Fri Dec 20 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [Analytics] Fire AB test events for client side routing [#3067](https://github.com/artsy/reaction/pull/3067) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.6 (Fri Dec 20 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1700: Artist Page Tweaks [#3065](https://github.com/artsy/reaction/pull/3065) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.0.5 (Thu Dec 19 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CatchLinks] Dont attempt to handle empty anchor tags [#3066](https://github.com/artsy/reaction/pull/3066) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v24.0.4 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- Remove linking artifact [#3064](https://github.com/artsy/reaction/pull/3064) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v24.0.3 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1698] Fix whitespace in global nav [#3062](https://github.com/artsy/reaction/pull/3062) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v24.0.2 (Wed Dec 18 2019)
+
+#### 🐛  Bug Fix
+
+- Fix scrolling issue after modal is closed [#3063](https://github.com/artsy/reaction/pull/3063) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v24.0.1 (Tue Dec 17 2019)
+
+#### 🐛  Bug Fix
+
+- Margin fix for Artist Header [#3061](https://github.com/artsy/reaction/pull/3061) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Update "artist summary" on artist page [#3056](https://github.com/artsy/reaction/pull/3056) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Remove @alloy from point people [#3060](https://github.com/artsy/reaction/pull/3060) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Add coverage badge [#3059](https://github.com/artsy/reaction/pull/3059) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v24.0.0 (Tue Dec 17 2019)
+
+#### 💥  Breaking Change
+
+- Adds full page AppShell component w/ routing for supported Reaction apps [#3043](https://github.com/artsy/reaction/pull/3043) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v23.0.5 (Mon Dec 16 2019)
+
+#### 🐛  Bug Fix
+
+- Coverage reporting [#3051](https://github.com/artsy/reaction/pull/3051) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v23.0.4 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1633] fix double hover event in new navbar [#3057](https://github.com/artsy/reaction/pull/3057) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v23.0.3 (Fri Dec 13 2019)
+
+#### 🐛  Bug Fix
+
+- Updates to display ad tracking [#3052](https://github.com/artsy/reaction/pull/3052) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v22.10.4 (Thu Dec 12 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1683] clone the NavBar component for navigation a/b test [#3055](https://github.com/artsy/reaction/pull/3055) ([@xtina-starr](https://github.com/xtina-starr))
+- [GROW-1633] remove duplicate hover analytics event [#3050](https://github.com/artsy/reaction/pull/3050) ([@xtina-starr](https://github.com/xtina-starr))
+- Bump down threshold for lazy-loading on artist artwork grid [#3053](https://github.com/artsy/reaction/pull/3053) ([@zephraph](https://github.com/zephraph))
+- Restore Artworks link to mobile nav [#3046](https://github.com/artsy/reaction/pull/3046) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### ⚠️  Pushed to master
+
+- Bump to 23.0.1 to get around issues with auto-release  (steven.j.hicks@gmail.com)
+
+#### Authors: 3
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Steven Hicks (steven.j.hicks@gmail.com)
+
+---
+
+# v22.10.3 (Tue Dec 10 2019)
+
+#### 🐛  Bug Fix
+
+- Add lazy loading to collections rail [#3047](https://github.com/artsy/reaction/pull/3047) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.10.2 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- Bump version of lazy-load lib to fix SSR issue [#3049](https://github.com/artsy/reaction/pull/3049) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.10.1 (Mon Dec 09 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1681] adds analytics events to the navbar notification menu [#3048](https://github.com/artsy/reaction/pull/3048) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v22.10.0 (Mon Dec 09 2019)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 5.1.5 to v5.1.11 [#2985](https://github.com/artsy/reaction/pull/2985) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.9.7 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Bring back arrows removed by #3036 [#3044](https://github.com/artsy/reaction/pull/3044) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v22.9.6 (Thu Dec 05 2019)
+
+#### 🐛  Bug Fix
+
+- Maintain proper aspect ratio for image on confirm bid [#3042](https://github.com/artsy/reaction/pull/3042) ([@dleve123](https://github.com/dleve123))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.7.2 to v3.7.3 [#3041](https://github.com/artsy/reaction/pull/3041) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v22.9.5 (Wed Dec 04 2019)
+
+#### 🐛  Bug Fix
+
+- Modifies waypoint method call [#3038](https://github.com/artsy/reaction/pull/3038) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v22.9.4 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Remove dots from the artist images [#3036](https://github.com/artsy/reaction/pull/3036) ([@ashkan18](https://github.com/ashkan18))
+
+#### 🏠  Internal
+
+- Update dep prettier from 1.16.4 to v1.19.1 [#3040](https://github.com/artsy/reaction/pull/3040) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.9.3 (Tue Dec 03 2019)
+
+#### 🐛  Bug Fix
+
+- Handle missing partner on artwork page [#3039](https://github.com/artsy/reaction/pull/3039) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v22.9.2 (Mon Dec 02 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1649: Adds data-test attribute to the sale message on artwork view [#3037](https://github.com/artsy/reaction/pull/3037) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v22.9.1 (Thu Nov 28 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes a bug where your max bid is not pre-selected on the new confirm bid page [#3035](https://github.com/artsy/reaction/pull/3035) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.9.0 (Wed Nov 27 2019)
+
+#### 🚀  Enhancement
+
+- Track "selected max bid" events on the confirm bid page
+
+addresses https://artsyproduct.atlassian.net/browse/AUCT-773 [#3034](https://github.com/artsy/reaction/pull/3034) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.8.0 (Wed Nov 27 2019)
+
+#### 🚀  Enhancement
+
+- User can see buyer's premium cost on web [#3033](https://github.com/artsy/reaction/pull/3033) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.7.3 (Tue Nov 26 2019)
+
+#### 🐛  Bug Fix
+
+- Fix for SaleArtwork/Sale without a partner [#3032](https://github.com/artsy/reaction/pull/3032) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
+# v22.7.2 (Tue Nov 26 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1479 Blank thumbnail on collections with generated banner [#3027](https://github.com/artsy/reaction/pull/3027) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v22.7.1 (Tue Nov 26 2019)
+
+#### 🐛  Bug Fix
+
+- Refactors Display Ad Component to Handle Analytics Firing [#3031](https://github.com/artsy/reaction/pull/3031) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v22.4.0 (Sat Nov 23 2019)
+
+#### 🚀  Enhancement
+
+- Track validation errors and registration submitted events [#3028](https://github.com/artsy/reaction/pull/3028) ([@yuki24](https://github.com/yuki24))
+
+#### 🐛  Bug Fix
+
+- Trigger a new build to cut a new version. includes #3018, #3028, #3029 [#3030](https://github.com/artsy/reaction/pull/3030) ([@yuki24](https://github.com/yuki24))
+- Add modal to "Certificate of Authenticity" Badges with explanation of COA [#3018](https://github.com/artsy/reaction/pull/3018) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Include partner's name on copy stating bidders agree to Artsy's COS [#3029](https://github.com/artsy/reaction/pull/3029) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v22.3.1 (Thu Nov 21 2019)
+
+#### 🐛  Bug Fix
+
+- Remove impression event [#3025](https://github.com/artsy/reaction/pull/3025) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v22.3.0 (Thu Nov 21 2019)
+
+#### 🚀  Enhancement
+
+- Create gene links view [#3020](https://github.com/artsy/reaction/pull/3020) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.2.4 (Thu Nov 21 2019)
+
+#### 🐛  Bug Fix
+
+- Do not include seller in structured data when no partner profile image [#3026](https://github.com/artsy/reaction/pull/3026) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v22.2.3 (Wed Nov 20 2019)
+
+#### 🐛  Bug Fix
+
+- Artwork `aggregateOffer` metadata [#3019](https://github.com/artsy/reaction/pull/3019) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v22.2.2 (Wed Nov 20 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Bank Transfer Experiment [#3024](https://github.com/artsy/reaction/pull/3024) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v22.2.1 (Wed Nov 20 2019)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1610] Allow offer metadata for artworks with min-price [#3015](https://github.com/artsy/reaction/pull/3015) ([@sepans](https://github.com/sepans))
+
+#### 🏠  Internal
+
+- Update dep typescript from 3.6.3 to v3.7.2 [#3023](https://github.com/artsy/reaction/pull/3023) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v22.2.0 (Tue Nov 19 2019)
+
+#### 🚀  Enhancement
+
+- Meta: Merge recent auctions team product work into master [#3022](https://github.com/artsy/reaction/pull/3022) ([@yuki24](https://github.com/yuki24) [@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v22.1.0 (Mon Nov 18 2019)
+
+#### 🚀  Enhancement
+
+- Upgrade to relay v7 [#3017](https://github.com/artsy/reaction/pull/3017) ([@alloy](https://github.com/alloy))
+
+#### 🐛  Bug Fix
+
+- Track ad impressions and clicks on 3rd party served ads [#2964](https://github.com/artsy/reaction/pull/2964) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v22.0.8 (Sat Nov 16 2019)
+
+#### 🐛  Bug Fix
+
+- [MP v2] Remove left-over `__id` usage [#3016](https://github.com/artsy/reaction/pull/3016) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v22.0.7 (Fri Nov 15 2019)
+
+#### 🐛  Bug Fix
+
+- PaymentForm __id -> id [#3014](https://github.com/artsy/reaction/pull/3014) ([@ds300](https://github.com/ds300))
+
+#### Authors: 1
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v22.0.6 (Fri Nov 15 2019)
+
+#### 🐛  Bug Fix
+
+- Moved artist insights to the right PURCHASE-1608 [#2967](https://github.com/artsy/reaction/pull/2967) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v22.0.5 (Fri Nov 15 2019)
+
+#### 🐛  Bug Fix
+
+- [schema] Sync with latest removal [#3013](https://github.com/artsy/reaction/pull/3013) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v22.0.4 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- [Payment] Fix CC removal by using internalID [#3012](https://github.com/artsy/reaction/pull/3012) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v22.0.3 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure user agent gets passed from SSR Relay Environment [#3010](https://github.com/artsy/reaction/pull/3010) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v22.0.2 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- @eessex => [v2] Correct title for medium-based collect pages [#3009](https://github.com/artsy/reaction/pull/3009) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v22.0.1 (Thu Nov 14 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [v2] Strictly support and generate snake case filter params in URLs [#3008](https://github.com/artsy/reaction/pull/3008) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3006](https://github.com/artsy/reaction/pull/3006) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v22.0.0 (Wed Nov 13 2019)
+
+#### 💥  Breaking Change
+
+- Metaphysics v2 migration [#2972](https://github.com/artsy/reaction/pull/2972) ([@alloy](https://github.com/alloy) [@ashkan18](https://github.com/ashkan18) [@ds300](https://github.com/ds300) [@dblandin](https://github.com/dblandin) [@sweir27](https://github.com/sweir27))
+
+#### 🐛  Bug Fix
+
+- @alloy => Artist app tests for v2 [#2993](https://github.com/artsy/reaction/pull/2993) ([@ashkan18](https://github.com/ashkan18))
+- @sweir27 => [v2] Use correct id for edition set in BNMO mutations [#3005](https://github.com/artsy/reaction/pull/3005) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Fix Collection featured artist header [#3003](https://github.com/artsy/reaction/pull/3003) ([@alloy](https://github.com/alloy))
+- [MP v2] Make test suite green [#3002](https://github.com/artsy/reaction/pull/3002) ([@alloy](https://github.com/alloy))
+- [MP v2] Make type-checker green [#3001](https://github.com/artsy/reaction/pull/3001) ([@alloy](https://github.com/alloy))
+- MP v2 migration Order app [#2999](https://github.com/artsy/reaction/pull/2999) ([@ashkan18](https://github.com/ashkan18))
+- PLATFORM-1962: Migrate Payment “app” [#2992](https://github.com/artsy/reaction/pull/2992) ([@ashkan18](https://github.com/ashkan18) [@alloy](https://github.com/alloy))
+- [MP v2] Fix all non-test related type errors [#2997](https://github.com/artsy/reaction/pull/2997) ([@alloy](https://github.com/alloy))
+- Fix type errors in order app v2 [#2998](https://github.com/artsy/reaction/pull/2998) ([@ds300](https://github.com/ds300))
+- @alloy => [v2] Finish artist app [#2996](https://github.com/artsy/reaction/pull/2996) ([@ashkan18](https://github.com/ashkan18))
+- Order app v2 pt1 [#2995](https://github.com/artsy/reaction/pull/2995) ([@ds300](https://github.com/ds300))
+- [WIP] MP v2 migration artwork app [#2987](https://github.com/artsy/reaction/pull/2987) ([@ashkan18](https://github.com/ashkan18) [@sweir27](https://github.com/sweir27))
+- [MP v2] Finish Search migration [#2991](https://github.com/artsy/reaction/pull/2991) ([@alloy](https://github.com/alloy))
+- @alloy => [v2] Gene and Tag pagination fixes [#3004](https://github.com/artsy/reaction/pull/3004) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Migrate Search app's artworks tab [#2983](https://github.com/artsy/reaction/pull/2983) ([@alloy](https://github.com/alloy))
+- Collections tests pass [#2989](https://github.com/artsy/reaction/pull/2989) ([@ashkan18](https://github.com/ashkan18))
+- @xtina-starr => [WIP] [v2] Get collect rendering [#2984](https://github.com/artsy/reaction/pull/2984) ([@ashkan18](https://github.com/ashkan18))
+- Migrate Auction app to Metaphysics V2 [#2988](https://github.com/artsy/reaction/pull/2988) ([@dblandin](https://github.com/dblandin))
+- [v2] migrate /collection/:id [#2986](https://github.com/artsy/reaction/pull/2986) ([@ashkan18](https://github.com/ashkan18))
+- @alloy => V2 artist app [#2976](https://github.com/artsy/reaction/pull/2976) ([@ashkan18](https://github.com/ashkan18))
+- [v2] Migrate Editorial to MPv2 [#2982](https://github.com/artsy/reaction/pull/2982) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Migrate WorksForYou app [#2981](https://github.com/artsy/reaction/pull/2981) ([@alloy](https://github.com/alloy))
+- Re-enable storybooks [#2978](https://github.com/artsy/reaction/pull/2978) ([@ashkan18](https://github.com/ashkan18))
+- [MP v2] Remove mock resolvers and add more typings to tests [#2977](https://github.com/artsy/reaction/pull/2977) ([@alloy](https://github.com/alloy) [@ds300](https://github.com/ds300))
+- @alloy => [v2] Get storybooks working [#2975](https://github.com/artsy/reaction/pull/2975) ([@ashkan18](https://github.com/ashkan18))
+- @alloy => Resolves relay compiler errors [#2974](https://github.com/artsy/reaction/pull/2974) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 5
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v21.17.11 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#2971](https://github.com/artsy/reaction/pull/2971) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v21.17.10 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- Safe access to artwork image in `ArtworkSummaryItem` [#2969](https://github.com/artsy/reaction/pull/2969) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v21.17.9 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1639] close collection hubs entry points a/b test on the collect page [#2970](https://github.com/artsy/reaction/pull/2970) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.17.8 (Mon Nov 04 2019)
+
+#### 🐛  Bug Fix
+
+- Update buyer's premium copy and location [#2966](https://github.com/artsy/reaction/pull/2966) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 5.1.4 to v5.1.5 [#2968](https://github.com/artsy/reaction/pull/2968) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 5.1.1 to v5.1.4 [#2948](https://github.com/artsy/reaction/pull/2948) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v21.17.7 (Fri Nov 01 2019)
+
+#### 🐛  Bug Fix
+
+- [PURCHASE-1578]  Adds `<Tags>` component for genes [#2951](https://github.com/artsy/reaction/pull/2951) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v21.17.6 (Thu Oct 31 2019)
+
+#### 🐛  Bug Fix
+
+- Article meta component [#2959](https://github.com/artsy/reaction/pull/2959) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v21.17.5 (Thu Oct 31 2019)
+
+#### 🐛  Bug Fix
+
+- Add productize-able info to bid success payload [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+- cleanup: remove unused ValidFormValues in ConfirmBidTestPage [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+- Remove stray log in ConfirmBid route. [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+- Refactor ConfirmBid tracking
+
+Why?
+
+* This allows us to use the type schema, better protecting ourselves
+incorrect tracking code.
+
+* It also allows better factor common tracking components by replacing
+dependency injection with composition with common properties defined
+at the component level.
+
+Details
+
+- add common tracking properties to HOC call and delete commonProperties
+- Remove incorrect assertion about `order_id` in failing case
+- Extend analytics schema with Criteo and Auctions info
+  + Add `CriteoInfo` interface to describe core information about
+    integrating with Criteo
+  + Add `AuctionInfo` interface to describe assorted auction-related
+    properties.
+- Use p instead of props in track-wrapping to avoid “props shadowing”
+  error. [#2961](https://github.com/artsy/reaction/pull/2961) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v21.17.4 (Wed Oct 30 2019)
+
+#### 🐛  Bug Fix
+
+- Conditions of sale --> Conditions of Sale in Auction FAQ [#2963](https://github.com/artsy/reaction/pull/2963) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v21.17.3 (Wed Oct 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove Magazine from mobile nav [#2962](https://github.com/artsy/reaction/pull/2962) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v21.17.2 (Tue Oct 29 2019)
+
+#### 🐛  Bug Fix
+
+- QA for Grow 1577 Analytics tracking for hub entry points [#2957](https://github.com/artsy/reaction/pull/2957) ([@jiahaodavid](https://github.com/jiahaodavid))
+- Grow 1563 Add analytics tracking to Nav Bar [#2949](https://github.com/artsy/reaction/pull/2949) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v21.17.1 (Tue Oct 29 2019)
+
+#### 🐛  Bug Fix
+
+- Fix title of Confirm Bid route [#2960](https://github.com/artsy/reaction/pull/2960) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v21.17.0 (Mon Oct 28 2019)
+
+#### 🚀  Enhancement
+
+- Add analytics calls to ConfirmBid route [#2956](https://github.com/artsy/reaction/pull/2956) ([@bhoggard](https://github.com/bhoggard))
+
+#### 🐛  Bug Fix
+
+- Collection SeoProducts description [#2958](https://github.com/artsy/reaction/pull/2958) ([@bhoggard](https://github.com/bhoggard))
+
+#### Authors: 1
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+
+---
+
+# v21.16.8 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- [NavBar] Rename `Magazine` to `Editorial` [#2955](https://github.com/artsy/reaction/pull/2955) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.16.7 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection Hubs Entry Points] Moves Experiment Viewed to collect app [#2954](https://github.com/artsy/reaction/pull/2954) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.16.6 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- remove pricing transparency query param, make a story for it [#2953](https://github.com/artsy/reaction/pull/2953) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v21.16.5 (Fri Oct 25 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1513] Collection hub nav ab [#2844](https://github.com/artsy/reaction/pull/2844) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.16.4 (Fri Oct 25 2019)
+
+
+
+---
+
+# v21.16.3 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure makesOffer isn't null before getting length [#2950](https://github.com/artsy/reaction/pull/2950) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v21.16.2 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- Pre-populate the selected bid with a value from the query string [#2947](https://github.com/artsy/reaction/pull/2947) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v21.16.1 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- Restore meta data, fix product structured data issues on artist… [#2939](https://github.com/artsy/reaction/pull/2939) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v21.16.0 (Thu Oct 24 2019)
+
+#### 🚀  Enhancement
+
+- Enable collection hubs rails for everyone! [#2940](https://github.com/artsy/reaction/pull/2940) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v21.15.1 (Thu Oct 24 2019)
+
+#### 🐛  Bug Fix
+
+- @alloy =>Update stories and remove RelayStubProvider [#2945](https://github.com/artsy/reaction/pull/2945) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v21.15.0 (Wed Oct 23 2019)
+
+#### 🚀  Enhancement
+
+- Refactor auction tests to use deepmerge in fixture creation [#2944](https://github.com/artsy/reaction/pull/2944) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v21.14.2 (Wed Oct 23 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Remove double render [#2946](https://github.com/artsy/reaction/pull/2946) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.14.1 (Wed Oct 23 2019)
+
+#### 🐛  Bug Fix
+
+- Remove pageview tracking from hubs modules [#2943](https://github.com/artsy/reaction/pull/2943) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v21.14.0 (Wed Oct 23 2019)
+
+#### 🚀  Enhancement
+
+- Loosen rules on phone numbers in AddressForm for international numbers. [#2938](https://github.com/artsy/reaction/pull/2938) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 1
+
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v21.13.0 (Tue Oct 22 2019)
+
+#### 🚀  Enhancement
+
+- Submit bid via new ConfirmBid page [#2928](https://github.com/artsy/reaction/pull/2928) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v21.12.2 (Tue Oct 22 2019)
+
+#### 🐛  Bug Fix
+
+- this hopefully fixes the broken login flow on mobile [#2941](https://github.com/artsy/reaction/pull/2941) ([@mbilokonsky](https://github.com/mbilokonsky))
+
+#### Authors: 1
+
+- Mykola Bilokonsky ([@mbilokonsky](https://github.com/mbilokonsky))
+
+---
+
+# v21.12.1 (Tue Oct 22 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection Hubs] only display Related Collections Rail on non-hubs collections [#2942](https://github.com/artsy/reaction/pull/2942) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.12.0 (Tue Oct 22 2019)
+
+#### 🚀  Enhancement
+
+- Require login for bid confirm route [#2936](https://github.com/artsy/reaction/pull/2936) ([@bhoggard](https://github.com/bhoggard) [@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Barry Hoggard ([@bhoggard](https://github.com/bhoggard))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v21.11.2 (Tue Oct 22 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1677 Analytics tracking for hub entry points [#2922](https://github.com/artsy/reaction/pull/2922) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette to v5.0.0 [#2937](https://github.com/artsy/reaction/pull/2937) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v21.11.1 (Mon Oct 21 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1598] Excluded featured artist ids [#2932](https://github.com/artsy/reaction/pull/2932) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.11.0 (Mon Oct 21 2019)
+
+#### 🚀  Enhancement
+
+- [Revert] Move arc router code back into reaction [#2935](https://github.com/artsy/reaction/pull/2935) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- [Carousel] Type `new Flickity(…)` and document SSR import issue. [#2934](https://github.com/artsy/reaction/pull/2934) ([@alloy](https://github.com/alloy))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.10.11 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Ensure we only import flickity on client [#2933](https://github.com/artsy/reaction/pull/2933) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep @types/flickity from ^2.2.2 to 2.2.2 [#2930](https://github.com/artsy/reaction/pull/2930) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v21.10.10 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Return default object on server from useWindowSize, instead of null [#2931](https://github.com/artsy/reaction/pull/2931) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v21.10.9 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Fix incorrect invocation of `Flickity.prototype.destroy()` [#2927](https://github.com/artsy/reaction/pull/2927) ([@alloy](https://github.com/alloy) [@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.10.8 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "@damassi => [Artist] Port meta tags and structured data from Force" [#2929](https://github.com/artsy/reaction/pull/2929) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v21.10.7 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Add a check for window obj before useLayoutEffect hook [#2919](https://github.com/artsy/reaction/pull/2919) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v21.10.6 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- Auct 465 pricing stub [#2918](https://github.com/artsy/reaction/pull/2918) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v21.10.5 (Fri Oct 18 2019)
+
+#### 🐛  Bug Fix
+
+- [createRelaySSREnvironment] Lazy load deps so they can be stripped. [#2926](https://github.com/artsy/reaction/pull/2926) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.10.4 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- [SEO] Publishing titles use h1 [#2925](https://github.com/artsy/reaction/pull/2925) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v21.10.3 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes carousel for iOS 13 [#2924](https://github.com/artsy/reaction/pull/2924) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v21.10.2 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection] Pass COLLECT_HUBS a/b test to context [#2921](https://github.com/artsy/reaction/pull/2921) ([@damassi](https://github.com/damassi))
+- Don't overwrite the User-Agent header for relay operations [#2923](https://github.com/artsy/reaction/pull/2923) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v21.10.1 (Thu Oct 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Order] Don't refer to graphql-js at runtime. [#2920](https://github.com/artsy/reaction/pull/2920) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.10.0 (Thu Oct 17 2019)
+
+#### 🚀  Enhancement
+
+- SEO Improvements to the Artist page [#2914](https://github.com/artsy/reaction/pull/2914) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v21.9.7 (Wed Oct 16 2019)
+
+
+
+---
+
+# v21.9.6 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Test] Update FollowArtistPopover to use renderRelayTree [#2917](https://github.com/artsy/reaction/pull/2917) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v21.9.5 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => Move more specs to `renderRelayTree` [#2913](https://github.com/artsy/reaction/pull/2913) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v21.9.4 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- Use `name` from MP for artist series rail, instead of hardcoded text. [#2915](https://github.com/artsy/reaction/pull/2915) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v21.9.3 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Bugfix] Fix analytics event on /search filter [#2907](https://github.com/artsy/reaction/pull/2907) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.9.2 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Test] Convert artist shows to use renderRelayTree [#2912](https://github.com/artsy/reaction/pull/2912) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v21.9.1 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1433, PURCHASE-1534: Informative error messages and maxHeight for image carousel [#2879](https://github.com/artsy/reaction/pull/2879) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v21.9.0 (Wed Oct 16 2019)
+
+#### 🚀  Enhancement
+
+- [PURCHASE-1589] Add trust signals tests [#2911](https://github.com/artsy/reaction/pull/2911) ([@zephraph](https://github.com/zephraph) [@sepans](https://github.com/sepans))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v21.8.4 (Wed Oct 16 2019)
+
+#### 🐛  Bug Fix
+
+- Fixes margins on XS default collection headers [#2904](https://github.com/artsy/reaction/pull/2904) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v21.8.3 (Tue Oct 15 2019)
+
+#### 🐛  Bug Fix
+
+- Remove snapping effect from mobile carousels because it causes weirdness in iOS 13. [#2910](https://github.com/artsy/reaction/pull/2910) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v21.8.2 (Tue Oct 15 2019)
+
+#### 🐛  Bug Fix
+
+- Use h1 element for page title [#2908](https://github.com/artsy/reaction/pull/2908) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v21.8.1 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Trust signal followup [#2906](https://github.com/artsy/reaction/pull/2906) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v21.8.0 (Mon Oct 14 2019)
+
+#### 🚀  Enhancement
+
+- Trust signals 2 [#2896](https://github.com/artsy/reaction/pull/2896) ([@sepans](https://github.com/sepans))
+
+#### Authors: 1
+
+- Sepand Ansari ([@sepans](https://github.com/sepans))
+
+---
+
+# v21.7.8 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- [Publishing] Revert SystemQueryRenderer change [#2905](https://github.com/artsy/reaction/pull/2905) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.7.7 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Add DOMParser polyfill for the server [#2903](https://github.com/artsy/reaction/pull/2903) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.7.6 (Mon Oct 14 2019)
+
+#### 🐛  Bug Fix
+
+- Collections breadcrumb navigation bug fix [#2902](https://github.com/artsy/reaction/pull/2902) ([@ashleyjelks](https://github.com/ashleyjelks))
+- [GROW-1587] ensure custom collection header image height is correct at small breakpoint [#2895](https://github.com/artsy/reaction/pull/2895) ([@xtina-starr](https://github.com/xtina-starr))
+- [GROW-1580] truncate featured collection description by line count vs characters [#2898](https://github.com/artsy/reaction/pull/2898) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.7.5 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- [Publishing] Do not include test fixtures in main exports and bundles [#2901](https://github.com/artsy/reaction/pull/2901) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.7.4 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Drop htmlparser2 and parse5 deps from runtime deps [#2900](https://github.com/artsy/reaction/pull/2900) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.7.3 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Revert dropping htmlparser2 for now due to difficulty running Force test suite [#2899](https://github.com/artsy/reaction/pull/2899) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.7.2 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- [Publising/Text] Update react-html-parser to use DOMParser [#2897](https://github.com/artsy/reaction/pull/2897) ([@alloy](https://github.com/alloy))
+
+#### Authors: 1
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+
+---
+
+# v21.7.1 (Fri Oct 11 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1482 collection rail images are insecure and oversized [#2880](https://github.com/artsy/reaction/pull/2880) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v21.7.0 (Thu Oct 10 2019)
+
+#### 🚀  Enhancement
+
+- Add secure payment trust signal component [#2889](https://github.com/artsy/reaction/pull/2889) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v21.6.5 (Thu Oct 10 2019)
+
+#### 🐛  Bug Fix
+
+- Swap name prompt in address form based on billing prop [#2893](https://github.com/artsy/reaction/pull/2893) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v21.6.4 (Thu Oct 10 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1587] Ensure content below collection header image respond to image resize at small breakpoint [#2892](https://github.com/artsy/reaction/pull/2892) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.6.3 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Fillwidth doesn't fail when image is absent [#2882](https://github.com/artsy/reaction/pull/2882) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v21.6.2 (Wed Oct 09 2019)
+
+#### 🐛  Bug Fix
+
+- Update `time` util to not cache at relay layer [#2891](https://github.com/artsy/reaction/pull/2891) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.6.1 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Alias SystemQueryRenderer as QueryRenderer for linting [#2890](https://github.com/artsy/reaction/pull/2890) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.6.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- @damassi => [Artist] Port meta tags and structured data from Force [#2888](https://github.com/artsy/reaction/pull/2888) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v21.5.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Confirm Bid Page Layout [#2875](https://github.com/artsy/reaction/pull/2875) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v21.4.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Clarify phone number description logic [#2847](https://github.com/artsy/reaction/pull/2847) ([@dblandin](https://github.com/dblandin))
+- Consolidate payment form components [#2847](https://github.com/artsy/reaction/pull/2847) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v21.3.0 (Tue Oct 08 2019)
+
+#### 🚀  Enhancement
+
+- Truncate long titles featured collection entity titles [#2886](https://github.com/artsy/reaction/pull/2886) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.2.2 (Tue Oct 08 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Replace mobile LoginForm `metaphysics` calls with `fetchQuery` [#2887](https://github.com/artsy/reaction/pull/2887) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.2.1 (Mon Oct 07 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Update Utils/time to use `fetchQuery` [#2885](https://github.com/artsy/reaction/pull/2885) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.2.0 (Mon Oct 07 2019)
+
+#### 🚀  Enhancement
+
+- Add hooks for cypress in the PaymentPicker [#2884](https://github.com/artsy/reaction/pull/2884) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.15 to v4.17.16 [#2883](https://github.com/artsy/reaction/pull/2883) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v21.1.1 (Mon Oct 07 2019)
+
+#### 🐛  Bug Fix
+
+- Collection hubs QA [#2874](https://github.com/artsy/reaction/pull/2874) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v21.1.0 (Mon Oct 07 2019)
+
+#### 🚀  Enhancement
+
+- [Refactor] Replace QueryRender with SystemQueryRenderer [#2881](https://github.com/artsy/reaction/pull/2881) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.6 (Fri Oct 04 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Nav] Move notifications dropdown fetching to client [#2878](https://github.com/artsy/reaction/pull/2878) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.14 to v4.17.15 [#2877](https://github.com/artsy/reaction/pull/2877) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.12 to v4.17.14 [#2876](https://github.com/artsy/reaction/pull/2876) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep typescript from 3.1.6 to v3.6.3 [#2871](https://github.com/artsy/reaction/pull/2871) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph) [@ds300](https://github.com/ds300))
+- Update dep @artsy/palette from 4.17.11 to v4.17.12 [#2873](https://github.com/artsy/reaction/pull/2873) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.10 to v4.17.11 [#2872](https://github.com/artsy/reaction/pull/2872) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+
+---
+
+# v21.0.5 (Thu Oct 03 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Make user path a bit safer [#2870](https://github.com/artsy/reaction/pull/2870) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.4 (Wed Oct 02 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1547] increment correctly at smaller breakpoints [#2848](https://github.com/artsy/reaction/pull/2848) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.9 to v4.17.10 [#2869](https://github.com/artsy/reaction/pull/2869) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.17.8 to v4.17.9 [#2867](https://github.com/artsy/reaction/pull/2867) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v21.0.3 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- Fix ArtistCollectionsRail's fetching of collections' artworks [#2845](https://github.com/artsy/reaction/pull/2845) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v21.0.2 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- [Collection/Id] Re-add missing price sort [#2865](https://github.com/artsy/reaction/pull/2865) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.1 (Tue Oct 01 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Remove unused router packages [#2866](https://github.com/artsy/reaction/pull/2866) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v21.0.0 (Tue Oct 01 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Replace router code with @artsy/arc [#2863](https://github.com/artsy/reaction/pull/2863) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v20.0.11 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1416 - Adds AuctionFAQ [#2809](https://github.com/artsy/reaction/pull/2809) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v20.0.10 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Artwork] Be defensive about missing partner in additional info section [#2862](https://github.com/artsy/reaction/pull/2862) ([@mzikherman](https://github.com/mzikherman))
+- @damassi => [Filter] Be defensive about missing filtered artworks [#2861](https://github.com/artsy/reaction/pull/2861) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v20.0.9 (Mon Sep 30 2019)
+
+#### ⚠️  Pushed to master
+
+- Remove Luc from point people  (eve.essex@gmail.com)
+
+#### Authors: 1
+
+- Eve Essex (eve.essex@gmail.com)
+
+---
+
+# v20.0.8 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- Remove deprecated display components/functionality [#2852](https://github.com/artsy/reaction/pull/2852) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v20.0.7 (Sat Sep 28 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [CI] Empty commit to deploy Reaction [#2860](https://github.com/artsy/reaction/pull/2860) ([@mzikherman](https://github.com/mzikherman))
+- @damassi => Couple of more defers on the artist page [#2858](https://github.com/artsy/reaction/pull/2858) ([@mzikherman](https://github.com/mzikherman))
+- [Artist] Defer collection rail to client [#2857](https://github.com/artsy/reaction/pull/2857) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update yarn orb to v2.1.1 [#2859](https://github.com/artsy/reaction/pull/2859) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v20.0.6 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => Few more Sentry bugs [#2856](https://github.com/artsy/reaction/pull/2856) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v20.0.5 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => Couple of artist page/Sentry issues [#2855](https://github.com/artsy/reaction/pull/2855) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v20.0.4 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @pepopowitz => [Artwork] Be defensive in SEO meta tag component to artworks w/o part… [#2854](https://github.com/artsy/reaction/pull/2854) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v20.0.3 (Fri Sep 27 2019)
+
+#### 🐛  Bug Fix
+
+- @joeyAghion => [RelatedArtworks] Be defensive about missing layer [#2853](https://github.com/artsy/reaction/pull/2853) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v20.0.2 (Thu Sep 26 2019)
+
+#### 🐛  Bug Fix
+
+- Point collection hubs entry points at marketingHubCollections for real data [#2765](https://github.com/artsy/reaction/pull/2765) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v20.0.1 (Thu Sep 26 2019)
+
+#### 🐛  Bug Fix
+
+- Increase Test Coverage of 2019 Vanguard Article Series [#2851](https://github.com/artsy/reaction/pull/2851) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Add codemod command to simplify running codemods in reaction [#2850](https://github.com/artsy/reaction/pull/2850) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v20.0.0 (Wed Sep 25 2019)
+
+#### 💥  Breaking Change
+
+- @eessex => [Error Handling] Only serve non 2XX pages on principalField errors [#2836](https://github.com/artsy/reaction/pull/2836) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v19.0.0 (Tue Sep 24 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Add new ArtworkFilter to /artist/id [#2820](https://github.com/artsy/reaction/pull/2820) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v18.1.19 (Mon Sep 23 2019)
+
+#### 🐛  Bug Fix
+
+- Persist telephone from bidder registration form to user profile [#2842](https://github.com/artsy/reaction/pull/2842) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.7 to v4.17.8 [#2843](https://github.com/artsy/reaction/pull/2843) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v18.1.18 (Mon Sep 23 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Corrections footer [#2841](https://github.com/artsy/reaction/pull/2841) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v18.1.17 (Mon Sep 23 2019)
+
+#### 🐛  Bug Fix
+
+- improved error messaging on payment page [#2839](https://github.com/artsy/reaction/pull/2839) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v18.1.16 (Fri Sep 20 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1506] use unique key [#2840](https://github.com/artsy/reaction/pull/2840) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v18.1.15 (Fri Sep 20 2019)
+
+#### 🐛  Bug Fix
+
+- Handle collections header flicker [#2838](https://github.com/artsy/reaction/pull/2838) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v18.1.14 (Thu Sep 19 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "Add error log" [#2837](https://github.com/artsy/reaction/pull/2837) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v18.1.13 (Thu Sep 19 2019)
+
+#### 🐛  Bug Fix
+
+- Add error log [#2835](https://github.com/artsy/reaction/pull/2835) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v18.1.12 (Thu Sep 19 2019)
+
+#### 🐛  Bug Fix
+
+- Update fake hubs data with more accurate fake images [#2834](https://github.com/artsy/reaction/pull/2834) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.6 to v4.17.7 [#2826](https://github.com/artsy/reaction/pull/2826) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep patch-package from 6.0.2 to v6.2.0 [#2831](https://github.com/artsy/reaction/pull/2831) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v18.1.11 (Wed Sep 18 2019)
+
+#### 🐛  Bug Fix
+
+- Collect null QA [#2832](https://github.com/artsy/reaction/pull/2832) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v18.1.10 (Wed Sep 18 2019)
+
+#### 🐛  Bug Fix
+
+- Collect2 app passes strict null checks [#2830](https://github.com/artsy/reaction/pull/2830) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Don't tie `yalc` publishing to `yarn watch` [#2829](https://github.com/artsy/reaction/pull/2829) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v18.1.9 (Tue Sep 17 2019)
+
+
+
+---
+
+# v18.1.8 (Tue Sep 17 2019)
+
+#### 🐛  Bug Fix
+
+- [Lib] Upgrade storybooks@5.2 [#2827](https://github.com/artsy/reaction/pull/2827) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v18.1.7 (Tue Sep 17 2019)
+
+#### 🐛  Bug Fix
+
+- Handle case for payment_method_confirmation_failed [#2824](https://github.com/artsy/reaction/pull/2824) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v18.1.6 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard sharing [#2823](https://github.com/artsy/reaction/pull/2823) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v18.1.5 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Collection rail on Artist page [#2822](https://github.com/artsy/reaction/pull/2822) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v18.1.4 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter] Fix aggregations [#2821](https://github.com/artsy/reaction/pull/2821) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v18.1.3 (Mon Sep 16 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard QA--moves credits to end of article series on mobile [#2817](https://github.com/artsy/reaction/pull/2817) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v18.1.2 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- [Search] Replace old artwork filter with new generic implementation [#2816](https://github.com/artsy/reaction/pull/2816) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v18.1.1 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1501]: fixes word wrapping in ie [#2814](https://github.com/artsy/reaction/pull/2814) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v18.1.0 (Fri Sep 13 2019)
+
+#### 🚀  Enhancement
+
+- Add specs to exercise full bidder registration flow [#2774](https://github.com/artsy/reaction/pull/2774) ([@dblandin](https://github.com/dblandin))
+- Keep Register button spinner spinning while redirecting
+
+It can take a while to redirect back to the auction page so keep the
+spinner spinning so that the user doesn't think the page is stuck. [#2774](https://github.com/artsy/reaction/pull/2774) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v18.0.11 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- Grow 1498 fix the broken scrolling in small size [#2811](https://github.com/artsy/reaction/pull/2811) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v18.0.10 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1476: If work can only ship domestically, the shipping form only displays the artwork's origin country [#2793](https://github.com/artsy/reaction/pull/2793) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.3 to v4.17.6 [#2819](https://github.com/artsy/reaction/pull/2819) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v18.0.9 (Fri Sep 13 2019)
+
+
+
+---
+
+# v18.0.8 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1456 Add BankTransferExperiment [#2794](https://github.com/artsy/reaction/pull/2794) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Add Artsy Engineering footer [#2818](https://github.com/artsy/reaction/pull/2818) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v18.0.7 (Fri Sep 13 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter] Fix reset bug #trivial [#2815](https://github.com/artsy/reaction/pull/2815) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v18.0.6 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- [principalField] Add directive to more apps [#2813](https://github.com/artsy/reaction/pull/2813) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v18.0.5 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- [Refactor] Wire up new <ArtworkFilter> into /collection/id [#2801](https://github.com/artsy/reaction/pull/2801) ([@damassi](https://github.com/damassi))
+- Revert "Update dep @artsy/palette from 4.17.3 to v4.17.4" [#2812](https://github.com/artsy/reaction/pull/2812) ([@damassi](https://github.com/damassi))
+- Vanguard qa [#2810](https://github.com/artsy/reaction/pull/2810) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.3 to v4.17.4 [#2808](https://github.com/artsy/reaction/pull/2808) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v18.0.4 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard qa [#2805](https://github.com/artsy/reaction/pull/2805) ([@eessex](https://github.com/eessex))
+- Remove side frame text from slide show in mobile [#2806](https://github.com/artsy/reaction/pull/2806) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v18.0.3 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Add vscode-apollo-relay [#2802](https://github.com/artsy/reaction/pull/2802) ([@alloy](https://github.com/alloy))
+- Increase z-indices to enable navigation by clicking on nav bar logos [#2807](https://github.com/artsy/reaction/pull/2807) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 2
+
+- Eloy Durán ([@alloy](https://github.com/alloy))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v18.0.2 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Move video credits to end of series on mobile [#2803](https://github.com/artsy/reaction/pull/2803) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v18.0.1 (Thu Sep 12 2019)
+
+#### 🐛  Bug Fix
+
+- Handle caption color on static images in expanded mode in mobile [#2804](https://github.com/artsy/reaction/pull/2804) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v18.0.0 (Wed Sep 11 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Replace <ArtworkFilter> in /collect -> Take 2 [#2789](https://github.com/artsy/reaction/pull/2789) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.11.18 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Switch to using metaphysics field for tax information [#2800](https://github.com/artsy/reaction/pull/2800) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.2 to v4.17.3 [#2799](https://github.com/artsy/reaction/pull/2799) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.11.17 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Directive] Start using principalField to propagate a single HTTP non 2XX code [#2784](https://github.com/artsy/reaction/pull/2784) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v17.11.16 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- replace up/down arrows with underline on read more button [#2797](https://github.com/artsy/reaction/pull/2797) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.11.15 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- align captions on artist image and artist artworks [#2798](https://github.com/artsy/reaction/pull/2798) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.11.14 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Remove padding from article content on mobile [#2796](https://github.com/artsy/reaction/pull/2796) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.11.13 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Prevent Side Frame from overlapping with Article Content [#2795](https://github.com/artsy/reaction/pull/2795) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.11.12 (Wed Sep 11 2019)
+
+#### 🐛  Bug Fix
+
+- Collection hub title [#2791](https://github.com/artsy/reaction/pull/2791) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.17.1 to v4.17.2 [#2792](https://github.com/artsy/reaction/pull/2792) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.11.11 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard qa [#2790](https://github.com/artsy/reaction/pull/2790) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.11.10 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1470: Reuse SetupIntent for make offer [#2773](https://github.com/artsy/reaction/pull/2773) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v17.11.9 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [QueryString] When parsing query strings for apps, coerce Ints and Bools [#2787](https://github.com/artsy/reaction/pull/2787) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v17.11.8 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- [PageLoader] Add page loader to router [#2785](https://github.com/artsy/reaction/pull/2785) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.11.7 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- Handle Nav Bar and Side Frame Text When Slideshow is Open [#2788](https://github.com/artsy/reaction/pull/2788) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.11.6 (Tue Sep 10 2019)
+
+#### 🐛  Bug Fix
+
+- add intercom to order app [#2783](https://github.com/artsy/reaction/pull/2783) ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.3 to v4.17.1 [#2781](https://github.com/artsy/reaction/pull/2781) ([@renovate-bot](https://github.com/renovate-bot))
+- Bump lodash.template from 4.4.0 to 4.5.0 [#2777](https://github.com/artsy/reaction/pull/2777) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump lodash-es from 4.17.11 to 4.17.15 [#2779](https://github.com/artsy/reaction/pull/2779) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump extend from 3.0.1 to 3.0.2 [#2780](https://github.com/artsy/reaction/pull/2780) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump mixin-deep from 1.3.1 to 1.3.2 [#2778](https://github.com/artsy/reaction/pull/2778) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
+# v17.11.5 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard QA [#2786](https://github.com/artsy/reaction/pull/2786) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.11.4 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- Add Default Mobile Styling to Vanguard 2019 Article Series [#2782](https://github.com/artsy/reaction/pull/2782) ([@ashleyjelks](https://github.com/ashleyjelks) [@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.11.3 (Mon Sep 09 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1472 - Checks for availability before showing VAT [#2775](https://github.com/artsy/reaction/pull/2775) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v17.11.2 (Fri Sep 06 2019)
+
+#### 🐛  Bug Fix
+
+- Allow images without zoom [#2776](https://github.com/artsy/reaction/pull/2776) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/detect-responsive-traits from ^0.0.4 to ^0.0.5 [#2763](https://github.com/artsy/reaction/pull/2763) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.11.1 (Thu Sep 05 2019)
+
+#### 🐛  Bug Fix
+
+- Defensively access images' aspect ratio in Recently Viewed rail [#2772](https://github.com/artsy/reaction/pull/2772) ([@anandaroop](https://github.com/anandaroop))
+
+#### 🏠  Internal
+
+- Update dep jest from 24.8.0 to v24.9.0 [#2756](https://github.com/artsy/reaction/pull/2756) ([@renovate-bot](https://github.com/renovate-bot) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v17.11.0 (Wed Sep 04 2019)
+
+#### 🚀  Enhancement
+
+- Add bottom margin to viewports > XS on bidder registration form [#2771](https://github.com/artsy/reaction/pull/2771) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v17.10.0 (Wed Sep 04 2019)
+
+#### 🚀  Enhancement
+
+- Respond to both auction-registration and auction-registration2 routes [#2769](https://github.com/artsy/reaction/pull/2769) ([@dblandin](https://github.com/dblandin))
+- Rename test file redirects -> routes [#2769](https://github.com/artsy/reaction/pull/2769) ([@dblandin](https://github.com/dblandin))
+- Host new registration form on `/auction-registration` [#2769](https://github.com/artsy/reaction/pull/2769) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Pin dep yalc from ^1.0.0-pre.34 to 1.0.0-pre.34 [#2770](https://github.com/artsy/reaction/pull/2770) ([@renovate-bot](https://github.com/renovate-bot))
+- Setup safer/more robust linking process for reaction/force [#2758](https://github.com/artsy/reaction/pull/2758) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 4
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Erik Stockmeier ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.9.7 (Wed Sep 04 2019)
+
+#### 🐛  Bug Fix
+
+- Ensure carousel arrows are the same size and long titles line-break [#2766](https://github.com/artsy/reaction/pull/2766) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v17.9.6 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Fix bug where rendering the submission failed modal cleared props [#2768](https://github.com/artsy/reaction/pull/2768) ([@erikdstock](https://github.com/erikdstock))
+- Add page title to Auction Registration form
+
+- use react-head
+- static title for now so that it doesn't look janky
+
+Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2768](https://github.com/artsy/reaction/pull/2768) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik Stockmeier ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v17.9.5 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2767](https://github.com/artsy/reaction/pull/2767) ([@yuki24](https://github.com/yuki24))
+
+#### Authors: 1
+
+- Yuki Nishijima ([@yuki24](https://github.com/yuki24))
+
+---
+
+# v17.9.4 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Analytics tracking default header Grow-1450 [#2760](https://github.com/artsy/reaction/pull/2760) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v17.9.3 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Scroll top on close Vanguard [#2764](https://github.com/artsy/reaction/pull/2764) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.9.2 (Tue Sep 03 2019)
+
+#### 🐛  Bug Fix
+
+- Invert Header Text to Match Side Frame Text on Artsy Vanguard Headers [#2759](https://github.com/artsy/reaction/pull/2759) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.9.1 (Mon Sep 02 2019)
+
+#### 🐛  Bug Fix
+
+- De-randomize subtitles in homepage hubs nav to eliminate hydration mismatches [#2761](https://github.com/artsy/reaction/pull/2761) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Rename "Credit card number*" to "Credit card" to fix scan cc on mobile [#2762](https://github.com/artsy/reaction/pull/2762) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v17.9.0 (Fri Aug 30 2019)
+
+#### 🚀  Enhancement
+
+- Add analytic event tracking to auction registration route [#2727](https://github.com/artsy/reaction/pull/2727) ([@erikdstock](https://github.com/erikdstock) [@dleve123](https://github.com/dleve123))
+
+#### 🏠  Internal
+
+- Update dep jest-junit from 6.3.0 to v6.4.0 [#2757](https://github.com/artsy/reaction/pull/2757) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.8.5 (Fri Aug 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1432: Improve error messaging for generic declines on the payment page [#2740](https://github.com/artsy/reaction/pull/2740) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v17.8.4 (Fri Aug 30 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1428: Get failed payment flow working with case where payment intent of a already confirmed setupintent fails when seller accepts offer [#2751](https://github.com/artsy/reaction/pull/2751) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v17.8.3 (Thu Aug 29 2019)
+
+
+
+---
+
+# v17.8.2 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- @mzikherman => [Error Handling] Correct default if no status codes provided [#2754](https://github.com/artsy/reaction/pull/2754) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Add STRIPE_PUBISHABLE_KEY to .env.oss [#2747](https://github.com/artsy/reaction/pull/2747) ([@dleve123](https://github.com/dleve123))
+
+#### Authors: 2
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Daniel Levenson ([@dleve123](https://github.com/dleve123))
+
+---
+
+# v17.8.1 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionHubsRails] minor UI fixes [#2753](https://github.com/artsy/reaction/pull/2753) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v17.8.0 (Thu Aug 29 2019)
+
+#### 🚀  Enhancement
+
+- Create Collection Hubs entrypoint nav component for homepage [#2749](https://github.com/artsy/reaction/pull/2749) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v17.7.7 (Thu Aug 29 2019)
+
+#### 🐛  Bug Fix
+
+- Update ImageLink to use a fixed aspect ratio and avoid jitter [#2752](https://github.com/artsy/reaction/pull/2752) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v17.7.6 (Wed Aug 28 2019)
+
+#### 🐛  Bug Fix
+
+- showing arrows based on the width [#2746](https://github.com/artsy/reaction/pull/2746) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v17.7.5 (Wed Aug 28 2019)
+
+#### 🐛  Bug Fix
+
+- Show correct edition set dimensions based on the selected edition set [#2748](https://github.com/artsy/reaction/pull/2748) ([@ashkan18](https://github.com/ashkan18))
+
+#### Authors: 1
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+
+---
+
+# v17.7.4 (Wed Aug 28 2019)
+
+#### 🐛  Bug Fix
+
+- Update Targeting Data in Ad Server [#2743](https://github.com/artsy/reaction/pull/2743) ([@ashleyjelks](https://github.com/ashleyjelks))
+- Additional hubs qa [#2726](https://github.com/artsy/reaction/pull/2726) ([@mzikherman](https://github.com/mzikherman))
+- @zephraph => [Error Handling] Present downstream 404s as 404s when possible instead of 500s [#2745](https://github.com/artsy/reaction/pull/2745) ([@mzikherman](https://github.com/mzikherman))
+- Stub out new API for collection hub nav item [#2730](https://github.com/artsy/reaction/pull/2730) ([@mzikherman](https://github.com/mzikherman))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.2 to v4.16.3 [#2742](https://github.com/artsy/reaction/pull/2742) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.7.3 (Tue Aug 27 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard QA [#2741](https://github.com/artsy/reaction/pull/2741) ([@eessex](https://github.com/eessex))
+- PURCHASE-1427: On Submitting offers, check graphql response and show Stripe's SCA popup if the mutation response was action required [#2739](https://github.com/artsy/reaction/pull/2739) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.7.2 (Tue Aug 27 2019)
+
+#### 🐛  Bug Fix
+
+- Analytics_tracking_in_artist_series_in_collection_hub [#2736](https://github.com/artsy/reaction/pull/2736) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v17.7.1 (Mon Aug 26 2019)
+
+#### 🐛  Bug Fix
+
+- Vanguard responsive QA [#2738](https://github.com/artsy/reaction/pull/2738) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.7.0 (Mon Aug 26 2019)
+
+#### 🚀  Enhancement
+
+- Adds lazyLoad to ArtistHeader and ArtistCollectionRail [#2737](https://github.com/artsy/reaction/pull/2737) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v17.6.1 (Fri Aug 23 2019)
+
+#### 🐛  Bug Fix
+
+- Add Reponsiveness to Primary and Subseries SVG Videos [#2729](https://github.com/artsy/reaction/pull/2729) ([@ashleyjelks](https://github.com/ashleyjelks))
+- New PR for improving CSS [#2734](https://github.com/artsy/reaction/pull/2734) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### 🏠  Internal
+
+- Update dep webpack-bundle-analyzer from 3.3.2 to v3.4.1 [#2733](https://github.com/artsy/reaction/pull/2733) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.6.0 (Thu Aug 22 2019)
+
+#### 🚀  Enhancement
+
+- Revert "[Refactor] Replace <ArtworkFilter> in /collect " [#2732](https://github.com/artsy/reaction/pull/2732) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.5.3 (Thu Aug 22 2019)
+
+#### 🐛  Bug Fix
+
+- Revert "[ArtworkFilter] Ensure page is reset to 1 on filter change #trivial" [#2731](https://github.com/artsy/reaction/pull/2731) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.5.2 (Thu Aug 22 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1386 - Adds VAT included in price to Artworks [#2725](https://github.com/artsy/reaction/pull/2725) ([@kierangillen](https://github.com/kierangillen))
+
+#### Authors: 1
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+
+---
+
+# v17.5.1 (Thu Aug 22 2019)
+
+#### 🐛  Bug Fix
+
+- [ArtworkFilter] Ensure page is reset to 1 on filter change #trivial [#2728](https://github.com/artsy/reaction/pull/2728) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.5.0 (Thu Aug 22 2019)
+
+#### 🚀  Enhancement
+
+- [Refactor] Replace <ArtworkFilter> in /collect [#2714](https://github.com/artsy/reaction/pull/2714) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.4.1 (Wed Aug 21 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionsHubsNav] Restyle collection hub nav according to new designs [#2723](https://github.com/artsy/reaction/pull/2723) ([@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 1
+
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v17.4.0 (Wed Aug 21 2019)
+
+#### 🚀  Enhancement
+
+- Update Auction registration form
+
+- Add CountrySelect input to form
+- Update Auctions-related Storybook entries
+- Add Metaphytics API error handling
+- Update register redirect rules
+
+Co-authored-by: Erik Stockmeier <erik.d.stock@gmail.com> [#2703](https://github.com/artsy/reaction/pull/2703) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v17.3.0 (Wed Aug 21 2019)
+
+#### 🚀  Enhancement
+
+- Auction post-registration modal (migrating from force) [#2702](https://github.com/artsy/reaction/pull/2702) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
+# v17.2.3 (Tue Aug 20 2019)
+
+#### 🐛  Bug Fix
+
+- Handle <RouterLink> behavior better [#2721](https://github.com/artsy/reaction/pull/2721) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.2.2 (Tue Aug 20 2019)
+
+#### 🐛  Bug Fix
+
+- GROW 1362 - Add hub entry points to collect page [#2698](https://github.com/artsy/reaction/pull/2698) ([@anandaroop](https://github.com/anandaroop) [@pepopowitz](https://github.com/pepopowitz))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.1 to v4.16.2 [#2718](https://github.com/artsy/reaction/pull/2718) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.2.1 (Tue Aug 20 2019)
+
+#### 🐛  Bug Fix
+
+- Remove debug text #trivial [#2722](https://github.com/artsy/reaction/pull/2722) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Bring back the cool ascii banner text in the README [#2720](https://github.com/artsy/reaction/pull/2720) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v17.2.0 (Mon Aug 19 2019)
+
+#### 🚀  Enhancement
+
+- [Router] Add ErrorPage handler [#2719](https://github.com/artsy/reaction/pull/2719) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.1.7 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] scroll to sections based on slug [#2701](https://github.com/artsy/reaction/pull/2701) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v17.1.6 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- Add Video in SVG Blobs on Primary and Sub Series Headers [#2716](https://github.com/artsy/reaction/pull/2716) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v17.1.5 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- adds item_number to analytics tracking [#2717](https://github.com/artsy/reaction/pull/2717) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v17.1.4 (Mon Aug 19 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections] Relocate CollectionsHub rails [#2709](https://github.com/artsy/reaction/pull/2709) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.16.0 to v4.16.1 [#2715](https://github.com/artsy/reaction/pull/2715) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.15.1 to v4.16.0 [#2713](https://github.com/artsy/reaction/pull/2713) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v17.1.3 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette [#2710](https://github.com/artsy/reaction/pull/2710) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Mark components with clear artsy/palette equivalents as deprecated [#2711](https://github.com/artsy/reaction/pull/2711) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v17.1.2 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Collect] Fix text alignment [#2707](https://github.com/artsy/reaction/pull/2707) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.1.1 (Fri Aug 16 2019)
+
+#### 🐛  Bug Fix
+
+- [Router] Fix zIndex #trivial [#2706](https://github.com/artsy/reaction/pull/2706) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.1.0 (Fri Aug 16 2019)
+
+#### 🚀  Enhancement
+
+- [Router] Add in  interstitial loading state [#2705](https://github.com/artsy/reaction/pull/2705) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v17.0.1 (Thu Aug 15 2019)
+
+
+
+---
+
+# v17.0.0 (Thu Aug 15 2019)
+
+#### 💥  Breaking Change
+
+- [Refactor] Consolidate /collect, /collections and /collection/id under a single App / Router [#2685](https://github.com/artsy/reaction/pull/2685) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- Call modal onClose only after show has been set to false [#2696](https://github.com/artsy/reaction/pull/2696) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.46 to v4.14.47 [#2699](https://github.com/artsy/reaction/pull/2699) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.24.12 (Thu Aug 15 2019)
+
+#### 🐛  Bug Fix
+
+- [Carousel] Pass index / props down to render items [#2695](https://github.com/artsy/reaction/pull/2695) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.24.11 (Thu Aug 15 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Put back super article related_articles [#2697](https://github.com/artsy/reaction/pull/2697) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.10 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Article truncation [#2681](https://github.com/artsy/reaction/pull/2681) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.9 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- [GROW-1355]: Address OtherCollectionsRail QA items [#2691](https://github.com/artsy/reaction/pull/2691) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.24.8 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- [TRIVIAL] Update fixture to use correct naming for related_article_ids [#2694](https://github.com/artsy/reaction/pull/2694) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.7 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor slideshows & add to vanguard [#2690](https://github.com/artsy/reaction/pull/2690) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.6 (Wed Aug 14 2019)
+
+#### 🐛  Bug Fix
+
+- Refactor svg blobs on artist headers [#2692](https://github.com/artsy/reaction/pull/2692) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.24.5 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Adds prop to hide ads from feature articles for vanguard development [#2689](https://github.com/artsy/reaction/pull/2689) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.24.4 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Adds SVGs To Artist Header [#2688](https://github.com/artsy/reaction/pull/2688) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.24.3 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- [CollectionHubs] various hubs qa [#2687](https://github.com/artsy/reaction/pull/2687) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.24.2 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- Bump react to 16.8.4 [#2686](https://github.com/artsy/reaction/pull/2686) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.1 (Tue Aug 13 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Add creative credits [#2684](https://github.com/artsy/reaction/pull/2684) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.24.0 (Mon Aug 12 2019)
+
+#### 🚀  Enhancement
+
+- Refactor ConditionsOfSaleCheckbox to use palette checkbox [#2682](https://github.com/artsy/reaction/pull/2682) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🐛  Bug Fix
+
+- Extract tooltip provider from fullscreen logic [#2683](https://github.com/artsy/reaction/pull/2683) ([@eessex](https://github.com/eessex))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.23.3 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] SectionsList can accommodate custom widths [#2679](https://github.com/artsy/reaction/pull/2679) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.23.2 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- update test [#2644](https://github.com/artsy/reaction/pull/2644) (jiahaodavid4040@gmail.com)
+
+#### ⚠️  Pushed to master
+
+- resolve conflicting files  (jiahaodavid4040@gmail.com)
+
+#### Authors: 1
+
+- david huang (jiahaodavid4040@gmail.com)
+
+---
+
+# v16.23.1 (Mon Aug 12 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1370: add analytics tracking to FeaturedCollections module [#2678](https://github.com/artsy/reaction/pull/2678) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.23.0 (Fri Aug 09 2019)
+
+#### 🚀  Enhancement
+
+- Update Metaphysics GraphQL schema [#2677](https://github.com/artsy/reaction/pull/2677) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.22.13 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- @damassi => [Artist] Consolidate aggregations and grid request for filter, when possible [#2674](https://github.com/artsy/reaction/pull/2674) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.22.12 (Fri Aug 09 2019)
+
+#### 🐛  Bug Fix
+
+- adds latest svgs from wax [#2676](https://github.com/artsy/reaction/pull/2676) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.22.11 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- Fix render implementation in AuctionApp routes
+
+If provided, a `render` function in a [found][] router implementation
+will execute before and after a Relay response is available. To account
+for the early invocation, guard against the presence of `props`.
+
+[found]: https://github.com/4Catalyzer/found
+
+Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2672](https://github.com/artsy/reaction/pull/2672) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.22.10 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- GROW-1372: add analytics events for OtherCollectionsRail [#2653](https://github.com/artsy/reaction/pull/2653) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.22.9 (Wed Aug 07 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Table of Contents [#2667](https://github.com/artsy/reaction/pull/2667) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.22.8 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Handle xs breakpoint with metadata field [#2673](https://github.com/artsy/reaction/pull/2673) ([@sweir27](https://github.com/sweir27))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.44 to v4.14.46 [#2671](https://github.com/artsy/reaction/pull/2671) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.22.7 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Updates Artwork Details display [#2668](https://github.com/artsy/reaction/pull/2668) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.22.6 (Tue Aug 06 2019)
+
+#### 🐛  Bug Fix
+
+- Upload Artsy Vanguard 2019 SVG Files [#2670](https://github.com/artsy/reaction/pull/2670) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.22.5 (Mon Aug 05 2019)
+
+
+
+---
+
+# v16.22.4 (Mon Aug 05 2019)
+
+
+
+---
+
+# v16.22.3 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Co-locate Vanguard assets and components [#2666](https://github.com/artsy/reaction/pull/2666) ([@eessex](https://github.com/eessex))
+- [ArtworkFilter v2] More progress [#2661](https://github.com/artsy/reaction/pull/2661) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.22.2 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- [Vanguard] Display video in headers/intro [#2664](https://github.com/artsy/reaction/pull/2664) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.22.1 (Mon Aug 05 2019)
+
+#### 🐛  Bug Fix
+
+- Add Inverted Text CSS to Storybooks [#2662](https://github.com/artsy/reaction/pull/2662) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.43 to v4.14.44 [#2665](https://github.com/artsy/reaction/pull/2665) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.22.0 (Mon Aug 05 2019)
+
+#### 🚀  Enhancement
+
+- Auct-463 auction registration modal [#2635](https://github.com/artsy/reaction/pull/2635) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🏠  Internal
+
+- Update dep @artsy/auto-config from 1.0.0 to v1.0.1 [#2663](https://github.com/artsy/reaction/pull/2663) ([@renovate-bot](https://github.com/renovate-bot))
+- Update dep @artsy/palette from 4.14.41 to v4.14.43 [#2660](https://github.com/artsy/reaction/pull/2660) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.21.5 (Fri Aug 02 2019)
+
+
+
+---
+
+# v16.21.4 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- Updates palette to 4.14.41 [#2658](https://github.com/artsy/reaction/pull/2658) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.39 to v4.14.41 [#2659](https://github.com/artsy/reaction/pull/2659) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.21.3 (Fri Aug 02 2019)
+
+#### 🐛  Bug Fix
+
+- @yuki24 => [Collect] Remove unneeded medium aggregation call [#2639](https://github.com/artsy/reaction/pull/2639) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.21.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Grow-1391,Collections carousel tweaks QA for artist series and related collections [#2648](https://github.com/artsy/reaction/pull/2648) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v16.21.1 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Revert #2640 [#2655](https://github.com/artsy/reaction/pull/2655) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v16.21.0 (Thu Aug 01 2019)
+
+#### 🚀  Enhancement
+
+- Add redirects to AuctionApp bidder registration flow [#2643](https://github.com/artsy/reaction/pull/2643) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.20.4 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Use actual data in Vanguard Scaffold [#2654](https://github.com/artsy/reaction/pull/2654) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.20.3 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1282: Updates offer views to handle non-USD currencies [#2646](https://github.com/artsy/reaction/pull/2646) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.20.2 (Thu Aug 01 2019)
+
+#### 🐛  Bug Fix
+
+- Collections Default Header Bug Fix [#2647](https://github.com/artsy/reaction/pull/2647) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.38 to v4.14.39 [#2651](https://github.com/artsy/reaction/pull/2651) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.20.1 (Wed Jul 31 2019)
+
+#### 🐛  Bug Fix
+
+- [RecentlyViewed Carousel] Make consistent with recent patterns [#2650](https://github.com/artsy/reaction/pull/2650) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.20.0 (Wed Jul 31 2019)
+
+#### 🚀  Enhancement
+
+- Address more MP v2 deprecations [#2640](https://github.com/artsy/reaction/pull/2640) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.19.8 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.7 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [Collections]  Default Header [#2634](https://github.com/artsy/reaction/pull/2634) ([@ashleyjelks](https://github.com/ashleyjelks))
+
+#### Authors: 1
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+
+---
+
+# v16.19.6 (Tue Jul 30 2019)
+
+
+
+---
+
+# v16.19.5 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- [SearchResults] Remove unneeded call for medium aggregations [#2638](https://github.com/artsy/reaction/pull/2638) ([@mzikherman](https://github.com/mzikherman))
+
+#### Authors: 1
+
+- Matt Zikherman ([@mzikherman](https://github.com/mzikherman))
+
+---
+
+# v16.19.4 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Scaffold Vanguard series page [#2636](https://github.com/artsy/reaction/pull/2636) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v16.19.3 (Tue Jul 30 2019)
+
+#### 🐛  Bug Fix
+
+- Sync MP schema [#2637](https://github.com/artsy/reaction/pull/2637) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v16.19.2 (Mon Jul 29 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1347 - Uses modal for price in context [#2632](https://github.com/artsy/reaction/pull/2632) ([@kierangillen](https://github.com/kierangillen))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 4.14.27 to v4.14.38 [#2601](https://github.com/artsy/reaction/pull/2601) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Kieran Gillen ([@kierangillen](https://github.com/kierangillen))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.19.1 (Fri Jul 26 2019)
+
+#### 🐛  Bug Fix
+
+- Other collections module [#2633](https://github.com/artsy/reaction/pull/2633) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
+# v16.19.0 (Thu Jul 25 2019)
+
+#### 🚀  Enhancement
+
+- Add initial auction registration flow [#2605](https://github.com/artsy/reaction/pull/2605) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v16.18.36 (Thu Jul 25 2019)
+
+
+
+---
+
+# v16.18.35 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Fixed spacing above Related Works artwork grid on artwork page [#2630](https://github.com/artsy/reaction/pull/2630) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.18.34 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Test & refactor collection header [#2614](https://github.com/artsy/reaction/pull/2614) ([@ashleyjelks](https://github.com/ashleyjelks) [@xtina-starr](https://github.com/xtina-starr) [@pepopowitz](https://github.com/pepopowitz))
+
+#### Authors: 3
+
+- Ashley Jelks ([@ashleyjelks](https://github.com/ashleyjelks))
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Steven Hicks ([@pepopowitz](https://github.com/pepopowitz))
+
+---
+
+# v16.18.33 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- Collections hub [#2628](https://github.com/artsy/reaction/pull/2628) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
+# v16.18.32 (Wed Jul 24 2019)
+
+#### 🐛  Bug Fix
+
+- PURCHASE-1317: Convert OtherWorks component to use contextGrids [#2623](https://github.com/artsy/reaction/pull/2623) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
+# v16.18.31 (Tue Jul 23 2019)
+
+#### 🐛  Bug Fix
+
+- Fix Modal with image on smaller(xs) screens [#2627](https://github.com/artsy/reaction/pull/2627) ([@l2succes](https://github.com/l2succes))
+
+#### Authors: 1
+
+- Luc Succes ([@l2succes](https://github.com/l2succes))
+
+---
+
+# v16.18.30 (Tue Jul 23 2019)
+
+#### 🐛  Bug Fix
+
+- Sync schema [#2625](https://github.com/artsy/reaction/pull/2625) (damassi.pappas@gmail.com)
+- Upgrade styled-components@4.3.2 [#2625](https://github.com/artsy/reaction/pull/2625) (damassi.pappas@gmail.com)
+
+#### Authors: 1
+
+- Christopher Pappas (damassi.pappas@gmail.com)
+
+---
+
+# v16.18.29 (Tue Jul 23 2019)
+
+
+
+---
+
+# v16.18.28 (Tue Jul 23 2019)
+
+
+
+---
+
+# v16.18.27 (Tue Jul 23 2019)
+
+#### 🐛  Bug Fix
+
+- Update to latest MP schema [#2622](https://github.com/artsy/reaction/pull/2622) ([@ashkan18](https://github.com/ashkan18) [@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Update yarn orb to v2 [#2621](https://github.com/artsy/reaction/pull/2621) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Ashkan Nasseri ([@ashkan18](https://github.com/ashkan18))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v16.18.26 (Thu Jul 18 2019)
+
+#### 🐛  Bug Fix
+
+- Collections carousel tweaks QA for artist series and related collections [#2620](https://github.com/artsy/reaction/pull/2620) ([@jiahaodavid](https://github.com/jiahaodavid))
+
+#### Authors: 1
+
+- david huang ([@jiahaodavid](https://github.com/jiahaodavid))
+
+---
+
+# v16.18.25 (Wed Jul 17 2019)
+
+
+
+---
+
 # v16.18.24 (Wed Jul 17 2019)
 
 #### 🐛  Bug Fix

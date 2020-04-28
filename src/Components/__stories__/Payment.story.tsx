@@ -12,6 +12,7 @@ storiesOf("Components/Payment", module)
         mockResolvers={{
           Me: () => ({
             id: "1234",
+            internalID: "abc1234",
             creditCards: {
               edges: [],
             },
@@ -34,19 +35,24 @@ storiesOf("Components/Payment", module)
         mockResolvers={{
           Me: () => ({
             id: "1234",
+            internalID: "1abc4556",
             creditCards: {
               edges: [
                 {
+                  id: "1234",
+                  internalID: "abc1234",
                   brand: "Visa",
-                  last_four_digits: "1234",
-                  expiration_year: "2020",
-                  expiration_month: "07",
+                  lastFourDigits: "1234",
+                  expirationYear: "2020",
+                  expirationMonth: "07",
                 },
                 {
+                  id: "4567",
+                  internalID: "abc4567",
                   brand: "Visa",
-                  last_four_digits: "4444",
-                  expiration_year: "2022",
-                  expiration_month: "10",
+                  lastFourDigits: "4444",
+                  expirationYear: "2022",
+                  expirationMonth: "10",
                 },
               ],
             },

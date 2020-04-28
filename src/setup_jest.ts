@@ -7,7 +7,7 @@ import { format } from "util"
 jest.mock("react-tracking")
 import _track from "react-tracking"
 const track = _track as jest.Mock<typeof _track>
-track.mockImplementation(y => x => x)
+track.mockImplementation(y => x => x as any)
 
 jest.mock("react-sizeme", () => jest.fn(c => d => d))
 jest.mock("Utils/logger")
@@ -67,7 +67,25 @@ if (process.env.ALLOW_CONSOLE_LOGS !== "true") {
     ;["error", "warn"].forEach((type: "error" | "warn") => {
       // Don't spy on loggers that have been modified by the current test.
       if (console[type] === originalLoggers[type]) {
-        const handler = (...args) => done.fail(logToError(type, args, handler))
+        const handler = (...args) => {
+          // FIXME: React 16.8.x doesn't support async `act` testing hooks and so this
+          // suppresses for now. Remove once we upgrade to React 16.9.
+          // @see https://github.com/facebook/react/issues/14769
+          if (
+            args[0] &&
+            args[0].includes &&
+            !args[0].includes(
+              "Warning: An update to %s inside a test was not wrapped in act"
+            ) &&
+            !args[0].includes(
+              "Warning: RelayResponseNormalizer: Payload did not contain a value for field `id: id`. Check that you are parsing with the same query that was used to fetch the payload."
+            ) &&
+            !/Warning: Received.+?for a non-boolean attribute/.test(args[0])
+          ) {
+            done.fail(logToError(type, args, handler))
+          }
+        }
+
         jest.spyOn(console, type).mockImplementation(handler)
       }
     })

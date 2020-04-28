@@ -2,13 +2,14 @@ import { Box, Serif } from "@artsy/palette"
 import { SystemContextConsumer } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
 
-import { FollowIcon } from "Components/v2"
+import { FollowIcon } from "Components/FollowIcon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 
 export interface ArtistsProps {
   artwork: ArtworkSidebarArtists_artwork
@@ -30,14 +31,14 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
   }
 
   handleOpenAuth = (mediator, artist) => {
-    openAuthModal(mediator, {
+    openAuthToFollowSave(mediator, {
       entity: artist,
-      contextModule: Schema.ContextModule.ArtworkPage,
-      intent: AuthModalIntent.FollowArtist,
+      contextModule: ContextModule.artworkSidebar,
+      intent: AuthIntent.followArtist,
     })
   }
 
-  private renderSingleArtist(artist: Artist, user, mediator) {
+  private renderSingleArtist = (artist: Artist, user, mediator) => {
     return (
       <React.Fragment>
         {this.renderArtistName(artist)}
@@ -48,8 +49,8 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
             modelName: Schema.OwnerType.Artist,
             context_module: Schema.ContextModule.Sidebar,
             context_page: "Artwork page",
-            entity_id: artist._id,
-            entity_slug: artist.id,
+            entity_id: artist.internalID,
+            entity_slug: artist.slug,
           }}
           onOpenAuthModal={() => this.handleOpenAuth(mediator, artist)}
           triggerSuggestions
@@ -69,7 +70,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     } = this.props
     return artists.map((artist, index) => {
       return (
-        <React.Fragment key={artist.__id}>
+        <React.Fragment key={artist.id}>
           {this.renderArtistName(artist)}
           {index !== artists.length - 1 && ", "}
         </React.Fragment>
@@ -115,11 +116,11 @@ export const ArtworkSidebarArtistsFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           showFollowSuggestions: { type: "Boolean", defaultValue: true }
         ) {
-        cultural_maker
+        cultural_maker: culturalMaker
         artists {
-          __id
-          _id
           id
+          internalID
+          slug
           name
           href
           ...FollowArtistButton_artist

@@ -12,7 +12,6 @@ import { Status_order } from "__generated__/Status_order.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 import { Title } from "react-head"
@@ -48,7 +47,7 @@ export class StatusRoute extends Component<StatusProps> {
       stateExpiresAt,
     } = this.props.order
     const isOfferFlow = mode === "OFFER"
-    const isShip = requestedFulfillment.__typename === "Ship"
+    const isShip = requestedFulfillment.__typename === "CommerceShip"
 
     switch (state) {
       case "SUBMITTED":
@@ -246,7 +245,7 @@ export class StatusRoute extends Component<StatusProps> {
             {title}
           </Serif>
           <Sans size="2" weight="regular" color="black60" mb={[2, 3]}>
-            {flowName} #{order.code}
+            {flowName} <span data-test="OrderCode">#{order.code}</span>
           </Sans>
           <TwoColumnLayout
             Content={
@@ -314,62 +313,57 @@ const StyledTransactionDetailsSummaryItem = styled(
   `};
 `
 
-export const StatusFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(StatusRoute),
-  {
-    order: graphql`
-      fragment Status_order on Order {
-        __typename
-        id
-        code
-        state
-        mode
-        stateReason
-        stateExpiresAt(format: "MMM D")
-        requestedFulfillment {
-          ... on Ship {
-            __typename
-          }
-          ... on Pickup {
-            __typename
-          }
+export const StatusFragmentContainer = createFragmentContainer(StatusRoute, {
+  order: graphql`
+    fragment Status_order on CommerceOrder {
+      __typename
+      internalID
+      code
+      state
+      mode
+      stateReason
+      stateExpiresAt(format: "MMM D")
+      requestedFulfillment {
+        ... on CommerceShip {
+          __typename
         }
-        ...ArtworkSummaryItem_order
-        ...TransactionDetailsSummaryItem_order
-        ...ShippingSummaryItem_order
-        ...CreditCardSummaryItem_order
-        lineItems {
-          edges {
-            node {
-              fulfillments {
-                edges {
-                  node {
-                    courier
-                    trackingId
-                    estimatedDelivery(format: "MMM Do, YYYY")
-                  }
+        ... on CommercePickup {
+          __typename
+        }
+      }
+      ...ArtworkSummaryItem_order
+      ...TransactionDetailsSummaryItem_order
+      ...ShippingSummaryItem_order
+      ...CreditCardSummaryItem_order
+      lineItems {
+        edges {
+          node {
+            fulfillments {
+              edges {
+                node {
+                  courier
+                  trackingId
+                  estimatedDelivery(format: "MMM Do, YYYY")
                 }
-              }
-              artwork {
-                id
-                is_acquireable
-                ...ItemReview_artwork
               }
             }
           }
         }
-        ... on OfferOrder {
-          myLastOffer {
-            id
-            amount(precision: 2)
-            amountCents
-            shippingTotal(precision: 2)
-            shippingTotalCents
-            taxTotal(precision: 2)
-            taxTotalCents
-          }
+      }
+      ... on CommerceOfferOrder {
+        myLastOffer {
+          internalID
+          amount(precision: 2)
+          amountCents
+          shippingTotal(precision: 2)
+          shippingTotalCents
+          taxTotal(precision: 2)
+          taxTotalCents
         }
       }
-    `,
-  }
-)
+    }
+  `,
+})
+
+// For bundle splitting in router
+export default StatusFragmentContainer

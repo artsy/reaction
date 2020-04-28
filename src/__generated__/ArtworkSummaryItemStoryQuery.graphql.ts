@@ -1,12 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSummaryItemStoryQueryVariables = {};
 export type ArtworkSummaryItemStoryQueryResponse = {
-    readonly order: ({
-        readonly " $fragmentRefs": ArtworkSummaryItem_order$ref;
-    }) | null;
+    readonly order: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order">;
+    } | null;
 };
 export type ArtworkSummaryItemStoryQuery = {
     readonly response: ArtworkSummaryItemStoryQueryResponse;
@@ -17,31 +17,31 @@ export type ArtworkSummaryItemStoryQuery = {
 
 /*
 query ArtworkSummaryItemStoryQuery {
-  order: ecommerceOrder(id: "foo") {
+  order: commerceOrder(id: "foo") {
     __typename
     ...ArtworkSummaryItem_order
-    __id
+    id
   }
 }
 
-fragment ArtworkSummaryItem_order on Order {
-  seller {
+fragment ArtworkSummaryItem_order on CommerceOrder {
+  sellerDetails {
     __typename
     ... on Partner {
       name
     }
     ... on Node {
-      __id
+      id
     }
     ... on User {
-      __id
+      id
     }
   }
   lineItems {
     edges {
       node {
         artwork {
-          artist_names
+          artist_names: artistNames
           title
           date
           shippingOrigin
@@ -49,15 +49,13 @@ fragment ArtworkSummaryItem_order on Order {
             resized_ArtworkSummaryItem: resized(width: 55) {
               url
             }
-            __id: id
           }
-          __id
+          id
         }
-        __id
+        id
       }
     }
   }
-  __id
 }
 */
 
@@ -66,31 +64,25 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "foo",
-    "type": "String!"
+    "value": "foo"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSummaryItemStoryQuery",
-  "id": null,
-  "text": "query ArtworkSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    __id\n  }\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSummaryItemStoryQuery",
@@ -101,9 +93,9 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -111,8 +103,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSummaryItem_order",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -125,24 +116,24 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v2,
+          (v1/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "seller",
+            "name": "sellerDetails",
             "storageKey": null,
             "args": null,
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2,
-              v1,
+              (v1/*: any*/),
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
@@ -164,7 +155,7 @@ return {
             "name": "lineItems",
             "storageKey": null,
             "args": null,
-            "concreteType": "OrderLineItemConnection",
+            "concreteType": "CommerceLineItemConnection",
             "plural": false,
             "selections": [
               {
@@ -173,7 +164,7 @@ return {
                 "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "OrderLineItemEdge",
+                "concreteType": "CommerceLineItemEdge",
                 "plural": true,
                 "selections": [
                   {
@@ -182,7 +173,7 @@ return {
                     "name": "node",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "OrderLineItem",
+                    "concreteType": "CommerceLineItem",
                     "plural": false,
                     "selections": [
                       {
@@ -196,8 +187,8 @@ return {
                         "selections": [
                           {
                             "kind": "ScalarField",
-                            "alias": null,
-                            "name": "artist_names",
+                            "alias": "artist_names",
+                            "name": "artistNames",
                             "args": null,
                             "storageKey": null
                           },
@@ -240,8 +231,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -255,32 +245,32 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": "__id",
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
                               }
                             ]
                           },
-                          v1
+                          (v2/*: any*/)
                         ]
                       },
-                      v1
+                      (v2/*: any*/)
                     ]
                   }
                 ]
               }
             ]
           },
-          v1
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSummaryItemStoryQuery",
+    "id": null,
+    "text": "query ArtworkSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...ArtworkSummaryItem_order\n    id\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'bfcfbadc3bfe111c7ea2809b35db6f29';
+(node as any).hash = 'e0867a7c2273dbcb65cb962b7bb65c9c';
 export default node;

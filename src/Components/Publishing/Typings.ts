@@ -30,6 +30,7 @@ export enum AdUnit {
 
   Mobile_TopLeaderboard = "Mobile_TopLeaderboard",
   Mobile_InContentMR1 = "Mobile_InContentMR1",
+  Mobile_InContentMR2 = "Mobile_InContentMR2",
   Mobile_InContentLB1 = "Mobile_InContentLB1",
   Mobile_InContentLB2 = "Mobile_InContentLB2",
 
@@ -55,6 +56,7 @@ export enum AdDimension {
   Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom = "970x250",
   Mobile_TopLeaderboard = "300x50",
   Mobile_InContentMR1 = "300x50",
+  Mobile_InContentMR2 = "300x250",
   Mobile_InContentLB1 = "300x50",
   Mobile_InContentLB2 = "300x50",
   Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom = "300x250",
@@ -89,6 +91,7 @@ export interface ArticleData {
   postscript?: string
   date?: string
   published_at?: string
+  lead_paragraph?: string
   sections?: SectionData[]
   series?: {
     description?: string
@@ -108,6 +111,8 @@ export interface ArticleData {
     partner_condensed_logo?: string
   }
   shouldAdRender?: boolean
+  partner?: ArticlePartner
+  sale?: ArticleSale
 }
 
 export type SectionType =
@@ -142,7 +147,7 @@ export interface ImageData {
   caption?: string
   credit?: string
   date?: string
-  height?: number
+  height: number
   id?: string
   index?: number
   image?: string
@@ -152,7 +157,7 @@ export interface ImageData {
   url?: string
   partner?: GravityEntity
   slug?: string
-  width?: number
+  width: number
 }
 
 export interface GravityEntity {
@@ -187,4 +192,30 @@ export interface RelatedArticleCanvasData {
   slug: string
   thumbnail_title: string
   thumbnail_image: string
+}
+
+export interface ArticleSale {
+  id: string
+  name: string
+  href: string
+  cover_image?: {
+    cropped: {
+      url: string
+    }
+  }
+}
+
+export interface ArticlePartner {
+  default_profile_id: string
+  name: string
+  type: string
+  profile: {
+    id: string
+    href: string
+    image?: {
+      cropped: {
+        url: string
+      }
+    }
+  }
 }

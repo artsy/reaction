@@ -3,7 +3,10 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { Flex, Sans, Serif, Spacer } from "@artsy/palette"
-import { StepSummaryItem, StepSummaryItemProps } from "Components/v2"
+import {
+  StepSummaryItem,
+  StepSummaryItemProps,
+} from "Components/StepSummaryItem"
 import { Omit } from "lodash"
 
 export interface TransactionDetailsSummaryItemProps
@@ -173,8 +176,8 @@ const SecondaryEntry: React.SFC<SecondaryEntryProps> = ({ label, value }) => (
 )
 
 graphql`
-  fragment TransactionDetailsSummaryItemOfferProperties on Offer {
-    id
+  fragment TransactionDetailsSummaryItemOfferProperties on CommerceOffer {
+    internalID
     amount(precision: 2)
     amountCents
     shippingTotal(precision: 2)
@@ -192,7 +195,7 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
   TransactionDetailsSummaryItem,
   {
     order: graphql`
-      fragment TransactionDetailsSummaryItem_order on Order {
+      fragment TransactionDetailsSummaryItem_order on CommerceOrder {
         __typename
         mode
         shippingTotal(precision: 2)
@@ -202,7 +205,7 @@ export const TransactionDetailsSummaryItemFragmentContainer = createFragmentCont
         itemsTotal(precision: 2)
         totalListPrice(precision: 2)
         buyerTotal(precision: 2)
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             ...TransactionDetailsSummaryItemOfferProperties @relay(mask: false)
           }

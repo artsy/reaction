@@ -1,5 +1,6 @@
+import { useSystemContext } from "Artsy"
 import { DateTime } from "luxon"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { getCurrentTimeAsIsoString } from "Utils/getCurrentTimeAsIsoString"
 import { getOffsetBetweenGravityClock } from "Utils/time"
 
@@ -24,55 +25,43 @@ import { getOffsetBetweenGravityClock } from "Utils/time"
  *                 every second.
  */
 
-interface State {
-  currentTime: string
-  timeOffsetInMilliseconds: number
+interface WithCurrentTimeProps {
+  interval?: number
+  syncWithServer?: boolean
+  children: (currentTime: string) => React.ReactElement<any>
 }
 
-export class WithCurrentTime extends React.Component<
-  {
-    interval?: number
-    syncWithServer?: boolean
-    children: (currentTime: string) => React.ReactNode
-  },
-  State
-> {
-  state = {
-    currentTime: getCurrentTimeAsIsoString(),
-    timeOffsetInMilliseconds: 0,
+export const WithCurrentTime: React.FC<WithCurrentTimeProps> = ({
+  children,
+  interval = 1000,
+  syncWithServer,
+}) => {
+  const { relayEnvironment } = useSystemContext()
+  const [currentTime, setCurrentTime] = useState(getCurrentTimeAsIsoString())
+  const [timeOffsetInMilliseconds, setTimeOffsetInMilliseconds] = useState(0)
+  let intervalId
+
+  function updateCurrentTime() {
+    setCurrentTime(getCurrentTimeAsIsoString())
   }
 
-  intervalId: NodeJS.Timer
-
-  componentDidMount() {
-    if (this.props.syncWithServer) {
-      getOffsetBetweenGravityClock().then(timeOffsetInMilliseconds => {
-        this.setState({ timeOffsetInMilliseconds })
+  useEffect(() => {
+    if (syncWithServer) {
+      getOffsetBetweenGravityClock(relayEnvironment).then(offset => {
+        setTimeOffsetInMilliseconds(offset)
       })
     }
 
-    this.intervalId = setInterval(
-      this.setCurrentTime,
-      this.props.interval || 1000
-    )
-  }
+    intervalId = setInterval(updateCurrentTime, interval || 1000)
 
-  componentWillUnmount() {
-    clearInterval(this.intervalId)
-  }
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
 
-  setCurrentTime = () => {
-    this.setState({
-      currentTime: getCurrentTimeAsIsoString(),
-    })
-  }
-
-  render() {
-    const { currentTime, timeOffsetInMilliseconds } = this.state
-    return this.props.children(
-      DateTime.fromISO(currentTime)
-        .minus({ millisecond: timeOffsetInMilliseconds })
-        .toString()
-    )
-  }
+  return children(
+    DateTime.fromISO(currentTime)
+      .minus({ millisecond: timeOffsetInMilliseconds })
+      .toString()
+  )
 }

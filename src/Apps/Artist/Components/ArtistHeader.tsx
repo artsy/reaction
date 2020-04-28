@@ -1,16 +1,23 @@
-import { Box, Flex, Image, Serif, Spacer } from "@artsy/palette"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Box, Button, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
+import { StyledLink } from "Apps/Artist/Components/StyledLink"
+import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { Mediator, SystemContextConsumer } from "Artsy"
 import { track, Track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { RouterLink } from "Artsy/Router/RouterLink"
+import { Carousel } from "Components/Carousel"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { Carousel } from "Components/v2/Carousel"
 import React, { Component, Fragment } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import styled from "styled-components"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { get } from "Utils/get"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 import { Media } from "Utils/Responsive"
 import { userIsAdmin } from "Utils/user"
+import { ArtistIndicator } from "./ArtistIndicator"
+import { highestCategory } from "./MarketInsights/MarketInsights"
 
 /**
  * This H1 and H2 were added for SEO purposes
@@ -33,15 +40,38 @@ const H1 = styled.h1`
 
 const H2 = H1.withComponent("h2")
 
+const WorksForSaleButtonWrapper = styled(Box)`
+  position: absolute;
+  top: 166px;
+  left: 12px;
+`
+
+export const WorksForSaleButton = styled(Box)`
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+`
+
 interface Props {
   artist: ArtistHeader_artist
   user?: User
   mediator?: Mediator
 }
 
+const CATEGORIES = {
+  "blue-chip": "Blue Chip Representation",
+  "top-established": "Established Representation",
+  "top-emerging": "Emerging Representation",
+}
+
 type Image = Props["artist"]["carousel"]["images"][0]
 
 const carouselSlideTrack: Track<null, null, [Image]> = track
+
+const shopAllWorksButtonText = (forSaleArtworksCount: number) => {
+  return forSaleArtworksCount > 0
+    ? `Shop works for sale (${forSaleArtworksCount.toLocaleString()})`
+    : `Browse artworks`
+}
 
 @track<Props>(
   props =>
@@ -49,8 +79,8 @@ const carouselSlideTrack: Track<null, null, [Image]> = track
       context_module: "Header",
       // TODO: Old schema for the Follow button
       modelName: "artist",
-      entity_slug: props.artist.id,
-      entity_id: props.artist._id,
+      entity_slug: props.artist.slug,
+      entity_id: props.artist.internalID,
     } as Schema.ContextModule & Schema.Old)
 )
 export class ArtistHeader extends Component<Props> {
@@ -91,10 +121,19 @@ export class LargeArtistHeader extends Component<Props> {
     // no-op
   }
 
+  @track<Props>(props => ({
+    action_type: Schema.ActionType.Click,
+    subject: "Shop all works for sale",
+    destination_path: `artist/${props.artist.slug}/works-for-sale`,
+  }))
+  handleBrowseWorksClick() {
+    // no-op
+  }
+
   render() {
     const { props } = this
     const {
-      artist: { carousel },
+      artist: { carousel, statuses },
       user,
     } = props
 
@@ -102,62 +141,103 @@ export class LargeArtistHeader extends Component<Props> {
     const isAdmin = userIsAdmin(user)
 
     return (
-      <Box width="100%">
-        {hasImages && (
-          <section>
-            <Carousel
-              height="200px"
-              data={carousel.images as object[]}
-              render={(slide: Image) => {
-                return (
-                  <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
-                    <Image
-                      px={5}
-                      src={slide.resized.url}
-                      width={slide.resized.width}
-                      height={slide.resized.height}
-                      preventRightClick={!isAdmin}
-                    />
-                  </a>
-                )
-              }}
-            />
-          </section>
-        )}
-        <Spacer my={2} />
-
-        <span id="jumpto-ArtistHeader" />
-
-        <Flex justifyContent="space-between">
-          <Box>
-            <H1>
-              <Serif size="10">{props.artist.name}</Serif>
-            </H1>
-            <Flex>
-              <H2>
-                <Serif size="3">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
-                </Serif>
-              </H2>
-              <Spacer mr={2} />
-              {props.artist.counts.follows > 50 && (
-                <Serif size="3">
-                  {props.artist.counts.follows.toLocaleString()} followers
-                </Serif>
+      <HorizontalPadding>
+        <Box width="100%" data-test={ContextModule.artistHeader}>
+          {hasImages && (
+            <>
+              <Carousel
+                height="200px"
+                options={{ pageDots: false }}
+                data={carousel.images as object[]}
+                render={(slide: Image, slideIndex: number) => {
+                  return (
+                    // FIXME: Update this type to appropriately accept children
+                    // @ts-ignore
+                    <RouterLink
+                      // FIXME: this `as never` should go away
+                      href={slide.href as never}
+                      onClick={() => this.onClickSlide(slide)}
+                    >
+                      <Image
+                        px={0.3}
+                        lazyLoad={slideIndex > 5}
+                        src={slide.resized.url}
+                        width={slide.resized.width}
+                        height={slide.resized.height}
+                        preventRightClick={!isAdmin}
+                      />
+                    </RouterLink>
+                  )
+                }}
+              />
+              {statuses.artworks && (
+                <WorksForSaleButtonWrapper pl={4}>
+                  <StyledLink
+                    onClick={() => this.handleBrowseWorksClick()}
+                    to={`/artist/${props.artist.slug}/works-for-sale`}
+                  >
+                    <WorksForSaleButton>
+                      <Button variant="primaryWhite" size="small">
+                        {shopAllWorksButtonText(
+                          props.artist.counts.forSaleArtworks
+                        )}
+                      </Button>
+                    </WorksForSaleButton>
+                  </StyledLink>
+                </WorksForSaleButtonWrapper>
               )}
+            </>
+          )}
+          <Spacer my={2} />
+
+          <span id="jumpto-ArtistHeader" />
+
+          <Flex justifyContent="space-between">
+            <Box>
+              <H1>
+                <Serif size="10">{props.artist.name}</Serif>
+              </H1>
+              <Flex>
+                <H2>
+                  <Serif size="3">
+                    {props.artist.formattedNationalityAndBirthday}
+                  </Serif>
+                </H2>
+                <Spacer mr={2} />
+              </Flex>
+            </Box>
+            <Flex justifyContent="space-between">
+              {props.artist.counts.follows > 50 && (
+                <Flex flexDirection="column" alignItems="center">
+                  <Sans size="5t" weight="medium">
+                    {props.artist.counts.follows.toLocaleString()}
+                  </Sans>
+                  <Sans size="2" color="black60" weight="medium">
+                    Followers
+                  </Sans>
+                </Flex>
+              )}
+              <Spacer mr={3} />
+              <FollowArtistButton
+                useDeprecatedButtonStyle={false}
+                artist={props.artist}
+                user={user}
+                onOpenAuthModal={() =>
+                  handleOpenAuth(props.mediator, props.artist)
+                }
+              >
+                Follow
+              </FollowArtistButton>
             </Flex>
-          </Box>
-          <FollowArtistButton
-            useDeprecatedButtonStyle={false}
-            artist={props.artist}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
+          </Flex>
+        </Box>
+        <Flex flexDirection="row">
+          {renderRepresentationStatus(props.artist)}
+          {renderAuctionHighlight(props.artist) &&
+            renderRepresentationStatus(props.artist) && <Spacer mr={5} />}
+          {renderAuctionHighlight(props.artist)}
         </Flex>
-      </Box>
+      </HorizontalPadding>
     )
   }
 }
@@ -178,10 +258,19 @@ export class SmallArtistHeader extends Component<Props> {
     // no-op
   }
 
+  @track<Props>(props => ({
+    action_type: Schema.ActionType.Click,
+    subject: "Clicked shop works for sale",
+    destination_path: `artist/${props.artist.slug}/works-for-sale`,
+  }))
+  handleBrowseWorksClick() {
+    // no-op
+  }
+
   render() {
     const props = this.props
     const {
-      artist: { carousel },
+      artist: { carousel, statuses },
       user,
     } = props
 
@@ -189,18 +278,19 @@ export class SmallArtistHeader extends Component<Props> {
     const isAdmin = userIsAdmin(user)
 
     return (
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" data-test={ContextModule.artistHeader}>
         {hasImages && (
           <Fragment>
             <Carousel
-              data={carousel.images as object[]}
-              height="200px"
+              data={carousel.images}
+              height="180px"
+              options={{ pageDots: false }}
               render={slide => {
                 return (
                   <a href={slide.href} onClick={() => this.onClickSlide(slide)}>
                     <Image
-                      px={5}
                       src={slide.resized.url}
+                      px={0.3}
                       width={slide.resized.width}
                       height={slide.resized.height}
                       preventRightClick={!isAdmin}
@@ -209,67 +299,192 @@ export class SmallArtistHeader extends Component<Props> {
                 )
               }}
             />
+            {statuses.artworks && (
+              <WorksForSaleButtonWrapper>
+                <StyledLink
+                  onClick={() => this.handleBrowseWorksClick()}
+                  to={`/artist/${props.artist.slug}/works-for-sale`}
+                >
+                  <WorksForSaleButton>
+                    <Button variant="primaryWhite" size="small">
+                      {shopAllWorksButtonText(
+                        props.artist.counts.forSaleArtworks
+                      )}
+                    </Button>
+                  </WorksForSaleButton>
+                </StyledLink>
+              </WorksForSaleButtonWrapper>
+            )}
             <Spacer my={2} />
           </Fragment>
         )}
-
         <span id="jumpto-ArtistHeader" />
-        <Flex flexDirection="column" alignItems="center">
-          <H1>
-            <Serif size="5">{props.artist.name}</Serif>
-          </H1>
-          <Flex>
-            <Box mx={1}>
-              <H2>
-                <Serif size="2">
-                  {props.artist.nationality && `${props.artist.nationality}, `}
-                  {props.artist.years}
-                </Serif>
-              </H2>
-            </Box>
-            {props.artist.counts.follows > 50 && (
-              <Serif size="2">
+        <Box mx={2}>
+          <Flex flexDirection="column" alignItems="center">
+            <H1>
+              <Serif size="5">{props.artist.name}</Serif>
+            </H1>
+            <Flex>
+              <Box mx={1}>
+                <H2>
+                  <Serif size="2">
+                    {props.artist.formattedNationalityAndBirthday}
+                  </Serif>
+                </H2>
+              </Box>
+            </Flex>
+          </Flex>
+        </Box>
+        <Spacer mb={0.5} />
+        <Flex flexDirection="row" justifyContent="center">
+          {props.artist.counts.follows > 50 && (
+            <Flex>
+              <Sans size="2" weight="medium">
                 {props.artist.counts.follows.toLocaleString()} followers
-              </Serif>
-            )}
+              </Sans>
+              <Sans size="2" color="black100" mx={0.3} display="inline-block">
+                •
+              </Sans>
+            </Flex>
+          )}
+          <Flex>
+            <FollowArtistButton
+              artist={props.artist}
+              useDeprecatedButtonStyle={false}
+              buttonProps={{ width: "100%" }}
+              user={user}
+              render={({ is_followed }) => {
+                return (
+                  <Sans
+                    size="2"
+                    weight="medium"
+                    color="black"
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    {is_followed ? "Following" : "Follow"}
+                  </Sans>
+                )
+              }}
+              onOpenAuthModal={() =>
+                handleOpenAuth(props.mediator, props.artist)
+              }
+            >
+              Follow
+            </FollowArtistButton>
           </Flex>
         </Flex>
-        <Box my={2}>
-          <FollowArtistButton
-            artist={props.artist}
-            useDeprecatedButtonStyle={false}
-            buttonProps={{ width: "100%" }}
-            user={user}
-            onOpenAuthModal={() => handleOpenAuth(props.mediator, props.artist)}
-          >
-            Follow
-          </FollowArtistButton>
-        </Box>
+        <Flex flexDirection="row" justifyContent="center">
+          {renderRepresentationStatus(props.artist)}
+          {renderAuctionHighlight(props.artist) &&
+            renderRepresentationStatus(props.artist) && <Spacer mr={5} />}
+          {renderAuctionHighlight(props.artist)}
+        </Flex>
       </Flex>
     )
   }
 }
 
 const handleOpenAuth = (mediator, artist) => {
-  openAuthModal(mediator, {
+  openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: Schema.ContextModule.ArtistPage,
-    intent: AuthModalIntent.FollowArtist,
+    contextModule: ContextModule.artistHeader,
+    intent: AuthIntent.followArtist,
   })
+}
+
+const renderAuctionHighlight = artist => {
+  const topAuctionResult = get(
+    artist,
+    a => artist.auctionResultsConnection.edges[0].node.price_realized.display
+  )
+  if (topAuctionResult) {
+    const auctionLabel = topAuctionResult + " Auction Record"
+    return (
+      <ArtistIndicator
+        label={auctionLabel}
+        type="high-auction"
+        link={`/artist/${artist.slug}/auction-results`}
+      />
+    )
+  }
+}
+
+const renderRepresentationStatus = artist => {
+  const { artistHightlights } = artist
+  const { partnersConnection } = artistHightlights
+  if (
+    partnersConnection &&
+    partnersConnection.edges &&
+    partnersConnection.edges.length > 0
+  ) {
+    const highCategory = highestCategory(partnersConnection.edges)
+
+    return (
+      <ArtistIndicator
+        label={CATEGORIES[highCategory]}
+        type={highCategory}
+        link={`/artist/${artist.slug}/cv`}
+      />
+    )
+  }
 }
 
 export const ArtistHeaderFragmentContainer = createFragmentContainer(
   ArtistHeader,
   {
     artist: graphql`
-      fragment ArtistHeader_artist on Artist {
-        _id
-        id
+      fragment ArtistHeader_artist on Artist
+        @argumentDefinitions(
+          partnerCategory: {
+            type: "[String]"
+            defaultValue: ["blue-chip", "top-established", "top-emerging"]
+          }
+        ) {
+        artistHightlights: highlights {
+          partnersConnection(
+            first: 10
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: $partnerCategory
+          ) {
+            edges {
+              node {
+                categories {
+                  slug
+                }
+              }
+            }
+          }
+        }
+
+        auctionResultsConnection(
+          recordsTrusted: true
+          first: 1
+          sort: PRICE_AND_DATE_DESC
+        ) {
+          edges {
+            node {
+              price_realized: priceRealized {
+                display(format: "0a")
+              }
+              organization
+              sale_date: saleDate(format: "YYYY")
+            }
+          }
+        }
+        internalID
+        slug
         name
-        nationality
-        years
+        formattedNationalityAndBirthday
         counts {
           follows
+          forSaleArtworks
+        }
+        statuses {
+          artworks
         }
         carousel {
           images {

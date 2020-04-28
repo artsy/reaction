@@ -8,7 +8,7 @@ import {
   AddressForm,
   AddressTouched,
   emptyAddress,
-} from "Apps/Order/Components/AddressForm"
+} from "Components/AddressForm"
 
 import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { validateAddress } from "Apps/Order/Utils/formValidators"
@@ -68,10 +68,13 @@ export class PaymentPicker extends React.Component<
 
   private getInitialCreditCardSelection(): PaymentPickerState["creditCardSelection"] {
     if (this.props.order.creditCard) {
-      return { type: "existing", id: this.props.order.creditCard.id }
+      return { type: "existing", id: this.props.order.creditCard.internalID }
     } else {
       return this.props.me.creditCards.edges.length
-        ? { type: "existing", id: this.props.me.creditCards.edges[0].node.id }
+        ? {
+            type: "existing",
+            id: this.props.me.creditCards.edges[0].node.internalID,
+          }
         : { type: "new" }
     }
   }
@@ -108,6 +111,7 @@ export class PaymentPicker extends React.Component<
 
   getCreditCardId: () => Promise<
     | { type: "error"; error: string | undefined }
+    | { type: "internal_error"; error: string | undefined }
     | { type: "invalid_form" }
     | { type: "success"; creditCardId: string }
   > = async () => {
@@ -135,17 +139,33 @@ export class PaymentPicker extends React.Component<
       return { type: "invalid_form" }
     }
 
-    const creditCardOrError = (await this.createCreditCard({
-      input: {
-        token: stripeResult.token.id,
-        oneTimeUse: !saveNewCreditCard,
-      },
-    })).createCreditCard.creditCardOrError
+    const creditCardOrError = (
+      await this.createCreditCard({
+        input: {
+          token: stripeResult.token.id,
+          oneTimeUse: !saveNewCreditCard,
+        },
+      })
+    ).createCreditCard.creditCardOrError
 
-    if (creditCardOrError.mutationError) {
+    if (
+      creditCardOrError.mutationError &&
+      creditCardOrError.mutationError.detail
+    ) {
       return { type: "error", error: creditCardOrError.mutationError.detail }
-    }
-    return { type: "success", creditCardId: creditCardOrError.creditCard.id }
+    } else if (
+      creditCardOrError.mutationError &&
+      creditCardOrError.mutationError.message
+    ) {
+      return {
+        type: "internal_error",
+        error: creditCardOrError.mutationError.message,
+      }
+    } else
+      return {
+        type: "success",
+        creditCardId: creditCardOrError.creditCard.internalID,
+      }
   }
 
   @track((props: PaymentPickerProps, state, args) => {
@@ -206,7 +226,7 @@ export class PaymentPicker extends React.Component<
     // only add the unsaved card to the cards array if it exists and is not already there
     if (
       orderCard != null &&
-      !creditCardsArray.some(card => card.id === orderCard.id)
+      !creditCardsArray.some(card => card.internalID === orderCard.internalID)
     ) {
       creditCardsArray.unshift(orderCard)
     }
@@ -235,9 +255,9 @@ export class PaymentPicker extends React.Component<
             >
               {creditCardsArray
                 .map(e => {
-                  const { id, ...creditCardProps } = e
+                  const { internalID, ...creditCardProps } = e
                   return (
-                    <BorderedRadio value={id} key={id}>
+                    <BorderedRadio value={internalID} key={internalID}>
                       <CreditCardDetails
                         responsive={false}
                         {...creditCardProps}
@@ -247,6 +267,7 @@ export class PaymentPicker extends React.Component<
                 })
                 .concat([
                   <BorderedRadio
+                    data-test="AddNewCard"
                     value="new"
                     key="new"
                     selected={creditCardSelection.type === "new"}
@@ -283,6 +304,7 @@ export class PaymentPicker extends React.Component<
                 <Checkbox
                   selected={this.state.hideBillingAddress}
                   onSelect={this.handleChangeHideBillingAddress.bind(this)}
+                  data-test="BillingAndShippingAreTheSame"
                 >
                   Billing and shipping addresses are the same.
                 </Checkbox>
@@ -300,6 +322,7 @@ export class PaymentPicker extends React.Component<
               <Spacer mb={2} />
             </Collapse>
             <Checkbox
+              data-test="SaveNewCreditCard"
               selected={this.state.saveNewCreditCard}
               onSelect={() =>
                 this.setState({
@@ -352,17 +375,17 @@ export class PaymentPicker extends React.Component<
             creditCardOrError {
               ... on CreditCardMutationSuccess {
                 creditCard {
-                  id
+                  internalID
                   name
                   street1
                   street2
                   city
                   state
                   country
-                  postal_code
-                  expiration_month
-                  expiration_year
-                  last_digits
+                  postalCode
+                  expirationMonth
+                  expirationYear
+                  lastDigits
                   brand
                 }
               }
@@ -381,7 +404,7 @@ export class PaymentPicker extends React.Component<
   }
 
   private isPickup = () => {
-    return this.props.order.requestedFulfillment.__typename === "Pickup"
+    return this.props.order.requestedFulfillment.__typename === "CommercePickup"
   }
 
   private needsAddress = () => {
@@ -392,55 +415,55 @@ export class PaymentPicker extends React.Component<
 // Our mess of HOC wrappers is not amenable to ref forwarding, so to expose a
 // ref to the PaymentPicker instance (for getCreditCardId) we'll add an
 // `innerRef` prop which gets sneakily injected here
-const PaymentPickerWithInnerRef: React.SFC<
-  PaymentPickerProps & { innerRef: React.RefObject<PaymentPicker> }
-> = ({ innerRef, ...props }) => (
-  <PaymentPicker ref={innerRef} {...props as any} />
+const PaymentPickerWithInnerRef: React.SFC<PaymentPickerProps & {
+  innerRef: React.RefObject<PaymentPicker>
+}> = ({ innerRef, ...props }) => (
+  <PaymentPicker ref={innerRef} {...(props as any)} />
 )
 
 export const PaymentPickerFragmentContainer = createFragmentContainer(
   // 😭 HOCs
-  injectStripe(track()(
-    PaymentPickerWithInnerRef
-  ) as typeof PaymentPickerWithInnerRef),
+  injectStripe(
+    track()(PaymentPickerWithInnerRef) as typeof PaymentPickerWithInnerRef
+  ),
   {
     me: graphql`
       fragment PaymentPicker_me on Me {
         creditCards(first: 100) {
           edges {
             node {
-              id
+              internalID
               brand
-              last_digits
-              expiration_month
-              expiration_year
+              lastDigits
+              expirationMonth
+              expirationYear
             }
           }
         }
       }
     `,
     order: graphql`
-      fragment PaymentPicker_order on Order {
-        id
+      fragment PaymentPicker_order on CommerceOrder {
+        internalID
         mode
         state
         creditCard {
-          id
+          internalID
           name
           street1
           street2
           city
           state
           country
-          postal_code
-          expiration_month
-          expiration_year
-          last_digits
+          postalCode
+          expirationMonth
+          expirationYear
+          lastDigits
           brand
         }
         requestedFulfillment {
           __typename
-          ... on Ship {
+          ... on CommerceShip {
             name
             addressLine1
             addressLine2
@@ -449,7 +472,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
             country
             postalCode
           }
-          ... on Pickup {
+          ... on CommercePickup {
             fulfillmentType
           }
         }
@@ -457,7 +480,7 @@ export const PaymentPickerFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }

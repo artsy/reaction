@@ -1,4 +1,7 @@
+import { createMockNetworkLayerTestAliasPrecendenceQuery } from "__generated__/createMockNetworkLayerTestAliasPrecendenceQuery.graphql"
+import { createMockNetworkLayerTestAliasQuery } from "__generated__/createMockNetworkLayerTestAliasQuery.graphql"
 import { createMockNetworkLayerTestMutationResultsMutation } from "__generated__/createMockNetworkLayerTestMutationResultsMutation.graphql"
+import { createMockNetworkLayerTestQuery } from "__generated__/createMockNetworkLayerTestQuery.graphql"
 import { createMockFetchQuery } from "DevTools/createMockNetworkLayer"
 import { commitMutation, graphql } from "react-relay"
 import {
@@ -6,7 +9,7 @@ import {
   fetchQuery,
   GraphQLTaggedNode,
   Network,
-  OperationBase,
+  OperationType,
   RecordSource,
   Store,
 } from "relay-runtime"
@@ -14,9 +17,9 @@ import { createMockNetworkLayer2 } from "../index"
 jest.unmock("react-relay")
 
 describe("createMockNetworkLayer", () => {
-  function fetchQueryWithResolvers(
+  function _fetchQueryWithResolvers<T extends OperationType>(
     options: Parameters<typeof createMockNetworkLayer2>[0],
-    query?: GraphQLTaggedNode
+    query: GraphQLTaggedNode
   ) {
     const network = createMockNetworkLayer2(options)
 
@@ -24,22 +27,26 @@ describe("createMockNetworkLayer", () => {
     const store = new Store(source)
     const environment = new Environment({ network, store })
 
-    return fetchQuery(
-      environment,
-      query ||
-        graphql`
-          query createMockNetworkLayerTestQuery {
-            artwork(id: "untitled") {
-              __id
-              title
-            }
+    return fetchQuery<T>(environment, query, {})
+  }
+
+  function fetchArtworkQueryWithResolvers(
+    options: Parameters<typeof createMockNetworkLayer2>[0]
+  ) {
+    return _fetchQueryWithResolvers<createMockNetworkLayerTestQuery>(
+      options,
+      graphql`
+        query createMockNetworkLayerTestQuery {
+          artwork(id: "untitled") {
+            id
+            title
           }
-        `,
-      {}
+        }
+      `
     )
   }
 
-  function fetchMutationResults<Input extends OperationBase>({
+  function fetchMutationResults<Input extends OperationType>({
     mockMutationResults,
     query,
     variables,
@@ -74,27 +81,18 @@ describe("createMockNetworkLayer", () => {
 
   describe("preserves the upstream behaviour", () => {
     it("returns the data if present", async () => {
-      const data = await fetchQueryWithResolvers({
+      const data = await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { title: "Untitled", __id: "untitled" },
+          artwork: { title: "Untitled", id: "untitled" },
         },
       })
       expect(data.artwork.title).toEqual("Untitled")
     })
 
     it("returns null for nullable fields which are given as null", async () => {
-      const data = await fetchQueryWithResolvers({
+      const data = await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { title: null, __id: "null" },
-        },
-      })
-      expect(data.artwork.title).toEqual(null)
-    })
-
-    it("converts undefined to null", async () => {
-      const data = await fetchQueryWithResolvers({
-        mockData: {
-          artwork: { title: undefined, __id: "null" },
+          artwork: { title: null, id: "null" },
         },
       })
       expect(data.artwork.title).toEqual(null)
@@ -103,9 +101,9 @@ describe("createMockNetworkLayer", () => {
 
   it("complains with a helpful error when selected field is not present", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { __id: "blah" },
+          artwork: { id: "blah" },
         },
       })
     } catch (e) {
@@ -119,9 +117,9 @@ describe("createMockNetworkLayer", () => {
   // see https://github.com/graphql/graphql-js/commit/3521e1429eec7eabeee4da65c93306b51308727b
   it.skip("complains with a helpful error when leaf field type is incorrect", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { __id: "blah", title: 32 },
+          artwork: { id: "blah", title: 32 },
         },
       })
     } catch (e) {
@@ -132,9 +130,9 @@ describe("createMockNetworkLayer", () => {
   // TODO: related to above, the only check right now is that you can't return an array as a string
   it("complains with a helpful error when leaf field type is incorrect", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
-          artwork: { __id: "blah", title: [] },
+          artwork: { id: "blah", title: [] },
         },
       })
     } catch (e) {
@@ -146,7 +144,7 @@ describe("createMockNetworkLayer", () => {
 
   it("complains with a helpful error when non-leaf field type is incorrect", async () => {
     try {
-      await fetchQueryWithResolvers({
+      await fetchArtworkQueryWithResolvers({
         mockData: {
           artwork: 3,
         },
@@ -159,7 +157,7 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("Does not complain when non-leaf nullable field type is null", async () => {
-    const data = await fetchQueryWithResolvers({
+    const data = await fetchArtworkQueryWithResolvers({
       mockData: {
         artwork: null,
       },
@@ -169,96 +167,121 @@ describe("createMockNetworkLayer", () => {
   })
 
   it("uses data provided with an aliased name", async () => {
-    const data = await fetchQueryWithResolvers(
+    const data = await _fetchQueryWithResolvers<
+      createMockNetworkLayerTestAliasQuery
+    >(
       {
         mockData: {
           artist: {
-            forSaleArtworks: [{ __id: "for-sale-work" }],
-            notForSaleArtworks: [{ __id: "no-for-sale-work" }],
-            __id: "id",
+            forSaleArtworks: { edges: [{ node: { id: "for-sale-work" } }] },
+            notForSaleArtworks: {
+              edges: [{ node: { id: "no-for-sale-work" } }],
+            },
+            id: "id",
           },
         },
       },
       graphql`
         query createMockNetworkLayerTestAliasQuery {
           artist(id: "banksy") {
-            forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-              __id
+            forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {
+              edges {
+                node {
+                  id
+                }
+              }
             }
-            notForSaleArtworks: artworks(filter: IS_NOT_FOR_SALE) {
-              __id
+            notForSaleArtworks: artworksConnection(filter: IS_NOT_FOR_SALE) {
+              edges {
+                node {
+                  id
+                }
+              }
             }
           }
         }
       `
     )
-    expect(data.artist.forSaleArtworks).toEqual([{ __id: "for-sale-work" }])
-    expect(data.artist.notForSaleArtworks).toEqual([
-      { __id: "no-for-sale-work" },
-    ])
+    expect(data.artist.forSaleArtworks.edges[0].node).toEqual({
+      id: "for-sale-work",
+    })
+    expect(data.artist.notForSaleArtworks.edges[0].node).toEqual({
+      id: "no-for-sale-work",
+    })
   })
 
   it("uses the alias over the default name if both are present", async () => {
-    const data = await fetchQueryWithResolvers(
+    const data = await _fetchQueryWithResolvers<
+      createMockNetworkLayerTestAliasPrecendenceQuery
+    >(
       {
         mockData: {
           artist: {
-            forSaleArtworks: [{ __id: "for-sale-work" }],
-            artworks: [{ __id: "no-for-sale-work" }],
-            __id: "id",
+            forSaleArtworks: { edges: [{ node: { id: "for-sale-work" } }] },
+            artworks: { edges: [{ node: { id: "no-for-sale-work" } }] },
+            id: "id",
           },
         },
       },
       graphql`
         query createMockNetworkLayerTestAliasPrecendenceQuery {
           artist(id: "banksy") {
-            forSaleArtworks: artworks(filter: IS_FOR_SALE) {
-              __id
+            forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {
+              edges {
+                node {
+                  id
+                }
+              }
             }
           }
         }
       `
     )
-    expect(data.artist.forSaleArtworks).toEqual([{ __id: "for-sale-work" }])
+    expect(data.artist.forSaleArtworks.edges[0].node).toEqual({
+      id: "for-sale-work",
+    })
   })
 
   describe("mutations", () => {
-    const query = graphql`
-      mutation createMockNetworkLayerTestMutationResultsMutation(
-        $input: buyerAcceptOfferInput!
-      ) {
-        ecommerceBuyerAcceptOffer(input: $input) {
-          orderOrError {
-            ... on OrderWithMutationFailure {
-              error {
-                type
-                code
-                data
+    const query =
+      // TODO: Inputs to the mutation might have changed case of the keys!
+      graphql`
+        mutation createMockNetworkLayerTestMutationResultsMutation(
+          $input: CommerceBuyerAcceptOfferInput!
+        ) {
+          commerceBuyerAcceptOffer(input: $input) {
+            orderOrError {
+              ... on CommerceOrderWithMutationFailure {
+                error {
+                  type
+                  code
+                  data
+                }
               }
-            }
-            ... on OrderWithMutationSuccess {
-              order {
-                id
-                state
+              ... on CommerceOrderWithMutationSuccess {
+                order {
+                  internalID
+                  state
+                }
               }
             }
           }
         }
-      }
-    `
+      `
 
     it("allows mocking successful mutation results", async () => {
       const data = await fetchMutationResults<
         createMockNetworkLayerTestMutationResultsMutation
       >({
         mockMutationResults: {
-          ecommerceBuyerAcceptOffer: {
+          commerceBuyerAcceptOffer: {
             orderOrError: {
-              __typename: "OrderWithMutationSuccess",
+              __typename: "CommerceOrderWithMutationSuccess",
               order: {
-                __typename: "OfferOrder",
+                __typename: "CommerceOfferOrder",
                 id: "my-order",
-                state: "MOCKED",
+                internalID: "my-order",
+                state: "ABANDONED",
               },
             },
           },
@@ -271,8 +294,8 @@ describe("createMockNetworkLayer", () => {
         },
       })
 
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
+      expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+        "ABANDONED"
       )
     })
 
@@ -281,12 +304,13 @@ describe("createMockNetworkLayer", () => {
         createMockNetworkLayerTestMutationResultsMutation
       >({
         mockMutationResults: {
-          ecommerceBuyerAcceptOffer: {
+          commerceBuyerAcceptOffer: {
             orderOrError: {
               order: {
-                __typename: "BuyOrder",
+                __typename: "CommerceBuyOrder",
                 id: "my-order",
-                state: "MOCKED",
+                internalID: "my-order",
+                state: "ABANDONED",
               },
             },
           },
@@ -299,8 +323,8 @@ describe("createMockNetworkLayer", () => {
         },
       })
 
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
+      expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+        "ABANDONED"
       )
     })
 
@@ -310,11 +334,12 @@ describe("createMockNetworkLayer", () => {
           createMockNetworkLayerTestMutationResultsMutation
         >({
           mockMutationResults: {
-            ecommerceBuyerAcceptOffer: {
+            commerceBuyerAcceptOffer: {
               orderOrError: {
                 order: {
                   id: "my-order",
-                  state: "MOCKED",
+                  internalID: "my-order",
+                  state: "ABANDONED",
                 },
               },
             },
@@ -328,7 +353,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Ambiguous object at path 'ecommerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [BuyOrder, OfferOrder]"`
+          `"RelayMockNetworkLayerError: Ambiguous object at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'. Add a __typename from this list: [CommerceBuyOrder, CommerceOfferOrder]"`
         )
       }
     })
@@ -338,11 +363,12 @@ describe("createMockNetworkLayer", () => {
         createMockNetworkLayerTestMutationResultsMutation
       >({
         mockMutationResults: {
-          ecommerceBuyerAcceptOffer: {
+          commerceBuyerAcceptOffer: {
             orderOrError: {
               order: {
                 id: "my-order",
-                state: "MOCKED",
+                internalID: "my-order",
+                state: "ABANDONED",
                 myLastOffer: {},
               },
             },
@@ -355,8 +381,8 @@ describe("createMockNetworkLayer", () => {
           },
         },
       })
-      expect(data.ecommerceBuyerAcceptOffer.orderOrError.order.state).toBe(
-        "MOCKED"
+      expect(data.commerceBuyerAcceptOffer.orderOrError.order.state).toBe(
+        "ABANDONED"
       )
     })
 
@@ -366,13 +392,14 @@ describe("createMockNetworkLayer", () => {
           createMockNetworkLayerTestMutationResultsMutation
         >({
           mockMutationResults: {
-            ecommerceBuyerAcceptOffer: {
+            commerceBuyerAcceptOffer: {
               orderOrError: {
-                __typename: "OrderWithMutationSuccess",
+                __typename: "CommerceOrderWithMutationSuccess",
                 order: {
-                  __typename: "OfferOrder",
+                  __typename: "CommerceOfferOrder",
                   id: "my-order",
-                  state: "MOCKED",
+                  internalID: "my-order",
+                  state: "ABANDONED",
                 },
               },
             },
@@ -396,9 +423,9 @@ describe("createMockNetworkLayer", () => {
           createMockNetworkLayerTestMutationResultsMutation
         >({
           mockMutationResults: {
-            ecommerceBuyerAcceptOffer: {
+            commerceBuyerAcceptOffer: {
               orderOrError: {
-                __typename: "OrderWithMutationSuccess",
+                __typename: "CommerceOrderWithMutationSuccess",
                 order: "hello I am a string",
               },
             },
@@ -412,7 +439,7 @@ describe("createMockNetworkLayer", () => {
         })
       } catch (e) {
         expect(e.message).toMatchInlineSnapshot(
-          `"RelayMockNetworkLayerError: Expected object of type 'Order' but got 'string' at path 'ecommerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
+          `"RelayMockNetworkLayerError: Expected object of type 'CommerceOrder!' but got 'string' at path 'commerceBuyerAcceptOffer/orderOrError/order' for operation 'createMockNetworkLayerTestMutationResultsMutation'"`
         )
       }
     })

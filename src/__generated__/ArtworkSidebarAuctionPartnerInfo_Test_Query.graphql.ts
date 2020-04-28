@@ -1,16 +1,35 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkSidebarAuctionPartnerInfo_artwork$ref } from "./ArtworkSidebarAuctionPartnerInfo_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarAuctionPartnerInfo_Test_QueryVariables = {};
 export type ArtworkSidebarAuctionPartnerInfo_Test_QueryResponse = {
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarAuctionPartnerInfo_artwork">;
+    } | null;
+};
+export type ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkSidebarAuctionPartnerInfo_artwork$ref;
+        readonly partner: ({
+            readonly name: string | null;
+            readonly id: string | null;
+        }) | null;
+        readonly sale_artwork: ({
+            readonly estimate: string | null;
+            readonly id: string | null;
+        }) | null;
+        readonly sale: ({
+            readonly internalID: string;
+            readonly is_closed: boolean | null;
+            readonly id: string | null;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type ArtworkSidebarAuctionPartnerInfo_Test_Query = {
     readonly response: ArtworkSidebarAuctionPartnerInfo_Test_QueryResponse;
     readonly variables: ArtworkSidebarAuctionPartnerInfo_Test_QueryVariables;
+    readonly rawResponse: ArtworkSidebarAuctionPartnerInfo_Test_QueryRawResponse;
 };
 
 
@@ -19,26 +38,24 @@ export type ArtworkSidebarAuctionPartnerInfo_Test_Query = {
 query ArtworkSidebarAuctionPartnerInfo_Test_Query {
   artwork(id: "auction_artwork_estimate_premium") {
     ...ArtworkSidebarAuctionPartnerInfo_artwork
-    __id
+    id
   }
 }
 
 fragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {
   partner {
     name
-    __id
+    id
   }
-  sale_artwork {
+  sale_artwork: saleArtwork {
     estimate
-    __id
+    id
   }
   sale {
-    _id
-    is_closed
-    is_with_buyers_premium
-    __id
+    internalID
+    is_closed: isClosed
+    id
   }
-  __id
 }
 */
 
@@ -47,24 +64,18 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "auction_artwork_estimate_premium",
-    "type": "String!"
+    "value": "auction_artwork_estimate_premium"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkSidebarAuctionPartnerInfo_Test_Query",
-  "id": null,
-  "text": "query ArtworkSidebarAuctionPartnerInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarAuctionPartnerInfo_artwork\n    __id\n  }\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    __id\n  }\n  sale_artwork {\n    estimate\n    __id\n  }\n  sale {\n    _id\n    is_closed\n    is_with_buyers_premium\n    __id\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkSidebarAuctionPartnerInfo_Test_Query",
@@ -77,7 +88,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"auction_artwork_estimate_premium\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -85,8 +96,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkSidebarAuctionPartnerInfo_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -101,7 +111,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"auction_artwork_estimate_premium\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -121,13 +131,13 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
           },
           {
             "kind": "LinkedField",
-            "alias": null,
-            "name": "sale_artwork",
+            "alias": "sale_artwork",
+            "name": "saleArtwork",
             "storageKey": null,
             "args": null,
             "concreteType": "SaleArtwork",
@@ -140,7 +150,7 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v1/*: any*/)
             ]
           },
           {
@@ -155,33 +165,33 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "_id",
+                "name": "internalID",
                 "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "is_closed",
+                "alias": "is_closed",
+                "name": "isClosed",
                 "args": null,
                 "storageKey": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "is_with_buyers_premium",
-                "args": null,
-                "storageKey": null
-              },
-              v1
+              (v1/*: any*/)
             ]
           },
-          v1
+          (v1/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkSidebarAuctionPartnerInfo_Test_Query",
+    "id": null,
+    "text": "query ArtworkSidebarAuctionPartnerInfo_Test_Query {\n  artwork(id: \"auction_artwork_estimate_premium\") {\n    ...ArtworkSidebarAuctionPartnerInfo_artwork\n    id\n  }\n}\n\nfragment ArtworkSidebarAuctionPartnerInfo_artwork on Artwork {\n  partner {\n    name\n    id\n  }\n  sale_artwork: saleArtwork {\n    estimate\n    id\n  }\n  sale {\n    internalID\n    is_closed: isClosed\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '61df51c013d5fd8dd2fce1e68b6aa953';
+(node as any).hash = 'affb9d09ad318d6abe783c6bd9bfec45';
 export default node;

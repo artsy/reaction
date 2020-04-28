@@ -22,6 +22,7 @@ export const NewsNav: React.SFC<Props> = props => {
 }
 
 const Title = styled(NewsText)`
+  text-align: center;
   position: absolute;
   left: 30px;
   ${pMedia.sm`

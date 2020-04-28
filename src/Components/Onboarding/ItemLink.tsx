@@ -46,8 +46,6 @@ export const LinkContainer = styled.div`
 interface Props extends React.HTMLProps<HTMLAnchorElement> {
   item?: any
   id: string
-  _id?: string
-  __id?: string
   name: string
   image_url: string
 }

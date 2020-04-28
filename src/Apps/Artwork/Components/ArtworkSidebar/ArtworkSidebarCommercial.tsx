@@ -1,3 +1,4 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   Box,
   Button,
@@ -16,8 +17,10 @@ import { ArtworkSidebarCommercialOrderMutation } from "__generated__/ArtworkSide
 import { Mediator, SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { ModalType } from "Components/Authentication/Types"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import currency from "currency.js"
+import { Router } from "found"
 import React, { FC, useContext } from "react"
 import {
   commitMutation,
@@ -28,6 +31,7 @@ import {
 import { ErrorWithMetadata } from "Utils/errors"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
+import { openAuthModal } from "Utils/openAuthModal"
 import { ArtworkSidebarSizeInfoFragmentContainer as SizeInfo } from "./ArtworkSidebarSizeInfo"
 
 type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
@@ -35,7 +39,9 @@ type EditionSet = ArtworkSidebarCommercial_artwork["edition_sets"][0]
 export interface ArtworkSidebarCommercialContainerProps
   extends ArtworkSidebarCommercialProps {
   mediator: Mediator
+  router?: Router
   user: User
+  EXPERIMENTAL_APP_SHELL?: boolean
 }
 
 export interface ArtworkSidebarCommercialContainerState {
@@ -77,7 +83,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
   renderSaleMessage(saleMessage: string) {
     return (
-      <Serif size="5t" weight="semibold">
+      <Serif size="5t" weight="semibold" data-test="SaleMessage">
         {saleMessage}
       </Serif>
     )
@@ -90,7 +96,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     const editionFragment = (
       <>
         <SizeInfo piece={editionSet} />
-        <Serif ml="auto" size="2">
+        <Serif ml="auto" size="2" data-test="SaleMessage">
           {editionSet.sale_message}
         </Serif>
       </>
@@ -119,7 +125,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
 
     const editionSetsFragment = editionSets.map((editionSet, index) => {
       return (
-        <React.Fragment key={editionSet.__id}>
+        <React.Fragment key={editionSet.id}>
           <Box py={3}>
             {this.renderEditionSet(editionSet, includeSelectOption)}
           </Box>
@@ -147,13 +153,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     context_module: Schema.ContextModule.Sidebar,
     action_type: Schema.ActionType.ClickedContactGallery,
     subject: Schema.Subject.ContactGallery,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
   }))
   handleInquiry() {
     get(this.props, props => props.mediator.trigger) &&
       this.props.mediator.trigger("launchInquiryFlow", {
-        artworkId: this.props.artwork.id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 
@@ -161,13 +167,13 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     action_type: Schema.ActionType.ClickedBuyNow,
     flow: Schema.Flow.BuyNow,
     type: Schema.Type.Button,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
     products: [
       {
-        product_id: props.artwork._id,
+        product_id: props.artwork.internalID,
         quantity: 1,
-        price: currency(props.artwork.price).value,
+        price: currency(props.artwork.listPrice.display).value,
       },
     ],
   }))
@@ -179,6 +185,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           commitMutation<ArtworkSidebarCommercialOrderMutation>(
             this.props.relay.environment,
             {
+              // TODO: Inputs to the mutation might have changed case of the keys!
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOrderMutation(
                   $input: CommerceCreateOrderWithArtworkInput!
@@ -188,7 +195,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                       ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
-                          id
+                          internalID
                           mode
                         }
                       }
@@ -205,10 +212,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               `,
               variables: {
                 input: {
-                  artworkId: this.props.artwork._id,
+                  artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
-                    state => state.selectedEditionSet.id
+                    state => state.selectedEditionSet.internalID
                   ),
                 },
               },
@@ -227,7 +234,14 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                         )
                       )
                     } else {
-                      window.location.assign(`/orders/${orderOrError.order.id}`)
+                      const url = `/orders/${orderOrError.order.internalID}`
+
+                      // FIXME: Remove once A/B test completes
+                      if (this.props.EXPERIMENTAL_APP_SHELL) {
+                        this.props.router.push(url)
+                      } else {
+                        window.location.assign(url)
+                      }
                     }
                   }
                 )
@@ -238,9 +252,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         }
       })
     } else {
-      mediator.trigger("open:auth", {
-        mode: "login",
+      openAuthModal(mediator, {
+        mode: ModalType.login,
         redirectTo: location.href,
+        contextModule: ContextModule.artworkSidebar,
+        intent: AuthIntent.buyNow,
       })
     }
   }
@@ -249,8 +265,8 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     action_type: Schema.ActionType.ClickedMakeOffer,
     flow: Schema.Flow.MakeOffer,
     type: Schema.Type.Button,
-    artwork_id: props.artwork._id,
-    artwork_slug: props.artwork.id,
+    artwork_id: props.artwork.internalID,
+    artwork_slug: props.artwork.slug,
   }))
   handleCreateOfferOrder() {
     const { user, mediator } = this.props
@@ -260,20 +276,21 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
           commitMutation<ArtworkSidebarCommercialOfferOrderMutation>(
             this.props.relay.environment,
             {
+              // TODO: Inputs to the mutation might have changed case of the keys!
               mutation: graphql`
                 mutation ArtworkSidebarCommercialOfferOrderMutation(
-                  $input: CreateOfferOrderWithArtworkInput!
+                  $input: CommerceCreateOfferOrderWithArtworkInput!
                 ) {
-                  ecommerceCreateOfferOrderWithArtwork(input: $input) {
+                  commerceCreateOfferOrderWithArtwork(input: $input) {
                     orderOrError {
-                      ... on OrderWithMutationSuccess {
+                      ... on CommerceOrderWithMutationSuccess {
                         __typename
                         order {
-                          id
+                          internalID
                           mode
                         }
                       }
-                      ... on OrderWithMutationFailure {
+                      ... on CommerceOrderWithMutationFailure {
                         error {
                           type
                           code
@@ -286,10 +303,10 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
               `,
               variables: {
                 input: {
-                  artworkId: this.props.artwork._id,
+                  artworkId: this.props.artwork.internalID,
                   editionSetId: get(
                     this.state,
-                    state => state.selectedEditionSet.id
+                    state => state.selectedEditionSet.internalID
                   ),
                 },
               },
@@ -298,7 +315,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                   { isCommittingCreateOfferOrderMutation: false },
                   () => {
                     const {
-                      ecommerceCreateOfferOrderWithArtwork: { orderOrError },
+                      commerceCreateOfferOrderWithArtwork: { orderOrError },
                     } = data
                     if (orderOrError.error) {
                       this.onMutationError(
@@ -308,9 +325,14 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
                         )
                       )
                     } else {
-                      window.location.assign(
-                        `/orders/${orderOrError.order.id}/offer`
-                      )
+                      const url = `/orders/${orderOrError.order.internalID}/offer`
+
+                      // FIXME: Remove once A/B test completes
+                      if (this.props.EXPERIMENTAL_APP_SHELL) {
+                        this.props.router.push(url)
+                      } else {
+                        window.location.assign(url)
+                      }
                     }
                   }
                 )
@@ -321,9 +343,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         }
       })
     } else {
-      mediator.trigger("open:auth", {
-        mode: "login",
+      openAuthModal(mediator, {
+        mode: ModalType.login,
         redirectTo: location.href,
+        contextModule: ContextModule.artworkSidebar,
+        intent: AuthIntent.makeOffer,
       })
     }
   }
@@ -341,6 +365,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
     if (!artwork.sale_message && !artwork.is_inquireable) {
       return <Separator />
     }
+
     return (
       <Box textAlign="left">
         {artwork.sale_message && <Separator />}
@@ -374,6 +399,11 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         {artworkEcommerceAvailable && artwork.shippingInfo && (
           <Sans size="2" color="black60">
             {artwork.shippingInfo}
+          </Sans>
+        )}
+        {artworkEcommerceAvailable && artwork.priceIncludesTaxDisplay && (
+          <Sans size="2" color="black60">
+            {artwork.priceIncludesTaxDisplay}
           </Sans>
         )}
 
@@ -437,16 +467,18 @@ interface ArtworkSidebarCommercialProps {
   relay?: RelayProp
 }
 
-export const ArtworkSidebarCommercial: FC<
-  ArtworkSidebarCommercialProps
-> = props => {
-  const { mediator, user } = useContext(SystemContext)
+export const ArtworkSidebarCommercial: FC<ArtworkSidebarCommercialProps> = props => {
+  const { mediator, router, user, EXPERIMENTAL_APP_SHELL } = useContext(
+    SystemContext
+  )
 
   return (
     <ArtworkSidebarCommercialContainer
       {...props}
       mediator={mediator}
+      router={router}
       user={user}
+      EXPERIMENTAL_APP_SHELL={EXPERIMENTAL_APP_SHELL}
     />
   )
 }
@@ -456,21 +488,30 @@ export const ArtworkSidebarCommercialFragmentContainer = createFragmentContainer
   {
     artwork: graphql`
       fragment ArtworkSidebarCommercial_artwork on Artwork {
-        id
-        _id
-        is_acquireable
-        is_inquireable
-        is_offerable
-        price
-        sale_message
+        slug
+        internalID
+        is_for_sale: isForSale
+        is_acquireable: isAcquireable
+        is_inquireable: isInquireable
+        is_offerable: isOfferable
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
+        priceIncludesTaxDisplay
+        sale_message: saleMessage
         shippingInfo
         shippingOrigin
-        edition_sets {
+        edition_sets: editionSets {
+          internalID
           id
-          __id
-          is_acquireable
-          is_offerable
-          sale_message
+          is_acquireable: isAcquireable
+          is_offerable: isOfferable
+          sale_message: saleMessage
           ...ArtworkSidebarSizeInfo_piece
         }
       }

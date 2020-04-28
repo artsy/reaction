@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { ArtworkBanner_artwork$ref } from "./ArtworkBanner_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkBannerQueryVariables = {
-    readonly artworkID: string;
+    artworkID: string;
 };
 export type ArtworkBannerQueryResponse = {
-    readonly artwork: ({
-        readonly " $fragmentRefs": ArtworkBanner_artwork$ref;
-    }) | null;
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkBanner_artwork">;
+    } | null;
 };
 export type ArtworkBannerQuery = {
     readonly response: ArtworkBannerQueryResponse;
@@ -23,7 +23,7 @@ query ArtworkBannerQuery(
 ) {
   artwork(id: $artworkID) {
     ...ArtworkBanner_artwork
-    __id
+    id
   }
 }
 
@@ -31,34 +31,24 @@ fragment ArtworkBanner_artwork on Artwork {
   partner {
     name
     initials
-    __id
+    id
   }
   sale {
-    is_auction
+    is_auction: isAuction
     isBenefit
     isGalleryAuction
-    cover_image {
+    cover_image: coverImage {
       url(version: "square")
-      __id: id
     }
-    __id
+    id
   }
-  artworkContextAuction: context {
+  context {
     __typename
-    ... on ArtworkContextAuction {
+    ... on Sale {
       name
       href
     }
-    ... on Node {
-      __id
-    }
-    ... on ArtworkContextFair {
-      __id
-    }
-  }
-  artworkContextFair: context {
-    __typename
-    ... on ArtworkContextFair {
+    ... on Fair {
       name
       href
       profile {
@@ -67,37 +57,24 @@ fragment ArtworkBanner_artwork on Artwork {
           img: resized(width: 70, height: 70, version: "square") {
             url
           }
-          __id: id
         }
-        __id
+        id
       }
-      __id
     }
-    ... on Node {
-      __id
-    }
-  }
-  artworkContextPartnerShow: context {
-    __typename
-    ... on ArtworkContextPartnerShow {
+    ... on Show {
       name
       href
       status
-      thumbnail: cover_image {
+      thumbnail: coverImage {
         img: resized(width: 70, height: 70, version: "square") {
           url
         }
-        __id: id
       }
     }
     ... on Node {
-      __id
-    }
-    ... on ArtworkContextFair {
-      __id
+      id
     }
   }
-  __id
 }
 */
 
@@ -114,59 +91,43 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artworkID",
-    "type": "String!"
+    "variableName": "artworkID"
   }
 ],
 v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "initials",
   "args": null,
   "storageKey": null
 },
-v5 = {
-  "kind": "Literal",
-  "name": "version",
-  "value": "square",
-  "type": "[String]"
-},
-v6 = {
+v4 = {
   "kind": "ScalarField",
-  "alias": "__id",
+  "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v7 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__typename",
-  "args": null,
-  "storageKey": null
+v5 = {
+  "kind": "Literal",
+  "name": "version",
+  "value": "square"
 },
-v8 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "href",
   "args": null,
   "storageKey": null
 },
-v9 = [
+v7 = [
   {
     "kind": "LinkedField",
     "alias": "img",
@@ -176,15 +137,13 @@ v9 = [
       {
         "kind": "Literal",
         "name": "height",
-        "value": 70,
-        "type": "Int"
+        "value": 70
       },
-      v5,
+      (v5/*: any*/),
       {
         "kind": "Literal",
         "name": "width",
-        "value": 70,
-        "type": "Int"
+        "value": 70
       }
     ],
     "concreteType": "ResizedImageUrl",
@@ -198,29 +157,23 @@ v9 = [
         "storageKey": null
       }
     ]
-  },
-  v6
+  }
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtworkBannerQuery",
-  "id": null,
-  "text": "query ArtworkBannerQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkBanner_artwork\n    __id\n  }\n}\n\nfragment ArtworkBanner_artwork on Artwork {\n  partner {\n    name\n    initials\n    __id\n  }\n  sale {\n    is_auction\n    isBenefit\n    isGalleryAuction\n    cover_image {\n      url(version: \"square\")\n      __id: id\n    }\n    __id\n  }\n  artworkContextAuction: context {\n    __typename\n    ... on ArtworkContextAuction {\n      name\n      href\n    }\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  artworkContextFair: context {\n    __typename\n    ... on ArtworkContextFair {\n      name\n      href\n      profile {\n        initials\n        icon {\n          img: resized(width: 70, height: 70, version: \"square\") {\n            url\n          }\n          __id: id\n        }\n        __id\n      }\n      __id\n    }\n    ... on Node {\n      __id\n    }\n  }\n  artworkContextPartnerShow: context {\n    __typename\n    ... on ArtworkContextPartnerShow {\n      name\n      href\n      status\n      thumbnail: cover_image {\n        img: resized(width: 70, height: 70, version: \"square\") {\n          url\n        }\n        __id: id\n      }\n    }\n    ... on Node {\n      __id\n    }\n    ... on ArtworkContextFair {\n      __id\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtworkBannerQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -228,8 +181,7 @@ return {
             "kind": "FragmentSpread",
             "name": "ArtworkBanner_artwork",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -237,14 +189,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtworkBannerQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artwork",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -257,9 +209,9 @@ return {
             "concreteType": "Partner",
             "plural": false,
             "selections": [
-              v3,
-              v4,
-              v2
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/)
             ]
           },
           {
@@ -273,8 +225,8 @@ return {
             "selections": [
               {
                 "kind": "ScalarField",
-                "alias": null,
-                "name": "is_auction",
+                "alias": "is_auction",
+                "name": "isAuction",
                 "args": null,
                 "storageKey": null
               },
@@ -294,8 +246,8 @@ return {
               },
               {
                 "kind": "LinkedField",
-                "alias": null,
-                "name": "cover_image",
+                "alias": "cover_image",
+                "name": "coverImage",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Image",
@@ -306,54 +258,46 @@ return {
                     "alias": null,
                     "name": "url",
                     "args": [
-                      v5
+                      (v5/*: any*/)
                     ],
                     "storageKey": "url(version:\"square\")"
-                  },
-                  v6
+                  }
                 ]
               },
-              v2
+              (v4/*: any*/)
             ]
           },
           {
             "kind": "LinkedField",
-            "alias": "artworkContextAuction",
+            "alias": null,
             "name": "context",
             "storageKey": null,
             "args": null,
             "concreteType": null,
             "plural": false,
             "selections": [
-              v7,
-              v2,
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "__typename",
+                "args": null,
+                "storageKey": null
+              },
+              (v4/*: any*/),
               {
                 "kind": "InlineFragment",
-                "type": "ArtworkContextAuction",
+                "type": "Sale",
                 "selections": [
-                  v3,
-                  v8
+                  (v2/*: any*/),
+                  (v6/*: any*/)
                 ]
-              }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": "artworkContextFair",
-            "name": "context",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              v7,
-              v2,
+              },
               {
                 "kind": "InlineFragment",
-                "type": "ArtworkContextFair",
+                "type": "Fair",
                 "selections": [
-                  v3,
-                  v8,
+                  (v2/*: any*/),
+                  (v6/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -363,7 +307,7 @@ return {
                     "concreteType": "Profile",
                     "plural": false,
                     "selections": [
-                      v4,
+                      (v3/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -372,32 +316,19 @@ return {
                         "args": null,
                         "concreteType": "Image",
                         "plural": false,
-                        "selections": v9
+                        "selections": (v7/*: any*/)
                       },
-                      v2
+                      (v4/*: any*/)
                     ]
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "kind": "LinkedField",
-            "alias": "artworkContextPartnerShow",
-            "name": "context",
-            "storageKey": null,
-            "args": null,
-            "concreteType": null,
-            "plural": false,
-            "selections": [
-              v7,
-              v2,
+              },
               {
                 "kind": "InlineFragment",
-                "type": "ArtworkContextPartnerShow",
+                "type": "Show",
                 "selections": [
-                  v3,
-                  v8,
+                  (v2/*: any*/),
+                  (v6/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -408,21 +339,28 @@ return {
                   {
                     "kind": "LinkedField",
                     "alias": "thumbnail",
-                    "name": "cover_image",
+                    "name": "coverImage",
                     "storageKey": null,
                     "args": null,
                     "concreteType": "Image",
                     "plural": false,
-                    "selections": v9
+                    "selections": (v7/*: any*/)
                   }
                 ]
               }
             ]
           },
-          v2
+          (v4/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtworkBannerQuery",
+    "id": null,
+    "text": "query ArtworkBannerQuery(\n  $artworkID: String!\n) {\n  artwork(id: $artworkID) {\n    ...ArtworkBanner_artwork\n    id\n  }\n}\n\nfragment ArtworkBanner_artwork on Artwork {\n  partner {\n    name\n    initials\n    id\n  }\n  sale {\n    is_auction: isAuction\n    isBenefit\n    isGalleryAuction\n    cover_image: coverImage {\n      url(version: \"square\")\n    }\n    id\n  }\n  context {\n    __typename\n    ... on Sale {\n      name\n      href\n    }\n    ... on Fair {\n      name\n      href\n      profile {\n        initials\n        icon {\n          img: resized(width: 70, height: 70, version: \"square\") {\n            url\n          }\n        }\n        id\n      }\n    }\n    ... on Show {\n      name\n      href\n      status\n      thumbnail: coverImage {\n        img: resized(width: 70, height: 70, version: \"square\") {\n          url\n        }\n      }\n    }\n    ... on Node {\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

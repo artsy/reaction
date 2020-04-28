@@ -1,34 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSidebarClassification_artwork$ref } from "./ArtworkSidebarClassification_artwork.graphql";
-import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece.graphql";
-import { ArtworkSidebarTitleInfo_artwork$ref } from "./ArtworkSidebarTitleInfo_artwork.graphql";
-declare const _ArtworkSidebarMetadata_artwork$ref: unique symbol;
-export type ArtworkSidebarMetadata_artwork$ref = typeof _ArtworkSidebarMetadata_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarMetadata_artwork = {
     readonly is_biddable: boolean | null;
-    readonly edition_sets: ReadonlyArray<({
+    readonly edition_sets: ReadonlyArray<{
         readonly __typename: string;
-    }) | null> | null;
-    readonly sale_artwork: ({
+    } | null> | null;
+    readonly sale_artwork: {
         readonly lot_label: string | null;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkSidebarTitleInfo_artwork$ref & ArtworkSidebarSizeInfo_piece$ref & ArtworkSidebarClassification_artwork$ref;
-    readonly " $refType": ArtworkSidebarMetadata_artwork$ref;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarTitleInfo_artwork" | "ArtworkSidebarSizeInfo_piece" | "ArtworkSidebarClassification_artwork">;
+    readonly " $refType": "ArtworkSidebarMetadata_artwork";
+};
+export type ArtworkSidebarMetadata_artwork$data = ArtworkSidebarMetadata_artwork;
+export type ArtworkSidebarMetadata_artwork$key = {
+    readonly " $data"?: ArtworkSidebarMetadata_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarMetadata_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarMetadata_artwork",
   "type": "Artwork",
@@ -37,15 +30,15 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_biddable",
+      "alias": "is_biddable",
+      "name": "isBiddable",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "edition_sets",
+      "alias": "edition_sets",
+      "name": "editionSets",
       "storageKey": null,
       "args": null,
       "concreteType": "EditionSet",
@@ -57,14 +50,13 @@ return {
           "name": "__typename",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "sale_artwork",
+      "alias": "sale_artwork",
+      "name": "saleArtwork",
       "storageKey": null,
       "args": null,
       "concreteType": "SaleArtwork",
@@ -72,12 +64,11 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "lot_label",
+          "alias": "lot_label",
+          "name": "lotLabel",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -94,10 +85,8 @@ return {
       "kind": "FragmentSpread",
       "name": "ArtworkSidebarClassification_artwork",
       "args": null
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'c5e1fd530fcb8c986c96047befa0496f';
+(node as any).hash = 'ee1d620cfeeb5424fe48e300e387ffa4';
 export default node;

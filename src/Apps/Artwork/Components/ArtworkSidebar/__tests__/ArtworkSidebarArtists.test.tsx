@@ -1,35 +1,57 @@
+import { ArtworkSidebarArtists_Test_QueryRawResponse } from "__generated__/ArtworkSidebarArtists_Test_Query.graphql"
 import {
   CulturalMakerWork,
   MultipleArtists,
   SingleFollowedArtist,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarArtists"
 import { ArtworkSidebarArtistsFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarArtists"
+import { Mediator, SystemContextProvider } from "Artsy"
+import { FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { renderRelayTree } from "DevTools"
+import React from "react"
 import { graphql } from "react-relay"
 
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarArtists", () => {
-  const getWrapper = async (response = SingleFollowedArtist) => {
+  let mediator: Mediator
+  beforeEach(() => {
+    mediator = { trigger: jest.fn() }
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn() },
+    })
+  })
+
+  const getWrapper = async (
+    response: ArtworkSidebarArtists_Test_QueryRawResponse["artwork"] = SingleFollowedArtist,
+    context = { mediator, user: null }
+  ) => {
     return await renderRelayTree({
-      Component: ArtworkSidebarArtistsFragmentContainer,
+      Component: ({ artwork }: any) => {
+        return (
+          <SystemContextProvider {...context}>
+            <ArtworkSidebarArtistsFragmentContainer artwork={artwork} />
+          </SystemContextProvider>
+        )
+      },
       query: graphql`
-        query ArtworkSidebarArtists_Test_Query {
+        query ArtworkSidebarArtists_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarArtists_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarArtists_Test_QueryRawResponse,
     })
   }
 
   let wrapper
 
   describe("ArtworkSidebarArtists with one artist", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       wrapper = await getWrapper()
     })
 
@@ -39,7 +61,26 @@ describe("ArtworkSidebarArtists", () => {
     })
 
     it("renders artist follow button for single artist", () => {
-      expect(wrapper.html()).toContain("Follow")
+      expect(wrapper.find(FollowArtistButton)).toHaveLength(1)
+      expect(wrapper.find(FollowArtistButton).text()).not.toMatch("Following")
+    })
+
+    it("Opens auth with expected args when following an artist", () => {
+      wrapper
+        .find(FollowArtistButton)
+        .at(0)
+        .simulate("click")
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: "josef-albers",
+        },
+        contextModule: "artworkSidebar",
+        copy: "Sign up to follow Josef Albers",
+        intent: "followArtist",
+        mode: "signup",
+      })
     })
   })
 
@@ -64,7 +105,7 @@ describe("ArtworkSidebarArtists", () => {
     })
 
     it("does not display follow buttons", () => {
-      expect(wrapper.html()).not.toContain("Follow")
+      expect(wrapper.html()).not.toContain(FollowArtistButton)
     })
 
     it("separates artist names by comma", () => {

@@ -1,11 +1,19 @@
+import { Link } from "@artsy/palette"
 import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
 import { mount, shallow } from "enzyme"
 import { Formik } from "formik"
 import React from "react"
 import { SignupValues } from "../fixtures"
 
+const mockEnableRequestSignInWithApple = jest.fn()
+
 jest.mock("sharify", () => ({
-  data: { RECAPTCHA_KEY: "recaptcha-api-key" },
+  data: {
+    RECAPTCHA_KEY: "recaptcha-api-key",
+    get ENABLE_SIGN_IN_WITH_APPLE() {
+      return mockEnableRequestSignInWithApple()
+    },
+  },
 }))
 
 // FIXME: mock Formik async and remove setTimeout
@@ -98,12 +106,67 @@ describe("SignUpForm", () => {
     props.values = SignupValues
     const wrapper = getWrapper()
     const input = wrapper.find(Formik)
+
     input.simulate("submit")
     wrapper.update()
 
     setTimeout(() => {
       const submitButton = wrapper.find(`SubmitButton`)
       expect((submitButton.props() as any).loading).toEqual(true)
+      done()
+    })
+  })
+
+  it("calls apple callback on tapping link", done => {
+    mockEnableRequestSignInWithApple.mockReturnValue(true)
+    props.onAppleLogin = jest.fn()
+    props.values = SignupValues
+    const wrapper = getWrapper()
+
+    wrapper
+      .find(Link)
+      .at(2)
+      .simulate("click")
+
+    setTimeout(() => {
+      expect(props.onAppleLogin).toBeCalled()
+      done()
+    })
+  })
+
+  it("renders apple link with feature flag enabled", done => {
+    mockEnableRequestSignInWithApple.mockReturnValue(true)
+    props.onAppleLogin = jest.fn()
+    props.values = SignupValues
+    const wrapper = getWrapper()
+    expect(wrapper.text()).toContain("Apple")
+    done()
+  })
+
+  it("does not render apple link with feature flag disabled", done => {
+    mockEnableRequestSignInWithApple.mockReturnValue(false)
+    props.onAppleLogin = jest.fn()
+    props.values = SignupValues
+    const wrapper = getWrapper()
+    expect(wrapper.text()).not.toContain("Apple")
+    done()
+  })
+
+  it("does not call apple callback without accepting terms of service", done => {
+    props.onAppleLogin = jest.fn()
+    props.values = SignupValues
+    props.values.accepted_terms_of_service = false
+    const wrapper = getWrapper()
+
+    wrapper
+      .find(Link)
+      .at(2)
+      .simulate("click")
+
+    wrapper.update()
+
+    setTimeout(() => {
+      expect(props.onAppleLogin).not.toBeCalled()
       done()
     })
   })

@@ -59,6 +59,7 @@ export class BudgetComponent extends React.Component<
     commitMutation<BudgetUpdateMyUserProfileMutation>(
       this.props.relayEnvironment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation BudgetUpdateMyUserProfileMutation(
             $input: UpdateMyProfileInput!
@@ -72,8 +73,8 @@ export class BudgetComponent extends React.Component<
         `,
         variables: {
           input: {
-            price_range_min: -1,
-            price_range_max: priceRangeMax,
+            priceRangeMin: -1,
+            priceRangeMax,
           },
         },
       }

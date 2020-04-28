@@ -1,34 +1,55 @@
-import { Radio, RadioGroup } from "@artsy/palette"
+import { Flex, Radio, RadioGroup, Toggle } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "../ArtworkFilterContext"
+import { get } from "Utils/get"
+import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-interface Props {
-  timePeriods?: string[]
+interface TimePeriodFilterProps {
+  expanded?: boolean
 }
 
-export const TimePeriodFilter: FC<Props> = props => {
-  const filterContext = useFilterContext()
+export const TimePeriodFilter: FC<TimePeriodFilterProps> = ({
+  expanded = false,
+}) => {
+  const { aggregations, ...filterContext } = useArtworkFilterContext()
+  const timePeriods = aggregations.find(agg => agg.slice === "MAJOR_PERIOD")
 
-  const periods = (props.timePeriods || allowedPeriods).filter(timePeriod => {
-    return allowedPeriods.includes(timePeriod)
-  })
+  let periods
+  if (timePeriods && timePeriods.counts) {
+    periods = timePeriods.counts.filter(timePeriod => {
+      return allowedPeriods.includes(timePeriod.name)
+    })
+  } else {
+    periods = allowedPeriods.map(name => ({ name }))
+  }
 
-  const selectedPeriod = filterContext.filters.major_periods[0]
+  const selectedPeriod = get(
+    filterContext.filters,
+    f => f.majorPeriods[0] || ""
+  )
 
   return (
-    <RadioGroup
-      deselectable
-      defaultValue={selectedPeriod}
-      onSelect={selectedOption => {
-        filterContext.setFilter("major_periods", selectedOption)
-      }}
-    >
-      {periods.map((timePeriod, index) => {
-        return (
-          <Radio my={0.3} value={timePeriod} key={index} label={timePeriod} />
-        )
-      })}
-    </RadioGroup>
+    <Toggle label="Time period" expanded={expanded}>
+      <Flex flexDirection="column" my={1}>
+        <RadioGroup
+          deselectable
+          defaultValue={selectedPeriod}
+          onSelect={selectedOption => {
+            filterContext.setFilter("majorPeriods", selectedOption)
+          }}
+        >
+          {periods.map((timePeriod, index) => {
+            return (
+              <Radio
+                my={0.3}
+                value={timePeriod.name}
+                key={index}
+                label={timePeriod.name}
+              />
+            )
+          })}
+        </RadioGroup>
+      </Flex>
+    </Toggle>
   )
 }
 

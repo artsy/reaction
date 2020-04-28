@@ -1,16 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref: unique symbol;
-export type ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref = typeof _ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkDetailsAboutTheWorkFromArtsy_artwork = {
     readonly description: string | null;
-    readonly " $refType": ArtworkDetailsAboutTheWorkFromArtsy_artwork$ref;
+    readonly " $refType": "ArtworkDetailsAboutTheWorkFromArtsy_artwork";
+};
+export type ArtworkDetailsAboutTheWorkFromArtsy_artwork$data = ArtworkDetailsAboutTheWorkFromArtsy_artwork;
+export type ArtworkDetailsAboutTheWorkFromArtsy_artwork$key = {
+    readonly " $data"?: ArtworkDetailsAboutTheWorkFromArtsy_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkDetailsAboutTheWorkFromArtsy_artwork">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkDetailsAboutTheWorkFromArtsy_artwork",
   "type": "Artwork",
@@ -25,18 +29,10 @@ const node: ConcreteFragment = {
         {
           "kind": "Literal",
           "name": "format",
-          "value": "HTML",
-          "type": "Format"
+          "value": "HTML"
         }
       ],
       "storageKey": "description(format:\"HTML\")"
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };

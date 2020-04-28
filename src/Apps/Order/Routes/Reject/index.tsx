@@ -4,13 +4,12 @@ import { RejectOfferMutation } from "__generated__/RejectOfferMutation.graphql"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import { ConditionsOfSaleDisclaimer } from "Apps/Order/Components/ConditionsOfSaleDisclaimer"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import { StepSummaryItem } from "Components/v2"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
+import { StepSummaryItem } from "Components/StepSummaryItem"
 import { Media } from "Utils/Responsive"
 import { logger } from "../Respond"
 
@@ -39,20 +38,21 @@ export class Reject extends Component<RejectProps> {
   rejectOffer(variables: RejectOfferMutation["variables"]) {
     return this.props.commitMutation<RejectOfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
-        mutation RejectOfferMutation($input: buyerRejectOfferInput!) {
-          ecommerceBuyerRejectOffer(input: $input) {
+        mutation RejectOfferMutation($input: CommerceBuyerRejectOfferInput!) {
+          commerceBuyerRejectOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
-                  ... on OfferOrder {
+                  internalID
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -68,17 +68,19 @@ export class Reject extends Component<RejectProps> {
 
   onSubmit = async () => {
     try {
-      const orderOrError = (await this.rejectOffer({
-        input: {
-          offerId: this.props.order.lastOffer.id,
-        },
-      })).ecommerceBuyerRejectOffer.orderOrError
+      const orderOrError = (
+        await this.rejectOffer({
+          input: {
+            offerId: this.props.order.lastOffer.internalID,
+          },
+        })
+      ).commerceBuyerRejectOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -87,7 +89,7 @@ export class Reject extends Component<RejectProps> {
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   render() {
@@ -183,24 +185,24 @@ export class Reject extends Component<RejectProps> {
 }
 
 export const RejectFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(Reject))),
+  injectCommitMutation(injectDialog(Reject)),
   {
     order: graphql`
-      fragment Reject_order on Order {
-        id
+      fragment Reject_order on CommerceOrder {
+        internalID
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
-            id
+            internalID
             createdAt
           }
         }
@@ -209,3 +211,6 @@ export const RejectFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default RejectFragmentContainer

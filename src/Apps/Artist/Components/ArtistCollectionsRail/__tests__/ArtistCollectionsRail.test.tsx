@@ -1,6 +1,6 @@
 import { CollectionsRailFixture } from "Apps/__tests__/Fixtures/Collections"
 import { mockTracking } from "Artsy/Analytics"
-import { ArrowButton } from "Components/v2/Carousel"
+import { ArrowButton } from "Components/Carousel"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import { clone, drop } from "lodash"
@@ -29,7 +29,7 @@ describe("CollectionsRail", () => {
     ).renderUntil(n => {
       return n.html().search("is-selected") > 0
     })
-    expect(component.text()).toMatch("Browse by iconic collections")
+    expect(component.text()).toMatch("Iconic Collections")
     expect(component.find(ArtistCollectionEntity).length).toBe(8)
     expect(component.text()).toMatch("Flags")
     expect(component.text()).toMatch("From $1,000")
@@ -73,36 +73,48 @@ describe("CollectionsRail", () => {
         headerImage: "http://files.artsy.net/images/jasperjohnsflag.png",
         title: "Jasper Johns: Flags Part 2",
         price_guidance: 1000,
-        artworks: {
-          hits: [
+        artworksConnection: {
+          edges: [
             {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag",
-              image: {
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag",
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg",
+                  },
+                },
               },
             },
             {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag (Moratorium)",
-              image: {
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag (Moratorium)",
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/Jyhryk2bLDdkpNflvWO0Lg/small.jpg",
+                  },
+                },
               },
             },
             {
-              artist: {
-                name: "Jasper Johns",
-              },
-              title: "Flag I",
-              image: {
-                url:
-                  "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+              node: {
+                artist: {
+                  name: "Jasper Johns",
+                },
+                title: "Flag I",
+                image: {
+                  resized: {
+                    url:
+                      "https://d32dm0rphc51dk.cloudfront.net/gM-IwaZ9C24Y_RQTRW6F5A/small.jpg",
+                  },
+                },
               },
             },
           ],

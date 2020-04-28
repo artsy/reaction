@@ -16,9 +16,9 @@ describe("MoreNavMenu", () => {
   const defaultLinks = [
     ["/galleries", "Galleries"],
     ["/fairs", "Fairs"],
-    ["/artists", "Artists"],
     ["/shows", "Shows"],
     ["/institutions", "Museums"],
+    ["/consign", "Consign"],
     ["https://partners.artsy.net", "Artsy for Galleries"],
   ]
 

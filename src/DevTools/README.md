@@ -94,9 +94,9 @@ Union types should be disambiguated using the `__typename` property. e.g. for a 
 
 ```ts
 mockMutationResults = {
-  ecommerceSetOrderShipping: {
+  commerceSetShipping: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
+      __typename: "CommerceOrderWithMutationSuccess",
       order: {
         ...BuyOrderWithShippingDetails,
       },
@@ -109,9 +109,9 @@ or this:
 
 ```ts
 mockMutationResults = {
-  ecommerceSetOrderShipping: {
+  commerceSetShipping: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "validation",
         code: "credit_card_not_found",
@@ -128,11 +128,11 @@ Both `mockData` and `mockMutationResults` can take functions as top-level values
 
 ```ts
 mockMutationResults = {
-  ecommerceSetOrderShipping: (_, { input }) => {
+  commerceSetShipping: (_, { input }) => {
     if (input.shipping.country === "US") {
       return {
         orderOrError: {
-          __typename: "OrderWithMutationSuccess",
+          __typename: "CommerceOrderWithMutationSuccess",
           order: {
             ...BuyOrderWithShippingDetails,
           },
@@ -141,7 +141,7 @@ mockMutationResults = {
     } else {
       return {
         orderOrError: {
-          __typename: "OrderWithMutationFailure",
+          __typename: "CommerceOrderWithMutationFailure",
           error: {
             type: "validation",
             code: "address_outside_usa",

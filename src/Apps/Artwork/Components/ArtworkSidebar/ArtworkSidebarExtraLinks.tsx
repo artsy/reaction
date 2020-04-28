@@ -78,7 +78,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openAuctionAskSpecialistModal", {
-        artworkId: this.props.artwork._id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 
@@ -91,7 +91,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     this.props.mediator &&
       this.props.mediator.trigger &&
       this.props.mediator.trigger("openBuyNowAskSpecialistModal", {
-        artworkId: this.props.artwork._id,
+        artworkId: this.props.artwork.internalID,
       })
   }
 
@@ -104,10 +104,26 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
     window.open(sd.APP_URL + "/consign", "_blank")
   }
 
+  conditionsOfSaleText() {
+    const first = "By placing your bid you agree to Artsy's "
+    if (
+      !this.props.artwork.sale.isBenefit &&
+      !!this.props.artwork.sale.partner
+    ) {
+      const partnerName = this.props.artwork.sale.partner.name
+      const possessivePartnerName = partnerName.endsWith("'s")
+        ? partnerName
+        : partnerName + "'s"
+      return first + "and " + possessivePartnerName + " "
+    } else {
+      return first
+    }
+  }
+
   renderAuctionTerms() {
     return (
       <Container>
-        By placing your bid you agree to Artsy's{" "}
+        {this.conditionsOfSaleText()}
         <Link onClick={this.onClickConditionsOfSale.bind(this)}>
           Conditions of Sale
         </Link>
@@ -160,7 +176,8 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
       <Container>
         Want to sell a work by{" "}
         {artistsCount === 1 ? "this artist" : "these artists"}?{" "}
-        <Link onClick={this.onClickConsign.bind(this)}>Learn more</Link>.
+        <Link onClick={this.onClickConsign.bind(this)}>Consign with Artsy</Link>
+        .
       </Container>
     )
   }
@@ -190,9 +207,7 @@ class ArtworkSidebarExtraLinksContainer extends React.Component<
   }
 }
 
-export const ArtworkSidebarExtraLinks: SFC<
-  ArtworkSidebarExtraLinksProps
-> = props => {
+export const ArtworkSidebarExtraLinks: SFC<ArtworkSidebarExtraLinksProps> = props => {
   const { mediator } = useContext(SystemContext)
   return <ArtworkSidebarExtraLinksContainer {...props} mediator={mediator} />
 }
@@ -202,16 +217,20 @@ export const ArtworkSidebarExtraLinksFragmentContainer = createFragmentContainer
   {
     artwork: graphql`
       fragment ArtworkSidebarExtraLinks_artwork on Artwork {
-        _id
-        is_in_auction
-        is_for_sale
-        is_acquireable
-        is_inquireable
+        internalID
+        is_in_auction: isInAuction
+        is_for_sale: isForSale
+        is_acquireable: isAcquireable
+        is_inquireable: isInquireable
         artists {
-          is_consignable
+          is_consignable: isConsignable
         }
         sale {
-          is_closed
+          is_closed: isClosed
+          isBenefit
+          partner {
+            name
+          }
         }
       }
     `,

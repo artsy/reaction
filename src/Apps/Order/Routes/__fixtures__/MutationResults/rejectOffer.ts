@@ -1,15 +1,15 @@
 export const rejectOfferSuccess = {
-  ecommerceBuyerRejectOffer: {
+  commerceBuyerRejectOffer: {
     orderOrError: {
       order: {
-        id: "1234",
+        internalID: "1234",
         awaitingResponseFrom: null,
       },
     },
   },
 }
 export const rejectOfferFailed = {
-  ecommerceBuyerRejectOffer: {
+  commerceBuyerRejectOffer: {
     orderOrError: {
       error: {
         type: "validation",

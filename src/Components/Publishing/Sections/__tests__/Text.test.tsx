@@ -1,4 +1,5 @@
 import { SystemContextProvider } from "Artsy"
+import { FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { TextFeatureArticle } from "Components/Publishing/Fixtures/Articles"
 import { TextFromArticle } from "Components/Publishing/Fixtures/Helpers"
 import { wrapperWithContext } from "Components/Publishing/Fixtures/Helpers"
@@ -66,61 +67,76 @@ describe("Text", () => {
   // })
 
   describe("Unit", () => {
-    it("Inserts content-end spans if isContentEnd", () => {
-      testProps.html = TextFromArticle(TextFeatureArticle)
-      testProps.layout = "feature"
-      testProps.isContentEnd = true
-      const wrapper = mount(getWrapper(testProps))
+    describe("content-end", () => {
+      it("Inserts content-end spans if isContentEnd", () => {
+        testProps.html = TextFromArticle(TextFeatureArticle)
+        testProps.layout = "feature"
+        testProps.isContentEnd = true
+        const wrapper = mount(getWrapper(testProps))
 
-      expect(wrapper.html()).toMatch("content-end")
+        expect(wrapper.html()).toMatch("content-end")
+      })
+
+      it("Inserts content-end spans in last paragraph, even if another block follows", () => {
+        testProps.html = "<p>The end of the article</p><h3>An h3 after</h3>"
+        testProps.layout = "standard"
+        testProps.isContentEnd = true
+        const wrapper = mount(getWrapper(testProps))
+
+        expect(wrapper.html()).toMatch(
+          `<p>The end of the article<span class=\"content-end\"> </span></p><h3>An h3 after</h3>`
+        )
+      })
+
+      it("Removes content-end spans if not isContentEnd", () => {
+        testProps.html =
+          "<p>The end of a great article. <span class='content-end> </span></p>"
+        testProps.layout = "feature"
+        const wrapper = mount(getWrapper(testProps))
+
+        expect(wrapper.html()).not.toMatch("content-end")
+      })
     })
 
-    it("Inserts content-end spans in last paragraph, even if another block follows", () => {
-      testProps.html = "<p>The end of the article</p><h3>An h3 after</h3>"
-      testProps.layout = "standard"
-      testProps.isContentEnd = true
-      const wrapper = mount(getWrapper(testProps))
+    describe("ToolTips", () => {
+      it("Should add LinkWithTooltip when artsy link is contained", () => {
+        testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a></p>`
+        testProps.layout = "standard"
+        testProps.showTooltips = true
+        const wrapper = mount(getWrapper(testProps))
 
-      expect(wrapper.html()).toMatch(
-        `<p>The end of the article<span class=\"content-end\"> </span></p><h3>An h3 after</h3>`
-      )
+        expect(wrapper.find(LinkWithTooltip)).toHaveLength(1)
+      })
+
+      it("Does not render for empty links", () => {
+        testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy"></a></p>`
+        testProps.layout = "standard"
+        testProps.showTooltips = true
+        const wrapper = mount(getWrapper(testProps))
+
+        expect(wrapper.find(LinkWithTooltip)).toHaveLength(0)
+      })
+
+      it("Creates a wrapper around links with 's text nodes, preventing line breaks", () => {
+        testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a>'s other amazing content <a href="https://www.artsy.net/artist/pablo-picasso">Picasso</a>'s other amazing...</p>`
+        testProps.layout = "standard"
+        testProps.showTooltips = true
+        const wrapper = mount(getWrapper(testProps))
+
+        expect(wrapper.find(".preventLineBreak").length).toEqual(2)
+        expect(wrapper.html()).toContain("'s</span>")
+      })
     })
 
-    it("Removes content-end spans if not isContentEnd", () => {
-      testProps.html =
-        "<p>The end of a great article. <span class='content-end> </span></p>"
-      testProps.layout = "feature"
-      const wrapper = mount(getWrapper(testProps))
+    describe("Follow Buttons", () => {
+      it("Should add FollowArtistButton when .artist-follow link is present", () => {
+        testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy"></a><a data-id="banksy" class="artist-follow"></a></p>`
+        testProps.layout = "standard"
+        testProps.showTooltips = true
+        const wrapper = mount(getWrapper(testProps))
 
-      expect(wrapper.html()).not.toMatch("content-end")
-    })
-
-    it("Should add LinkWithTooltip when artsy link is contained", () => {
-      testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a></p>`
-      testProps.layout = "standard"
-      testProps.showTooltips = true
-      const wrapper = mount(getWrapper(testProps))
-
-      expect(wrapper.find(LinkWithTooltip)).toHaveLength(1)
-    })
-
-    it("Does not render for empty links", () => {
-      testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy"></a></p>`
-      testProps.layout = "standard"
-      testProps.showTooltips = true
-      const wrapper = mount(getWrapper(testProps))
-
-      expect(wrapper.find(LinkWithTooltip)).toHaveLength(0)
-    })
-
-    it("Creates a wrapper around links with 's text nodes, preventing line breaks", () => {
-      testProps.html = `<p>Amazing content <a href="https://www.artsy.net/artist/banksy">Banksy</a>'s other amazing content <a href="https://www.artsy.net/artist/pablo-picasso">Picasso</a>'s other amazing...</p>`
-      testProps.layout = "standard"
-      testProps.showTooltips = true
-      const wrapper = mount(getWrapper(testProps))
-
-      expect(wrapper.find(".preventLineBreak").length).toEqual(2)
-      expect(wrapper.html()).toContain("'s</span>")
+        expect(wrapper.find(FollowArtistButton)).toHaveLength(1)
+      })
     })
   })
 })

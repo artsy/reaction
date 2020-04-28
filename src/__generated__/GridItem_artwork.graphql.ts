@@ -1,28 +1,29 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Badge_artwork$ref } from "./Badge_artwork.graphql";
-import { Metadata_artwork$ref } from "./Metadata_artwork.graphql";
-import { Save_artwork$ref } from "./Save_artwork.graphql";
-declare const _GridItem_artwork$ref: unique symbol;
-export type GridItem_artwork$ref = typeof _GridItem_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type GridItem_artwork = {
-    readonly _id: string;
+    readonly internalID: string;
     readonly title: string | null;
     readonly image_title: string | null;
-    readonly image: ({
+    readonly image: {
         readonly placeholder: string | null;
         readonly url: string | null;
         readonly aspect_ratio: number;
-    }) | null;
+    } | null;
     readonly href: string | null;
-    readonly " $fragmentRefs": Metadata_artwork$ref & Save_artwork$ref & Badge_artwork$ref;
-    readonly " $refType": GridItem_artwork$ref;
+    readonly " $fragmentRefs": FragmentRefs<"Metadata_artwork" | "Save_artwork" | "Badge_artwork">;
+    readonly " $refType": "GridItem_artwork";
+};
+export type GridItem_artwork$data = GridItem_artwork;
+export type GridItem_artwork$key = {
+    readonly " $data"?: GridItem_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"GridItem_artwork">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "GridItem_artwork",
   "type": "Artwork",
@@ -32,7 +33,7 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -45,8 +46,8 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "image_title",
+      "alias": "image_title",
+      "name": "imageTitle",
       "args": null,
       "storageKey": null
     },
@@ -74,23 +75,15 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "version",
-              "value": "large",
-              "type": "[String]"
+              "value": "large"
             }
           ],
           "storageKey": "url(version:\"large\")"
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "aspect_ratio",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
+          "alias": "aspect_ratio",
+          "name": "aspectRatio",
           "args": null,
           "storageKey": null
         }
@@ -117,15 +110,8 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "Badge_artwork",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'ccef836f9a27c7aa2e345ce8cb678f68';
+(node as any).hash = '3615b2a178c8219ced926a8e2da0673b';
 export default node;

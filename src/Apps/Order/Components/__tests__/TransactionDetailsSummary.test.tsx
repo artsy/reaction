@@ -1,5 +1,8 @@
 import {
-  mockResolver,
+  TransactionDetailsSummaryItemTestQueryRawResponse,
+  TransactionDetailsSummaryItemTestQueryResponse,
+} from "__generated__/TransactionDetailsSummaryItemTestQuery.graphql"
+import {
   OfferOrderWithOffers,
   OfferWithTotals,
   UntouchedBuyOrder,
@@ -12,45 +15,52 @@ import { TransactionDetailsSummaryItemFragmentContainer } from "../TransactionDe
 
 jest.unmock("react-relay")
 
-const transactionSummaryBuyOrder = {
+type TestOfferOrder = Extract<
+  TransactionDetailsSummaryItemTestQueryRawResponse["order"],
+  { __typename: "CommerceOfferOrder" }
+>
+type TestBuyOrder = Exclude<
+  TransactionDetailsSummaryItemTestQueryRawResponse["order"],
+  { __typename: "CommerceBuyOrder" }
+>
+
+const transactionSummaryBuyOrder: TestBuyOrder = {
   ...UntouchedBuyOrder,
   shippingTotal: "$12.00",
-  shippingTotalCents: "1200",
+  shippingTotalCents: 1200,
   taxTotal: "$3.25",
-  taxTotalCents: "325",
+  taxTotalCents: 325,
   itemsTotal: "$200.00",
   buyerTotal: "$215.25",
 }
 
-const transactionSummaryOfferOrder = {
+const transactionSummaryOfferOrder: TestOfferOrder = {
   ...OfferOrderWithOffers,
   shippingTotal: "$12.00",
-  shippingTotalCents: "1200",
+  shippingTotalCents: 1200,
   taxTotal: "$3.25",
-  taxTotalCents: "325",
+  taxTotalCents: 325,
   itemsTotal: "$200.00",
   buyerTotal: "$215.25",
 }
 
 const render = (
-  order,
+  order: TransactionDetailsSummaryItemTestQueryRawResponse["order"],
   extraProps?: Partial<
     ExtractProps<typeof TransactionDetailsSummaryItemFragmentContainer>
   >
 ) =>
   renderRelayTree({
-    Component: (props: any) => (
+    Component: (props: TransactionDetailsSummaryItemTestQueryResponse) => (
       <TransactionDetailsSummaryItemFragmentContainer
         {...props}
         {...extraProps}
       />
     ),
-    mockResolvers: mockResolver({
-      ...order,
-    }),
+    mockData: { order },
     query: graphql`
-      query TransactionDetailsSummaryItemTestQuery {
-        order: ecommerceOrder(id: "whatevs") {
+      query TransactionDetailsSummaryItemTestQuery @raw_response_type {
+        order: commerceOrder(id: "whatevs") {
           ...TransactionDetailsSummaryItem_order
         }
       }
@@ -58,7 +68,7 @@ const render = (
   })
 
 describe("TransactionDetailsSummaryItem", () => {
-  describe("BuyOrder", () => {
+  describe("CommerceBuyOrder", () => {
     it("shows the shipping and tax price if it's greater than 0", async () => {
       const transactionSummary = await render(transactionSummaryBuyOrder)
 
@@ -88,7 +98,7 @@ describe("TransactionDetailsSummaryItem", () => {
     })
   })
 
-  describe("OfferOrder", () => {
+  describe("CommerceOfferOrder", () => {
     it("shows the shipping and tax price if it's greater than 0", async () => {
       const transactionSummary = await render(transactionSummaryOfferOrder)
 
@@ -103,6 +113,7 @@ describe("TransactionDetailsSummaryItem", () => {
     it("shows the shipping and tax price as dashes if null", async () => {
       const transactionSummary = await render({
         ...transactionSummaryOfferOrder,
+        __typename: "CommerceOfferOrder",
         myLastOffer: {
           ...OfferWithTotals,
           taxTotal: null,
@@ -141,6 +152,7 @@ describe("TransactionDetailsSummaryItem", () => {
       const transactionSummary = await render(
         {
           ...transactionSummaryOfferOrder,
+          __typename: "CommerceOfferOrder",
           lastOffer: {
             ...OfferWithTotals,
             id: "last-offer",
@@ -168,6 +180,7 @@ describe("TransactionDetailsSummaryItem", () => {
           ...transactionSummaryOfferOrder,
           lastOffer: {
             ...OfferWithTotals,
+            id: "seller-offer-id",
             amount: "£405.00",
             fromParticipant: "SELLER",
           },
@@ -186,6 +199,7 @@ describe("TransactionDetailsSummaryItem", () => {
           ...transactionSummaryOfferOrder,
           lastOffer: {
             ...OfferWithTotals,
+            id: "seller-offer-id",
             amount: "£405.00",
             fromParticipant: "SELLER",
           },

@@ -1,7 +1,4 @@
 import { Box } from "@artsy/palette"
-// import { bio, biography_blurb } from "Apps/__tests__/Fixtures/ArtistBio"
-// import { artistResponse } from "Apps/__tests__/Fixtures/MarketInsights"
-// import { exhibitions } from "Apps/__tests__/Fixtures/SelectedExhibitions"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"

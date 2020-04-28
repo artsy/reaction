@@ -1,32 +1,28 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _CreditCardSummaryItem_order$ref: unique symbol;
-export type CreditCardSummaryItem_order$ref = typeof _CreditCardSummaryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type CreditCardSummaryItem_order = {
-    readonly creditCard: ({
+    readonly creditCard: {
         readonly brand: string;
-        readonly last_digits: string;
-        readonly expiration_year: number;
-        readonly expiration_month: number;
-    }) | null;
-    readonly " $refType": CreditCardSummaryItem_order$ref;
+        readonly lastDigits: string;
+        readonly expirationYear: number;
+        readonly expirationMonth: number;
+    } | null;
+    readonly " $refType": "CreditCardSummaryItem_order";
+};
+export type CreditCardSummaryItem_order$data = CreditCardSummaryItem_order;
+export type CreditCardSummaryItem_order$key = {
+    readonly " $data"?: CreditCardSummaryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"CreditCardSummaryItem_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "CreditCardSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -49,30 +45,27 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "last_digits",
+          "name": "lastDigits",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "expiration_year",
+          "name": "expirationYear",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "expiration_month",
+          "name": "expirationMonth",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'e1b7a3f9688dc19be197743ecbfe5a54';
+(node as any).hash = 'a92d2e7b3be6db434a54e7812b352637';
 export default node;

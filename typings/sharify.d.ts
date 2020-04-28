@@ -20,8 +20,14 @@ declare module "sharify" {
       readonly APP_URL: string
       readonly ARTIST_COLLECTIONS_RAIL?: string // TODO: remove after CollectionsRail a/b test
       readonly ARTIST_COLLECTIONS_RAIL_IDS: string[]
+      readonly CLIENT_NAVIGATION_V5: "experiment" | "control" // TODO: Remove after A/B test.
       readonly CMS_URL: string
+      readonly CDN_URL: string
+      CURRENT_USER: object
+      readonly ENABLE_SIGN_IN_WITH_APPLE: string // TODO: Remove once sign in with apple is rolled out.
+      readonly ENABLE_PRICE_TRANSPARENCY: string
       readonly FACEBOOK_APP_NAMESPACE: string
+      readonly FACEBOOK_ID: string
       readonly FORCE_CLOUDFRONT_URL: string
       readonly GEMINI_CLOUDFRONT_URL: string
       readonly GENOME_URL: string

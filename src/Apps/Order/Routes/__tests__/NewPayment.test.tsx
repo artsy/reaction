@@ -1,10 +1,8 @@
+import { NewPaymentTestQueryRawResponse } from "__generated__/NewPaymentTestQuery.graphql"
 import {
-  Buyer,
   OfferOrderWithShippingDetails,
-  Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { DateTime } from "luxon"
 import { graphql } from "react-relay"
@@ -14,6 +12,7 @@ import {
   fixFailedPaymentFailure,
   fixFailedPaymentInsufficientInventoryFailure,
   fixFailedPaymentSuccess,
+  fixFailedPaymentWithActionRequired,
 } from "../__fixtures__/MutationResults"
 import { NewPaymentFragmentContainer } from "../NewPayment"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
@@ -24,7 +23,6 @@ jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
 
-jest.mock("Apps/Order/Utils/trackPageView")
 jest.mock(
   "Apps/Order/Components/PaymentPicker",
   // not sure why this is neccessary :(
@@ -34,15 +32,21 @@ jest.mock(
   }
 )
 
+const handleCardAction = jest.fn()
+const realSetInterval = global.setInterval
+
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
-window.location.assign = jest.fn()
+Object.defineProperty(window, "location", {
+  writable: true,
+  value: { assign: jest.fn() },
+})
 
-const testOrder = {
+const testOrder: NewPaymentTestQueryRawResponse["order"] = {
   ...OfferOrderWithShippingDetails,
-  id: "1234",
+  internalID: "1234",
   state: "SUBMITTED",
   stateExpiresAt: DateTime.fromISO(NOW)
     .plus({ days: 1 })
@@ -53,28 +57,38 @@ const testOrder = {
       .minus({ days: 1 })
       .toString(),
   },
-  awaitingResponseFrom: "BUYER",
-  offers: { edges: Offers },
-  buyer: Buyer,
 }
 
 describe("Payment", () => {
+  beforeAll(() => {
+    // @ts-ignore
+    window.Stripe = () => {
+      return { handleCardAction }
+    }
+
+    window.sd = { STRIPE_PUBLISHABLE_KEY: "" }
+  })
   const { buildPage, mutations, routes } = createTestEnv({
     Component: NewPaymentFragmentContainer,
     defaultData: {
       order: testOrder,
       me: { creditCards: { edges: [] } },
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
     },
     defaultMutationResults: {
       ...creatingCreditCardSuccess,
       ...fixFailedPaymentSuccess,
     },
     query: graphql`
-      query NewPaymentTestQuery {
+      query NewPaymentTestQuery @raw_response_type {
         me {
           ...NewPayment_me
         }
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...NewPayment_order
         }
       }
@@ -84,6 +98,11 @@ describe("Payment", () => {
 
   beforeEach(() => {
     ;(window.location.assign as any).mockReset()
+    global.setInterval = jest.fn()
+  })
+
+  afterEach(() => {
+    global.setInterval = realSetInterval
   })
 
   it("shows the countdown timer", async () => {
@@ -150,7 +169,7 @@ describe("Payment", () => {
       "Not available",
       "Sorry, the work is no longer available."
     )
-    const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+    const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].slug
     expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
   })
 
@@ -159,8 +178,18 @@ describe("Payment", () => {
     const page = await buildPage()
     await page.clickSubmit()
     await page.expectAndDismissErrorDialogMatching(
-      "An error occurred",
-      "This is the description of an error."
+      "This is the description of an error.",
+      "Please enter another payment method or contact your bank for more information."
+    )
+  })
+
+  it("shows an error modal with the title 'An internal error occurred' and the default message when the payment picker returns an error with the type 'internal_error'", async () => {
+    paymentPickerMock.useInternalErrorResult()
+    const page = await buildPage()
+    await page.clickSubmit()
+    await page.expectAndDismissErrorDialogMatching(
+      "An internal error occurred",
+      "Please try again or contact orders@artsy.net."
     )
   })
 
@@ -182,8 +211,11 @@ describe("Payment", () => {
     await page.expectAndDismissDefaultErrorDialog()
   })
 
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+  it("shows SCA modal when required", async () => {
+    const page = await buildPage()
+    mutations.useResultsOnce(fixFailedPaymentWithActionRequired)
+
+    await page.clickSubmit()
+    expect(handleCardAction).toBeCalledWith("client-secret")
   })
 })

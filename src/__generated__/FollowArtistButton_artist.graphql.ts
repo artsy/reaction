@@ -1,23 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FollowArtistPopover_suggested$ref } from "./FollowArtistPopover_suggested.graphql";
-declare const _FollowArtistButton_artist$ref: unique symbol;
-export type FollowArtistButton_artist$ref = typeof _FollowArtistButton_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type FollowArtistButton_artist = {
-    readonly __id: string;
     readonly id: string;
+    readonly internalID: string;
+    readonly name: string | null;
     readonly is_followed: boolean | null;
-    readonly counts: ({
-        readonly follows: any | null;
-    }) | null;
-    readonly " $fragmentRefs": FollowArtistPopover_suggested$ref;
-    readonly " $refType": FollowArtistButton_artist$ref;
+    readonly counts: {
+        readonly follows: number | null;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"FollowArtistPopover_artist">;
+    readonly " $refType": "FollowArtistButton_artist";
+};
+export type FollowArtistButton_artist$data = FollowArtistButton_artist;
+export type FollowArtistButton_artist$key = {
+    readonly " $data"?: FollowArtistButton_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowArtistButton_artist",
   "type": "Artist",
@@ -34,13 +38,6 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
       "name": "id",
       "args": null,
       "storageKey": null
@@ -48,7 +45,21 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_followed",
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "is_followed",
+      "name": "isFollowed",
       "args": null,
       "storageKey": null
     },
@@ -77,12 +88,12 @@ const node: ConcreteFragment = {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "FollowArtistPopover_suggested",
+          "name": "FollowArtistPopover_artist",
           "args": null
         }
       ]
     }
   ]
 };
-(node as any).hash = 'c8cd753c0684c100bbc6d08b01eec991';
+(node as any).hash = '560d15156b37402c50ee7572d14c9eca';
 export default node;

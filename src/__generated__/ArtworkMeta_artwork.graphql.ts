@@ -1,61 +1,57 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { SeoDataForArtwork_artwork$ref } from "./SeoDataForArtwork_artwork.graphql";
-declare const _ArtworkMeta_artwork$ref: unique symbol;
-export type ArtworkMeta_artwork$ref = typeof _ArtworkMeta_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkMeta_artwork = {
     readonly href: string | null;
-    readonly _id: string;
+    readonly internalID: string;
     readonly date: string | null;
     readonly artist_names: string | null;
     readonly sale_message: string | null;
-    readonly partner: ({
+    readonly partner: {
         readonly name: string | null;
-    }) | null;
+    } | null;
     readonly image_rights: string | null;
     readonly is_in_auction: boolean | null;
     readonly is_acquireable: boolean | null;
     readonly is_shareable: boolean | null;
-    readonly meta_image: ({
-        readonly resized: ({
+    readonly meta_image: {
+        readonly resized: {
             readonly width: number | null;
             readonly height: number | null;
             readonly url: string | null;
-        }) | null;
-    }) | null;
-    readonly meta: ({
+        } | null;
+    } | null;
+    readonly meta: {
         readonly title: string | null;
         readonly description: string | null;
         readonly long_description: string | null;
-    }) | null;
+    } | null;
     readonly context: ({
-        readonly __typename: "ArtworkContextFair";
-        readonly id: string;
+        readonly __typename: "Fair";
+        readonly slug: string;
         readonly name: string | null;
     } | {
-        /*This will never be '% other', but we need some
+        /*This will never be '%other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
-    readonly " $fragmentRefs": SeoDataForArtwork_artwork$ref;
-    readonly " $refType": ArtworkMeta_artwork$ref;
+    readonly " $fragmentRefs": FragmentRefs<"SeoDataForArtwork_artwork">;
+    readonly " $refType": "ArtworkMeta_artwork";
+};
+export type ArtworkMeta_artwork$data = ArtworkMeta_artwork;
+export type ArtworkMeta_artwork$key = {
+    readonly " $data"?: ArtworkMeta_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkMeta_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -69,14 +65,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_in_auction",
+      "name": "href",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "href",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -89,15 +85,15 @@ return {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "artist_names",
+      "alias": "artist_names",
+      "name": "artistNames",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "sale_message",
+      "alias": "sale_message",
+      "name": "saleMessage",
       "args": null,
       "storageKey": null
     },
@@ -110,35 +106,34 @@ return {
       "concreteType": "Partner",
       "plural": false,
       "selections": [
-        v0,
-        v1
+        (v0/*: any*/)
       ]
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "image_rights",
+      "alias": "image_rights",
+      "name": "imageRights",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
+      "alias": "is_in_auction",
+      "name": "isInAuction",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_acquireable",
+      "alias": "is_acquireable",
+      "name": "isAcquireable",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_shareable",
+      "alias": "is_shareable",
+      "name": "isShareable",
       "args": null,
       "storageKey": null
     },
@@ -160,8 +155,7 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 640,
-              "type": "Int"
+              "value": 640
             },
             {
               "kind": "Literal",
@@ -170,14 +164,12 @@ return {
                 "large",
                 "medium",
                 "tall"
-              ],
-              "type": "[String]"
+              ]
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 640,
-              "type": "Int"
+              "value": 640
             }
           ],
           "concreteType": "ResizedImageUrl",
@@ -205,13 +197,6 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -239,8 +224,7 @@ return {
             {
               "kind": "Literal",
               "name": "limit",
-              "value": 155,
-              "type": "Int"
+              "value": 155
             }
           ],
           "storageKey": "description(limit:155)"
@@ -253,8 +237,7 @@ return {
             {
               "kind": "Literal",
               "name": "limit",
-              "value": 200,
-              "type": "Int"
+              "value": 200
             }
           ],
           "storageKey": "description(limit:200)"
@@ -277,19 +260,18 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1,
         {
           "kind": "InlineFragment",
-          "type": "ArtworkContextFair",
+          "type": "Fair",
           "selections": [
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "id",
+              "name": "slug",
               "args": null,
               "storageKey": null
             },
-            v0
+            (v0/*: any*/)
           ]
         }
       ]
@@ -298,10 +280,9 @@ return {
       "kind": "FragmentSpread",
       "name": "SeoDataForArtwork_artwork",
       "args": null
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = 'e1bf74578133fc8ebf24b1ea06329d38';
+(node as any).hash = '3270b3c87f1d4d01b50b768608dc420e';
 export default node;

@@ -1,26 +1,22 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarClassification_artwork$ref: unique symbol;
-export type ArtworkSidebarClassification_artwork$ref = typeof _ArtworkSidebarClassification_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarClassification_artwork = {
-    readonly attribution_class: ({
+    readonly attribution_class: {
         readonly short_description: string | null;
-    }) | null;
-    readonly " $refType": ArtworkSidebarClassification_artwork$ref;
+    } | null;
+    readonly " $refType": "ArtworkSidebarClassification_artwork";
+};
+export type ArtworkSidebarClassification_artwork$data = ArtworkSidebarClassification_artwork;
+export type ArtworkSidebarClassification_artwork$key = {
+    readonly " $data"?: ArtworkSidebarClassification_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarClassification_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarClassification_artwork",
   "type": "Artwork",
@@ -29,8 +25,8 @@ return {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "attribution_class",
+      "alias": "attribution_class",
+      "name": "attributionClass",
       "storageKey": null,
       "args": null,
       "concreteType": "AttributionClass",
@@ -38,17 +34,14 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "short_description",
+          "alias": "short_description",
+          "name": "shortDescription",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '0edd5c2a1b8b93a17d606367fe4c25ae';
+(node as any).hash = '8207b17fc2db26e6b886dd476a7920bf';
 export default node;

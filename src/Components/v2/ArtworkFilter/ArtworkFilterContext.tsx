@@ -1,118 +1,214 @@
-import React, { useContext, useEffect, useReducer } from "react"
-import { useDidMount } from "Utils/Hooks/useDidMount"
+import { omit } from "lodash"
+import React, { useContext, useReducer, useState } from "react"
+import useDeepCompareEffect from "use-deep-compare-effect"
 import { hasFilters } from "./Utils/hasFilters"
 import { isDefaultFilter } from "./Utils/isDefaultFilter"
 import { rangeToTuple } from "./Utils/rangeToTuple"
-import { urlFragmentFromState } from "./Utils/urlFragmentFromState"
+import { paramsToCamelCase } from "./Utils/urlBuilder"
 
-export interface Filters {
+/**
+ * Initial filter state
+ */
+export const initialArtworkFilterState: ArtworkFilters = {
+  majorPeriods: [],
+  page: 1,
+  sort: "-decayed_merch",
+
+  // TODO: Remove these unneeded default props
+  // height: "*-*",
+  // price_range: "*-*",
+  // width: "*-*",
+}
+
+/**
+ * A list of all possible artwork filters across all apps
+ */
+export interface ArtworkFilters {
   acquireable?: boolean
-  at_auction?: boolean
+  artist_id?: string
+  atAuction?: boolean
   color?: string
-  for_sale?: boolean
-  height: string
-  inquireable_only?: boolean
+  forSale?: boolean
+  height?: string
+  inquireableOnly?: boolean
   keyword?: string
-  major_periods: string[]
+  majorPeriods?: string[]
   medium?: string
   offerable?: boolean
-  page: number
-  partner_id?: string
-  price_range: string
-  sort: string
-  width: string
+  page?: number
+  partnerID?: string
+  priceRange?: string
+  sort?: string
+  term?: string
+  width?: string
 }
 
-export const initialFilterState = {
-  height: "*-*",
-  major_periods: [],
-  page: 1,
-  price_range: "*-*",
-  sort: "-decayed_merch",
-  width: "*-*",
+interface ArtworkFiltersState extends ArtworkFilters {
+  reset?: boolean
 }
 
-export const FilterContext = React.createContext<{
-  filters: Filters
+/**
+ * Possible aggregations that can be passed
+ */
+export type Aggregations = Array<{
+  slice:
+    | "COLOR"
+    | "DIMENSION_RANGE"
+    | "FOLLOWED_ARTISTS"
+    | "GALLERY"
+    | "INSTITUTION"
+    | "MAJOR_PERIOD"
+    | "MEDIUM"
+    | "MERCHANDISABLE_ARTISTS"
+    | "PARTNER_CITY"
+    | "PERIOD"
+    | "PRICE_RANGE"
+    | "TOTAL"
+  counts: Array<{
+    count: number
+    value: string
+    name: string
+  }>
+}>
+
+interface Counts {
+  for_sale_artworks?: number
+  ecommerce_artworks?: number
+  auction_artworks?: number
+  artworks?: number
+  has_make_offer_artworks?: boolean
+}
+
+export interface ArtworkFilterContextProps {
+  filters?: ArtworkFilters
+
+  // Components
+  ZeroState?: React.FC
+
+  // Sorting
+  sortOptions?: SortOptions
+  aggregations?: Aggregations
+  setAggregations?: (aggregations: Aggregations) => void
+  counts?: Counts
+  setCounts?: (counts: Counts) => void
+
+  // Handlers
+  onArtworkBrickClick?: (artwork: any, props: any) => void
+  onFilterClick?: (
+    key: keyof ArtworkFilters,
+    value: string,
+    filterState: ArtworkFilters
+  ) => void
+
+  // Filter manipulation
   hasFilters: boolean
-  isDefaultValue: (name: string) => boolean
-  rangeToTuple: (name: string) => [number, number]
+  isDefaultValue: (name: keyof ArtworkFilters) => boolean
+  rangeToTuple: (name: keyof ArtworkFilters) => [number, number]
   resetFilters: () => void
-  setFilter: (name: string, value: any) => void
-  unsetFilter: (name: string) => void
-}>({
-  filters: initialFilterState,
+  setFilter: (name: keyof ArtworkFilters, value: any) => void
+  unsetFilter: (name: keyof ArtworkFilters) => void
+}
+
+/**
+ * Context behavior shared globally across the ArtworkFilter component tree
+ */
+export const ArtworkFilterContext = React.createContext<
+  ArtworkFilterContextProps
+>({
+  filters: initialArtworkFilterState,
   hasFilters: false,
   isDefaultValue: null,
   rangeToTuple: null,
   resetFilters: null,
   setFilter: null,
+  sortOptions: [],
   unsetFilter: null,
+  ZeroState: null,
 })
 
-export const FilterContextProvider: React.FC<
-  Filters & { children: React.ReactNode }
-> = ({
+export type SortOptions = Array<{
+  value: string
+  text: string
+}>
+
+export type SharedArtworkFilterContextProps = Pick<
+  ArtworkFilterContextProps,
+  | "aggregations"
+  | "counts"
+  | "filters"
+  | "sortOptions"
+  | "onArtworkBrickClick"
+  | "onFilterClick"
+  | "ZeroState"
+> & {
+  onChange?: (filterState) => void
+}
+
+export const ArtworkFilterContextProvider: React.FC<SharedArtworkFilterContextProps & {
+  children: React.ReactNode
+}> = ({
+  aggregations = [],
   children,
-  height = "*-*",
-  major_periods = [],
-  medium = "",
-  page = 1,
-  price_range = "*-*",
-  sort = "-decayed_merch",
-  width = "*-*",
-  ...rest
+  counts = {},
+  filters = {},
+  onArtworkBrickClick,
+  onChange,
+  onFilterClick,
+  sortOptions,
+  ZeroState,
 }) => {
-  const [state, dispatch] = useReducer(filterReducer, {
-    height,
-    major_periods,
-    medium,
-    page,
-    price_range,
-    sort,
-    width,
-    ...rest,
-  })
-  const isMounted = useDidMount()
-  // const updateOnChange = Object.keys(state).map(prop => state[prop])
-
-  useEffect(() => {
-    if (isMounted) {
-      const queryString = urlFragmentFromState(state)
-      window.history.pushState(
-        {},
-        null,
-        `${window.location.pathname}?${queryString}`
-      )
-    }
-  })
-
-  /**
-   * TODO: use this to trigger resetting of fields when back/fwd buttons are hit
-   * because otherwise it doesn't always happen.
-   */
-  useEffect(() => {
-    window.addEventListener("popstate", handleChange)
-    return () => window.removeEventListener("popstate", handleChange)
-  }, [])
-
-  function handleChange() {
-    console.log("derive state from URL here, and update!")
+  const initialFilterState = {
+    ...initialArtworkFilterState,
+    ...paramsToCamelCase(filters),
   }
 
-  const value = {
-    filters: state,
-    hasFilters: hasFilters(state),
+  const [artworkFilterState, dispatch] = useReducer(
+    artworkFilterReducer,
+    initialFilterState
+  )
 
+  // TODO: Consolidate this into additional reducer
+  const [filterAggregations, setAggregations] = useState(aggregations)
+  const [artworkCounts, setCounts] = useState(counts)
+
+  useDeepCompareEffect(() => {
+    if (onChange) {
+      onChange(omit(artworkFilterState, ["reset"]))
+    }
+  }, [artworkFilterState])
+
+  const artworkFilterContext = {
+    filters: artworkFilterState,
+    hasFilters: hasFilters(artworkFilterState),
+
+    // Handlers
+    onArtworkBrickClick,
+    onFilterClick,
+
+    // Sorting
+    sortOptions,
+    aggregations: filterAggregations,
+    setAggregations,
+    counts: artworkCounts,
+    setCounts,
+
+    // Components
+    ZeroState,
+
+    // Filter manipulation
     isDefaultValue: field => {
-      return isDefaultFilter(field, state[field])
+      return isDefaultFilter(field, artworkFilterState[field])
     },
 
     rangeToTuple: range => {
-      return rangeToTuple(state, range)
+      return rangeToTuple(artworkFilterState, range)
     },
 
     setFilter: (name, val) => {
+      if (onFilterClick) {
+        onFilterClick(name, val, { ...artworkFilterState, [name]: val })
+      }
+
       dispatch({
         type: "SET",
         payload: {
@@ -140,45 +236,143 @@ export const FilterContextProvider: React.FC<
   }
 
   return (
-    <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
+    <ArtworkFilterContext.Provider value={artworkFilterContext}>
+      {children}
+    </ArtworkFilterContext.Provider>
   )
 }
 
-const filterReducer = (state, action) => {
+const artworkFilterReducer = (
+  state: ArtworkFiltersState,
+  action: {
+    type: "SET" | "UNSET" | "RESET"
+    payload: { name: keyof ArtworkFilters; value?: any }
+  }
+): ArtworkFiltersState => {
   switch (action.type) {
+    /**
+     * Setting  and updating filters
+     */
     case "SET": {
+      const { name, value } = action.payload
+
+      let filterState: ArtworkFilters = {
+        page: 1,
+      }
+
+      if (name === "majorPeriods") {
+        filterState = {
+          majorPeriods: value ? [value] : [],
+        }
+      }
+      if (name === "page") {
+        filterState[name] = Number(value)
+      }
+
+      // String filter types
+      const stringFilterTypes: Array<keyof ArtworkFilters> = [
+        "color",
+        "height",
+        "medium",
+        "partnerID",
+        "priceRange",
+        "sort",
+        "width",
+      ]
+      stringFilterTypes.forEach(filter => {
+        if (name === filter) {
+          filterState[name as any] = value
+        }
+      })
+
+      // Boolean filter types
+      const booleanFilterTypes: Array<keyof ArtworkFilters> = [
+        "acquireable",
+        "atAuction",
+        "forSale",
+        "inquireableOnly",
+        "offerable",
+      ]
+      booleanFilterTypes.forEach(filter => {
+        if (name === filter) {
+          filterState[name as any] = Boolean(value)
+        }
+      })
+
+      delete state.reset
+
       return {
         ...state,
-        [action.payload.name]: action.payload.value,
+        ...filterState,
       }
     }
+
+    /**
+     * Unsetting a filter
+     */
     case "UNSET": {
+      const { name } = action.payload as { name: keyof ArtworkFilters }
+
+      let filterState: ArtworkFilters = {
+        page: 1,
+      }
+
+      if (name === "majorPeriods") {
+        filterState = {
+          majorPeriods: [],
+        }
+      }
+      if (name === "medium") {
+        filterState = {
+          medium: "*",
+        }
+      }
+      if (name === "page") {
+        filterState = {
+          page: 1,
+        }
+      }
+
+      const filters: Array<keyof ArtworkFilters> = [
+        "acquireable",
+        "atAuction",
+        "color",
+        "forSale",
+        "inquireableOnly",
+        "offerable",
+        "partnerID",
+      ]
+      filters.forEach(filter => {
+        if (name === filter) {
+          filterState[name as any] = null
+        }
+      })
+
       return {
         ...state,
-        [action.payload.name]: initialFilterState[action.payload.name],
+        ...filterState,
       }
     }
+
+    /**
+     * Resetting filters back to their initial state
+     */
     case "RESET": {
-      return initialFilterState
+      return {
+        ...initialArtworkFilterState,
+        reset: true,
+      }
     }
+
     default:
-      throw new Error("Unexpected action")
+      return state
   }
 }
 
 /**
  * Hook to conveniently access fiter state context
  */
-export const useFilterContext = () => {
-  const filterContext = useContext(FilterContext)
-  return filterContext
-}
-
-/**
- * Prefer using `useFilterContext`. This exists for legacy class components to
- * use as a render-prop.
- */
-export const FilterContextConsumer = ({ children }) => {
-  const filterContext = useFilterContext()
-  return children(filterContext)
+export const useArtworkFilterContext = () => {
+  const artworkFilterContext = useContext(ArtworkFilterContext)
+  return artworkFilterContext
 }

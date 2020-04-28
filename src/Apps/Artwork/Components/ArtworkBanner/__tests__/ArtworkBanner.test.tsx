@@ -1,9 +1,10 @@
+import { ArtworkBanner_Test_QueryRawResponse } from "__generated__/ArtworkBanner_Test_Query.graphql"
 import {
   ArtworkAuctionBannerFixture,
   ArtworkBenefitAuctionBannerFixture,
   ArtworkFairBannerFixture,
+  ArtworkNoBannerFixture,
   ArtworkUpcomingShowBannerFixture,
-  ArtwrorkNoBannerFixture,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkBanner"
 import { ArtworkBannerFragmentContainer } from "Apps/Artwork/Components/ArtworkBanner"
 import { renderRelayTree } from "DevTools"
@@ -12,17 +13,19 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkBanner", () => {
-  const getWrapper = async (response = ArtwrorkNoBannerFixture) => {
+  const getWrapper = async (
+    response: ArtworkBanner_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkBannerFragmentContainer,
       query: graphql`
-        query ArtworkBanner_Test_Query {
+        query ArtworkBanner_Test_Query @raw_response_type {
           artwork(id: "richard-anuszkiewicz-lino-yellow-318") {
             ...ArtworkBanner_artwork
           }
         }
       `,
-      mockData: { artwork: response },
+      mockData: { artwork: response } as ArtworkBanner_Test_QueryRawResponse,
     })
   }
 
@@ -30,7 +33,7 @@ describe("ArtworkBanner", () => {
 
   describe("ArtworkBanner for artwork with no banner", () => {
     beforeAll(async () => {
-      wrapper = await getWrapper()
+      wrapper = await getWrapper(ArtworkNoBannerFixture)
     })
     it("renders nothing", () => {
       const html = wrapper.html()

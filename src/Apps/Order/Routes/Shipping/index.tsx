@@ -11,24 +11,23 @@ import {
 } from "@artsy/palette"
 import { Shipping_order } from "__generated__/Shipping_order.graphql"
 import {
-  OrderFulfillmentType,
+  CommerceOrderFulfillmentTypeEnum,
   ShippingOrderAddressUpdateMutation,
 } from "__generated__/ShippingOrderAddressUpdateMutation.graphql"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
-import {
-  Address,
-  AddressChangeHandler,
-  AddressErrors,
-  AddressForm,
-  AddressTouched,
-  emptyAddress,
-} from "Apps/Order/Components/AddressForm"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/Order/Components/ArtworkSummaryItem"
 import {
   buyNowFlowSteps,
   offerFlowSteps,
   OrderStepper,
 } from "Apps/Order/Components/OrderStepper"
+import {
+  PhoneNumber,
+  PhoneNumberChangeHandler,
+  PhoneNumberError,
+  PhoneNumberForm,
+  PhoneNumberTouched,
+} from "Apps/Order/Components/PhoneNumberForm"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
 import { Dialog, injectDialog } from "Apps/Order/Dialogs"
@@ -37,9 +36,16 @@ import {
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
 import { validatePresence } from "Apps/Order/Utils/formValidators"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import {
+  Address,
+  AddressChangeHandler,
+  AddressErrors,
+  AddressForm,
+  AddressTouched,
+  emptyAddress,
+} from "Components/AddressForm"
 import { Router } from "found"
 import { pick } from "lodash"
 import React, { Component } from "react"
@@ -58,8 +64,11 @@ export interface ShippingProps {
 }
 
 export interface ShippingState {
-  shippingOption: OrderFulfillmentType
+  shippingOption: CommerceOrderFulfillmentTypeEnum
   address: Address
+  phoneNumber: PhoneNumber
+  phoneNumberError: PhoneNumberError
+  phoneNumberTouched: PhoneNumberTouched
   addressErrors: AddressErrors
   addressTouched: AddressTouched
 }
@@ -69,12 +78,21 @@ const logger = createLogger("Order/Routes/Shipping/index.tsx")
 @track()
 export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   state: ShippingState = {
-    shippingOption: ((this.props.order.requestedFulfillment &&
-      this.props.order.requestedFulfillment.__typename.toUpperCase()) ||
-      "SHIP") as OrderFulfillmentType,
+    shippingOption: (this.props.order.requestedFulfillment &&
+    this.props.order.requestedFulfillment.__typename !== "CommerceShip"
+      ? "PICKUP"
+      : "SHIP") as CommerceOrderFulfillmentTypeEnum,
     address: this.startingAddress,
     addressErrors: {},
     addressTouched: {},
+    phoneNumber:
+      this.props.order.requestedFulfillment &&
+      (this.props.order.requestedFulfillment.__typename === "CommerceShip" ||
+        this.props.order.requestedFulfillment.__typename === "CommercePickup")
+        ? this.props.order.requestedFulfillment.phoneNumber
+        : "",
+    phoneNumberError: "",
+    phoneNumberTouched: false,
   }
 
   get startingAddress() {
@@ -104,20 +122,21 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   setShipping(variables: ShippingOrderAddressUpdateMutation["variables"]) {
     return this.props.commitMutation<ShippingOrderAddressUpdateMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation ShippingOrderAddressUpdateMutation(
-          $input: SetOrderShippingInput!
+          $input: CommerceSetShippingInput!
         ) {
-          ecommerceSetOrderShipping(input: $input) {
+          commerceSetShipping(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   state
                   requestedFulfillment {
                     __typename
-                    ... on Ship {
+                    ... on CommerceShip {
                       name
                       addressLine1
                       addressLine2
@@ -130,7 +149,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -145,34 +164,65 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   onContinueButtonPressed = async () => {
-    const { address, shippingOption } = this.state
+    const { address, shippingOption, phoneNumber } = this.state
 
     if (shippingOption === "SHIP") {
       const { errors, hasErrors } = this.validateAddress(this.state.address)
-      if (hasErrors) {
+      const { error, hasError } = this.validatePhoneNumber(
+        this.state.phoneNumber
+      )
+      if (hasErrors && hasError) {
         this.setState({
           addressErrors: errors,
           addressTouched: this.touchedAddress,
+          phoneNumberError: error,
+          phoneNumberTouched: true,
+        })
+        return
+      } else if (hasErrors) {
+        this.setState({
+          addressErrors: errors,
+          addressTouched: this.touchedAddress,
+        })
+        return
+      } else if (hasError) {
+        this.setState({
+          phoneNumberError: error,
+          phoneNumberTouched: true,
+        })
+        return
+      }
+    } else {
+      const { error, hasError } = this.validatePhoneNumber(
+        this.state.phoneNumber
+      )
+      if (hasError) {
+        this.setState({
+          phoneNumberError: error,
+          phoneNumberTouched: true,
         })
         return
       }
     }
 
     try {
-      const orderOrError = (await this.setShipping({
-        input: {
-          orderId: this.props.order.id,
-          fulfillmentType: shippingOption,
-          shipping: address,
-        },
-      })).ecommerceSetOrderShipping.orderOrError
+      const orderOrError = (
+        await this.setShipping({
+          input: {
+            id: this.props.order.internalID,
+            fulfillmentType: shippingOption,
+            shipping: address,
+            phoneNumber,
+          },
+        })
+      ).commerceSetShipping.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/payment`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/payment`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -207,15 +257,7 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
   }
 
   private validateAddress(address: Address) {
-    const {
-      name,
-      addressLine1,
-      city,
-      region,
-      country,
-      postalCode,
-      phoneNumber,
-    } = address
+    const { name, addressLine1, city, region, country, postalCode } = address
     const usOrCanada = country === "US" || country === "CA"
     const errors = {
       name: validatePresence(name),
@@ -224,13 +266,22 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
       region: usOrCanada && validatePresence(region),
       country: validatePresence(country),
       postalCode: usOrCanada && validatePresence(postalCode),
-      phoneNumber: validatePresence(phoneNumber),
     }
     const hasErrors = Object.keys(errors).filter(key => errors[key]).length > 0
 
     return {
       errors,
       hasErrors,
+    }
+  }
+
+  private validatePhoneNumber(phoneNumber: string) {
+    const error = validatePresence(phoneNumber)
+    const hasError = error !== null
+
+    return {
+      error,
+      hasError,
     }
   }
 
@@ -249,6 +300,15 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     })
   }
 
+  onPhoneNumberChange: PhoneNumberChangeHandler = phoneNumber => {
+    const { error } = this.validatePhoneNumber(phoneNumber)
+    this.setState({
+      phoneNumber,
+      phoneNumberError: error,
+      phoneNumberTouched: true,
+    })
+  }
+
   @track((props, state, args) => ({
     action_type: Schema.ActionType.Click,
     subject:
@@ -258,16 +318,23 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
     flow: "buy now",
     type: "button",
   }))
-  onSelectShippingOption(shippingOption: OrderFulfillmentType) {
+  onSelectShippingOption(shippingOption: CommerceOrderFulfillmentTypeEnum) {
     this.setState({ shippingOption })
   }
 
   render() {
     const { order, isCommittingMutation } = this.props
-    const { address, addressErrors, addressTouched } = this.state
+    const {
+      address,
+      addressErrors,
+      addressTouched,
+      phoneNumber,
+      phoneNumberError,
+      phoneNumberTouched,
+    } = this.state
     const artwork = get(
       this.props,
-      props => order.lineItems.edges[0].node.artwork
+      props => props.order.lineItems.edges[0].node.artwork
     )
 
     return (
@@ -334,7 +401,28 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
                     errors={addressErrors}
                     touched={addressTouched}
                     onChange={this.onAddressChange}
-                    continentalUsOnly={artwork.shipsToContinentalUSOnly}
+                    domesticOnly={artwork.onlyShipsDomestically}
+                    euOrigin={artwork.euShippingOrigin}
+                    shippingCountry={artwork.shippingCountry}
+                    showPhoneNumberInput={false}
+                  />
+                  <Spacer mb={2} />
+                  <PhoneNumberForm
+                    value={phoneNumber}
+                    errors={phoneNumberError}
+                    touched={phoneNumberTouched}
+                    onChange={this.onPhoneNumberChange}
+                    label="Required for shipping logistics"
+                  />
+                </Collapse>
+
+                <Collapse open={this.state.shippingOption === "PICKUP"}>
+                  <PhoneNumberForm
+                    value={phoneNumber}
+                    errors={phoneNumberError}
+                    touched={phoneNumberTouched}
+                    onChange={this.onPhoneNumberChange}
+                    label="Number to contact you for pickup logistics"
                   />
                 </Collapse>
 
@@ -378,16 +466,19 @@ export class ShippingRoute extends Component<ShippingProps, ShippingState> {
 }
 
 export const ShippingFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(ShippingRoute))),
+  injectCommitMutation(injectDialog(ShippingRoute)),
   {
     order: graphql`
-      fragment Shipping_order on Order {
-        id
+      fragment Shipping_order on CommerceOrder {
+        internalID
         mode
         state
         requestedFulfillment {
           __typename
-          ... on Ship {
+          ... on CommercePickup {
+            phoneNumber
+          }
+          ... on CommerceShip {
             name
             addressLine1
             addressLine2
@@ -402,9 +493,11 @@ export const ShippingFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
-                pickup_available
-                shipsToContinentalUSOnly
+                slug
+                pickup_available: pickupAvailable
+                onlyShipsDomestically
+                euShippingOrigin
+                shippingCountry
               }
             }
           }
@@ -415,3 +508,6 @@ export const ShippingFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default ShippingFragmentContainer

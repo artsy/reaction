@@ -1,7 +1,7 @@
 import { OfferOrderWithOffers } from "Apps/__tests__/Fixtures/Order"
 
 export const submitPendingOfferSuccess = {
-  ecommerceSubmitPendingOffer: {
+  commerceSubmitPendingOffer: {
     orderOrError: {
       order: {
         ...OfferOrderWithOffers,
@@ -10,7 +10,7 @@ export const submitPendingOfferSuccess = {
   },
 }
 export const submitPendingOfferFailed = {
-  ecommerceSubmitPendingOffer: {
+  commerceSubmitPendingOffer: {
     orderOrError: {
       error: {
         type: "validation",
@@ -22,7 +22,7 @@ export const submitPendingOfferFailed = {
 }
 
 export const insufficientInventoryResponse = {
-  ecommerceSubmitPendingOffer: {
+  commerceSubmitPendingOffer: {
     orderOrError: {
       error: {
         type: "validation",

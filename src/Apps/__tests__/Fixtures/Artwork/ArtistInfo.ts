@@ -1,5 +1,8 @@
-export const ArtistInfoFixture = {
-  id: "pablo-picasso",
+import { ArtistInfo_Test_QueryRawResponse } from "__generated__/ArtistInfo_Test_Query.graphql"
+
+export const ArtistInfoFixture: ArtistInfo_Test_QueryRawResponse["artist"] = {
+  internalID: "pablo-picasso",
+  slug: "pablo-picasso",
   name: "Pablo Picasso",
   href: "/artist/pablo-picasso",
   image: {
@@ -15,7 +18,7 @@ export const ArtistInfoFixture = {
       partner: {
         __typename: "Partner",
         name: "Tate Modern",
-        __id: "UGFydG5lcjp0YXRlLW1vZGVybg==",
+        id: "UGFydG5lcjp0YXRlLW1vZGVybg==",
       },
       name: "The EY Exhibition: PICASSO 1932 – Love, Fame, Tragedy",
       start_at: "2018",
@@ -26,14 +29,14 @@ export const ArtistInfoFixture = {
         },
       },
       city: "London",
-      __id:
+      id:
         "U2hvdzp0YXRlLW1vZGVybi10aGUtZXktZXhoaWJpdGlvbi1waWNhc3NvLTE5MzItbG92ZS1mYW1lLXRyYWdlZHk=",
     },
     {
       partner: {
         __typename: "Partner",
         name: "Musée Picasso Paris",
-        __id: "UGFydG5lcjptdXNlZS1waWNhc3NvLXBhcmlz",
+        id: "UGFydG5lcjptdXNlZS1waWNhc3NvLXBhcmlz",
       },
       name: "Picasso 1932. Année érotique",
       start_at: "2017",
@@ -44,14 +47,14 @@ export const ArtistInfoFixture = {
         },
       },
       city: "Paris",
-      __id:
+      id:
         "U2hvdzptdXNlZS1waWNhc3NvLXBhcmlzLXBpY2Fzc28tMTkzMi1hbm5lZS1lcm90aXF1ZQ==",
     },
     {
       partner: {
         __typename: "Partner",
         name: "Musée Picasso Paris",
-        __id: "UGFydG5lcjptdXNlZS1waWNhc3NvLXBhcmlz",
+        id: "UGFydG5lcjptdXNlZS1waWNhc3NvLXBhcmlz",
       },
       name: "Olga Picasso",
       start_at: "2017",
@@ -62,16 +65,14 @@ export const ArtistInfoFixture = {
         },
       },
       city: "Paris",
-      __id: "U2hvdzptdXNlZS1waWNhc3NvLXBhcmlzLW9sZ2EtcGljYXNzbw==",
+      id: "U2hvdzptdXNlZS1waWNhc3NvLXBhcmlzLW9sZ2EtcGljYXNzbw==",
     },
   ],
-  biography_blurb: {
+  biographyBlurb: {
     text:
       '<p>A prolific and tireless innovator of art forms, Pablo Picasso impacted the course of 20th-century art with unparalleled magnitude. Inspired by African and Iberian art and developments in the world around him, Picasso contributed significantly to a number of artistic movements, notably <a href="/gene/cubism">Cubism</a>, <a href="/gene/surrealism">Surrealism</a>, <a href="/gene/neoclassicism">Neoclassicism</a>, and <a href="/gene/austrian-and-german-expressionism">Expressionism</a>. Along with <a href="/artist/georges-braque">Georges Braque</a>, Picasso is best known for pioneering <a href="/gene/cubism">Cubism</a> in an attempt to reconcile three-dimensional space with the two-dimensional picture plane, once asking, “Are we to paint what’s on the face, what’s inside the face, or what’s behind it?” Responding to the Spanish Civil War, he painted his most famous work, <em>Guernica</em> (1937), whose violent images of anguished figures rendered in grisaille made it a definitive work of anti-war art. “Painting is not made to decorate apartments,” he said. “It’s an offensive and defensive weapon against the enemy.” Picasso’s sizable oeuvre includes over 20,000 paintings, prints, drawings, sculptures, ceramics, theater sets, and costume designs.</p>\n',
-    credit: null,
   },
-  __id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
-  _id: "4d8b928b4eb68a1b2c0001f2",
+  id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28=",
   collections: [
     "Tate",
     "Museum of Modern Art (MoMA)",
@@ -80,57 +81,61 @@ export const ArtistInfoFixture = {
     "San Francisco Museum of Modern Art (SFMOMA) ",
   ],
   highlights: {
-    partners: {
+    partnersConnection: {
       edges: [
         {
           node: {
+            __typename: "Partner",
             categories: [
-              { id: "contemporary" },
-              { id: "established" },
-              { id: "modern" },
-              { id: "painting" },
-              { id: "blue-chip" },
+              { id: "contemporary", slug: "contemporary" },
+              { id: "established", slug: "established" },
+              { id: "modern", slug: "modern" },
+              { id: "painting", slug: "painting" },
+              { id: "blue-chip", slug: "blue-chip" },
             ],
-            __id: "UGFydG5lcjpnYWdvc2lhbg==",
+            id: "UGFydG5lcjpnYWdvc2lhbg==",
           },
-          __id: "UGFydG5lckFydGlzdEVkZ2U6NTIwNTBlYmMzYjU1NTIzOTNmMDAwMDk0",
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTIwNTBlYmMzYjU1NTIzOTNmMDAwMDk0",
         },
         {
           node: {
+            __typename: "Partner",
             categories: [
-              { id: "contemporary" },
-              { id: "established" },
-              { id: "painting" },
-              { id: "blue-chip" },
+              { id: "contemporary", slug: "contemporary" },
+              { id: "established", slug: "established" },
+              { id: "painting", slug: "painting" },
+              { id: "blue-chip", slug: "blue-chip" },
             ],
-            __id: "UGFydG5lcjpwYWNlLWdhbGxlcnk=",
+            id: "UGFydG5lcjpwYWNlLWdhbGxlcnk=",
           },
-          __id: "UGFydG5lckFydGlzdEVkZ2U6NTZmNTRhYjdjZDUzMGU2NTg3MDAwMWM4",
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTZmNTRhYjdjZDUzMGU2NTg3MDAwMWM4",
         },
         {
           node: {
+            __typename: "Partner",
             categories: [
-              { id: "contemporary" },
-              { id: "established" },
-              { id: "mid-career" },
-              { id: "painting" },
-              { id: "top-established" },
+              { id: "contemporary", slug: "contemporary" },
+              { id: "established", slug: "established" },
+              { id: "mid-career", slug: "mid-career" },
+              { id: "painting", slug: "painting" },
+              { id: "top-established", slug: "top-established" },
             ],
-            __id: "UGFydG5lcjpiZWNrLWFuZC1lZ2dlbGluZw==",
+            id: "UGFydG5lcjpiZWNrLWFuZC1lZ2dlbGluZw==",
           },
-          __id: "UGFydG5lckFydGlzdEVkZ2U6NTM2YWE5YmVlYmFkNjQ4MzM4MDAwMDk2",
+          id: "UGFydG5lckFydGlzdEVkZ2U6NTM2YWE5YmVlYmFkNjQ4MzM4MDAwMDk2",
         },
       ],
     },
   },
-  auctionResults: {
+  auctionResultsConnection: {
     edges: [
       {
         node: {
+          __typename: "AuctionResult",
           price_realized: { display: "$179m" },
           organization: "Christie's",
           sale_date: "2015",
-          __id: "QXVjdGlvblJlc3VsdDoxNjQ3MQ==",
+          id: "QXVjdGlvblJlc3VsdDoxNjQ3MQ==",
         },
       },
     ],

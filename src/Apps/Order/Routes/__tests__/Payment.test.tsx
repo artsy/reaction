@@ -1,14 +1,14 @@
 import { Checkbox } from "@artsy/palette"
+import { PaymentTestQueryRawResponse } from "__generated__/PaymentTestQuery.graphql"
 
 import {
   BuyOrderWithShippingDetails,
   OfferOrderWithShippingDetails,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { AddressForm } from "Components/AddressForm"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
 import * as paymentPickerMock from "../../Components/__mocks__/PaymentPicker"
-import { AddressForm } from "../../Components/AddressForm"
 import {
   settingOrderPaymentFailed,
   settingOrderPaymentSuccess,
@@ -22,7 +22,8 @@ jest.mock("Utils/Events", () => ({
   postEvent: jest.fn(),
 }))
 
-jest.mock("Apps/Order/Utils/trackPageView")
+const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
+
 jest.mock(
   "Apps/Order/Components/PaymentPicker",
   // not sure why this is neccessary :(
@@ -32,7 +33,10 @@ jest.mock(
   }
 )
 
-const testOrder = { ...BuyOrderWithShippingDetails, id: "1234" }
+const testOrder: PaymentTestQueryRawResponse["order"] = {
+  ...BuyOrderWithShippingDetails,
+  internalID: "1234",
+}
 
 describe("Payment", () => {
   const { buildPage, mutations, routes } = createTestEnv({
@@ -45,11 +49,11 @@ describe("Payment", () => {
       ...settingOrderPaymentSuccess,
     },
     query: graphql`
-      query PaymentTestQuery {
+      query PaymentTestQuery @raw_response_type {
         me {
           ...Payment_me
         }
-        order: ecommerceOrder(id: "unused") {
+        order: commerceOrder(id: "unused") {
           ...Payment_order
         }
       }
@@ -96,8 +100,18 @@ describe("Payment", () => {
     const page = await buildPage()
     await page.clickSubmit()
     await page.expectAndDismissErrorDialogMatching(
-      "An error occurred",
-      "This is the description of an error."
+      "This is the description of an error.",
+      "Please enter another payment method or contact your bank for more information."
+    )
+  })
+
+  it("shows an error modal with the title 'An internal error occurred' and the default message when the payment picker returns an error with the type 'internal_error'", async () => {
+    paymentPickerMock.useInternalErrorResult()
+    const page = await buildPage()
+    await page.clickSubmit()
+    await page.expectAndDismissErrorDialogMatching(
+      "An internal error occurred",
+      "Please try again or contact orders@artsy.net."
     )
   })
 
@@ -108,7 +122,7 @@ describe("Payment", () => {
     expect(mutations.lastFetchVariables).toMatchObject({
       input: {
         creditCardId: "credit-card-id",
-        orderId: "1234",
+        id: "1234",
       },
     })
   })
@@ -144,14 +158,36 @@ describe("Payment", () => {
         },
       })
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkOffer navigate rightcheckShipping navigate rightPaymentnavigate rightReview"`
+        `"CheckOffer Navigate rightCheckShipping Navigate rightPaymentNavigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Payment")
     })
   })
 
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
+  describe("analytics", () => {
+    const err = console.error
+    beforeEach(() => {
+      mockPostEvent.mockClear()
+      // TODO: update to react 16.9 so we can use async `act`
+      console.error = (...args) => {
+        if (
+          !args.some(
+            a =>
+              a &&
+              a
+                .toString()
+                .match(
+                  "code that causes React state updates should be wrapped into act"
+                )
+          )
+        ) {
+          err(...args)
+        }
+      }
+    })
+
+    afterEach(() => {
+      console.error = err
+    })
   })
 })

@@ -1,15 +1,15 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchBar_viewer$ref } from "./SearchBar_viewer.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type SearchBarSuggestQueryVariables = {
-    readonly term: string;
-    readonly hasTerm: boolean;
+    term: string;
+    hasTerm: boolean;
 };
 export type SearchBarSuggestQueryResponse = {
-    readonly viewer: ({
-        readonly " $fragmentRefs": SearchBar_viewer$ref;
-    }) | null;
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"SearchBar_viewer">;
+    } | null;
 };
 export type SearchBarSuggestQuery = {
     readonly response: SearchBarSuggestQueryResponse;
@@ -29,7 +29,7 @@ query SearchBarSuggestQuery(
 }
 
 fragment SearchBar_viewer_2Mejjw on Viewer {
-  search(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {
+  searchConnection(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {
     edges {
       node {
         __typename
@@ -37,10 +37,10 @@ fragment SearchBar_viewer_2Mejjw on Viewer {
         href
         ... on SearchableItem {
           displayType
-          id
+          slug
         }
         ... on Node {
-          __id
+          id
         }
       }
     }
@@ -65,22 +65,17 @@ var v0 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SearchBarSuggestQuery",
-  "id": null,
-  "text": "query SearchBarSuggestQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  search(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          displayType\n          id\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SearchBarSuggestQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -93,14 +88,12 @@ return {
               {
                 "kind": "Variable",
                 "name": "hasTerm",
-                "variableName": "hasTerm",
-                "type": null
+                "variableName": "hasTerm"
               },
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": null
+                "variableName": "term"
               }
             ]
           }
@@ -111,7 +104,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "SearchBarSuggestQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -130,26 +123,23 @@ return {
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "search",
+                "name": "searchConnection",
                 "storageKey": null,
                 "args": [
                   {
                     "kind": "Literal",
                     "name": "first",
-                    "value": 7,
-                    "type": "Int"
+                    "value": 7
                   },
                   {
                     "kind": "Literal",
                     "name": "mode",
-                    "value": "AUTOSUGGEST",
-                    "type": "SearchMode"
+                    "value": "AUTOSUGGEST"
                   },
                   {
                     "kind": "Variable",
                     "name": "query",
-                    "variableName": "term",
-                    "type": "String!"
+                    "variableName": "term"
                   }
                 ],
                 "concreteType": "SearchableConnection",
@@ -197,7 +187,7 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "__id",
+                            "name": "id",
                             "args": null,
                             "storageKey": null
                           },
@@ -215,7 +205,7 @@ return {
                               {
                                 "kind": "ScalarField",
                                 "alias": null,
-                                "name": "id",
+                                "name": "slug",
                                 "args": null,
                                 "storageKey": null
                               }
@@ -230,17 +220,15 @@ return {
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SearchBarSuggestQuery",
+    "id": null,
+    "text": "query SearchBarSuggestQuery(\n  $term: String!\n  $hasTerm: Boolean!\n) {\n  viewer {\n    ...SearchBar_viewer_2Mejjw\n  }\n}\n\nfragment SearchBar_viewer_2Mejjw on Viewer {\n  searchConnection(query: $term, mode: AUTOSUGGEST, first: 7) @include(if: $hasTerm) {\n    edges {\n      node {\n        __typename\n        displayLabel\n        href\n        ... on SearchableItem {\n          displayType\n          slug\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

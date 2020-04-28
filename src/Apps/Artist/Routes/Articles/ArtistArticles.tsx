@@ -1,12 +1,12 @@
 import { Box, Col, Row } from "@artsy/palette"
 import { ArtistArticles_artist } from "__generated__/ArtistArticles_artist.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import styled from "styled-components"
 import { ArticleItem } from "./ArtistArticle"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/LoadingArea"
 
 const PAGE_SIZE = 10
 
@@ -50,7 +50,7 @@ export class ArtistArticles extends Component<
       {
         first: PAGE_SIZE,
         after: cursor,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
       },
@@ -131,14 +131,14 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           after: { type: "String" }
           before: { type: "String" }
         ) {
-        id
+        slug
         articlesConnection(
           first: $first
           after: $after
           before: $before
           last: $last
           sort: PUBLISHED_AT_DESC
-          in_editorial_feed: true
+          inEditorialFeed: true
         ) {
           pageInfo {
             hasNextPage
@@ -150,12 +150,12 @@ export const ArtistArticlesRefetchContainer = createRefetchContainer(
           edges {
             node {
               href
-              thumbnail_title
+              thumbnail_title: thumbnailTitle
               author {
                 name
               }
-              published_at(format: "MMM Do, YYYY")
-              thumbnail_image {
+              published_at: publishedAt(format: "MMM Do, YYYY")
+              thumbnail_image: thumbnailImage {
                 resized(width: 300) {
                   url
                 }

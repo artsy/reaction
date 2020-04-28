@@ -1,5 +1,5 @@
 import { cloneDeep, extend } from "lodash"
-import { ArticleData } from "../Typings"
+import { ArticleData, ArticlePartner, ArticleSale } from "../Typings"
 import {
   ClassicText,
   FeatureText,
@@ -165,6 +165,678 @@ export const ClassicArticleManyAuthors = extend({}, ClassicArticle, {
     },
   ],
 })
+
+export const ClassicArticleInternalChannel: ArticleData = {
+  id: "5e3b232c77aee50020ddfb7f",
+  title: "Consignments Intern",
+  description:
+    "Artsy’s mission is to expand the art market to support more artists and art in the world. Artsy has created the world’s largest two-sided art marketpl...",
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/QqdsjeaNSJcspGs0pEw_7A%2F18_11_09_Artsy_0377%2B0366%2B0386.jpg",
+  thumbnail_title: "Consignments Intern",
+  published_at: "2020-02-05T20:51:39.758Z",
+  tags: [],
+  tracking_tags: [],
+  slug: "artsy-jobs-consignments-intern-02-05-20",
+  layout: "classic",
+  featured: false,
+  channel_id: "578eb73cb5989e6f98f779a1",
+  partner_channel_id: null,
+  lead_paragraph:
+    "<p>Artsy’s mission is to expand the art market to support more artists and art in the world. Artsy has created the world’s largest two-sided art marketplace, with more than 1,000,000 works by 100,000 artists from 4,000 of the world’s leading galleries, auction houses, art fairs, and institutions across 190 countries. </p>",
+  keywords: [],
+  published: true,
+  email_metadata: {
+    headline: "Consignments Intern",
+    author: "Artsy Jobs",
+    image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/e7TOhXLnd0vkNqtFRByrgQ%2F18_11_09_Artsy_0123.jpg",
+  },
+  author: {
+    name: "Artsy Jobs",
+  },
+  authors: null,
+  channel: {
+    name: "Artsy Jobs",
+  },
+  sections: [
+    {
+      type: "text",
+      body:
+        '<p>We are currently seeking an analytical and driven Consignments Intern who will help grow this new Artsy business and provide guidance and expertise to collectors while selling their art.</p><p>The Consignments team is a recent area of business investment that aims to create more liquidity in the market and enable collectors to sell and rotate their collection more frequently, seamlessly and with the best outcome.</p><p>The Consignments Intern will be responsible for being the first person reviewing incoming Consignment property submissions, addressing inquiries from collectors via email and phone, as well as supporting the team of Specialists with a variety of administrative tasks. This is a unique opportunity for a professional early in their career in the art industry, who is eager to play an important role in growing a new business within Artsy. </p><p><br></p><h2>Key Responsibilities:</h2><ul><li>Review consignment submissions and ensuring that consignment requests are being evaluated promptly</li><li>Identify and surface high-value property and consignors to Specialists </li><li>Catalog consignment submissions data </li><li>Create consignment reports </li><li>Address consignment requests via email, phone and in-person requests</li><li>Log and synthesize feedback from clients</li><li>Track the status of Artsy’s consignments thorough follow-ups with partners and logging consignments outcomes </li></ul><p><br></p><h2>Candidate Qualifications:</h2><ul><li>0-3 years of professional experience (preferably in an auction house setting)</li><li>Background or experience in art market and/or art history - preferably with a focus on research, data or analytics</li><li>Excellent analytical skills and focus on process</li><li>Strong written and verbal communication skills</li><li>Ability to work on tight deadlines and under pressure</li><li>Comfort operating independently in a fast-paced environment</li><li>Proficiency in a language other than English is a plus, but not required</li><li>Solutions-oriented and go-getter mentality</li></ul><p><br></p><h2>To Apply:</h2><p>This position is a paid full-time, six month internship based in our Manhattan offices. To apply, please submit your resumé and a cover letter <strong><a href="https://grnh.se/298b49861">here</a>.</strong> </p><p><em>When you apply, you will be directed to a third party site.</em></p>',
+    },
+    {
+      type: "text",
+      body:
+        "<h2>Artsy Values</h2><p>Artsy has five core values that will inform your experience at Artsy.</p><p><strong>Art x Science:</strong> We believe in uniting empathy with logic, emotion with data, and intuition with research in everything we do. Whether in business strategy or design, culture or code, we seek the magic that happens when the often separate worlds of art and science come together.</p><p><strong>People are Paramount:</strong> We spend extraordinary energy finding the best person for a job—and once found, we give them the trust and autonomy to be CEO of their role. We avoid pointless bureaucracy and prefer to empower people with information rather than limit them with process.</p><p><strong>Quality Worthy of Art:</strong> We aim to create an experience worthy of all the world’s art and so hold ourselves to the highest standards in all our work. We believe that the best long term quality comes from rapid shipping, iterating, and learning as we go.</p><p><strong>Positive Energy:</strong> We know positivity and optimism benefit our work, and we harness positive energy as a vehicle towards greater awareness, growth, and collaboration. We believe in cultivating a positive relationship to art as opposed to one based on exclusivity or scarcity.</p><p><strong>Openness:</strong> We believe in being open with each other and the world—whether in open-sourcing our code, sharing feedback, or building a diverse and inclusive work culture. We believe in bringing our full selves to work and manifesting an open world where everyone has access to art.</p><p><em>Artsy is an equal opportunity employer. We value a diverse workforce and an inclusive culture. We encourage applications from all qualified individuals without regard to race, color, religion, gender, sexual orientation, gender identity or expression, age, national origin, marital status, disability, and veteran status.</em></p>",
+    },
+  ],
+}
+
+export const ClassicArticlePartner: ArticlePartner = {
+  default_profile_id: "contessa-gallery",
+  name: "Contessa Gallery",
+  type: "Gallery",
+  profile: {
+    id: "contessa-gallery",
+    href: "/contessa-gallery",
+    image: {
+      cropped: {
+        url:
+          "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FOyZ08tRGQ1k-ue1nk06vlQ%2Fsquare.jpg",
+      },
+    },
+  },
+}
+
+export const ClassicArticleSale: ArticleSale = {
+  id: "ici-benefit-auction-2019",
+  name: "ICI: Benefit Auction 2019",
+  href: "/auction/ici-benefit-auction-2019",
+  cover_image: {
+    cropped: {
+      url:
+        "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FLp8BFIM7yd8AspTZJz-MGg%2Flarge_rectangle.jpg",
+    },
+  },
+}
+
+export const ClassicArticlePromotedContent: ArticleData = {
+  id: "5da49b750c2c190020d70d2d",
+  title: "ICI: Benefit Auction 2019 Curatorial Committee Picks",
+  search_title: null,
+  social_title: null,
+  description:
+    "On the occasion of its 2019 Annual Benefit & Auction, Independent Curators International (ICI) has assembled the inaugural Benefit Auction Curatorial ...",
+  search_description: null,
+  social_description: null,
+  thumbnail_image:
+    "https://artsy-media-uploads.s3.amazonaws.com/M9D3a0es2TBNztvPs_dIAQ%2FShrobe%2C+David.jpg",
+  thumbnail_title: "ICI: Benefit Auction 2019 Curatorial Committee Picks",
+  social_image: null,
+  published_at: "2019-10-14T18:52:13.138Z",
+  tags: [],
+  tracking_tags: [],
+  slug:
+    "independent-curators-international-ici-benefit-auction-2019-curatorial-committee-picks",
+  layout: "classic",
+  featured: false,
+  channel_id: "5759e4d7b5989e6f98f77997",
+  partner_channel_id: null,
+  auction_ids: ["5d9664fafe84d100122ed257", "5d9b78f801c2c900126c1954"],
+  partner_ids: null,
+  lead_paragraph: "",
+  indexable: true,
+  keywords: [],
+  published: true,
+  postscript: null,
+  is_super_article: false,
+  is_super_sub_article: false,
+  sponsor: {
+    partner_dark_logo: null,
+    partner_light_logo: null,
+    partner_condensed_logo: null,
+    partner_logo_link: null,
+    pixel_tracking_code: null,
+  },
+  seriesArticle: null,
+  super_article: null,
+  email_metadata: {
+    headline: "ICI: Benefit Auction 2019 Curatorial Committee Picks",
+    author: "Independent Curators International",
+    image_url:
+      "https://artsy-media-uploads.s3.amazonaws.com/M9D3a0es2TBNztvPs_dIAQ%2FShrobe%2C+David.jpg",
+  },
+  author: {
+    name: "Independent Curators International",
+  },
+  authors: null,
+  channel: {
+    name: "Artsy Auctions",
+  },
+  contributing_authors: [],
+  vertical: null,
+  news_source: {
+    title: null,
+    url: null,
+  },
+  media: {
+    url: null,
+    credits: null,
+    description: null,
+    cover_image_url: null,
+    published: null,
+    duration: null,
+    release_date: null,
+  },
+  series: null,
+  hero_section: null,
+  sections: [
+    {
+      type: "text",
+      body:
+        '<p>On the occasion of its <a href="https://www.artsy.net/feature/ici-benefit-auction-2019">2019 Annual Benefit &amp; Auction</a>, Independent Curators International (ICI) has assembled the inaugural <strong>Benefit Auction Curatorial Committee</strong>, composed of <strong>Magali Arriola</strong>, <strong>Matthew Higgs</strong>, <strong>Barbara London</strong>, <strong>Larry Ossei-Mensah</strong>, <strong>Tumelo Mosaka</strong>, <strong>Paul Schimmel</strong> and <strong>Franklin Sirmans</strong>.</p>',
+    },
+    {
+      type: "text",
+      body:
+        "<p>The Benefit Auction Curatorial Committee has provided advice and assistance in the creation of a unique Benefit Auction, adding their voices and endorsement to the generosity of artists who support ICI's mission and programs. </p>",
+    },
+    {
+      type: "text",
+      body:
+        "<p><strong>ICI: Benefit Auction 2019 Curatorial Committee Picks</strong></p>",
+    },
+    {
+      type: "text",
+      body:
+        "<p>1.<strong> Magali Arriola</strong>, Director, Museo Tamayo, Mexico City, Mexico</p>",
+    },
+    {
+      type: "text",
+      body:
+        '<p>Pablo Vargas Lugo is representing Mexico in the Mexican National Pavilion at the Venice Biennale, curated by Arriola. </p><p>"Vargas Lugo\'s work has always put forth fortuitous and unlikely encounters. His interest in the ancient and the sacred, cartography and astronomy, secret societies and science fiction, has allowed him to displace the hierarchies and classifications that structure Western thought. His practice speculates about what happens when the left hand is unaware of what the right hand does, when numbers operate like letters, or when during the course of one day, time is fractured into arbitrary and indivisible units, reimagining thereby the rites and conventions that shape our cultural imaginary." - Magali Arriola</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce86f2f7f58000ee2657b",
+          slug: "pablo-vargas-lugo-no-imago",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/9sPuiCmlJ8436sqTensu-A/larger.jpg",
+          title: "No imago",
+          date: "2016",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Pablo Vargas Lugo",
+              slug: "pablo-vargas-lugo",
+            },
+          ],
+          artist: {
+            name: "Pablo Vargas Lugo",
+            slug: "pablo-vargas-lugo",
+          },
+          width: 2000,
+          height: 2698,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>2.<strong> Mathew Higgs</strong>, Director and Chief Curator, White Columns, New York, NY</p><p>Neil Winokur's <em>Andy Warhol</em> was included in the ICI exhibition: <em>Likeness: Portraits of Artists by other Artists</em> (2004–2006), curated by Matthew Higgs. </p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce871fbeac100113269d0",
+          slug: "neil-winokur-andy-warhol",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/q5BueTqqcv6mpl_Gr32ZUg/larger.jpg",
+          title: "Andy Warhol",
+          date: "1982",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Neil Winokur",
+              slug: "neil-winokur",
+            },
+          ],
+          artist: {
+            name: "Neil Winokur",
+            slug: "neil-winokur",
+          },
+          width: 2000,
+          height: 2545,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>3.<strong> Barbara London</strong>, Independent Curator</p><p>"Marina Rosenfeld is a New York-based composer, sound and visual artist who pushes the definition of what Contemporary art can be. Her drawing is related to her environmental sonic work Music Stand, featured in ICI’s touring exhibition, “Seeing Sound.” The drawing and installation are based on the concept that a site may involve a continuous and simultaneous recording and playback, an acoustic environment where a constant production and dispersal of data is subject to a series of delays and to the native distortion of the gallery and the viewer’s mind." - Barbara London</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce86c0f01e1000e492877",
+          slug: "marina-rosenfeld-untitled-deathstar-notation-p-50",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/48m0ZmcozydFWrCW4AzzDg/larger.jpg",
+          title: "Untitled (Deathstar notation p. 50)",
+          date: "2017",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Marina Rosenfeld",
+              slug: "marina-rosenfeld",
+            },
+          ],
+          artist: {
+            name: "Marina Rosenfeld",
+            slug: "marina-rosenfeld",
+          },
+          width: 2000,
+          height: 1530,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>4. <strong>Larry Ossei-Mensah</strong>, Senior Curator, Museum of Contemporary Art Detroit (MoCAD), Detroit</p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce86606f50b0012c4432c",
+          slug: "david-shrobe-moment-to-see",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/_f8jgZZy4q6ag14gYzjeaQ/larger.jpg",
+          title: "Moment to See",
+          date: "2019",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "David Shrobe",
+              slug: "david-shrobe",
+            },
+          ],
+          artist: {
+            name: "David Shrobe",
+            slug: "david-shrobe",
+          },
+          width: 3496,
+          height: 4000,
+        },
+      ],
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9cf074985cb5000d0a7736",
+          slug: "amoako-boafo-yaw-abedi",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/XITMc6Bfw1aQcOCl2RHfuQ/larger.jpg",
+          title: "Yaw Abedi",
+          date: "2019",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Amoako Boafo",
+              slug: "amoako-boafo",
+            },
+          ],
+          artist: {
+            name: "Amoako Boafo",
+            slug: "amoako-boafo",
+          },
+          width: 2691,
+          height: 3818,
+        },
+      ],
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce86b0f01e1000e492872",
+          slug: "lakela-brown-triangle-composition-with-bamboo-earrings",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/FAwt5X2Abdn1iKIWMp1nVg/larger.jpg",
+          title: "Triangle composition with Bamboo Earrings",
+          date: "2018",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "LaKela Brown",
+              slug: "lakela-brown-1",
+            },
+          ],
+          artist: {
+            name: "LaKela Brown",
+            slug: "lakela-brown-1",
+          },
+          width: 2000,
+          height: 2394,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>5. <strong>Tumelo Mosaka</strong>, Independent Curator</p><p>"Paul Pfeiffer’s digitally manipulated photographs amplify the racial challenges confronting black athletes today. In the photographs, the black male body is isolated and frozen to question the bias and racism at the core of sports and entertainment business." - Tumelo Mosaka</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9cf074fc022b000d29bec8",
+          slug: "paul-pfeiffer-four-horseman-of-the-apocalypse-8",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/8Ny4AftChgf-yEYDIFUebA/larger.jpg",
+          title: "Four Horseman of the Apocalypse (8)",
+          date: "2001/2018",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Paul Pfeiffer",
+              slug: "paul-pfeiffer",
+            },
+          ],
+          artist: {
+            name: "Paul Pfeiffer",
+            slug: "paul-pfeiffer",
+          },
+          width: 1050,
+          height: 1340,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        '<p>"Nate Young’s works at first glance looks incomprehensible and inaccessible. Despite this formal look, Young offers complex forms and shapes excavated from familial histories. He is interested in reflecting on absence as a kind of potential space for re-imagination of our own histories." - Tumelo Mosaka</p>',
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce871734442000d5726be",
+          slug: "nate-young-reliquary-for-a-declaration-no-4",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/rtqAwJfwlyv4lmg3OEzykA/larger.jpg",
+          title: "Reliquary for a Declaration No. 4",
+          date: "2015",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Nate Young",
+              slug: "nate-young",
+            },
+          ],
+          artist: {
+            name: "Nate Young",
+            slug: "nate-young",
+          },
+          width: 800,
+          height: 1200,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body: "<p>6.<strong> Paul Schimmel</strong>, Independent Curator</p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9cf07488dcf20012c05b7a",
+          slug: "rachel-rose-failing-at-the-4th-dimension",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/9Dx5YT1ITDfI7ey3LrJvTA/larger.jpg",
+          title: "Failing at the 4th Dimension",
+          date: "2017",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Rachel Rose",
+              slug: "rachel-rose",
+            },
+          ],
+          artist: {
+            name: "Rachel Rose",
+            slug: "rachel-rose",
+          },
+          width: 6925,
+          height: 2400,
+        },
+      ],
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9cf074985cb5000d0a7736",
+          slug: "amoako-boafo-yaw-abedi",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/XITMc6Bfw1aQcOCl2RHfuQ/larger.jpg",
+          title: "Yaw Abedi",
+          date: "2019",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Amoako Boafo",
+              slug: "amoako-boafo",
+            },
+          ],
+          artist: {
+            name: "Amoako Boafo",
+            slug: "amoako-boafo",
+          },
+          width: 2691,
+          height: 3818,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>7.<strong> Franklin Sirmans</strong>, Director, Perez Art Museum in Miami (PAMM), Miami, FL</p>",
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce86ab6952d000e283e56",
+          slug: "christo-wrapped-fountain-project-for-la-fontana-de-jujol",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/a6rvKCJbXyyuHX91miGZbg/larger.jpg",
+          title: 'Wrapped Fountain (Project for "La Fontana de Jujol")',
+          date: "2009",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Christo",
+              slug: "christo",
+            },
+          ],
+          artist: {
+            name: "Christo",
+            slug: "christo",
+          },
+          width: 2000,
+          height: 1626,
+        },
+      ],
+    },
+    {
+      type: "image_collection",
+      layout: "overflow_fillwidth",
+      images: [
+        {
+          type: "artwork",
+          id: "5d9ce871734442000d5726be",
+          slug: "nate-young-reliquary-for-a-declaration-no-4",
+          image:
+            "https://d32dm0rphc51dk.cloudfront.net/rtqAwJfwlyv4lmg3OEzykA/larger.jpg",
+          title: "Reliquary for a Declaration No. 4",
+          date: "2015",
+          partner: {
+            name: "Independent Curators International (ICI) Benefit Auction",
+            slug: null,
+          },
+          artists: [
+            {
+              name: "Nate Young",
+              slug: "nate-young",
+            },
+          ],
+          artist: {
+            name: "Nate Young",
+            slug: "nate-young",
+          },
+          width: 800,
+          height: 1200,
+        },
+      ],
+    },
+    {
+      type: "text",
+      body:
+        "<p>The creation of the Benefit Auction Curatorial Committee is ICI's latest effort to honor the generosity of artists by developing collaborations with curators, galleries, collectors and others to maximize the power of each donation. ICI was among the first non-profits to collaborate with Artsy, and since 2013 the organisation has always offered artists the choice to receive up to 20% of the sale of their donated works. </p>",
+    },
+  ],
+  relatedArticlesPanel: null,
+  relatedArticlesCanvas: [
+    {
+      id: "5e4473584ce5d4001f875061",
+      layout: "standard",
+      slug:
+        "artsy-editorial-artwork-changed-life-graciela-iturbides-nuestra-senora-de-las-iguanas",
+      thumbnail_title:
+        "This Artwork Changed My Life: Graciela Iturbide’s “Nuestra Señora de Las Iguanas”",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/NpQ6kzl0vmFiqWuXjWwrPg%2Fcustom-Custom_Size___graciela-iturbide-senora-de-las-iguanas-juchitan-1979-2-2.jpg",
+      published_at: "2020-02-18T13:00:00.000Z",
+      contributing_authors: [
+        {
+          name: "Eva Recinos",
+        },
+      ],
+      authors: [
+        {
+          name: "Eva Recinos",
+        },
+      ],
+    },
+    {
+      id: "5e45c710cbcccc0022fb8250",
+      layout: "standard",
+      slug:
+        "artsy-editorial-meteoric-rise-gallerist-mariane-ibrahim-champion-african-diasporic-art",
+      thumbnail_title:
+        "The Meteoric Rise of Gallerist Mariane Ibrahim, Champion of African Diasporic Art ",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/KTtcjL8YBanpMY-QtimfiA%2Fcustom-Custom_Size___Mariane+Ibrahim_Credit+Sofia+Giner.jpeg",
+      published_at: "2020-02-17T20:00:00.000Z",
+      contributing_authors: [
+        {
+          name: "Claire Voon",
+        },
+      ],
+      authors: [
+        {
+          name: "Claire Voon",
+        },
+      ],
+    },
+    {
+      id: "5e4a9fc6902fb90020def94b",
+      layout: "standard",
+      slug: "artsy-editorial-sold-frieze-los-angeles-02-17-20",
+      thumbnail_title: "What Sold at Frieze Los Angeles",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/tITBg0kPG57qeiTztnYGRQ%2Fcustom-Custom_Size___SINGA102319-hires.jpg",
+      published_at: "2020-02-17T16:37:41.336Z",
+      contributing_authors: [
+        {
+          name: "Benjamin Sutton",
+        },
+      ],
+      authors: [
+        {
+          name: "Benjamin Sutton",
+        },
+      ],
+    },
+    {
+      id: "5e46ecea429fe000208a3265",
+      layout: "standard",
+      slug:
+        "artsy-editorial-contemporary-artists-washington-crossing-delaware-challenge-history",
+      thumbnail_title:
+        "How Contemporary Artists Have Used “Washington Crossing the Delaware” to Challenge History ",
+      thumbnail_image:
+        "https://artsy-media-uploads.s3.amazonaws.com/0buCA8pPqOWO9gFcz-q85Q%2Fcustom-Custom_Size___06.+Resurgence+of+the+People_2019.jpg",
+      published_at: "2020-02-14T22:56:24.223Z",
+      contributing_authors: [
+        {
+          name: "Alexxa Gotthardt",
+        },
+      ],
+      authors: [
+        {
+          name: "Alexxa Gotthardt",
+        },
+      ],
+    },
+  ],
+  relatedArticles: null,
+  sale: ClassicArticleSale,
+}
 
 export const StandardArticle: ArticleData = {
   id: "594a7e2254c37f00177c0ea9",
@@ -1359,6 +2031,7 @@ export const SeriesArticle: ArticleData = {
   layout: "series",
   title: "The Future of Art",
   slug: "future-of-art",
+  slugs: ["future-of-art"],
   hero_section: {
     url:
       "https://artsy-media-uploads.s3.amazonaws.com/GXvnaBYBdP2z6LKIBQF7XA%2FArtboard.jpg",
@@ -1367,7 +2040,7 @@ export const SeriesArticle: ArticleData = {
     description:
       "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. <a href='http://artsy.net'>Curabitur blandit</a> tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
   },
-  related_articles: ["594a7e2254c37f00177c0ea9", "597b9f652d35b80017a2a6a7"],
+  related_article_ids: ["594a7e2254c37f00177c0ea9", "597b9f652d35b80017a2a6a7"],
 }
 
 export const SeriesArticleSponsored = extend(cloneDeep(SeriesArticle), Sponsor)
@@ -1387,6 +2060,10 @@ export const NewsArticle: ArticleData = {
   author: {
     id: "50f4367051e7956b6e00045d",
     name: "Artsy Editorial",
+  },
+  vertical: {
+    name: "News",
+    id: "12345",
   },
   published_at: "2018-07-19T17:19:55.909Z",
   authors: [

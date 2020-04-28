@@ -1,12 +1,10 @@
-import { BellIcon, SoloIcon } from "@artsy/palette"
+import { BellIcon, EnvelopeIcon, SoloIcon } from "@artsy/palette"
 import { SystemContextProvider } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { mount } from "enzyme"
 import React from "react"
 import { NavBar } from "../NavBar"
-import * as authentication from "../Utils/authentication"
 
-jest.mock("../Utils/authentication")
 jest.mock("Components/Search/SearchBar", () => {
   return {
     SearchBarQueryRenderer: () => <div />,
@@ -54,10 +52,9 @@ describe("NavBar", () => {
   describe("desktop", () => {
     const defaultLinks = [
       ["/collect", "Artworks"],
+      ["/artists", "Artists"],
       ["/auctions", "Auctions"],
-      ["/galleries", "Galleries"],
-      ["/art-fairs", "Fairs"],
-      ["/articles", "Magazine"],
+      ["/articles", "Editorial"],
     ]
 
     it("renders correct lg, xl nav items", () => {
@@ -95,6 +92,22 @@ describe("NavBar", () => {
       expect(wrapper.find(BellIcon).length).toEqual(1)
       expect(wrapper.find(SoloIcon).length).toEqual(1)
     })
+
+    describe("lab features", () => {
+      it("hides inquiries icon if lab feature not enabled", () => {
+        const wrapper = getWrapper({
+          user: { type: "NotAdmin", lab_features: [] },
+        })
+        expect(wrapper.find(EnvelopeIcon).length).toEqual(0)
+      })
+
+      it("shows inquiries icon if lab feature enabled", () => {
+        const wrapper = getWrapper({
+          user: { type: "NotAdmin", lab_features: ["User Conversations View"] },
+        })
+        expect(wrapper.find(EnvelopeIcon).length).toEqual(1)
+      })
+    })
   })
 
   describe("mediator actions", () => {
@@ -108,7 +121,11 @@ describe("NavBar", () => {
         .find("Button")
         .first()
         .simulate("click")
-      expect(authentication.login).toHaveBeenCalledWith(mediator)
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        contextModule: "header",
+        intent: "login",
+        mode: "login",
+      })
     })
 
     it("calls signup auth action on signup button click", () => {
@@ -117,7 +134,11 @@ describe("NavBar", () => {
         .find("Button")
         .last()
         .simulate("click")
-      expect(authentication.signup).toHaveBeenCalledWith(mediator)
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        contextModule: "header",
+        intent: "signup",
+        mode: "signup",
+      })
     })
   })
 

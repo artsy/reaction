@@ -1,8 +1,10 @@
-import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import { Box, color, Flex, Image, Sans, Serif } from "@artsy/palette"
 import { ArtistCollectionEntity_collection } from "__generated__/ArtistCollectionEntity_collection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import currency from "currency.js"
+import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -11,6 +13,7 @@ import { get } from "Utils/get"
 
 export interface CollectionProps {
   collection: ArtistCollectionEntity_collection
+  lazyLoad: boolean
 }
 
 @track()
@@ -28,29 +31,39 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
 
   render() {
     const {
-      artworks: { hits },
       headerImage,
       price_guidance,
       slug,
       title,
+      artworksConnection,
     } = this.props.collection
+    const artworks = get(artworksConnection, ac =>
+      ac.edges.map(({ node }) => node)
+    )
+
+    if (!artworks) {
+      return null
+    }
+
     const formattedTitle = (title && title.split(": ")[1]) || title
-    const bgImages = hits.map(hit => hit.image.url)
+    const bgImages = compact(
+      artworks.map(({ image }) => image && image.resized && image.resized.url)
+    )
     const imageSize =
-      bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
+      bgImages.length === 1 ? 262 : bgImages.length === 2 ? 130 : 86
 
     return (
       <Box pr={2}>
         <StyledLink
-          href={`${sd.APP_URL}/collection/${slug}`}
+          to={`/collection/${slug}`}
           onClick={this.onLinkClick.bind(this)}
         >
           <ImgWrapper pb={1}>
             {bgImages.length ? (
               bgImages.map((url, i) => {
-                const artistName = get(hits[i].artist, a => a.name)
+                const artistName = get(artworks[i].artist, a => a.name)
                 const alt = `${artistName ? artistName + ", " : ""}${
-                  hits[i].title
+                  artworks[i].title
                 }`
                 return (
                   <SingleImgContainer key={i}>
@@ -60,12 +73,19 @@ export class ArtistCollectionEntity extends React.Component<CollectionProps> {
                       src={url}
                       width={imageSize}
                       alt={alt}
+                      lazyLoad={this.props.lazyLoad}
+                      style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </SingleImgContainer>
                 )
               })
             ) : (
-              <ArtworkImage src={headerImage} width={265} />
+              <ArtworkImage
+                src={headerImage}
+                lazyLoad={this.props.lazyLoad}
+                width={262}
+                style={{ objectFit: "cover", objectPosition: "center" }}
+              />
             )}
           </ImgWrapper>
 
@@ -89,7 +109,7 @@ const CollectionTitle = styled(Serif)`
   width: max-content;
 `
 
-export const StyledLink = styled(Link)`
+const StyledLink = styled(RouterLink)`
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -121,17 +141,15 @@ const ImgOverlay = styled(Box)<{ width: number }>`
   z-index: 7;
 `
 
-export const ArtworkImage = styled.img<{ width: number }>`
+export const ArtworkImage = styled(Image)<{ width: number }>`
   width: ${({ width }) => width}px;
   height: 125px;
   background-color: ${color("black10")};
-  object-fit: cover;
-  object-position: center;
   opacity: 0.9;
 `
 
 const ImgWrapper = styled(Flex)`
-  width: 265px;
+  width: 262px;
 `
 
 export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
@@ -142,15 +160,23 @@ export const ArtistCollectionEntityFragmentContainer = createFragmentContainer(
         headerImage
         slug
         title
-        price_guidance
-        artworks(size: 3, sort: "-decayed_merch") {
-          hits {
-            artist {
-              name
-            }
-            title
-            image {
-              url(version: "small")
+        price_guidance: priceGuidance
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              artist {
+                name
+              }
+              title
+              image {
+                resized(width: 262) {
+                  url
+                }
+              }
             }
           }
         }

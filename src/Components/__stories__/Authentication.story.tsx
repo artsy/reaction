@@ -4,6 +4,7 @@ import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import Button from "../Buttons/Default"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   Footer,
   TermsOfServiceCheckbox,
@@ -44,6 +45,8 @@ class ModalContainer extends Component<any> {
         <ModalManager
           ref={ref => (this.manager = ref)}
           submitUrls={{
+            apple: "/users/auth/apple",
+            facebook: "/users/auth/facebook",
             login: "/login",
             signup: "/signup",
             forgot: "/forgot",
@@ -69,7 +72,10 @@ storiesOf("Components/Authentication/Mobile", module)
         type={ModalType.login}
         handleSubmit={submit}
         isMobile
-        options={{}}
+        options={{
+          contextModule: ContextModule.header,
+          intent: AuthIntent.login,
+        }}
       />
     </MobileContainer>
   ))
@@ -79,7 +85,10 @@ storiesOf("Components/Authentication/Mobile", module)
         type={ModalType.forgot}
         handleSubmit={submit}
         isMobile
-        options={{}}
+        options={{
+          contextModule: ContextModule.header,
+          intent: AuthIntent.forgot,
+        }}
       />
     </MobileContainer>
   ))
@@ -89,7 +98,10 @@ storiesOf("Components/Authentication/Mobile", module)
         type={ModalType.signup}
         handleSubmit={submit}
         isMobile
-        options={{}}
+        options={{
+          contextModule: ContextModule.header,
+          intent: AuthIntent.signup,
+        }}
       />
     </MobileContainer>
   ))

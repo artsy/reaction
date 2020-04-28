@@ -1,17 +1,18 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy"
-import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/v2/FollowArtistPopover"
+import { FollowArtistPopoverFragmentContainer as SuggestionsPopover } from "Components/FollowArtistPopover"
 import { extend } from "lodash"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
-import { RecordSourceSelectorProxy, SelectorData } from "relay-runtime"
 import styled from "styled-components"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
 import { FollowButton } from "./Button"
 import { FollowButtonDeprecated } from "./ButtonDeprecated"
 import { FollowTrackingData } from "./Typings"
 
+import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import {
   commitMutation,
   createFragmentContainer,
@@ -26,7 +27,7 @@ interface Props
   artist?: FollowArtistButton_artist
   tracking?: TrackingProp
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
+  onOpenAuthModal?: (type: ModalType, config?: ModalOptions) => void
 
   /**
    * FIXME: Default is true due to legacy code. If false, use new @artsy/palette
@@ -77,17 +78,22 @@ export class FollowArtistButton extends React.Component<Props, State> {
 
   handleFollow = e => {
     e.preventDefault() // If this button is part of a link, we _probably_ dont want to actually follow the link.
-    const { user, onOpenAuthModal } = this.props
+    const { artist, user, onOpenAuthModal } = this.props
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
 
     if (user && user.id) {
       this.followArtistForUser(user)
     } else if (onOpenAuthModal) {
-      const config = {
-        contextModule: "intext tooltip",
-        intent: "follow artist",
+      onOpenAuthModal(ModalType.signup, {
+        contextModule: ContextModule.intextTooltip,
+        intent: AuthIntent.followArtist,
         copy: "Sign up to follow artists",
-      }
-      onOpenAuthModal("register", config)
+        afterSignUpAction: {
+          action: "follow",
+          kind: "artist",
+          objectId: (artist && artist.internalID) || trackingData.entity_slug,
+        },
+      })
     }
   }
 
@@ -103,8 +109,8 @@ export class FollowArtistButton extends React.Component<Props, State> {
         mutation FollowArtistButtonMutation($input: FollowArtistInput!) {
           followArtist(input: $input) {
             artist {
-              __id
-              is_followed
+              id
+              is_followed: isFollowed
               counts {
                 follows
               }
@@ -114,21 +120,21 @@ export class FollowArtistButton extends React.Component<Props, State> {
       `,
       variables: {
         input: {
-          artist_id: artist.id,
+          artistID: artist.internalID,
           unfollow: artist.is_followed,
         },
       },
       optimisticResponse: {
         followArtist: {
           artist: {
-            __id: artist.__id,
+            id: artist.id,
             is_followed: !artist.is_followed,
             counts: { follows: newFollowCount },
           },
         },
       },
-      updater: (store: RecordSourceSelectorProxy, data: SelectorData) => {
-        const artistProxy = store.get(data.followArtist.artist.__id)
+      updater: (store, data) => {
+        const artistProxy = store.get(data.followArtist.artist.id)
 
         artistProxy
           .getLinkedRecord("counts")
@@ -154,20 +160,27 @@ export class FollowArtistButton extends React.Component<Props, State> {
       user,
     } = this.props
     const { openSuggestions } = this.state
-    // FIXME: Unify design language
-    const Button = useDeprecatedButtonStyle
-      ? FollowButtonDeprecated
-      : FollowButton
 
     // Custom button renderer
     const content = render ? (
       <span onClick={this.handleFollow}> {render(artist)}</span>
     ) : (
-      <Button
-        isFollowed={artist && artist.is_followed}
-        handleFollow={this.handleFollow}
-        buttonProps={buttonProps}
-      />
+      <>
+        {useDeprecatedButtonStyle && (
+          <FollowButtonDeprecated
+            isFollowed={artist && artist.is_followed}
+            handleFollow={this.handleFollow}
+            buttonProps={buttonProps}
+          />
+        )}
+        {!useDeprecatedButtonStyle && (
+          <FollowButton
+            isFollowed={artist && artist.is_followed}
+            handleFollow={this.handleFollow}
+            buttonProps={buttonProps}
+          />
+        )}
+      </>
     )
 
     return (
@@ -177,7 +190,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
           <SuggestionsPopoverContainer>
             <SuggestionsPopover
               user={user}
-              suggested={artist}
+              artist={artist}
               onClose={() => this.closePopover()}
             />
           </SuggestionsPopoverContainer>
@@ -195,13 +208,14 @@ export const FollowArtistButtonFragmentContainer = createFragmentContainer(
         @argumentDefinitions(
           showFollowSuggestions: { type: "Boolean", defaultValue: false }
         ) {
-        __id
         id
-        is_followed
+        internalID
+        name
+        is_followed: isFollowed
         counts {
           follows
         }
-        ...FollowArtistPopover_suggested @include(if: $showFollowSuggestions)
+        ...FollowArtistPopover_artist @include(if: $showFollowSuggestions)
       }
     `,
   }

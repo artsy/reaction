@@ -1,8 +1,8 @@
-import { Box, Sans, space, Spacer } from "@artsy/palette"
+import { Box, Sans, Separator } from "@artsy/palette"
 import { ArtistCollectionsRail_collections } from "__generated__/ArtistCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
+import { ArrowButton, Carousel } from "Components/Carousel"
 import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -14,6 +14,7 @@ import { ArtistCollectionEntityFragmentContainer as ArtistCollectionEntity } fro
 
 interface ArtistCollectionsRailProps {
   collections: ArtistCollectionsRail_collections
+  includeTopSpacer?: boolean
 }
 
 @track(null, {
@@ -42,16 +43,22 @@ export class ArtistCollectionsRail extends React.Component<
     // noop
   }
 
+  static defaultProps = {
+    includeTopSpacer: true,
+  }
+
   render() {
-    const { collections } = this.props
+    const { collections, includeTopSpacer } = this.props
     if (collections.length > 3) {
       return (
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-          <Sans size="3" weight="medium">
-            Browse by iconic collections
+
+          {includeTopSpacer && <Separator my={3} />}
+
+          <Sans size="5" color="black100" mb={2}>
+            Iconic Collections
           </Sans>
-          <Spacer pb={1} />
 
           <Carousel
             height="200px"
@@ -60,11 +67,17 @@ export class ArtistCollectionsRail extends React.Component<
               wrapAround: sd.IS_MOBILE ? true : false,
               cellAlign: "left",
               pageDots: false,
+              contain: true,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={collections as object[]} // type required by slider
-            render={slide => {
-              return <ArtistCollectionEntity collection={slide} />
+            data={collections}
+            render={(slide, index: number) => {
+              return (
+                <ArtistCollectionEntity
+                  lazyLoad={index > 5}
+                  collection={slide}
+                />
+              )
             }}
             renderLeftArrow={({ Arrow }) => {
               return (
@@ -90,10 +103,10 @@ export class ArtistCollectionsRail extends React.Component<
 }
 
 const ArrowContainer = styled(Box)`
-  position: relative;
+  align-self: flex-start;
 
   ${ArrowButton} {
-    top: -${space(3)}px;
+    height: 60%;
   }
 `
 

@@ -1,5 +1,7 @@
+import { AnalyticsSchema } from "Artsy/Analytics"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import React, { useContext } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 
 import { SystemContext } from "Artsy"
 import { get } from "Utils/get"
@@ -25,10 +27,9 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 
-export const NotificationMenuItems: React.FC<
-  NotificationsMenuQueryResponse
-> = props => {
+export const NotificationMenuItems: React.FC<NotificationsMenuQueryResponse> = props => {
   const notifications = get(
     props,
     p => {
@@ -37,12 +38,30 @@ export const NotificationMenuItems: React.FC<
     []
   )
 
+  const { trackEvent } = useTracking()
+
+  const handleClick = (href: string, subject: string) => {
+    trackEvent({
+      action_type: AnalyticsSchema.ActionType.Click,
+      context_module: AnalyticsSchema.ContextModule.HeaderActivityDropdown,
+      destination_path: href,
+      subject,
+    })
+  }
+
   return (
     <>
       {notifications.map(({ node }, index) => {
         const { artists, href, image, summary } = node
+        const worksForSaleHref = href + "/works-for-sale"
         return (
-          <MenuItem href={href} key={index}>
+          <MenuItem
+            href={worksForSaleHref}
+            key={index}
+            onClick={() => {
+              handleClick(href, AnalyticsSchema.Subject.Notification)
+            }}
+          >
             <Flex alignItems="center">
               <Box width={40} height={40} bg="black5" mr={1}>
                 <Image
@@ -81,7 +100,14 @@ export const NotificationMenuItems: React.FC<
 
           <Box pt={2}>
             <Sans size="2">
-              <Link href="/works-for-you">View all</Link>
+              <Link
+                href="/works-for-you"
+                onClick={() => {
+                  handleClick("/works-for-you", AnalyticsSchema.Subject.ViewAll)
+                }}
+              >
+                View all
+              </Link>
             </Sans>
           </Box>
         </>
@@ -125,8 +151,9 @@ export const NotificationsQueryRenderer: React.FC<{
       query={graphql`
         query NotificationsMenuQuery {
           me {
+            unreadNotificationsCount
             followsAndSaves {
-              notifications: bundledArtworksByArtist(
+              notifications: bundledArtworksByArtistConnection(
                 sort: PUBLISHED_AT_DESC
                 first: 10
               ) @connection(key: "WorksForYou_notifications") {
@@ -135,7 +162,7 @@ export const NotificationsQueryRenderer: React.FC<{
                     href
                     summary
                     artists
-                    published_at(format: "MMM DD")
+                    published_at: publishedAt(format: "MMM DD")
                     image {
                       resized(height: 40, width: 40) {
                         url

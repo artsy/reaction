@@ -1,14 +1,16 @@
 export const initialOfferSuccess = {
-  ecommerceAddInitialOfferToOrder: {
+  commerceAddInitialOfferToOrder: {
     orderOrError: {
       order: {
         id: "1234",
+        internalID: "1234",
         mode: "BUY",
         itemsTotalCents: 400,
         totalListPriceCents: 600,
         totalListPrice: "$6.00",
         myLastOffer: {
           id: "2345",
+          internalID: "2345",
           amountCents: 400,
           note: null,
         },
@@ -19,7 +21,7 @@ export const initialOfferSuccess = {
 }
 
 export const initialOfferFailedCannotOffer = {
-  ecommerceAddInitialOfferToOrder: {
+  commerceAddInitialOfferToOrder: {
     orderOrError: {
       error: {
         type: "validation",
@@ -31,7 +33,7 @@ export const initialOfferFailedCannotOffer = {
 }
 
 export const initialOfferFailedAmountIsInvalid = {
-  ecommerceAddInitialOfferToOrder: {
+  commerceAddInitialOfferToOrder: {
     orderOrError: {
       error: {
         type: "validation",

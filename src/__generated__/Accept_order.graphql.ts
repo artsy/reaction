@@ -1,60 +1,60 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
-import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-declare const _Accept_order$ref: unique symbol;
-export type Accept_order$ref = typeof _Accept_order$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Accept_order = {
-    readonly id: string;
+    readonly internalID: string;
     readonly stateExpiresAt: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                    readonly artists: ReadonlyArray<({
-                        readonly id: string;
-                    }) | null> | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
-        readonly id: string;
-        readonly createdAt: string | null;
-    }) | null;
-    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref;
-    readonly " $refType": Accept_order$ref;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                    readonly artists: ReadonlyArray<{
+                        readonly slug: string;
+                    } | null> | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
+        readonly internalID: string;
+        readonly createdAt: string;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItem_order" | "ArtworkSummaryItem_order" | "ShippingSummaryItem_order" | "CreditCardSummaryItem_order">;
+    readonly " $refType": "Accept_order";
+};
+export type Accept_order$data = Accept_order;
+export type Accept_order$key = {
+    readonly " $data"?: Accept_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"Accept_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "Accept_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -68,7 +68,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -77,7 +77,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -86,7 +86,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -98,7 +98,7 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
+                    (v1/*: any*/),
                     {
                       "kind": "LinkedField",
                       "alias": null,
@@ -108,15 +108,37 @@ return {
                       "concreteType": "Artist",
                       "plural": true,
                       "selections": [
-                        v0,
-                        v1
+                        (v1/*: any*/)
                       ]
-                    },
-                    v1
+                    }
                   ]
-                },
-                v1
+                }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "InlineFragment",
+      "type": "CommerceOfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceOffer",
+          "plural": false,
+          "selections": [
+            (v0/*: any*/),
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "createdAt",
+              "args": null,
+              "storageKey": null
             }
           ]
         }
@@ -141,36 +163,9 @@ return {
       "kind": "FragmentSpread",
       "name": "CreditCardSummaryItem_order",
       "args": null
-    },
-    v1,
-    {
-      "kind": "InlineFragment",
-      "type": "OfferOrder",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "lastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v0,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "createdAt",
-              "args": null,
-              "storageKey": null
-            },
-            v1
-          ]
-        }
-      ]
     }
   ]
 };
 })();
-(node as any).hash = '24e55f9d54ff55efe08283ee3f1d8c04';
+(node as any).hash = '91654c3e6d9f31a894287e9684b81500';
 export default node;

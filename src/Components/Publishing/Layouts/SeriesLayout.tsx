@@ -70,10 +70,11 @@ export class SeriesLayout extends Component<Props, null> {
           }
           adDimension={adDimension}
           targetingData={targetingData(
-            article.id,
+            article,
             isSponsored ? "sponsorlanding" : "standardseries"
           )}
           isSeries
+          articleSlug={article.slug}
         />
       </SeriesContainer>
     )

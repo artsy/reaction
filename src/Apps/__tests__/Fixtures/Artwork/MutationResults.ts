@@ -3,7 +3,7 @@ export const OrderWithSuccess = {
     orderOrError: {
       __typename: "CommerceOrderWithMutationSuccess",
       order: {
-        id: "orderId",
+        internalID: "orderId",
         mode: "BUY",
       },
     },
@@ -23,11 +23,11 @@ export const OrderWithFailure = {
 }
 
 export const OfferOrderWithSuccess = {
-  ecommerceCreateOfferOrderWithArtwork: {
+  commerceCreateOfferOrderWithArtwork: {
     orderOrError: {
       __typename: "OrderWithMutationSuccess",
       order: {
-        id: "orderId",
+        internalID: "orderId",
         mode: "OFFER",
       },
     },
@@ -35,7 +35,7 @@ export const OfferOrderWithSuccess = {
 }
 
 export const OfferOrderWithFailure = {
-  ecommerceCreateOfferOrderWithArtwork: {
+  commerceCreateOfferOrderWithArtwork: {
     orderOrError: {
       __typename: "OrderWithMutationFailure",
       error: {

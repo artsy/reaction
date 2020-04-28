@@ -3,18 +3,19 @@ import { OfferHistoryItem_order } from "__generated__/OfferHistoryItem_order.gra
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Components/v2/StepSummaryItem"
+} from "Components/StepSummaryItem"
 import React, { HTMLProps } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RevealButton } from "./RevealButton"
 
-const OfferHistoryItem: React.SFC<
-  {
-    order: OfferHistoryItem_order
-  } & StepSummaryItemProps
-> = ({ order: { totalListPrice, lastOffer, offers }, ...others }) => {
+const OfferHistoryItem: React.SFC<{
+  order: OfferHistoryItem_order
+} & StepSummaryItemProps> = ({
+  order: { totalListPrice, lastOffer, offers },
+  ...others
+}) => {
   const previousOffers = offers.edges.filter(
-    ({ node: { id } }) => id !== lastOffer.id
+    ({ node: { internalID } }) => internalID !== lastOffer.internalID
   )
 
   return (
@@ -58,7 +59,7 @@ const OfferHistoryItem: React.SFC<
                 Offer history
               </Serif>
               {previousOffers.map(({ node: offer }) => (
-                <Row key={offer.id}>
+                <Row key={offer.internalID}>
                   <Serif size={["2", "3"]} color="black60">
                     {offer.fromParticipant === "BUYER" ? "You" : "Seller"}
                     {` (${offer.createdAt})`}
@@ -75,11 +76,10 @@ const OfferHistoryItem: React.SFC<
     </StepSummaryItem>
   )
 }
-
-const Row: React.SFC<
-  // TODO: look into why a separate style prop is necessary here
-  FlexProps & { style?: HTMLProps<HTMLDivElement>["style"] }
-> = ({ children, ...others }) => (
+// TODO: look into why a separate style prop is necessary here
+const Row: React.SFC<FlexProps & {
+  style?: HTMLProps<HTMLDivElement>["style"]
+}> = ({ children, ...others }) => (
   <Flex justifyContent="space-between" alignItems="baseline" {...others}>
     {children}
   </Flex>
@@ -89,12 +89,12 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
   OfferHistoryItem,
   {
     order: graphql`
-      fragment OfferHistoryItem_order on Order {
-        ... on OfferOrder {
+      fragment OfferHistoryItem_order on CommerceOrder {
+        ... on CommerceOfferOrder {
           offers {
             edges {
               node {
-                id
+                internalID
                 amount(precision: 2)
                 createdAt(format: "MMM D")
                 fromParticipant
@@ -102,7 +102,7 @@ export const OfferHistoryItemFragmentContainer = createFragmentContainer(
             }
           }
           lastOffer {
-            id
+            internalID
             fromParticipant
             amount(precision: 2)
             shippingTotal(precision: 2)

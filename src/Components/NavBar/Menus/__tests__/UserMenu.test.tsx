@@ -1,10 +1,8 @@
 import { SystemContextProvider } from "Artsy"
-import * as authentication from "Components/NavBar/Utils/authentication"
 import { mount } from "enzyme"
 import React from "react"
 import { UserMenu } from "../UserMenu"
 
-jest.mock("Components/NavBar/Utils/authentication")
 jest.mock("Artsy/Analytics/useTracking", () => {
   return {
     useTracking: () => ({
@@ -29,8 +27,8 @@ describe("UserMenu", () => {
   // Label also includes SVG image title
   const defaultLinks = [
     ["/user/saves", "Save Saves & Follows"],
-    ["/profile/edit", "user Collector Profile"],
-    ["/user/edit", "settings Settings"],
+    ["/profile/edit", "User Collector Profile"],
+    ["/user/edit", "Settings Settings"],
   ]
 
   it("renders correct menu items", () => {
@@ -57,7 +55,7 @@ describe("UserMenu", () => {
       .find("MenuItem")
       .last()
       .simulate("click")
-    expect(authentication.logout).toHaveBeenCalledWith(mediator)
+    expect(mediator.trigger).toBeCalledWith("auth:logout")
   })
 
   describe("admin features", () => {
@@ -69,6 +67,16 @@ describe("UserMenu", () => {
     it("shows admin button if admin", () => {
       const wrapper = getWrapper({ user: { type: "Admin" } })
       expect(wrapper.html()).toContain("Admin")
+    })
+
+    it("hides purchases button if not admin", () => {
+      const wrapper = getWrapper({ user: { type: "NotAdmin" } })
+      expect(wrapper.html()).not.toContain("Purchases")
+    })
+
+    it("shows purchases button if admin", () => {
+      const wrapper = getWrapper({ user: { type: "Admin" } })
+      expect(wrapper.html()).toContain("Purchases")
     })
 
     it("shows CMS button if admin", () => {

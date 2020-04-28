@@ -1,4 +1,6 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Link } from "@artsy/palette"
+import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 import { ForgotPasswordForm } from "../Desktop/ForgotPasswordForm"
@@ -10,6 +12,12 @@ import { MobileLoginForm } from "../Mobile/LoginForm"
 import { MobileSignUpForm } from "../Mobile/SignUpForm"
 import { ModalType } from "../Types"
 
+jest.mock("sharify", () => ({
+  data: {
+    ENABLE_SIGN_IN_WITH_APPLE: true,
+  },
+}))
+
 describe("FormSwitcher", () => {
   const getWrapper = (props: any = {}) =>
     mount(
@@ -18,14 +26,15 @@ describe("FormSwitcher", () => {
         handleSubmit={jest.fn()}
         tracking={props.tracking}
         options={{
-          contextModule: "Header",
+          contextModule: ContextModule.header,
           copy: "Foo Bar",
           destination: "/collect",
-          intent: "follow artist",
+          intent: AuthIntent.followArtist,
           redirectTo: "/foo",
-          trigger: "timed",
           triggerSeconds: 1,
         }}
+        submitUrls={props.submitURLs}
+        onSocialAuthEvent={props.onSocialAuthEvent}
         isMobile={props.isMobile || false}
         isStatic={props.isStatic || false}
         handleTypeChange={jest.fn()}
@@ -46,6 +55,20 @@ describe("FormSwitcher", () => {
     it("forgot password form", () => {
       const wrapper = getWrapper({ type: ModalType.forgot })
       expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
+    })
+
+    it("prepopulates email input from URL query string", () => {
+      window.history.replaceState(
+        {},
+        "Reset your password",
+        "/forgot?email=user@example.com"
+      )
+
+      const wrapper = getWrapper({ type: ModalType.forgot })
+
+      expect(wrapper.find(ForgotPasswordForm).length).toEqual(1)
+      expect(wrapper.html()).toContain("user@example.com")
+      expect(wrapper.find(QuickInput).prop("value")).toEqual("user@example.com")
     })
   })
 
@@ -68,8 +91,12 @@ describe("FormSwitcher", () => {
 
   describe("#handleTypeChange", () => {
     beforeEach(() => {
-      window.location.assign = jest.fn()
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn(), search: "" },
+      })
     })
+
     it("redirects to a url if static or mobile", () => {
       const wrapper = getWrapper({
         type: ModalType.login,
@@ -78,11 +105,11 @@ describe("FormSwitcher", () => {
 
       wrapper
         .find(Link)
-        .at(1)
+        .at(2)
         .simulate("click")
 
-      expect((window.location.assign as any).mock.calls[0][0]).toEqual(
-        "/signup?contextModule=Header&copy=Foo%20Bar&destination=%2Fcollect&intent=follow%20artist&redirectTo=%2Ffoo&trigger=timed&triggerSeconds=1"
+      expect(window.location.assign).toHaveBeenCalledWith(
+        "/signup?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&triggerSeconds=1"
       )
     })
 
@@ -93,11 +120,50 @@ describe("FormSwitcher", () => {
 
       wrapper
         .find(Link)
-        .at(2)
+        .at(3)
         .simulate("click")
 
       expect((wrapper.state() as any).type).toMatch("signup")
       expect(wrapper.props().handleTypeChange).toBeCalled()
+    })
+  })
+
+  describe("Third party sign in", () => {
+    beforeEach(() => {
+      Object.defineProperty(window, "location", {
+        writable: true,
+        value: { assign: jest.fn(), search: "" },
+      })
+    })
+
+    it("fires social auth event and redirects", () => {
+      const wrapper = getWrapper({
+        type: ModalType.login,
+        submitURLs: {
+          apple: "/users/auth/apple",
+          facebook: "/users/auth/facebook",
+          twitter: "/users/auth/twitter",
+          login: "/login",
+          signup: "/signup",
+          forgot: "/forgot",
+        },
+        onSocialAuthEvent: jest.fn(),
+      })
+
+      wrapper
+        .find(Link)
+        .at(1)
+        .simulate("click")
+
+      expect(wrapper.props().onSocialAuthEvent).toHaveBeenCalledWith(
+        expect.objectContaining({
+          service: "apple",
+        })
+      )
+
+      expect((window.location.assign as any).mock.calls[0][0]).toEqual(
+        "/users/auth/apple?contextModule=header&copy=Foo%20Bar&destination=%2Fcollect&intent=followArtist&redirectTo=%2Ffoo&triggerSeconds=1&accepted_terms_of_service=true&agreed_to_receive_emails=true&signup-referer=&afterSignUpAction=&redirect-to=%2Ffoo&signup-intent=followArtist&service=apple"
+      )
     })
   })
 
@@ -106,12 +172,12 @@ describe("FormSwitcher", () => {
       const tracking = { trackEvent: jest.fn() }
       getWrapper({ type: ModalType.login, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
-        action: "Auth impression",
-        auth_redirect: "/foo",
-        intent: "follow artist",
+        action: "authImpression",
+        intent: "followArtist",
         type: "login",
-        context_module: "Header",
+        context_module: "header",
         modal_copy: "Foo Bar",
+        onboarding: false,
         trigger: "timed",
         trigger_seconds: 1,
       })
@@ -121,12 +187,12 @@ describe("FormSwitcher", () => {
       const tracking = { trackEvent: jest.fn() }
       getWrapper({ type: ModalType.forgot, tracking })
       expect(tracking.trackEvent).toBeCalledWith({
-        action: "Auth impression",
-        auth_redirect: "/foo",
+        action: "authImpression",
         type: "forgot",
-        intent: "follow artist",
-        context_module: "Header",
+        intent: "followArtist",
+        context_module: "header",
         modal_copy: "Foo Bar",
+        onboarding: false,
         trigger: "timed",
         trigger_seconds: 1,
       })
@@ -139,12 +205,11 @@ describe("FormSwitcher", () => {
         tracking,
       })
       expect(tracking.trackEvent).toBeCalledWith({
-        action: "Auth impression",
+        action: "authImpression",
         type: "signup",
-        context_module: "Header",
+        context_module: "header",
         onboarding: false,
-        auth_redirect: "/foo",
-        intent: "follow artist",
+        intent: "followArtist",
         modal_copy: "Foo Bar",
         trigger: "timed",
         trigger_seconds: 1,

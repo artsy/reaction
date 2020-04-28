@@ -1,3 +1,4 @@
+import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import {
@@ -24,7 +25,8 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
-import { repcaptcha } from "Utils/repcaptcha"
+import { Environment } from "relay-runtime"
+import { recaptcha } from "Utils/recaptcha"
 
 export interface MobileSignUpFormState {
   isSocialSignUp: boolean
@@ -36,8 +38,10 @@ export const currentStepActionName = {
 }
 
 @track()
-export class MobileSignUpForm extends Component<
-  FormProps,
+class TrackedMobileSignUpForm extends Component<
+  FormProps & {
+    relayEnvironment: Environment
+  },
   MobileSignUpFormState
 > {
   state = {
@@ -70,7 +74,7 @@ export class MobileSignUpForm extends Component<
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("signup_submit", recaptcha_token => {
+    recaptcha("signup_submit", recaptcha_token => {
       const valuesWithToken = {
         ...values,
         recaptcha_token,
@@ -84,7 +88,12 @@ export class MobileSignUpForm extends Component<
       <Step
         validationSchema={MobileSignUpValidator.email}
         onSubmit={(values, actions) =>
-          checkEmail({ values, actions, shouldExist: false })
+          checkEmail({
+            relayEnvironment: this.props.relayEnvironment,
+            values,
+            actions,
+            shouldExist: false,
+          })
         }
       >
         {({
@@ -170,7 +179,7 @@ export class MobileSignUpForm extends Component<
           const { currentStep, isLastStep } = wizard
 
           return (
-            <MobileContainer>
+            <MobileContainer data-test="SignUpForm">
               <ProgressIndicator percentComplete={wizard.progressPercentage} />
               <MobileInnerWrapper>
                 <BackButton
@@ -212,6 +221,24 @@ export class MobileSignUpForm extends Component<
                 </SubmitButton>
                 <Footer
                   mode={"signup" as ModalType}
+                  onAppleLogin={e => {
+                    if (!values.accepted_terms_of_service) {
+                      this.setState(
+                        {
+                          isSocialSignUp: true,
+                        },
+                        () => {
+                          setTouched({
+                            accepted_terms_of_service: true,
+                          })
+                        }
+                      )
+                    } else {
+                      if (this.props.onAppleLogin) {
+                        this.props.onAppleLogin(e)
+                      }
+                    }
+                  }}
                   onFacebookLogin={e => {
                     if (!values.accepted_terms_of_service) {
                       this.setState(
@@ -241,3 +268,5 @@ export class MobileSignUpForm extends Component<
     )
   }
 }
+
+export const MobileSignUpForm = withSystemContext(TrackedMobileSignUpForm)

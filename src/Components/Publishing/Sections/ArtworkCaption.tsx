@@ -1,5 +1,5 @@
 import { color as Color, Sans, Serif } from "@artsy/palette"
-import { ErrorBoundary } from "Components/ErrorBoundary"
+import { ErrorBoundary } from "Artsy/Router/ErrorBoundary"
 import { pMedia } from "Components/Helpers"
 import { ArticleLayout, SectionLayout } from "Components/Publishing/Typings"
 import { Truncator } from "Components/Truncator"
@@ -262,7 +262,7 @@ const ArtistName = styled.span`
   white-space: nowrap;
 `
 
-const StyledArtworkCaption = styled(Sans)<{
+export const StyledArtworkCaption = styled(Sans)<{
   color?: string
   layout?: ArticleLayout
   sectionLayout?: SectionLayout

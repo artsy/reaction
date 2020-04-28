@@ -73,8 +73,8 @@ export const ArtworkSidebarClassificationFragmentContainer = createFragmentConta
   {
     artwork: graphql`
       fragment ArtworkSidebarClassification_artwork on Artwork {
-        attribution_class {
-          short_description
+        attribution_class: attributionClass {
+          short_description: shortDescription
         }
       }
     `,

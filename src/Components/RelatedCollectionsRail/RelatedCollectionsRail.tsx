@@ -1,9 +1,9 @@
-import { Box, Sans, space, Spacer } from "@artsy/palette"
+import { Box, Serif, Spacer } from "@artsy/palette"
 import { RelatedCollectionsRail_collections } from "__generated__/RelatedCollectionsRail_collections.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArrowButton, Carousel } from "Components/v2/Carousel"
-import { once, take } from "lodash"
+import { ArrowButton, Carousel } from "Components/Carousel"
+import { once } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import Waypoint from "react-waypoint"
@@ -14,6 +14,8 @@ import { RelatedCollectionEntityFragmentContainer as RelatedCollectionEntity } f
 
 interface RelatedCollectionsRailProps {
   collections: RelatedCollectionsRail_collections
+  title?: string
+  lazyLoadImages?: boolean
 }
 
 @track(null, {
@@ -44,29 +46,39 @@ export class RelatedCollectionsRail extends React.Component<
 
   render() {
     const { collections } = this.props
-    if (collections.length > 3) {
+    const { title, lazyLoadImages } = this.props
+    const collectionsWithArtworks = collections.filter(collection =>
+      Boolean(collection.artworksConnection)
+    )
+
+    if (collectionsWithArtworks.length > 3) {
       return (
         <Box>
           <Waypoint onEnter={once(this.trackImpression.bind(this))} />
-          <Sans size="3" weight="medium">
-            Browse by iconic collections
-          </Sans>
-          <Spacer pb={1} />
+          <Serif size="8" color="black100">
+            More like {title}
+          </Serif>
+          <Spacer pb={4} />
 
           <Carousel
             height="200px"
             options={{
               groupCells: sd.IS_MOBILE ? 1 : 4,
-
               cellAlign: "left",
+              contain: true,
               wrapAround: sd.IS_MOBILE ? true : false,
               pageDots: false,
               draggable: sd.IS_MOBILE ? true : false,
             }}
             onArrowClick={this.trackCarouselNav.bind(this)}
-            data={take(collections, 8)}
+            data={collectionsWithArtworks}
             render={slide => {
-              return <RelatedCollectionEntity collection={slide} />
+              return (
+                <RelatedCollectionEntity
+                  lazyLoad={lazyLoadImages}
+                  collection={slide}
+                />
+              )
             }}
             renderLeftArrow={({ Arrow }) => {
               return (
@@ -92,10 +104,10 @@ export class RelatedCollectionsRail extends React.Component<
 }
 
 const ArrowContainer = styled(Box)`
-  position: relative;
+  align-self: flex-start;
 
   ${ArrowButton} {
-    top: -${space(3)}px;
+    height: 60%;
   }
 `
 
@@ -106,6 +118,19 @@ export const RelatedCollectionsRailFragmentContainer = createFragmentContainer(
       fragment RelatedCollectionsRail_collections on MarketingCollection
         @relay(plural: true) {
         ...RelatedCollectionEntity_collection
+        # We need this so we can filter out collections w/o artworks that would
+        # otherwise break the carousel.
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
       }
     `,
   }

@@ -1,31 +1,29 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Follow_artist$ref: unique symbol;
-export type Follow_artist$ref = typeof _Follow_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Follow_artist = {
-    readonly __id: string;
     readonly id: string;
+    readonly internalID: string;
+    readonly name: string | null;
     readonly is_followed: boolean | null;
-    readonly " $refType": Follow_artist$ref;
+    readonly " $refType": "Follow_artist";
+};
+export type Follow_artist$data = Follow_artist;
+export type Follow_artist$key = {
+    readonly " $data"?: Follow_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"Follow_artist">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Follow_artist",
   "type": "Artist",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -36,11 +34,25 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_followed",
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "is_followed",
+      "name": "isFollowed",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = 'e2c8c185e485a2f0cf3079ead7217a61';
+(node as any).hash = 'a79fc7c37e66978ac1b86bac912ac995';
 export default node;

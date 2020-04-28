@@ -1,8 +1,9 @@
-import { OtherAuctionsQuery } from "__generated__/OtherAuctionsQuery.graphql"
+import { OtherAuctionsStoryQuery } from "__generated__/OtherAuctionsStoryQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 import { OtherAuctionsFragmentContainer } from "../OtherAuctions"
@@ -11,12 +12,13 @@ const OtherAuctions = ({ size }: { size?: number }) => {
   const { relayEnvironment } = useContext(SystemContext)
 
   return (
-    <QueryRenderer<OtherAuctionsQuery>
+    <QueryRenderer<OtherAuctionsStoryQuery>
       environment={relayEnvironment}
       query={graphql`
-        query OtherAuctionsQuery($size: Int!) {
-          sales(size: $size, sort: TIMELY_AT_NAME_ASC) {
-            ...OtherAuctions_sales
+        query OtherAuctionsStoryQuery($size: Int!) {
+          salesConnection(first: $size, sort: TIMELY_AT_NAME_ASC) {
+            # FIXME: Need to pluck just nodes and send as array.
+            ...OtherAuctions_salesConnection
           }
         }
       `}

@@ -1,22 +1,22 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type SetOrderPaymentInput = {
-    readonly orderId: string;
-    readonly creditCardId: string;
+export type CommerceSetPaymentInput = {
     readonly clientMutationId?: string | null;
+    readonly creditCardId: string;
+    readonly id: string;
 };
 export type commitMutationTest1MutationVariables = {
-    readonly input: SetOrderPaymentInput;
+    input: CommerceSetPaymentInput;
 };
 export type commitMutationTest1MutationResponse = {
-    readonly ecommerceSetOrderPayment: ({
-        readonly orderOrError: ({
-            readonly error?: ({
+    readonly commerceSetPayment: {
+        readonly orderOrError: {
+            readonly error?: {
                 readonly code: string;
-            }) | null;
-        }) | null;
-    }) | null;
+            };
+        };
+    } | null;
 };
 export type commitMutationTest1Mutation = {
     readonly response: commitMutationTest1MutationResponse;
@@ -27,12 +27,12 @@ export type commitMutationTest1Mutation = {
 
 /*
 mutation commitMutationTest1Mutation(
-  $input: SetOrderPaymentInput!
+  $input: CommerceSetPaymentInput!
 ) {
-  ecommerceSetOrderPayment(input: $input) {
+  commerceSetPayment(input: $input) {
     orderOrError {
       __typename
-      ... on OrderWithMutationFailure {
+      ... on CommerceOrderWithMutationFailure {
         error {
           code
         }
@@ -47,7 +47,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "SetOrderPaymentInput!",
+    "type": "CommerceSetPaymentInput!",
     "defaultValue": null
   }
 ],
@@ -55,13 +55,12 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "SetOrderPaymentInput!"
+    "variableName": "input"
   }
 ],
 v2 = {
   "kind": "InlineFragment",
-  "type": "OrderWithMutationFailure",
+  "type": "CommerceOrderWithMutationFailure",
   "selections": [
     {
       "kind": "LinkedField",
@@ -69,7 +68,7 @@ v2 = {
       "name": "error",
       "storageKey": null,
       "args": null,
-      "concreteType": "EcommerceError",
+      "concreteType": "CommerceApplicationError",
       "plural": false,
       "selections": [
         {
@@ -85,25 +84,20 @@ v2 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "commitMutationTest1Mutation",
-  "id": null,
-  "text": "mutation commitMutationTest1Mutation(\n  $input: SetOrderPaymentInput!\n) {\n  ecommerceSetOrderPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on OrderWithMutationFailure {\n        error {\n          code\n        }\n      }\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "commitMutationTest1Mutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSetOrderPayment",
+        "name": "commerceSetPayment",
         "storageKey": null,
-        "args": v1,
-        "concreteType": "SetOrderPaymentPayload",
+        "args": (v1/*: any*/),
+        "concreteType": "CommerceSetPaymentPayload",
         "plural": false,
         "selections": [
           {
@@ -115,7 +109,7 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v2
+              (v2/*: any*/)
             ]
           }
         ]
@@ -125,15 +119,15 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "commitMutationTest1Mutation",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "ecommerceSetOrderPayment",
+        "name": "commerceSetPayment",
         "storageKey": null,
-        "args": v1,
-        "concreteType": "SetOrderPaymentPayload",
+        "args": (v1/*: any*/),
+        "concreteType": "CommerceSetPaymentPayload",
         "plural": false,
         "selections": [
           {
@@ -152,14 +146,21 @@ return {
                 "args": null,
                 "storageKey": null
               },
-              v2
+              (v2/*: any*/)
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "commitMutationTest1Mutation",
+    "id": null,
+    "text": "mutation commitMutationTest1Mutation(\n  $input: CommerceSetPaymentInput!\n) {\n  commerceSetPayment(input: $input) {\n    orderOrError {\n      __typename\n      ... on CommerceOrderWithMutationFailure {\n        error {\n          code\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '185f6aacd76ffb48524e52100e0988d0';
+(node as any).hash = '00dce5aa5f8ecdb281f7afb350b5d5b8';
 export default node;

@@ -1,31 +1,28 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _FollowGeneButton_gene$ref: unique symbol;
-export type FollowGeneButton_gene$ref = typeof _FollowGeneButton_gene$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type FollowGeneButton_gene = {
-    readonly __id: string;
     readonly id: string;
+    readonly internalID: string;
     readonly is_followed: boolean | null;
-    readonly " $refType": FollowGeneButton_gene$ref;
+    readonly " $refType": "FollowGeneButton_gene";
+};
+export type FollowGeneButton_gene$data = FollowGeneButton_gene;
+export type FollowGeneButton_gene$key = {
+    readonly " $data"?: FollowGeneButton_gene$data;
+    readonly " $fragmentRefs": FragmentRefs<"FollowGeneButton_gene">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "FollowGeneButton_gene",
   "type": "Gene",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -36,11 +33,18 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_followed",
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "is_followed",
+      "name": "isFollowed",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '56411a7fc651d6c3a3e5ab27b241b1c0';
+(node as any).hash = '27bbf9c0d8426586f13fe1dacb54b489';
 export default node;

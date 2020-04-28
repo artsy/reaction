@@ -5,12 +5,22 @@
     "declaration": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "emitDeclarationOnly": true,
+    "incremental": true,
     "jsx": "react",
     "lib": ["dom", "es2015", "es2016", "es2017", "esnext.asynciterable"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "outDir": "dist",
+    "paths": {
+      "storybook/*": ["./__stories__/*"],
+      "Analytics/*": ["./Analytics/*"],
+      "Assets/*": ["./Assets/*"],
+      "Components/*": ["./Components/*"],
+      "Styleguide/*": ["./Styleguide/*"],
+      "package.json": ["./package.json"]
+    },
     "plugins": [
       {
         "name": "typescript-styled-plugin"
@@ -19,15 +29,7 @@
     "pretty": true,
     "rootDir": "src",
     "sourceMap": true,
-    "target": "es2015",
-    "paths": {
-      "storybook/*": ["./__stories__/*"],
-      "Analytics/*": ["./Analytics/*"],
-      "Assets/*": ["./Assets/*"],
-      "Components/*": ["./Components/*"],
-      "Styleguide/*": ["./Styleguide/*"],
-      "package.json": ["./package.json"]
-    }
+    "target": "es2015"
   },
   "include": ["typings/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": [

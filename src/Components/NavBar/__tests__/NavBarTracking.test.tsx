@@ -5,7 +5,7 @@ import { AnalyticsSchema, SystemContextProvider } from "Artsy"
 
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { QueryRenderer as _QueryRenderer } from "react-relay"
-import { MobileNavMenu, MoreNavMenu, UserMenu } from "../Menus"
+import { MoreNavMenu, UserMenu } from "../Menus"
 import { NavBar } from "../NavBar"
 import { NavItem } from "../NavItem"
 
@@ -53,40 +53,6 @@ describe("NavBarTracking", () => {
         subject: AnalyticsSchema.Subject.NotificationBell,
         destination_path: "/works-for-you",
         new_notification_count: 0,
-      })
-    })
-
-    it("tracks NavBar login button clicks", () => {
-      const wrapper = mount(
-        <Wrapper user={null}>
-          <NavBar />
-        </Wrapper>
-      )
-      wrapper
-        .find("Button")
-        .first()
-        .simulate("click")
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: AnalyticsSchema.ActionType.Click,
-        subject: AnalyticsSchema.Subject.Login,
-      })
-    })
-
-    it("tracks NavBar signup button clicks", () => {
-      const wrapper = mount(
-        <Wrapper user={null}>
-          <NavBar />
-        </Wrapper>
-      )
-      wrapper
-        .find("Button")
-        .last()
-        .simulate("click")
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: AnalyticsSchema.ActionType.Click,
-        subject: AnalyticsSchema.Subject.Signup,
       })
     })
   })
@@ -203,32 +169,6 @@ describe("NavBarTracking", () => {
       expect(trackEvent).toBeCalledWith({
         action_type: AnalyticsSchema.ActionType.Click,
         subject: AnalyticsSchema.Subject.SmallScreenMenuSandwichIcon,
-      })
-    })
-
-    it("tracks mobile dropdown clicks", () => {
-      const wrapper = mount(
-        <Wrapper>
-          <MobileNavMenu />
-        </Wrapper>
-      )
-
-      wrapper
-        .find("MobileLink")
-        .last()
-        .simulate("click", {
-          target: {
-            innerText: "Magazine",
-            parentNode: {
-              getAttribute: () => "/articles",
-            },
-          },
-        })
-
-      expect(trackEvent).toBeCalledWith({
-        action_type: AnalyticsSchema.ActionType.Click,
-        subject: "Magazine",
-        destination_path: "/articles",
       })
     })
   })

@@ -4,9 +4,15 @@
 export enum PageName {
   ArticlePage = "Article",
   ArtistPage = "Artist",
+  ArtistAuctionResults = "Artist Auction Results",
   ArtworkPage = "Artwork page",
+  AuctionRegistrationPage = "Auction Registration page",
+  AuctionConfirmBidPage = "Auction Confirm Bid page",
   CollectPage = "Collect page",
+  CollectionPage = "Collection",
   SearchPage = "Search page",
+  HomePage = "Home",
+  IdentityVerificationPage = "Identity Verification page",
 }
 
 /**
@@ -43,14 +49,14 @@ export enum ActionType {
    * TODO: Check if ‘Tap’ and this can be combined.
    */
   Click = "Click",
-
+  ClickedBid = 'Clicked "Bid"',
   /**
    * A click on 'Buy Now' or 'Make offer' buttons.
    */
   ClickedBuyNow = "Clicked buy now",
-  ClickedMakeOffer = "Clicked make offer",
+  ClickedConsign = "Clicked consign",
   ClickedContactGallery = 'Clicked "Contact Gallery"',
-  ClickedBid = 'Clicked "Bid"',
+  ClickedMakeOffer = "Clicked make offer",
 
   /**
    * Triggers a pageview in force, skips segment
@@ -58,6 +64,8 @@ export enum ActionType {
   ClickedReadMore = "Clicked read more",
 
   CommercialFilterParamsChanged = "Commercial filter params changed",
+  AuctionResultFilterParamChanged = "Auction results filter params changed",
+  AuctionResultItemClicked = "Auction result item clicked",
 
   /**
    * A/B Test Experiments
@@ -81,6 +89,17 @@ export enum ActionType {
    * A UI element that links out to another location
    */
   Link = "Link",
+
+  /**
+   * Auctions
+   */
+  ClickedRequestConditionReport = "Clicked request condition report",
+  ConfirmBidSubmitted = "Confirmed bid on bid page",
+  ConfirmBidFailed = "Confirm bid failed",
+  PlacedMaxBid = "Placed Max Bid",
+  RegisteredToBid = "Registered To Bid",
+  SelectedMaxBid = "Selected max bid",
+  ViewedLot = "Lot Viewed",
 
   /**
    * A tap on a UI element using a finger-like input device.
@@ -111,6 +130,17 @@ export enum ActionType {
   SelectedItemFromSearchPage = "Selected item from search page",
   SearchedAutosuggestWithResults = "Searched from header with results",
   SearchedAutosuggestWithoutResults = "Searched from header with no results",
+
+  /**
+   * Auction Registration flow
+   */
+  RegistrationSubmitFailed = "Registration failed to submit",
+  RegistrationSubmitted = "Registration submitted",
+
+  /**
+   * Identity Verification
+   */
+  ClickedContinueToIdVerification = "ClickedContinueToIdVerification",
 }
 
 /**
@@ -206,6 +236,10 @@ export enum Subject {
   BNMOProvideShipping = "provide shipping address",
   BNMOArrangePickup = "arrange for pickup",
   BNMOUseShippingAddress = "use shipping address",
+  BNMOAddBankAccount = "addBankAccount",
+  BNMOHelpEmail = "orders@artsy.net",
+  BNMOBankTransferNotifcationCheckbox = "notifyCheckboxChecked",
+  BNMOBankTransferModalDismissed = "modalDismissed",
 
   AuctionConditionsOfSale = "conditions of sale",
   AuctionFAQ = "auction faq",
@@ -217,6 +251,11 @@ export enum Subject {
   ConsignLearnMore = "learn more",
 
   /**
+   * Artist Page
+   */
+  GetStarted = "Get Started",
+
+  /**
    * Artwork Page
    */
   Classification = "Classification info",
@@ -226,14 +265,31 @@ export enum Subject {
   HistogramBar = "Histogram Bar",
   BrowseWorks = "Browse works in this category",
   QuestionMarkIcon = "Question Mark Informational Icon",
+  RequestConditionReport = "Request condition report",
 
   /**
    * Header
    */
   NotificationBell = "Notification Bell",
+  Notification = "Notification",
+  ViewAll = "View All",
   Login = "Log In",
   Signup = "Sign Up",
   SmallScreenMenuSandwichIcon = "Small Screen Menu Sandwich Icon",
+
+  /**
+   * CollectionHub
+   */
+  FeaturedCategories = "Featured Categories",
+
+  /**
+   * Consignments
+   */
+  ExploreAuctionResults = "Explore Auction Results",
+  Here = "here",
+  RequestPriceEstimate = "Request a price estimate",
+  SubmitForReview = "Submit for review",
+  SubmitWorksInterestedInSelling = "submit works you’re interested in selling here",
 }
 
 /**
@@ -245,10 +301,14 @@ export enum ContextModule {
   RecentlyViewedArtworks = "recently_viewed_artworks",
   HeaderMoreDropdown = "HeaderMoreDropdown",
   HeaderUserDropdown = "HeaderUserDropdown",
+  HeaderActivityDropdown = "HeaderActivityDropdown",
+  HeaderArtworksDropdown = "HeaderArtworksDropdown",
+  HeaderArtistsDropdown = "HeaderArtistsDropdown",
 
   /**
    * Artist page
    */
+  ArtistConsignment = "ArtistConsignment",
   ArtistPage = "Artist page",
   AboutTheWork = "About the work",
   AboutTheWorkPartner = "About the Work (Partner)",
@@ -258,10 +318,12 @@ export enum ContextModule {
   ArtistInsights = "ArtistInsights",
   Biography = "Biography",
   Sidebar = "Sidebar",
+  WorksForSale = "Works For Sale",
 
   /**
    * Artwork page
    */
+  AboutTheWorkCondition = "About the work condition",
   ArtworkPage = "Artwork page",
   ArtworkTabs = "Artwork tabs",
   OtherWorksByArtist = "Other works by artist",
@@ -299,11 +361,56 @@ export enum ContextModule {
    * Collection page
    */
   CollectionDescription = "CollectionDescription",
+  ArtworkBanner = "ArtworkBanner",
 
   /**
    * Collections Rails
    */
   CollectionsRail = "CollectionsRail",
+
+  /**
+   * CollectionHub Entry Point in home page
+   */
+  CollectionHubEntryPoint = "HubEntrypoint",
+
+  /**
+   * Consignments
+   */
+  FAQ = "FAQ",
+  HowToSellYourCollection = "How to sell your collection with Artsy",
+  SellArtFromYourCollection = "Sell Art From Your Collection",
+  SellWorksBy = "Sell Works by",
+
+  /**
+   * Other Collections Rail
+   */
+  OtherCollectionsRail = "OtherCollectionsRail",
+
+  /**
+   * Featured Collections Rail
+   */
+  FeaturedCollectionsRail = "FeaturedCollectionsRail",
+
+  /**
+   * Artist Series rail in the collection hub
+   */
+  ArtistCollectionsRail = "ArtistCollectionsRail",
+
+  /**
+   * Ad Server
+   */
+  AdServer = "AdServer",
+
+  /**
+   * Art Keeps Going Campaign
+   */
+  FeaturedThisWeek = "FeaturedThisWeek",
+  Editorial = "Editorial",
+  SelectedWorks = "SelectedWorks",
+  FeaturedArtists = "FeaturedArtists",
+  BrowseCollections = "BrowseCollections",
+  BrowseAuctions = "BrowseAuctions",
+  BrowseFairs = "BrowseFairs",
 }
 
 export enum Flow {
@@ -315,6 +422,7 @@ export enum Flow {
   ArtworkPriceContext = "Artwork Price Context",
   Auctions = "Auctions",
   BuyNow = "Buy now",
+  Consignments = "Consignments",
   MakeOffer = "Make offer",
   Header = "Header",
 }
@@ -335,4 +443,7 @@ export enum Type {
   Tab = "Tab",
   Thumbnail = "thumbnail",
   Chart = "Chart",
+  RadioButton = "radio button",
+  EmailLink = "email link",
+  ModalDismissal = "modal dismissal",
 }

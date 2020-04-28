@@ -3,7 +3,7 @@ import { OfferSummaryItem_order } from "__generated__/OfferSummaryItem_order.gra
 import {
   StepSummaryItem,
   StepSummaryItemProps,
-} from "Components/v2/StepSummaryItem"
+} from "Components/StepSummaryItem"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -42,9 +42,9 @@ export const OfferSummaryItemFragmentContainer = createFragmentContainer(
   OfferSummaryItem,
   {
     order: graphql`
-      fragment OfferSummaryItem_order on Order {
+      fragment OfferSummaryItem_order on CommerceOrder {
         totalListPrice(precision: 2)
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           myLastOffer {
             amount(precision: 2)
             note

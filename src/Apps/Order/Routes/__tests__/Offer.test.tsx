@@ -1,4 +1,4 @@
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
+import { OfferTestQueryRawResponse } from "__generated__/OfferTestQuery.graphql"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { graphql } from "react-relay"
 import { commitMutation as _commitMutation } from "react-relay"
@@ -23,9 +23,10 @@ jest.mock("Utils/Events", () => ({
 
 const mockPostEvent = require("Utils/Events").postEvent as jest.Mock
 
-jest.mock("Apps/Order/Utils/trackPageView")
-
-const testOrder = { ...UntouchedOfferOrder, id: "1234" }
+const testOrder: OfferTestQueryRawResponse["order"] = {
+  ...UntouchedOfferOrder,
+  internalID: "1234",
+}
 
 describe("Offer InitialMutation", () => {
   const { buildPage, mutations, routes } = createTestEnv({
@@ -38,8 +39,8 @@ describe("Offer InitialMutation", () => {
     },
     TestPage: OrderAppTestPage,
     query: graphql`
-      query OfferTestQuery {
-        order: ecommerceOrder(id: "unused") {
+      query OfferTestQuery @raw_response_type {
+        order: commerceOrder(id: "unused") {
           ...Offer_order
         }
       }
@@ -69,6 +70,36 @@ describe("Offer InitialMutation", () => {
 
       page.setOfferAmount(1023)
       expect(page.transactionSummary.text()).toContain("Your offer$1,023.00")
+    })
+  })
+
+  describe("a non-usd currency", () => {
+    let page: OrderAppTestPage
+    beforeAll(async () => {
+      page = await buildPage({
+        mockData: {
+          order: {
+            ...testOrder,
+            currencyCode: "GBP",
+            totalListPrice: "£16,000",
+          },
+        },
+      })
+    })
+
+    it("shows the list price just below the input", () => {
+      const container = page.find("div#offer-page-left-column")
+      expect(container.text()).toContain("List price: £16,000")
+    })
+
+    it("can receive input, which updates the transaction summary", () => {
+      expect(page.transactionSummary.text()).toContain("Your offer")
+
+      page.setOfferAmount(1)
+      expect(page.transactionSummary.text()).toContain("Your offer£1.00")
+
+      page.setOfferAmount(1023)
+      expect(page.transactionSummary.text()).toContain("Your offer£1,023.00")
     })
   })
 
@@ -177,10 +208,6 @@ describe("Offer InitialMutation", () => {
     beforeEach(async () => {
       page = await buildPage()
       mockPostEvent.mockReset()
-    })
-
-    it("tracks a pageview", () => {
-      expect(trackPageView).toHaveBeenCalledTimes(1)
     })
 
     it("tracks the offer input focus", () => {

@@ -1,39 +1,35 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _OfferSummaryItem_order$ref: unique symbol;
-export type OfferSummaryItem_order$ref = typeof _OfferSummaryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type OfferSummaryItem_order = {
     readonly totalListPrice: string | null;
-    readonly myLastOffer?: ({
+    readonly myLastOffer?: {
         readonly amount: string | null;
         readonly note: string | null;
-    }) | null;
-    readonly " $refType": OfferSummaryItem_order$ref;
+    } | null;
+    readonly " $refType": "OfferSummaryItem_order";
+};
+export type OfferSummaryItem_order$data = OfferSummaryItem_order;
+export type OfferSummaryItem_order$key = {
+    readonly " $data"?: OfferSummaryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"OfferSummaryItem_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "OfferSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -41,13 +37,12 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
-    v1,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -55,14 +50,14 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "amount",
-              "args": v0,
+              "args": (v0/*: any*/),
               "storageKey": "amount(precision:2)"
             },
             {
@@ -71,8 +66,7 @@ return {
               "name": "note",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         }
       ]
@@ -80,5 +74,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '90ad44d35301b6a9de545dc7e020855d';
+(node as any).hash = '0261dbe6d5bf78317ddcbcc13f207aa5';
 export default node;

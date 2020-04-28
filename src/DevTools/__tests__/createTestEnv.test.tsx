@@ -1,6 +1,7 @@
 import { createTestEnv_artwork } from "__generated__/createTestEnv_artwork.graphql"
 import { createTestEnvCreditCardMutation } from "__generated__/createTestEnvCreditCardMutation.graphql"
 import { createTestEnvOrderMutation } from "__generated__/createTestEnvOrderMutation.graphql"
+import { createTestEnvQueryRawResponse } from "__generated__/createTestEnvQuery.graphql"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne, RootTestPage } from "DevTools/RootTestPage"
 import React from "react"
@@ -13,41 +14,45 @@ import {
 
 jest.unmock("react-relay")
 
-const orderMutation = graphql`
-  mutation createTestEnvOrderMutation($input: CreateOrderWithArtworkInput!) {
-    createOrderWithArtwork(input: $input) {
-      orderOrError {
-        ... on OrderWithMutationSuccess {
-          order {
-            id
+const orderMutation =
+  // TODO: Inputs to the mutation might have changed case of the keys!
+  graphql`
+    mutation createTestEnvOrderMutation(
+      $input: CommerceCreateOrderWithArtworkInput!
+    ) {
+      commerceCreateOrderWithArtwork(input: $input) {
+        orderOrError {
+          ... on CommerceOrderWithMutationSuccess {
+            order {
+              internalID
+            }
           }
-        }
-        ... on OrderWithMutationFailure {
-          error {
-            type
+          ... on CommerceOrderWithMutationFailure {
+            error {
+              type
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
 const orderSuccess = {
-  createOrderWithArtwork: {
+  commerceCreateOrderWithArtwork: {
     orderOrError: {
-      __typename: "OrderWithMutationSuccess",
+      __typename: "CommerceOrderWithMutationSuccess",
       order: {
-        __typename: "BuyOrder",
-        id: "order-id",
+        __typename: "CommerceBuyOrder",
+        internalID: "order-id",
       },
     },
   },
 }
 
 const orderFailure = {
-  createOrderWithArtwork: {
+  commerceCreateOrderWithArtwork: {
     orderOrError: {
-      __typename: "OrderWithMutationFailure",
+      __typename: "CommerceOrderWithMutationFailure",
       error: {
         type: "order-error",
       },
@@ -55,25 +60,26 @@ const orderFailure = {
   },
 }
 
-const creditCardMutation = graphql`
-  mutation createTestEnvCreditCardMutation($input: CreditCardInput!) {
-    createCreditCard: createCreditCard(input: $input) {
-      creditCardOrError {
-        ... on CreditCardMutationSuccess {
-          creditCard {
-            brand
+const creditCardMutation =
+  // TODO: Inputs to the mutation might have changed case of the keys!
+  graphql`
+    mutation createTestEnvCreditCardMutation($input: CreditCardInput!) {
+      createCreditCard: createCreditCard(input: $input) {
+        creditCardOrError {
+          ... on CreditCardMutationSuccess {
+            creditCard {
+              brand
+            }
           }
-        }
-
-        ... on CreditCardMutationFailure {
-          mutationError {
-            type
+          ... on CreditCardMutationFailure {
+            mutationError {
+              type
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
 const creditCardSuccess = {
   createCreditCard: {
@@ -185,13 +191,13 @@ describe("test envs", () => {
         title: "Test Artwork",
         artist: { name: "David Sheldrick" },
       },
-    },
+    } as createTestEnvQueryRawResponse,
     defaultMutationResults: {
       ...orderSuccess,
       ...creditCardSuccess,
     },
     query: graphql`
-      query createTestEnvQuery {
+      query createTestEnvQuery @raw_response_type {
         artwork(id: "unused") {
           ...createTestEnv_artwork
         }
@@ -293,7 +299,7 @@ describe("test envs", () => {
 
     expect(onCompleted).toHaveBeenCalledTimes(2)
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ order: {} })
     expect(
       onCompleted.mock.calls[1][0].createCreditCard.creditCardOrError
@@ -311,7 +317,7 @@ describe("test envs", () => {
 
     await page.update()
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
     expect(
       onCompleted.mock.calls[1][0].createCreditCard.creditCardOrError
@@ -320,7 +326,9 @@ describe("test envs", () => {
 
   it("resets the mutation mocks after every test", () => {
     expect(mutations.resolvers.createCreditCard).not.toHaveBeenCalled()
-    expect(mutations.resolvers.createOrderWithArtwork).not.toHaveBeenCalled()
+    expect(
+      mutations.resolvers.commerceCreateOrderWithArtwork
+    ).not.toHaveBeenCalled()
   })
 
   it("lets you inspect mutation variables", async () => {
@@ -352,7 +360,7 @@ describe("test envs", () => {
     page.orderSubmitButton.simulate("click")
     await page.update()
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
   })
 
@@ -363,19 +371,21 @@ describe("test envs", () => {
     page.orderSubmitButton.simulate("click")
     await page.update()
     expect(
-      onCompleted.mock.calls[0][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[0][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
     page.orderSubmitButton.simulate("click")
     await page.update()
     expect(
-      onCompleted.mock.calls[1][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[1][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ error: {} })
     page.orderSubmitButton.simulate("click")
     await page.update()
-    expect(mutations.resolvers.createOrderWithArtwork).toHaveBeenCalledTimes(3)
+    expect(
+      mutations.resolvers.commerceCreateOrderWithArtwork
+    ).toHaveBeenCalledTimes(3)
     expect(onCompleted).toHaveBeenCalledTimes(3)
     expect(
-      onCompleted.mock.calls[2][0].createOrderWithArtwork.orderOrError
+      onCompleted.mock.calls[2][0].commerceCreateOrderWithArtwork.orderOrError
     ).toMatchObject({ order: {} })
   })
 })

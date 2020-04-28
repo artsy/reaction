@@ -5,6 +5,17 @@ import { createMockNetworkLayer } from "DevTools"
 import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
+import { Boot } from "../Boot"
+
+jest.mock("Components/NavBar", () => ({
+  NavBar: () => <div />,
+}))
+
+jest.mock("react-relay", () => ({
+  ReactRelayContext: {
+    Provider: ({ children }) => children,
+  },
+}))
 
 describe("buildClientApp", () => {
   it("resolves with a <ClientApp /> component", async () => {
@@ -77,7 +88,7 @@ describe("buildClientApp", () => {
     const wrapper = mount(<ClientApp />)
     expect(
       (wrapper
-        .find("Boot")
+        .find(Boot)
         .props() as any).relayEnvironment.relaySSRMiddleware.cache.values()
     ).toContain("found window cache")
   })
@@ -88,9 +99,14 @@ describe("buildClientApp", () => {
         <SystemContextConsumer>
           {context => {
             expect(Object.keys(context).sort()).toEqual([
+              "isFetching",
               "mediator",
               "relayEnvironment",
+              "router",
               "routes",
+              "setFetching",
+              "setRouter",
+              "setUser",
               "user",
             ])
             setImmediate(done)
@@ -153,7 +169,7 @@ describe("buildClientApp", () => {
               query: graphql`
                 query buildClientAppTestQuery {
                   me {
-                    __id
+                    id
                   }
                 }
               `,
@@ -161,6 +177,7 @@ describe("buildClientApp", () => {
           ],
           context: { relayEnvironment },
         })
+
         mount(<ClientApp />)
       } catch (error) {
         expect(error.message).toMatch(/Oh noes/)

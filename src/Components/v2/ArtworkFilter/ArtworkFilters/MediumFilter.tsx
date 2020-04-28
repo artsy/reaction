@@ -1,80 +1,88 @@
-import { Radio, RadioGroup } from "@artsy/palette"
+import { Flex, Radio, RadioGroup, Toggle } from "@artsy/palette"
 import React, { FC } from "react"
-import { useFilterContext } from "../ArtworkFilterContext"
+import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-interface Props {
-  mediums: Array<{
-    id: string
-    name: string
-  }>
-}
+export const MediumFilter: FC = () => {
+  const { aggregations, counts, ...filterContext } = useArtworkFilterContext()
+  const mediums = aggregations.find(agg => agg.slice === "MEDIUM") || {
+    slice: "",
+    counts: [],
+  }
+  const allowedMediums =
+    mediums && mediums.counts.length ? mediums.counts : hardcodedMediums
 
-export const MediumFilter: FC<Props> = props => {
-  const filterContext = useFilterContext()
-  const { mediums } = props
-  const allowedMediums = mediums && mediums.length ? mediums : hardcodedMediums
   const selectedMedium = filterContext.filters.medium
+  const isExpanded = !counts.artworks || counts.artworks > 0
 
   return (
-    <RadioGroup
-      deselectable
-      defaultValue={selectedMedium}
-      onSelect={selectedOption =>
-        filterContext.setFilter("medium", selectedOption)
-      }
-    >
-      {allowedMediums.map((medium, index) => {
-        return (
-          <Radio key={index} my={0.3} value={medium.id} label={medium.name} />
-        )
-      })}
-    </RadioGroup>
+    <Toggle label="Medium" expanded={isExpanded}>
+      <Flex flexDirection="column" alignItems="left" mb={1}>
+        <RadioGroup
+          deselectable
+          defaultValue={selectedMedium}
+          onSelect={selectedOption => {
+            filterContext.setFilter("medium", selectedOption)
+          }}
+        >
+          {allowedMediums.map((medium, index) => {
+            return (
+              <Radio
+                key={index}
+                my={0.3}
+                value={medium.value.toLocaleLowerCase()}
+                label={medium.name}
+              />
+            )
+          })}
+        </RadioGroup>
+      </Flex>
+    </Toggle>
   )
 }
 
 const hardcodedMediums = [
   {
-    id: "painting",
+    value: "painting",
     name: "Painting",
   },
   {
-    id: "photography",
+    value: "photography",
     name: "Photography",
   },
   {
-    id: "sculpture",
+    value: "sculpture",
     name: "Sculpture",
   },
   {
-    id: "prints",
+    value: "prints",
     name: "Prints",
   },
   {
-    id: "work-on-Paper",
+    value: "work-on-Paper",
     name: "Work on Paper",
   },
   {
-    id: "design",
+    value: "design",
     name: "Design",
   },
   {
-    id: "drawing",
+    value: "drawing",
     name: "Drawing",
   },
   {
-    id: "installation",
+    value: "installation",
     name: "Installation",
   },
   {
-    id: "film-slash-video",
+    value: "film-slash-video",
     name: "Film/Video",
   },
   {
-    id: "jewelry",
+    value: "jewelry",
     name: "Jewelry",
   },
   {
-    id: "performance-art",
+    value: "performance-art",
     name: "Performance Art",
   },
 ]

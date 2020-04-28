@@ -1,23 +1,27 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _GeneToolTip_gene$ref: unique symbol;
-export type GeneToolTip_gene$ref = typeof _GeneToolTip_gene$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type GeneToolTip_gene = {
     readonly description: string | null;
     readonly href: string | null;
-    readonly id: string;
-    readonly _id: string;
-    readonly image: ({
+    readonly slug: string;
+    readonly internalID: string;
+    readonly image: {
         readonly url: string | null;
-    }) | null;
+    } | null;
     readonly name: string | null;
-    readonly " $refType": GeneToolTip_gene$ref;
+    readonly " $refType": "GeneToolTip_gene";
+};
+export type GeneToolTip_gene$data = GeneToolTip_gene;
+export type GeneToolTip_gene$key = {
+    readonly " $data"?: GeneToolTip_gene$data;
+    readonly " $fragmentRefs": FragmentRefs<"GeneToolTip_gene">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "GeneToolTip_gene",
   "type": "Gene",
@@ -41,14 +45,14 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -69,18 +73,10 @@ const node: ConcreteFragment = {
             {
               "kind": "Literal",
               "name": "version",
-              "value": "tall",
-              "type": "[String]"
+              "value": "tall"
             }
           ],
           "storageKey": "url(version:\"tall\")"
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
@@ -90,15 +86,8 @@ const node: ConcreteFragment = {
       "name": "name",
       "args": null,
       "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'e4df0664535bb18b36a35439157de4ce';
+(node as any).hash = 'ab5f28661f9c5437186bbdaa00ac1414';
 export default node;

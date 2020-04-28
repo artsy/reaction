@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import {
   SeriesArticle,
@@ -11,21 +12,29 @@ import React from "react"
 import renderer from "react-test-renderer"
 import { SeriesLayout } from "../SeriesLayout"
 
-let props
-function renderComponent() {
-  return renderer.create(<SeriesLayout {...props} />)
-}
-function mountComponent() {
-  return mount(<SeriesLayout {...props} />)
-}
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("series layout", () => {
+  const trackEvent = jest.fn()
+  const renderComponent = () => {
+    return renderer.create(<SeriesLayout {...props} />)
+  }
+  const mountComponent = () => {
+    return mount(<SeriesLayout {...props} />)
+  }
+  let props
+
   beforeEach(() => {
     props = {
       article: SeriesArticle,
       relatedArticles: [VideoArticle, StandardArticle],
       isSeries: true,
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   it("renders a series", () => {

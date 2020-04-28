@@ -5,6 +5,7 @@
 .env
 .storybook/.DS_Store
 .storybook/manager.js
+.tsbuildinfo
 .vscode/cSpell.json
 *.tgz
 assets/reaction-force.js
@@ -15,7 +16,17 @@ node_modules
 npm-debug.log
 out*
 package-lock.json
+tsconfig.tsbuildinfo
 reaction-force.js
 reaction-force.js.map
 yarn-error.log
 storybook_build
+.yalc
+yalc.lock
+coverage*
+tsconfig.tsbuildinfo
+reports*
+2
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.*.json

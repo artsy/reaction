@@ -1,12 +1,12 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type TransactionDetailsSummaryItemStoryQueryVariables = {};
 export type TransactionDetailsSummaryItemStoryQueryResponse = {
-    readonly order: ({
-        readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref;
-    }) | null;
+    readonly order: {
+        readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItem_order">;
+    } | null;
 };
 export type TransactionDetailsSummaryItemStoryQuery = {
     readonly response: TransactionDetailsSummaryItemStoryQueryResponse;
@@ -17,14 +17,14 @@ export type TransactionDetailsSummaryItemStoryQuery = {
 
 /*
 query TransactionDetailsSummaryItemStoryQuery {
-  order: ecommerceOrder(id: "foo") {
+  order: commerceOrder(id: "foo") {
     __typename
     ...TransactionDetailsSummaryItem_order
-    __id
+    id
   }
 }
 
-fragment TransactionDetailsSummaryItem_order on Order {
+fragment TransactionDetailsSummaryItem_order on CommerceOrder {
   __typename
   mode
   shippingTotal(precision: 2)
@@ -34,9 +34,9 @@ fragment TransactionDetailsSummaryItem_order on Order {
   itemsTotal(precision: 2)
   totalListPrice(precision: 2)
   buyerTotal(precision: 2)
-  ... on OfferOrder {
+  ... on CommerceOfferOrder {
     lastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -47,10 +47,10 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       fromParticipant
       note
-      __id
+      id
     }
     myLastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -61,10 +61,9 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       fromParticipant
       note
-      __id
+      id
     }
   }
-  __id
 }
 */
 
@@ -73,68 +72,72 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "foo",
-    "type": "String!"
+    "value": "foo"
   }
 ],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "taxTotalCents",
-  "args": null,
-  "storageKey": null
-},
-v3 = [
+v1 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ],
-v4 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotal",
-  "args": v3,
+  "args": (v1/*: any*/),
   "storageKey": "shippingTotal(precision:2)"
 },
-v5 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v3,
+  "args": (v1/*: any*/),
   "storageKey": "taxTotal(precision:2)"
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "taxTotalCents",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "buyerTotal",
+  "args": (v1/*: any*/),
+  "storageKey": "buyerTotal(precision:2)"
 },
 v7 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "buyerTotal",
-  "args": v3,
-  "storageKey": "buyerTotal(precision:2)"
+  "name": "id",
+  "args": null,
+  "storageKey": null
 },
 v8 = [
-  v2,
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "id",
+    "name": "internalID",
     "args": null,
     "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amount",
+    "args": (v1/*: any*/),
+    "storageKey": "amount(precision:2)"
   },
   {
     "kind": "ScalarField",
@@ -143,17 +146,11 @@ v8 = [
     "args": null,
     "storageKey": null
   },
-  v4,
-  v5,
-  v6,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v3,
-    "storageKey": "amount(precision:2)"
-  },
-  v7,
+  (v2/*: any*/),
+  (v3/*: any*/),
+  (v4/*: any*/),
+  (v5/*: any*/),
+  (v6/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -175,15 +172,10 @@ v8 = [
     "args": null,
     "storageKey": null
   },
-  v1
+  (v7/*: any*/)
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "TransactionDetailsSummaryItemStoryQuery",
-  "id": null,
-  "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: ecommerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    __id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "TransactionDetailsSummaryItemStoryQuery",
@@ -194,9 +186,9 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -204,8 +196,7 @@ return {
             "kind": "FragmentSpread",
             "name": "TransactionDetailsSummaryItem_order",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -218,13 +209,12 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"foo\")",
-        "args": v0,
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"foo\")",
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -232,9 +222,6 @@ return {
             "args": null,
             "storageKey": null
           },
-          v4,
-          v5,
-          v6,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -242,25 +229,29 @@ return {
             "args": null,
             "storageKey": null
           },
+          (v2/*: any*/),
+          (v3/*: any*/),
+          (v4/*: any*/),
+          (v5/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v3,
+            "args": (v1/*: any*/),
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v3,
+            "args": (v1/*: any*/),
             "storageKey": "totalListPrice(precision:2)"
           },
-          v7,
-          v1,
+          (v6/*: any*/),
+          (v7/*: any*/),
           {
             "kind": "InlineFragment",
-            "type": "OfferOrder",
+            "type": "CommerceOfferOrder",
             "selections": [
               {
                 "kind": "LinkedField",
@@ -268,9 +259,9 @@ return {
                 "name": "lastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": v8
+                "selections": (v8/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -278,17 +269,24 @@ return {
                 "name": "myLastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": v8
+                "selections": (v8/*: any*/)
               }
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "TransactionDetailsSummaryItemStoryQuery",
+    "id": null,
+    "text": "query TransactionDetailsSummaryItemStoryQuery {\n  order: commerceOrder(id: \"foo\") {\n    __typename\n    ...TransactionDetailsSummaryItem_order\n    id\n  }\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '3a5232e28c1ac359d2d3335bdfd70648';
+(node as any).hash = 'f77b446c9a57f7b8446573a3a248788f';
 export default node;

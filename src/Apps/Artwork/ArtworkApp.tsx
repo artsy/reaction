@@ -1,9 +1,11 @@
 import { Box, Col, Row, Separator, Spacer } from "@artsy/palette"
-import React from "react"
+import React, { useContext } from "react"
 import { LazyLoadComponent } from "react-lazy-load-image-component"
 import { createFragmentContainer, graphql } from "react-relay"
+import { data as sd } from "sharify"
 
 import { ArtworkApp_artwork } from "__generated__/ArtworkApp_artwork.graphql"
+import { ArtworkApp_me } from "__generated__/ArtworkApp_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 
@@ -20,45 +22,114 @@ import { PricingContextFragmentContainer as PricingContext } from "./Components/
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Components/v2"
+import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
+import { useRouteTracking } from "Artsy/Analytics/useRouteTracking"
+import { Footer } from "Components/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
+import { RouterContext } from "found"
 import { TrackingProp } from "react-tracking"
-import { get } from "Utils/get"
 import { Media } from "Utils/Responsive"
 
 export interface Props {
   artwork: ArtworkApp_artwork
   tracking?: TrackingProp
+  routerPathname: string
+  referrer: string
+  shouldTrackPageView: boolean
+  me: ArtworkApp_me
 }
 
 declare const window: any
 @track()
 export class ArtworkApp extends React.Component<Props> {
-  // TODO: Move the below tracking, which consists of:
-  //
-  //  * a custom `track` event when the artwork is acquireable or in an auction
-  //  * a custom pageview event including extra metadata
-  //
-  // into an appropriate wrapper HOC.
+  /**
+   * On mount, trigger a page view and product view
+   *
+   * FIXME: We're manually invoking pageView tracking here, instead of within
+   * the `trackingMiddleware` file as we need to pass along additional metadata.
+   * Waiting on analytics team to decide if there's a better way to capture this
+   * data that remains consistent with the rest of the app.
+   */
   componentDidMount() {
+    this.track()
+  }
+
+  componentDidUpdate() {
+    if (this.props.shouldTrackPageView) {
+      this.track()
+    }
+  }
+
+  track() {
     this.trackPageview()
     this.trackProductView()
+    this.trackLotView()
+  }
+
+  trackPageview() {
+    const {
+      artwork: { listPrice, availability, is_offerable, is_acquireable },
+      referrer,
+    } = this.props
+
+    const path = window.location.pathname
+    // FIXME: This breaks our global pageview tracking in the router level.
+    // Can these props be tracked on mount using our typical @track() or
+    // trackEvent() patterns as used in other apps?
+    const properties = {
+      path,
+      acquireable: is_acquireable,
+      offerable: is_offerable,
+      availability,
+      price_listed: !!listPrice,
+      referrer,
+      url: sd.APP_URL + path,
+    }
+
+    if (typeof window.analytics !== "undefined") {
+      // See trackingMiddleware.ts
+      window.analytics.__artsyReferrer = referrer
+      window.analytics.page(properties, { integrations: { Marketo: false } })
+
+      // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
+      if (sd.CLIENT_NAVIGATION_V5) {
+        trackExperimentViewed("client_navigation_v5", properties)
+      }
+    }
   }
 
   trackProductView() {
     const {
       tracking,
-      artwork: { is_acquireable, is_in_auction, _id },
+      artwork: { is_acquireable, is_in_auction, internalID },
     } = this.props
 
     if (is_acquireable || is_in_auction) {
       const trackingData = {
         action_type: Schema.ActionType.ViewedProduct,
-        product_id: _id,
+        product_id: internalID,
       }
-      if (tracking) tracking.trackEvent(trackingData)
+      if (tracking) {
+        tracking.trackEvent(trackingData)
+      }
+    }
+  }
+
+  trackLotView() {
+    const {
+      tracking,
+      artwork: { is_in_auction, slug, internalID, sale },
+    } = this.props
+
+    if (tracking && is_in_auction) {
+      const trackingData = {
+        action_type: Schema.ActionType.ViewedLot,
+        artwork_id: internalID,
+        artwork_slug: slug,
+        sale_id: sale.internalID,
+        auction_slug: sale.slug,
+      }
+      tracking.trackEvent(trackingData)
     }
   }
 
@@ -74,29 +145,10 @@ export class ArtworkApp extends React.Component<Props> {
       })
   }
 
-  trackPageview() {
-    const {
-      artwork: { price, availability, is_offerable, is_acquireable },
-    } = this.props
-
-    // Pageview
-    const properties = {
-      path: window.location.pathname,
-      acquireable: is_acquireable,
-      offerable: is_offerable,
-      availability,
-      price_listed: !!price,
-    }
-
-    if (typeof window.analytics !== "undefined") {
-      window.analytics.page(properties, { integrations: { Marketo: false } })
-    }
-  }
-
   renderArtists() {
-    const artists = get(this.props, p => p.artwork.artists)
+    const artists = this.props.artwork?.artists
 
-    if (!artists.length) {
+    if (!artists?.length) {
       return null
     }
 
@@ -120,8 +172,7 @@ export class ArtworkApp extends React.Component<Props> {
   }
 
   render() {
-    const { artwork } = this.props
-
+    const { artwork, me } = this.props
     return (
       <AppContainer>
         <HorizontalPadding>
@@ -140,7 +191,7 @@ export class ArtworkApp extends React.Component<Props> {
             <Row>
               <Col>
                 <ArtworkImageBrowser artwork={artwork} />
-                <ArtworkSidebar artwork={artwork} />
+                <ArtworkSidebar artwork={artwork} me={me} />
                 <ArtworkDetails artwork={artwork} />
                 <PricingContext artwork={artwork} />
                 {this.renderArtists()}
@@ -160,7 +211,7 @@ export class ArtworkApp extends React.Component<Props> {
                 </Box>
               </Col>
               <Col sm={4}>
-                <ArtworkSidebar artwork={artwork} />
+                <ArtworkSidebar artwork={artwork} me={me} />
               </Col>
             </Row>
           </Media>
@@ -198,7 +249,14 @@ export class ArtworkApp extends React.Component<Props> {
             </Col>
           </Row>
 
-          <div id="lightbox-container" />
+          <div
+            id="lightbox-container"
+            style={{
+              position: "absolute",
+              top: 0,
+              zIndex: 1100, // over top nav
+            }}
+          />
           <SystemContextConsumer>
             {({ mediator }) => <>{this.enableIntercomForBuyers(mediator)}</>}
           </SystemContextConsumer>
@@ -208,31 +266,74 @@ export class ArtworkApp extends React.Component<Props> {
   }
 }
 
-export const ArtworkAppFragmentContainer = createFragmentContainer(ArtworkApp, {
-  artwork: graphql`
-    fragment ArtworkApp_artwork on Artwork {
-      id
-      _id
-      is_acquireable
-      is_offerable
-      availability
-      price
-      is_in_auction
-      artists {
-        id
-        ...ArtistInfo_artist
+export const ArtworkAppFragmentContainer = createFragmentContainer(
+  (props: Props) => {
+    const {
+      match: {
+        location: { pathname, state },
+      },
+    } = useContext(RouterContext)
+
+    const referrer = state && state.previousHref
+    const shouldTrackPageView = useRouteTracking()
+
+    return (
+      <ArtworkApp
+        {...props}
+        routerPathname={pathname}
+        referrer={referrer}
+        shouldTrackPageView={shouldTrackPageView}
+      />
+    )
+  },
+  {
+    artwork: graphql`
+      fragment ArtworkApp_artwork on Artwork {
+        slug
+        internalID
+        is_acquireable: isAcquireable
+        is_offerable: isOfferable
+        availability
+        # FIXME: The props in the component need to update to reflect
+        # the new structure for price.
+        listPrice {
+          ... on PriceRange {
+            display
+          }
+          ... on Money {
+            display
+          }
+        }
+        is_in_auction: isInAuction
+        sale {
+          internalID
+          slug
+        }
+        artists {
+          id
+          slug
+          ...ArtistInfo_artist
+        }
+        artist {
+          ...ArtistInfo_artist
+        }
+        ...ArtworkRelatedArtists_artwork
+        ...ArtworkMeta_artwork
+        ...ArtworkBanner_artwork
+        ...ArtworkSidebar_artwork
+        ...ArtworkDetails_artwork
+        ...ArtworkImageBrowser_artwork
+        ...OtherWorks_artwork
+        ...PricingContext_artwork
       }
-      artist {
-        ...ArtistInfo_artist
+    `,
+    me: graphql`
+      fragment ArtworkApp_me on Me {
+        ...ArtworkSidebar_me
       }
-      ...ArtworkRelatedArtists_artwork
-      ...ArtworkMeta_artwork
-      ...ArtworkBanner_artwork
-      ...ArtworkSidebar_artwork
-      ...ArtworkDetails_artwork
-      ...ArtworkImageBrowser_artwork
-      ...OtherWorks_artwork
-      ...PricingContext_artwork
-    }
-  `,
-})
+    `,
+  }
+)
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default ArtworkAppFragmentContainer

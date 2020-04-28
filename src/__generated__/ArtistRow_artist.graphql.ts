@@ -1,23 +1,25 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Fillwidth_artworks$ref } from "./Fillwidth_artworks.graphql";
-import { Follow_artist$ref } from "./Follow_artist.graphql";
-declare const _ArtistRow_artist$ref: unique symbol;
-export type ArtistRow_artist$ref = typeof _ArtistRow_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistRow_artist = {
     readonly name: string | null;
     readonly href: string | null;
-    readonly artworks: ({
-        readonly " $fragmentRefs": Fillwidth_artworks$ref;
-    }) | null;
-    readonly " $fragmentRefs": Follow_artist$ref;
-    readonly " $refType": ArtistRow_artist$ref;
+    readonly artworks: {
+        readonly " $fragmentRefs": FragmentRefs<"Fillwidth_artworks">;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"Follow_artist">;
+    readonly " $refType": "ArtistRow_artist";
+};
+export type ArtistRow_artist$data = ArtistRow_artist;
+export type ArtistRow_artist$key = {
+    readonly " $data"?: ArtistRow_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistRow_artist">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistRow_artist",
   "type": "Artist",
@@ -39,21 +41,15 @@ const node: ConcreteFragment = {
       "storageKey": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "Follow_artist",
-      "args": null
-    },
-    {
       "kind": "LinkedField",
       "alias": "artworks",
-      "name": "artworks_connection",
-      "storageKey": "artworks_connection(first:6)",
+      "name": "artworksConnection",
+      "storageKey": "artworksConnection(first:6)",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
-          "value": 6,
-          "type": "Int"
+          "value": 6
         }
       ],
       "concreteType": "ArtworkConnection",
@@ -67,13 +63,11 @@ const node: ConcreteFragment = {
       ]
     },
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "Follow_artist",
+      "args": null
     }
   ]
 };
-(node as any).hash = 'b65c87fce5097ae99473b0bbd008e4a1';
+(node as any).hash = '165cde0cf105756da9745ed008809922';
 export default node;

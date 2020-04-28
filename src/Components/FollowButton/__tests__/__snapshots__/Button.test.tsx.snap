@@ -33,6 +33,7 @@ exports[`FollowButton snapshots Renders FollowButton properly 1`] = `
 
 <div
   className="c0"
+  data-test="followButton"
   onClick={[MockFunction]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

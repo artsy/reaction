@@ -547,7 +547,8 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-greaterThanOrEqual-md"
+      className="fresnel-container fresnel-greaterThanOrEqual-md"
+      suppressHydrationWarning={false}
     />
   </div>
   <div
@@ -578,7 +579,8 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-lessThan-md"
+      className="fresnel-container fresnel-lessThan-md"
+      suppressHydrationWarning={false}
     />
   </div>
 </div>
@@ -1131,7 +1133,8 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-greaterThanOrEqual-md"
+      className="fresnel-container fresnel-greaterThanOrEqual-md"
+      suppressHydrationWarning={false}
     />
   </div>
   <div
@@ -1155,7 +1158,8 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-lessThan-md"
+      className="fresnel-container fresnel-lessThan-md"
+      suppressHydrationWarning={false}
     />
   </div>
 </div>
@@ -1711,7 +1715,8 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-greaterThanOrEqual-md"
+      className="fresnel-container fresnel-greaterThanOrEqual-md"
+      suppressHydrationWarning={false}
     />
   </div>
   <div
@@ -1742,7 +1747,8 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-lessThan-md"
+      className="fresnel-container fresnel-lessThan-md"
+      suppressHydrationWarning={false}
     />
   </div>
 </div>
@@ -2331,7 +2337,8 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-greaterThanOrEqual-md"
+      className="fresnel-container fresnel-greaterThanOrEqual-md"
+      suppressHydrationWarning={false}
     >
       <div
         className="c6"
@@ -2389,7 +2396,8 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
       </div>
     </div>
     <div
-      className="rrm-container rrm-lessThan-md"
+      className="fresnel-container fresnel-lessThan-md"
+      suppressHydrationWarning={false}
     >
       <div
         className="c12"

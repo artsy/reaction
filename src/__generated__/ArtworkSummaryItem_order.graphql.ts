@@ -1,59 +1,54 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSummaryItem_order$ref: unique symbol;
-export type ArtworkSummaryItem_order$ref = typeof _ArtworkSummaryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSummaryItem_order = {
-    readonly seller: ({
+    readonly sellerDetails: {
         readonly name?: string | null;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
+    } | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
                     readonly artist_names: string | null;
                     readonly title: string | null;
                     readonly date: string | null;
                     readonly shippingOrigin: string | null;
-                    readonly image: ({
-                        readonly resized_ArtworkSummaryItem: ({
+                    readonly image: {
+                        readonly resized_ArtworkSummaryItem: {
                             readonly url: string | null;
-                        }) | null;
-                    }) | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtworkSummaryItem_order$ref;
+                        } | null;
+                    } | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtworkSummaryItem_order";
+};
+export type ArtworkSummaryItem_order$data = ArtworkSummaryItem_order;
+export type ArtworkSummaryItem_order$key = {
+    readonly " $data"?: ArtworkSummaryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSummaryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "seller",
+      "name": "sellerDetails",
       "storageKey": null,
       "args": null,
       "concreteType": null,
       "plural": false,
       "selections": [
-        v0,
         {
           "kind": "InlineFragment",
           "type": "Partner",
@@ -75,7 +70,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -84,7 +79,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -93,7 +88,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -107,8 +102,8 @@ return {
                   "selections": [
                     {
                       "kind": "ScalarField",
-                      "alias": null,
-                      "name": "artist_names",
+                      "alias": "artist_names",
+                      "name": "artistNames",
                       "args": null,
                       "storageKey": null
                     },
@@ -151,8 +146,7 @@ return {
                             {
                               "kind": "Literal",
                               "name": "width",
-                              "value": 55,
-                              "type": "Int"
+                              "value": 55
                             }
                           ],
                           "concreteType": "ResizedImageUrl",
@@ -166,29 +160,18 @@ return {
                               "storageKey": null
                             }
                           ]
-                        },
-                        {
-                          "kind": "ScalarField",
-                          "alias": "__id",
-                          "name": "id",
-                          "args": null,
-                          "storageKey": null
                         }
                       ]
-                    },
-                    v0
+                    }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'b65b9c01d65b8ef276a77155bed8c14c';
+(node as any).hash = 'ef1e5063c36ba2a92e3abe4d4b9b16b9';
 export default node;

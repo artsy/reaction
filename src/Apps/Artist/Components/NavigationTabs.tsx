@@ -1,11 +1,13 @@
 import { Flex } from "@artsy/palette"
 import { NavigationTabs_artist } from "__generated__/NavigationTabs_artist.graphql"
+import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
 import { SystemContextProps, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouteTab, RouteTabs } from "Components/v2"
+import { RouteTab, RouteTabs } from "Components/RouteTabs"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import { get } from "Utils/get"
 
 interface Props extends SystemContextProps {
   artist: NavigationTabs_artist
@@ -21,7 +23,7 @@ export class NavigationTabs extends React.Component<Props> {
     destination_path,
   }))
   handleClick(tab: string, destination_path: string) {
-    // no-op
+    // noop
   }
 
   renderTab(
@@ -29,19 +31,15 @@ export class NavigationTabs extends React.Component<Props> {
     to: string,
     options: {
       exact?: boolean
-      mediator: {
-        trigger: (action: string, config: object) => void
-      }
-    }
+    } = {}
   ) {
-    const { exact, mediator } = options
+    const { exact } = options
 
     return (
       <RouteTab
         to={to}
         exact={exact}
         onClick={() => {
-          mediator && mediator.trigger("artist:tabclick", { to })
           this.handleClick(text, to)
         }}
       >
@@ -52,42 +50,74 @@ export class NavigationTabs extends React.Component<Props> {
 
   renderTabs() {
     const {
-      artist: { id, statuses },
-      mediator,
+      artist: { slug, statuses, counts },
     } = this.props
 
-    const route = path => `/artist/${id}${path}`
+    const route = path => `/artist/${slug}${path}`
+
+    const worksForSaleTabName =
+      counts.forSaleArtworks > 0
+        ? `Works for sale (${counts.forSaleArtworks.toLocaleString()})`
+        : "Artworks"
 
     return (
       <>
         {this.renderTab("Overview", route(""), {
           exact: true,
-          mediator,
         })}
-        {statuses.cv && this.renderTab("CV", route("/cv"), { mediator })}
-        {statuses.articles &&
-          this.renderTab("Articles", route("/articles"), {
-            mediator,
-          })}
-        {statuses.shows &&
-          this.renderTab("Shows", route("/shows"), { mediator })}
-        {statuses.auction_lots &&
-          this.renderTab("Auction results", route("/auction-results"), {
-            mediator,
-          })}
+        {statuses.artworks &&
+          this.renderTab(worksForSaleTabName, route("/works-for-sale"))}
+        {statuses.auctionLots &&
+          this.renderTab("Auction results", route("/auction-results"))}
       </>
     )
   }
 
   render() {
+    const artist = this.props.artist
+
+    const showArtistInsights =
+      showMarketInsights(artist) ||
+      (artist.insights && artist.insights.length > 0)
+    const hasArtistContent = hasOverviewContent(artist)
+
+    const showTabs = showArtistInsights || hasArtistContent
+
     return (
-      <>
-        <Flex mx={[-2, 0]}>
-          <RouteTabs>{this.renderTabs()}</RouteTabs>
-        </Flex>
-      </>
+      showTabs && (
+        <>
+          <Flex mx={[-2, 0]} data-test="navigationTabs">
+            <RouteTabs>{this.renderTabs()}</RouteTabs>
+          </Flex>
+        </>
+      )
     )
   }
+}
+
+export const hasOverviewContent = ({
+  statuses,
+  related,
+  biographyBlurb,
+}: {
+  statuses: { shows: boolean; cv: boolean; articles: boolean }
+  related: { genes?: { edges?: ReadonlyArray<any> } }
+  biographyBlurb: { text?: string }
+}) => {
+  const showArtistBio = biographyBlurb && Boolean(biographyBlurb.text)
+  const showRelatedCategories = get(
+    related,
+    r => r.genes.edges.length > 0,
+    false
+  )
+
+  return (
+    showArtistBio ||
+    showRelatedCategories ||
+    statuses.articles ||
+    statuses.cv ||
+    statuses.shows
+  )
 }
 
 export const NavigationTabsFragmentContainer = createFragmentContainer(
@@ -95,12 +125,48 @@ export const NavigationTabsFragmentContainer = createFragmentContainer(
   {
     artist: graphql`
       fragment NavigationTabs_artist on Artist {
-        id
+        slug
         statuses {
           shows
-          articles
           cv(minShowCount: 0)
-          auction_lots
+          articles
+          auctionLots
+          artworks
+        }
+        counts {
+          forSaleArtworks
+        }
+        # Only here to determine whether or not we can display the overview tab
+        related {
+          genes {
+            edges {
+              node {
+                slug
+              }
+            }
+          }
+        }
+        highlights {
+          partnersConnection(
+            first: 10
+            displayOnPartnerProfile: true
+            representedBy: true
+            partnerCategory: ["blue-chip", "top-established", "top-emerging"]
+          ) {
+            edges {
+              node {
+                categories {
+                  slug
+                }
+              }
+            }
+          }
+        }
+        insights {
+          type
+        }
+        biographyBlurb(format: HTML, partnerBio: true) {
+          text
         }
       }
     `,

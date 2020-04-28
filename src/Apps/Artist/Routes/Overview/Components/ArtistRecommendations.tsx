@@ -1,13 +1,14 @@
-import { Button, Flex, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans } from "@artsy/palette"
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
 import { ArtistRecommendationsRendererQuery } from "__generated__/ArtistRecommendationsRendererQuery.graphql"
-import { SystemContext } from "Artsy"
+import { SystemContext, useTracking } from "Artsy"
+import * as Schema from "Artsy/Analytics/Schema"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext, useState } from "react"
 import {
   createPaginationContainer,
   graphql,
-  QueryRenderer,
   RelayPaginationProp,
 } from "react-relay"
 import { get } from "Utils/get"
@@ -29,10 +30,11 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
 }) => {
   const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
-  const { name } = artist
-  const relatedArtists = get(artist, a => a.related.artists.edges, []).map(
-    edge => <RecommendedArtist artist={edge.node} key={edge.node.id} />
-  )
+  const relatedArtists = get(
+    artist,
+    a => a.related.artistsConnection.edges,
+    []
+  ).map(edge => <RecommendedArtist artist={edge.node} key={edge.node.id} />)
 
   const fetchData = () => {
     if (!relay.hasMore() || relay.isLoading()) {
@@ -48,16 +50,16 @@ export const ArtistRecommendations: React.FC<ArtistRecommendationsProps> = ({
   }
 
   return (
-    <div>
-      <Serif size="8" color="black100">
-        Related to {name}
-      </Serif>
+    <Box>
+      <Sans size="5" color="black100" mb={2}>
+        Related Artists
+      </Sans>
       {relatedArtists}
 
       {relay.hasMore() && (
         <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
       )}
-    </div>
+    </Box>
   )
 }
 
@@ -65,12 +67,21 @@ const ShowMoreButton: React.FC<{ onClick: () => void; loading: boolean }> = ({
   onClick,
   loading,
 }) => {
+  const tracking = useTracking()
+
   return (
     <Flex flexDirection="column" alignItems="center">
       <Button
         my={4}
         variant="secondaryOutline"
-        onClick={onClick}
+        onClick={() => {
+          tracking.trackEvent({
+            action_type: Schema.ActionType.Click,
+            subject: "Show more",
+            context_module: Schema.ContextModule.RecommendedArtists,
+          })
+          onClick()
+        }}
         loading={loading}
       >
         Show More
@@ -87,16 +98,15 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 3 }
           cursor: { type: "String", defaultValue: "" }
-          min_forsale_artworks: { type: "Int", defaultValue: 7 }
+          minForsaleArtworks: { type: "Int", defaultValue: 7 }
         ) {
-        id
-        name
+        slug
         related {
-          artists(
+          artistsConnection(
             first: $count
             after: $cursor
-            min_forsale_artworks: $min_forsale_artworks
-          ) @connection(key: "ArtistRecommendations_artists") {
+            minForsaleArtworks: $minForsaleArtworks
+          ) @connection(key: "ArtistRecommendations_artistsConnection") {
             edges {
               node {
                 id
@@ -111,7 +121,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artist.related.artists
+      return props.artist.related.artistsConnection
     },
     getFragmentVariables(prevVars, count) {
       return {
@@ -128,7 +138,7 @@ export const ArtistRecommendationsPaginationContainer = createPaginationContaine
         ...fragmentVariables,
         count,
         cursor,
-        artistID: props.artist.id,
+        artistID: props.artist.slug,
       }
     },
     query: graphql`

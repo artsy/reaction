@@ -1,9 +1,13 @@
-import { color } from "@artsy/palette"
-import { avantgarde } from "Assets/Fonts"
+import { Box, color, Sans } from "@artsy/palette"
+import { Share, ShareContainer } from "Components/Publishing/Byline/Share"
+import {
+  getArticleFullHref,
+  getAuthorByline,
+  getDate,
+} from "Components/Publishing/Constants"
+import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
-import { getAuthorByline, getDate } from "../Constants"
-import { ArticleData } from "../Typings"
 
 interface ClassicBylineProps {
   date?: string
@@ -12,33 +16,55 @@ interface ClassicBylineProps {
 
 export const ClassicByline: React.SFC<ClassicBylineProps> = props => {
   const {
-    article: { contributing_authors, author, published_at },
+    article: {
+      channel,
+      contributing_authors,
+      author,
+      published_at,
+      slug,
+      social_title,
+      thumbnail_title,
+    },
     date,
   } = props
 
   const contributors = getAuthorByline(contributing_authors, false)
+  const byline = author ? author.name : channel && channel.name
 
   return (
-    <ClassicBylineContainer>
+    <ClassicBylineContainer textAlign={["left", "center"]}>
       {contributors ? (
         <div>
-          <TextSm>{author.name}</TextSm>
-          <div>{`By ${contributors}`}</div>
+          {author && (
+            <Sans size="3" weight="medium">
+              {author.name}
+            </Sans>
+          )}
+          <Sans size="4" weight="medium">{`By ${contributors}`}</Sans>
         </div>
       ) : (
-        author.name
+        byline && (
+          <Sans size="4" weight="medium">
+            {byline}
+          </Sans>
+        )
       )}
-      <TextSm color={color("black60")}>{getDate(date || published_at)}</TextSm>
+      <Sans size="3" weight="medium" color={color("black60")}>
+        {getDate(date || published_at)}
+      </Sans>
+
+      <Share
+        url={getArticleFullHref(slug)}
+        title={social_title || thumbnail_title}
+      />
     </ClassicBylineContainer>
   )
 }
 
-const TextSm = styled.div.attrs<{ color?: string }>({})`
-  ${avantgarde("s11")}
-  color: ${props => (props.color ? props.color : "black")};
-`
-
-const ClassicBylineContainer = styled.div`
+const ClassicBylineContainer = styled(Box)`
   display: block;
-  ${avantgarde("s13")};
+
+  ${ShareContainer} {
+    display: inline-block;
+  }
 `

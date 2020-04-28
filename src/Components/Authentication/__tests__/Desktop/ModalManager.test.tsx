@@ -3,6 +3,7 @@ import { ModalType } from "Components/Authentication/Types"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   ModalManager,
   ModalManagerProps,
@@ -14,6 +15,8 @@ const getWrapper = (
   const wrapper = mount(
     <ModalManager
       submitUrls={{
+        apple: "/users/auth/apple",
+        facebook: "/users/auth/facebook",
         login: "/login",
         signup: "/signup",
         forgot: "/forgot",
@@ -39,6 +42,8 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.login,
+      contextModule: ContextModule.header,
     })
 
     expect(manager.state.currentType).toEqual("login")
@@ -61,6 +66,8 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.login,
+      contextModule: ContextModule.header,
     })
 
     expect(document.body.style.overflowY).toEqual("hidden")
@@ -72,6 +79,8 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.login,
+      contextModule: ContextModule.header,
     })
 
     manager.handleTypeChange("signup")
@@ -87,7 +96,9 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
+      intent: AuthIntent.signup,
       copy: "Foobar",
+      contextModule: ContextModule.header,
     })
     expect(manager.getSubtitle()).toEqual("Foobar")
 
@@ -95,6 +106,6 @@ describe("ModalManager", () => {
     expect(manager.getSubtitle()).toEqual("Sign up")
 
     manager.handleTypeChange("forgot")
-    expect(manager.getSubtitle()).toEqual("Forgot Password")
+    expect(manager.getSubtitle()).toEqual("Reset your password")
   })
 })

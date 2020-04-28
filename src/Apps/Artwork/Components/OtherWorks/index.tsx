@@ -1,63 +1,155 @@
+import { ContextModule } from "@artsy/cohesion"
+import { Box, Join, Spacer } from "@artsy/palette"
 import { OtherWorks_artwork } from "__generated__/OtherWorks_artwork.graphql"
+import { OtherAuctionsQueryRenderer as OtherAuctions } from "Apps/Artwork/Components/OtherAuctions"
+import { Header } from "Apps/Artwork/Components/OtherWorks/Header"
+import { RelatedWorksArtworkGridRefetchContainer as RelatedWorksArtworkGrid } from "Apps/Artwork/Components/OtherWorks/RelatedWorksArtworkGrid"
+import { Mediator, SystemContextProps, withSystemContext } from "Artsy"
+import { track, useTracking } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
+import ArtworkGrid from "Components/ArtworkGrid"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { ArtworkContextArtistFragmentContainer as ArtworkContextArtist } from "./ArtworkContexts/ArtworkContextArtist"
-import { ArtworkContextAuctionQueryRenderer as ArtworkContextAuction } from "./ArtworkContexts/ArtworkContextAuction"
-import { ArtworkContextFairFragmentContainer as ArtworkContextFair } from "./ArtworkContexts/ArtworkContextFair"
-import { ArtworkContextPartnerShowFragmentContainer as ArtworkContextPartnerShow } from "./ArtworkContexts/ArtworkContextPartnerShow"
+import { get } from "Utils/get"
 
 export interface OtherWorksContextProps {
-  /** The artworkSlug to query */
-  artworkSlug: string
-  /** Used to exclude the current work from the currently-shown work from grid */
-  artworkID: string
+  artwork: OtherWorks_artwork
+  mediator?: Mediator
 }
+
+/**
+ * Check to see if a connection's edges have a length; if false hide the grid.
+ */
+export function hideGrid(artworksConnection): boolean {
+  return Boolean(get(artworksConnection, p => !p?.edges.length))
+}
+
+const populatedGrids = (grids: OtherWorks_artwork["contextGrids"]) => {
+  if (grids && grids.length > 0) {
+    return grids.filter(grid => {
+      return (
+        grid.artworksConnection &&
+        grid.artworksConnection.edges &&
+        grid.artworksConnection.edges.length > 0 &&
+        grid.__typename !== "RelatedArtworkGrid"
+      )
+    })
+  }
+}
+
+const contextGridTypeToContextModule = contextGridType => {
+  switch (contextGridType) {
+    case "ArtistArtworkGrid": {
+      return Schema.ContextModule.OtherWorksByArtist
+    }
+    case "PartnerArtworkGrid": {
+      return Schema.ContextModule.OtherWorksFromGallery
+    }
+    case "AuctionArtworkGrid": {
+      return Schema.ContextModule.OtherWorksInAuction
+    }
+    case "ShowArtworkGrid": {
+      return Schema.ContextModule.OtherWorksFromShow
+    }
+  }
+}
+
+const contextGridTypeToV2ContextModule = contextGridType => {
+  switch (contextGridType) {
+    case "ArtistArtworkGrid": {
+      return ContextModule.otherWorksByArtistRail
+    }
+    case "PartnerArtworkGrid": {
+      return ContextModule.otherWorksFromPartnerRail
+    }
+    case "AuctionArtworkGrid": {
+      return ContextModule.otherWorksInAuctionRail
+    }
+    case "ShowArtworkGrid": {
+      return ContextModule.otherWorksFromShowRail
+    }
+  }
+}
+
+export const OtherWorks = track()(
+  (props: { artwork: OtherWorks_artwork } & SystemContextProps) => {
+    const { context, contextGrids, sale } = props.artwork
+    const gridsToShow = populatedGrids(contextGrids)
+    const tracking = useTracking()
+    return (
+      <>
+        {gridsToShow && gridsToShow.length > 0 && (
+          <Join separator={<Spacer my={3} />}>
+            {gridsToShow.map((grid, index) => (
+              <React.Fragment key={`Grid-${index}`}>
+                <Header title={grid.title} buttonHref={grid.ctaHref} />
+                <ArtworkGrid
+                  artworks={grid.artworksConnection}
+                  columnCount={[2, 3, 4]}
+                  preloadImageCount={0}
+                  mediator={props.mediator}
+                  contextModule={contextGridTypeToV2ContextModule(
+                    grid.__typename
+                  )}
+                  onBrickClick={() =>
+                    tracking.trackEvent({
+                      type: Schema.Type.ArtworkBrick,
+                      action_type: Schema.ActionType.Click,
+                      context_module: contextGridTypeToContextModule(
+                        grid.__typename
+                      ),
+                    })
+                  }
+                />
+              </React.Fragment>
+            ))}
+          </Join>
+        )}
+        {!(
+          context &&
+          context.__typename === "ArtworkContextAuction" &&
+          !(sale && sale.is_closed)
+        ) && (
+          <Box mt={3}>
+            <RelatedWorksArtworkGrid artwork={props.artwork} />
+          </Box>
+        )}
+        {context && context.__typename === "ArtworkContextAuction" && (
+          <OtherAuctions />
+        )}
+      </>
+    )
+  }
+)
 
 export const OtherWorksFragmentContainer = createFragmentContainer<{
   artwork: OtherWorks_artwork
-}>(
-  props => {
-    const contextType =
-      props.artwork.context && props.artwork.context.__typename
-    const artworkSlug = props.artwork.id
-
-    switch (contextType) {
-      case "ArtworkContextAuction": {
-        return (
-          <ArtworkContextAuction
-            artworkSlug={artworkSlug}
-            artworkID={props.artwork._id}
-            isClosed={props.artwork.sale.is_closed}
-          />
-        )
+}>(withSystemContext(OtherWorks), {
+  artwork: graphql`
+    fragment OtherWorks_artwork on Artwork {
+      contextGrids {
+        __typename
+        title
+        ctaTitle
+        ctaHref
+        artworksConnection(first: 8) {
+          ...ArtworkGrid_artworks
+          edges {
+            node {
+              slug
+            }
+          }
+        }
       }
-      case "ArtworkContextFair": {
-        return <ArtworkContextFair artwork={props.artwork} />
+      ...RelatedWorksArtworkGrid_artwork
+      slug
+      internalID
+      sale {
+        is_closed: isClosed
       }
-      case "ArtworkContextPartnerShow": {
-        return <ArtworkContextPartnerShow artwork={props.artwork} />
-      }
-      default: {
-        return <ArtworkContextArtist artwork={props.artwork} />
+      context {
+        __typename
       }
     }
-  },
-  {
-    artwork: graphql`
-      fragment OtherWorks_artwork on Artwork {
-        ...ArtworkContextArtist_artwork
-        ...ArtworkContextFair_artwork
-        ...ArtworkContextPartnerShow_artwork
-
-        id
-        _id
-        sale {
-          is_closed
-        }
-        context {
-          __typename
-        }
-      }
-    `,
-  }
-)
+  `,
+})

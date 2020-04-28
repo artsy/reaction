@@ -1,9 +1,8 @@
-import { Box, color, Flex, Sans } from "@artsy/palette"
-import { AnalyticsSchema, SystemContext } from "Artsy"
-import { useTracking } from "Artsy/Analytics/useTracking"
+import { Box, color, Flex, Sans, space } from "@artsy/palette"
+import { NotificationsMenuQueryResponse } from "__generated__/NotificationsMenuQuery.graphql"
+import { SystemContext } from "Artsy"
 import cookie from "cookies-js"
-import React, { useContext, useEffect } from "react"
-import { ReadyState } from "react-relay"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
@@ -11,15 +10,17 @@ import { NotificationsQueryRenderer } from "./Menus"
 
 const logger = createLogger("Components/NavBar")
 
-export const NotificationsBadge: React.FC<{
-  /**
-   * If hovering over the nav item, `hover` is passed into the badge (Overlay)
-   */
-  hover?: boolean
-}> = ({ hover }) => {
-  return (
+export const NotificationsBadge: React.FC<{}> = () => {
+  const isClient = typeof window !== "undefined"
+  return isClient ? (
     <NotificationsQueryRenderer
-      render={({ error, props }: ReadyState) => {
+      render={({
+        error,
+        props,
+      }: {
+        error?: Error
+        props?: NotificationsMenuQueryResponse
+      }) => {
         // If there's an error hide the badge
         if (error) {
           logger.error(error)
@@ -35,18 +36,20 @@ export const NotificationsBadge: React.FC<{
         const totalUnread = get(
           props,
           p => {
-            return p.me.followsAndSaves.notifications.edges.length
+            return p.me.unreadNotificationsCount
           },
           0
         )
 
-        let count = totalUnread
+        const count = totalUnread
 
         // User has no notifications; clear the cookie
         if (count === 0) {
           cookie.expire("notification-count")
           return null
         }
+
+        const displayCount = count >= 100 ? "99+" : count.toLocaleString()
 
         // Update the notification bad with the count, and store it in a cookie
         // so that subsequent page views don't need a fetch in order to render
@@ -56,23 +59,21 @@ export const NotificationsBadge: React.FC<{
             cookie.get("notification-count")
           )
           if (count !== cachedNotificationCount) {
-            if (count >= 100) {
-              count = "99+"
-            }
-
             // In force, when a request is made to `/notifications` endpoint,
             // sd.NOTIFICATIONS_COUNT is populated by this cookie.
-            cookie.set("notification-count", count)
+            cookie.set("notification-count", displayCount)
           }
         }
 
         return (
           <Box>
-            <CircularCount count={count} rawCount={totalUnread} hover={hover} />
+            <CircularCount count={displayCount} />
           </Box>
         )
       }}
     />
+  ) : (
+    <CircularCount />
   )
 }
 
@@ -81,34 +82,15 @@ const CircularCount: React.FC<{
    * Formatted count for display
    */
   count?: string
-  /**
-   * Raw unread count, used for analytics.
-   */
-  rawCount?: boolean
-  /**
-   * True if hovering over the badge
-   */
-  hover?: boolean
-}> = ({ count, rawCount, hover }) => {
+}> = ({ count }) => {
   // Check to see if we've got a value from sharify, populated by a cookie on
   // the server.
   const { notificationCount } = useContext(SystemContext)
   const notificationsLabel = count || notificationCount
-  const { trackEvent } = useTracking()
 
   if (!notificationsLabel) {
     return null
   }
-
-  useEffect(() => {
-    if (hover) {
-      trackEvent({
-        action_type: AnalyticsSchema.ActionType.Hover,
-        subject: AnalyticsSchema.Subject.NotificationBell,
-        new_notification_count: rawCount,
-      })
-    }
-  }, [hover])
 
   return (
     <Container>
@@ -127,6 +109,6 @@ const Container = styled(Flex)`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 12px;
-  right: 0;
+  top: ${space(1)}px;
+  right: 48px;
 `

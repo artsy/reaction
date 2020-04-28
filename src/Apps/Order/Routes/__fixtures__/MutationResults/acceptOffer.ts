@@ -1,15 +1,15 @@
 export const acceptOfferSuccess = {
-  ecommerceBuyerAcceptOffer: {
+  commerceBuyerAcceptOffer: {
     orderOrError: {
       order: {
-        id: "1234",
+        internalID: "1234",
         awaitingResponseFrom: null,
       },
     },
   },
 }
 export const acceptOfferFailed = {
-  ecommerceBuyerAcceptOffer: {
+  commerceBuyerAcceptOffer: {
     orderOrError: {
       error: {
         type: "validation",
@@ -21,7 +21,7 @@ export const acceptOfferFailed = {
 }
 
 export const acceptOfferPaymentFailed = {
-  ecommerceBuyerAcceptOffer: {
+  commerceBuyerAcceptOffer: {
     orderOrError: {
       error: {
         type: "processing",
@@ -33,7 +33,7 @@ export const acceptOfferPaymentFailed = {
 }
 
 export const acceptOfferPaymentFailedInsufficientFunds = {
-  ecommerceBuyerAcceptOffer: {
+  commerceBuyerAcceptOffer: {
     orderOrError: {
       error: {
         type: "processing",
@@ -45,7 +45,7 @@ export const acceptOfferPaymentFailedInsufficientFunds = {
 }
 
 export const acceptOfferInsufficientInventoryFailure = {
-  ecommerceBuyerAcceptOffer: {
+  commerceBuyerAcceptOffer: {
     orderOrError: {
       error: {
         type: "processing",

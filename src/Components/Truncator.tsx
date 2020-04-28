@@ -1,6 +1,6 @@
+import { ErrorBoundary } from "Artsy/Router/ErrorBoundary"
 import React from "react"
 import ReactDOM from "react-dom/server"
-import { ErrorBoundary } from "./ErrorBoundary"
 
 interface Props {
   maxLineCount?: number

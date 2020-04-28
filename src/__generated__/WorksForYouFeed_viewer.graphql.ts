@@ -1,51 +1,46 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-declare const _WorksForYouFeed_viewer$ref: unique symbol;
-export type WorksForYouFeed_viewer$ref = typeof _WorksForYouFeed_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type WorksForYouFeed_viewer = {
-    readonly me: ({
-        readonly followsAndSaves: ({
-            readonly notifications: ({
+    readonly me: {
+        readonly followsAndSaves: {
+            readonly notifications: {
                 readonly pageInfo: {
                     readonly hasNextPage: boolean;
                     readonly endCursor: string | null;
                 };
-                readonly edges: ReadonlyArray<({
-                    readonly node: ({
-                        readonly __id: string;
+                readonly edges: ReadonlyArray<{
+                    readonly node: {
+                        readonly id: string;
                         readonly href: string | null;
                         readonly summary: string | null;
                         readonly artists: string | null;
                         readonly published_at: string | null;
-                        readonly artworksConnection: ({
-                            readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-                        }) | null;
-                        readonly image: ({
-                            readonly resized: ({
+                        readonly artworksConnection: {
+                            readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
+                        } | null;
+                        readonly image: {
+                            readonly resized: {
                                 readonly url: string | null;
-                            }) | null;
-                        }) | null;
-                    }) | null;
-                }) | null> | null;
-            }) | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": WorksForYouFeed_viewer$ref;
+                            } | null;
+                        } | null;
+                    } | null;
+                } | null> | null;
+            } | null;
+        } | null;
+    } | null;
+    readonly " $refType": "WorksForYouFeed_viewer";
+};
+export type WorksForYouFeed_viewer$data = WorksForYouFeed_viewer;
+export type WorksForYouFeed_viewer$key = {
+    readonly " $data"?: WorksForYouFeed_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"WorksForYouFeed_viewer">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "WorksForYouFeed_viewer",
   "type": "Viewer",
@@ -78,7 +73,7 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "for_sale",
+      "name": "forSale",
       "type": "Boolean",
       "defaultValue": true
     }
@@ -110,15 +105,13 @@ return {
               "args": [
                 {
                   "kind": "Variable",
-                  "name": "for_sale",
-                  "variableName": "for_sale",
-                  "type": "Boolean"
+                  "name": "forSale",
+                  "variableName": "forSale"
                 },
                 {
                   "kind": "Literal",
                   "name": "sort",
-                  "value": "PUBLISHED_AT_DESC",
-                  "type": "ArtworkSorts"
+                  "value": "PUBLISHED_AT_DESC"
                 }
               ],
               "concreteType": "FollowedArtistsArtworksGroupConnection",
@@ -167,7 +160,13 @@ return {
                       "concreteType": "FollowedArtistsArtworksGroup",
                       "plural": false,
                       "selections": [
-                        v0,
+                        {
+                          "kind": "ScalarField",
+                          "alias": null,
+                          "name": "id",
+                          "args": null,
+                          "storageKey": null
+                        },
                         {
                           "kind": "ScalarField",
                           "alias": null,
@@ -191,17 +190,16 @@ return {
                         },
                         {
                           "kind": "ScalarField",
-                          "alias": null,
-                          "name": "published_at",
+                          "alias": "published_at",
+                          "name": "publishedAt",
                           "args": [
                             {
                               "kind": "Literal",
                               "name": "format",
-                              "value": "MMM DD",
-                              "type": "String"
+                              "value": "MMM DD"
                             }
                           ],
-                          "storageKey": "published_at(format:\"MMM DD\")"
+                          "storageKey": "publishedAt(format:\"MMM DD\")"
                         },
                         {
                           "kind": "LinkedField",
@@ -237,14 +235,12 @@ return {
                                 {
                                   "kind": "Literal",
                                   "name": "height",
-                                  "value": 80,
-                                  "type": "Int"
+                                  "value": 80
                                 },
                                 {
                                   "kind": "Literal",
                                   "name": "width",
-                                  "value": 80,
-                                  "type": "Int"
+                                  "value": 80
                                 }
                               ],
                               "concreteType": "ResizedImageUrl",
@@ -258,13 +254,6 @@ return {
                                   "storageKey": null
                                 }
                               ]
-                            },
-                            {
-                              "kind": "ScalarField",
-                              "alias": "__id",
-                              "name": "id",
-                              "args": null,
-                              "storageKey": null
                             }
                           ]
                         },
@@ -289,12 +278,10 @@ return {
               ]
             }
           ]
-        },
-        v0
+        }
       ]
     }
   ]
 };
-})();
-(node as any).hash = '4a5f6fe1600a373f7271a88baf13d9cd';
+(node as any).hash = 'bd5d74879f1919eade9e0b94cdbcb3f6';
 export default node;

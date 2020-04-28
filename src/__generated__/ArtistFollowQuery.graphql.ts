@@ -1,14 +1,14 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Follow_artist$ref } from "./Follow_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistFollowQueryVariables = {
-    readonly artistID: string;
+    artistID: string;
 };
 export type ArtistFollowQueryResponse = {
-    readonly artist: ({
-        readonly " $fragmentRefs": Follow_artist$ref;
-    }) | null;
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"Follow_artist">;
+    } | null;
 };
 export type ArtistFollowQuery = {
     readonly response: ArtistFollowQueryResponse;
@@ -23,14 +23,15 @@ query ArtistFollowQuery(
 ) {
   artist(id: $artistID) {
     ...Follow_artist
-    __id
+    id
   }
 }
 
 fragment Follow_artist on Artist {
-  __id
   id
-  is_followed
+  internalID
+  name
+  is_followed: isFollowed
 }
 */
 
@@ -47,37 +48,24 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ArtistFollowQuery",
-  "id": null,
-  "text": "query ArtistFollowQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Follow_artist\n    __id\n  }\n}\n\nfragment Follow_artist on Artist {\n  __id\n  id\n  is_followed\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ArtistFollowQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -85,8 +73,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Follow_artist",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -94,18 +81,17 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ArtistFollowQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
-          v2,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -116,13 +102,34 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "is_followed",
+            "name": "internalID",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "name",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": "is_followed",
+            "name": "isFollowed",
             "args": null,
             "storageKey": null
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ArtistFollowQuery",
+    "id": null,
+    "text": "query ArtistFollowQuery(\n  $artistID: String!\n) {\n  artist(id: $artistID) {\n    ...Follow_artist\n    id\n  }\n}\n\nfragment Follow_artist on Artist {\n  id\n  internalID\n  name\n  is_followed: isFollowed\n}\n",
+    "metadata": {}
   }
 };
 })();

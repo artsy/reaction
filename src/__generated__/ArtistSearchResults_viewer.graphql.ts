@@ -1,26 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtistSearchResults_viewer$ref: unique symbol;
-export type ArtistSearchResults_viewer$ref = typeof _ArtistSearchResults_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistSearchResults_viewer = {
-    readonly match_artist: ReadonlyArray<({
-        readonly id: string;
-        readonly _id: string;
-        readonly __id: string;
-        readonly name: string | null;
-        readonly image: ({
-            readonly cropped: ({
-                readonly url: string | null;
-            }) | null;
-        }) | null;
-    }) | null> | null;
-    readonly " $refType": ArtistSearchResults_viewer$ref;
+    readonly searchConnection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly id?: string;
+                readonly slug?: string;
+                readonly internalID?: string;
+                readonly displayLabel?: string | null;
+                readonly imageUrl?: string | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtistSearchResults_viewer";
+};
+export type ArtistSearchResults_viewer$data = ArtistSearchResults_viewer;
+export type ArtistSearchResults_viewer$key = {
+    readonly " $data"?: ArtistSearchResults_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistSearchResults_viewer">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistSearchResults_viewer",
   "type": "Viewer",
@@ -36,93 +40,90 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "match_artist",
+      "name": "searchConnection",
       "storageKey": null,
       "args": [
         {
+          "kind": "Literal",
+          "name": "entities",
+          "value": [
+            "ARTIST"
+          ]
+        },
+        {
+          "kind": "Literal",
+          "name": "mode",
+          "value": "AUTOSUGGEST"
+        },
+        {
           "kind": "Variable",
-          "name": "term",
-          "variableName": "term",
-          "type": "String!"
+          "name": "query",
+          "variableName": "term"
         }
       ],
-      "concreteType": "Artist",
-      "plural": true,
+      "concreteType": "SearchableConnection",
+      "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "_id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__id",
-          "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "name",
-          "args": null,
-          "storageKey": null
-        },
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "image",
+          "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "Image",
-          "plural": false,
+          "concreteType": "SearchableEdge",
+          "plural": true,
           "selections": [
             {
               "kind": "LinkedField",
               "alias": null,
-              "name": "cropped",
-              "storageKey": "cropped(height:100,width:100)",
-              "args": [
-                {
-                  "kind": "Literal",
-                  "name": "height",
-                  "value": 100,
-                  "type": "Int!"
-                },
-                {
-                  "kind": "Literal",
-                  "name": "width",
-                  "value": 100,
-                  "type": "Int!"
-                }
-              ],
-              "concreteType": "CroppedImageUrl",
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": null,
               "plural": false,
               "selections": [
                 {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "url",
-                  "args": null,
-                  "storageKey": null
+                  "kind": "InlineFragment",
+                  "type": "SearchableItem",
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "slug",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "internalID",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "displayLabel",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "imageUrl",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         }
@@ -130,5 +131,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'aac31badd3923a3ac64436155d012dcb';
+(node as any).hash = 'd6c4b99412cf4117f60a06e5297f433d';
 export default node;

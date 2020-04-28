@@ -1,16 +1,57 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { PricingContext_artwork$ref } from "./PricingContext_artwork.graphql";
+import { FragmentRefs } from "relay-runtime";
+export type AnalyticsPricingContextCategoryEnum = "ARCHITECTURE" | "BOOKS_AND_PORTFOLIOS" | "DESIGN_DECORATIVE_ART" | "DRAWING_COLLAGE_OTHER_WORK_ON_PAPER" | "FASHION" | "INSTALLATION" | "JEWELRY" | "MIXED_MEDIA" | "OTHER" | "PAINTING" | "PERFORMANCE" | "PHOTOGRAPHY" | "POSTERS" | "PRINT" | "SCULPTURE" | "SOUND" | "TEXTILE" | "VIDEO_FILM_ANIMATION" | "WORK_ON_PAPER" | "%future added value";
+export type AnalyticsPricingContextDimensionEnum = "LARGE" | "MEDIUM" | "SMALL" | "%future added value";
 export type PricingContextStoryQueryVariables = {};
 export type PricingContextStoryQueryResponse = {
+    readonly artwork: {
+        readonly " $fragmentRefs": FragmentRefs<"PricingContext_artwork">;
+    } | null;
+};
+export type PricingContextStoryQueryRawResponse = {
     readonly artwork: ({
-        readonly " $fragmentRefs": PricingContext_artwork$ref;
+        readonly listPrice: ({
+            readonly __typename: "PriceRange";
+            readonly maxPrice: ({
+                readonly minor: number;
+            }) | null;
+            readonly minPrice: ({
+                readonly minor: number;
+            }) | null;
+        } | {
+            readonly __typename: "Money";
+            readonly minor: number;
+        } | {
+            readonly __typename: string;
+        }) | null;
+        readonly artists: ReadonlyArray<({
+            readonly slug: string;
+            readonly id: string | null;
+        }) | null> | null;
+        readonly category: string | null;
+        readonly pricingContext: ({
+            readonly appliedFiltersDisplay: string | null;
+            readonly appliedFilters: {
+                readonly dimension: AnalyticsPricingContextDimensionEnum | null;
+                readonly category: AnalyticsPricingContextCategoryEnum | null;
+            };
+            readonly bins: ReadonlyArray<{
+                readonly maxPrice: string | null;
+                readonly maxPriceCents: number;
+                readonly minPrice: string | null;
+                readonly minPriceCents: number;
+                readonly numArtworks: number;
+            }>;
+        }) | null;
+        readonly id: string | null;
     }) | null;
 };
 export type PricingContextStoryQuery = {
     readonly response: PricingContextStoryQueryResponse;
     readonly variables: PricingContextStoryQueryVariables;
+    readonly rawResponse: PricingContextStoryQueryRawResponse;
 };
 
 
@@ -19,18 +60,28 @@ export type PricingContextStoryQuery = {
 query PricingContextStoryQuery {
   artwork(id: "unused") {
     ...PricingContext_artwork
-    __id
+    id
   }
 }
 
 fragment PricingContext_artwork on Artwork {
-  priceCents {
-    min
-    max
+  listPrice {
+    __typename
+    ... on PriceRange {
+      maxPrice {
+        minor
+      }
+      minPrice {
+        minor
+      }
+    }
+    ... on Money {
+      minor
+    }
   }
   artists {
+    slug
     id
-    __id
   }
   category
   pricingContext {
@@ -47,7 +98,6 @@ fragment PricingContext_artwork on Artwork {
       numArtworks
     }
   }
-  __id
 }
 */
 
@@ -56,18 +106,26 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "minor",
+    "args": null,
+    "storageKey": null
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "category",
@@ -76,11 +134,6 @@ v2 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "PricingContextStoryQuery",
-  "id": null,
-  "text": "query PricingContextStoryQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    __id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  priceCents {\n    min\n    max\n  }\n  artists {\n    id\n    __id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "PricingContextStoryQuery",
@@ -93,7 +146,7 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
@@ -101,8 +154,7 @@ return {
             "kind": "FragmentSpread",
             "name": "PricingContext_artwork",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -117,32 +169,56 @@ return {
         "alias": null,
         "name": "artwork",
         "storageKey": "artwork(id:\"unused\")",
-        "args": v0,
+        "args": (v0/*: any*/),
         "concreteType": "Artwork",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "priceCents",
+            "name": "listPrice",
             "storageKey": null,
             "args": null,
-            "concreteType": "PriceCents",
+            "concreteType": null,
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "min",
+                "name": "__typename",
                 "args": null,
                 "storageKey": null
               },
               {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "max",
-                "args": null,
-                "storageKey": null
+                "kind": "InlineFragment",
+                "type": "PriceRange",
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "maxPrice",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Money",
+                    "plural": false,
+                    "selections": (v1/*: any*/)
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "minPrice",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Money",
+                    "plural": false,
+                    "selections": (v1/*: any*/)
+                  }
+                ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "Money",
+                "selections": (v1/*: any*/)
               }
             ]
           },
@@ -158,14 +234,14 @@ return {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "id",
+                "name": "slug",
                 "args": null,
                 "storageKey": null
               },
-              v1
+              (v2/*: any*/)
             ]
           },
-          v2,
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -198,7 +274,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  v2
+                  (v3/*: any*/)
                 ]
               },
               {
@@ -249,12 +325,19 @@ return {
               }
             ]
           },
-          v1
+          (v2/*: any*/)
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "PricingContextStoryQuery",
+    "id": null,
+    "text": "query PricingContextStoryQuery {\n  artwork(id: \"unused\") {\n    ...PricingContext_artwork\n    id\n  }\n}\n\nfragment PricingContext_artwork on Artwork {\n  listPrice {\n    __typename\n    ... on PriceRange {\n      maxPrice {\n        minor\n      }\n      minPrice {\n        minor\n      }\n    }\n    ... on Money {\n      minor\n    }\n  }\n  artists {\n    slug\n    id\n  }\n  category\n  pricingContext {\n    appliedFiltersDisplay\n    appliedFilters {\n      dimension\n      category\n    }\n    bins {\n      maxPrice\n      maxPriceCents\n      minPrice\n      minPriceCents\n      numArtworks\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '82437c2a0e40f80f11ce8355a882fe17';
+(node as any).hash = '4549b9b93cbb1df0e5f198e6ac1e5ab6';
 export default node;

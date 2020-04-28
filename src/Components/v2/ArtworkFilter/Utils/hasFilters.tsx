@@ -1,15 +1,10 @@
-import { Filters } from "../ArtworkFilterContext"
+import { ArtworkFilters } from "../ArtworkFilterContext"
 import { isDefaultFilter } from "./isDefaultFilter"
 
-export const hasFilters: (state: Filters) => boolean = state => {
-  return Object.entries(state).some(([key, value]) => {
-    /**
-     * TODO: I think this can be based on some flag on the filter that indicates
-     * if this one should trip hasFilters.
-     */
-    if (key === "keyword") {
-      return false
+export const hasFilters: (state: ArtworkFilters) => boolean = state => {
+  return Object.entries(state).some(
+    ([key, value]: [keyof ArtworkFilters, any]) => {
+      return !isDefaultFilter(key, value)
     }
-    return !isDefaultFilter(key, value)
-  })
+  )
 }

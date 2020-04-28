@@ -1,82 +1,75 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
-declare const _redirects_order$ref: unique symbol;
-export type redirects_order$ref = typeof _redirects_order$ref;
+import { ReaderFragment } from "relay-runtime";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type redirects_order = {
-    readonly id: string;
-    readonly mode: OrderModeEnum | null;
-    readonly state: string | null;
+    readonly internalID: string;
+    readonly mode: CommerceOrderModeEnum | null;
+    readonly state: CommerceOrderStateEnum;
     readonly lastTransactionFailed: boolean | null;
-    readonly requestedFulfillment: ({
+    readonly requestedFulfillment: {
         readonly __typename: string;
-    }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly creditCard: ({
-        readonly id: string;
-    }) | null;
-    readonly myLastOffer?: ({
-        readonly id: string;
-        readonly createdAt: string | null;
-    }) | null;
-    readonly lastOffer?: ({
-        readonly id: string;
-        readonly createdAt: string | null;
-    }) | null;
-    readonly awaitingResponseFrom?: OrderParticipantEnum | null;
-    readonly " $refType": redirects_order$ref;
+    } | null;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly creditCard: {
+        readonly internalID: string;
+    } | null;
+    readonly myLastOffer?: {
+        readonly internalID: string;
+        readonly createdAt: string;
+    } | null;
+    readonly lastOffer?: {
+        readonly internalID: string;
+        readonly createdAt: string;
+    } | null;
+    readonly awaitingResponseFrom?: CommerceOrderParticipantEnum | null;
+    readonly " $refType": "redirects_order";
+};
+export type redirects_order$data = redirects_order;
+export type redirects_order$key = {
+    readonly " $data"?: redirects_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"redirects_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
-  v0,
-  v1
-],
-v3 = [
-  v0,
+v1 = [
+  (v0/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
     "name": "createdAt",
     "args": null,
     "storageKey": null
-  },
-  v1
+  }
 ];
 return {
   "kind": "Fragment",
   "name": "redirects_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    (v0/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -122,7 +115,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -131,7 +124,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -140,7 +133,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -151,9 +144,16 @@ return {
                   "args": null,
                   "concreteType": "Artwork",
                   "plural": false,
-                  "selections": v2
-                },
-                v1
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "slug",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                }
               ]
             }
           ]
@@ -168,12 +168,13 @@ return {
       "args": null,
       "concreteType": "CreditCard",
       "plural": false,
-      "selections": v2
+      "selections": [
+        (v0/*: any*/)
+      ]
     },
-    v1,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -181,9 +182,9 @@ return {
           "name": "myLastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
-          "selections": v3
+          "selections": (v1/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -191,9 +192,9 @@ return {
           "name": "lastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
-          "selections": v3
+          "selections": (v1/*: any*/)
         },
         {
           "kind": "ScalarField",
@@ -207,5 +208,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '69f41a6e9e04504f73cde98dea2ae25b';
+(node as any).hash = '45b06150d1e7184360e9c945ed0660bf';
 export default node;

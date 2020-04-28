@@ -92,7 +92,7 @@ export function renderRelayTree<
   S = {},
   C extends React.Component = React.Component
 >(
-  params: MockRelayRendererProps & {
+  params: MockRelayRendererProps<any> & {
     renderUntil?: RenderUntilPredicate<P, S, C>
     wrapper?: (renderer: JSX.Element) => JSX.Element
   }

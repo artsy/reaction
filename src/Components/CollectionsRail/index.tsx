@@ -1,8 +1,10 @@
 import React, { useContext } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 
 import { CollectionsRailQuery } from "__generated__/CollectionsRailQuery.graphql"
 import { SystemContext } from "Artsy"
+import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { CollectionsRailFragmentContainer as CollectionsRail } from "./CollectionsRail"
 
 interface Props {
@@ -35,13 +37,7 @@ export const CollectionsRailContent: React.FC<Props> = passedProps => {
           }
         }
       `}
-      render={({ props }) => {
-        if (props) {
-          return <CollectionsRail {...props} />
-        } else {
-          return null
-        }
-      }}
+      render={renderWithLoadProgress(CollectionsRail)}
       cacheConfig={{ force: true }}
     />
   )

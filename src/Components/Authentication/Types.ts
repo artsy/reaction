@@ -1,3 +1,4 @@
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { FormikProps } from "formik"
 
 export enum ModalType {
@@ -19,16 +20,17 @@ export type SubmitHandler = (
 ) => void
 
 export interface FormProps {
+  contextModule: AuthContextModule
   /**
    * any global error that comes from an external data source
    * (e.g. server)
    */
-  contextModule?: string
   error?: string
   values?: InputValues
   handleSubmit?: SubmitHandler
   handleTypeChange?: (modalType: ModalType) => void
-  intent?: string
+  intent: AuthIntent
+  onAppleLogin?: (e: Event) => void
   onFacebookLogin?: (e: Event) => void
   onBackButtonClicked?: (e: Event) => void
   title?: string
@@ -36,7 +38,7 @@ export interface FormProps {
   showRecaptchaDisclaimer?: boolean
 }
 
-interface AfterSignUpAction {
+export interface AfterSignUpAction {
   action: "save" | "follow" | "editorialSignup"
   objectId?: string
   kind?: "artist" | "artworks" | "gene" | "profile" | "show"
@@ -64,7 +66,7 @@ export interface ModalOptions {
   /**
    * the action taken that prompted user to signup or login.
    */
-  intent?: string
+  intent: AuthIntent
   /**
    * the page before the page on which the sign up was triggered.
    */
@@ -82,11 +84,7 @@ export interface ModalOptions {
   /*
    * the location where the modal was triggered.
    */
-  contextModule?: string
-  /**
-   * the type of action that triggered the modal (eg: click, timed)
-   */
-  trigger?: string
+  contextModule: AuthContextModule
   /**
    * the number of seconds before a modal was triggered
    */
@@ -99,6 +97,21 @@ export interface ModalOptions {
    * The image rendered with the modal
    */
   image?: string
+  /**
+   * MOBILE ONLY
+   * Used to construct afterSignupAction from query params
+   */
+  kind?: AfterSignUpAction["kind"]
+  /**
+   * MOBILE ONLY
+   * Used to construct afterSignupAction from query params
+   */
+  action?: AfterSignUpAction["action"]
+  /**
+   * MOBILE ONLY
+   * Used to construct afterSignupAction from query params
+   */
+  objectId?: AfterSignUpAction["objectId"]
 }
 
 export type FormComponentType =

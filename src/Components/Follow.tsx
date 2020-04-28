@@ -6,6 +6,7 @@
  * and two specialised components that use composition to achieve the desired functionality.
  */
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
 import { FollowArtistMutation } from "__generated__/FollowArtistMutation.graphql"
 import * as Artsy from "Artsy"
@@ -17,7 +18,9 @@ import {
   RelayProp,
 } from "react-relay"
 import styled from "styled-components"
+import { getMobileAuthLink, openAuthToFollowSave } from "Utils/openAuthModal"
 import colors from "../Assets/Colors"
+import { ModalType } from "./Authentication/Types"
 import Icon from "./Icon"
 
 const SIZE = 32
@@ -28,6 +31,7 @@ interface Props
   style?: any
   relay: RelayProp
   artist: Follow_artist
+  contextModule: ContextModule
 }
 
 export const StyledFollowButton = styled.div`
@@ -63,22 +67,22 @@ export const StyledFollowButton = styled.div`
 
 export class FollowButton extends React.Component<Props, null> {
   handleFollow() {
-    const { artist, user, relay } = this.props
+    const { artist, user, relay, mediator, contextModule } = this.props
     if (user && user.id) {
       commitMutation<FollowArtistMutation>(relay.environment, {
         mutation: graphql`
           mutation FollowArtistMutation($input: FollowArtistInput!) {
             followArtist(input: $input) {
               artist {
-                __id
-                is_followed
+                id
+                is_followed: isFollowed
               }
             }
           }
         `,
         variables: {
           input: {
-            artist_id: artist.id,
+            artistID: artist.internalID,
             unfollow: artist.is_followed,
           },
         },
@@ -86,14 +90,34 @@ export class FollowButton extends React.Component<Props, null> {
         optimisticResponse: {
           followArtist: {
             artist: {
-              __id: artist.__id,
+              id: artist.id,
               is_followed: !artist.is_followed,
             },
           },
         },
       })
     } else {
-      window.location.href = "/login"
+      const options = {
+        contextModule: contextModule || ContextModule.relatedArtistsRail,
+        intent: AuthIntent.followArtist,
+      }
+
+      if (mediator) {
+        openAuthToFollowSave(mediator, {
+          entity: {
+            slug: artist.internalID,
+            name: artist.name,
+          },
+          ...options,
+        })
+      } else {
+        window.location.href = getMobileAuthLink(ModalType.signup, {
+          kind: "artist",
+          objectId: artist.internalID,
+          action: "follow",
+          ...options,
+        })
+      }
     }
   }
 
@@ -123,9 +147,10 @@ export class FollowButton extends React.Component<Props, null> {
 export default createFragmentContainer(Artsy.withSystemContext(FollowButton), {
   artist: graphql`
     fragment Follow_artist on Artist {
-      __id
       id
-      is_followed
+      internalID
+      name
+      is_followed: isFollowed
     }
   `,
 })

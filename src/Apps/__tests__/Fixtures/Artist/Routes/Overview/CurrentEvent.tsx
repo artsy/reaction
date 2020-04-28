@@ -1,4 +1,7 @@
-export const CurrentEventFixture = {
+import { CurrentEvent_Test_QueryRawResponse } from "__generated__/CurrentEvent_Test_Query.graphql"
+
+export const CurrentEventFixture: CurrentEvent_Test_QueryRawResponse["artist"] = {
+  id: "opaque-event-id",
   currentEvent: {
     name: "Catty Art Sale",
     status: "Currently at auction",
@@ -6,6 +9,9 @@ export const CurrentEventFixture = {
     details: "Live bidding begins soon",
     event: {
       __typename: "Sale",
+      id: "opaque-sale-id",
     },
+    image: null,
+    partner: null,
   },
 }

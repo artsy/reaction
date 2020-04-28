@@ -7,30 +7,30 @@ import styled from "styled-components"
 interface Props extends React.HTMLProps<Headline> {
   aggregations?: any
   medium: string
-  price_range: string
-  dimension_range: string
-  for_sale: boolean
+  priceRange: string
+  dimensionRange: string
+  forSale: boolean
   facet?: any
 }
 
 export class Headline extends React.Component<Props, null> {
-  getCountName(aggregation, id) {
+  getCountName(aggregation, value) {
     const selectedAggregation = find(
       this.props.aggregations,
       agg => agg.slice === aggregation.toUpperCase()
     )
     const selectedCount = find(
       selectedAggregation.counts,
-      count => count.id === id
+      count => count.value === value
     )
     return selectedCount ? selectedCount.name : null
   }
 
   size() {
-    const { dimension_range } = this.props
+    const { dimensionRange } = this.props
 
-    if (dimension_range && dimension_range !== "*") {
-      return this.getCountName("dimension_range", dimension_range)
+    if (dimensionRange && dimensionRange !== "*") {
+      return this.getCountName("dimension_range", dimensionRange)
     }
     return false
   }
@@ -49,16 +49,16 @@ export class Headline extends React.Component<Props, null> {
   }
 
   priceRange() {
-    const { price_range } = this.props
+    const { priceRange } = this.props
 
-    if (price_range && price_range !== "*") {
-      return this.getCountName("price_range", price_range)
+    if (priceRange && priceRange !== "*") {
+      return this.getCountName("price_range", priceRange)
     }
     return false
   }
 
   forSale() {
-    if (this.props.for_sale) {
+    if (this.props.forSale) {
       return "For Sale"
     }
     return false
@@ -92,10 +92,10 @@ const StyledHeadline = styled(Headline)`
 export default createFragmentContainer(StyledHeadline, {
   facet: graphql`
     fragment Headline_facet on ArtworkFilterFacet {
-      ... on ArtworkFilterTag {
+      ... on Tag {
         name
       }
-      ... on ArtworkFilterGene {
+      ... on Gene {
         name
       }
     }

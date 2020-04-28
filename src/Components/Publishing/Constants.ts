@@ -1,4 +1,3 @@
-import cheerio from "cheerio"
 import { compact, last, uniq } from "lodash"
 import { DateTime } from "luxon"
 import url from "url"
@@ -36,7 +35,9 @@ export const getArticleFullHref = slug => `${APP_URL}/article/${slug}`
  */
 
 export const getPreSlugPath = layout => {
-  return ["standard", "feature"].includes(layout) ? "article" : layout
+  return ["standard", "feature", "classic"].includes(layout)
+    ? "article"
+    : layout
 }
 
 /**
@@ -69,7 +70,7 @@ export const getAuthorByline = (authors, isEditoral = true) => {
   const authorCount = Number(authors && authors.length)
 
   if (authorCount === 1) {
-    return authors[0].name || ""
+    return (authors[0] && authors[0].name) || ""
   } else if (authorCount > 1) {
     const names = authors.reduce((prev, curr, i) => {
       let delim
@@ -99,9 +100,7 @@ export const getDate = (date, format: DateFormat = "default") => {
   const amPm = dateTime.hour >= 12 ? "pm" : "am"
   const minutes = dateTime.minute < 10 ? "0" + dateTime.minute : dateTime.minute
   const monthDay = `${dateTime.monthShort} ${dateTime.day}`
-  const monthDayYear = `${dateTime.monthShort} ${dateTime.day}, ${
-    dateTime.year
-  }`
+  const monthDayYear = `${dateTime.monthShort} ${dateTime.day}, ${dateTime.year}`
   let hour
   if (dateTime.hour > 12) {
     hour = dateTime.hour - 12
@@ -162,12 +161,14 @@ export const getArtsySlugsFromArticle = (
   article: ArticleData
 ): SlugsFromArticle => {
   const articleBody = article.sections
-    .map(section => {
-      if (section.type === "text") {
-        return section.body
-      }
-    })
-    .join()
+    ? article.sections
+        .map(section => {
+          if (section.type === "text") {
+            return section.body
+          }
+        })
+        .join()
+    : ""
 
   const artists = uniq(getArtsySlugsFromHTML(articleBody, "artist"))
   const genes = uniq(getArtsySlugsFromHTML(articleBody, "gene"))
@@ -182,19 +183,16 @@ export const getArtsySlugsFromHTML = (
   html: string,
   model: string
 ): string[] => {
-  const $ = cheerio.load(html)
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(html, "text/html")
 
-  const slugs = compact($("a")).map(a => {
-    const href = $(a).attr("href")
-    if (href) {
-      if (href.match(`artsy.net/${model}`)) {
-        return last(url.parse(href).pathname.split("/"))
-      } else {
-        return null
-      }
-    } else {
-      return null
+  const slugs: string[] = []
+  doc.querySelectorAll("a").forEach(anchor => {
+    const href = anchor.getAttribute("href")
+    if (href && href.match(`artsy.net/${model}`)) {
+      slugs.push(last(url.parse(href).pathname.split("/")))
     }
   })
+
   return compact(slugs)
 }

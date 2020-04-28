@@ -1,51 +1,50 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Contact_artwork$ref: unique symbol;
-export type Contact_artwork$ref = typeof _Contact_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Contact_artwork = {
     readonly href: string | null;
     readonly is_inquireable: boolean | null;
-    readonly sale: ({
+    readonly sale: {
         readonly is_auction: boolean | null;
         readonly is_live_open: boolean | null;
         readonly is_open: boolean | null;
         readonly is_closed: boolean | null;
-    }) | null;
-    readonly partner: ({
+    } | null;
+    readonly partner: {
         readonly type: string | null;
-    }) | null;
-    readonly sale_artwork: ({
-        readonly highest_bid: ({
+    } | null;
+    readonly sale_artwork: {
+        readonly highest_bid: {
             readonly display: string | null;
-        }) | null;
-        readonly opening_bid: ({
+        } | null;
+        readonly opening_bid: {
             readonly display: string | null;
-        }) | null;
-        readonly counts: ({
-            readonly bidder_positions: any | null;
-        }) | null;
-    }) | null;
-    readonly " $refType": Contact_artwork$ref;
+        } | null;
+        readonly counts: {
+            readonly bidder_positions: number | null;
+        } | null;
+    } | null;
+    readonly " $refType": "Contact_artwork";
+};
+export type Contact_artwork$data = Contact_artwork;
+export type Contact_artwork$key = {
+    readonly " $data"?: Contact_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"Contact_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "display",
-  "args": null,
-  "storageKey": null
-};
+const node: ReaderFragment = (function(){
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "display",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "Contact_artwork",
@@ -62,8 +61,8 @@ return {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_inquireable",
+      "alias": "is_inquireable",
+      "name": "isInquireable",
       "args": null,
       "storageKey": null
     },
@@ -78,33 +77,32 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_auction",
+          "alias": "is_auction",
+          "name": "isAuction",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_live_open",
+          "alias": "is_live_open",
+          "name": "isLiveOpen",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_open",
+          "alias": "is_open",
+          "name": "isOpen",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_closed",
+          "alias": "is_closed",
+          "name": "isClosed",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -116,8 +114,7 @@ return {
         {
           "kind": "Literal",
           "name": "shallow",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         }
       ],
       "concreteType": "Partner",
@@ -129,14 +126,13 @@ return {
           "name": "type",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "sale_artwork",
+      "alias": "sale_artwork",
+      "name": "saleArtwork",
       "storageKey": null,
       "args": null,
       "concreteType": "SaleArtwork",
@@ -144,34 +140,23 @@ return {
       "selections": [
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "highest_bid",
+          "alias": "highest_bid",
+          "name": "highestBid",
           "storageKey": null,
           "args": null,
           "concreteType": "SaleArtworkHighestBid",
           "plural": false,
-          "selections": [
-            v1,
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            }
-          ]
+          "selections": (v0/*: any*/)
         },
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "opening_bid",
+          "alias": "opening_bid",
+          "name": "openingBid",
           "storageKey": null,
           "args": null,
           "concreteType": "SaleArtworkOpeningBid",
           "plural": false,
-          "selections": [
-            v1
-          ]
+          "selections": (v0/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -184,19 +169,17 @@ return {
           "selections": [
             {
               "kind": "ScalarField",
-              "alias": null,
-              "name": "bidder_positions",
+              "alias": "bidder_positions",
+              "name": "bidderPositions",
               "args": null,
               "storageKey": null
             }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
 })();
-(node as any).hash = 'eae0e1181f8c3d8e63e2e9d53be065d3';
+(node as any).hash = '9f34c3389ae10d7ea1db682424201582';
 export default node;

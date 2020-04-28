@@ -26,7 +26,7 @@ const order: ShippingSummaryItem_order = {
   " $refType": null,
   state: "PENDING",
   requestedFulfillment: {
-    __typename: "Ship",
+    __typename: "CommerceShip",
     ...ship,
   } as any,
   lineItems: {
@@ -36,7 +36,7 @@ const order: ShippingSummaryItem_order = {
 
 const orderQuery = graphql`
   query ShippingSummaryItemStoryQuery {
-    order: ecommerceOrder(id: "foo") {
+    order: commerceOrder(id: "foo") {
       ...ShippingSummaryItem_order
     }
   }
@@ -60,7 +60,7 @@ storiesOf("Apps/Order/Components", module).add("ShippingSummaryItem", () => (
           mockResolvers={mockResolver({
             ...order,
             requestedFulfillment: {
-              __typename: "Pickup",
+              __typename: "CommercePickup",
             },
           })}
           query={orderQuery}
@@ -93,7 +93,7 @@ storiesOf("Apps/Order/Components", module).add("ShippingSummaryItem", () => (
           mockResolvers={mockResolver({
             ...order,
             requestedFulfillment: {
-              __typename: "Pickup",
+              __typename: "CommercePickup",
             },
           })}
           query={orderQuery}

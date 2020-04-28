@@ -53,26 +53,27 @@ export class FollowProfileButton extends React.Component<Props> {
 
     if (user && user.id) {
       commitMutation<FollowProfileButtonMutation>(relay.environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation FollowProfileButtonMutation($input: FollowProfileInput!) {
             followProfile(input: $input) {
               profile {
-                __id
-                is_followed
+                id
+                is_followed: isFollowed
               }
             }
           }
         `,
         variables: {
           input: {
-            profile_id: profile.id,
+            profileID: profile.internalID,
             unfollow: profile.is_followed,
           },
         },
         optimisticResponse: {
           followProfile: {
             profile: {
-              __id: profile.__id,
+              id: profile.id,
               is_followed: !profile.is_followed,
             },
           },
@@ -82,7 +83,7 @@ export class FollowProfileButton extends React.Component<Props> {
     } else {
       onOpenAuthModal &&
         onOpenAuthModal("register", {
-          contextModule: "intext tooltip",
+          contextModule: "intextTooltip",
           intent: "follow profile",
           copy: "Sign up to follow profile",
         })
@@ -111,9 +112,9 @@ export const FollowProfileButtonFragmentContainer = track({})(
   createFragmentContainer(Artsy.withSystemContext(FollowProfileButton), {
     profile: graphql`
       fragment FollowProfileButton_profile on Profile {
-        __id
         id
-        is_followed
+        internalID
+        is_followed: isFollowed
       }
     `,
   })

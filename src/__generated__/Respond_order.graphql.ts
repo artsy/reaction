@@ -1,70 +1,63 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { CreditCardSummaryItem_order$ref } from "./CreditCardSummaryItem_order.graphql";
-import { OfferHistoryItem_order$ref } from "./OfferHistoryItem_order.graphql";
-import { ShippingSummaryItem_order$ref } from "./ShippingSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-declare const _Respond_order$ref: unique symbol;
-export type Respond_order$ref = typeof _Respond_order$ref;
+import { ReaderFragment } from "relay-runtime";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type Respond_order = {
-    readonly id: string;
-    readonly mode: OrderModeEnum | null;
-    readonly state: string | null;
+    readonly internalID: string;
+    readonly mode: CommerceOrderModeEnum | null;
+    readonly state: CommerceOrderStateEnum;
+    readonly currencyCode: string;
     readonly itemsTotal: string | null;
     readonly itemsTotalCents: number | null;
     readonly totalListPrice: string | null;
-    readonly totalListPriceCents: number | null;
+    readonly totalListPriceCents: number;
     readonly stateExpiresAt: string | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
-        readonly createdAt: string | null;
-        readonly id: string;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
+        readonly createdAt: string;
+        readonly internalID: string;
         readonly note: string | null;
-    }) | null;
-    readonly myLastOffer?: ({
-        readonly createdAt: string | null;
-    }) | null;
-    readonly " $fragmentRefs": TransactionDetailsSummaryItem_order$ref & ArtworkSummaryItem_order$ref & ShippingSummaryItem_order$ref & CreditCardSummaryItem_order$ref & OfferHistoryItem_order$ref;
-    readonly " $refType": Respond_order$ref;
+    } | null;
+    readonly myLastOffer?: {
+        readonly createdAt: string;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"TransactionDetailsSummaryItem_order" | "ArtworkSummaryItem_order" | "ShippingSummaryItem_order" | "CreditCardSummaryItem_order" | "OfferHistoryItem_order">;
+    readonly " $refType": "Respond_order";
+};
+export type Respond_order$data = Respond_order;
+export type Respond_order$key = {
+    readonly " $data"?: Respond_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"Respond_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v2 = [
+v1 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ],
-v3 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "createdAt",
@@ -74,58 +67,18 @@ v3 = {
 return {
   "kind": "Fragment",
   "name": "Respond_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    (v0/*: any*/),
     {
-      "kind": "LinkedField",
+      "kind": "ScalarField",
       "alias": null,
-      "name": "lineItems",
-      "storageKey": null,
+      "name": "mode",
       "args": null,
-      "concreteType": "OrderLineItemConnection",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "edges",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "OrderLineItemEdge",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "node",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "OrderLineItem",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "LinkedField",
-                  "alias": null,
-                  "name": "artwork",
-                  "storageKey": null,
-                  "args": null,
-                  "concreteType": "Artwork",
-                  "plural": false,
-                  "selections": [
-                    v0,
-                    v1
-                  ]
-                },
-                v1
-              ]
-            }
-          ]
-        }
-      ]
+      "storageKey": null
     },
-    v0,
     {
       "kind": "ScalarField",
       "alias": null,
@@ -136,8 +89,15 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "currencyCode",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "itemsTotal",
-      "args": v2,
+      "args": (v1/*: any*/),
       "storageKey": "itemsTotal(precision:2)"
     },
     {
@@ -151,7 +111,7 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v2,
+      "args": (v1/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
     {
@@ -169,16 +129,93 @@ return {
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "mode",
+      "name": "lineItems",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "CommerceLineItemConnection",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceLineItemEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "CommerceLineItem",
+              "plural": false,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "artwork",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "slug",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "OfferHistoryItem_order",
-      "args": null
+      "kind": "InlineFragment",
+      "type": "CommerceOfferOrder",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "lastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceOffer",
+          "plural": false,
+          "selections": [
+            (v2/*: any*/),
+            (v0/*: any*/),
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "note",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "myLastOffer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "CommerceOffer",
+          "plural": false,
+          "selections": [
+            (v2/*: any*/)
+          ]
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -200,49 +237,13 @@ return {
       "name": "CreditCardSummaryItem_order",
       "args": null
     },
-    v1,
     {
-      "kind": "InlineFragment",
-      "type": "OfferOrder",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "lastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v3,
-            v0,
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "note",
-              "args": null,
-              "storageKey": null
-            },
-            v1
-          ]
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "myLastOffer",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Offer",
-          "plural": false,
-          "selections": [
-            v3,
-            v1
-          ]
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "OfferHistoryItem_order",
+      "args": null
     }
   ]
 };
 })();
-(node as any).hash = '632034c4e26818aaec38a7646bcb5e6e';
+(node as any).hash = '5b8133ec8a17977aa86f219db0b50846';
 export default node;

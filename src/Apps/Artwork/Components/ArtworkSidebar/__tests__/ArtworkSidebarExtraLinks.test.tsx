@@ -1,8 +1,12 @@
+import { ArtworkSidebarExtraLinks_Test_QueryRawResponse } from "__generated__/ArtworkSidebarExtraLinks_Test_Query.graphql"
 import {
   AcquireableArtworkWithOneConsignableArtist,
+  BenefitAuctionArtwork,
   InquireableArtworkWithMultipleConsignableArtists,
   LiveAuctionArtwork,
+  LiveAuctionArtworkWithoutPartner,
   NotForSaleArtworkWithOneConsignableArtist,
+  VanHamLiveAuctionArtwork,
 } from "Apps/__tests__/Fixtures/Artwork/ArtworkSidebar/ArtworkSidebarExtraLinks"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
@@ -13,27 +17,29 @@ jest.unmock("react-relay")
 describe("ArtworkSidebarExtraLinks", () => {
   let wrapper = null
 
-  const getWrapper = async (response = {}) => {
+  const getWrapper = async (
+    response: ArtworkSidebarExtraLinks_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarExtraLinksFragmentContainer,
       query: graphql`
-        query ArtworkSidebarExtraLinks_Test_Query {
+        query ArtworkSidebarExtraLinks_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarExtraLinks_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarExtraLinks_Test_QueryRawResponse,
     })
   }
 
-  describe("for work in an auction", () => {
+  describe("for work in a benefit auction", () => {
     beforeAll(async () => {
-      wrapper = await getWrapper(LiveAuctionArtwork)
+      wrapper = await getWrapper(BenefitAuctionArtwork)
     })
-    it("displays proper text", () => {
+    it("displays proper conditions of sale text", () => {
       expect(wrapper.text()).toContain(
         "By placing your bid you agree to Artsy's Conditions of Sale."
       )
@@ -41,7 +47,46 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Have a question? Read our auction FAQs or ask a specialist."
       )
       expect(wrapper.text()).toContain(
-        "Want to sell a work by this artist? Learn more."
+        "Want to sell a work by this artist? Consign with Artsy."
+      )
+    })
+  })
+
+  describe("for work in an auction by Van Ham", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(VanHamLiveAuctionArtwork)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's and Van Ham's Conditions of Sale."
+      )
+    })
+  })
+
+  describe("for work in an auction without a partner", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(LiveAuctionArtworkWithoutPartner)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's Conditions of Sale."
+      )
+    })
+  })
+
+  describe("for work in an auction", () => {
+    beforeAll(async () => {
+      wrapper = await getWrapper(LiveAuctionArtwork)
+    })
+    it("displays proper conditions of sale text", () => {
+      expect(wrapper.text()).toContain(
+        "By placing your bid you agree to Artsy's and Christie's Conditions of Sale."
+      )
+      expect(wrapper.text()).toContain(
+        "Have a question? Read our auction FAQs or ask a specialist."
+      )
+      expect(wrapper.text()).toContain(
+        "Want to sell a work by this artist? Consign with Artsy."
       )
     })
     it("displays conditions of sale link that opens conditions of sale page", () => {
@@ -73,9 +118,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openAuctionAskSpecialistModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -95,7 +140,7 @@ describe("ArtworkSidebarExtraLinks", () => {
         "Have a question? Read our FAQ or ask a specialist."
       )
       expect(wrapper.text()).toContain(
-        "Want to sell a work by this artist? Learn more."
+        "Want to sell a work by this artist? Consign with Artsy."
       )
     })
     it("displays FAQ link that opens Buy now FAQ page", () => {
@@ -118,9 +163,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openBuyNowAskSpecialistModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -141,7 +186,7 @@ describe("ArtworkSidebarExtraLinks", () => {
     it("displays proper text", () => {
       expect(wrapper.text()).toContain("Have a question? Read our FAQ.")
       expect(wrapper.text()).toContain(
-        "Want to sell a work by these artists? Learn more."
+        "Want to sell a work by these artists? Consign with Artsy."
       )
     })
     it("displays FAQ link that brings collector FAQ modal", () => {
@@ -153,9 +198,9 @@ describe("ArtworkSidebarExtraLinks", () => {
       // TODO: verify mediator call with openCollectorFAQModal
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 
@@ -173,13 +218,13 @@ describe("ArtworkSidebarExtraLinks", () => {
     it("displays proper text", () => {
       expect(wrapper.text()).not.toContain("Have a question? Read our FAQ")
       expect(wrapper.text()).toContain(
-        "Want to sell a work by this artist? Learn more."
+        "Want to sell a work by this artist? Consign with Artsy."
       )
     })
     it("displays consign link that opens consign page", () => {
-      expect(wrapper.find('a[children="Learn more"]').length).toBe(1)
+      expect(wrapper.find('a[children="Consign with Artsy"]').length).toBe(1)
       wrapper
-        .find('a[children="Learn more"]')
+        .find('a[children="Consign with Artsy"]')
         .at(0)
         .simulate("click")
 

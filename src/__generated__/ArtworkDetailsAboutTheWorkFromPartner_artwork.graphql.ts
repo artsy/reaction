@@ -1,51 +1,47 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FollowProfileButton_profile$ref } from "./FollowProfileButton_profile.graphql";
-declare const _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref: unique symbol;
-export type ArtworkDetailsAboutTheWorkFromPartner_artwork$ref = typeof _ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkDetailsAboutTheWorkFromPartner_artwork = {
     readonly additional_information: string | null;
-    readonly sale: ({
+    readonly sale: {
         readonly isBenefit: boolean | null;
         readonly isGalleryAuction: boolean | null;
-    }) | null;
-    readonly partner: ({
-        readonly _id: string;
-        readonly id: string;
+    } | null;
+    readonly partner: {
+        readonly internalID: string;
+        readonly slug: string;
         readonly type: string | null;
         readonly href: string | null;
         readonly name: string | null;
         readonly initials: string | null;
-        readonly locations: ReadonlyArray<({
+        readonly locations: ReadonlyArray<{
             readonly city: string | null;
-        }) | null> | null;
+        } | null> | null;
         readonly is_default_profile_public: boolean | null;
-        readonly profile: ({
-            readonly id: string;
-            readonly icon: ({
+        readonly profile: {
+            readonly slug: string;
+            readonly icon: {
                 readonly url: string | null;
-            }) | null;
-            readonly " $fragmentRefs": FollowProfileButton_profile$ref;
-        }) | null;
-    }) | null;
-    readonly " $refType": ArtworkDetailsAboutTheWorkFromPartner_artwork$ref;
+            } | null;
+            readonly " $fragmentRefs": FragmentRefs<"FollowProfileButton_profile">;
+        } | null;
+    } | null;
+    readonly " $refType": "ArtworkDetailsAboutTheWorkFromPartner_artwork";
+};
+export type ArtworkDetailsAboutTheWorkFromPartner_artwork$data = ArtworkDetailsAboutTheWorkFromPartner_artwork;
+export type ArtworkDetailsAboutTheWorkFromPartner_artwork$key = {
+    readonly " $data"?: ArtworkDetailsAboutTheWorkFromPartner_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkDetailsAboutTheWorkFromPartner_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -58,17 +54,16 @@ return {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "additional_information",
+      "alias": "additional_information",
+      "name": "additionalInformation",
       "args": [
         {
           "kind": "Literal",
           "name": "format",
-          "value": "HTML",
-          "type": "Format"
+          "value": "HTML"
         }
       ],
-      "storageKey": "additional_information(format:\"HTML\")"
+      "storageKey": "additionalInformation(format:\"HTML\")"
     },
     {
       "kind": "LinkedField",
@@ -92,8 +87,7 @@ return {
           "name": "isGalleryAuction",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -108,11 +102,11 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "_id",
+          "name": "internalID",
           "args": null,
           "storageKey": null
         },
-        v1,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -156,14 +150,13 @@ return {
               "name": "city",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_default_profile_public",
+          "alias": "is_default_profile_public",
+          "name": "isDefaultProfilePublic",
           "args": null,
           "storageKey": null
         },
@@ -176,12 +169,7 @@ return {
           "concreteType": "Profile",
           "plural": false,
           "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "FollowProfileButton_profile",
-              "args": null
-            },
-            v1,
+            (v0/*: any*/),
             {
               "kind": "LinkedField",
               "alias": null,
@@ -199,30 +187,24 @@ return {
                     {
                       "kind": "Literal",
                       "name": "version",
-                      "value": "square140",
-                      "type": "[String]"
+                      "value": "square140"
                     }
                   ],
                   "storageKey": "url(version:\"square140\")"
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": "__id",
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
                 }
               ]
             },
-            v0
+            {
+              "kind": "FragmentSpread",
+              "name": "FollowProfileButton_profile",
+              "args": null
+            }
           ]
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
 })();
-(node as any).hash = 'b10480d701a172845d0dccc414c0bd2f';
+(node as any).hash = 'b4d409938d5854193023a059e8c29a43';
 export default node;

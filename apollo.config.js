@@ -1,25 +1,17 @@
-// @ts-nocheck
-//
-// Install the apollo-language-server package to get typings for the configuration object when needing to make updates.
-// It seems overkill to install the package and all its dependencies for the occasional updates made here.
+const path = require("path")
+const {
+  config,
+  directivesFile,
+  includesGlobPattern,
+} = require("vscode-apollo-relay").generateConfig()
 
-const validationRulesToExcludeForRelay = ["NoUndefinedVariables"]
-
-/**
- * @type {import("apollo-language-server/lib/config").ApolloConfigFormat}
- */
-const config = {
+module.exports = {
   client: {
-    service: {
-      name: "local",
-      localSchemaFile: "data/schema.graphql",
-    },
-    validationRules: rule =>
-      !validationRulesToExcludeForRelay.includes(rule.name),
-    includes: ["src/**/*.{ts,tsx,graphql}"],
-    excludes: ["**/node_modules", "**/__tests__"],
-    tagName: "graphql",
+    ...config.client,
+    includes: [
+      directivesFile,
+      path.join("./src", includesGlobPattern(["ts", "tsx"])),
+    ],
+    excludes: ["**/node_modules/**", "**/__mocks__/**", "**/__generated__/**"],
   },
 }
-
-module.exports = config

@@ -2,20 +2,20 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowProfileInput = {
-    readonly profile_id?: string | null;
+    readonly profileID?: string | null;
     readonly unfollow?: boolean | null;
     readonly clientMutationId?: string | null;
 };
 export type FollowProfileButtonMutationVariables = {
-    readonly input: FollowProfileInput;
+    input: FollowProfileInput;
 };
 export type FollowProfileButtonMutationResponse = {
-    readonly followProfile: ({
-        readonly profile: ({
-            readonly __id: string;
+    readonly followProfile: {
+        readonly profile: {
+            readonly id: string;
             readonly is_followed: boolean | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
 };
 export type FollowProfileButtonMutation = {
     readonly response: FollowProfileButtonMutationResponse;
@@ -30,8 +30,8 @@ mutation FollowProfileButtonMutation(
 ) {
   followProfile(input: $input) {
     profile {
-      __id
-      is_followed
+      id
+      is_followed: isFollowed
     }
   }
 }
@@ -56,8 +56,7 @@ v1 = [
       {
         "kind": "Variable",
         "name": "input",
-        "variableName": "input",
-        "type": "FollowProfileInput!"
+        "variableName": "input"
       }
     ],
     "concreteType": "FollowProfilePayload",
@@ -75,14 +74,14 @@ v1 = [
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "__id",
+            "name": "id",
             "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
-            "alias": null,
-            "name": "is_followed",
+            "alias": "is_followed",
+            "name": "isFollowed",
             "args": null,
             "storageKey": null
           }
@@ -93,26 +92,28 @@ v1 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "FollowProfileButtonMutation",
-  "id": null,
-  "text": "mutation FollowProfileButtonMutation(\n  $input: FollowProfileInput!\n) {\n  followProfile(input: $input) {\n    profile {\n      __id\n      is_followed\n    }\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "FollowProfileButtonMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "FollowProfileButtonMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "FollowProfileButtonMutation",
+    "id": null,
+    "text": "mutation FollowProfileButtonMutation(\n  $input: FollowProfileInput!\n) {\n  followProfile(input: $input) {\n    profile {\n      id\n      is_followed: isFollowed\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '41505cb1b2dfc8e45a15406888d5555a';
+(node as any).hash = 'fa116a6824af830210198ab020a8d472';
 export default node;

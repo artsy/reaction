@@ -22,8 +22,7 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { get } from "Utils/get"
 import createLogger from "Utils/logger"
 import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "../../Components/ArtworkSummaryItem"
@@ -46,22 +45,23 @@ export class Accept extends Component<AcceptProps> {
   acceptOffer() {
     return this.props.commitMutation<AcceptOfferMutation>({
       variables: {
-        input: { offerId: this.props.order.lastOffer.id },
+        input: { offerId: this.props.order.lastOffer.internalID },
       },
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
-        mutation AcceptOfferMutation($input: buyerAcceptOfferInput!) {
-          ecommerceBuyerAcceptOffer(input: $input) {
+        mutation AcceptOfferMutation($input: CommerceBuyerAcceptOfferInput!) {
+          commerceBuyerAcceptOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
-                  ... on OfferOrder {
+                  internalID
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -77,7 +77,7 @@ export class Accept extends Component<AcceptProps> {
 
   onSubmit = async () => {
     try {
-      const orderOrError = (await this.acceptOffer()).ecommerceBuyerAcceptOffer
+      const orderOrError = (await this.acceptOffer()).commerceBuyerAcceptOffer
         .orderOrError
 
       if (orderOrError.error) {
@@ -85,7 +85,7 @@ export class Accept extends Component<AcceptProps> {
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -134,19 +134,21 @@ export class Accept extends Component<AcceptProps> {
       confirmButtonText: "Use new card",
     })
     if (confirmed) {
-      this.props.router.push(`/orders/${this.props.order.id}/payment/new`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/payment/new`
+      )
     }
   }
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   artistId() {
     return get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artists[0].id
+      o => o.lineItems.edges[0].node.artwork.artists[0].slug
     )
   }
 
@@ -254,27 +256,27 @@ export class Accept extends Component<AcceptProps> {
 }
 
 export const AcceptFragmentContainer = createFragmentContainer(
-  injectCommitMutation(injectDialog(trackPageViewWrapper(Accept))),
+  injectCommitMutation(injectDialog(Accept)),
   {
     order: graphql`
-      fragment Accept_order on Order {
-        id
+      fragment Accept_order on CommerceOrder {
+        internalID
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
                 artists {
-                  id
+                  slug
                 }
               }
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
-            id
+            internalID
             createdAt
           }
         }
@@ -286,3 +288,6 @@ export const AcceptFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default AcceptFragmentContainer

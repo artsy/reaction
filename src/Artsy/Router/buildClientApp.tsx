@@ -14,11 +14,15 @@ import qs from "qs"
 import createLogger from "Utils/logger"
 import { getUser } from "Utils/user"
 import { createRouteConfig } from "./Utils/createRouteConfig"
+import { queryStringParsing } from "./Utils/queryStringParsing"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import { Boot } from "Artsy/Router/Boot"
 
 import { RouterConfig } from "./"
+
+import { trackingMiddleware } from "Artsy/Analytics/trackingMiddleware"
+import { RenderError, RenderPending, RenderReady } from "./RenderStatus"
 
 interface Resolve {
   ClientApp: ComponentType<any>
@@ -59,24 +63,35 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
 
       const historyMiddlewares = [
         createQueryMiddleware({
-          parse: qs.parse,
+          parse: queryStringParsing,
           stringify: qs.stringify,
+        }),
+        trackingMiddleware({
+          excludePaths: ["/artwork/"],
         }),
       ]
       const resolver = new Resolver(relayEnvironment)
-      const render = createRender({})
+
+      const Renderer = createRender({
+        renderPending: RenderPending,
+        renderReady: RenderReady,
+        renderError: RenderError,
+      })
+
       const Router = await createInitialFarceRouter({
         historyProtocol: getHistoryProtocol(),
         historyMiddlewares,
         historyOptions: history.options,
         routeConfig: createRouteConfig(routes),
-        matchContext: { user },
+        matchContext: context,
         resolver,
-        render: renderArgs => (
-          <ScrollManager renderArgs={renderArgs}>
-            {render(renderArgs)}
-          </ScrollManager>
-        ),
+        render: renderArgs => {
+          return (
+            <ScrollManager renderArgs={renderArgs}>
+              <Renderer {...renderArgs} />
+            </ScrollManager>
+          )
+        },
       })
 
       const ClientApp = () => {

@@ -11,6 +11,10 @@ interface ReadMoreWrapperState {
   truncationHeight: number | string
 }
 
+/**
+ * @deprecated in favor of our Design System ReadMore component in @artsy/palette
+ * https://palette.artsy.net/elements/layout/readmore
+ */
 export class ReadMoreWrapper extends React.Component<
   ReadMoreWrapperProps,
   ReadMoreWrapperState

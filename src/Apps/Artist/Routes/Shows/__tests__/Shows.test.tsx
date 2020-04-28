@@ -1,28 +1,40 @@
 import { ShowsRouteFragmentContainer as ShowsRoute } from "Apps/Artist/Routes/Shows"
-import { MockBoot } from "DevTools"
-import { mount, ReactWrapper } from "enzyme"
-import React from "react"
-import { Breakpoint } from "Utils/Responsive"
+import { MockBoot, renderRelayTree } from "DevTools"
 
 import { ShowsFixture } from "Apps/__tests__/Fixtures/Artist/Routes/ShowsFixture"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
+import { ReactWrapper } from "enzyme"
+import React from "react"
+import { graphql } from "react-relay"
+import { Breakpoint } from "Utils/Responsive"
+
+jest.unmock("react-relay")
 
 describe("Shows Route", () => {
   let wrapper: ReactWrapper
 
-  const getWrapper = (breakpoint: Breakpoint = "xl") => {
-    return mount(
-      <RelayStubProvider>
-        <MockBoot breakpoint={breakpoint}>
-          <ShowsRoute viewer={ShowsFixture as any} />
-        </MockBoot>
-      </RelayStubProvider>
-    )
+  const getWrapper = async (breakpoint: Breakpoint = "xl") => {
+    return await renderRelayTree({
+      Component: ShowsRoute,
+      query: graphql`
+        query Shows_Test_Query($artistID: String!) @raw_response_type {
+          viewer {
+            ...Shows_viewer
+          }
+        }
+      `,
+      mockData: ShowsFixture,
+      variables: {
+        artistID: "pablo-picasso",
+      },
+      wrapper: children => (
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
+      ),
+    })
   }
 
   describe("general behavior", () => {
-    beforeAll(() => {
-      wrapper = getWrapper()
+    beforeAll(async () => {
+      wrapper = await getWrapper()
     })
 
     it("renders proper components", () => {

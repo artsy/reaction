@@ -1,6 +1,6 @@
 import * as React from "react"
 import {
-  createFragmentContainer,
+  createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
@@ -18,24 +18,34 @@ import TotalCount from "../ArtworkFilter/TotalCount"
 import BorderedPulldown from "../BorderedPulldown"
 
 import { GeneArtworks_gene } from "__generated__/GeneArtworks_gene.graphql"
-import GeneArtworksContent from "./GeneArtworksContent"
-
-interface Filters {
-  for_sale?: boolean
-  dimension_range?: string
-  price_range?: string
-  medium?: string
-}
+import { Mediator } from "Artsy"
+import ArtworkGrid from "Components/ArtworkGrid"
+import { Filters } from "."
+import Spinner from "../Spinner"
 
 interface Props extends Filters {
-  relay: RelayPaginationProp
   gene: GeneArtworks_gene
   onDropdownSelected: (slice: string, value: string) => void
   onSortSelected: (sort: string) => void
   onForSaleToggleSelected: () => void
   onArtistModeToggleSelected: () => void
   sort?: string
+  relay: RelayPaginationProp
+  mediator: Mediator
 }
+
+interface State {
+  loading: boolean
+  page: number
+}
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
+
+const PageSize = 10
 
 const FilterBar = styled.div`
   vertical-align: middle;
@@ -62,15 +72,59 @@ const ArtistFilterButtons = styled.div`
   }
 `
 
-export class GeneArtworks extends React.Component<Props, null> {
+export class GeneArtworks extends React.Component<Props, State> {
+  private finishedPaginatingWithError = false
+
+  state = {
+    loading: false,
+    page: 1,
+  }
+
+  loadMoreArtworks() {
+    const hasMore = this.props.gene.filtered_artworks.pageInfo.hasNextPage
+    const origLength = this.props.gene.filtered_artworks.edges.length
+    if (hasMore && !this.state.loading && !this.finishedPaginatingWithError) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.loadMore(PageSize, error => {
+          if (error) {
+            console.error(error)
+          }
+          // Check to see if we're at the max allowable page.
+          const { page } = this.state
+          if (page > 100) {
+            console.error(`Finished paging: ${this.props.gene.slug}`)
+            this.finishedPaginatingWithError = true
+          }
+          // Check to see if no new edges were received.
+          const newLength = this.props.gene.filtered_artworks.edges.length
+          const newHasMore = this.props.gene.filtered_artworks.pageInfo
+            .hasNextPage
+          if (newLength - origLength === 0 && newHasMore) {
+            console.error(
+              `No more records returned for gene: ${this.props.gene.slug}`
+            )
+            this.finishedPaginatingWithError = true
+          }
+          this.setState({ loading: false, page: page + 1 })
+        })
+      })
+    }
+  }
+
   renderDropdown() {
+    const getSelected = slice => {
+      if (slice === "price_range") return "priceRange"
+      if (slice === "dimension_range") return "dimensionRange"
+      return slice
+    }
     return this.props.gene.filtered_artworks.aggregations.map(aggregation => {
       return (
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
           selected={
-            aggregation.slice && this.props[aggregation.slice.toLowerCase()]
+            aggregation.slice &&
+            this.props[getSelected(aggregation.slice.toLowerCase())]
           }
           onSelected={this.props.onDropdownSelected}
         />
@@ -96,7 +150,7 @@ export class GeneArtworks extends React.Component<Props, null> {
   renderForSaleToggle() {
     return (
       <ForSaleCheckbox
-        checked={this.props.for_sale}
+        checked={this.props.forSale}
         onChange={this.props.onForSaleToggleSelected}
       />
     )
@@ -117,9 +171,9 @@ export class GeneArtworks extends React.Component<Props, null> {
           <div>
             <Headline
               medium={this.props.medium}
-              price_range={this.props.price_range}
-              dimension_range={this.props.dimension_range}
-              for_sale={this.props.for_sale}
+              priceRange={this.props.priceRange}
+              dimensionRange={this.props.dimensionRange}
+              forSale={this.props.forSale}
               facet={this.props.gene.filtered_artworks.facet}
               aggregations={this.props.gene.filtered_artworks.aggregations}
             />
@@ -132,10 +186,18 @@ export class GeneArtworks extends React.Component<Props, null> {
             onChange={this.props.onSortSelected}
           />
         </SubFilterBar>
-        <GeneArtworksContent
-          geneID={this.props.gene.id}
-          filtered_artworks={this.props.gene.filtered_artworks}
-        />
+        <div>
+          <ArtworkGrid
+            artworks={this.props.gene.filtered_artworks as any}
+            columnCount={4}
+            itemMargin={40}
+            onLoadMore={() => this.loadMoreArtworks()}
+            mediator={this.props.mediator}
+          />
+          <SpinnerContainer>
+            {this.state.loading ? <Spinner /> : ""}
+          </SpinnerContainer>
+        </div>
       </div>
     )
   }
@@ -154,43 +216,109 @@ export class GeneArtworks extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(GeneArtworks, {
-  gene: graphql`
-    fragment GeneArtworks_gene on Gene
-      @argumentDefinitions(
-        for_sale: { type: "Boolean" }
-        medium: { type: "String", defaultValue: "*" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
-        }
-        price_range: { type: "String", defaultValue: "*" }
-        dimension_range: { type: "String", defaultValue: "*" }
-      ) {
-      id
-      filtered_artworks(
-        aggregations: $aggregations
-        for_sale: $for_sale
-        medium: $medium
-        price_range: $price_range
-        dimension_range: $dimension_range
-        size: 0
-        include_medium_filter_in_aggregation: true
-      ) {
-        ...TotalCount_filter_artworks
-        ...GeneArtworksContent_filtered_artworks
-        aggregations {
-          slice
-          counts {
-            name
-            id
+export default createPaginationContainer(
+  GeneArtworks,
+  {
+    gene: graphql`
+      fragment GeneArtworks_gene on Gene
+        @argumentDefinitions(
+          forSale: { type: "Boolean" }
+          medium: { type: "String", defaultValue: "*" }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
           }
-          ...Dropdown_aggregation
-        }
-        facet {
-          ...Headline_facet
+          priceRange: { type: "String", defaultValue: "*" }
+          dimensionRange: { type: "String", defaultValue: "*" }
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+        ) {
+        slug
+        filtered_artworks: filterArtworksConnection(
+          aggregations: $aggregations
+          forSale: $forSale
+          medium: $medium
+          priceRange: $priceRange
+          dimensionRange: $dimensionRange
+          includeMediumFilterInAggregation: true
+          first: $count
+          after: $cursor
+          sort: $sort
+        ) @connection(key: "GeneArtworks_filtered_artworks") {
+          ...TotalCount_filter_artworks
+          aggregations {
+            slice
+            counts {
+              name
+              value
+            }
+            ...Dropdown_aggregation
+          }
+          id
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          ...ArtworkGrid_artworks
+
+          edges {
+            node {
+              id
+            }
+          }
+          facet {
+            ...Headline_facet
+          }
         }
       }
-    }
-  `,
-})
+    `,
+  },
+  {
+    direction: "forward",
+    getConnectionFromProps(props) {
+      return props.gene.filtered_artworks
+    },
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      }
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      return {
+        // in most cases, for variables other than connection filters like
+        // `first`, `after`, etc. you may want to use the previous values.
+        ...fragmentVariables,
+        count,
+        cursor,
+        geneID: props.gene.slug,
+      }
+    },
+    query: graphql`
+      query GeneArtworksPaginationQuery(
+        $geneID: String!
+        $count: Int!
+        $cursor: String
+        $sort: String
+        $priceRange: String
+        $dimensionRange: String
+        $medium: String
+        $forSale: Boolean
+      ) {
+        gene(id: $geneID) {
+          ...GeneArtworks_gene
+            @arguments(
+              count: $count
+              cursor: $cursor
+              sort: $sort
+              priceRange: $priceRange
+              dimensionRange: $dimensionRange
+              medium: $medium
+              forSale: $forSale
+            )
+        }
+      }
+    `,
+  }
+)

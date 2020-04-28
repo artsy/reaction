@@ -1,6 +1,7 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
-import { Lightbox } from "Components/v2"
-import { BaseCarousel as Carousel } from "Components/v2/Carousel"
+import { BaseCarousel as Carousel } from "Components/Carousel"
+import { Lightbox } from "Components/Lightbox"
+import FlickityType from "flickity"
 import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -10,7 +11,7 @@ import { Box, ChevronIcon, Col, color, Flex, space } from "@artsy/palette"
 interface ArtworkBrowserProps {
   imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
-  setCarouselRef: (carouselRef: Carousel) => void
+  setCarouselRef: (carouselRef: FlickityType) => void
 }
 
 type Image = ArtworkBrowserProps["images"][number]
@@ -48,20 +49,26 @@ export class LargeArtworkImageBrowser extends React.Component<
       lazyLoad: true,
     }
 
+    // The maxHeight was added in order to fix how Google bot renders the page
     return (
-      <Container>
+      <Container key={Math.random()}>
         <Carousel
           showArrows={hasMultipleImages}
           options={options}
           oneSlideVisible
-          height="60vh"
+          height="auto"
           setCarouselRef={setCarouselRef}
           data={carouselImages}
           renderLeftArrow={({ flickity }) => (
             <Col sm={1}>
               <ArrowButton
                 direction="left"
-                onClick={() => flickity.previous(false, true)}
+                onClick={() => {
+                  // FIXME: Flickity.prototype.previous typing is missing second
+                  // `isInstant` method.
+                  // @ts-ignore
+                  flickity.previous(false, true)
+                }}
               />
             </Col>
           )}
@@ -69,10 +76,16 @@ export class LargeArtworkImageBrowser extends React.Component<
             <Col sm={1}>
               <ArrowButton
                 direction="right"
-                onClick={() => flickity.next(false, true)}
+                onClick={() => {
+                  // FIXME: Flickity.prototype.next typing is missing second
+                  // `isInstant` method.
+                  // @ts-ignore
+                  flickity.next(false, true)
+                }}
               />
             </Col>
           )}
+          // maxHeight is needed for google search indexing
           render={(image: Image) => {
             return (
               <Flex
@@ -81,6 +94,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                 width="100%"
                 px={hasMultipleImages ? [2, 2, 0] : 0}
                 height="60vh"
+                maxHeight="2000px"
               >
                 <Lightbox
                   imageAlt={imageAlt}
@@ -89,6 +103,7 @@ export class LargeArtworkImageBrowser extends React.Component<
                   isDefault={image.is_default}
                   src={image.uri}
                   initialHeight="60vh"
+                  maxHeight="2000px"
                 />
               </Flex>
             )
@@ -115,8 +130,10 @@ export class SmallArtworkImageBrowser extends React.Component<
       groupCells: 1,
       pageDots: hasMultipleImages,
     }
+
+    // The maxHeight was added in order to fix how Google bot renders the page
     return (
-      <Container>
+      <Container key={Math.random()}>
         <Carousel
           options={options}
           data={carouselImages}
@@ -136,6 +153,7 @@ export class SmallArtworkImageBrowser extends React.Component<
                   enabled={image.is_zoomable}
                   isDefault={image.is_default}
                   src={image.uri}
+                  maxHeight="2000px"
                   initialHeight="45vh"
                 />
               </Flex>

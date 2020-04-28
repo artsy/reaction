@@ -1,8 +1,8 @@
+import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import * as Artsy from "Artsy"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import { extend, isNull } from "lodash"
 import React from "react"
 import {
@@ -14,7 +14,7 @@ import {
 import { TrackingProp } from "react-tracking"
 import * as RelayRuntimeTypes from "relay-runtime"
 import styled from "styled-components"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 import colors from "../../Assets/Colors"
 import Icon from "../Icon"
 
@@ -28,6 +28,7 @@ export interface SaveProps
   extends Artsy.SystemContextProps,
     React.HTMLProps<React.ComponentType> {
   artwork: Save_artwork
+  contextModule: AuthContextModule
   style?: any
   relay?: RelayProp
   relayEnvironment?: RelayRuntimeTypes.Environment
@@ -62,13 +63,13 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
   trackSave = () => {
     const {
       tracking,
-      artwork: { is_saved, id, _id },
+      artwork: { is_saved, slug, internalID },
     } = this.props
     const trackingData: SaveTrackingProps = this.props.trackingData || {}
     const action = is_saved ? "Removed Artwork" : "Saved Artwork"
     const entityInfo = {
-      entity_slug: id,
-      entity_id: _id,
+      entity_slug: slug,
+      entity_id: internalID,
     }
 
     if (tracking) {
@@ -82,28 +83,29 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
 
     if (environment && user && user.id) {
       commitMutation<SaveArtworkMutation>(environment, {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation SaveArtworkMutation($input: SaveArtworkInput!) {
             saveArtwork(input: $input) {
               artwork {
-                __id
                 id
-                is_saved
+                slug
+                is_saved: isSaved
               }
             }
           }
         `,
         variables: {
           input: {
-            artwork_id: artwork.id,
+            artworkID: artwork.internalID,
             remove: this.isSaved,
           },
         },
         optimisticResponse: {
           saveArtwork: {
             artwork: {
-              __id: artwork.__id,
               id: artwork.id,
+              slug: artwork.slug,
               is_saved: !this.isSaved,
             },
           },
@@ -128,13 +130,13 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
       })
       this.trackSave()
     } else {
-      openAuthModal(this.props.mediator, {
-        contextModule: Schema.ContextModule.ArtworkPage,
+      openAuthToFollowSave(this.props.mediator, {
+        contextModule: this.props.contextModule,
         entity: {
-          id: this.props.artwork.id,
+          slug: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
-        intent: AuthModalIntent.SaveArtwork,
+        intent: AuthIntent.saveArtwork,
       })
     }
   }
@@ -165,6 +167,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
 
     return (
       <div
+        data-test="saveButton"
         className={this.props.className}
         style={fullStyle}
         {...this.mixinButtonActions()}
@@ -226,10 +229,10 @@ export const Container = styled.div`
 export default createFragmentContainer(Artsy.withSystemContext(SaveButton), {
   artwork: graphql`
     fragment Save_artwork on Artwork {
-      __id
-      _id
       id
-      is_saved
+      internalID
+      slug
+      is_saved: isSaved
       title
     }
   `,

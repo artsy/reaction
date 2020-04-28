@@ -1,65 +1,74 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSidebarSizeInfo_piece$ref } from "./ArtworkSidebarSizeInfo_piece.graphql";
-declare const _ArtworkSidebarCommercial_artwork$ref: unique symbol;
-export type ArtworkSidebarCommercial_artwork$ref = typeof _ArtworkSidebarCommercial_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarCommercial_artwork = {
-    readonly id: string;
-    readonly _id: string;
+    readonly slug: string;
+    readonly internalID: string;
+    readonly is_for_sale: boolean | null;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
     readonly is_offerable: boolean | null;
-    readonly price: string | null;
+    readonly listPrice: {
+        readonly display?: string | null;
+    } | null;
+    readonly priceIncludesTaxDisplay: string | null;
     readonly sale_message: string | null;
     readonly shippingInfo: string | null;
     readonly shippingOrigin: string | null;
-    readonly edition_sets: ReadonlyArray<({
+    readonly edition_sets: ReadonlyArray<{
+        readonly internalID: string;
         readonly id: string;
-        readonly __id: string;
         readonly is_acquireable: boolean | null;
         readonly is_offerable: boolean | null;
         readonly sale_message: string | null;
-        readonly " $fragmentRefs": ArtworkSidebarSizeInfo_piece$ref;
-    }) | null> | null;
-    readonly " $refType": ArtworkSidebarCommercial_artwork$ref;
+        readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarSizeInfo_piece">;
+    } | null> | null;
+    readonly " $refType": "ArtworkSidebarCommercial_artwork";
+};
+export type ArtworkSidebarCommercial_artwork$data = ArtworkSidebarCommercial_artwork;
+export type ArtworkSidebarCommercial_artwork$key = {
+    readonly " $data"?: ArtworkSidebarCommercial_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarCommercial_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v1 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "is_acquireable",
+  "alias": "is_acquireable",
+  "name": "isAcquireable",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "is_offerable",
+  "alias": "is_offerable",
+  "name": "isOfferable",
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "sale_message",
-  "args": null,
-  "storageKey": null
-},
+v3 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "display",
+    "args": null,
+    "storageKey": null
+  }
+],
 v4 = {
   "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "alias": "sale_message",
+  "name": "saleMessage",
   "args": null,
   "storageKey": null
 };
@@ -73,28 +82,56 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "price",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
-    v0,
-    v1,
+    (v0/*: any*/),
+    {
+      "kind": "ScalarField",
+      "alias": "is_for_sale",
+      "name": "isForSale",
+      "args": null,
+      "storageKey": null
+    },
+    (v1/*: any*/),
+    {
+      "kind": "ScalarField",
+      "alias": "is_inquireable",
+      "name": "isInquireable",
+      "args": null,
+      "storageKey": null
+    },
+    (v2/*: any*/),
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "listPrice",
+      "storageKey": null,
+      "args": null,
+      "concreteType": null,
+      "plural": false,
+      "selections": [
+        {
+          "kind": "InlineFragment",
+          "type": "PriceRange",
+          "selections": (v3/*: any*/)
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "Money",
+          "selections": (v3/*: any*/)
+        }
+      ]
+    },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_inquireable",
+      "name": "priceIncludesTaxDisplay",
       "args": null,
       "storageKey": null
     },
-    v2,
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
-      "args": null,
-      "storageKey": null
-    },
-    v3,
+    (v4/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
@@ -111,28 +148,33 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "edition_sets",
+      "alias": "edition_sets",
+      "name": "editionSets",
       "storageKey": null,
       "args": null,
       "concreteType": "EditionSet",
       "plural": true,
       "selections": [
-        v0,
-        v4,
-        v1,
-        v2,
-        v3,
+        (v0/*: any*/),
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null
+        },
+        (v1/*: any*/),
+        (v2/*: any*/),
+        (v4/*: any*/),
         {
           "kind": "FragmentSpread",
           "name": "ArtworkSidebarSizeInfo_piece",
           "args": null
         }
       ]
-    },
-    v4
+    }
   ]
 };
 })();
-(node as any).hash = 'c26a481dd5578776811cf868f1eead42';
+(node as any).hash = '4b27f5f48c80ad681cc7752ca8fe9638';
 export default node;

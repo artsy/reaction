@@ -1,5 +1,7 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
 import * as Artsy from "Artsy"
+import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import { extend } from "lodash"
 import React from "react"
 import {
@@ -20,7 +22,7 @@ interface Props
   gene?: FollowGeneButton_gene
   tracking?: TrackingProp
   trackingData?: FollowTrackingData
-  onOpenAuthModal?: (type: "register" | "login", config?: object) => void
+  onOpenAuthModal?: (type: ModalType, config?: ModalOptions) => void
 }
 
 export class FollowGeneButton extends React.Component<Props> {
@@ -37,6 +39,7 @@ export class FollowGeneButton extends React.Component<Props> {
 
   handleFollow = () => {
     const { gene, user, relay, onOpenAuthModal } = this.props
+    const trackingData: FollowTrackingData = this.props.trackingData || {}
 
     if (user && user.id) {
       commitMutation<FollowGeneButtonMutation>(relay.environment, {
@@ -44,21 +47,21 @@ export class FollowGeneButton extends React.Component<Props> {
           mutation FollowGeneButtonMutation($input: FollowGeneInput!) {
             followGene(input: $input) {
               gene {
-                __id
-                is_followed
+                id
+                is_followed: isFollowed
               }
             }
           }
         `,
         variables: {
           input: {
-            gene_id: gene.id,
+            geneID: gene.internalID,
           },
         },
         optimisticResponse: {
           followGene: {
             gene: {
-              __id: gene.__id,
+              id: gene.id,
               is_followed: !gene.is_followed,
             },
           },
@@ -67,10 +70,15 @@ export class FollowGeneButton extends React.Component<Props> {
       this.trackFollow()
     } else {
       onOpenAuthModal &&
-        onOpenAuthModal("register", {
-          contextModule: "intext tooltip",
-          intent: "follow gene",
+        onOpenAuthModal(ModalType.signup, {
+          contextModule: ContextModule.intextTooltip,
+          intent: AuthIntent.followGene,
           copy: "Sign up to follow categories",
+          afterSignUpAction: {
+            action: "follow",
+            kind: "gene",
+            objectId: (gene && gene.internalID) || trackingData.entity_slug,
+          },
         })
     }
   }
@@ -91,9 +99,9 @@ export const FollowGeneButtonFragmentContainer = track({})(
   createFragmentContainer(Artsy.withSystemContext(FollowGeneButton), {
     gene: graphql`
       fragment FollowGeneButton_gene on Gene {
-        __id
         id
-        is_followed
+        internalID
+        is_followed: isFollowed
       }
     `,
   })

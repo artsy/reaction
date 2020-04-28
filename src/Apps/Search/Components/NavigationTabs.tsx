@@ -2,7 +2,7 @@ import { Flex, Sans } from "@artsy/palette"
 import { NavigationTabs_searchableConnection } from "__generated__/NavigationTabs_searchableConnection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { RouteTab, TabCarousel } from "Components/v2"
+import { RouteTab, TabCarousel } from "Components/RouteTabs"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
@@ -13,7 +13,7 @@ export interface Props {
   artworkCount: number
 }
 
-const MORE_TABS = ["tag", "city", "feature"]
+const MORE_TABS = ["tag", "city", "feature", "page"]
 
 const TAB_NAME_MAP = {
   artist: "Artists",
@@ -38,7 +38,11 @@ export class NavigationTabs extends React.Component<Props> {
     destination_path,
   }))
   trackClick(tab: string, destination_path: string) {
-    // no-op
+    // noop
+  }
+
+  shouldComponentUpdate = prevProps => {
+    return this.props.term !== prevProps.term
   }
 
   renderTab = (
@@ -60,7 +64,7 @@ export class NavigationTabs extends React.Component<Props> {
         }}
         key={to}
       >
-        <Flex>
+        <Flex mr={[0, 2]}>
           {text}
           {count != null && (
             <Sans ml={0.5} size="3t" weight="regular">
@@ -120,7 +124,10 @@ export class NavigationTabs extends React.Component<Props> {
   render() {
     return (
       <Flex mx={[-2, 0]}>
-        <TabCarousel tabs={this.tabs()} />
+        <TabCarousel
+          key={`tab-carousel-${this.props.term}`}
+          tabs={this.tabs()}
+        />
       </Flex>
     )
   }

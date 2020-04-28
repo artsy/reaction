@@ -57,7 +57,9 @@ describe("Sticky footer", () => {
 
     expect(mediatorMock.trigger).toHaveBeenCalledWith(
       "openOrdersContactArtsyModal",
-      { artworkId: "whatever" }
+      {
+        artworkId: "whatever",
+      }
     )
   })
 

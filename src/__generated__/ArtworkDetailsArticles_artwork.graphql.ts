@@ -1,36 +1,32 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkDetailsArticles_artwork$ref: unique symbol;
-export type ArtworkDetailsArticles_artwork$ref = typeof _ArtworkDetailsArticles_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkDetailsArticles_artwork = {
-    readonly articles: ReadonlyArray<({
-        readonly author: ({
+    readonly articles: ReadonlyArray<{
+        readonly author: {
             readonly name: string | null;
-        }) | null;
+        } | null;
         readonly href: string | null;
         readonly published_at: string | null;
-        readonly thumbnail_image: ({
-            readonly resized: ({
+        readonly thumbnail_image: {
+            readonly resized: {
                 readonly url: string | null;
-            }) | null;
-        }) | null;
+            } | null;
+        } | null;
         readonly thumbnail_title: string | null;
-    }) | null> | null;
-    readonly " $refType": ArtworkDetailsArticles_artwork$ref;
+    } | null> | null;
+    readonly " $refType": "ArtworkDetailsArticles_artwork";
+};
+export type ArtworkDetailsArticles_artwork$data = ArtworkDetailsArticles_artwork;
+export type ArtworkDetailsArticles_artwork$key = {
+    readonly " $data"?: ArtworkDetailsArticles_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkDetailsArticles_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkDetailsArticles_artwork",
   "type": "Artwork",
@@ -46,8 +42,7 @@ return {
         {
           "kind": "Literal",
           "name": "size",
-          "value": 10,
-          "type": "Int"
+          "value": 10
         }
       ],
       "concreteType": "Article",
@@ -68,8 +63,7 @@ return {
               "name": "name",
               "args": null,
               "storageKey": null
-            },
-            v0
+            }
           ]
         },
         {
@@ -81,22 +75,21 @@ return {
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "published_at",
+          "alias": "published_at",
+          "name": "publishedAt",
           "args": [
             {
               "kind": "Literal",
               "name": "format",
-              "value": "MMM Do, YYYY",
-              "type": "String"
+              "value": "MMM Do, YYYY"
             }
           ],
-          "storageKey": "published_at(format:\"MMM Do, YYYY\")"
+          "storageKey": "publishedAt(format:\"MMM Do, YYYY\")"
         },
         {
           "kind": "LinkedField",
-          "alias": null,
-          "name": "thumbnail_image",
+          "alias": "thumbnail_image",
+          "name": "thumbnailImage",
           "storageKey": null,
           "args": null,
           "concreteType": "Image",
@@ -111,8 +104,7 @@ return {
                 {
                   "kind": "Literal",
                   "name": "width",
-                  "value": 300,
-                  "type": "Int"
+                  "value": 300
                 }
               ],
               "concreteType": "ResizedImageUrl",
@@ -126,29 +118,19 @@ return {
                   "storageKey": null
                 }
               ]
-            },
-            {
-              "kind": "ScalarField",
-              "alias": "__id",
-              "name": "id",
-              "args": null,
-              "storageKey": null
             }
           ]
         },
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "thumbnail_title",
+          "alias": "thumbnail_title",
+          "name": "thumbnailTitle",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = 'a82766a04154e8b1f4c8d6938e7863d2';
+(node as any).hash = '07fa06d932146874a0ac580620a5cdf9';
 export default node;

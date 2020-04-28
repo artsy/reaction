@@ -1,9 +1,10 @@
 import { LosingBidIcon, WinningBidIcon } from "@artsy/palette"
+import { ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse } from "__generated__/ArtworkSidebarCurrentBidInfo_Test_Query.graphql"
 import {
   AuctionPreview,
   AuctionPreviewNoStartingBid,
   ClosedAuctionArtwork,
-  LiveAuctionInProgeress,
+  LiveAuctionInProgress,
   OpenAuctionNoReserveNoBids,
   OpenAuctionNoReserveWithBids,
   OpenAuctionReserveMetWithBids,
@@ -20,19 +21,21 @@ import { graphql } from "react-relay"
 jest.unmock("react-relay")
 
 describe("ArtworkSidebarCurrentBidInfo", () => {
-  const getWrapper = async response => {
+  const getWrapper = async (
+    response: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"]
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarCurrentBidInfoFragmentContainer,
       query: graphql`
-        query ArtworkSidebarCurrentBidInfo_Test_Query {
+        query ArtworkSidebarCurrentBidInfo_Test_Query @raw_response_type {
           artwork(id: "auction_artwork_estimate_premium") {
             ...ArtworkSidebarCurrentBidInfo_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse,
     })
   }
 
@@ -46,7 +49,7 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
 
   describe("for live sale in progress", () => {
     it("does not display anything", async () => {
-      const wrapper = await getWrapper(LiveAuctionInProgeress)
+      const wrapper = await getWrapper(LiveAuctionInProgress)
 
       expect(wrapper.html()).toBe(null)
     })
@@ -123,6 +126,15 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
 
       expect(wrapper.text()).toContain("Your max: $15,000")
       expect(wrapper.find(WinningBidIcon).length).toBe(1)
+    })
+
+    it("displays buyer's premium information", async () => {
+      const wrapper = await getWrapper(OpenAuctionReserveMetWithMyWinningBid)
+
+      expect(wrapper.text()).toContain("This auction has a buyer's premium.")
+      expect(wrapper.text()).toContain(
+        "Shipping, taxes, and additional fees may apply."
+      )
     })
   })
 

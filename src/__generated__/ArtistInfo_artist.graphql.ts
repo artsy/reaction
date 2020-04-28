@@ -1,72 +1,64 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistBio_bio$ref } from "./ArtistBio_bio.graphql";
-import { ArtistMarketInsights_artist$ref } from "./ArtistMarketInsights_artist.graphql";
-import { FollowArtistButton_artist$ref } from "./FollowArtistButton_artist.graphql";
-import { SelectedExhibitions_exhibitions$ref } from "./SelectedExhibitions_exhibitions.graphql";
-declare const _ArtistInfo_artist$ref: unique symbol;
-export type ArtistInfo_artist$ref = typeof _ArtistInfo_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistInfo_artist = {
-    readonly _id: string;
-    readonly id: string;
+    readonly internalID: string;
+    readonly slug: string;
     readonly name: string | null;
     readonly href: string | null;
-    readonly image: ({
-        readonly cropped: ({
+    readonly image: {
+        readonly cropped: {
             readonly url: string | null;
-        }) | null;
-    }) | null;
+        } | null;
+    } | null;
     readonly formatted_nationality_and_birthday: string | null;
-    readonly counts: ({
-        readonly partner_shows: any | null;
-    }) | null;
-    readonly exhibition_highlights: ReadonlyArray<({
-        readonly " $fragmentRefs": SelectedExhibitions_exhibitions$ref;
-    }) | null> | null;
+    readonly counts: {
+        readonly partner_shows: number | null;
+    } | null;
+    readonly exhibition_highlights: ReadonlyArray<{
+        readonly " $fragmentRefs": FragmentRefs<"SelectedExhibitions_exhibitions">;
+    } | null> | null;
     readonly collections: ReadonlyArray<string | null> | null;
-    readonly highlights: ({
-        readonly partners: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
+    readonly highlights: {
+        readonly partnersConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
                     readonly __typename: string;
-                }) | null;
-            }) | null> | null;
-        }) | null;
-    }) | null;
-    readonly auctionResults: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+                } | null;
+            } | null> | null;
+        } | null;
+    } | null;
+    readonly auctionResultsConnection: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly __typename: string;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly biography_blurb: ({
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly biographyBlurb: {
         readonly text: string | null;
-    }) | null;
-    readonly " $fragmentRefs": ArtistBio_bio$ref & ArtistMarketInsights_artist$ref & FollowArtistButton_artist$ref;
-    readonly " $refType": ArtistInfo_artist$ref;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistBio_bio" | "ArtistMarketInsights_artist" | "FollowArtistButton_artist">;
+    readonly " $refType": "ArtistInfo_artist";
+};
+export type ArtistInfo_artist$data = ArtistInfo_artist;
+export type ArtistInfo_artist$key = {
+    readonly " $data"?: ArtistInfo_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistInfo_artist">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+const node: ReaderFragment = (function(){
+var v0 = [
   {
     "kind": "ScalarField",
     "alias": null,
     "name": "__typename",
     "args": null,
     "storageKey": null
-  },
-  v0
+  }
 ];
 return {
   "kind": "Fragment",
@@ -76,7 +68,7 @@ return {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "partner_category",
+      "name": "partnerCategory",
       "type": "[String]",
       "defaultValue": [
         "blue-chip",
@@ -89,14 +81,14 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "collections",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -132,14 +124,12 @@ return {
             {
               "kind": "Literal",
               "name": "height",
-              "value": 100,
-              "type": "Int!"
+              "value": 100
             },
             {
               "kind": "Literal",
               "name": "width",
-              "value": 100,
-              "type": "Int!"
+              "value": 100
             }
           ],
           "concreteType": "CroppedImageUrl",
@@ -153,20 +143,13 @@ return {
               "storageKey": null
             }
           ]
-        },
-        {
-          "kind": "ScalarField",
-          "alias": "__id",
-          "name": "id",
-          "args": null,
-          "storageKey": null
         }
       ]
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "formatted_nationality_and_birthday",
+      "alias": "formatted_nationality_and_birthday",
+      "name": "formattedNationalityAndBirthday",
       "args": null,
       "storageKey": null
     },
@@ -181,8 +164,8 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "partner_shows",
+          "alias": "partner_shows",
+          "name": "partnerShows",
           "args": null,
           "storageKey": null
         }
@@ -190,15 +173,14 @@ return {
     },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "exhibition_highlights",
-      "storageKey": "exhibition_highlights(size:3)",
+      "alias": "exhibition_highlights",
+      "name": "exhibitionHighlights",
+      "storageKey": "exhibitionHighlights(size:3)",
       "args": [
         {
           "kind": "Literal",
           "name": "size",
-          "value": 3,
-          "type": "Int"
+          "value": 3
         }
       ],
       "concreteType": "Show",
@@ -208,14 +190,13 @@ return {
           "kind": "FragmentSpread",
           "name": "SelectedExhibitions_exhibitions",
           "args": null
-        },
-        v0
+        }
       ]
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "collections",
       "args": null,
       "storageKey": null
     },
@@ -231,32 +212,28 @@ return {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "partners",
+          "name": "partnersConnection",
           "storageKey": null,
           "args": [
             {
               "kind": "Literal",
-              "name": "display_on_partner_profile",
-              "value": true,
-              "type": "Boolean"
+              "name": "displayOnPartnerProfile",
+              "value": true
             },
             {
               "kind": "Literal",
               "name": "first",
-              "value": 10,
-              "type": "Int"
+              "value": 10
             },
             {
               "kind": "Variable",
-              "name": "partner_category",
-              "variableName": "partner_category",
-              "type": "[String]"
+              "name": "partnerCategory",
+              "variableName": "partnerCategory"
             },
             {
               "kind": "Literal",
-              "name": "represented_by",
-              "value": true,
-              "type": "Boolean"
+              "name": "representedBy",
+              "value": true
             }
           ],
           "concreteType": "PartnerArtistConnection",
@@ -279,9 +256,8 @@ return {
                   "args": null,
                   "concreteType": "Partner",
                   "plural": false,
-                  "selections": v1
-                },
-                v0
+                  "selections": (v0/*: any*/)
+                }
               ]
             }
           ]
@@ -291,26 +267,23 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "auctionResults",
-      "storageKey": "auctionResults(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
+      "name": "auctionResultsConnection",
+      "storageKey": "auctionResultsConnection(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
-          "value": 1,
-          "type": "Int"
+          "value": 1
         },
         {
           "kind": "Literal",
           "name": "recordsTrusted",
-          "value": true,
-          "type": "Boolean"
+          "value": true
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "PRICE_AND_DATE_DESC",
-          "type": "AuctionResultSorts"
+          "value": "PRICE_AND_DATE_DESC"
         }
       ],
       "concreteType": "AuctionResultConnection",
@@ -333,9 +306,38 @@ return {
               "args": null,
               "concreteType": "AuctionResult",
               "plural": false,
-              "selections": v1
+              "selections": (v0/*: any*/)
             }
           ]
+        }
+      ]
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "biographyBlurb",
+      "storageKey": "biographyBlurb(format:\"HTML\",partnerBio:true)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "HTML"
+        },
+        {
+          "kind": "Literal",
+          "name": "partnerBio",
+          "value": true
+        }
+      ],
+      "concreteType": "ArtistBlurb",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "text",
+          "args": null,
+          "storageKey": null
         }
       ]
     },
@@ -353,41 +355,9 @@ return {
       "kind": "FragmentSpread",
       "name": "FollowArtistButton_artist",
       "args": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "biography_blurb",
-      "storageKey": "biography_blurb(format:\"HTML\",partner_bio:true)",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "format",
-          "value": "HTML",
-          "type": "Format"
-        },
-        {
-          "kind": "Literal",
-          "name": "partner_bio",
-          "value": true,
-          "type": "Boolean"
-        }
-      ],
-      "concreteType": "ArtistBlurb",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "text",
-          "args": null,
-          "storageKey": null
-        }
-      ]
-    },
-    v0
+    }
   ]
 };
 })();
-(node as any).hash = '67fd2074bbedcb4a1adab1fe594b0edc';
+(node as any).hash = '18b724b8ae5e5b82b1181478cf151e78';
 export default node;

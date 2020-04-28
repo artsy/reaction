@@ -1,20 +1,24 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarSizeInfo_piece$ref: unique symbol;
-export type ArtworkSidebarSizeInfo_piece$ref = typeof _ArtworkSidebarSizeInfo_piece$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarSizeInfo_piece = {
-    readonly dimensions: ({
+    readonly dimensions: {
         readonly in: string | null;
         readonly cm: string | null;
-    }) | null;
+    } | null;
     readonly edition_of: string | null;
-    readonly " $refType": ArtworkSidebarSizeInfo_piece$ref;
+    readonly " $refType": "ArtworkSidebarSizeInfo_piece";
+};
+export type ArtworkSidebarSizeInfo_piece$data = ArtworkSidebarSizeInfo_piece;
+export type ArtworkSidebarSizeInfo_piece$key = {
+    readonly " $data"?: ArtworkSidebarSizeInfo_piece$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarSizeInfo_piece">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarSizeInfo_piece",
   "type": "Sellable",
@@ -48,19 +52,12 @@ const node: ConcreteFragment = {
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "edition_of",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
+      "alias": "edition_of",
+      "name": "editionOf",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '0b7abbfbf9eeaea9d739a6744e2c2403';
+(node as any).hash = '084d24d3f414c5839dbc469b7d8c1810';
 export default node;

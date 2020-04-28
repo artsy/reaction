@@ -1,40 +1,35 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistShows_artist$ref } from "./ArtistShows_artist.graphql";
-declare const _Shows_viewer$ref: unique symbol;
-export type Shows_viewer$ref = typeof _Shows_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Shows_viewer = {
-    readonly artist_currentShows: ({
-        readonly " $fragmentRefs": ArtistShows_artist$ref;
-    }) | null;
-    readonly artist_upcomingShows: ({
-        readonly " $fragmentRefs": ArtistShows_artist$ref;
-    }) | null;
-    readonly artist_pastShows: ({
-        readonly " $fragmentRefs": ArtistShows_artist$ref;
-    }) | null;
-    readonly " $refType": Shows_viewer$ref;
+    readonly artist_currentShows: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistShows_artist">;
+    } | null;
+    readonly artist_upcomingShows: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistShows_artist">;
+    } | null;
+    readonly artist_pastShows: {
+        readonly " $fragmentRefs": FragmentRefs<"ArtistShows_artist">;
+    } | null;
+    readonly " $refType": "Shows_viewer";
+};
+export type Shows_viewer$data = Shows_viewer;
+export type Shows_viewer$key = {
+    readonly " $data"?: Shows_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"Shows_viewer">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "artistID",
-    "type": "String!"
+    "variableName": "artistID"
   }
-],
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Fragment",
   "name": "Shows_viewer",
@@ -50,8 +45,8 @@ return {
     {
       "kind": "LocalArgument",
       "name": "currentShowsSort",
-      "type": "PartnerShowSorts",
-      "defaultValue": "end_at_asc"
+      "type": "ShowSorts",
+      "defaultValue": "END_AT_ASC"
     },
     {
       "kind": "LocalArgument",
@@ -62,8 +57,8 @@ return {
     {
       "kind": "LocalArgument",
       "name": "upcomingShowsSort",
-      "type": "PartnerShowSorts",
-      "defaultValue": "start_at_asc"
+      "type": "ShowSorts",
+      "defaultValue": "START_AT_ASC"
     },
     {
       "kind": "LocalArgument",
@@ -74,8 +69,8 @@ return {
     {
       "kind": "LocalArgument",
       "name": "pastShowsSort",
-      "type": "PartnerShowSorts",
-      "defaultValue": "end_at_desc"
+      "type": "ShowSorts",
+      "defaultValue": "END_AT_DESC"
     },
     {
       "kind": "RootArgument",
@@ -89,7 +84,7 @@ return {
       "alias": "artist_currentShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -100,18 +95,15 @@ return {
             {
               "kind": "Variable",
               "name": "sort",
-              "variableName": "currentShowsSort",
-              "type": null
+              "variableName": "currentShowsSort"
             },
             {
               "kind": "Variable",
               "name": "status",
-              "variableName": "currentShowsStatus",
-              "type": null
+              "variableName": "currentShowsStatus"
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -119,7 +111,7 @@ return {
       "alias": "artist_upcomingShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -130,18 +122,15 @@ return {
             {
               "kind": "Variable",
               "name": "sort",
-              "variableName": "upcomingShowsSort",
-              "type": null
+              "variableName": "upcomingShowsSort"
             },
             {
               "kind": "Variable",
               "name": "status",
-              "variableName": "upcomingShowsStatus",
-              "type": null
+              "variableName": "upcomingShowsStatus"
             }
           ]
-        },
-        v1
+        }
       ]
     },
     {
@@ -149,7 +138,7 @@ return {
       "alias": "artist_pastShows",
       "name": "artist",
       "storageKey": null,
-      "args": v0,
+      "args": (v0/*: any*/),
       "concreteType": "Artist",
       "plural": false,
       "selections": [
@@ -160,22 +149,19 @@ return {
             {
               "kind": "Variable",
               "name": "sort",
-              "variableName": "pastShowsSort",
-              "type": null
+              "variableName": "pastShowsSort"
             },
             {
               "kind": "Variable",
               "name": "status",
-              "variableName": "pastShowsStatus",
-              "type": null
+              "variableName": "pastShowsStatus"
             }
           ]
-        },
-        v1
+        }
       ]
     }
   ]
 };
 })();
-(node as any).hash = 'a5b24380340288a2abae7669e3103624';
+(node as any).hash = '88d732cfde2cab843c92b14811d5f43d';
 export default node;

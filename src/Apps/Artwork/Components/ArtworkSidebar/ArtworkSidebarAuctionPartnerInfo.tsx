@@ -1,4 +1,4 @@
-import { Box, Link, Serif } from "@artsy/palette"
+import { Box, Serif } from "@artsy/palette"
 import { SystemContextConsumer } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
@@ -21,14 +21,6 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
     subject: Schema.Subject.AuctionBuyerPremium,
     type: Schema.Type.Link,
   }))
-  onClickBuyerPremium(mediator) {
-    mediator &&
-      mediator.trigger &&
-      mediator.trigger("openAuctionBuyerPremium", {
-        auctionId: this.props.artwork.sale._id,
-      })
-  }
-
   render() {
     const { partner, sale_artwork, sale } = this.props.artwork
     if (sale.is_closed) {
@@ -48,15 +40,6 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
                 Estimated value: {sale_artwork.estimate}
               </Serif>
             )}
-            {sale && sale.is_with_buyers_premium && (
-              <Serif size="2" color="black60">
-                This work has a{" "}
-                <Link onClick={this.onClickBuyerPremium.bind(this, mediator)}>
-                  buyer's premium
-                </Link>
-                .
-              </Serif>
-            )}
           </Box>
         )}
       </SystemContextConsumer>
@@ -72,13 +55,12 @@ export const ArtworkSidebarAuctionPartnerInfoFragmentContainer = createFragmentC
         partner {
           name
         }
-        sale_artwork {
+        sale_artwork: saleArtwork {
           estimate
         }
         sale {
-          _id
-          is_closed
-          is_with_buyers_premium
+          internalID
+          is_closed: isClosed
         }
       }
     `,

@@ -1,17 +1,20 @@
+import { ImagesData } from "Components/Publishing/Typings"
 import { find } from "lodash"
 import React from "react"
 import sizeMe from "react-sizeme"
 import styled from "styled-components"
-import fillwidthDimensions from "../../../Utils/fillwidth"
+import fillwidthDimensions, {
+  FillWidthItemDimensions,
+} from "../../../Utils/fillwidth"
 import { pMedia } from "../../Helpers"
 import { SIZE_ME_REFRESH_RATE } from "../Constants"
 import { ArticleLayout, SectionLayout } from "../Typings"
 import { Artwork } from "./Artwork"
 import { Image } from "./Image"
 
-interface ImageCollectionProps {
+export interface ImageCollectionProps {
   color?: string
-  images: any
+  images: ImagesData
   targetHeight?: number
   gutter?: number
   sectionLayout?: SectionLayout
@@ -19,6 +22,7 @@ interface ImageCollectionProps {
   size?: {
     width: number
   }
+  fullscreenImages: ImagesData
 }
 
 class ImageCollectionComponent extends React.PureComponent<
@@ -31,7 +35,7 @@ class ImageCollectionComponent extends React.PureComponent<
     },
   }
 
-  renderImages(dimensions) {
+  renderImages(dimensions: FillWidthItemDimensions[]) {
     const {
       articleLayout,
       color,
@@ -39,6 +43,7 @@ class ImageCollectionComponent extends React.PureComponent<
       images,
       sectionLayout,
       size: { width },
+      fullscreenImages,
     } = this.props
 
     const renderedImages = images.map((image, i) => {
@@ -48,8 +53,14 @@ class ImageCollectionComponent extends React.PureComponent<
       if (width <= 600 || dimensions.length === 1) {
         imageSize = {}
       } else {
-        imageSize = find(dimensions, ["__id", url])
+        imageSize = find(dimensions, ["id", url])
       }
+
+      const slideshowIndex =
+        fullscreenImages &&
+        fullscreenImages.findIndex(img => {
+          return img.url === image.url
+        })
 
       let renderedImage
       if (image.type === "image") {
@@ -61,6 +72,7 @@ class ImageCollectionComponent extends React.PureComponent<
             layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
+            slideshowIndex={slideshowIndex}
           />
         )
       } else if (image.type === "artwork") {
@@ -72,6 +84,7 @@ class ImageCollectionComponent extends React.PureComponent<
             layout={articleLayout}
             width={imageSize.width}
             height={imageSize.height}
+            slideshowIndex={slideshowIndex}
           />
         )
       } else {
@@ -119,9 +132,20 @@ export const ImageCollectionItem = styled.div<{
 }>`
   margin-right: ${props => (props.margin ? props.margin + "px" : "0px")};
   width: ${props => (props.width ? props.width + "px" : "100%")};
+  max-width: 100%;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 
   ${pMedia.xs`
     margin-bottom: 10px;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
   `};
 `
 

@@ -22,7 +22,6 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics"
 import { Router } from "found"
@@ -62,7 +61,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   @track<OfferProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.FocusedOnOfferInput,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -71,7 +70,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   @track<OfferProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferTooLow,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -86,7 +85,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   }
 
   @track<OfferProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -102,27 +101,28 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   addInitialOfferToOrder(variables: OfferMutation["variables"]) {
     return this.props.commitMutation<OfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
-        mutation OfferMutation($input: AddInitialOfferToOrderInput!) {
-          ecommerceAddInitialOfferToOrder(input: $input) {
+        mutation OfferMutation($input: CommerceAddInitialOfferToOrderInput!) {
+          commerceAddInitialOfferToOrder(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 __typename
                 order {
-                  id
+                  internalID
                   mode
                   totalListPrice
                   totalListPriceCents
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     myLastOffer {
-                      id
+                      internalID
                       amountCents
                       note
                     }
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -183,23 +183,22 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
     }
 
     try {
-      const orderOrError = (await this.addInitialOfferToOrder({
-        input: {
-          note: this.state.offerNoteValue && this.state.offerNoteValue.value,
-          orderId: this.props.order.id,
-          offerPrice: {
-            amount: offerValue,
-            currencyCode: "USD",
+      const orderOrError = (
+        await this.addInitialOfferToOrder({
+          input: {
+            note: this.state.offerNoteValue && this.state.offerNoteValue.value,
+            orderId: this.props.order.internalID,
+            amountCents: offerValue * 100,
           },
-        },
-      })).ecommerceAddInitialOfferToOrder.orderOrError
+        })
+      ).commerceAddInitialOfferToOrder.orderOrError
 
       if (orderOrError.error) {
         this.handleSubmitError(orderOrError.error)
         return
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/shipping`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/shipping`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -209,7 +208,8 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
   render() {
     const { order, isCommittingMutation } = this.props
 
-    const artworkId = order.lineItems.edges[0].node.artwork.id
+    const artworkId = order.lineItems.edges[0].node.artwork.slug
+    const orderCurrency = order.currencyCode
 
     return (
       <>
@@ -282,7 +282,7 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
                       this.state.offerValue &&
                       this.state.offerValue.toLocaleString("en-US", {
                         style: "currency",
-                        currency: "USD",
+                        currency: orderCurrency,
                         minimumFractionDigits: 2,
                       })
                     }
@@ -312,20 +312,21 @@ export class OfferRoute extends Component<OfferProps, OfferState> {
 }
 
 export const OfferFragmentContainer = createFragmentContainer(
-  injectCommitMutation(injectDialog(trackPageViewWrapper(OfferRoute))),
+  injectCommitMutation(injectDialog(OfferRoute)),
   {
     order: graphql`
-      fragment Offer_order on Order {
-        id
+      fragment Offer_order on CommerceOrder {
+        internalID
         mode
         state
         totalListPrice(precision: 2)
         totalListPriceCents
+        currencyCode
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
@@ -336,3 +337,6 @@ export const OfferFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default OfferFragmentContainer

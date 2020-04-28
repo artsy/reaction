@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
 import {
@@ -25,13 +26,15 @@ jest.mock(
     withFullScreen: x => x,
   })
 )
+jest.mock("Artsy/Analytics/useTracking")
 
 describe("Standard Article", () => {
+  const trackEvent = jest.fn()
   const getWrapper = _props => {
     return mount(<StandardLayout {..._props} />)
   }
-
   let props
+
   beforeEach(() => {
     props = {
       article: StandardArticle,
@@ -39,6 +42,11 @@ describe("Standard Article", () => {
       relatedArticlesForCanvas: RelatedCanvas,
       relatedArticlesForPanel: RelatedPanel,
     }
+    ;(useTracking as jest.Mock).mockImplementation(() => {
+      return {
+        trackEvent,
+      }
+    })
   })
 
   afterEach(() => {
@@ -95,14 +103,16 @@ describe("Standard Article", () => {
     expect(article.state().isTruncated).toBeFalsy()
   })
 
-  it("It renders display ads in Standard Layout", () => {
+  it("It renders three display ads in Standard Layout", () => {
     const article = getWrapper(props)
 
-    expect(article.find(DisplayAd).length).toBe(2)
+    expect(article.find(DisplayAd).length).toBe(3)
   })
 
   it("renders the top and side rail display ad component with the correct data and properties on standard articles", () => {
     const article = getWrapper(props)
+    props.isSuper = false
+    props.isMobile = false
 
     expect(
       article
@@ -131,6 +141,20 @@ describe("Standard Article", () => {
         .at(1)
         .props().adUnit
     ).toBe("Desktop_RightRail1")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(2)
+        .props().adDimension
+    ).toBe("300x250")
+
+    expect(
+      article
+        .find(DisplayAd)
+        .at(2)
+        .props().adUnit
+    ).toBe("Desktop_RightRail1")
   })
 
   it("renders the top and side rail display ad component with the correct data and properties on standard articles on mobile", () => {
@@ -157,91 +181,113 @@ describe("Standard Article", () => {
         .find(DisplayAd)
         .at(1)
         .props().adDimension
-    ).toBe("300x50")
+    ).toBe("300x250")
 
     expect(
       article
         .find(DisplayAd)
         .at(1)
         .props().adUnit
-    ).toBe("Mobile_InContentMR1")
-  })
-})
+    ).toBe("Desktop_RightRail1")
 
-describe("standard article ad data", () => {
-  it("renders the top rail display ad component with the correct data and properties on standard articles", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Desktop_TopLeaderboard}
-        adUnit={AdUnit.Desktop_TopLeaderboard}
-        targetingData={targetingData(StandardArticle.id, "article")}
-      />
-    )
+    expect(
+      article
+        .find(DisplayAd)
+        .at(2)
+        .props().adDimension
+    ).toBe("300x250")
 
-    expect(ad.props().adDimension).toEqual("970x250")
-    expect(ad.props().adUnit).toEqual("Desktop_TopLeaderboard")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
-    })
-    expect(ad).toHaveLength(1)
+    expect(
+      article
+        .find(DisplayAd)
+        .at(2)
+        .props().adUnit
+    ).toBe("Mobile_InContentMR2")
   })
 
-  it("renders the side rail display ad component with the correct data and properties on standard articles", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Desktop_RightRail1}
-        adUnit={AdUnit.Desktop_RightRail1}
-        targetingData={targetingData(StandardArticle.id, "article")}
-      />
-    )
+  describe("Standard Article Display Ads", () => {
+    it("renders the top rail display ad component with the correct data and properties on standard articles", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Desktop_TopLeaderboard}
+          adUnit={AdUnit.Desktop_TopLeaderboard}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("300x250")
-    expect(ad.props().adUnit).toEqual("Desktop_RightRail1")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
+      expect(ad.props().adDimension).toEqual("970x250")
+      expect(ad.props().adUnit).toEqual("Desktop_TopLeaderboard")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
-  })
 
-  it("renders the side rail display ad component with the correct data and properties on standard articles on mobile", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Mobile_InContentMR1}
-        adUnit={AdUnit.Mobile_InContentMR1}
-        targetingData={targetingData(StandardArticle.id, "article")}
-      />
-    )
+    it("renders the side rail display ad component with the correct data and properties on standard articles", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Desktop_RightRail1}
+          adUnit={AdUnit.Desktop_RightRail1}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("300x50")
-    expect(ad.props().adUnit).toEqual("Mobile_InContentMR1")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
+      expect(ad.props().adDimension).toEqual("300x250")
+      expect(ad.props().adUnit).toEqual("Desktop_RightRail1")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
-  })
 
-  it("renders the top rail display ad component with the correct data and properties on standard articles on mobile", () => {
-    const ad = mount(
-      <DisplayAd
-        adDimension={AdDimension.Mobile_TopLeaderboard}
-        adUnit={AdUnit.Mobile_TopLeaderboard}
-        targetingData={targetingData(StandardArticle.id, "article")}
-      />
-    )
+    it("renders the side rail display ad component with the correct data and properties on standard articles on mobile", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Mobile_InContentMR1}
+          adUnit={AdUnit.Mobile_InContentMR1}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
 
-    expect(ad.props().adDimension).toEqual("300x50")
-    expect(ad.props().adUnit).toEqual("Mobile_TopLeaderboard")
-    expect(ad.props().targetingData).toEqual({
-      is_testing: true,
-      page_type: "article",
-      post_id: "594a7e2254c37f00177c0ea9",
+      expect(ad.props().adDimension).toEqual("300x50")
+      expect(ad.props().adUnit).toEqual("Mobile_InContentMR1")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
     })
-    expect(ad).toHaveLength(1)
+
+    it("renders the top rail display ad component with the correct data and properties on standard articles on mobile", () => {
+      const ad = mount(
+        <DisplayAd
+          adDimension={AdDimension.Mobile_TopLeaderboard}
+          adUnit={AdUnit.Mobile_TopLeaderboard}
+          targetingData={targetingData(StandardArticle, "article")}
+          articleSlug={StandardArticle.slug}
+        />
+      )
+
+      expect(ad.props().adDimension).toEqual("300x50")
+      expect(ad.props().adUnit).toEqual("Mobile_TopLeaderboard")
+      expect(ad.props().targetingData).toEqual({
+        is_testing: true,
+        page_type: "article",
+        post_id: "594a7e2254c37f00177c0ea9",
+        tags: "Art Market",
+      })
+      expect(ad).toHaveLength(1)
+    })
   })
 })

@@ -1,3 +1,4 @@
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { DisplayAd } from "Components/Publishing/Display/DisplayAd"
 import {
   FeatureArticle,
@@ -21,6 +22,16 @@ jest.mock(
     withFullScreen: x => x,
   })
 )
+jest.mock("Artsy/Analytics/useTracking")
+
+const trackEvent = jest.fn()
+beforeEach(() => {
+  ;(useTracking as jest.Mock).mockImplementation(() => {
+    return {
+      trackEvent,
+    }
+  })
+})
 
 it("renders RelatedArticlesCanvas if article is not super or in a series", () => {
   const article = mount(

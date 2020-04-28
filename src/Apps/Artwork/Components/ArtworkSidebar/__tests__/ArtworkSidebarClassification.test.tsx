@@ -1,3 +1,4 @@
+import { ArtworkSidebarClassification_Test_QueryRawResponse } from "__generated__/ArtworkSidebarClassification_Test_Query.graphql"
 import { renderRelayTree } from "DevTools"
 import { ReactWrapper } from "enzyme"
 import { graphql } from "react-relay"
@@ -10,8 +11,10 @@ describe("ArtworkSidebarClassification", () => {
   let wrapper = null
 
   const getWrapper = async (
-    response = {
+    response: ArtworkSidebarClassification_Test_QueryRawResponse["artwork"] = {
+      id: "opaque-artwork-id",
       attribution_class: {
+        id: "opaque-attribution-class-id",
         short_description: "This is a unique work",
       },
     }
@@ -19,15 +22,15 @@ describe("ArtworkSidebarClassification", () => {
     return await renderRelayTree({
       Component: ArtworkSidebarClassificationFragmentContainer,
       query: graphql`
-        query ArtworkSidebarClassification_Test_Query {
+        query ArtworkSidebarClassification_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarClassification_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarClassification_Test_QueryRawResponse,
     })
   }
 
@@ -71,7 +74,10 @@ describe("ArtworkSidebarClassification", () => {
 
   describe("for artwork without classification", () => {
     beforeAll(async () => {
-      wrapper = await getWrapper({ attribution_class: null })
+      wrapper = await getWrapper({
+        id: "opaque-artwork-id",
+        attribution_class: null,
+      })
     })
 
     it("does not render anything", () => {

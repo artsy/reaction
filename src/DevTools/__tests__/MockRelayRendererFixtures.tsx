@@ -4,10 +4,11 @@ import { MockRelayRendererFixtures_artworkMetadata } from "__generated__/MockRel
 import { MockRelayRendererFixturesArtistQuery } from "__generated__/MockRelayRendererFixturesArtistQuery.graphql"
 import { SystemContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import cheerio from "cheerio"
 import { render } from "enzyme"
 import * as React from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 
 const Metadata = createFragmentContainer(
   (props: { artworkMetadata: MockRelayRendererFixtures_artworkMetadata }) => (
@@ -28,7 +29,7 @@ export const Artwork = createFragmentContainer(
       <img src={props.artwork.image.url} />
       <Metadata artworkMetadata={props.artwork} />
       {props.artwork.artist && (
-        <ArtistQueryRenderer id={props.artwork.artist.id} />
+        <ArtistQueryRenderer id={props.artwork.artist.slug} />
       )}
     </div>
   ),
@@ -39,7 +40,7 @@ export const Artwork = createFragmentContainer(
           url
         }
         artist {
-          id
+          slug
         }
         ...MockRelayRendererFixtures_artworkMetadata
       }
@@ -68,7 +69,8 @@ const ArtistQueryRenderer = (props: { id: string }) => (
           environment={relayEnvironment}
           variables={props}
           query={graphql`
-            query MockRelayRendererFixturesArtistQuery($id: String!) {
+            query MockRelayRendererFixturesArtistQuery($id: String!)
+              @raw_response_type {
               artist(id: $id) {
                 ...MockRelayRendererFixtures_artist
               }
@@ -82,7 +84,7 @@ const ArtistQueryRenderer = (props: { id: string }) => (
 )
 
 export const query = graphql`
-  query MockRelayRendererFixturesQuery {
+  query MockRelayRendererFixturesQuery @raw_response_type {
     artwork(id: "mona-lisa") {
       ...MockRelayRendererFixtures_artwork
     }
@@ -91,7 +93,7 @@ export const query = graphql`
 
 // Bad query has a misnamed top-level property.
 export const badQuery = graphql`
-  query MockRelayRendererFixturesBadQuery {
+  query MockRelayRendererFixturesBadQuery @raw_response_type {
     something_that_is_not_expected: artwork(id: "mona-lisa") {
       ...MockRelayRendererFixtures_artwork
     }

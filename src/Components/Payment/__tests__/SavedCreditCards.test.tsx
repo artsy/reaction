@@ -30,16 +30,18 @@ describe("SavedCreditCards", () => {
       me: { id: "1234" },
       creditCards: [
         {
+          internalID: "cc-db-id-1224",
           brand: "Visa",
-          last_digits: "1224",
-          expiration_year: "2020",
-          expiration_month: "05",
+          lastDigits: "1224",
+          expirationYear: "2020",
+          expirationMonth: "05",
         },
         {
+          internalID: "cc-db-id-2345",
           brand: "Visa",
-          last_digits: "2345",
-          expiration_year: "2024",
-          expiration_month: "07",
+          lastDigits: "2345",
+          expirationYear: "2024",
+          expirationMonth: "07",
         },
       ],
       relay: { environment: {} } as RelayProp,
@@ -76,6 +78,17 @@ describe("SavedCreditCards", () => {
       .first()
       .find(RemoveLink)
       .simulate("click")
+
+    expect(mutationMock).toBeCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        variables: {
+          input: {
+            id: "cc-db-id-1224",
+          },
+        },
+      })
+    )
 
     expect(
       creditCardsWrapper

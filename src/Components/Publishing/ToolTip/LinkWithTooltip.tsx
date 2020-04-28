@@ -86,14 +86,14 @@ export class LinkWithTooltip extends Component<Props, State> {
     const { entity, entityType } = toolTipData
 
     if (entity) {
-      onTriggerToolTip(entity.id)
+      onTriggerToolTip(entity.slug)
 
       tracking.trackEvent({
         action: "Viewed tooltip",
         type: "intext tooltip",
         entity_type: entityType,
-        entity_id: entity._id,
-        entity_slug: entity.id,
+        entity_id: entity.internalID,
+        entity_slug: entity.slug,
       })
     }
   }
@@ -187,12 +187,10 @@ export class LinkWithTooltip extends Component<Props, State> {
     const { color, url } = this.props
     const { activeToolTip, waitForFade } = this.context
     const { orientation } = this.state
-
     const toolTipData = this.entityTypeToEntity()
     const { entity, entityType } = toolTipData
-    const id = entity ? entity.id : null
+    const id = entity ? entity.slug : null
     const toolTipPosition = this.getToolTipPosition(entityType)
-
     const show = id && activeToolTip ? id === activeToolTip : false
     const showWithFade = show || (waitForFade && waitForFade === id)
 
@@ -203,6 +201,7 @@ export class LinkWithTooltip extends Component<Props, State> {
         }}
         ref={link => (this.link = link)}
         show={showWithFade}
+        data-test="linkWithTooltip"
       >
         <PrimaryLink
           color={color}

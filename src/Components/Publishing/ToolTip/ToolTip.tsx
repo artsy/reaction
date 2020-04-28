@@ -1,7 +1,6 @@
 import { color } from "@artsy/palette"
-import { ArtistToolTip_artist$ref } from "__generated__/ArtistToolTip_artist.graphql"
-import { GeneToolTip_gene$ref } from "__generated__/GeneToolTip_gene.graphql"
 import React from "react"
+import { FragmentRefs } from "relay-runtime"
 import styled from "styled-components"
 import { ArtistTooltipContainer } from "./ArtistToolTip"
 import { Arrow, ArrowContainer } from "./Components/Arrow"
@@ -18,7 +17,9 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
    * Having to type this opaque data manually is an exceptional case, because of
    * how this component setup doesn’t strictly follow a Relay tree.
    */
-  entity: { " $fragmentRefs": ArtistToolTip_artist$ref & GeneToolTip_gene$ref }
+  entity: {
+    " $fragmentRefs": FragmentRefs<"ArtistToolTip_artist" | "GeneToolTip_gene">
+  }
 }
 
 export class ToolTip extends React.Component<Props> {
@@ -56,6 +57,7 @@ export class ToolTip extends React.Component<Props> {
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         positionLeft={positionLeft}
+        data-test="tooltipWrapper"
       >
         <Content orientation={orientation} arrowLeft={arrowLeft}>
           {orientation === "down" && (

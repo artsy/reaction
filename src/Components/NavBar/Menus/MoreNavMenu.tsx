@@ -24,15 +24,11 @@ export const MoreNavMenu: React.FC<{ width?: number }> = ({ width = 160 }) => {
       {/*
         Hide nav items at md / lg as they appear in the top nav
       */}
-      <MenuItem href="/galleries" display={["block", "block", "none"]}>
-        Galleries
-      </MenuItem>
-      <MenuItem href="/fairs" display={["block", "block", "block", "none"]}>
-        Fairs
-      </MenuItem>
-      <MenuItem href="/artists">Artists</MenuItem>
+      <MenuItem href="/galleries">Galleries</MenuItem>
+      <MenuItem href="/fairs">Fairs</MenuItem>
       <MenuItem href="/shows">Shows</MenuItem>
       <MenuItem href="/institutions">Museums</MenuItem>
+      <MenuItem href="/consign">Consign</MenuItem>
       <MenuItem href="https://partners.artsy.net">Artsy for Galleries</MenuItem>
     </Menu>
   )

@@ -1,15 +1,9 @@
-import { routes_OrderQueryResponse } from "__generated__/routes_OrderQuery.graphql"
-import { Location, RouteConfig, Router } from "found"
 import { DateTime } from "luxon"
 import { graphql } from "react-relay"
 import { get } from "Utils/get"
 import { RedirectPredicate, RedirectRecord } from "./getRedirect"
-import { OrderApp } from "./OrderApp"
 
 import { redirects_order } from "__generated__/redirects_order.graphql"
-
-const LEAVE_MESSAGING =
-  "Are you sure you want to refresh? Your changes will not be saved."
 
 interface OrderQuery {
   order: redirects_order
@@ -17,36 +11,13 @@ interface OrderQuery {
 
 type OrderPredicate = RedirectPredicate<OrderQuery>
 
-export const confirmRouteExit = (
-  newLocation: Location,
-  oldLocation: Location,
-  router: Router
-) => {
-  // Refresh -- On refresh newLocation is null
-  if (!newLocation || newLocation.pathname === oldLocation.pathname) {
-    // Most browsers will ignore this and supply their own messaging for refresh
-    return LEAVE_MESSAGING
-  }
-
-  // Attempting to navigate to another route in the orders app
-  const match = router.matcher.match(newLocation)
-  if (match) {
-    const matchedRoutes: RouteConfig[] | null = router.matcher.getRoutes(match)
-    if (matchedRoutes && matchedRoutes[0].Component === OrderApp) {
-      return undefined
-    }
-  }
-
-  return LEAVE_MESSAGING
-}
-
 const goToStatusIf = (
-  pred: (order: routes_OrderQueryResponse["order"]) => boolean,
+  pred: (order: redirects_order) => boolean,
   reason
 ): OrderPredicate => ({ order }) => {
   if (pred(order)) {
     return {
-      path: `/orders/${order.id}/status`,
+      path: `/orders/${order.internalID}/status`,
       reason,
     }
   }
@@ -54,7 +25,7 @@ const goToStatusIf = (
 
 const goToArtworkIfOrderWasAbandoned: OrderPredicate = ({ order }) => {
   if (order.state === "ABANDONED") {
-    const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.id)
+    const artworkID = get(order, o => o.lineItems.edges[0].node.artwork.slug)
     // If an artwork ID can't be found, redirect back to home page.
     return {
       path: artworkID ? `/artwork/${artworkID}` : "/",
@@ -71,7 +42,7 @@ const goToStatusIfOrderIsNotPending = goToStatusIf(
 const goToShippingIfShippingIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.requestedFulfillment) {
     return {
-      path: `/orders/${order.id}/shipping`,
+      path: `/orders/${order.internalID}/shipping`,
       reason: "Shipping was not yet completed",
     }
   }
@@ -80,7 +51,7 @@ const goToShippingIfShippingIsNotCompleted: OrderPredicate = ({ order }) => {
 const goToPaymentIfPaymentIsNotCompleted: OrderPredicate = ({ order }) => {
   if (!order.creditCard) {
     return {
-      path: `/orders/${order.id}/payment`,
+      path: `/orders/${order.internalID}/payment`,
       reason: "Payment was not yet completed",
     }
   }
@@ -89,7 +60,7 @@ const goToPaymentIfPaymentIsNotCompleted: OrderPredicate = ({ order }) => {
 const goToShippingIfOrderIsNotOfferOrder: OrderPredicate = ({ order }) => {
   if (order.mode !== "OFFER") {
     return {
-      path: `/orders/${order.id}/shipping`,
+      path: `/orders/${order.internalID}/shipping`,
       reason: "Order is not an offer order",
     }
   }
@@ -98,7 +69,7 @@ const goToShippingIfOrderIsNotOfferOrder: OrderPredicate = ({ order }) => {
 const goToOfferIfNoOfferMade: OrderPredicate = ({ order }) => {
   if (order.mode === "OFFER" && !order.myLastOffer) {
     return {
-      path: `/orders/${order.id}/offer`,
+      path: `/orders/${order.internalID}/offer`,
       reason: "No offer has been made yet",
     }
   }
@@ -127,7 +98,7 @@ const goToStatusIfNotLastTransactionFailed = goToStatusIf(
 const goToReviewIfOrderIsPending: OrderPredicate = ({ order }) => {
   if (order.state === "PENDING") {
     return {
-      path: `/orders/${order.id}/review`,
+      path: `/orders/${order.internalID}/review`,
       reason: "Order is still pending",
     }
   }
@@ -145,7 +116,7 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
     return
   }
   return {
-    path: `/orders/${order.id}/respond`,
+    path: `/orders/${order.internalID}/respond`,
     reason: "myLastOffer is not most recent offer",
   }
 }
@@ -153,7 +124,7 @@ const goToRespondIfMyLastOfferIsNotMostRecentOffer: OrderPredicate = ({
 const goToRespondIfAwaitingBuyerResponse: OrderPredicate = ({ order }) => {
   if (order.awaitingResponseFrom === "BUYER") {
     return {
-      path: `/orders/${order.id}/respond`,
+      path: `/orders/${order.internalID}/respond`,
       reason: "Still awaiting buyer response",
     }
   }
@@ -243,18 +214,18 @@ export const redirects: RedirectRecord<OrderQuery> = {
 }
 
 graphql`
-  fragment redirects_order on Order {
-    id
+  fragment redirects_order on CommerceOrder {
+    internalID
     mode
     state
     lastTransactionFailed
-    ... on OfferOrder {
+    ... on CommerceOfferOrder {
       myLastOffer {
-        id
+        internalID
         createdAt
       }
       lastOffer {
-        id
+        internalID
         createdAt
       }
       awaitingResponseFrom
@@ -266,13 +237,13 @@ graphql`
       edges {
         node {
           artwork {
-            id
+            slug
           }
         }
       }
     }
     creditCard {
-      id
+      internalID
     }
   }
 `

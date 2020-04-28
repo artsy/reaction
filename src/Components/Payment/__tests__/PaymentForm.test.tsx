@@ -8,6 +8,7 @@ import { creatingCreditCardFailed } from "Apps/Order/Routes/__fixtures__/Mutatio
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
   createFragmentContainer: component => component,
+  createRefetchContainer: component => component,
 }))
 
 jest.mock("react-stripe-elements", () => ({
@@ -15,12 +16,12 @@ jest.mock("react-stripe-elements", () => ({
   injectStripe: args => args,
 }))
 
-import { Address, AddressForm } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
   validAddress,
-} from "Apps/Order/Routes/__tests__/Utils/addressForm"
+} from "Components/__tests__/Utils/addressForm"
+import { Address, AddressForm } from "Components/AddressForm"
 import { ErrorModal } from "Components/Modal/ErrorModal"
 import { ModalButton } from "Components/Modal/ModalDialog"
 import PaymentForm, { PaymentFormProps } from "Components/Payment/PaymentForm"
@@ -31,7 +32,7 @@ import Input from "../../Input"
 const mutationMock = commitMutation as jest.Mock<any>
 
 const fillAddressForm = (component: any, address: Address) => {
-  fillIn(component, { title: "Full name", value: address.name })
+  fillIn(component, { title: "Name on card", value: address.name })
   fillIn(component, { title: "Address line 1", value: address.addressLine1 })
   fillIn(component, {
     title: "Address line 2 (optional)",
@@ -212,13 +213,13 @@ describe("PaymentForm", () => {
       paymentWrapper.update()
       const input = paymentWrapper
         .find(Input)
-        .filterWhere(wrapper => wrapper.props().title === "Full name")
+        .filterWhere(wrapper => wrapper.props().title === "Name on card")
       expect(input.props().error).toEqual("This field is required")
     })
 
     it("after submit, shows all validation errors on inputs that have been touched", () => {
       const paymentWrapper = getWrapper()
-      fillIn(paymentWrapper, { title: "Full name", value: "Erik David" })
+      fillIn(paymentWrapper, { title: "Name on card", value: "Erik David" })
 
       paymentWrapper.find(Button).simulate("click")
 
@@ -237,7 +238,7 @@ describe("PaymentForm", () => {
 
     it("does not submit the mutation with an incomplete billing address", () => {
       const paymentWrapper = getWrapper()
-      fillIn(paymentWrapper, { title: "Full name", value: "Air Bud" })
+      fillIn(paymentWrapper, { title: "Name on card", value: "Air Bud" })
       paymentWrapper.find(Button).simulate("click")
       expect(commitMutation).not.toBeCalled()
     })

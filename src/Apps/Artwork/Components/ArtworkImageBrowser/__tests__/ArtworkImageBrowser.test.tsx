@@ -1,25 +1,37 @@
+import { ArtworkImageBrowser_Test_QueryRawResponse } from "__generated__/ArtworkImageBrowser_Test_Query.graphql"
 import { ArtworkImageBrowserFixture } from "Apps/__tests__/Fixtures/Artwork/ArtworkImageBrowser.fixture"
-import { MockBoot } from "DevTools"
-import { RelayStubProvider } from "DevTools/RelayStubProvider"
-import { mount, ReactWrapper } from "enzyme"
+import { MockBoot, renderRelayTree } from "DevTools"
+import { ReactWrapper } from "enzyme"
 import { cloneDeep } from "lodash"
 import React from "react"
+import { graphql } from "react-relay"
 import { Breakpoint } from "Utils/Responsive"
-import { ArtworkImageBrowserFragmentContainer } from "../"
+import { ArtworkImageBrowserFragmentContainer as ArtworkImageBrowser } from "../"
+
+jest.unmock("react-relay")
 
 describe("ArtworkImageBrowser", () => {
   const getWrapper = async (
     breakpoint: Breakpoint = "lg",
-    data = ArtworkImageBrowserFixture
+    data: ArtworkImageBrowser_Test_QueryRawResponse = ArtworkImageBrowserFixture
   ) => {
-    return await mount(
-      <RelayStubProvider>
-        <MockBoot breakpoint={breakpoint}>
-          <ArtworkImageBrowserFragmentContainer artwork={data.artwork as any} />
-        </MockBoot>
-      </RelayStubProvider>
-    ).renderUntil(n => {
-      return n.html().search("is-selected") > 0
+    return await renderRelayTree({
+      Component: ArtworkImageBrowser,
+      query: graphql`
+        query ArtworkImageBrowser_Test_Query($artworkID: String!)
+          @raw_response_type {
+          artwork(id: $artworkID) {
+            ...ArtworkImageBrowser_artwork
+          }
+        }
+      `,
+      mockData: data as ArtworkImageBrowser_Test_QueryRawResponse,
+      variables: {
+        artworkID: "matt-z-and-percy-still-life",
+      },
+      wrapper: children => (
+        <MockBoot breakpoint={breakpoint}>{children}</MockBoot>
+      ),
     })
   }
 
@@ -42,18 +54,10 @@ describe("ArtworkImageBrowser", () => {
       expect(wrapper.find("ArrowButton").length).toBe(2)
     })
 
-    it("returns null if missing images", () => {
+    it("returns null if missing images", async () => {
       const data = cloneDeep(ArtworkImageBrowserFixture) as any
       data.artwork.images = []
-      wrapper = mount(
-        <RelayStubProvider>
-          <MockBoot breakpoint="lg">
-            <ArtworkImageBrowserFragmentContainer
-              artwork={data.artwork as any}
-            />
-          </MockBoot>
-        </RelayStubProvider>
-      )
+      wrapper = await getWrapper("lg", data)
       expect(wrapper.find("ArtworkImageBrowser").length).toBe(0)
       expect(wrapper.find("ArtworkActions").length).toBe(0)
     })

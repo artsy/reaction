@@ -1,16 +1,20 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _MockRelayRendererFixtures_artist$ref: unique symbol;
-export type MockRelayRendererFixtures_artist$ref = typeof _MockRelayRendererFixtures_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type MockRelayRendererFixtures_artist = {
     readonly name: string | null;
-    readonly " $refType": MockRelayRendererFixtures_artist$ref;
+    readonly " $refType": "MockRelayRendererFixtures_artist";
+};
+export type MockRelayRendererFixtures_artist$data = MockRelayRendererFixtures_artist;
+export type MockRelayRendererFixtures_artist$key = {
+    readonly " $data"?: MockRelayRendererFixtures_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artist">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "MockRelayRendererFixtures_artist",
   "type": "Artist",
@@ -21,13 +25,6 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "name",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
       "args": null,
       "storageKey": null
     }

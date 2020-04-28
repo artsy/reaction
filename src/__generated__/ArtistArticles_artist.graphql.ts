@@ -1,49 +1,44 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
-declare const _ArtistArticles_artist$ref: unique symbol;
-export type ArtistArticles_artist$ref = typeof _ArtistArticles_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistArticles_artist = {
-    readonly id: string;
-    readonly articlesConnection: ({
+    readonly slug: string;
+    readonly articlesConnection: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
-            readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+        readonly pageCursors: {
+            readonly " $fragmentRefs": FragmentRefs<"Pagination_pageCursors">;
+        };
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly href: string | null;
                 readonly thumbnail_title: string | null;
-                readonly author: ({
+                readonly author: {
                     readonly name: string | null;
-                }) | null;
+                } | null;
                 readonly published_at: string | null;
-                readonly thumbnail_image: ({
-                    readonly resized: ({
+                readonly thumbnail_image: {
+                    readonly resized: {
                         readonly url: string | null;
-                    }) | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": ArtistArticles_artist$ref;
+                    } | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "ArtistArticles_artist";
+};
+export type ArtistArticles_artist$data = ArtistArticles_artist;
+export type ArtistArticles_artist$key = {
+    readonly " $data"?: ArtistArticles_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistArticles_artist">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistArticles_artist",
   "type": "Artist",
@@ -78,7 +73,7 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "slug",
       "args": null,
       "storageKey": null
     },
@@ -91,38 +86,32 @@ return {
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "before",
-          "variableName": "before",
-          "type": "String"
+          "variableName": "before"
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         },
         {
           "kind": "Literal",
-          "name": "in_editorial_feed",
-          "value": true,
-          "type": "Boolean"
+          "name": "inEditorialFeed",
+          "value": true
         },
         {
           "kind": "Variable",
           "name": "last",
-          "variableName": "last",
-          "type": "Int"
+          "variableName": "last"
         },
         {
           "kind": "Literal",
           "name": "sort",
-          "value": "PUBLISHED_AT_DESC",
-          "type": "ArticleSorts"
+          "value": "PUBLISHED_AT_DESC"
         }
       ],
       "concreteType": "ArticleConnection",
@@ -196,8 +185,8 @@ return {
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": null,
-                  "name": "thumbnail_title",
+                  "alias": "thumbnail_title",
+                  "name": "thumbnailTitle",
                   "args": null,
                   "storageKey": null
                 },
@@ -216,28 +205,26 @@ return {
                       "name": "name",
                       "args": null,
                       "storageKey": null
-                    },
-                    v0
+                    }
                   ]
                 },
                 {
                   "kind": "ScalarField",
-                  "alias": null,
-                  "name": "published_at",
+                  "alias": "published_at",
+                  "name": "publishedAt",
                   "args": [
                     {
                       "kind": "Literal",
                       "name": "format",
-                      "value": "MMM Do, YYYY",
-                      "type": "String"
+                      "value": "MMM Do, YYYY"
                     }
                   ],
-                  "storageKey": "published_at(format:\"MMM Do, YYYY\")"
+                  "storageKey": "publishedAt(format:\"MMM Do, YYYY\")"
                 },
                 {
                   "kind": "LinkedField",
-                  "alias": null,
-                  "name": "thumbnail_image",
+                  "alias": "thumbnail_image",
+                  "name": "thumbnailImage",
                   "storageKey": null,
                   "args": null,
                   "concreteType": "Image",
@@ -252,8 +239,7 @@ return {
                         {
                           "kind": "Literal",
                           "name": "width",
-                          "value": 300,
-                          "type": "Int"
+                          "value": 300
                         }
                       ],
                       "concreteType": "ResizedImageUrl",
@@ -267,26 +253,16 @@ return {
                           "storageKey": null
                         }
                       ]
-                    },
-                    {
-                      "kind": "ScalarField",
-                      "alias": "__id",
-                      "name": "id",
-                      "args": null,
-                      "storageKey": null
                     }
                   ]
-                },
-                v0
+                }
               ]
             }
           ]
         }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '9431572d880bde3b77ca6f9a8b570ef8';
+(node as any).hash = '7f0e34e1adeff84958977955f2073aa5';
 export default node;

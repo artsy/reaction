@@ -5,23 +5,22 @@ import {
 } from "__generated__/ArtistSearchResultsArtistMutation.graphql"
 import { ArtistSearchResultsQuery } from "__generated__/ArtistSearchResultsQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import * as React from "react"
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
-  QueryRenderer,
   RelayProp,
 } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
 import { RecordSourceSelectorProxy } from "relay-runtime"
-import { get } from "Utils/get"
 import Events from "../../../../Utils/Events"
 import ReplaceTransition from "../../../Animation/ReplaceTransition"
 import ItemLink, { LinkContainer } from "../../ItemLink"
 import { FollowProps } from "../../Types"
 
-type Artist = ArtistSearchResults_viewer["match_artist"][0]
+type Artist = ArtistSearchResults_viewer["searchConnection"]["edges"][number]["node"]
 
 export interface ContainerProps extends FollowProps {
   term: string
@@ -41,7 +40,9 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
   constructor(props: Props, context: any) {
     super(props, context)
     this.excludedArtistIds = new Set(
-      this.props.viewer.match_artist.map(item => item._id)
+      this.props.viewer.searchConnection.edges.map(
+        ({ node }) => node.internalID
+      )
     )
   }
 
@@ -51,12 +52,12 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
     data: ArtistSearchResultsArtistMutationResponse
   ): void {
     const suggestedArtistEdge =
-      data.followArtist.artist.related.suggested.edges[0]
-    const popularArtist = data.followArtist.popular_artists.artists[0]
+      data.followArtist.artist.related.suggestedConnection.edges[0]
+    const popularArtist = data.followArtist.popular_artists[0]
     const artistToSuggest = store.get(
-      ((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).__id
+      ((suggestedArtistEdge && suggestedArtistEdge.node) || popularArtist).id
     )
-    this.excludedArtistIds.add(artistToSuggest.getValue("_id"))
+    this.excludedArtistIds.add(artistToSuggest.getValue("internalID") as string)
 
     const popularArtistsRootField = store.get("client:root:viewer")
     const popularArtists = popularArtistsRootField.getLinkedRecords(
@@ -64,7 +65,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
       { term: this.props.term }
     )
     const updatedPopularArtists = popularArtists.map(artistItem =>
-      artistItem.getDataID() === artist.__id ? artistToSuggest : artistItem
+      artistItem.getDataID() === artist.id ? artistToSuggest : artistItem
     )
 
     popularArtistsRootField.setLinkedRecords(
@@ -79,8 +80,8 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
 
     this.props.tracking.trackEvent({
       action: "Followed Artist",
-      entity_id: artist._id,
-      entity_slug: artist.id,
+      entity_id: artist.internalID,
+      entity_slug: artist.slug,
       context_module: "onboarding search",
     })
   }
@@ -89,42 +90,39 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
     commitMutation<ArtistSearchResultsArtistMutation>(
       this.props.relay.environment,
       {
+        // TODO: Inputs to the mutation might have changed case of the keys!
         mutation: graphql`
           mutation ArtistSearchResultsArtistMutation(
             $input: FollowArtistInput!
             $excludedArtistIds: [String]!
           ) {
             followArtist(input: $input) {
-              popular_artists(
+              popular_artists: popularArtists(
                 size: 1
-                exclude_followed_artists: true
-                exclude_artist_ids: $excludedArtistIds
+                excludeFollowedArtists: true
+                excludeArtistIDs: $excludedArtistIds
               ) {
-                artists {
-                  id
-                  _id
-                  __id
-                  name
-                  image {
-                    cropped(width: 100, height: 100) {
-                      url
-                    }
+                internalID
+                id
+                name
+                image {
+                  cropped(width: 100, height: 100) {
+                    url
                   }
                 }
               }
               artist {
-                __id
+                id
                 related {
-                  suggested(
+                  suggestedConnection(
                     first: 1
-                    exclude_followed_artists: true
-                    exclude_artist_ids: $excludedArtistIds
+                    excludeFollowedArtists: true
+                    excludeArtistIDs: $excludedArtistIds
                   ) {
                     edges {
                       node {
+                        internalID
                         id
-                        _id
-                        __id
                         name
                         image {
                           cropped(width: 100, height: 100) {
@@ -141,7 +139,7 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
         `,
         variables: {
           input: {
-            artist_id: artist.id,
+            artistID: artist.internalID,
             unfollow: false,
           },
           excludedArtistIds: Array.from(this.excludedArtistIds),
@@ -152,28 +150,28 @@ class ArtistSearchResultsContent extends React.Component<Props, null> {
   }
 
   render() {
-    const artistItems = this.props.viewer.match_artist.map((artist, index) => {
-      const imageUrl = get(artist, a => a.image.cropped.url)
-
-      return (
-        <LinkContainer key={`artist-search-results-${index}`}>
-          <ReplaceTransition
-            transitionEnterTimeout={1000}
-            transitionLeaveTimeout={400}
-          >
-            <ItemLink
-              href="#"
-              item={artist}
-              key={artist.id}
-              id={artist.id}
-              name={artist.name}
-              image_url={imageUrl}
-              onClick={() => this.onFollowedArtist(artist)}
-            />
-          </ReplaceTransition>
-        </LinkContainer>
-      )
-    })
+    const artistItems = this.props.viewer.searchConnection.edges.map(
+      ({ node: artist }, index) => {
+        return (
+          <LinkContainer key={`artist-search-results-${index}`}>
+            <ReplaceTransition
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={400}
+            >
+              <ItemLink
+                href="#"
+                item={artist}
+                key={artist.id}
+                id={artist.internalID}
+                name={artist.displayLabel}
+                image_url={artist.imageUrl}
+                onClick={() => this.onFollowedArtist(artist)}
+              />
+            </ReplaceTransition>
+          </LinkContainer>
+        )
+      }
+    )
 
     return <div>{artistItems}</div>
   }
@@ -184,14 +182,16 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   {
     viewer: graphql`
       fragment ArtistSearchResults_viewer on Viewer {
-        match_artist(term: $term) {
-          id
-          _id
-          __id
-          name
-          image {
-            cropped(width: 100, height: 100) {
-              url
+        searchConnection(query: $term, mode: AUTOSUGGEST, entities: [ARTIST]) {
+          edges {
+            node {
+              ... on SearchableItem {
+                id
+                slug
+                internalID
+                displayLabel
+                imageUrl
+              }
             }
           }
         }
@@ -200,9 +200,8 @@ const ArtistSearchResultsContentContainer = createFragmentContainer(
   }
 )
 
-const ArtistSearchResultsComponent: React.SFC<
-  ContainerProps & SystemContextProps
-> = ({ term, relayEnvironment, updateFollowCount }) => {
+const ArtistSearchResultsComponent: React.SFC<ContainerProps &
+  SystemContextProps> = ({ term, relayEnvironment, updateFollowCount }) => {
   return (
     <QueryRenderer<ArtistSearchResultsQuery>
       environment={relayEnvironment}

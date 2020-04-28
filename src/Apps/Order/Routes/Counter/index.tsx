@@ -17,10 +17,9 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
@@ -48,19 +47,22 @@ export class CounterRoute extends Component<CounterProps> {
   submitPendingOffer(variables: CounterSubmitMutation["variables"]) {
     return this.props.commitMutation<CounterSubmitMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
-        mutation CounterSubmitMutation($input: submitPendingOfferInput!) {
-          ecommerceSubmitPendingOffer(input: $input) {
+        mutation CounterSubmitMutation(
+          $input: CommerceSubmitPendingOfferInput!
+        ) {
+          commerceSubmitPendingOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -77,10 +79,10 @@ export class CounterRoute extends Component<CounterProps> {
   onSubmitButtonPressed = async () => {
     try {
       const {
-        ecommerceSubmitPendingOffer: { orderOrError },
+        commerceSubmitPendingOffer: { orderOrError },
       } = await this.submitPendingOffer({
         input: {
-          offerId: this.props.order.myLastOffer.id,
+          offerId: this.props.order.myLastOffer.internalID,
         },
       })
 
@@ -110,15 +112,15 @@ export class CounterRoute extends Component<CounterProps> {
 
   @track<CounterProps>(props => ({
     action_type: Schema.ActionType.SubmittedCounterOffer,
-    order_id: props.order.id,
+    order_id: props.order.internalID,
   }))
   onSuccessfulSubmit() {
-    this.props.router.push(`/orders/${this.props.order.id}/status`)
+    this.props.router.push(`/orders/${this.props.order.internalID}/status`)
   }
 
   onChangeResponse = () => {
     const { order } = this.props
-    this.props.router.push(`/orders/${order.id}/respond`)
+    this.props.router.push(`/orders/${order.internalID}/respond`)
   }
 
   render() {
@@ -210,29 +212,29 @@ export class CounterRoute extends Component<CounterProps> {
 }
 
 export const CounterFragmentContainer = createFragmentContainer(
-  trackPageViewWrapper(injectCommitMutation(injectDialog(CounterRoute))),
+  injectCommitMutation(injectDialog(CounterRoute)),
   {
     order: graphql`
-      fragment Counter_order on Order {
-        id
+      fragment Counter_order on CommerceOrder {
+        internalID
         mode
         state
         itemsTotal(precision: 2)
         totalListPrice(precision: 2)
         stateExpiresAt
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
           }
           myLastOffer {
-            id
+            internalID
           }
         }
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
@@ -246,3 +248,6 @@ export const CounterFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default CounterFragmentContainer

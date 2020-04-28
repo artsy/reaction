@@ -1,9 +1,11 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Box, Button, Flex, Serif } from "@artsy/palette"
 import { ArtworkRelatedArtists_artwork } from "__generated__/ArtworkRelatedArtists_artwork.graphql"
+import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
 import { useSystemContext } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import { ArtistCardFragmentContainer as ArtistCard } from "Components/v2"
+import { ArtistCardFragmentContainer as ArtistCard } from "Components/ArtistCard"
 import React, { useState } from "react"
 import {
   createPaginationContainer,
@@ -11,7 +13,6 @@ import {
   RelayPaginationProp,
 } from "react-relay"
 import createLogger from "Utils/logger"
-import { hideGrid } from "./OtherWorks/ArtworkContexts/ArtworkGrids"
 
 const logger = createLogger("ArtworkRelatedArtists.tsx")
 
@@ -22,69 +23,70 @@ export interface ArtworkRelatedArtistsProps {
 
 const PAGE_SIZE = 4
 
-export const ArtworkRelatedArtists: React.FC<
-  ArtworkRelatedArtistsProps
-> = track()(props => {
-  const { trackEvent } = useTracking()
-  const { mediator, user } = useSystemContext()
-  const [fetchingNextPage, setFetchingNextPage] = useState(false)
+export const ArtworkRelatedArtists: React.FC<ArtworkRelatedArtistsProps> = track()(
+  props => {
+    const { trackEvent } = useTracking()
+    const { mediator, user } = useSystemContext()
+    const [fetchingNextPage, setFetchingNextPage] = useState(false)
 
-  const {
-    artwork: { artist },
-    relay,
-  } = props
-  if (hideGrid(artist.related.artists)) {
-    return null
-  }
-
-  const fetchData = () => {
-    if (!relay.hasMore() || relay.isLoading()) {
-      return
+    const {
+      artwork: { artist },
+      relay,
+    } = props
+    if (hideGrid(artist.related.artistsConnection)) {
+      return null
     }
-    setFetchingNextPage(true)
-    relay.loadMore(PAGE_SIZE, error => {
-      if (error) {
-        logger.error(error)
+
+    const fetchData = () => {
+      if (!relay.hasMore() || relay.isLoading()) {
+        return
       }
-      setFetchingNextPage(false)
-    })
+      setFetchingNextPage(true)
+      relay.loadMore(PAGE_SIZE, error => {
+        if (error) {
+          logger.error(error)
+        }
+        setFetchingNextPage(false)
+      })
+    }
+
+    return (
+      <Box mt={6}>
+        <Flex flexDirection="column" alignItems="center">
+          <Serif size={["5t", "8"]} color="black100" mb={2} textAlign="center">
+            Related artists
+          </Serif>
+        </Flex>
+        <Flex flexWrap="wrap" mr={-2} width="100%">
+          {artist.related.artistsConnection.edges.map(({ node }, index) => {
+            return (
+              <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
+                <ArtistCard
+                  lazyLoad
+                  artist={node}
+                  contextModule={ContextModule.relatedArtistsRail}
+                  mediator={mediator}
+                  user={user}
+                  onClick={() => {
+                    trackEvent({
+                      context_module: Schema.ContextModule.RelatedArtists,
+                      type: Schema.Type.ArtistCard,
+                      action_type: Schema.ActionType.Click,
+                    })
+                  }}
+                />
+              </Box>
+            )
+          })}
+        </Flex>
+
+        {relay.hasMore() && (
+          <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
+        )}
+      </Box>
+    )
   }
-
-  return (
-    <Box mt={6}>
-      <Flex flexDirection="column" alignItems="center">
-        <Serif size={["5t", "8"]} color="black100" mb={2} textAlign="center">
-          Related artists
-        </Serif>
-      </Flex>
-      <Flex flexWrap="wrap" mr={-2} width="100%">
-        {artist.related.artists.edges.map(({ node }, index) => {
-          return (
-            <Box pr={2} mb={[1, 4]} width={["100%", "25%"]} key={index}>
-              <ArtistCard
-                lazyLoad
-                artist={node}
-                mediator={mediator}
-                user={user}
-                onClick={() => {
-                  trackEvent({
-                    context_module: Schema.ContextModule.RelatedArtists,
-                    type: Schema.Type.ArtistCard,
-                    action_type: Schema.ActionType.Click,
-                  })
-                }}
-              />
-            </Box>
-          )
-        })}
-      </Flex>
-
-      {relay.hasMore() && (
-        <ShowMoreButton onClick={fetchData} loading={fetchingNextPage} />
-      )}
-    </Box>
-  )
-})
+)
 
 const ShowMoreButton: React.FC<{ onClick: () => void; loading: boolean }> = ({
   onClick,
@@ -113,12 +115,12 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
           count: { type: "Int", defaultValue: 4 }
           cursor: { type: "String", defaultValue: "" }
         ) {
-        id
+        slug
         artist {
           href
           related {
-            artists(kind: MAIN, first: $count, after: $cursor)
-              @connection(key: "ArtworkRelatedArtists_artists") {
+            artistsConnection(kind: MAIN, first: $count, after: $cursor)
+              @connection(key: "ArtworkRelatedArtists_artistsConnection") {
               pageInfo {
                 hasNextPage
               }
@@ -136,7 +138,7 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.artwork.artist.related.artists
+      return props.artwork.artist.related.artistsConnection
     },
     getFragmentVariables(prevVars, count) {
       return {
@@ -149,7 +151,7 @@ export const ArtworkRelatedArtistsPaginationContainer = createPaginationContaine
         ...fragmentVariables,
         count,
         cursor,
-        artworkID: props.artwork.id,
+        artworkID: props.artwork.slug,
       }
     },
     query: graphql`

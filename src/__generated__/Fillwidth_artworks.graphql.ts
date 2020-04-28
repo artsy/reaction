@@ -1,25 +1,28 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { FillwidthItem_artwork$ref } from "./FillwidthItem_artwork.graphql";
-declare const _Fillwidth_artworks$ref: unique symbol;
-export type Fillwidth_artworks$ref = typeof _Fillwidth_artworks$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Fillwidth_artworks = {
-    readonly edges: ReadonlyArray<({
-        readonly node: ({
-            readonly __id: string;
-            readonly image: ({
+    readonly edges: ReadonlyArray<{
+        readonly node: {
+            readonly id: string;
+            readonly image: {
                 readonly aspect_ratio: number;
-            }) | null;
-            readonly " $fragmentRefs": FillwidthItem_artwork$ref;
-        }) | null;
-    }) | null> | null;
-    readonly " $refType": Fillwidth_artworks$ref;
+            } | null;
+            readonly " $fragmentRefs": FragmentRefs<"FillwidthItem_artwork">;
+        } | null;
+    } | null> | null;
+    readonly " $refType": "Fillwidth_artworks";
+};
+export type Fillwidth_artworks$data = Fillwidth_artworks;
+export type Fillwidth_artworks$key = {
+    readonly " $data"?: Fillwidth_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"Fillwidth_artworks">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Fillwidth_artworks",
   "type": "ArtworkConnection",
@@ -47,7 +50,7 @@ const node: ConcreteFragment = {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "__id",
+              "name": "id",
               "args": null,
               "storageKey": null
             },
@@ -62,15 +65,8 @@ const node: ConcreteFragment = {
               "selections": [
                 {
                   "kind": "ScalarField",
-                  "alias": null,
-                  "name": "aspect_ratio",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": "__id",
-                  "name": "id",
+                  "alias": "aspect_ratio",
+                  "name": "aspectRatio",
                   "args": null,
                   "storageKey": null
                 }
@@ -87,5 +83,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '2c137b96505cd1aae9b4750ecf6bacc7';
+(node as any).hash = '9b77dfaad4a1239bd6d4dd567c95d70e';
 export default node;

@@ -20,12 +20,15 @@ describe("FollowGeneButton", () => {
     )
   }
 
-  window.location.assign = jest.fn()
+  Object.defineProperty(window, "location", {
+    writable: true,
+    value: { assign: jest.fn() },
+  })
 
   let testProps
   beforeEach(() => {
     testProps = {
-      gene: { id: "modernism", __id: "1234", is_followed: false },
+      gene: { internalID: "modernism", id: "1234", is_followed: false },
       onOpenAuthModal: jest.fn(),
       tracking: { trackEvent: jest.fn() },
     }
@@ -52,12 +55,17 @@ describe("FollowGeneButton", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(testProps)
       component.find(FollowButtonDeprecated).simulate("click")
-      const args = testProps.onOpenAuthModal.mock.calls[0]
 
-      expect(args[0]).toBe("register")
-      expect(args[1].contextModule).toBe("intext tooltip")
-      expect(args[1].intent).toBe("follow gene")
-      expect(args[1].copy).toBe("Sign up to follow categories")
+      expect(testProps.onOpenAuthModal).toBeCalledWith("signup", {
+        contextModule: "intextTooltip",
+        copy: "Sign up to follow categories",
+        intent: "followGene",
+        afterSignUpAction: {
+          action: "follow",
+          kind: "gene",
+          objectId: "modernism",
+        },
+      })
     })
 
     it("Follows an gene if current user", () => {
@@ -65,7 +73,7 @@ describe("FollowGeneButton", () => {
       component.find(FollowButtonDeprecated).simulate("click")
       const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
-      expect(mutation.gene_id).toBe("modernism")
+      expect(mutation.geneID).toBe("modernism")
     })
 
     it("Unfollows an gene if current user", () => {
@@ -74,7 +82,7 @@ describe("FollowGeneButton", () => {
       component.find(FollowButtonDeprecated).simulate("click")
       const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
-      expect(mutation.gene_id).toBe("modernism")
+      expect(mutation.geneID).toBe("modernism")
     })
 
     it("Tracks follow click when following", () => {

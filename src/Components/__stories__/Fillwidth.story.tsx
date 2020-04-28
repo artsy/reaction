@@ -2,16 +2,18 @@ import { storiesOf } from "@storybook/react"
 import React from "react"
 import { graphql } from "react-relay"
 
+import { ContextModule } from "@artsy/cohesion"
+import { FillwidthQuery } from "__generated__/FillwidthQuery.graphql"
 import { RootQueryRenderer } from "Artsy/Relay/RootQueryRenderer"
 import Fillwidth from "../Artwork/Fillwidth"
 
 function FillwidthExample(props: { artistID: string }) {
   return (
-    <RootQueryRenderer
+    <RootQueryRenderer<FillwidthQuery>
       query={graphql`
         query FillwidthQuery($artistID: String!) {
           artist(id: $artistID) {
-            artworks: artworks_connection(first: 6) {
+            artworks: artworksConnection(first: 6) {
               ...Fillwidth_artworks
             }
           }
@@ -20,7 +22,12 @@ function FillwidthExample(props: { artistID: string }) {
       variables={{ artistID: props.artistID }}
       render={readyState => {
         return (
-          readyState.props && <Fillwidth {...readyState.props.artist as any} />
+          readyState.props && (
+            <Fillwidth
+              {...readyState.props.artist}
+              contextModule={ContextModule.header}
+            />
+          )
         )
       }}
     />

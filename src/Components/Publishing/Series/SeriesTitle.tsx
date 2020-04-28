@@ -1,8 +1,7 @@
-import { unica } from "Assets/Fonts"
+import { media, Sans } from "@artsy/palette"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
-import { pMedia } from "../../Helpers"
 import { ImageContainer, PartnerBlock } from "../Partner/PartnerBlock"
 
 interface SeriesTitleProps extends React.HTMLProps<HTMLDivElement> {
@@ -20,7 +19,9 @@ export const SeriesTitle: React.SFC<SeriesTitleProps> = ({
 
   return (
     <SeriesTitleContainer color={color}>
-      <Title>{editTitle ? editTitle : title}</Title>
+      <Sans size={["10", "12", "16"]} element="h1" mb={["2", "3"]}>
+        {editTitle ? editTitle : title}
+      </Sans>
 
       {sponsor && (
         <PartnerBlock
@@ -50,19 +51,9 @@ export const SeriesTitleContainer = styled.div<{ color: string }>`
     }
   }
 
-  ${pMedia.md`
+  ${media.md`
     ${ImageContainer} {
       padding-bottom: 0;
     }
-  `};
-`
-
-const Title = styled.div`
-  ${unica("s120")};
-  margin-bottom: 30px;
-
-  ${pMedia.md`
-    ${unica("s65")}
-    margin-bottom: 20px;
   `};
 `

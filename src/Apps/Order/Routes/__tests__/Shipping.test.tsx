@@ -1,3 +1,4 @@
+import { ShippingTestQueryRawResponse } from "__generated__/ShippingTestQuery.graphql"
 import { cloneDeep } from "lodash"
 
 import { RadioGroup } from "@artsy/palette"
@@ -5,15 +6,15 @@ import {
   UntouchedBuyOrder,
   UntouchedOfferOrder,
 } from "Apps/__tests__/Fixtures/Order"
-import { Address } from "Apps/Order/Components/AddressForm"
 import {
   fillCountrySelect,
   fillIn,
+  fillInPhoneNumber,
   validAddress,
-} from "Apps/Order/Routes/__tests__/Utils/addressForm"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
+} from "Components/__tests__/Utils/addressForm"
+import { Address } from "Components/AddressForm"
+import { CountrySelect } from "Components/CountrySelect"
 import Input from "Components/Input"
-import { CountrySelect } from "Components/v2"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { commitMutation as _commitMutation, graphql } from "react-relay"
 import {
@@ -25,7 +26,6 @@ import {
 import { ShippingFragmentContainer } from "../Shipping"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
 const fillAddressForm = (component: any, address: Address) => {
@@ -41,11 +41,17 @@ const fillAddressForm = (component: any, address: Address) => {
     value: address.region,
   })
   fillIn(component, { title: "Postal code", value: address.postalCode })
-  fillIn(component, { title: "Phone number", value: address.phoneNumber })
+  fillInPhoneNumber(component, {
+    value: address.phoneNumber,
+  })
   fillCountrySelect(component, address.country)
 }
 
-const testOrder = { ...UntouchedBuyOrder, id: "1234" }
+const testOrder: ShippingTestQueryRawResponse["order"] = {
+  ...UntouchedBuyOrder,
+  internalID: "1234",
+  id: "1234",
+}
 
 class ShippingTestPage extends OrderAppTestPage {
   async selectPickupOption() {
@@ -64,8 +70,8 @@ describe("Shipping", () => {
       ...settingOrderShipmentSuccess,
     },
     query: graphql`
-      query ShippingTestQuery {
-        order: ecommerceOrder(id: "unused") {
+      query ShippingTestQuery @raw_response_type {
+        order: commerceOrder(id: "unused") {
           ...Shipping_order
         }
       }
@@ -80,13 +86,24 @@ describe("Shipping", () => {
     expect(page.find(RadioGroup).length).toEqual(0)
   })
 
-  it("disables country select when shipsToContinentalUSOnly is true", async () => {
-    const continentalUSOnlyOrder = cloneDeep(testOrder) as any
-    continentalUSOnlyOrder.lineItems.edges[0].node.artwork.shipsToContinentalUSOnly = true
+  it("disables country select when onlyShipsDomestically is true and artwork is not in EU local zone", async () => {
+    const domesticShippingOnlyOrder = cloneDeep(testOrder) as any
+    domesticShippingOnlyOrder.lineItems.edges[0].node.artwork.onlyShipsDomestically = true
+    domesticShippingOnlyOrder.lineItems.edges[0].node.artwork.euShippingOrigin = false
     const page = await buildPage({
-      mockData: { order: continentalUSOnlyOrder },
+      mockData: { order: domesticShippingOnlyOrder },
     })
     expect(page.find(CountrySelect).props().disabled).toBe(true)
+  })
+
+  it("does not disable select when onlyShipsDomestically is true but artwork is located in EU local zone", async () => {
+    const domesticShippingEUOrder = cloneDeep(testOrder) as any
+    domesticShippingEUOrder.lineItems.edges[0].node.artwork.onlyShipsDomestically = true
+    domesticShippingEUOrder.lineItems.edges[0].node.artwork.euShippingOrigin = true
+    const page = await buildPage({
+      mockData: { order: domesticShippingEUOrder },
+    })
+    expect(page.find(CountrySelect).props().disabled).toBe(false)
   })
 
   it("commits the mutation with the orderId", async () => {
@@ -99,23 +116,24 @@ describe("Shipping", () => {
 
     expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
     expect(mutations.lastFetchVariables).toMatchInlineSnapshot(`
-Object {
-  "input": Object {
-    "fulfillmentType": "SHIP",
-    "orderId": "1234",
-    "shipping": Object {
-      "addressLine1": "14 Gower's Walk",
-      "addressLine2": "Suite 2.5, The Loom",
-      "city": "Whitechapel",
-      "country": "UK",
-      "name": "Artsy UK Ltd",
-      "phoneNumber": "8475937743",
-      "postalCode": "E1 8PY",
-      "region": "London",
-    },
-  },
-}
-`)
+      Object {
+        "input": Object {
+          "fulfillmentType": "SHIP",
+          "id": "1234",
+          "phoneNumber": "8475937743",
+          "shipping": Object {
+            "addressLine1": "14 Gower's Walk",
+            "addressLine2": "Suite 2.5, The Loom",
+            "city": "Whitechapel",
+            "country": "UK",
+            "name": "Artsy UK Ltd",
+            "phoneNumber": "",
+            "postalCode": "E1 8PY",
+            "region": "London",
+          },
+        },
+      }
+    `)
   })
 
   it("commits the mutation with shipping option", async () => {
@@ -136,7 +154,9 @@ Object {
 
   it("commits the mutation with pickup option", async () => {
     const page = await buildPage()
+    console.log("")
     await page.selectPickupOption()
+    fillInPhoneNumber(page.root, { isPickup: true, value: "2813308004" })
     expect(mutations.mockFetch).not.toHaveBeenCalled()
     await page.clickSubmit()
     expect(mutations.mockFetch).toHaveBeenCalledTimes(1)
@@ -204,7 +224,7 @@ Object {
             ...testOrder,
             requestedFulfillment: {
               ...validAddress,
-              __typename: "Ship",
+              __typename: "CommerceShip",
               name: "Dr Collector",
             },
           },
@@ -290,11 +310,13 @@ Object {
 
         await page.update()
 
-        const [addressInput, cityInput] = ["Address line 1", "City"].map(
-          label =>
-            page
-              .find(Input)
-              .filterWhere(wrapper => wrapper.props().title === label)
+        const [addressInput, cityInput] = [
+          "Address line 1",
+          "City",
+        ].map(label =>
+          page
+            .find(Input)
+            .filterWhere(wrapper => wrapper.props().title === label)
         )
 
         expect(addressInput.props().error).toBeTruthy()
@@ -311,6 +333,22 @@ Object {
           .filterWhere(wrapper => wrapper.props().title === "City")
 
         expect(cityInput.props().error).toBeTruthy()
+      })
+
+      it("does not submit the mutation without a phone number", async () => {
+        const address = {
+          name: "Erik David",
+          addressLine1: "401 Broadway",
+          addressLine2: "",
+          city: "New York",
+          region: "",
+          postalCode: "7Z",
+          phoneNumber: "",
+          country: "AQ",
+        }
+        fillAddressForm(page.root, address)
+        await page.clickSubmit()
+        expect(mutations.mockFetch).not.toBeCalled()
       })
 
       it("allows a missing state/province if the selected country is not US or Canada", async () => {
@@ -332,8 +370,15 @@ Object {
 
     it("does submit the mutation with a non-ship order", async () => {
       await page.selectPickupOption()
+      fillInPhoneNumber(page.root, { isPickup: true, value: "2813308004" })
       await page.clickSubmit()
       expect(mutations.mockFetch).toBeCalled()
+    })
+
+    it("does not submit the mutation with an incomplete form for a PICKUP order", async () => {
+      await page.selectPickupOption()
+      await page.clickSubmit()
+      expect(mutations.mockFetch).not.toBeCalled()
     })
   })
 
@@ -345,14 +390,9 @@ Object {
         },
       })
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkOffer navigate rightShippingnavigate rightPaymentnavigate rightReview"`
+        `"CheckOffer Navigate rightShippingNavigate rightPaymentNavigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe("Shipping")
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

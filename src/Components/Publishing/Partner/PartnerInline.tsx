@@ -60,6 +60,7 @@ export class PartnerInline extends React.Component<Props, null> {
 }
 
 const PartnerInlineContainer = styled.div`
+  z-index: 1;
   display: flex;
   align-items: center;
   margin: ${(props: DivProps) => props.margin};

@@ -83,7 +83,7 @@ export class VideoPlayer extends Component<VideoPlayerProps, VideoPlayerState> {
     clearInterval(this.timer)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.forcePlay) {
       this.forcePlay()
     }

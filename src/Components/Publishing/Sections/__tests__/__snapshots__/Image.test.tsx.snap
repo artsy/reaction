@@ -29,6 +29,7 @@ exports[`Image snapshots renders a long caption properly 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c6 > a,
@@ -219,6 +220,7 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c6 > a,
@@ -413,6 +415,7 @@ exports[`Image snapshots renders properly 1`] = `
   line-height: 1.4em;
   color: #999;
   margin: 0;
+  display: inline;
 }
 
 .c6 > a,

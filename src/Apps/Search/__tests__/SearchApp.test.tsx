@@ -4,28 +4,32 @@ import { mount } from "enzyme"
 import React from "react"
 import { SearchApp } from "../SearchApp"
 
-jest.mock("Components/v2/RouteTabs", () => ({
+jest.mock("Components/RouteTabs", () => ({
   RouteTab: ({ children }) => children,
   TabCarousel: ({ tabs }) => tabs,
 }))
 
 describe("SearchApp", () => {
   const getWrapper = (searchProps: any) => {
+    const trackEvent = jest.fn()
+    const tracking = { trackEvent }
     return mount(
       <MockBoot breakpoint="lg">
         <SystemContextProvider>
-          <SearchApp {...searchProps} />
+          <SearchApp {...searchProps} tracking={tracking} />
         </SystemContextProvider>
       </MockBoot>
     )
   }
 
   const props = {
-    location: {
-      query: { term: "andy" },
+    match: {
+      location: {
+        query: { term: "andy" },
+      },
     },
     viewer: {
-      search: {
+      searchConnection: {
         aggregations: [
           {
             slice: "TYPE",
@@ -37,7 +41,7 @@ describe("SearchApp", () => {
           },
         ],
       },
-      filter_artworks: {
+      artworksConnection: {
         counts: {
           total: 100,
         },
@@ -46,14 +50,14 @@ describe("SearchApp", () => {
   }
 
   it("includes the total count", () => {
-    const wrapper = getWrapper(props) as any
-    const html = wrapper.html()
+    const wrapper = getWrapper(props).find("TotalResults")
+    const html = wrapper.text()
     expect(html).toContain('520 Results for "andy"')
   })
 
   it("includes tabs w/ counts", () => {
-    const wrapper = getWrapper(props) as any
-    const html = wrapper.html()
+    const wrapper = getWrapper(props).find("NavigationTabs")
+    const html = wrapper.text()
     expect(html).toMatch(/Artworks.*100/)
     expect(html).toMatch(/Artists.*320/)
     expect(html).toMatch(/Galleries.*100/)

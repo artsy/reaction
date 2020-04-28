@@ -3,11 +3,13 @@ import {
   GraphQLResolveInfo,
   isAbstractType,
   isLeafType,
+  isNonNullType,
+  isNullableType,
   responsePathAsArray,
 } from "graphql"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import getNetworkLayer from "relay-mock-network-layer"
-import { Network, RelayNetwork } from "relay-runtime"
+import { INetwork, Network } from "relay-runtime"
 import { get } from "Utils/get"
 import uuid from "uuid"
 import schema from "../../../data/schema.graphql"
@@ -32,7 +34,7 @@ export const createMockNetworkLayer2 = ({
 }: {
   mockData?: object
   mockMutationResults?: object
-}): RelayNetwork => {
+}): INetwork => {
   return Network.create(createMockFetchQuery({ mockData, mockMutationResults }))
 }
 
@@ -93,10 +95,10 @@ export const createMockFetchQuery = ({
         )
       }
 
-      if (info.fieldName === "__id" || info.fieldName === "id") {
-        // if relay is looking for `__id` but we only supplied `id`
-        if ("id" in source) {
-          return source.id
+      if (info.fieldName === "id" || info.fieldName === "internalID") {
+        // if relay is looking for `id` but we only supplied `internalID`
+        if ("internalID" in source) {
+          return source.internalID
         }
 
         // relay is looking for an id to denormalize the fixture in the store
@@ -124,13 +126,6 @@ export const createMockFetchQuery = ({
       // here we map the mock fixture entries to resolver functions if they aren't
       // already. graphql-tools expects functions, but we want to be able to just
       // supply plain data for syntax convenience.
-      Query: Object.entries(mockData).reduce(
-        (acc, [k, v]) => ({
-          ...acc,
-          [k]: typeof v === "function" ? v : () => v,
-        }),
-        {}
-      ),
       Mutation: Object.entries(mockMutationResults).reduce(
         (acc, [k, v]) => ({
           ...acc,
@@ -144,6 +139,9 @@ export const createMockFetchQuery = ({
 
 const checkLeafType = (value: unknown, info: GraphQLResolveInfo) => {
   const returnType = info.returnType
+  if (isNullableType(returnType) && value === null) {
+    return null
+  }
   if (isLeafType(returnType)) {
     try {
       returnType.parseValue(value)
@@ -164,7 +162,11 @@ const inferUnionOrInterfaceType = (
   value: unknown,
   info: GraphQLResolveInfo
 ) => {
-  const returnType = info.returnType
+  let returnType = info.returnType
+
+  if (isNonNullType(returnType)) {
+    returnType = returnType.ofType
+  }
 
   if (!isAbstractType(returnType)) {
     return value

@@ -2,13 +2,14 @@ import { Box, BoxProps, Link, Sans, space } from "@artsy/palette"
 import { AnalyticsSchema } from "Artsy"
 import { useTracking } from "Artsy/Analytics/useTracking"
 import { isFunction, isString } from "lodash"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { animated, config, useSpring } from "react-spring"
 import styled from "styled-components"
-import { NavBarHeight } from "./NavBar"
 
 interface NavItemProps extends BoxProps {
-  Menu?: React.FC
+  Menu?: React.FC<{
+    setIsVisible: React.Dispatch<React.SetStateAction<boolean>>
+  }>
   Overlay?: React.FC<{
     hover: boolean
   }>
@@ -16,7 +17,11 @@ interface NavItemProps extends BoxProps {
   className?: string
   href?: string
   onClick?: () => void
+  isFullScreenDropDown?: boolean
+  label?: string
 }
+
+type Position = React.CSSProperties["position"]
 
 export const NavItem: React.FC<NavItemProps> = ({
   Menu,
@@ -27,15 +32,20 @@ export const NavItem: React.FC<NavItemProps> = ({
   display = "block",
   href,
   onClick,
+  isFullScreenDropDown,
+  label,
 }) => {
+  const navItemLabel = children
   const { trackEvent } = useTracking()
-  const [hover, toggleHover] = useState(active)
+  const [hover, setIsVisible] = useState(active)
   const showMenu = Boolean(Menu && hover)
   const showOverlay = Boolean(Overlay)
   const hoverColor = hover ? "purple100" : "black80"
   const getAnimation = h => ({
     opacity: h ? 0 : 1,
     transform: `translate3d(0, ${h ? -90 : -65}px, 0)`,
+    position: isFullScreenDropDown ? ("absolute" as Position) : "static",
+    left: "0px",
   })
   const animatedStyle = useSpring({
     from: getAnimation(hover),
@@ -50,20 +60,33 @@ export const NavItem: React.FC<NavItemProps> = ({
   })
 
   const trackClick = () => {
-    if (href && isString(children)) {
+    if (href && isString(navItemLabel)) {
       trackEvent({
         action_type: AnalyticsSchema.ActionType.Click,
-        subject: children, // Text passed into the NavItem
+        subject: navItemLabel, // Text passed into the NavItem
         destination_path: href,
       })
     }
   }
 
+  const trackHover = () => {
+    if (isString(navItemLabel) || label)
+      trackEvent({
+        action_type: AnalyticsSchema.ActionType.Hover,
+        subject: navItemLabel.toString() || label,
+      })
+  }
+
+  useEffect(() => {
+    if (hover) {
+      trackHover()
+    }
+  }, [hover])
+
   return (
     <Box
-      position="relative"
-      onMouseEnter={() => toggleHover(true)}
-      onMouseLeave={() => toggleHover(false)}
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
     >
       <Link
         href={href}
@@ -82,22 +105,43 @@ export const NavItem: React.FC<NavItemProps> = ({
       >
         <Sans size="3" weight="medium" color={hoverColor}>
           <Box height={25}>
-            {isFunction(children)
+            {isFunction(navItemLabel)
               ? // NavItem children can be called as renderProps so that contents
                 // can operate on UI behaviors (such as changing the color of an
                 // icon on hover).
-                children({
+                navItemLabel({
                   hover,
                 })
-              : children}
+              : navItemLabel}
           </Box>
         </Sans>
       </Link>
 
+      {/* Very hacky fix to prevent mouse out from triggering a close on the
+          first Artworks nav item. Create a box, position and extend it out a
+          ways and then hide it.
+
+          FIXME: Come up with a better way to do this
+       */}
+      {isFullScreenDropDown && label === "Artworks" && showMenu && (
+        <Box
+          position="absolute"
+          style={{
+            background: "green",
+            zIndex: 1,
+            width: 300,
+            height: 50,
+            marginTop: -50, // using margin because we can't use relative positioning here
+            marginLeft: -220,
+            opacity: 0,
+          }}
+        />
+      )}
+
       {showMenu && (
         <animated.div style={animatedStyle}>
-          <MenuContainer top={space(6)}>
-            <Menu />
+          <MenuContainer top={space(6)} isFullScreen={isFullScreenDropDown}>
+            <Menu setIsVisible={setIsVisible} />
           </MenuContainer>
         </animated.div>
       )}
@@ -107,9 +151,8 @@ export const NavItem: React.FC<NavItemProps> = ({
   )
 }
 
-const MenuContainer = styled(Box)`
+const MenuContainer = styled(Box)<{ isFullScreen?: boolean }>`
   position: absolute;
-  top: ${NavBarHeight}px;
-  margin-top: -1px; /* Offset border */
-  transform: translateX(-78%);
+  margin-top: ${p => (p.isFullScreen ? "1px" : "-1px")}; /* Offset border */
+  transform: translateX(${p => (p.isFullScreen ? 0 : "-78%")});
 `

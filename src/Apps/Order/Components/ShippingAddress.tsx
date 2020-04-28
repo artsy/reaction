@@ -2,7 +2,7 @@ import { Serif } from "@artsy/palette"
 import React from "react"
 
 import { ShippingAddress_ship } from "__generated__/ShippingAddress_ship.graphql"
-import { COUNTRY_CODE_TO_COUNTRY_NAME } from "Components/v2"
+import { COUNTRY_CODE_TO_COUNTRY_NAME } from "Components/CountrySelect"
 import { createFragmentContainer, graphql } from "react-relay"
 
 export interface ShippingAddressProps {
@@ -40,7 +40,7 @@ export const ShippingAddressFragmentContainer = createFragmentContainer(
   ShippingAddress,
   {
     ship: graphql`
-      fragment ShippingAddress_ship on Ship {
+      fragment ShippingAddress_ship on CommerceShip {
         name
         addressLine1
         addressLine2

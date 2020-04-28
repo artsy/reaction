@@ -1,4 +1,4 @@
-import { Address } from "Apps/Order/Components/AddressForm"
+import { Address } from "Components/AddressForm"
 import { validateAddress } from "../formValidators"
 
 describe("formValidators/validateAddress", () => {

@@ -2,8 +2,9 @@ import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_a
 import { ArtworkImageBrowserQuery } from "__generated__/ArtworkImageBrowserQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
-import { createFragmentContainer, graphql, QueryRenderer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
 
@@ -22,7 +23,9 @@ export class ArtworkImageBrowserContainer extends React.Component<
       return null
     }
 
-    const defaultImageIndex = images.findIndex(e => e.id === image.id)
+    const defaultImageIndex = images.findIndex(
+      e => e.internalID === image.internalID
+    )
     return (
       <>
         <ArtworkImageBrowser
@@ -46,21 +49,21 @@ export const ArtworkImageBrowserFragmentContainer = createFragmentContainer<
 >(ArtworkImageBrowserContainer, {
   artwork: graphql`
     fragment ArtworkImageBrowser_artwork on Artwork {
-      image_alt: to_s
+      image_alt: formattedMetadata
       ...ArtworkActions_artwork
       image {
-        id
+        internalID
       }
       images {
-        id
+        internalID
         uri: url(version: ["large"])
         placeholder: resized(width: 30, height: 30, version: "small") {
           url
         }
-        aspectRatio: aspect_ratio
-        is_zoomable
-        is_default
-        deepZoom: deep_zoom {
+        aspectRatio: aspectRatio
+        is_zoomable: isZoomable
+        is_default: isDefault
+        deepZoom: deepZoom {
           Image {
             xmlns
             Url

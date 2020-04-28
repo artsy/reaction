@@ -1,6 +1,9 @@
 // @ts-ignore
 import { ArtistRecommendations_artist } from "__generated__/ArtistRecommendations_artist.graphql"
-import { ArtistRecommendations_Test_Query } from "__generated__/ArtistRecommendations_Test_Query.graphql"
+import {
+  ArtistRecommendations_Test_Query,
+  ArtistRecommendations_Test_QueryRawResponse,
+} from "__generated__/ArtistRecommendations_Test_Query.graphql"
 import { MockBoot, MockRelayRenderer, renderUntil } from "DevTools"
 import React from "react"
 import { graphql } from "react-relay"
@@ -10,7 +13,9 @@ import { RecommendedArtistFragmentContainer as RecommendedArtist } from "../Reco
 jest.unmock("react-relay")
 
 describe("ArtistRecommendations", () => {
-  async function getWrapper(artistData: any) {
+  async function getWrapper(
+    artistData: ArtistRecommendations_Test_QueryRawResponse["artist"]
+  ) {
     return await renderUntil(
       wrapper => {
         return wrapper.find(ArtistRecommendations).length > 0
@@ -19,15 +24,17 @@ describe("ArtistRecommendations", () => {
         <MockRelayRenderer<ArtistRecommendations_Test_Query>
           Component={ArtistRecommendations}
           query={graphql`
-            query ArtistRecommendations_Test_Query {
+            query ArtistRecommendations_Test_Query @raw_response_type {
               artist(id: "andy-warhol") {
                 ...ArtistRecommendations_artist
               }
             }
           `}
-          mockData={{
-            artist: artistData,
-          }}
+          mockData={
+            {
+              artist: artistData,
+            } as ArtistRecommendations_Test_QueryRawResponse
+          }
         />
       </MockBoot>
     )
@@ -36,19 +43,19 @@ describe("ArtistRecommendations", () => {
   it("Doesn`t explode when there are no recommended artists", async () => {
     const request = {
       ...defaultArtist,
-      related: { artists: null },
+      related: { artistsConnection: null },
     }
 
     const wrapper = await getWrapper(request)
 
-    expect(wrapper.html()).toContain("Related to Juan Gris")
+    expect(wrapper.html()).toContain("Related Artists")
     expect(wrapper.find(RecommendedArtist).length).toEqual(0)
   })
 
   it("Renders recommended artists when they exist", async () => {
     const wrapper = await getWrapper(defaultArtist)
 
-    expect(wrapper.html()).toContain("Related to Juan Gris")
+    expect(wrapper.html()).toContain("Related Artists")
     expect(wrapper.find(RecommendedArtist).length).toEqual(1)
   })
 
@@ -73,12 +80,16 @@ const artistFields = {
   artworks_connection: null,
   is_followed: false,
   counts: null,
+  slug: "",
+  internalID: "",
+  __typename: "Artist",
 }
 
 const defaultArtist = {
   name: "Juan Gris",
+  slug: "juan-gris",
   related: {
-    artists: {
+    artistsConnection: {
       pageInfo: {
         hasNextPage: false,
         endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
@@ -87,7 +98,7 @@ const defaultArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
@@ -96,13 +107,14 @@ const defaultArtist = {
     },
   },
   id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-}
+  internalID: "QXJ0aXN0Omp1YW4tZ3Jpcw",
+} as ArtistRecommendations_Test_QueryRawResponse["artist"]
 
 const pagedArtist = {
   name: "Juan Gris",
+  slug: "juan-gris",
   related: {
-    artists: {
+    artistsConnection: {
       pageInfo: {
         hasNextPage: true,
         endCursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
@@ -111,7 +123,7 @@ const pagedArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc28",
@@ -119,7 +131,7 @@ const pagedArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc29",
@@ -127,7 +139,7 @@ const pagedArtist = {
         {
           node: {
             id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
-            _id: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
+            internalID: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
             ...artistFields,
           },
           cursor: "QXJ0aXN0OnBhYmxvLXBpY2Fzc30",
@@ -136,5 +148,5 @@ const pagedArtist = {
     },
   },
   id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-  _id: "QXJ0aXN0Omp1YW4tZ3Jpcw",
-}
+  internalID: "QXJ0aXN0Omp1YW4tZ3Jpcw",
+} as ArtistRecommendations_Test_QueryRawResponse["artist"]

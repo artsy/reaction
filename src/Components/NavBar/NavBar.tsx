@@ -7,7 +7,9 @@ import {
   BellIcon,
   Box,
   Button,
+  ChevronIcon,
   color,
+  EnvelopeIcon,
   Flex,
   Link,
   SoloIcon,
@@ -19,6 +21,7 @@ import { SystemContext } from "Artsy/SystemContext"
 import { SearchBarQueryRenderer as SearchBar } from "Components/Search/SearchBar"
 
 import {
+  DropDownNavMenu,
   MobileNavMenu,
   MobileToggleIcon,
   MoreNavMenu,
@@ -26,14 +29,19 @@ import {
   UserMenu,
 } from "./Menus"
 
+import { ModalType } from "Components/Authentication/Types"
+import { menuData, MenuLinkData } from "Components/NavBar/menuData"
+import { openAuthModal } from "Utils/openAuthModal"
+
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
-import * as authentication from "./Utils/authentication"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import Events from "Utils/Events"
 import { useMedia } from "Utils/Hooks/useMedia"
+import { userHasLabFeature } from "Utils/user"
 
 export const NavBar: React.FC = track(
   {
@@ -43,13 +51,22 @@ export const NavBar: React.FC = track(
   {
     dispatch: data => Events.postEvent(data),
   }
-)(_props => {
+)(() => {
   const { trackEvent } = useTracking()
-  const { mediator, user } = useContext(SystemContext)
+  const { mediator, user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
   const { xs, sm } = useMedia()
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
+  const conversationsEnabled = userHasLabFeature(
+    user,
+    "User Conversations View"
+  )
+  const canViewNewDropDown = userHasLabFeature(user, "Updated Navigation")
+  const {
+    links: [artworks, artists],
+  } = menuData
+
   const getNotificationCount = () => cookie.get("notification-count") || 0
 
   // Close mobile menu if dragging window from small size to desktop
@@ -59,8 +76,24 @@ export const NavBar: React.FC = track(
     }
   }, [isMobile])
 
+  /**
+   * Check to see if we're clicking a link that lives within the new app shell
+   * and close the navbar.
+   *
+   * TODO: Find a less naive way to check if route is in appshell
+   */
+  const handleMobileNavClick = event => {
+    // FIXME: Remove once experimental A/B test completes
+    if (EXPERIMENTAL_APP_SHELL) {
+      // Includes /collect or /collections
+      if (event.target?.parentNode?.href?.includes("/collect")) {
+        toggleMobileNav(false)
+      }
+    }
+  }
+
   return (
-    <>
+    <header>
       <NavBarContainer px={1}>
         <NavSection>
           <Link href="/" style={{ display: "flex" }}>
@@ -76,28 +109,95 @@ export const NavBar: React.FC = track(
           </Box>
         </NavSection>
 
-        <Spacer mr={3} />
+        <Spacer mr={2} />
 
         {/*
           Desktop. Collapses into mobile at `sm` breakpoint.
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            <NavItem href="/collect">Artworks</NavItem>
-            <NavItem href="/auctions">Auctions</NavItem>
-            <NavItem href="/galleries">Galleries</NavItem>
+            {canViewNewDropDown ? (
+              <NavItem
+                label="Artworks"
+                isFullScreenDropDown
+                Menu={({ setIsVisible }) => {
+                  return (
+                    <Box>
+                      <DropDownNavMenu
+                        width="100vw"
+                        menu={(artworks as MenuLinkData).menu}
+                        contextModule={
+                          AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+                        }
+                        onClick={() => {
+                          if (EXPERIMENTAL_APP_SHELL) {
+                            setIsVisible(false)
+                          }
+                        }}
+                      />
+                    </Box>
+                  )
+                }}
+              >
+                <Flex>
+                  Artworks
+                  <ChevronIcon
+                    direction="down"
+                    color={color("black100")}
+                    height="15px"
+                    width="15px"
+                    top="5px"
+                    left="4px"
+                  />
+                </Flex>
+              </NavItem>
+            ) : (
+              <NavItem href="/collect">Artworks</NavItem>
+            )}
 
-            {/**
-              Only show Fairs at `xlg`
-            */}
+            {canViewNewDropDown ? (
+              <NavItem
+                label="Artists"
+                isFullScreenDropDown
+                Menu={({ setIsVisible }) => {
+                  return (
+                    <Box>
+                      <DropDownNavMenu
+                        width="100vw"
+                        menu={(artists as MenuLinkData).menu}
+                        contextModule={
+                          AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+                        }
+                        onClick={() => {
+                          if (EXPERIMENTAL_APP_SHELL) {
+                            setIsVisible(false)
+                          }
+                        }}
+                      />
+                    </Box>
+                  )
+                }}
+              >
+                <Flex>
+                  Artists
+                  <ChevronIcon
+                    direction="down"
+                    color={color("black100")}
+                    height="15px"
+                    width="15px"
+                    top="5px"
+                    left="4px"
+                  />
+                </Flex>
+              </NavItem>
+            ) : (
+              <NavItem href="/artists">Artists</NavItem>
+            )}
+
+            <NavItem href="/auctions">Auctions</NavItem>
+            <NavItem href="/articles">Editorial</NavItem>
             <NavItem
-              href="/art-fairs"
-              display={["none", "none", "none", "none", "block"]}
-            >
-              Fairs
-            </NavItem>
-            <NavItem href="/articles">Magazine</NavItem>
-            <NavItem
+              label="More"
               Menu={() => {
                 return (
                   <Box mr={-150}>
@@ -106,11 +206,19 @@ export const NavBar: React.FC = track(
                 )
               }}
             >
-              More
+              <Flex>
+                More
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
             </NavItem>
           </NavSection>
-
-          <Spacer mr={2} />
 
           <NavSection>
             {isLoggedIn && (
@@ -136,7 +244,6 @@ export const NavBar: React.FC = track(
                         new_notification_count: getNotificationCount(),
                       })
                     }
-
                     return (
                       <BellIcon
                         top={3}
@@ -145,8 +252,26 @@ export const NavBar: React.FC = track(
                     )
                   }}
                 </NavItem>
+                {conversationsEnabled && (
+                  <NavItem href="/user/conversations">
+                    {({ hover }) => {
+                      return (
+                        <EnvelopeIcon
+                          top={3}
+                          fill={hover ? "purple100" : "black80"}
+                        />
+                      )
+                    }}
+                  </NavItem>
+                )}
                 <NavItem Menu={UserMenu}>
                   {({ hover }) => {
+                    if (hover) {
+                      trackEvent({
+                        action_type: AnalyticsSchema.ActionType.Hover,
+                        subject: "User",
+                      })
+                    }
                     return (
                       <SoloIcon
                         top={3}
@@ -161,15 +286,15 @@ export const NavBar: React.FC = track(
 
           {!isLoggedIn && (
             <NavSection>
+              <Spacer mr={2} />
               <Button
                 variant="secondaryOutline"
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Login,
+                  openAuthModal(mediator, {
+                    mode: ModalType.login,
+                    intent: AuthIntent.login,
+                    contextModule: ContextModule.header,
                   })
-
-                  authentication.login(mediator)
                 }}
               >
                 Log in
@@ -177,12 +302,11 @@ export const NavBar: React.FC = track(
               <Spacer mr={1} />
               <Button
                 onClick={() => {
-                  trackEvent({
-                    action_type: AnalyticsSchema.ActionType.Click,
-                    subject: AnalyticsSchema.Subject.Signup,
+                  openAuthModal(mediator, {
+                    mode: ModalType.signup,
+                    intent: AuthIntent.signup,
+                    contextModule: ContextModule.header,
                   })
-
-                  authentication.signup(mediator)
                 }}
               >
                 Sign up
@@ -225,10 +349,14 @@ export const NavBar: React.FC = track(
       {showMobileMenu && (
         <>
           <MobileNavCover onClick={() => toggleMobileNav(false)} />
-          <MobileNavMenu />
+          <MobileNavMenu
+            isOpen={showMobileMenu}
+            menuData={menuData}
+            onNavButtonClick={handleMobileNavClick}
+          />
         </>
       )}
-    </>
+    </header>
   )
 })
 

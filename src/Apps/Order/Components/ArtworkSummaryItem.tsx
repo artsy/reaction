@@ -21,21 +21,18 @@ export interface ArtworkSummaryItemProps extends Omit<FlexProps, "order"> {
 const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
   order: {
     lineItems,
-    seller: { name },
+    sellerDetails: { name },
   },
   ...others
 }) => {
   const artwork = get({}, props => lineItems.edges[0].node.artwork)
 
-  const {
-    artist_names,
-    title,
-    date,
-    shippingOrigin,
-    image: {
-      resized_ArtworkSummaryItem: { url: imageURL },
-    },
-  } = artwork
+  const { artist_names, title, date, shippingOrigin, image } = artwork
+
+  const imageURL =
+    image &&
+    image.resized_ArtworkSummaryItem &&
+    image.resized_ArtworkSummaryItem.url
 
   const truncateTextStyle = {
     whiteSpace: "nowrap",
@@ -46,7 +43,7 @@ const ArtworkSummaryItem: React.SFC<ArtworkSummaryItemProps> = ({
   return (
     <StackableBorderBox flexDirection="row" {...others}>
       <Box height="auto">
-        <Image src={imageURL} width="55px" mr={1} />
+        {imageURL && <Image src={imageURL} width="55px" mr={1} />}
       </Box>
       <Flex flexDirection="column" style={{ overflow: "hidden" }}>
         <Serif
@@ -80,8 +77,8 @@ export const ArtworkSummaryItemFragmentContainer = createFragmentContainer(
   ArtworkSummaryItem,
   {
     order: graphql`
-      fragment ArtworkSummaryItem_order on Order {
-        seller {
+      fragment ArtworkSummaryItem_order on CommerceOrder {
+        sellerDetails {
           ... on Partner {
             name
           }
@@ -90,7 +87,7 @@ export const ArtworkSummaryItemFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                artist_names
+                artist_names: artistNames
                 title
                 date
                 shippingOrigin

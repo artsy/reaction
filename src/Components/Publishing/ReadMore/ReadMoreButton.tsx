@@ -13,6 +13,10 @@ interface ReadMoreProps {
   referrer: string
 }
 
+/**
+ * @deprecated in favor of our Design System ReadMore component in @artsy/palette
+ * https://palette.artsy.net/elements/layout/readmore
+ */
 @track({
   context_module: Schema.ContextModule.ReadMore,
   subject: Schema.Subject.ReadMore,

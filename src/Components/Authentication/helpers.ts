@@ -1,5 +1,6 @@
-import * as sharify from "sharify"
-import { metaphysics } from "Utils/metaphysics"
+import { helpersEmailQuery } from "__generated__/helpersEmailQuery.graphql"
+import { graphql } from "react-relay"
+import { fetchQuery } from "relay-runtime"
 
 export const handleSubmit = (
   url: string,
@@ -38,21 +39,23 @@ export async function sendAuthData(
   return data
 }
 
-export const checkEmail = ({ values, actions, shouldExist }) => {
-  const query = email => `
-    query {
-      user(email: "${email}") {
+export const checkEmail = ({
+  relayEnvironment,
+  values,
+  actions,
+  shouldExist,
+}) => {
+  const query = graphql`
+    query helpersEmailQuery($email: String!) {
+      user(email: $email) {
         userAlreadyExists
       }
     }
   `
-  return metaphysics(
-    { query: query(values.email) },
-    {
-      appToken: sharify.data.XAPP_TOKEN,
-    }
-  ).then(({ data }: any) => {
-    if (data.user.userAlreadyExists) {
+  return fetchQuery<helpersEmailQuery>(relayEnvironment, query, {
+    email: values.email,
+  }).then((data: any) => {
+    if (data.user && data.user.userAlreadyExists) {
       if (shouldExist) {
         return true
       } else {

@@ -1,7 +1,5 @@
-import { garamond } from "Assets/Fonts"
-import { pMedia } from "Components/Helpers"
+import { Box, Flex, Serif } from "@artsy/palette"
 import React from "react"
-import styled from "styled-components"
 
 interface NewsHeadlineProps {
   article: any
@@ -13,33 +11,17 @@ export const NewsHeadline: React.SFC<NewsHeadlineProps> = props => {
   const { title } = article
 
   return (
-    <NewsHeadlineParent>
-      <NewsHeadlineContainer>
-        <Title>{editTitle ? editTitle : title}</Title>
-      </NewsHeadlineContainer>
-    </NewsHeadlineParent>
+    <Box>
+      <Flex flexDirection="column" maxWidth="780" mx="auto" mt="1" mb="3">
+        <Serif
+          size={["6", "8"]}
+          lineHeight={["1.1", "initial"]}
+          weight="semibold"
+          element="h1"
+        >
+          {editTitle ? editTitle : title}
+        </Serif>
+      </Flex>
+    </Box>
   )
 }
-
-const NewsHeadlineParent = styled.div`
-  margin: 0;
-`
-
-const NewsHeadlineContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  max-width: 780px;
-  width: 100%;
-  margin: 10px auto 30px;
-  box-sizing: border-box;
-`
-
-const Title = styled.div`
-  ${garamond("s34")};
-  font-weight: 600;
-  ${pMedia.sm`
-    ${garamond("s23")}
-    line-height: 1.1;
-  `};
-`

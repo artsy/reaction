@@ -1,8 +1,16 @@
-import { Box, Sans, StackableBorderBox } from "@artsy/palette"
+import {
+  Col,
+  Grid,
+  ReadMore,
+  Row,
+  Sans,
+  StackableBorderBox,
+} from "@artsy/palette"
+import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import { ArtworkDetailsAdditionalInfo_artwork } from "__generated__/ArtworkDetailsAdditionalInfo_artwork.graphql"
+import { RequestConditionReportQueryRenderer } from "./RequestConditionReport"
 
 export interface ArtworkDetailsAdditionalInfoProps {
   artwork: ArtworkDetailsAdditionalInfo_artwork
@@ -11,68 +19,86 @@ export interface ArtworkDetailsAdditionalInfoProps {
 export class ArtworkDetailsAdditionalInfo extends React.Component<
   ArtworkDetailsAdditionalInfoProps
 > {
-  renderRow(label: string, details: string) {
-    if (!label && !details) {
-      return null
-    }
-    return (
-      <Box>
-        <Sans size="2" weight="medium" display="inline" mr={1}>
-          {label}
-        </Sans>
-        <Sans size="2" display="inline" color="black60">
-          {details}
-        </Sans>
-      </Box>
-    )
-  }
-
   render() {
     const {
+      category,
       series,
       publisher,
       manufacturer,
       image_rights,
+      internalID,
+      canRequestLotConditionsReport,
       framed,
       signatureInfo,
       conditionDescription,
       certificateOfAuthenticity,
     } = this.props.artwork
 
-    if (
-      !series &&
-      !publisher &&
-      !manufacturer &&
-      !image_rights &&
-      !framed &&
-      !signatureInfo &&
-      !conditionDescription &&
-      !certificateOfAuthenticity
-    ) {
+    const listItems = [
+      {
+        title: "Medium",
+        value: category,
+      },
+      {
+        title: "Condition",
+        value: canRequestLotConditionsReport ? (
+          <RequestConditionReportQueryRenderer artworkID={internalID} />
+        ) : (
+          conditionDescription && conditionDescription.details
+        ),
+      },
+
+      {
+        title: "Signature",
+        value: signatureInfo && signatureInfo.details,
+      },
+      {
+        title: "Certificate of authenticity",
+        value: certificateOfAuthenticity && certificateOfAuthenticity.details,
+      },
+      {
+        title: "Frame",
+        value: framed && framed.details,
+      },
+      { title: "Series", value: series },
+      { title: "Publisher", value: publisher },
+      { title: "Manufacturer", value: manufacturer },
+      { title: "Image rights", value: image_rights },
+    ]
+
+    const displayItems = listItems.filter(
+      i => i.value != null && i.value !== ""
+    )
+
+    if (displayItems.length === 0) {
       return null
     }
 
     return (
       <StackableBorderBox p={2}>
-        <Box>
-          {series && this.renderRow("Series", series)}
-          {publisher && this.renderRow("Publisher", publisher)}
-          {manufacturer && this.renderRow("Manufacturer", manufacturer)}
-          {image_rights && this.renderRow("Image rights", image_rights)}
-          {framed && this.renderRow(framed.label, framed.details)}
-          {signatureInfo &&
-            this.renderRow(signatureInfo.label, signatureInfo.details)}
-          {conditionDescription &&
-            this.renderRow(
-              conditionDescription.label,
-              conditionDescription.details
-            )}
-          {certificateOfAuthenticity &&
-            this.renderRow(
-              certificateOfAuthenticity.label,
-              certificateOfAuthenticity.details
-            )}
-        </Box>
+        <Grid>
+          {displayItems.map(({ title, value }, index) => (
+            <Row
+              key={`artwork-details-${index}`}
+              pb={index === displayItems.length - 1 ? 0 : 1}
+            >
+              <Col xs={12} sm={6} md={6} lg={3}>
+                <Sans size="2" weight="medium" pr={2}>
+                  {title}
+                </Sans>
+              </Col>
+              <Col xs={12} sm={6} md={6} lg={9}>
+                <Sans size="2" weight="regular" color="black60">
+                  {React.isValidElement(value) ? (
+                    value
+                  ) : (
+                    <ReadMore maxChars={140} content={value} />
+                  )}
+                </Sans>
+              </Col>
+            </Row>
+          ))}
+        </Grid>
       </StackableBorderBox>
     )
   }
@@ -83,10 +109,13 @@ export const ArtworkDetailsAdditionalInfoFragmentContainer = createFragmentConta
   {
     artwork: graphql`
       fragment ArtworkDetailsAdditionalInfo_artwork on Artwork {
+        category
         series
         publisher
         manufacturer
-        image_rights
+        image_rights: imageRights
+        canRequestLotConditionsReport
+        internalID
         framed {
           label
           details

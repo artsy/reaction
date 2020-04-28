@@ -19,6 +19,10 @@ export interface ModalProps extends React.HTMLProps<Modal> {
   title?: string
 }
 
+/**
+ * @deprecated in favor of our Design System Modal component in @artsy/palette
+ * https://palette.artsy.net/elements/dialogs/modal
+ */
 export class Modal extends React.Component<ModalProps> {
   static defaultProps = {
     show: false,
@@ -33,7 +37,7 @@ export class Modal extends React.Component<ModalProps> {
       : [],
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.show !== nextProps.show) {
       this.setState({
         isAnimating: true,
@@ -101,6 +105,8 @@ export const ModalContent = styled.div.attrs<{
   width: ${props => (props.hasImage ? "50%" : "100%")};
   ${props => props.hasImage && "margin-left: 50%"};
   ${media.sm`
+    width: 100%;
+    margin: 0px;
     padding: ${props =>
       props.cta && props.cta.isFixed ? "20px 20px 110px" : "20px"};
   `};

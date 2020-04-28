@@ -1,7 +1,7 @@
 import { OfferOrderWithShippingDetails } from "Apps/__tests__/Fixtures/Order"
 
 export const submitOfferOrderWithFailure = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       error: {
         type: "validation",
@@ -12,8 +12,21 @@ export const submitOfferOrderWithFailure = {
   },
 }
 
+export const submitOfferOrderFailedConfirmation = {
+  commerceSubmitOrderWithOffer: {
+    orderOrError: {
+      __typename: "CommerceOrderWithMutationFailure",
+      error: {
+        type: "processing",
+        code: "payment_method_confirmation_failed",
+        data: null,
+      },
+    },
+  },
+}
+
 export const submitOfferOrderWithVersionMismatchFailure = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       error: {
         type: "processing",
@@ -25,7 +38,7 @@ export const submitOfferOrderWithVersionMismatchFailure = {
 }
 
 export const submitOfferOrderWithNoInventoryFailure = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       error: {
         type: "processing",
@@ -36,8 +49,18 @@ export const submitOfferOrderWithNoInventoryFailure = {
   },
 }
 
+export const submitOfferOrderWithActionRequired = {
+  commerceSubmitOrderWithOffer: {
+    orderOrError: {
+      actionData: {
+        clientSecret: "client-secret",
+      },
+    },
+  },
+}
+
 export const submitOfferOrderSuccess = {
-  ecommerceSubmitOrderWithOffer: {
+  commerceSubmitOrderWithOffer: {
     orderOrError: {
       order: {
         ...OfferOrderWithShippingDetails,

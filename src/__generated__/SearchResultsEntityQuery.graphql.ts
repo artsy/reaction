@@ -1,21 +1,21 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { SearchResultsEntity_viewer$ref } from "./SearchResultsEntity_viewer.graphql";
-export type SearchEntity = "ARTICLE" | "ARTIST" | "ARTWORK" | "CITY" | "COLLECTION" | "FAIR" | "FEATURE" | "GALLERY" | "GENE" | "INSTITUTION" | "PROFILE" | "SALE" | "SHOW" | "TAG" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
+export type SearchEntity = "ARTICLE" | "ARTIST" | "ARTWORK" | "CITY" | "COLLECTION" | "FAIR" | "FEATURE" | "GALLERY" | "GENE" | "INSTITUTION" | "PAGE" | "PROFILE" | "SALE" | "SHOW" | "TAG" | "%future added value";
 export type SearchResultsEntityQueryVariables = {
-    readonly first?: number | null;
-    readonly last?: number | null;
-    readonly after?: string | null;
-    readonly before?: string | null;
-    readonly term: string;
-    readonly page?: number | null;
-    readonly entities?: ReadonlyArray<SearchEntity | null> | null;
+    first?: number | null;
+    last?: number | null;
+    after?: string | null;
+    before?: string | null;
+    term: string;
+    page?: number | null;
+    entities?: ReadonlyArray<SearchEntity | null> | null;
 };
 export type SearchResultsEntityQueryResponse = {
-    readonly viewer: ({
-        readonly " $fragmentRefs": SearchResultsEntity_viewer$ref;
-    }) | null;
+    readonly viewer: {
+        readonly " $fragmentRefs": FragmentRefs<"SearchResultsEntity_viewer">;
+    } | null;
 };
 export type SearchResultsEntityQuery = {
     readonly response: SearchResultsEntityQueryResponse;
@@ -39,34 +39,6 @@ query SearchResultsEntityQuery(
   }
 }
 
-fragment SearchResultsEntity_viewer_4tOGvB on Viewer {
-  search(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: $entities) {
-    pageInfo {
-      hasNextPage
-      endCursor
-    }
-    pageCursors {
-      ...Pagination_pageCursors
-    }
-    edges {
-      node {
-        __typename
-        ... on SearchableItem {
-          description
-          displayLabel
-          href
-          _id
-          imageUrl
-          displayType
-        }
-        ... on Node {
-          __id
-        }
-      }
-    }
-  }
-}
-
 fragment Pagination_pageCursors on PageCursors {
   around {
     cursor
@@ -86,6 +58,34 @@ fragment Pagination_pageCursors on PageCursors {
   previous {
     cursor
     page
+  }
+}
+
+fragment SearchResultsEntity_viewer_4tOGvB on Viewer {
+  searchConnection(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: $entities) @principalField {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    pageCursors {
+      ...Pagination_pageCursors
+    }
+    edges {
+      node {
+        __typename
+        ... on SearchableItem {
+          description
+          displayLabel
+          href
+          internalID
+          imageUrl
+          displayType
+        }
+        ... on Node {
+          id
+        }
+      }
+    }
   }
 }
 */
@@ -136,22 +136,52 @@ var v0 = [
   }
 ],
 v1 = {
+  "kind": "Variable",
+  "name": "after",
+  "variableName": "after"
+},
+v2 = {
+  "kind": "Variable",
+  "name": "before",
+  "variableName": "before"
+},
+v3 = {
+  "kind": "Variable",
+  "name": "entities",
+  "variableName": "entities"
+},
+v4 = {
+  "kind": "Variable",
+  "name": "first",
+  "variableName": "first"
+},
+v5 = {
+  "kind": "Variable",
+  "name": "last",
+  "variableName": "last"
+},
+v6 = {
+  "kind": "Variable",
+  "name": "page",
+  "variableName": "page"
+},
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "cursor",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "page",
   "args": null,
   "storageKey": null
 },
-v3 = [
-  v1,
-  v2,
+v9 = [
+  (v7/*: any*/),
+  (v8/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -162,22 +192,17 @@ v3 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "SearchResultsEntityQuery",
-  "id": null,
-  "text": "query SearchResultsEntityQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n  $page: Int\n  $entities: [SearchEntity]\n) {\n  viewer {\n    ...SearchResultsEntity_viewer_4tOGvB\n  }\n}\n\nfragment SearchResultsEntity_viewer_4tOGvB on Viewer {\n  search(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: $entities) {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          _id\n          imageUrl\n          displayType\n        }\n        ... on Node {\n          __id\n        }\n      }\n    }\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "SearchResultsEntityQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
-        "alias": "viewer",
-        "name": "__viewer_viewer",
+        "alias": null,
+        "name": "viewer",
         "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
@@ -187,47 +212,16 @@ return {
             "kind": "FragmentSpread",
             "name": "SearchResultsEntity_viewer",
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "entities",
-                "variableName": "entities",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": null
-              },
-              {
-                "kind": "Variable",
-                "name": "page",
-                "variableName": "page",
-                "type": null
-              },
+              (v1/*: any*/),
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/),
               {
                 "kind": "Variable",
                 "name": "term",
-                "variableName": "term",
-                "type": null
+                "variableName": "term"
               }
             ]
           }
@@ -238,7 +232,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "SearchResultsEntityQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -252,50 +246,19 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "search",
+            "name": "searchConnection",
             "storageKey": null,
             "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "after",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "before",
-                "variableName": "before",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "entities",
-                "variableName": "entities",
-                "type": "[SearchEntity]"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "first",
-                "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "last",
-                "variableName": "last",
-                "type": "Int"
-              },
-              {
-                "kind": "Variable",
-                "name": "page",
-                "variableName": "page",
-                "type": "Int"
-              },
+              (v1/*: any*/),
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/),
               {
                 "kind": "Variable",
                 "name": "query",
-                "variableName": "term",
-                "type": "String!"
+                "variableName": "term"
               }
             ],
             "concreteType": "SearchableConnection",
@@ -343,7 +306,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": true,
-                    "selections": v3
+                    "selections": (v9/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -353,7 +316,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": (v9/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -363,7 +326,7 @@ return {
                     "args": null,
                     "concreteType": "PageCursor",
                     "plural": false,
-                    "selections": v3
+                    "selections": (v9/*: any*/)
                   },
                   {
                     "kind": "LinkedField",
@@ -374,8 +337,8 @@ return {
                     "concreteType": "PageCursor",
                     "plural": false,
                     "selections": [
-                      v1,
-                      v2
+                      (v7/*: any*/),
+                      (v8/*: any*/)
                     ]
                   }
                 ]
@@ -408,7 +371,7 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "name": "__id",
+                        "name": "id",
                         "args": null,
                         "storageKey": null
                       },
@@ -440,7 +403,7 @@ return {
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "_id",
+                            "name": "internalID",
                             "args": null,
                             "storageKey": null
                           },
@@ -467,17 +430,15 @@ return {
             ]
           }
         ]
-      },
-      {
-        "kind": "LinkedHandle",
-        "alias": null,
-        "name": "viewer",
-        "args": null,
-        "handle": "viewer",
-        "key": "",
-        "filters": null
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "SearchResultsEntityQuery",
+    "id": null,
+    "text": "query SearchResultsEntityQuery(\n  $first: Int\n  $last: Int\n  $after: String\n  $before: String\n  $term: String!\n  $page: Int\n  $entities: [SearchEntity]\n) {\n  viewer {\n    ...SearchResultsEntity_viewer_4tOGvB\n  }\n}\n\nfragment Pagination_pageCursors on PageCursors {\n  around {\n    cursor\n    page\n    isCurrent\n  }\n  first {\n    cursor\n    page\n    isCurrent\n  }\n  last {\n    cursor\n    page\n    isCurrent\n  }\n  previous {\n    cursor\n    page\n  }\n}\n\nfragment SearchResultsEntity_viewer_4tOGvB on Viewer {\n  searchConnection(query: $term, first: $first, after: $after, before: $before, last: $last, page: $page, entities: $entities) @principalField {\n    pageInfo {\n      hasNextPage\n      endCursor\n    }\n    pageCursors {\n      ...Pagination_pageCursors\n    }\n    edges {\n      node {\n        __typename\n        ... on SearchableItem {\n          description\n          displayLabel\n          href\n          internalID\n          imageUrl\n          displayType\n        }\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

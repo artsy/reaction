@@ -40,7 +40,7 @@ export class StepMarker extends Component<StepMarkerProps, StepMarkerState> {
     this.state = this.computeStepState(props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.currentStepIndex !== this.props.currentStepIndex) {
       this.setState(this.computeStepState(nextProps))
     }

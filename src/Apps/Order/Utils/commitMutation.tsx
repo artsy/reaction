@@ -1,11 +1,16 @@
 import { SystemContext } from "Artsy"
-import { GraphQLError } from "graphql"
 import React, { useContext } from "react"
 import {
   commitMutation as relayCommitMutation,
   GraphQLTaggedNode,
 } from "react-relay"
-import { Environment, OperationBase } from "relay-runtime"
+import { Environment } from "relay-runtime"
+
+interface OperationBase {
+  variables: object
+  response: object
+  rawResponse?: object
+}
 
 export type CommitMutation = <MutationType extends OperationBase>(args: {
   mutation: GraphQLTaggedNode
@@ -45,7 +50,7 @@ class ProvideMutationContext extends React.Component<
           onCompleted: (data, errors) => {
             this.setState({ isCommittingMutation: false }, () => {
               if (errors) {
-                reject(new GraphQLError(errors.join("\n")))
+                reject(new Error(errors.join("\n")))
                 return
               }
               resolve(data)
@@ -79,9 +84,7 @@ class ProvideMutationContext extends React.Component<
 
 export function injectCommitMutation<Props extends CommitMutationProps>(
   Component: React.ComponentType<Props>
-): React.ComponentType<
-  Pick<Props, Exclude<keyof Props, keyof CommitMutationProps>>
-> {
+): React.ComponentType<Omit<Props, keyof CommitMutationProps>> {
   return props => {
     const { relayEnvironment } = useContext(SystemContext)
     return (
@@ -91,7 +94,7 @@ export function injectCommitMutation<Props extends CommitMutationProps>(
             <Component
               isCommittingMutation={isCommittingMutation}
               commitMutation={commitMutation}
-              {...props}
+              {...(props as Props)}
             />
           )}
         </MutationContext.Consumer>

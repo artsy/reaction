@@ -1,9 +1,18 @@
-import { Box, color, Flex, Link, Sans, Serif } from "@artsy/palette"
+import {
+  Box,
+  color,
+  Flex,
+  Image,
+  Link,
+  Sans,
+  Serif,
+  WebImageProps,
+} from "@artsy/palette"
 import { RelatedCollectionEntity_collection } from "__generated__/RelatedCollectionEntity_collection.graphql"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import currency from "currency.js"
-import { map } from "lodash"
+import { compact } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { data as sd } from "sharify"
@@ -12,6 +21,7 @@ import { get } from "Utils/get"
 
 export interface CollectionProps {
   collection: RelatedCollectionEntity_collection
+  lazyLoad?: boolean
 }
 
 @track()
@@ -28,16 +38,20 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
   }
 
   render() {
+    const { lazyLoad } = this.props
     const {
-      artworks: { hits },
+      artworksConnection,
       headerImage,
       price_guidance,
       slug,
       title,
     } = this.props.collection
-    const bgImages = map(hits, "image.url")
+    const artworks = artworksConnection.edges.map(({ node }) => node)
+    const bgImages = compact(
+      artworks.map(({ image }) => image && image.resized && image.resized.url)
+    )
     const imageSize =
-      bgImages.length === 1 ? 265 : bgImages.length === 2 ? 131 : 85
+      bgImages.length === 1 ? 262 : bgImages.length === 2 ? 130 : 86
 
     return (
       <Box pr={2}>
@@ -48,9 +62,9 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
           <ImgWrapper pb={1}>
             {bgImages.length ? (
               bgImages.map((url, i) => {
-                const artistName = get(hits[i].artist, a => a.name)
+                const artistName = get(artworks[i].artist, a => a.name)
                 const alt = `${artistName ? artistName + ", " : ""}${
-                  hits[i].title
+                  artworks[i].title
                 }`
                 return (
                   <SingleImgContainer key={i}>
@@ -60,15 +74,15 @@ export class RelatedCollectionEntity extends React.Component<CollectionProps> {
                       src={url}
                       width={imageSize}
                       alt={alt}
+                      lazyLoad={lazyLoad}
                     />
                   </SingleImgContainer>
                 )
               })
             ) : (
-              <ArtworkImage src={headerImage} width={265} />
+              <ArtworkImage src={headerImage} width={262} />
             )}
           </ImgWrapper>
-
           <CollectionTitle size="3">{title}</CollectionTitle>
           {price_guidance && (
             <Sans size="2" color="black60">
@@ -95,6 +109,7 @@ export const StyledLink = styled(Link)`
 
   &:hover {
     text-decoration: none;
+
     ${CollectionTitle} {
       text-decoration: underline;
     }
@@ -120,8 +135,7 @@ const ImgOverlay = styled(Box)<{ width: number }>`
   z-index: 7;
 `
 
-export const ArtworkImage = styled.img<{ width: number }>`
-  width: ${({ width }) => width}px;
+export const ArtworkImage = styled(Image)<WebImageProps>`
   height: 125px;
   background-color: ${color("black10")};
   object-fit: cover;
@@ -130,7 +144,7 @@ export const ArtworkImage = styled.img<{ width: number }>`
 `
 
 const ImgWrapper = styled(Flex)`
-  width: 265px;
+  width: 262px;
 `
 
 export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
@@ -141,15 +155,23 @@ export const RelatedCollectionEntityFragmentContainer = createFragmentContainer(
         headerImage
         slug
         title
-        price_guidance
-        artworks(size: 3, sort: "-decayed_merch") {
-          hits {
-            artist {
-              name
-            }
-            title
-            image {
-              url(version: "small")
+        price_guidance: priceGuidance
+        artworksConnection(
+          first: 3
+          aggregations: [TOTAL]
+          sort: "-decayed_merch"
+        ) {
+          edges {
+            node {
+              artist {
+                name
+              }
+              title
+              image {
+                resized(width: 262) {
+                  url
+                }
+              }
             }
           }
         }

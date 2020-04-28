@@ -1,11 +1,16 @@
-export const ArtworkActionsFixture = {
+import { ArtworkActions_Test_QueryRawResponse } from "__generated__/ArtworkActions_Test_Query.graphql"
+
+export const ArtworkActionsFixture: ArtworkActions_Test_QueryRawResponse & {
+  user: User
+} = {
   user: {
     type: "Admin",
   },
   artwork: {
-    __id:
+    id:
       "QXJ0d29yazpwYWJsby1waWNhc3NvLWZlbW1lLWFzc2lzZS1kYW5zLXVuLWZhdXRldWlsLXRyZXNzZQ==",
-    id: "pablo-picasso-femme-assise-dans-un-fauteuil-tresse",
+    internalID: "5bae581fc60fcc53df98dfcc",
+    slug: "pablo-picasso-femme-assise-dans-un-fauteuil-tresse",
     is_saved: true,
     is_downloadable: true,
     is_hangable: true,
@@ -13,13 +18,17 @@ export const ArtworkActionsFixture = {
     artists: [
       {
         name: "Pablo Picasso",
+        id: "asfds",
       },
     ],
     image: {
-      id: "5aa17f397622dd4f3b006294",
+      height: 540,
+      width: 540,
+      internalID: "5aa17f397622dd4f3b006294",
       url:
         "https://d32dm0rphc51dk.cloudfront.net/sSoqyQKLQrfODvlAR-oOjw/larger.jpg",
     },
+    title: "FEMME ASSISE DANS UN FAUTEUIL TRESSE",
     images: [
       {
         url:
@@ -34,16 +43,21 @@ export const ArtworkActionsFixture = {
           "https://d32dm0rphc51dk.cloudfront.net/d_bpX6nAmEDYjNPM1CshMQ/larger.jpg",
       },
     ],
+    date: "1979-1982",
+    dimensions: {
+      cm: "76.2 × 55.9 cm",
+    },
     artworkMeta: {
-      description:
-        "Available for sale from Gallery Art, Pablo Picasso, FEMME ASSISE DANS UN FAUTEUIL TRESSE (1979-1982), LITHOGRAPH ON ARCHES PAPER, 30 × 22 in",
+      share: "Share this please",
     },
     sale: {
+      id: "sdfdsf",
       is_closed: true,
       is_auction: false,
     },
     partner: {
       id: "foo",
+      slug: "gallery",
     },
   },
 }

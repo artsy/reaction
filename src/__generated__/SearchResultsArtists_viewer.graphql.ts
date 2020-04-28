@@ -1,34 +1,37 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Pagination_pageCursors$ref } from "./Pagination_pageCursors.graphql";
-declare const _SearchResultsArtists_viewer$ref: unique symbol;
-export type SearchResultsArtists_viewer$ref = typeof _SearchResultsArtists_viewer$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type SearchResultsArtists_viewer = {
-    readonly search: ({
+    readonly searchConnection: {
         readonly pageInfo: {
             readonly hasNextPage: boolean;
             readonly endCursor: string | null;
         };
-        readonly pageCursors: ({
-            readonly " $fragmentRefs": Pagination_pageCursors$ref;
-        }) | null;
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
+        readonly pageCursors: {
+            readonly " $fragmentRefs": FragmentRefs<"Pagination_pageCursors">;
+        };
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly name?: string | null;
-                readonly _id?: string;
+                readonly internalID?: string;
                 readonly href?: string | null;
                 readonly imageUrl?: string | null;
                 readonly bio?: string | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $refType": SearchResultsArtists_viewer$ref;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $refType": "SearchResultsArtists_viewer";
+};
+export type SearchResultsArtists_viewer$data = SearchResultsArtists_viewer;
+export type SearchResultsArtists_viewer$key = {
+    readonly " $data"?: SearchResultsArtists_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"SearchResultsArtists_viewer">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "SearchResultsArtists_viewer",
   "type": "Viewer",
@@ -75,52 +78,45 @@ const node: ConcreteFragment = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "search",
+      "name": "searchConnection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "after",
-          "variableName": "after",
-          "type": "String"
+          "variableName": "after"
         },
         {
           "kind": "Variable",
           "name": "before",
-          "variableName": "before",
-          "type": "String"
+          "variableName": "before"
         },
         {
           "kind": "Literal",
           "name": "entities",
           "value": [
             "ARTIST"
-          ],
-          "type": "[SearchEntity]"
+          ]
         },
         {
           "kind": "Variable",
           "name": "first",
-          "variableName": "first",
-          "type": "Int"
+          "variableName": "first"
         },
         {
           "kind": "Variable",
           "name": "last",
-          "variableName": "last",
-          "type": "Int"
+          "variableName": "last"
         },
         {
           "kind": "Variable",
           "name": "page",
-          "variableName": "page",
-          "type": "Int"
+          "variableName": "page"
         },
         {
           "kind": "Variable",
           "name": "query",
-          "variableName": "term",
-          "type": "String!"
+          "variableName": "term"
         }
       ],
       "concreteType": "SearchableConnection",
@@ -186,13 +182,6 @@ const node: ConcreteFragment = {
               "plural": false,
               "selections": [
                 {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "__id",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
                   "kind": "InlineFragment",
                   "type": "Artist",
                   "selections": [
@@ -206,7 +195,7 @@ const node: ConcreteFragment = {
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "_id",
+                      "name": "internalID",
                       "args": null,
                       "storageKey": null
                     },
@@ -241,5 +230,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '424f7979f455210cfd54d1c1e2f75071';
+(node as any).hash = '204321838585efb41c817e25978acad1';
 export default node;

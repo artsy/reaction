@@ -15,6 +15,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import Events from "Utils/Events"
 
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import {
   Box,
   EntityHeader,
@@ -25,7 +26,7 @@ import {
   StackableBorderBox,
 } from "@artsy/palette"
 import { FollowProfileButton_profile } from "__generated__/FollowProfileButton_profile.graphql"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 
 export interface ArtworkDetailsAboutTheWorkFromPartnerProps {
   artwork: ArtworkDetailsAboutTheWorkFromPartner_artwork
@@ -53,10 +54,10 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
   }
 
   handleOpenAuth = (mediator, partner) => {
-    openAuthModal(mediator, {
+    openAuthToFollowSave(mediator, {
       entity: partner,
-      contextModule: Schema.ContextModule.ArtworkPage,
-      intent: AuthModalIntent.FollowPartner,
+      contextModule: ContextModule.aboutTheWork,
+      intent: AuthIntent.followPartner,
     })
   }
 
@@ -89,9 +90,11 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
       (artwork.sale.isBenefit || artwork.sale.isGalleryAuction)
     )
     const imageUrl = showPartnerLogo && get(partner, p => p.profile.icon.url)
-    const partnerInitials = showPartnerLogo && partner.initials
+    const partnerInitials = showPartnerLogo && get(partner, p => p.initials)
     const showPartnerFollow =
-      partner.type !== "Auction House" && partner.profile
+      partner && partner.type !== "Auction House" && partner.profile
+    const hasDefaultPublicProfile = partner && partner.is_default_profile_public
+    const partnerName = partner && partner.name
 
     return (
       <SystemContextConsumer>
@@ -100,10 +103,9 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
             <StackableBorderBox p={2}>
               <Box>
                 <EntityHeader
-                  name={partner.name}
+                  name={partnerName}
                   href={
-                    partner.is_default_profile_public &&
-                    `${sd.APP_URL}${partner.href}`
+                    hasDefaultPublicProfile && `${sd.APP_URL}${partner.href}`
                   }
                   meta={locationNames}
                   imageUrl={imageUrl}
@@ -117,8 +119,8 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                           modelName: Schema.OwnerType.Partner,
                           context_module:
                             Schema.ContextModule.AboutTheWorkPartner,
-                          entity_id: partner._id,
-                          entity_slug: partner.id,
+                          entity_id: partner.internalID,
+                          entity_slug: partner.slug,
                         }}
                         onOpenAuthModal={() =>
                           this.handleOpenAuth(mediator, partner)
@@ -168,14 +170,14 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
   {
     artwork: graphql`
       fragment ArtworkDetailsAboutTheWorkFromPartner_artwork on Artwork {
-        additional_information(format: HTML)
+        additional_information: additionalInformation(format: HTML)
         sale {
           isBenefit
           isGalleryAuction
         }
         partner {
-          _id
-          id
+          internalID
+          slug
           type
           href
           name
@@ -183,10 +185,10 @@ export const ArtworkDetailsAboutTheWorkFromPartnerFragmentContainer = createFrag
           locations {
             city
           }
-          is_default_profile_public
+          is_default_profile_public: isDefaultProfilePublic
           profile {
             ...FollowProfileButton_profile
-            id
+            slug
             icon {
               url(version: "square140")
             }

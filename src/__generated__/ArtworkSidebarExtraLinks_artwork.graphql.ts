@@ -1,34 +1,34 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarExtraLinks_artwork$ref: unique symbol;
-export type ArtworkSidebarExtraLinks_artwork$ref = typeof _ArtworkSidebarExtraLinks_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarExtraLinks_artwork = {
-    readonly _id: string;
+    readonly internalID: string;
     readonly is_in_auction: boolean | null;
     readonly is_for_sale: boolean | null;
     readonly is_acquireable: boolean | null;
     readonly is_inquireable: boolean | null;
-    readonly artists: ReadonlyArray<({
+    readonly artists: ReadonlyArray<{
         readonly is_consignable: boolean | null;
-    }) | null> | null;
-    readonly sale: ({
+    } | null> | null;
+    readonly sale: {
         readonly is_closed: boolean | null;
-    }) | null;
-    readonly " $refType": ArtworkSidebarExtraLinks_artwork$ref;
+        readonly isBenefit: boolean | null;
+        readonly partner: {
+            readonly name: string | null;
+        } | null;
+    } | null;
+    readonly " $refType": "ArtworkSidebarExtraLinks_artwork";
+};
+export type ArtworkSidebarExtraLinks_artwork$data = ArtworkSidebarExtraLinks_artwork;
+export type ArtworkSidebarExtraLinks_artwork$key = {
+    readonly " $data"?: ArtworkSidebarExtraLinks_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarExtraLinks_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
-return {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarExtraLinks_artwork",
   "type": "Artwork",
@@ -38,35 +38,35 @@ return {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_in_auction",
+      "alias": "is_in_auction",
+      "name": "isInAuction",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_for_sale",
+      "alias": "is_for_sale",
+      "name": "isForSale",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_acquireable",
+      "alias": "is_acquireable",
+      "name": "isAcquireable",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "is_inquireable",
+      "alias": "is_inquireable",
+      "name": "isInquireable",
       "args": null,
       "storageKey": null
     },
@@ -81,12 +81,11 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_consignable",
+          "alias": "is_consignable",
+          "name": "isConsignable",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -100,17 +99,39 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_closed",
+          "alias": "is_closed",
+          "name": "isClosed",
           "args": null,
           "storageKey": null
         },
-        v0
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "isBenefit",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "partner",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Partner",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "name",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        }
       ]
-    },
-    v0
+    }
   ]
 };
-})();
-(node as any).hash = '7d2aba9e455ca0d2f3d1b195e0e6572d';
+(node as any).hash = 'bec792d6e1dee8cecdc8ce83584d8d2e';
 export default node;

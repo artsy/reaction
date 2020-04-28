@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the new canvas in standard layout 1`] = `
+exports[`Display Ad renders the new canvas in standard layout 1`] = `
 .c1 {
   margin: auto;
 }
@@ -35,6 +35,7 @@ exports[`renders the new canvas in standard layout 1`] = `
 <div
   className="c0"
   height="1px"
+  onClick={[Function]}
 >
   <div
     className="c1"

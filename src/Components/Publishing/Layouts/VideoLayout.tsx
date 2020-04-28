@@ -128,10 +128,11 @@ export class VideoLayout extends Component<Props, State> {
           }
           adDimension={adDimension}
           targetingData={targetingData(
-            article.id,
+            article,
             isSponsored ? "sponsorfeature" : "video"
           )}
           isSeries
+          articleSlug={article.slug}
         />
       </VideoLayoutContainer>
     )

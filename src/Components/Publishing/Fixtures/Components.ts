@@ -189,23 +189,15 @@ export const Authors = [
   },
 ]
 
-export const StandardArticleHostedAdPanel: DisplayAdProps = {
-  adUnit: "Desktop_RightRail1" as AdUnit,
-  adDimension: "300x250" as AdDimension,
-  targetingData: {
-    is_testing: true,
-    page_type: "article",
-    post_id: "123",
-  },
-}
-
-export const StandardArticleHostedAdCanvas: DisplayAdProps = {
+export const ArticleDisplayAdProps: DisplayAdProps = {
+  articleSlug: "a-standard-article",
   adUnit: "Desktop_TopLeaderboard" as AdUnit,
   adDimension: "970x250" as AdDimension,
   targetingData: {
     is_testing: true,
     page_type: "article",
     post_id: "123",
+    tags: "Art Market",
   },
 }
 
@@ -589,8 +581,8 @@ export const Genes: GeneProps[] = [
     gene: {
       " $refType": null,
       name: "Capitalist Realism",
-      id: "capitalist-realism",
-      _id: "5955005ceaaedc0017acdd1f",
+      slug: "capitalist-realism",
+      internalID: "5955005ceaaedc0017acdd1f",
       image: {
         url:
           "https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&width=240&height=160&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FKX6a5mdTJd5cVrqCC-yb9A%2Fthumb.jpg",
@@ -609,8 +601,8 @@ export const Artists: ArtistToolTipProps[] = [
       name: "Nick Mauss",
       formatted_nationality_and_birthday: "American, b. 1980",
       href: "/artist/nick-mauss",
-      id: "nick-mauss",
-      _id: "5955005ceaaedc0017acdd1f",
+      slug: "nick-mauss",
+      internalID: "5955005ceaaedc0017acdd1f",
       blurb:
         "Nick Mauss makes drawings, prints, and paintings that often take on sculptural presence in their presentation; his 2012 large-scale series of [silkscreen](/gene/silkscreen-1) prints on aluminum sheeting were propped against the wall, folded to stand upright, or rolled up on the ground, revealing only parts of the printed image. Mauss creates his works using a variety of materials, including ceramic tablets, glaze, ink, acrylic, wooden panels, paper, and velvet appliqué, in the case of his 2012 Whitney Biennial installation. He also uses a range of techniques to apply marks and color, including rubbing, rasping, stenciling, and scraping, in addition to silkscreening and printing. His works have a common interest in the presentation of memory and repetition.",
       carousel: {
@@ -673,8 +665,8 @@ export const Artists: ArtistToolTipProps[] = [
       name: "Jutta Koether",
       formatted_nationality_and_birthday: "German, b. 1958",
       href: "/artist/jutta-koether",
-      id: "jutta-koether",
-      _id: "5955005ceaaedc0017acdd1f",
+      slug: "jutta-koether",
+      internalID: "5955005ceaaedc0017acdd1f",
       blurb:
         "Since the 1990s, German artist Jutta Koether has reflected on contemporary culture through her painting, performance, music, and writing. Koether is most commonly recognized for her abstract paintings that combine vibrant colors and gestural strokes with contemporary and historical imagery, such as graffiti-like brushwork, song lyrics, images of women, floral motifs, and other symbolic references. In her own take on [Neoclassical](/gene/neoclassicism) renderings of landscapes and Biblical images, Koether painted a series based on 17th-century painter [Nicolas Poussin](/artist/nicolas-poussin)'s _The Four Seasons_. Using frenetic lines in contrast to Poussin's formal refined techniques, Koether reveals her contemporary view of the seasons and notes the context of the work, a theme also carried through in her display of the works, frequently meant to be site-specific.",
       carousel: {
@@ -714,8 +706,8 @@ export const Artists: ArtistToolTipProps[] = [
       name: "Diamond Stingily",
       formatted_nationality_and_birthday: "",
       href: "/artist/diamond-stingily",
-      id: "diamond-stingily",
-      _id: "5955005ceaaedc0017acdd1f",
+      slug: "diamond-stingily",
+      internalID: "5955005ceaaedc0017acdd1f",
       blurb:
         "Diamond Stingily is an American artist whose work explores memory and identity through powerful, restrained installations mediated by an intentional choice of material and careful negotiation of spatial relationships. Using [childhood](/gene/childhood) as a universalizing inflection point, Stingily addresses neglected narratives, particularly the ignored experience of black girlhood, drawing on experiences in her mother’s hair salon and childhood diary, which was published in 2014. Stingily has used braids to materialize the historical and contemporary implications of black women’s hair, and more broadly, the physical alienation and exploitation. Structures of power emerge in unexpected presentations of familiar objects, highlighting disproportionate systemic limitation, physical violence, and [surveillance](/gene/surveillance). ",
       carousel: {
@@ -754,8 +746,8 @@ export const Artists: ArtistToolTipProps[] = [
       name: "Anni Albers",
       formatted_nationality_and_birthday: "German-American, 1899–1994",
       href: "/artist/anni-albers",
-      id: "anni-albers",
-      _id: "5955005ceaaedc0017acdd1f",
+      slug: "anni-albers",
+      internalID: "5955005ceaaedc0017acdd1f",
       blurb:
         "Printmaker and textile artist Anni Albers is widely recognized both for her geometric patterned compositions and deep involvement with the [Bauhaus](/gene/bauhaus) and Black Mountain College, teaching at the latter between 1933 and 1949. Albers arrived at the Bauhaus in Weimar, Germany in 1922, but was limited in the coursework she could pursue as certain disciplines were not taught to women. Although she began weaving almost by default, Albers became among the 20th century’s defining “pictorial” textile artists. At the Bauhaus she studied under painters [Paul Klee](/artist/paul-klee) and [Wassily Kandinsky](/artist/wassily-kandinsky), focusing on relationships between colors and the expressive potential of simple forms. She then married leading Bauhaus figure and renowned color theorist [Josef Albers](/artist/josef-albers) in 1925. In addition to frequent conversations with her many friends and colleagues, Albers drew inspiration from the pre-Columbian art she viewed during travels throughout Mexico and the Americas.",
       carousel: {

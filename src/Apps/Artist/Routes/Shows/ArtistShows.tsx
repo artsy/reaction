@@ -1,6 +1,6 @@
 import { Box, Col, Flex, Row, Sans, Spacer } from "@artsy/palette"
 import { ArtistShows_artist } from "__generated__/ArtistShows_artist.graphql"
-import { PaginationFragmentContainer as Pagination } from "Components/v2"
+import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import React, { Component } from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { get } from "Utils/get"
@@ -8,7 +8,7 @@ import { Media } from "Utils/Responsive"
 import { ArtistShowBlockItem } from "./ArtistShowBlockItem"
 import { ArtistShowListItem } from "./ArtistShowListItem"
 
-import { LoadingArea, LoadingAreaState } from "Components/v2/LoadingArea"
+import { LoadingArea, LoadingAreaState } from "Components/LoadingArea"
 
 interface ArtistShowsProps {
   relay: RelayRefetchProp
@@ -52,7 +52,7 @@ class ArtistShows extends Component<ArtistShowsProps, LoadingAreaState> {
       {
         first: PAGE_SIZE,
         after: cursor,
-        artistID: this.props.artist.id,
+        artistID: this.props.artist.slug,
         before: null,
         last: null,
         status: this.props.status,
@@ -188,10 +188,10 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
           last: { type: "Int" }
           after: { type: "String" }
           before: { type: "String" }
-          sort: { type: "PartnerShowSorts" }
+          sort: { type: "ShowSorts" }
           status: { type: "String" }
         ) {
-        id
+        slug
         showsConnection(
           first: $first
           after: $after
@@ -219,8 +219,8 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
               }
               name
               href
-              exhibition_period
-              cover_image {
+              exhibition_period: exhibitionPeriod
+              cover_image: coverImage {
                 cropped(width: 800, height: 600) {
                   url
                 }
@@ -239,7 +239,7 @@ export const ArtistShowsRefetchContainer = createRefetchContainer(
       $after: String
       $before: String
       $artistID: String!
-      $sort: PartnerShowSorts
+      $sort: ShowSorts
       $status: String!
     ) {
       artist(id: $artistID) {

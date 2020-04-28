@@ -1,4 +1,5 @@
 import { Message } from "@artsy/palette"
+import { StatusQueryRawResponse } from "__generated__/StatusQuery.graphql"
 import {
   BuyOrderPickup,
   BuyOrderWithShippingDetails,
@@ -8,7 +9,6 @@ import {
   PaymentDetails,
 } from "Apps/__tests__/Fixtures/Order"
 import { TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { expectOne } from "DevTools/RootTestPage"
 import { render } from "enzyme"
@@ -17,7 +17,6 @@ import { graphql } from "react-relay"
 import { StatusFragmentContainer } from "../Status"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
 class StatusTestPage extends OrderAppTestPage {
@@ -32,7 +31,13 @@ class StatusTestPage extends OrderAppTestPage {
   }
 }
 
-const testOrder = {
+type UnionToIntersection<U> = (U extends any
+? (k: U) => void
+: never) extends (k: infer I) => void
+  ? I
+  : never
+
+const testOrder: UnionToIntersection<StatusQueryRawResponse["order"]> = {
   ...OfferOrderWithShippingDetailsAndNote,
   ...PaymentDetails,
   state: "SUBMITTED",
@@ -42,8 +47,8 @@ describe("Status", () => {
   const env = createTestEnv({
     Component: StatusFragmentContainer,
     query: graphql`
-      query StatusQuery {
-        order(id: "42") {
+      query StatusQuery @raw_response_type {
+        order: commerceOrder(id: "42") {
           ...Status_order
         }
       }
@@ -77,16 +82,6 @@ describe("Status", () => {
         expect(page.text()).toContain(
           "The seller will respond to your offer by Jan 15"
         )
-        page.expectMessage()
-      })
-
-      it("should not warn the user about having the artwork bought while artwork is not available for buy now", async () => {
-        const page = await buildPageWithOrder(
-          produce(testOrder, order => {
-            order.lineItems.edges[0].node.artwork.is_acquireable = false
-          })
-        )
-        expect(page.text()).not.toContain("or buy now at list price")
         page.expectMessage()
       })
 
@@ -323,11 +318,5 @@ describe("Status", () => {
         page.expectMessage()
       })
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await env.buildPage()
-
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

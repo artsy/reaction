@@ -9,8 +9,10 @@
 
 export * from "./Values"
 
+import { AuctionInfo } from "./AuctionInfo"
 import { ContextModule } from "./ContextModule"
 import { ContextPage } from "./ContextPage"
+import { CriteoInfo } from "./CriteoInfo"
 import { Flow } from "./Flow"
 import { AuthenticationInteraction, Interaction } from "./Interaction"
 import { Label } from "./Label"
@@ -23,6 +25,12 @@ interface Uncategorized {
   item_type: any
   item_id: any
   query: any
+  item_number: number
+  experiment_id: string
+  experiment_name: string
+  variation_id: string
+  variation_name: string
+  nonInteraction: number
 }
 
 export type Trackables =
@@ -36,6 +44,8 @@ export type Trackables =
   | Failure
   | Type
   | Uncategorized
+  | AuctionInfo
+  | CriteoInfo
 
 /**
  * A sentinel type used to signal that anything goes in order to be able to

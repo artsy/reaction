@@ -4,23 +4,38 @@ import { AppContainer } from "Apps/Components/AppContainer"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { NavigationTabsFragmentContainer as NavigationTabs } from "Apps/Search/Components/NavigationTabs"
 import { SearchMeta } from "Apps/Search/Components/SearchMeta"
-import { FilterState } from "Apps/Search/FilterState"
+import { withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
-import {
-  Footer,
-  RecentlyViewedQueryRenderer as RecentlyViewed,
-} from "Components/v2"
-import { Location } from "found"
-import React from "react"
+
+import { Footer } from "Components/Footer"
+import { RecentlyViewedQueryRenderer as RecentlyViewed } from "Components/RecentlyViewed"
+
+import { RouterState, withRouter } from "found"
+import React, { useEffect, useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import { Provider } from "unstated"
+import { TrackingProp } from "react-tracking"
 import { get } from "Utils/get"
 import { ZeroState } from "./Components/ZeroState"
 
-export interface Props {
+export interface Props extends RouterState {
   viewer: SearchApp_viewer
-  location: Location
+  tracking: TrackingProp
+}
+
+const TotalResults: React.SFC<{ count: number; term: string }> = ({
+  count,
+  term,
+}) => {
+  const formatResults = () =>
+    `${count.toLocaleString()} Result${count > 1 ? "s" : ""} for "${term}"`
+  const [results, setResults] = useState(formatResults())
+
+  useEffect(() => {
+    setResults(formatResults())
+  }, [count])
+
+  return <Serif size="5">{results}</Serif>
 }
 
 @track({
@@ -28,8 +43,11 @@ export interface Props {
 })
 export class SearchApp extends React.Component<Props> {
   renderResults(count: number, artworkCount: number) {
-    const { viewer, location } = this.props
-    const { search } = viewer
+    const {
+      viewer,
+      match: { location },
+    } = this.props
+    const { searchConnection } = viewer
     const {
       query: { term },
     } = location
@@ -39,15 +57,13 @@ export class SearchApp extends React.Component<Props> {
         <Spacer mb={4} />
         <Row>
           <Col>
-            <Serif size="5">
-              {count.toLocaleString()} Result{count > 1 ? "s" : ""} for "{term}"
-            </Serif>
+            <TotalResults count={count} term={term} />
             <Spacer mb={4} />
             <span id="jumpto--searchResultTabs" />
             <NavigationTabs
               artworkCount={artworkCount}
               term={term}
-              searchableConnection={search}
+              searchableConnection={searchConnection}
             />
             <Box minHeight="30vh">{this.props.children}</Box>
           </Col>
@@ -79,13 +95,16 @@ export class SearchApp extends React.Component<Props> {
   }
 
   render() {
-    const { viewer, location } = this.props
-    const { search, filter_artworks } = viewer
+    const {
+      viewer,
+      match: { location },
+    } = this.props
+    const { searchConnection, artworksConnection } = viewer
     const { query } = location
     const { term } = query
 
-    const { aggregations } = search
-    const artworkCount = get(filter_artworks, f => f.counts.total, 0)
+    const { aggregations } = searchConnection
+    const artworkCount = get(artworksConnection, f => f.counts.total, 0)
 
     let countWithoutArtworks: number = 0
     const typeAggregation = aggregations.find(agg => agg.slice === "TYPE")
@@ -100,66 +119,62 @@ export class SearchApp extends React.Component<Props> {
     const hasResults = !!(countWithoutArtworks || artworkCount)
 
     return (
-      <Provider
-        inject={[
-          new FilterState({
-            ...query,
-            keyword: term,
-          }),
-        ]}
-      >
-        <AppContainer>
-          <HorizontalPadding>
-            {/* NOTE: react-head automatically moves these tags to the <head> element */}
-            <SearchMeta term={term} />
-            {hasResults ? (
-              this.renderResults(
-                countWithoutArtworks + artworkCount,
-                artworkCount
-              )
-            ) : (
-              <Box mt={3}>
-                <ZeroState term={term} />
-                {this.renderFooter()}
-              </Box>
-            )}
-            <Spacer mb={3} />
-          </HorizontalPadding>
-        </AppContainer>
-      </Provider>
+      <AppContainer>
+        <HorizontalPadding>
+          {/* NOTE: react-head automatically moves these tags to the <head> element */}
+          <SearchMeta term={term} />
+          {hasResults ? (
+            this.renderResults(
+              countWithoutArtworks + artworkCount,
+              artworkCount
+            )
+          ) : (
+            <Box mt={3}>
+              <ZeroState term={term} />
+              {this.renderFooter()}
+            </Box>
+          )}
+          <Spacer mb={3} />
+        </HorizontalPadding>
+      </AppContainer>
     )
   }
 }
 
-export const SearchAppFragmentContainer = createFragmentContainer(SearchApp, {
-  viewer: graphql`
-    fragment SearchApp_viewer on Viewer
-      @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
-      search(query: $term, first: 1, aggregations: [TYPE]) {
-        aggregations {
-          slice
-          counts {
-            count
-            name
+export const SearchAppFragmentContainer = createFragmentContainer(
+  withSystemContext(withRouter(SearchApp)),
+  {
+    viewer: graphql`
+      fragment SearchApp_viewer on Viewer
+        @argumentDefinitions(term: { type: "String!", defaultValue: "" }) {
+        searchConnection(query: $term, first: 1, aggregations: [TYPE]) {
+          aggregations {
+            slice
+            counts {
+              count
+              name
+            }
           }
-        }
-        ...NavigationTabs_searchableConnection
-        edges {
-          node {
-            ... on SearchableItem {
-              id
-              displayLabel
-              displayType
+          ...NavigationTabs_searchableConnection
+          edges {
+            node {
+              ... on SearchableItem {
+                slug
+                displayLabel
+                displayType
+              }
             }
           }
         }
-      }
-
-      filter_artworks(keyword: $term, size: 0, aggregations: [TOTAL]) {
-        counts {
-          total
+        artworksConnection(keyword: $term, size: 0, aggregations: [TOTAL]) {
+          counts {
+            total
+          }
         }
       }
-    }
-  `,
-})
+    `,
+  }
+)
+
+// Top-level route needs to be exported for bundle splitting in the router
+export default SearchAppFragmentContainer

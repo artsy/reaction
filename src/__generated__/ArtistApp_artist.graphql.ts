@@ -1,20 +1,23 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtistHeader_artist$ref } from "./ArtistHeader_artist.graphql";
-import { NavigationTabs_artist$ref } from "./NavigationTabs_artist.graphql";
-declare const _ArtistApp_artist$ref: unique symbol;
-export type ArtistApp_artist$ref = typeof _ArtistApp_artist$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtistApp_artist = {
-    readonly _id: string;
-    readonly id: string;
-    readonly " $fragmentRefs": ArtistHeader_artist$ref & NavigationTabs_artist$ref;
-    readonly " $refType": ArtistApp_artist$ref;
+    readonly internalID: string;
+    readonly name: string | null;
+    readonly slug: string;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistMeta_artist" | "ArtistHeader_artist" | "NavigationTabs_artist">;
+    readonly " $refType": "ArtistApp_artist";
+};
+export type ArtistApp_artist$data = ArtistApp_artist;
+export type ArtistApp_artist$key = {
+    readonly " $data"?: ArtistApp_artist$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtistApp_artist">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtistApp_artist",
   "type": "Artist",
@@ -24,16 +27,28 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "id",
+      "name": "name",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ArtistMeta_artist",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
@@ -44,15 +59,8 @@ const node: ConcreteFragment = {
       "kind": "FragmentSpread",
       "name": "NavigationTabs_artist",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
-(node as any).hash = '6ec519bff85cfd1957c0c3e0d61027ed';
+(node as any).hash = '8804872230d49a56826f305d90d76385';
 export default node;

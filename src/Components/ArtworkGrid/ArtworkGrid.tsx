@@ -1,3 +1,4 @@
+import { AuthContextModule, ContextModule } from "@artsy/cohesion"
 import { Flex } from "@artsy/palette"
 import { ArtworkGrid_artworks } from "__generated__/ArtworkGrid_artworks.graphql"
 import { Mediator } from "Artsy"
@@ -20,6 +21,7 @@ type Artwork = ArtworkGrid_artworks["edges"][0]["node"]
 export interface ArtworkGridProps
   extends React.HTMLProps<ArtworkGridContainer> {
   artworks: ArtworkGrid_artworks
+  contextModule?: AuthContextModule
   columnCount?: number | number[]
   preloadImageCount?: number
   itemMargin?: number
@@ -29,7 +31,7 @@ export interface ArtworkGridProps
   onLoadMore?: () => any
   sectionMargin?: number
   user?: User
-  emptyStateComponent?: ReactNode
+  emptyStateComponent?: ReactNode | boolean
 }
 
 export interface ArtworkGridContainerState {
@@ -102,22 +104,31 @@ export class ArtworkGridContainer extends React.Component<
     columnCount: number,
     sectionedArtworks: SectionedArtworks
   ) {
-    const { preloadImageCount } = this.props
+    const { contextModule, preloadImageCount } = this.props
     const spacerStyle = {
       height: this.props.itemMargin,
     }
     const sections = []
 
-    for (let i = 0; i < columnCount; i++) {
+    for (let column = 0; column < columnCount; column++) {
       const artworkComponents = []
-      for (let j = 0; j < sectionedArtworks[i].length; j++) {
-        const artwork = sectionedArtworks[i][j]
+      for (let row = 0; row < sectionedArtworks[column].length; row++) {
+        /**
+         * The position of the image in the grid represented
+         * by counting left to right, top to bottom.
+         *
+         * Here's a stackoverflow explaining the math: https://stackoverflow.com/questions/1730961/convert-a-2d-array-index-into-a-1d-index
+         */
+        const artworkIndex = column * columnCount + row
+
+        const artwork = sectionedArtworks[column][row]
         artworkComponents.push(
           <GridItem
+            contextModule={contextModule}
             artwork={artwork}
-            key={"artwork-" + j + "-" + artwork.__id}
+            key={artwork.id}
             mediator={this.props.mediator}
-            lazyLoad={i + j >= preloadImageCount}
+            lazyLoad={artworkIndex >= preloadImageCount}
             onClick={() => {
               if (this.props.onBrickClick) {
                 this.props.onBrickClick(artwork)
@@ -126,9 +137,9 @@ export class ArtworkGridContainer extends React.Component<
           />
         )
         // Setting a marginBottom on the artwork component didn’t work, so using a spacer view instead.
-        if (j < sectionedArtworks[i].length - 1) {
+        if (row < sectionedArtworks[column].length - 1) {
           artworkComponents.push(
-            <div style={spacerStyle} key={"spacer-" + j + "-" + artwork.__id} />
+            <div style={spacerStyle} key={"spacer-" + row + "-" + artwork.id} />
           )
         }
       }
@@ -136,11 +147,11 @@ export class ArtworkGridContainer extends React.Component<
       const sectionSpecificStyle = {
         flex: 1,
         minWidth: 0,
-        marginRight: i === columnCount - 1 ? 0 : this.props.sectionMargin,
+        marginRight: column === columnCount - 1 ? 0 : this.props.sectionMargin,
       }
 
       sections.push(
-        <div style={sectionSpecificStyle} key={i}>
+        <div style={sectionSpecificStyle} key={column}>
           {artworkComponents}
         </div>
       )
@@ -191,6 +202,7 @@ export class ArtworkGridContainer extends React.Component<
       onClearFilters,
       emptyStateComponent,
     } = this.props
+
     const hasArtworks = artworks && artworks.edges && artworks.edges.length > 0
     const artworkGrids = this.renderSectionsForAllBreakpoints()
     const emptyState = emptyStateComponent || (
@@ -198,7 +210,9 @@ export class ArtworkGridContainer extends React.Component<
     )
 
     return (
-      <div className={className}>{hasArtworks ? artworkGrids : emptyState}</div>
+      <div className={className} data-test={ContextModule.artworkGrid}>
+        {hasArtworks ? artworkGrids : emptyState}
+      </div>
     )
   }
 }
@@ -215,14 +229,14 @@ const InnerContainer = styled(Flex)`
 
 export default createFragmentContainer(ArtworkGrid, {
   artworks: graphql`
-    fragment ArtworkGrid_artworks on ArtworkConnection {
+    fragment ArtworkGrid_artworks on ArtworkConnectionInterface {
       edges {
         node {
-          __id
           id
+          slug
           href
           image {
-            aspect_ratio
+            aspect_ratio: aspectRatio
           }
           ...GridItem_artwork
         }
@@ -242,7 +256,7 @@ function areSectionedArtworksEqual(current: any, previous: any) {
     const previousEdges = (previous as ArtworkGrid_artworks).edges
     return (
       currentEdges.length === previousEdges.length &&
-      currentEdges.every((e, i) => e.node.__id === previousEdges[i].node.__id)
+      currentEdges.every((e, i) => e.node.id === previousEdges[i].node.id)
     )
   }
 }

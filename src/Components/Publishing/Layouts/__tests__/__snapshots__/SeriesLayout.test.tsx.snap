@@ -78,6 +78,13 @@ exports[`series layout renders a series 1`] = `
   text-align: center;
 }
 
+.c14 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
+}
+
 .c20 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -171,6 +178,7 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c2 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -625,14 +633,6 @@ exports[`series layout renders a series 1`] = `
   margin-right: auto;
 }
 
-.c14 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
 .c11 {
   max-width: 1200px;
   min-height: 100vh;
@@ -774,6 +774,36 @@ exports[`series layout renders a series 1`] = `
 @media screen and (min-width:64em) {
   .c40 {
     width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c14 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    margin-bottom: 16px;
   }
 }
 
@@ -1040,16 +1070,6 @@ exports[`series layout renders a series 1`] = `
   }
 }
 
-@media (max-width:900px) {
-  .c14 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-    margin-bottom: 20px;
-  }
-}
-
 <div
   className="c0"
   color="white"
@@ -1074,7 +1094,8 @@ exports[`series layout renders a series 1`] = `
         
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c5 c6"
@@ -1088,7 +1109,7 @@ exports[`series layout renders a series 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
@@ -1120,11 +1141,19 @@ exports[`series layout renders a series 1`] = `
       className="c12 c13"
       color="white"
     >
-      <div
+      <h1
         className="c14"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize={
+          Array [
+            "42px",
+            "60px",
+            "100px",
+          ]
+        }
       >
         The Future of Art
-      </div>
+      </h1>
     </div>
     <div
       className="c15"
@@ -1225,7 +1254,7 @@ exports[`series layout renders a series 1`] = `
             >
               <img
                 className="c26 c27"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=80"
               />
               <div
                 className="c28"
@@ -1384,7 +1413,7 @@ exports[`series layout renders a series 1`] = `
             >
               <img
                 className="c26 c27"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=80"
               />
             </div>
           </div>
@@ -1509,7 +1538,8 @@ exports[`series layout renders a series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           />
         </div>
         <div
@@ -1540,7 +1570,8 @@ exports[`series layout renders a series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           />
         </div>
       </div>
@@ -1549,6 +1580,7 @@ exports[`series layout renders a series 1`] = `
   <div
     className="c42"
     height="1px"
+    onClick={[Function]}
   >
     <div
       className="c43"
@@ -1660,6 +1692,13 @@ exports[`series layout renders a sponsored series 1`] = `
   text-align: center;
 }
 
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
+}
+
 .c26 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -1758,6 +1797,7 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c2 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2231,14 +2271,6 @@ exports[`series layout renders a sponsored series 1`] = `
   margin-right: auto;
 }
 
-.c16 {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 120px;
-  line-height: 1.1em;
-  margin-bottom: 30px;
-}
-
 .c53 .c14 {
   margin-bottom: 90px;
 }
@@ -2384,6 +2416,36 @@ exports[`series layout renders a sponsored series 1`] = `
 @media screen and (min-width:64em) {
   .c47 {
     width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c16 {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
+    line-height: 66px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c16 {
+    line-height: 104px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
+    margin-bottom: 16px;
   }
 }
 
@@ -2666,16 +2728,6 @@ exports[`series layout renders a sponsored series 1`] = `
   }
 }
 
-@media (max-width:900px) {
-  .c16 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 65px;
-    line-height: 1em;
-    margin-bottom: 20px;
-  }
-}
-
 <div
   className="c0"
   color="white"
@@ -2744,7 +2796,8 @@ exports[`series layout renders a sponsored series 1`] = `
         </a>
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c7 c8"
@@ -2758,7 +2811,7 @@ exports[`series layout renders a sponsored series 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
@@ -2790,11 +2843,19 @@ exports[`series layout renders a sponsored series 1`] = `
       className="c14 c15"
       color="white"
     >
-      <div
+      <h1
         className="c16"
+        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontSize={
+          Array [
+            "42px",
+            "60px",
+            "100px",
+          ]
+        }
       >
         The Future of Art
-      </div>
+      </h1>
       <div
         className="PartnerBlock c17"
       >
@@ -2917,7 +2978,7 @@ exports[`series layout renders a sponsored series 1`] = `
             >
               <img
                 className="c32 c33"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=80"
               />
               <div
                 className="c34"
@@ -3076,7 +3137,7 @@ exports[`series layout renders a sponsored series 1`] = `
             >
               <img
                 className="c32 c33"
-                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+                src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=80"
               />
             </div>
           </div>
@@ -3201,7 +3262,8 @@ exports[`series layout renders a sponsored series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c46"
@@ -3259,7 +3321,8 @@ exports[`series layout renders a sponsored series 1`] = `
             </div>
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c49"
@@ -3295,6 +3358,7 @@ exports[`series layout renders a sponsored series 1`] = `
   <div
     className="c50"
     height="1px"
+    onClick={[Function]}
   >
     <div
       className="c51"

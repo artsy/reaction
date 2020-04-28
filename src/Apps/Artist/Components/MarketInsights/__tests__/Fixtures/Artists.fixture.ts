@@ -4,24 +4,24 @@ import { MarketInsights_artist } from "__generated__/MarketInsights_artist.graph
 export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
   {
     " $refType": null,
-    _id: "589a6291275b2410d1beb6a5",
+    internalID: "589a6291275b2410d1beb6a5",
     collections: ["Museum of Modern Art (MoMA)"],
     highlights: {
-      partners: {
+      partnersConnection: {
         edges: [
           {
             node: {
               categories: [
-                { id: "contemporary" },
-                { id: "established" },
-                { id: "top-established" },
+                { slug: "contemporary" },
+                { slug: "established" },
+                { slug: "top-established" },
               ],
             },
           },
         ],
       },
     },
-    auctionResults: {
+    auctionResultsConnection: {
       edges: [
         {
           node: {
@@ -35,68 +35,68 @@ export const MarketDataSummaryArtists: MarketDataSummary_artist[] = [
   },
   {
     " $refType": null,
-    _id: "551361eb72616903f6d50300",
+    internalID: "551361eb72616903f6d50300",
     collections: null,
     highlights: {
-      partners: {
+      partnersConnection: {
         edges: [],
       },
     },
-    auctionResults: null,
+    auctionResultsConnection: null,
   },
 ]
 
 export const MarketInsightsArtists: MarketInsights_artist[] = [
   {
     " $refType": null,
-    _id: "4d8b92b34eb68a1b2c0003f4",
+    internalID: "4d8b92b34eb68a1b2c0003f4",
     collections: ["Tate", "Museum of Modern Art (MoMA)"],
     highlights: {
-      partners: {
+      partnersConnection: {
         edges: [
           {
             node: {
               categories: [
-                { id: "contemporary" },
-                { id: "established" },
-                { id: "modern" },
-                { id: "painting" },
-                { id: "blue-chip" },
+                { slug: "contemporary" },
+                { slug: "established" },
+                { slug: "modern" },
+                { slug: "painting" },
+                { slug: "blue-chip" },
               ],
             },
           },
-          { node: { categories: [{ id: "blue-chip" }] } },
+          { node: { categories: [{ slug: "blue-chip" }] } },
           {
             node: {
               categories: [
-                { id: "contemporary" },
-                { id: "modern" },
-                { id: "top-established" },
+                { slug: "contemporary" },
+                { slug: "modern" },
+                { slug: "top-established" },
               ],
             },
           },
-          { node: { categories: [{ id: "blue-chip" }] } },
+          { node: { categories: [{ slug: "blue-chip" }] } },
           {
             node: {
               categories: [
-                { id: "contemporary" },
-                { id: "established" },
-                { id: "top-established" },
+                { slug: "contemporary" },
+                { slug: "established" },
+                { slug: "top-established" },
               ],
             },
           },
         ],
       },
     },
-    auctionResults: {
+    auctionResultsConnection: {
       edges: [{ node: { price_realized: { display: "$63m" } } }],
     },
   },
   {
     " $refType": null,
-    _id: "4d8b92b34eb68a1b2c0003f4",
+    internalID: "4d8b92b34eb68a1b2c0003f4",
     collections: null,
-    highlights: { partners: { edges: [] } },
-    auctionResults: null,
+    highlights: { partnersConnection: { edges: [] } },
+    auctionResultsConnection: null,
   },
 ]

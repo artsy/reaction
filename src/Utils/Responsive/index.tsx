@@ -1,5 +1,5 @@
 export * from "./DeprecatedResponsive"
-import { createMedia } from "@artsy/react-responsive-media"
+import { createMedia } from "@artsy/fresnel"
 
 // TODO: We need this to be 0-based, whereas currently in palette xs is defined
 //       as 767. We should move this up to palette, but we need to give the
@@ -33,5 +33,5 @@ export const valuesWithBreakpointProps = ReactionMedia.valuesWithBreakpointProps
 
 // TODO: Simplify this hideous typing.
 export type MatchingMediaQueries = Array<
-  "hover" | "notHover" | (typeof SortedBreakpoints)[0]
+  "hover" | "notHover" | typeof SortedBreakpoints[0]
 >

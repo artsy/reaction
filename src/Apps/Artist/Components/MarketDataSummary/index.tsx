@@ -1,8 +1,9 @@
 import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 
 import { MarketDataSummaryContentsQuery } from "__generated__/MarketDataSummaryContentsQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import MarketDataSummary from "./MarketDataSummary"
 
 export interface Props extends SystemContextProps {

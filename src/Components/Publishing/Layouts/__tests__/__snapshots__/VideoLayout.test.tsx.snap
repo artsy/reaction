@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Video Layout ads renders the video layout properly with ads 1`] = `
+exports[`Video Layout Video Layout ads renders the video layout properly with ads 1`] = `
 .c31 {
   max-width: 1200px;
   margin-left: auto;
@@ -140,6 +140,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
 }
 
 .c3 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1019,7 +1020,8 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
         
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c6 c7"
@@ -1033,7 +1035,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
@@ -1268,13 +1270,13 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
                     02:28
                   </div>
                 </div>
-                <div
+                <h1
                   className="c37"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
                   Trevor Paglan
-                </div>
+                </h1>
               </div>
             </div>
           </div>
@@ -1341,7 +1343,8 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
             />
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c47"
@@ -1495,7 +1498,8 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
             />
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c47"
@@ -1623,6 +1627,7 @@ exports[`Video Layout ads renders the video layout properly with ads 1`] = `
   <div
     className="c56"
     height="1px"
+    onClick={[Function]}
   >
     <div
       className="c57"
@@ -1915,6 +1920,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c3 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3245,7 +3251,8 @@ exports[`Video Layout matches the snapshot 1`] = `
         
       </div>
       <div
-        className="rrm-container rrm-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs"
+        suppressHydrationWarning={false}
       >
         <div
           className="c6 c7"
@@ -3259,7 +3266,7 @@ exports[`Video Layout matches the snapshot 1`] = `
           fontSize="22px"
         >
           <a
-            href="/magazine"
+            href="/articles"
           >
             Artsy Editorial
           </a>
@@ -3498,13 +3505,13 @@ exports[`Video Layout matches the snapshot 1`] = `
                     02:28
                   </div>
                 </div>
-                <div
+                <h1
                   className="c37"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
                 >
                   Trevor Paglan
-                </div>
+                </h1>
               </div>
             </div>
           </div>
@@ -3571,7 +3578,8 @@ exports[`Video Layout matches the snapshot 1`] = `
             />
           </div>
           <div
-            className="rrm-container rrm-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c47"
@@ -3725,7 +3733,8 @@ exports[`Video Layout matches the snapshot 1`] = `
             />
           </div>
           <div
-            className="rrm-container rrm-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md"
+            suppressHydrationWarning={false}
           >
             <div
               className="c47"
@@ -3976,7 +3985,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   >
                     <img
                       className="c71 c72"
-                      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=95"
+                      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FwHFgQlrTrHav5O6bQRJ0dg%252FUntitled%2BSuspended_30x67x33%2B%25282%2529_sm%2Bcropped.jpg&width=680&height=450&quality=80"
                     />
                     <div
                       className="c73"
@@ -4135,7 +4144,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   >
                     <img
                       className="c71 c72"
-                      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=95"
+                      src="https://d7hftxdivxxvm.cloudfront.net?resize_to=fill&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F7lsxxsw0qPAuKl37jEYitw%252Farticle%2Basset%2B1-hig%2Bres%2Bcopy.jpg&width=680&height=450&quality=80"
                     />
                   </div>
                 </div>
@@ -4261,7 +4270,8 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="rrm-container rrm-greaterThanOrEqual-md"
+                className="fresnel-container fresnel-greaterThanOrEqual-md"
+                suppressHydrationWarning={false}
               />
             </div>
             <div
@@ -4292,7 +4302,8 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="rrm-container rrm-lessThan-md"
+                className="fresnel-container fresnel-lessThan-md"
+                suppressHydrationWarning={false}
               />
             </div>
           </div>
@@ -4303,6 +4314,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   <div
     className="c83"
     height="1px"
+    onClick={[Function]}
   >
     <div
       className="c84"

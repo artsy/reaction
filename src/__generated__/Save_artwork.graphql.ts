@@ -1,40 +1,30 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _Save_artwork$ref: unique symbol;
-export type Save_artwork$ref = typeof _Save_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type Save_artwork = {
-    readonly __id: string;
-    readonly _id: string;
     readonly id: string;
+    readonly internalID: string;
+    readonly slug: string;
     readonly is_saved: boolean | null;
     readonly title: string | null;
-    readonly " $refType": Save_artwork$ref;
+    readonly " $refType": "Save_artwork";
+};
+export type Save_artwork$data = Save_artwork;
+export type Save_artwork$key = {
+    readonly " $data"?: Save_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"Save_artwork">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "Save_artwork",
   "type": "Artwork",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "_id",
-      "args": null,
-      "storageKey": null
-    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -45,7 +35,21 @@ const node: ConcreteFragment = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "is_saved",
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "is_saved",
+      "name": "isSaved",
       "args": null,
       "storageKey": null
     },
@@ -58,5 +62,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'c2c4c95bdc8dc89eb18e52f9723edc15';
+(node as any).hash = 'beeb9a74a0ff8d75076752d5be66523c';
 export default node;

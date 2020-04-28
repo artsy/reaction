@@ -1,11 +1,12 @@
 export const settingOrderPaymentSuccess = {
-  ecommerceSetOrderPayment: {
+  commerceSetPayment: {
     orderOrError: {
       order: {
-        __typename: "BuyOrder",
+        __typename: "CommerceBuyOrder",
         id: "1234",
         creditCard: {
           id: "credit-card-id",
+          internalID: "credit-card-id",
           name: "Artsy UK Ltd",
           street1: "14 Gower's Walk",
           street2: "Suite 2.5, The Loom",
@@ -20,7 +21,7 @@ export const settingOrderPaymentSuccess = {
 }
 
 export const settingOrderPaymentFailed = {
-  ecommerceSetOrderPayment: {
+  commerceSetPayment: {
     orderOrError: {
       error: {
         type: "validation",

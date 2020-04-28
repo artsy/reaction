@@ -30,15 +30,6 @@ export class MinimalCtaBanner extends React.Component<
   }
 
   @track({
-    action_type: Schema.ActionType.AuthImpression,
-    intent: Schema.ActionName.ViewEditorial,
-    trigger: "click",
-  })
-  componentDidMount() {
-    // no op
-  }
-
-  @track({
     action_type: Schema.ActionType.Click,
     action_name: Schema.ActionName.Dismiss,
     subject: "dismiss auth banner for editorial cta on mobile",

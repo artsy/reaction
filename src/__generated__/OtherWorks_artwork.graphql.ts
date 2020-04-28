@@ -1,31 +1,53 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkContextArtist_artwork$ref } from "./ArtworkContextArtist_artwork.graphql";
-import { ArtworkContextFair_artwork$ref } from "./ArtworkContextFair_artwork.graphql";
-import { ArtworkContextPartnerShow_artwork$ref } from "./ArtworkContextPartnerShow_artwork.graphql";
-declare const _OtherWorks_artwork$ref: unique symbol;
-export type OtherWorks_artwork$ref = typeof _OtherWorks_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type OtherWorks_artwork = {
-    readonly id: string;
-    readonly _id: string;
-    readonly sale: ({
-        readonly is_closed: boolean | null;
-    }) | null;
-    readonly context: ({
+    readonly contextGrids: ReadonlyArray<{
         readonly __typename: string;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkContextArtist_artwork$ref & ArtworkContextFair_artwork$ref & ArtworkContextPartnerShow_artwork$ref;
-    readonly " $refType": OtherWorks_artwork$ref;
+        readonly title: string | null;
+        readonly ctaTitle: string | null;
+        readonly ctaHref: string | null;
+        readonly artworksConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly slug: string;
+                } | null;
+            } | null> | null;
+            readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
+        } | null;
+    } | null> | null;
+    readonly slug: string;
+    readonly internalID: string;
+    readonly sale: {
+        readonly is_closed: boolean | null;
+    } | null;
+    readonly context: {
+        readonly __typename: string;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"RelatedWorksArtworkGrid_artwork">;
+    readonly " $refType": "OtherWorks_artwork";
+};
+export type OtherWorks_artwork$data = OtherWorks_artwork;
+export type OtherWorks_artwork$key = {
+    readonly " $data"?: OtherWorks_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"OtherWorks_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -37,31 +59,88 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextArtist_artwork",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextFair_artwork",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ArtworkContextPartnerShow_artwork",
-      "args": null
-    },
-    {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "id",
+      "name": "contextGrids",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": null,
+      "plural": true,
+      "selections": [
+        (v0/*: any*/),
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "title",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "ctaTitle",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "ctaHref",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "artworksConnection",
+          "storageKey": "artworksConnection(first:8)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "first",
+              "value": 8
+            }
+          ],
+          "concreteType": "ArtworkConnection",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "edges",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "ArtworkEdge",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "node",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "Artwork",
+                  "plural": false,
+                  "selections": [
+                    (v1/*: any*/)
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtworkGrid_artworks",
+              "args": null
+            }
+          ]
+        }
+      ]
     },
+    (v1/*: any*/),
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "_id",
+      "name": "internalID",
       "args": null,
       "storageKey": null
     },
@@ -76,12 +155,11 @@ return {
       "selections": [
         {
           "kind": "ScalarField",
-          "alias": null,
-          "name": "is_closed",
+          "alias": "is_closed",
+          "name": "isClosed",
           "args": null,
           "storageKey": null
-        },
-        v0
+        }
       ]
     },
     {
@@ -93,19 +171,16 @@ return {
       "concreteType": null,
       "plural": false,
       "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "__typename",
-          "args": null,
-          "storageKey": null
-        },
-        v0
+        (v0/*: any*/)
       ]
     },
-    v0
+    {
+      "kind": "FragmentSpread",
+      "name": "RelatedWorksArtworkGrid_artwork",
+      "args": null
+    }
   ]
 };
 })();
-(node as any).hash = '586e3a8404448705d4dc248ff5ef2997';
+(node as any).hash = '001b89e8373c47657f58f46c8886d829';
 export default node;

@@ -1,26 +1,24 @@
+import { ContextModule } from "@artsy/cohesion"
 import { TagArtworks_tag } from "__generated__/TagArtworks_tag.graphql"
+import { Mediator } from "Artsy"
+import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import {
-  createFragmentContainer,
+  createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
+import { Filters } from "."
 import Dropdown from "../ArtworkFilter/Dropdown"
 import ForSaleCheckbox from "../ArtworkFilter/ForSaleCheckbox"
 import Headline from "../ArtworkFilter/Headline"
 import TotalCount from "../ArtworkFilter/TotalCount"
 import BorderedPulldown from "../BorderedPulldown"
-import TagArtworksContent from "./TagArtworksContent"
-
-interface Filters {
-  for_sale?: boolean
-  dimension_range?: string
-  price_range?: string
-  medium?: string
-}
+import Spinner from "../Spinner"
 
 interface Props extends Filters {
+  mediator: Mediator
   relay: RelayPaginationProp
   tag: TagArtworks_tag
   onDropdownSelected: (slice: string, value: string) => void
@@ -28,6 +26,18 @@ interface Props extends Filters {
   onForSaleToggleSelected: () => void
   sort?: string
 }
+
+export interface State {
+  loading: boolean
+}
+
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
+
+const PageSize = 10
 
 const FilterBar = styled.div`
   vertical-align: middle;
@@ -45,15 +55,51 @@ const SubFilterBar = styled.div`
   align-items: center;
 `
 
-export class TagArtworks extends React.Component<Props, null> {
+export class TagArtworks extends React.Component<Props, State> {
+  private finishedPaginatingWithError = false
+
+  state = {
+    loading: false,
+  }
+
+  loadMoreArtworks() {
+    const hasMore = this.props.tag.filtered_artworks.pageInfo.hasNextPage
+    const origLength = this.props.tag.filtered_artworks.edges.length
+    if (hasMore && !this.state.loading && !this.finishedPaginatingWithError) {
+      this.setState({ loading: true }, () => {
+        this.props.relay.loadMore(PageSize, error => {
+          if (error) {
+            console.error(error)
+          }
+          const newLength = this.props.tag.filtered_artworks.edges.length
+          const newHasMore = this.props.tag.filtered_artworks.pageInfo
+            .hasNextPage
+          if (newLength - origLength < PageSize && newHasMore) {
+            console.error(
+              `Total count inconsistent with actual records returned for tag: ${this.props.tag.slug}`
+            )
+            this.finishedPaginatingWithError = true
+          }
+          this.setState({ loading: false })
+        })
+      })
+    }
+  }
+
   renderDropdown() {
+    const getSelected = slice => {
+      if (slice === "price_range") return "priceRange"
+      if (slice === "dimension_range") return "dimensionRange"
+      return slice
+    }
     return this.props.tag.filtered_artworks.aggregations.map(aggregation => {
       return (
         <Dropdown
           aggregation={aggregation}
           key={aggregation.slice}
           selected={
-            aggregation.slice && this.props[aggregation.slice.toLowerCase()]
+            aggregation.slice &&
+            this.props[getSelected(aggregation.slice.toLowerCase())]
           }
           onSelected={this.props.onDropdownSelected}
         />
@@ -64,7 +110,7 @@ export class TagArtworks extends React.Component<Props, null> {
   renderForSaleToggle() {
     return (
       <ForSaleCheckbox
-        checked={this.props.for_sale}
+        checked={this.props.forSale}
         onChange={this.props.onForSaleToggleSelected}
       />
     )
@@ -85,9 +131,9 @@ export class TagArtworks extends React.Component<Props, null> {
           <div style={{ lineHeight: "1.8em" }}>
             <Headline
               medium={this.props.medium}
-              price_range={this.props.price_range}
-              dimension_range={this.props.dimension_range}
-              for_sale={this.props.for_sale}
+              priceRange={this.props.priceRange}
+              dimensionRange={this.props.dimensionRange}
+              forSale={this.props.forSale}
               facet={this.props.tag.filtered_artworks.facet}
               aggregations={this.props.tag.filtered_artworks.aggregations}
             />
@@ -100,10 +146,19 @@ export class TagArtworks extends React.Component<Props, null> {
             onChange={this.props.onSortSelected}
           />
         </SubFilterBar>
-        <TagArtworksContent
-          tagID={this.props.tag.id}
-          filtered_artworks={this.props.tag.filtered_artworks}
-        />
+        <div>
+          <ArtworkGrid
+            artworks={this.props.tag.filtered_artworks as any}
+            columnCount={4}
+            itemMargin={40}
+            onLoadMore={() => this.loadMoreArtworks()}
+            mediator={this.props.mediator}
+            contextModule={ContextModule.featuredArtistsRail}
+          />
+          <SpinnerContainer>
+            {this.state.loading ? <Spinner /> : ""}
+          </SpinnerContainer>
+        </div>
       </div>
     )
   }
@@ -121,42 +176,108 @@ export class TagArtworks extends React.Component<Props, null> {
   }
 }
 
-export default createFragmentContainer(TagArtworks, {
-  tag: graphql`
-    fragment TagArtworks_tag on Tag
-      @argumentDefinitions(
-        for_sale: { type: "Boolean" }
-        medium: { type: "String", defaultValue: "*" }
-        aggregations: {
-          type: "[ArtworkAggregation]"
-          defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
-        }
-        price_range: { type: "String", defaultValue: "*" }
-        dimension_range: { type: "String", defaultValue: "*" }
-      ) {
-      id
-      filtered_artworks(
-        aggregations: $aggregations
-        for_sale: $for_sale
-        medium: $medium
-        price_range: $price_range
-        dimension_range: $dimension_range
-        size: 0
-      ) {
-        ...TotalCount_filter_artworks
-        ...TagArtworksContent_filtered_artworks
-        aggregations {
-          slice
-          counts {
-            name
-            id
+export default createPaginationContainer(
+  TagArtworks,
+  {
+    tag: graphql`
+      fragment TagArtworks_tag on Tag
+        @argumentDefinitions(
+          forSale: { type: "Boolean" }
+          medium: { type: "String", defaultValue: "*" }
+          aggregations: {
+            type: "[ArtworkAggregation]"
+            defaultValue: [MEDIUM, TOTAL, PRICE_RANGE, DIMENSION_RANGE]
           }
-          ...Dropdown_aggregation
-        }
-        facet {
-          ...Headline_facet
+          priceRange: { type: "String", defaultValue: "*" }
+          dimensionRange: { type: "String", defaultValue: "*" }
+          count: { type: "Int", defaultValue: 10 }
+          cursor: { type: "String", defaultValue: "" }
+          sort: { type: "String", defaultValue: "-partner_updated_at" }
+        ) {
+        slug
+        filtered_artworks: filterArtworksConnection(
+          aggregations: $aggregations
+          forSale: $forSale
+          medium: $medium
+          priceRange: $priceRange
+          dimensionRange: $dimensionRange
+          sort: $sort
+          first: $count
+          after: $cursor
+        ) @connection(key: "TagArtworks_filtered_artworks") {
+          ...TotalCount_filter_artworks
+          aggregations {
+            slice
+            counts {
+              name
+              value
+            }
+            ...Dropdown_aggregation
+          }
+          facet {
+            ...Headline_facet
+          }
+          id
+
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          ...ArtworkGrid_artworks
+          edges {
+            node {
+              id
+            }
+          }
         }
       }
-    }
-  `,
-})
+    `,
+  },
+  {
+    direction: "forward",
+    getConnectionFromProps(props) {
+      return props.tag.filtered_artworks
+    },
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      }
+    },
+    getVariables(props, { count, cursor }, fragmentVariables) {
+      return {
+        // in most cases, for variables other than connection filters like
+        // `first`, `after`, etc. you may want to use the previous values.
+        ...fragmentVariables,
+        count,
+        cursor,
+        tagID: props.tag.slug,
+      }
+    },
+    query: graphql`
+      query TagArtworksPaginationQuery(
+        $tagID: String!
+        $count: Int!
+        $cursor: String
+        $sort: String
+        $priceRange: String
+        $dimensionRange: String
+        $medium: String
+        $forSale: Boolean
+      ) {
+        tag(id: $tagID) {
+          ...TagArtworks_tag
+            @arguments(
+              count: $count
+              cursor: $cursor
+              sort: $sort
+              priceRange: $priceRange
+              dimensionRange: $dimensionRange
+              medium: $medium
+              forSale: $forSale
+            )
+        }
+      }
+    `,
+  }
+)

@@ -1,16 +1,17 @@
 import React from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 
 import { GeneContentsArtistsQuery } from "__generated__/GeneContentsArtistsQuery.graphql"
 import { GeneContentsArtworksQuery } from "__generated__/GeneContentsArtworksQuery.graphql"
 import { SystemContextProps, withSystemContext } from "Artsy"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import Artists from "./Artists"
 import GeneArtworks from "./GeneArtworks"
 
 export interface Filters {
-  for_sale: boolean
-  dimension_range: string
-  price_range: string
+  forSale: boolean
+  dimensionRange: string
+  priceRange: string
   medium?: string
 }
 
@@ -40,17 +41,12 @@ export interface State extends Filters {
 class GeneContents extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    const {
-      for_sale,
-      price_range,
-      dimension_range,
-      medium,
-    } = this.props.filters
+    const { forSale, priceRange, dimensionRange, medium } = this.props.filters
     this.state = {
-      for_sale: for_sale || null,
+      forSale: forSale || null,
       medium: medium || "*",
-      price_range: price_range || "*",
-      dimension_range: dimension_range || "*",
+      priceRange: priceRange || "*",
+      dimensionRange: dimensionRange || "*",
       mode: props.mode,
       sort: props.sort || "-partner_updated_at",
     }
@@ -58,18 +54,18 @@ class GeneContents extends React.Component<Props, State> {
 
   handleStateChange = () => {
     const {
-      for_sale,
+      forSale,
       medium,
-      price_range,
-      dimension_range,
+      priceRange,
+      dimensionRange,
       sort,
       mode,
     } = this.state
     const filters = {
-      for_sale,
+      forSale,
       medium,
-      price_range,
-      dimension_range,
+      priceRange,
+      dimensionRange,
     }
     this.props.onStateChange({ filters, sort, mode })
   }
@@ -80,8 +76,15 @@ class GeneContents extends React.Component<Props, State> {
   onDropdownSelect(slice: string, value: string | boolean) {
     let filter = slice.toLowerCase() as string
     if (filter === "price_range" && value === "*-*") {
-      filter = "for_sale"
+      filter = "forSale"
       value = true
+    }
+
+    if (filter === "price_range") {
+      filter = "priceRange"
+    }
+    if (filter === "dimension_range") {
+      filter = "dimensionRange"
     }
     this.setState(
       ({
@@ -93,10 +96,10 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   onForSaleToggleSelect() {
-    const forSale = this.state.for_sale ? null : true
+    const forSale = this.state.forSale ? null : true
     this.setState(
       {
-        for_sale: forSale,
+        forSale,
         mode: "artworks",
       },
       this.handleStateChange
@@ -123,7 +126,7 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   renderArtists() {
-    const { geneID, relayEnvironment } = this.props
+    const { geneID, relayEnvironment, mediator } = this.props
     return (
       <QueryRenderer<GeneContentsArtistsQuery>
         environment={relayEnvironment}
@@ -142,6 +145,7 @@ class GeneContents extends React.Component<Props, State> {
                 onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
                 gene={props.gene}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
+                mediator={mediator}
               />
             )
           } else {
@@ -153,8 +157,8 @@ class GeneContents extends React.Component<Props, State> {
   }
 
   renderArtworks() {
-    const { geneID, relayEnvironment } = this.props
-    const { for_sale, medium, price_range, dimension_range, sort } = this.state
+    const { geneID, relayEnvironment, mediator } = this.props
+    const { forSale, medium, priceRange, dimensionRange, sort } = this.state
     return (
       <QueryRenderer<GeneContentsArtworksQuery>
         environment={relayEnvironment}
@@ -162,18 +166,19 @@ class GeneContents extends React.Component<Props, State> {
           query GeneContentsArtworksQuery(
             $geneID: String!
             $medium: String
-            $price_range: String
+            $priceRange: String
+            $forSale: Boolean
+            $dimensionRange: String
             $sort: String
-            $for_sale: Boolean
-            $dimension_range: String
           ) {
             gene(id: $geneID) {
               ...GeneArtworks_gene
                 @arguments(
-                  for_sale: $for_sale
+                  forSale: $forSale
                   medium: $medium
-                  price_range: $price_range
-                  dimension_range: $dimension_range
+                  priceRange: $priceRange
+                  dimensionRange: $dimensionRange
+                  sort: $sort
                 )
             }
           }
@@ -181,10 +186,10 @@ class GeneContents extends React.Component<Props, State> {
         variables={{
           geneID,
           medium,
-          price_range,
+          priceRange,
           sort,
-          for_sale,
-          dimension_range,
+          forSale,
+          dimensionRange,
         }}
         render={({ props }) => {
           if (props) {
@@ -194,12 +199,13 @@ class GeneContents extends React.Component<Props, State> {
                 onForSaleToggleSelected={this.onForSaleToggleSelect.bind(this)}
                 onSortSelected={this.onSortSelect.bind(this)}
                 sort={sort}
-                for_sale={for_sale}
+                forSale={forSale}
                 medium={medium}
-                price_range={price_range}
-                dimension_range={dimension_range}
+                priceRange={priceRange}
+                dimensionRange={dimensionRange}
                 gene={props.gene}
                 onDropdownSelected={this.onDropdownSelect.bind(this)}
+                mediator={mediator}
               />
             )
           } else {

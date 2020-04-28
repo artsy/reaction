@@ -1,15 +1,79 @@
-import { routes_OverviewQueryRendererQueryResponse } from "__generated__/routes_OverviewQueryRendererQuery.graphql"
-import { FilterState, initialState } from "Apps/Artist/Routes/Overview/state"
-import { Redirect, RouteConfig } from "found"
-import React from "react"
+import loadable from "@loadable/component"
+import { Redirect, RedirectException, RouteConfig } from "found"
+import * as React from "react"
 import { graphql } from "react-relay"
-import { Provider } from "unstated"
-import { ArtistAppFragmentContainer as ArtistApp } from "./ArtistApp"
-import { ArticlesRouteFragmentContainer as ArticlesRoute } from "./Routes/Articles"
-import { AuctionResultsRouteFragmentContainer as AuctionResultsRoute } from "./Routes/AuctionResults"
-import { CVRouteFragmentContainer as CVRoute } from "./Routes/CV"
-import { OverviewRouteFragmentContainer as OverviewRoute } from "./Routes/Overview"
-import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
+
+import { hasSections as showMarketInsights } from "Apps/Artist/Components/MarketInsights/MarketInsights"
+
+import { isDefaultFilter } from "Components/v2/ArtworkFilter/Utils/isDefaultFilter"
+import { paramsToCamelCase } from "Components/v2/ArtworkFilter/Utils/urlBuilder"
+
+import { hasOverviewContent } from "./Components/NavigationTabs"
+
+import {
+  ArtworkFilters,
+  initialArtworkFilterState,
+} from "Components/v2/ArtworkFilter/ArtworkFilterContext"
+
+graphql`
+  fragment routes_Artist on Artist {
+    slug
+    statuses {
+      shows
+      cv(minShowCount: 0)
+      articles
+    }
+    counts {
+      forSaleArtworks
+    }
+    related {
+      genes {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+    highlights {
+      partnersConnection(
+        first: 10
+        displayOnPartnerProfile: true
+        representedBy: true
+        partnerCategory: ["blue-chip", "top-established", "top-emerging"]
+      ) {
+        edges {
+          node {
+            categories {
+              slug
+            }
+          }
+        }
+      }
+    }
+    insights {
+      type
+    }
+    biographyBlurb(format: HTML, partnerBio: true) {
+      text
+    }
+  }
+`
+
+const ArtistApp = loadable(() => import("./ArtistApp"))
+const OverviewRoute = loadable(() => import("./Routes/Overview"))
+const WorksForSaleRoute = loadable(() => import("./Routes/Works"))
+const AuctionResultsRoute = loadable(() => import("./Routes/AuctionResults"))
+const ConsignRoute = loadable(() => import("./Routes/Consign"))
+const CVRoute = loadable(() => import("./Routes/CV"))
+const ArticlesRoute = loadable(() => import("./Routes/Articles"))
+const ShowsRoute = loadable(() => import("./Routes/Shows"))
+
+// Artist pages tend to load almost instantly, so just preload it up front
+if (typeof window !== "undefined") {
+  ArtistApp.preload()
+  ConsignRoute.preload()
+}
 
 // FIXME:
 // * `render` functions requires casting
@@ -17,82 +81,205 @@ import { ShowsRouteFragmentContainer as ShowsRoute } from "./Routes/Shows"
 export const routes: RouteConfig[] = [
   {
     path: "/artist/:artistID",
-    Component: ArtistApp,
+    getComponent: () => ArtistApp,
+    prepare: () => {
+      ArtistApp.preload()
+    },
     query: graphql`
-      query routes_ArtistTopLevelQuery($artistID: String!) {
-        artist(id: $artistID) {
+      query routes_ArtistTopLevelQuery($artistID: String!) @raw_response_type {
+        artist(id: $artistID) @principalField {
           ...ArtistApp_artist
+          ...routes_Artist @relay(mask: false)
         }
       }
     `,
+    render: ({ Component, props, match }) => {
+      if (!(Component && props)) {
+        return null
+      }
+
+      const { artist } = props as any
+      const { pathname } = match.location
+
+      if (!artist) {
+        return undefined
+      }
+
+      const showArtistInsights =
+        showMarketInsights(artist) ||
+        (artist.insights && artist.insights.length > 0)
+      const hasArtistContent = hasOverviewContent(artist)
+
+      const alreadyAtWorksForSalePath = pathname.includes(
+        `${artist.slug}/works-for-sale`
+      )
+
+      const canShowOverview = showArtistInsights || hasArtistContent
+
+      if (pathname === `/artist/${artist.slug}/`) {
+        throw new RedirectException(`/artist/${artist.slug}`)
+      }
+
+      if (!canShowOverview && !alreadyAtWorksForSalePath) {
+        throw new RedirectException(`/artist/${artist.slug}/works-for-sale`)
+      }
+
+      return <Component {...props} />
+    },
     children: [
+      // Routes in tabs
       {
         path: "/",
-        Component: OverviewRoute,
-        render: ({ props, Component }) => {
-          if (!props) {
-            return null
-          }
-
-          return (
-            <Provider inject={[new FilterState(props.location.query as any)]}>
-              <Component
-                artist={
-                  (props as any)
-                    .artist as routes_OverviewQueryRendererQueryResponse
-                }
-              />
-            </Provider>
-          )
+        getComponent: () => OverviewRoute,
+        prepare: () => {
+          OverviewRoute.preload()
         },
+        displayNavigationTabs: true,
+        query: graphql`
+          query routes_OverviewQuery($artistID: String!) @raw_response_type {
+            artist(id: $artistID) {
+              ...Overview_artist
+            }
+          }
+        `,
+      },
+      {
+        path: "works-for-sale",
+        getComponent: () => WorksForSaleRoute,
+        prepare: () => {
+          WorksForSaleRoute.preload()
+        },
+        displayNavigationTabs: true,
+        query: graphql`
+          query routes_WorksQuery(
+            $acquireable: Boolean
+            $aggregations: [ArtworkAggregation] = [
+              MEDIUM
+              TOTAL
+              GALLERY
+              INSTITUTION
+              MAJOR_PERIOD
+            ]
+            $artistID: String!
+            $atAuction: Boolean
+            $attributionClass: [String]
+            $color: String
+            $forSale: Boolean
+            $height: String
+            $inquireableOnly: Boolean
+            $keyword: String
+            $majorPeriods: [String]
+            $medium: String
+            $offerable: Boolean
+            $page: Int
+            $partnerID: ID
+            $priceRange: String
+            $sort: String
+            $width: String
+          ) @raw_response_type {
+            artist(id: $artistID) {
+              ...Works_artist
+                @arguments(
+                  acquireable: $acquireable
+                  aggregations: $aggregations
+                  artistID: $artistID
+                  atAuction: $atAuction
+                  attributionClass: $attributionClass
+                  color: $color
+                  forSale: $forSale
+                  height: $height
+                  inquireableOnly: $inquireableOnly
+                  keyword: $keyword
+                  majorPeriods: $majorPeriods
+                  medium: $medium
+                  offerable: $offerable
+                  page: $page
+                  partnerID: $partnerID
+                  priceRange: $priceRange
+                  sort: $sort
+                  width: $width
+                )
+            }
+          }
+        `,
         prepareVariables: (params, props) => {
           // FIXME: The initial render includes `location` in props, but subsequent
           // renders (such as tabbing back to this route in your browser) will not.
           const filterStateFromUrl = props.location ? props.location.query : {}
+
           const filterParams = {
-            ...initialState,
-            ...filterStateFromUrl,
+            ...initialArtworkFilterState,
+            ...paramsToCamelCase(filterStateFromUrl),
             ...params,
           }
+
+          filterParams.hasFilter = Object.entries(filterParams).some(
+            ([k, v]: [keyof ArtworkFilters, any]) => {
+              return !isDefaultFilter(k, v)
+            }
+          )
+
           return filterParams
         },
+      },
+      {
+        path: "auction-results",
+        getComponent: () => AuctionResultsRoute,
+        prepare: () => {
+          AuctionResultsRoute.preload()
+        },
+        displayNavigationTabs: true,
         query: graphql`
-          query routes_OverviewQueryRendererQuery(
-            $artistID: String!
-            $medium: String
-            $major_periods: [String]
-            $partner_id: ID
-            $for_sale: Boolean
-            $sort: String
-            $at_auction: Boolean
-            $acquireable: Boolean
-            $offerable: Boolean
-            $inquireable_only: Boolean
-            $price_range: String
-            $page: Int
-          ) {
+          query routes_AuctionResultsQuery($artistID: String!) {
             artist(id: $artistID) {
-              ...Overview_artist
-                @arguments(
-                  medium: $medium
-                  major_periods: $major_periods
-                  partner_id: $partner_id
-                  for_sale: $for_sale
-                  sort: $sort
-                  at_auction: $at_auction
-                  acquireable: $acquireable
-                  inquireable_only: $inquireable_only
-                  offerable: $offerable
-                  price_range: $price_range
-                  page: $page
-                )
+              ...AuctionResults_artist
+            }
+          }
+        `,
+      },
+
+      // Routes not in tabs
+
+      {
+        path: "consign",
+        getComponent: () => ConsignRoute,
+        prepare: () => {
+          ConsignRoute.preload()
+        },
+        displayFullPage: true,
+        render: ({ Component, props, match }) => {
+          if (!(Component && props)) {
+            return undefined
+          }
+
+          const artistPathName = match.location.pathname.replace("/consign", "")
+          const isInMicrofunnel = (props as any).artist.targetSupply
+            .isInMicrofunnel
+
+          if (isInMicrofunnel) {
+            return <Component {...props} />
+          } else {
+            throw new RedirectException(artistPathName)
+          }
+        },
+        query: graphql`
+          query routes_ArtistConsignQuery($artistID: String!) {
+            artist(id: $artistID) {
+              ...Consign_artist
+
+              targetSupply {
+                isInMicrofunnel
+              }
             }
           }
         `,
       },
       {
         path: "cv",
-        Component: CVRoute,
+        getComponent: () => CVRoute,
+        prepare: () => {
+          CVRoute.preload()
+        },
         query: graphql`
           query routes_CVQuery($artistID: String!) {
             viewer {
@@ -103,7 +290,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "articles",
-        Component: ArticlesRoute,
+        getComponent: () => ArticlesRoute,
+        prepare: () => {
+          ArticlesRoute.preload()
+        },
         query: graphql`
           query routes_ArticlesQuery($artistID: String!) {
             artist(id: $artistID) {
@@ -114,7 +304,10 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "shows",
-        Component: ShowsRoute,
+        getComponent: () => ShowsRoute,
+        prepare: () => {
+          ShowsRoute.preload()
+        },
         query: graphql`
           query routes_ShowsQuery($artistID: String!) {
             viewer {
@@ -123,17 +316,7 @@ export const routes: RouteConfig[] = [
           }
         `,
       },
-      {
-        path: "auction-results",
-        Component: AuctionResultsRoute,
-        query: graphql`
-          query routes_AuctionResultsQuery($artistID: String!) {
-            artist(id: $artistID) {
-              ...AuctionResults_artist
-            }
-          }
-        `,
-      },
+
       // Redirect all unhandled tabs to the artist page.
       // Note: there is a deep-linked standalone auction-lot page
       // in Force, under /artist/:artistID/auction-result/:id.

@@ -11,9 +11,9 @@ jest.mock("Artsy/Relay/createRelaySSREnvironment", () => ({
   }),
 }))
 
-const ShowCurrentUser: React.SFC<
-  SystemContextProps & { additionalProp?: string }
-> = props => {
+const ShowCurrentUser: React.SFC<SystemContextProps & {
+  additionalProp?: string
+}> = props => {
   let text = props.user ? props.user.id : "no-current-user"
   if (props.additionalProp) {
     text = `${text} & ${props.additionalProp}`
@@ -41,7 +41,12 @@ describe("Artsy context", () => {
         <Artsy.SystemContextConsumer>
           {props => {
             expect(Object.keys(props).sort()).toEqual([
+              "isFetching",
               "relayEnvironment",
+              "router",
+              "setFetching",
+              "setRouter",
+              "setUser",
               "user",
             ])
             setImmediate(done)

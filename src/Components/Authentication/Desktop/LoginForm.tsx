@@ -16,7 +16,7 @@ import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
 import { Formik, FormikProps } from "formik"
 import React, { Component } from "react"
-import { repcaptcha } from "Utils/repcaptcha"
+import { recaptcha } from "Utils/recaptcha"
 
 export interface LoginFormState {
   error: string
@@ -28,7 +28,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("login_submit")
+    recaptcha("login_submit")
     this.props.handleSubmit(values, formikBag)
   }
 
@@ -60,7 +60,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
           }
 
           return (
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} data-test="LoginForm">
               <QuickInput
                 block
                 error={touched.email && errors.email}
@@ -95,6 +95,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                   this.props.handleTypeChange(ModalType.signup)
                 }
                 mode={"login" as ModalType}
+                onAppleLogin={this.props.onAppleLogin}
                 onFacebookLogin={this.props.onFacebookLogin}
                 inline
               />

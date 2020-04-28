@@ -1,17 +1,21 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _AuctionTimer_sale$ref: unique symbol;
-export type AuctionTimer_sale$ref = typeof _AuctionTimer_sale$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type AuctionTimer_sale = {
     readonly live_start_at: string | null;
     readonly end_at: string | null;
-    readonly " $refType": AuctionTimer_sale$ref;
+    readonly " $refType": "AuctionTimer_sale";
+};
+export type AuctionTimer_sale$data = AuctionTimer_sale;
+export type AuctionTimer_sale$key = {
+    readonly " $data"?: AuctionTimer_sale$data;
+    readonly " $fragmentRefs": FragmentRefs<"AuctionTimer_sale">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "AuctionTimer_sale",
   "type": "Sale",
@@ -20,26 +24,19 @@ const node: ConcreteFragment = {
   "selections": [
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "live_start_at",
+      "alias": "live_start_at",
+      "name": "liveStartAt",
       "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
-      "alias": null,
-      "name": "end_at",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
+      "alias": "end_at",
+      "name": "endAt",
       "args": null,
       "storageKey": null
     }
   ]
 };
-(node as any).hash = '1f2163f3979be7879c3399cf91a8524f';
+(node as any).hash = 'e2516b9a974aff68f99b38968c28502a';
 export default node;

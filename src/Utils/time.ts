@@ -1,46 +1,49 @@
-import { metaphysics } from "./metaphysics"
+import { timeQuery } from "__generated__/timeQuery.graphql"
+import { graphql } from "react-relay"
+import { Environment, fetchQuery } from "relay-runtime"
 
 const getLocalTimestampInMilliSeconds = () => {
   return Date.now()
 }
 
-interface SystemTimeResults {
-  data: {
-    system: {
-      time: {
-        unix: number
-      }
-    }
-  }
-}
-
-const fetchSystemTime = () => {
-  return metaphysics<SystemTimeResults>({
-    query: `
-      {
-        system {
-          time {
-            unix
-          }
+export async function getOffsetBetweenGravityClock(
+  relayEnvironment: Environment
+): Promise<number> {
+  const query = graphql`
+    query timeQuery {
+      system {
+        time {
+          unix
         }
       }
-    `,
-  })
-}
+    }
+  `
 
-const getGravityTimestampInMilliSeconds = async () => {
-  const startTime = getLocalTimestampInMilliSeconds()
-  const { data } = await fetchSystemTime()
+  const fetchSystemTime = () => {
+    return fetchQuery<timeQuery>(
+      relayEnvironment,
+      query,
+      {},
+      // FIXME: Update after definitely-typed and relay docs are updated
+      // @ts-ignore
+      {
+        force: true,
+      }
+    )
+  }
 
-  const possibleNetworkLatencyInMilliSeconds =
-    (getLocalTimestampInMilliSeconds() - startTime) / 2
-  const serverTimestampInMilliSeconds =
-    data.system.time.unix * 1e3 + possibleNetworkLatencyInMilliSeconds
+  const getGravityTimestampInMilliSeconds = async () => {
+    const startTime = getLocalTimestampInMilliSeconds()
+    const data = await fetchSystemTime()
 
-  return serverTimestampInMilliSeconds
-}
+    const possibleNetworkLatencyInMilliSeconds =
+      (getLocalTimestampInMilliSeconds() - startTime) / 2
+    const serverTimestampInMilliSeconds =
+      data.system.time.unix * 1e3 + possibleNetworkLatencyInMilliSeconds
 
-export const getOffsetBetweenGravityClock = async () => {
+    return serverTimestampInMilliSeconds
+  }
+
   try {
     const gravityClock = await getGravityTimestampInMilliSeconds()
     const localClock = getLocalTimestampInMilliSeconds()

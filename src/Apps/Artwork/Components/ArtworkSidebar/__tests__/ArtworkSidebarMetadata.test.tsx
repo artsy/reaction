@@ -1,5 +1,5 @@
+import { ArtworkSidebarMetadata_Test_QueryRawResponse } from "__generated__/ArtworkSidebarMetadata_Test_Query.graphql"
 import { renderRelayTree } from "DevTools"
-import { cloneDeep } from "lodash"
 import { graphql } from "react-relay"
 import {
   EmptyMetadataNoEditions,
@@ -17,19 +17,21 @@ jest.unmock("react-relay")
 describe("ArtworkSidebarMetadata", () => {
   let wrapper = null
 
-  const getWrapper = async (response = FilledOutMetadataNoEditions) => {
+  const getWrapper = async (
+    response: ArtworkSidebarMetadata_Test_QueryRawResponse["artwork"] = FilledOutMetadataNoEditions
+  ) => {
     return await renderRelayTree({
       Component: ArtworkSidebarMetadataFragmentContainer,
       query: graphql`
-        query ArtworkSidebarMetadata_Test_Query {
+        query ArtworkSidebarMetadata_Test_Query @raw_response_type {
           artwork(id: "josef-albers-homage-to-the-square-85") {
             ...ArtworkSidebarMetadata_artwork
           }
         }
       `,
-      mockResolvers: {
-        Artwork: () => response,
-      },
+      mockData: {
+        artwork: response,
+      } as ArtworkSidebarMetadata_Test_QueryRawResponse,
     })
   }
 
@@ -135,8 +137,10 @@ describe("ArtworkSidebarMetadata", () => {
     })
 
     it("does not display lot number when present if work is not biddable(auction closed)", async () => {
-      const closedAuctionArtwork = cloneDeep(MetadataForAuctionWork)
-      closedAuctionArtwork.is_biddable = false
+      const closedAuctionArtwork = {
+        ...MetadataForAuctionWork,
+        is_biddable: false,
+      }
       wrapper = await getWrapper(closedAuctionArtwork)
       expect(wrapper.html()).not.toContain("Lot 210")
     })

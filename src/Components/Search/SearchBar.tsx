@@ -1,9 +1,10 @@
 import { Box, Flex } from "@artsy/palette"
 import { SearchBar_viewer } from "__generated__/SearchBar_viewer.graphql"
 import { SearchBarSuggestQuery } from "__generated__/SearchBarSuggestQuery.graphql"
-import { SystemContext, SystemContextProps } from "Artsy"
+import { SystemContext, SystemContextProps, withSystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import colors from "Assets/Colors"
 import {
   FirstSuggestionItem,
@@ -11,22 +12,19 @@ import {
   PLACEHOLDER_XS,
   SuggestionItem,
 } from "Components/Search/Suggestions/SuggestionItem"
-import { throttle } from "lodash"
+import { Router } from "found"
 import { isEmpty } from "lodash"
+import { throttle } from "lodash"
 import qs from "qs"
 import React, { Component, useContext } from "react"
 import Autosuggest from "react-autosuggest"
-import {
-  createRefetchContainer,
-  graphql,
-  QueryRenderer,
-  RelayRefetchProp,
-} from "react-relay"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { data as sd } from "sharify"
 import styled from "styled-components"
 import request from "superagent"
 import Events from "Utils/Events"
 import { get } from "Utils/get"
+import { useDidMount } from "Utils/Hooks/useDidMount"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 import { SearchInputContainer } from "./SearchInputContainer"
@@ -35,6 +33,7 @@ const logger = createLogger("Components/Search/SearchBar")
 
 export interface Props extends SystemContextProps {
   relay: RelayRefetchProp
+  router?: Router
   viewer: SearchBar_viewer
 }
 
@@ -93,6 +92,9 @@ export class SearchBar extends Component<Props, State> {
   // this behaviour  is acceptable.
   private userClickedOnDescendant: boolean
 
+  // TODO: Remove references once things go live
+  private enableExperimentalAppShell: boolean
+
   state = {
     term: getSearchTerm(window.location),
     entityID: null,
@@ -145,10 +147,16 @@ export class SearchBar extends Component<Props, State> {
           this.reportPerformanceMeasurement(performanceStart)
         }
         const { viewer } = this.props
-        const edges = get(viewer, v => v.search.edges, [])
+        const edges = get(viewer, v => v.searchConnection.edges, [])
         this.trackSearch(term, edges.length > 0)
       }
     )
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.enableExperimentalAppShell = props.EXPERIMENTAL_APP_SHELL
   }
 
   componentDidMount() {
@@ -236,7 +244,8 @@ export class SearchBar extends Component<Props, State> {
     ) => ({
       action_type: Schema.ActionType.SelectedItemFromSearch,
       query: state.term,
-      destination_path: href,
+      destination_path:
+        displayType === "Artist" ? `${href}/works-for-sale` : href,
       item_type: displayType,
       item_id: id,
       item_number: suggestionIndex,
@@ -244,16 +253,44 @@ export class SearchBar extends Component<Props, State> {
   )
   onSuggestionSelected({
     suggestion: {
-      node: { href },
+      node: { href, displayType },
     },
   }) {
     this.userClickedOnDescendant = true
+    const newHref = displayType === "Artist" ? `${href}/works-for-sale` : href
 
-    window.location.assign(href)
+    if (this.enableExperimentalAppShell) {
+      if (this.props.router) {
+        // @ts-ignore (routeConfig not found; need to update DT types)
+        const routes = this.props.router.matcher.routeConfig
+        // @ts-ignore (matchRoutes not found; need to update DT types)
+        const isSupportedInRouter = !!this.props.router.matcher.matchRoutes(
+          routes,
+          newHref
+        )
+
+        // Check if url exists within the global router context
+        if (isSupportedInRouter) {
+          this.props.router.push(newHref)
+          this.onBlur({})
+        } else {
+          window.location.assign(newHref)
+        }
+        // Outside of router context
+      } else {
+        window.location.assign(newHref)
+      }
+      // New router not enabled
+    } else {
+      window.location.assign(newHref)
+    }
   }
 
   renderSuggestionsContainer = ({ containerProps, children, query }) => {
-    const noResults = get(this.props, p => p.viewer.search.edges.length === 0)
+    const noResults = get(
+      this.props,
+      p => p.viewer.searchConnection.edges.length === 0
+    )
     const { focused } = this.state
 
     if (noResults || !focused || !query) {
@@ -297,10 +334,12 @@ export class SearchBar extends Component<Props, State> {
 
   renderDefaultSuggestion = (edge, { query, isHighlighted }) => {
     const { displayLabel, displayType, href } = edge.node
+    const newHref = displayType === "Artist" ? `${href}/works-for-sale` : href
+
     return (
       <SuggestionItem
         display={displayLabel}
-        href={href}
+        href={newHref}
         isHighlighted={isHighlighted}
         label={displayType}
         query={query}
@@ -329,6 +368,17 @@ export class SearchBar extends Component<Props, State> {
         ) {
           event.preventDefault()
         }
+
+        // Clear input after submit
+        if (this.enableExperimentalAppShell) {
+          if (event.key === "Enter") {
+            setTimeout(() => {
+              this.setState({
+                term: "",
+              })
+            })
+          }
+        }
       },
     }
 
@@ -341,7 +391,7 @@ export class SearchBar extends Component<Props, State> {
       },
     }
 
-    const edges = get(viewer, v => v.search.edges, [])
+    const edges = get(viewer, v => v.searchConnection.edges, [])
     const suggestions = [firstSuggestionPlaceholder, ...edges]
 
     return (
@@ -367,6 +417,8 @@ export class SearchBar extends Component<Props, State> {
   }
 
   render() {
+    const { router } = this.props
+
     return (
       <form
         action="/search"
@@ -374,6 +426,19 @@ export class SearchBar extends Component<Props, State> {
         itemProp="potentialAction"
         itemScope
         itemType="http://schema.org/SearchAction"
+        onSubmit={event => {
+          if (this.enableExperimentalAppShell) {
+            if (router) {
+              event.preventDefault()
+              router.push(`/search?term=${this.state.term}`)
+              this.onBlur(event)
+            } else {
+              console.error(
+                "[Components/Search/SearchBar] `router` instance not found."
+              )
+            }
+          }
+        }}
       >
         <Media at="xs">{this.renderAutosuggestComponent({ xs: true })}</Media>
         <Media greaterThan="xs">
@@ -385,9 +450,7 @@ export class SearchBar extends Component<Props, State> {
 }
 
 export const SearchBarRefetchContainer = createRefetchContainer(
-  (props: Props) => {
-    return <SearchBar {...props} />
-  },
+  withSystemContext(SearchBar),
   {
     viewer: graphql`
       fragment SearchBar_viewer on Viewer
@@ -395,7 +458,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
           term: { type: "String!", defaultValue: "" }
           hasTerm: { type: "Boolean!", defaultValue: false }
         ) {
-        search(query: $term, mode: AUTOSUGGEST, first: 7)
+        searchConnection(query: $term, mode: AUTOSUGGEST, first: 7)
           @include(if: $hasTerm) {
           edges {
             node {
@@ -403,7 +466,7 @@ export const SearchBarRefetchContainer = createRefetchContainer(
               href
               ... on SearchableItem {
                 displayType
-                id
+                slug
               }
             }
           }
@@ -422,6 +485,35 @@ export const SearchBarRefetchContainer = createRefetchContainer(
 
 export const SearchBarQueryRenderer: React.FC = () => {
   const { relayEnvironment, searchQuery = "" } = useContext(SystemContext)
+  const isMounted = useDidMount(typeof window !== "undefined")
+
+  /**
+   * Displays during SSR render, but once mounted is swapped out with
+   * QueryRenderer below.
+   */
+  const StaticSearchContainer = () => {
+    return (
+      <>
+        <Box display={["block", "none"]}>
+          <SearchInputContainer
+            placeholder={searchQuery || PLACEHOLDER_XS}
+            defaultValue={searchQuery}
+          />
+        </Box>
+        <Box display={["none", "block"]}>
+          <SearchInputContainer
+            placeholder={searchQuery || PLACEHOLDER}
+            defaultValue={searchQuery}
+          />
+        </Box>
+      </>
+    )
+  }
+
+  if (!isMounted) {
+    return <StaticSearchContainer />
+  }
+
   return (
     <QueryRenderer<SearchBarSuggestQuery>
       environment={relayEnvironment}
@@ -443,22 +535,7 @@ export const SearchBarQueryRenderer: React.FC = () => {
           // from within the NavBar (it's not a part of any app) we need to lean
           // on styled-system for showing / hiding depending upon breakpoint.
         } else {
-          return (
-            <>
-              <Box display={["block", "none"]}>
-                <SearchInputContainer
-                  placeholder={searchQuery || PLACEHOLDER_XS}
-                  defaultValue={searchQuery}
-                />
-              </Box>
-              <Box display={["none", "block"]}>
-                <SearchInputContainer
-                  placeholder={searchQuery || PLACEHOLDER}
-                  defaultValue={searchQuery}
-                />
-              </Box>
-            </>
-          )
+          return <StaticSearchContainer />
         }
       }}
     />

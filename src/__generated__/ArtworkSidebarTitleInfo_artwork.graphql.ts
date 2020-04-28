@@ -1,18 +1,22 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-declare const _ArtworkSidebarTitleInfo_artwork$ref: unique symbol;
-export type ArtworkSidebarTitleInfo_artwork$ref = typeof _ArtworkSidebarTitleInfo_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkSidebarTitleInfo_artwork = {
     readonly title: string | null;
     readonly date: string | null;
     readonly medium: string | null;
-    readonly " $refType": ArtworkSidebarTitleInfo_artwork$ref;
+    readonly " $refType": "ArtworkSidebarTitleInfo_artwork";
+};
+export type ArtworkSidebarTitleInfo_artwork$data = ArtworkSidebarTitleInfo_artwork;
+export type ArtworkSidebarTitleInfo_artwork$key = {
+    readonly " $data"?: ArtworkSidebarTitleInfo_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSidebarTitleInfo_artwork">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkSidebarTitleInfo_artwork",
   "type": "Artwork",
@@ -37,13 +41,6 @@ const node: ConcreteFragment = {
       "kind": "ScalarField",
       "alias": null,
       "name": "medium",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "__id",
       "args": null,
       "storageKey": null
     }

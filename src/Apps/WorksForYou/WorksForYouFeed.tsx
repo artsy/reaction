@@ -8,14 +8,13 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 
 import {
-  ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
 
 interface Props extends SystemContextProps {
-  relay?: RelayPaginationProp
+  relay: RelayPaginationProp
   user?: User
   viewer: WorksForYouFeed_viewer
 }
@@ -85,6 +84,7 @@ export class WorksForYouFeed extends Component<Props, State> {
           ({ node }, index) => {
             const avatarImageUrl = get(node, p => p.image.resized.url)
             const meta = `${node.summary}, ${node.published_at}`
+            const worksForSaleHref = node.href + "/works-for-sale"
 
             return (
               <Box key={index}>
@@ -92,7 +92,7 @@ export class WorksForYouFeed extends Component<Props, State> {
                   name={node.artists}
                   meta={meta}
                   imageUrl={avatarImageUrl}
-                  href={node.href}
+                  href={worksForSaleHref}
                 />
 
                 <Spacer mb={3} />
@@ -129,15 +129,15 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
         @argumentDefinitions(
           count: { type: "Int", defaultValue: 10 }
           cursor: { type: "String" }
-          for_sale: { type: "Boolean", defaultValue: true }
+          forSale: { type: "Boolean", defaultValue: true }
         ) {
         me {
           followsAndSaves {
-            notifications: bundledArtworksByArtist(
+            notifications: bundledArtworksByArtistConnection(
               sort: PUBLISHED_AT_DESC
               first: $count
               after: $cursor
-              for_sale: $for_sale
+              forSale: $forSale
             ) @connection(key: "WorksForYou_notifications") {
               pageInfo {
                 hasNextPage
@@ -145,11 +145,11 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
               }
               edges {
                 node {
-                  __id
+                  id
                   href
                   summary
                   artists
-                  published_at(format: "MMM DD")
+                  published_at: publishedAt(format: "MMM DD")
                   artworksConnection {
                     ...ArtworkGrid_artworks
                   }
@@ -169,7 +169,7 @@ export const WorksForYouFeedPaginationContainer = createPaginationContainer(
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.viewer.me.followsAndSaves.notifications as ConnectionData
+      return props.viewer.me.followsAndSaves.notifications
     },
     getFragmentVariables(prevVars, totalCount) {
       return {

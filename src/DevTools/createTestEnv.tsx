@@ -1,6 +1,7 @@
 import { ConnectedModalDialog } from "Apps/Order/Dialogs"
-import { SystemContext } from "Artsy"
+import { SystemContext, SystemContextProps } from "Artsy"
 import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
+import { merge } from "lodash"
 import React, { ReactElement, useContext } from "react"
 import { GraphQLTaggedNode } from "react-relay"
 import { Network } from "relay-runtime"
@@ -48,7 +49,7 @@ class Mutations<MutationNames extends string> {
 }
 
 class Routes {
-  mockPushRoute = jest.fn<string>()
+  mockPushRoute = jest.fn()
   mockOnTransition = jest.fn()
 }
 
@@ -60,6 +61,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       defaultData: object
       defaultMutationResults?: Record<MutationNames, any>
       defaultBreakpoint?: Breakpoint
+      systemContextProps?: SystemContextProps
       TestPage: { new (): TestPage }
     }
   ) {
@@ -74,6 +76,10 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       }),
       {} as any
     )
+
+    beforeEach(() => {
+      this.errors = []
+    })
 
     afterEach(() => {
       const _errors = this.errors
@@ -91,9 +97,11 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       }
     })
 
+    this.mockQuery = jest.fn()
     this.mutations = new Mutations(mutationResolvers)
   }
 
+  mockQuery: jest.Mock
   mutations: Mutations<MutationNames>
   routes = new Routes()
   readonly headTags: Array<ReactElement<any>> = []
@@ -122,6 +130,7 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       query,
       defaultData,
       defaultBreakpoint,
+      systemContextProps,
     } = this.opts
     const page = new TestPage() as TestPage
 
@@ -143,13 +152,14 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       })
 
     this.mutations.mockFetch.mockImplementation(wrappedFetchQuery)
+    this.mockQuery.mockImplementation(wrappedFetchQuery)
 
     // Switch on mutation/query when making requests to help make assertions
     // Seems we only make assertions about mutations right now
     const mockNetwork = Network.create((operation, variableValues) => {
       return operation.operationKind === "mutation"
         ? this.mutations.mockFetch(operation, variableValues)
-        : wrappedFetchQuery(operation, variableValues)
+        : this.mockQuery(operation, variableValues)
     })
 
     // @ts-ignore
@@ -157,7 +167,12 @@ class TestEnv<MutationNames extends string, TestPage extends RootTestPage> {
       Component: (props: any) => {
         // MockBoot overwrites system context, but we want to preserve the
         // context set higher in the tree by MockQueryRenderer
-        const contextBypass = useContext(SystemContext)
+        let contextBypass = useContext(SystemContext)
+
+        if (systemContextProps) {
+          contextBypass = merge(contextBypass, systemContextProps)
+        }
+
         return (
           <MockBoot
             breakpoint={breakpoint || defaultBreakpoint}

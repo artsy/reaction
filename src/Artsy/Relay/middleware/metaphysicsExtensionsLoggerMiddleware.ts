@@ -8,7 +8,11 @@ import _ from "lodash"
 export function metaphysicsExtensionsLoggerMiddleware() {
   return next => req => {
     return next(req).then(res => {
-      if (res.json.extensions && console.groupCollapsed) {
+      if (
+        res.json.extensions &&
+        console.groupCollapsed &&
+        res.json.extensions.requests
+      ) {
         // See: https://github.com/artsy/metaphysics/blob/master/src/lib/loaders/api/extensionsLogger.ts
         const requests = res.json.extensions.requests
 

@@ -11,7 +11,6 @@ import {
 } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -29,6 +28,7 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
+import { AnalyticsSchema, track } from "Artsy"
 
 export const ContinueButton = props => (
   <Button size="large" width="100%" {...props}>
@@ -51,6 +51,12 @@ interface PaymentState {
 
 const logger = createLogger("Order/Routes/Payment/index.tsx")
 
+@track((props: PaymentProps) => ({
+  flow:
+    props.order.mode === "BUY"
+      ? AnalyticsSchema.Flow.BuyNow
+      : AnalyticsSchema.Flow.MakeOffer,
+}))
 export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   state: PaymentState = { isGettingCreditCardId: false }
   paymentPicker = React.createRef<PaymentPicker>()
@@ -66,23 +72,35 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 
       if (result.type === "error") {
         this.props.dialog.showErrorDialog({
-          message: result.error,
+          title: result.error,
+          message:
+            "Please enter another payment method or contact your bank for more information.",
         })
         return
       }
 
-      const orderOrError = (await this.setOrderPayment({
-        input: {
-          creditCardId: result.creditCardId,
-          orderId: this.props.order.id,
-        },
-      })).ecommerceSetOrderPayment.orderOrError
+      if (result.type === "internal_error") {
+        this.props.dialog.showErrorDialog({
+          title: "An internal error occurred",
+        })
+        logger.error(result.error)
+        return
+      }
+
+      const orderOrError = (
+        await this.setOrderPayment({
+          input: {
+            creditCardId: result.creditCardId,
+            id: this.props.order.internalID,
+          },
+        })
+      ).commerceSetPayment.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/review`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/review`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -158,27 +176,29 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
   setOrderPayment(variables: PaymentRouteSetOrderPaymentMutation["variables"]) {
     return this.props.commitMutation<PaymentRouteSetOrderPaymentMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation PaymentRouteSetOrderPaymentMutation(
-          $input: SetOrderPaymentInput!
+          $input: CommerceSetPaymentInput!
         ) {
-          ecommerceSetOrderPayment(input: $input) {
+          commerceSetPayment(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
+                  id
                   creditCard {
-                    id
+                    internalID
                     name
                     street1
                     street2
                     city
                     state
                     country
-                    postal_code
+                    postal_code: postalCode
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -194,7 +214,7 @@ export class PaymentRoute extends Component<PaymentProps, PaymentState> {
 }
 
 export const PaymentFragmentContainer = createFragmentContainer(
-  injectCommitMutation(trackPageViewWrapper(injectDialog(PaymentRoute))),
+  injectCommitMutation(injectDialog(PaymentRoute)),
   {
     me: graphql`
       fragment Payment_me on Me {
@@ -202,14 +222,14 @@ export const PaymentFragmentContainer = createFragmentContainer(
       }
     `,
     order: graphql`
-      fragment Payment_order on Order {
-        id
+      fragment Payment_order on CommerceOrder {
+        internalID
         mode
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
@@ -221,3 +241,6 @@ export const PaymentFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default PaymentFragmentContainer

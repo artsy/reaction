@@ -1,65 +1,61 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-export type OrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
-declare const _OfferHistoryItem_order$ref: unique symbol;
-export type OfferHistoryItem_order$ref = typeof _OfferHistoryItem_order$ref;
+import { ReaderFragment } from "relay-runtime";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type OfferHistoryItem_order = {
     readonly totalListPrice: string | null;
-    readonly offers?: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly id: string;
+    readonly offers?: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly internalID: string;
                 readonly amount: string | null;
-                readonly createdAt: string | null;
-                readonly fromParticipant: OrderParticipantEnum | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly lastOffer?: ({
-        readonly id: string;
-        readonly fromParticipant: OrderParticipantEnum | null;
+                readonly createdAt: string;
+                readonly fromParticipant: CommerceOrderParticipantEnum | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly lastOffer?: {
+        readonly internalID: string;
+        readonly fromParticipant: CommerceOrderParticipantEnum | null;
         readonly amount: string | null;
         readonly shippingTotal: string | null;
         readonly taxTotal: string | null;
         readonly note: string | null;
-    }) | null;
-    readonly " $refType": OfferHistoryItem_order$ref;
+    } | null;
+    readonly " $refType": "OfferHistoryItem_order";
+};
+export type OfferHistoryItem_order$data = OfferHistoryItem_order;
+export type OfferHistoryItem_order$key = {
+    readonly " $data"?: OfferHistoryItem_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"OfferHistoryItem_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = [
   {
     "kind": "Literal",
     "name": "precision",
-    "value": 2,
-    "type": "Int"
+    "value": 2
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "amount",
-  "args": v0,
+  "args": (v0/*: any*/),
   "storageKey": "amount(precision:2)"
 },
-v4 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "fromParticipant",
@@ -69,7 +65,7 @@ v4 = {
 return {
   "kind": "Fragment",
   "name": "OfferHistoryItem_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -77,13 +73,12 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "totalListPrice",
-      "args": v0,
+      "args": (v0/*: any*/),
       "storageKey": "totalListPrice(precision:2)"
     },
-    v1,
     {
       "kind": "InlineFragment",
-      "type": "OfferOrder",
+      "type": "CommerceOfferOrder",
       "selections": [
         {
           "kind": "LinkedField",
@@ -91,7 +86,7 @@ return {
           "name": "offers",
           "storageKey": null,
           "args": null,
-          "concreteType": "OfferConnection",
+          "concreteType": "CommerceOfferConnection",
           "plural": false,
           "selections": [
             {
@@ -100,7 +95,7 @@ return {
               "name": "edges",
               "storageKey": null,
               "args": null,
-              "concreteType": "OfferEdge",
+              "concreteType": "CommerceOfferEdge",
               "plural": true,
               "selections": [
                 {
@@ -109,11 +104,11 @@ return {
                   "name": "node",
                   "storageKey": null,
                   "args": null,
-                  "concreteType": "Offer",
+                  "concreteType": "CommerceOffer",
                   "plural": false,
                   "selections": [
-                    v2,
-                    v3,
+                    (v1/*: any*/),
+                    (v2/*: any*/),
                     {
                       "kind": "ScalarField",
                       "alias": null,
@@ -122,14 +117,12 @@ return {
                         {
                           "kind": "Literal",
                           "name": "format",
-                          "value": "MMM D",
-                          "type": "String"
+                          "value": "MMM D"
                         }
                       ],
                       "storageKey": "createdAt(format:\"MMM D\")"
                     },
-                    v4,
-                    v1
+                    (v3/*: any*/)
                   ]
                 }
               ]
@@ -142,24 +135,24 @@ return {
           "name": "lastOffer",
           "storageKey": null,
           "args": null,
-          "concreteType": "Offer",
+          "concreteType": "CommerceOffer",
           "plural": false,
           "selections": [
-            v2,
-            v4,
-            v3,
+            (v1/*: any*/),
+            (v3/*: any*/),
+            (v2/*: any*/),
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "shippingTotal",
-              "args": v0,
+              "args": (v0/*: any*/),
               "storageKey": "shippingTotal(precision:2)"
             },
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "taxTotal",
-              "args": v0,
+              "args": (v0/*: any*/),
               "storageKey": "taxTotal(precision:2)"
             },
             {
@@ -168,8 +161,7 @@ return {
               "name": "note",
               "args": null,
               "storageKey": null
-            },
-            v1
+            }
           ]
         }
       ]
@@ -177,5 +169,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '115498eb52f9e7edd8cd8dc0893efb8c';
+(node as any).hash = '6209a00aa1b92262f730863b082250c1';
 export default node;

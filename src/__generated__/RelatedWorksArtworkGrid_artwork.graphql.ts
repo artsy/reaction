@@ -1,31 +1,35 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkGrid_artworks$ref } from "./ArtworkGrid_artworks.graphql";
-declare const _RelatedWorksArtworkGrid_artwork$ref: unique symbol;
-export type RelatedWorksArtworkGrid_artwork$ref = typeof _RelatedWorksArtworkGrid_artwork$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type RelatedWorksArtworkGrid_artwork = {
-    readonly layers: ReadonlyArray<({
+    readonly layers: ReadonlyArray<{
         readonly name: string | null;
-        readonly id: string;
-    }) | null> | null;
-    readonly layer: ({
+        readonly internalID: string;
+    } | null> | null;
+    readonly slug: string;
+    readonly layer: {
         readonly name: string | null;
-        readonly artworksConnection: ({
-            readonly edges: ReadonlyArray<({
-                readonly node: ({
-                    readonly id: string;
-                }) | null;
-            }) | null> | null;
-            readonly " $fragmentRefs": ArtworkGrid_artworks$ref;
-        }) | null;
-    }) | null;
-    readonly " $refType": RelatedWorksArtworkGrid_artwork$ref;
+        readonly artworksConnection: {
+            readonly edges: ReadonlyArray<{
+                readonly node: {
+                    readonly slug: string;
+                } | null;
+            } | null> | null;
+            readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
+        } | null;
+    } | null;
+    readonly " $refType": "RelatedWorksArtworkGrid_artwork";
+};
+export type RelatedWorksArtworkGrid_artwork$data = RelatedWorksArtworkGrid_artwork;
+export type RelatedWorksArtworkGrid_artwork$key = {
+    readonly " $data"?: RelatedWorksArtworkGrid_artwork$data;
+    readonly " $fragmentRefs": FragmentRefs<"RelatedWorksArtworkGrid_artwork">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -36,14 +40,7 @@ var v0 = {
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -70,11 +67,17 @@ return {
       "concreteType": "ArtworkLayer",
       "plural": true,
       "selections": [
-        v0,
-        v1,
-        v2
+        (v0/*: any*/),
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "internalID",
+          "args": null,
+          "storageKey": null
+        }
       ]
     },
+    (v1/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -84,14 +87,13 @@ return {
         {
           "kind": "Variable",
           "name": "id",
-          "variableName": "layerId",
-          "type": "String"
+          "variableName": "layerId"
         }
       ],
       "concreteType": "ArtworkLayer",
       "plural": false,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "LinkedField",
           "alias": null,
@@ -101,18 +103,12 @@ return {
             {
               "kind": "Literal",
               "name": "first",
-              "value": 8,
-              "type": "Int"
+              "value": 8
             }
           ],
           "concreteType": "ArtworkConnection",
           "plural": false,
           "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "ArtworkGrid_artworks",
-              "args": null
-            },
             {
               "kind": "LinkedField",
               "alias": null,
@@ -131,20 +127,22 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v1,
-                    v2
+                    (v1/*: any*/)
                   ]
                 }
               ]
+            },
+            {
+              "kind": "FragmentSpread",
+              "name": "ArtworkGrid_artworks",
+              "args": null
             }
           ]
-        },
-        v2
+        }
       ]
-    },
-    v2
+    }
   ]
 };
 })();
-(node as any).hash = 'e5bdffd3541deeb7ba8a7babb5dd0d8e';
+(node as any).hash = 'c94051a248fa232b6664a79ce100df6d';
 export default node;

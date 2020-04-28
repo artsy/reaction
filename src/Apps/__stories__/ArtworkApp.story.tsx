@@ -1,4 +1,6 @@
-import { MockRouter } from "DevTools/MockRouter"
+import { Box } from "@artsy/palette"
+import { SystemContextProvider } from "Artsy/SystemContext"
+import { MockRouter } from "DevTools"
 import React from "react"
 import { storiesOf } from "storybook/storiesOf"
 import { routes as artworkRoutes } from "../Artwork/routes"
@@ -16,7 +18,7 @@ storiesOf("Apps/Artwork", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/pablo-picasso-femme-assise-dans-un-fauteuil-tresse/confirm-bid"
+        initialRoute="/artwork/yoshitomo-nara-untitled-65/confirm-bid"
       />
     )
   })
@@ -40,7 +42,7 @@ storiesOf("Apps/Artwork", module)
     return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/charles-arnoldi-brig-1"
+        initialRoute="/artwork/jeanine-coupe-ryding-ennui"
       />
     )
   })
@@ -118,9 +120,34 @@ storiesOf("Apps/Artwork", module)
   })
   .add("Artwork in an auction", () => {
     return (
+      <SystemContextProvider>
+        <Box>
+          <MockRouter
+            routes={artworkRoutes}
+            initialRoute="/artwork/pablo-picasso-la-minotauromachie"
+            context={{
+              mediator: {
+                trigger: x => x,
+              },
+            }}
+          />
+        </Box>
+      </SystemContextProvider>
+    )
+  })
+  .add("Artwork in a benefit buy now auction", () => {
+    return (
       <MockRouter
         routes={artworkRoutes}
-        initialRoute="/artwork/brooklyn-nets-courtside-seats"
+        initialRoute="/artwork/annie-lennox-now-dot-dot-dot"
+      />
+    )
+  })
+  .add("Artwork with Price in Context", () => {
+    return (
+      <MockRouter
+        routes={artworkRoutes}
+        initialRoute="/artwork/andy-warhol-marilyn-orange-lg"
       />
     )
   })

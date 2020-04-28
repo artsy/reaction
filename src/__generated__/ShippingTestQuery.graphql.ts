@@ -1,36 +1,230 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { Shipping_order$ref } from "./Shipping_order.graphql";
+import { FragmentRefs } from "relay-runtime";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderParticipantEnum = "BUYER" | "SELLER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 export type ShippingTestQueryVariables = {};
 export type ShippingTestQueryResponse = {
+    readonly order: {
+        readonly " $fragmentRefs": FragmentRefs<"Shipping_order">;
+    } | null;
+};
+export type ShippingTestQueryRawResponse = {
     readonly order: ({
-        readonly " $fragmentRefs": Shipping_order$ref;
+        readonly internalID: string;
+        readonly mode: CommerceOrderModeEnum | null;
+        readonly state: CommerceOrderStateEnum;
+        readonly requestedFulfillment: ({
+            readonly __typename: "CommercePickup";
+            readonly phoneNumber: string | null;
+        } | {
+            readonly __typename: "CommerceShip";
+            readonly name: string | null;
+            readonly addressLine1: string | null;
+            readonly addressLine2: string | null;
+            readonly city: string | null;
+            readonly region: string | null;
+            readonly country: string | null;
+            readonly postalCode: string | null;
+            readonly phoneNumber: string | null;
+        } | {
+            readonly __typename: string;
+        }) | null;
+        readonly lineItems: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly artwork: ({
+                        readonly slug: string;
+                        readonly pickup_available: boolean | null;
+                        readonly onlyShipsDomestically: boolean | null;
+                        readonly euShippingOrigin: boolean | null;
+                        readonly shippingCountry: string | null;
+                        readonly id: string | null;
+                        readonly artist_names: string | null;
+                        readonly title: string | null;
+                        readonly date: string | null;
+                        readonly shippingOrigin: string | null;
+                        readonly image: ({
+                            readonly resized_ArtworkSummaryItem: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
+                    }) | null;
+                    readonly id: string | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly sellerDetails: ({
+            readonly __typename: "Partner";
+            readonly id: string | null;
+            readonly name: string | null;
+        } | {
+            readonly __typename: string | null;
+            readonly id: string | null;
+        }) | null;
+        readonly __typename: "CommerceOfferOrder";
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+        readonly itemsTotal: string | null;
+        readonly totalListPrice: string | null;
+        readonly buyerTotal: string | null;
+        readonly id: string | null;
+        readonly lastOffer: ({
+            readonly internalID: string;
+            readonly amount: string | null;
+            readonly amountCents: number;
+            readonly shippingTotal: string | null;
+            readonly shippingTotalCents: number | null;
+            readonly taxTotal: string | null;
+            readonly taxTotalCents: number | null;
+            readonly buyerTotal: string | null;
+            readonly buyerTotalCents: number | null;
+            readonly fromParticipant: CommerceOrderParticipantEnum | null;
+            readonly note: string | null;
+            readonly id: string | null;
+        }) | null;
+        readonly myLastOffer: ({
+            readonly internalID: string;
+            readonly amount: string | null;
+            readonly amountCents: number;
+            readonly shippingTotal: string | null;
+            readonly shippingTotalCents: number | null;
+            readonly taxTotal: string | null;
+            readonly taxTotalCents: number | null;
+            readonly buyerTotal: string | null;
+            readonly buyerTotalCents: number | null;
+            readonly fromParticipant: CommerceOrderParticipantEnum | null;
+            readonly note: string | null;
+            readonly id: string | null;
+        }) | null;
+    } | {
+        readonly internalID: string;
+        readonly mode: CommerceOrderModeEnum | null;
+        readonly state: CommerceOrderStateEnum;
+        readonly requestedFulfillment: ({
+            readonly __typename: "CommercePickup";
+            readonly phoneNumber: string | null;
+        } | {
+            readonly __typename: "CommerceShip";
+            readonly name: string | null;
+            readonly addressLine1: string | null;
+            readonly addressLine2: string | null;
+            readonly city: string | null;
+            readonly region: string | null;
+            readonly country: string | null;
+            readonly postalCode: string | null;
+            readonly phoneNumber: string | null;
+        } | {
+            readonly __typename: string;
+        }) | null;
+        readonly lineItems: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly artwork: ({
+                        readonly slug: string;
+                        readonly pickup_available: boolean | null;
+                        readonly onlyShipsDomestically: boolean | null;
+                        readonly euShippingOrigin: boolean | null;
+                        readonly shippingCountry: string | null;
+                        readonly id: string | null;
+                        readonly artist_names: string | null;
+                        readonly title: string | null;
+                        readonly date: string | null;
+                        readonly shippingOrigin: string | null;
+                        readonly image: ({
+                            readonly resized_ArtworkSummaryItem: ({
+                                readonly url: string | null;
+                            }) | null;
+                        }) | null;
+                    }) | null;
+                    readonly id: string | null;
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly sellerDetails: ({
+            readonly __typename: "Partner";
+            readonly id: string | null;
+            readonly name: string | null;
+        } | {
+            readonly __typename: string | null;
+            readonly id: string | null;
+        }) | null;
+        readonly __typename: string;
+        readonly shippingTotal: string | null;
+        readonly shippingTotalCents: number | null;
+        readonly taxTotal: string | null;
+        readonly taxTotalCents: number | null;
+        readonly itemsTotal: string | null;
+        readonly totalListPrice: string | null;
+        readonly buyerTotal: string | null;
+        readonly id: string | null;
     }) | null;
 };
 export type ShippingTestQuery = {
     readonly response: ShippingTestQueryResponse;
     readonly variables: ShippingTestQueryVariables;
+    readonly rawResponse: ShippingTestQueryRawResponse;
 };
 
 
 
 /*
 query ShippingTestQuery {
-  order: ecommerceOrder(id: "unused") {
+  order: commerceOrder(id: "unused") {
     __typename
     ...Shipping_order
-    __id
+    id
   }
 }
 
-fragment Shipping_order on Order {
-  id
+fragment ArtworkSummaryItem_order on CommerceOrder {
+  sellerDetails {
+    __typename
+    ... on Partner {
+      name
+    }
+    ... on Node {
+      id
+    }
+    ... on User {
+      id
+    }
+  }
+  lineItems {
+    edges {
+      node {
+        artwork {
+          artist_names: artistNames
+          title
+          date
+          shippingOrigin
+          image {
+            resized_ArtworkSummaryItem: resized(width: 55) {
+              url
+            }
+          }
+          id
+        }
+        id
+      }
+    }
+  }
+}
+
+fragment Shipping_order on CommerceOrder {
+  internalID
   mode
   state
   requestedFulfillment {
     __typename
-    ... on Ship {
+    ... on CommercePickup {
+      phoneNumber
+    }
+    ... on CommerceShip {
       name
       addressLine1
       addressLine2
@@ -45,57 +239,22 @@ fragment Shipping_order on Order {
     edges {
       node {
         artwork {
+          slug
+          pickup_available: pickupAvailable
+          onlyShipsDomestically
+          euShippingOrigin
+          shippingCountry
           id
-          pickup_available
-          shipsToContinentalUSOnly
-          __id
         }
-        __id
+        id
       }
     }
   }
   ...ArtworkSummaryItem_order
   ...TransactionDetailsSummaryItem_order
-  __id
 }
 
-fragment ArtworkSummaryItem_order on Order {
-  seller {
-    __typename
-    ... on Partner {
-      name
-    }
-    ... on Node {
-      __id
-    }
-    ... on User {
-      __id
-    }
-  }
-  lineItems {
-    edges {
-      node {
-        artwork {
-          artist_names
-          title
-          date
-          shippingOrigin
-          image {
-            resized_ArtworkSummaryItem: resized(width: 55) {
-              url
-            }
-            __id: id
-          }
-          __id
-        }
-        __id
-      }
-    }
-  }
-  __id
-}
-
-fragment TransactionDetailsSummaryItem_order on Order {
+fragment TransactionDetailsSummaryItem_order on CommerceOrder {
   __typename
   mode
   shippingTotal(precision: 2)
@@ -105,9 +264,9 @@ fragment TransactionDetailsSummaryItem_order on Order {
   itemsTotal(precision: 2)
   totalListPrice(precision: 2)
   buyerTotal(precision: 2)
-  ... on OfferOrder {
+  ... on CommerceOfferOrder {
     lastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -118,10 +277,10 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       fromParticipant
       note
-      __id
+      id
     }
     myLastOffer {
-      id
+      internalID
       amount(precision: 2)
       amountCents
       shippingTotal(precision: 2)
@@ -132,10 +291,9 @@ fragment TransactionDetailsSummaryItem_order on Order {
       buyerTotalCents
       fromParticipant
       note
-      __id
+      id
     }
   }
-  __id
 }
 */
 
@@ -144,84 +302,95 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "id",
-    "value": "unused",
-    "type": "String!"
+    "value": "unused"
   }
 ],
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__id",
+  "name": "internalID",
   "args": null,
   "storageKey": null
 },
-v2 = [
-  {
-    "kind": "Literal",
-    "name": "precision",
-    "value": 2,
-    "type": "Int"
-  }
-],
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "shippingTotal",
-  "args": v2,
-  "storageKey": "shippingTotal(precision:2)"
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "phoneNumber",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v6 = [
+  {
+    "kind": "Literal",
+    "name": "precision",
+    "value": 2
+  }
+],
 v7 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "shippingTotal",
+  "args": (v6/*: any*/),
+  "storageKey": "shippingTotal(precision:2)"
+},
+v8 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "shippingTotalCents",
   "args": null,
   "storageKey": null
 },
-v8 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotal",
-  "args": v2,
+  "args": (v6/*: any*/),
   "storageKey": "taxTotal(precision:2)"
 },
-v9 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "taxTotalCents",
   "args": null,
   "storageKey": null
 },
-v10 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "buyerTotal",
-  "args": v2,
+  "args": (v6/*: any*/),
   "storageKey": "buyerTotal(precision:2)"
 },
-v11 = [
-  v9,
-  v4,
+v12 = [
+  (v1/*: any*/),
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "amount",
+    "args": (v6/*: any*/),
+    "storageKey": "amount(precision:2)"
+  },
   {
     "kind": "ScalarField",
     "alias": null,
@@ -229,17 +398,11 @@ v11 = [
     "args": null,
     "storageKey": null
   },
-  v3,
-  v7,
-  v8,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "amount",
-    "args": v2,
-    "storageKey": "amount(precision:2)"
-  },
-  v10,
+  (v7/*: any*/),
+  (v8/*: any*/),
+  (v9/*: any*/),
+  (v10/*: any*/),
+  (v11/*: any*/),
   {
     "kind": "ScalarField",
     "alias": null,
@@ -261,15 +424,10 @@ v11 = [
     "args": null,
     "storageKey": null
   },
-  v1
+  (v5/*: any*/)
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ShippingTestQuery",
-  "id": null,
-  "text": "query ShippingTestQuery {\n  order: ecommerceOrder(id: \"unused\") {\n    __typename\n    ...Shipping_order\n    __id\n  }\n}\n\nfragment Shipping_order on Order {\n  id\n  mode\n  state\n  requestedFulfillment {\n    __typename\n    ... on Ship {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n      phoneNumber\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          id\n          pickup_available\n          shipsToContinentalUSOnly\n          __id\n        }\n        __id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n  __id\n}\n\nfragment ArtworkSummaryItem_order on Order {\n  seller {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      __id\n    }\n    ... on User {\n      __id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n            __id: id\n          }\n          __id\n        }\n        __id\n      }\n    }\n  }\n  __id\n}\n\nfragment TransactionDetailsSummaryItem_order on Order {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on OfferOrder {\n    lastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id\n    }\n    myLastOffer {\n      id\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      __id\n    }\n  }\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ShippingTestQuery",
@@ -280,9 +438,9 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"unused\")",
-        "args": v0,
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"unused\")",
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -290,8 +448,7 @@ return {
             "kind": "FragmentSpread",
             "name": "Shipping_order",
             "args": null
-          },
-          v1
+          }
         ]
       }
     ]
@@ -304,14 +461,20 @@ return {
       {
         "kind": "LinkedField",
         "alias": "order",
-        "name": "ecommerceOrder",
-        "storageKey": "ecommerceOrder(id:\"unused\")",
-        "args": v0,
+        "name": "commerceOrder",
+        "storageKey": "commerceOrder(id:\"unused\")",
+        "args": (v0/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
-          v3,
-          v4,
+          (v1/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "mode",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -328,12 +491,19 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
+              (v2/*: any*/),
               {
                 "kind": "InlineFragment",
-                "type": "Ship",
+                "type": "CommercePickup",
                 "selections": [
-                  v6,
+                  (v3/*: any*/)
+                ]
+              },
+              {
+                "kind": "InlineFragment",
+                "type": "CommerceShip",
+                "selections": [
+                  (v4/*: any*/),
                   {
                     "kind": "ScalarField",
                     "alias": null,
@@ -376,13 +546,7 @@ return {
                     "args": null,
                     "storageKey": null
                   },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "phoneNumber",
-                    "args": null,
-                    "storageKey": null
-                  }
+                  (v3/*: any*/)
                 ]
               }
             ]
@@ -393,7 +557,7 @@ return {
             "name": "lineItems",
             "storageKey": null,
             "args": null,
-            "concreteType": "OrderLineItemConnection",
+            "concreteType": "CommerceLineItemConnection",
             "plural": false,
             "selections": [
               {
@@ -402,7 +566,7 @@ return {
                 "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "OrderLineItemEdge",
+                "concreteType": "CommerceLineItemEdge",
                 "plural": true,
                 "selections": [
                   {
@@ -411,7 +575,7 @@ return {
                     "name": "node",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "OrderLineItem",
+                    "concreteType": "CommerceLineItem",
                     "plural": false,
                     "selections": [
                       {
@@ -423,26 +587,46 @@ return {
                         "concreteType": "Artwork",
                         "plural": false,
                         "selections": [
-                          v4,
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "pickup_available",
+                            "name": "slug",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": "pickup_available",
+                            "name": "pickupAvailable",
                             "args": null,
                             "storageKey": null
                           },
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "shipsToContinentalUSOnly",
+                            "name": "onlyShipsDomestically",
                             "args": null,
                             "storageKey": null
                           },
-                          v1,
                           {
                             "kind": "ScalarField",
                             "alias": null,
-                            "name": "artist_names",
+                            "name": "euShippingOrigin",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "shippingCountry",
+                            "args": null,
+                            "storageKey": null
+                          },
+                          (v5/*: any*/),
+                          {
+                            "kind": "ScalarField",
+                            "alias": "artist_names",
+                            "name": "artistNames",
                             "args": null,
                             "storageKey": null
                           },
@@ -485,8 +669,7 @@ return {
                                   {
                                     "kind": "Literal",
                                     "name": "width",
-                                    "value": 55,
-                                    "type": "Int"
+                                    "value": 55
                                   }
                                 ],
                                 "concreteType": "ResizedImageUrl",
@@ -500,19 +683,12 @@ return {
                                     "storageKey": null
                                   }
                                 ]
-                              },
-                              {
-                                "kind": "ScalarField",
-                                "alias": "__id",
-                                "name": "id",
-                                "args": null,
-                                "storageKey": null
                               }
                             ]
                           }
                         ]
                       },
-                      v1
+                      (v5/*: any*/)
                     ]
                   }
                 ]
@@ -522,53 +698,47 @@ return {
           {
             "kind": "LinkedField",
             "alias": null,
-            "name": "seller",
+            "name": "sellerDetails",
             "storageKey": null,
             "args": null,
             "concreteType": null,
             "plural": false,
             "selections": [
-              v5,
-              v1,
+              (v2/*: any*/),
+              (v5/*: any*/),
               {
                 "kind": "InlineFragment",
                 "type": "Partner",
                 "selections": [
-                  v6
+                  (v4/*: any*/)
                 ]
               }
             ]
           },
-          v1,
-          v5,
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "mode",
-            "args": null,
-            "storageKey": null
-          },
-          v7,
-          v8,
-          v9,
+          (v2/*: any*/),
+          (v7/*: any*/),
+          (v8/*: any*/),
+          (v9/*: any*/),
+          (v10/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "itemsTotal",
-            "args": v2,
+            "args": (v6/*: any*/),
             "storageKey": "itemsTotal(precision:2)"
           },
           {
             "kind": "ScalarField",
             "alias": null,
             "name": "totalListPrice",
-            "args": v2,
+            "args": (v6/*: any*/),
             "storageKey": "totalListPrice(precision:2)"
           },
-          v10,
+          (v11/*: any*/),
+          (v5/*: any*/),
           {
             "kind": "InlineFragment",
-            "type": "OfferOrder",
+            "type": "CommerceOfferOrder",
             "selections": [
               {
                 "kind": "LinkedField",
@@ -576,9 +746,9 @@ return {
                 "name": "lastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": v11
+                "selections": (v12/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -586,17 +756,24 @@ return {
                 "name": "myLastOffer",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Offer",
+                "concreteType": "CommerceOffer",
                 "plural": false,
-                "selections": v11
+                "selections": (v12/*: any*/)
               }
             ]
           }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ShippingTestQuery",
+    "id": null,
+    "text": "query ShippingTestQuery {\n  order: commerceOrder(id: \"unused\") {\n    __typename\n    ...Shipping_order\n    id\n  }\n}\n\nfragment ArtworkSummaryItem_order on CommerceOrder {\n  sellerDetails {\n    __typename\n    ... on Partner {\n      name\n    }\n    ... on Node {\n      id\n    }\n    ... on User {\n      id\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          artist_names: artistNames\n          title\n          date\n          shippingOrigin\n          image {\n            resized_ArtworkSummaryItem: resized(width: 55) {\n              url\n            }\n          }\n          id\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment Shipping_order on CommerceOrder {\n  internalID\n  mode\n  state\n  requestedFulfillment {\n    __typename\n    ... on CommercePickup {\n      phoneNumber\n    }\n    ... on CommerceShip {\n      name\n      addressLine1\n      addressLine2\n      city\n      region\n      country\n      postalCode\n      phoneNumber\n    }\n  }\n  lineItems {\n    edges {\n      node {\n        artwork {\n          slug\n          pickup_available: pickupAvailable\n          onlyShipsDomestically\n          euShippingOrigin\n          shippingCountry\n          id\n        }\n        id\n      }\n    }\n  }\n  ...ArtworkSummaryItem_order\n  ...TransactionDetailsSummaryItem_order\n}\n\nfragment TransactionDetailsSummaryItem_order on CommerceOrder {\n  __typename\n  mode\n  shippingTotal(precision: 2)\n  shippingTotalCents\n  taxTotal(precision: 2)\n  taxTotalCents\n  itemsTotal(precision: 2)\n  totalListPrice(precision: 2)\n  buyerTotal(precision: 2)\n  ... on CommerceOfferOrder {\n    lastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n    myLastOffer {\n      internalID\n      amount(precision: 2)\n      amountCents\n      shippingTotal(precision: 2)\n      shippingTotalCents\n      taxTotal(precision: 2)\n      taxTotalCents\n      buyerTotal(precision: 2)\n      buyerTotalCents\n      fromParticipant\n      note\n      id\n    }\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'a258a2a639ca39c4a06a43e55d91d25f';
+(node as any).hash = 'ed5bd8886e34ee450a63ba71a2a13482';
 export default node;

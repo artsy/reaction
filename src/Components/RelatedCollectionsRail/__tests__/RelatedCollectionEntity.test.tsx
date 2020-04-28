@@ -34,11 +34,11 @@ describe("RelatedCollectionEntity", () => {
       "https://d32dm0rphc51dk.cloudfront.net/4izTOpDv-ew-g1RFXeREcQ/small.jpg"
     )
     expect(artworkImage.alt).toBe("Jasper Johns, Flag")
-    expect(artworkImage.width).toBe(85)
+    expect(artworkImage.width).toBe(86)
   })
 
   it("Returns proper image size if 2 artworks returned", () => {
-    props.collection.artworks.hits.pop()
+    props.collection.artworksConnection.edges.pop()
     const component = mount(<RelatedCollectionEntity {...props} />)
     const artworkImage = component
       .find(ArtworkImage)
@@ -46,11 +46,11 @@ describe("RelatedCollectionEntity", () => {
       .getElement().props
 
     expect(component.find(ArtworkImage).length).toBe(2)
-    expect(artworkImage.width).toBe(131)
+    expect(artworkImage.width).toBe(130)
   })
 
   it("Renders a backup image if no artworks returned", () => {
-    props.collection.artworks.hits = []
+    props.collection.artworksConnection.edges = []
     const component = mount(<RelatedCollectionEntity {...props} />)
     const artworkImage = component
       .find(ArtworkImage)
@@ -61,7 +61,7 @@ describe("RelatedCollectionEntity", () => {
     expect(artworkImage.src).toBe(
       "http://files.artsy.net/images/jasperjohnsflag.png"
     )
-    expect(artworkImage.width).toBe(265)
+    expect(artworkImage.width).toBe(262)
   })
 
   it("Tracks link clicks", () => {

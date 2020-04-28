@@ -1,70 +1,77 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { ArtworkSummaryItem_order$ref } from "./ArtworkSummaryItem_order.graphql";
-import { TransactionDetailsSummaryItem_order$ref } from "./TransactionDetailsSummaryItem_order.graphql";
-export type OrderModeEnum = "BUY" | "OFFER" | "%future added value";
-declare const _Shipping_order$ref: unique symbol;
-export type Shipping_order$ref = typeof _Shipping_order$ref;
+import { ReaderFragment } from "relay-runtime";
+export type CommerceOrderModeEnum = "BUY" | "OFFER" | "%future added value";
+export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
+import { FragmentRefs } from "relay-runtime";
 export type Shipping_order = {
-    readonly id: string;
-    readonly mode: OrderModeEnum | null;
-    readonly state: string | null;
+    readonly internalID: string;
+    readonly mode: CommerceOrderModeEnum | null;
+    readonly state: CommerceOrderStateEnum;
     readonly requestedFulfillment: ({
-        readonly __typename: "Ship";
+        readonly __typename: "CommercePickup";
+        readonly phoneNumber: string | null;
+    } | {
+        readonly __typename: "CommerceShip";
         readonly name: string | null;
         readonly addressLine1: string | null;
         readonly addressLine2: string | null;
         readonly city: string | null;
         readonly region: string | null;
-        readonly country: string;
+        readonly country: string | null;
         readonly postalCode: string | null;
         readonly phoneNumber: string | null;
     } | {
-        /*This will never be '% other', but we need some
+        /*This will never be '%other', but we need some
         value in case none of the concrete values match.*/
         readonly __typename: "%other";
     }) | null;
-    readonly lineItems: ({
-        readonly edges: ReadonlyArray<({
-            readonly node: ({
-                readonly artwork: ({
-                    readonly id: string;
+    readonly lineItems: {
+        readonly edges: ReadonlyArray<{
+            readonly node: {
+                readonly artwork: {
+                    readonly slug: string;
                     readonly pickup_available: boolean | null;
-                    readonly shipsToContinentalUSOnly: boolean | null;
-                }) | null;
-            }) | null;
-        }) | null> | null;
-    }) | null;
-    readonly " $fragmentRefs": ArtworkSummaryItem_order$ref & TransactionDetailsSummaryItem_order$ref;
-    readonly " $refType": Shipping_order$ref;
+                    readonly onlyShipsDomestically: boolean | null;
+                    readonly euShippingOrigin: boolean | null;
+                    readonly shippingCountry: string | null;
+                } | null;
+            } | null;
+        } | null> | null;
+    } | null;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkSummaryItem_order" | "TransactionDetailsSummaryItem_order">;
+    readonly " $refType": "Shipping_order";
+};
+export type Shipping_order$data = Shipping_order;
+export type Shipping_order$key = {
+    readonly " $data"?: Shipping_order$data;
+    readonly " $fragmentRefs": FragmentRefs<"Shipping_order">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
+  "name": "phoneNumber",
   "args": null,
   "storageKey": null
 };
 return {
   "kind": "Fragment",
   "name": "Shipping_order",
-  "type": "Order",
+  "type": "CommerceOrder",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,
@@ -97,7 +104,14 @@ return {
         },
         {
           "kind": "InlineFragment",
-          "type": "Ship",
+          "type": "CommercePickup",
+          "selections": [
+            (v0/*: any*/)
+          ]
+        },
+        {
+          "kind": "InlineFragment",
+          "type": "CommerceShip",
           "selections": [
             {
               "kind": "ScalarField",
@@ -148,13 +162,7 @@ return {
               "args": null,
               "storageKey": null
             },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "phoneNumber",
-              "args": null,
-              "storageKey": null
-            }
+            (v0/*: any*/)
           ]
         }
       ]
@@ -165,7 +173,7 @@ return {
       "name": "lineItems",
       "storageKey": null,
       "args": null,
-      "concreteType": "OrderLineItemConnection",
+      "concreteType": "CommerceLineItemConnection",
       "plural": false,
       "selections": [
         {
@@ -174,7 +182,7 @@ return {
           "name": "edges",
           "storageKey": null,
           "args": null,
-          "concreteType": "OrderLineItemEdge",
+          "concreteType": "CommerceLineItemEdge",
           "plural": true,
           "selections": [
             {
@@ -183,7 +191,7 @@ return {
               "name": "node",
               "storageKey": null,
               "args": null,
-              "concreteType": "OrderLineItem",
+              "concreteType": "CommerceLineItem",
               "plural": false,
               "selections": [
                 {
@@ -195,25 +203,43 @@ return {
                   "concreteType": "Artwork",
                   "plural": false,
                   "selections": [
-                    v0,
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "pickup_available",
+                      "name": "slug",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": "pickup_available",
+                      "name": "pickupAvailable",
                       "args": null,
                       "storageKey": null
                     },
                     {
                       "kind": "ScalarField",
                       "alias": null,
-                      "name": "shipsToContinentalUSOnly",
+                      "name": "onlyShipsDomestically",
                       "args": null,
                       "storageKey": null
                     },
-                    v1
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "euShippingOrigin",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "shippingCountry",
+                      "args": null,
+                      "storageKey": null
+                    }
                   ]
-                },
-                v1
+                }
               ]
             }
           ]
@@ -229,10 +255,9 @@ return {
       "kind": "FragmentSpread",
       "name": "TransactionDetailsSummaryItem_order",
       "args": null
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = 'ddc48eefaaa41842044ccffcd2d55e4f';
+(node as any).hash = '215f2663f765f7ae5046b82743647c4a';
 export default node;

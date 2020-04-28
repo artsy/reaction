@@ -14,9 +14,14 @@ const MIN_IMAGE_SIZE = 150
 
 class Badge extends React.Component<BadgeProps> {
   get stackedLayout() {
+    // During the SSR render pass we don't have access to window pixel data so
+    // default to high density screen.
+    const devicePixelRatio =
+      typeof window === "undefined" ? 2 : window.devicePixelRatio
+
     return get(
       this.props,
-      p => p.width / window.devicePixelRatio < MIN_IMAGE_SIZE,
+      p => p.width / devicePixelRatio < MIN_IMAGE_SIZE,
       false
     )
   }
@@ -59,13 +64,13 @@ class Badge extends React.Component<BadgeProps> {
 export default createFragmentContainer(Badge, {
   artwork: graphql`
     fragment Badge_artwork on Artwork {
-      is_biddable
-      is_acquireable
-      is_offerable
+      is_biddable: isBiddable
+      is_acquireable: isAcquireable
+      is_offerable: isOfferable
       href
       sale {
-        is_preview
-        display_timely_at
+        is_preview: isPreview
+        display_timely_at: displayTimelyAt
       }
     }
   `,

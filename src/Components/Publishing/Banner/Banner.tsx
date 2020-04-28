@@ -1,6 +1,8 @@
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { ModalType } from "Components/Authentication/Types"
 import { debounce } from "lodash"
-import qs from "querystring"
 import React, { Component } from "react"
+import { getMobileAuthLink } from "Utils/openAuthModal"
 import { MinimalCtaBanner } from "../../MinimalCtaBanner"
 import { getArticleFullHref } from "../Constants"
 import { ArticleData } from "../Typings"
@@ -44,7 +46,10 @@ export class BannerWrapper extends Component<{ article: ArticleData }, State> {
 
   componentDidMount() {
     if (window) {
-      window.addEventListener("scroll", debounce(() => this.handleScroll(), 10))
+      window.addEventListener(
+        "scroll",
+        debounce(() => this.handleScroll(), 10)
+      )
     }
   }
 
@@ -53,16 +58,16 @@ export class BannerWrapper extends Component<{ article: ArticleData }, State> {
     const copy = layout === "news" ? CtaCopy.news : CtaCopy.default
     const backgroundColor = layout === "video" ? "white" : "black"
     const textColor = layout === "video" ? "black" : "white"
+    const href = getMobileAuthLink(ModalType.signup, {
+      action: "editorialSignup",
+      intent: AuthIntent.viewEditorial,
+      contextModule: ContextModule.minimalCTABanner,
+      redirectTo: getArticleFullHref(slug),
+    })
 
     return (
       <MinimalCtaBanner
-        href={`/sign_up?${qs.stringify({
-          action: "editorialSignup",
-          intent: "viewed editorial",
-          trigger: "click",
-          contextModule: "auth minimal cta banner",
-          "redirect-to": getArticleFullHref(slug),
-        })}`}
+        href={href}
         height="55px"
         copy={copy}
         position="bottom"

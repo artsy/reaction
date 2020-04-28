@@ -1,6 +1,7 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 import styled, { createGlobalStyle, keyframes } from "styled-components"
+import { getViewportDimensions } from "Utils/viewport"
 import FadeTransition from "../Animation/FadeTransition"
 import { media } from "../Helpers"
 import { CtaProps } from "./ModalCta"
@@ -53,7 +54,7 @@ export class ModalWrapper extends React.Component<
       : [],
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.show !== nextProps.show) {
       this.setState({
         isAnimating: true,
@@ -63,17 +64,23 @@ export class ModalWrapper extends React.Component<
   }
 
   componentDidMount() {
-    this.updateBodyScrollBlock()
-    this.updateEscapeKeyListener()
+    const isOpen = this.props.show
+    this.updateBodyScrollBlock(isOpen)
+    this.updateEscapeKeyListener(isOpen)
   }
 
-  componentDidUpdate() {
-    this.updateBodyScrollBlock()
-    this.updateEscapeKeyListener()
+  componentDidUpdate(prevProps) {
+    const isOpen = this.props.show
+    if (prevProps.show !== isOpen) {
+      this.updateBodyScrollBlock(isOpen)
+      this.updateEscapeKeyListener(isOpen)
+    }
   }
 
   componentWillUnmount() {
     this.removeBlurToContainers()
+    this.updateBodyScrollBlock(false)
+    this.updateEscapeKeyListener(false)
   }
 
   close = () => {
@@ -93,8 +100,8 @@ export class ModalWrapper extends React.Component<
     }
   }
 
-  updateBodyScrollBlock() {
-    if (this.props.show) {
+  updateBodyScrollBlock(isOpen) {
+    if (isOpen) {
       document.body.style.overflowY = "hidden"
     } else {
       document.body.style.overflowY = "visible"
@@ -107,27 +114,18 @@ export class ModalWrapper extends React.Component<
     }
   }
 
-  updateEscapeKeyListener() {
-    if (this.props.show) {
+  updateEscapeKeyListener(isOpen) {
+    if (isOpen) {
       document.addEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
     } else {
       document.removeEventListener(KEYBOARD_EVENT, this.handleEscapeKey, true)
     }
   }
 
-  getViewportWidth = () => {
-    let width: number
-    try {
-      width = window.innerWidth
-    } catch (e) {
-      width = 0
-    }
-    return width
-  }
-
   render(): JSX.Element {
     const { children, width, fullscreenResponsiveModal, image } = this.props
     const { isShown, isAnimating } = this.state
+    const { width: viewportWidth } = getViewportDimensions()
 
     if (isShown) {
       this.addBlurToContainers()
@@ -153,7 +151,7 @@ export class ModalWrapper extends React.Component<
               fullscreenResponsiveModal={fullscreenResponsiveModal}
               width={width}
               image={image}
-              viewportWidth={this.getViewportWidth()}
+              viewportWidth={viewportWidth}
             >
               <ModalInner fullscreenResponsiveModal={fullscreenResponsiveModal}>
                 {children}

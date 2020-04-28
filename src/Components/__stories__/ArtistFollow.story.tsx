@@ -17,7 +17,7 @@ function ArtistExample(props: { artistID: string }) {
       `}
       variables={{ artistID: props.artistID }}
       render={readyState =>
-        readyState.props && <Follow {...readyState.props as any} />
+        readyState.props && <Follow {...(readyState.props as any)} />
       }
     />
   )

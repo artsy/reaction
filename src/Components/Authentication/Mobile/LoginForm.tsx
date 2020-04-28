@@ -1,4 +1,5 @@
 import { Flex } from "@artsy/palette"
+import { withSystemContext } from "Artsy"
 import { checkEmail } from "Components/Authentication/helpers"
 import Icon from "Components/Icon"
 import PasswordInput from "Components/PasswordInput"
@@ -7,7 +8,8 @@ import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
 import { FormikProps } from "formik"
 import React, { Component, Fragment } from "react"
-import { repcaptcha } from "Utils/repcaptcha"
+import { Environment } from "relay-runtime"
+import { recaptcha } from "Utils/recaptcha"
 import {
   BackButton,
   Error,
@@ -21,7 +23,11 @@ import {
 import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 
-export class MobileLoginForm extends Component<FormProps> {
+class MobileLoginFormWithSystemContext extends Component<
+  FormProps & {
+    relayEnvironment: Environment
+  }
+> {
   showError = status => {
     const { error } = this.props
     if (error) {
@@ -36,7 +42,7 @@ export class MobileLoginForm extends Component<FormProps> {
   }
 
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
-    repcaptcha("login_submit")
+    recaptcha("login_submit")
     this.props.handleSubmit(values, formikBag)
   }
 
@@ -45,7 +51,12 @@ export class MobileLoginForm extends Component<FormProps> {
       <Step
         validationSchema={MobileLoginValidator.email}
         onSubmit={(values, actions) =>
-          checkEmail({ values, actions, shouldExist: true })
+          checkEmail({
+            relayEnvironment: this.props.relayEnvironment,
+            values,
+            actions,
+            shouldExist: true,
+          })
         }
       >
         {({
@@ -117,7 +128,7 @@ export class MobileLoginForm extends Component<FormProps> {
           const { currentStep, isLastStep } = wizard
 
           return (
-            <MobileContainer>
+            <MobileContainer data-test="LoginForm">
               <ProgressIndicator percentComplete={wizard.progressPercentage} />
               <MobileInnerWrapper>
                 <BackButton
@@ -142,6 +153,7 @@ export class MobileLoginForm extends Component<FormProps> {
                 <Footer
                   mode={"login" as ModalType}
                   handleTypeChange={this.props.handleTypeChange}
+                  onAppleLogin={this.props.onAppleLogin}
                   onFacebookLogin={this.props.onFacebookLogin}
                 />
               </MobileInnerWrapper>
@@ -152,3 +164,7 @@ export class MobileLoginForm extends Component<FormProps> {
     )
   }
 }
+
+export const MobileLoginForm = withSystemContext(
+  MobileLoginFormWithSystemContext
+)

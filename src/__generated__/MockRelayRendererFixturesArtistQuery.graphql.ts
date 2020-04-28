@@ -1,18 +1,25 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-import { MockRelayRendererFixtures_artist$ref } from "./MockRelayRendererFixtures_artist.graphql";
+import { FragmentRefs } from "relay-runtime";
 export type MockRelayRendererFixturesArtistQueryVariables = {
-    readonly id: string;
+    id: string;
 };
 export type MockRelayRendererFixturesArtistQueryResponse = {
+    readonly artist: {
+        readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artist">;
+    } | null;
+};
+export type MockRelayRendererFixturesArtistQueryRawResponse = {
     readonly artist: ({
-        readonly " $fragmentRefs": MockRelayRendererFixtures_artist$ref;
+        readonly name: string | null;
+        readonly id: string | null;
     }) | null;
 };
 export type MockRelayRendererFixturesArtistQuery = {
     readonly response: MockRelayRendererFixturesArtistQueryResponse;
     readonly variables: MockRelayRendererFixturesArtistQueryVariables;
+    readonly rawResponse: MockRelayRendererFixturesArtistQueryRawResponse;
 };
 
 
@@ -23,13 +30,12 @@ query MockRelayRendererFixturesArtistQuery(
 ) {
   artist(id: $id) {
     ...MockRelayRendererFixtures_artist
-    __id
+    id
   }
 }
 
 fragment MockRelayRendererFixtures_artist on Artist {
   name
-  __id
 }
 */
 
@@ -46,37 +52,24 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "id",
-    "type": "String!"
+    "variableName": "id"
   }
-],
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
-  "args": null,
-  "storageKey": null
-};
+];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "MockRelayRendererFixturesArtistQuery",
-  "id": null,
-  "text": "query MockRelayRendererFixturesArtistQuery(\n  $id: String!\n) {\n  artist(id: $id) {\n    ...MockRelayRendererFixtures_artist\n    __id\n  }\n}\n\nfragment MockRelayRendererFixtures_artist on Artist {\n  name\n  __id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "MockRelayRendererFixturesArtistQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -84,8 +77,7 @@ return {
             "kind": "FragmentSpread",
             "name": "MockRelayRendererFixtures_artist",
             "args": null
-          },
-          v2
+          }
         ]
       }
     ]
@@ -93,14 +85,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "MockRelayRendererFixturesArtistQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "artist",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "Artist",
         "plural": false,
         "selections": [
@@ -111,12 +103,25 @@ return {
             "args": null,
             "storageKey": null
           },
-          v2
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          }
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "MockRelayRendererFixturesArtistQuery",
+    "id": null,
+    "text": "query MockRelayRendererFixturesArtistQuery(\n  $id: String!\n) {\n  artist(id: $id) {\n    ...MockRelayRendererFixtures_artist\n    id\n  }\n}\n\nfragment MockRelayRendererFixtures_artist on Artist {\n  name\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'aabded82722f7ed4c4f873a3d0b315be';
+(node as any).hash = '8c4a637a093bfbe6fe9591999d35c879';
 export default node;

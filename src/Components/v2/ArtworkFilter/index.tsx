@@ -1,23 +1,28 @@
 import { isEqual } from "lodash"
 import React, { useEffect, useState } from "react"
-import {
-  createRefetchContainer,
-  graphql,
-  QueryRenderer,
-  RelayRefetchProp,
-} from "react-relay"
+import useDeepCompareEffect from "use-deep-compare-effect"
 
-import { AnalyticsSchema, useSystemContext, useTracking } from "Artsy"
+import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+
+import { AnalyticsSchema, useSystemContext } from "Artsy"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
 import { usePrevious } from "Utils/Hooks/usePrevious"
 import { Media } from "Utils/Responsive"
 
 import { ArtworkFilter_viewer } from "__generated__/ArtworkFilter_viewer.graphql"
-import { ArtworkFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkFilterQuery.graphql"
+import { ArtworkQueryFilterQuery as ArtworkFilterQueryType } from "__generated__/ArtworkQueryFilterQuery.graphql"
 
 import { ArtworkFilterArtworkGridRefetchContainer as ArtworkFilterArtworkGrid } from "./ArtworkFilterArtworkGrid2"
-import { initialFilterState, useFilterContext } from "./ArtworkFilterContext"
-import { FilterContextProvider } from "./ArtworkFilterContext"
+import { SortFilter } from "./ArtworkFilters/SortFilter"
+
+import {
+  ArtworkFilterContextProvider,
+  initialArtworkFilterState,
+  SharedArtworkFilterContextProps,
+  useArtworkFilterContext,
+} from "./ArtworkFilterContext"
+
 import { ArtworkFilterMobileActionSheet } from "./ArtworkFilterMobileActionSheet"
 import { ArtworkFilters } from "./ArtworkFilters"
 
@@ -29,64 +34,66 @@ import {
   Separator,
   Spacer,
 } from "@artsy/palette"
+import { ArtistArtworkFilter_artist } from "__generated__/ArtistArtworkFilter_artist.graphql"
+import { Collection_collection } from "__generated__/Collection_collection.graphql"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
+import { ArtworkQueryFilter } from "./ArtworkQueryFilter"
 
-const ArtworkQueryFilter = graphql`
-  query ArtworkFilterQuery(
-    $acquireable: Boolean
-    $artist_id: String
-    $at_auction: Boolean
-    $attribution_class: [String]
-    $color: String
-    $for_sale: Boolean
-    $height: String
-    $inquireable_only: Boolean
-    $major_periods: [String]
-    $medium: String
-    $offerable: Boolean
-    $page: Int
-    $partner_id: ID
-    $price_range: String
-    $sort: String
-    $term: String!
-    $width: String
-  ) {
-    viewer {
-      ...ArtworkFilter_viewer
-        @arguments(
-          acquireable: $acquireable
-          artist_id: $artist_id
-          at_auction: $at_auction
-          attribution_class: $attribution_class
-          color: $color
-          for_sale: $for_sale
-          height: $height
-          inquireable_only: $inquireable_only
-          keyword: $term
-          major_periods: $major_periods
-          medium: $medium
-          offerable: $offerable
-          page: $page
-          partner_id: $partner_id
-          price_range: $price_range
-          sort: $sort
-          width: $width
-        )
-    }
-  }
-`
-
-interface ArtworkFilterProps {
-  viewer: ArtworkFilter_viewer
-  relay: RelayRefetchProp
-  term: string
+/**
+ * Primary ArtworkFilter which is wrapped with a context and refetch container.
+ *
+ * If needing more granular control over the query being used, or the root query
+ * doesn't `extend Viewer`, the BaseArtworkFilter can be imported below. See
+ * `Apps/Collection` for an example, which queries Kaws for data.
+ */
+export const ArtworkFilter: React.FC<SharedArtworkFilterContextProps & {
+  viewer: any // FIXME: We need to support multiple types implementing different viewer interfaces
+}> = ({
+  viewer,
+  aggregations,
+  counts,
+  filters,
+  sortOptions,
+  onArtworkBrickClick,
+  onFilterClick,
+  onChange,
+  ZeroState,
+}) => {
+  return (
+    <ArtworkFilterContextProvider
+      aggregations={aggregations}
+      counts={counts}
+      filters={filters}
+      sortOptions={sortOptions}
+      onArtworkBrickClick={onArtworkBrickClick}
+      onFilterClick={onFilterClick}
+      onChange={onChange}
+      ZeroState={ZeroState}
+    >
+      <ArtworkFilterRefetchContainer viewer={viewer} />
+    </ArtworkFilterContextProvider>
+  )
 }
 
-const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
-  const { viewer, relay, term } = props
+export const BaseArtworkFilter: React.FC<{
+  relay: RelayRefetchProp
+  relayVariables?: object
+  viewer:
+    | ArtworkFilter_viewer
+    | Collection_collection
+    | ArtistArtworkFilter_artist
+}> = ({ relay, viewer, relayVariables = {}, ...props }) => {
+  const { filtered_artworks } = viewer
+  const hasFilter = filtered_artworks && filtered_artworks.id
+
+  // If there was an error fetching the filter,
+  // we still want to render the rest of the page.
+  if (!hasFilter) return null
+
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
-  const filterContext = useFilterContext()
+  const filterContext = useArtworkFilterContext()
   const previousFilters = usePrevious(filterContext.filters)
 
   /**
@@ -94,7 +101,7 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
    */
   useEffect(() => {
     const setScrollable = doScroll => {
-      document.body.style.overflowY = doScroll ? "hidden" : "visible"
+      document.body.style.overflowY = doScroll ? "visible" : "hidden"
     }
     if (showMobileActionSheet) {
       setScrollable(false)
@@ -108,54 +115,45 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
    * Check to see if the current filter is different from the previous filter
    * and trigger a reload.
    */
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     Object.entries(filterContext.filters).forEach(
       ([filterKey, currentFilter]) => {
-        if (filterKey === "page") {
-          return
-        }
         const previousFilter = previousFilters[filterKey]
         const filtersHaveUpdated = !isEqual(currentFilter, previousFilter)
 
         if (filtersHaveUpdated) {
-          fetchResults(filterKey)
+          fetchResults()
+
+          tracking.trackEvent({
+            action_type:
+              AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
+            current: filterContext.filters,
+            changed: {
+              [filterKey]: filterContext.filters[filterKey],
+            },
+          })
         }
       }
     )
   }, [filterContext.filters])
 
-  function fetchResults(filterKey) {
-    if (isFetching) {
-      return
-    }
-
-    tracking.trackEvent({
-      action_type: AnalyticsSchema.ActionType.CommercialFilterParamsChanged,
-      current: filterContext.filters,
-      changed: {
-        [filterKey]: filterContext.filters[filterKey],
-      },
-    })
-
+  function fetchResults() {
     toggleFetching(true)
 
-    // FIXME: Re-enable fetch updates. Throws strange low-lever error ATM
-    return
-    relay.refetch(filterContext.filters, null, error => {
+    const relayRefetchVariables = {
+      ...filterContext.filters,
+      ...relayVariables,
+      first: 30,
+    }
+
+    relay.refetch(relayRefetchVariables, null, error => {
       if (error) {
         console.error(error)
       }
 
       toggleFetching(false)
-
-      // FIXME: Is this extra guard still needed
-      // this.isLoading = true
     })
   }
-
-  const filterMediums = viewer.filter_artworks.aggregations.find(
-    agg => agg.slice === "MEDIUM"
-  )
 
   const ArtworkGrid = () => {
     return (
@@ -163,37 +161,37 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
         filtered_artworks={viewer.filtered_artworks}
         isLoading={isFetching}
         columnCount={[2, 2, 2, 3]}
-        term={term}
       />
     )
   }
 
   return (
     <Box>
+      <Box id="jump--artworkFilter" />
+
+      {/*
+        Mobile Artwork Filter
+      */}
       <Media at="xs">
-        <Box>
+        <Box mb={1}>
           {showMobileActionSheet && (
             <ArtworkFilterMobileActionSheet
               onClose={() => toggleMobileActionSheet(false)}
             >
-              <ArtworkFilters mediums={filterMediums as any} />
+              <ArtworkFilters />
             </ArtworkFilterMobileActionSheet>
           )}
 
-          <Box id="jump--searchArtworkGrid" />
-
-          <Flex justifyContent="flex-end" alignItems="center">
-            <Button
-              size="small"
-              mt={-1}
-              onClick={() => toggleMobileActionSheet(true)}
-            >
+          <Flex justifyContent="space-between" alignItems="center" py={1}>
+            <Button size="small" onClick={() => toggleMobileActionSheet(true)}>
               <Flex justifyContent="space-between" alignItems="center">
                 <FilterIcon fill="white100" />
                 <Spacer mr={0.5} />
                 Filter
               </Flex>
             </Button>
+
+            <SortFilter />
           </Flex>
 
           <Spacer mb={2} />
@@ -202,16 +200,23 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
         </Box>
       </Media>
 
+      {/*
+        Desktop Artwork Filter
+      */}
       <Media greaterThan="xs">
         <Flex>
-          <Box width="25%" mr={2}>
-            <ArtworkFilters mediums={filterMediums as any} />
-            <Separator mb={2} />
+          <Box width="25%" mr={2} mt={0.5}>
+            <ArtworkFilters />
           </Box>
           <Box width="75%">
-            <Box id="jump--searchArtworkGrid" />
+            <Box mb={2}>
+              <Box pb={2} mt={0.5}>
+                <Separator />
+              </Box>
+              <SortFilter />
+            </Box>
 
-            <ArtworkGrid />
+            {props.children || <ArtworkGrid />}
           </Box>
         </Flex>
       </Media>
@@ -219,65 +224,54 @@ const ArtworkFilter: React.FC<ArtworkFilterProps> = props => {
   )
 }
 
-const ArtworkFilterFragmentContainer = createRefetchContainer(
-  ArtworkFilter,
+export const ArtworkFilterRefetchContainer = createRefetchContainer(
+  BaseArtworkFilter,
   {
     viewer: graphql`
       fragment ArtworkFilter_viewer on Viewer
         @argumentDefinitions(
-          aggregations: {
-            type: "[ArtworkAggregation]"
-            defaultValue: [MEDIUM, TOTAL]
-          }
-
           acquireable: { type: "Boolean" }
-          artist_id: { type: "String" }
-          at_auction: { type: "Boolean" }
-          attribution_class: { type: "[String]" }
+          aggregations: { type: "[ArtworkAggregation]" }
+          artistID: { type: "String" }
+          atAuction: { type: "Boolean" }
+          attributionClass: { type: "[String]" }
           color: { type: "String" }
-          for_sale: { type: "Boolean" }
+          forSale: { type: "Boolean" }
           height: { type: "String" }
-          inquireable_only: { type: "Boolean" }
-          keyword: { type: "String!", defaultValue: "" }
-          major_periods: { type: "[String]" }
+          inquireableOnly: { type: "Boolean" }
+          keyword: { type: "String" }
+          majorPeriods: { type: "[String]" }
           medium: { type: "String" }
           offerable: { type: "Boolean" }
           page: { type: "Int" }
-          partner_id: { type: "ID" }
-          price_range: { type: "String" }
+          partnerID: { type: "ID" }
+          priceRange: { type: "String" }
           sort: { type: "String", defaultValue: "-partner_updated_at" }
           width: { type: "String" }
+          first: { type: "Int", defaultValue: 30 }
         ) {
-        filter_artworks(aggregations: $aggregations, size: 0) {
-          aggregations {
-            slice
-            counts {
-              name
-              id
-            }
-          }
-        }
-        filtered_artworks: filter_artworks(
-          aggregations: [TOTAL]
-          medium: $medium
-          major_periods: $major_periods
-          partner_id: $partner_id
-          for_sale: $for_sale
-          at_auction: $at_auction
+        filtered_artworks: artworksConnection(
           acquireable: $acquireable
-          offerable: $offerable
-          inquireable_only: $inquireable_only
-          size: 0
-          sort: $sort
-          price_range: $price_range
-          height: $height
-          width: $width
-          artist_id: $artist_id
-          attribution_class: $attribution_class
+          aggregations: $aggregations
+          artistID: $artistID
+          atAuction: $atAuction
+          attributionClass: $attributionClass
           color: $color
+          forSale: $forSale
+          height: $height
+          inquireableOnly: $inquireableOnly
           keyword: $keyword
+          majorPeriods: $majorPeriods
+          medium: $medium
+          offerable: $offerable
           page: $page
+          partnerID: $partnerID
+          priceRange: $priceRange
+          sort: $sort
+          width: $width
+          first: $first
         ) {
+          id
           ...ArtworkFilterArtworkGrid2_filtered_artworks
         }
       }
@@ -286,21 +280,30 @@ const ArtworkFilterFragmentContainer = createRefetchContainer(
   ArtworkQueryFilter
 )
 
-export const ArtworkFilterQueryRenderer = ({ term = "andy warhol" }) => {
+/**
+ * This QueryRenderer can be used to instantiate stand-alone embedded ArtworkFilters
+ * that are not dependent on URLBar state.
+ */
+export const ArtworkFilterQueryRenderer = ({ keyword = "andy warhol" }) => {
   const { relayEnvironment } = useSystemContext()
 
   return (
-    <FilterContextProvider keyword={term} {...initialFilterState}>
+    <ArtworkFilterContextProvider
+      filters={{
+        ...initialArtworkFilterState,
+        keyword,
+      }}
+    >
       <QueryRenderer<ArtworkFilterQueryType>
         environment={relayEnvironment}
         // FIXME: Passing a variable to `query` shouldn't error out in linter
         /* tslint:disable:relay-operation-generics */
         query={ArtworkQueryFilter}
         variables={{
-          term: "andy warhol",
+          keyword,
         }}
-        render={renderWithLoadProgress(ArtworkFilterFragmentContainer as any)}
+        render={renderWithLoadProgress(ArtworkFilterRefetchContainer as any)} // FIXME: Find way to support union types here
       />
-    </FilterContextProvider>
+    </ArtworkFilterContextProvider>
   )
 }

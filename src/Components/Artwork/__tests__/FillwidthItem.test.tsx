@@ -1,3 +1,4 @@
+import { ContextModule } from "@artsy/cohesion"
 import { render } from "enzyme"
 import React from "react"
 import { FillwidthItem } from "../FillwidthItem"
@@ -12,7 +13,12 @@ describe("FillwidthItem", () => {
         href: "my/artwork",
       }
 
-      const wrapper = render(<FillwidthItem artwork={artwork as any} />)
+      const wrapper = render(
+        <FillwidthItem
+          artwork={artwork as any}
+          contextModule={ContextModule.header}
+        />
+      )
 
       expect(wrapper.html()).toBeNull()
     })

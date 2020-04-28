@@ -15,9 +15,14 @@ export interface ModalDialogProps {
   primaryCta: CtaProps
   secondaryCta?: CtaProps
   onClose?: () => void
+  width?: ModalWidth
 }
 
 export class ModalDialog extends React.Component<ModalDialogProps> {
+  static defaultProps = {
+    width: ModalWidth.Narrow,
+  }
+
   render() {
     const {
       show,
@@ -26,13 +31,14 @@ export class ModalDialog extends React.Component<ModalDialogProps> {
       onClose,
       primaryCta,
       secondaryCta,
+      width,
     } = this.props
 
     return (
       <ModalWrapper
         show={show}
         onClose={onClose || (() => undefined)}
-        width={ModalWidth.Narrow}
+        width={width}
       >
         <Flex flexDirection="column" pt={2} px={2}>
           <Sans size="4" weight="medium" mb={10}>

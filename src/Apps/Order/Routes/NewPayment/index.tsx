@@ -6,13 +6,13 @@ import { ArtworkSummaryItemFragmentContainer as ArtworkSummaryItem } from "Apps/
 import { OrderStepper } from "Apps/Order/Components/OrderStepper"
 import { TransactionDetailsSummaryItemFragmentContainer as TransactionDetailsSummaryItem } from "Apps/Order/Components/TransactionDetailsSummaryItem"
 import { TwoColumnLayout } from "Apps/Order/Components/TwoColumnLayout"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy/Analytics"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { RouteConfig, Router } from "found"
 import React, { Component } from "react"
-import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ReactStripeElements } from "react-stripe-elements"
+import { data as sd } from "sharify"
 import createLogger from "Utils/logger"
 import { Media } from "Utils/Responsive"
 
@@ -38,7 +38,6 @@ export interface NewPaymentProps
   extends ReactStripeElements.InjectedStripeProps {
   order: NewPayment_order
   me: NewPayment_me
-  relay?: RelayRefetchProp
   router: Router
   route: RouteConfig
   dialog: Dialog
@@ -48,6 +47,7 @@ export interface NewPaymentProps
 
 interface NewPaymentState {
   isGettingCreditCardId: boolean
+  stripe: stripe.Stripe
 }
 
 const logger = createLogger("Order/Routes/NewPayment/index.tsx")
@@ -60,6 +60,21 @@ export class NewPaymentRoute extends Component<
   paymentPicker = React.createRef<PaymentPicker>()
   state = {
     isGettingCreditCardId: false,
+    stripe: null,
+  }
+  componentDidMount() {
+    if (window.Stripe) {
+      this.setState({
+        stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+      })
+    } else {
+      document.querySelector("#stripe-js").addEventListener("load", () => {
+        // Create Stripe instance once Stripe.js loads
+        this.setState({
+          stripe: window.Stripe(sd.STRIPE_PUBLISHABLE_KEY),
+        })
+      })
+    }
   }
 
   onContinue = async () => {
@@ -74,24 +89,54 @@ export class NewPaymentRoute extends Component<
 
       if (result.type === "error") {
         this.props.dialog.showErrorDialog({
-          message: result.error,
+          title: result.error,
+          message:
+            "Please enter another payment method or contact your bank for more information.",
         })
         return
       }
 
-      const orderOrError = (await this.fixFailedPayment({
-        input: {
-          creditCardId: result.creditCardId,
-          offerId: this.props.order.lastOffer.id,
-        },
-      })).ecommerceFixFailedPayment.orderOrError
+      if (result.type === "internal_error") {
+        this.props.dialog.showErrorDialog({
+          title: "An internal error occurred",
+        })
+        logger.error(result.error)
+        return
+      }
+
+      const orderOrError = (
+        await this.fixFailedPayment({
+          input: {
+            creditCardId: result.creditCardId,
+            offerId: this.props.order.lastOffer.internalID,
+          },
+        })
+      ).commerceFixFailedPayment.orderOrError
 
       if (orderOrError.error) {
         this.handleFixFailedPaymentError(orderOrError.error.code)
         return
+      } else if (
+        orderOrError.actionData &&
+        orderOrError.actionData.clientSecret
+      ) {
+        const scaResult = await this.state.stripe.handleCardAction(
+          orderOrError.actionData.clientSecret
+        )
+        if (scaResult.error) {
+          this.props.dialog.showErrorDialog({
+            title: "An error occurred",
+            message: scaResult.error.message,
+          })
+          return
+        } else {
+          this.onContinue()
+        }
+      } else {
+        this.props.router.push(`/orders/${this.props.order.internalID}/status`)
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/status`)
+      this.props.router.push(`/orders/${this.props.order.internalID}/status`)
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -178,31 +223,37 @@ export class NewPaymentRoute extends Component<
   ) {
     return this.props.commitMutation<NewPaymentRouteSetOrderPaymentMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
         mutation NewPaymentRouteSetOrderPaymentMutation(
-          $input: FixFailedPaymentInput!
+          $input: CommerceFixFailedPaymentInput!
         ) {
-          ecommerceFixFailedPayment(input: $input) {
+          commerceFixFailedPayment(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   state
                   creditCard {
-                    id
+                    internalID
                     name
                     street1
                     street2
                     city
                     state
                     country
-                    postal_code
+                    postal_code: postalCode
                   }
-                  ... on OfferOrder {
+                  ... on CommerceOfferOrder {
                     awaitingResponseFrom
                   }
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderRequiresAction {
+                actionData {
+                  clientSecret
+                }
+              }
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -244,7 +295,7 @@ export class NewPaymentRoute extends Component<
   artistId() {
     return get(
       this.props.order,
-      o => o.lineItems.edges[0].node.artwork.artists[0].id
+      o => o.lineItems.edges[0].node.artwork.artists[0].slug
     )
   }
 
@@ -258,7 +309,7 @@ export class NewPaymentRoute extends Component<
 }
 
 export const NewPaymentFragmentContainer = createFragmentContainer(
-  injectCommitMutation(trackPageViewWrapper(injectDialog(NewPaymentRoute))),
+  injectCommitMutation(injectDialog(NewPaymentRoute)),
   {
     me: graphql`
       fragment NewPayment_me on Me {
@@ -266,26 +317,26 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
       }
     `,
     order: graphql`
-      fragment NewPayment_order on Order {
-        id
+      fragment NewPayment_order on CommerceOrder {
+        internalID
         mode
         stateExpiresAt
         lineItems {
           edges {
             node {
               artwork {
-                id
+                slug
                 artists {
-                  id
+                  slug
                 }
               }
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
-            id
+            internalID
             note
           }
         }
@@ -296,3 +347,6 @@ export const NewPaymentFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default NewPaymentFragmentContainer

@@ -1,6 +1,9 @@
 import { Spinner, SpinnerProps } from "@artsy/palette"
 import React from "react"
-import { ReadyState, RelayContainer } from "react-relay"
+import {
+  Container as RelayContainer,
+  QueryRendererReadyState,
+} from "react-relay"
 import styled from "styled-components"
 import createLogger from "Utils/logger"
 
@@ -16,14 +19,21 @@ const SpinnerContainer = styled.figure`
   flex-direction: column;
   justify-content: center;
   position: relative;
-
-  /*
-    Noticed some weird behavior in force due to figure margin being set to 0
-    in global css. Adding padding of 22 gets things back to visual default.
-  */
-  margin: unset;
-  padding: 22px;
 `
+
+const RouteSpinnerContainer = styled.figure`
+  width: 100%;
+  height: 100px;
+  position: relative;
+`
+
+export const RouteSpinner = () => {
+  return (
+    <RouteSpinnerContainer className={LoadingClassName}>
+      <Spinner />
+    </RouteSpinnerContainer>
+  )
+}
 
 export const LoadingClassName = "relay-loading"
 
@@ -53,14 +63,16 @@ const handleError = error => {
 }
 
 export type LoadProgressRenderer<P> = (
-  readyState: ReadyState<P>
+  readyState: QueryRendererReadyState<P>
 ) => React.ReactElement<RelayContainer<P>> | null
 
 export function renderWithLoadProgress<P>(
   Container: RelayContainer<P>,
   initialProps: object = {},
   wrapperProps: object = {},
-  spinnerProps: SpinnerProps = {}
+  spinnerProps: SpinnerProps = {
+    delay: 1000,
+  }
 ): LoadProgressRenderer<P> {
   // TODO: We need design for retrying or the approval to use the iOS design.
   // See also: https://artsyproduct.atlassian.net/browse/PLATFORM-1272
@@ -71,7 +83,7 @@ export function renderWithLoadProgress<P>(
       handleError(error)
       return null
     } else if (props) {
-      return <Container {...initialProps} {...props as any} />
+      return <Container {...initialProps} {...(props as any)} />
     } else {
       return (
         <SpinnerContainer className={LoadingClassName} {...wrapperProps}>

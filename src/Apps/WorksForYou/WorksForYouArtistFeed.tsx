@@ -7,14 +7,13 @@ import styled from "styled-components"
 import { get } from "Utils/get"
 
 import {
-  ConnectionData,
   createPaginationContainer,
   graphql,
   RelayPaginationProp,
 } from "react-relay"
 
 interface Props extends SystemContextProps {
-  relay?: RelayPaginationProp
+  relay: RelayPaginationProp
   viewer: WorksForYouArtistFeed_viewer
   artistID: string
   forSale?: boolean
@@ -57,8 +56,9 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
     const avatarImageUrl = get(artist, p => p.image.resized.url)
     const meta =
       (forSale
-        ? get(artist, p => p.counts.for_sale_artworks, "").toLocaleString()
-        : get(artist, p => p.counts.artworks, "").toLocaleString()) + " Works"
+        ? get(artist, p => p.counts.for_sale_artworks.toLocaleString(), "")
+        : get(artist, p => p.counts.artworks.toLocaleString(), "")) + " Works"
+    const worksForSaleHref = artist.href + "/works-for-sale"
 
     return (
       <>
@@ -66,7 +66,7 @@ export class WorksForYouArtistFeed extends React.Component<Props, State> {
           name={artist.name}
           meta={meta}
           imageUrl={avatarImageUrl}
-          href={artist.href}
+          href={worksForSaleHref}
         />
 
         <Spacer mb={3} />
@@ -108,14 +108,14 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
           href
           counts {
             artworks
-            for_sale_artworks
+            for_sale_artworks: forSaleArtworks
           }
           image {
             resized(height: 80, width: 80) {
               url
             }
           }
-          artworks_connection(
+          artworks_connection: artworksConnection(
             sort: PUBLISHED_AT_DESC
             first: $count
             after: $cursor
@@ -128,7 +128,7 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
             ...ArtworkGrid_artworks
             edges {
               node {
-                __id
+                id
               }
             }
           }
@@ -139,7 +139,7 @@ export const WorksForYouArtistFeedPaginationContainer = createPaginationContaine
   {
     direction: "forward",
     getConnectionFromProps(props) {
-      return props.viewer.artist.artworks_connection as ConnectionData
+      return props.viewer.artist.artworks_connection
     },
     getFragmentVariables(prevVars, totalCount) {
       return {

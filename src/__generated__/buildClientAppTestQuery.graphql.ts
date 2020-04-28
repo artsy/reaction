@@ -3,9 +3,9 @@
 import { ConcreteRequest } from "relay-runtime";
 export type buildClientAppTestQueryVariables = {};
 export type buildClientAppTestQueryResponse = {
-    readonly me: ({
-        readonly __id: string;
-    }) | null;
+    readonly me: {
+        readonly id: string;
+    } | null;
 };
 export type buildClientAppTestQuery = {
     readonly response: buildClientAppTestQueryResponse;
@@ -17,7 +17,7 @@ export type buildClientAppTestQuery = {
 /*
 query buildClientAppTestQuery {
   me {
-    __id
+    id
   }
 }
 */
@@ -36,7 +36,7 @@ var v0 = [
       {
         "kind": "ScalarField",
         "alias": null,
-        "name": "__id",
+        "name": "id",
         "args": null,
         "storageKey": null
       }
@@ -45,26 +45,28 @@ var v0 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "buildClientAppTestQuery",
-  "id": null,
-  "text": "query buildClientAppTestQuery {\n  me {\n    __id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "buildClientAppTestQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": (v0/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "buildClientAppTestQuery",
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": (v0/*: any*/)
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "buildClientAppTestQuery",
+    "id": null,
+    "text": "query buildClientAppTestQuery {\n  me {\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = 'b3f25ce581d3ea277681773834936ee9';
+(node as any).hash = 'ca5ac123598ee572b83f461b5863ce9d';
 export default node;

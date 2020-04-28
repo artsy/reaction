@@ -23,10 +23,9 @@ import {
   CommitMutation,
   injectCommitMutation,
 } from "Apps/Order/Utils/commitMutation"
-import { trackPageViewWrapper } from "Apps/Order/Utils/trackPageViewWrapper"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { CountdownTimer } from "Components/v2/CountdownTimer"
+import { CountdownTimer } from "Components/CountdownTimer"
 import { Router } from "found"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
@@ -73,7 +72,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   @track<RespondProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.FocusedOnOfferInput,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -82,7 +81,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   @track<RespondProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferTooLow,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -97,7 +96,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   }
 
   @track<RespondProps>(props => ({
-    order_id: props.order.id,
+    order_id: props.order.internalID,
     action_type: Schema.ActionType.ViewedOfferHigherThanListPrice,
     flow: Schema.Flow.MakeOffer,
   }))
@@ -120,12 +119,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     } = this.state
 
     if (responseOption === "ACCEPT") {
-      this.props.router.push(`/orders/${this.props.order.id}/review/accept`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/review/accept`
+      )
       return
     }
 
     if (responseOption === "DECLINE") {
-      this.props.router.push(`/orders/${this.props.order.id}/review/decline`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/review/decline`
+      )
       return
     }
 
@@ -154,22 +157,23 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
     }
 
     try {
-      const orderOrError = (await this.createCounterOffer({
-        input: {
-          offerId: this.props.order.lastOffer.id,
-          offerPrice: {
-            amount: this.state.offerValue,
-            currencyCode: "USD",
+      const orderOrError = (
+        await this.createCounterOffer({
+          input: {
+            offerId: this.props.order.lastOffer.internalID,
+            amountCents: this.state.offerValue * 100,
+            note: this.state.offerNoteValue && this.state.offerNoteValue.value,
           },
-          note: this.state.offerNoteValue && this.state.offerNoteValue.value,
-        },
-      })).ecommerceBuyerCounterOffer.orderOrError
+        })
+      ).commerceBuyerCounterOffer.orderOrError
 
       if (orderOrError.error) {
         throw orderOrError.error
       }
 
-      this.props.router.push(`/orders/${this.props.order.id}/review/counter`)
+      this.props.router.push(
+        `/orders/${this.props.order.internalID}/review/counter`
+      )
     } catch (error) {
       logger.error(error)
       this.props.dialog.showErrorDialog()
@@ -179,16 +183,19 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   createCounterOffer(variables: RespondCounterOfferMutation["variables"]) {
     return this.props.commitMutation<RespondCounterOfferMutation>({
       variables,
+      // TODO: Inputs to the mutation might have changed case of the keys!
       mutation: graphql`
-        mutation RespondCounterOfferMutation($input: buyerCounterOfferInput!) {
-          ecommerceBuyerCounterOffer(input: $input) {
+        mutation RespondCounterOfferMutation(
+          $input: CommerceBuyerCounterOfferInput!
+        ) {
+          commerceBuyerCounterOffer(input: $input) {
             orderOrError {
-              ... on OrderWithMutationSuccess {
+              ... on CommerceOrderWithMutationSuccess {
                 order {
                   ...Respond_order
                 }
               }
-              ... on OrderWithMutationFailure {
+              ... on CommerceOrderWithMutationFailure {
                 error {
                   type
                   code
@@ -205,7 +212,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
   render() {
     const { order, isCommittingMutation } = this.props
 
-    const artworkId = order.lineItems.edges[0].node.artwork.id
+    const artworkId = order.lineItems.edges[0].node.artwork.slug
 
     return (
       <>
@@ -247,11 +254,16 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                   }
                   defaultValue={this.state.responseOption}
                 >
-                  <BorderedRadio value="ACCEPT" label="Accept seller's offer" />
+                  <BorderedRadio
+                    value="ACCEPT"
+                    label="Accept seller's offer"
+                    data-test="AcceptOffer"
+                  />
                   <BorderedRadio
                     value="COUNTER"
                     position="relative"
                     label="Send counteroffer"
+                    data-test="SendCounteroffer"
                   >
                     <Collapse open={this.state.responseOption === "COUNTER"}>
                       <Spacer mb={2} />
@@ -283,6 +295,7 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
                     value="DECLINE"
                     position="relative"
                     label="Decline seller's offer"
+                    data-test="DeclineOffer"
                   >
                     <Flex position="relative">
                       <Collapse open={this.state.responseOption === "DECLINE"}>
@@ -339,13 +352,14 @@ export class RespondRoute extends Component<RespondProps, RespondState> {
 }
 
 export const RespondFragmentContainer = createFragmentContainer(
-  injectCommitMutation(injectDialog(trackPageViewWrapper(RespondRoute))),
+  injectCommitMutation(injectDialog(RespondRoute)),
   {
     order: graphql`
-      fragment Respond_order on Order {
-        id
+      fragment Respond_order on CommerceOrder {
+        internalID
         mode
         state
+        currencyCode
         itemsTotal(precision: 2)
         itemsTotalCents
         totalListPrice(precision: 2)
@@ -355,15 +369,15 @@ export const RespondFragmentContainer = createFragmentContainer(
           edges {
             node {
               artwork {
-                id
+                slug
               }
             }
           }
         }
-        ... on OfferOrder {
+        ... on CommerceOfferOrder {
           lastOffer {
             createdAt
-            id
+            internalID
             note
           }
           myLastOffer {
@@ -379,3 +393,6 @@ export const RespondFragmentContainer = createFragmentContainer(
     `,
   }
 )
+
+// For bundle splitting in router
+export default RespondFragmentContainer

@@ -1,3 +1,4 @@
+import { SearchBarTestQueryRawResponse } from "__generated__/SearchBarTestQuery.graphql"
 import Input from "Components/Input"
 import {
   getSearchTerm,
@@ -13,24 +14,20 @@ import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
 jest.unmock("react-relay")
 
-const searchResults = {
-  search: {
+const searchResults: SearchBarTestQueryRawResponse["viewer"] = {
+  searchConnection: {
     edges: [
       {
         node: {
+          __typename: "SearchableItem",
           displayLabel: "Percy Z",
           href: "/cat/percy-z",
           displayType: "Cat",
-          id: "percy-z",
+          slug: "percy-z",
+          id: "opaque-searchable-item-id",
         },
       },
     ],
-  },
-
-  filter_artworks: {
-    artworks_connection: {
-      edges: [],
-    },
   },
 }
 
@@ -42,11 +39,15 @@ const simulateTyping = (wrapper: ReactWrapper, text: string) => {
   textArea.simulate("change")
 }
 
-const getWrapper = (viewer, breakpoint = "xl") => {
+const getWrapper = (
+  viewer: SearchBarTestQueryRawResponse["viewer"],
+  breakpoint = "xl"
+) => {
   return renderRelayTree({
     Component: SearchBar,
     query: graphql`
-      query SearchBarTestQuery($term: String!, $hasTerm: Boolean!) {
+      query SearchBarTestQuery($term: String!, $hasTerm: Boolean!)
+        @raw_response_type {
         viewer {
           ...SearchBar_viewer @arguments(term: $term, hasTerm: $hasTerm)
         }
@@ -54,7 +55,7 @@ const getWrapper = (viewer, breakpoint = "xl") => {
     `,
     mockData: {
       viewer,
-    },
+    } as SearchBarTestQueryRawResponse,
     variables: {
       term: "perc",
       hasTerm: true,
@@ -97,7 +98,10 @@ describe("SearchBar", () => {
     simulateTyping(component, "blah") // Any text of non-zero length.
     await flushPromiseQueue()
 
-    window.location.assign = jest.fn()
+    Object.defineProperty(window, "location", {
+      writable: true,
+      value: { assign: jest.fn() },
+    })
     component
       .find(SuggestionItem)
       .at(0)

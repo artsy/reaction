@@ -1,16 +1,17 @@
 import { SystemContextProvider } from "Artsy"
 import { SystemContextConsumer } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import { IMocks } from "graphql-tools/dist/Interfaces"
 import React from "react"
-import { QueryRenderer, RelayContainer } from "react-relay"
+/* tslint:disable-next-line:no-query-renderer-import */
+import { QueryRenderer } from "react-relay"
 import {
   Environment,
   GraphQLTaggedNode,
-  OperationBase,
-  OperationDefaults,
+  INetwork,
+  OperationType,
   RecordSource,
-  RelayNetwork,
   Store,
 } from "relay-runtime"
 import {
@@ -18,10 +19,8 @@ import {
   createMockNetworkLayer2,
 } from "./createMockNetworkLayer"
 
-export interface MockRelayRendererProps<
-  T extends OperationBase = OperationDefaults
-> {
-  Component: RelayContainer<T["response"]>
+export interface MockRelayRendererProps<T extends OperationType> {
+  Component: React.ComponentType<any>
   componentProps?: object
   variables?: T["variables"]
   query: GraphQLTaggedNode
@@ -37,7 +36,7 @@ export interface MockRelayRendererProps<
   /**
    * @example
    * mockMutationResults={{
-   *   ecommerceCreateOrderWithArtworkId: {
+   *   commerceCreateOrderWithArtworkId: {
    *     orderOrError: {
    *       order: {id: "my-order-id"}
    *     }
@@ -45,7 +44,7 @@ export interface MockRelayRendererProps<
    * }}
    */
   mockMutationResults?: object
-  mockNetwork?: RelayNetwork
+  mockNetwork?: INetwork
 }
 
 export interface MockRelayRendererState {
@@ -106,7 +105,7 @@ export interface MockRelayRendererState {
        <MockRelayRenderer
          Component={Artwork}
          query={graphql`
-           query MockRelayRendererQuery {
+           query AnotherMockRelayRendererQuery {
              artwork(id: "mona-lisa") {
                ...MockRelayRenderer_artwork
              }
@@ -133,9 +132,10 @@ export interface MockRelayRendererState {
   * @param params.mockData
   *
   */
-export class MockRelayRenderer<
-  T extends OperationBase = OperationDefaults
-> extends React.Component<MockRelayRendererProps<T>, MockRelayRendererState> {
+export class MockRelayRenderer<T extends OperationType> extends React.Component<
+  MockRelayRendererProps<T>,
+  MockRelayRendererState
+> {
   state = {
     caughtError: undefined,
   }
@@ -219,7 +219,7 @@ export class MockRelayRenderer<
             {...contextProps}
             relayEnvironment={environment}
           >
-            <QueryRenderer
+            <SystemQueryRenderer
               // tslint:disable-next-line relay-operation-generics
               query={query}
               environment={environment}

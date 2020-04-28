@@ -1,8 +1,18 @@
-import { breakpoints } from "@artsy/palette"
-import styled from "styled-components"
+import { Box, breakpoints } from "@artsy/palette"
+import React from "react"
 
-export const AppContainer = styled.div`
-  width: 100%;
-  max-width: ${breakpoints.xl}px;
-  margin: auto;
-`
+interface AppContainerProps {
+  children: React.ReactNode
+  maxWidth?: number | string
+}
+
+export const AppContainer: React.FC<AppContainerProps> = ({
+  children,
+  maxWidth = breakpoints.xl,
+}) => {
+  return (
+    <Box width="100%" maxWidth={maxWidth} m="auto">
+      {children}
+    </Box>
+  )
+}

@@ -10,9 +10,7 @@ export interface ArtworkDetailsArticlesProps {
   artwork: ArtworkDetailsArticles_artwork
 }
 
-export const ArtworkDetailsArticles: React.SFC<
-  ArtworkDetailsArticlesProps
-> = props => {
+export const ArtworkDetailsArticles: React.SFC<ArtworkDetailsArticlesProps> = props => {
   const { articles } = props.artwork
   if (!articles || articles.length < 1) {
     return null
@@ -51,13 +49,13 @@ export const ArtworkDetailsArticlesFragmentContainer = createFragmentContainer(
             name
           }
           href
-          published_at(format: "MMM Do, YYYY")
-          thumbnail_image {
+          published_at: publishedAt(format: "MMM Do, YYYY")
+          thumbnail_image: thumbnailImage {
             resized(width: 300) {
               url
             }
           }
-          thumbnail_title
+          thumbnail_title: thumbnailTitle
         }
       }
     `,

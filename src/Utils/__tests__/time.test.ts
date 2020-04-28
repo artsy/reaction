@@ -1,8 +1,8 @@
 import { getOffsetBetweenGravityClock } from "../time"
 
-jest.mock("../metaphysics", () => ({ metaphysics: jest.fn() }))
-import { metaphysics } from "../metaphysics"
-const mockphysics = metaphysics as jest.Mock<any>
+jest.mock("relay-runtime", () => ({ fetchQuery: jest.fn() }))
+import { fetchQuery } from "relay-runtime"
+const mockFetchQuery = fetchQuery as jest.Mock<any>
 
 const SECONDS = 1000
 const MINUTES = 60 * SECONDS
@@ -14,13 +14,11 @@ it("returns an offset between current time and system time", async () => {
   Date.now = () => dateNow
 
   // Set up a situation where the client's clock is ahead of Gravity's clock by 10 minutes.
-  mockphysics.mockReturnValueOnce(
+  mockFetchQuery.mockReturnValueOnce(
     Promise.resolve({
-      data: {
-        system: {
-          time: {
-            unix: (dateNow - 10 * MINUTES) * 1e-3,
-          },
+      system: {
+        time: {
+          unix: (dateNow - 10 * MINUTES) * 1e-3,
         },
       },
     })
@@ -28,5 +26,5 @@ it("returns an offset between current time and system time", async () => {
 
   jest.runAllTicks()
 
-  expect(await getOffsetBetweenGravityClock()).toEqual(10 * MINUTES)
+  expect(await getOffsetBetweenGravityClock(null)).toEqual(10 * MINUTES)
 })

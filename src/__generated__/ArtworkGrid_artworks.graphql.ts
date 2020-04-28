@@ -1,30 +1,33 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { GridItem_artwork$ref } from "./GridItem_artwork.graphql";
-declare const _ArtworkGrid_artworks$ref: unique symbol;
-export type ArtworkGrid_artworks$ref = typeof _ArtworkGrid_artworks$ref;
+import { ReaderFragment } from "relay-runtime";
+import { FragmentRefs } from "relay-runtime";
 export type ArtworkGrid_artworks = {
-    readonly edges: ReadonlyArray<({
-        readonly node: ({
-            readonly __id: string;
+    readonly edges: ReadonlyArray<{
+        readonly node: {
             readonly id: string;
+            readonly slug: string;
             readonly href: string | null;
-            readonly image: ({
+            readonly image: {
                 readonly aspect_ratio: number;
-            }) | null;
-            readonly " $fragmentRefs": GridItem_artwork$ref;
-        }) | null;
-    }) | null> | null;
-    readonly " $refType": ArtworkGrid_artworks$ref;
+            } | null;
+            readonly " $fragmentRefs": FragmentRefs<"GridItem_artwork">;
+        } | null;
+    } | null> | null;
+    readonly " $refType": "ArtworkGrid_artworks";
+};
+export type ArtworkGrid_artworks$data = ArtworkGrid_artworks;
+export type ArtworkGrid_artworks$key = {
+    readonly " $data"?: ArtworkGrid_artworks$data;
+    readonly " $fragmentRefs": FragmentRefs<"ArtworkGrid_artworks">;
 };
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "ArtworkGrid_artworks",
-  "type": "ArtworkConnection",
+  "type": "ArtworkConnectionInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -34,7 +37,7 @@ const node: ConcreteFragment = {
       "name": "edges",
       "storageKey": null,
       "args": null,
-      "concreteType": "ArtworkEdge",
+      "concreteType": null,
       "plural": true,
       "selections": [
         {
@@ -49,14 +52,14 @@ const node: ConcreteFragment = {
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "__id",
+              "name": "id",
               "args": null,
               "storageKey": null
             },
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "id",
+              "name": "slug",
               "args": null,
               "storageKey": null
             },
@@ -78,15 +81,8 @@ const node: ConcreteFragment = {
               "selections": [
                 {
                   "kind": "ScalarField",
-                  "alias": null,
-                  "name": "aspect_ratio",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": "__id",
-                  "name": "id",
+                  "alias": "aspect_ratio",
+                  "name": "aspectRatio",
                   "args": null,
                   "storageKey": null
                 }
@@ -103,5 +99,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'b14f0927b10e6b5c53d7bd2ca546a2cf';
+(node as any).hash = 'c827490f6a3cea394d73810bccad5dbd';
 export default node;

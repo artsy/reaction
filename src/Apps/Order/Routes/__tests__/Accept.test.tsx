@@ -1,10 +1,10 @@
+import { AcceptTestQueryRawResponse } from "__generated__/AcceptTestQuery.graphql"
 import {
   Buyer,
   OfferOrderWithShippingDetails,
   Offers,
   OfferWithTotals,
 } from "Apps/__tests__/Fixtures/Order"
-import { trackPageView } from "Apps/Order/Utils/trackPageView"
 import { createTestEnv } from "DevTools/createTestEnv"
 import { DateTime } from "luxon"
 import { graphql } from "react-relay"
@@ -18,14 +18,18 @@ import {
 import { AcceptFragmentContainer } from "../Accept"
 import { OrderAppTestPage } from "./Utils/OrderAppTestPage"
 
-jest.mock("Apps/Order/Utils/trackPageView")
 jest.unmock("react-relay")
 
 jest.mock("Utils/getCurrentTimeAsIsoString")
 const NOW = "2018-12-05T13:47:16.446Z"
 require("Utils/getCurrentTimeAsIsoString").__setCurrentTime(NOW)
 
-window.location.assign = jest.fn()
+const realSetInterval = global.setInterval
+
+Object.defineProperty(window, "location", {
+  writable: true,
+  value: { assign: jest.fn() },
+})
 
 const testOrder = {
   ...OfferOrderWithShippingDetails,
@@ -48,15 +52,20 @@ describe("Accept seller offer", () => {
   const { mutations, buildPage, routes } = createTestEnv({
     Component: AcceptFragmentContainer,
     query: graphql`
-      query AcceptTestQuery {
-        order(id: "") {
+      query AcceptTestQuery @raw_response_type {
+        order: commerceOrder(id: "") {
           ...Accept_order
         }
       }
     `,
     defaultData: {
       order: testOrder,
-    },
+      system: {
+        time: {
+          unix: 222,
+        },
+      },
+    } as AcceptTestQueryRawResponse,
     defaultMutationResults: {
       ...acceptOfferSuccess,
     },
@@ -70,6 +79,7 @@ describe("Accept seller offer", () => {
   describe("with default data", () => {
     let page: OrderAppTestPage
     beforeAll(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage({
         mockData: {
           order: {
@@ -82,13 +92,17 @@ describe("Accept seller offer", () => {
       })
     })
 
+    afterAll(() => {
+      global.setInterval = realSetInterval
+    })
+
     it("shows the countdown timer", async () => {
       expect(page.countdownTimer.text()).toContain("01d 04h 22m 59s left")
     })
 
     it("Shows the stepper", async () => {
       expect(page.orderStepper.text()).toMatchInlineSnapshot(
-        `"checkRespond navigate rightReview"`
+        `"CheckRespond Navigate rightReview"`
       )
       expect(page.orderStepperCurrentStep).toBe(`Review`)
     })
@@ -134,13 +148,18 @@ describe("Accept seller offer", () => {
   describe("mutation", () => {
     let page: OrderAppTestPage
     beforeEach(async () => {
+      global.setInterval = jest.fn()
       page = await buildPage()
+    })
+
+    afterEach(() => {
+      global.setInterval = realSetInterval
     })
 
     it("routes to status page after mutation completes", async () => {
       await page.clickSubmit()
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/status`
+        `/orders/${testOrder.internalID}/status`
       )
     })
 
@@ -162,7 +181,7 @@ describe("Accept seller offer", () => {
         "Payment authorization has been declined. Please contact your card provider, then press “Submit” again. Alternatively, use a new card."
       )
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/payment/new`
+        `/orders/${testOrder.internalID}/payment/new`
       )
     })
 
@@ -174,25 +193,19 @@ describe("Accept seller offer", () => {
         "There aren’t enough funds available on the card you provided. Please use a new card. Alternatively, contact your card provider, then press “Submit” again."
       )
       expect(routes.mockPushRoute).toHaveBeenCalledWith(
-        `/orders/${testOrder.id}/payment/new`
+        `/orders/${testOrder.internalID}/payment/new`
       )
     })
 
     it("shows an error modal and routes the user to the artist page if there is insufficient inventory", async () => {
       mutations.useResultsOnce(acceptOfferInsufficientInventoryFailure)
-
       await page.clickSubmit()
       await page.expectAndDismissErrorDialogMatching(
         "Not available",
         "Sorry, the work is no longer available."
       )
-      const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].id
+      const artistId = testOrder.lineItems.edges[0].node.artwork.artists[0].slug
       expect(window.location.assign).toHaveBeenCalledWith(`/artist/${artistId}`)
     })
-  })
-
-  it("tracks a pageview", async () => {
-    await buildPage()
-    expect(trackPageView).toHaveBeenCalledTimes(1)
   })
 })

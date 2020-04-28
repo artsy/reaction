@@ -12,12 +12,39 @@ const resizeHeight = (img, dir) => {
   img.height += dir
 }
 
+type Item =
+  | {
+      node: {
+        id: string
+        image: {
+          aspect_ratio: number
+        }
+      }
+      url?: undefined
+      image?: undefined
+      width?: undefined
+      height?: undefined
+    }
+  | {
+      node?: undefined
+      url?: string
+      image?: string
+      width: number
+      height: number
+    }
+
+export interface FillWidthItemDimensions {
+  id: string
+  width: number
+  height: number
+}
+
 const fillwidthDimensions = (
-  items,
-  containerWidth,
-  gutter = 10,
-  targetHeight
-) => {
+  items: ReadonlyArray<Item>,
+  containerWidth: number,
+  gutter: number = 10,
+  targetHeight: number
+): FillWidthItemDimensions[] => {
   const totalWhitespace = () => {
     return (items.length - 1) * gutter
   }
@@ -40,15 +67,15 @@ const fillwidthDimensions = (
 
     // Set id and aspectRatio for Relay or publishing
     if (item.node) {
-      id = item.node.__id
-      aspectRatio = item.node.image.aspect_ratio
+      id = item.node.id
+      aspectRatio = item.node.image && item.node.image.aspect_ratio
     } else {
       id = item.url ? item.url : item.image
       aspectRatio = item.width / item.height
     }
 
     return {
-      __id: id,
+      id,
       width: targetHeight * aspectRatio,
       height: targetHeight,
     }

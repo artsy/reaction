@@ -1,12 +1,13 @@
 import { OtherWorksQuery } from "__generated__/OtherWorksQuery.graphql"
 import { SystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
+import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React, { useContext } from "react"
-import { graphql, QueryRenderer } from "react-relay"
+import { graphql } from "react-relay"
 import { storiesOf } from "storybook/storiesOf"
 import { Section } from "Utils/Section"
 import { OtherWorksFragmentContainer } from "../OtherWorks"
-import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/ArtworkContexts/ArtworkGrids/RelatedWorksArtworkGrid"
+import { RelatedWorksArtworkGridQueryRenderer as RelatedWorksArtworkGrid } from "../OtherWorks/RelatedWorksArtworkGrid"
 
 export const OtherWorks = ({ artworkSlug }: { artworkSlug: string }) => {
   const { relayEnvironment } = useContext(SystemContext)
@@ -50,7 +51,7 @@ storiesOf("Apps/Artwork/Components/OtherWorks", module)
   .add("Fair", () => {
     return (
       <Section title="Fair">
-        <OtherWorks artworkSlug="lucio-fontana-concetto-spaziale-attese-139" />
+        <OtherWorks artworkSlug="lucio-fontana-concetto-spaziale-attese-160" />
       </Section>
     )
   })

@@ -1,10 +1,11 @@
 import { Box } from "@artsy/palette"
 import { targetingData } from "Components/Publishing/Display/DisplayTargeting"
+import { getSlideshowImagesFromArticle } from "Components/Publishing/Layouts/ArticleWithFullScreen"
 import { AdDimension, AdUnit } from "Components/Publishing/Typings"
 import { clone, compact, findLastIndex, get, once } from "lodash"
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { pMedia } from "../../Helpers"
 import { DisplayAd } from "../Display/DisplayAd"
 import { ArticleData } from "../Typings"
@@ -25,6 +26,9 @@ interface Props {
   showTooltips?: boolean
   isSponsored?: boolean
   isSuper?: boolean
+  customWidth?: number
+  isTruncatedAt?: number
+  hideAds?: boolean
 }
 
 interface State {
@@ -49,7 +53,7 @@ export class Sections extends Component<Props, State> {
     shouldInjectMobileDisplay: false,
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {
       article: { layout },
       isMobile,
@@ -149,7 +153,11 @@ export class Sections extends Component<Props, State> {
   }
 
   getSection(section, index) {
-    const { article, color, showTooltips } = this.props
+    const { article, color, customWidth, isMobile, showTooltips } = this.props
+    const targetHeight =
+      customWidth && customWidth > 750 && !isMobile ? 750 : 500
+    const size = customWidth && { width: customWidth }
+    const fullscreenImages = getSlideshowImagesFromArticle(article)
 
     const sections = {
       image_collection: (
@@ -158,11 +166,19 @@ export class Sections extends Component<Props, State> {
           sectionLayout={section.layout}
           articleLayout={article.layout}
           images={section.images}
-          targetHeight={500}
+          targetHeight={targetHeight}
           gutter={10}
+          size={size}
+          fullscreenImages={fullscreenImages}
         />
       ),
-      image_set: <ImageSetPreview section={section} color={color} />,
+      image_set: (
+        <ImageSetPreview
+          section={section}
+          color={color}
+          fullscreenImages={fullscreenImages}
+        />
+      ),
       video: <Video section={section} color={color} />,
       embed: <Embed section={section} />,
       social_embed: <SocialEmbed section={section} />,
@@ -183,8 +199,16 @@ export class Sections extends Component<Props, State> {
     return sectionComponent
   }
 
-  getAdUnit(index: number, indexAtFirstAd: number) {
+  getAdUnit(
+    index: number,
+    indexAtFirstAd: number,
+    isStandard: boolean
+  ): AdUnit {
     const { isMobile } = this.props
+
+    if (isStandard) {
+      return AdUnit.Desktop_RightRail1
+    }
 
     if (index === indexAtFirstAd) {
       return isMobile
@@ -228,67 +252,127 @@ export class Sections extends Component<Props, State> {
     return shouldAddTopMargin() ? "calc(100% - 96%)" : null
   }
 
+  getAdDimension(isStandard: boolean): AdDimension {
+    const { isMobile, isSponsored } = this.props
+
+    if (isStandard) {
+      return AdDimension.Desktop_RightRail1
+    }
+
+    if (isMobile) {
+      if (isSponsored) {
+        return AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
+      }
+      return AdDimension.Mobile_Feature_InContentLeaderboard1
+    }
+
+    return AdDimension.Desktop_NewsLanding_Leaderboard1
+  }
+
   renderSections() {
-    const { article, isMobile, isSponsored, isSuper } = this.props
+    const {
+      article,
+      customWidth,
+      isSponsored,
+      isSuper,
+      isTruncatedAt,
+      hideAds,
+    } = this.props
+
+    const { layout: articleType } = article
     const { shouldInjectMobileDisplay } = this.state
     let quantityOfAdsRendered = 0
     let firstAdInjected = false
     let placementCount = 1
     let displayMarkerInjected = false
     let indexAtFirstAd = null
+    let textAndImageSection = 0
+    const isStandardArticle = articleType === "standard"
 
-    const renderedSections = article.sections.map((sectionItem, index) => {
+    const articleSections = isTruncatedAt
+      ? clone(article.sections).slice(0, isTruncatedAt)
+      : article.sections
+
+    const renderedSections = articleSections.map((sectionItem, index) => {
       let section = sectionItem
       let ad = null
+      const prevSection = articleSections[index - 1]
       const shouldInject =
         shouldInjectMobileDisplay &&
         sectionItem.type === "text" &&
         !displayMarkerInjected
 
       /**
-       *  Possible data types for sectionItem.type are
-       *  callout, embed, social_embed, text, slideshow, image_set, and image_collection.
-       *  Here we want to inject the first ad after the first image_collection OR image_set data type.
+       *  Possible data types for "sectionItem.type" are : callout, embed, social_embed,
+       *  text, slideshow, image_set, and image_collection.
+       *  Depending on the article type we inject an ad after the first text + image_collection OR image_set
+       *  section (on Features) and after the 2nd text + image_collection OR image_set on Standard Articles.
        * */
+
+      // calculate if a section is a text + image set/collection/social_embed
+      if (
+        prevSection?.type === "text" &&
+        (sectionItem.type === "image_collection" ||
+          sectionItem.type === "image_set" ||
+          sectionItem.type === "social_embed")
+      ) {
+        textAndImageSection++
+      }
+
       let shouldInjectNewAds =
-        article.layout === "feature" &&
+        articleType === "feature" &&
         (sectionItem.type === "image_collection" ||
           sectionItem.type === "image_set") &&
         !firstAdInjected &&
-        !isSuper
+        !isSuper &&
+        !hideAds
 
       if (firstAdInjected) {
         placementCount++
       }
 
-      if (placementCount % 6 === 0 && quantityOfAdsRendered < 2) {
-        // only render 2 ads on Features
+      // only render 2 ads on Features
+      if (
+        placementCount % 6 === 0 &&
+        quantityOfAdsRendered < 2 &&
+        articleType !== "standard"
+      ) {
+        shouldInjectNewAds = true
+      }
+
+      // render one ad on Standard articles after the 2nd image + text section
+      if (
+        textAndImageSection === 2 &&
+        quantityOfAdsRendered < 1 &&
+        !isSuper &&
+        isStandardArticle
+      ) {
         shouldInjectNewAds = true
       }
 
       if (shouldInjectNewAds) {
         quantityOfAdsRendered++
 
-        const adDimension = isMobile
-          ? isSponsored
-            ? AdDimension.Mobile_Sponsored_Feature_InContentLeaderboard1
-            : AdDimension.Mobile_Feature_InContentLeaderboard1
-          : AdDimension.Desktop_NewsLanding_Leaderboard1
-
+        const adDimension = this.getAdDimension(isStandardArticle)
         const marginTop = this.getAdMarginTop(section)
 
         firstAdInjected = true
         indexAtFirstAd = indexAtFirstAd === null ? index : indexAtFirstAd // only set this value once; after the index where 1st ad injection is found
 
         ad = (
-          <AdWrapper mt={marginTop}>
+          <AdWrapper mt={marginTop} layout={articleType}>
             <DisplayAd
-              adUnit={this.getAdUnit(placementCount, indexAtFirstAd)}
+              adUnit={this.getAdUnit(
+                placementCount,
+                indexAtFirstAd,
+                isStandardArticle
+              )}
               adDimension={adDimension}
               targetingData={targetingData(
-                article.id,
+                article,
                 isSponsored ? "sponsorfeature" : "feature"
               )}
+              articleSlug={article.slug}
             />
           </AdWrapper>
         )
@@ -313,8 +397,9 @@ export class Sections extends Component<Props, State> {
         return (
           <SectionContainer
             key={index}
-            articleLayout={article.layout}
+            articleLayout={articleType}
             section={section}
+            customWidth={customWidth}
           >
             {child}
             {ad}
@@ -380,29 +465,29 @@ const chooseMargin = layout => {
   }
 }
 
-const div: StyledFunction<{ layout: string }> = styled.div
-const StyledSections = div`
+export const StyledSections = styled.div<{ layout: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: ${props => chooseMargin(props.layout)}
-  max-width: ${props => (props.layout === "standard" ? "780px" : "auto")};
+  margin: ${({ layout }) => chooseMargin(layout)};
+  max-width: ${({ layout }) => (layout === "standard" ? "780px" : "auto")};
 
-  ${props => pMedia.xl`
-    max-width: ${props.layout === "standard" ? "680px" : "auto"};
-    ${props.layout === "feature" ? "margin: 80px auto 0 auto" : ""}
+  ${({ layout }) => pMedia.xl`
+    max-width: ${layout === "standard" ? "680px" : "auto"};
+    ${layout === "feature" ? "margin: 80px auto 0 auto" : ""}
   `}
 
-  ${props => pMedia.md`
-    max-width: ${props.layout === "standard" ? "780px" : "auto"};
+  ${({ layout }) => pMedia.md`
+    max-width: ${layout === "standard" ? "780px" : "auto"};
   `}
-  ${props => pMedia.xs`
-    max-width: ${props.layout === "standard" ? "780px" : "auto"};
-    ${props.layout === "feature" ? "margin: 30px auto 0 auto" : ""}
+
+  ${({ layout }) => pMedia.xs`
+    max-width: ${layout === "standard" ? "780px" : "auto"};
+    ${layout === "feature" ? "margin: 30px auto 0 auto" : ""}
   `}
 `
-const AdWrapper = styled(Box)`
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+const AdWrapper = styled(Box)<{ layout: string }>`
+  width: ${p => (p.layout === "standard" ? "100%" : "100vw")};
+  margin-left: ${p => (p.layout === "standard" ? "0" : "calc(-50vw + 50%)")};
 `

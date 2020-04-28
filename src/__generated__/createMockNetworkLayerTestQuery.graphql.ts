@@ -3,10 +3,10 @@
 import { ConcreteRequest } from "relay-runtime";
 export type createMockNetworkLayerTestQueryVariables = {};
 export type createMockNetworkLayerTestQueryResponse = {
-    readonly artwork: ({
-        readonly __id: string;
+    readonly artwork: {
+        readonly id: string;
         readonly title: string | null;
-    }) | null;
+    } | null;
 };
 export type createMockNetworkLayerTestQuery = {
     readonly response: createMockNetworkLayerTestQueryResponse;
@@ -18,7 +18,7 @@ export type createMockNetworkLayerTestQuery = {
 /*
 query createMockNetworkLayerTestQuery {
   artwork(id: "untitled") {
-    __id
+    id
     title
   }
 }
@@ -35,8 +35,7 @@ var v0 = [
       {
         "kind": "Literal",
         "name": "id",
-        "value": "untitled",
-        "type": "String!"
+        "value": "untitled"
       }
     ],
     "concreteType": "Artwork",
@@ -45,7 +44,7 @@ var v0 = [
       {
         "kind": "ScalarField",
         "alias": null,
-        "name": "__id",
+        "name": "id",
         "args": null,
         "storageKey": null
       },
@@ -61,26 +60,28 @@ var v0 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "createMockNetworkLayerTestQuery",
-  "id": null,
-  "text": "query createMockNetworkLayerTestQuery {\n  artwork(id: \"untitled\") {\n    __id\n    title\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createMockNetworkLayerTestQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": (v0/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "createMockNetworkLayerTestQuery",
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": (v0/*: any*/)
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "createMockNetworkLayerTestQuery",
+    "id": null,
+    "text": "query createMockNetworkLayerTestQuery {\n  artwork(id: \"untitled\") {\n    id\n    title\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
-(node as any).hash = '7d5663d7e3fdb24e39214db3ed9ea1b7';
+(node as any).hash = 'e735fd4b2d3daed26a8c2e227bc1cc5f';
 export default node;

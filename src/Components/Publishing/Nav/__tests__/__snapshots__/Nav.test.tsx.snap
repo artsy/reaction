@@ -25,6 +25,7 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c1 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -127,7 +128,8 @@ exports[`Nav renders a Nav 1`] = `
       
     </div>
     <div
-      className="rrm-container rrm-greaterThan-xs"
+      className="fresnel-container fresnel-greaterThan-xs"
+      suppressHydrationWarning={false}
     >
       <div
         className="c4 c5"
@@ -141,7 +143,7 @@ exports[`Nav renders a Nav 1`] = `
         fontSize="22px"
       >
         <a
-          href="/magazine"
+          href="/articles"
         >
           Artsy Editorial
         </a>
@@ -188,6 +190,7 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c1 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -341,7 +344,8 @@ exports[`Nav renders a sponsored nav 1`] = `
       </a>
     </div>
     <div
-      className="rrm-container rrm-greaterThan-xs"
+      className="fresnel-container fresnel-greaterThan-xs"
+      suppressHydrationWarning={false}
     >
       <div
         className="c6 c7"
@@ -355,7 +359,7 @@ exports[`Nav renders a sponsored nav 1`] = `
         fontSize="22px"
       >
         <a
-          href="/magazine"
+          href="/articles"
         >
           Artsy Editorial
         </a>
@@ -397,6 +401,7 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c1 {
+  z-index: 1;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -501,7 +506,8 @@ exports[`Nav renders a transparent nav 1`] = `
       
     </div>
     <div
-      className="rrm-container rrm-greaterThan-xs"
+      className="fresnel-container fresnel-greaterThan-xs"
+      suppressHydrationWarning={false}
     >
       <div
         className="c4 c5"
@@ -515,7 +521,7 @@ exports[`Nav renders a transparent nav 1`] = `
         fontSize="22px"
       >
         <a
-          href="/magazine"
+          href="/articles"
         >
           Artsy Editorial
         </a>

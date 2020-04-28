@@ -1,15 +1,17 @@
-import { EntityHeader, Sans, Spacer } from "@artsy/palette"
+import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Box, EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
 import { SystemContext } from "Artsy"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import FillwidthItem from "Components/Artwork/FillwidthItem"
+import { ArrowButton, Carousel } from "Components/Carousel"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
-import { Carousel } from "Components/v2/Carousel"
 import React, { FC, useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
+import styled from "styled-components"
 import { get } from "Utils/get"
-import { AuthModalIntent, openAuthModal } from "Utils/openAuthModal"
+import { openAuthToFollowSave } from "Utils/openAuthModal"
 
 interface RecommendedArtistProps {
   artist: RecommendedArtist_artist
@@ -17,10 +19,10 @@ interface RecommendedArtistProps {
 const HEIGHT = 150
 
 const handleOpenAuth = (mediator, artist) => {
-  openAuthModal(mediator, {
+  openAuthToFollowSave(mediator, {
     entity: artist,
-    contextModule: Schema.ContextModule.RecommendedArtists,
-    intent: AuthModalIntent.FollowArtist,
+    contextModule: ContextModule.relatedArtistsRail,
+    intent: AuthIntent.followArtist,
   })
 }
 
@@ -48,18 +50,14 @@ class RecommendedArtistWithTracking extends React.Component<
   }
 }
 
-const RecommendedArtist: FC<
-  RecommendedArtistProps & { onArtworkClicked: () => void }
-> = ({ artist, onArtworkClicked }) => {
+const RecommendedArtist: FC<RecommendedArtistProps & {
+  onArtworkClicked: () => void
+}> = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
-  const artistData = get(
-    artist,
-    a => a.artworks_connection.edges,
-    []
-  ) as object[]
+  const artistData = get(artist, a => a.artworks_connection.edges, [])
 
   return (
-    <>
+    <Box data-test={ContextModule.relatedArtistsRail}>
       <EntityHeader
         mt={4}
         imageUrl={get(artist, a => a.image.cropped.url, "")}
@@ -73,8 +71,8 @@ const RecommendedArtist: FC<
             trackingData={{
               modelName: Schema.OwnerType.Artist,
               context_module: Schema.ContextModule.RecommendedArtists,
-              entity_id: artist._id,
-              entity_slug: artist.id,
+              entity_id: artist.internalID,
+              entity_slug: artist.slug,
             }}
             onOpenAuthModal={() => handleOpenAuth(mediator, artist)}
             render={({ is_followed }) => {
@@ -83,6 +81,7 @@ const RecommendedArtist: FC<
                   size="2"
                   weight="medium"
                   color="black"
+                  data-test="followButton"
                   style={{
                     cursor: "pointer",
                     textDecoration: "underline",
@@ -101,12 +100,13 @@ const RecommendedArtist: FC<
       <Carousel
         height="240px"
         data={artistData}
+        options={{ pageDots: false }}
         render={artwork => {
           const aspect_ratio = get(artwork, a => a.node.image.aspect_ratio, 1)
-
           return (
             <FillwidthItem
               artwork={artwork.node}
+              contextModule={ContextModule.relatedArtistsRail}
               targetHeight={HEIGHT}
               imageHeight={HEIGHT}
               width={HEIGHT * aspect_ratio}
@@ -118,36 +118,58 @@ const RecommendedArtist: FC<
             />
           )
         }}
+        renderLeftArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>
+              <Arrow />
+            </ArrowContainer>
+          )
+        }}
+        renderRightArrow={({ Arrow }) => {
+          return (
+            <ArrowContainer>
+              <Arrow />
+            </ArrowContainer>
+          )
+        }}
       />
-    </>
+    </Box>
   )
 }
+
+const ArrowContainer = styled(Box)`
+  align-self: flex-start;
+
+  ${ArrowButton} {
+    height: 60%;
+  }
+`
 
 export const RecommendedArtistFragmentContainer = createFragmentContainer(
   RecommendedArtistWithTracking,
   {
     artist: graphql`
       fragment RecommendedArtist_artist on Artist {
-        id
-        _id
+        slug
+        internalID
         name
-        formatted_nationality_and_birthday
+        formatted_nationality_and_birthday: formattedNationalityAndBirthday
         href
         image {
           cropped(width: 100, height: 100) {
             url
           }
         }
-        artworks_connection(
+        artworks_connection: artworksConnection(
           first: 20
           sort: PUBLISHED_AT_DESC
           filter: IS_FOR_SALE
         ) {
           edges {
             node {
-              __id
+              id
               image {
-                aspect_ratio
+                aspect_ratio: aspectRatio
               }
               ...FillwidthItem_artwork
             }

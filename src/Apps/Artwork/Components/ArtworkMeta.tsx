@@ -44,10 +44,7 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
     const { artwork } = this.props
     const imageURL = get(artwork, a => a.meta_image.resized.url)
 
-    if (
-      artwork.context &&
-      artwork.context.__typename === "ArtworkContextFair"
-    ) {
+    if (artwork.context && artwork.context.__typename === "Fair") {
       return (
         <>
           <Meta name="artwork_type" content="fair" />
@@ -58,7 +55,7 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
           {artwork.sale_message && (
             <Meta name="price" content={artwork.sale_message} />
           )}
-          <Meta name="sailthru_fair_slug" content={artwork.context.id} />
+          <Meta name="sailthru_fair_slug" content={artwork.context.slug} />
           <Meta name="sailthru_fair_name" content={artwork.context.name} />
           <Meta name="sailthru_fair_page" content="artwork" />
           {artwork.partner && (
@@ -76,7 +73,7 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
   renderGoogleAdSnippet() {
     const { artwork, googleAdId: fromPropsGoogleAdId } = this.props
     const { GOOGLE_ADWORDS_ID: fromSharifyGoogleAdId } = sd
-    const { is_in_auction, is_acquireable, _id } = artwork
+    const { is_in_auction, is_acquireable, internalID } = artwork
     if (!is_in_auction && !is_acquireable) return
 
     // TODO: Investigate always being able to select from sharify.
@@ -90,7 +87,7 @@ export class ArtworkMeta extends Component<ArtworkMetaProps> {
       gtag('config', "${googleAdId}");
       gtag('event', 'page_view', {
         'send_to': "${googleAdId}",
-        'dynx_itemid': "${_id}"
+        'dynx_itemid': "${internalID}"
       });`
 
     // The below might be a useful guard if scripts start to be evaluated twice.
@@ -151,17 +148,17 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
     artwork: graphql`
       fragment ArtworkMeta_artwork on Artwork {
         href
-        _id
+        internalID
         date
-        artist_names
-        sale_message
+        artist_names: artistNames
+        sale_message: saleMessage
         partner {
           name
         }
-        image_rights
-        is_in_auction
-        is_acquireable
-        is_shareable
+        image_rights: imageRights
+        is_in_auction: isInAuction
+        is_acquireable: isAcquireable
+        is_shareable: isShareable
         meta_image: image {
           resized(
             width: 640
@@ -180,8 +177,8 @@ export const ArtworkMetaFragmentContainer = createFragmentContainer(
         }
         context {
           __typename
-          ... on ArtworkContextFair {
-            id
+          ... on Fair {
+            slug
             name
           }
         }

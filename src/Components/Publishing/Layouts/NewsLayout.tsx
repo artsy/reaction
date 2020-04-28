@@ -55,7 +55,7 @@ export class NewsLayout extends Component<Props, State> {
     this.trackExpand = once(this.trackExpand)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.isHovered !== this.props.isHovered) {
       this.setState({ isHovered: nextProps.isHovered })
     }
@@ -121,7 +121,8 @@ export class NewsLayout extends Component<Props, State> {
           <DisplayAd
             adUnit={adUnit}
             adDimension={adDimension}
-            targetingData={targetingData(article.id, "newslanding")}
+            targetingData={targetingData(article, "newslanding")}
+            articleSlug={article.slug}
           />
         )}
         {relatedArticlesForCanvas && (

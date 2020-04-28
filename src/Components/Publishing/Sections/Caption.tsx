@@ -57,6 +57,7 @@ const Figcaption = styled.div<FigcaptionProps>`
     color: ${props =>
       props.color ? props.color : props.layout === "classic" ? "#666" : "#999"};
     margin: 0;
+    display: inline;    
   }
 
   & > a, a {

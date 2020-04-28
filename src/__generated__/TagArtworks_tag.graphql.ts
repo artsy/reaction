@@ -1,46 +1,49 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
-import { Dropdown_aggregation$ref } from "./Dropdown_aggregation.graphql";
-import { Headline_facet$ref } from "./Headline_facet.graphql";
-import { TagArtworksContent_filtered_artworks$ref } from "./TagArtworksContent_filtered_artworks.graphql";
-import { TotalCount_filter_artworks$ref } from "./TotalCount_filter_artworks.graphql";
+import { ReaderFragment } from "relay-runtime";
 export type ArtworkAggregation = "COLOR" | "DIMENSION_RANGE" | "FOLLOWED_ARTISTS" | "GALLERY" | "INSTITUTION" | "MAJOR_PERIOD" | "MEDIUM" | "MERCHANDISABLE_ARTISTS" | "PARTNER_CITY" | "PERIOD" | "PRICE_RANGE" | "TOTAL" | "%future added value";
-declare const _TagArtworks_tag$ref: unique symbol;
-export type TagArtworks_tag$ref = typeof _TagArtworks_tag$ref;
+import { FragmentRefs } from "relay-runtime";
 export type TagArtworks_tag = {
-    readonly id: string;
-    readonly filtered_artworks: ({
-        readonly aggregations: ReadonlyArray<({
+    readonly slug: string;
+    readonly filtered_artworks: {
+        readonly aggregations: ReadonlyArray<{
             readonly slice: ArtworkAggregation | null;
-            readonly counts: ReadonlyArray<({
-                readonly name: string | null;
+            readonly counts: ReadonlyArray<{
+                readonly name: string;
+                readonly value: string;
+            } | null> | null;
+            readonly " $fragmentRefs": FragmentRefs<"Dropdown_aggregation">;
+        } | null> | null;
+        readonly facet: {
+            readonly " $fragmentRefs": FragmentRefs<"Headline_facet">;
+        } | null;
+        readonly id: string;
+        readonly pageInfo: {
+            readonly hasNextPage: boolean;
+            readonly endCursor: string | null;
+        };
+        readonly edges: ReadonlyArray<{
+            readonly node: {
                 readonly id: string;
-            }) | null> | null;
-            readonly " $fragmentRefs": Dropdown_aggregation$ref;
-        }) | null> | null;
-        readonly facet: ({
-            readonly " $fragmentRefs": Headline_facet$ref;
-        }) | null;
-        readonly " $fragmentRefs": TotalCount_filter_artworks$ref & TagArtworksContent_filtered_artworks$ref;
-    }) | null;
-    readonly " $refType": TagArtworks_tag$ref;
+            } | null;
+        } | null> | null;
+        readonly " $fragmentRefs": FragmentRefs<"TotalCount_filter_artworks" | "ArtworkGrid_artworks">;
+    } | null;
+    readonly " $refType": "TagArtworks_tag";
+};
+export type TagArtworks_tag$data = TagArtworks_tag;
+export type TagArtworks_tag$key = {
+    readonly " $data"?: TagArtworks_tag$data;
+    readonly " $fragmentRefs": FragmentRefs<"TagArtworks_tag">;
 };
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "__id",
   "args": null,
   "storageKey": null
 };
@@ -48,11 +51,22 @@ return {
   "kind": "Fragment",
   "name": "TagArtworks_tag",
   "type": "Tag",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": "count",
+        "cursor": "cursor",
+        "direction": "forward",
+        "path": [
+          "filtered_artworks"
+        ]
+      }
+    ]
+  },
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "for_sale",
+      "name": "forSale",
       "type": "Boolean",
       "defaultValue": null
     },
@@ -75,75 +89,83 @@ return {
     },
     {
       "kind": "LocalArgument",
-      "name": "price_range",
+      "name": "priceRange",
       "type": "String",
       "defaultValue": "*"
     },
     {
       "kind": "LocalArgument",
-      "name": "dimension_range",
+      "name": "dimensionRange",
       "type": "String",
       "defaultValue": "*"
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "count",
+      "type": "Int",
+      "defaultValue": 10
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "cursor",
+      "type": "String",
+      "defaultValue": ""
+    },
+    {
+      "kind": "LocalArgument",
+      "name": "sort",
+      "type": "String",
+      "defaultValue": "-partner_updated_at"
     }
   ],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "slug",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
-      "alias": null,
-      "name": "filtered_artworks",
+      "alias": "filtered_artworks",
+      "name": "__TagArtworks_filtered_artworks_connection",
       "storageKey": null,
       "args": [
         {
           "kind": "Variable",
           "name": "aggregations",
-          "variableName": "aggregations",
-          "type": "[ArtworkAggregation]"
+          "variableName": "aggregations"
         },
         {
           "kind": "Variable",
-          "name": "dimension_range",
-          "variableName": "dimension_range",
-          "type": "String"
+          "name": "dimensionRange",
+          "variableName": "dimensionRange"
         },
         {
           "kind": "Variable",
-          "name": "for_sale",
-          "variableName": "for_sale",
-          "type": "Boolean"
+          "name": "forSale",
+          "variableName": "forSale"
         },
         {
           "kind": "Variable",
           "name": "medium",
-          "variableName": "medium",
-          "type": "String"
+          "variableName": "medium"
         },
         {
           "kind": "Variable",
-          "name": "price_range",
-          "variableName": "price_range",
-          "type": "String"
+          "name": "priceRange",
+          "variableName": "priceRange"
         },
         {
-          "kind": "Literal",
-          "name": "size",
-          "value": 0,
-          "type": "Int"
+          "kind": "Variable",
+          "name": "sort",
+          "variableName": "sort"
         }
       ],
-      "concreteType": "FilterArtworks",
+      "concreteType": "FilterArtworksConnection",
       "plural": false,
       "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "TotalCount_filter_artworks",
-          "args": null
-        },
-        {
-          "kind": "FragmentSpread",
-          "name": "TagArtworksContent_filtered_artworks",
-          "args": null
-        },
         {
           "kind": "LinkedField",
           "alias": null,
@@ -176,8 +198,13 @@ return {
                   "args": null,
                   "storageKey": null
                 },
-                v0,
-                v1
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "value",
+                  "args": null,
+                  "storageKey": null
+                }
               ]
             },
             {
@@ -200,16 +227,86 @@ return {
               "kind": "FragmentSpread",
               "name": "Headline_facet",
               "args": null
-            },
-            v1
+            }
           ]
         },
-        v1
+        (v0/*: any*/),
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "pageInfo",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "hasNextPage",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "endCursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "edges",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "FilterArtworksEdge",
+          "plural": true,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "node",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "Artwork",
+              "plural": false,
+              "selections": [
+                (v0/*: any*/),
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "__typename",
+                  "args": null,
+                  "storageKey": null
+                }
+              ]
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "cursor",
+              "args": null,
+              "storageKey": null
+            }
+          ]
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "TotalCount_filter_artworks",
+          "args": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ArtworkGrid_artworks",
+          "args": null
+        }
       ]
-    },
-    v1
+    }
   ]
 };
 })();
-(node as any).hash = 'e338dce3de7771de5f87d5d3605e6c19';
+(node as any).hash = 'a96b8d8f2425c1b17877655c0d077ab6';
 export default node;
