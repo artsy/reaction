@@ -1,3 +1,15 @@
+# v26.27.12 (Tue Apr 28 2020)
+
+#### 🐛  Bug Fix
+
+- Ensure notification badge proprely aligned [#3459](https://github.com/artsy/reaction/pull/3459) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.27.11 (Tue Apr 28 2020)
 
 #### 🐛  Bug Fix
