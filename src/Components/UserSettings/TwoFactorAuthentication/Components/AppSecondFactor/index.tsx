@@ -1,11 +1,10 @@
 import { BorderBox, Button, Flex, Link, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
-import { FormikActions } from "formik"
 import React, { useState } from "react"
 import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { useSystemContext } from "Artsy"
-import { AppSecondFactorModal, FormValues } from "./Modal"
+import { AppSecondFactorModal } from "./Modal"
 
 import { AppSecondFactor_me } from "__generated__/AppSecondFactor_me.graphql"
 
@@ -14,83 +13,57 @@ interface AppSecondFactorProps extends BorderBoxProps {
   relayRefetch?: RelayRefetchProp
 }
 
+import { ApiError } from "../../ApiError"
+import { ApiErrorModal } from "../ApiErrorModal"
 import { DisableSecondFactor } from "../Mutation/DisableSecondFactor"
-import { EnableSecondFactor } from "../Mutation/EnableSecondFactor"
 import { CreateAppSecondFactor } from "./Mutation/CreateAppSecondFactor"
-import { UpdateAppSecondFactor } from "./Mutation/UpdateAppSecondFactor"
 
 export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   const { me, relayRefetch } = props
+  const [apiErrors, setApiErrors] = useState<ApiError[]>([])
   const [showSetupModal, setShowSetupModal] = useState(false)
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
 
   const { relayEnvironment } = useSystemContext()
 
-  function handleSubmit(values: FormValues, actions: FormikActions<object>) {
-    const update = UpdateAppSecondFactor(relayEnvironment, {
-      secondFactorID: stagedSecondFactor.internalID,
-      attributes: { name: values.name },
-    })
-
-    const enable = EnableSecondFactor(relayEnvironment, {
-      secondFactorID: stagedSecondFactor.internalID,
-      code: values.code,
-    })
-
-    Promise.all([update, enable]).then(result => {
-      const updateFactorOrErrors =
-        result[0].updateAppSecondFactor.secondFactorOrErrors
-      const enableFactorOrErrors =
-        result[1].enableSecondFactor.secondFactorOrErrors
-
-      if (updateFactorOrErrors.__typename === "Errors") {
-        actions.setSubmitting(false)
-        actions.setError(updateFactorOrErrors.errors[0].message)
-      } else if (enableFactorOrErrors.__typename === "Errors") {
-        actions.setSubmitting(false)
-        actions.setError(enableFactorOrErrors.errors[0].message)
-      } else {
-        setShowSetupModal(false)
-        relayRefetch.refetch({})
-      }
-    })
+  function onComplete() {
+    setShowSetupModal(false)
+    relayRefetch.refetch({})
   }
 
-  function handleSetup() {
-    CreateAppSecondFactor(relayEnvironment, { attributes: {} }).then(
-      response => {
-        if (
-          response.createAppSecondFactor.secondFactorOrErrors.__typename ===
-          "Errors"
-        ) {
-          console.error(response.createAppSecondFactor.secondFactorOrErrors)
-        } else {
-          setStagedSecondFactor(
-            response.createAppSecondFactor.secondFactorOrErrors
-          )
-          setShowSetupModal(true)
-        }
-      }
-    )
+  function handleMutationError(errors: ApiError[]) {
+    if (!Array.isArray(errors)) {
+      throw errors
+    }
+
+    setApiErrors(errors)
   }
 
-  function handleDisable() {
+  async function createSecondFactor() {
+    try {
+      const response = await CreateAppSecondFactor(relayEnvironment, {
+        attributes: {},
+      })
+      setStagedSecondFactor(response.createAppSecondFactor.secondFactorOrErrors)
+      setShowSetupModal(true)
+    } catch (error) {
+      handleMutationError(error)
+    }
+  }
+
+  async function disableSecondFactor() {
     if (me.appSecondFactors[0].__typename !== "AppSecondFactor") {
       return
     }
 
-    DisableSecondFactor(relayEnvironment, {
-      secondFactorID: me.appSecondFactors[0].internalID,
-    }).then(response => {
-      if (
-        response.disableSecondFactor.secondFactorOrErrors.__typename ===
-        "Errors"
-      ) {
-        console.error(response.disableSecondFactor.secondFactorOrErrors.errors)
-      } else {
-        relayRefetch.refetch({})
-      }
-    })
+    try {
+      await DisableSecondFactor(relayEnvironment, {
+        secondFactorID: me.appSecondFactors[0].internalID,
+      })
+      relayRefetch.refetch({})
+    } catch (error) {
+      handleMutationError(error)
+    }
   }
 
   return (
@@ -113,25 +86,38 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
           me.appSecondFactors[0].__typename === "AppSecondFactor" ? (
             <>
               <Sans color="black60" size="3" weight="medium">
-                {me.appSecondFactors[0].name}
+                {me.appSecondFactors[0].name || "Unnamed"}
               </Sans>
-              <Button onClick={handleDisable} ml={1} variant="secondaryOutline">
+              <Button
+                onClick={disableSecondFactor}
+                ml={1}
+                variant="secondaryOutline"
+              >
                 Disable
               </Button>
-              <Button onClick={handleSetup} ml={1} variant="secondaryGray">
+              <Button
+                onClick={createSecondFactor}
+                ml={1}
+                variant="secondaryGray"
+              >
                 Edit
               </Button>
             </>
           ) : (
-            <Button onClick={handleSetup}>Set up</Button>
+            <Button onClick={createSecondFactor}>Set up</Button>
           )}
         </Flex>
       </Flex>
       <AppSecondFactorModal
         show={showSetupModal}
         secondFactor={stagedSecondFactor}
-        handleSubmit={handleSubmit}
+        onComplete={onComplete}
         onClose={() => setShowSetupModal(false)}
+      />
+      <ApiErrorModal
+        onClose={() => setApiErrors([])}
+        show={!!apiErrors.length}
+        errors={apiErrors}
       />
     </BorderBox>
   )

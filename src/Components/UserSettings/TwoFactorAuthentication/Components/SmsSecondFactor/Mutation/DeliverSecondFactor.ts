@@ -13,7 +13,15 @@ export const DeliverSecondFactor = (
     async (resolve, reject) => {
       commitMutation<DeliverSecondFactorMutation>(environment, {
         onCompleted: data => {
-          resolve(data)
+          const response = data.deliverSecondFactor.secondFactorOrErrors
+
+          switch (response.__typename) {
+            case "SmsSecondFactor":
+              resolve(data)
+              break
+            case "Errors":
+              reject(response.errors)
+          }
         },
         onError: error => {
           reject(error)
@@ -24,16 +32,16 @@ export const DeliverSecondFactor = (
           ) @raw_response_type {
             deliverSecondFactor(input: $input) {
               secondFactorOrErrors {
-                ... on SecondFactor {
+                ... on SmsSecondFactor {
                   __typename
+                  formattedPhoneNumber
                 }
 
                 ... on Errors {
+                  __typename
                   errors {
                     message
                     code
-                    path
-                    data
                   }
                 }
               }

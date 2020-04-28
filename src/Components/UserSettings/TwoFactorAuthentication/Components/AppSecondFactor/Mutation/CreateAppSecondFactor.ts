@@ -13,7 +13,16 @@ export const CreateAppSecondFactor = (
     async (resolve, reject) => {
       commitMutation<CreateAppSecondFactorMutation>(environment, {
         onCompleted: data => {
-          resolve(data)
+          const response = data.createAppSecondFactor.secondFactorOrErrors
+
+          switch (response.__typename) {
+            case "AppSecondFactor":
+              resolve(data)
+              break
+            case "Errors":
+              reject(response.errors)
+              break
+          }
         },
         onError: error => {
           reject(error)
@@ -24,9 +33,8 @@ export const CreateAppSecondFactor = (
           ) @raw_response_type {
             createAppSecondFactor(input: $input) {
               secondFactorOrErrors {
-                __typename
-
                 ... on AppSecondFactor {
+                  __typename
                   internalID
                   otpSecret
                   otpProvisioningURI
@@ -34,11 +42,10 @@ export const CreateAppSecondFactor = (
                 }
 
                 ... on Errors {
+                  __typename
                   errors {
                     message
                     code
-                    data
-                    path
                   }
                 }
               }

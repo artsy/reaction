@@ -13,7 +13,16 @@ export const UpdateAppSecondFactor = (
     async (resolve, reject) => {
       commitMutation<UpdateAppSecondFactorMutation>(environment, {
         onCompleted: data => {
-          resolve(data)
+          const response = data.updateAppSecondFactor.secondFactorOrErrors
+
+          switch (response.__typename) {
+            case "AppSecondFactor":
+              resolve(data)
+              break
+            case "Errors":
+              reject(response.errors)
+              break
+          }
         },
         onError: error => {
           reject(error)
@@ -24,14 +33,15 @@ export const UpdateAppSecondFactor = (
           ) @raw_response_type {
             updateAppSecondFactor(input: $input) {
               secondFactorOrErrors {
-                __typename
+                ... on AppSecondFactor {
+                  __typename
+                }
 
                 ... on Errors {
+                  __typename
                   errors {
                     message
                     code
-                    path
-                    data
                   }
                 }
               }

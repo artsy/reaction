@@ -22,9 +22,10 @@ export const BackupSecondFactors = [
   { code: "a9zmemiejs", __typename: "BackupSecondFactor" },
 ]
 
-export const MutationResponse: CreateBackupSecondFactorsMutationResponse = {
+export const CreateBackupSecondFactorsMutationSuccessResponse: CreateBackupSecondFactorsMutationResponse = {
   createBackupSecondFactors: {
     secondFactorsOrErrors: {
+      __typename: "BackupSecondFactors",
       secondFactors: BackupSecondFactors,
     },
   },
@@ -71,14 +72,6 @@ export const BackupSecondFactorModalContentQueryResponse: BackupSecondFactorModa
   },
 }
 
-export const BackupSecondFactorsMutationResponse: CreateBackupSecondFactorsMutationResponse = {
-  createBackupSecondFactors: {
-    secondFactorsOrErrors: {
-      secondFactors: BackupSecondFactors,
-    },
-  },
-}
-
 export const CreateSmsSecondFactorMutationSuccessResponse: CreateSmsSecondFactorMutationResponse = {
   createSmsSecondFactor: {
     secondFactorOrErrors: {
@@ -93,17 +86,19 @@ export const CreateAppSecondFactorMutationSuccessResponse: CreateAppSecondFactor
     secondFactorOrErrors: {
       __typename: "AppSecondFactor",
       internalID: "id",
-      otpProvisioningURI: "",
-      otpSecret: "",
-      name: "My Phone",
+      otpProvisioningURI:
+        "otpauth://totp/Artsy:user@example.com?secret=secret&issuer=Artsy",
+      otpSecret: "secret",
+      name: "",
     },
   },
 }
 
-export const DeliverSecondFactorMutationSuccessResponse: DeliverSecondFactorMutationResponse = {
+export const DeliverSmsSecondFactorMutationSuccessResponse: DeliverSecondFactorMutationResponse = {
   deliverSecondFactor: {
     secondFactorOrErrors: {
-      __typename: "%other",
+      __typename: "SmsSecondFactor",
+      formattedPhoneNumber: "+1 (555) 123-7878",
     },
   },
 }
@@ -111,7 +106,36 @@ export const DeliverSecondFactorMutationSuccessResponse: DeliverSecondFactorMuta
 export const UpdateSmsSecondFactorMutationSuccessResponse: UpdateSmsSecondFactorMutationResponse = {
   updateSmsSecondFactor: {
     secondFactorOrErrors: {
-      __typename: "%other",
+      __typename: "SmsSecondFactor",
+    },
+  },
+}
+
+export const DeliverSmsSecondFactorMutationErrorResponse: DeliverSecondFactorMutationResponse = {
+  deliverSecondFactor: {
+    secondFactorOrErrors: {
+      __typename: "Errors",
+      errors: [
+        {
+          message: "Unable to deliver.",
+          code: "undeliverable",
+        },
+      ],
+    },
+  },
+}
+
+export const UpdateSmsSecondFactorMutationErrorResponse: UpdateSmsSecondFactorMutationResponse = {
+  updateSmsSecondFactor: {
+    secondFactorOrErrors: {
+      __typename: "Errors",
+      errors: [
+        {
+          code: "invalid",
+          message: "is an invalid number",
+          data: { key: "phone_number" },
+        },
+      ],
     },
   },
 }
@@ -119,15 +143,38 @@ export const UpdateSmsSecondFactorMutationSuccessResponse: UpdateSmsSecondFactor
 export const UpdateAppSecondFactorMutationSuccessResponse: UpdateAppSecondFactorMutationResponse = {
   updateAppSecondFactor: {
     secondFactorOrErrors: {
-      __typename: "%other",
+      __typename: "AppSecondFactor",
     },
   },
 }
 
-export const EnableSecondFactorMutationSuccessResponse: EnableSecondFactorMutationResponse = {
+export const EnableAppSecondFactorMutationSuccessResponse: EnableSecondFactorMutationResponse = {
   enableSecondFactor: {
     secondFactorOrErrors: {
-      __typename: "%other",
+      __typename: "AppSecondFactor",
+    },
+  },
+}
+
+export const EnableSmsSecondFactorMutationSuccessResponse: EnableSecondFactorMutationResponse = {
+  enableSecondFactor: {
+    secondFactorOrErrors: {
+      __typename: "SmsSecondFactor",
+    },
+  },
+}
+
+export const EnableSmsSecondFactorMutationErrorResponse: EnableSecondFactorMutationResponse = {
+  enableSecondFactor: {
+    secondFactorOrErrors: {
+      __typename: "Errors",
+      errors: [
+        {
+          code: "invalid_otp",
+          message:
+            "Unable to enable factor. Please check your two-factor authentication code and try again.",
+        },
+      ],
     },
   },
 }
@@ -135,7 +182,7 @@ export const EnableSecondFactorMutationSuccessResponse: EnableSecondFactorMutati
 export const DisableSecondFactorMutationSuccessResponse: DisableSecondFactorMutationResponse = {
   disableSecondFactor: {
     secondFactorOrErrors: {
-      __typename: "%other",
+      __typename: "AppSecondFactor",
     },
   },
 }

@@ -10,9 +10,20 @@ export type CreateBackupSecondFactorsMutationVariables = {
 export type CreateBackupSecondFactorsMutationResponse = {
     readonly createBackupSecondFactors: {
         readonly secondFactorsOrErrors: {
-            readonly secondFactors?: ReadonlyArray<{
+            readonly __typename: "BackupSecondFactors";
+            readonly secondFactors: ReadonlyArray<{
                 readonly code: string;
             }>;
+        } | {
+            readonly __typename: "Errors";
+            readonly errors: ReadonlyArray<{
+                readonly code: string;
+                readonly message: string;
+            }>;
+        } | {
+            /*This will never be '%other', but we need some
+            value in case none of the concrete values match.*/
+            readonly __typename: "%other";
         };
     } | null;
 };
@@ -31,8 +42,16 @@ mutation CreateBackupSecondFactorsMutation(
     secondFactorsOrErrors {
       __typename
       ... on BackupSecondFactors {
+        __typename
         secondFactors {
           code
+        }
+      }
+      ... on Errors {
+        __typename
+        errors {
+          code
+          message
         }
       }
     }
@@ -57,9 +76,24 @@ v1 = [
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "code",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
   "kind": "InlineFragment",
   "type": "BackupSecondFactors",
   "selections": [
+    (v2/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -69,10 +103,30 @@ v2 = {
       "concreteType": "BackupSecondFactor",
       "plural": true,
       "selections": [
+        (v3/*: any*/)
+      ]
+    }
+  ]
+},
+v5 = {
+  "kind": "InlineFragment",
+  "type": "Errors",
+  "selections": [
+    (v2/*: any*/),
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "errors",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Error",
+      "plural": true,
+      "selections": [
+        (v3/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "code",
+          "name": "message",
           "args": null,
           "storageKey": null
         }
@@ -107,7 +161,8 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              (v2/*: any*/)
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
           }
         ]
@@ -137,14 +192,9 @@ return {
             "concreteType": null,
             "plural": false,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "__typename",
-                "args": null,
-                "storageKey": null
-              },
-              (v2/*: any*/)
+              (v2/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/)
             ]
           }
         ]
@@ -155,10 +205,10 @@ return {
     "operationKind": "mutation",
     "name": "CreateBackupSecondFactorsMutation",
     "id": null,
-    "text": "mutation CreateBackupSecondFactorsMutation(\n  $input: CreateBackupSecondFactorsInput!\n) {\n  createBackupSecondFactors(input: $input) {\n    secondFactorsOrErrors {\n      __typename\n      ... on BackupSecondFactors {\n        secondFactors {\n          code\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation CreateBackupSecondFactorsMutation(\n  $input: CreateBackupSecondFactorsInput!\n) {\n  createBackupSecondFactors(input: $input) {\n    secondFactorsOrErrors {\n      __typename\n      ... on BackupSecondFactors {\n        __typename\n        secondFactors {\n          code\n        }\n      }\n      ... on Errors {\n        __typename\n        errors {\n          code\n          message\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'a4d406599539fe830281a6bbd8394a27';
+(node as any).hash = 'bcf355b344cd120155860af9215df977';
 export default node;

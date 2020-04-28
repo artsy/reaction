@@ -24,8 +24,6 @@ export type CreateAppSecondFactorMutationResponse = {
             readonly errors: ReadonlyArray<{
                 readonly message: string;
                 readonly code: string;
-                readonly data: unknown | null;
-                readonly path: ReadonlyArray<string> | null;
             }>;
         } | {
             /*This will never be '%other', but we need some
@@ -47,11 +45,9 @@ export type CreateAppSecondFactorMutationRawResponse = {
             readonly errors: ReadonlyArray<{
                 readonly message: string;
                 readonly code: string;
-                readonly data: unknown | null;
-                readonly path: ReadonlyArray<string> | null;
             }>;
         } | {
-            readonly __typename: string;
+            readonly __typename: string | null;
         };
     }) | null;
 };
@@ -71,17 +67,17 @@ mutation CreateAppSecondFactorMutation(
     secondFactorOrErrors {
       __typename
       ... on AppSecondFactor {
+        __typename
         internalID
         otpSecret
         otpProvisioningURI
         name
       }
       ... on Errors {
+        __typename
         errors {
           message
           code
-          data
-          path
         }
       }
     }
@@ -100,120 +96,85 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "createAppSecondFactor",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input"
-      }
-    ],
-    "concreteType": "CreateAppSecondFactorPayload",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "secondFactorOrErrors",
-        "storageKey": null,
-        "args": null,
-        "concreteType": null,
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "__typename",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "AppSecondFactor",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "internalID",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "otpSecret",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "otpProvisioningURI",
-                "args": null,
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "name": "name",
-                "args": null,
-                "storageKey": null
-              }
-            ]
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "Errors",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "errors",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Error",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "message",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "code",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "data",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "path",
-                    "args": null,
-                    "storageKey": null
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "__typename",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "InlineFragment",
+  "type": "AppSecondFactor",
+  "selections": [
+    (v2/*: any*/),
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "internalID",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "otpSecret",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "otpProvisioningURI",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "name",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v4 = {
+  "kind": "InlineFragment",
+  "type": "Errors",
+  "selections": [
+    (v2/*: any*/),
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "errors",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Error",
+      "plural": true,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "message",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
+          "args": null,
+          "storageKey": null
+        }
+      ]
+    }
+  ]
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -222,22 +183,73 @@ return {
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "createAppSecondFactor",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "CreateAppSecondFactorPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "secondFactorOrErrors",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              (v3/*: any*/),
+              (v4/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "CreateAppSecondFactorMutation",
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "createAppSecondFactor",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "CreateAppSecondFactorPayload",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "secondFactorOrErrors",
+            "storageKey": null,
+            "args": null,
+            "concreteType": null,
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/)
+            ]
+          }
+        ]
+      }
+    ]
   },
   "params": {
     "operationKind": "mutation",
     "name": "CreateAppSecondFactorMutation",
     "id": null,
-    "text": "mutation CreateAppSecondFactorMutation(\n  $input: CreateAppSecondFactorInput!\n) {\n  createAppSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on AppSecondFactor {\n        internalID\n        otpSecret\n        otpProvisioningURI\n        name\n      }\n      ... on Errors {\n        errors {\n          message\n          code\n          data\n          path\n        }\n      }\n    }\n  }\n}\n",
+    "text": "mutation CreateAppSecondFactorMutation(\n  $input: CreateAppSecondFactorInput!\n) {\n  createAppSecondFactor(input: $input) {\n    secondFactorOrErrors {\n      __typename\n      ... on AppSecondFactor {\n        __typename\n        internalID\n        otpSecret\n        otpProvisioningURI\n        name\n      }\n      ... on Errors {\n        __typename\n        errors {\n          message\n          code\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'a92e81f58afdc5a156c15d0971b2bbf4';
+(node as any).hash = '6c55f2fcf9ffd17825721a9443d0cb4d';
 export default node;

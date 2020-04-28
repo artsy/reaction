@@ -2,34 +2,34 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type AppSecondFactorStoryQueryVariables = {};
-export type AppSecondFactorStoryQueryResponse = {
+export type SmsSecondFactorStorySuccessQueryVariables = {};
+export type SmsSecondFactorStorySuccessQueryResponse = {
     readonly me: {
-        readonly " $fragmentRefs": FragmentRefs<"AppSecondFactor_me">;
+        readonly " $fragmentRefs": FragmentRefs<"SmsSecondFactor_me">;
     } | null;
 };
-export type AppSecondFactorStoryQuery = {
-    readonly response: AppSecondFactorStoryQueryResponse;
-    readonly variables: AppSecondFactorStoryQueryVariables;
+export type SmsSecondFactorStorySuccessQuery = {
+    readonly response: SmsSecondFactorStorySuccessQueryResponse;
+    readonly variables: SmsSecondFactorStorySuccessQueryVariables;
 };
 
 
 
 /*
-query AppSecondFactorStoryQuery {
+query SmsSecondFactorStorySuccessQuery {
   me {
-    ...AppSecondFactor_me
+    ...SmsSecondFactor_me
     id
   }
 }
 
-fragment AppSecondFactor_me on Me {
-  appSecondFactors: secondFactors(kinds: [app]) {
+fragment SmsSecondFactor_me on Me {
+  smsSecondFactors: secondFactors(kinds: [sms]) {
     __typename
-    ... on AppSecondFactor {
+    ... on SmsSecondFactor {
       __typename
       internalID
-      name
+      formattedPhoneNumber
     }
   }
 }
@@ -47,7 +47,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "AppSecondFactorStoryQuery",
+    "name": "SmsSecondFactorStorySuccessQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
@@ -63,7 +63,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "AppSecondFactor_me",
+            "name": "SmsSecondFactor_me",
             "args": null
           }
         ]
@@ -72,7 +72,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AppSecondFactorStoryQuery",
+    "name": "SmsSecondFactorStorySuccessQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -86,15 +86,15 @@ return {
         "selections": [
           {
             "kind": "LinkedField",
-            "alias": "appSecondFactors",
+            "alias": "smsSecondFactors",
             "name": "secondFactors",
-            "storageKey": "secondFactors(kinds:[\"app\"])",
+            "storageKey": "secondFactors(kinds:[\"sms\"])",
             "args": [
               {
                 "kind": "Literal",
                 "name": "kinds",
                 "value": [
-                  "app"
+                  "sms"
                 ]
               }
             ],
@@ -104,7 +104,7 @@ return {
               (v0/*: any*/),
               {
                 "kind": "InlineFragment",
-                "type": "AppSecondFactor",
+                "type": "SmsSecondFactor",
                 "selections": [
                   (v0/*: any*/),
                   {
@@ -117,7 +117,7 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "name": "name",
+                    "name": "formattedPhoneNumber",
                     "args": null,
                     "storageKey": null
                   }
@@ -138,12 +138,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "AppSecondFactorStoryQuery",
+    "name": "SmsSecondFactorStorySuccessQuery",
     "id": null,
-    "text": "query AppSecondFactorStoryQuery {\n  me {\n    ...AppSecondFactor_me\n    id\n  }\n}\n\nfragment AppSecondFactor_me on Me {\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      __typename\n      internalID\n      name\n    }\n  }\n}\n",
+    "text": "query SmsSecondFactorStorySuccessQuery {\n  me {\n    ...SmsSecondFactor_me\n    id\n  }\n}\n\nfragment SmsSecondFactor_me on Me {\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      __typename\n      internalID\n      formattedPhoneNumber\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'cb0ec168fd8d195c200384110c9982e9';
+(node as any).hash = '7715cb46a652b03d99e6aef365436e7d';
 export default node;
