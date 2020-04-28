@@ -85,6 +85,7 @@ export const NavItem: React.FC<NavItemProps> = ({
 
   return (
     <Box
+      position={showOverlay ? "relative" : "static"}
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >

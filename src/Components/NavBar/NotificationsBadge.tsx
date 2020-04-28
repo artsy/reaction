@@ -110,5 +110,5 @@ const Container = styled(Flex)`
   justify-content: center;
   position: absolute;
   top: ${space(1)}px;
-  right: 48px;
+  left: 15px;
 `
