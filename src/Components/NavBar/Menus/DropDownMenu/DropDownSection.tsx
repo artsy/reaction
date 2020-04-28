@@ -1,6 +1,6 @@
 import { Box, color, MenuItem, Sans } from "@artsy/palette"
+import { MenuLinkData, SimpleLinkData } from "Components/NavBar/menuData"
 import React from "react"
-import { MenuLinkData, SimpleLinkData } from "../menuData"
 import { TwoColumnDropDownSection } from "./TwoColumnDropDownSection"
 
 interface DropDownSectionProps {
