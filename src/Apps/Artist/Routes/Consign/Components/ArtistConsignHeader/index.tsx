@@ -4,7 +4,7 @@ import {
   LightPurpleColor,
   SectionContainer,
 } from "Apps/Artist/Routes/Consign/Components/SectionContainer"
-import { AnalyticsSchema } from "Artsy"
+import { AnalyticsSchema, useTracking } from "Artsy"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -19,6 +19,8 @@ interface ArtistConsignHeaderProps {
 export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
   artist,
 }) => {
+  const tracking = useTracking()
+
   return (
     <SectionContainer background={LightPurpleColor}>
       <Media greaterThan="sm">
@@ -57,6 +59,14 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
               contextPath: artist.href,
               subject: AnalyticsSchema.Subject.RequestPriceEstimate,
             })}
+            onClick={() => {
+              tracking.trackEvent({
+                action_type: AnalyticsSchema.ActionType.Click,
+                context_module: AnalyticsSchema.ContextModule.SellWorksBy,
+                flow: AnalyticsSchema.Flow.Consignments,
+                subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+              })
+            }}
           >
             <Button>Request a price estimate</Button>
           </RouterLink>
