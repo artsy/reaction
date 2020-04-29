@@ -139,7 +139,7 @@ const Conversation: React.FC<ConversationProps> = props => {
         </Sans>
         <InfoCircleIcon />
       </StyledHeader>
-      <Spacer mt={"45px"} />
+      <Spacer mt="45px" />
       <Flex flexDirection="column" width="100%" px={1}>
         {conversation.items.map((i, idx) => (
           <Item
