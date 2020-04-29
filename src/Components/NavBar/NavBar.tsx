@@ -62,7 +62,6 @@ export const NavBar: React.FC = track(
     user,
     "User Conversations View"
   )
-  const canViewNewDropDown = userHasLabFeature(user, "Updated Navigation")
   const {
     links: [artworks, artists],
   } = menuData
@@ -116,83 +115,75 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            {canViewNewDropDown ? (
-              <NavItem
-                label="Artworks"
-                isFullScreenDropDown
-                Menu={({ setIsVisible }) => {
-                  return (
-                    <Box>
-                      <DropDownNavMenu
-                        width="100vw"
-                        menu={(artworks as MenuLinkData).menu}
-                        contextModule={
-                          AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+            <NavItem
+              label="Artworks"
+              isFullScreenDropDown
+              Menu={({ setIsVisible }) => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      menu={(artworks as MenuLinkData).menu}
+                      contextModule={
+                        AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+                      }
+                      onClick={() => {
+                        if (EXPERIMENTAL_APP_SHELL) {
+                          setIsVisible(false)
                         }
-                        onClick={() => {
-                          if (EXPERIMENTAL_APP_SHELL) {
-                            setIsVisible(false)
-                          }
-                        }}
-                      />
-                    </Box>
-                  )
-                }}
-              >
-                <Flex>
-                  Artworks
-                  <ChevronIcon
-                    direction="down"
-                    color={color("black100")}
-                    height="15px"
-                    width="15px"
-                    top="5px"
-                    left="4px"
-                  />
-                </Flex>
-              </NavItem>
-            ) : (
-              <NavItem href="/collect">Artworks</NavItem>
-            )}
+                      }}
+                    />
+                  </Box>
+                )
+              }}
+            >
+              <Flex>
+                Artworks
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
+            </NavItem>
 
-            {canViewNewDropDown ? (
-              <NavItem
-                label="Artists"
-                isFullScreenDropDown
-                Menu={({ setIsVisible }) => {
-                  return (
-                    <Box>
-                      <DropDownNavMenu
-                        width="100vw"
-                        menu={(artists as MenuLinkData).menu}
-                        contextModule={
-                          AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+            <NavItem
+              label="Artists"
+              isFullScreenDropDown
+              Menu={({ setIsVisible }) => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      menu={(artists as MenuLinkData).menu}
+                      contextModule={
+                        AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+                      }
+                      onClick={() => {
+                        if (EXPERIMENTAL_APP_SHELL) {
+                          setIsVisible(false)
                         }
-                        onClick={() => {
-                          if (EXPERIMENTAL_APP_SHELL) {
-                            setIsVisible(false)
-                          }
-                        }}
-                      />
-                    </Box>
-                  )
-                }}
-              >
-                <Flex>
-                  Artists
-                  <ChevronIcon
-                    direction="down"
-                    color={color("black100")}
-                    height="15px"
-                    width="15px"
-                    top="5px"
-                    left="4px"
-                  />
-                </Flex>
-              </NavItem>
-            ) : (
-              <NavItem href="/artists">Artists</NavItem>
-            )}
+                      }}
+                    />
+                  </Box>
+                )
+              }}
+            >
+              <Flex>
+                Artists
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
+            </NavItem>
 
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>

@@ -73,7 +73,7 @@ export const NavItem: React.FC<NavItemProps> = ({
     if (isString(navItemLabel) || label)
       trackEvent({
         action_type: AnalyticsSchema.ActionType.Hover,
-        subject: navItemLabel.toString() || label,
+        subject: label || navItemLabel.toString(),
       })
   }
 
