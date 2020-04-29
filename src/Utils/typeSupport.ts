@@ -33,3 +33,5 @@ interface DeepPartialSet<ItemType> extends Set<DeepPartial<ItemType>> {}
 interface DeepPartialMap<KeyType, ValueType>
   extends Map<DeepPartial<KeyType>, DeepPartial<ValueType>> {}
 // tslint:enable
+
+export type Writable<T> = { -readonly [P in keyof T]: T[P] }

@@ -1,4 +1,4 @@
-import { Box, Separator } from "@artsy/palette"
+import { Box, breakpoints, Separator } from "@artsy/palette"
 import { Collection_collection } from "__generated__/Collection_collection.graphql"
 import { SeoProductsForArtworks } from "Apps/Collect/Components/SeoProductsForArtworks"
 import { SeoProductsForCollections } from "Apps/Collect/Components/SeoProductsForCollections"
@@ -82,84 +82,91 @@ export class CollectionApp extends Component<CollectionAppProps> {
         fallbackHeaderImage?.edges[0]?.node?.image?.resized.url)
 
     return (
-      <AppContainer>
-        <FrameWithRecentlyViewed>
-          <Title>{`${title} - For Sale on Artsy`}</Title>
-          <Meta name="description" content={metadataDescription} />
-          <Meta property="og:url" content={collectionHref} />
-          <Meta property="og:image" content={socialImage} />
-          <Meta property="og:description" content={metadataDescription} />
-          <Meta property="twitter:description" content={metadataDescription} />
-          <Link rel="canonical" href={collectionHref} />
-          <BreadCrumbList
-            items={[
-              { path: "/collections", name: "Collections" },
-              { path: `/collection/${slug}`, name: title },
-            ]}
+      <>
+        <Title>{`${title} - For Sale on Artsy`}</Title>
+        <Meta name="description" content={metadataDescription} />
+        <Meta property="og:url" content={collectionHref} />
+        <Meta property="og:image" content={socialImage} />
+        <Meta property="og:description" content={metadataDescription} />
+        <Meta property="twitter:description" content={metadataDescription} />
+        <Link rel="canonical" href={collectionHref} />
+        <BreadCrumbList
+          items={[
+            { path: "/collections", name: "Collections" },
+            { path: `/collection/${slug}`, name: title },
+          ]}
+        />
+        {artworksConnection && (
+          <SeoProductsForArtworks artworks={artworksConnection} />
+        )}
+        {artworksConnection && (
+          <SeoProductsForCollections
+            descending_artworks={descending_artworks}
+            ascending_artworks={ascending_artworks}
+            collectionDescription={description}
+            collectionURL={collectionHref}
+            collectionName={title}
           />
-          {artworksConnection && (
-            <SeoProductsForArtworks artworks={artworksConnection} />
-          )}
-          {artworksConnection && (
-            <SeoProductsForCollections
-              descending_artworks={descending_artworks}
-              ascending_artworks={ascending_artworks}
-              collectionDescription={description}
-              collectionURL={collectionHref}
-              collectionName={title}
-            />
-          )}
+        )}
+
+        <AppContainer maxWidth="100%">
           <CollectionHeader
             collection={collection}
             artworks={artworksConnection}
           />
 
-          {showCollectionHubs && (
-            <CollectionsHubRails
-              linkedCollections={collection.linkedCollections}
-            />
-          )}
-          <Box>
-            <ArtworkFilterContextProvider
-              filters={location.query}
-              sortOptions={[
-                { value: "-decayed_merch", text: "Default" },
-                { value: "sold,-has_price,-prices", text: "Price (desc.)" },
-                { value: "sold,-has_price,prices", text: "Price (asc.)" },
-                { value: "-partner_updated_at", text: "Recently updated" },
-                { value: "-published_at", text: "Recently added" },
-                { value: "-year", text: "Artwork year (desc.)" },
-                { value: "year", text: "Artwork year (asc.)" },
-              ]}
-              aggregations={
-                artworksConnection.aggregations as SharedArtworkFilterContextProps["aggregations"]
-              }
-              onChange={updateUrl}
-            >
-              <BaseArtworkFilter
-                relay={relay}
-                viewer={collection}
-                relayVariables={{
-                  slug: collection.slug,
-                  first: 30,
-                }}
-              />
-            </ArtworkFilterContextProvider>
-          </Box>
-          {collection.linkedCollections.length === 0 && (
-            <>
-              <Separator mt={6} mb={3} />
-              <Box mt="3">
-                <RelatedCollectionsRail
-                  collections={collection.relatedCollections}
-                  title={collection.title}
-                  lazyLoadImages
+          <Box maxWidth={breakpoints.xl} mx="auto" width="100%">
+            <FrameWithRecentlyViewed>
+              {showCollectionHubs && (
+                <CollectionsHubRails
+                  linkedCollections={collection.linkedCollections}
                 />
+              )}
+
+              <Box>
+                <ArtworkFilterContextProvider
+                  filters={location.query}
+                  sortOptions={[
+                    { value: "-decayed_merch", text: "Default" },
+                    { value: "sold,-has_price,-prices", text: "Price (desc.)" },
+                    { value: "sold,-has_price,prices", text: "Price (asc.)" },
+                    { value: "-partner_updated_at", text: "Recently updated" },
+                    { value: "-published_at", text: "Recently added" },
+                    { value: "-year", text: "Artwork year (desc.)" },
+                    { value: "year", text: "Artwork year (asc.)" },
+                  ]}
+                  aggregations={
+                    artworksConnection.aggregations as SharedArtworkFilterContextProps["aggregations"]
+                  }
+                  onChange={updateUrl}
+                >
+                  <BaseArtworkFilter
+                    relay={relay}
+                    viewer={collection}
+                    relayVariables={{
+                      slug: collection.slug,
+                      first: 30,
+                    }}
+                  />
+                </ArtworkFilterContextProvider>
               </Box>
-            </>
-          )}
-        </FrameWithRecentlyViewed>
-      </AppContainer>
+
+              {collection.linkedCollections.length === 0 && (
+                <>
+                  <Separator mt={6} mb={3} />
+                  <Box mt="3">
+                    <RelatedCollectionsRail
+                      collections={collection.relatedCollections}
+                      title={collection.title}
+                      lazyLoadImages
+                    />
+                  </Box>
+                </>
+              )}
+            </FrameWithRecentlyViewed>
+          </Box>
+        </AppContainer>
+      </>
     )
   }
 }
