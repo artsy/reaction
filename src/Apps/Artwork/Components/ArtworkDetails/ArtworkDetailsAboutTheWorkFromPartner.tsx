@@ -132,6 +132,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                               size="2"
                               weight="medium"
                               color="black"
+                              data-test="followButton"
                               style={{
                                 cursor: "pointer",
                                 textDecoration: "underline",

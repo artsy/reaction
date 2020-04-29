@@ -80,29 +80,32 @@ export const OtherWorks = track()(
       <>
         {gridsToShow && gridsToShow.length > 0 && (
           <Join separator={<Spacer my={3} />}>
-            {gridsToShow.map((grid, index) => (
-              <React.Fragment key={`Grid-${index}`}>
-                <Header title={grid.title} buttonHref={grid.ctaHref} />
-                <ArtworkGrid
-                  artworks={grid.artworksConnection}
-                  columnCount={[2, 3, 4]}
-                  preloadImageCount={0}
-                  mediator={props.mediator}
-                  contextModule={contextGridTypeToV2ContextModule(
-                    grid.__typename
-                  )}
-                  onBrickClick={() =>
-                    tracking.trackEvent({
-                      type: Schema.Type.ArtworkBrick,
-                      action_type: Schema.ActionType.Click,
-                      context_module: contextGridTypeToContextModule(
-                        grid.__typename
-                      ),
-                    })
-                  }
-                />
-              </React.Fragment>
-            ))}
+            {gridsToShow.map((grid, index) => {
+              const contextModule = contextGridTypeToV2ContextModule(
+                grid.__typename
+              )
+              return (
+                <Box key={`Grid-${index}`} data-test={contextModule}>
+                  <Header title={grid.title} buttonHref={grid.ctaHref} />
+                  <ArtworkGrid
+                    artworks={grid.artworksConnection}
+                    columnCount={[2, 3, 4]}
+                    preloadImageCount={0}
+                    mediator={props.mediator}
+                    contextModule={contextModule}
+                    onBrickClick={() =>
+                      tracking.trackEvent({
+                        type: Schema.Type.ArtworkBrick,
+                        action_type: Schema.ActionType.Click,
+                        context_module: contextGridTypeToContextModule(
+                          grid.__typename
+                        ),
+                      })
+                    }
+                  />
+                </Box>
+              )
+            })}
           </Join>
         )}
         {!(

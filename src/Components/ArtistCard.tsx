@@ -92,7 +92,12 @@ export const LargeArtistCard: SFC<ArtistCardProps> = props => (
         onOpenAuthModal={() => handleOpenAuth(props)}
         render={({ is_followed }) => {
           return (
-            <Button variant="secondaryOutline" size="small" width={space(9)}>
+            <Button
+              variant="secondaryOutline"
+              size="small"
+              width={space(9)}
+              data-test="followButton"
+            >
               {getButtonLabel(is_followed)}
             </Button>
           )
@@ -128,7 +133,11 @@ export const SmallArtistCard: SFC<ArtistCardProps> = props => (
         onOpenAuthModal={() => handleOpenAuth(props)}
         render={({ is_followed }) => {
           return (
-            <Button variant="secondaryOutline" size="small">
+            <Button
+              variant="secondaryOutline"
+              size="small"
+              data-test="followButton"
+            >
               {getButtonLabel(is_followed)}
             </Button>
           )
