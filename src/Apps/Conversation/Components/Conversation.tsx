@@ -1,4 +1,4 @@
-import { color, Flex, Image, Link, Sans, Serif } from "@artsy/palette"
+import { color, Flex, Image, Link, Sans, Serif, Spacer } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { DateTime } from "luxon"
 import React from "react"
@@ -155,6 +155,7 @@ const Conversation: React.FC<ConversationProps> = props => {
           )
         }
       )}
+      <Spacer mb={9} />
       <Reply conversation={conversation} environment={relay.environment} />
     </Flex>
   )
