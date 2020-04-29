@@ -36,6 +36,8 @@ module.exports = {
     node: true,
   },
   rules: {
+    "react/display-name": 0,
+    "react/prop-types": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/camelcase": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
@@ -98,8 +100,5 @@ module.exports = {
     //     tagName: "graphql",
     //   },
     // ],
-
-    "react/display-name": 0,
-    "react/prop-types": 0,
   },
 }
