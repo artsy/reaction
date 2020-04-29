@@ -1,3 +1,20 @@
+# v26.29.0 (Wed Apr 29 2020)
+
+#### 🚀  Enhancement
+
+- Add Empty conversations view [#3461](https://github.com/artsy/reaction/pull/3461) ([@zephraph](https://github.com/zephraph))
+
+#### 🐛  Bug Fix
+
+- [FX-1819] Links to consign page in mobile nav [#3445](https://github.com/artsy/reaction/pull/3445) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.28.2 (Wed Apr 29 2020)
 
 #### 🐛  Bug Fix
