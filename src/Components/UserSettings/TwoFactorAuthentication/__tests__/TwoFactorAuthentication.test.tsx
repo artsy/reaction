@@ -5,7 +5,7 @@ import { createTestEnv } from "DevTools/createTestEnv"
 
 import { TwoFactorAuthenticationQueryResponse } from "__generated__/TwoFactorAuthenticationQuery.graphql"
 import { createMockFetchQuery } from "DevTools"
-import { TwoFactorAuthenticationRefetchContainer } from ".."
+import { TwoFactorAuthenticationRefetchContainer } from "../"
 import {
   AppEnabledWithBackupCodesQueryResponse,
   AppEnabledWithoutBackupCodesQueryResponse,

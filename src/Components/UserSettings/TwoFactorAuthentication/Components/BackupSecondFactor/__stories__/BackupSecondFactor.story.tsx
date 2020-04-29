@@ -4,7 +4,7 @@ import React from "react"
 import { graphql } from "react-relay"
 
 import { MockRelayRenderer } from "DevTools"
-import { BackupSecondFactorFragmentContainer } from ".."
+import { BackupSecondFactorFragmentContainer } from "../"
 import {
   AppEnabledWithBackupCodesQueryResponse,
   CreateBackupSecondFactorsMutationSuccessResponse,

@@ -11,7 +11,7 @@ import {
 } from "Components/UserSettings/TwoFactorAuthentication/__tests__/fixtures"
 import { MockRelayRenderer } from "DevTools"
 import { merge } from "lodash"
-import { AppSecondFactorFragmentContainer } from ".."
+import { AppSecondFactorFragmentContainer } from "../"
 
 const MockAppSecondFactor = ({ mockData, mockMutationResults, query }) => {
   return (
