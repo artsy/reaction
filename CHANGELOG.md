@@ -1,3 +1,15 @@
+# v26.28.0 (Wed Apr 29 2020)
+
+#### 🚀  Enhancement
+
+- Update 2FA enrollment [#3462](https://github.com/artsy/reaction/pull/3462) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.27.12 (Tue Apr 28 2020)
 
 #### 🐛  Bug Fix
