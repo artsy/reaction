@@ -98,7 +98,7 @@ export const NavItem: React.FC<NavItemProps> = ({
         className={className}
         display={display}
         position="relative"
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", zIndex: 9 }}
         onClick={() => {
           trackClick()
           onClick && onClick()

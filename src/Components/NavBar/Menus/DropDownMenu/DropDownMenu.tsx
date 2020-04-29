@@ -20,8 +20,8 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
 }) => {
   const { trackEvent } = useTracking()
   const viewAllTopMargin = {
-    HeaderArtworksDropdown: "130px",
-    HeaderArtistsDropdown: "90px",
+    HeaderArtworksDropdown: "120px",
+    HeaderArtistsDropdown: "80px",
   }
 
   const handleClick = event => {
@@ -45,18 +45,19 @@ export const DropDownNavMenu: React.FC<DropDownNavMenuProps> = ({
     <Menu onClick={handleClick} width={width} m={0} py={0}>
       <Flex justifyContent="center">
         <SimpleLinksContainer
-          py={4}
+          mt={0.5}
+          py={3}
           mr={[3, 3, 3, "50px"]}
           viewAllTopMargin={viewAllTopMargin[contextModule]}
         >
-          <Box mr={[2, 2, 3, 3]} width={[110, 110, 110, 135, 150]}>
+          <Box mr={[1, 1, 2, 2]} width={[110, 110, 110, 135, 170]}>
             {menu.links.map(menuItem => {
               if (!menuItem.menu) {
                 return (
-                  <MenuItemContainer mb={1} key={menuItem.text}>
+                  <MenuItemContainer key={menuItem.text}>
                     <MenuItem
                       px={1}
-                      py={0}
+                      py={0.5}
                       href={menuItem.href}
                       textColor={color("black60")}
                       textWeight="regular"
