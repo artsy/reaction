@@ -17,7 +17,7 @@ export const DropDownSection: React.FC<DropDownSectionProps> = ({
       {section.text === "Artist Nationality & Region" ? (
         <TwoColumnDropDownSection section={section} />
       ) : (
-        <Box width={[110, 110, 110, 135, 150]} py={4} mr={[2, 2, 3, 3]}>
+        <Box width={[110, 110, 110, 135, 170]} py={4} mr={[1, 1, 2, 2]}>
           <Sans size="2" mb={1} px={1}>
             {section.text}
           </Sans>

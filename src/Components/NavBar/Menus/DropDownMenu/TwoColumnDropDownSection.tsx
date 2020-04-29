@@ -17,10 +17,12 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
 
   return (
     <Flex>
-      <Box width={[110, 110, 110, 135, 150]} py={4} mr={[2, 2, 3, 3]}>
-        <Sans size="2" mb={1} px={1}>
-          {section.text}
-        </Sans>
+      <Box width={[110, 110, 110, 135, 170]} py={4} mr={[1, 1, 2, 2]}>
+        <Box width={[110, 110, 180, 180, 190]}>
+          <Sans size="2" mb={1} px={1}>
+            {section.text}
+          </Sans>
+        </Box>
         {section.menu &&
           nationalities.map((menuItem: SimpleLinkData) => {
             return (
@@ -39,7 +41,7 @@ export const TwoColumnDropDownSection: React.FC<TwoColumnDropDownSectionProps> =
             )
           })}
       </Box>
-      <Box width={[110, 110, 110, 135, 150]} pt="66px" pb={4} mr={[2, 2, 3, 3]}>
+      <Box width={[110, 110, 110, 135, 170]} pt="66px" pb={4} mr={[1, 1, 2, 2]}>
         {section.menu &&
           regions.map((menuItem: SimpleLinkData) => {
             return (
