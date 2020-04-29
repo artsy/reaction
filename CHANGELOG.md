@@ -1,3 +1,15 @@
+# v26.28.2 (Wed Apr 29 2020)
+
+#### 🐛  Bug Fix
+
+- [FX-1925] Fix some minor issues and launch nav drop down menus [#3457](https://github.com/artsy/reaction/pull/3457) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 1
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+
+---
+
 # v26.28.1 (Wed Apr 29 2020)
 
 #### 🐛  Bug Fix
