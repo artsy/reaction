@@ -1,3 +1,15 @@
+# v26.29.2 (Wed Apr 29 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial - Add test attrs for artwork page auth entrypoints [#3464](https://github.com/artsy/reaction/pull/3464) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.29.1 (Wed Apr 29 2020)
 
 #### 🐛  Bug Fix
