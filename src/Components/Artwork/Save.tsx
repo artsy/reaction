@@ -187,7 +187,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
 
   renderCustomButton() {
     return (
-      <div {...this.mixinButtonActions()}>
+      <div {...this.mixinButtonActions()} data-test="saveButton">
         {this.props.render(this.props, this.state)}
       </div>
     )

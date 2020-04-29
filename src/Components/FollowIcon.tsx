@@ -61,7 +61,7 @@ export class FollowIcon extends React.Component<FollowIconProps> {
     const iconName = isFollowed ? "follow-circle.is-following" : "follow-circle"
 
     return (
-      <FollowIconContainer>
+      <FollowIconContainer data-test="followButton">
         <Icon
           name={iconName}
           style={{

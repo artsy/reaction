@@ -137,6 +137,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                           size="2"
                           weight="medium"
                           color="black"
+                          data-test="followButton"
                           style={{
                             cursor: "pointer",
                             textDecoration: "underline",

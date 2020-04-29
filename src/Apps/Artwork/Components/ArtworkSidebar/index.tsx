@@ -13,6 +13,7 @@ import { ArtworkSidebarExtraLinksFragmentContainer as ExtraLinks } from "./Artwo
 import { ArtworkSidebarMetadataFragmentContainer as Metadata } from "./ArtworkSidebarMetadata"
 import { ArtworkSidebarPartnerInfoFragmentContainer as PartnerInfo } from "./ArtworkSidebarPartnerInfo"
 
+import { ContextModule } from "@artsy/cohesion"
 import { ArtworkSidebar_artwork } from "__generated__/ArtworkSidebar_artwork.graphql"
 import { ArtworkSidebar_me } from "__generated__/ArtworkSidebar_me.graphql"
 import { ArtworkSidebarQuery } from "__generated__/ArtworkSidebarQuery.graphql"
@@ -45,7 +46,7 @@ export class ArtworkSidebar extends Component<ArtworkSidebarProps> {
     const { artwork, me } = this.props
 
     return (
-      <ArtworkSidebarContainer>
+      <ArtworkSidebarContainer data-test={ContextModule.artworkSidebar}>
         <Artists artwork={artwork} />
         <Spacer mb={2} />
         <Metadata artwork={artwork} />
