@@ -1,3 +1,15 @@
+# v26.28.1 (Wed Apr 29 2020)
+
+#### 🐛  Bug Fix
+
+- [GALL-2778] - add a note about Covid-19 into status page [#3451](https://github.com/artsy/reaction/pull/3451) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v26.28.0 (Wed Apr 29 2020)
 
 #### 🚀  Enhancement
