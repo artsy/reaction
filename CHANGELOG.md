@@ -1,3 +1,19 @@
+# v26.29.1 (Wed Apr 29 2020)
+
+#### 🐛  Bug Fix
+
+- Improves server-side render of collect header [#3460](https://github.com/artsy/reaction/pull/3460) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Fixes relative paths for OSX [#3463](https://github.com/artsy/reaction/pull/3463) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.29.0 (Wed Apr 29 2020)
 
 #### 🚀  Enhancement
