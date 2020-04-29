@@ -23,7 +23,7 @@
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "find-unused-fields": "ts-node scripts/find-unused-fields",
     "integrate": "./scripts/quicklink-to-project.sh",
-    "lint": "tslint -c tslint.json --project tsconfig.json && yarn prettier-check",
+    "lint": "eslint src --cache  --ext ts,tsx --ignore-pattern 'src/__generated__'",
     "omg": "om g",
     "prepare": "patch-package",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
@@ -104,7 +104,10 @@
     "@types/styled-components": "4.0.3",
     "@types/styled-system": "3.0.9",
     "@types/underscore.string": "0.0.32",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-lodash": "3.3.3",
@@ -121,6 +124,11 @@
     "dotenv": "4.0.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-graphql": "^3.1.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
     "flickity": "2.1.2",
     "fork-ts-checker-notifier-webpack-plugin": "0.6.2",
     "fork-ts-checker-webpack-plugin": "0.4.10",
@@ -158,10 +166,6 @@
     "stylelint-processor-styled-components": "1.5.1",
     "ts-loader": "^3.5.yarn 0",
     "ts-node": "8.2.0",
-    "tslint": "5.11.0",
-    "tslint-config-prettier": "1.13.0",
-    "tslint-plugin-relay": "0.0.3",
-    "tslint-react": "2.6.0",
     "typescript": "3.8.3",
     "typescript-styled-plugin": "0.13.0",
     "vscode-apollo-relay": "1.5.0",
@@ -287,21 +291,21 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
+      "pre-push": "yarn type-check"
     }
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "tslint -c tslint.json --fix",
-      "yarn prettier-write --"
+      "yarn lint --fix",
+      "yarn prettier-write"
     ],
     "*.json": [
-      "yarn prettier-write --"
+      "yarn prettier-write"
     ]
   },
   "lint-changed": {
     "*.@(ts|tsx)": [
-      "tslint -c tslint.json",
+      "yarn lint",
       "yarn prettier -c"
     ],
     "*.json": [

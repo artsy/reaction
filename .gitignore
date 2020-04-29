@@ -3,6 +3,7 @@
 .cache
 .cache-loader
 .env
+.eslintcache
 .storybook/.DS_Store
 .storybook/manager.js
 .tsbuildinfo
