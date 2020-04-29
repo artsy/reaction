@@ -3,6 +3,7 @@ import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ConversationSnippetFragmentContainer as ConversationSnippet } from "./ConversationSnippet"
+import { NoMessages } from "./NoMessages"
 
 interface ConversationsProps {
   me: Conversations_me
@@ -13,7 +14,7 @@ const Conversations: React.FC<ConversationsProps> = props => {
   const { me } = props
   const conversations = me.conversationsConnection.edges
   return (
-    <Box px={1}>
+    <Box px={1} height="calc(100vh - 180px)">
       <Sans size="6" weight="medium" ml={1}>
         Inbox
       </Sans>
@@ -23,7 +24,7 @@ const Conversations: React.FC<ConversationsProps> = props => {
           <ConversationSnippet conversation={edge.node} key={edge.cursor} />
         ))
       ) : (
-        <Sans size="2">No Conversations</Sans>
+        <NoMessages />
       )}
     </Box>
   )

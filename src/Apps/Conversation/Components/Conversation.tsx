@@ -7,6 +7,7 @@ import {
   Link,
   Sans,
   Serif,
+  Spacer,
 } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { RouterLink } from "Artsy/Router/RouterLink"
@@ -138,6 +139,7 @@ const Conversation: React.FC<ConversationProps> = props => {
         </Sans>
         <InfoCircleIcon />
       </StyledHeader>
+      <Spacer mt="45px" />
       <Flex flexDirection="column" width="100%" px={1}>
         {conversation.items.map((i, idx) => (
           <Item
