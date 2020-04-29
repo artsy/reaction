@@ -1,3 +1,20 @@
+# v26.30.0 (Wed Apr 29 2020)
+
+#### 🚀  Enhancement
+
+- [Toolchain] Replace TSLint with ESLint [#3467](https://github.com/artsy/reaction/pull/3467) ([@damassi](https://github.com/damassi))
+
+#### 🐛  Bug Fix
+
+- [FX-1926] Minor ui dropdown fixes [#3465](https://github.com/artsy/reaction/pull/3465) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.29.2 (Wed Apr 29 2020)
 
 #### 🐛  Bug Fix
