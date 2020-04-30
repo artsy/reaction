@@ -126,7 +126,7 @@ const Menu: React.FC<MenuProps> = ({
 export const BackLink: React.FC = () => {
   const { trackEvent } = useTracking()
   const { pop } = useNavigation()
-  const contextModule = getTrackingContextModule()
+  const contextModule = useTrackingContextModule()
 
   return (
     <Box
@@ -159,7 +159,7 @@ export const BackLink: React.FC = () => {
   )
 }
 
-const getTrackingContextModule = () => {
+const useTrackingContextModule = () => {
   const { path } = useNavigation()
   let contextModule
   if (path[0] === "Artworks") {
@@ -174,7 +174,7 @@ const getTrackingContextModule = () => {
 
 const NavLink: React.FC<any> = ({ link }) => {
   const isSubMenu = !!link.menu
-  const contextModule = getTrackingContextModule()
+  const contextModule = useTrackingContextModule()
 
   if (isSubMenu) {
     return (
@@ -198,7 +198,7 @@ const NavLink: React.FC<any> = ({ link }) => {
 export const MobileSubmenuLink: React.FC<any> = ({ children, menu }) => {
   const { trackEvent } = useTracking()
   const { path, push } = useNavigation()
-  const contextModule = getTrackingContextModule()
+  const contextModule = useTrackingContextModule()
 
   return (
     <li>

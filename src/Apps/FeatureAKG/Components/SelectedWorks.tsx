@@ -14,11 +14,11 @@ interface SelectedWorksProps {
 const SelectedWorks: React.FC<SelectedWorksProps> = props => {
   const { mediator } = useSystemContext()
 
+  const tracking = useTracking()
+
   if (!props.selectedWorks?.itemsConnection?.edges?.length) {
     return null
   }
-
-  const tracking = useTracking()
 
   return (
     <Box maxWidth="720px" style={{ margin: "0 auto" }}>

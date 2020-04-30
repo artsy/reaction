@@ -50,8 +50,8 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": 0,
     "@typescript-eslint/no-var-requires": 0,
 
+    "react-hooks/rules-of-hooks": "error",
     // FIXME: Fix issues with React Hooks:
-    "react-hooks/rules-of-hooks": 0,
     "react-hooks/exhaustive-deps": 0,
 
     // FIXME: Investigate / reenable these rules. Disabled to introduce eslint
