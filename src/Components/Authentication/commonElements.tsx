@@ -88,7 +88,7 @@ export const ForgotPassword = (props: { onClick: () => void }) => (
 )
 
 export const SubmitButton = (props: ButtonProps) => (
-  <Button width="100%" size="large" mt={30.0} mb={0.5} {...props}>
+  <Button type="submit" width="100%" size="large" mt={30.0} mb={0.5} {...props}>
     {props.children}
   </Button>
 )

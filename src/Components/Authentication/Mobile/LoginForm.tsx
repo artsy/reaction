@@ -22,15 +22,27 @@ import {
 } from "../commonElements"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
+import { StepElement } from "Components/Wizard/types"
 
 class MobileLoginFormWithSystemContext extends Component<
   FormProps & {
     relayEnvironment: Environment
-  }
+  },
+  { error: string; shouldGoToNextStep: boolean; steps: StepElement[] }
 > {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      error: null,
+      shouldGoToNextStep: false,
+      steps: this.getBaseSteps(),
+    }
+  }
+
   showError = status => {
-    const { error } = this.props
-    if (error) {
+    const { error } = this.state
+    if (error && error !== "missing two-factor authentication code") {
       return <Error show>{error}</Error>
     }
 
@@ -41,13 +53,32 @@ class MobileLoginFormWithSystemContext extends Component<
     return null
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.error !== prevState.error) {
+      let newState = {
+        error: nextProps.error,
+        steps: prevState.steps,
+        shouldGoToNextStep: false,
+      }
+
+      if (nextProps.error === "missing two-factor authentication code") {
+        newState.steps.push(MobileLoginFormWithSystemContext.getOtpStep())
+        newState.shouldGoToNextStep = true
+      }
+
+      return newState
+    }
+
+    return null
+  }
+
   onSubmit = (values: InputValues, formikBag: FormikProps<InputValues>) => {
     recaptcha("login_submit")
     this.props.handleSubmit(values, formikBag)
   }
 
-  render() {
-    const steps = [
+  getBaseSteps = () => {
+    return [
       <Step
         validationSchema={MobileLoginValidator.email}
         onSubmit={(values, actions) =>
@@ -118,14 +149,56 @@ class MobileLoginFormWithSystemContext extends Component<
         )}
       </Step>,
     ]
+  }
+
+  static getOtpStep = () => {
+    return (
+      <Step validationSchema={MobileLoginValidator.otpAttempt}>
+        {({
+          form: {
+            errors,
+            values,
+            handleChange,
+            handleBlur,
+            setTouched,
+            status,
+          },
+        }) => {
+          return (
+            <QuickInput
+              block
+              error={errors.otp_attempt}
+              name="otp_attempt"
+              placeholder="Authentication Code"
+              value={values.otp_attempt}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              setTouched={setTouched}
+              touchedOnChange={false}
+            />
+          )
+        }}
+      </Step>
+    )
+  }
+
+  render() {
+    const { steps } = this.state
+
     return (
       <Wizard steps={steps} onComplete={this.onSubmit}>
         {context => {
           const {
             wizard,
-            form: { handleSubmit, values, status, isSubmitting },
+            form: { handleSubmit, actions, values, status, isSubmitting },
           } = context
-          const { currentStep, isLastStep } = wizard
+
+          const { currentStep, isLastStep, next } = wizard
+
+          if (this.state.shouldGoToNextStep) {
+            next(values, actions)
+            this.setState({ shouldGoToNextStep: false })
+          }
 
           return (
             <MobileContainer data-test="LoginForm">
@@ -141,6 +214,7 @@ class MobileLoginFormWithSystemContext extends Component<
                 >
                   <Icon name="chevron-left" color="black60" fontSize="16px" />
                 </BackButton>
+
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}
                 {this.showError(status)}
