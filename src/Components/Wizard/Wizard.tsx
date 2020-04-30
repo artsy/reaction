@@ -125,20 +125,20 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
     if (this.isLastStep) {
       onComplete && onComplete(values, actions)
     } else {
-      actions && actions.setSubmitting(false)
+      actions?.setSubmitting(false)
       // If exist, call onSubmit on the current step
       const onSubmit = this.currentStep.props.onSubmit
       if (onSubmit) {
-        actions.setSubmitting(true)
+        actions?.setSubmitting(true)
         const result = onSubmit(values, actions)
 
         if (result instanceof Boolean) {
-          actions.setSubmitting(false)
+          actions?.setSubmitting(false)
           return result
         } else {
           return (result as Promise<boolean>).then(shouldGoNext => {
             if (shouldGoNext) {
-              actions.setSubmitting(false)
+              actions?.setSubmitting(false)
               this.next(null, values)
             }
           })

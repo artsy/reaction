@@ -11,6 +11,7 @@ export interface InputValues {
   name?: string
   email?: string
   password?: string
+  otp_attempt?: string
   accepted_terms_of_service?: boolean
 }
 

@@ -12,6 +12,8 @@ const password = Yup.string()
 
 const loginPassword = Yup.string().required("Password required")
 
+const otpAttempt = Yup.string().required("Enter a code")
+
 const accepted_terms_of_service = Yup.boolean()
   .required("You must agree to our terms to continue.")
   .oneOf([true])
@@ -41,4 +43,5 @@ export const MobileSignUpValidator = {
 export const MobileLoginValidator = {
   email: Yup.object().shape({ email }),
   password: Yup.object().shape({ password: loginPassword }),
+  otpAttempt: Yup.object().shape({ otp_attempt: otpAttempt }),
 }

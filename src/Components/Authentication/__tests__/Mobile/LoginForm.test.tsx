@@ -97,6 +97,38 @@ describe("MobileLoginForm", () => {
       })
     })
 
+    it("calls handleSubmit with expected params when server requests a two-factor authentication code", done => {
+      props.error = "missing two-factor authentication code"
+      props.actions = {}
+      const wrapper = getWrapper()
+      const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+      inputEmail.onChange(ChangeEvents.email)
+      wrapper.find(SubmitButton).simulate("click")
+
+      setTimeout(() => {
+        wrapper.update()
+        const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+        inputPass.onChange(ChangeEvents.password)
+        wrapper.find(SubmitButton).simulate("click")
+
+        setTimeout(() => {
+          wrapper.update()
+          const inputOtp = wrapper.find(QuickInput).instance() as QuickInput
+          inputOtp.onChange(ChangeEvents.otpAttempt)
+          wrapper.find(SubmitButton).simulate("click")
+
+          setTimeout(() => {
+            expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+              email: "email@email.com",
+              password: "password",
+              otp_attempt: "123456",
+            })
+            done()
+          })
+        })
+      })
+    })
+
     it("fires reCAPTCHA event", done => {
       const wrapper = getWrapper()
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
