@@ -4,7 +4,6 @@ export const findCurrentRoute = ({
   routes,
   routeIndices,
 }: Match & { route?: RouteConfig }) => {
-  console.log(routes, routeIndices)
   let remainingRouteIndicies = [...routeIndices]
   let route: RouteConfig = routes[remainingRouteIndicies.shift()]
 
