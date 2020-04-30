@@ -22,15 +22,81 @@ import {
 } from "../commonElements"
 import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
+import { StepElement } from "Components/Wizard/types"
+
+interface LoginFormState {
+  advanceWizardStep: boolean
+  error: string
+  hideBackButton: boolean
+  steps: StepElement[]
+}
 
 class MobileLoginFormWithSystemContext extends Component<
   FormProps & {
     relayEnvironment: Environment
-  }
+  },
+  LoginFormState
 > {
+  static getDerivedStateFromProps(nextProps, prevState): LoginFormState | null {
+    if (nextProps.error !== prevState.error) {
+      if (nextProps.error === "missing two-factor authentication code") {
+        return {
+          advanceWizardStep: true,
+          error: nextProps.error,
+          hideBackButton: true,
+          steps: prevState.steps.concat([
+            MobileLoginFormWithSystemContext.buildOtpStep(),
+          ]),
+        }
+      } else {
+        return {
+          ...prevState,
+          error: nextProps.error,
+        }
+      }
+    }
+
+    return null
+  }
+
+  static buildOtpStep = () => {
+    return (
+      <Step validationSchema={MobileLoginValidator.otpAttempt}>
+        {({
+          form: { errors, values, handleChange, handleBlur, setTouched },
+        }) => {
+          return (
+            <QuickInput
+              block
+              error={errors.otp_attempt}
+              name="otp_attempt"
+              placeholder="Authentication Code"
+              value={values.otp_attempt}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              setTouched={setTouched}
+              touchedOnChange={false}
+            />
+          )
+        }}
+      </Step>
+    )
+  }
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      error: null,
+      advanceWizardStep: false,
+      hideBackButton: false,
+      steps: this.buildBaseSteps(),
+    }
+  }
+
   showError = status => {
-    const { error } = this.props
-    if (error) {
+    const { error } = this.state
+    if (error && error !== "missing two-factor authentication code") {
       return <Error show>{error}</Error>
     }
 
@@ -46,8 +112,8 @@ class MobileLoginFormWithSystemContext extends Component<
     this.props.handleSubmit(values, formikBag)
   }
 
-  render() {
-    const steps = [
+  buildBaseSteps = () => {
+    return [
       <Step
         validationSchema={MobileLoginValidator.email}
         onSubmit={(values, actions) =>
@@ -60,15 +126,7 @@ class MobileLoginFormWithSystemContext extends Component<
         }
       >
         {({
-          wizard,
-          form: {
-            errors,
-            touched,
-            values,
-            handleChange,
-            handleBlur,
-            setTouched,
-          },
+          form: { errors, values, handleChange, handleBlur, setTouched },
         }) => (
           <QuickInput
             block
@@ -118,29 +176,42 @@ class MobileLoginFormWithSystemContext extends Component<
         )}
       </Step>,
     ]
+  }
+
+  render() {
+    const { steps, hideBackButton, advanceWizardStep } = this.state
+
     return (
       <Wizard steps={steps} onComplete={this.onSubmit}>
         {context => {
           const {
             wizard,
-            form: { handleSubmit, values, status, isSubmitting },
+            form: { handleSubmit, actions, values, status, isSubmitting },
           } = context
-          const { currentStep, isLastStep } = wizard
+
+          const { currentStep, isLastStep, next } = wizard
+
+          if (advanceWizardStep) {
+            next(values, actions)
+            this.setState({ advanceWizardStep: false })
+          }
 
           return (
             <MobileContainer data-test="LoginForm">
               <ProgressIndicator percentComplete={wizard.progressPercentage} />
               <MobileInnerWrapper>
-                <BackButton
-                  onClick={e =>
-                    this.props.onBackButtonClicked &&
-                    wizard.currentStepIndex === 0
-                      ? this.props.onBackButtonClicked(e as any)
-                      : wizard.previous(e, values)
-                  }
-                >
-                  <Icon name="chevron-left" color="black60" fontSize="16px" />
-                </BackButton>
+                {!hideBackButton && (
+                  <BackButton
+                    onClick={e =>
+                      this.props.onBackButtonClicked &&
+                      wizard.currentStepIndex === 0
+                        ? this.props.onBackButtonClicked(e as any)
+                        : wizard.previous(e, values)
+                    }
+                  >
+                    <Icon name="chevron-left" color="black60" fontSize="16px" />
+                  </BackButton>
+                )}
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}
                 {this.showError(status)}

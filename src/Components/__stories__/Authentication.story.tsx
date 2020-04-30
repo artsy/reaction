@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react"
 import Colors from "Assets/Colors"
-import React, { Component, Fragment } from "react"
+import React, { Component, Fragment, useState } from "react"
 import styled from "styled-components"
 import Button from "../Buttons/Default"
 
@@ -11,9 +11,9 @@ import {
 } from "../Authentication/commonElements"
 import { ModalManager } from "../Authentication/Desktop/ModalManager"
 import { FormSwitcher } from "../Authentication/FormSwitcher"
-import { ModalType } from "../Authentication/Types"
+import { ModalType, SubmitHandler } from "../Authentication/Types"
 
-const submit = (values, actions) => {
+const submit: SubmitHandler = (values, actions) => {
   setTimeout(() => {
     alert(JSON.stringify(values, null, 1))
     actions.setSubmitting(false)
@@ -65,6 +65,36 @@ storiesOf("Components/Authentication/Desktop", module)
   ))
   .add("Sign Up", () => <ModalContainer options={{ mode: ModalType.signup }} />)
 
+const MobileLoginTwoFactorAuthDemo: React.FC = () => {
+  const [serverError, setServerError] = useState(null)
+
+  const handleSubmit: SubmitHandler = (values, actions) => {
+    setTimeout(() => {
+      if (values.otp_attempt === "123456") {
+        alert(JSON.stringify(values, null, 1))
+      } else if (values.otp_attempt) {
+        setServerError("invalid two-factor authentication code")
+      } else {
+        setServerError("missing two-factor authentication code")
+      }
+      actions.setSubmitting(false)
+    }, 1000)
+  }
+
+  return (
+    <FormSwitcher
+      error={serverError}
+      type={ModalType.login}
+      handleSubmit={handleSubmit}
+      isMobile
+      options={{
+        contextModule: ContextModule.header,
+        intent: AuthIntent.login,
+      }}
+    />
+  )
+}
+
 storiesOf("Components/Authentication/Mobile", module)
   .add("Login", () => (
     <MobileContainer>
@@ -77,6 +107,11 @@ storiesOf("Components/Authentication/Mobile", module)
           intent: Intent.login,
         }}
       />
+    </MobileContainer>
+  ))
+  .add("Login (2FA)", () => (
+    <MobileContainer>
+      <MobileLoginTwoFactorAuthDemo />
     </MobileContainer>
   ))
   .add("Forgot Password", () => (
