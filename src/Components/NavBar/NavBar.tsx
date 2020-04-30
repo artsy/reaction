@@ -37,7 +37,7 @@ import { openAuthModal } from "Utils/openAuthModal"
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import Events from "Utils/Events"
@@ -285,7 +285,7 @@ export const NavBar: React.FC = track(
                 onClick={() => {
                   openAuthModal(mediator, {
                     mode: ModalType.login,
-                    intent: AuthIntent.login,
+                    intent: Intent.login,
                     contextModule: ContextModule.header,
                   })
                 }}
@@ -297,7 +297,7 @@ export const NavBar: React.FC = track(
                 onClick={() => {
                   openAuthModal(mediator, {
                     mode: ModalType.signup,
-                    intent: AuthIntent.signup,
+                    intent: Intent.signup,
                     contextModule: ContextModule.header,
                   })
                 }}

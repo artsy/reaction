@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   Box,
   Button,
@@ -256,7 +256,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         mode: ModalType.login,
         redirectTo: location.href,
         contextModule: ContextModule.artworkSidebar,
-        intent: AuthIntent.buyNow,
+        intent: Intent.buyNow,
       })
     }
   }
@@ -347,7 +347,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
         mode: ModalType.login,
         redirectTo: location.href,
         contextModule: ContextModule.artworkSidebar,
-        intent: AuthIntent.makeOffer,
+        intent: Intent.makeOffer,
       })
     }
   }

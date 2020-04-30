@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
+import { AuthContextModule, Intent } from "@artsy/cohesion"
 import { Save_artwork } from "__generated__/Save_artwork.graphql"
 import { SaveArtworkMutation } from "__generated__/SaveArtworkMutation.graphql"
 import * as Artsy from "Artsy"
@@ -136,7 +136,7 @@ export class SaveButton extends React.Component<SaveProps, SaveState> {
           slug: this.props.artwork.slug,
           name: this.props.artwork.title,
         },
-        intent: AuthIntent.saveArtwork,
+        intent: Intent.saveArtwork,
       })
     }
   }

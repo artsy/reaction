@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { ModalType } from "Components/Authentication/Types"
 import {
   AuthModalOptions,
@@ -15,7 +15,7 @@ const artistArgs: AuthModalOptions = {
     slug: "andy-warhol",
     name: "Andy Warhol",
   },
-  intent: AuthIntent.followArtist,
+  intent: Intent.followArtist,
 }
 
 const partnerArgs: AuthModalOptions = {
@@ -24,7 +24,7 @@ const partnerArgs: AuthModalOptions = {
     slug: "david-zwirner",
     name: "David Zwirner",
   },
-  intent: AuthIntent.followPartner,
+  intent: Intent.followPartner,
 }
 
 const artworkArgs: AuthModalOptions = {
@@ -33,7 +33,7 @@ const artworkArgs: AuthModalOptions = {
     slug: "andy-warhol-skull",
     name: "Skull",
   },
-  intent: AuthIntent.saveArtwork,
+  intent: Intent.saveArtwork,
 }
 
 describe("openAuth Helpers", () => {
@@ -53,7 +53,7 @@ describe("openAuth Helpers", () => {
     it("calls the mediator with expected args", () => {
       openAuthModal(mediator, {
         mode: ModalType.signup,
-        intent: AuthIntent.signup,
+        intent: Intent.signup,
         contextModule: ContextModule.header,
         copy: "Sign up to do cool stuff",
       })
