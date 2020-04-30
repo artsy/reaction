@@ -15,6 +15,7 @@ import {
   SoloIcon,
   space,
   Spacer,
+  themeProps,
 } from "@artsy/palette"
 
 import { SystemContext } from "Artsy/SystemContext"
@@ -40,7 +41,7 @@ import { AuthIntent, ContextModule } from "@artsy/cohesion"
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import Events from "Utils/Events"
-import { useMedia } from "Utils/Hooks/useMedia"
+import { useMatchMedia } from "Utils/Hooks/useMatchMedia"
 import { userHasLabFeature } from "Utils/user"
 
 export const NavBar: React.FC = track(
@@ -55,7 +56,8 @@ export const NavBar: React.FC = track(
   const { trackEvent } = useTracking()
   const { mediator, user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
-  const { xs, sm } = useMedia()
+  const xs = useMatchMedia(themeProps.mediaQueries.xs)
+  const sm = useMatchMedia(themeProps.mediaQueries.sm)
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
   const conversationsEnabled = userHasLabFeature(
