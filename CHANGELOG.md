@@ -1,3 +1,20 @@
+# v26.30.3 (Thu Apr 30 2020)
+
+#### 🐛  Bug Fix
+
+- Use cohesion v1 [#3474](https://github.com/artsy/reaction/pull/3474) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- [Chore] Turns on rules-of-hooks [#3470](https://github.com/artsy/reaction/pull/3470) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.30.1 (Thu Apr 30 2020)
 
 #### 🐛  Bug Fix
