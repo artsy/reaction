@@ -1,3 +1,17 @@
+# v26.30.1 (Thu Apr 30 2020)
+
+#### 🐛  Bug Fix
+
+- Correct findCurrentRoute logic to unbreak artist page [#3469](https://github.com/artsy/reaction/pull/3469) ([@zephraph](https://github.com/zephraph))
+- [FX-1894] change top artists [#3466](https://github.com/artsy/reaction/pull/3466) ([@xtina-starr](https://github.com/xtina-starr))
+
+#### Authors: 2
+
+- Christina ([@xtina-starr](https://github.com/xtina-starr))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.30.0 (Wed Apr 29 2020)
 
 #### 🚀  Enhancement
