@@ -51,4 +51,40 @@ describe("findCurrentRoute", () => {
     })
     expect(findCurrentRoute(match)).toHaveProperty("path", "/cv")
   })
+
+  it("should return a deeply nested route", () => {
+    const match = getMatch({
+      routeIndices: [0, 3, 0],
+      routes: [
+        {
+          path: "/artist/:artistID",
+          children: [
+            {
+              path: "/",
+            },
+            {
+              path: "/works-for-sale",
+            },
+            {
+              path: "/cv",
+            },
+            {
+              baz: "/foo",
+              children: [
+                {
+                  path: "/bar",
+                  children: [
+                    {
+                      path: "/dont-match",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    })
+    expect(findCurrentRoute(match)).toHaveProperty("path", "/bar")
+  })
 })
