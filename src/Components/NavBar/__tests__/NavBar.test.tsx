@@ -12,8 +12,8 @@ jest.mock("Components/Search/SearchBar", () => {
 })
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({}),
+jest.mock("Utils/Hooks/useMatchMedia", () => ({
+  useMatchMedia: () => ({}),
 }))
 
 describe("NavBar", () => {

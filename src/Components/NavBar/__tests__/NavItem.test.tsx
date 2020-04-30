@@ -10,7 +10,7 @@ jest.mock("Artsy/Analytics/useTracking", () => {
   }
 })
 
-jest.mock("Utils/Hooks/useMedia")
+jest.mock("Utils/Hooks/useMatchMedia")
 
 describe("NavItem", () => {
   it("renders proper content", () => {
