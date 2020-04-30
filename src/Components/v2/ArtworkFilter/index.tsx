@@ -86,10 +86,6 @@ export const BaseArtworkFilter: React.FC<{
   const { filtered_artworks } = viewer
   const hasFilter = filtered_artworks && filtered_artworks.id
 
-  // If there was an error fetching the filter,
-  // we still want to render the rest of the page.
-  if (!hasFilter) return null
-
   const tracking = useTracking()
   const [isFetching, toggleFetching] = useState(false)
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
@@ -136,6 +132,10 @@ export const BaseArtworkFilter: React.FC<{
       }
     )
   }, [filterContext.filters])
+
+  // If there was an error fetching the filter,
+  // we still want to render the rest of the page.
+  if (!hasFilter) return null
 
   function fetchResults() {
     toggleFetching(true)

@@ -26,6 +26,8 @@ export function useMedia(): { [k in Breakpoint]?: boolean } {
     (acc, [key, value]) => {
       return {
         ...acc,
+        // TODO:
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         [key]: useMatchMedia(value),
       }
     },
@@ -58,12 +60,6 @@ export function useMatchMedia(
 ) {
   const [matches, setMatches] = useState(initialMatches)
 
-  // Exit if we're in a server-like environment
-  const isServer = typeof window === "undefined"
-  if (isServer) {
-    return matches
-  }
-
   useEffect(() => {
     const mediaQueryList = window.matchMedia(mediaQueryString)
     setMatches(mediaQueryList.matches)
@@ -75,6 +71,12 @@ export function useMatchMedia(
       mediaQueryList.removeListener(handleChange)
     }
   }, [mediaQueryString])
+
+  // Exit if we're in a server-like environment
+  const isServer = typeof window === "undefined"
+  if (isServer) {
+    return matches
+  }
 
   return matches
 }
