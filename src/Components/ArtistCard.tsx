@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
+import { AuthContextModule, Intent } from "@artsy/cohesion"
 import { ArtistCard_artist } from "__generated__/ArtistCard_artist.graphql"
 import { Mediator } from "Artsy"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
@@ -151,7 +151,7 @@ const handleOpenAuth = (props: ArtistCardProps) => {
   openAuthToFollowSave(props.mediator, {
     entity: props.artist,
     contextModule: props.contextModule,
-    intent: AuthIntent.followArtist,
+    intent: Intent.followArtist,
   })
 }
 

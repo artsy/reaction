@@ -6,7 +6,7 @@ import { FollowIcon } from "Components/FollowIcon"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { ArtworkSidebarArtists_artwork } from "__generated__/ArtworkSidebarArtists_artwork.graphql"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "Components/FollowButton/FollowArtistButton"
 import { openAuthToFollowSave } from "Utils/openAuthModal"
@@ -34,7 +34,7 @@ export class ArtworkSidebarArtists extends React.Component<ArtistsProps> {
     openAuthToFollowSave(mediator, {
       entity: artist,
       contextModule: ContextModule.artworkSidebar,
-      intent: AuthIntent.followArtist,
+      intent: Intent.followArtist,
     })
   }
 

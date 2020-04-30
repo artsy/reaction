@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -372,7 +372,7 @@ const renderPricing = (salePrice, saleDate, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Log in to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.seePriceAuctionRecords,
+              intent: Intent.seePriceAuctionRecords,
             })
         }}
       >
@@ -408,7 +408,7 @@ const renderEstimate = (estimatedPrice, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.seeEstimateAuctionRecords,
+              intent: Intent.seeEstimateAuctionRecords,
             })
         }}
       >
@@ -444,7 +444,7 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.seeRealizedPriceAuctionRecords,
+              intent: Intent.seeRealizedPriceAuctionRecords,
             })
         }}
       >

@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   Box,
   ChevronIcon,
@@ -242,7 +242,7 @@ export const MobileSubmenuLink: React.FC<any> = ({ children, menu }) => {
 const AuthenticateLinks: React.FC = () => {
   const authLink = (type: ModalType) => {
     return getMobileAuthLink(type, {
-      intent: AuthIntent[type],
+      intent: Intent[type],
       contextModule: ContextModule.header,
     })
   }

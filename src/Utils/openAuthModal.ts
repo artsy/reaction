@@ -1,4 +1,4 @@
-import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
+import { AuthContextModule, AuthIntent, Intent } from "@artsy/cohesion"
 import { Mediator } from "Artsy/SystemContext"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import qs from "qs"
@@ -24,15 +24,15 @@ export const openAuthToFollowSave = (
   let handled = false
 
   if (sd.IS_MOBILE) {
-    const intent = getMobileAuthIntent(options)
+    const intent = getMobileIntent(options)
     if (intent) {
       openMobileAuth(intent)
       handled = true
     }
   } else if (mediator) {
-    const intent = getDesktopAuthIntent(options)
+    const intent = getDesktopIntent(options)
     if (intent) {
-      mediator.trigger("open:auth", {
+      openAuthModal(mediator, {
         mode: ModalType.signup,
         ...intent,
       })
@@ -59,12 +59,12 @@ function openMobileAuth(intent) {
   window.location.assign(href)
 }
 
-function getMobileAuthIntent(options: AuthModalOptions): ModalOptions {
+function getMobileIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
-    case AuthIntent.followArtist:
-    case AuthIntent.followPartner:
+    case Intent.followArtist:
+    case Intent.followPartner:
       return getMobileIntentToFollow(options)
-    case AuthIntent.saveArtwork:
+    case Intent.saveArtwork:
       return getMobileIntentToSaveArtwork(options)
     default:
       return undefined
@@ -76,7 +76,7 @@ function getMobileIntentToFollow({
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === AuthIntent.followArtist ? "artist" : "profile"
+  const kind = intent === Intent.followArtist ? "artist" : "profile"
   return {
     action: "follow",
     contextModule,
@@ -107,7 +107,7 @@ function getDesktopIntentToFollow({
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === AuthIntent.followArtist ? "artist" : "profile"
+  const kind = intent === Intent.followArtist ? "artist" : "profile"
   return {
     mode: ModalType.signup,
     contextModule,
@@ -139,12 +139,12 @@ function getDesktopIntentToSaveArtwork({
   }
 }
 
-function getDesktopAuthIntent(options: AuthModalOptions): ModalOptions {
+function getDesktopIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
-    case AuthIntent.followArtist:
-    case AuthIntent.followPartner:
+    case Intent.followArtist:
+    case Intent.followPartner:
       return getDesktopIntentToFollow(options)
-    case AuthIntent.saveArtwork:
+    case Intent.saveArtwork:
       return getDesktopIntentToSaveArtwork(options)
     default:
       return undefined

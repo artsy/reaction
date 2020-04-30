@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { Link } from "@artsy/palette"
 import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
@@ -29,7 +29,7 @@ describe("FormSwitcher", () => {
           contextModule: ContextModule.header,
           copy: "Foo Bar",
           destination: "/collect",
-          intent: AuthIntent.followArtist,
+          intent: Intent.followArtist,
           redirectTo: "/foo",
           triggerSeconds: 1,
         }}

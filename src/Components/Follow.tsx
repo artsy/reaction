@@ -6,7 +6,12 @@
  * and two specialised components that use composition to achieve the desired functionality.
  */
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import {
+  Intent,
+  ContextModule,
+  AuthContextModule,
+  AuthIntent,
+} from "@artsy/cohesion"
 import { Follow_artist } from "__generated__/Follow_artist.graphql"
 import { FollowArtistMutation } from "__generated__/FollowArtistMutation.graphql"
 import * as Artsy from "Artsy"
@@ -31,7 +36,7 @@ interface Props
   style?: any
   relay: RelayProp
   artist: Follow_artist
-  contextModule: ContextModule
+  contextModule: AuthContextModule
 }
 
 export const StyledFollowButton = styled.div`
@@ -97,9 +102,12 @@ export class FollowButton extends React.Component<Props, null> {
         },
       })
     } else {
-      const options = {
+      const options: {
+        contextModule: AuthContextModule
+        intent: AuthIntent
+      } = {
         contextModule: contextModule || ContextModule.relatedArtistsRail,
-        intent: AuthIntent.followArtist,
+        intent: Intent.followArtist,
       }
 
       if (mediator) {

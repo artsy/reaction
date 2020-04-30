@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { Box, ButtonProps } from "@artsy/palette"
 import { FollowArtistButtonMutation } from "__generated__/FollowArtistButtonMutation.graphql"
 import * as Artsy from "Artsy"
@@ -86,7 +86,7 @@ export class FollowArtistButton extends React.Component<Props, State> {
     } else if (onOpenAuthModal) {
       onOpenAuthModal(ModalType.signup, {
         contextModule: ContextModule.intextTooltip,
-        intent: AuthIntent.followArtist,
+        intent: Intent.followArtist,
         copy: "Sign up to follow artists",
         afterSignUpAction: {
           action: "follow",

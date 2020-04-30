@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { breakpoints, EntityHeader, ReadMore } from "@artsy/palette"
 import {
   Box,
@@ -40,7 +40,7 @@ const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
     contextModule: ContextModule.featuredArtistsRail,
-    intent: AuthIntent.followArtist,
+    intent: Intent.followArtist,
   })
 }
 

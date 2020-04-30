@@ -4,7 +4,7 @@ import React, { Component, Fragment } from "react"
 import styled from "styled-components"
 import Button from "../Buttons/Default"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   Footer,
   TermsOfServiceCheckbox,
@@ -74,7 +74,7 @@ storiesOf("Components/Authentication/Mobile", module)
         isMobile
         options={{
           contextModule: ContextModule.header,
-          intent: AuthIntent.login,
+          intent: Intent.login,
         }}
       />
     </MobileContainer>
@@ -87,7 +87,7 @@ storiesOf("Components/Authentication/Mobile", module)
         isMobile
         options={{
           contextModule: ContextModule.header,
-          intent: AuthIntent.forgot,
+          intent: Intent.forgot,
         }}
       />
     </MobileContainer>
@@ -100,7 +100,7 @@ storiesOf("Components/Authentication/Mobile", module)
         isMobile
         options={{
           contextModule: ContextModule.header,
-          intent: AuthIntent.signup,
+          intent: Intent.signup,
         }}
       />
     </MobileContainer>
