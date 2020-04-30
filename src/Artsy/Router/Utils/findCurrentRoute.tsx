@@ -1,16 +1,19 @@
 import { Match, RouteConfig } from "found"
 
 export const findCurrentRoute = ({
-  route,
+  route: baseRoute,
   routes,
   routeIndices,
 }: Match & { route?: RouteConfig }) => {
-  if (route) {
-    return route
+  if (!routeIndices || routeIndices.length === 0) {
+    return baseRoute
   }
-  let currentRoute = routes[routeIndices[0]]
-  routeIndices.slice(1).forEach(routeIndex => {
-    currentRoute = currentRoute.children[routeIndex]
-  })
-  return currentRoute
+  let remainingRouteIndicies = [...routeIndices]
+  let route: RouteConfig = routes[remainingRouteIndicies.shift()]
+
+  while (remainingRouteIndicies.length > 0) {
+    route = route.children[remainingRouteIndicies.shift()]
+  }
+
+  return route
 }
