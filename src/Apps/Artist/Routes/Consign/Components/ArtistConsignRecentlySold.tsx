@@ -28,15 +28,16 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
 
           <Spacer my={4} />
 
-          <Flex
-            justifyContent={["center", "center"]}
-            flexWrap="wrap"
-            alignItems="center"
-          >
+          <Flex justifyContent={["center", "center"]} flexWrap="wrap">
             {artist.targetSupply.microfunnel.artworks.map(
               ({ artwork, realizedPrice }, key) => {
                 return (
-                  <Box p={2} key={key} textAlign="left">
+                  <Flex
+                    p={2}
+                    key={key}
+                    flexDirection="column"
+                    style={{ textAlign: "left" }}
+                  >
                     <FillwidthItem
                       artwork={artwork}
                       targetHeight={150}
@@ -45,10 +46,12 @@ export const ArtistConsignRecentlySold: React.FC<ArtistConsignRecentlySoldProps>
                       width={150 * artwork.image.aspectRatio}
                       contextModule={ContextModule.artistRecentlySold}
                     />
-                    <Sans size="2" weight="medium">
-                      Sold for {realizedPrice}
-                    </Sans>
-                  </Box>
+                    {realizedPrice && (
+                      <Sans size="2" weight="medium">
+                        Sold for {realizedPrice}
+                      </Sans>
+                    )}
+                  </Flex>
                 )
               }
             )}

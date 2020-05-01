@@ -138,7 +138,7 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignPageViews", () => {
-    it("includes artist name in pageviews title", async () => {
+    it("includes artist name in pageview title", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignPageViews").text()).toContain(
         "Alex Katz"
