@@ -20,6 +20,25 @@ const submit: SubmitHandler = (values, actions) => {
   }, 1000)
 }
 
+const submitWithOtpRequired: SubmitHandler = (values, actions) => {
+  setTimeout(() => {
+    if (values.otp_attempt === "123456") {
+      alert(JSON.stringify(values, null, 1))
+    } else if (values.otp_attempt) {
+      actions.setStatus({
+        success: false,
+        error: "invalid two-factor authentication code",
+      })
+    } else {
+      actions.setStatus({
+        success: false,
+        error: "missing two-factor authentication code",
+      })
+    }
+    actions.setSubmitting(false)
+  }, 1000)
+}
+
 const boundedSubmit = (type, options, values, actions) => {
   setTimeout(() => {
     alert(JSON.stringify(values, null, 1))
@@ -65,7 +84,7 @@ storiesOf("Components/Authentication/Desktop", module)
   ))
   .add("Sign Up", () => <ModalContainer options={{ mode: ModalType.signup }} />)
 
-const MobileLoginTwoFactorAuthDemo: React.FC = () => {
+const MobileLoginTwoFactorErrorPropAuthDemo: React.FC = () => {
   const [serverError, setServerError] = useState(null)
 
   const handleSubmit: SubmitHandler = (values, actions) => {
@@ -109,9 +128,22 @@ storiesOf("Components/Authentication/Mobile", module)
       />
     </MobileContainer>
   ))
-  .add("Login (2FA)", () => (
+  .add("Login (2FA with error prop)", () => (
     <MobileContainer>
-      <MobileLoginTwoFactorAuthDemo />
+      <FormSwitcher
+        type={ModalType.login}
+        handleSubmit={submitWithOtpRequired}
+        isMobile
+        options={{
+          contextModule: ContextModule.header,
+          intent: Intent.login,
+        }}
+      />
+    </MobileContainer>
+  ))
+  .add("Login (2FA with form status)", () => (
+    <MobileContainer>
+      <MobileLoginTwoFactorErrorPropAuthDemo />
     </MobileContainer>
   ))
   .add("Forgot Password", () => (

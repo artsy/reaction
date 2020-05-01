@@ -32,9 +32,7 @@ interface LoginFormState {
 }
 
 class MobileLoginFormWithSystemContext extends Component<
-  FormProps & {
-    relayEnvironment: Environment
-  },
+  FormProps & { relayEnvironment: Environment },
   LoginFormState
 > {
   static getDerivedStateFromProps(nextProps, prevState): LoginFormState | null {
@@ -59,7 +57,7 @@ class MobileLoginFormWithSystemContext extends Component<
     return null
   }
 
-  static buildOtpStep = () => {
+  static buildOtpStep = (): StepElement => {
     return (
       <Step validationSchema={MobileLoginValidator.otpAttempt}>
         {({
@@ -112,7 +110,7 @@ class MobileLoginFormWithSystemContext extends Component<
     this.props.handleSubmit(values, formikBag)
   }
 
-  buildBaseSteps = () => {
+  buildBaseSteps = (): StepElement[] => {
     return [
       <Step
         validationSchema={MobileLoginValidator.email}
@@ -186,14 +184,42 @@ class MobileLoginFormWithSystemContext extends Component<
         {context => {
           const {
             wizard,
-            form: { handleSubmit, actions, values, status, isSubmitting },
+            form: {
+              handleSubmit,
+              actions,
+              values,
+              status,
+              setStatus,
+              isSubmitting,
+            },
           } = context
 
           const { currentStep, isLastStep, next } = wizard
 
+          if (
+            status &&
+            !status.success &&
+            status.error === "missing two-factor authentication code"
+          ) {
+            this.setState(
+              {
+                steps: steps.concat([
+                  MobileLoginFormWithSystemContext.buildOtpStep(),
+                ]),
+                hideBackButton: true,
+              },
+              () => {
+                setStatus(null)
+
+                next(values, actions)
+              }
+            )
+          }
+
           if (advanceWizardStep) {
-            next(values, actions)
-            this.setState({ advanceWizardStep: false })
+            this.setState({ advanceWizardStep: false }, () => {
+              next(values, actions)
+            })
           }
 
           return (
