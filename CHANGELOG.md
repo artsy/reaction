@@ -1,3 +1,27 @@
+# v26.30.4 (Fri May 01 2020)
+
+#### 🐛  Bug Fix
+
+- [mWeb] Show OTP prompt during login when 2FA-enabled [#3472](https://github.com/artsy/reaction/pull/3472) ([@dblandin](https://github.com/dblandin))
+- [Chore] Turns on exhaustive-deps [#3473](https://github.com/artsy/reaction/pull/3473) ([@dzucconi](https://github.com/dzucconi))
+
+#### ⚠️  Pushed to `master`
+
+- Fix @artsy/cohesion Intent.login reference ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3468](https://github.com/artsy/reaction/pull/3468) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.30.3 (Thu Apr 30 2020)
 
 #### 🐛  Bug Fix
