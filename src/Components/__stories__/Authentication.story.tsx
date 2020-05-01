@@ -89,7 +89,7 @@ const MobileLoginTwoFactorAuthDemo: React.FC = () => {
       isMobile
       options={{
         contextModule: ContextModule.header,
-        intent: AuthIntent.login,
+        intent: Intent.login,
       }}
     />
   )
