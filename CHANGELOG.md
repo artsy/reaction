@@ -1,3 +1,15 @@
+# v26.30.5 (Fri May 01 2020)
+
+#### 🐛  Bug Fix
+
+- Support OTP prompt on mobile login modal via Formik setStatus [#3476](https://github.com/artsy/reaction/pull/3476) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.30.4 (Fri May 01 2020)
 
 #### 🐛  Bug Fix
