@@ -1,3 +1,15 @@
+# v26.30.6 (Sat May 02 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Hide recently sold data point if missing [#3477](https://github.com/artsy/reaction/pull/3477) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.30.5 (Fri May 01 2020)
 
 #### 🐛  Bug Fix
