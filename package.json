@@ -23,7 +23,7 @@
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "find-unused-fields": "ts-node scripts/find-unused-fields",
     "integrate": "./scripts/quicklink-to-project.sh",
-    "lint": "eslint src --cache  --ext ts,tsx --ignore-pattern 'src/__generated__'",
+    "lint": "eslint --cache  --ext ts,tsx --ignore-pattern 'src/__generated__'",
     "omg": "om g",
     "prepare": "patch-package",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
