@@ -14,20 +14,22 @@ const StyledFlex = styled(Flex)`
   background: white;
 `
 
-const FullWidthFlex = styled(Flex)<{ height: string }>`
+const FullWidthFlex = styled(Flex)<{ height?: string }>`
   div {
     width: 100%;
     height: ${({ height }) => height};
+    min-height: 40px;
   }
 `
 
-const StyledTextArea = styled(TextArea)<{ height: string }>`
+const StyledTextArea = styled.textarea<{ height?: string }>`
   border: none;
   width: 100%;
   height: ${({ height }) => height};
   max-height: calc(60vh - 145px);
   resize: none;
-
+  min-height: 40px;
+  font-size: 16px;
   ${media.xs`
     max-height: calc(60vh - 115px)
   `};
@@ -45,19 +47,44 @@ export const Reply: React.FC<ReplyProps> = props => {
   const textArea = useRef()
   const textAreaDisabled =
     textArea.current === undefined || textArea.current.state.value === ""
-  const textAreaHeight =
-    textArea.current === undefined || textArea.current.state.value.length < 100
-      ? "40px"
-      : "auto"
+  // const textAreaHeight =
+  //   textArea.current === undefined || !textArea.current.state.value.length
+  //     ? "40px"
+  //     : "auto"
+
+  // if (textArea.current !== undefined) {
+  //   console.log("JGYGHJhgjhjg", textArea.current.state.value.length)
+  // }
   /* const height = large ? calc(60vh - 145px) : calc(60vh - 115px) */
   return (
     <StyledFlex p={1}>
-      <FullWidthFlex height={textAreaHeight} width="100%">
+      <FullWidthFlex width="100%">
         <StyledTextArea
+          onInput={event => {
+            // Reset field height
+            const field = event.target as HTMLTextAreaElement
+            field.style.height = "inherit"
+
+            // Get the computed styles for the element
+            const computed = window.getComputedStyle(field)
+
+            // Calculate the height
+            const height = field.scrollHeight
+            // parseInt(computed.getPropertyValue("border-top-width"), 10) +
+            // parseInt(computed.getPropertyValue("padding-top"), 10) +
+            // field.scrollHeight +
+            // parseInt(computed.getPropertyValue("padding-bottom"), 10) +
+            // parseInt(computed.getPropertyValue("border-bottom-width"), 10)
+
+            console.log("COMPUTED height", height)
+
+            field.style.height = height + "px"
+          }}
           placeholder="Type your message"
-          height={textAreaHeight}
           ref={textArea}
-          onChange={event => setBodyText(event.value)}
+          onChange={event => {
+            // setBodyText(event.value)
+          }}
         />
       </FullWidthFlex>
       <Flex alignItems="flex-end">
