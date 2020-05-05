@@ -36,6 +36,8 @@ export const fitHeaderArtworks = (
         return headerArtworks
       }
 
+      if (!artwork.node.image) continue
+
       isSmallViewport
         ? (artworkWidths += artwork.node.image.small.width + space(1))
         : (artworkWidths += artwork.node.image.large.width + space(1))

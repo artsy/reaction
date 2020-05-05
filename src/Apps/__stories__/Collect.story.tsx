@@ -32,6 +32,9 @@ storiesOf("Apps/Collect/Collection", module)
   })
   .add("Collection with Hub rails", () => {
     return (
-      <MockRouter routes={collectRoutes} initialRoute="/collection/post-war" />
+      <MockRouter
+        routes={collectRoutes}
+        initialRoute="/collection/german-artists"
+      />
     )
   })
