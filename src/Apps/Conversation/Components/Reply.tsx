@@ -31,7 +31,7 @@ const StyledTextArea = styled.textarea<{ height?: string }>`
   min-height: 40px;
   font-size: 16px;
   ${media.xs`
-    max-height: calc(60vh - 115px)
+    max-height: calc(60vh - 115px);
   `};
 `
 const StyledButton = styled(Button)``
@@ -44,16 +44,19 @@ interface ReplyProps {
 export const Reply: React.FC<ReplyProps> = props => {
   const { environment, conversation } = props
   const [bodyText, setBodyText] = useState("")
+  const [buttonDisabled, setButtonDisabled] = useState(true)
   const textArea = useRef()
-  const textAreaDisabled =
-    textArea.current === undefined || textArea.current.state.value === ""
+  // const textAreaDisabled =
+  //   textArea.current === undefined || textArea.current.state.value === ""
   // const textAreaHeight =
   //   textArea.current === undefined || !textArea.current.state.value.length
   //     ? "40px"
   //     : "auto"
+  // let textAreaDisabled = true
 
+  // console.log("JGYGHJhgjhjg", textArea)
   // if (textArea.current !== undefined) {
-  //   console.log("JGYGHJhgjhjg", textArea.current.state.value.length)
+  //   console.log("JGYGHJhgjhjg", textArea.current)
   // }
   /* const height = large ? calc(60vh - 145px) : calc(60vh - 115px) */
   return (
@@ -64,6 +67,14 @@ export const Reply: React.FC<ReplyProps> = props => {
             // Reset field height
             const field = event.target as HTMLTextAreaElement
             field.style.height = "inherit"
+            if (buttonDisabled && field.value.length > 2) {
+              setButtonDisabled(false)
+            }
+            if (!buttonDisabled && field.value.length <= 2) {
+              setButtonDisabled(true)
+            }
+
+            // console.log("wooooo", textAreaDisabled)
 
             // Get the computed styles for the element
             const computed = window.getComputedStyle(field)
@@ -83,13 +94,13 @@ export const Reply: React.FC<ReplyProps> = props => {
           placeholder="Type your message"
           ref={textArea}
           onChange={event => {
-            // setBodyText(event.value)
+            setBodyText(event.target.value)
           }}
         />
       </FullWidthFlex>
       <Flex alignItems="flex-end">
         <StyledButton
-          disabled={textAreaDisabled}
+          disabled={buttonDisabled}
           onClick={_event =>
             SendConversationMessage(
               environment,
