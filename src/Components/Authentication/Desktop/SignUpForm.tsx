@@ -39,7 +39,7 @@ export class SignUpForm extends Component<FormProps, SignUpFormState> {
   render() {
     return (
       <Formik
-        initialValues={this.props.values}
+        initialValues={this.props.values || {}}
         onSubmit={this.onSubmit}
         validationSchema={SignUpValidator}
       >

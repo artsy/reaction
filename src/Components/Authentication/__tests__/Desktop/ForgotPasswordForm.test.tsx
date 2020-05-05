@@ -1,5 +1,5 @@
 import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
-import { mount, shallow } from "enzyme"
+import { mount } from "enzyme"
 import React from "react"
 
 jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
@@ -22,9 +22,9 @@ describe("ForgotPasswordForm", () => {
 
   describe("onSubmit", () => {
     it("calls handleSubmit with expected params", done => {
-      const wrapper = shallow(<ForgotPasswordForm {...props} />)
-      const formik = wrapper.dive().instance() as any
-      formik.submitForm()
+      const wrapper = getWrapper()
+      const input = wrapper.find(`Formik`)
+      input.simulate("submit")
       wrapper.update()
 
       setTimeout(() => {
@@ -32,7 +32,7 @@ describe("ForgotPasswordForm", () => {
           {
             email: "foo@bar.com",
           },
-          formik.getFormikActions()
+          expect.anything()
         )
         done()
       })

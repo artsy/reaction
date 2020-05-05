@@ -35,7 +35,7 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
   render() {
     return (
       <Formik
-        initialValues={this.props.values}
+        initialValues={this.props.values || {}}
         onSubmit={this.onSubmit}
         validationSchema={LoginValidator}
       >
