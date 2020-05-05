@@ -47,7 +47,7 @@ describe("ArtworkFilterMobileActionSheet", () => {
     ).toEqual("Apply")
   })
 
-  it("resets filters to defaults on `Reset` button click", () => {
+  it("resets filters to defaults on `Reset` button click", done => {
     const wrapper = getWrapper({
       filters: {
         ...initialArtworkFilterState,
@@ -60,7 +60,11 @@ describe("ArtworkFilterMobileActionSheet", () => {
       .simulate("click")
 
     setTimeout(() => {
-      expect(context.filters).toEqual(initialArtworkFilterState)
+      expect(context.filters).toEqual({
+        ...initialArtworkFilterState,
+        reset: true,
+      })
+      done()
     })
   })
 

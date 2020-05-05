@@ -80,7 +80,7 @@ describe("CollectionsRail", () => {
       })
     })
 
-    it("Tracks carousel navigation", () => {
+    it("Tracks carousel navigation", done => {
       const collectionsCopy = clone(props.collections)
       collectionsCopy.push({
         slug: "jasper-johns-flags2",
@@ -151,6 +151,7 @@ describe("CollectionsRail", () => {
           subject: "clicked next button",
           type: "Button",
         })
+        done()
       })
     })
   })

@@ -13,6 +13,7 @@ import {
   PricingContext,
   PricingContextFragmentContainer,
 } from "../PricingContext"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
 jest.unmock("react-tracking")
 jest.unmock("react-relay")
@@ -118,11 +119,12 @@ describe("PricingContext", () => {
       .find(QuestionCircleIcon)
       .at(0)
       .simulate("click")
-    setTimeout(() => {
-      expect(wrapper.text()).toContain(
-        "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
-      )
-    })
+
+    await flushPromiseQueue()
+
+    expect(wrapper.text()).toContain(
+      "This feature aims to provide insight into the range of prices for an artist's works and allow buyers to discover other available works by the artist at different price points."
+    )
   })
 
   it("displays $0 as the minimum price label if the minimum price is null", async () => {
