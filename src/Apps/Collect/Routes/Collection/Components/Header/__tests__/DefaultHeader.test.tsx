@@ -10,26 +10,20 @@ import React from "react"
 jest.mock("Artsy/Analytics/useTracking")
 
 describe("default collections header artworks", () => {
-  const hasDuplicateArtworks = (artworksRendered, allArtworks) => {
-    return artworksRendered.length !== allArtworks.length
-  }
-
   it("duplicates header artworks when the quantity of artworks in collection are small in a large viewport", () => {
     const artworks = defaultCollectionHeaderArtworks.edges.slice(0, 3)
     const headerArtworks = fitHeaderArtworks(artworks as any, 1275, false)
 
-    expect(hasDuplicateArtworks(headerArtworks, artworks)).toBeTruthy()
     expect(headerArtworks.length).toBeGreaterThan(artworks.length)
-    expect(headerArtworks).toHaveLength(7)
+    expect(headerArtworks).toHaveLength(10)
   })
 
   it("duplicates header artworks when the quantity of artworks in collection are small in a small viewport", () => {
     const artworks = defaultCollectionHeaderArtworks.edges.slice(0, 2)
     const headerArtworks = fitHeaderArtworks(artworks as any, 375, true)
 
-    expect(hasDuplicateArtworks(headerArtworks, artworks)).toBeTruthy()
     expect(headerArtworks.length).toBeGreaterThan(artworks.length)
-    expect(headerArtworks).toHaveLength(4)
+    expect(headerArtworks).toHaveLength(7)
   })
 
   it("returns only the number of artworks necessary to fill the header", () => {
@@ -37,7 +31,7 @@ describe("default collections header artworks", () => {
     const headerArtworks = fitHeaderArtworks(artworks as any, 675, false)
 
     expect(headerArtworks.length).toBeLessThan(artworks.length)
-    expect(headerArtworks).toHaveLength(4)
+    expect(headerArtworks).toHaveLength(5)
   })
 })
 
@@ -69,9 +63,7 @@ describe("default header component", () => {
         .find("a")
         .at(0)
         .props().href
-    ).toEqual(
-      "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children"
-    )
+    ).toEqual("/artwork/carrie-mae-weems-untitled-woman-feeding-bird")
   })
 
   describe("Tracking", () => {
@@ -89,7 +81,7 @@ describe("default header component", () => {
         context_module: "ArtworkBanner",
         context_page_owner_type: "Collection",
         destination_path:
-          "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children",
+          "/artwork/carrie-mae-weems-untitled-woman-feeding-bird",
         context_page_owner_id: undefined,
         context_page_owner_slug: undefined,
       })

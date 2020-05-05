@@ -30,6 +30,8 @@ export const DefaultHeaderArtwork: React.FC<DefaultHeaderArtworkProps> = ({
 }) => {
   const { trackEvent } = useTracking()
 
+  if (!artwork.node.image) return null
+
   const handleClick = () => {
     trackEvent({
       action_type: AnalyticsSchema.ActionType.Click,

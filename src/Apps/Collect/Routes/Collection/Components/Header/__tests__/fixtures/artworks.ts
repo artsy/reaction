@@ -75,19 +75,7 @@ export const defaultCollectionHeaderArtworks: {
         href:
           "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children",
         slug: "carrie-mae-weems-untitled-woman-and-daughter-with-children",
-        image: {
-          small: {
-            url: "https://resized-small.cloudfront.net",
-
-            width: 160,
-            height: 160,
-          },
-          large: {
-            url: "https://resized-large.cloudfront.net",
-            width: 220,
-            height: 220,
-          },
-        },
+        image: null, // intentionally null
       },
     },
     {
