@@ -1,3 +1,15 @@
+# v26.30.8 (Tue May 05 2020)
+
+#### 🐛  Bug Fix
+
+- Fixes for nullable artwork images [#3478](https://github.com/artsy/reaction/pull/3478) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.30.7 (Sat May 02 2020)
 
 #### 🐛  Bug Fix
