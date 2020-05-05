@@ -45,7 +45,7 @@
     "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'"
   },
   "resolutions": {
-    "@types/react": "16.8.7",
+    "@types/react": "16.9.34",
     "babel-core": "^7.0.0-bridge.0",
     "chokidar": "^3.0.2"
   },
@@ -88,7 +88,7 @@
     "@types/prop-types": "15.7.1",
     "@types/qrcode.react": "1.0.0",
     "@types/qs": "6.5.3",
-    "@types/react": "16.8.7",
+    "@types/react": "16.9.34",
     "@types/react-dom": "16.8.4",
     "@types/react-overlays": "0.8.4",
     "@types/react-relay": "7.0.2",
