@@ -7,6 +7,7 @@ import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 import { ChangeEvents } from "../fixtures"
+import { flushPromiseQueue } from "Utils/flushPromiseQueue"
 
 jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
@@ -52,11 +53,30 @@ describe("MobileLoginForm", () => {
     })
   })
 
-  xit("renders password error", () => {
+  it("renders password error", async () => {
+    ;(props.handleSubmit as jest.Mock).mockImplementation((values, actions) => {
+      actions.setStatus({ error: "some password error" })
+    })
+
     const wrapper = getWrapper()
-    const formik: any = wrapper.find("Formik").instance()
-    formik.setStatus({ error: "some password error" })
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    inputEmail.onChange(ChangeEvents.email)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
     wrapper.update()
+
+    const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+    inputPass.onChange(ChangeEvents.password)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
+    wrapper.update()
+
+    expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+      email: "email@email.com",
+      password: "password",
+    })
     expect(wrapper.html()).toMatch("some password error")
   })
 
