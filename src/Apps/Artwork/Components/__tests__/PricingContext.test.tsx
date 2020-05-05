@@ -13,7 +13,7 @@ import {
   PricingContext,
   PricingContextFragmentContainer,
 } from "../PricingContext"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import { flushPromiseQueue } from "DevTools"
 
 jest.unmock("react-tracking")
 jest.unmock("react-relay")

@@ -6,7 +6,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { graphql } from "react-relay"
 import { Environment, RecordSource, Store } from "relay-runtime"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import { flushPromiseQueue } from "DevTools"
 import { CommitMutation, injectCommitMutation } from "../commitMutation"
 jest.unmock("react-relay")
 

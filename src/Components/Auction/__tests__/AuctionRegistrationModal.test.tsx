@@ -3,7 +3,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { act } from "react-dom/test-utils"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import { flushPromiseQueue } from "DevTools"
 import { AuctionRegistrationModal } from "../AuctionRegistrationModal"
 
 const submitMock = jest.fn()
