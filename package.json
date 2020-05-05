@@ -185,7 +185,7 @@
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
     "farce": "^0.2.6",
-    "formik": "^1.5.8",
+    "formik": "^2.1.4",
     "found": "^0.4.9",
     "found-relay": "^0.5",
     "found-scroll": "^0.1.5",

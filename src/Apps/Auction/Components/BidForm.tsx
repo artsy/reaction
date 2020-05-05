@@ -7,7 +7,12 @@ import {
   Separator,
   Serif,
 } from "@artsy/palette"
-import { Form, Formik, FormikActions, FormikValues } from "formik"
+import {
+  Form,
+  Formik,
+  FormikHelpers as FormikActions,
+  FormikValues,
+} from "formik"
 import { dropWhile, find } from "lodash"
 import React from "react"
 import { createFragmentContainer, graphql, RelayProp } from "react-relay"
@@ -159,7 +164,8 @@ export const BidForm: React.FC<Props> = ({
         }}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        render={({
+      >
+        {({
           values,
           touched,
           errors,
@@ -297,7 +303,7 @@ export const BidForm: React.FC<Props> = ({
             </Form>
           )
         }}
-      />
+      </Formik>
     </Box>
   )
 }

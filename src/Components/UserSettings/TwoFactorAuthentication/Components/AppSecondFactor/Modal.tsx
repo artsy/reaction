@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Input, Modal, Sans } from "@artsy/palette"
 import { CreateAppSecondFactorMutationResponse } from "__generated__/CreateAppSecondFactorMutation.graphql"
 import { useSystemContext } from "Artsy"
-import { Formik, FormikActions, FormikProps } from "formik"
+import { Formik, FormikHelpers as FormikActions, FormikProps } from "formik"
 import QRCode from "qrcode.react"
 import React, { useState } from "react"
 import * as Yup from "yup"
@@ -99,10 +99,12 @@ export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props =
         validationSchema={validationSchema}
         initialValues={{ name: secondFactor.name || "", code: "" }}
         onSubmit={handleSubmit}
-        render={(formikProps: FormikProps<FormValues>) => (
+      >
+        {(formikProps: FormikProps<FormValues>) => (
           <InnerForm secondFactor={secondFactor} {...formikProps} />
         )}
-      />
+      </Formik>
+      >
     </Modal>
   )
 }

@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Input, Modal, Sans, Spacer } from "@artsy/palette"
-import { FormikActions } from "formik"
+import { FormikHelpers as FormikActions } from "formik"
 import React from "react"
 import styled from "styled-components"
 
