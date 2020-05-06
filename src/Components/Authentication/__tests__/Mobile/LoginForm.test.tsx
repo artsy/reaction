@@ -7,7 +7,7 @@ import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 import { ChangeEvents } from "../fixtures"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import { flushPromiseQueue } from "DevTools"
 
 jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
