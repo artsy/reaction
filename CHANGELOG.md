@@ -1,3 +1,31 @@
+# v26.31.1 (Wed May 06 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3483](https://github.com/artsy/reaction/pull/3483) ([@artsyit](https://github.com/artsyit))
+- Fix Formik boolean handling [#3481](https://github.com/artsy/reaction/pull/3481) ([@dblandin](https://github.com/dblandin))
+
+#### ⚠️  Pushed to `master`
+
+- empty commit to trigger build ([@ds300](https://github.com/ds300))
+
+#### 🏠  Internal
+
+- Move storybook behind queue [#3485](https://github.com/artsy/reaction/pull/3485) ([@zephraph](https://github.com/zephraph))
+- Deploys Storybook to S3 [#3484](https://github.com/artsy/reaction/pull/3484) ([@dzucconi](https://github.com/dzucconi))
+- Fixes paths to flushPromiseQueue [#3482](https://github.com/artsy/reaction/pull/3482) ([@dzucconi](https://github.com/dzucconi))
+- Fixes swallowed assertions in async tests [#3479](https://github.com/artsy/reaction/pull/3479) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 5
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.31.0 (Wed May 06 2020)
 
 #### 🚀  Enhancement
