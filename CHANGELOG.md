@@ -1,3 +1,16 @@
+# v26.31.0 (Wed May 06 2020)
+
+#### 🚀  Enhancement
+
+- Re-enable `renders password error` specs with simulated form submission [#3480](https://github.com/artsy/reaction/pull/3480) ([@dblandin](https://github.com/dblandin))
+- [dep] Upgrade formik to v2.1.4 [#3480](https://github.com/artsy/reaction/pull/3480) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.30.8 (Tue May 05 2020)
 
 #### 🐛  Bug Fix
