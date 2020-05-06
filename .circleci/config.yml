@@ -79,6 +79,7 @@ workflows:
       - upload-storybook:
           context: static-sites-uploader
           requires:
+            - yarn/workflow-queue
             - build-storybook
           pre-steps:
             - attach_workspace:
