@@ -1,3 +1,15 @@
+# v26.31.5 (Wed May 06 2020)
+
+#### 🐛  Bug Fix
+
+- Fix auction results layout on mobile [#3486](https://github.com/artsy/reaction/pull/3486) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 1
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.31.1 (Wed May 06 2020)
 
 #### 🐛  Bug Fix
