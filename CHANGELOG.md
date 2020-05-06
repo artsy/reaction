@@ -1,3 +1,18 @@
+# v26.31.6 (Wed May 06 2020)
+
+#### 🐛  Bug Fix
+
+- Downgrade storybooks [#3487](https://github.com/artsy/reaction/pull/3487) ([@damassi](https://github.com/damassi))
+- Bump acorn from 5.7.3 to 5.7.4 [#3347](https://github.com/artsy/reaction/pull/3347) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump serialize-javascript from 1.5.0 to 2.1.1 [#3045](https://github.com/artsy/reaction/pull/3045) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.31.5 (Wed May 06 2020)
 
 #### 🐛  Bug Fix
