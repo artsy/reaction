@@ -76,6 +76,7 @@ export const ArtistSeriesRailContainer = createFragmentContainer(
         groupType
         name
         members {
+          slug
           ...ArtistSeriesEntity_member
         }
       }

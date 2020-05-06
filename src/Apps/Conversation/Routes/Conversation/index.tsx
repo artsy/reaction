@@ -1,9 +1,11 @@
-import { BorderBox, Flex, Title } from "@artsy/palette"
+import { Title } from "@artsy/palette"
 import { Conversation_me } from "__generated__/Conversation_me.graphql"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { ConversationFragmentContainer as Conversation } from "Apps/Conversation/Components/Conversation"
 import { SystemContext } from "Artsy"
+import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { ErrorPage } from "Components/ErrorPage"
+import { Match } from "found"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { userHasLabFeature } from "Utils/user"
@@ -11,6 +13,7 @@ import { userHasLabFeature } from "Utils/user"
 interface ConversationRouteProps {
   me: Conversation_me
   conversationID: string
+  match: Match
 }
 
 export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
@@ -18,14 +21,16 @@ export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
   const { user } = useContext(SystemContext)
   const isEnabled = userHasLabFeature(user, "User Conversations View")
   if (isEnabled) {
+    const route = findCurrentRoute(props.match)
+    let maxWidth
+
+    if (route.displayFullPage) {
+      maxWidth = "100%"
+    }
     return (
-      <AppContainer>
-        <Title>My Inquiries | Artsy</Title>
-        <BorderBox>
-          <Flex flexDirection="column">
-            <Conversation conversation={me.conversation} />
-          </Flex>
-        </BorderBox>
+      <AppContainer maxWidth={maxWidth}>
+        <Title>Inbox | Artsy</Title>
+        <Conversation conversation={me.conversation} />
       </AppContainer>
     )
   } else {

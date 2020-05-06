@@ -15,7 +15,7 @@ import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import Events from "Utils/Events"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   Box,
   EntityHeader,
@@ -57,7 +57,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
     openAuthToFollowSave(mediator, {
       entity: partner,
       contextModule: ContextModule.aboutTheWork,
-      intent: AuthIntent.followPartner,
+      intent: Intent.followPartner,
     })
   }
 
@@ -132,6 +132,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
                               size="2"
                               weight="medium"
                               color="black"
+                              data-test="followButton"
                               style={{
                                 cursor: "pointer",
                                 textDecoration: "underline",

@@ -1,15 +1,15 @@
 import { Grid, injectGlobalStyles, Theme, themeProps } from "@artsy/palette"
 import * as Sentry from "@sentry/browser"
-import * as Artsy from "Artsy"
-import { track } from "Artsy/Analytics"
+import { SystemContextProvider, track } from "Artsy"
 import { RouteConfig } from "found"
-import React from "react"
+import React, { useEffect } from "react"
 import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { data as sd } from "sharify"
 import { Provider as StateProvider } from "unstated"
 import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
+import { getENV } from "Utils/getENV"
 import { ErrorBoundary } from "./ErrorBoundary"
 
 import {
@@ -19,74 +19,69 @@ import {
 } from "Utils/Responsive"
 
 export interface BootProps {
+  children: React.ReactNode
   context: object
-  user: User
+  headTags?: JSX.Element[]
   onlyMatchMediaQueries?: MatchingMediaQueries
   relayEnvironment: Environment
   routes: RouteConfig
-  headTags?: JSX.Element[]
+  user: User
 }
 
-// FIXME: When we update to latest @types/styled-components `suppressMultiMountWarning`
-// issue will be fixed
-const { GlobalStyles } = injectGlobalStyles<{
-  suppressMultiMountWarning: boolean
-}>()
+const { GlobalStyles } = injectGlobalStyles()
 
-@track(null, {
-  dispatch: data => {
-    Events.postEvent(data)
-  },
-})
-export class Boot extends React.Component<BootProps> {
-  componentDidMount() {
-    const env = sd.NODE_ENV || (process.env && process.env.NODE_ENV)
-    if (env === "production") {
+export const Boot = track(null, {
+  dispatch: Events.postEvent,
+})((props: BootProps) => {
+  /**
+   * Let our end-to-end tests know that the app is hydrated and ready to go; and
+   * if in prod, initialize Sentry.
+   */
+  useEffect(() => {
+    document.body.setAttribute("data-test", "AppReady") //
+
+    if (getENV("NODE_ENV") === "production") {
       Sentry.init({ dsn: sd.SENTRY_PUBLIC_DSN })
     }
+  }, [])
 
-    // Let our end-to-end tests know that the app is hydrated and ready to go
-    document.body.setAttribute("data-test", "AppReady")
+  const {
+    children,
+    context,
+    headTags = [],
+    onlyMatchMediaQueries,
+    ...rest
+  } = props
+
+  const contextProps = {
+    ...rest,
+    ...context,
   }
 
-  render() {
-    const { children, context, headTags = [], ...props } = this.props
-    const contextProps = {
-      ...props,
-      ...context,
-    }
-
-    return (
-      <Theme>
-        <HeadProvider headTags={headTags}>
-          <StateProvider>
-            <Artsy.SystemContextProvider {...contextProps}>
-              <ErrorBoundary>
-                <MediaContextProvider onlyMatch={props.onlyMatchMediaQueries}>
-                  <ResponsiveProvider
-                    mediaQueries={themeProps.mediaQueries}
-                    initialMatchingMediaQueries={
-                      props.onlyMatchMediaQueries as any
-                    }
-                  >
-                    <Grid fluid>
-                      <GlobalStyles suppressMultiMountWarning />
-                      {children}
-                      {process.env.NODE_ENV === "development" && (
-                        <BreakpointVisualizer />
-                      )}
-                    </Grid>
-                  </ResponsiveProvider>
-                </MediaContextProvider>
-              </ErrorBoundary>
-            </Artsy.SystemContextProvider>
-          </StateProvider>
-        </HeadProvider>
-      </Theme>
-    )
-  }
-}
-
-// Tests
-GlobalStyles.displayName = "GlobalStyles"
-Grid.displayName = "Grid"
+  return (
+    <Theme>
+      <HeadProvider headTags={headTags}>
+        <StateProvider>
+          <SystemContextProvider {...contextProps}>
+            <ErrorBoundary>
+              <MediaContextProvider onlyMatch={onlyMatchMediaQueries}>
+                <ResponsiveProvider
+                  mediaQueries={themeProps.mediaQueries}
+                  initialMatchingMediaQueries={onlyMatchMediaQueries as any}
+                >
+                  <Grid fluid maxWidth="100%">
+                    <GlobalStyles />
+                    {children}
+                    {process.env.NODE_ENV === "development" && (
+                      <BreakpointVisualizer />
+                    )}
+                  </Grid>
+                </ResponsiveProvider>
+              </MediaContextProvider>
+            </ErrorBoundary>
+          </SystemContextProvider>
+        </StateProvider>
+      </HeadProvider>
+    </Theme>
+  )
+})

@@ -1,4 +1,4 @@
-import { Box, Button, Sans, Serif } from "@artsy/palette"
+import { Box, Button, Flex, Sans, Serif } from "@artsy/palette"
 import { ArtistConsignHeader_artist } from "__generated__/ArtistConsignHeader_artist.graphql"
 import {
   LightPurpleColor,
@@ -9,6 +9,7 @@ import { RouterLink } from "Artsy/Router/RouterLink"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
+import { getConsignSubmissionUrl } from "../Utils/getConsignSubmissionUrl"
 import { ArtistConsignHeaderImagesFragmentContainer as ArtistConsignHeaderImages } from "./ArtistConsignHeaderImages"
 
 interface ArtistConsignHeaderProps {
@@ -22,22 +23,23 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
 
   return (
     <SectionContainer background={LightPurpleColor}>
-      <Media greaterThan="xs">
+      <Media greaterThan="sm">
         {classNames => {
           return (
-            <Box
+            <Flex
               className={classNames}
               position="absolute"
-              width="100%"
+              width="70%"
               height="100%"
+              justifyContent="center"
             >
               <ArtistConsignHeaderImages artist={artist} />
-            </Box>
+            </Flex>
           )
         }}
       </Media>
 
-      <Box textAlign="center">
+      <Box textAlign="center" position="relative" zIndex={1}>
         <Box>
           <Serif element="h1" size={["10", "12"]}>
             Sell Works by <br />
@@ -53,7 +55,10 @@ export const ArtistConsignHeader: React.FC<ArtistConsignHeaderProps> = ({
 
         <Box>
           <RouterLink
-            to="/consign/submission"
+            to={getConsignSubmissionUrl({
+              contextPath: artist.href,
+              subject: AnalyticsSchema.Subject.RequestPriceEstimate,
+            })}
             onClick={() => {
               tracking.trackEvent({
                 action_type: AnalyticsSchema.ActionType.Click,
@@ -78,6 +83,7 @@ export const ArtistConsignHeaderFragmentContainer = createFragmentContainer(
       fragment ArtistConsignHeader_artist on Artist {
         ...ArtistConsignHeaderImages_artist
         name
+        href
       }
     `,
   }

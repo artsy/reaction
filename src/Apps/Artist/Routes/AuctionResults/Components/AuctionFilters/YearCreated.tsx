@@ -19,6 +19,7 @@ const buildDateRange = (startYear: number, endYear: number) =>
 
 export const YearCreated: React.FC = () => {
   const filterContext = useAuctionResultsFilterContext()
+
   const {
     earliestCreatedYear,
     latestCreatedYear,
@@ -26,20 +27,16 @@ export const YearCreated: React.FC = () => {
     createdBeforeYear,
     allowEmptyCreatedDates,
   } = filterContext?.filters
-  if (
-    typeof earliestCreatedYear !== "number" ||
-    typeof latestCreatedYear !== "number"
-  ) {
-    log.error("Couldn't display year created filter due to missing data")
-    return null
-  }
+
   const hasChanges =
     earliestCreatedYear !== createdAfterYear ||
     latestCreatedYear !== createdBeforeYear
+
   const fullDateRange = useMemo(
     () => buildDateRange(earliestCreatedYear, latestCreatedYear),
     [earliestCreatedYear, latestCreatedYear]
   )
+
   const resetFilter = useMemo(
     () => () => {
       filterContext.setFilter("createdAfterYear", earliestCreatedYear)
@@ -47,6 +44,14 @@ export const YearCreated: React.FC = () => {
     },
     [earliestCreatedYear, latestCreatedYear]
   )
+
+  if (
+    typeof earliestCreatedYear !== "number" ||
+    typeof latestCreatedYear !== "number"
+  ) {
+    log.error("Couldn't display year created filter due to missing data")
+    return null
+  }
 
   return (
     <Toggle

@@ -1,6 +1,6 @@
 import { Link } from "@artsy/palette"
 import { SignUpForm } from "Components/Authentication/Desktop/SignUpForm"
-import { mount, shallow } from "enzyme"
+import { mount } from "enzyme"
 import { Formik } from "formik"
 import React from "react"
 import { SignupValues } from "../fixtures"
@@ -34,9 +34,9 @@ describe("SignUpForm", () => {
   describe("onSubmit", () => {
     it("calls handleSubmit with expected params", done => {
       props.values = SignupValues
-      const wrapper = shallow(<SignUpForm {...props} />)
-      const formik = wrapper.dive().instance() as any
-      formik.submitForm()
+      const wrapper = getWrapper()
+      const formik = wrapper.find("Formik")
+      formik.simulate("submit")
 
       setTimeout(() => {
         expect(props.handleSubmit).toBeCalledWith(
@@ -47,7 +47,7 @@ describe("SignUpForm", () => {
             accepted_terms_of_service: true,
             recaptcha_token: "recaptcha-token",
           },
-          formik.getFormikActions()
+          expect.anything()
         )
         done()
       })
@@ -55,9 +55,9 @@ describe("SignUpForm", () => {
 
     it("fires reCAPTCHA event", done => {
       props.values = SignupValues
-      const wrapper = shallow(<SignUpForm {...props} />)
-      const formik = wrapper.dive().instance() as any
-      formik.submitForm()
+      const wrapper = getWrapper()
+      const formik = wrapper.find("Formik")
+      formik.simulate("submit")
 
       setTimeout(() => {
         expect(window.grecaptcha.execute).toBeCalledWith("recaptcha-api-key", {

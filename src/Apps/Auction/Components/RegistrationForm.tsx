@@ -4,7 +4,12 @@ import { CreditCardInput } from "Apps/Order/Components/CreditCardInput"
 import { Address, AddressForm } from "Components/AddressForm"
 import { ConditionsOfSaleCheckbox } from "Components/Auction/ConditionsOfSaleCheckbox"
 import { ErrorModal } from "Components/Modal/ErrorModal"
-import { Form, Formik, FormikActions, FormikProps } from "formik"
+import {
+  Form,
+  Formik,
+  FormikHelpers as FormikActions,
+  FormikProps,
+} from "formik"
 import React, { useEffect, useState } from "react"
 import {
   Elements,
@@ -241,7 +246,8 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
           initialValues={initialValues}
           onSubmit={createTokenAndSubmit}
           validationSchema={validationSchema}
-          render={(formikProps: FormikProps<FormValues>) => (
+        >
+          {(formikProps: FormikProps<FormValues>) => (
             <>
               <OnSubmitValidationError
                 cb={props.trackSubmissionErrors}
@@ -259,7 +265,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = props => {
               />
             </>
           )}
-        />
+        </Formik>
       </Box>
     </Box>
   )

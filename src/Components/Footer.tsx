@@ -6,6 +6,7 @@ import { Media } from "Utils/Responsive"
 
 import {
   ArtsyMarkIcon,
+  breakpoints,
   FacebookIcon,
   Flex,
   InstagramIcon,
@@ -51,6 +52,8 @@ const FooterContainer: React.SFC<FlexDirectionProps & Props> = props => {
         flexDirection={props.flexDirection}
         justifyContent="space-between"
         width="100%"
+        maxWidth={breakpoints.xl}
+        m="auto"
       >
         <Flex flexDirection="column" mb={1}>
           <Sans size="2" weight="medium">
@@ -166,7 +169,7 @@ const UnstyledLink = styled.a`
 
 const PolicyLinks = () => (
   <>
-    <Serif size="2">© 2018 Artsy</Serif>
+    <Serif size="2">© {new Date().getFullYear()} Artsy</Serif>
     <Spacer mr={1} />
     <UnstyledLink href="https://www.artsy.net/terms">
       <Serif size="2">Terms of Use</Serif>

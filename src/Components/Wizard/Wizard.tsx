@@ -1,4 +1,4 @@
-import { Formik, FormikActions } from "formik"
+import { Formik, FormikHelpers as FormikActions } from "formik"
 import { isEmpty } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component } from "react"
@@ -58,7 +58,7 @@ interface WizardState {
  */
 export class Wizard extends React.Component<WizardProps, WizardState> {
   static defaultProps = {
-    initialValues: null,
+    initialValues: {},
   }
 
   constructor(props) {
@@ -125,20 +125,20 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
     if (this.isLastStep) {
       onComplete && onComplete(values, actions)
     } else {
-      actions && actions.setSubmitting(false)
+      actions?.setSubmitting(false)
       // If exist, call onSubmit on the current step
       const onSubmit = this.currentStep.props.onSubmit
       if (onSubmit) {
-        actions.setSubmitting(true)
+        actions?.setSubmitting(true)
         const result = onSubmit(values, actions)
 
         if (result instanceof Boolean) {
-          actions.setSubmitting(false)
+          actions?.setSubmitting(false)
           return result
         } else {
           return (result as Promise<boolean>).then(shouldGoNext => {
             if (shouldGoNext) {
-              actions.setSubmitting(false)
+              actions?.setSubmitting(false)
               this.next(null, values)
             }
           })
@@ -160,7 +160,8 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
         validationSchema={validationSchema}
         validateOnChange={false}
         onSubmit={this.handleSubmit}
-        render={formikRenderProps => {
+      >
+        {formikRenderProps => {
           const context: WizardContext = {
             wizard: this.wizardProps,
             form: formikRenderProps,
@@ -180,7 +181,7 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
             </form>
           )
         }}
-      />
+      </Formik>
     )
   }
 }

@@ -1,13 +1,13 @@
 {
   "name": "@artsy/reaction",
-  "version": "26.18.0",
+  "version": "26.31.5",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@artsy/palette": "^4.16.0 || ^5.0.0 || ^7.0.0",
+    "@artsy/palette": "^4.16.0 || ^5.0.0 || ^7.0.0 || ^8.0.0",
     "@sentry/browser": "^4.2.3",
     "flickity": "2.1.2",
     "react": "^16.8.0",
@@ -19,11 +19,11 @@
     "clean": "rm -rf .cache && rm -rf dist",
     "codemod": "./scripts/codemod.sh",
     "compile": "babel src --out-dir dist -s --source-map --extensions '.js,.jsx,.ts,.tsx' --ignore src/**/__tests__,src/**/__stories__",
-    "deploy-storybook-pr": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build ",
+    "deploy-storybook": "yarn relay && NODE_ENV=production build-storybook -s ./public -o storybook_build",
     "emit-types": "tsc --declaration --emitDeclarationOnly --listEmittedFiles --jsx react --outDir dist",
     "find-unused-fields": "ts-node scripts/find-unused-fields",
     "integrate": "./scripts/quicklink-to-project.sh",
-    "lint": "tslint -c tslint.json --project tsconfig.json && yarn prettier-check",
+    "lint": "eslint --cache  --ext ts,tsx --ignore-pattern 'src/__generated__'",
     "omg": "om g",
     "prepare": "patch-package",
     "prepublishOnly": "yarn clean && yarn relay && yarn compile && yarn emit-types",
@@ -45,14 +45,15 @@
     "watch": "concurrently --raw --kill-others 'yarn relay --watch' 'yarn compile -w' 'yarn emit-types --watch'"
   },
   "resolutions": {
-    "@types/react": "16.8.7",
+    "@types/react": "16.9.34",
     "babel-core": "^7.0.0-bridge.0",
     "chokidar": "^3.0.2"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
+    "@artsy/cohesion": "1.0.0",
     "@artsy/lint-changed": "3.0.4",
-    "@artsy/palette": "8.0.0",
+    "@artsy/palette": "8.2.1",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -87,7 +88,7 @@
     "@types/prop-types": "15.7.1",
     "@types/qrcode.react": "1.0.0",
     "@types/qs": "6.5.3",
-    "@types/react": "16.8.7",
+    "@types/react": "16.9.34",
     "@types/react-dom": "16.8.4",
     "@types/react-overlays": "0.8.4",
     "@types/react-relay": "7.0.2",
@@ -103,7 +104,10 @@
     "@types/styled-components": "4.0.3",
     "@types/styled-system": "3.0.9",
     "@types/underscore.string": "0.0.32",
+    "@typescript-eslint/eslint-plugin": "2.30.0",
+    "@typescript-eslint/parser": "2.30.0",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.1.0",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-lodash": "3.3.3",
@@ -120,6 +124,11 @@
     "dotenv": "4.0.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.7.1",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-graphql": "3.1.1",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "3.0.0",
     "flickity": "2.1.2",
     "fork-ts-checker-notifier-webpack-plugin": "0.6.2",
     "fork-ts-checker-webpack-plugin": "0.4.10",
@@ -157,10 +166,6 @@
     "stylelint-processor-styled-components": "1.5.1",
     "ts-loader": "^3.5.yarn 0",
     "ts-node": "8.2.0",
-    "tslint": "5.11.0",
-    "tslint-config-prettier": "1.13.0",
-    "tslint-plugin-relay": "0.0.3",
-    "tslint-react": "2.6.0",
     "typescript": "3.8.3",
     "typescript-styled-plugin": "0.13.0",
     "vscode-apollo-relay": "1.5.0",
@@ -170,7 +175,6 @@
     "yalc": "1.0.0-pre.34"
   },
   "dependencies": {
-    "@artsy/cohesion": "0.0.3",
     "@artsy/detect-responsive-traits": "^0.0.5",
     "@artsy/fresnel": "^1.0.13",
     "@artsy/react-html-parser": "^3.0.2",
@@ -181,7 +185,7 @@
     "cheerio": "^1.0.0-rc.2",
     "currency.js": "^1.2.1",
     "farce": "^0.2.6",
-    "formik": "^1.5.8",
+    "formik": "^2.1.4",
     "found": "^0.4.9",
     "found-relay": "^0.5",
     "found-scroll": "^0.1.5",
@@ -222,7 +226,7 @@
     "react-waypoint": "^7.3.3",
     "relay-mock-network-layer": "^2.0.0",
     "relay-runtime": "^7.1.0",
-    "serialize-javascript": "^1.5.0",
+    "serialize-javascript": "^2.1.1",
     "sharify": "^0.1.6",
     "styled-system": "^3.1.11",
     "superagent": "^3.6.3",
@@ -238,7 +242,8 @@
     "semi": false,
     "singleQuote": false,
     "trailingComma": "es5",
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "arrowParens": "avoid"
   },
   "jest": {
     "cacheDirectory": ".cache/jest",
@@ -286,21 +291,21 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn run type-check"
+      "pre-push": "yarn type-check"
     }
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
-      "tslint -c tslint.json --fix",
-      "yarn prettier-write --"
+      "yarn lint --fix",
+      "yarn prettier-write"
     ],
     "*.json": [
-      "yarn prettier-write --"
+      "yarn prettier-write"
     ]
   },
   "lint-changed": {
     "*.@(ts|tsx)": [
-      "tslint -c tslint.json",
+      "yarn lint",
       "yarn prettier -c"
     ],
     "*.json": [

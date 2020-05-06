@@ -162,7 +162,7 @@ describe("ArtworkFilter", () => {
     it("renders default UI items", async () => {
       const wrapper = await getWrapper("xs")
       expect(wrapper.find("ArtworkFilterArtworkGrid").length).toEqual(1)
-      expect(wrapper.find("Button").text()).toEqual("filterFilter") // svg icon + text
+      expect(wrapper.find("Button").text()).toEqual("FilterFilter") // svg icon + text
       expect(wrapper.find("FilterIcon").length).toEqual(1)
     })
 

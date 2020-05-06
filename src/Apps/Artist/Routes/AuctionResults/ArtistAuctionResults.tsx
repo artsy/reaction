@@ -7,8 +7,8 @@ import useDeepCompareEffect from "use-deep-compare-effect"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { TableSidebar } from "./Components/TableSidebar"
 
+import { ContextModule } from "@artsy/cohesion"
 import { Box, Spacer } from "@artsy/palette"
-
 import { AnalyticsSchema } from "Artsy"
 import { LoadingArea } from "Components/LoadingArea"
 import { isEqual } from "lodash"
@@ -180,7 +180,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
           </Media>
         </Col>
 
-        <Col sm={9}>
+        <Col sm={9} data-test={ContextModule.auctionResults}>
           <AuctionResultsControls
             artist={artist}
             toggleMobileActionSheet={toggleMobileActionSheet}

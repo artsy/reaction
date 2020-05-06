@@ -12,8 +12,8 @@ jest.mock("Components/Search/SearchBar", () => {
 })
 
 jest.mock("Artsy/Analytics/useTracking")
-jest.mock("Utils/Hooks/useMedia", () => ({
-  useMedia: () => ({}),
+jest.mock("Utils/Hooks/useMatchMedia", () => ({
+  useMatchMedia: () => ({}),
 }))
 
 describe("NavBar", () => {
@@ -51,8 +51,8 @@ describe("NavBar", () => {
 
   describe("desktop", () => {
     const defaultLinks = [
-      ["/collect", "Artworks"],
-      ["/artists", "Artists"],
+      [undefined, "ArtworksReveal more"],
+      [undefined, "ArtistsReveal more"],
       ["/auctions", "Auctions"],
       ["/articles", "Editorial"],
     ]

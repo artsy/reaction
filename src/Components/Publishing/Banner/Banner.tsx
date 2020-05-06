@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { ModalType } from "Components/Authentication/Types"
 import { debounce } from "lodash"
 import React, { Component } from "react"
@@ -60,7 +60,7 @@ export class BannerWrapper extends Component<{ article: ArticleData }, State> {
     const textColor = layout === "video" ? "black" : "white"
     const href = getMobileAuthLink(ModalType.signup, {
       action: "editorialSignup",
-      intent: AuthIntent.viewEditorial,
+      intent: Intent.viewEditorial,
       contextModule: ContextModule.minimalCTABanner,
       redirectTo: getArticleFullHref(slug),
     })

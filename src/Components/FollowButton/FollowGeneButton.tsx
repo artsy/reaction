@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
 import * as Artsy from "Artsy"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
@@ -72,7 +72,7 @@ export class FollowGeneButton extends React.Component<Props> {
       onOpenAuthModal &&
         onOpenAuthModal(ModalType.signup, {
           contextModule: ContextModule.intextTooltip,
-          intent: AuthIntent.followGene,
+          intent: Intent.followGene,
           copy: "Sign up to follow categories",
           afterSignUpAction: {
             action: "follow",

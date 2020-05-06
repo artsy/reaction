@@ -1,12 +1,32 @@
-import { color, Flex, Image, Sans, Serif } from "@artsy/palette"
+import {
+  ArrowLeftIcon,
+  color,
+  Flex,
+  Image,
+  InfoCircleIcon,
+  Link,
+  Sans,
+  Serif,
+  Spacer,
+} from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
+import { RouterLink } from "Artsy/Router/RouterLink"
 import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer, RelayProp } from "react-relay"
 import { graphql } from "relay-runtime"
+import styled from "styled-components"
 import { MessageFragmentContainer as Message } from "./Message"
 import { Reply } from "./Reply"
 import { fromToday, TimeSince } from "./TimeSince"
+
+const StyledHeader = styled(Flex)`
+  position: fixed;
+  background: white;
+  border-bottom: 1px solid ${color("black10")};
+  height: 55px;
+  top: 59px;
+`
 
 interface ItemProps {
   item: Conversation_conversation["items"][0]["item"]
@@ -16,28 +36,30 @@ const Item: React.FC<ItemProps> = props => {
   const { item } = props
   if (item.__typename === "Artwork") {
     return (
-      <Flex
-        flexDirection="column"
-        width="350px"
-        p={1}
+      <Link
+        href={item.href}
+        underlineBehavior="none"
         style={{ alignSelf: "flex-end" }}
+        my={1}
       >
-        <Image src={item.image.url} borderRadius="15px 15px 0 0" />
-        <Flex
-          p={1}
-          flexDirection="column"
-          justifyContent="center"
-          background={color("black100")}
-          borderRadius="0 0 15px 15px"
-        >
-          <Sans size="4" weight="medium" color="white100">
-            {item.artistNames}
-          </Sans>
-          <Sans size="2" color="white100">
-            {item.title} / {item.date}
-          </Sans>
+        <Flex flexDirection="column" width="350px">
+          <Image src={item.image.url} borderRadius="15px 15px 0 0" />
+          <Flex
+            p={1}
+            flexDirection="column"
+            justifyContent="center"
+            background={color("black100")}
+            borderRadius="0 0 15px 15px"
+          >
+            <Sans size="4" weight="medium" color="white100">
+              {item.artistNames}
+            </Sans>
+            <Sans size="2" color="white100">
+              {item.title} / {item.date}
+            </Sans>
+          </Flex>
         </Flex>
-      </Flex>
+      </Link>
     )
   } else if (item.__typename === "Show") {
     // it's a partnerShow
@@ -102,59 +124,76 @@ export interface ConversationProps {
 const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
   return (
-    <Flex flexDirection="column" width="100%">
-      {conversation.items.map((i, idx) => (
-        <Item
-          item={i.item}
-          key={
-            i.item.__typename === "Artwork" || i.item.__typename === "Show"
-              ? i.item.id
-              : idx
+    <>
+      <StyledHeader
+        px={2}
+        alignItems="center"
+        justifyContent="space-between"
+        width="100%"
+      >
+        <RouterLink to={`/user/conversations`}>
+          <ArrowLeftIcon />
+        </RouterLink>
+        <Sans size="3t" weight="medium">
+          Inquiry with {conversation.to.name}
+        </Sans>
+        <InfoCircleIcon />
+      </StyledHeader>
+      <Spacer mt="45px" />
+      <Flex flexDirection="column" width="100%" px={1}>
+        {conversation.items.map((i, idx) => (
+          <Item
+            item={i.item}
+            key={
+              i.item.__typename === "Artwork" || i.item.__typename === "Show"
+                ? i.item.id
+                : idx
+            }
+          />
+        ))}
+        {groupMessages(conversation.messages.edges.map(edge => edge.node)).map(
+          (messageGroup, groupIndex) => {
+            const today = fromToday(messageGroup[0].createdAt)
+            return (
+              <React.Fragment
+                key={`group-${groupIndex}-${messageGroup[0].internalID}`}
+              >
+                <TimeSince
+                  style={{ alignSelf: "center" }}
+                  time={messageGroup[0].createdAt}
+                  exact
+                  mt={0.5}
+                  mb={1}
+                />
+                {messageGroup.map((message, messageIndex) => {
+                  const nextMessage = messageGroup[messageIndex + 1]
+                  return (
+                    <Message
+                      message={message}
+                      initialMessage={conversation.initialMessage}
+                      key={message.internalID}
+                      isFirst={groupIndex + messageIndex === 0}
+                      showTimeSince={
+                        message.createdAt &&
+                        today &&
+                        messageGroup.length - 1 === messageIndex
+                      }
+                      mb={
+                        nextMessage &&
+                        nextMessage.isFromUser !== message.isFromUser
+                          ? 1
+                          : undefined
+                      }
+                    />
+                  )
+                })}
+              </React.Fragment>
+            )
           }
-        />
-      ))}
-      {groupMessages(conversation.messages.edges.map(edge => edge.node)).map(
-        (messageGroup, groupIndex) => {
-          const today = fromToday(messageGroup[0].createdAt)
-          return (
-            <React.Fragment
-              key={`group-${groupIndex}-${messageGroup[0].internalID}`}
-            >
-              <TimeSince
-                style={{ alignSelf: "center" }}
-                time={messageGroup[0].createdAt}
-                exact
-                mt={0.5}
-                mb={1}
-              />
-              {messageGroup.map((message, messageIndex) => {
-                const nextMessage = messageGroup[messageIndex + 1]
-                return (
-                  <Message
-                    message={message}
-                    initialMessage={conversation.initialMessage}
-                    key={message.internalID}
-                    isFirst={groupIndex + messageIndex === 0}
-                    showTimeSince={
-                      message.createdAt &&
-                      today &&
-                      messageGroup.length - 1 === messageIndex
-                    }
-                    mb={
-                      nextMessage &&
-                      nextMessage.isFromUser !== message.isFromUser
-                        ? 1
-                        : undefined
-                    }
-                  />
-                )
-              })}
-            </React.Fragment>
-          )
-        }
-      )}
-      <Reply conversation={conversation} environment={relay.environment} />
-    </Flex>
+        )}
+        <Reply conversation={conversation} environment={relay.environment} />
+      </Flex>
+    </>
   )
 }
 
@@ -206,6 +245,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
               date
               title
               artistNames
+              href
               image {
                 url
               }

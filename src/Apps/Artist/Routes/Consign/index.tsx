@@ -4,14 +4,14 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import { Consign_artist } from "__generated__/Consign_artist.graphql"
 
-import { ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
+import { ArtistConsignFAQFragmentContainer as ArtistConsignFAQ } from "./Components/ArtistConsignFAQ"
 import { ArtistConsignHeaderFragmentContainer as ArtistConsignHeader } from "./Components/ArtistConsignHeader"
-import { ArtistConsignHowtoSell } from "./Components/ArtistConsignHowToSell"
+import { ArtistConsignHowtoSellFragmentContainer as ArtistConsignHowtoSell } from "./Components/ArtistConsignHowToSell"
 import { ArtistConsignMarketTrendsFragmentContainer as ArtistConsignMarketTrends } from "./Components/ArtistConsignMarketTrends"
 import { ArtistConsignMetaFragmentContainer as ArtistConsignMeta } from "./Components/ArtistConsignMeta"
 import { ArtistConsignPageViewsFragmentContainer as ArtistConsignPageViews } from "./Components/ArtistConsignPageViews"
 import { ArtistConsignRecentlySoldFragmentContainer as ArtistConsignRecentlySold } from "./Components/ArtistConsignRecentlySold"
-import { ArtistConsignSellArt } from "./Components/ArtistConsignSellArt"
+import { ArtistConsignSellArtFragmentContainer as ArtistConsignSellArt } from "./Components/ArtistConsignSellArt"
 
 import { track } from "Artsy"
 
@@ -27,9 +27,9 @@ export const ConsignRoute: React.FC<ConsignRouteProps> = ({ artist }) => {
       <ArtistConsignRecentlySold artist={artist} />
       <ArtistConsignPageViews artist={artist} />
       <ArtistConsignMarketTrends artist={artist} />
-      <ArtistConsignHowtoSell />
-      <ArtistConsignFAQ />
-      <ArtistConsignSellArt />
+      <ArtistConsignHowtoSell artist={artist} />
+      <ArtistConsignFAQ artist={artist} />
+      <ArtistConsignSellArt artist={artist} />
     </Box>
   )
 }
@@ -48,6 +48,9 @@ export const ConsignRouteFragmentContainer = createFragmentContainer(
         ...ArtistConsignRecentlySold_artist
         ...ArtistConsignPageViews_artist
         ...ArtistConsignMarketTrends_artist
+        ...ArtistConsignHowToSell_artist
+        ...ArtistConsignFAQ_artist
+        ...ArtistConsignSellArt_artist
       }
     `,
   }

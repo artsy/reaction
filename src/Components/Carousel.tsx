@@ -1,3 +1,4 @@
+import { ContextModule } from "@artsy/cohesion"
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
@@ -19,16 +20,16 @@ import FlickityType, { Options as FlickityOptions } from "flickity"
  * - For LazyLoad use Palette's Image lazyLoad prop instead of Flickities
  */
 
-interface CarouselProps {
+interface CarouselProps<T> {
   /**
    * This is designed to handle any shape of data passed, as long as its an array
    */
-  data: any
+  data: Readonly<T[]>
 
   /**
    * Passes CarouselRef
    */
-  setCarouselRef?: (CarouselRef) => void
+  setCarouselRef?: (CarouselRef: FlickityType) => void
 
   /**
    * If this carousel contains only one visible image on render set to true (for SSR)
@@ -46,6 +47,11 @@ interface CarouselProps {
   width?: string
 
   /**
+   * For analytics, describes the context for rail content
+   */
+  contextModule?: ContextModule
+
+  /**
    * Callback when forward / backward arrows are clicked
    */
   onArrowClick?: ({
@@ -57,7 +63,7 @@ interface CarouselProps {
   /**
    * The render callback returns an image to display
    */
-  render: (slide, slideIndex: number) => React.ReactNode
+  render: (slide: T, slideIndex: number) => React.ReactNode
 
   /**
    * Flickity options
@@ -91,7 +97,7 @@ type ArrowProps = (props: {
   flickity: FlickityType
 }) => React.ReactNode
 
-export class Carousel extends React.Component<CarouselProps> {
+export class Carousel<T> extends React.Component<CarouselProps<T>> {
   static defaultProps = {
     height: "300px",
     oneSlideVisible: false,
@@ -99,7 +105,7 @@ export class Carousel extends React.Component<CarouselProps> {
 
   render() {
     return (
-      <Box width="100%">
+      <Box width="100%" data-test={this.props.contextModule}>
         <Media greaterThan="xs">
           <LargeCarousel {...this.props} />
         </Media>
@@ -111,7 +117,7 @@ export class Carousel extends React.Component<CarouselProps> {
   }
 }
 
-export const LargeCarousel: React.FC<CarouselProps> = props => {
+export const LargeCarousel = <T,>(props: CarouselProps<T>) => {
   return (
     <BaseCarousel
       showArrows
@@ -130,7 +136,7 @@ export const LargeCarousel: React.FC<CarouselProps> = props => {
   )
 }
 
-export const SmallCarousel: React.FC<CarouselProps> = props => {
+export const SmallCarousel = <T,>(props: CarouselProps<T>) => {
   // Only render pageDots and enable draggable if more than one slide
   const hasMultipleSlides = props.data.length > 1
 
@@ -160,8 +166,8 @@ interface BaseCarouselState {
   isMounted: boolean
 }
 
-export class BaseCarousel extends React.Component<
-  CarouselProps,
+export class BaseCarousel<T> extends React.Component<
+  CarouselProps<T>,
   BaseCarouselState
 > {
   state = {

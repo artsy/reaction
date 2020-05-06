@@ -1,5 +1,6 @@
-import { DefaultHeader_headerArtworks } from "__generated__/DefaultHeader_headerArtworks.graphql"
+import { DefaultHeaderArtwork_artwork } from "__generated__/DefaultHeaderArtwork_artwork.graphql"
 import { Header_artworks } from "__generated__/Header_artworks.graphql"
+import { DeFraged } from "Utils/typeSupport"
 
 export const collectionHeaderArtworks: Header_artworks = {
   " $refType": null,
@@ -64,34 +65,22 @@ export const collectionHeaderArtworks: Header_artworks = {
   ],
 }
 
-export const defaultCollectionHeaderArtworks: Header_artworks &
-  DefaultHeader_headerArtworks = {
-  " $refType": null as never,
-  " $fragmentRefs": null as never,
-  merchandisableArtists: null,
+export const defaultCollectionHeaderArtworks: {
+  edges: Array<DeFraged<DefaultHeaderArtwork_artwork>>
+} = {
   edges: [
     {
       node: {
+        id: "1",
         href:
           "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-children",
         slug: "carrie-mae-weems-untitled-woman-and-daughter-with-children",
-        image: {
-          small: {
-            url: "https://resized-small.cloudfront.net",
-
-            width: 160,
-            height: 160,
-          },
-          large: {
-            url: "https://resized-large.cloudfront.net",
-            width: 220,
-            height: 220,
-          },
-        },
+        image: null, // intentionally null
       },
     },
     {
       node: {
+        id: "2",
         href: "/artwork/carrie-mae-weems-untitled-woman-feeding-bird",
         slug: "carrie-mae-weems-untitled-woman-feeding-bird",
         image: {
@@ -112,6 +101,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "3",
         href:
           "/artwork/carrie-mae-weems-untitled-man-reading-newspaper-and-kitchen-table-series-book",
         slug:
@@ -134,6 +124,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "4",
         href: "/artwork/carrie-mae-weems-untitled-woman-standing",
         slug: "carrie-mae-weems-untitled-woman-standing",
         image: {
@@ -154,6 +145,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "5",
         href:
           "/artwork/carrie-mae-weems-untitled-woman-and-daughter-with-makeup-from-kitchen-table-series-1",
         slug:
@@ -176,6 +168,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "6",
         href: "/artwork/carrie-mae-weems-untitled-brushing-hair",
         slug: "carrie-mae-weems-untitled-brushing-hair",
         image: {
@@ -196,6 +189,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "7",
         href:
           "/artwork/carrie-mae-weems-untitled-man-smoking-from-kitchen-table-series",
         slug: "carrie-mae-weems-untitled-man-smoking-from-kitchen-table-series",
@@ -217,6 +211,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "8",
         href:
           "/artwork/carrie-mae-weems-untitled-from-the-kitchen-table-series",
         slug: "carrie-mae-weems-untitled-from-the-kitchen-table-series",
@@ -238,6 +233,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "9",
         href:
           "/artwork/carrie-mae-weems-untitled-woman-and-phone-from-the-series-the-kitchen-table",
         slug:
@@ -260,6 +256,7 @@ export const defaultCollectionHeaderArtworks: Header_artworks &
     },
     {
       node: {
+        id: "10",
         href: "/artwork/carrie-mae-weems-untitled-from-kitchen-table-series",
         slug: "carrie-mae-weems-untitled-from-kitchen-table-series",
         image: {

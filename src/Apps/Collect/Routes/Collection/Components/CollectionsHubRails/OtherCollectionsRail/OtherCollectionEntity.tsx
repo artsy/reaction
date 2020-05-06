@@ -71,6 +71,7 @@ export const OtherCollectionsRailsContainer = createFragmentContainer(
 )
 
 export const StyledLink = styled(RouterLink)`
+  display: block;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border: 1px solid ${color("black10")};

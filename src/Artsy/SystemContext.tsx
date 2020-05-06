@@ -1,8 +1,8 @@
+import { Router } from "found"
 import React, { SFC, useContext, useState } from "react"
 import { Environment } from "relay-runtime"
 
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
-import { Router } from "found"
 import { getUser } from "Utils/user"
 
 export interface Mediator {
@@ -12,16 +12,40 @@ export interface Mediator {
 }
 
 /**
- * Globally accessible SystemContext values for use in Artsy apps
+ * FIXME: Use a proper state management library. Ran into problems with useReducer
+ * leading to an infinite loop.
  */
-export interface SystemContextProps {
-  /** Is the user opening a Reaction page from the mobile app */
-  isEigen?: boolean
+export type SystemContextState = Partial<{
+  /**
+   * Toggle for setting global fetch state, typically set in RenderStatus
+   */
+  isFetching: boolean
+  setFetching: (isFetching: boolean) => void
 
   /**
-   * Trigger for global fetching indicator
+   * The current router instance
    */
-  isFetching?: boolean
+  router: Router
+  setRouter: (router: Router) => void
+
+  /**
+   * The currently signed-in user.
+   *
+   * Unless explicitely set to `null`, this will default to use the `USER_ID`
+   * and `USER_ACCESS_TOKEN` environment variables if available.
+   */
+  user: User
+  setUser: (user: User) => void
+}>
+
+/**
+ * Globally accessible SystemContext values for use in Artsy apps
+ */
+export interface SystemContextProps extends SystemContextState {
+  /**
+   * Is the user opening a Reaction page from the mobile app
+   */
+  isEigen?: boolean
 
   /**
    * A PubSub hub, which should only be used for communicating with Force.
@@ -43,30 +67,15 @@ export interface SystemContextProps {
   relayEnvironment?: Environment
 
   /**
-   * When in AppShell router context, store a reference to router instance
+   * The current search query.
+   * FIXME: Move this to a more appropriate place
    */
-  router?: Router
-
   searchQuery?: string
 
   /**
    * Useful for passing arbitrary data from Force.
    */
   injectedData?: any
-
-  /**
-   * Toggle for setting global fetch state, typically set in the `RenderStatus.tsx`
-   */
-  setIsFetching?: (isFetching: boolean) => void
-  setRouter?: (router: Router) => void
-
-  /**
-   * The currently signed-in user.
-   *
-   * Unless explicitely set to `null`, this will default to use the `USER_ID`
-   * and `USER_ACCESS_TOKEN` environment variables if available.
-   */
-  user?: User
 
   // TODO: Remove once A/B test completes
   EXPERIMENTAL_APP_SHELL?: boolean
@@ -82,20 +91,21 @@ export const SystemContextProvider: SFC<SystemContextProps> = ({
   children,
   ...props
 }) => {
-  const [isFetching, setIsFetching] = useState(false)
+  const [isFetching, setFetching] = useState(false)
   const [router, setRouter] = useState(null)
-  const [user] = useState(getUser(props.user))
+  const [user, setUser] = useState(getUser(props.user))
+
   const relayEnvironment =
     props.relayEnvironment || createRelaySSREnvironment({ user })
-
   const providerValues = {
     ...props,
     isFetching,
-    relayEnvironment,
+    setFetching,
     router,
-    setIsFetching,
     setRouter,
+    relayEnvironment,
     user,
+    setUser,
   }
 
   return (

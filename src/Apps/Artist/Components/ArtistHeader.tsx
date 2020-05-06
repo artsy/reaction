@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { Box, Button, Flex, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { ArtistHeader_artist } from "__generated__/ArtistHeader_artist.graphql"
 import { StyledLink } from "Apps/Artist/Components/StyledLink"
@@ -142,7 +142,7 @@ export class LargeArtistHeader extends Component<Props> {
 
     return (
       <HorizontalPadding>
-        <Box width="100%">
+        <Box width="100%" data-test={ContextModule.artistHeader}>
           {hasImages && (
             <>
               <Carousel
@@ -278,11 +278,11 @@ export class SmallArtistHeader extends Component<Props> {
     const isAdmin = userIsAdmin(user)
 
     return (
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" data-test={ContextModule.artistHeader}>
         {hasImages && (
           <Fragment>
             <Carousel
-              data={carousel.images as object[]}
+              data={carousel.images}
               height="180px"
               options={{ pageDots: false }}
               render={slide => {
@@ -391,7 +391,7 @@ const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
     contextModule: ContextModule.artistHeader,
-    intent: AuthIntent.followArtist,
+    intent: Intent.followArtist,
   })
 }
 

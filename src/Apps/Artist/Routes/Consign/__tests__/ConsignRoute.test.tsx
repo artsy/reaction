@@ -69,7 +69,7 @@ describe("ConsignRoute", () => {
       const wrapper = await getWrapper()
       expect(
         wrapper.find("ArtistConsignHeader").find("ResponsiveImage").length
-      ).toEqual(4) // actually 2, but second set of images creates border
+      ).toEqual(2)
     })
 
     it("links out to consign page", async () => {
@@ -79,7 +79,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHeader")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
+      )
     })
 
     it("tracks event", async () => {
@@ -136,7 +138,7 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignPageViews", () => {
-    it("includes artist name in pageviews title", async () => {
+    it("includes artist name in pageview title", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignPageViews").text()).toContain(
         "Alex Katz"
@@ -203,7 +205,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignHowtoSell")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
+      )
     })
 
     it("tracks event", async () => {
@@ -251,7 +255,9 @@ describe("ConsignRoute", () => {
           .find("ArtistConsignSellArt")
           .find("RouterLink")
           .html()
-      ).toContain(`href="/consign/submission"`)
+      ).toContain(
+        `href="/consign/submission?contextPath=%2Fartist%2Falex-katz%2Fconsign&amp;subject=Request%20a%20price%20estimate"`
+      )
     })
 
     it("tracks event", async () => {

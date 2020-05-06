@@ -4,6 +4,17 @@ orbs:
   yarn: artsy/yarn@4.0.2
   codecov: codecov/codecov@1.0.5
   auto: artsy/auto@1.2.0
+  aws-s3: circleci/aws-s3@1.0.15
+
+jobs:
+  upload-storybook:
+    docker:
+      - image: "cimg/python:3.8"
+    steps:
+      - aws-s3/sync:
+          arguments: --acl public-read
+          from: storybook_build
+          to: "s3://artsy-static-sites/artsy-reaction"
 
 workflows:
   build_and_verify:
@@ -54,3 +65,25 @@ workflows:
             - lint-changed
             - yarn/type-check
             - yarn/update-cache
+      - yarn/run:
+          name: build-storybook
+          script: "deploy-storybook"
+          post-steps:
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - storybook_build
+          filters:
+            branches:
+              only: master
+      - upload-storybook:
+          context: static-sites-uploader
+          requires:
+            - yarn/workflow-queue
+            - build-storybook
+          pre-steps:
+            - attach_workspace:
+                at: .
+          filters:
+            branches:
+              only: master
