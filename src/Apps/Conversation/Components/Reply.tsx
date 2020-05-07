@@ -1,6 +1,6 @@
-import { Box, Button, color, Flex, media, TextArea } from "@artsy/palette"
+import { Button, color, Flex, media } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { Environment } from "react-relay"
 import styled from "styled-components"
 import { SendConversationMessage } from "../Mutation/SendConversationMessage"
@@ -30,6 +30,7 @@ const StyledTextArea = styled.textarea<{ height?: string }>`
   resize: none;
   min-height: 40px;
   font-size: 16px;
+
   ${media.xs`
     max-height: calc(60vh - 115px);
   `};
@@ -46,25 +47,12 @@ export const Reply: React.FC<ReplyProps> = props => {
   const [bodyText, setBodyText] = useState("")
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const textArea = useRef()
-  // const textAreaDisabled =
-  //   textArea.current === undefined || textArea.current.state.value === ""
-  // const textAreaHeight =
-  //   textArea.current === undefined || !textArea.current.state.value.length
-  //     ? "40px"
-  //     : "auto"
-  // let textAreaDisabled = true
 
-  // console.log("JGYGHJhgjhjg", textArea)
-  // if (textArea.current !== undefined) {
-  //   console.log("JGYGHJhgjhjg", textArea.current)
-  // }
-  /* const height = large ? calc(60vh - 145px) : calc(60vh - 115px) */
   return (
     <StyledFlex p={1}>
       <FullWidthFlex width="100%">
         <StyledTextArea
           onInput={event => {
-            // Reset field height
             const field = event.target as HTMLTextAreaElement
             field.style.height = "inherit"
             if (buttonDisabled && field.value.length > 2) {
@@ -73,22 +61,7 @@ export const Reply: React.FC<ReplyProps> = props => {
             if (!buttonDisabled && field.value.length <= 2) {
               setButtonDisabled(true)
             }
-
-            // console.log("wooooo", textAreaDisabled)
-
-            // Get the computed styles for the element
-            const computed = window.getComputedStyle(field)
-
-            // Calculate the height
             const height = field.scrollHeight
-            // parseInt(computed.getPropertyValue("border-top-width"), 10) +
-            // parseInt(computed.getPropertyValue("padding-top"), 10) +
-            // field.scrollHeight +
-            // parseInt(computed.getPropertyValue("padding-bottom"), 10) +
-            // parseInt(computed.getPropertyValue("border-bottom-width"), 10)
-
-            console.log("COMPUTED height", height)
-
             field.style.height = height + "px"
           }}
           placeholder="Type your message"
