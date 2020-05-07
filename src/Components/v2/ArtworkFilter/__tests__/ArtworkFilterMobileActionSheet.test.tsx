@@ -32,13 +32,16 @@ describe("ArtworkFilterMobileActionSheet", () => {
 
   it("contains correct UI elements", () => {
     const wrapper = getWrapper()
+
     expect(
       wrapper
         .find("Button")
         .first()
         .text()
-    ).toEqual("Reset")
+    ).toEqual("Close")
+
     expect(wrapper.html()).toContain("Filter")
+
     expect(
       wrapper
         .find("Button")
@@ -47,7 +50,7 @@ describe("ArtworkFilterMobileActionSheet", () => {
     ).toEqual("Apply")
   })
 
-  it("resets filters to defaults on `Reset` button click", done => {
+  it("resets filters to defaults on `Reset` button click", () => {
     const wrapper = getWrapper({
       filters: {
         ...initialArtworkFilterState,
@@ -56,15 +59,13 @@ describe("ArtworkFilterMobileActionSheet", () => {
     })
     wrapper
       .find("Button")
+      .findWhere(c => c.text() === "Clear all")
       .first()
       .simulate("click")
 
-    setTimeout(() => {
-      expect(context.filters).toEqual({
-        ...initialArtworkFilterState,
-        reset: true,
-      })
-      done()
+    expect(context.filters).toEqual({
+      ...initialArtworkFilterState,
+      reset: true,
     })
   })
 
