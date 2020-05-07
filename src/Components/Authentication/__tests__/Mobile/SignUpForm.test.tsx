@@ -5,6 +5,7 @@ import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 import { ChangeEvents } from "../fixtures"
+import { flushPromiseQueue } from "DevTools"
 
 jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
@@ -111,7 +112,7 @@ describe("MobileSignUpForm", () => {
       })
     })
 
-    it("fires reCAPTCHA even", done => {
+    it("fires reCAPTCHA event", done => {
       const wrapper = getWrapper()
       const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
       const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
@@ -165,11 +166,42 @@ describe("MobileSignUpForm", () => {
     })
   })
 
-  it("renders password error", () => {
+  it("renders password error", async () => {
+    ;(props.handleSubmit as jest.Mock).mockImplementation((values, actions) => {
+      actions.setStatus({ error: "some password error" })
+    })
+
     const wrapper = getWrapper()
-    const formik: any = wrapper.find("Formik").instance()
-    formik.setStatus({ error: "some password error" })
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    const termsCheckbox = wrapper.find(`Checkbox`).instance() as Checkbox
+    inputEmail.onChange(ChangeEvents.email)
+    termsCheckbox.onChange(ChangeEvents.accepted_terms_of_service)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
     wrapper.update()
+
+    const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+    inputPass.onChange(ChangeEvents.password)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
+    wrapper.update()
+
+    const inputName = wrapper.find(QuickInput).instance() as QuickInput
+    inputName.onChange(ChangeEvents.name)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
+    wrapper.update()
+
+    expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+      email: "email@email.com",
+      accepted_terms_of_service: true,
+      password: "password",
+      name: "User Name",
+      recaptcha_token: "recaptcha-token",
+    })
     expect(wrapper.html()).toMatch("some password error")
   })
 

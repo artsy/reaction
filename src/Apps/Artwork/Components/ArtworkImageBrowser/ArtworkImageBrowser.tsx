@@ -1,6 +1,7 @@
 import { ArtworkImageBrowser_artwork } from "__generated__/ArtworkImageBrowser_artwork.graphql"
 import { BaseCarousel as Carousel } from "Components/Carousel"
 import { Lightbox } from "Components/Lightbox"
+import FlickityType from "flickity"
 import React from "react"
 import styled from "styled-components"
 import { Media } from "Utils/Responsive"
@@ -10,7 +11,7 @@ import { Box, ChevronIcon, Col, color, Flex, space } from "@artsy/palette"
 interface ArtworkBrowserProps {
   imageAlt: string
   images: ArtworkImageBrowser_artwork["images"]
-  setCarouselRef: (carouselRef: Carousel) => void
+  setCarouselRef: (carouselRef: FlickityType) => void
 }
 
 type Image = ArtworkBrowserProps["images"][number]

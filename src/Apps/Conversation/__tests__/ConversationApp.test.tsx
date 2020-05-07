@@ -5,6 +5,7 @@ import {
 import { MockedConversation } from "Apps/__tests__/Fixtures/Conversation"
 import { SystemContextProvider } from "Artsy"
 import { MockBoot, renderRelayTree } from "DevTools"
+import { Match } from "found"
 import React from "react"
 import { HeadProvider } from "react-head"
 import { graphql } from "react-relay"
@@ -26,6 +27,7 @@ const render = (me: ConversationAppTestQueryRawResponse["me"], user: User) =>
         me={{
           ...me,
         }}
+        match={({ route: { displayFullPage: true } } as unknown) as Match}
         {...props}
       />
     ),
@@ -77,9 +79,9 @@ describe("Conversation app", () => {
         }
         const component = await render(mockMe, userType)
         const text = component.text()
-        expect(text).toContain("No Conversations")
+        expect(text).toContain("You don't have any messages yet")
         const btn = component.find("Button")
-        expect(btn.length).toBe(0)
+        expect(btn.length).toBe(1)
       })
     })
   })

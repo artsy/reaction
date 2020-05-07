@@ -1,4 +1,4 @@
-import { Spinner, Tab, Tabs } from "@artsy/palette"
+import { Box, Spinner, Tab, Tabs } from "@artsy/palette"
 import { RelatedWorksArtworkGrid_artwork } from "__generated__/RelatedWorksArtworkGrid_artwork.graphql"
 import { RelatedWorksArtworkGridQuery } from "__generated__/RelatedWorksArtworkGridQuery.graphql"
 import { hideGrid } from "Apps/Artwork/Components/OtherWorks"
@@ -96,7 +96,7 @@ class RelatedWorksArtworkGrid extends React.Component<
     }
 
     return (
-      <>
+      <Box data-test={ContextModule.relatedWorksRail}>
         <Header title="Related works" />
         <Tabs justifyContent="center" onChange={this.handleTabClick}>
           {names.map(({ name, internalID }, key) => {
@@ -120,7 +120,7 @@ class RelatedWorksArtworkGrid extends React.Component<
             )
           })}
         </Tabs>
-      </>
+      </Box>
     )
   }
 }

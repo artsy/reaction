@@ -15,6 +15,7 @@ import {
   SoloIcon,
   space,
   Spacer,
+  themeProps,
 } from "@artsy/palette"
 
 import { SystemContext } from "Artsy/SystemContext"
@@ -36,11 +37,11 @@ import { openAuthModal } from "Utils/openAuthModal"
 import { NavItem } from "./NavItem"
 import { NotificationsBadge } from "./NotificationsBadge"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { AnalyticsSchema } from "Artsy"
 import { track, useTracking } from "Artsy/Analytics"
 import Events from "Utils/Events"
-import { useMedia } from "Utils/Hooks/useMedia"
+import { useMatchMedia } from "Utils/Hooks/useMatchMedia"
 import { userHasLabFeature } from "Utils/user"
 
 export const NavBar: React.FC = track(
@@ -55,14 +56,14 @@ export const NavBar: React.FC = track(
   const { trackEvent } = useTracking()
   const { mediator, user, EXPERIMENTAL_APP_SHELL } = useContext(SystemContext)
   const [showMobileMenu, toggleMobileNav] = useState(false)
-  const { xs, sm } = useMedia()
+  const xs = useMatchMedia(themeProps.mediaQueries.xs)
+  const sm = useMatchMedia(themeProps.mediaQueries.sm)
   const isMobile = xs || sm
   const isLoggedIn = Boolean(user)
   const conversationsEnabled = userHasLabFeature(
     user,
     "User Conversations View"
   )
-  const canViewNewDropDown = userHasLabFeature(user, "Updated Navigation")
   const {
     links: [artworks, artists],
   } = menuData
@@ -116,75 +117,80 @@ export const NavBar: React.FC = track(
         */}
         <NavSection display={["none", "none", "flex"]}>
           <NavSection>
-            {canViewNewDropDown ? (
-              <NavItem
-                isFullScreenDropDown
-                Menu={() => {
-                  return (
-                    <Box>
-                      <DropDownNavMenu
-                        width="100vw"
-                        menu={(artworks as MenuLinkData).menu}
-                        contextModule={
-                          AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+            <NavItem
+              label="Artworks"
+              isFullScreenDropDown
+              Menu={({ setIsVisible }) => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      menu={(artworks as MenuLinkData).menu}
+                      contextModule={
+                        AnalyticsSchema.ContextModule.HeaderArtworksDropdown
+                      }
+                      onClick={() => {
+                        if (EXPERIMENTAL_APP_SHELL) {
+                          setIsVisible(false)
                         }
-                      />
-                    </Box>
-                  )
-                }}
-              >
-                <Flex>
-                  Artworks
-                  <ChevronIcon
-                    direction="down"
-                    color={color("black100")}
-                    height="15px"
-                    width="15px"
-                    top="5px"
-                    left="4px"
-                  />
-                </Flex>
-              </NavItem>
-            ) : (
-              <NavItem href="/collect">Artworks</NavItem>
-            )}
+                      }}
+                    />
+                  </Box>
+                )
+              }}
+            >
+              <Flex>
+                Artworks
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
+            </NavItem>
 
-            {canViewNewDropDown ? (
-              <NavItem
-                isFullScreenDropDown
-                Menu={() => {
-                  return (
-                    <Box>
-                      <DropDownNavMenu
-                        width="100vw"
-                        menu={(artists as MenuLinkData).menu}
-                        contextModule={
-                          AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+            <NavItem
+              label="Artists"
+              isFullScreenDropDown
+              Menu={({ setIsVisible }) => {
+                return (
+                  <Box>
+                    <DropDownNavMenu
+                      width="100vw"
+                      menu={(artists as MenuLinkData).menu}
+                      contextModule={
+                        AnalyticsSchema.ContextModule.HeaderArtistsDropdown
+                      }
+                      onClick={() => {
+                        if (EXPERIMENTAL_APP_SHELL) {
+                          setIsVisible(false)
                         }
-                      />
-                    </Box>
-                  )
-                }}
-              >
-                <Flex>
-                  Artists
-                  <ChevronIcon
-                    direction="down"
-                    color={color("black100")}
-                    height="15px"
-                    width="15px"
-                    top="5px"
-                    left="4px"
-                  />
-                </Flex>
-              </NavItem>
-            ) : (
-              <NavItem href="/artists">Artists</NavItem>
-            )}
+                      }}
+                    />
+                  </Box>
+                )
+              }}
+            >
+              <Flex>
+                Artists
+                <ChevronIcon
+                  direction="down"
+                  color={color("black100")}
+                  height="15px"
+                  width="15px"
+                  top="5px"
+                  left="4px"
+                />
+              </Flex>
+            </NavItem>
 
             <NavItem href="/auctions">Auctions</NavItem>
             <NavItem href="/articles">Editorial</NavItem>
             <NavItem
+              label="More"
               Menu={() => {
                 return (
                   <Box mr={-150}>
@@ -279,7 +285,7 @@ export const NavBar: React.FC = track(
                 onClick={() => {
                   openAuthModal(mediator, {
                     mode: ModalType.login,
-                    intent: AuthIntent.login,
+                    intent: Intent.login,
                     contextModule: ContextModule.header,
                   })
                 }}
@@ -291,7 +297,7 @@ export const NavBar: React.FC = track(
                 onClick={() => {
                   openAuthModal(mediator, {
                     mode: ModalType.signup,
-                    intent: AuthIntent.signup,
+                    intent: Intent.signup,
                     contextModule: ContextModule.header,
                   })
                 }}

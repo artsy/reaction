@@ -1,21 +1,40 @@
 import { storiesOf } from "@storybook/react"
 import Colors from "Assets/Colors"
-import React, { Component, Fragment } from "react"
+import React, { Component, Fragment, useState } from "react"
 import styled from "styled-components"
 import Button from "../Buttons/Default"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   Footer,
   TermsOfServiceCheckbox,
 } from "../Authentication/commonElements"
 import { ModalManager } from "../Authentication/Desktop/ModalManager"
 import { FormSwitcher } from "../Authentication/FormSwitcher"
-import { ModalType } from "../Authentication/Types"
+import { ModalType, SubmitHandler } from "../Authentication/Types"
 
-const submit = (values, actions) => {
+const submit: SubmitHandler = (values, actions) => {
   setTimeout(() => {
     alert(JSON.stringify(values, null, 1))
+    actions.setSubmitting(false)
+  }, 1000)
+}
+
+const submitWithOtpRequired: SubmitHandler = (values, actions) => {
+  setTimeout(() => {
+    if (values.otp_attempt === "123456") {
+      alert(JSON.stringify(values, null, 1))
+    } else if (values.otp_attempt) {
+      actions.setStatus({
+        success: false,
+        error: "invalid two-factor authentication code",
+      })
+    } else {
+      actions.setStatus({
+        success: false,
+        error: "missing two-factor authentication code",
+      })
+    }
     actions.setSubmitting(false)
   }, 1000)
 }
@@ -65,6 +84,36 @@ storiesOf("Components/Authentication/Desktop", module)
   ))
   .add("Sign Up", () => <ModalContainer options={{ mode: ModalType.signup }} />)
 
+const MobileLoginTwoFactorErrorPropAuthDemo: React.FC = () => {
+  const [serverError, setServerError] = useState(null)
+
+  const handleSubmit: SubmitHandler = (values, actions) => {
+    setTimeout(() => {
+      if (values.otp_attempt === "123456") {
+        alert(JSON.stringify(values, null, 1))
+      } else if (values.otp_attempt) {
+        setServerError("invalid two-factor authentication code")
+      } else {
+        setServerError("missing two-factor authentication code")
+      }
+      actions.setSubmitting(false)
+    }, 1000)
+  }
+
+  return (
+    <FormSwitcher
+      error={serverError}
+      type={ModalType.login}
+      handleSubmit={handleSubmit}
+      isMobile
+      options={{
+        contextModule: ContextModule.header,
+        intent: Intent.login,
+      }}
+    />
+  )
+}
+
 storiesOf("Components/Authentication/Mobile", module)
   .add("Login", () => (
     <MobileContainer>
@@ -74,9 +123,27 @@ storiesOf("Components/Authentication/Mobile", module)
         isMobile
         options={{
           contextModule: ContextModule.header,
-          intent: AuthIntent.login,
+          intent: Intent.login,
         }}
       />
+    </MobileContainer>
+  ))
+  .add("Login (2FA with error prop)", () => (
+    <MobileContainer>
+      <FormSwitcher
+        type={ModalType.login}
+        handleSubmit={submitWithOtpRequired}
+        isMobile
+        options={{
+          contextModule: ContextModule.header,
+          intent: Intent.login,
+        }}
+      />
+    </MobileContainer>
+  ))
+  .add("Login (2FA with form status)", () => (
+    <MobileContainer>
+      <MobileLoginTwoFactorErrorPropAuthDemo />
     </MobileContainer>
   ))
   .add("Forgot Password", () => (
@@ -87,7 +154,7 @@ storiesOf("Components/Authentication/Mobile", module)
         isMobile
         options={{
           contextModule: ContextModule.header,
-          intent: AuthIntent.forgot,
+          intent: Intent.forgot,
         }}
       />
     </MobileContainer>
@@ -100,7 +167,7 @@ storiesOf("Components/Authentication/Mobile", module)
         isMobile
         options={{
           contextModule: ContextModule.header,
-          intent: AuthIntent.signup,
+          intent: Intent.signup,
         }}
       />
     </MobileContainer>

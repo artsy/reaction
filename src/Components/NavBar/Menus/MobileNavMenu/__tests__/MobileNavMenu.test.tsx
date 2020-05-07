@@ -68,7 +68,7 @@ describe("MobileNavMenu", () => {
 
       const simpleLinks = linkContainer.children(MobileLink)
 
-      expect(simpleLinks.length).toBe(7)
+      expect(simpleLinks.length).toBe(8)
       ;(menuData.links as SimpleLinkData[])
         .slice(2)
         .map(({ href, text }, index) => {

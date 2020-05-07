@@ -1,4 +1,4 @@
-import { ContextModule } from "@artsy/cohesion"
+import { AuthContextModule } from "@artsy/cohesion"
 import { Fillwidth_artworks } from "__generated__/Fillwidth_artworks.graphql"
 import { Mediator } from "Artsy"
 import { find } from "lodash"
@@ -16,7 +16,7 @@ interface Props extends React.HTMLAttributes<FillwidthContainer> {
   gutter?: number
   size?: any
   artworks: Fillwidth_artworks
-  contextModule: ContextModule
+  contextModule: AuthContextModule
   mediator?: Mediator
 }
 

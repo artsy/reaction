@@ -5,7 +5,7 @@ import { FragmentRefs } from "relay-runtime";
 export type ArtistConsignRecentlySold_artist = {
     readonly targetSupply: {
         readonly microfunnel: {
-            readonly randomArtworks: ReadonlyArray<{
+            readonly artworks: ReadonlyArray<{
                 readonly artwork: {
                     readonly image: {
                         readonly aspectRatio: number;
@@ -56,16 +56,10 @@ const node: ReaderFragment = {
           "selections": [
             {
               "kind": "LinkedField",
-              "alias": "randomArtworks",
+              "alias": null,
               "name": "artworks",
-              "storageKey": "artworks(randomize:true)",
-              "args": [
-                {
-                  "kind": "Literal",
-                  "name": "randomize",
-                  "value": true
-                }
-              ],
+              "storageKey": null,
+              "args": null,
               "concreteType": "ArtistTargetSupplyMicrofunnelArtwork",
               "plural": true,
               "selections": [
@@ -139,5 +133,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'ddc9d6cce24975784836539499f83822';
+(node as any).hash = '796c6909af76876d049a50784d7fb593';
 export default node;

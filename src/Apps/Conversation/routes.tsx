@@ -5,6 +5,7 @@ import { graphql } from "react-relay"
 export const conversationRoutes: RouteConfig[] = [
   {
     path: "/user/conversations",
+    displayFullPage: true,
     getComponent: () => loadable(() => import("./ConversationApp")),
     query: graphql`
       query routes_ConversationQuery {
@@ -24,6 +25,7 @@ export const conversationRoutes: RouteConfig[] = [
   },
   {
     path: "/user/conversations/:conversationID",
+    displayFullPage: true,
     getComponent: () => loadable(() => import("./Routes/Conversation")),
     prepareVariables: (params, _props) => {
       return {

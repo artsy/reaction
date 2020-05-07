@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { Box, EntityHeader, Sans, Spacer } from "@artsy/palette"
 import { RecommendedArtist_artist } from "__generated__/RecommendedArtist_artist.graphql"
 import { SystemContext } from "Artsy"
@@ -22,7 +22,7 @@ const handleOpenAuth = (mediator, artist) => {
   openAuthToFollowSave(mediator, {
     entity: artist,
     contextModule: ContextModule.relatedArtistsRail,
-    intent: AuthIntent.followArtist,
+    intent: Intent.followArtist,
   })
 }
 
@@ -54,11 +54,7 @@ const RecommendedArtist: FC<RecommendedArtistProps & {
   onArtworkClicked: () => void
 }> = ({ artist, onArtworkClicked }) => {
   const { user, mediator } = useContext(SystemContext)
-  const artistData = get(
-    artist,
-    a => a.artworks_connection.edges,
-    []
-  ) as object[]
+  const artistData = get(artist, a => a.artworks_connection.edges, [])
 
   return (
     <Box data-test={ContextModule.relatedArtistsRail}>

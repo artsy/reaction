@@ -10,7 +10,7 @@ jest.mock("Artsy/Analytics/useTracking", () => {
   }
 })
 
-jest.mock("Utils/Hooks/useMedia")
+jest.mock("Utils/Hooks/useMatchMedia")
 
 describe("NavItem", () => {
   it("renders proper content", () => {
@@ -28,6 +28,29 @@ describe("NavItem", () => {
       </NavItem>
     )
     expect(wrapper.html()).toContain("Menu Item")
+  })
+
+  it("passes a setIsVisible toggle to Menu component", done => {
+    let toggle
+    const wrapper = mount(
+      <NavItem
+        active
+        href="/some-link"
+        Menu={({ setIsVisible }) => {
+          toggle = setIsVisible
+          return <div>Menu Item</div>
+        }}
+      >
+        hello how are you
+      </NavItem>
+    )
+    expect(wrapper.html()).toContain("Menu Item")
+    setTimeout(() => {
+      toggle()
+      wrapper.update()
+      expect(wrapper.html()).not.toContain("Menu Item")
+      done()
+    })
   })
 
   it("shows / hides Menu on mouse interactions", () => {

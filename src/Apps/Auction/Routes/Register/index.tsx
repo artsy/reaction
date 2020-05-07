@@ -13,7 +13,7 @@ import {
 import { AppContainer } from "Apps/Components/AppContainer"
 import { track } from "Artsy"
 import * as Schema from "Artsy/Analytics/Schema"
-import { FormikActions } from "formik"
+import { FormikHelpers as FormikActions } from "formik"
 import React from "react"
 import { Title } from "react-head"
 import {

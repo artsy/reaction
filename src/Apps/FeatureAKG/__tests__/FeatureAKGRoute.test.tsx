@@ -277,6 +277,7 @@ describe("FeatureAKG", () => {
           subject: "View more",
         })
       })
+
       it("does not show the section if there are no articles", async () => {
         const injectedData = {
           ...defaultData,
@@ -487,6 +488,125 @@ describe("FeatureAKG", () => {
         const wrapper = await getWrapper(noFairsData, defaultVariables)
         expect(wrapper.find("FeaturedRailCarousel").length).toEqual(2)
         expect(wrapper.find("FeaturedRails").text()).not.toContain("Fairs")
+      })
+
+      it("doesn't break if a single auction doesn't match the graphQL response", async () => {
+        const partialAuctionsData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            auctions_rail: {
+              ...defaultData.browse.auctions_rail,
+              items: [
+                {
+                  id: "bad-slug",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+                {
+                  id: "heritage-signature-photographs-1",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+                {
+                  id:
+                    "dope-gallery-global-icons-slash-contemporary-prints-and-editions",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+              ],
+            },
+          },
+        }
+
+        const defaultWrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          partialAuctionsData
+        )
+        expect(defaultWrapper.html()).toContain("Browse")
+        expect(defaultWrapper.find("FeaturedRailCarousel").length).toEqual(3)
+        expect(defaultWrapper.find("FeaturedRails").text()).toContain(
+          "Benefit Auctions"
+        )
+      })
+
+      it("doesn't break if a single collection doesn't match the graphQL response", async () => {
+        const partialCollectionsData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            collections_rail: {
+              ...defaultData.browse.collections_rail,
+              items: [
+                {
+                  id: "bad-slug",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+                {
+                  id: "collect-by-color-orange",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+                {
+                  id: "minimalist-prints",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+              ],
+            },
+          },
+        }
+
+        const defaultWrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          partialCollectionsData
+        )
+        expect(defaultWrapper.html()).toContain("Browse")
+        expect(defaultWrapper.find("FeaturedRailCarousel").length).toEqual(3)
+        expect(defaultWrapper.find("FeaturedRails").text()).toContain(
+          "Collections"
+        )
+      })
+
+      it("doesn't break if a single fair doesn't match the graphQL response", async () => {
+        const partialFairsData = {
+          ...defaultData,
+          browse: {
+            ...defaultData.browse,
+            fairs_rail: {
+              ...defaultData.browse.fairs_rail,
+              items: [
+                {
+                  id: "bad-id",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+                {
+                  id: "5e5e45095c859000102aa95f",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+                {
+                  id: "5d88fbc5192508000efb03d4",
+                  image_src:
+                    "https://d32dm0rphc51dk.cloudfront.net/Nr7AtUmX2UVpIcb7sXoJug/large.jpg",
+                },
+              ],
+            },
+          },
+        }
+
+        const defaultWrapper = await getWrapper(
+          ArtKeepsGoingFixture,
+          defaultVariables,
+          partialFairsData
+        )
+        expect(defaultWrapper.html()).toContain("Browse")
+        expect(defaultWrapper.find("FeaturedRailCarousel").length).toEqual(3)
+        expect(defaultWrapper.find("FeaturedRails").text()).toContain("Fairs")
       })
 
       it("doesn't attempt to display the collections rail if there is no manual data", async () => {

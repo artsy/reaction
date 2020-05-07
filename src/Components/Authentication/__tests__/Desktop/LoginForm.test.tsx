@@ -1,5 +1,5 @@
 import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
-import { mount, shallow } from "enzyme"
+import { mount } from "enzyme"
 import React from "react"
 import { LoginValues } from "../fixtures"
 
@@ -63,9 +63,10 @@ describe("LoginForm", () => {
   describe("onSubmit", () => {
     it("calls handleSubmit with expected params", done => {
       props.values = LoginValues
-      const wrapper = shallow(<LoginForm {...props} />)
-      const formik = wrapper.dive().instance() as any
-      formik.submitForm()
+      const wrapper = getWrapper()
+      const input = wrapper.find(`Formik`)
+      input.simulate("submit")
+      wrapper.update()
 
       setTimeout(() => {
         expect(props.handleSubmit).toBeCalledWith(
@@ -73,7 +74,7 @@ describe("LoginForm", () => {
             email: "foo@bar.com",
             password: "password123",
           },
-          formik.getFormikActions()
+          expect.anything()
         )
         done()
       })

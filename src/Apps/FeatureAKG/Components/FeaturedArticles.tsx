@@ -31,20 +31,21 @@ interface FeaturedArticlesProps {
 const FeaturedArticles: React.FC<FeaturedArticlesProps> = props => {
   const articles = [...props.articles]
 
-  if (!articles?.length) {
-    return null
-  }
-
   const firstArticle = articles.shift()
   const firstArticleImage = firstArticle?.thumbnailImage?.cropped
 
   const tracking = useTracking()
+
   const trackClick = (destinationPath: string) => {
     tracking.trackEvent({
       action_type: AnalyticsSchema.ActionType.Click,
       context_module: AnalyticsSchema.ContextModule.Editorial,
       destination_path: destinationPath,
     })
+  }
+
+  if (articles.length === 0) {
+    return null
   }
 
   return (

@@ -7,6 +7,7 @@ import QuickInput from "Components/QuickInput"
 import { mount } from "enzyme"
 import React from "react"
 import { ChangeEvents } from "../fixtures"
+import { flushPromiseQueue } from "DevTools"
 
 jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
@@ -52,11 +53,30 @@ describe("MobileLoginForm", () => {
     })
   })
 
-  it("renders password error", () => {
+  it("renders password error", async () => {
+    ;(props.handleSubmit as jest.Mock).mockImplementation((values, actions) => {
+      actions.setStatus({ error: "some password error" })
+    })
+
     const wrapper = getWrapper()
-    const formik: any = wrapper.find("Formik").instance()
-    formik.setStatus({ error: "some password error" })
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    inputEmail.onChange(ChangeEvents.email)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
     wrapper.update()
+
+    const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+    inputPass.onChange(ChangeEvents.password)
+    wrapper.find(SubmitButton).simulate("click")
+
+    await flushPromiseQueue()
+    wrapper.update()
+
+    expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+      email: "email@email.com",
+      password: "password",
+    })
     expect(wrapper.html()).toMatch("some password error")
   })
 
@@ -93,6 +113,38 @@ describe("MobileLoginForm", () => {
             password: "password",
           })
           done()
+        })
+      })
+    })
+
+    it("calls handleSubmit with expected params when server requests a two-factor authentication code", done => {
+      props.error = "missing two-factor authentication code"
+      props.actions = {}
+      const wrapper = getWrapper()
+      const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+      inputEmail.onChange(ChangeEvents.email)
+      wrapper.find(SubmitButton).simulate("click")
+
+      setTimeout(() => {
+        wrapper.update()
+        const inputPass = wrapper.find(QuickInput).instance() as QuickInput
+        inputPass.onChange(ChangeEvents.password)
+        wrapper.find(SubmitButton).simulate("click")
+
+        setTimeout(() => {
+          wrapper.update()
+          const inputOtp = wrapper.find(QuickInput).instance() as QuickInput
+          inputOtp.onChange(ChangeEvents.otpAttempt)
+          wrapper.find(SubmitButton).simulate("click")
+
+          setTimeout(() => {
+            expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+              email: "email@email.com",
+              password: "password",
+              otp_attempt: "123456",
+            })
+            done()
+          })
         })
       })
     })

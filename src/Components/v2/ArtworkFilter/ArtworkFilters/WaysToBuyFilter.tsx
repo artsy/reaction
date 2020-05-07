@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Sans, Spacer } from "@artsy/palette"
+import { Checkbox, Flex, Toggle } from "@artsy/palette"
 import { isEmpty } from "lodash"
 import React, { FC } from "react"
 
@@ -53,12 +53,8 @@ export const WaysToBuyFilter: FC = () => {
   ]
 
   return (
-    <Flex flexDirection="column" alignItems="left" mt={-1} mb={1}>
-      <Box pt={1}>
-        <Sans size="2" weight="medium" color="black100">
-          Ways to buy
-        </Sans>
-        <Spacer mb={2} />
+    <Toggle label="Ways to buy" expanded>
+      <Flex flexDirection="column" my={1}>
         {checkboxes.map((checkbox, index) => {
           const props = {
             disabled: checkbox.disabled,
@@ -68,7 +64,7 @@ export const WaysToBuyFilter: FC = () => {
           }
           return <Checkbox {...props}>{checkbox.name}</Checkbox>
         })}
-      </Box>
-    </Flex>
+      </Flex>
+    </Toggle>
   )
 }

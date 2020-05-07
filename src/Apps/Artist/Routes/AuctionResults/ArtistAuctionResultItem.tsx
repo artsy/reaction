@@ -1,4 +1,4 @@
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -207,56 +207,34 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
   )
 
   return (
-    <Box data-test={ContextModule.auctionResults}>
-      <Col xs="4">
-        <Flex
-          alignItems="center"
-          justifyContent="center"
-          height="80px"
-          width="80px"
-        >
-          {imageUrl ? (
-            <StyledImage
-              src={imageUrl}
-              Fallback={() => renderFallbackImage()}
-            />
-          ) : (
-            renderFallbackImage()
-          )}
-        </Flex>
-      </Col>
-      <Col xs="6">
-        <Flex alignItems="center" width="100%" height="100%">
-          <Box>
-            {renderPricing(
-              salePrice,
-              saleDate,
-              props.user,
-              props.mediator,
-              "xs"
-            )}
-            <Sans size="2" weight="medium" color="black60">
-              {title}
-              {title && date_text && ", "}
-              {date_text}
-            </Sans>
-            <Sans size="2" color="black60" mt="5px">
-              Sold on {dateOfSale}
-            </Sans>
-          </Box>
-        </Flex>
-      </Col>
-      <Col xs="2">
-        <Flex
-          justifyContent="flex-end"
-          width="100%"
-          alignItems="center"
-          height="100%"
-        >
-          <div>{expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
-        </Flex>
-      </Col>
-    </Box>
+    <Flex data-test={ContextModule.auctionResults} width="100%">
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        height="80px"
+        width="80px"
+      >
+        {imageUrl ? (
+          <StyledImage src={imageUrl} Fallback={() => renderFallbackImage()} />
+        ) : (
+          renderFallbackImage()
+        )}
+      </Flex>
+      <Flex ml={2} flexDirection="column" justifyContent="center" width="100%">
+        {renderPricing(salePrice, saleDate, props.user, props.mediator, "xs")}
+        <Sans size="2" weight="medium" color="black60">
+          {title}
+          {title && date_text && ", "}
+          {date_text}
+        </Sans>
+        <Sans size="2" color="black60" mt="5px">
+          Sold on {dateOfSale}
+        </Sans>
+      </Flex>
+      <Flex justifyContent="flex-end" alignItems="center" height="100%">
+        <div>{expanded ? <ArrowUpIcon /> : <ArrowDownIcon />}</div>
+      </Flex>
+    </Flex>
   )
 }
 
@@ -372,7 +350,7 @@ const renderPricing = (salePrice, saleDate, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Log in to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.seePriceAuctionRecords,
+              intent: Intent.seePriceAuctionRecords,
             })
         }}
       >
@@ -408,7 +386,7 @@ const renderEstimate = (estimatedPrice, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.seeEstimateAuctionRecords,
+              intent: Intent.seeEstimateAuctionRecords,
             })
         }}
       >
@@ -444,7 +422,7 @@ const renderRealizedPrice = (estimatedPrice, user, mediator, size) => {
               mode: ModalType.signup,
               copy: "Sign up to see full auction records — for free",
               contextModule: ContextModule.auctionResults,
-              intent: AuthIntent.seeRealizedPriceAuctionRecords,
+              intent: Intent.seeRealizedPriceAuctionRecords,
             })
         }}
       >

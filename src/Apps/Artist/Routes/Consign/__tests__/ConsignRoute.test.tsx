@@ -69,7 +69,7 @@ describe("ConsignRoute", () => {
       const wrapper = await getWrapper()
       expect(
         wrapper.find("ArtistConsignHeader").find("ResponsiveImage").length
-      ).toEqual(4) // actually 2, but second set of images creates border
+      ).toEqual(2)
     })
 
     it("links out to consign page", async () => {
@@ -138,7 +138,7 @@ describe("ConsignRoute", () => {
   })
 
   describe("ArtistConsignPageViews", () => {
-    it("includes artist name in pageviews title", async () => {
+    it("includes artist name in pageview title", async () => {
       const wrapper = await getWrapper()
       expect(wrapper.find("ArtistConsignPageViews").text()).toContain(
         "Alex Katz"

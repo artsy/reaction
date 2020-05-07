@@ -1,7 +1,7 @@
 import { Modal } from "@artsy/palette"
 import { mount } from "enzyme"
 import React from "react"
-import { flushPromiseQueue } from "Utils/flushPromiseQueue"
+import { flushPromiseQueue } from "DevTools"
 import { ContentKey, PostRegistrationModal } from "../PostRegistrationModal"
 
 const closeMock = jest.fn()

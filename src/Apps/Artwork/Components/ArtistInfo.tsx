@@ -20,7 +20,7 @@ import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
 import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/ArtistMarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/SelectedExhibitions"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import { MIN_EXHIBITIONS } from "Components/SelectedExhibitions"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -87,7 +87,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
     openAuthToFollowSave(mediator, {
       entity: artist,
       contextModule: ContextModule.aboutTheWork,
-      intent: AuthIntent.followArtist,
+      intent: Intent.followArtist,
     })
   }
 
@@ -137,6 +137,7 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
                           size="2"
                           weight="medium"
                           color="black"
+                          data-test="followButton"
                           style={{
                             cursor: "pointer",
                             textDecoration: "underline",

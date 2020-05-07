@@ -36,13 +36,18 @@ export interface ArtistAppProps {
 
 export const ArtistApp: React.FC<ArtistAppProps> = props => {
   const { artist, children } = props
-
   const { trackEvent } = useTracking()
-
   const route = findCurrentRoute(props.match)
+  let HorizontalPaddingArea = HorizontalPadding
+  let maxWidth
+
+  if (route.displayFullPage) {
+    maxWidth = "100%"
+    HorizontalPaddingArea = Box
+  }
 
   return (
-    <AppContainer>
+    <AppContainer maxWidth={maxWidth}>
       <ArtistMeta artist={artist} />
       {route.displayNavigationTabs && (
         <Row>
@@ -52,9 +57,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
         </Row>
       )}
 
-      <HorizontalPadding>
-        <Spacer mb={3} />
-
+      <HorizontalPaddingArea>
         <Row>
           <Col>
             {/*
@@ -62,6 +65,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
              */}
             {route.displayNavigationTabs ? (
               <>
+                <Spacer mb={3} />
                 <NavigationTabs artist={artist} />
                 <Spacer mb={2} />
               </>
@@ -72,7 +76,7 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
                */
               !route.displayFullPage && (
                 <>
-                  <Flex flexDirection="row" alignItems="center">
+                  <Flex flexDirection="row" alignItems="center" my={3}>
                     <ChevronIcon
                       direction="left"
                       color="black"
@@ -104,24 +108,31 @@ export const ArtistApp: React.FC<ArtistAppProps> = props => {
           </Col>
         </Row>
 
-        {typeof window !== "undefined" && (
-          <LazyLoadComponent threshold={1000}>
-            <Row>
-              <Col>
-                <RecentlyViewed />
-              </Col>
-            </Row>
-          </LazyLoadComponent>
+        {/* Fullpage is typically a stand-alone marketing page  */}
+        {!route.displayFullPage && typeof window !== "undefined" && (
+          <>
+            <LazyLoadComponent threshold={1000}>
+              <Row>
+                <Col>
+                  <RecentlyViewed />
+                </Col>
+              </Row>
+            </LazyLoadComponent>
+          </>
         )}
 
-        <Separator mt={6} mb={3} />
+        {route.displayFullPage ? (
+          <Spacer mb={3} />
+        ) : (
+          <Separator mt={6} mb={3} />
+        )}
 
         <Row>
           <Col>
             <Footer />
           </Col>
         </Row>
-      </HorizontalPadding>
+      </HorizontalPaddingArea>
     </AppContainer>
   )
 }

@@ -4,7 +4,7 @@ import React, { useEffect } from "react"
 
 import { AppShell } from "Apps/Components/AppShell"
 import { useSystemContext } from "Artsy/SystemContext"
-import { catchLinks } from "./Utils/catchLinks"
+import { interceptLinks } from "./interceptLinks"
 
 interface RouteList {
   routes: RouteConfig
@@ -31,28 +31,9 @@ export function buildAppRoutes(routeList: RouteList[]): RouteConfig[] {
         setRouter(props.router)
       }
 
-      /**
-       * Intercept <a> tags on page and if contained within router route
-       * manifest, navigate via router versus doing a hard jump between pages.
-       */
-      catchLinks(window, href => {
-        // FIXME: PR upstream; `matchRoutes` is missing from type definition
-        // @ts-ignore
-        const foundUrl = props.router.matcher.matchRoutes(routes, href)
-
-        if (foundUrl) {
-          const location = props.router.createLocation(href)
-          const previousHref = window.location.href
-
-          props.router.push({
-            ...location,
-            state: {
-              previousHref,
-            },
-          })
-        } else {
-          window.location.assign(href)
-        }
+      interceptLinks({
+        router: props.router,
+        routes,
       })
     }, [])
 

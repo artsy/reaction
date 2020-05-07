@@ -170,7 +170,11 @@ class TrackedMobileSignUpForm extends Component<
     ]
 
     return (
-      <Wizard steps={steps} onComplete={this.onSubmit}>
+      <Wizard
+        steps={steps}
+        onComplete={this.onSubmit}
+        initialValues={{ accepted_terms_of_service: false }}
+      >
         {context => {
           const {
             form: { handleSubmit, values, setTouched, isSubmitting, status },

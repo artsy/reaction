@@ -105,7 +105,7 @@ const Section: React.FC<{
   description: string
 }> = ({ icon, text, description }) => {
   return (
-    <Box width={["100%", "33%"]} height={["100%", 170]} my={[3, 0]} mx={1}>
+    <Box width={["100%", "25%"]} height={["100%", 170]} my={[3, 0]} mx={2}>
       <Box>{icon}</Box>
       <Box mt={1} mb={2}>
         <Sans size="5">{text}</Sans>

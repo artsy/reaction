@@ -7,6 +7,7 @@ export type ArtistSeriesRail_collectionGroup = {
     readonly groupType: MarketingGroupTypes;
     readonly name: string;
     readonly members: ReadonlyArray<{
+        readonly slug: string;
         readonly " $fragmentRefs": FragmentRefs<"ArtistSeriesEntity_member">;
     }>;
     readonly " $refType": "ArtistSeriesRail_collectionGroup";
@@ -50,6 +51,13 @@ const node: ReaderFragment = {
       "plural": true,
       "selections": [
         {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "slug",
+          "args": null,
+          "storageKey": null
+        },
+        {
           "kind": "FragmentSpread",
           "name": "ArtistSeriesEntity_member",
           "args": null
@@ -58,5 +66,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '74444f1335a930cac0d23033f2438ad6';
+(node as any).hash = '0a934729123f8c15545a74cfcd58bb55';
 export default node;

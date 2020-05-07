@@ -48,7 +48,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
                 <Spacer mb={3} />
 
                 <Carousel
-                  data={me.recentlyViewedArtworksConnection.edges as object[]}
+                  data={me.recentlyViewedArtworksConnection.edges}
                   render={artwork => {
                     const aspect_ratio = get(
                       artwork,
@@ -59,6 +59,7 @@ export class RecentlyViewed extends React.Component<RecentlyViewedProps> {
                     return (
                       <FillwidthItem
                         lazyLoad={true}
+                        // @ts-ignore // TODO: Correct typing
                         artwork={artwork.node}
                         targetHeight={HEIGHT}
                         imageHeight={HEIGHT}

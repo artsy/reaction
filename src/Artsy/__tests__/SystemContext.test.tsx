@@ -44,8 +44,9 @@ describe("Artsy context", () => {
               "isFetching",
               "relayEnvironment",
               "router",
-              "setIsFetching",
+              "setFetching",
               "setRouter",
+              "setUser",
               "user",
             ])
             setImmediate(done)

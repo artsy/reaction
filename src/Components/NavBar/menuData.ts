@@ -373,36 +373,40 @@ export const menuData: MenuData = {
               title: "Top Artists",
               links: [
                 {
-                  text: "Pablo Picasso",
-                  href: "/artist/pablo-picasso",
-                },
-                {
-                  text: "Andy Warhol",
-                  href: "/artist/andy-warhol",
-                },
-                {
                   text: "Yayoi Kusama",
                   href: "/artist/yayoi-kusama",
+                },
+                {
+                  text: "Roy Lichtenstein",
+                  href: "/artist/roy-lichtenstein",
+                },
+                {
+                  text: "Cindy Sherman",
+                  href: "/artist/cindy-sherman",
                 },
                 {
                   text: "Keith Haring",
                   href: "/artist/keith-haring",
                 },
                 {
-                  text: "Takashi Murakami",
-                  href: "/artist/takashi-murakami",
+                  text: "David Hockney",
+                  href: "/artist/david-hockney",
                 },
                 {
-                  text: "Jean-Michel Basquiat",
-                  href: "/artist/jean-michel-basquiat",
+                  text: "Katherine Bernhardt",
+                  href: "/artist/katherine-bernhardt",
                 },
                 {
-                  text: "Salvador Dalí",
-                  href: "/artist/salvador-dali",
+                  text: "Kehinde Wiley",
+                  href: "/artist/kehinde-wiley",
                 },
                 {
-                  text: "Tracey Emin",
-                  href: "/artist/tracey-emin",
+                  text: "Ed Ruscha",
+                  href: "/artist/ed-ruscha",
+                },
+                {
+                  text: "Banksy",
+                  href: "/artist/banksy",
                 },
               ],
             },
@@ -438,6 +442,10 @@ export const menuData: MenuData = {
     {
       text: "Museums",
       href: "/institutions",
+    },
+    {
+      text: "Consign",
+      href: "/consign",
     },
     {
       text: "Artsy for Galleries",

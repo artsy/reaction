@@ -3,7 +3,7 @@ import { ModalType } from "Components/Authentication/Types"
 import { mount, ReactWrapper } from "enzyme"
 import React from "react"
 
-import { AuthIntent, ContextModule } from "@artsy/cohesion"
+import { Intent, ContextModule } from "@artsy/cohesion"
 import {
   ModalManager,
   ModalManagerProps,
@@ -42,7 +42,7 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
-      intent: AuthIntent.login,
+      intent: Intent.login,
       contextModule: ContextModule.header,
     })
 
@@ -66,7 +66,7 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
-      intent: AuthIntent.login,
+      intent: Intent.login,
       contextModule: ContextModule.header,
     })
 
@@ -79,7 +79,7 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
-      intent: AuthIntent.login,
+      intent: Intent.login,
       contextModule: ContextModule.header,
     })
 
@@ -96,7 +96,7 @@ describe("ModalManager", () => {
 
     manager.openModal({
       mode: ModalType.login,
-      intent: AuthIntent.signup,
+      intent: Intent.signup,
       copy: "Foobar",
       contextModule: ContextModule.header,
     })
