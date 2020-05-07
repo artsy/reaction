@@ -6,8 +6,8 @@ import PasswordInput from "Components/PasswordInput"
 import { ProgressIndicator } from "Components/ProgressIndicator"
 import QuickInput from "Components/QuickInput"
 import { Step, Wizard } from "Components/Wizard"
-import { FormikProps } from "formik"
-import React, { Component, Fragment } from "react"
+import { FormikProps, useFormikContext } from "formik"
+import React, { Component, Fragment, useEffect } from "react"
 import { Environment } from "relay-runtime"
 import { recaptcha } from "Utils/recaptcha"
 import {
@@ -24,82 +24,86 @@ import { FormProps, InputValues, ModalType } from "../Types"
 import { MobileLoginValidator } from "../Validators"
 import { StepElement } from "Components/Wizard/types"
 
-interface LoginFormState {
-  advanceWizardStep: boolean
+interface ConditionalOtpInputProps {
   error: string
-  hideBackButton: boolean
-  steps: StepElement[]
+}
+
+const OtpInput: React.FC<ConditionalOtpInputProps> = props => {
+  const {
+    errors,
+    values,
+    handleBlur,
+    handleChange,
+    setTouched,
+  } = useFormikContext<InputValues>()
+
+  return (
+    <QuickInput
+      block
+      error={errors.otp_attempt}
+      name="otp_attempt"
+      placeholder="Enter an authentication code"
+      value={values.otp_attempt}
+      label="Authentication Code"
+      onChange={handleChange}
+      onBlur={handleBlur}
+      setTouched={setTouched}
+      touchedOnChange={false}
+    />
+  )
+}
+
+interface OtpInputTriggerProps {
+  setShowOtp: (show: boolean, cb: () => void) => void
+  showOtp: boolean
+  next: (e: null, values: InputValues) => void
+  error: string
+}
+
+const OtpInputTrigger: React.FC<OtpInputTriggerProps> = props => {
+  const { status, values } = useFormikContext<InputValues>()
+
+  const globalError = props.error || (status && !status.success && status.error)
+  const isOtpMissing = globalError === "missing two-factor authentication code"
+
+  useEffect(() => {
+    if (!props.showOtp && isOtpMissing) {
+      props.setShowOtp(true, () => {
+        props.next(null, values)
+      })
+    }
+  }, [status])
+
+  return null
+}
+
+interface LoginFormState {
+  error: string
+  showOtp: boolean
 }
 
 class MobileLoginFormWithSystemContext extends Component<
   FormProps & { relayEnvironment: Environment },
   LoginFormState
 > {
-  static getDerivedStateFromProps(nextProps, prevState): LoginFormState | null {
-    if (nextProps.error !== prevState.error) {
-      if (nextProps.error === "missing two-factor authentication code") {
-        return {
-          advanceWizardStep: true,
-          error: nextProps.error,
-          hideBackButton: true,
-          steps: prevState.steps.concat([
-            MobileLoginFormWithSystemContext.buildOtpStep(),
-          ]),
-        }
-      } else {
-        return {
-          ...prevState,
-          error: nextProps.error,
-        }
-      }
-    }
-
-    return null
-  }
-
-  static buildOtpStep = (): StepElement => {
-    return (
-      <Step validationSchema={MobileLoginValidator.otpAttempt}>
-        {({
-          form: { errors, values, handleChange, handleBlur, setTouched },
-        }) => {
-          return (
-            <QuickInput
-              block
-              error={errors.otp_attempt}
-              name="otp_attempt"
-              placeholder="Authentication Code"
-              value={values.otp_attempt}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              setTouched={setTouched}
-              touchedOnChange={false}
-            />
-          )
-        }}
-      </Step>
-    )
-  }
-
   constructor(props) {
     super(props)
 
     this.state = {
-      error: null,
-      advanceWizardStep: false,
-      hideBackButton: false,
-      steps: this.buildBaseSteps(),
+      error: props.error,
+      showOtp: props.error === "missing two-factor authentication code",
     }
   }
 
   showError = status => {
     const { error } = this.state
-    if (error && error !== "missing two-factor authentication code") {
-      return <Error show>{error}</Error>
-    }
 
-    if (status && !status.success) {
-      return <Error show>{status.error}</Error>
+    const globalError = error || (status && !status.success && status.error)
+    const isOtpMissing =
+      globalError === "missing two-factor authentication code"
+
+    if (globalError && !isOtpMissing) {
+      return <Error show>{globalError}</Error>
     }
 
     return null
@@ -110,123 +114,90 @@ class MobileLoginFormWithSystemContext extends Component<
     this.props.handleSubmit(values, formikBag)
   }
 
-  buildBaseSteps = (): StepElement[] => {
-    return [
-      <Step
-        validationSchema={MobileLoginValidator.email}
-        onSubmit={(values, actions) =>
-          checkEmail({
-            relayEnvironment: this.props.relayEnvironment,
-            values,
-            actions,
-            shouldExist: true,
-          })
-        }
-      >
-        {({
-          form: { errors, values, handleChange, handleBlur, setTouched },
-        }) => (
-          <QuickInput
+  steps: StepElement[] = [
+    <Step
+      validationSchema={MobileLoginValidator.email}
+      onSubmit={(values, actions) =>
+        checkEmail({
+          relayEnvironment: this.props.relayEnvironment,
+          values,
+          actions,
+          shouldExist: true,
+        })
+      }
+    >
+      {({ form: { errors, values, handleChange, handleBlur, setTouched } }) => (
+        <QuickInput
+          block
+          error={errors.email}
+          placeholder="Enter your email address"
+          name="email"
+          label="Email"
+          type="email"
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          setTouched={setTouched}
+          touchedOnChange={false}
+          autoFocus
+        />
+      )}
+    </Step>,
+    <Step validationSchema={MobileLoginValidator.password}>
+      {({
+        wizard,
+        form: { errors, touched, values, handleChange, handleBlur, setTouched },
+      }) => (
+        <Fragment>
+          <PasswordInput
             block
-            error={errors.email}
-            placeholder="Enter your email address"
-            name="email"
-            label="Email"
-            type="email"
-            value={values.email}
+            error={errors.password}
+            name="password"
+            label="Password"
+            placeholder="Password"
+            value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
             setTouched={setTouched}
             touchedOnChange={false}
-            autoFocus
           />
-        )}
-      </Step>,
-      <Step validationSchema={MobileLoginValidator.password}>
-        {({
-          wizard,
-          form: {
-            errors,
-            touched,
-            values,
-            handleChange,
-            handleBlur,
-            setTouched,
-          },
-        }) => (
-          <Fragment>
-            <PasswordInput
-              block
-              error={errors.password}
-              name="password"
-              label="Password"
-              placeholder="Password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              setTouched={setTouched}
-              touchedOnChange={false}
-            />
-            <Flex alignItems="center" justifyContent="flex-end">
-              <ForgotPassword onClick={() => (location.href = "/forgot")} />
-            </Flex>
-          </Fragment>
-        )}
-      </Step>,
-    ]
-  }
+          <Flex alignItems="center" justifyContent="flex-end">
+            <ForgotPassword onClick={() => (location.href = "/forgot")} />
+          </Flex>
+        </Fragment>
+      )}
+    </Step>,
+  ]
+
+  otpStep = (
+    <Step validationSchema={MobileLoginValidator.otpAttempt}>
+      {() => <OtpInput error={this.state.error} />}
+    </Step>
+  )
+
+  setShowOtp = (show, cb) => this.setState({ showOtp: show }, cb)
 
   render() {
-    const { steps, hideBackButton, advanceWizardStep } = this.state
+    const { showOtp } = this.state
 
     return (
-      <Wizard steps={steps} onComplete={this.onSubmit}>
+      <Wizard
+        steps={showOtp ? this.steps.concat([this.otpStep]) : this.steps}
+        onComplete={this.onSubmit}
+      >
         {context => {
           const {
             wizard,
-            form: {
-              handleSubmit,
-              actions,
-              values,
-              status,
-              setStatus,
-              isSubmitting,
-            },
+            form: { handleSubmit, values, status, isSubmitting },
           } = context
 
           const { currentStep, isLastStep, next } = wizard
-
-          if (
-            status &&
-            !status.success &&
-            status.error === "missing two-factor authentication code"
-          ) {
-            this.setState(
-              {
-                steps: steps.concat([
-                  MobileLoginFormWithSystemContext.buildOtpStep(),
-                ]),
-                hideBackButton: true,
-              },
-              () => {
-                setStatus(null)
-
-                next(values, actions)
-              }
-            )
-          }
-
-          if (advanceWizardStep) {
-            this.setState({ advanceWizardStep: false }, () => {
-              next(values, actions)
-            })
-          }
 
           return (
             <MobileContainer data-test="LoginForm">
               <ProgressIndicator percentComplete={wizard.progressPercentage} />
               <MobileInnerWrapper>
-                {!hideBackButton && (
+                {!showOtp && (
                   <BackButton
                     onClick={e =>
                       this.props.onBackButtonClicked &&
@@ -241,6 +212,12 @@ class MobileLoginFormWithSystemContext extends Component<
                 <MobileHeader>Log in to Artsy</MobileHeader>
                 {currentStep}
                 {this.showError(status)}
+                <OtpInputTrigger
+                  error={this.state.error}
+                  next={next}
+                  showOtp={this.state.showOtp}
+                  setShowOtp={this.setShowOtp}
+                />
                 <SubmitButton
                   onClick={handleSubmit}
                   loading={isLastStep && isSubmitting}

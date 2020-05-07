@@ -1,4 +1,4 @@
-import { Formik, FormikHelpers as FormikActions } from "formik"
+import { Formik, FormikHelpers as FormikActions, Form } from "formik"
 import { isEmpty } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component } from "react"
@@ -91,7 +91,7 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
       currentStep: this.currentStep,
       isLastStep: this.isLastStep,
       previous: this.previous,
-      next: this.handleSubmit,
+      next: this.next,
       currentStepIndex: this.state.currentStepIndex,
       steps: this.steps,
       shouldAllowNext: false,
@@ -172,13 +172,13 @@ export class Wizard extends React.Component<WizardProps, WizardState> {
             !isEmpty(formikRenderProps.touched)
 
           return (
-            <form onSubmit={formikRenderProps.handleSubmit}>
+            <Form>
               <WizardContextProvider {...context}>
                 {!!this.props.steps
                   ? React.createElement(children as any, context)
                   : this.currentStep}
               </WizardContextProvider>
-            </form>
+            </Form>
           )
         }}
       </Formik>
