@@ -14,6 +14,11 @@ export const ChangeEvents = {
     persist: jest.fn(),
     target: { type: "", name: "otp_attempt", value: "123456" },
   },
+  invalidOtpAttempt: {
+    currentTarget: { value: "111111" },
+    persist: jest.fn(),
+    target: { type: "", name: "otp_attempt", value: "111111" },
+  },
   accepted_terms_of_service: {
     currentTarget: { checked: true },
     persist: jest.fn(),

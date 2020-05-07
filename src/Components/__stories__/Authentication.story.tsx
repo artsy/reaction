@@ -39,11 +39,12 @@ const submitWithOtpRequired: SubmitHandler = (values, actions) => {
   }, 1000)
 }
 
-const boundedSubmit = (type, options, values, actions) => {
-  setTimeout(() => {
-    alert(JSON.stringify(values, null, 1))
-    actions.setSubmitting(false)
-  }, 1000)
+const boundedSubmit = (_type, _options, values, actions) => {
+  submit(values, actions)
+}
+
+const boundedSubmitWithOtp = (_type, _options, values, actions) => {
+  submitWithOtpRequired(values, actions)
 }
 
 class ModalContainer extends Component<any> {
@@ -51,6 +52,7 @@ class ModalContainer extends Component<any> {
 
   componentDidMount() {
     setTimeout(this.onClick, 500)
+    this.manager.setError(this.props.error)
   }
 
   onClick = () => {
@@ -70,7 +72,7 @@ class ModalContainer extends Component<any> {
             signup: "/signup",
             forgot: "/forgot",
           }}
-          handleSubmit={boundedSubmit}
+          handleSubmit={this.props.handleSubmit}
         />
       </Fragment>
     )
@@ -78,7 +80,25 @@ class ModalContainer extends Component<any> {
 }
 
 storiesOf("Components/Authentication/Desktop", module)
-  .add("Login", () => <ModalContainer options={{ mode: ModalType.login }} />)
+  .add("Login", () => (
+    <ModalContainer
+      options={{ mode: ModalType.login }}
+      handleSubmit={boundedSubmit}
+    />
+  ))
+  .add("Login (2FA with form status)", () => (
+    <ModalContainer
+      options={{ mode: ModalType.login }}
+      handleSubmit={boundedSubmitWithOtp}
+    />
+  ))
+  .add("Login (2FA with error prop)", () => (
+    <ModalContainer
+      options={{ mode: ModalType.login }}
+      handleSubmit={boundedSubmitWithOtp}
+      error="missing two-factor authentication code"
+    />
+  ))
   .add("Forgot Password", () => (
     <ModalContainer options={{ mode: ModalType.forgot }} />
   ))
