@@ -1,7 +1,9 @@
 import { LoginForm } from "Components/Authentication/Desktop/LoginForm"
 import { mount } from "enzyme"
 import React from "react"
-import { LoginValues } from "../fixtures"
+import { LoginValues, ChangeEvents } from "../fixtures"
+import QuickInput from "Components/QuickInput"
+import { flushPromiseQueue } from "DevTools"
 
 jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
 
@@ -77,6 +79,142 @@ describe("LoginForm", () => {
           expect.anything()
         )
         done()
+      })
+    })
+
+    it("calls handleSubmit with expected params when server requests a two-factor authentication code", async () => {
+      props.error = "missing two-factor authentication code"
+      props.values = LoginValues
+      const wrapper = getWrapper()
+      const inputOtp = wrapper
+        .find(QuickInput)
+        .filterWhere(el => el.prop("name") === "otp_attempt")
+        .instance() as QuickInput
+      inputOtp.onChange(ChangeEvents.otpAttempt)
+      const input = wrapper.find(`Formik`)
+      input.simulate("submit")
+
+      await flushPromiseQueue()
+      wrapper.update()
+
+      expect(props.handleSubmit).toBeCalledWith(
+        {
+          email: "foo@bar.com",
+          password: "password123",
+          otp_attempt: "123456",
+        },
+        expect.anything()
+      )
+    })
+
+    it("renders password error", async () => {
+      ;(props.handleSubmit as jest.Mock).mockImplementation(
+        (values, actions) => {
+          actions.setStatus({ error: "some password error" })
+        }
+      )
+
+      const wrapper = getWrapper()
+
+      const inputEmail = wrapper
+        .find(QuickInput)
+        .filterWhere(el => el.prop("name") === "email")
+        .instance() as QuickInput
+      inputEmail.onChange(ChangeEvents.email)
+
+      const inputPass = wrapper
+        .find(QuickInput)
+        .filterWhere(el => el.prop("name") === "password")
+        .instance() as QuickInput
+      inputPass.onChange(ChangeEvents.password)
+
+      const form = wrapper.find(`Formik`)
+      form.simulate("submit")
+
+      await flushPromiseQueue()
+      wrapper.update()
+
+      expect(wrapper.html()).toMatch("some password error")
+
+      expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+        email: "email@email.com",
+        password: "password",
+      })
+    })
+
+    it("shows 2FA one-time password prompt", async () => {
+      ;(props.handleSubmit as jest.Mock).mockImplementation(
+        (values, actions) => {
+          if (!values.otp_attempt) {
+            actions.setStatus({
+              error: "missing two-factor authentication code",
+            })
+          } else if (values.otp_attempt !== "123456") {
+            actions.setStatus({
+              error: "invalid two-factor authentication code",
+            })
+          } else {
+            actions.setStatus(null)
+          }
+        }
+      )
+
+      const wrapper = getWrapper()
+
+      const inputEmail = wrapper
+        .find(QuickInput)
+        .filterWhere(el => el.prop("name") === "email")
+        .instance() as QuickInput
+      inputEmail.onChange(ChangeEvents.email)
+
+      const inputPass = wrapper
+        .find(QuickInput)
+        .filterWhere(el => el.prop("name") === "password")
+        .instance() as QuickInput
+      inputPass.onChange(ChangeEvents.password)
+
+      const form = wrapper.find(`Formik`)
+      form.simulate("submit")
+
+      await flushPromiseQueue()
+      wrapper.update()
+
+      expect(wrapper.html()).not.toMatch(
+        "missing two-factor authentication code"
+      )
+      expect(props.handleSubmit.mock.calls[0][0]).toEqual({
+        email: "email@email.com",
+        password: "password",
+      })
+
+      const inputOtp = wrapper
+        .find(QuickInput)
+        .filterWhere(el => el.prop("name") === "otp_attempt")
+        .instance() as QuickInput
+      inputOtp.onChange(ChangeEvents.invalidOtpAttempt)
+      form.simulate("submit")
+
+      await flushPromiseQueue()
+      wrapper.update()
+
+      expect(wrapper.html()).toMatch("invalid two-factor authentication code")
+      expect(props.handleSubmit.mock.calls[1][0]).toEqual({
+        email: "email@email.com",
+        password: "password",
+        otp_attempt: "111111",
+      })
+
+      inputOtp.onChange(ChangeEvents.otpAttempt)
+      form.simulate("submit")
+
+      await flushPromiseQueue()
+      wrapper.update()
+
+      expect(wrapper.html()).not.toMatch("Error")
+      expect(props.handleSubmit.mock.calls[2][0]).toEqual({
+        email: "email@email.com",
+        password: "password",
+        otp_attempt: "123456",
       })
     })
 
