@@ -1,3 +1,16 @@
+# v26.34.0 (Thu May 07 2020)
+
+#### 🚀  Enhancement
+
+- Refactor mobile login modal [#3496](https://github.com/artsy/reaction/pull/3496) ([@dblandin](https://github.com/dblandin))
+- Add 2FA one-time password support to desktop login modal [#3496](https://github.com/artsy/reaction/pull/3496) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.32.0 (Thu May 07 2020)
 
 #### 🚀  Enhancement
