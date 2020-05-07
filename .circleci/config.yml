@@ -68,6 +68,8 @@ workflows:
       - yarn/run:
           name: build-storybook
           script: "deploy-storybook"
+          requires:
+            - yarn/workflow-queue
           post-steps:
             - persist_to_workspace:
                 root: .
