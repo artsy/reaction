@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  yarn: artsy/yarn@5.1.0
+  yarn: artsy/yarn@dev:4ab104781797303488b75d3fd18e99ee
   codecov: codecov/codecov@1.0.5
   auto: artsy/auto@1.2.1
   aws-s3: circleci/aws-s3@1.0.15
@@ -36,6 +36,9 @@ workflows:
             - yarn/workflow-queue
       - yarn/jest:
           args: --runInBand
+          only_test_changed: true
+          notify_slack_on_failure: true
+          context: slack-reaction-test-failures
           requires:
             - yarn/workflow-queue
           post-steps:
