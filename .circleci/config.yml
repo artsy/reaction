@@ -36,6 +36,9 @@ workflows:
             - yarn/workflow-queue
       - yarn/jest:
           args: --runInBand
+          only_test_changed: true
+          notify_slack_on_failure: true
+          context: slack-reaction-test-failures
           requires:
             - yarn/workflow-queue
           post-steps:
