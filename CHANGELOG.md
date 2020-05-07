@@ -1,3 +1,23 @@
+# v26.31.7 (Thu May 07 2020)
+
+#### 🐛  Bug Fix
+
+- [ViewingRoom] Stub out viewing room [#3491](https://github.com/artsy/reaction/pull/3491) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Ensure storybook build is gated behind queue [#3492](https://github.com/artsy/reaction/pull/3492) ([@zephraph](https://github.com/zephraph))
+- Update yarn orb from 4.0.2 to v5 [#3489](https://github.com/artsy/reaction/pull/3489) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.31.6 (Wed May 06 2020)
 
 #### 🐛  Bug Fix
