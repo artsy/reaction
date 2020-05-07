@@ -11,13 +11,12 @@ storiesOf("Apps", module).add("AppShell", () => {
     <SystemContextProvider>
       <MockRouter
         routes={getAppRoutes()}
-        initialRoute="/collect"
+        initialRoute="/viewing-room"
         context={{
-          // FIXME: Remove when a/b test is complete
-          // @ts-ignore
-          COLLECTION_HUBS: "experiment",
           mediator: {
             trigger: x => x,
+            on: x => x,
+            off: x => x,
           },
         }}
       />
