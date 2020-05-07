@@ -1,3 +1,21 @@
+# v26.32.0 (Thu May 07 2020)
+
+#### 🚀  Enhancement
+
+- Updates mobile artwork filters layout [#3494](https://github.com/artsy/reaction/pull/3494) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🐛  Bug Fix
+
+- Change CTA and flow from "log in" to "sign-up" on auction results page [#3414](https://github.com/artsy/reaction/pull/3414) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.31.9 (Thu May 07 2020)
 
 #### 🐛  Bug Fix
