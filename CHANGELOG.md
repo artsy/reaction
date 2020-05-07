@@ -1,3 +1,20 @@
+# v26.31.9 (Thu May 07 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3495](https://github.com/artsy/reaction/pull/3495) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Enable faster PR builds [#3493](https://github.com/artsy/reaction/pull/3493) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.31.8 (Thu May 07 2020)
 
 #### 🐛  Bug Fix
