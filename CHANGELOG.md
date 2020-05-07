@@ -1,3 +1,15 @@
+# v26.31.8 (Thu May 07 2020)
+
+#### 🐛  Bug Fix
+
+- Change the filter order to prioritize more popular filters [#3490](https://github.com/artsy/reaction/pull/3490) ([@sweir27](https://github.com/sweir27))
+
+#### Authors: 1
+
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.31.7 (Thu May 07 2020)
 
 #### 🐛  Bug Fix
