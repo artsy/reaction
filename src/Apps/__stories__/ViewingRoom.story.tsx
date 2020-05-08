@@ -4,5 +4,10 @@ import { storiesOf } from "storybook/storiesOf"
 import { routes as viewingRoomRoutes } from "Apps/ViewingRoom/routes"
 
 storiesOf("Apps/ViewingRoom", module).add("Viewing Room", () => {
-  return <MockRouter routes={viewingRoomRoutes} initialRoute="/viewing-room" />
+  return (
+    <MockRouter
+      routes={viewingRoomRoutes}
+      initialRoute="/viewing-room/flatland-gallery-guy-yanai"
+    />
+  )
 })

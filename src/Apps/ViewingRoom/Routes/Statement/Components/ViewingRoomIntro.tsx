@@ -1,20 +1,29 @@
 import React from "react"
 import { Box, Serif } from "@artsy/palette"
+import { createFragmentContainer, graphql } from "react-relay"
+import { ViewingRoomIntro_viewingRoom } from "__generated__/ViewingRoomIntro_viewingRoom.graphql"
 
-export const ViewingRoomIntro: React.FC = props => {
+interface ViewingRoomIntroProps {
+  viewingRoom: ViewingRoomIntro_viewingRoom
+}
+
+const ViewingRoomIntro: React.FC<ViewingRoomIntroProps> = ({
+  viewingRoom: { introStatement },
+}) => {
   return (
     <Box>
-      <Serif size={["4", "5"]}>
-        Jack Hanley presents the pairing artists to face off/join forces in
-        tribute to Gorgeous Ladies of Wrestling. For G.L.O.W. Match Six (Gaze
-        Living Other Worlds) at Frieze Los Angeles 2020, Young Joon Kwak and
-        Oren Pinhassi propose new sites of queer embodiment, offering us
-        glimpses into liminal spaces present in our daily realities. For
-        G.L.O.W. Match Six (Gaze Living Other Worlds) at Frieze Los Angeles
-        2020, Young Joon Kwak and Oren Pinhassi propose new sites of queer
-        embodiment, offering us glimpses into liminal spaces present in our
-        daily realities.
-      </Serif>
+      <Serif size={["4", "5"]}>{introStatement}</Serif>
     </Box>
   )
 }
+
+export const ViewingRoomIntroFragmentContainer = createFragmentContainer(
+  ViewingRoomIntro,
+  {
+    viewingRoom: graphql`
+      fragment ViewingRoomIntro_viewingRoom on ViewingRoom {
+        introStatement
+      }
+    `,
+  }
+)

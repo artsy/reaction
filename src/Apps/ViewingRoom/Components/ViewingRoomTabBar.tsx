@@ -1,6 +1,6 @@
 import React from "react"
 import { Flex, color, Color, FontWeights, Box, Sans } from "@artsy/palette"
-import { useIsRouteActive } from "Artsy/Router/useRouter"
+import { useIsRouteActive, useRouter } from "Artsy/Router/useRouter"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { LinkProps } from "found"
 import styled from "styled-components"
@@ -8,12 +8,17 @@ import styled from "styled-components"
 interface ViewingRoomTabBarProps {}
 
 export const ViewingRoomTabBar: React.FC<ViewingRoomTabBarProps> = props => {
+  const {
+    match: {
+      params: { slug },
+    },
+  } = useRouter()
+
   return (
     <Flex width="100%" justifyContent="center" id="tabBarAnchor">
       <Flex width={["100%", "66%"]} height={50}>
-        {/* FIXME: Update with `:id` prop when ready */}
-        <Tab to={`/viewing-room`}>Statement</Tab>
-        <Tab to={`/viewing-room/works`}>Works</Tab>
+        <Tab to={`/viewing-room/${slug}`}>Statement</Tab>
+        <Tab to={`/viewing-room/${slug}/works`}>Works</Tab>
       </Flex>
     </Flex>
   )

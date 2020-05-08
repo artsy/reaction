@@ -1,30 +1,51 @@
 import React from "react"
 import { Box, Sans, Button, Serif } from "@artsy/palette"
+import { ViewingRoomArtworkDetails_artwork } from "__generated__/ViewingRoomArtworkDetails_artwork.graphql"
+import { createFragmentContainer, graphql } from "react-relay"
+import { RouterLink } from "Artsy/Router/RouterLink"
 
-export const ViewingRoomArtworkDetails = props => {
+interface ViewingRoomArtworkDetailsProps {
+  artwork: ViewingRoomArtworkDetails_artwork
+}
+
+export const ViewingRoomArtworkDetails: React.FC<ViewingRoomArtworkDetailsProps> = ({
+  artwork: { artistNames, title, date, href, description },
+}) => {
   return (
     <Box width={["100%", "50%"]} m="auto">
       <Box>
-        <Sans size="3">Christine Sun Kim</Sans>
+        <Sans size="3">{artistNames}</Sans>
       </Box>
 
       <Box style={{ textOverflow: "ellipsis" }}>
         <Sans size="3" color="black60">
-          Fleurs (for UCLA) (Bloch 1297; Mourlot 351), 1961
+          {title}, {date}
         </Sans>
       </Box>
 
-      <Button width="100%" size="large" my={2}>
-        Buy
-      </Button>
+      <RouterLink to={href}>
+        <Button width="100%" size="large" my={2}>
+          Buy
+        </Button>
+      </RouterLink>
 
-      {/* Artwork Description */}
-      <Serif size={["4", "5"]}>
-        Inspired by meme formats, the artist creates pie charts that cleverly
-        address different types of discrimination she faces as a deaf person.
-        Here, she offers answers to questions like “Why does your hearing
-        partner sign?” and “Why do you watch shows with closed captions?”
-      </Serif>
+      <Serif size={["4", "5"]}>{description}</Serif>
     </Box>
   )
 }
+
+export const ViewingRoomArtworkDetailsFragmentContainer = createFragmentContainer(
+  ViewingRoomArtworkDetails,
+  {
+    artwork: graphql`
+      fragment ViewingRoomArtworkDetails_artwork on Artwork {
+        id
+        artistNames
+        title
+        date
+        description
+        href
+      }
+    `,
+  }
+)
