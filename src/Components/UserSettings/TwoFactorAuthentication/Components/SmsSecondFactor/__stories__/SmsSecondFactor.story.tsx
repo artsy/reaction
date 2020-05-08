@@ -29,118 +29,107 @@ const MockSmsSecondFactor = ({ mockData, mockMutationResults, query }) => {
 }
 
 storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/SmsSecondFactor",
+  "Components/UserSettings/TwoFactorAuthentication/Components/SmsSecondFactor",
   module
-).add("Update Error", () => {
-  const mockMutationResults = merge(
-    CreateSmsSecondFactorMutationSuccessResponse,
-    UpdateSmsSecondFactorMutationErrorResponse
-  )
+)
+  .add("Update Error", () => {
+    const mockMutationResults = merge(
+      CreateSmsSecondFactorMutationSuccessResponse,
+      UpdateSmsSecondFactorMutationErrorResponse
+    )
 
-  return (
-    <Theme>
-      <Box maxWidth="800px">
-        <MockSmsSecondFactor
-          mockData={DisabledQueryResponse}
-          mockMutationResults={mockMutationResults}
-          query={graphql`
-            query SmsSecondFactorStoryUpdateErrorQuery {
-              me {
-                ...SmsSecondFactor_me
+    return (
+      <Theme>
+        <Box maxWidth="800px">
+          <MockSmsSecondFactor
+            mockData={DisabledQueryResponse}
+            mockMutationResults={mockMutationResults}
+            query={graphql`
+              query SmsSecondFactorStoryUpdateErrorQuery {
+                me {
+                  ...SmsSecondFactor_me
+                }
               }
-            }
-          `}
-        />
-      </Box>
-    </Theme>
-  )
-})
+            `}
+          />
+        </Box>
+      </Theme>
+    )
+  })
+  .add("Undeliverable", () => {
+    const mockMutationResults = merge(
+      CreateSmsSecondFactorMutationSuccessResponse,
+      UpdateSmsSecondFactorMutationSuccessResponse,
+      DeliverSmsSecondFactorMutationErrorResponse
+    )
 
-storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/SmsSecondFactor",
-  module
-).add("Undeliverable", () => {
-  const mockMutationResults = merge(
-    CreateSmsSecondFactorMutationSuccessResponse,
-    UpdateSmsSecondFactorMutationSuccessResponse,
-    DeliverSmsSecondFactorMutationErrorResponse
-  )
-
-  return (
-    <Theme>
-      <Box maxWidth="800px">
-        <MockSmsSecondFactor
-          mockData={DisabledQueryResponse}
-          mockMutationResults={mockMutationResults}
-          query={graphql`
-            query SmsSecondFactorStoryUndeliverableQuery {
-              me {
-                ...SmsSecondFactor_me
+    return (
+      <Theme>
+        <Box maxWidth="800px">
+          <MockSmsSecondFactor
+            mockData={DisabledQueryResponse}
+            mockMutationResults={mockMutationResults}
+            query={graphql`
+              query SmsSecondFactorStoryUndeliverableQuery {
+                me {
+                  ...SmsSecondFactor_me
+                }
               }
-            }
-          `}
-        />
-      </Box>
-    </Theme>
-  )
-})
+            `}
+          />
+        </Box>
+      </Theme>
+    )
+  })
+  .add("Success", () => {
+    const mockMutationResults = merge(
+      CreateSmsSecondFactorMutationSuccessResponse,
+      DeliverSmsSecondFactorMutationSuccessResponse,
+      UpdateSmsSecondFactorMutationSuccessResponse,
+      EnableSmsSecondFactorMutationSuccessResponse
+    )
 
-storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/SmsSecondFactor",
-  module
-).add("Success", () => {
-  const mockMutationResults = merge(
-    CreateSmsSecondFactorMutationSuccessResponse,
-    DeliverSmsSecondFactorMutationSuccessResponse,
-    UpdateSmsSecondFactorMutationSuccessResponse,
-    EnableSmsSecondFactorMutationSuccessResponse
-  )
-
-  return (
-    <Theme>
-      <Box maxWidth="800px">
-        <MockSmsSecondFactor
-          mockData={DisabledQueryResponse}
-          mockMutationResults={mockMutationResults}
-          query={graphql`
-            query SmsSecondFactorStorySuccessQuery {
-              me {
-                ...SmsSecondFactor_me
+    return (
+      <Theme>
+        <Box maxWidth="800px">
+          <MockSmsSecondFactor
+            mockData={DisabledQueryResponse}
+            mockMutationResults={mockMutationResults}
+            query={graphql`
+              query SmsSecondFactorStorySuccessQuery {
+                me {
+                  ...SmsSecondFactor_me
+                }
               }
-            }
-          `}
-        />
-      </Box>
-    </Theme>
-  )
-})
+            `}
+          />
+        </Box>
+      </Theme>
+    )
+  })
+  .add("Incorrect OTP code", () => {
+    const mockMutationResults = merge(
+      CreateSmsSecondFactorMutationSuccessResponse,
+      DeliverSmsSecondFactorMutationSuccessResponse,
+      UpdateSmsSecondFactorMutationSuccessResponse,
+      EnableSmsSecondFactorMutationErrorResponse
+    )
 
-storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/SmsSecondFactor",
-  module
-).add("Incorrect OTP code", () => {
-  const mockMutationResults = merge(
-    CreateSmsSecondFactorMutationSuccessResponse,
-    DeliverSmsSecondFactorMutationSuccessResponse,
-    UpdateSmsSecondFactorMutationSuccessResponse,
-    EnableSmsSecondFactorMutationErrorResponse
-  )
-
-  return (
-    <Theme>
-      <Box maxWidth="800px">
-        <MockSmsSecondFactor
-          mockData={DisabledQueryResponse}
-          mockMutationResults={mockMutationResults}
-          query={graphql`
-            query SmsSecondFactorStoryErrorQuery {
-              me {
-                ...SmsSecondFactor_me
+    return (
+      <Theme>
+        <Box maxWidth="800px">
+          <MockSmsSecondFactor
+            mockData={DisabledQueryResponse}
+            mockMutationResults={mockMutationResults}
+            query={graphql`
+              query SmsSecondFactorStoryErrorQuery {
+                me {
+                  ...SmsSecondFactor_me
+                }
               }
-            }
-          `}
-        />
-      </Box>
-    </Theme>
-  )
-})
+            `}
+          />
+        </Box>
+      </Theme>
+    )
+  })

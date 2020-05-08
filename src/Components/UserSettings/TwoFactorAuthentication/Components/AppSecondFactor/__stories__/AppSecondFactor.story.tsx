@@ -25,7 +25,7 @@ const MockAppSecondFactor = ({ mockData, mockMutationResults, query }) => {
 }
 
 storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/AppSecondFactor",
+  "Components/UserSettings/TwoFactorAuthentication/Components/AppSecondFactor",
   module
 ).add("Success", () => {
   const mockMutationResults = merge(
