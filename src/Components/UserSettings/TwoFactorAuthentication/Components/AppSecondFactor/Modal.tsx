@@ -145,8 +145,8 @@ const InnerForm: React.FC<InnerFormProps> = ({
         />
       </Box>
       <Sans mt={2} color="black60" size="3">
-        Use your app to scan the code below. If you can’t use a barcode, enter
-        the secret code manually.
+        1. Use your app to scan the code below. If you can’t use a barcode,
+        enter the secret code manually.
       </Sans>
       <Box mt={2} textAlign="center">
         <QRCode size={256} value={secondFactor.otpProvisioningURI} />
@@ -165,7 +165,7 @@ const InnerForm: React.FC<InnerFormProps> = ({
         )}
       </Sans>
       <Sans mt={2} color="black60" size="3">
-        Enter the six-digit code from the application to complete the
+        2. Enter the six-digit code from the application to complete the
         configuration.
       </Sans>
       <Box mt={2}>
