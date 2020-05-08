@@ -191,6 +191,7 @@ const Conversation: React.FC<ConversationProps> = props => {
             )
           }
         )}
+        <Spacer mb={9} />
         <Reply conversation={conversation} environment={relay.environment} />
       </Flex>
     </>
