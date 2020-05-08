@@ -151,9 +151,11 @@ const InnerForm: React.FC<InnerFormProps> = ({
       <Box mt={2} textAlign="center">
         <QRCode size={256} value={secondFactor.otpProvisioningURI} />
       </Box>
-      <Sans mt={2} color="black60" size="3t">
+      <Box mt={2} textAlign="center">
         {showSecret ? (
-          `secret: ${secondFactor.otpSecret}`
+          <Sans color="black60" size="3t">
+            {secondFactor.otpSecret}
+          </Sans>
         ) : (
           <Button
             size="small"
@@ -163,7 +165,7 @@ const InnerForm: React.FC<InnerFormProps> = ({
             Show secret
           </Button>
         )}
-      </Sans>
+      </Box>
       <Sans mt={2} color="black60" size="3">
         2. Enter the six-digit code from the application to complete the
         configuration.
