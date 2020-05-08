@@ -31,8 +31,9 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
 
   function onComplete() {
-    setShowSetupModal(false)
-    relayRefetch.refetch({})
+    relayRefetch.refetch({}, {}, () => {
+      setShowSetupModal(false)
+    })
   }
 
   function handleMutationError(errors: ApiError[]) {
@@ -83,7 +84,7 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     }
   }
 
-  const DisableButton = props =>
+  const DisableButton = props => (
     <Button
       onClick={() => setShowConfirmDisable(true)}
       variant="secondaryOutline"
@@ -93,14 +94,16 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     >
       Disable
     </Button>
+  )
 
-  const SetupButton = props =>
+  const SetupButton = props => (
     <Button
       onClick={createSecondFactor}
       loading={isCreating}
       disabled={isCreating}
       {...props}
     />
+  )
 
   return (
     <BorderBox p={2} {...props}>
@@ -115,17 +118,19 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
         </Flex>
         <Flex alignItems="center">
           {me.smsSecondFactors.length &&
-            me.smsSecondFactors[0].__typename === "SmsSecondFactor" ? (
-              <>
-                <Sans color="black60" size="3" weight="medium">
-                  {me.smsSecondFactors[0].formattedPhoneNumber}
-                </Sans>
-                <DisableButton ml={1} />
-                <SetupButton ml={1} variant="secondaryGray">Edit</SetupButton>
-              </>
-            ) : (
-              <SetupButton ml={1}>Set up</SetupButton>
-            )}
+          me.smsSecondFactors[0].__typename === "SmsSecondFactor" ? (
+            <>
+              <Sans color="black60" size="3" weight="medium">
+                {me.smsSecondFactors[0].formattedPhoneNumber}
+              </Sans>
+              <DisableButton ml={1} />
+              <SetupButton ml={1} variant="secondaryGray">
+                Edit
+              </SetupButton>
+            </>
+          ) : (
+            <SetupButton ml={1}>Set up</SetupButton>
+          )}
         </Flex>
       </Flex>
       <SmsSecondFactorModal
