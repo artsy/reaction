@@ -15,5 +15,9 @@ export const findCurrentRoute = ({
     route = route.children[remainingRouteIndicies.shift()]
   }
 
+  if (!route) {
+    route = baseRoute
+  }
+
   return route
 }
