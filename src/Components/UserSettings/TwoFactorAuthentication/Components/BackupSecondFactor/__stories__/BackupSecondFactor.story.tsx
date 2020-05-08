@@ -29,29 +29,26 @@ const MockBackupSecondFactor = ({ mockData }) => {
 }
 
 storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/BackupSecondFactor",
+  "Components/UserSettings/TwoFactorAuthentication/Components/BackupSecondFactor",
   module
-).add("Disabled", () => {
-  return (
-    <Theme>
-      <Box maxWidth="800px">
-        <MockBackupSecondFactor mockData={DisabledQueryResponse} />
-      </Box>
-    </Theme>
-  )
-})
-
-storiesOf(
-  "UserSettings/TwoFactorAuthentication/Components/BackupSecondFactor",
-  module
-).add("Enabled", () => {
-  return (
-    <Theme>
-      <Box maxWidth="800px">
-        <MockBackupSecondFactor
-          mockData={AppEnabledWithBackupCodesQueryResponse}
-        />
-      </Box>
-    </Theme>
-  )
-})
+)
+  .add("Disabled", () => {
+    return (
+      <Theme>
+        <Box maxWidth="800px">
+          <MockBackupSecondFactor mockData={DisabledQueryResponse} />
+        </Box>
+      </Theme>
+    )
+  })
+  .add("Enabled", () => {
+    return (
+      <Theme>
+        <Box maxWidth="800px">
+          <MockBackupSecondFactor
+            mockData={AppEnabledWithBackupCodesQueryResponse}
+          />
+        </Box>
+      </Theme>
+    )
+  })

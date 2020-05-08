@@ -5,14 +5,17 @@ import React from "react"
 import { SystemContextProvider } from "Artsy"
 import { TwoFactorAuthenticationQueryRenderer } from "../"
 
-storiesOf("UserSettings/TwoFactorAuthentication", module).add("Live", () => {
-  return (
-    <SystemContextProvider>
-      <Theme>
-        <Box maxWidth="800px">
-          <TwoFactorAuthenticationQueryRenderer />
-        </Box>
-      </Theme>
-    </SystemContextProvider>
-  )
-})
+storiesOf("Components/UserSettings/TwoFactorAuthentication", module).add(
+  "Live",
+  () => {
+    return (
+      <SystemContextProvider>
+        <Theme>
+          <Box maxWidth="800px">
+            <TwoFactorAuthenticationQueryRenderer />
+          </Box>
+        </Theme>
+      </SystemContextProvider>
+    )
+  }
+)
