@@ -1,3 +1,35 @@
+# v26.35.0 (Fri May 08 2020)
+
+#### 🚀  Enhancement
+
+- Update "Enabled" typography to Sans style [#3505](https://github.com/artsy/reaction/pull/3505) ([@dblandin](https://github.com/dblandin))
+- Refine 2FA enrollment design and experience [#3505](https://github.com/artsy/reaction/pull/3505) ([@dblandin](https://github.com/dblandin))
+
+#### 🐛  Bug Fix
+
+- Build conversation text input [#3503](https://github.com/artsy/reaction/pull/3503) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- adding pullQuote to VR [#3502](https://github.com/artsy/reaction/pull/3502) ([@oxaudo](https://github.com/oxaudo))
+- Update metaphysics schema [#3500](https://github.com/artsy/reaction/pull/3500) ([@artsyit](https://github.com/artsyit))
+- Fallback to base route if no route found through index [#3504](https://github.com/artsy/reaction/pull/3504) ([@zephraph](https://github.com/zephraph))
+
+#### ⚠️  Pushed to `master`
+
+- Force deploy ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Bump yarn orb to ensure forks still aren't failing [#3501](https://github.com/artsy/reaction/pull/3501) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 5
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v26.34.1 (Fri May 08 2020)
 
 #### 🐛  Bug Fix
