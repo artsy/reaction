@@ -1,3 +1,48 @@
+# v26.34.1 (Fri May 08 2020)
+
+#### 🐛  Bug Fix
+
+- [ViewingRoom] Connect to data [#3499](https://github.com/artsy/reaction/pull/3499) ([@damassi](https://github.com/damassi))
+- [ViewingRoom] Make responsive [#3498](https://github.com/artsy/reaction/pull/3498) ([@damassi](https://github.com/damassi))
+- [ViewingRoom] Break apart components [#3497](https://github.com/artsy/reaction/pull/3497) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.34.0 (Thu May 07 2020)
+
+#### 🚀  Enhancement
+
+- Refactor mobile login modal [#3496](https://github.com/artsy/reaction/pull/3496) ([@dblandin](https://github.com/dblandin))
+- Add 2FA one-time password support to desktop login modal [#3496](https://github.com/artsy/reaction/pull/3496) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.32.0 (Thu May 07 2020)
+
+#### 🚀  Enhancement
+
+- Updates mobile artwork filters layout [#3494](https://github.com/artsy/reaction/pull/3494) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🐛  Bug Fix
+
+- Change CTA and flow from "log in" to "sign-up" on auction results page [#3414](https://github.com/artsy/reaction/pull/3414) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 3
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.31.9 (Thu May 07 2020)
 
 #### 🐛  Bug Fix

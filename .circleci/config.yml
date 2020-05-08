@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  yarn: artsy/yarn@dev:4ab104781797303488b75d3fd18e99ee
+  yarn: artsy/yarn@dev:da826a2455c0d9f9ce31f71db9b0601e
   codecov: codecov/codecov@1.0.5
   auto: artsy/auto@1.2.1
   aws-s3: circleci/aws-s3@1.0.15

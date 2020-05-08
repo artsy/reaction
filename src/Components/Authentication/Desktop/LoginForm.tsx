@@ -14,9 +14,45 @@ import {
 import { LoginValidator } from "Components/Authentication/Validators"
 import PasswordInput from "Components/PasswordInput"
 import QuickInput from "Components/QuickInput"
-import { Formik, FormikProps } from "formik"
-import React, { Component } from "react"
+import { Formik, FormikProps, useFormikContext } from "formik"
+import React, { Component, useState } from "react"
 import { recaptcha } from "Utils/recaptcha"
+
+interface ConditionalOtpInputProps {
+  error: string
+}
+
+const ConditionalOtpInput: React.FC<ConditionalOtpInputProps> = props => {
+  const [show, setShow] = useState(false)
+  const {
+    errors,
+    values,
+    handleBlur,
+    handleChange,
+    setTouched,
+  } = useFormikContext<InputValues>()
+
+  if (!show && props.error === "missing two-factor authentication code") {
+    setShow(true)
+  }
+
+  return (
+    show && (
+      <QuickInput
+        block
+        error={errors.otp_attempt}
+        name="otp_attempt"
+        placeholder="Enter an authentication code"
+        value={values.otp_attempt}
+        label="Authentication Code"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        setTouched={setTouched}
+        touchedOnChange={false}
+      />
+    )
+  )
+}
 
 export interface LoginFormState {
   error: string
@@ -83,12 +119,16 @@ export class LoginForm extends Component<FormProps, LoginFormState> {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              <ConditionalOtpInput error={globalError} />
               <Flex alignItems="center" justifyContent="flex-end">
                 <ForgotPassword
                   onClick={() => this.props.handleTypeChange(ModalType.forgot)}
                 />
               </Flex>
-              {globalError && <Error show>{globalError}</Error>}
+              {globalError &&
+                globalError !== "missing two-factor authentication code" && (
+                  <Error show>{globalError}</Error>
+                )}
               <SubmitButton loading={isSubmitting}>Log in</SubmitButton>
               <Footer
                 handleTypeChange={() =>
