@@ -30,8 +30,9 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   const { relayEnvironment } = useSystemContext()
 
   function onComplete() {
-    setShowSetupModal(false)
-    relayRefetch.refetch({})
+    relayRefetch.refetch({}, {}, () => {
+      setShowSetupModal(false)
+    })
   }
 
   function handleMutationError(errors: ApiError[]) {
@@ -79,7 +80,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
     }
   }
 
-  const DisableButton = props =>
+  const DisableButton = props => (
     <Button
       onClick={() => setShowConfirmDisable(true)}
       variant="secondaryOutline"
@@ -88,9 +89,10 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
       {...props}
     >
       Disable
-  </Button>
+    </Button>
+  )
 
-  const SetupButton = props =>
+  const SetupButton = props => (
     <Button
       onClick={createSecondFactor}
       loading={isCreating}
@@ -99,6 +101,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
     >
       {props.children}
     </Button>
+  )
 
   return (
     <BorderBox p={2} {...props}>
@@ -117,17 +120,19 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
         </Flex>
         <Flex alignItems="center">
           {me.appSecondFactors.length &&
-            me.appSecondFactors[0].__typename === "AppSecondFactor" ? (
-              <>
-                <Sans color="black60" size="3" weight="medium">
-                  {me.appSecondFactors[0].name || "Unnamed"}
-                </Sans>
-                <DisableButton ml={1} />
-                <SetupButton ml={1} variant="secondaryGray">Edit</SetupButton>
-              </>
-            ) : (
-              <SetupButton ml={1}>Set up</SetupButton>
-            )}
+          me.appSecondFactors[0].__typename === "AppSecondFactor" ? (
+            <>
+              <Sans color="black60" size="3" weight="medium">
+                {me.appSecondFactors[0].name || "Unnamed"}
+              </Sans>
+              <DisableButton ml={1} />
+              <SetupButton ml={1} variant="secondaryGray">
+                Edit
+              </SetupButton>
+            </>
+          ) : (
+            <SetupButton ml={1}>Set up</SetupButton>
+          )}
         </Flex>
       </Flex>
       <AppSecondFactorModal
