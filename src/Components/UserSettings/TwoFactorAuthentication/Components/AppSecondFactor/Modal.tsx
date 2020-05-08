@@ -104,7 +104,6 @@ export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props =
           <InnerForm secondFactor={secondFactor} {...formikProps} />
         )}
       </Formik>
-      >
     </Modal>
   )
 }
