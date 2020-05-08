@@ -60,6 +60,12 @@ interface CarouselProps<T> {
     flickity: FlickityOptions,
   }) => void
 
+  onDragEnd?: ({
+    props: CarouselProps,
+    state: BaseCarouselState,
+    flickity: FlickityOptions,
+  }) => void
+
   /**
    * The render callback returns an image to display
    */
@@ -127,7 +133,7 @@ export const LargeCarousel = <T,>(props: CarouselProps<T>) => {
         contain: true,
         draggable: false,
         freeScroll: false,
-        groupCells: true,
+        groupCells: 1,
         pageDots: false,
         wrapAround: false,
         ...props.options,
@@ -235,6 +241,7 @@ export class BaseCarousel<T> extends React.Component<
           setCarouselRef(this.flickity)
         }
         this.flickity.on("select", this.handleSlideChange)
+        this.flickity.on("dragEnd", this.handleDragEnd)
         this.allowPreventDefault()
       }
     )
@@ -243,14 +250,9 @@ export class BaseCarousel<T> extends React.Component<
   componentWillUnmount() {
     if (this.flickity) {
       this.flickity.off("select", this.handleSlideChange)
+      this.flickity.off("dragEnd", this.handleDragEnd)
       this.flickity.destroy()
     }
-  }
-
-  handleSlideChange = index => {
-    this.setState({
-      currentSlideIndex: index,
-    })
   }
 
   checkLastItemVisible = () => {
@@ -267,14 +269,38 @@ export class BaseCarousel<T> extends React.Component<
     }
   }
 
+  handleDragEnd = () => {
+    const { onDragEnd } = this.props
+
+    if (onDragEnd) {
+      onDragEnd({
+        state: this.state,
+        props: this.props,
+        flickity: this.flickity,
+      })
+    }
+  }
+
+  handleSlideChange = index => {
+    this.setState({
+      currentSlideIndex: index,
+    })
+  }
+
+  handleArrowClick = () => {
+    const { onArrowClick } = this.props
+
+    if (onArrowClick) {
+      onArrowClick({
+        state: this.state,
+        props: this.props,
+        flickity: this.flickity,
+      })
+    }
+  }
+
   renderLeftArrow = () => {
-    const {
-      arrowPosition,
-      onArrowClick,
-      renderLeftArrow,
-      showArrows,
-      height,
-    } = this.props
+    const { arrowPosition, renderLeftArrow, showArrows, height } = this.props
 
     if (!showArrows) {
       return null
@@ -291,14 +317,7 @@ export class BaseCarousel<T> extends React.Component<
           height={height}
           onClick={() => {
             this.flickity.previous()
-
-            if (onArrowClick) {
-              onArrowClick({
-                state: this.state,
-                props: this.props,
-                flickity: this.flickity,
-              })
-            }
+            setImmediate(this.handleArrowClick)
           }}
         >
           <ChevronIcon
@@ -324,13 +343,7 @@ export class BaseCarousel<T> extends React.Component<
   }
 
   renderRightArrow = () => {
-    const {
-      arrowPosition,
-      onArrowClick,
-      renderRightArrow,
-      showArrows,
-      height,
-    } = this.props
+    const { arrowPosition, renderRightArrow, showArrows, height } = this.props
 
     if (!showArrows) {
       return null
@@ -347,14 +360,7 @@ export class BaseCarousel<T> extends React.Component<
           height={height}
           onClick={() => {
             this.flickity.next()
-
-            if (onArrowClick) {
-              onArrowClick({
-                state: this.state,
-                props: this.props,
-                flickity: this.flickity,
-              })
-            }
+            setImmediate(this.handleArrowClick)
           }}
         >
           <ChevronIcon

@@ -11,7 +11,7 @@ storiesOf("Apps", module).add("AppShell", () => {
     <SystemContextProvider>
       <MockRouter
         routes={getAppRoutes()}
-        initialRoute="/viewing-room"
+        initialRoute="/viewing-room/subscription-demo-gg-guy-yanai"
         context={{
           mediator: {
             trigger: x => x,

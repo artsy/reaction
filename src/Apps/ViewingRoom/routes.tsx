@@ -16,6 +16,8 @@ export const routes: RouteConfig[] = [
     getComponent: () => ViewingRoomApp,
     prepare: () => {
       ViewingRoomApp.preload()
+      StatementRoute.preload()
+      WorksRoute.preload()
     },
     query: graphql`
       query routes_ViewingRoomQuery($slug: ID!) {
@@ -28,6 +30,7 @@ export const routes: RouteConfig[] = [
       {
         path: "/",
         Component: StatementRoute,
+
         query: graphql`
           query routes_ViewingRoomStatementRouteQuery($slug: ID!) {
             viewingRoom(id: $slug) {

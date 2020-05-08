@@ -53,7 +53,7 @@ const ViewingRoomHeaderSmall: React.FC<ViewingRoomHeaderProps> = props => {
       alignItems="center"
       height={HeaderHeight}
       style={{
-        borderBottom: `1px solid ${color("black10")};`,
+        borderBottom: `1px solid ${color("black10")}`,
         overflow: "hidden",
         position: "relative",
       }}
