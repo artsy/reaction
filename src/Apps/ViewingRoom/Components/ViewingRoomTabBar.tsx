@@ -10,7 +10,7 @@ interface ViewingRoomTabBarProps {}
 export const ViewingRoomTabBar: React.FC<ViewingRoomTabBarProps> = props => {
   return (
     <Flex width="100%" justifyContent="center" id="tabBarAnchor">
-      <Flex width="66%" height={50}>
+      <Flex width={["100%", "66%"]} height={50}>
         {/* FIXME: Update with `:id` prop when ready */}
         <Tab to={`/viewing-room`}>Statement</Tab>
         <Tab to={`/viewing-room/works`}>Works</Tab>
@@ -31,7 +31,7 @@ const Tab: React.FC<LinkProps> = ({ children, to }) => {
 
   return (
     <TabContainer
-      width="50%"
+      width={["100%", "50%"]}
       textAlign="center"
       height={40}
       style={{

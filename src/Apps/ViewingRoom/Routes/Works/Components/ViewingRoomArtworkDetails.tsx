@@ -3,7 +3,7 @@ import { Box, Sans, Button, Serif } from "@artsy/palette"
 
 export const ViewingRoomArtworkDetails = props => {
   return (
-    <Box width="50%" m="auto">
+    <Box width={["100%", "50%"]} m="auto">
       <Box>
         <Sans size="3">Christine Sun Kim</Sans>
       </Box>
@@ -19,7 +19,7 @@ export const ViewingRoomArtworkDetails = props => {
       </Button>
 
       {/* Artwork Description */}
-      <Serif size="5">
+      <Serif size={["4", "5"]}>
         Inspired by meme formats, the artist creates pie charts that cleverly
         address different types of discrimination she faces as a deaf person.
         Here, she offers answers to questions like “Why does your hearing
