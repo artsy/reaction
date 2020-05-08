@@ -5,6 +5,11 @@ import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
 
 import { useSystemContext } from "Artsy"
 import { AppSecondFactorModal } from "./Modal"
+import { ApiError } from "../../ApiError"
+import { ApiErrorModal } from "../ApiErrorModal"
+import { DisableSecondFactor } from "../Mutation/DisableSecondFactor"
+import { CreateAppSecondFactor } from "./Mutation/CreateAppSecondFactor"
+import { DisableFactorConfirmation } from "../DisableFactorConfirmation"
 
 import { AppSecondFactor_me } from "__generated__/AppSecondFactor_me.graphql"
 
@@ -13,14 +18,10 @@ interface AppSecondFactorProps extends BorderBoxProps {
   relayRefetch?: RelayRefetchProp
 }
 
-import { ApiError } from "../../ApiError"
-import { ApiErrorModal } from "../ApiErrorModal"
-import { DisableSecondFactor } from "../Mutation/DisableSecondFactor"
-import { CreateAppSecondFactor } from "./Mutation/CreateAppSecondFactor"
-
 export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   const { me, relayRefetch } = props
   const [apiErrors, setApiErrors] = useState<ApiError[]>([])
+  const [showConfirmDisable, setShowConfirmDisable] = useState(false)
   const [showSetupModal, setShowSetupModal] = useState(false)
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
 
@@ -89,7 +90,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
                 {me.appSecondFactors[0].name || "Unnamed"}
               </Sans>
               <Button
-                onClick={disableSecondFactor}
+                onClick={() => setShowConfirmDisable(true)}
                 ml={1}
                 variant="secondaryOutline"
               >
@@ -118,6 +119,11 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
         onClose={() => setApiErrors([])}
         show={!!apiErrors.length}
         errors={apiErrors}
+      />
+      <DisableFactorConfirmation
+        show={showConfirmDisable}
+        onConfirm={disableSecondFactor}
+        onCancel={() => setShowConfirmDisable(false)}
       />
     </BorderBox>
   )
