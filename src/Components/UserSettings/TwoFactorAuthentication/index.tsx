@@ -1,4 +1,4 @@
-import { Box, Flex, Serif } from "@artsy/palette"
+import { Box, Flex, Serif, Sans } from "@artsy/palette"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 
@@ -28,9 +28,9 @@ const TwoFactorAuthentication: React.FC<TwoFactorAuthenticationProps> = props =>
           Two-factor Authentication
         </Serif>
         {me.hasSecondFactorEnabled && (
-          <Serif ml={1} size="4" color="green100">
+          <Sans ml={1} size="4" color="green100">
             Enabled
-          </Serif>
+          </Sans>
         )}
       </Flex>
       <Serif mt={1} size="3t" maxWidth="515px" color="black60">
