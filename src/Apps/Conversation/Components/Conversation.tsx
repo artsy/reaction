@@ -190,58 +190,11 @@ const Conversation: React.FC<ConversationProps> = props => {
               </React.Fragment>
             )
           }
-<<<<<<< HEAD
-        />
-      ))}
-      {groupMessages(conversation.messages.edges.map(edge => edge.node)).map(
-        (messageGroup, groupIndex) => {
-          const today = fromToday(messageGroup[0].createdAt)
-          return (
-            <React.Fragment
-              key={`group-${groupIndex}-${messageGroup[0].internalID}`}
-            >
-              <TimeSince
-                style={{ alignSelf: "center" }}
-                time={messageGroup[0].createdAt}
-                exact
-                mt={0.5}
-                mb={1}
-              />
-              {messageGroup.map((message, messageIndex) => {
-                const nextMessage = messageGroup[messageIndex + 1]
-                return (
-                  <Message
-                    message={message}
-                    initialMessage={conversation.initialMessage}
-                    key={message.internalID}
-                    isFirst={groupIndex + messageIndex === 0}
-                    showTimeSince={
-                      message.createdAt &&
-                      today &&
-                      messageGroup.length - 1 === messageIndex
-                    }
-                    mb={
-                      nextMessage &&
-                      nextMessage.isFromUser !== message.isFromUser
-                        ? 1
-                        : undefined
-                    }
-                  />
-                )
-              })}
-            </React.Fragment>
-          )
-        }
-      )}
-      <Spacer mb={9} />
-      <Reply conversation={conversation} environment={relay.environment} />
-    </Flex>
-=======
         )}
+        <Spacer mb={9} />
         <Reply conversation={conversation} environment={relay.environment} />
       </Flex>
     </>
->>>>>>> b191f406585f10e432f8460fe1ac83fd8909a7c7
   )
 }
 
