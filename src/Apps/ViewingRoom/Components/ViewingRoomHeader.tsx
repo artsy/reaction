@@ -2,21 +2,48 @@ import React from "react"
 import { Flex, color, Box, ResponsiveImage, Sans } from "@artsy/palette"
 import { NavBarHeight } from "Components/NavBar"
 import { Media } from "Utils/Responsive"
+import { graphql, createFragmentContainer } from "react-relay"
 
-export const ViewingRoomHeader: React.FC = props => {
+import { ViewingRoomHeader_viewingRoom } from "__generated__/ViewingRoomHeader_viewingRoom.graphql"
+
+interface ViewingRoomHeaderProps {
+  viewingRoom: ViewingRoomHeader_viewingRoom
+}
+
+const ViewingRoomHeader: React.FC<ViewingRoomHeaderProps> = props => {
   return (
     <>
       <Media greaterThanOrEqual="sm">
-        <ViewingRoomHeaderLarge />
+        <ViewingRoomHeaderLarge {...props} />
       </Media>
       <Media lessThan="sm">
-        <ViewingRoomHeaderSmall />
+        <ViewingRoomHeaderSmall {...props} />
       </Media>
     </>
   )
 }
 
-const ViewingRoomHeaderSmall = props => {
+export const ViewingRoomHeaderFragmentContainer = createFragmentContainer(
+  ViewingRoomHeader,
+  {
+    viewingRoom: graphql`
+      fragment ViewingRoomHeader_viewingRoom on ViewingRoom {
+        heroImageURL
+        title
+        partner {
+          name
+        }
+        endAt
+      }
+    `,
+  }
+)
+
+const ViewingRoomHeaderSmall: React.FC<ViewingRoomHeaderProps> = props => {
+  const {
+    viewingRoom: { heroImageURL, title },
+  } = props
+
   const HeaderHeight = `calc(100vh - ${NavBarHeight * 2.8}px)`
 
   return (
@@ -32,7 +59,7 @@ const ViewingRoomHeaderSmall = props => {
       }}
     >
       <ResponsiveImage
-        src="https://user-images.githubusercontent.com/236943/81243255-342dcc00-8fc4-11ea-9a2b-2ab96ab67c9b.png"
+        src={heroImageURL}
         style={{
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -56,16 +83,20 @@ const ViewingRoomHeaderSmall = props => {
 
       <Box position="absolute" bottom="20%">
         <Sans size="8" element="h1" color="white100">
-          Christine Sun Kim
+          {title}
         </Sans>
       </Box>
 
-      <Metadata />
+      <Metadata {...props} />
     </Flex>
   )
 }
 
-const ViewingRoomHeaderLarge = props => {
+const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
+  const {
+    viewingRoom: { heroImageURL, title },
+  } = props
+
   return (
     <Flex
       style={{
@@ -75,7 +106,7 @@ const ViewingRoomHeaderLarge = props => {
     >
       <Box width="50%" style={{ overflow: "hidden" }}>
         <ResponsiveImage
-          src="https://user-images.githubusercontent.com/236943/81243255-342dcc00-8fc4-11ea-9a2b-2ab96ab67c9b.png"
+          src={heroImageURL}
           style={{
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -91,16 +122,23 @@ const ViewingRoomHeaderLarge = props => {
         style={{ position: "relative" }}
       >
         <Sans size="10" element="h1">
-          Christine Sun Kim
+          {title}
         </Sans>
 
-        <Metadata />
+        <Metadata {...props} />
       </Flex>
     </Flex>
   )
 }
 
-const Metadata: React.FC = props => {
+const Metadata: React.FC<ViewingRoomHeaderProps> = props => {
+  const {
+    viewingRoom: {
+      partner: { name },
+      endAt,
+    },
+  } = props
+
   return (
     <Box position="absolute" left={0} bottom={0} width="100%">
       <Flex
@@ -110,10 +148,10 @@ const Metadata: React.FC = props => {
         p={2}
       >
         <Sans size={["3", "4"]} color={["white100", "black100"]}>
-          Gallery Name
+          {name}
         </Sans>
         <Sans size={["3", "4"]} color={["white100", "black100"]}>
-          Closes in 5 days
+          {endAt}
         </Sans>
       </Flex>
     </Box>

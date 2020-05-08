@@ -8,10 +8,10 @@ export function useRouter(): {
   match: Match
   router: Router
 } {
-  const { router, match } = useContext(RouterContext)
+  const { match, router } = useContext(RouterContext)
   return {
-    router,
     match,
+    router,
   }
 }
 

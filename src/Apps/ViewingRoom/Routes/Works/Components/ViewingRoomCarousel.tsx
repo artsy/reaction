@@ -1,37 +1,29 @@
 import React from "react"
 import { Flex, ChevronIcon, Box, Image, ProgressBar } from "@artsy/palette"
+import { createFragmentContainer, graphql } from "react-relay"
 
-export const ViewingRoomCarousel = () => {
+import { ViewingRoomCarousel_artwork } from "__generated__/ViewingRoomCarousel_artwork.graphql"
+
+interface ViewingRoomCarouselProps {
+  artwork: ViewingRoomCarousel_artwork
+}
+
+const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
+  artwork: { images },
+}) => {
   return (
     <Box width="100%">
       <Flex position="relative" height={550} my={2}>
         <Arrow direction="left" />
 
         <Flex>
-          <Box>
-            <Image
-              height={550}
-              src="https://user-images.githubusercontent.com/236943/81243991-15303980-8fc6-11ea-949e-fb34979a11ea.png"
-            />
-          </Box>
-          <Box>
-            <Image
-              height={550}
-              src="https://user-images.githubusercontent.com/236943/81244007-1a8d8400-8fc6-11ea-95e3-3f49d49c60eb.png"
-            />
-          </Box>
-          <Box>
-            <Image
-              height={550}
-              src="https://user-images.githubusercontent.com/236943/81243991-15303980-8fc6-11ea-949e-fb34979a11ea.png"
-            />
-          </Box>
-          <Box>
-            <Image
-              height={550}
-              src="https://user-images.githubusercontent.com/236943/81244007-1a8d8400-8fc6-11ea-95e3-3f49d49c60eb.png"
-            />
-          </Box>
+          {images.map(({ internalID, imageHref }) => {
+            return (
+              <Box key={internalID}>
+                <Image height={550} src={imageHref} />
+              </Box>
+            )
+          })}
         </Flex>
 
         <Arrow direction="right" />
@@ -45,6 +37,20 @@ export const ViewingRoomCarousel = () => {
     </Box>
   )
 }
+
+export const ViewingRoomCarouselFragmentContainer = createFragmentContainer(
+  ViewingRoomCarousel,
+  {
+    artwork: graphql`
+      fragment ViewingRoomCarousel_artwork on Artwork {
+        images {
+          internalID
+          imageHref: url(version: ["large"])
+        }
+      }
+    `,
+  }
+)
 
 const Arrow: React.FC<{ direction: "left" | "right" }> = ({ direction }) => {
   const position = { [direction]: 0 }
