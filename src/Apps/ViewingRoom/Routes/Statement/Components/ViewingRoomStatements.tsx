@@ -18,7 +18,7 @@ export const ViewingRoomStatements: React.FC = props => {
 
       {/* Statement 1 */}
       <Box>
-        <Serif size="5">
+        <Serif size={["4", "5"]}>
           Young Joon Kwak (b. 1984 in Queens, NY) is a LA-based
           multi-disciplinary artist working primarily through sculpture,
           performance, video, and collaboration. Kwak's work reimagines the
@@ -43,7 +43,7 @@ export const ViewingRoomStatements: React.FC = props => {
 
         {/* Statement 2 */}
         <Box>
-          <Serif size="5">
+          <Serif size={["4", "5"]}>
             Young Joon Kwak (b. 1984 in Queens, NY) is a LA-based
             multi-disciplinary artist working primarily through sculpture,
             performance, video, and collaboration. Kwak's work reimagines the

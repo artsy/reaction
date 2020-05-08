@@ -10,7 +10,7 @@ const WorksRoute: React.FC<WorksRouteProps> = props => {
   return (
     <Box>
       <ViewingRoomCarousel />
-      <Box mt={2} mb={4}>
+      <Box mt={2} mb={4} px={[2, 0]}>
         <ViewingRoomArtworkDetails />
       </Box>
     </Box>

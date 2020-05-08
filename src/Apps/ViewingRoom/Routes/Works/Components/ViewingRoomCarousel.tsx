@@ -56,6 +56,7 @@ const Arrow: React.FC<{ direction: "left" | "right" }> = ({ direction }) => {
       height="100%"
       justifyContent="center"
       alignItems="center"
+      display={["none", "inherit"]}
       style={{
         backgroundColor: "#ffffff95",
         cursor: "pointer",

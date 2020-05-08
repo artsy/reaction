@@ -11,7 +11,7 @@ const StatementRoute: React.FC = props => {
 
   return (
     <Box>
-      <Box width="50%" m="auto">
+      <Box width={["100%", "50%"]} px={[2, 0]} m="auto">
         <Join separator={<Spacer my={4} />}>
           <ViewingRoomIntro />
           <ViewingRoomWorks />
