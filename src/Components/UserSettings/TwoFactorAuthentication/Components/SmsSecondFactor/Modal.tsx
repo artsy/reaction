@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Input, Modal, Sans, Spacer } from "@artsy/palette"
 import { FormikHelpers as FormikActions } from "formik"
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 import * as Yup from "yup"
@@ -32,6 +32,9 @@ const StyledInput = styled(Input)`
 export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props => {
   const { secondFactor, onComplete } = props
   const { relayEnvironment } = useSystemContext()
+  const [isSubmitting, setSubmitting] = useState(false)
+  const [isDelivering, setDelivering] = useState(false)
+
 
   if (!secondFactor || secondFactor.__typename !== "SmsSecondFactor") {
     return null
@@ -41,6 +44,8 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
     values: FormValues,
     actions: FormikActions<object>
   ) => {
+    setSubmitting(true)
+
     try {
       await EnableSecondFactor(relayEnvironment, {
         secondFactorID: secondFactor.internalID,
@@ -51,6 +56,8 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
     } catch (error) {
       handleMutationError(actions, error)
     }
+
+    setSubmitting(false)
   }
 
   const handleMutationError = (
@@ -83,6 +90,8 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
     actions: FormikActions<FormValues>
   ) => {
     return new Promise<boolean>(async (resolve, _reject) => {
+      setDelivering(true)
+
       try {
         await UpdateSmsSecondFactor(relayEnvironment, {
           secondFactorID: secondFactor.internalID,
@@ -108,6 +117,8 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
       } catch (error) {
         handleMutationError(actions, error)
       }
+
+      setDelivering(false)
     })
   }
 
@@ -149,7 +160,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
               {form.status.message}
             </Sans>
           )}
-          <Button display="block" width="100%" type="submit" mt={2}>
+          <Button loading={isDelivering} disabled={isDelivering} display="block" width="100%" type="submit" mt={2}>
             Next
           </Button>
         </Box>
@@ -195,7 +206,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
               Back
             </Button>
             <Spacer ml={1} />
-            <Button width="50%" type="submit">
+            <Button width="50%" loading={isSubmitting} disabled={isSubmitting} type="submit">
               Turn on
             </Button>
           </Flex>

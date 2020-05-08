@@ -157,14 +157,14 @@ const InnerForm: React.FC<InnerFormProps> = ({
             {secondFactor.otpSecret}
           </Sans>
         ) : (
-          <Button
-            size="small"
-            variant="secondaryGray"
-            onClick={() => setShowSecret(true)}
-          >
-            Show secret
-          </Button>
-        )}
+            <Button
+              size="small"
+              variant="secondaryGray"
+              onClick={() => setShowSecret(true)}
+            >
+              Show secret
+            </Button>
+          )}
       </Box>
       <Sans mt={2} color="black60" size="3">
         2. Enter the six-digit code from the application to complete the
@@ -185,6 +185,7 @@ const InnerForm: React.FC<InnerFormProps> = ({
         <Button
           mt={2}
           loading={isSubmitting}
+          disabled={isSubmitting}
           width="100%"
           type="submit"
           onClick={handleSubmit}
