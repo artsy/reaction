@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ViewingRoomStatementRoute_viewingRoom = {
-    readonly " $fragmentRefs": FragmentRefs<"ViewingRoomIntro_viewingRoom" | "ViewingRoomWorks_viewingRoom" | "ViewingRoomSubsections_viewingRoom">;
+    readonly " $fragmentRefs": FragmentRefs<"ViewingRoomIntro_viewingRoom" | "ViewingRoomWorks_viewingRoom" | "ViewingRoomPullQuote_viewingRoom" | "ViewingRoomSubsections_viewingRoom">;
     readonly " $refType": "ViewingRoomStatementRoute_viewingRoom";
 };
 export type ViewingRoomStatementRoute_viewingRoom$data = ViewingRoomStatementRoute_viewingRoom;
@@ -33,10 +33,15 @@ const node: ReaderFragment = {
     },
     {
       "kind": "FragmentSpread",
+      "name": "ViewingRoomPullQuote_viewingRoom",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "ViewingRoomSubsections_viewingRoom",
       "args": null
     }
   ]
 };
-(node as any).hash = '0a75295ac5a8aca9f7d211f215810c21';
+(node as any).hash = '2b5a5a60797e4077ec07fc1c1ce009db';
 export default node;

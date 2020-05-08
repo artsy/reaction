@@ -13,17 +13,6 @@ const ViewingRoomSubsections: React.FC<ViewingRoomSubsectionsProps> = ({
 }) => {
   return (
     <Box>
-      <Box>
-        <Sans size="8" textAlign="center">
-          [TODO - what is this field?]Traces of bodies abound in Kwak’s hollowed
-          forms, burnished ectoplasmic impressions asserting a queer immanence.
-          Their poses simultaneously suggest supplication, pleasure, distress,
-          nostalgia, the past, the present, and the future.
-        </Sans>
-      </Box>
-
-      <Spacer my={4} />
-
       {subsections.map(({ internalID, title, body, imageURL, caption }) => {
         return (
           <Fragment key={internalID}>

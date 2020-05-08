@@ -3,6 +3,7 @@ import { Box, Spacer, Button, Join } from "@artsy/palette"
 import { useRouter } from "Artsy/Router/useRouter"
 import { ViewingRoomWorksFragmentContainer as ViewingRoomWorks } from "./Components/ViewingRoomWorks"
 import { ViewingRoomIntroFragmentContainer as ViewingRoomIntro } from "./Components/ViewingRoomIntro"
+import { ViewingRoomPullQuoteFragmentContainer as ViewingRoomPullQuote } from "./Components/ViewingRoomPullQuote"
 import { ViewingRoomSubsectionsFragmentContainer as ViewingRoomSubsections } from "./Components/ViewingRoomSubsections"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ViewingRoomStatementRoute_viewingRoom } from "__generated__/ViewingRoomStatementRoute_viewingRoom.graphql"
@@ -34,6 +35,8 @@ const StatementRoute: React.FC<ViewingRoomStatementRouteProps> = ({
           >
             View works
           </Button>
+          <ViewingRoomPullQuote viewingRoom={viewingRoom} />
+          <Spacer my={4} />
           <ViewingRoomSubsections viewingRoom={viewingRoom} />
         </Join>
       </Box>
@@ -48,6 +51,7 @@ export default createFragmentContainer(StatementRoute, {
     fragment ViewingRoomStatementRoute_viewingRoom on ViewingRoom {
       ...ViewingRoomIntro_viewingRoom
       ...ViewingRoomWorks_viewingRoom
+      ...ViewingRoomPullQuote_viewingRoom
       ...ViewingRoomSubsections_viewingRoom
     }
   `,
