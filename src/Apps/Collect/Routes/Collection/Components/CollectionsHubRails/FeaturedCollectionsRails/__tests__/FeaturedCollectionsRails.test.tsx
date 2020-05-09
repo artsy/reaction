@@ -10,6 +10,7 @@ import {
   FeaturedImage,
   StyledLink,
 } from "../index"
+import { flushPromiseQueue } from "DevTools"
 
 jest.mock("Artsy/Analytics/useTracking")
 
@@ -54,7 +55,7 @@ describe("FeaturedCollectionsRails", () => {
   })
 
   describe("Tracking", () => {
-    it("Tracks arrow click", () => {
+    it("Tracks arrow click", async () => {
       props.collectionGroup.members = [
         memberData(),
         memberData(),
@@ -65,10 +66,9 @@ describe("FeaturedCollectionsRails", () => {
 
       const component = mount(<FeaturedCollectionsRails {...props} />)
 
-      component
-        .find(ArrowButton)
-        .at(1)
-        .simulate("click")
+      component.find(ArrowButton).at(1).simulate("click")
+
+      await flushPromiseQueue()
 
       expect(trackEvent).toBeCalledWith({
         action_type: "Click",
@@ -128,15 +128,14 @@ describe("FeaturedCollectionEntity", () => {
     expect(firstEntity.text()).not.toContain("From $")
   })
 
-  it("Tracks collection entity click", () => {
+  it("Tracks collection entity click", async () => {
     const { members } = props.collectionGroup
     const component = mount(
       <FeaturedCollectionEntity member={members[0]} itemNumber={0} />
     )
-    component
-      .find(StyledLink)
-      .at(0)
-      .simulate("click")
+    component.find(StyledLink).at(0).simulate("click")
+
+    await flushPromiseQueue()
 
     expect(trackEvent).toBeCalledWith({
       action_type: "Click",

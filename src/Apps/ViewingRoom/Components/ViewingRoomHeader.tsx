@@ -39,6 +39,51 @@ export const ViewingRoomHeaderFragmentContainer = createFragmentContainer(
   }
 )
 
+/**
+ * Header used for desktop layouts
+ */
+const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
+  const {
+    viewingRoom: { heroImageURL, title },
+  } = props
+
+  return (
+    <Flex
+      style={{
+        height: `calc(100vh - ${NavBarHeight}px)`,
+        borderBottom: `1px solid ${color("black10")}`,
+      }}
+    >
+      <Box width="50%" style={{ overflow: "hidden" }}>
+        <ResponsiveImage
+          src={heroImageURL}
+          style={{
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "100%",
+          }}
+        />
+      </Box>
+
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        width="50%"
+        style={{ position: "relative" }}
+      >
+        <Sans size="10" element="h1">
+          {title}
+        </Sans>
+
+        <Metadata {...props} />
+      </Flex>
+    </Flex>
+  )
+}
+
+/**
+ * Header used for mobile layouts
+ */
 const ViewingRoomHeaderSmall: React.FC<ViewingRoomHeaderProps> = props => {
   const {
     viewingRoom: { heroImageURL, title },
@@ -92,45 +137,6 @@ const ViewingRoomHeaderSmall: React.FC<ViewingRoomHeaderProps> = props => {
   )
 }
 
-const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
-  const {
-    viewingRoom: { heroImageURL, title },
-  } = props
-
-  return (
-    <Flex
-      style={{
-        height: `calc(100vh - ${NavBarHeight}px)`,
-        borderBottom: `1px solid ${color("black10")}`,
-      }}
-    >
-      <Box width="50%" style={{ overflow: "hidden" }}>
-        <ResponsiveImage
-          src={heroImageURL}
-          style={{
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "100%",
-          }}
-        />
-      </Box>
-
-      <Flex
-        alignItems="center"
-        justifyContent="center"
-        width="50%"
-        style={{ position: "relative" }}
-      >
-        <Sans size="10" element="h1">
-          {title}
-        </Sans>
-
-        <Metadata {...props} />
-      </Flex>
-    </Flex>
-  )
-}
-
 const Metadata: React.FC<ViewingRoomHeaderProps> = props => {
   const {
     viewingRoom: {
@@ -138,6 +144,12 @@ const Metadata: React.FC<ViewingRoomHeaderProps> = props => {
       endAt,
     },
   } = props
+
+  const Text = ({ children }) => (
+    <Sans size={["3", "4"]} color={["white100", "black100"]}>
+      {children}
+    </Sans>
+  )
 
   return (
     <Box position="absolute" left={0} bottom={0} width="100%">
@@ -147,12 +159,8 @@ const Metadata: React.FC<ViewingRoomHeaderProps> = props => {
         width="100%"
         p={2}
       >
-        <Sans size={["3", "4"]} color={["white100", "black100"]}>
-          {name}
-        </Sans>
-        <Sans size={["3", "4"]} color={["white100", "black100"]}>
-          {endAt}
-        </Sans>
+        <Text>{name}</Text>
+        <Text>{endAt}</Text>
       </Flex>
     </Box>
   )
