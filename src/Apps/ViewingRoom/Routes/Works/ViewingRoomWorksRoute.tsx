@@ -12,9 +12,9 @@ interface WorksRouteProps {
 const ViewingRoomWorksRoute: React.FC<WorksRouteProps> = ({ viewingRoom }) => {
   return (
     <Join separator={<Spacer my={4} />}>
-      {viewingRoom.artworksConnection.edges.map(({ node: artwork }, index) => {
+      {viewingRoom.artworksConnection.edges.map(({ node: artwork }) => {
         return (
-          <Box key={index}>
+          <Box key={artwork.internalID}>
             <ViewingRoomCarousel artwork={artwork} />
             <Spacer my={2} />
             <Box mb={9} px={[2, 0]}>
@@ -27,7 +27,6 @@ const ViewingRoomWorksRoute: React.FC<WorksRouteProps> = ({ viewingRoom }) => {
   )
 }
 
-// Top-level route needs to be exported for bundle splitting in the router
 export const ViewingRoomWorksRouteFragmentContainer = createFragmentContainer(
   ViewingRoomWorksRoute,
   {

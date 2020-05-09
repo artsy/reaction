@@ -11,7 +11,7 @@ export function shouldUpdateScroll(_prevRenderArgs, { routes }) {
       return false
     }
   } catch (error) {
-    console.error("[Router/buildClientApp] Error:", error)
+    console.error("[Router/Utils/shouldUpdateScroll] Error:", error)
   }
   return true
 }
