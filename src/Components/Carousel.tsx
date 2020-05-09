@@ -317,7 +317,7 @@ export class BaseCarousel<T> extends React.Component<
           height={height}
           onClick={() => {
             this.flickity.previous()
-            setImmediate(this.handleArrowClick)
+            this.handleArrowClick()
           }}
         >
           <ChevronIcon
@@ -360,7 +360,7 @@ export class BaseCarousel<T> extends React.Component<
           height={height}
           onClick={() => {
             this.flickity.next()
-            setImmediate(this.handleArrowClick)
+            this.handleArrowClick()
           }}
         >
           <ChevronIcon

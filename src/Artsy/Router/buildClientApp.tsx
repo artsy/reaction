@@ -23,6 +23,7 @@ import { RouterConfig } from "./"
 
 import { trackingMiddleware } from "Artsy/Analytics/trackingMiddleware"
 import { RenderError, RenderPending, RenderReady } from "./RenderStatus"
+import { shouldUpdateScroll } from "./Utils/shouldUpdateScroll"
 
 interface Resolve {
   ClientApp: ComponentType<any>
@@ -87,7 +88,10 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         resolver,
         render: renderArgs => {
           return (
-            <ScrollManager renderArgs={renderArgs}>
+            <ScrollManager
+              renderArgs={renderArgs}
+              shouldUpdateScroll={shouldUpdateScroll}
+            >
               <Renderer {...renderArgs} />
             </ScrollManager>
           )

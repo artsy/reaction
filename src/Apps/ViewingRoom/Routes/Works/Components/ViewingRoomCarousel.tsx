@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ViewingRoomCarousel_artwork } from "__generated__/ViewingRoomCarousel_artwork.graphql"
 import { Carousel } from "Components/Carousel"
-import { flow } from "lodash"
+import { flowRight } from "lodash"
 
 import {
   Flex,
@@ -23,7 +23,7 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
   const computeScrollPercent = selectedIndex =>
     ((selectedIndex + 1) / images.length) * 100
   const [scrollPercent, setScrollPercent] = useState(computeScrollPercent(0))
-  const update = flow(computeScrollPercent, setScrollPercent)
+  const update = flowRight(setScrollPercent, computeScrollPercent)
   const showProgressBar = images.length > 1
 
   return (
@@ -33,11 +33,9 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
         maxWidth={breakpoints.lg}
         m="auto"
         my={2}
-        px={2}
         position="relative"
       >
         <Carousel
-          height="550px"
           options={{
             cellAlign: "center",
             draggable: showProgressBar,
@@ -46,6 +44,7 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
             pageDots: false,
           }}
           data={images}
+          height="550px"
           onDragEnd={({ flickity }) => update(flickity.selectedIndex)}
           render={({ imageHref, internalID }) => {
             return (
@@ -84,14 +83,12 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
       </Flex>
 
       {showProgressBar && (
-        <Box>
-          <Box width="50%" m="auto">
-            <ProgressBar
-              highlight="black100"
-              percentComplete={scrollPercent}
-              transition="width .30s ease-out"
-            />
-          </Box>
+        <Box width="50%" m="auto">
+          <ProgressBar
+            highlight="black100"
+            percentComplete={scrollPercent}
+            transition="width .30s ease-out"
+          />
         </Box>
       )}
     </Box>

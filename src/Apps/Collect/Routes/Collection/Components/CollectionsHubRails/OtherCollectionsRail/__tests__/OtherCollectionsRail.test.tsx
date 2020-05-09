@@ -5,7 +5,6 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { OtherCollectionsRail } from "../index"
-import { flushPromiseQueue } from "DevTools"
 
 jest.mock("Artsy/Analytics/useTracking")
 jest.mock("found", () => ({
@@ -49,7 +48,7 @@ describe("CollectionsRail", () => {
   })
 
   describe("Tracking", () => {
-    it("Tracks arrow click", async () => {
+    it("Tracks arrow click", () => {
       props.collectionGroup.members = [
         memberData(),
         memberData(),
@@ -64,8 +63,6 @@ describe("CollectionsRail", () => {
         .find(ArrowButton)
         .at(1)
         .simulate("click")
-
-      await flushPromiseQueue()
 
       expect(trackEvent).toBeCalledWith({
         action_type: "Click",

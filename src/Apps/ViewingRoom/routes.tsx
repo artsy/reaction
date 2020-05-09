@@ -2,13 +2,10 @@ import loadable from "@loadable/component"
 import { graphql } from "react-relay"
 import { RouteConfig } from "found"
 
+import { ViewingRoomStatementRouteFragmentContainer as StatementRoute } from "./Routes/Statement/ViewingRoomStatementRoute"
+import { ViewingRoomWorksRouteFragmentContainer as WorksRoute } from "./Routes/Works/ViewingRoomWorksRoute"
+
 const ViewingRoomApp = loadable(() => import("./ViewingRoomApp"))
-const StatementRoute = loadable(() =>
-  import("./Routes/Statement/ViewingRoomStatementRoute")
-)
-const WorksRoute = loadable(() =>
-  import("./Routes/Works/ViewingRoomWorksRoute")
-)
 
 export const routes: RouteConfig[] = [
   {
@@ -16,8 +13,6 @@ export const routes: RouteConfig[] = [
     getComponent: () => ViewingRoomApp,
     prepare: () => {
       ViewingRoomApp.preload()
-      StatementRoute.preload()
-      WorksRoute.preload()
     },
     query: graphql`
       query routes_ViewingRoomQuery($slug: ID!) {
@@ -30,7 +25,7 @@ export const routes: RouteConfig[] = [
       {
         path: "/",
         Component: StatementRoute,
-
+        ignoreScrollBehavior: true,
         query: graphql`
           query routes_ViewingRoomStatementRouteQuery($slug: ID!) {
             viewingRoom(id: $slug) {
@@ -42,6 +37,7 @@ export const routes: RouteConfig[] = [
       {
         path: "/works",
         Component: WorksRoute,
+        ignoreScrollBehavior: true,
         query: graphql`
           query routes_ViewingRoomWorksRouteQuery($slug: ID!) {
             viewingRoom(id: $slug) {

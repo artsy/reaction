@@ -56,7 +56,9 @@ const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
     >
       <Box width="50%" style={{ overflow: "hidden" }}>
         <ResponsiveImage
+          // FIXME: Use resizer: https://github.com/artsy/reaction/pull/3499/files#r422166275
           src={heroImageURL}
+          lazyLoad={false}
           style={{
             backgroundSize: "cover",
             backgroundPosition: "center",
