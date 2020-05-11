@@ -6,7 +6,7 @@ import { ConversationsFragmentContainer as Conversations } from "Apps/Conversati
 import { SystemContext } from "Artsy"
 import { findCurrentRoute } from "Artsy/Router/Utils/findCurrentRoute"
 import { ErrorPage } from "Components/ErrorPage"
-import { Match, Router } from "found"
+import { Match } from "found"
 import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { userHasLabFeature } from "Utils/user"
@@ -21,11 +21,10 @@ interface ConversationRouteProps {
   me: Conversations_me & Conversation_me
   conversationID: string
   match: Match
-  router: Router
 }
 
 export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
-  const { me, router } = props
+  const { me } = props
   const { user } = useContext(SystemContext)
   const isEnabled = userHasLabFeature(user, "User Conversations View")
   if (isEnabled) {
