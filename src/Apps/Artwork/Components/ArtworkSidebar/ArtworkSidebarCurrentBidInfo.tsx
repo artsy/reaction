@@ -5,7 +5,7 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
+import { AnalyticsSchema } from "Artsy/Analytics"
 import {
   Box,
   Flex,
@@ -25,13 +25,15 @@ export interface ArtworkSidebarCurrentBidInfoProps {
 export class ArtworkSidebarCurrentBidInfo extends React.Component<
   ArtworkSidebarCurrentBidInfoProps
 > {
-  @track(() => ({
-    context_module: Schema.ContextModule.Sidebar,
-    action_type: Schema.ActionType.Click,
-    subject: Schema.Subject.AuctionBuyerPremium,
-    type: Schema.Type.Link,
-  }))
-  onClickBuyerPremium(mediator) {
+  @track(() => {
+    return {
+      context_module: AnalyticsSchema.ContextModule.Sidebar,
+      action_type: AnalyticsSchema.ActionType.Click,
+      subject: AnalyticsSchema.Subject.AuctionBuyerPremium,
+      type: AnalyticsSchema.Type.Link,
+    }
+  })
+  handleClickBuyerPremium(mediator) {
     const { artwork } = this.props
     mediator &&
       mediator.trigger &&
@@ -143,7 +145,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
               <Serif size="2" color="black60">
                 <br />
                 This auction has a{" "}
-                <Link onClick={this.onClickBuyerPremium.bind(this, mediator)}>
+                <Link onClick={this.handleClickBuyerPremium}>
                   buyer's premium
                 </Link>
                 .<br />

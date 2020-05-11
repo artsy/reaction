@@ -1,6 +1,5 @@
 import { Box, Serif } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
-import { SystemContextConsumer } from "Artsy"
 import React from "react"
 
 import { ArtworkSidebarAuctionPartnerInfo_artwork } from "__generated__/ArtworkSidebarAuctionPartnerInfo_artwork.graphql"
@@ -18,22 +17,18 @@ export class ArtworkSidebarAuctionPartnerInfo extends React.Component<
       return null
     }
     return (
-      <SystemContextConsumer>
-        {() => (
-          <Box pb={3}>
-            {partner && (
-              <Serif size="2" weight="semibold" color="black100">
-                {partner.name}
-              </Serif>
-            )}
-            {sale_artwork && sale_artwork.estimate && (
-              <Serif size="2" color="black60">
-                Estimated value: {sale_artwork.estimate}
-              </Serif>
-            )}
-          </Box>
+      <Box pb={3}>
+        {partner && (
+          <Serif size="2" weight="semibold" color="black100">
+            {partner.name}
+          </Serif>
         )}
-      </SystemContextConsumer>
+        {sale_artwork && sale_artwork.estimate && (
+          <Serif size="2" color="black60">
+            Estimated value: {sale_artwork.estimate}
+          </Serif>
+        )}
+      </Box>
     )
   }
 }
