@@ -16,7 +16,7 @@ import {
   FullHeader,
   ConversationHeader,
 } from "Apps/Conversation/Components/InboxHeaders"
-import { Details } from "../../Components/Details"
+import { DetailsFragmentContainer as Details } from "../../Components/Details"
 interface ConversationRouteProps {
   me: Conversations_me & Conversation_me
   conversationID: string
@@ -50,6 +50,7 @@ export const ConversationRoute: React.FC<ConversationRouteProps> = props => {
           </Media>
           <Conversation conversation={me.conversation} />
           <Details
+            conversation={me.conversation as any /** FIXME: Correct type */}
             display={["none", null, null, null, "flex"]}
             width={["100%", "376px"]}
           />
