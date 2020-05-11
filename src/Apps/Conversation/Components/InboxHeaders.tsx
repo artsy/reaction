@@ -55,6 +55,22 @@ export const ConversationHeader: FC<ConversationHeaderProps> = ({
   )
 }
 
+export const MobileInboxHeader: FC<FlexProps> = props => {
+  return (
+    <Flex
+      justifyContent="flex-end"
+      flexDirection="column"
+      height="85px"
+      {...props}
+    >
+      <Sans size="6" weight="medium" ml={1}>
+        Inbox
+      </Sans>
+      <Separator mt={1} />
+    </Flex>
+  )
+}
+
 export const InboxHeader: FC<BorderedFlexProps> = props => {
   return (
     <BorderedFlex justifyContent="flex-end" flexDirection="column" {...props}>

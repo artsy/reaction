@@ -1,4 +1,4 @@
-import { Box, media, color, space } from "@artsy/palette"
+import { Box, media, color } from "@artsy/palette"
 import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
@@ -9,7 +9,6 @@ import styled from "styled-components"
 const Container = styled(Box)`
   min-height: 100vh;
   border-right: 1px solid ${color("black10")};
-  padding-top: ${space(2)}px;
   ${media.xs`
     border-right: none;
   `};

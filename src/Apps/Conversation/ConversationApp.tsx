@@ -11,6 +11,8 @@ import { debounce } from "lodash"
 import { SystemContext } from "Artsy"
 import { userHasLabFeature } from "Utils/user"
 import { ErrorPage } from "Components/ErrorPage"
+import { Media } from "Utils/Responsive"
+import { FullHeader, MobileInboxHeader } from "./Components/InboxHeaders"
 
 interface ConversationAppProps {
   me: ConversationApp_me
@@ -60,6 +62,12 @@ export const ConversationApp: React.FC<ConversationAppProps> = props => {
   return (
     <AppContainer maxWidth={maxWidth}>
       <Title>Conversations | Artsy</Title>
+      <Media at="xs">
+        <MobileInboxHeader />
+      </Media>
+      <Media greaterThan="xs">
+        <FullHeader partnerName={conversation?.to?.name} />
+      </Media>
       <Conversations me={me} />
       <Flex
         display={["none", "flex"]}
@@ -94,6 +102,9 @@ export const ConversationAppFragmentContainer = createFragmentContainer(
           edges {
             node {
               internalID
+              to {
+                name
+              }
             }
           }
         }
