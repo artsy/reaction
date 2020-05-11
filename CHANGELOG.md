@@ -1,3 +1,21 @@
+# v26.36.0 (Mon May 11 2020)
+
+#### 🚀  Enhancement
+
+- Responsive conversations layout [#3509](https://github.com/artsy/reaction/pull/3509) ([@zephraph](https://github.com/zephraph))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 8.2.1 to v8.2.3 [#3507](https://github.com/artsy/reaction/pull/3507) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.35.0 (Fri May 08 2020)
 
 #### 🚀  Enhancement
