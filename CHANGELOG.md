@@ -1,3 +1,17 @@
+# v26.36.1 (Mon May 11 2020)
+
+#### 🐛  Bug Fix
+
+- [FeaturePage] Adds basic app shell [#3506](https://github.com/artsy/reaction/pull/3506) ([@sweir27](https://github.com/sweir27))
+- Readd mobile inbox header [#3510](https://github.com/artsy/reaction/pull/3510) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+
+---
+
 # v26.36.0 (Mon May 11 2020)
 
 #### 🚀  Enhancement
