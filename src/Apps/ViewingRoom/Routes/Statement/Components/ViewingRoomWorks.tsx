@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Box, Image, Sans } from "@artsy/palette"
+import { Flex, Box, Image, Sans, Button, Spacer } from "@artsy/palette"
 import { useRouter } from "Artsy/Router/useRouter"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -14,12 +14,36 @@ const ViewingRoomWorks: React.FC<ViewingRoomWorksProps> = ({
     artworksConnection: { edges },
   },
 }) => {
+  const {
+    match: {
+      params: { slug },
+    },
+    router,
+  } = useRouter()
+
+  const navigateToWorks = () => {
+    router.push(`/viewing-room/${slug}/works`)
+    scrollToTabBar()
+  }
+
   return (
-    <Flex>
-      {edges.map(({ node: artwork }) => {
-        return <ArtworkItem key={artwork.internalID} {...artwork} />
-      })}
-    </Flex>
+    <>
+      <Flex>
+        {edges.map(({ node: artwork }) => {
+          return (
+            <ArtworkItem
+              key={artwork.internalID}
+              onClick={navigateToWorks}
+              {...artwork}
+            />
+          )
+        })}
+      </Flex>
+      <Spacer my={4} />
+      <Button onClick={navigateToWorks} size="large" width="100%">
+        View works
+      </Button>
+    </>
   )
 }
 
@@ -44,18 +68,26 @@ export const ViewingRoomWorksFragmentContainer = createFragmentContainer(
   }
 )
 
-type ArtworkNode = ViewingRoomWorksProps["viewingRoom"]["artworksConnection"]["edges"][0]["node"]
+type ArtworkNode = ViewingRoomWorksProps["viewingRoom"]["artworksConnection"]["edges"][0]["node"] & {
+  onClick: () => void
+}
 
 const ArtworkItem: React.FC<ArtworkNode> = ({
-  imageUrl,
   artistNames,
-  title,
   date,
+  imageUrl,
+  onClick,
+  title,
 }) => {
-  const { router } = useRouter()
-
   return (
-    <Box width="50%" pl={1} onClick={() => router.push("/viewing-room/works")}>
+    <Box
+      onClick={onClick}
+      width="50%"
+      pl={1}
+      style={{
+        cursor: "pointer",
+      }}
+    >
       <Box>
         <Image width="100%" src={imageUrl} />
       </Box>
@@ -69,4 +101,10 @@ const ArtworkItem: React.FC<ArtworkNode> = ({
       </Box>
     </Box>
   )
+}
+
+const scrollToTabBar = () => {
+  const element = document.getElementById("viewingRoomTabBarAnchor")
+  const top = element.getBoundingClientRect().top + window.pageYOffset - 80
+  window.scrollTo({ top, behavior: "auto" })
 }

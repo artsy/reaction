@@ -12,7 +12,7 @@ export const ViewingRoomArtworkDetails: React.FC<ViewingRoomArtworkDetailsProps>
   artwork: { artistNames, title, date, href, description },
 }) => {
   return (
-    <Box width={["100%", "50%"]} m="auto">
+    <Box maxWidth={["100%", 470]} m="auto">
       <Box>
         <Sans size="3">{artistNames}</Sans>
       </Box>
@@ -29,7 +29,11 @@ export const ViewingRoomArtworkDetails: React.FC<ViewingRoomArtworkDetailsProps>
         </Button>
       </RouterLink>
 
-      <Serif size={["4", "5"]}>{description}</Serif>
+      <Serif size={["4", "5"]}>
+        {/* FIXME: Populate description in test data */}
+        {description ||
+          `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}
+      </Serif>
     </Box>
   )
 }

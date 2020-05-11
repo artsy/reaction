@@ -16,7 +16,8 @@ const ViewingRoomWorksRoute: React.FC<WorksRouteProps> = ({ viewingRoom }) => {
         return (
           <Box key={artwork.internalID}>
             <ViewingRoomCarousel artwork={artwork} />
-            <Box mt={2} mb={4} px={[2, 0]}>
+            <Spacer my={2} />
+            <Box mb={9} px={[2, 0]}>
               <ViewingRoomArtworkDetails artwork={artwork} />
             </Box>
           </Box>
@@ -26,19 +27,21 @@ const ViewingRoomWorksRoute: React.FC<WorksRouteProps> = ({ viewingRoom }) => {
   )
 }
 
-// Top-level route needs to be exported for bundle splitting in the router
-export default createFragmentContainer(ViewingRoomWorksRoute, {
-  viewingRoom: graphql`
-    fragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {
-      artworksConnection {
-        edges {
-          node {
-            internalID
-            ...ViewingRoomCarousel_artwork
-            ...ViewingRoomArtworkDetails_artwork
+export const ViewingRoomWorksRouteFragmentContainer = createFragmentContainer(
+  ViewingRoomWorksRoute,
+  {
+    viewingRoom: graphql`
+      fragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {
+        artworksConnection {
+          edges {
+            node {
+              internalID
+              ...ViewingRoomCarousel_artwork
+              ...ViewingRoomArtworkDetails_artwork
+            }
           }
         }
       }
-    }
-  `,
-})
+    `,
+  }
+)

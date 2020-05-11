@@ -33,6 +33,7 @@ const ViewingRoomSubsections: React.FC<ViewingRoomSubsectionsProps> = ({
                 <Box width="100%">
                   <Image width="100%" src={imageURL} />
                 </Box>
+                <Spacer my={1} />
                 <Box>
                   <Sans size="2" color="black60">
                     {caption}

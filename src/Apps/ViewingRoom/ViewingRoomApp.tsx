@@ -6,6 +6,7 @@ import { ViewingRoomTabBar } from "./Components/ViewingRoomTabBar"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { ViewingRoomApp_viewingRoom } from "__generated__/ViewingRoomApp_viewingRoom.graphql"
+import { ViewingRoomMeta } from "./Components/ViewingRoomMeta"
 
 interface ViewingRoomAppProps {
   children: React.ReactNode
@@ -17,13 +18,16 @@ const ViewingRoomApp: React.FC<ViewingRoomAppProps> = ({
   viewingRoom,
 }) => {
   return (
-    <AppContainer maxWidth="100%">
-      <ViewingRoomHeader viewingRoom={viewingRoom} />
-      <Box my={3}>
-        <ViewingRoomTabBar />
-      </Box>
-      {children}
-    </AppContainer>
+    <>
+      <ViewingRoomMeta />
+      <AppContainer maxWidth="100%">
+        <ViewingRoomHeader viewingRoom={viewingRoom} />
+        <Box my={3}>
+          <ViewingRoomTabBar />
+        </Box>
+        {children}
+      </AppContainer>
+    </>
   )
 }
 
