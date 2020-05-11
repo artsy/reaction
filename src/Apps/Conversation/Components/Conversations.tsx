@@ -1,4 +1,4 @@
-import { Box, media, color, space } from "@artsy/palette"
+import { Box, media, color } from "@artsy/palette"
 import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
