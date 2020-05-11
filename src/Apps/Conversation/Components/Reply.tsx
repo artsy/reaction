@@ -1,17 +1,22 @@
-import { Button, color, Flex, media } from "@artsy/palette"
+import { Button, color, Flex, media, FlexProps } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import React, { useRef, useState } from "react"
 import { Environment } from "react-relay"
 import styled from "styled-components"
 import { SendConversationMessage } from "../Mutation/SendConversationMessage"
+import { right, RightProps } from "styled-system"
 
-const StyledFlex = styled(Flex)`
+const StyledFlex = styled(Flex)<FlexProps & RightProps>`
+  ${right};
   border-top: 1px solid ${color("black10")};
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   background: white;
+  bottom: 0;
+  left: 375px;
+  ${media.xs`
+    width: 100%;
+    left: 0;
+  `}
 `
 
 const FullWidthFlex = styled(Flex)<{ height?: string }>`
@@ -49,7 +54,7 @@ export const Reply: React.FC<ReplyProps> = props => {
   const textArea = useRef()
 
   return (
-    <StyledFlex p={1}>
+    <StyledFlex p={1} right={[0, null, null, null, "376px"]}>
       <FullWidthFlex width="100%">
         <StyledTextArea
           onInput={event => {

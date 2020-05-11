@@ -7,6 +7,7 @@ export type Conversations_me = {
         readonly edges: ReadonlyArray<{
             readonly cursor: string;
             readonly node: {
+                readonly id: string;
                 readonly internalID: string | null;
                 readonly lastMessage: string | null;
                 readonly " $fragmentRefs": FragmentRefs<"ConversationSnippet_conversation">;
@@ -119,6 +120,13 @@ const node: ReaderFragment = {
                 {
                   "kind": "ScalarField",
                   "alias": null,
+                  "name": "id",
+                  "args": null,
+                  "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
                   "name": "internalID",
                   "args": null,
                   "storageKey": null
@@ -182,5 +190,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'e94e07540fbe2e24b795e52d48c2b76f';
+(node as any).hash = '9a2f916205ca98143386672e8d86d642';
 export default node;

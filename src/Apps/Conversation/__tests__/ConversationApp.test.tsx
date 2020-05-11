@@ -28,6 +28,7 @@ const render = (me: ConversationAppTestQueryRawResponse["me"], user: User) =>
           ...me,
         }}
         match={({ route: { displayFullPage: true } } as unknown) as Match}
+        router={{ replace: () => {} } as any}
         {...props}
       />
     ),
@@ -68,7 +69,7 @@ describe("Conversation app", () => {
         }
         const component = await render(mockMe, userType)
         const text = component.text()
-        expect(text).toContain("InboxAshkan Gallery(message count)")
+        expect(text).toContain("Ashkan Gallery12 months ago")
       })
     })
     describe("without previous conversations", () => {
