@@ -5,7 +5,7 @@ import { graphql } from "relay-runtime"
 
 import { Breakpoint } from "@artsy/palette"
 import { FeatureAKGRoute_Test_QueryRawResponse } from "__generated__/FeatureAKGRoute_Test_Query.graphql"
-import { FeatureAppFragmentContainer } from "../FeatureApp"
+import { FeatureAKGAppFragmentContainer } from "../FeatureAKGApp"
 
 jest.unmock("react-relay")
 jest.mock("Artsy/Analytics/useTracking")
@@ -38,7 +38,7 @@ describe("FeatureAKG", () => {
       Component: ({ viewer }) => {
         return (
           <MockBoot breakpoint={breakpoint} context={{ injectedData }}>
-            <FeatureAppFragmentContainer viewer={viewer} />
+            <FeatureAKGAppFragmentContainer viewer={viewer} />
           </MockBoot>
         )
       },
@@ -54,7 +54,7 @@ describe("FeatureAKG", () => {
           $hasFairRailItems: Boolean!
         ) @raw_response_type {
           viewer {
-            ...FeatureApp_viewer
+            ...FeatureAKGApp_viewer
               @arguments(
                 articleIDs: $articleIDs
                 selectedWorksSetID: $selectedWorksSetID

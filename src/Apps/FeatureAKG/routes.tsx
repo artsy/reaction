@@ -2,17 +2,17 @@ import loadable from "@loadable/component"
 import { RouteConfig } from "found"
 import { graphql } from "react-relay"
 
-const FeatureApp = loadable(() => import("./FeatureApp"))
+const FeatureAKGApp = loadable(() => import("./FeatureAKGApp"))
 
 export const routes: RouteConfig[] = [
   {
     path: "/campaign/art-keeps-going",
-    getComponent: () => FeatureApp,
+    getComponent: () => FeatureAKGApp,
     prepare: () => {
-      FeatureApp.preload()
+      FeatureAKGApp.preload()
     },
     query: graphql`
-      query routes_FeatureQuery(
+      query routes_FeatureAKGQuery(
         $articleIDs: [String]!
         $selectedWorksSetID: String!
         $collectionRailItemIDs: [String!]
@@ -23,7 +23,7 @@ export const routes: RouteConfig[] = [
         $hasFairRailItems: Boolean!
       ) {
         viewer {
-          ...FeatureApp_viewer
+          ...FeatureAKGApp_viewer
             @arguments(
               articleIDs: $articleIDs
               selectedWorksSetID: $selectedWorksSetID
