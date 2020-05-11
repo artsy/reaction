@@ -66,8 +66,8 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         href={`/user/conversations/${conversation.internalID}`}
         underlineBehavior="none"
       >
-        <Flex alignItems="center" pr={1} width="100%" height="120px">
-          <Flex alignItems="center" width={2}>
+        <Flex alignItems="center" px={1} width="100%" height="120px">
+          <Flex alignItems="center" width="25px" height="100%">
             {conversation.unread && <PurpleCircle />}
           </Flex>
           <StyledFlex alignItems="center" height="80px" width="80px">
@@ -94,7 +94,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                     <Sans
                       size="3"
                       weight="medium"
-                      mr={1}
+                      mr={2}
                       color={conversation.unread ? "black" : "black60"}
                     >
                       {partnerName}
@@ -107,7 +107,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                     <TimeSince
                       time={conversation.lastMessageAt}
                       size="3"
-                      mr={1}
+                      mr={2}
                     />
                   </Flex>
                 </Flex>
@@ -124,7 +124,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
           </Flex>
         </Flex>
       </Link>
-      <Separator mx={2} width="auto" />
+      <Separator mx={3} width="auto" />
     </Box>
   )
 }
