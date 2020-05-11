@@ -66,7 +66,7 @@ export const ConversationApp: React.FC<ConversationAppProps> = props => {
         <MobileInboxHeader />
       </Media>
       <Media greaterThan="xs">
-        <FullHeader partnerName={conversation.to.name} />
+        <FullHeader partnerName={conversation?.to?.name} />
       </Media>
       <Conversations me={me} />
       <Flex
