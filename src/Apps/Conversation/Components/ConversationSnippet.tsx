@@ -59,7 +59,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         href={`/user/conversations/${conversation.internalID}`}
         underlineBehavior="none"
       >
-        <Flex alignItems="center" px={1} width="100%" height="120px">
+        <Flex alignItems="center" width="100%" height="120px">
           <StyledFlex alignItems="center" height="80px" width="80px">
             {imageURL ? (
               <StyledImage
@@ -82,21 +82,21 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                 <Flex width="100%" justifyContent="space-between">
                   <Flex>
                     <Sans
-                      size="3"
+                      size="3t"
                       weight="medium"
                       mr="5px"
                       color={conversation.unread ? "black" : "black60"}
                     >
                       {partnerName}
                     </Sans>
-                    <Sans size="3" color={"black30"}>
-                      (message count)
+                    <Sans size="3t" color={"black30"}>
+                      {conversation.messagesConnection.totalCount}
                     </Sans>
                   </Flex>
                   <Flex>
                     <TimeSince
                       time={conversation.lastMessageAt}
-                      size="3"
+                      size="3t"
                       mr="5px"
                     />
                   </Flex>
@@ -114,7 +114,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
           </Flex>
         </Flex>
       </Link>
-      <Separator mx={1} width="auto" />
+      <Separator width="auto" />
     </Box>
   )
 }
@@ -152,6 +152,9 @@ export const ConversationSnippetFragmentContainer = createFragmentContainer(
               }
             }
           }
+        }
+        messagesConnection {
+          totalCount
         }
       }
     `,
