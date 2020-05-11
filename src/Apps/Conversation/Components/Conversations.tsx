@@ -9,7 +9,6 @@ import styled from "styled-components"
 const Container = styled(Box)`
   min-height: 100vh;
   border-right: 1px solid ${color("black10")};
-  padding-top: ${space(2)}px;
   ${media.xs`
     border-right: none;
   `};

@@ -7,6 +7,9 @@ export type ConversationApp_me = {
         readonly edges: ReadonlyArray<{
             readonly node: {
                 readonly internalID: string | null;
+                readonly to: {
+                    readonly name: string;
+                };
             } | null;
         } | null> | null;
     } | null;
@@ -107,6 +110,24 @@ const node: ReaderFragment = {
                   "name": "internalID",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "name": "to",
+                  "storageKey": null,
+                  "args": null,
+                  "concreteType": "ConversationResponder",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "name",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
                 }
               ]
             }
@@ -121,5 +142,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'd4c7e79711b6ea55474086ffe47c6b7a';
+(node as any).hash = 'edfa47e1542a594d34c232767151f3eb';
 export default node;
