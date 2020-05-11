@@ -1,4 +1,4 @@
-import { Box, Flex, Link, Row, Sans, Separator } from "@artsy/palette"
+import { Box, Flex, Link, Row, Sans, Separator, color } from "@artsy/palette"
 import { ConversationSnippet_conversation } from "__generated__/ConversationSnippet_conversation.graphql"
 import {
   ImageWithFallback,
@@ -18,6 +18,13 @@ const StyledImage = styled(ImageWithFallback)`
 `
 const StyledFlex = styled(Flex)`
   float: left;
+`
+const PurpleCircle = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: ${color("purple100")};
+  border-radius: 50%;
+  margin-right: 10px;
 `
 
 interface ConversationSnippetProps {
@@ -59,7 +66,10 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
         href={`/user/conversations/${conversation.internalID}`}
         underlineBehavior="none"
       >
-        <Flex alignItems="center" px={1} width="100%" height="120px">
+        <Flex alignItems="center" pr={1} width="100%" height="120px">
+          <Flex alignItems="center" width={2}>
+            {conversation.unread && <PurpleCircle />}
+          </Flex>
           <StyledFlex alignItems="center" height="80px" width="80px">
             {imageURL ? (
               <StyledImage
@@ -84,7 +94,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                     <Sans
                       size="3"
                       weight="medium"
-                      mr="5px"
+                      mr={1}
                       color={conversation.unread ? "black" : "black60"}
                     >
                       {partnerName}
@@ -97,7 +107,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                     <TimeSince
                       time={conversation.lastMessageAt}
                       size="3"
-                      mr="5px"
+                      mr={1}
                     />
                   </Flex>
                 </Flex>
@@ -114,7 +124,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
           </Flex>
         </Flex>
       </Link>
-      <Separator mx={1} width="auto" />
+      <Separator mx={2} width="auto" />
     </Box>
   )
 }
