@@ -4,7 +4,8 @@ import { SystemContextConsumer } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { get } from "Utils/get"
-
+import { track } from "Artsy/Analytics"
+import * as Schema from "Artsy/Analytics/Schema"
 import {
   Box,
   Flex,
@@ -20,9 +21,16 @@ export interface ArtworkSidebarCurrentBidInfoProps {
   artwork: ArtworkSidebarCurrentBidInfo_artwork
 }
 
+@track()
 export class ArtworkSidebarCurrentBidInfo extends React.Component<
   ArtworkSidebarCurrentBidInfoProps
 > {
+  @track(() => ({
+    context_module: Schema.ContextModule.Sidebar,
+    action_type: Schema.ActionType.Click,
+    subject: Schema.Subject.AuctionBuyerPremium,
+    type: Schema.Type.Link,
+  }))
   onClickBuyerPremium(mediator) {
     const { artwork } = this.props
     mediator &&
