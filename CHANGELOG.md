@@ -1,3 +1,16 @@
+# v26.36.7 (Tue May 12 2020)
+
+#### 🐛  Bug Fix
+
+- Removes placeholders to fix build [#3521](https://github.com/artsy/reaction/pull/3521) ([@dzucconi](https://github.com/dzucconi))
+- Roughs in Feature app UI [#3517](https://github.com/artsy/reaction/pull/3517) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.36.6 (Tue May 12 2020)
 
 #### 🐛  Bug Fix
