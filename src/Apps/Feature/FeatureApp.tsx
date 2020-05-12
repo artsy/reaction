@@ -2,11 +2,8 @@ import React from "react"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureHeaderFragmentContainer as FeatureHeader } from "./Components/FeatureHeader"
-import { FeatureFeaturedLink } from "./Components/FeatureFeaturedLink"
-import { FeatureSet } from "./Components/FeatureSet"
 import { FeatureApp_feature } from "__generated__/FeatureApp_feature.graphql"
 import { Box, Sans, Spacer } from "@artsy/palette"
-import { FEATURED_LINK } from "./Components/__tests__/fixtures"
 
 interface FeatureAppProps {
   feature: FeatureApp_feature
@@ -40,39 +37,6 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
           Lisson, Hauser &amp; Wirth
         </Sans>
       </Box>
-
-      <FeatureSet mx={3}>
-        <FeatureFeaturedLink wide featuredLink={FEATURED_LINK} />
-      </FeatureSet>
-
-      <FeatureSet mx={3}>
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-      </FeatureSet>
-
-      <FeatureSet mx={3}>
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-      </FeatureSet>
-
-      <FeatureSet mx={3}>
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-      </FeatureSet>
-
-      <FeatureSet mx={3}>
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-        <FeatureFeaturedLink featuredLink={FEATURED_LINK} />
-      </FeatureSet>
     </AppContainer>
   )
 }
