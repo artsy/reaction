@@ -18,21 +18,39 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
   const { relayEnvironment } = useSystemContext()
 
   const [showModal, setShowModal] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isCreating, setCreating] = useState(false)
 
-  function createBackupSecondFactors() {
-    setIsSubmitting(true)
+  async function createBackupSecondFactors() {
+    setCreating(true)
 
-    CreateBackupSecondFactors(relayEnvironment)
-      .then(() => {
-        setIsSubmitting(false)
-        setShowModal(true)
-      })
-      .catch(reason => {
-        console.error(reason)
-        setIsSubmitting(false)
-      })
+    try {
+      await CreateBackupSecondFactors(relayEnvironment)
+      setShowModal(true)
+    } catch (e) {
+      console.error(e)
+    }
+
+    setCreating(false)
   }
+
+  const ShowButton = props => (
+    <Button
+      onClick={() => setShowModal(true)}
+      variant="secondaryOutline"
+      {...props}
+    >
+      Show
+    </Button>
+  )
+
+  const SetupButton = props => (
+    <Button
+      onClick={createBackupSecondFactors}
+      loading={isCreating}
+      disabled={isCreating}
+      {...props}
+    />
+  )
 
   return (
     <BorderBox p={20} {...props}>
@@ -52,26 +70,13 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
               <Sans color="black60" size="3" weight="medium">
                 {me.backupSecondFactors.length} remaining
               </Sans>
-              <Button
-                ml={10}
-                variant="secondaryOutline"
-                onClick={() => setShowModal(true)}
-              >
-                Show
-              </Button>
-              <Button
-                loading={isSubmitting}
-                ml={10}
-                variant="secondaryGray"
-                onClick={createBackupSecondFactors}
-              >
+              <ShowButton ml={1} />
+              <SetupButton ml={1} variant="secondaryGray">
                 Regenerate
-              </Button>
+              </SetupButton>
             </>
           ) : (
-            <Button loading={isSubmitting} onClick={createBackupSecondFactors}>
-              Set up
-            </Button>
+            <SetupButton ml={1}>Set up</SetupButton>
           )}
         </Flex>
       </Flex>

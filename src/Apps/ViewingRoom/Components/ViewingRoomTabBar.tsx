@@ -15,8 +15,8 @@ export const ViewingRoomTabBar: React.FC<ViewingRoomTabBarProps> = props => {
   } = useRouter()
 
   return (
-    <Flex width="100%" justifyContent="center" id="tabBarAnchor">
-      <Flex width={["100%", "66%"]} height={50}>
+    <Flex width="100%" justifyContent="center" id="viewingRoomTabBarAnchor">
+      <Flex width={["100%", 720]} height={50}>
         <Tab to={`/viewing-room/${slug}`}>Statement</Tab>
         <Tab to={`/viewing-room/${slug}/works`}>Works</Tab>
       </Flex>

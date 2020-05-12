@@ -1,9 +1,18 @@
-import { Box, Sans, Separator } from "@artsy/palette"
+import { Box, media, color } from "@artsy/palette"
 import { Conversations_me } from "__generated__/Conversations_me.graphql"
 import React from "react"
 import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
 import { ConversationSnippetFragmentContainer as ConversationSnippet } from "./ConversationSnippet"
 import { NoMessages } from "./NoMessages"
+import styled from "styled-components"
+
+const Container = styled(Box)`
+  min-height: 100vh;
+  border-right: 1px solid ${color("black10")};
+  ${media.xs`
+    border-right: none;
+  `};
+`
 
 interface ConversationsProps {
   me: Conversations_me
@@ -14,19 +23,19 @@ const Conversations: React.FC<ConversationsProps> = props => {
   const { me } = props
   const conversations = me.conversationsConnection.edges
   return (
-    <Box height="calc(100vh - 180px)">
-      <Sans size="6" weight="medium" ml={1} mt={2}>
-        Inbox
-      </Sans>
-      <Separator mt={2} />
-      {conversations.length ? (
-        conversations.map(edge => (
-          <ConversationSnippet conversation={edge.node} key={edge.cursor} />
-        ))
-      ) : (
-        <NoMessages />
-      )}
-    </Box>
+    <>
+      <Container width={["100%", "375px"]}>
+        {conversations.length ? (
+          <Box>
+            {conversations.map(edge => (
+              <ConversationSnippet conversation={edge.node} key={edge.cursor} />
+            ))}
+          </Box>
+        ) : (
+          <NoMessages />
+        )}
+      </Container>
+    </>
   )
 }
 
@@ -50,6 +59,7 @@ export const ConversationsFragmentContainer = createRefetchContainer(
           edges {
             cursor
             node {
+              id
               internalID
               lastMessage
               ...ConversationSnippet_conversation

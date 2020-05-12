@@ -7,7 +7,7 @@ storiesOf("Apps/ViewingRoom", module).add("Viewing Room", () => {
   return (
     <MockRouter
       routes={viewingRoomRoutes}
-      initialRoute="/viewing-room/flatland-gallery-guy-yanai"
+      initialRoute="/viewing-room/subscription-demo-gg-guy-yanai/works"
     />
   )
 })

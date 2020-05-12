@@ -24,7 +24,6 @@ const exactDate = (time: string) => {
   }
   const date = DateTime.fromISO(time)
   const daysSince = daysSinceDate(date)
-  console.log("days since", daysSince)
   if (daysSince === 0) {
     return `Today ${date.toFormat("t")}`
   } else if (daysSince === 1) {

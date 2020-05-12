@@ -12,6 +12,7 @@ import { CreateSmsSecondFactor } from "./Mutation/CreateSmsSecondFactor"
 
 import { SmsSecondFactor_me } from "__generated__/SmsSecondFactor_me.graphql"
 import { ApiErrorModal } from "../ApiErrorModal"
+import { DisableFactorConfirmation } from "../DisableFactorConfirmation"
 
 interface SmsSecondFactorProps extends BorderBoxProps {
   me: SmsSecondFactor_me
@@ -21,14 +22,18 @@ interface SmsSecondFactorProps extends BorderBoxProps {
 export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
   const { me, relayRefetch } = props
   const { relayEnvironment } = useSystemContext()
+  const [showConfirmDisable, setShowConfirmDisable] = useState(false)
   const [showSetupModal, setShowSetupModal] = useState(false)
   const [apiErrors, setApiErrors] = useState<ApiError[]>([])
+  const [isDisabling, setDisabling] = useState(false)
+  const [isCreating, setCreating] = useState(false)
 
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
 
   function onComplete() {
-    setShowSetupModal(false)
-    relayRefetch.refetch({})
+    relayRefetch.refetch({}, {}, () => {
+      setShowSetupModal(false)
+    })
   }
 
   function handleMutationError(errors: ApiError[]) {
@@ -40,6 +45,8 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
   }
 
   async function createSecondFactor() {
+    setCreating(true)
+
     try {
       const response = await CreateSmsSecondFactor(relayEnvironment, {
         attributes: {},
@@ -51,6 +58,8 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     } catch (error) {
       handleMutationError(error)
     }
+
+    setCreating(false)
   }
 
   async function disableSecondFactor() {
@@ -58,16 +67,43 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
       return
     }
 
+    setShowConfirmDisable(false)
+    setDisabling(true)
+
     try {
       await DisableSecondFactor(relayEnvironment, {
         secondFactorID: me.smsSecondFactors[0].internalID,
       })
 
-      relayRefetch.refetch({})
+      relayRefetch.refetch({}, {}, () => {
+        setDisabling(false)
+      })
     } catch (error) {
+      setDisabling(false)
       handleMutationError(error)
     }
   }
+
+  const DisableButton = props => (
+    <Button
+      onClick={() => setShowConfirmDisable(true)}
+      variant="secondaryOutline"
+      loading={isDisabling}
+      disabled={isDisabling}
+      {...props}
+    >
+      Disable
+    </Button>
+  )
+
+  const SetupButton = props => (
+    <Button
+      onClick={createSecondFactor}
+      loading={isCreating}
+      disabled={isCreating}
+      {...props}
+    />
+  )
 
   return (
     <BorderBox p={2} {...props}>
@@ -87,23 +123,13 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
               <Sans color="black60" size="3" weight="medium">
                 {me.smsSecondFactors[0].formattedPhoneNumber}
               </Sans>
-              <Button
-                onClick={disableSecondFactor}
-                ml={1}
-                variant="secondaryOutline"
-              >
-                Disable
-              </Button>
-              <Button
-                onClick={createSecondFactor}
-                ml={1}
-                variant="secondaryGray"
-              >
+              <DisableButton ml={1} />
+              <SetupButton ml={1} variant="secondaryGray">
                 Edit
-              </Button>
+              </SetupButton>
             </>
           ) : (
-            <Button onClick={createSecondFactor}>Set up</Button>
+            <SetupButton ml={1}>Set up</SetupButton>
           )}
         </Flex>
       </Flex>
@@ -117,6 +143,11 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
         onClose={() => setApiErrors([])}
         show={!!apiErrors.length}
         errors={apiErrors}
+      />
+      <DisableFactorConfirmation
+        show={showConfirmDisable}
+        onConfirm={disableSecondFactor}
+        onCancel={() => setShowConfirmDisable(false)}
       />
     </BorderBox>
   )

@@ -53,4 +53,15 @@ export const MockedConversation = {
       },
     ],
   },
+  messagesConnection: {
+    totalCount: 1,
+    edges: [
+      {
+        node: {
+          ...Message,
+        },
+        cursor: "message1",
+      },
+    ],
+  },
 } as const

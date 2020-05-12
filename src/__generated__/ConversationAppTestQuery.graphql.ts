@@ -12,14 +12,14 @@ export type ConversationAppTestQueryRawResponse = {
     readonly me: ({
         readonly conversationsConnection: ({
             readonly edges: ReadonlyArray<({
-                readonly cursor: string;
                 readonly node: ({
                     readonly internalID: string | null;
-                    readonly lastMessage: string | null;
                     readonly to: {
                         readonly name: string;
                         readonly id: string | null;
                     };
+                    readonly id: string | null;
+                    readonly lastMessage: string | null;
                     readonly lastMessageAt: string | null;
                     readonly unread: boolean | null;
                     readonly items: ReadonlyArray<({
@@ -48,8 +48,11 @@ export type ConversationAppTestQueryRawResponse = {
                             readonly id: string | null;
                         }) | null;
                     }) | null> | null;
-                    readonly id: string | null;
+                    readonly messagesConnection: ({
+                        readonly totalCount: number | null;
+                    }) | null;
                 }) | null;
+                readonly cursor: string;
             }) | null> | null;
             readonly pageInfo: {
                 readonly endCursor: string | null;
@@ -78,6 +81,18 @@ query ConversationAppTestQuery {
 }
 
 fragment ConversationApp_me on Me {
+  conversationsConnection(first: 10) {
+    edges {
+      node {
+        internalID
+        to {
+          name
+          id
+        }
+        id
+      }
+    }
+  }
   ...Conversations_me
 }
 
@@ -116,6 +131,9 @@ fragment ConversationSnippet_conversation on Conversation {
       }
     }
   }
+  messagesConnection {
+    totalCount
+  }
 }
 
 fragment Conversations_me on Me {
@@ -123,10 +141,10 @@ fragment Conversations_me on Me {
     edges {
       cursor
       node {
+        id
         internalID
         lastMessage
         ...ConversationSnippet_conversation
-        id
       }
     }
     pageInfo {
@@ -233,13 +251,6 @@ return {
                 "plural": true,
                 "selections": [
                   {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "cursor",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
                     "kind": "LinkedField",
                     "alias": null,
                     "name": "node",
@@ -256,13 +267,6 @@ return {
                         "storageKey": null
                       },
                       {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "lastMessage",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
                         "kind": "LinkedField",
                         "alias": null,
                         "name": "to",
@@ -271,6 +275,14 @@ return {
                         "concreteType": "ConversationResponder",
                         "plural": false,
                         "selections": (v2/*: any*/)
+                      },
+                      (v1/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "lastMessage",
+                        "args": null,
+                        "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
@@ -380,8 +392,32 @@ return {
                           }
                         ]
                       },
-                      (v1/*: any*/)
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "messagesConnection",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "MessageConnection",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "totalCount",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      }
                     ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "cursor",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               },
@@ -435,7 +471,7 @@ return {
     "operationKind": "query",
     "name": "ConversationAppTestQuery",
     "id": null,
-    "text": "query ConversationAppTestQuery {\n  me {\n    ...ConversationApp_me\n    id\n  }\n}\n\nfragment ConversationApp_me on Me {\n  ...Conversations_me\n}\n\nfragment ConversationSnippet_conversation on Conversation {\n  internalID\n  to {\n    name\n    id\n  }\n  lastMessage\n  lastMessageAt\n  unread\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversations_me on Me {\n  conversationsConnection(first: 10) {\n    edges {\n      cursor\n      node {\n        internalID\n        lastMessage\n        ...ConversationSnippet_conversation\n        id\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
+    "text": "query ConversationAppTestQuery {\n  me {\n    ...ConversationApp_me\n    id\n  }\n}\n\nfragment ConversationApp_me on Me {\n  conversationsConnection(first: 10) {\n    edges {\n      node {\n        internalID\n        to {\n          name\n          id\n        }\n        id\n      }\n    }\n  }\n  ...Conversations_me\n}\n\nfragment ConversationSnippet_conversation on Conversation {\n  internalID\n  to {\n    name\n    id\n  }\n  lastMessage\n  lastMessageAt\n  unread\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n  messagesConnection {\n    totalCount\n  }\n}\n\nfragment Conversations_me on Me {\n  conversationsConnection(first: 10) {\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        lastMessage\n        ...ConversationSnippet_conversation\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

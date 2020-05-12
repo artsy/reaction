@@ -135,6 +135,7 @@ export const routes: RouteConfig[] = [
           OverviewRoute.preload()
         },
         displayNavigationTabs: true,
+        ignoreScrollBehavior: true,
         query: graphql`
           query routes_OverviewQuery($artistID: String!) @raw_response_type {
             artist(id: $artistID) {
@@ -150,6 +151,7 @@ export const routes: RouteConfig[] = [
           WorksForSaleRoute.preload()
         },
         displayNavigationTabs: true,
+        ignoreScrollBehavior: true,
         query: graphql`
           query routes_WorksQuery(
             $acquireable: Boolean
@@ -229,6 +231,7 @@ export const routes: RouteConfig[] = [
           AuctionResultsRoute.preload()
         },
         displayNavigationTabs: true,
+        ignoreScrollBehavior: true,
         query: graphql`
           query routes_AuctionResultsQuery($artistID: String!) {
             artist(id: $artistID) {

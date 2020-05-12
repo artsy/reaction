@@ -92,15 +92,15 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                 <Flex width="100%" justifyContent="space-between">
                   <Flex>
                     <Sans
-                      size="3"
+                      size="3t"
                       weight="medium"
                       mr={2}
                       color={conversation.unread ? "black" : "black60"}
                     >
                       {partnerName}
                     </Sans>
-                    <Sans size="3" color={"black30"}>
-                      (message count)
+                    <Sans size="3t" color={"black30"}>
+                      {conversation.messagesConnection.totalCount}
                     </Sans>
                   </Flex>
                   <Flex>
@@ -162,6 +162,9 @@ export const ConversationSnippetFragmentContainer = createFragmentContainer(
               }
             }
           }
+        }
+        messagesConnection {
+          totalCount
         }
       }
     `,

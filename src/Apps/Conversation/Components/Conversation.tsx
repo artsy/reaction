@@ -1,32 +1,21 @@
 import {
-  ArrowLeftIcon,
   color,
   Flex,
   Image,
-  InfoCircleIcon,
   Link,
   Sans,
   Serif,
   Spacer,
+  Box,
 } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
-import { RouterLink } from "Artsy/Router/RouterLink"
 import { DateTime } from "luxon"
 import React from "react"
 import { createFragmentContainer, RelayProp } from "react-relay"
 import { graphql } from "relay-runtime"
-import styled from "styled-components"
 import { MessageFragmentContainer as Message } from "./Message"
 import { Reply } from "./Reply"
 import { fromToday, TimeSince } from "./TimeSince"
-
-const StyledHeader = styled(Flex)`
-  position: fixed;
-  background: white;
-  border-bottom: 1px solid ${color("black10")};
-  height: 55px;
-  top: 59px;
-`
 
 interface ItemProps {
   item: Conversation_conversation["items"][0]["item"]
@@ -124,35 +113,23 @@ export interface ConversationProps {
 const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
   return (
-    <>
-      <StyledHeader
-        px={2}
-        alignItems="center"
-        justifyContent="space-between"
-        width="100%"
-      >
-        <RouterLink to={`/user/conversations`}>
-          <ArrowLeftIcon />
-        </RouterLink>
-        <Sans size="3t" weight="medium">
-          Inquiry with {conversation.to.name}
-        </Sans>
-        <InfoCircleIcon />
-      </StyledHeader>
-      <Spacer mt="45px" />
-      <Flex flexDirection="column" width="100%" px={1}>
-        {conversation.items.map((i, idx) => (
-          <Item
-            item={i.item}
-            key={
-              i.item.__typename === "Artwork" || i.item.__typename === "Show"
-                ? i.item.id
-                : idx
-            }
-          />
-        ))}
-        {groupMessages(conversation.messages.edges.map(edge => edge.node)).map(
-          (messageGroup, groupIndex) => {
+    <Flex flexDirection="column" width="100%">
+      <Box>
+        <Spacer mt="45px" />
+        <Flex flexDirection="column" width="100%" px={1}>
+          {conversation.items.map((i, idx) => (
+            <Item
+              item={i.item}
+              key={
+                i.item.__typename === "Artwork" || i.item.__typename === "Show"
+                  ? i.item.id
+                  : idx
+              }
+            />
+          ))}
+          {groupMessages(
+            conversation.messages.edges.map(edge => edge.node)
+          ).map((messageGroup, groupIndex) => {
             const today = fromToday(messageGroup[0].createdAt)
             return (
               <React.Fragment
@@ -189,11 +166,12 @@ const Conversation: React.FC<ConversationProps> = props => {
                 })}
               </React.Fragment>
             )
-          }
-        )}
-        <Reply conversation={conversation} environment={relay.environment} />
-      </Flex>
-    </>
+          })}
+          <Spacer mb={9} />
+        </Flex>
+      </Box>
+      <Reply conversation={conversation} environment={relay.environment} />
+    </Flex>
   )
 }
 

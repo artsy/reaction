@@ -2,21 +2,21 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type FeatureApp_viewer = {
+export type FeatureAKGApp_viewer = {
     readonly " $fragmentRefs": FragmentRefs<"Feature_viewer">;
-    readonly " $refType": "FeatureApp_viewer";
+    readonly " $refType": "FeatureAKGApp_viewer";
 };
-export type FeatureApp_viewer$data = FeatureApp_viewer;
-export type FeatureApp_viewer$key = {
-    readonly " $data"?: FeatureApp_viewer$data;
-    readonly " $fragmentRefs": FragmentRefs<"FeatureApp_viewer">;
+export type FeatureAKGApp_viewer$data = FeatureAKGApp_viewer;
+export type FeatureAKGApp_viewer$key = {
+    readonly " $data"?: FeatureAKGApp_viewer$data;
+    readonly " $fragmentRefs": FragmentRefs<"FeatureAKGApp_viewer">;
 };
 
 
 
 const node: ReaderFragment = {
   "kind": "Fragment",
-  "name": "FeatureApp_viewer",
+  "name": "FeatureAKGApp_viewer",
   "type": "Viewer",
   "metadata": null,
   "argumentDefinitions": [
@@ -118,5 +118,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = 'e0ab6e7bde3c87a7ce50273e9cf6756c';
+(node as any).hash = '7e462965607113d556dfbd202e44b165';
 export default node;
