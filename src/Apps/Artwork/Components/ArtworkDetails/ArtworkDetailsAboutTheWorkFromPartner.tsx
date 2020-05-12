@@ -101,7 +101,7 @@ export class ArtworkDetailsAboutTheWorkFromPartner extends React.Component<
         {({ user, mediator }) => {
           return (
             <StackableBorderBox p={2}>
-              <Box>
+              <Box data-test="aboutTheWorkPartner">
                 <EntityHeader
                   name={partnerName}
                   href={

@@ -7,6 +7,8 @@ import React, { useContext } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import { ArtworkActionsFragmentContainer as ArtworkActions } from "./ArtworkActions"
 import { ArtworkImageBrowser } from "./ArtworkImageBrowser"
+import { Box } from "@artsy/palette"
+import { ContextModule } from "@artsy/cohesion"
 
 export interface ImageBrowserProps {
   artwork: ArtworkImageBrowser_artwork
@@ -27,7 +29,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
       e => e.internalID === image.internalID
     )
     return (
-      <>
+      <Box data-test={ContextModule.artworkImage}>
         <ArtworkImageBrowser
           setCarouselRef={f => (this.carousel = f)}
           images={images}
@@ -39,7 +41,7 @@ export class ArtworkImageBrowserContainer extends React.Component<
           }}
           artwork={this.props.artwork}
         />
-      </>
+      </Box>
     )
   }
 }
