@@ -145,7 +145,7 @@ export class ArtworkSidebarCurrentBidInfo extends React.Component<
               <Serif size="2" color="black60">
                 <br />
                 This auction has a{" "}
-                <Link onClick={this.handleClickBuyerPremium}>
+                <Link onClick={() => this.handleClickBuyerPremium(mediator)}>
                   buyer's premium
                 </Link>
                 .<br />
