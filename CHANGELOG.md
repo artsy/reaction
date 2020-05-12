@@ -1,3 +1,15 @@
+# v26.36.6 (Tue May 12 2020)
+
+#### 🐛  Bug Fix
+
+- Conversations view unread indicator [#3515](https://github.com/artsy/reaction/pull/3515) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.36.3 (Tue May 12 2020)
 
 #### 🐛  Bug Fix
