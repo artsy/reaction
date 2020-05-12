@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type FeatureApp_feature = {
-    readonly name: string;
+    readonly " $fragmentRefs": FragmentRefs<"FeatureHeader_feature">;
     readonly " $refType": "FeatureApp_feature";
 };
 export type FeatureApp_feature$data = FeatureApp_feature;
@@ -22,13 +22,11 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "name",
-      "args": null,
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "FeatureHeader_feature",
+      "args": null
     }
   ]
 };
-(node as any).hash = '8d3e8d14c09f18f704309438d68ead7d';
+(node as any).hash = '76d11c95bc3f546cf83bc71a5f10873c';
 export default node;

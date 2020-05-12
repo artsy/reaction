@@ -28,7 +28,15 @@ query routes_FeatureQuery(
 }
 
 fragment FeatureApp_feature on Feature {
+  ...FeatureHeader_feature
+}
+
+fragment FeatureHeader_feature on Feature {
   name
+  subheadline: description
+  image {
+    url
+  }
 }
 */
 
@@ -98,6 +106,31 @@ return {
           },
           {
             "kind": "ScalarField",
+            "alias": "subheadline",
+            "name": "description",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "image",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "FeatureImage",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "url",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          },
+          {
+            "kind": "ScalarField",
             "alias": null,
             "name": "id",
             "args": null,
@@ -111,7 +144,7 @@ return {
     "operationKind": "query",
     "name": "routes_FeatureQuery",
     "id": null,
-    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  name\n}\n",
+    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline: description\n  image {\n    url\n  }\n}\n",
     "metadata": {}
   }
 };
