@@ -1,3 +1,23 @@
+# v26.36.3 (Tue May 12 2020)
+
+#### 🐛  Bug Fix
+
+- Rough out starting point for details view [#3513](https://github.com/artsy/reaction/pull/3513) ([@zephraph](https://github.com/zephraph))
+- [Viewing Room] Add carousel support [#3508](https://github.com/artsy/reaction/pull/3508) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.0 to v1.0.2 [#3512](https://github.com/artsy/reaction/pull/3512) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.36.1 (Mon May 11 2020)
 
 #### 🐛  Bug Fix
