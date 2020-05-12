@@ -35,7 +35,6 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
   const [isSubmitting, setSubmitting] = useState(false)
   const [isDelivering, setDelivering] = useState(false)
 
-
   if (!secondFactor || secondFactor.__typename !== "SmsSecondFactor") {
     return null
   }
@@ -160,7 +159,14 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
               {form.status.message}
             </Sans>
           )}
-          <Button loading={isDelivering} disabled={isDelivering} display="block" width="100%" type="submit" mt={2}>
+          <Button
+            loading={isDelivering}
+            disabled={isDelivering}
+            display="block"
+            width="100%"
+            type="submit"
+            mt={2}
+          >
             Next
           </Button>
         </Box>
@@ -206,7 +212,12 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
               Back
             </Button>
             <Spacer ml={1} />
-            <Button width="50%" loading={isSubmitting} disabled={isSubmitting} type="submit">
+            <Button
+              width="50%"
+              loading={isSubmitting}
+              disabled={isSubmitting}
+              type="submit"
+            >
               Turn on
             </Button>
           </Flex>
