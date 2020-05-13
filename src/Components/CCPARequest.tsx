@@ -307,7 +307,6 @@ export const CCPARequest: React.SFC<Props> = props => {
       </Box>
       <Modal
         title={title}
-        forcedScroll={false}
         show={showModal}
         onClose={onClose}
         FixedButton={modalButton}

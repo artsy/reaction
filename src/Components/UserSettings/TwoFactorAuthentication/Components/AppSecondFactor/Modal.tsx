@@ -89,12 +89,7 @@ export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props =
   }
 
   return (
-    <Modal
-      forcedScroll={false}
-      title="Set up with app"
-      show={props.show}
-      onClose={props.onClose}
-    >
+    <Modal title="Set up with app" show={props.show} onClose={props.onClose}>
       <Formik
         validationSchema={validationSchema}
         initialValues={{ name: secondFactor.name || "", code: "" }}
