@@ -1,3 +1,24 @@
+# v26.36.9 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- Bump [#3524](https://github.com/artsy/reaction/pull/3524) ([@damassi](https://github.com/damassi))
+- Move tracking code for buyers premium link click [#3514](https://github.com/artsy/reaction/pull/3514) ([@erikdstock](https://github.com/erikdstock))
+- [Viewing Room] QA [#3523](https://github.com/artsy/reaction/pull/3523) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update auto orb from 1.2.1 to v1.3.2 [#3519](https://github.com/artsy/reaction/pull/3519) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.36.7 (Tue May 12 2020)
 
 #### 🐛  Bug Fix
