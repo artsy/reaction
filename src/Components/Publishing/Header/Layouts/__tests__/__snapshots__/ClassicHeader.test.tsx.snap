@@ -108,17 +108,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
     max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -675,17 +665,7 @@ Array [
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
     max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -956,17 +936,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
     max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c0 {
     padding-left: 0px;
     padding-right: 0px;
   }
