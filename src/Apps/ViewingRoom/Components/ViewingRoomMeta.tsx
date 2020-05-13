@@ -8,7 +8,7 @@ interface ViewingRoomMetaProps {
 }
 
 const ViewingRoomMeta: React.FC<ViewingRoomMetaProps> = ({
-  viewingRoom: { title, introStatement },
+  viewingRoom: { title },
 }) => {
   return (
     <>
@@ -24,7 +24,6 @@ export const ViewingRoomMetaFragmentContainer = createFragmentContainer(
     viewingRoom: graphql`
       fragment ViewingRoomMeta_viewingRoom on ViewingRoom {
         title
-        introStatement
       }
     `,
   }
