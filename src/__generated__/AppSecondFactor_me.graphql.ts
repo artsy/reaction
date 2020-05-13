@@ -3,6 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type AppSecondFactor_me = {
+    readonly hasSecondFactorEnabled: boolean;
     readonly appSecondFactors: ReadonlyArray<({
         readonly __typename: "AppSecondFactor";
         readonly internalID: string;
@@ -29,6 +30,13 @@ const node: ReaderFragment = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "hasSecondFactorEnabled",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": "appSecondFactors",
@@ -77,5 +85,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '991170a4ad736b79116d467ab0e03e07';
+(node as any).hash = '5c098681fc3af26acb2b13dab1368da3';
 export default node;

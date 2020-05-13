@@ -24,6 +24,7 @@ query SmsSecondFactorStoryUpdateErrorQuery {
 }
 
 fragment SmsSecondFactor_me on Me {
+  hasSecondFactorEnabled
   smsSecondFactors: secondFactors(kinds: [sms]) {
     __typename
     ... on SmsSecondFactor {
@@ -85,6 +86,13 @@ return {
         "plural": false,
         "selections": [
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "hasSecondFactorEnabled",
+            "args": null,
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": "smsSecondFactors",
             "name": "secondFactors",
@@ -140,7 +148,7 @@ return {
     "operationKind": "query",
     "name": "SmsSecondFactorStoryUpdateErrorQuery",
     "id": null,
-    "text": "query SmsSecondFactorStoryUpdateErrorQuery {\n  me {\n    ...SmsSecondFactor_me\n    id\n  }\n}\n\nfragment SmsSecondFactor_me on Me {\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      __typename\n      internalID\n      formattedPhoneNumber\n    }\n  }\n}\n",
+    "text": "query SmsSecondFactorStoryUpdateErrorQuery {\n  me {\n    ...SmsSecondFactor_me\n    id\n  }\n}\n\nfragment SmsSecondFactor_me on Me {\n  hasSecondFactorEnabled\n  smsSecondFactors: secondFactors(kinds: [sms]) {\n    __typename\n    ... on SmsSecondFactor {\n      __typename\n      internalID\n      formattedPhoneNumber\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
