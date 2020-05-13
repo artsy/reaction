@@ -47,6 +47,12 @@ const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
     viewingRoom: { heroImageURL, title },
   } = props
 
+  // FIXME: Wire up. Currently Gemini is returning a 500 from this, not sure why.
+  // const resizedHeroImageURL = resize(heroImageURL, {
+  //   width: 600,
+  //   convert_to: "jpg",
+  // })
+
   return (
     <Flex
       style={{
