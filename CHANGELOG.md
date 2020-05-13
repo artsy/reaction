@@ -1,3 +1,15 @@
+# v26.36.14 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- additional_information should be displayed for artworks in VR [#3528](https://github.com/artsy/reaction/pull/3528) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v26.36.13 (Wed May 13 2020)
 
 #### 🐛  Bug Fix
