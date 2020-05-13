@@ -1,3 +1,15 @@
+# v26.36.13 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Viewing Room] Add tests [#3525](https://github.com/artsy/reaction/pull/3525) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.36.10 (Wed May 13 2020)
 
 #### 🐛  Bug Fix
