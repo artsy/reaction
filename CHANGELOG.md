@@ -1,3 +1,17 @@
+# v26.36.10 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- Fix carousel init [#3526](https://github.com/artsy/reaction/pull/3526) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3511](https://github.com/artsy/reaction/pull/3511) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.36.9 (Wed May 13 2020)
 
 #### 🐛  Bug Fix
