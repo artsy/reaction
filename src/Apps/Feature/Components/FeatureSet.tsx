@@ -1,6 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { Box, BoxProps, color, Sans, CSSGrid } from "@artsy/palette"
+import { Box, BoxProps, CSSGrid, Sans, color } from "@artsy/palette"
+import { createFragmentContainer, graphql } from "react-relay"
+import { FeatureFeaturedLinkFragmentContainer as FeatureFeaturedLink } from "./FeatureFeaturedLink"
+import { FeatureSet_set } from "__generated__/FeatureSet_set.graphql"
 
 const Container = styled(Box)`
   border-top: 1px solid ${color("black100")};
@@ -15,27 +18,30 @@ const Container = styled(Box)`
   }
 `
 
-export type FeatureSetProps = Omit<BoxProps, "color">
+export interface FeatureSetProps extends Omit<BoxProps, "color"> {
+  set: FeatureSet_set
+}
 
-export const FeatureSet: React.FC<FeatureSetProps> = ({
-  children,
-  ...rest
-}) => {
-  const count = React.Children.count(children)
+export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
+  const count = set.orderedItems.edges.length
 
   return (
     <Container {...rest}>
-      <Box mt={4} mb={2}>
-        {/* OrderedSet#title */}
-        <Sans size="6" color="black100">
-          Selected works
-        </Sans>
+      {(set.name || set.description) && (
+        <Box mt={4} mb={2}>
+          {set.name && (
+            <Sans size="6" color="black100">
+              {set.name}
+            </Sans>
+          )}
 
-        {/* OrderedSet#subtitle */}
-        <Sans size="3" color="black60">
-          Selected in collaboration with our curators in Berlin.
-        </Sans>
-      </Box>
+          {set.description && (
+            <Sans size="3" color="black60">
+              {set.description}
+            </Sans>
+          )}
+        </Box>
+      )}
 
       <CSSGrid
         mt={2}
@@ -47,8 +53,43 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({
         ]}
         gridGap={2}
       >
-        {children}
+        {set.orderedItems.edges.map(({ node: orderedItem }) => {
+          switch (orderedItem.__typename) {
+            case "FeaturedLink":
+              return (
+                <FeatureFeaturedLink
+                  key={orderedItem.id}
+                  featuredLink={orderedItem}
+                />
+              )
+            default:
+              // TODO: Unimplemented: Artist | Artwork | Gene | Sale | PartnerShow | Profile | OrderedSet
+              return null
+          }
+        })}
       </CSSGrid>
     </Container>
   )
 }
+
+export const FeatureSetFragmentContainer = createFragmentContainer(FeatureSet, {
+  set: graphql`
+    fragment FeatureSet_set on OrderedSet {
+      name
+      description
+      itemType
+      # TODO: Handle pagination
+      orderedItems: orderedItemsConnection(first: 50) {
+        edges {
+          node {
+            __typename
+            ... on FeaturedLink {
+              id
+            }
+            ...FeatureFeaturedLink_featuredLink
+          }
+        }
+      }
+    }
+  `,
+})

@@ -1,8 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { space, SpaceProps } from "styled-system"
-import { Box, Sans, Serif, Image, Flex } from "@artsy/palette"
+import { SpaceProps, space } from "styled-system"
+import { Box, Flex, ResponsiveImage, Sans, Serif, color } from "@artsy/palette"
+import { createFragmentContainer, graphql } from "react-relay"
 import { RouterLink } from "Artsy/Router/RouterLink"
+import { FeatureFeaturedLink_featuredLink } from "__generated__/FeatureFeaturedLink_featuredLink.graphql"
 
 const Container = styled(RouterLink)`
   ${space}
@@ -13,12 +15,6 @@ const Container = styled(RouterLink)`
 
 const Figure = styled(Box)`
   position: relative;
-`
-
-const Cover = styled(Image)`
-  display: block;
-  width: 100%;
-  height: 100%;
 `
 
 const Title = styled(Sans)`
@@ -40,29 +36,25 @@ const MetaCell = styled(Flex)`
 
 export interface FeatureFeaturedLinkProps extends SpaceProps {
   wide?: boolean
-  featuredLink: {
-    title: string
-    href: string
-    subtitle?: string
-    description?: string
-    image: {
-      width: number
-      height: number
-      url: string
-    }
-  }
+  featuredLink: FeatureFeaturedLink_featuredLink
 }
 
 export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
   wide,
-  featuredLink: { title, href, subtitle, description, image },
+  featuredLink,
+  featuredLink: { href, title, subtitle, description, image },
   ...rest
 }) => {
   return (
     <Container to={href} {...rest}>
       {image ? (
         <Figure>
-          <Cover src={image.url} />
+          <ResponsiveImage
+            maxWidth="100%"
+            src={image.cropped.src}
+            ratio={image.cropped.height / image.cropped.width}
+            style={{ backgroundColor: color("black10") }}
+          />
 
           <Title size="6" color="white100" p={2} pt={9}>
             {title}
@@ -70,7 +62,7 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
         </Figure>
       ) : (
         <Sans size="6" color="black100" my={2}>
-          {title}
+          {title || "—"}
         </Sans>
       )}
 
@@ -90,3 +82,25 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
     </Container>
   )
 }
+
+export const FeatureFeaturedLinkFragmentContainer = createFragmentContainer(
+  FeatureFeaturedLink,
+  {
+    featuredLink: graphql`
+      fragment FeatureFeaturedLink_featuredLink on FeaturedLink {
+        href
+        title
+        subtitle
+        # TODO: Placeholder value
+        description: subtitle
+        image {
+          cropped(width: 800, height: 600, version: ["wide"]) {
+            src: url
+            width
+            height
+          }
+        }
+      }
+    `,
+  }
+)

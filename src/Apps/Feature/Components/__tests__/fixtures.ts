@@ -11,18 +11,18 @@ export const FEATURE_HEADER = {
 }
 
 export const FEATURED_LINK = {
-  __typename: "FeaturedLink",
-  id: "RmVhdHVyZWRMaW5rOjVkZmY1YzAwNTk4NDE3MDAwZTBkYWRjNw==",
-  href: "https://www.artsy.net/feature/discover-art-from-dusseldorf",
-  title: "Christine Sun Kim",
-  subtitle: "Greene Naftali",
-  description:
-    "This is a brief statement about the works. Brief statement about the works. This is a brief statement about the works and another. This is a brief statement about the works.",
+  " $fragmentRefs": null,
+  " $refType": null,
+  href: "/artwork/auguste-rodin-le-baiser-the-kiss",
+  title: "Auguste Rodin",
+  subtitle: "Le Baiser (The Kiss), ca. 1886",
+  description: "Le Baiser (The Kiss), ca. 1886",
   image: {
-    title: "Dusseldorf",
-    width: 1024,
-    height: 910,
-    url:
-      "https://d32dm0rphc51dk.cloudfront.net/96ObvNmUJVWL2RVrlWleFA/large_rectangle.jpg",
+    cropped: {
+      src:
+        "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=800&height=600&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FMK8cjqHtGvEWmCMFz6-ZGA%2Fwide.jpg",
+      width: 800,
+      height: 600,
+    },
   },
 }

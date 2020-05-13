@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Flex, Sans, color, Image, Spacer } from "@artsy/palette"
+import { Box, Flex, Image, Join, Sans, Spacer, color } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureHeader_feature } from "__generated__/FeatureHeader_feature.graphql"
 
@@ -48,18 +48,17 @@ export const FeatureHeader: React.FC<FeatureHeaderProps> = ({
       )}
 
       <Meta p={6} flexBasis={image ? "50%" : "100%"}>
-        <Sans size="10" element="h1" textAlign="center">
-          {name}
-        </Sans>
-
-        <Spacer my={1} />
-
-        {/* TODO: Doesn't exist in schema yet, aliased `description` */}
-        {subheadline && (
-          <Sans size="4" textAlign="center">
-            {subheadline}
+        <Join separator={<Spacer my={1} />}>
+          <Sans size="10" element="h1" textAlign="center">
+            {name}
           </Sans>
-        )}
+
+          {subheadline && (
+            <Sans size="4" textAlign="center">
+              <Box dangerouslySetInnerHTML={{ __html: subheadline }} />
+            </Sans>
+          )}
+        </Join>
       </Meta>
     </Container>
   )
@@ -71,7 +70,8 @@ export const FeatureHeaderFragmentContainer = createFragmentContainer(
     feature: graphql`
       fragment FeatureHeader_feature on Feature {
         name
-        subheadline: description
+        # TODO: Placeholder value
+        subheadline: description(format: HTML)
         image {
           url
         }
