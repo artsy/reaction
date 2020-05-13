@@ -1,7 +1,15 @@
-import { BorderBox, Button, Flex, Link, Sans, Serif } from "@artsy/palette"
+import {
+  BorderBox,
+  Button,
+  Flex,
+  Link,
+  Modal,
+  Sans,
+  Serif,
+} from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
-import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
+import { RelayRefetchProp, createFragmentContainer, graphql } from "react-relay"
 
 import { useSystemContext } from "Artsy"
 import { AppSecondFactorModal } from "./Modal"
@@ -23,6 +31,7 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   const [apiErrors, setApiErrors] = useState<ApiError[]>([])
   const [showConfirmDisable, setShowConfirmDisable] = useState(false)
   const [showSetupModal, setShowSetupModal] = useState(false)
+  const [showCompleteModal, setShowCompleteModal] = useState(false)
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
   const [isDisabling, setDisabling] = useState(false)
   const [isCreating, setCreating] = useState(false)
@@ -30,9 +39,24 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
   const { relayEnvironment } = useSystemContext()
 
   function onComplete() {
-    relayRefetch.refetch({}, {}, () => {
+    const showCompleteModalCallback = () => {
       setShowSetupModal(false)
-    })
+      setShowCompleteModal(true)
+    }
+
+    if (props.me.hasSecondFactorEnabled) {
+      relayRefetch.refetch({}, {}, showCompleteModalCallback)
+    } else {
+      showCompleteModalCallback()
+    }
+  }
+
+  function onCompleteConfirmed() {
+    if (props.me.hasSecondFactorEnabled) {
+      setShowCompleteModal(false)
+    } else {
+      window.location.reload()
+    }
   }
 
   function handleMutationError(errors: ApiError[]) {
@@ -151,6 +175,27 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
         onConfirm={disableSecondFactor}
         onCancel={() => setShowConfirmDisable(false)}
       />
+      <Modal
+        title="Set up with app"
+        onClose={() => onCompleteConfirmed()}
+        show={showCompleteModal}
+        hideCloseButton={!me.hasSecondFactorEnabled}
+        FixedButton={
+          <Button onClick={() => onCompleteConfirmed()} block width="100%">
+            {me.hasSecondFactorEnabled ? "OK" : "Log back in"}
+          </Button>
+        }
+      >
+        <Serif size="3t" color="black60">
+          You’ve successfully set up two-factor authentication!
+        </Serif>
+        {!me.hasSecondFactorEnabled && (
+          <Serif mt={2} size="3t" color="black60">
+            You will be logged out of this session and prompted to enter a
+            two-factor authentication code.
+          </Serif>
+        )}
+      </Modal>
     </BorderBox>
   )
 }
@@ -160,6 +205,8 @@ export const AppSecondFactorFragmentContainer = createFragmentContainer(
   {
     me: graphql`
       fragment AppSecondFactor_me on Me {
+        hasSecondFactorEnabled
+
         appSecondFactors: secondFactors(kinds: [app]) {
           ... on AppSecondFactor {
             __typename
