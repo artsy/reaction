@@ -224,26 +224,34 @@ export class BaseCarousel<T> extends React.Component<
   componentDidMount() {
     const { setCarouselRef } = this.props
 
-    const Flickity = require("flickity") as typeof FlickityType
-    this.flickity = new Flickity(this.carouselRef, this.options)
+    const init = () => {
+      const Flickity = require("flickity") as typeof FlickityType
+      this.flickity = new Flickity(this.carouselRef, this.options)
 
-    this.setState(
-      {
-        isMounted: true,
-      },
-      () => {
-        if (setCarouselRef) {
-          setCarouselRef(this.flickity)
+      this.setState(
+        {
+          isMounted: true,
+        },
+        () => {
+          if (setCarouselRef) {
+            setCarouselRef(this.flickity)
+          }
+          this.flickity.on("select", this.handleSlideChange)
+          this.flickity.on("dragEnd", this.handleDragEnd)
+          this.allowPreventDefault()
         }
-        this.flickity.on("select", this.handleSlideChange)
-        this.flickity.on("dragEnd", this.handleDragEnd)
-        this.allowPreventDefault()
+      )
+    }
 
-        // Force flickity to properly initialize
-        // See: https://github.com/metafizzy/flickity/issues/913#issuecomment-512693567
-        window.dispatchEvent(new Event("resize"))
-      }
-    )
+    // FIXME: this is super hacky :/
+    // Check to see if we're in a test context, as code runs syncronously there.
+    if (typeof jest === "undefined") {
+      // Need timeout because sometimes the carousel initializes too fast and
+      // breaks layout. Its a flickity thing, not too sure why
+      setTimeout(init, 100)
+    } else {
+      init()
+    }
   }
 
   componentWillUnmount() {

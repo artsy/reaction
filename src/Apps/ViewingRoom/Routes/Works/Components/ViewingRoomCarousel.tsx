@@ -36,6 +36,7 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
         m="auto"
         my={2}
         position="relative"
+        justifyContent="center"
       >
         <Carousel
           options={{
