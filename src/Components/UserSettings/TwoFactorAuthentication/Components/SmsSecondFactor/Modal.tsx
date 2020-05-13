@@ -228,7 +228,6 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
 
   return (
     <Modal
-      forcedScroll={false}
       title="Set up with text message"
       show={props.show}
       onClose={props.onClose}

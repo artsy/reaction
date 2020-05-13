@@ -81,7 +81,6 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
         </Flex>
       </Flex>
       <Modal
-        forcedScroll={false}
         title="Your backup codes"
         show={showModal}
         onClose={() => setShowModal(false)}
