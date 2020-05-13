@@ -36,8 +36,14 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "alias": "subheadline",
       "name": "description",
-      "args": null,
-      "storageKey": null
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "HTML"
+        }
+      ],
+      "storageKey": "description(format:\"HTML\")"
     },
     {
       "kind": "LinkedField",
@@ -59,5 +65,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '7386675e0f31669178e3e2c164bdf9f1';
+(node as any).hash = '96c7d6fe21ead9f9acd930b2f24bb861';
 export default node;

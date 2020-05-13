@@ -29,13 +29,57 @@ query routes_FeatureQuery(
 
 fragment FeatureApp_feature on Feature {
   ...FeatureHeader_feature
+  description(format: HTML)
+  callOut: description(format: HTML)
+  sets: setsConnection(first: 20) {
+    edges {
+      node {
+        id
+        ...FeatureSet_set
+      }
+    }
+  }
+}
+
+fragment FeatureFeaturedLink_featuredLink on FeaturedLink {
+  href
+  title
+  subtitle
+  description: subtitle
+  image {
+    cropped(width: 800, height: 600, version: ["wide"]) {
+      src: url
+      width
+      height
+    }
+  }
 }
 
 fragment FeatureHeader_feature on Feature {
   name
-  subheadline: description
+  subheadline: description(format: HTML)
   image {
     url
+  }
+}
+
+fragment FeatureSet_set on OrderedSet {
+  name
+  description
+  itemType
+  orderedItems: orderedItemsConnection(first: 20) {
+    edges {
+      node {
+        __typename
+        ... on FeaturedLink {
+          id
+        }
+        ...FeatureFeaturedLink_featuredLink
+        ... on Node {
+          id
+        }
+      }
+    }
   }
 }
 */
@@ -55,7 +99,35 @@ v1 = [
     "name": "id",
     "variableName": "slug"
   }
-];
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v3 = [
+  {
+    "kind": "Literal",
+    "name": "format",
+    "value": "HTML"
+  }
+],
+v4 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 20
+  }
+],
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -97,19 +169,13 @@ return {
         "concreteType": "Feature",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "name",
-            "args": null,
-            "storageKey": null
-          },
+          (v2/*: any*/),
           {
             "kind": "ScalarField",
             "alias": "subheadline",
             "name": "description",
-            "args": null,
-            "storageKey": null
+            "args": (v3/*: any*/),
+            "storageKey": "description(format:\"HTML\")"
           },
           {
             "kind": "LinkedField",
@@ -132,10 +198,203 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
-          }
+            "name": "description",
+            "args": (v3/*: any*/),
+            "storageKey": "description(format:\"HTML\")"
+          },
+          {
+            "kind": "ScalarField",
+            "alias": "callOut",
+            "name": "description",
+            "args": (v3/*: any*/),
+            "storageKey": "description(format:\"HTML\")"
+          },
+          {
+            "kind": "LinkedField",
+            "alias": "sets",
+            "name": "setsConnection",
+            "storageKey": "setsConnection(first:20)",
+            "args": (v4/*: any*/),
+            "concreteType": "OrderedSetConnection",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "edges",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "OrderedSetEdge",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "node",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "OrderedSet",
+                    "plural": false,
+                    "selections": [
+                      (v5/*: any*/),
+                      (v2/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "description",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "itemType",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": "orderedItems",
+                        "name": "orderedItemsConnection",
+                        "storageKey": "orderedItemsConnection(first:20)",
+                        "args": (v4/*: any*/),
+                        "concreteType": "OrderedSetItemConnection",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "edges",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "OrderedSetItemEdge",
+                            "plural": true,
+                            "selections": [
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "name": "node",
+                                "storageKey": null,
+                                "args": null,
+                                "concreteType": null,
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "name": "__typename",
+                                    "args": null,
+                                    "storageKey": null
+                                  },
+                                  (v5/*: any*/),
+                                  {
+                                    "kind": "InlineFragment",
+                                    "type": "FeaturedLink",
+                                    "selections": [
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": null,
+                                        "name": "href",
+                                        "args": null,
+                                        "storageKey": null
+                                      },
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": null,
+                                        "name": "title",
+                                        "args": null,
+                                        "storageKey": null
+                                      },
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": null,
+                                        "name": "subtitle",
+                                        "args": null,
+                                        "storageKey": null
+                                      },
+                                      {
+                                        "kind": "ScalarField",
+                                        "alias": "description",
+                                        "name": "subtitle",
+                                        "args": null,
+                                        "storageKey": null
+                                      },
+                                      {
+                                        "kind": "LinkedField",
+                                        "alias": null,
+                                        "name": "image",
+                                        "storageKey": null,
+                                        "args": null,
+                                        "concreteType": "Image",
+                                        "plural": false,
+                                        "selections": [
+                                          {
+                                            "kind": "LinkedField",
+                                            "alias": null,
+                                            "name": "cropped",
+                                            "storageKey": "cropped(height:600,version:[\"wide\"],width:800)",
+                                            "args": [
+                                              {
+                                                "kind": "Literal",
+                                                "name": "height",
+                                                "value": 600
+                                              },
+                                              {
+                                                "kind": "Literal",
+                                                "name": "version",
+                                                "value": [
+                                                  "wide"
+                                                ]
+                                              },
+                                              {
+                                                "kind": "Literal",
+                                                "name": "width",
+                                                "value": 800
+                                              }
+                                            ],
+                                            "concreteType": "CroppedImageUrl",
+                                            "plural": false,
+                                            "selections": [
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": "src",
+                                                "name": "url",
+                                                "args": null,
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
+                                                "name": "width",
+                                                "args": null,
+                                                "storageKey": null
+                                              },
+                                              {
+                                                "kind": "ScalarField",
+                                                "alias": null,
+                                                "name": "height",
+                                                "args": null,
+                                                "storageKey": null
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          (v5/*: any*/)
         ]
       }
     ]
@@ -144,7 +403,7 @@ return {
     "operationKind": "query",
     "name": "routes_FeatureQuery",
     "id": null,
-    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline: description\n  image {\n    url\n  }\n}\n",
+    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n  description(format: HTML)\n  callOut: description(format: HTML)\n  sets: setsConnection(first: 20) {\n    edges {\n      node {\n        id\n        ...FeatureSet_set\n      }\n    }\n  }\n}\n\nfragment FeatureFeaturedLink_featuredLink on FeaturedLink {\n  href\n  title\n  subtitle\n  description: subtitle\n  image {\n    cropped(width: 800, height: 600, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n  }\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline: description(format: HTML)\n  image {\n    url\n  }\n}\n\nfragment FeatureSet_set on OrderedSet {\n  name\n  description\n  itemType\n  orderedItems: orderedItemsConnection(first: 20) {\n    edges {\n      node {\n        __typename\n        ... on FeaturedLink {\n          id\n        }\n        ...FeatureFeaturedLink_featuredLink\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
