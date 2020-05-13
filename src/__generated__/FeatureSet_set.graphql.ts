@@ -57,12 +57,12 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "alias": "orderedItems",
       "name": "orderedItemsConnection",
-      "storageKey": "orderedItemsConnection(first:50)",
+      "storageKey": "orderedItemsConnection(first:20)",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
-          "value": 50
+          "value": 20
         }
       ],
       "concreteType": "OrderedSetItemConnection",
@@ -119,5 +119,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '083aa5a417d2906df27e4cb01b8fb35a';
+(node as any).hash = '6c7b894c485d5ad58abd203535e0b034';
 export default node;

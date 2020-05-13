@@ -79,7 +79,7 @@ export const FeatureSetFragmentContainer = createFragmentContainer(FeatureSet, {
       description
       itemType
       # TODO: Handle pagination
-      orderedItems: orderedItemsConnection(first: 50) {
+      orderedItems: orderedItemsConnection(first: 20) {
         edges {
           node {
             __typename

@@ -31,7 +31,7 @@ fragment FeatureApp_feature on Feature {
   ...FeatureHeader_feature
   description(format: HTML)
   callOut: description(format: HTML)
-  sets: setsConnection(first: 50) {
+  sets: setsConnection(first: 20) {
     edges {
       node {
         id
@@ -67,7 +67,7 @@ fragment FeatureSet_set on OrderedSet {
   name
   description
   itemType
-  orderedItems: orderedItemsConnection(first: 50) {
+  orderedItems: orderedItemsConnection(first: 20) {
     edges {
       node {
         __typename
@@ -118,7 +118,7 @@ v4 = [
   {
     "kind": "Literal",
     "name": "first",
-    "value": 50
+    "value": 20
   }
 ],
 v5 = {
@@ -213,7 +213,7 @@ return {
             "kind": "LinkedField",
             "alias": "sets",
             "name": "setsConnection",
-            "storageKey": "setsConnection(first:50)",
+            "storageKey": "setsConnection(first:20)",
             "args": (v4/*: any*/),
             "concreteType": "OrderedSetConnection",
             "plural": false,
@@ -256,7 +256,7 @@ return {
                         "kind": "LinkedField",
                         "alias": "orderedItems",
                         "name": "orderedItemsConnection",
-                        "storageKey": "orderedItemsConnection(first:50)",
+                        "storageKey": "orderedItemsConnection(first:20)",
                         "args": (v4/*: any*/),
                         "concreteType": "OrderedSetItemConnection",
                         "plural": false,
@@ -403,7 +403,7 @@ return {
     "operationKind": "query",
     "name": "routes_FeatureQuery",
     "id": null,
-    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n  description(format: HTML)\n  callOut: description(format: HTML)\n  sets: setsConnection(first: 50) {\n    edges {\n      node {\n        id\n        ...FeatureSet_set\n      }\n    }\n  }\n}\n\nfragment FeatureFeaturedLink_featuredLink on FeaturedLink {\n  href\n  title\n  subtitle\n  description: subtitle\n  image {\n    cropped(width: 800, height: 600, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n  }\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline: description(format: HTML)\n  image {\n    url\n  }\n}\n\nfragment FeatureSet_set on OrderedSet {\n  name\n  description\n  itemType\n  orderedItems: orderedItemsConnection(first: 50) {\n    edges {\n      node {\n        __typename\n        ... on FeaturedLink {\n          id\n        }\n        ...FeatureFeaturedLink_featuredLink\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n  description(format: HTML)\n  callOut: description(format: HTML)\n  sets: setsConnection(first: 20) {\n    edges {\n      node {\n        id\n        ...FeatureSet_set\n      }\n    }\n  }\n}\n\nfragment FeatureFeaturedLink_featuredLink on FeaturedLink {\n  href\n  title\n  subtitle\n  description: subtitle\n  image {\n    cropped(width: 800, height: 600, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n  }\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline: description(format: HTML)\n  image {\n    url\n  }\n}\n\nfragment FeatureSet_set on OrderedSet {\n  name\n  description\n  itemType\n  orderedItems: orderedItemsConnection(first: 20) {\n    edges {\n      node {\n        __typename\n        ... on FeaturedLink {\n          id\n        }\n        ...FeatureFeaturedLink_featuredLink\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

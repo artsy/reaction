@@ -61,7 +61,7 @@ export default createFragmentContainer(FeatureApp, {
       # TODO: Placeholder value
       callOut: description(format: HTML)
       # TODO: Handle pagination
-      sets: setsConnection(first: 50) {
+      sets: setsConnection(first: 20) {
         edges {
           node {
             id

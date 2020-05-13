@@ -57,12 +57,12 @@ return {
       "kind": "LinkedField",
       "alias": "sets",
       "name": "setsConnection",
-      "storageKey": "setsConnection(first:50)",
+      "storageKey": "setsConnection(first:20)",
       "args": [
         {
           "kind": "Literal",
           "name": "first",
-          "value": 50
+          "value": 20
         }
       ],
       "concreteType": "OrderedSetConnection",
@@ -112,5 +112,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '791fe186cfa7fb5c6f11084b88b576d0';
+(node as any).hash = '8d8153fd1cb50909c8f85109ca0e4d3e';
 export default node;
