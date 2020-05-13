@@ -21,10 +21,10 @@ export type ViewingRoomWorksRoute_Test_QueryRawResponse = {
                         readonly imageHref: string | null;
                     }) | null> | null;
                     readonly id: string;
+                    readonly additionalInformation: string | null;
                     readonly artistNames: string | null;
                     readonly title: string | null;
                     readonly date: string | null;
-                    readonly description: string | null;
                     readonly href: string | null;
                 }) | null;
             }) | null> | null;
@@ -50,10 +50,10 @@ query ViewingRoomWorksRoute_Test_Query(
 
 fragment ViewingRoomArtworkDetails_artwork on Artwork {
   id
+  additionalInformation
   artistNames
   title
   date
-  description
   href
 }
 
@@ -207,6 +207,13 @@ return {
                       {
                         "kind": "ScalarField",
                         "alias": null,
+                        "name": "additionalInformation",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
                         "name": "artistNames",
                         "args": null,
                         "storageKey": null
@@ -222,13 +229,6 @@ return {
                         "kind": "ScalarField",
                         "alias": null,
                         "name": "date",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "description",
                         "args": null,
                         "storageKey": null
                       },
@@ -253,7 +253,7 @@ return {
     "operationKind": "query",
     "name": "ViewingRoomWorksRoute_Test_Query",
     "id": null,
-    "text": "query ViewingRoomWorksRoute_Test_Query(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomWorksRoute_viewingRoom\n  }\n}\n\nfragment ViewingRoomArtworkDetails_artwork on Artwork {\n  id\n  artistNames\n  title\n  date\n  description\n  href\n}\n\nfragment ViewingRoomCarousel_artwork on Artwork {\n  images {\n    internalID\n    imageHref: url(version: [\"large\"])\n  }\n}\n\nfragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {\n  artworksConnection {\n    edges {\n      node {\n        internalID\n        ...ViewingRoomCarousel_artwork\n        ...ViewingRoomArtworkDetails_artwork\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query ViewingRoomWorksRoute_Test_Query(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomWorksRoute_viewingRoom\n  }\n}\n\nfragment ViewingRoomArtworkDetails_artwork on Artwork {\n  id\n  additionalInformation\n  artistNames\n  title\n  date\n  href\n}\n\nfragment ViewingRoomCarousel_artwork on Artwork {\n  images {\n    internalID\n    imageHref: url(version: [\"large\"])\n  }\n}\n\nfragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {\n  artworksConnection {\n    edges {\n      node {\n        internalID\n        ...ViewingRoomCarousel_artwork\n        ...ViewingRoomArtworkDetails_artwork\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
