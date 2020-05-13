@@ -19,7 +19,7 @@ export type ViewingRoomApp_Test_QueryRawResponse = {
             readonly name: string | null;
             readonly id: string | null;
         }) | null;
-        readonly endAt: unknown;
+        readonly formattedEndAt: string | null;
     }) | null;
 };
 export type ViewingRoomApp_Test_Query = {
@@ -51,7 +51,7 @@ fragment ViewingRoomHeader_viewingRoom on ViewingRoom {
     name
     id
   }
-  endAt
+  formattedEndAt
 }
 
 fragment ViewingRoomMeta_viewingRoom on ViewingRoom {
@@ -166,7 +166,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "endAt",
+            "name": "formattedEndAt",
             "args": null,
             "storageKey": null
           }
@@ -178,7 +178,7 @@ return {
     "operationKind": "query",
     "name": "ViewingRoomApp_Test_Query",
     "id": null,
-    "text": "query ViewingRoomApp_Test_Query(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomApp_viewingRoom\n  }\n}\n\nfragment ViewingRoomApp_viewingRoom on ViewingRoom {\n  ...ViewingRoomMeta_viewingRoom\n  ...ViewingRoomHeader_viewingRoom\n}\n\nfragment ViewingRoomHeader_viewingRoom on ViewingRoom {\n  heroImageURL\n  title\n  partner {\n    name\n    id\n  }\n  endAt\n}\n\nfragment ViewingRoomMeta_viewingRoom on ViewingRoom {\n  title\n  introStatement\n}\n",
+    "text": "query ViewingRoomApp_Test_Query(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomApp_viewingRoom\n  }\n}\n\nfragment ViewingRoomApp_viewingRoom on ViewingRoom {\n  ...ViewingRoomMeta_viewingRoom\n  ...ViewingRoomHeader_viewingRoom\n}\n\nfragment ViewingRoomHeader_viewingRoom on ViewingRoom {\n  heroImageURL\n  title\n  partner {\n    name\n    id\n  }\n  formattedEndAt\n}\n\nfragment ViewingRoomMeta_viewingRoom on ViewingRoom {\n  title\n  introStatement\n}\n",
     "metadata": {}
   }
 };

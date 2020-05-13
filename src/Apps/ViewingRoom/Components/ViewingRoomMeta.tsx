@@ -1,6 +1,6 @@
 import React from "react"
 import { Meta, Title } from "react-head"
-import { graphql, createFragmentContainer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 import { ViewingRoomMeta_viewingRoom } from "__generated__/ViewingRoomMeta_viewingRoom.graphql"
 
 interface ViewingRoomMetaProps {
@@ -13,7 +13,6 @@ const ViewingRoomMeta: React.FC<ViewingRoomMetaProps> = ({
   return (
     <>
       <Title>{title}</Title>
-      <Meta name="description" content={introStatement} />
       <Meta name="robots" content="noindex, nofollow" />
     </>
   )

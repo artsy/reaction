@@ -11,6 +11,6 @@ export const ViewingRoomAppFixture: ViewingRoomApp_Test_QueryRawResponse = {
       name: "Subscription Demo GG",
       id: "UGFydG5lcjo1NTQxMjM3MzcyNjE2OTJiMTk4YzAzMDA=",
     },
-    endAt: "2020-06-11T14:42:46Z",
+    formattedEndAt: "Closes in about 1 month",
   },
 }
