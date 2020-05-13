@@ -36,8 +36,6 @@ module.exports = {
     node: true,
   },
   rules: {
-    "react/display-name": 0,
-    "react/prop-types": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/camelcase": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
@@ -49,8 +47,17 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": 0,
     "@typescript-eslint/no-unused-vars": 0,
     "@typescript-eslint/no-var-requires": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "sort-imports": [
+      "warn",
+      {
+        // Unfortunately there's no autofixer for this
+        ignoreDeclarationSort: true,
+      },
+    ],
 
     // FIXME: Investigate / reenable these rules. Disabled to introduce eslint
     // into codebase.
@@ -76,6 +83,7 @@ module.exports = {
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-non-null-assertion": 0,
+
     // "@typescript-eslint/no-unused-vars": [
     //   "error",
     //   {

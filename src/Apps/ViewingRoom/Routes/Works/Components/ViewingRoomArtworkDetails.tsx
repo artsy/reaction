@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Sans, Button, Serif } from "@artsy/palette"
+import { Box, Button, Sans, Serif } from "@artsy/palette"
 import { ViewingRoomArtworkDetails_artwork } from "__generated__/ViewingRoomArtworkDetails_artwork.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RouterLink } from "Artsy/Router/RouterLink"
