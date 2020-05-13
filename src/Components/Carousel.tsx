@@ -2,7 +2,7 @@ import { ContextModule } from "@artsy/cohesion"
 import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { left, LeftProps, right, RightProps } from "styled-system"
+import { left, LeftProps, right, RightProps, HeightProps } from "styled-system"
 import { Media } from "Utils/Responsive"
 
 /**
@@ -20,7 +20,7 @@ import FlickityType, { Options as FlickityOptions } from "flickity"
  * - For LazyLoad use Palette's Image lazyLoad prop instead of Flickities
  */
 
-interface CarouselProps<T> {
+interface CarouselProps<T> extends HeightProps {
   /**
    * This is designed to handle any shape of data passed, as long as its an array
    */
@@ -35,11 +35,6 @@ interface CarouselProps<T> {
    * If this carousel contains only one visible image on render set to true (for SSR)
    */
   oneSlideVisible?: boolean
-
-  /**
-   * The height of the carousel
-   */
-  height?: string
 
   /**
    * The width of the carousel
@@ -105,7 +100,7 @@ type ArrowProps = (props: {
 
 export class Carousel<T> extends React.Component<CarouselProps<T>> {
   static defaultProps = {
-    height: "300px",
+    height: 300,
     oneSlideVisible: false,
   }
 
@@ -133,7 +128,7 @@ export const LargeCarousel = <T,>(props: CarouselProps<T>) => {
         contain: true,
         draggable: false,
         freeScroll: false,
-        groupCells: 1,
+        groupCells: true,
         pageDots: false,
         wrapAround: false,
         ...props.options,
@@ -243,6 +238,10 @@ export class BaseCarousel<T> extends React.Component<
         this.flickity.on("select", this.handleSlideChange)
         this.flickity.on("dragEnd", this.handleDragEnd)
         this.allowPreventDefault()
+
+        // Force flickity to properly initialize
+        // See: https://github.com/metafizzy/flickity/issues/913#issuecomment-512693567
+        window.dispatchEvent(new Event("resize"))
       }
     )
   }
@@ -438,8 +437,7 @@ const FlickityCarousel = styled.div<{
   display: ${props => (props.isMounted ? "block" : "flex")};
 `
 
-const CarouselContainer = styled.div<{
-  height?: string
+const CarouselContainer = styled(Box)<{
   isMounted: boolean
 }>`
   width: 100%;
@@ -479,15 +477,13 @@ const CarouselContainer = styled.div<{
   ${props => {
     if (props.height) {
       return `
-        height: ${props.height};
+        height: ${props.height}px;
       `
     }
   }};
 `
 
-export const ArrowButton = styled(Flex)<
-  LeftProps & RightProps & { height?: string }
->`
+export const ArrowButton = styled(Flex)<LeftProps & RightProps & HeightProps>`
   position: relative;
   cursor: pointer;
   display: flex;
@@ -496,7 +492,7 @@ export const ArrowButton = styled(Flex)<
   opacity: 0.3;
 
   transition: opacity 0.25s;
-  height: ${p => p.height || "200px"};
+  height: ${p => p.height || 200}px;
 
   &:hover {
     opacity: 1;

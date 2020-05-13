@@ -1,14 +1,32 @@
 import React from "react"
 import { Meta, Title } from "react-head"
+import { graphql, createFragmentContainer } from "react-relay"
+import { ViewingRoomMeta_viewingRoom } from "__generated__/ViewingRoomMeta_viewingRoom.graphql"
 
-export const ViewingRoomMeta: React.FC = props => {
-  const TODO_title = "Viewing Room"
-  const TODO_description = "Some description"
+interface ViewingRoomMetaProps {
+  viewingRoom: ViewingRoomMeta_viewingRoom
+}
 
+const ViewingRoomMeta: React.FC<ViewingRoomMetaProps> = ({
+  viewingRoom: { title, introStatement },
+}) => {
   return (
     <>
-      <Title>{TODO_title}</Title>
-      <Meta name="description" content={TODO_description} />
+      <Title>{title}</Title>
+      <Meta name="description" content={introStatement} />
+      <Meta name="robots" content="noindex, nofollow" />
     </>
   )
 }
+
+export const ViewingRoomMetaFragmentContainer = createFragmentContainer(
+  ViewingRoomMeta,
+  {
+    viewingRoom: graphql`
+      fragment ViewingRoomMeta_viewingRoom on ViewingRoom {
+        title
+        introStatement
+      }
+    `,
+  }
+)
