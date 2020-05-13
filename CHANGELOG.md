@@ -1,3 +1,28 @@
+# v26.37.0 (Wed May 13 2020)
+
+#### 🚀  Enhancement
+
+- Show complete modal conditionally showing reauth prompt [#3529](https://github.com/artsy/reaction/pull/3529) ([@dblandin](https://github.com/dblandin))
+
+#### 🐛  Bug Fix
+
+- Restore accidentally deleted index.ts entrypoint file [#3534](https://github.com/artsy/reaction/pull/3534) ([@dblandin](https://github.com/dblandin))
+- Update metaphysics schema [#3533](https://github.com/artsy/reaction/pull/3533) ([@artsyit](https://github.com/artsyit))
+- Wires up OrderedSets and FeaturedLinks to real data [#3527](https://github.com/artsy/reaction/pull/3527) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.2 to v1.0.3 [#3531](https://github.com/artsy/reaction/pull/3531) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.36.14 (Wed May 13 2020)
 
 #### 🐛  Bug Fix
