@@ -12,7 +12,7 @@ import { get } from "Utils/get"
  */
 
 interface TrackingMiddlewareOptions {
-  excludePaths?: [string]
+  excludePaths?: string[]
 }
 
 export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
