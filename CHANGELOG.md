@@ -1,3 +1,17 @@
+# v26.40.2 (Thu May 14 2020)
+
+#### 🐛  Bug Fix
+
+- [COM-17] Supports artworks on feature pages [#3540](https://github.com/artsy/reaction/pull/3540) ([@dzucconi](https://github.com/dzucconi))
+- Update metaphysics schema [#3542](https://github.com/artsy/reaction/pull/3542) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.40.1 (Thu May 14 2020)
 
 #### 🐛  Bug Fix
