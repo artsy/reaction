@@ -2,6 +2,7 @@ import { BorderBox, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
 import { RelayRefetchProp, createFragmentContainer, graphql } from "react-relay"
+import request from "superagent"
 
 import { useSystemContext } from "Artsy"
 
@@ -48,9 +49,9 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     if (props.me.hasSecondFactorEnabled) {
       setShowCompleteModal(false)
     } else {
-      location.assign(
-        "/log_in?redirect_uri=" + encodeURIComponent(location.pathname)
-      )
+      request.delete("/users/sign_out", () => {
+        location.reload()
+      })
     }
   }
 
