@@ -1,7 +1,8 @@
-import { BorderBox, Button, Flex, Sans, Serif } from "@artsy/palette"
+import { BorderBox, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
-import { createFragmentContainer, graphql, RelayRefetchProp } from "react-relay"
+import { RelayRefetchProp, createFragmentContainer, graphql } from "react-relay"
+import request from "superagent"
 
 import { useSystemContext } from "Artsy"
 
@@ -24,6 +25,7 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
   const { relayEnvironment } = useSystemContext()
   const [showConfirmDisable, setShowConfirmDisable] = useState(false)
   const [showSetupModal, setShowSetupModal] = useState(false)
+  const [showCompleteModal, setShowCompleteModal] = useState(false)
   const [apiErrors, setApiErrors] = useState<ApiError[]>([])
   const [isDisabling, setDisabling] = useState(false)
   const [isCreating, setCreating] = useState(false)
@@ -31,9 +33,28 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
   const [stagedSecondFactor, setStagedSecondFactor] = useState(null)
 
   function onComplete() {
-    relayRefetch.refetch({}, {}, () => {
+    const showCompleteModalCallback = () => {
       setShowSetupModal(false)
-    })
+      setShowCompleteModal(true)
+    }
+
+    if (props.me.hasSecondFactorEnabled) {
+      relayRefetch.refetch({}, {}, showCompleteModalCallback)
+    } else {
+      showCompleteModalCallback()
+    }
+  }
+
+  async function onCompleteConfirmed() {
+    if (props.me.hasSecondFactorEnabled) {
+      setShowCompleteModal(false)
+    } else {
+      await request
+        .delete("/users/sign_out")
+        .set("X-Requested-With", "XMLHttpRequest")
+
+      location.reload()
+    }
   }
 
   function handleMutationError(errors: ApiError[]) {
@@ -149,6 +170,27 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
         onConfirm={disableSecondFactor}
         onCancel={() => setShowConfirmDisable(false)}
       />
+      <Modal
+        title="Set up with text message"
+        onClose={onCompleteConfirmed}
+        show={showCompleteModal}
+        hideCloseButton={!me.hasSecondFactorEnabled}
+        FixedButton={
+          <Button onClick={onCompleteConfirmed} block width="100%">
+            {me.hasSecondFactorEnabled ? "OK" : "Log back in"}
+          </Button>
+        }
+      >
+        <Serif size="3t" color="black60">
+          You’ve successfully set up two-factor authentication!
+        </Serif>
+        {!me.hasSecondFactorEnabled && (
+          <Serif mt={2} size="3t" color="black60">
+            You will be logged out of this session and prompted to enter a
+            two-factor authentication code.
+          </Serif>
+        )}
+      </Modal>
     </BorderBox>
   )
 }
@@ -158,6 +200,8 @@ export const SmsSecondFactorFragmentContainer = createFragmentContainer(
   {
     me: graphql`
       fragment SmsSecondFactor_me on Me {
+        hasSecondFactorEnabled
+
         smsSecondFactors: secondFactors(kinds: [sms]) {
           ... on SmsSecondFactor {
             __typename

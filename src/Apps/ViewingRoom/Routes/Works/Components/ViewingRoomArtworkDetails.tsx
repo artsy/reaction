@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Sans, Button, Serif } from "@artsy/palette"
+import { Box, Button, Sans, Serif } from "@artsy/palette"
 import { ViewingRoomArtworkDetails_artwork } from "__generated__/ViewingRoomArtworkDetails_artwork.graphql"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RouterLink } from "Artsy/Router/RouterLink"
@@ -9,7 +9,7 @@ interface ViewingRoomArtworkDetailsProps {
 }
 
 export const ViewingRoomArtworkDetails: React.FC<ViewingRoomArtworkDetailsProps> = ({
-  artwork: { artistNames, title, date, href, description },
+  artwork: { artistNames, title, date, href, additionalInformation },
 }) => {
   return (
     <Box maxWidth={["100%", 470]} m="auto">
@@ -29,11 +29,7 @@ export const ViewingRoomArtworkDetails: React.FC<ViewingRoomArtworkDetailsProps>
         </Button>
       </RouterLink>
 
-      <Serif size={["4", "5"]}>
-        {/* FIXME: Populate description in test data */}
-        {description ||
-          `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`}
-      </Serif>
+      <Serif size={["4", "5"]}>{additionalInformation}</Serif>
     </Box>
   )
 }
@@ -44,10 +40,10 @@ export const ViewingRoomArtworkDetailsFragmentContainer = createFragmentContaine
     artwork: graphql`
       fragment ViewingRoomArtworkDetails_artwork on Artwork {
         id
+        additionalInformation
         artistNames
         title
         date
-        description
         href
       }
     `,

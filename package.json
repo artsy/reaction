@@ -1,13 +1,13 @@
 {
   "name": "@artsy/reaction",
-  "version": "26.36.5",
+  "version": "26.40.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@artsy/palette": "^4.16.0 || ^5.0.0 || ^7.0.0 || ^8.0.0",
+    "@artsy/palette": "^4.16.0 || ^5.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0",
     "@sentry/browser": "^4.2.3",
     "flickity": "2.1.2",
     "react": "^16.8.0",
@@ -51,9 +51,9 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
-    "@artsy/cohesion": "1.0.2",
+    "@artsy/cohesion": "1.0.3",
     "@artsy/lint-changed": "3.0.4",
-    "@artsy/palette": "8.2.3",
+    "@artsy/palette": "9.0.1",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",

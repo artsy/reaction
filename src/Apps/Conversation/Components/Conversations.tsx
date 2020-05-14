@@ -26,7 +26,7 @@ const Conversations: React.FC<ConversationsProps> = props => {
     <>
       <Container width={["100%", "375px"]}>
         {conversations.length ? (
-          <Box px={[2, 3]}>
+          <Box>
             {conversations.map(edge => (
               <ConversationSnippet conversation={edge.node} key={edge.cursor} />
             ))}

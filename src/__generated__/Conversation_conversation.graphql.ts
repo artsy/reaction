@@ -98,16 +98,7 @@ v3 = {
   "name": "__typename",
   "args": null,
   "storageKey": null
-},
-v4 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "url",
-    "args": null,
-    "storageKey": null
-  }
-];
+};
 return {
   "kind": "Fragment",
   "name": "Conversation_conversation",
@@ -361,7 +352,23 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": (v4/*: any*/)
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "url",
+                      "args": [
+                        {
+                          "kind": "Literal",
+                          "name": "version",
+                          "value": [
+                            "large"
+                          ]
+                        }
+                      ],
+                      "storageKey": "url(version:[\"large\"])"
+                    }
+                  ]
                 }
               ]
             },
@@ -391,7 +398,15 @@ return {
                   "args": null,
                   "concreteType": "Image",
                   "plural": false,
-                  "selections": (v4/*: any*/)
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "url",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
                 }
               ]
             }
@@ -402,5 +417,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'd96c31a26e875921ff2d4fafb22c9a4f';
+(node as any).hash = 'a7fbc0b98a46e035ce1f6e70199ac8e3';
 export default node;

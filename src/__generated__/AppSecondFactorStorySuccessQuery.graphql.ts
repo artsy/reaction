@@ -24,6 +24,7 @@ query AppSecondFactorStorySuccessQuery {
 }
 
 fragment AppSecondFactor_me on Me {
+  hasSecondFactorEnabled
   appSecondFactors: secondFactors(kinds: [app]) {
     __typename
     ... on AppSecondFactor {
@@ -85,6 +86,13 @@ return {
         "plural": false,
         "selections": [
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "hasSecondFactorEnabled",
+            "args": null,
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": "appSecondFactors",
             "name": "secondFactors",
@@ -140,7 +148,7 @@ return {
     "operationKind": "query",
     "name": "AppSecondFactorStorySuccessQuery",
     "id": null,
-    "text": "query AppSecondFactorStorySuccessQuery {\n  me {\n    ...AppSecondFactor_me\n    id\n  }\n}\n\nfragment AppSecondFactor_me on Me {\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      __typename\n      internalID\n      name\n    }\n  }\n}\n",
+    "text": "query AppSecondFactorStorySuccessQuery {\n  me {\n    ...AppSecondFactor_me\n    id\n  }\n}\n\nfragment AppSecondFactor_me on Me {\n  hasSecondFactorEnabled\n  appSecondFactors: secondFactors(kinds: [app]) {\n    __typename\n    ... on AppSecondFactor {\n      __typename\n      internalID\n      name\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

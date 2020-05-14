@@ -65,7 +65,10 @@ describe("FeaturedCollectionsRails", () => {
 
       const component = mount(<FeaturedCollectionsRails {...props} />)
 
-      component.find(ArrowButton).at(1).simulate("click")
+      component
+        .find(ArrowButton)
+        .at(1)
+        .simulate("click")
 
       expect(trackEvent).toBeCalledWith({
         action_type: "Click",
@@ -130,7 +133,10 @@ describe("FeaturedCollectionEntity", () => {
     const component = mount(
       <FeaturedCollectionEntity member={members[0]} itemNumber={0} />
     )
-    component.find(StyledLink).at(0).simulate("click")
+    component
+      .find(StyledLink)
+      .at(0)
+      .simulate("click")
 
     expect(trackEvent).toBeCalledWith({
       action_type: "Click",

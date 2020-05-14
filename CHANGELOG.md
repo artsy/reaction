@@ -1,3 +1,143 @@
+# v26.38.0 (Thu May 14 2020)
+
+#### 🚀  Enhancement
+
+- Remove use of `forcedScroll` Modal property [#3532](https://github.com/artsy/reaction/pull/3532) ([@dblandin](https://github.com/dblandin))
+- Update dep @artsy/palette to v9.0.0 [#3532](https://github.com/artsy/reaction/pull/3532) ([@renovate-bot](https://github.com/renovate-bot) [@dblandin](https://github.com/dblandin) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update publishing jest snapshots in response to Theme update [#3520](https://github.com/artsy/reaction/pull/3520) ([@dblandin](https://github.com/dblandin))
+- Update dep @artsy/palette from 8.2.3 to v8.2.6 [#3520](https://github.com/artsy/reaction/pull/3520) ([@renovate-bot](https://github.com/renovate-bot) [@dblandin](https://github.com/dblandin) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛  Bug Fix
+
+- Redirect to /log_in vs reloading upon initial 2FA setup [#3538](https://github.com/artsy/reaction/pull/3538) ([@dblandin](https://github.com/dblandin))
+- replace endAt with formatted value for endAt [#3535](https://github.com/artsy/reaction/pull/3535) ([@oxaudo](https://github.com/oxaudo))
+- Artwork appears stretched in conversation thread [#3536](https://github.com/artsy/reaction/pull/3536) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Purchase auth triggers use Sign up rather than Log in form [#3518](https://github.com/artsy/reaction/pull/3518) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 9.0.0 to v9.0.1 [#3537](https://github.com/artsy/reaction/pull/3537) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 6
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.37.0 (Wed May 13 2020)
+
+#### 🚀  Enhancement
+
+- Show complete modal conditionally showing reauth prompt [#3529](https://github.com/artsy/reaction/pull/3529) ([@dblandin](https://github.com/dblandin))
+
+#### 🐛  Bug Fix
+
+- Restore accidentally deleted index.ts entrypoint file [#3534](https://github.com/artsy/reaction/pull/3534) ([@dblandin](https://github.com/dblandin))
+- Update metaphysics schema [#3533](https://github.com/artsy/reaction/pull/3533) ([@artsyit](https://github.com/artsyit))
+- Wires up OrderedSets and FeaturedLinks to real data [#3527](https://github.com/artsy/reaction/pull/3527) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.2 to v1.0.3 [#3531](https://github.com/artsy/reaction/pull/3531) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.36.14 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- additional_information should be displayed for artworks in VR [#3528](https://github.com/artsy/reaction/pull/3528) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v26.36.13 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- [Viewing Room] Add tests [#3525](https://github.com/artsy/reaction/pull/3525) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.36.10 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- Fix carousel init [#3526](https://github.com/artsy/reaction/pull/3526) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3511](https://github.com/artsy/reaction/pull/3511) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.36.9 (Wed May 13 2020)
+
+#### 🐛  Bug Fix
+
+- Bump [#3524](https://github.com/artsy/reaction/pull/3524) ([@damassi](https://github.com/damassi))
+- Move tracking code for buyers premium link click [#3514](https://github.com/artsy/reaction/pull/3514) ([@erikdstock](https://github.com/erikdstock))
+- [Viewing Room] QA [#3523](https://github.com/artsy/reaction/pull/3523) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update auto orb from 1.2.1 to v1.3.2 [#3519](https://github.com/artsy/reaction/pull/3519) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.36.7 (Tue May 12 2020)
+
+#### 🐛  Bug Fix
+
+- Removes placeholders to fix build [#3521](https://github.com/artsy/reaction/pull/3521) ([@dzucconi](https://github.com/dzucconi))
+- Roughs in Feature app UI [#3517](https://github.com/artsy/reaction/pull/3517) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
+# v26.36.6 (Tue May 12 2020)
+
+#### 🐛  Bug Fix
+
+- Conversations view unread indicator [#3515](https://github.com/artsy/reaction/pull/3515) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.36.3 (Tue May 12 2020)
 
 #### 🐛  Bug Fix

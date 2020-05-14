@@ -27,7 +27,7 @@ import { MockBoot } from "DevTools"
 const commitMutation = _commitMutation as jest.Mock<any>
 
 describe("ArtworkSidebarCommercial", () => {
-  const user = { id: "blah" }
+  let user
   const mediator = { trigger: jest.fn() }
   const getWrapper = artwork => {
     return mount(
@@ -43,9 +43,38 @@ describe("ArtworkSidebarCommercial", () => {
   }
 
   beforeEach(() => {
+    user = { id: "blah" }
+    window.history.pushState({}, "Artwork Title", "/artwork/the-id")
     commitMutation.mockReset()
   })
 
+  describe("authentication", () => {
+    beforeEach(() => {
+      user = undefined
+    })
+
+    it("opens auth modal with expected args when clicking 'buy now' button", () => {
+      const component = getWrapper(ArtworkBuyNow)
+      component.find(Button).simulate("click")
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        mode: "signup",
+        redirectTo: "http://localhost/artwork/the-id",
+        contextModule: "artworkSidebar",
+        intent: "buyNow",
+      })
+    })
+
+    it("opens auth modal with expected args when clicking 'make offer' button", () => {
+      const component = getWrapper(ArtworkMakeOffer)
+      component.find(Button).simulate("click")
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
+        mode: "signup",
+        redirectTo: "http://localhost/artwork/the-id",
+        contextModule: "artworkSidebar",
+        intent: "makeOffer",
+      })
+    })
+  })
   it("displays if the artwork price includes tax", async () => {
     const artwork = Object.assign(
       {},

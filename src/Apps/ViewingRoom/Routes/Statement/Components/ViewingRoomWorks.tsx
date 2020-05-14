@@ -4,6 +4,8 @@ import { useRouter } from "Artsy/Router/useRouter"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { ViewingRoomWorks_viewingRoom } from "__generated__/ViewingRoomWorks_viewingRoom.graphql"
+import { RouterLink } from "Artsy/Router/RouterLink"
+import { LinkPropsSimple } from "found"
 
 interface ViewingRoomWorksProps {
   viewingRoom: ViewingRoomWorks_viewingRoom
@@ -18,12 +20,11 @@ const ViewingRoomWorks: React.FC<ViewingRoomWorksProps> = ({
     match: {
       params: { slug },
     },
-    router,
   } = useRouter()
 
-  const navigateToWorks = () => {
-    router.push(`/viewing-room/${slug}/works`)
-    scrollToTabBar()
+  const linkProps: LinkPropsSimple = {
+    to: `/viewing-room/${slug}/works`,
+    onClick: scrollToTabBar,
   }
 
   return (
@@ -33,16 +34,18 @@ const ViewingRoomWorks: React.FC<ViewingRoomWorksProps> = ({
           return (
             <ArtworkItem
               key={artwork.internalID}
-              onClick={navigateToWorks}
+              linkProps={linkProps}
               {...artwork}
             />
           )
         })}
       </Flex>
       <Spacer my={4} />
-      <Button onClick={navigateToWorks} size="large" width="100%">
-        View works
-      </Button>
+      <RouterLink {...linkProps}>
+        <Button size="large" width="100%">
+          View works
+        </Button>
+      </RouterLink>
     </>
   )
 }
@@ -69,37 +72,32 @@ export const ViewingRoomWorksFragmentContainer = createFragmentContainer(
 )
 
 type ArtworkNode = ViewingRoomWorksProps["viewingRoom"]["artworksConnection"]["edges"][0]["node"] & {
-  onClick: () => void
+  linkProps: LinkPropsSimple
 }
 
 const ArtworkItem: React.FC<ArtworkNode> = ({
   artistNames,
   date,
   imageUrl,
-  onClick,
   title,
+  linkProps,
 }) => {
   return (
-    <Box
-      onClick={onClick}
-      width="50%"
-      pl={1}
-      style={{
-        cursor: "pointer",
-      }}
-    >
-      <Box>
-        <Image width="100%" src={imageUrl} />
+    <RouterLink {...linkProps} style={{ textDecoration: "none", width: "50%" }}>
+      <Box pl={1}>
+        <Box>
+          <Image width="100%" src={imageUrl} />
+        </Box>
+        <Box>
+          <Sans size="3">{artistNames}</Sans>
+        </Box>
+        <Box style={{ textOverflow: "ellipsis" }}>
+          <Sans size="3" color="black60">
+            {title}, {date}
+          </Sans>
+        </Box>
       </Box>
-      <Box>
-        <Sans size="3">{artistNames}</Sans>
-      </Box>
-      <Box style={{ textOverflow: "ellipsis" }}>
-        <Sans size="3" color="black60">
-          {title}, {date}
-        </Sans>
-      </Box>
-    </Box>
+    </RouterLink>
   )
 }
 
