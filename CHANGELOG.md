@@ -1,3 +1,15 @@
+# v26.40.1 (Thu May 14 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial - data-test attrs for Artwork auth [#3541](https://github.com/artsy/reaction/pull/3541) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.38.0 (Thu May 14 2020)
 
 #### 🚀  Enhancement
