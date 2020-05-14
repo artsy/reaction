@@ -1,3 +1,15 @@
+# v26.40.2 (Thu May 14 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3542](https://github.com/artsy/reaction/pull/3542) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
 # v26.40.1 (Thu May 14 2020)
 
 #### 🐛  Bug Fix
