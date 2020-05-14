@@ -6,21 +6,7 @@ export const UpdateConversation = (
   environment: Environment,
   conversation: Conversation_conversation
 ) => {
-  // const storeUpdater = (store: RecordSourceSelectorProxy) => {
-  //   const mutationPayload = store.getRootField("updateConversation")
-  //   const newMessageEdge = mutationPayload.getLinkedRecord("messageEdge")
-  //   const conversationStore = store.get(conversation.id)
-  //   const connection = ConnectionHandler.getConnection(
-  //     conversationStore,
-  //     "Messages_messages"
-  //   )
-  //   ConnectionHandler.insertEdgeAfter(connection, newMessageEdge)
-  // }
   return commitMutation<UpdateConversationMutation>(environment, {
-    // onError,
-    // onCompleted,
-    // optimisticUpdater: storeUpdater,
-    // updater: storeUpdater,
     variables: {
       input: {
         conversationId: conversation.internalID,
