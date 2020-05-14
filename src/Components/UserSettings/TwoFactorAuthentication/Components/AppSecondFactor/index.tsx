@@ -56,7 +56,9 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
     if (props.me.hasSecondFactorEnabled) {
       setShowCompleteModal(false)
     } else {
-      await request.delete("/users/sign_out").accept("application/json")
+      await request
+        .delete("/users/sign_out")
+        .set("X-Requested-With", "XMLHttpRequest")
 
       location.reload()
     }
