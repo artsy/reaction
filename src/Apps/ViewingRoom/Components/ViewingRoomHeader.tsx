@@ -1,8 +1,8 @@
 import React from "react"
-import { Flex, color, Box, ResponsiveImage, Sans } from "@artsy/palette"
+import { Box, Flex, ResponsiveImage, Sans, color } from "@artsy/palette"
 import { NavBarHeight } from "Components/NavBar"
 import { Media } from "Utils/Responsive"
-import { graphql, createFragmentContainer } from "react-relay"
+import { createFragmentContainer, graphql } from "react-relay"
 
 import { ViewingRoomHeader_viewingRoom } from "__generated__/ViewingRoomHeader_viewingRoom.graphql"
 
@@ -33,7 +33,7 @@ export const ViewingRoomHeaderFragmentContainer = createFragmentContainer(
         partner {
           name
         }
-        endAt
+        formattedEndAt
       }
     `,
   }
@@ -149,7 +149,7 @@ const Metadata: React.FC<ViewingRoomHeaderProps> = props => {
   const {
     viewingRoom: {
       partner: { name },
-      endAt,
+      formattedEndAt,
     },
   } = props
 
@@ -168,7 +168,7 @@ const Metadata: React.FC<ViewingRoomHeaderProps> = props => {
         p={2}
       >
         <Text>{name}</Text>
-        <Text>{endAt}</Text>
+        <Text>{formattedEndAt}</Text>
       </Flex>
     </Box>
   )
