@@ -1439,7 +1439,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
-    padding: 20px;
   }
 }
 
@@ -1448,7 +1447,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    padding: 30px;
   }
 }
 
@@ -1457,6 +1455,23 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c79 {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c79 {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c79 {
     padding: 30px;
   }
 }
@@ -1464,20 +1479,35 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 @media screen and (min-width:40em) {
   .c80 {
     margin-bottom: 0px;
-    width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
   .c80 {
     margin-bottom: 5px;
-    width: 50%;
   }
 }
 
 @media screen and (min-width:64em) {
   .c80 {
     margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c80 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c80 {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c80 {
     width: 50%;
   }
 }
@@ -1961,6 +1991,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c16 {
     padding-left: 20px;
   }
 }

@@ -373,20 +373,35 @@ exports[`Video About matches the snapshot 1`] = `
 @media screen and (min-width:40em) {
   .c1 {
     padding-top: 80px;
-    width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
   .c1 {
     padding-top: 0px;
-    width: 33.33333333333333%;
   }
 }
 
 @media screen and (min-width:64em) {
   .c1 {
     padding-top: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
     width: 33.33333333333333%;
   }
 }
@@ -1104,20 +1119,35 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 @media screen and (min-width:40em) {
   .c1 {
     padding-top: 80px;
-    width: 100%;
   }
 }
 
 @media screen and (min-width:52em) {
   .c1 {
     padding-top: 0px;
-    width: 33.33333333333333%;
   }
 }
 
 @media screen and (min-width:64em) {
   .c1 {
     padding-top: 0px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c1 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c1 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c1 {
     width: 33.33333333333333%;
   }
 }

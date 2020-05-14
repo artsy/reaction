@@ -6,7 +6,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
 >
   <div>
     <div
-      className="sc-bwzfXH Nav__NavContainer-cd3j7j-0 krSeov"
+      className="sc-bwzfXH Nav__NavContainer-cd3j7j-0 liNjlw"
       color="black"
     >
       <div
@@ -55,7 +55,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     suppressHydrationWarning={false}
   >
     <div
-      className="sc-bwzfXH FrameText__MobileFrame-sc-8olftt-3 gSpsaH"
+      className="sc-bwzfXH FrameText__MobileFrame-sc-8olftt-3 cmBwtD"
     >
       <div
         className="sc-bxivhb FrameText__MobileFrameText-sc-8olftt-4 kiVmuH sc-htpNat hrIkAG"
@@ -120,7 +120,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       className="sc-bdVaJa gpmWlJ"
     >
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 jXGgQh"
       >
         <div
           className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
@@ -178,7 +178,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bdVaJa eFgrYo"
       >
         <div
-          className="sc-bwzfXH iHhpdt"
+          className="sc-bwzfXH jrmdoU"
         >
           <div
             className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -591,7 +591,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </h2>
       </div>
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 jXGgQh"
       >
         <div
           className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
@@ -631,7 +631,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bdVaJa bRlLEf"
       >
         <div
-          className="sc-bwzfXH SCivq"
+          className="sc-bwzfXH gQIYUw"
         >
           <h3
             className="sc-ifAKCX SeriesWrapper__SubTitle-sc-1v4ou91-2 bhrDFw sc-htpNat ensgXr"
@@ -733,7 +733,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="victoria-sin"
     >
       <div
@@ -811,7 +811,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1991, Toronto. Lives and works in London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -1158,7 +1158,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="monira-al-qadiri"
     >
       <div
@@ -1236,7 +1236,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Dakar, Senegal. Lives and works in Beirut and Berlin.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -1583,7 +1583,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="diedrick-brackens"
     >
       <div
@@ -1661,7 +1661,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, Mexia, Texas. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -2008,7 +2008,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="dineo-seshee-bopape"
     >
       <div
@@ -2086,7 +2086,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Polokwane, South Africa. Lives and works in Johannesburg.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -2405,7 +2405,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="martine-gutierrez"
     >
       <div
@@ -2483,7 +2483,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, Berkeley, California. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -2830,7 +2830,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="genesis-belanger"
     >
       <div
@@ -2908,7 +2908,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1978, United States. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -3227,7 +3227,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="tao-hui"
     >
       <div
@@ -3305,7 +3305,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1987, Chongqing, China. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -3652,7 +3652,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="jordan-nassar"
     >
       <div
@@ -3730,7 +3730,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, New York. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -4077,7 +4077,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="geng-xue"
     >
       <div
@@ -4155,7 +4155,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Baishan, China. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -4502,7 +4502,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="meriem-bennani"
     >
       <div
@@ -4580,7 +4580,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1988, Rabat, Morocco. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -4899,7 +4899,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="manuel-solano"
     >
       <div
@@ -4977,7 +4977,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1987, Mexico City. Lives and works in Berlin.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -5296,7 +5296,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="lauren-halsey"
     >
       <div
@@ -5374,7 +5374,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1987, Los Angeles. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -5721,7 +5721,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="derek-fordjour"
     >
       <div
@@ -5799,7 +5799,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1974, Memphis, Tennessee. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -6146,7 +6146,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="alia-farid"
     >
       <div
@@ -6224,7 +6224,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, Kuwait City, Kuwait. Lives and works in Kuwait City and San Juan.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -6543,7 +6543,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="gala-porras-kim"
     >
       <div
@@ -6621,7 +6621,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1984, Bogotá, Colombia. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -6940,7 +6940,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="jonathan-lyndon-chase"
     >
       <div
@@ -7018,7 +7018,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, Philadelphia. Lives and works in Philadelphia.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -7365,7 +7365,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="elle-perez"
     >
       <div
@@ -7443,7 +7443,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, New York. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -7762,7 +7762,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="suki-seokyeong-kang"
     >
       <div
@@ -7840,7 +7840,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1977, Seoul. Lives and works in Seoul.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -8187,7 +8187,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="evelyn-taocheng-wang"
     >
       <div
@@ -8265,7 +8265,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Chengdu, China. Lives and works in Amsterdam.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -8584,7 +8584,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="jill-mulleady"
     >
       <div
@@ -8662,7 +8662,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1980, Montevideo, Uruguay. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -9010,7 +9010,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </h2>
       </div>
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 jXGgQh"
       >
         <div
           className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
@@ -9050,7 +9050,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bdVaJa bRlLEf"
       >
         <div
-          className="sc-bwzfXH SCivq"
+          className="sc-bwzfXH gQIYUw"
         >
           <h3
             className="sc-ifAKCX SeriesWrapper__SubTitle-sc-1v4ou91-2 bhrDFw sc-htpNat ensgXr"
@@ -9152,7 +9152,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="michael-armitage"
     >
       <div
@@ -9230,7 +9230,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1984, Nairobi, Kenya. Lives and works in Nairobi and London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -9577,7 +9577,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="ebony-g-patterson"
     >
       <div
@@ -9655,7 +9655,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Kingston, Jamaica. Lives and works in Kingston and Chicago.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -10002,7 +10002,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="lawrence-abu-hamdan"
     >
       <div
@@ -10080,7 +10080,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, Amman, Jordan. Lives and works in Beirut.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -10399,7 +10399,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="korakrit-arunanondchai"
     >
       <div
@@ -10477,7 +10477,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1986, Bangkok. Lives and works in Bangkok and New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -10796,7 +10796,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="barbara-wagner-benjamin-de-burca"
     >
       <div
@@ -10874,7 +10874,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1980, Brasília, Brazil / B. 1975, Munich, Germany. Based in Recife, Brazil.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -11221,7 +11221,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="charlotte-prodger"
     >
       <div
@@ -11299,7 +11299,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1974, Bournemouth, England. Lives and works in Glasgow.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -11618,7 +11618,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="jeffrey-gibson"
     >
       <div
@@ -11696,7 +11696,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1972, Colorado Springs, Colorado. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -12043,7 +12043,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="hao-liang"
     >
       <div
@@ -12121,7 +12121,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Chengdu, China. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -12440,7 +12440,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="jacolby-satterwhite"
     >
       <div
@@ -12518,7 +12518,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1986, Columbia, South Carolina. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -12865,7 +12865,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="melike-kara"
     >
       <div
@@ -12943,7 +12943,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, Bensberg, Germany. Lives and works in Cologne.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -13262,7 +13262,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="cui-jie"
     >
       <div
@@ -13340,7 +13340,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Shanghai. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -13687,7 +13687,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="firelei-baez"
     >
       <div
@@ -13765,7 +13765,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Santiago de los Caballeros, Dominican Republic. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -14112,7 +14112,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="forensic-architecture"
     >
       <div
@@ -14190,7 +14190,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 Founded 2010, London. Based in London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -14537,7 +14537,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="tschabalala-self"
     >
       <div
@@ -14615,7 +14615,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1990, New York. Lives and works in New York and New Haven, Connecticut.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -14934,7 +14934,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="harold-ancart"
     >
       <div
@@ -15012,7 +15012,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1980, Brussels. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -15360,7 +15360,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </h2>
       </div>
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 jXGgQh"
       >
         <div
           className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
@@ -15400,7 +15400,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bdVaJa bRlLEf"
       >
         <div
-          className="sc-bwzfXH SCivq"
+          className="sc-bwzfXH gQIYUw"
         >
           <h3
             className="sc-ifAKCX SeriesWrapper__SubTitle-sc-1v4ou91-2 bhrDFw sc-htpNat ensgXr"
@@ -15502,7 +15502,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="frank-bowling"
     >
       <div
@@ -15580,7 +15580,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1934, Bartica, Guyana. Lives and works in London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -15899,7 +15899,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="zilia-sanchez"
     >
       <div
@@ -15977,7 +15977,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1926, Havana, Cuba. Lives and works in Puerto Rico.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -16324,7 +16324,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="fred-eversley"
     >
       <div
@@ -16402,7 +16402,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1941, New York. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -16749,7 +16749,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="tishan-hsu"
     >
       <div
@@ -16827,7 +16827,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1951, Boston. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -17146,7 +17146,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="howardena-pindell"
     >
       <div
@@ -17224,7 +17224,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1943, Philadelphia. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -17543,7 +17543,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="diane-simpson"
     >
       <div
@@ -17621,7 +17621,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1935, Joliet, Illinois. Lives and works in Chicago.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -17940,7 +17940,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="lorraine-o-grady"
     >
       <div
@@ -18018,7 +18018,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1934, Boston. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -18337,7 +18337,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="teresa-burga"
     >
       <div
@@ -18415,7 +18415,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1935, Iquitos, Peru. Lives and works in Lima.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -18762,7 +18762,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="siah-armajani"
     >
       <div
@@ -18840,7 +18840,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1939, Tehran, Iran. Lives and works in Minneapolis.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -19187,7 +19187,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="mcarthur-binion"
     >
       <div
@@ -19265,7 +19265,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1946, Macon, Mississippi. Lives and works in Chicago.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -19584,7 +19584,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="beatriz-gonzalez"
     >
       <div
@@ -19662,7 +19662,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1938, Bucaramanga, Colombia. Lives and works in Bogotá.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -20009,7 +20009,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="simone-fattal"
     >
       <div
@@ -20087,7 +20087,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1942, Damascus, Syria. Lives and works in Paris.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -20434,7 +20434,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="vivian-suter"
     >
       <div
@@ -20512,7 +20512,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1949, Buenos Aires. Lives and works in Panajachel, Guatemala.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -20859,7 +20859,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="henry-taylor"
     >
       <div
@@ -20937,7 +20937,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1958, Ventura, California. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -21256,7 +21256,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 bWeCSo"
       id="anna-maria-maiolino"
     >
       <div
@@ -21334,7 +21334,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1942, Scalea, Italy. Lives and works in São Paulo.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bwzfXH kvXhJD"
               >
                 <div
                   className="sc-bdVaJa cuOYlR"
@@ -21692,7 +21692,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         width="100%"
       />
       <div
-        className="sc-bwzfXH lcohpo"
+        className="sc-bwzfXH kHXktB"
       >
         <div
           className="sc-bdVaJa ccErhE"
