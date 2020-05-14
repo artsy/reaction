@@ -51,16 +51,54 @@ describe("trackingMiddleware", () => {
     expect(global.analytics.page).not.toBeCalled()
   })
 
-  it("excludes paths based on config option", () => {
-    trackingMiddleware({
-      excludePaths: ["/artwork/"],
-    })(store)(noop)({
-      type: ActionTypes.UPDATE_LOCATION,
-      payload: {
-        pathname: "/artwork/some-id",
-      },
+  describe("excluding paths", () => {
+    it("excludes all possible paths for a given route", () => {
+      trackingMiddleware({
+        excludePaths: ["/artwork(.*)"],
+      })(store)(noop)({
+        type: ActionTypes.UPDATE_LOCATION,
+        payload: {
+          pathname: "/artwork/some-id",
+        },
+      })
+      expect(global.analytics.page).not.toBeCalled()
     })
-    expect(global.analytics.page).not.toBeCalled()
+
+    it("excludes dynamic path segments", () => {
+      trackingMiddleware({
+        excludePaths: ["/artwork/:slug"],
+      })(store)(noop)({
+        type: ActionTypes.UPDATE_LOCATION,
+        payload: {
+          pathname: "/artwork/some-id",
+        },
+      })
+      expect(global.analytics.page).not.toBeCalled()
+    })
+
+    it("excludes nested paths", () => {
+      trackingMiddleware({
+        excludePaths: ["/artwork/:slug/:segment*"],
+      })(store)(noop)({
+        type: ActionTypes.UPDATE_LOCATION,
+        payload: {
+          pathname: "/artwork/some-id/foo",
+        },
+      })
+      expect(global.analytics.page).not.toBeCalled()
+    })
+
+    it("excludes paths including regexs", () => {
+      trackingMiddleware({
+        excludePaths: ["/auction/:saleID/bid(2)?/:artworkID"],
+      })(store)(noop)({
+        type: ActionTypes.UPDATE_LOCATION,
+        payload: {
+          pathname: "/auction/some-id/bid2/some-artwork",
+        },
+      })
+      expect(global.analytics.page).not.toBeCalled()
+    })
   })
 
   // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.

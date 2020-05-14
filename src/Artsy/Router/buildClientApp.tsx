@@ -69,9 +69,9 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
         }),
         trackingMiddleware({
           excludePaths: [
-            "/artwork/",
+            "/artwork(.*)",
             // FIXME: Remove once old feature pages are migrated
-            "/feature/",
+            "/feature(.*)",
           ],
         }),
       ]

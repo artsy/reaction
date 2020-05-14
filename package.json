@@ -143,6 +143,7 @@
     "klaw-sync": "6.0.0",
     "lint-staged": "10.0.8",
     "patch-package": "6.2.0",
+    "path-to-regexp": "6.1.0",
     "postinstall-prepare": "1.0.1",
     "prettier": "1.19.1",
     "raf": "3.4.0",
