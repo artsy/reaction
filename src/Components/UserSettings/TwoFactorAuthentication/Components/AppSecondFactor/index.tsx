@@ -55,7 +55,9 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
     if (props.me.hasSecondFactorEnabled) {
       setShowCompleteModal(false)
     } else {
-      window.location.reload()
+      location.assign(
+        "/log_in?redirect_uri=" + encodeURIComponent(location.pathname)
+      )
     }
   }
 
@@ -177,11 +179,11 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
       />
       <Modal
         title="Set up with app"
-        onClose={() => onCompleteConfirmed()}
+        onClose={onCompleteConfirmed}
         show={showCompleteModal}
         hideCloseButton={!me.hasSecondFactorEnabled}
         FixedButton={
-          <Button onClick={() => onCompleteConfirmed()} block width="100%">
+          <Button onClick={onCompleteConfirmed} block width="100%">
             {me.hasSecondFactorEnabled ? "OK" : "Log back in"}
           </Button>
         }
