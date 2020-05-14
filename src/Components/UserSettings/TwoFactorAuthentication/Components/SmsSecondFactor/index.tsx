@@ -45,13 +45,13 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     }
   }
 
-  function onCompleteConfirmed() {
+  async function onCompleteConfirmed() {
     if (props.me.hasSecondFactorEnabled) {
       setShowCompleteModal(false)
     } else {
-      request.delete("/users/sign_out", () => {
-        location.reload()
-      })
+      await request.delete("/users/sign_out").accept("application/json")
+
+      location.reload()
     }
   }
 
