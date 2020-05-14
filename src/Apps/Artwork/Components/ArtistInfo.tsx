@@ -20,7 +20,7 @@ import { ArtistBioFragmentContainer as ArtistBio } from "Components/ArtistBio"
 import { ArtistMarketInsightsFragmentContainer as ArtistMarketInsights } from "Components/ArtistMarketInsights"
 import { SelectedExhibitionFragmentContainer as SelectedExhibitions } from "Components/SelectedExhibitions"
 
-import { Intent, ContextModule } from "@artsy/cohesion"
+import { ContextModule, Intent } from "@artsy/cohesion"
 import { MIN_EXHIBITIONS } from "Components/SelectedExhibitions"
 import React, { Component } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -112,7 +112,11 @@ export class ArtistInfo extends Component<ArtistInfoProps, ArtistInfoState> {
       <SystemContextConsumer>
         {({ user, mediator }) => (
           <>
-            <StackableBorderBox p={2} flexDirection="column">
+            <StackableBorderBox
+              p={2}
+              flexDirection="column"
+              data-test="artistInfo"
+            >
               <EntityHeader
                 name={this.props.artist.name}
                 meta={this.props.artist.formatted_nationality_and_birthday}

@@ -22,7 +22,7 @@ import { ErrorModal } from "Components/Modal/ErrorModal"
 import createLogger from "Utils/logger"
 import { openAuthModal } from "Utils/openAuthModal"
 
-import { Intent, ContextModule } from "@artsy/cohesion"
+import { ContextModule, Intent } from "@artsy/cohesion"
 import { RequestConditionReport_artwork } from "__generated__/RequestConditionReport_artwork.graphql"
 import { RequestConditionReport_me } from "__generated__/RequestConditionReport_me.graphql"
 import {
@@ -130,7 +130,12 @@ export const RequestConditionReport: React.FC<RequestConditionReportProps> = pro
 
   const UnauthenticatedContent: React.FC = () => (
     <>
-      <Button size="small" variant="secondaryGray" onClick={handleLoginClick}>
+      <Button
+        size="small"
+        variant="secondaryGray"
+        onClick={handleLoginClick}
+        data-test="requestConditionReport"
+      >
         Log in
       </Button>
       <Sans display="inline" ml={1} size="2">

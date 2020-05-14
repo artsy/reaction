@@ -8,9 +8,9 @@ import * as Schema from "Artsy/Analytics/Schema"
 import { ArtistCardFragmentContainer as ArtistCard } from "Components/ArtistCard"
 import React, { useState } from "react"
 import {
+  RelayPaginationProp,
   createPaginationContainer,
   graphql,
-  RelayPaginationProp,
 } from "react-relay"
 import createLogger from "Utils/logger"
 
@@ -51,7 +51,7 @@ export const ArtworkRelatedArtists: React.FC<ArtworkRelatedArtistsProps> = track
     }
 
     return (
-      <Box mt={6}>
+      <Box mt={6} data-test={ContextModule.relatedArtistsRail}>
         <Flex flexDirection="column" alignItems="center">
           <Serif size={["5t", "8"]} color="black100" mb={2} textAlign="center">
             Related artists
