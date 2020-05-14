@@ -1,3 +1,34 @@
+# v26.38.0 (Thu May 14 2020)
+
+#### 🚀  Enhancement
+
+- Remove use of `forcedScroll` Modal property [#3532](https://github.com/artsy/reaction/pull/3532) ([@dblandin](https://github.com/dblandin))
+- Update dep @artsy/palette to v9.0.0 [#3532](https://github.com/artsy/reaction/pull/3532) ([@renovate-bot](https://github.com/renovate-bot) [@dblandin](https://github.com/dblandin) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update publishing jest snapshots in response to Theme update [#3520](https://github.com/artsy/reaction/pull/3520) ([@dblandin](https://github.com/dblandin))
+- Update dep @artsy/palette from 8.2.3 to v8.2.6 [#3520](https://github.com/artsy/reaction/pull/3520) ([@renovate-bot](https://github.com/renovate-bot) [@dblandin](https://github.com/dblandin) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛  Bug Fix
+
+- Redirect to /log_in vs reloading upon initial 2FA setup [#3538](https://github.com/artsy/reaction/pull/3538) ([@dblandin](https://github.com/dblandin))
+- replace endAt with formatted value for endAt [#3535](https://github.com/artsy/reaction/pull/3535) ([@oxaudo](https://github.com/oxaudo))
+- Artwork appears stretched in conversation thread [#3536](https://github.com/artsy/reaction/pull/3536) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Purchase auth triggers use Sign up rather than Log in form [#3518](https://github.com/artsy/reaction/pull/3518) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 9.0.0 to v9.0.1 [#3537](https://github.com/artsy/reaction/pull/3537) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 6
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.37.0 (Wed May 13 2020)
 
 #### 🚀  Enhancement
