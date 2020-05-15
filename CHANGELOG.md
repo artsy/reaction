@@ -1,3 +1,21 @@
+# v26.40.6 (Fri May 15 2020)
+
+#### 🐛  Bug Fix
+
+- Fix carousel [#3545](https://github.com/artsy/reaction/pull/3545) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep flickity-imagesloaded from ^2.0.0 to 2.0.0 [#3546](https://github.com/artsy/reaction/pull/3546) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.40.4 (Fri May 15 2020)
 
 #### 🐛  Bug Fix
