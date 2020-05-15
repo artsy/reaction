@@ -1,3 +1,17 @@
+# v26.40.4 (Fri May 15 2020)
+
+#### 🐛  Bug Fix
+
+- [COM-20] - handle missing data and include pricing info on VR artwork [#3544](https://github.com/artsy/reaction/pull/3544) ([@oxaudo](https://github.com/oxaudo))
+- Make tracking exclusion more robust [#3543](https://github.com/artsy/reaction/pull/3543) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v26.40.2 (Thu May 14 2020)
 
 #### 🐛  Bug Fix
