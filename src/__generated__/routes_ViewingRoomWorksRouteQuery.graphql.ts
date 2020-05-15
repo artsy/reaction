@@ -33,6 +33,7 @@ fragment ViewingRoomArtworkDetails_artwork on Artwork {
   title
   date
   href
+  saleMessage
 }
 
 fragment ViewingRoomCarousel_artwork on Artwork {
@@ -216,6 +217,13 @@ return {
                         "name": "href",
                         "args": null,
                         "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "saleMessage",
+                        "args": null,
+                        "storageKey": null
                       }
                     ]
                   }
@@ -231,7 +239,7 @@ return {
     "operationKind": "query",
     "name": "routes_ViewingRoomWorksRouteQuery",
     "id": null,
-    "text": "query routes_ViewingRoomWorksRouteQuery(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomWorksRoute_viewingRoom\n  }\n}\n\nfragment ViewingRoomArtworkDetails_artwork on Artwork {\n  id\n  additionalInformation\n  artistNames\n  title\n  date\n  href\n}\n\nfragment ViewingRoomCarousel_artwork on Artwork {\n  images {\n    internalID\n    imageHref: url(version: [\"large\"])\n  }\n}\n\nfragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {\n  artworksConnection {\n    edges {\n      node {\n        internalID\n        ...ViewingRoomCarousel_artwork\n        ...ViewingRoomArtworkDetails_artwork\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query routes_ViewingRoomWorksRouteQuery(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomWorksRoute_viewingRoom\n  }\n}\n\nfragment ViewingRoomArtworkDetails_artwork on Artwork {\n  id\n  additionalInformation\n  artistNames\n  title\n  date\n  href\n  saleMessage\n}\n\nfragment ViewingRoomCarousel_artwork on Artwork {\n  images {\n    internalID\n    imageHref: url(version: [\"large\"])\n  }\n}\n\nfragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {\n  artworksConnection {\n    edges {\n      node {\n        internalID\n        ...ViewingRoomCarousel_artwork\n        ...ViewingRoomArtworkDetails_artwork\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

@@ -10,6 +10,10 @@ interface ViewingRoomIntroProps {
 const ViewingRoomIntro: React.FC<ViewingRoomIntroProps> = ({
   viewingRoom: { introStatement },
 }) => {
+  if (!introStatement) {
+    return null
+  }
+
   return (
     <Box>
       <Serif size={["4", "5"]}>{introStatement}</Serif>

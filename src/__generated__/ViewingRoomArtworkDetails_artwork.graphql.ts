@@ -9,6 +9,7 @@ export type ViewingRoomArtworkDetails_artwork = {
     readonly title: string | null;
     readonly date: string | null;
     readonly href: string | null;
+    readonly saleMessage: string | null;
     readonly " $refType": "ViewingRoomArtworkDetails_artwork";
 };
 export type ViewingRoomArtworkDetails_artwork$data = ViewingRoomArtworkDetails_artwork;
@@ -67,8 +68,15 @@ const node: ReaderFragment = {
       "name": "href",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "saleMessage",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
-(node as any).hash = 'e3b915ac98584fd23afa29e799a37033';
+(node as any).hash = '17b59b378f42d4a5091389b5e193ab25';
 export default node;

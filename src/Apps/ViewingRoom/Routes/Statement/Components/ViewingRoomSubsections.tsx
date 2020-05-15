@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Box, Sans, Spacer, Serif, Image } from "@artsy/palette"
+import { Box, Image, Sans, Serif, Spacer } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 
 import { ViewingRoomSubsections_viewingRoom } from "__generated__/ViewingRoomSubsections_viewingRoom.graphql"
@@ -11,36 +11,53 @@ interface ViewingRoomSubsectionsProps {
 const ViewingRoomSubsections: React.FC<ViewingRoomSubsectionsProps> = ({
   viewingRoom: { subsections },
 }) => {
+  if (subsections.length === 0) {
+    return null
+  }
+
   return (
     <Box>
       {subsections.map(({ internalID, title, body, imageURL, caption }) => {
         return (
           <Fragment key={internalID}>
             <>
-              <Box>
-                <Sans size="5">{title}</Sans>
-              </Box>
-
-              <Spacer my={1} />
-
-              <Box>
-                <Serif size={["4", "5"]}>{body}</Serif>
-              </Box>
-
-              <Spacer my={4} />
-
-              <Box>
-                <Box width="100%">
-                  <Image width="100%" src={imageURL} />
-                </Box>
-                <Spacer my={1} />
+              {title && (
                 <Box>
-                  <Sans size="2" color="black60">
-                    {caption}
-                  </Sans>
+                  <Sans size="5">{title}</Sans>
                 </Box>
-              </Box>
+              )}
+
+              {body && (
+                <>
+                  <Spacer my={1} />
+                  <Box>
+                    <Serif size={["4", "5"]}>{body}</Serif>
+                  </Box>
+                </>
+              )}
+
+              {imageURL && (
+                <>
+                  <Spacer my={4} />
+                  <Box>
+                    <Box width="100%">
+                      <Image width="100%" src={imageURL} />
+                    </Box>
+                    {caption && (
+                      <>
+                        <Spacer my={1} />
+                        <Box>
+                          <Sans size="2" color="black60">
+                            {caption}
+                          </Sans>
+                        </Box>
+                      </>
+                    )}
+                  </Box>
+                </>
+              )}
             </>
+            <Spacer my={4} />
           </Fragment>
         )
       })}
