@@ -5,9 +5,9 @@ import { Carousel } from "Components/Carousel"
 import { flowRight } from "lodash"
 
 import {
-  Flex,
-  ChevronIcon,
   Box,
+  ChevronIcon,
+  Flex,
   Image,
   ProgressBar,
   breakpoints,
@@ -27,6 +27,7 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
   const showProgressBar = images.length > 1
 
   const CarouselHeight = [350, 550]
+  console.log("hii")
 
   return (
     <Box width="100%">

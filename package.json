@@ -130,6 +130,7 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "3.0.0",
     "flickity": "2.1.2",
+    "flickity-imagesloaded": "^2.0.0",
     "fork-ts-checker-notifier-webpack-plugin": "0.6.2",
     "fork-ts-checker-webpack-plugin": "0.4.10",
     "graphql": "14.5.8",
