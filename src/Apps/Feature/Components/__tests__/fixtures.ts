@@ -5,8 +5,10 @@ export const FEATURE_HEADER = {
   subheadline:
     "Alserkal Art Week Online\n\nDiscover new exhibitions by Alserkal Avenue Galleries",
   image: {
-    url:
-      "https://d32dm0rphc51dk.cloudfront.net/wsfiG9lAGOzs0Rey0felsQ/source.jpg",
+    cropped: {
+      url:
+        "https://d32dm0rphc51dk.cloudfront.net/wsfiG9lAGOzs0Rey0felsQ/source.jpg",
+    },
   },
 }
 
