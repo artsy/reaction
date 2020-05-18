@@ -66,7 +66,15 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
                   }
 
                   return (
-                    <FeatureFeaturedLink key={node.id} featuredLink={node} />
+                    <FeatureFeaturedLink
+                      size={
+                        { 1: "large", 2: "medium" }[
+                          set.orderedItems.edges.length
+                        ] ?? "small"
+                      }
+                      key={node.id}
+                      featuredLink={node}
+                    />
                   )
                 })}
               </CSSGrid>
