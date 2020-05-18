@@ -5,7 +5,11 @@ import { FragmentRefs } from "relay-runtime";
 export type ViewingRoomCarousel_artwork = {
     readonly images: ReadonlyArray<{
         readonly internalID: string | null;
-        readonly imageHref: string | null;
+        readonly resized: {
+            readonly url: string | null;
+            readonly width: number | null;
+            readonly height: number | null;
+        } | null;
     } | null> | null;
     readonly " $refType": "ViewingRoomCarousel_artwork";
 };
@@ -41,23 +45,46 @@ const node: ReaderFragment = {
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
-          "alias": "imageHref",
-          "name": "url",
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "resized",
+          "storageKey": "resized(height:550)",
           "args": [
             {
               "kind": "Literal",
-              "name": "version",
-              "value": [
-                "large"
-              ]
+              "name": "height",
+              "value": 550
             }
           ],
-          "storageKey": "url(version:[\"large\"])"
+          "concreteType": "ResizedImageUrl",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "url",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "width",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "height",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         }
       ]
     }
   ]
 };
-(node as any).hash = '9e994ea3c3e18477096bf472c72d4923';
+(node as any).hash = '7d40049fd00ee2782a206073dac8ce39';
 export default node;

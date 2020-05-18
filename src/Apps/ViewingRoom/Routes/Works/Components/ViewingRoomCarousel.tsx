@@ -27,7 +27,6 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
   const showProgressBar = images.length > 1
 
   const CarouselHeight = [350, 550]
-  console.log("hii")
 
   return (
     <Box width="100%">
@@ -50,10 +49,10 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
           data={images}
           height={CarouselHeight}
           onDragEnd={({ flickity }) => update(flickity.selectedIndex)}
-          render={({ imageHref, internalID }) => {
+          render={({ resized: { url, width, height }, internalID }) => {
             return (
-              <Box key={internalID}>
-                <Image height={CarouselHeight} src={imageHref} />
+              <Box key={internalID} width={width} height={height}>
+                <Image height={CarouselHeight} src={url} width={width} />
               </Box>
             )
           }}
@@ -106,7 +105,11 @@ export const ViewingRoomCarouselFragmentContainer = createFragmentContainer(
       fragment ViewingRoomCarousel_artwork on Artwork {
         images {
           internalID
-          imageHref: url(version: ["large"])
+          resized(height: 550) {
+            url
+            width
+            height
+          }
         }
       }
     `,
