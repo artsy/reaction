@@ -88,7 +88,7 @@ export const FEATURE = {
   subheadline:
     "<p>Alserkal Art Week Online</p>\n<p>Discover new exhibitions by Alserkal Avenue Galleries</p>\n",
   image: {
-    url: null,
+    cropped: { url: null },
   },
   description:
     "<p>Alserkal Art Week Online</p>\n<p>Discover new exhibitions by Alserkal Avenue Galleries</p>\n",

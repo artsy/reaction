@@ -6,7 +6,9 @@ export type FeatureHeader_feature = {
     readonly name: string;
     readonly subheadline: string | null;
     readonly image: {
-        readonly url: string | null;
+        readonly cropped: {
+            readonly url: string | null;
+        } | null;
     } | null;
     readonly " $refType": "FeatureHeader_feature";
 };
@@ -51,19 +53,46 @@ const node: ReaderFragment = {
       "name": "image",
       "storageKey": null,
       "args": null,
-      "concreteType": "FeatureImage",
+      "concreteType": "Image",
       "plural": false,
       "selections": [
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
-          "name": "url",
-          "args": null,
-          "storageKey": null
+          "name": "cropped",
+          "storageKey": "cropped(height:2000,version:\"source\",width:2000)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "height",
+              "value": 2000
+            },
+            {
+              "kind": "Literal",
+              "name": "version",
+              "value": "source"
+            },
+            {
+              "kind": "Literal",
+              "name": "width",
+              "value": 2000
+            }
+          ],
+          "concreteType": "CroppedImageUrl",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "url",
+              "args": null,
+              "storageKey": null
+            }
+          ]
         }
       ]
     }
   ]
 };
-(node as any).hash = '92e6ae91c28b0cba09c0fd12c0bf3b06';
+(node as any).hash = '4fad4b2f3161c349788d91adc1fc72b3';
 export default node;

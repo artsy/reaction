@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import {
+  Box,
   Flex,
   FlexProps,
   ResponsiveImage,
@@ -84,13 +85,17 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
       <Meta flexDirection={size === "large" ? ["column", "row"] : "column"}>
         {subtitle && (
           <MetaCell>
-            <Serif size="3">{subtitle}</Serif>
+            <Serif size="3">
+              <Box dangerouslySetInnerHTML={{ __html: subtitle }} />
+            </Serif>
           </MetaCell>
         )}
 
         {description && (
           <MetaCell>
-            <Serif size="4">{description}</Serif>
+            <Serif size="4">
+              <Box dangerouslySetInnerHTML={{ __html: description }} />
+            </Serif>
           </MetaCell>
         )}
       </Meta>
@@ -105,7 +110,7 @@ export const FeatureFeaturedLinkFragmentContainer = createFragmentContainer(
       fragment FeatureFeaturedLink_featuredLink on FeaturedLink {
         href
         title
-        subtitle
+        subtitle(format: HTML)
         description(format: HTML)
         image {
           # 4:5 - 400×500 native max dimensions * 2 for retina
