@@ -10,6 +10,7 @@ import { graphql } from "relay-runtime"
 import styled from "styled-components"
 import truncate from "trunc-html"
 import { TimeSince } from "./TimeSince"
+import { Truncator } from "Components/Truncator"
 
 const StyledImage = styled(ImageWithFallback)`
   object-fit: cover;
@@ -19,6 +20,16 @@ const StyledImage = styled(ImageWithFallback)`
 const StyledFlex = styled(Flex)`
   float: left;
 `
+const StyledSans = styled(Sans)`
+  word-break: break-all;
+`
+
+const TruncatedTitle = styled(Sans)`
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+`
+
 const PurpleCircle = styled.div`
   width: 10px;
   height: 10px;
@@ -58,7 +69,8 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
   const conversationText =
     conversation.lastMessage && conversation.lastMessage.replace(/\n/g, " ")
 
-  const truncatedText = truncate(conversationText, 100).html
+  const truncatedText = truncate(conversationText, 190).html
+  const truncatedName = truncate(partnerName, 10).html
 
   return (
     <Box>
@@ -91,14 +103,14 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
               <Row mb="2px">
                 <Flex width="100%" justifyContent="space-between">
                   <Flex>
-                    <Sans
+                    <TruncatedTitle
                       size="3t"
                       weight="medium"
                       mr="5px"
                       color={conversation.unread ? "black" : "black60"}
                     >
-                      {partnerName}
-                    </Sans>
+                      {truncatedName}
+                    </TruncatedTitle>
                     <Sans size="3t" color={"black30"}>
                       {conversation.messagesConnection.totalCount}
                     </Sans>
@@ -113,12 +125,13 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                 </Flex>
               </Row>
               <Row>
-                <Sans
+                <StyledSans
                   size="3t"
                   color={conversation.unread ? "black" : "black60"}
+                  mr="15px"
                 >
-                  {truncatedText}
-                </Sans>
+                  <Truncator maxLineCount={3}>{truncatedText}</Truncator>
+                </StyledSans>
               </Row>
             </Box>
           </Flex>
