@@ -8,7 +8,17 @@ export type FeatureFeaturedLink_featuredLink = {
     readonly subtitle: string | null;
     readonly description: string | null;
     readonly image: {
-        readonly cropped: {
+        readonly small: {
+            readonly src: string | null;
+            readonly width: number | null;
+            readonly height: number | null;
+        } | null;
+        readonly medium: {
+            readonly src: string | null;
+            readonly width: number | null;
+            readonly height: number | null;
+        } | null;
+        readonly large: {
             readonly src: string | null;
             readonly width: number | null;
             readonly height: number | null;
@@ -24,7 +34,38 @@ export type FeatureFeaturedLink_featuredLink$key = {
 
 
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "kind": "Literal",
+  "name": "version",
+  "value": [
+    "wide"
+  ]
+},
+v1 = [
+  {
+    "kind": "ScalarField",
+    "alias": "src",
+    "name": "url",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "width",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "height",
+    "args": null,
+    "storageKey": null
+  }
+];
+return {
   "kind": "Fragment",
   "name": "FeatureFeaturedLink_featuredLink",
   "type": "FeaturedLink",
@@ -70,22 +111,16 @@ const node: ReaderFragment = {
       "selections": [
         {
           "kind": "LinkedField",
-          "alias": null,
+          "alias": "small",
           "name": "cropped",
-          "storageKey": "cropped(height:600,version:[\"wide\"],width:800)",
+          "storageKey": "cropped(height:1000,version:[\"wide\"],width:800)",
           "args": [
             {
               "kind": "Literal",
               "name": "height",
-              "value": 600
+              "value": 1000
             },
-            {
-              "kind": "Literal",
-              "name": "version",
-              "value": [
-                "wide"
-              ]
-            },
+            (v0/*: any*/),
             {
               "kind": "Literal",
               "name": "width",
@@ -94,33 +129,56 @@ const node: ReaderFragment = {
           ],
           "concreteType": "CroppedImageUrl",
           "plural": false,
-          "selections": [
+          "selections": (v1/*: any*/)
+        },
+        {
+          "kind": "LinkedField",
+          "alias": "medium",
+          "name": "cropped",
+          "storageKey": "cropped(height:1365,version:[\"wide\"],width:1092)",
+          "args": [
             {
-              "kind": "ScalarField",
-              "alias": "src",
-              "name": "url",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "width",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
+              "kind": "Literal",
               "name": "height",
-              "args": null,
-              "storageKey": null
+              "value": 1365
+            },
+            (v0/*: any*/),
+            {
+              "kind": "Literal",
+              "name": "width",
+              "value": 1092
             }
-          ]
+          ],
+          "concreteType": "CroppedImageUrl",
+          "plural": false,
+          "selections": (v1/*: any*/)
+        },
+        {
+          "kind": "LinkedField",
+          "alias": "large",
+          "name": "cropped",
+          "storageKey": "cropped(height:1252,version:[\"wide\"],width:2224)",
+          "args": [
+            {
+              "kind": "Literal",
+              "name": "height",
+              "value": 1252
+            },
+            (v0/*: any*/),
+            {
+              "kind": "Literal",
+              "name": "width",
+              "value": 2224
+            }
+          ],
+          "concreteType": "CroppedImageUrl",
+          "plural": false,
+          "selections": (v1/*: any*/)
         }
       ]
     }
   ]
 };
-(node as any).hash = 'b15d1305f0285194e4f05a888f131bcd';
+})();
+(node as any).hash = 'cdbc16fceda302620eaa126308a7b2e6';
 export default node;
