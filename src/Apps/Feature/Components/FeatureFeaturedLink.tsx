@@ -1,20 +1,35 @@
 import React from "react"
 import styled from "styled-components"
-import { SpaceProps, space } from "styled-system"
-import { Box, Flex, ResponsiveImage, Sans, Serif, color } from "@artsy/palette"
+import {
+  Flex,
+  FlexProps,
+  ResponsiveImage,
+  Sans,
+  Serif,
+  color,
+} from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { FeatureFeaturedLink_featuredLink } from "__generated__/FeatureFeaturedLink_featuredLink.graphql"
 
-const Container = styled(RouterLink)`
-  ${space}
-  display: flex;
-  text-decoration: none;
-  flex-direction: column;
-`
-
-const Figure = styled(Box)`
+const Figure = styled(RouterLink)`
+  display: block;
   position: relative;
+
+  /* Inset border */
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &:hover::after {
+    box-shadow: inset 0 0 0 1px ${color("black100")};
+  }
 `
 
 const Title = styled(Sans)`
@@ -34,25 +49,25 @@ const MetaCell = styled(Flex)`
   flex-basis: 50%;
 `
 
-export interface FeatureFeaturedLinkProps extends SpaceProps {
-  wide?: boolean
+export interface FeatureFeaturedLinkProps extends FlexProps {
+  size: "small" | "medium" | "large"
   featuredLink: FeatureFeaturedLink_featuredLink
 }
 
 export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
-  wide,
+  size,
   featuredLink,
   featuredLink: { href, title, subtitle, description, image },
   ...rest
 }) => {
   return (
-    <Container to={href} {...rest}>
+    <Flex flexDirection="column" {...rest}>
       {image ? (
-        <Figure>
+        <Figure to={href}>
           <ResponsiveImage
             maxWidth="100%"
-            src={image.cropped.src}
-            ratio={image.cropped.height / image.cropped.width}
+            src={image[size].src}
+            ratio={image[size].height / image[size].width}
             style={{ backgroundColor: color("black10") }}
           />
 
@@ -62,11 +77,11 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
         </Figure>
       ) : (
         <Sans size="6" color="black100" my={2}>
-          {title || "—"}
+          <RouterLink to={href}>{title || "—"}</RouterLink>
         </Sans>
       )}
 
-      <Meta flexDirection={wide ? ["column", "row"] : "column"}>
+      <Meta flexDirection={size === "large" ? ["column", "row"] : "column"}>
         {subtitle && (
           <MetaCell>
             <Serif size="3">{subtitle}</Serif>
@@ -79,7 +94,7 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
           </MetaCell>
         )}
       </Meta>
-    </Container>
+    </Flex>
   )
 }
 
@@ -91,10 +106,22 @@ export const FeatureFeaturedLinkFragmentContainer = createFragmentContainer(
         href
         title
         subtitle
-        # TODO: Placeholder value
-        description: subtitle
+        description(format: HTML)
         image {
-          cropped(width: 800, height: 600, version: ["wide"]) {
+          # 4:5 - 400×500 native max dimensions * 2 for retina
+          small: cropped(width: 800, height: 1000, version: ["wide"]) {
+            src: url
+            width
+            height
+          }
+          # 4:5 - 546×682.5 native max dimensions * 2 for retina
+          medium: cropped(width: 1092, height: 1365, version: ["wide"]) {
+            src: url
+            width
+            height
+          }
+          # 16:9 - 1112×626 native max dimensions * 2 for retina
+          large: cropped(width: 2224, height: 1252, version: ["wide"]) {
             src: url
             width
             height

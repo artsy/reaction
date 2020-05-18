@@ -1,3 +1,80 @@
+# v26.40.7 (Mon May 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3552](https://github.com/artsy/reaction/pull/3552) ([@artsyit](https://github.com/artsyit))
+- Ensure test checks don't validate actual dates [#3550](https://github.com/artsy/reaction/pull/3550) ([@zephraph](https://github.com/zephraph))
+- [Viewing Room] Ensure fixed widths present [#3551](https://github.com/artsy/reaction/pull/3551) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3548](https://github.com/artsy/reaction/pull/3548) ([@artsyit](https://github.com/artsyit))
+- Minor Feature page Q/A [#3549](https://github.com/artsy/reaction/pull/3549) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.40.6 (Fri May 15 2020)
+
+#### 🐛  Bug Fix
+
+- Fix carousel [#3545](https://github.com/artsy/reaction/pull/3545) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Pin dep flickity-imagesloaded from ^2.0.0 to 2.0.0 [#3546](https://github.com/artsy/reaction/pull/3546) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.40.4 (Fri May 15 2020)
+
+#### 🐛  Bug Fix
+
+- [COM-20] - handle missing data and include pricing info on VR artwork [#3544](https://github.com/artsy/reaction/pull/3544) ([@oxaudo](https://github.com/oxaudo))
+- Make tracking exclusion more robust [#3543](https://github.com/artsy/reaction/pull/3543) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v26.40.2 (Thu May 14 2020)
+
+#### 🐛  Bug Fix
+
+- [COM-17] Supports artworks on feature pages [#3540](https://github.com/artsy/reaction/pull/3540) ([@dzucconi](https://github.com/dzucconi))
+- Update metaphysics schema [#3542](https://github.com/artsy/reaction/pull/3542) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
+# v26.40.1 (Thu May 14 2020)
+
+#### 🐛  Bug Fix
+
+- #trivial - data-test attrs for Artwork auth [#3541](https://github.com/artsy/reaction/pull/3541) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.38.0 (Thu May 14 2020)
 
 #### 🚀  Enhancement

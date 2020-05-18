@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { Box, BoxProps, CSSGrid, Sans, color } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureFeaturedLinkFragmentContainer as FeatureFeaturedLink } from "./FeatureFeaturedLink"
+import GridItem from "Components/Artwork/GridItem"
+import { Masonry } from "Components/Masonry"
 import { FeatureSet_set } from "__generated__/FeatureSet_set.graphql"
 
 const Container = styled(Box)`
@@ -43,31 +45,69 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
         </Box>
       )}
 
-      <CSSGrid
-        mt={2}
-        mb={4}
-        gridTemplateColumns={[
-          "repeat(1fr)",
-          `repeat(${Math.min(count, 2)}, 1fr)`,
-          `repeat(${Math.min(count, 3)}, 1fr)`,
-        ]}
-        gridGap={2}
-      >
-        {set.orderedItems.edges.map(({ node: orderedItem }) => {
-          switch (orderedItem.__typename) {
-            case "FeaturedLink":
-              return (
-                <FeatureFeaturedLink
-                  key={orderedItem.id}
-                  featuredLink={orderedItem}
-                />
-              )
-            default:
-              // TODO: Unimplemented: Artist | Artwork | Gene | Sale | PartnerShow | Profile | OrderedSet
-              return null
-          }
-        })}
-      </CSSGrid>
+      {(() => {
+        switch (set.itemType) {
+          case "FeaturedLink":
+            return (
+              <CSSGrid
+                key={set.id}
+                mt={2}
+                mb={4}
+                gridTemplateColumns={[
+                  "repeat(1fr)",
+                  `repeat(${Math.min(count, 2)}, 1fr)`,
+                  `repeat(${Math.min(count, 3)}, 1fr)`,
+                ]}
+                gridGap={2}
+              >
+                {set.orderedItems.edges.map(({ node }) => {
+                  if (!node || node.__typename !== "FeaturedLink") {
+                    return null
+                  }
+
+                  return (
+                    <FeatureFeaturedLink
+                      size={
+                        { 1: "large", 2: "medium" }[
+                          set.orderedItems.edges.length
+                        ] ?? "small"
+                      }
+                      key={node.id}
+                      featuredLink={node}
+                    />
+                  )
+                })}
+              </CSSGrid>
+            )
+
+          case "Artwork":
+            return (
+              <Masonry
+                key={set.id}
+                columnCount={[Math.min(count, 2), Math.min(count, 3)]}
+                gridColumnGap={20}
+              >
+                {set.orderedItems.edges.map(({ node }) => {
+                  if (!node || node.__typename !== "Artwork") {
+                    return null
+                  }
+
+                  return (
+                    <Box key={node.id} pb={2} maxWidth={400} mx="auto">
+                      <GridItem artwork={node} />
+                    </Box>
+                  )
+                })}
+              </Masonry>
+            )
+          default:
+            console.warn(
+              "Feature pages only support FeaturedLinks and Artworks"
+            )
+
+            return null
+        }
+      })()}
     </Container>
   )
 }
@@ -75,6 +115,7 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
 export const FeatureSetFragmentContainer = createFragmentContainer(FeatureSet, {
   set: graphql`
     fragment FeatureSet_set on OrderedSet {
+      id
       name
       description
       itemType
@@ -86,6 +127,10 @@ export const FeatureSetFragmentContainer = createFragmentContainer(FeatureSet, {
             ... on FeaturedLink {
               id
             }
+            ... on Artwork {
+              id
+            }
+            ...GridItem_artwork
             ...FeatureFeaturedLink_featuredLink
           }
         }

@@ -1,8 +1,8 @@
 import { ContextModule } from "@artsy/cohesion"
-import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
+import { Box, ChevronIcon, Flex, color, space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { left, LeftProps, right, RightProps, HeightProps } from "styled-system"
+import { HeightProps, LeftProps, RightProps, left, right } from "styled-system"
 import { Media } from "Utils/Responsive"
 
 /**
@@ -225,8 +225,11 @@ export class BaseCarousel<T> extends React.Component<
     const { setCarouselRef } = this.props
 
     const init = () => {
-      const Flickity = require("flickity") as typeof FlickityType
-      this.flickity = new Flickity(this.carouselRef, this.options)
+      const Flickity = require("flickity-imagesloaded") as typeof FlickityType
+      this.flickity = new Flickity(this.carouselRef, {
+        imagesLoaded: true,
+        ...this.options,
+      })
 
       this.setState(
         {

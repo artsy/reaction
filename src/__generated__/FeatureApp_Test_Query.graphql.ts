@@ -2,23 +2,132 @@
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type routes_FeatureQueryVariables = {
+export type FeatureApp_Test_QueryVariables = {
     slug: string;
 };
-export type routes_FeatureQueryResponse = {
+export type FeatureApp_Test_QueryResponse = {
     readonly feature: {
         readonly " $fragmentRefs": FragmentRefs<"FeatureApp_feature">;
     } | null;
 };
-export type routes_FeatureQuery = {
-    readonly response: routes_FeatureQueryResponse;
-    readonly variables: routes_FeatureQueryVariables;
+export type FeatureApp_Test_QueryRawResponse = {
+    readonly feature: ({
+        readonly name: string;
+        readonly subheadline: string | null;
+        readonly image: ({
+            readonly url: string | null;
+        }) | null;
+        readonly description: string | null;
+        readonly callout: string | null;
+        readonly sets: ({
+            readonly edges: ReadonlyArray<({
+                readonly node: ({
+                    readonly id: string;
+                    readonly name: string | null;
+                    readonly description: string | null;
+                    readonly itemType: string | null;
+                    readonly orderedItems: {
+                        readonly edges: ReadonlyArray<({
+                            readonly node: ({
+                                readonly __typename: "FeaturedLink";
+                                readonly id: string | null;
+                                readonly href: string | null;
+                                readonly title: string | null;
+                                readonly subtitle: string | null;
+                                readonly description: string | null;
+                                readonly image: ({
+                                    readonly small: ({
+                                        readonly src: string | null;
+                                        readonly width: number | null;
+                                        readonly height: number | null;
+                                    }) | null;
+                                    readonly medium: ({
+                                        readonly src: string | null;
+                                        readonly width: number | null;
+                                        readonly height: number | null;
+                                    }) | null;
+                                    readonly large: ({
+                                        readonly src: string | null;
+                                        readonly width: number | null;
+                                        readonly height: number | null;
+                                    }) | null;
+                                }) | null;
+                            } | {
+                                readonly __typename: "Artwork";
+                                readonly id: string | null;
+                                readonly internalID: string;
+                                readonly title: string | null;
+                                readonly image_title: string | null;
+                                readonly image: ({
+                                    readonly placeholder: string | null;
+                                    readonly url: string | null;
+                                    readonly aspect_ratio: number;
+                                }) | null;
+                                readonly href: string | null;
+                                readonly date: string | null;
+                                readonly sale_message: string | null;
+                                readonly cultural_maker: string | null;
+                                readonly artists: ReadonlyArray<({
+                                    readonly id: string;
+                                    readonly href: string | null;
+                                    readonly name: string | null;
+                                }) | null> | null;
+                                readonly collecting_institution: string | null;
+                                readonly partner: ({
+                                    readonly name: string | null;
+                                    readonly href: string | null;
+                                    readonly id: string | null;
+                                    readonly type: string | null;
+                                }) | null;
+                                readonly sale: ({
+                                    readonly is_auction: boolean | null;
+                                    readonly is_closed: boolean | null;
+                                    readonly id: string | null;
+                                    readonly is_live_open: boolean | null;
+                                    readonly is_open: boolean | null;
+                                    readonly is_preview: boolean | null;
+                                    readonly display_timely_at: string | null;
+                                }) | null;
+                                readonly sale_artwork: ({
+                                    readonly counts: ({
+                                        readonly bidder_positions: number | null;
+                                    }) | null;
+                                    readonly highest_bid: ({
+                                        readonly display: string | null;
+                                    }) | null;
+                                    readonly opening_bid: ({
+                                        readonly display: string | null;
+                                    }) | null;
+                                    readonly id: string | null;
+                                }) | null;
+                                readonly is_inquireable: boolean | null;
+                                readonly slug: string;
+                                readonly is_saved: boolean | null;
+                                readonly is_biddable: boolean | null;
+                                readonly is_acquireable: boolean | null;
+                                readonly is_offerable: boolean | null;
+                            } | {
+                                readonly __typename: string;
+                                readonly id: string | null;
+                            }) | null;
+                        }) | null> | null;
+                    };
+                }) | null;
+            }) | null> | null;
+        }) | null;
+        readonly id: string | null;
+    }) | null;
+};
+export type FeatureApp_Test_Query = {
+    readonly response: FeatureApp_Test_QueryResponse;
+    readonly variables: FeatureApp_Test_QueryVariables;
+    readonly rawResponse: FeatureApp_Test_QueryRawResponse;
 };
 
 
 
 /*
-query routes_FeatureQuery(
+query FeatureApp_Test_Query(
   $slug: ID!
 ) {
   feature(id: $slug) {
@@ -319,7 +428,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "routes_FeatureQuery",
+    "name": "FeatureApp_Test_Query",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -344,7 +453,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "routes_FeatureQuery",
+    "name": "FeatureApp_Test_Query",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -849,12 +958,12 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "routes_FeatureQuery",
+    "name": "FeatureApp_Test_Query",
     "id": null,
-    "text": "query routes_FeatureQuery(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n  description(format: HTML)\n  callout(format: HTML)\n  sets: setsConnection(first: 20) {\n    edges {\n      node {\n        id\n        ...FeatureSet_set\n      }\n    }\n  }\n}\n\nfragment FeatureFeaturedLink_featuredLink on FeaturedLink {\n  href\n  title\n  subtitle\n  description(format: HTML)\n  image {\n    small: cropped(width: 800, height: 1000, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n    medium: cropped(width: 1092, height: 1365, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n    large: cropped(width: 2224, height: 1252, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n  }\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline(format: HTML)\n  image {\n    url\n  }\n}\n\nfragment FeatureSet_set on OrderedSet {\n  id\n  name\n  description\n  itemType\n  orderedItems: orderedItemsConnection(first: 20) {\n    edges {\n      node {\n        __typename\n        ... on FeaturedLink {\n          id\n        }\n        ... on Artwork {\n          id\n        }\n        ...GridItem_artwork\n        ...FeatureFeaturedLink_featuredLink\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  internalID\n  title\n  image_title: imageTitle\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
+    "text": "query FeatureApp_Test_Query(\n  $slug: ID!\n) {\n  feature(id: $slug) {\n    ...FeatureApp_feature\n    id\n  }\n}\n\nfragment Badge_artwork on Artwork {\n  is_biddable: isBiddable\n  is_acquireable: isAcquireable\n  is_offerable: isOfferable\n  href\n  sale {\n    is_preview: isPreview\n    display_timely_at: displayTimelyAt\n    id\n  }\n}\n\nfragment Contact_artwork on Artwork {\n  href\n  is_inquireable: isInquireable\n  sale {\n    is_auction: isAuction\n    is_live_open: isLiveOpen\n    is_open: isOpen\n    is_closed: isClosed\n    id\n  }\n  partner(shallow: true) {\n    type\n    id\n  }\n  sale_artwork: saleArtwork {\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    counts {\n      bidder_positions: bidderPositions\n    }\n    id\n  }\n}\n\nfragment Details_artwork on Artwork {\n  href\n  title\n  date\n  sale_message: saleMessage\n  cultural_maker: culturalMaker\n  artists(shallow: true) {\n    id\n    href\n    name\n  }\n  collecting_institution: collectingInstitution\n  partner(shallow: true) {\n    name\n    href\n    id\n  }\n  sale {\n    is_auction: isAuction\n    is_closed: isClosed\n    id\n  }\n  sale_artwork: saleArtwork {\n    counts {\n      bidder_positions: bidderPositions\n    }\n    highest_bid: highestBid {\n      display\n    }\n    opening_bid: openingBid {\n      display\n    }\n    id\n  }\n}\n\nfragment FeatureApp_feature on Feature {\n  ...FeatureHeader_feature\n  description(format: HTML)\n  callout(format: HTML)\n  sets: setsConnection(first: 20) {\n    edges {\n      node {\n        id\n        ...FeatureSet_set\n      }\n    }\n  }\n}\n\nfragment FeatureFeaturedLink_featuredLink on FeaturedLink {\n  href\n  title\n  subtitle\n  description(format: HTML)\n  image {\n    small: cropped(width: 800, height: 1000, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n    medium: cropped(width: 1092, height: 1365, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n    large: cropped(width: 2224, height: 1252, version: [\"wide\"]) {\n      src: url\n      width\n      height\n    }\n  }\n}\n\nfragment FeatureHeader_feature on Feature {\n  name\n  subheadline(format: HTML)\n  image {\n    url\n  }\n}\n\nfragment FeatureSet_set on OrderedSet {\n  id\n  name\n  description\n  itemType\n  orderedItems: orderedItemsConnection(first: 20) {\n    edges {\n      node {\n        __typename\n        ... on FeaturedLink {\n          id\n        }\n        ... on Artwork {\n          id\n        }\n        ...GridItem_artwork\n        ...FeatureFeaturedLink_featuredLink\n        ... on Node {\n          id\n        }\n      }\n    }\n  }\n}\n\nfragment GridItem_artwork on Artwork {\n  internalID\n  title\n  image_title: imageTitle\n  image {\n    placeholder\n    url(version: \"large\")\n    aspect_ratio: aspectRatio\n  }\n  href\n  ...Metadata_artwork\n  ...Save_artwork\n  ...Badge_artwork\n}\n\nfragment Metadata_artwork on Artwork {\n  ...Details_artwork\n  ...Contact_artwork\n  href\n}\n\nfragment Save_artwork on Artwork {\n  id\n  internalID\n  slug\n  is_saved: isSaved\n  title\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'ad956707342c4a314fe89209464d7ceb';
+(node as any).hash = 'f39dc1e9525921a755f1c2e1b893837f';
 export default node;

@@ -20,7 +20,7 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
 
       <AppContainer>
         <HorizontalPadding>
-          {(feature.description || feature.callOut) && (
+          {(feature.description || feature.callout) && (
             <Box maxWidth={["100%", 460]} mx="auto" my={3} px={3}>
               <Join separator={<Spacer my={3} />}>
                 {feature.description && (
@@ -31,10 +31,10 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
                   </Sans>
                 )}
 
-                {feature.callOut && (
+                {feature.callout && (
                   <Sans size="6">
                     <Box
-                      dangerouslySetInnerHTML={{ __html: feature.callOut }}
+                      dangerouslySetInnerHTML={{ __html: feature.callout }}
                     />
                   </Sans>
                 )}
@@ -58,9 +58,7 @@ export default createFragmentContainer(FeatureApp, {
     fragment FeatureApp_feature on Feature {
       ...FeatureHeader_feature
       description(format: HTML)
-      # TODO: Placeholder value
-      callOut: description(format: HTML)
-      # TODO: Handle pagination
+      callout(format: HTML)
       sets: setsConnection(first: 20) {
         edges {
           node {

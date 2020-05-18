@@ -80,6 +80,7 @@ describe("ViewingRoomWorksRoute", () => {
       expect(html).toContain("Beep Beep")
       expect(html).toContain("2015")
       expect(html).toContain("some description")
+      expect(html).toContain("$500")
     })
 
     it("displays a buy button", () => {

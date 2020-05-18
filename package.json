@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "26.40.0",
+  "version": "26.40.7",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -130,6 +130,7 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-react-hooks": "3.0.0",
     "flickity": "2.1.2",
+    "flickity-imagesloaded": "2.0.0",
     "fork-ts-checker-notifier-webpack-plugin": "0.6.2",
     "fork-ts-checker-webpack-plugin": "0.4.10",
     "graphql": "14.5.8",
@@ -143,6 +144,7 @@
     "klaw-sync": "6.0.0",
     "lint-staged": "10.0.8",
     "patch-package": "6.2.0",
+    "path-to-regexp": "6.1.0",
     "postinstall-prepare": "1.0.1",
     "prettier": "1.19.1",
     "raf": "3.4.0",

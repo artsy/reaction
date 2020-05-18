@@ -2,6 +2,7 @@ import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import ActionTypes from "farce/lib/ActionTypes"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
+import { match } from "path-to-regexp"
 
 /**
  * PageView tracking middleware for use in our router apps. Middleware conforms
@@ -12,7 +13,7 @@ import { get } from "Utils/get"
  */
 
 interface TrackingMiddlewareOptions {
-  excludePaths?: [string]
+  excludePaths?: string[]
 }
 
 export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
@@ -39,7 +40,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
           // window.sd.routerReferrer = referrer
 
           const foundExcludedPath = excludePaths.some(excludedPath => {
-            return pathname.includes(excludedPath)
+            const matcher = match(excludedPath, { decode: decodeURIComponent })
+            const foundMatch = !!matcher(pathname)
+            return foundMatch
           })
 
           if (!foundExcludedPath) {

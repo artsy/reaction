@@ -70,8 +70,7 @@ export const FeatureHeaderFragmentContainer = createFragmentContainer(
     feature: graphql`
       fragment FeatureHeader_feature on Feature {
         name
-        # TODO: Placeholder value
-        subheadline: description(format: HTML)
+        subheadline(format: HTML)
         image {
           url
         }

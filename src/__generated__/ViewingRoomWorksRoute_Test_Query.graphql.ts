@@ -18,7 +18,11 @@ export type ViewingRoomWorksRoute_Test_QueryRawResponse = {
                     readonly internalID: string;
                     readonly images: ReadonlyArray<({
                         readonly internalID: string | null;
-                        readonly imageHref: string | null;
+                        readonly resized: ({
+                            readonly url: string | null;
+                            readonly width: number | null;
+                            readonly height: number | null;
+                        }) | null;
                     }) | null> | null;
                     readonly id: string;
                     readonly additionalInformation: string | null;
@@ -26,6 +30,7 @@ export type ViewingRoomWorksRoute_Test_QueryRawResponse = {
                     readonly title: string | null;
                     readonly date: string | null;
                     readonly href: string | null;
+                    readonly saleMessage: string | null;
                 }) | null;
             }) | null> | null;
         }) | null;
@@ -55,12 +60,17 @@ fragment ViewingRoomArtworkDetails_artwork on Artwork {
   title
   date
   href
+  saleMessage
 }
 
 fragment ViewingRoomCarousel_artwork on Artwork {
   images {
     internalID
-    imageHref: url(version: ["large"])
+    resized(height: 550) {
+      url
+      width
+      height
+    }
   }
 }
 
@@ -181,19 +191,42 @@ return {
                         "selections": [
                           (v2/*: any*/),
                           {
-                            "kind": "ScalarField",
-                            "alias": "imageHref",
-                            "name": "url",
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "resized",
+                            "storageKey": "resized(height:550)",
                             "args": [
                               {
                                 "kind": "Literal",
-                                "name": "version",
-                                "value": [
-                                  "large"
-                                ]
+                                "name": "height",
+                                "value": 550
                               }
                             ],
-                            "storageKey": "url(version:[\"large\"])"
+                            "concreteType": "ResizedImageUrl",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "url",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "width",
+                                "args": null,
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "height",
+                                "args": null,
+                                "storageKey": null
+                              }
+                            ]
                           }
                         ]
                       },
@@ -238,6 +271,13 @@ return {
                         "name": "href",
                         "args": null,
                         "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "saleMessage",
+                        "args": null,
+                        "storageKey": null
                       }
                     ]
                   }
@@ -253,7 +293,7 @@ return {
     "operationKind": "query",
     "name": "ViewingRoomWorksRoute_Test_Query",
     "id": null,
-    "text": "query ViewingRoomWorksRoute_Test_Query(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomWorksRoute_viewingRoom\n  }\n}\n\nfragment ViewingRoomArtworkDetails_artwork on Artwork {\n  id\n  additionalInformation\n  artistNames\n  title\n  date\n  href\n}\n\nfragment ViewingRoomCarousel_artwork on Artwork {\n  images {\n    internalID\n    imageHref: url(version: [\"large\"])\n  }\n}\n\nfragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {\n  artworksConnection {\n    edges {\n      node {\n        internalID\n        ...ViewingRoomCarousel_artwork\n        ...ViewingRoomArtworkDetails_artwork\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query ViewingRoomWorksRoute_Test_Query(\n  $slug: ID!\n) {\n  viewingRoom(id: $slug) {\n    ...ViewingRoomWorksRoute_viewingRoom\n  }\n}\n\nfragment ViewingRoomArtworkDetails_artwork on Artwork {\n  id\n  additionalInformation\n  artistNames\n  title\n  date\n  href\n  saleMessage\n}\n\nfragment ViewingRoomCarousel_artwork on Artwork {\n  images {\n    internalID\n    resized(height: 550) {\n      url\n      width\n      height\n    }\n  }\n}\n\nfragment ViewingRoomWorksRoute_viewingRoom on ViewingRoom {\n  artworksConnection {\n    edges {\n      node {\n        internalID\n        ...ViewingRoomCarousel_artwork\n        ...ViewingRoomArtworkDetails_artwork\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

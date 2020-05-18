@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Box, Image, Sans, Button, Spacer } from "@artsy/palette"
+import { Box, Button, Flex, Image, Sans, Spacer } from "@artsy/palette"
 import { useRouter } from "Artsy/Router/useRouter"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -93,7 +93,7 @@ const ArtworkItem: React.FC<ArtworkNode> = ({
         </Box>
         <Box style={{ textOverflow: "ellipsis" }}>
           <Sans size="3" color="black60">
-            {title}, {date}
+            {[title, date].filter(s => s).join(", ")}
           </Sans>
         </Box>
       </Box>
