@@ -2,6 +2,7 @@ import { BorderBox, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
 import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
 import { RelayRefetchProp, createFragmentContainer, graphql } from "react-relay"
+import request from "superagent"
 
 import { useSystemContext } from "Artsy"
 
@@ -44,11 +45,15 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
     }
   }
 
-  function onCompleteConfirmed() {
+  async function onCompleteConfirmed() {
     if (props.me.hasSecondFactorEnabled) {
       setShowCompleteModal(false)
     } else {
-      window.location.reload()
+      await request
+        .delete("/users/sign_out")
+        .set("X-Requested-With", "XMLHttpRequest")
+
+      location.reload()
     }
   }
 
@@ -167,11 +172,11 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
       />
       <Modal
         title="Set up with text message"
-        onClose={() => onCompleteConfirmed()}
+        onClose={onCompleteConfirmed}
         show={showCompleteModal}
         hideCloseButton={!me.hasSecondFactorEnabled}
         FixedButton={
-          <Button onClick={() => onCompleteConfirmed()} block width="100%">
+          <Button onClick={onCompleteConfirmed} block width="100%">
             {me.hasSecondFactorEnabled ? "OK" : "Log back in"}
           </Button>
         }

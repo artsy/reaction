@@ -32,8 +32,12 @@ const Item: React.FC<ItemProps> = props => {
         style={{ alignSelf: "flex-end" }}
         my={1}
       >
-        <Flex flexDirection="column" width="350px">
-          <Image src={item.image.url} borderRadius="15px 15px 0 0" />
+        <Flex flexDirection="column">
+          <Image
+            src={item.image.url}
+            width="350px"
+            borderRadius="15px 15px 0 0"
+          />
           <Flex
             p={1}
             flexDirection="column"
@@ -231,7 +235,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
               artistNames
               href
               image {
-                url
+                url(version: ["large"])
               }
             }
             ... on Show {

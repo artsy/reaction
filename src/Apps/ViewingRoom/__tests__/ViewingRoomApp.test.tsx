@@ -66,6 +66,7 @@ describe("ViewingRoomApp", () => {
         const html = wrapper.html()
         expect(html).toContain("Guy Yanai")
         expect(html).toContain("Subscription Demo GG")
+        expect(html).toContain("Closes in about 1 month")
       })
     })
 
