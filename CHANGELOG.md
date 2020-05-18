@@ -1,3 +1,16 @@
+# v26.40.8 (Mon May 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update a conversation to be read once it's opened [#3539](https://github.com/artsy/reaction/pull/3539) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.40.7 (Mon May 18 2020)
 
 #### 🐛  Bug Fix
