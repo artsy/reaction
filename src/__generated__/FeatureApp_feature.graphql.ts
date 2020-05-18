@@ -4,7 +4,7 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type FeatureApp_feature = {
     readonly description: string | null;
-    readonly callOut: string | null;
+    readonly callout: string | null;
     readonly sets: {
         readonly edges: ReadonlyArray<{
             readonly node: {
@@ -48,10 +48,10 @@ return {
     },
     {
       "kind": "ScalarField",
-      "alias": "callOut",
-      "name": "description",
+      "alias": null,
+      "name": "callout",
       "args": (v0/*: any*/),
-      "storageKey": "description(format:\"HTML\")"
+      "storageKey": "callout(format:\"HTML\")"
     },
     {
       "kind": "LinkedField",
@@ -112,5 +112,5 @@ return {
   ]
 };
 })();
-(node as any).hash = '8d8153fd1cb50909c8f85109ca0e4d3e';
+(node as any).hash = '3eb1189f8322b6862d68f5b370f0890e';
 export default node;

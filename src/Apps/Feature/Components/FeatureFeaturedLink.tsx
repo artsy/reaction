@@ -106,8 +106,7 @@ export const FeatureFeaturedLinkFragmentContainer = createFragmentContainer(
         href
         title
         subtitle
-        # TODO: Placeholder value
-        description: subtitle
+        description(format: HTML)
         image {
           # 4:5 - 400×500 native max dimensions * 2 for retina
           small: cropped(width: 800, height: 1000, version: ["wide"]) {
