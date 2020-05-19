@@ -1,3 +1,18 @@
+# v26.40.9 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Swap masonry component [#3557](https://github.com/artsy/reaction/pull/3557) ([@damassi](https://github.com/damassi))
+- [Viewing Room] Add tracking [#3555](https://github.com/artsy/reaction/pull/3555) ([@damassi](https://github.com/damassi))
+- Remaining Feature page Q/A items [#3554](https://github.com/artsy/reaction/pull/3554) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.40.8 (Mon May 18 2020)
 
 #### 🐛  Bug Fix
