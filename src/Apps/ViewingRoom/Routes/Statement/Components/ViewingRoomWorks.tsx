@@ -6,6 +6,7 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { ViewingRoomWorks_viewingRoom } from "__generated__/ViewingRoomWorks_viewingRoom.graphql"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { LinkPropsSimple } from "found"
+import { AnalyticsSchema, useTracking } from "Artsy"
 
 interface ViewingRoomWorksProps {
   viewingRoom: ViewingRoomWorks_viewingRoom
@@ -22,9 +23,10 @@ const ViewingRoomWorks: React.FC<ViewingRoomWorksProps> = ({
     },
   } = useRouter()
 
+  const tracking = useTracking()
+
   const linkProps: LinkPropsSimple = {
     to: `/viewing-room/${slug}/works`,
-    onClick: scrollToTabBar,
   }
 
   return (
@@ -41,7 +43,20 @@ const ViewingRoomWorks: React.FC<ViewingRoomWorksProps> = ({
         })}
       </Flex>
       <Spacer my={4} />
-      <RouterLink {...linkProps}>
+      <RouterLink
+        {...linkProps}
+        data-test="viewingRoomWorksButton"
+        onClick={() => {
+          scrollToTabBar()
+          tracking.trackEvent({
+            action_type: AnalyticsSchema.ActionType.ClickedArtworkGroup,
+            context_module:
+              AnalyticsSchema.ContextModule.ViewingRoomArtworkRail,
+            subject: AnalyticsSchema.Subject.ViewWorks,
+            destination_path: linkProps.to as string,
+          })
+        }}
+      >
         <Button size="large" width="100%">
           View works
         </Button>
@@ -82,8 +97,22 @@ const ArtworkItem: React.FC<ArtworkNode> = ({
   title,
   linkProps,
 }) => {
+  const tracking = useTracking()
+
   return (
-    <RouterLink {...linkProps} style={{ textDecoration: "none", width: "50%" }}>
+    <RouterLink
+      {...linkProps}
+      style={{ textDecoration: "none", width: "50%" }}
+      onClick={() => {
+        scrollToTabBar()
+        tracking.trackEvent({
+          action_type: AnalyticsSchema.ActionType.ClickedArtworkGroup,
+          context_module: AnalyticsSchema.ContextModule.ViewingRoomArtworkRail,
+          subject: AnalyticsSchema.Subject.ArtworkThumbnail,
+          destination_path: linkProps.to as string,
+        })
+      }}
+    >
       <Box pl={1}>
         <Box>
           <Image width="100%" src={imageUrl} />
