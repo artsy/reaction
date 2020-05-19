@@ -1,4 +1,4 @@
-import { Intent, ContextModule } from "@artsy/cohesion"
+import { ContextModule, Intent } from "@artsy/cohesion"
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -26,6 +26,9 @@ import {
   ImageWithFallback,
   renderFallbackImage,
 } from "./Components/ImageWithFallback"
+import { useAuctionResultsFilterContext } from "./AuctionResultsFilterContext"
+import { isEqual } from "lodash"
+import { usePrevious } from "Utils/Hooks/usePrevious"
 
 export interface Props extends SystemContextProps {
   expanded?: boolean
@@ -69,6 +72,10 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
       },
     })
   }
+
+  const filterContext = useAuctionResultsFilterContext()
+  const previousFilterContext = usePrevious(filterContext)
+  const filtersHaveUpdated = !isEqual(filterContext, previousFilterContext)
 
   return (
     <>
@@ -300,6 +307,7 @@ const getProps = (props: Props) => {
 
 const renderPricing = (salePrice, saleDate, user, mediator, size) => {
   const textSize = size === "xs" ? "2" : "3t"
+
   if (user) {
     const textAlign = size === "xs" ? "left" : "right"
     const dateOfSale = DateTime.fromISO(saleDate)
