@@ -85,9 +85,12 @@ export const ARTWORKS_SET = {
 export const FEATURE = {
   id: "RmVhdHVyZTo1ZTY5MGMzMWQyMmZmMTAwMTIwYzQzMzY=",
   name: "Alserkal Art Week",
+  slug: "alserkal-art-week",
+  metaDescription: "some description",
   subheadline:
     "<p>Alserkal Art Week Online</p>\n<p>Discover new exhibitions by Alserkal Avenue Galleries</p>\n",
   image: {
+    url: "some-url.jpg",
     cropped: { url: null },
   },
   description:

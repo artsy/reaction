@@ -1,19 +1,37 @@
 import React from "react"
-import { Meta, Title } from "react-head"
+import { Link, Meta, Title } from "react-head"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureMeta_feature } from "__generated__/FeatureMeta_feature.graphql"
+import { getENV } from "Utils/getENV"
 
 interface FeatureMetaProps {
   feature: FeatureMeta_feature
 }
 
-const FeatureMeta: React.FC<FeatureMetaProps> = ({ feature: { name } }) => {
-  const TODO_description = "description text"
+const FeatureMeta: React.FC<FeatureMetaProps> = ({
+  feature: { image, metaDescription, name, slug },
+}) => {
+  const description =
+    getENV("CURRENT_PATH") === "/feature/collect-with-artsy"
+      ? `Find everything you ever wanted to know about collecting art but were too afraid to ask, including tips on collecting and stories from art collectors.`
+      : metaDescription
+
+  const href = `${getENV("APP_URL")}/feature/${slug}`
+  const imageURL = image?.url
 
   return (
     <>
       <Title>{name}</Title>
-      <Meta name="description" content={TODO_description} />
+      <Meta property="og:title" content={name} />
+      <Meta name="description" content={description} />
+      <Meta property="og:description" content={description} />
+      <Meta property="twitter:description" content={description} />
+      <Link rel="canonical" href={href} />
+      <Meta property="og:url" content={href} />
+      <Meta property="og:type" content="website" />
+      <Meta property="twitter:card" content="summary" />
+      <Meta name="fragment" content="!" />
+      {imageURL && <Meta property="og:image" content={imageURL} />}
     </>
   )
 }
@@ -24,6 +42,11 @@ export const FeatureMetaFragmentContainer = createFragmentContainer(
     feature: graphql`
       fragment FeatureMeta_feature on Feature {
         name
+        slug
+        metaDescription: description(format: PLAIN)
+        image {
+          url(version: "large_rectangle")
+        }
       }
     `,
   }
