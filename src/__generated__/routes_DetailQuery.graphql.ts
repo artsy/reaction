@@ -112,7 +112,7 @@ fragment Conversation_conversation on Conversation {
         artistNames
         href
         image {
-          url
+          url(version: ["large"])
         }
       }
       ... on Show {
@@ -270,16 +270,6 @@ v11 = [
   }
 ],
 v12 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "image",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Image",
-  "plural": false,
-  "selections": (v11/*: any*/)
-},
-v13 = {
   "kind": "InlineFragment",
   "type": "Show",
   "selections": [
@@ -306,42 +296,42 @@ v13 = {
     }
   ]
 },
-v14 = {
+v13 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "endCursor",
   "args": null,
   "storageKey": null
 },
-v15 = {
+v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "hasNextPage",
   "args": null,
   "storageKey": null
 },
-v16 = {
+v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "hasPreviousPage",
   "args": null,
   "storageKey": null
 },
-v17 = {
+v16 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "startCursor",
   "args": null,
   "storageKey": null
 },
-v18 = {
+v17 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "email",
   "args": null,
   "storageKey": null
 },
-v19 = [
+v18 = [
   {
     "kind": "Literal",
     "name": "first",
@@ -488,10 +478,19 @@ return {
                                   (v8/*: any*/),
                                   (v9/*: any*/),
                                   (v10/*: any*/),
-                                  (v12/*: any*/)
+                                  {
+                                    "kind": "LinkedField",
+                                    "alias": null,
+                                    "name": "image",
+                                    "storageKey": null,
+                                    "args": null,
+                                    "concreteType": "Image",
+                                    "plural": false,
+                                    "selections": (v11/*: any*/)
+                                  }
                                 ]
                               },
-                              (v13/*: any*/)
+                              (v12/*: any*/)
                             ]
                           }
                         ]
@@ -527,10 +526,10 @@ return {
                 "concreteType": "PageInfo",
                 "plural": false,
                 "selections": [
+                  (v13/*: any*/),
                   (v14/*: any*/),
                   (v15/*: any*/),
-                  (v16/*: any*/),
-                  (v17/*: any*/)
+                  (v16/*: any*/)
                 ]
               }
             ]
@@ -582,7 +581,7 @@ return {
                 "plural": false,
                 "selections": [
                   (v4/*: any*/),
-                  (v18/*: any*/),
+                  (v17/*: any*/),
                   (v2/*: any*/)
                 ]
               },
@@ -606,7 +605,7 @@ return {
                 "alias": null,
                 "name": "messages",
                 "storageKey": "messages(first:30,sort:\"DESC\")",
-                "args": (v19/*: any*/),
+                "args": (v18/*: any*/),
                 "concreteType": "MessageConnection",
                 "plural": false,
                 "selections": [
@@ -619,10 +618,10 @@ return {
                     "concreteType": "PageInfo",
                     "plural": false,
                     "selections": [
-                      (v17/*: any*/),
-                      (v14/*: any*/),
                       (v16/*: any*/),
-                      (v15/*: any*/)
+                      (v13/*: any*/),
+                      (v15/*: any*/),
+                      (v14/*: any*/)
                     ]
                   },
                   {
@@ -676,7 +675,7 @@ return {
                             "plural": false,
                             "selections": [
                               (v4/*: any*/),
-                              (v18/*: any*/)
+                              (v17/*: any*/)
                             ]
                           },
                           {
@@ -725,7 +724,7 @@ return {
                 "kind": "LinkedHandle",
                 "alias": null,
                 "name": "messages",
-                "args": (v19/*: any*/),
+                "args": (v18/*: any*/),
                 "handle": "connection",
                 "key": "Messages_messages",
                 "filters": []
@@ -764,10 +763,35 @@ return {
                             "args": null,
                             "storageKey": null
                           },
-                          (v12/*: any*/)
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "image",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Image",
+                            "plural": false,
+                            "selections": [
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "url",
+                                "args": [
+                                  {
+                                    "kind": "Literal",
+                                    "name": "version",
+                                    "value": [
+                                      "large"
+                                    ]
+                                  }
+                                ],
+                                "storageKey": "url(version:[\"large\"])"
+                              }
+                            ]
+                          }
                         ]
                       },
-                      (v13/*: any*/)
+                      (v12/*: any*/)
                     ]
                   }
                 ]
@@ -783,7 +807,7 @@ return {
     "operationKind": "query",
     "name": "routes_DetailQuery",
     "id": null,
-    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Conversation_me_3oGfhn\n    id\n  }\n}\n\nfragment ConversationSnippet_conversation on Conversation {\n  internalID\n  to {\n    name\n    id\n  }\n  lastMessage\n  lastMessageAt\n  unread\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n  messagesConnection {\n    totalCount\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 30, sort: DESC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      node {\n        id\n        internalID\n        createdAt\n        isFromUser\n        ...Message_message\n        __typename\n      }\n      cursor\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        href\n        image {\n          url\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversation_me_3oGfhn on Me {\n  ...Conversations_me\n  conversation(id: $conversationID) {\n    to {\n      name\n      id\n    }\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Conversations_me on Me {\n  conversationsConnection(first: 10) {\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        lastMessage\n        ...ConversationSnippet_conversation\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n  attachments {\n    id\n    internalID\n    contentType\n    fileName\n    downloadURL\n  }\n}\n",
+    "text": "query routes_DetailQuery(\n  $conversationID: String!\n) {\n  me {\n    ...Conversation_me_3oGfhn\n    id\n  }\n}\n\nfragment ConversationSnippet_conversation on Conversation {\n  internalID\n  to {\n    name\n    id\n  }\n  lastMessage\n  lastMessageAt\n  unread\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        date\n        title\n        artistNames\n        image {\n          url\n        }\n      }\n      ... on Show {\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n  messagesConnection {\n    totalCount\n  }\n}\n\nfragment Conversation_conversation on Conversation {\n  id\n  internalID\n  from {\n    name\n    email\n    id\n  }\n  to {\n    name\n    initials\n    id\n  }\n  initialMessage\n  lastMessageID\n  unread\n  messages(first: 30, sort: DESC) {\n    pageInfo {\n      startCursor\n      endCursor\n      hasPreviousPage\n      hasNextPage\n    }\n    edges {\n      node {\n        id\n        internalID\n        createdAt\n        isFromUser\n        ...Message_message\n        __typename\n      }\n      cursor\n    }\n  }\n  items {\n    item {\n      __typename\n      ... on Artwork {\n        id\n        date\n        title\n        artistNames\n        href\n        image {\n          url(version: [\"large\"])\n        }\n      }\n      ... on Show {\n        id\n        fair {\n          name\n          id\n        }\n        name\n        coverImage {\n          url\n        }\n      }\n      ... on Node {\n        id\n      }\n    }\n  }\n}\n\nfragment Conversation_me_3oGfhn on Me {\n  ...Conversations_me\n  conversation(id: $conversationID) {\n    to {\n      name\n      id\n    }\n    ...Conversation_conversation\n    id\n  }\n}\n\nfragment Conversations_me on Me {\n  conversationsConnection(first: 10) {\n    edges {\n      cursor\n      node {\n        id\n        internalID\n        lastMessage\n        ...ConversationSnippet_conversation\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Message_message on Message {\n  internalID\n  body\n  createdAt\n  isFromUser\n  from {\n    name\n    email\n  }\n  attachments {\n    id\n    internalID\n    contentType\n    fileName\n    downloadURL\n  }\n}\n",
     "metadata": {}
   }
 };

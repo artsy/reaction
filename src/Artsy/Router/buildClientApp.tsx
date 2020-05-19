@@ -68,7 +68,11 @@ export function buildClientApp(config: RouterConfig): Promise<Resolve> {
           stringify: qs.stringify,
         }),
         trackingMiddleware({
-          excludePaths: ["/artwork/"],
+          excludePaths: [
+            "/artwork(.*)",
+            // FIXME: Remove once old feature pages are migrated
+            "/feature(.*)",
+          ],
         }),
       ]
       const resolver = new Resolver(relayEnvironment)

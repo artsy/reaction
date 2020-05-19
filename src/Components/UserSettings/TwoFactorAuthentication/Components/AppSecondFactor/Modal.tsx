@@ -89,12 +89,7 @@ export const AppSecondFactorModal: React.FC<AppSecondFactorModalProps> = props =
   }
 
   return (
-    <Modal
-      forcedScroll={false}
-      title="Set up with app"
-      show={props.show}
-      onClose={props.onClose}
-    >
+    <Modal title="Set up with app" show={props.show} onClose={props.onClose}>
       <Formik
         validationSchema={validationSchema}
         initialValues={{ name: secondFactor.name || "", code: "" }}
@@ -157,14 +152,14 @@ const InnerForm: React.FC<InnerFormProps> = ({
             {secondFactor.otpSecret}
           </Sans>
         ) : (
-            <Button
-              size="small"
-              variant="secondaryGray"
-              onClick={() => setShowSecret(true)}
-            >
-              Show secret
-            </Button>
-          )}
+          <Button
+            size="small"
+            variant="secondaryGray"
+            onClick={() => setShowSecret(true)}
+          >
+            Show secret
+          </Button>
+        )}
       </Box>
       <Sans mt={2} color="black60" size="3">
         2. Enter the six-digit code from the application to complete the

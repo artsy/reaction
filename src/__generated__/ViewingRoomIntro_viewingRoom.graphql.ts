@@ -3,7 +3,7 @@
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type ViewingRoomIntro_viewingRoom = {
-    readonly introStatement: string;
+    readonly introStatement: string | null;
     readonly " $refType": "ViewingRoomIntro_viewingRoom";
 };
 export type ViewingRoomIntro_viewingRoom$data = ViewingRoomIntro_viewingRoom;

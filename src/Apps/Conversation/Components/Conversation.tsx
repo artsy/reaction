@@ -1,21 +1,22 @@
 import {
-  color,
+  Box,
   Flex,
   Image,
   Link,
   Sans,
   Serif,
   Spacer,
-  Box,
+  color,
 } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { DateTime } from "luxon"
-import React from "react"
-import { createFragmentContainer, RelayProp } from "react-relay"
+import React, { useEffect } from "react"
+import { RelayProp, createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
 import { MessageFragmentContainer as Message } from "./Message"
 import { Reply } from "./Reply"
-import { fromToday, TimeSince } from "./TimeSince"
+import { TimeSince, fromToday } from "./TimeSince"
+import { UpdateConversation } from "../Mutation/UpdateConversationMutation"
 
 interface ItemProps {
   item: Conversation_conversation["items"][0]["item"]
@@ -31,8 +32,12 @@ const Item: React.FC<ItemProps> = props => {
         style={{ alignSelf: "flex-end" }}
         my={1}
       >
-        <Flex flexDirection="column" width="350px">
-          <Image src={item.image.url} borderRadius="15px 15px 0 0" />
+        <Flex flexDirection="column">
+          <Image
+            src={item.image.url}
+            width="350px"
+            borderRadius="15px 15px 0 0"
+          />
           <Flex
             p={1}
             flexDirection="column"
@@ -112,6 +117,11 @@ export interface ConversationProps {
 
 const Conversation: React.FC<ConversationProps> = props => {
   const { conversation, relay } = props
+
+  useEffect(() => {
+    UpdateConversation(relay.environment, conversation)
+  }, [conversation, relay.environment, conversation.lastMessageID])
+
   return (
     <Flex flexDirection="column" width="100%">
       <Box>
@@ -225,7 +235,7 @@ export const ConversationFragmentContainer = createFragmentContainer(
               artistNames
               href
               image {
-                url
+                url(version: ["large"])
               }
             }
             ... on Show {

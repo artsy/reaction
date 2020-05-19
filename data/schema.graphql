@@ -4257,7 +4257,18 @@ type Feature {
   name: String!
   isActive: Boolean!
   description(format: Format): String
-  image: FeatureImage
+  subheadline(format: Format): String
+  callout(format: Format): String
+  image: Image
+
+  # Features are composed of sets, which are themselves composed of items of various types
+  setsConnection(
+    sort: OrderedSetSorts
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): OrderedSetConnection
 }
 
 type FeaturedLink {
@@ -4269,26 +4280,9 @@ type FeaturedLink {
   href: String
   image: Image
   initials(length: Int = 3): String
-  subtitle: String
+  subtitle(format: Format): String
+  description(format: Format): String
   title: String
-}
-
-type FeatureImage {
-  # Unscaled (original) image width
-  width: Int
-
-  # Unscaled (original) image height
-  height: Int
-
-  # Ask for a version and you might receive it. Versions are not guaranteed to be present.
-  url(version: FeatureImageVersion): String
-}
-
-enum FeatureImageVersion {
-  LARGE_RECTANGLE
-  WIDE
-  SQUARE
-  SOURCE
 }
 
 type Feedback {
@@ -4982,10 +4976,6 @@ enum HomePageHeroUnitPlatform {
 }
 
 type HomePageMarketingCollectionsModule {
-  _unusedField: String
-    @deprecated(
-      reason: "This field only exists to satisfy the GraphQL Schema validation"
-    )
   results: [MarketingCollection]!
 }
 
@@ -5877,10 +5867,16 @@ type OrderedSet {
   # A type-specific ID.
   internalID: ID!
   cached: Int
-  description: String
+  description(format: Format): String
   key: String
   itemType: String
   items: [OrderedSetItem]
+  orderedItemsConnection(
+    after: String
+    first: Int
+    before: String
+    last: Int
+  ): OrderedSetItemConnection!
 
   # Returns a connection of the items. Only Artwork supported right now.
   itemsConnection(
@@ -5889,10 +5885,70 @@ type OrderedSet {
     before: String
     last: Int
   ): ArtworkConnection
+    @deprecated(reason: "Utilize `orderedItemsConnection` for union type")
   name: String
 }
 
-union OrderedSetItem = Artist | Artwork | FeaturedLink | Gene
+# A connection to a list of items.
+type OrderedSetConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [OrderedSetEdge]
+  pageCursors: PageCursors!
+  totalCount: Int
+}
+
+# An edge in a connection.
+type OrderedSetEdge {
+  # The item at the end of the edge
+  node: OrderedSet
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+union OrderedSetItem = Artist | Artwork | FeaturedLink | Gene | Sale | Show
+
+# A connection to a list of items.
+type OrderedSetItemConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [OrderedSetItemEdge]
+  pageCursors: PageCursors!
+  totalCount: Int
+}
+
+# An edge in a connection.
+type OrderedSetItemEdge {
+  # The item at the end of the edge
+  node: OrderedSetItem
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+enum OrderedSetSorts {
+  ID_ASC
+  ID_DESC
+  KEY_ASC
+  KEY_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  OWNER_TYPE_ASC
+  OWNER_TYPE_DESC
+  OWNER_ID_ASC
+  OWNER_ID_DESC
+  ITEM_TYPE_ASC
+  ITEM_TYPE_DESC
+  NAME_ASC
+  NAME_DESC
+  INTERNAL_NAME_ASC
+  INTERNAL_NAME_DESC
+}
 
 union OrderParty = Partner | User
 
@@ -8439,19 +8495,19 @@ type ViewingRoom {
   artworkIDs: [String!]!
 
   # Body copy
-  body: String!
+  body: String
 
   # Datetime after which the viewing room is no longer viewable
-  endAt: ISO8601DateTime!
+  endAt: ISO8601DateTime
 
   # Image URL for hero image on viewing room home screen
-  heroImageURL: String!
+  heroImageURL: String
 
   # Unique ID for this room
   internalID: ID!
 
   # Introductory paragraph
-  introStatement: String!
+  introStatement: String
 
   # ID of the partner associated with this viewing room
   partnerID: String!
@@ -8459,7 +8515,7 @@ type ViewingRoom {
   slug: String!
 
   # Datetime when the viewing room is viewable
-  startAt: ISO8601DateTime!
+  startAt: ISO8601DateTime
   subsections: [ViewingRoomSubsection!]
   timeZone: String
 
@@ -8471,6 +8527,7 @@ type ViewingRoom {
     after: String
     before: String
   ): ArtworkConnection
+  formattedEndAt: String
   partner: Partner
 }
 

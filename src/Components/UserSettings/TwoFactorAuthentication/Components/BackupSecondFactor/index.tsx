@@ -20,7 +20,6 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
   const [showModal, setShowModal] = useState(false)
   const [isCreating, setCreating] = useState(false)
 
-
   async function createBackupSecondFactors() {
     setCreating(true)
 
@@ -34,7 +33,7 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
     setCreating(false)
   }
 
-  const ShowButton = props =>
+  const ShowButton = props => (
     <Button
       onClick={() => setShowModal(true)}
       variant="secondaryOutline"
@@ -42,14 +41,16 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
     >
       Show
     </Button>
+  )
 
-  const SetupButton = props =>
+  const SetupButton = props => (
     <Button
       onClick={createBackupSecondFactors}
       loading={isCreating}
       disabled={isCreating}
       {...props}
     />
+  )
 
   return (
     <BorderBox p={20} {...props}>
@@ -70,15 +71,16 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
                 {me.backupSecondFactors.length} remaining
               </Sans>
               <ShowButton ml={1} />
-              <SetupButton ml={1} variant="secondaryGray">Regenerate</SetupButton>
+              <SetupButton ml={1} variant="secondaryGray">
+                Regenerate
+              </SetupButton>
             </>
           ) : (
-              <SetupButton ml={1}>Set up</SetupButton>
-            )}
+            <SetupButton ml={1}>Set up</SetupButton>
+          )}
         </Flex>
       </Flex>
       <Modal
-        forcedScroll={false}
         title="Your backup codes"
         show={showModal}
         onClose={() => setShowModal(false)}

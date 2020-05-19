@@ -253,7 +253,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       })
     } else {
       openAuthModal(mediator, {
-        mode: ModalType.login,
+        mode: ModalType.signup,
         redirectTo: location.href,
         contextModule: ContextModule.artworkSidebar,
         intent: Intent.buyNow,
@@ -344,7 +344,7 @@ export class ArtworkSidebarCommercialContainer extends React.Component<
       })
     } else {
       openAuthModal(mediator, {
-        mode: ModalType.login,
+        mode: ModalType.signup,
         redirectTo: location.href,
         contextModule: ContextModule.artworkSidebar,
         intent: Intent.makeOffer,

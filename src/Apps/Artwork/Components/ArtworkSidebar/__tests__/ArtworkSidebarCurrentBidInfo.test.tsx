@@ -17,15 +17,20 @@ import {
 import { ArtworkSidebarCurrentBidInfoFragmentContainer } from "Apps/Artwork/Components/ArtworkSidebar/ArtworkSidebarCurrentBidInfo"
 import { renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
+import { mockTracking } from "Artsy/Analytics"
 
 jest.unmock("react-relay")
+jest.unmock("react-tracking")
 
 describe("ArtworkSidebarCurrentBidInfo", () => {
+  const { Component, dispatch: mockTrack } = mockTracking(
+    ArtworkSidebarCurrentBidInfoFragmentContainer
+  )
   const getWrapper = async (
     response: ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse["artwork"]
   ) => {
     return await renderRelayTree({
-      Component: ArtworkSidebarCurrentBidInfoFragmentContainer,
+      Component,
       query: graphql`
         query ArtworkSidebarCurrentBidInfo_Test_Query @raw_response_type {
           artwork(id: "auction_artwork_estimate_premium") {
@@ -38,6 +43,24 @@ describe("ArtworkSidebarCurrentBidInfo", () => {
       } as ArtworkSidebarCurrentBidInfo_Test_QueryRawResponse,
     })
   }
+  describe("analytics", () => {
+    it("tracks a click on the buyers premium link", async () => {
+      const component = await getWrapper(OpenAuctionReserveMetWithMyWinningBid)
+      await component
+        .find("Link")
+        .filterWhere(l => l.text() === "buyer's premium")
+        .first()
+        .props()
+        .onClick({} as any)
+
+      expect(mockTrack).toBeCalledWith({
+        action_type: "Click",
+        context_module: "Sidebar",
+        subject: "Buyer premium",
+        type: "Link",
+      })
+    })
+  })
 
   describe("for closed auction", () => {
     it("displays Auction Closed", async () => {

@@ -10,6 +10,10 @@ interface ViewingRoomPullQuoteProps {
 const ViewingRoomPullQuote: React.FC<ViewingRoomPullQuoteProps> = ({
   viewingRoom: { pullQuote },
 }) => {
+  if (!pullQuote) {
+    return null
+  }
+
   return (
     <Box>
       <Sans size="8" textAlign="center">

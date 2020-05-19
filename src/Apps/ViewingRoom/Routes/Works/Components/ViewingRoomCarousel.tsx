@@ -5,9 +5,9 @@ import { Carousel } from "Components/Carousel"
 import { flowRight } from "lodash"
 
 import {
-  Flex,
-  ChevronIcon,
   Box,
+  ChevronIcon,
+  Flex,
   Image,
   ProgressBar,
   breakpoints,
@@ -26,14 +26,17 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
   const update = flowRight(setScrollPercent, computeScrollPercent)
   const showProgressBar = images.length > 1
 
+  const CarouselHeight = [350, 550]
+
   return (
     <Box width="100%">
       <Flex
-        height={550}
+        height={CarouselHeight}
         maxWidth={breakpoints.lg}
         m="auto"
         my={2}
         position="relative"
+        justifyContent="center"
       >
         <Carousel
           options={{
@@ -44,12 +47,12 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
             pageDots: false,
           }}
           data={images}
-          height="550px"
+          height={CarouselHeight}
           onDragEnd={({ flickity }) => update(flickity.selectedIndex)}
-          render={({ imageHref, internalID }) => {
+          render={({ resized: { url, width, height }, internalID }) => {
             return (
-              <Box key={internalID}>
-                <Image height={550} src={imageHref} />
+              <Box key={internalID} width={width} height={height}>
+                <Image height={CarouselHeight} src={url} width={width} />
               </Box>
             )
           }}
@@ -102,7 +105,11 @@ export const ViewingRoomCarouselFragmentContainer = createFragmentContainer(
       fragment ViewingRoomCarousel_artwork on Artwork {
         images {
           internalID
-          imageHref: url(version: ["large"])
+          resized(height: 550) {
+            url
+            width
+            height
+          }
         }
       }
     `,

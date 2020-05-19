@@ -69,7 +69,7 @@ describe("Conversation app", () => {
         }
         const component = await render(mockMe, userType)
         const text = component.text()
-        expect(text).toContain("Ashkan Gallery12 months ago")
+        expect(text).toContain("Conversation with Ashkan Gallery")
       })
     })
     describe("without previous conversations", () => {

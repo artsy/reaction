@@ -1,8 +1,8 @@
 import { ContextModule } from "@artsy/cohesion"
-import { Box, ChevronIcon, color, Flex, space } from "@artsy/palette"
+import { Box, ChevronIcon, Flex, color, space } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
-import { left, LeftProps, right, RightProps } from "styled-system"
+import { HeightProps, LeftProps, RightProps, left, right } from "styled-system"
 import { Media } from "Utils/Responsive"
 
 /**
@@ -20,7 +20,7 @@ import FlickityType, { Options as FlickityOptions } from "flickity"
  * - For LazyLoad use Palette's Image lazyLoad prop instead of Flickities
  */
 
-interface CarouselProps<T> {
+interface CarouselProps<T> extends HeightProps {
   /**
    * This is designed to handle any shape of data passed, as long as its an array
    */
@@ -35,11 +35,6 @@ interface CarouselProps<T> {
    * If this carousel contains only one visible image on render set to true (for SSR)
    */
   oneSlideVisible?: boolean
-
-  /**
-   * The height of the carousel
-   */
-  height?: string
 
   /**
    * The width of the carousel
@@ -105,7 +100,7 @@ type ArrowProps = (props: {
 
 export class Carousel<T> extends React.Component<CarouselProps<T>> {
   static defaultProps = {
-    height: "300px",
+    height: 300,
     oneSlideVisible: false,
   }
 
@@ -133,7 +128,7 @@ export const LargeCarousel = <T,>(props: CarouselProps<T>) => {
         contain: true,
         draggable: false,
         freeScroll: false,
-        groupCells: 1,
+        groupCells: true,
         pageDots: false,
         wrapAround: false,
         ...props.options,
@@ -229,22 +224,37 @@ export class BaseCarousel<T> extends React.Component<
   componentDidMount() {
     const { setCarouselRef } = this.props
 
-    const Flickity = require("flickity") as typeof FlickityType
-    this.flickity = new Flickity(this.carouselRef, this.options)
+    const init = () => {
+      const Flickity = require("flickity-imagesloaded") as typeof FlickityType
+      this.flickity = new Flickity(this.carouselRef, {
+        imagesLoaded: true,
+        ...this.options,
+      })
 
-    this.setState(
-      {
-        isMounted: true,
-      },
-      () => {
-        if (setCarouselRef) {
-          setCarouselRef(this.flickity)
+      this.setState(
+        {
+          isMounted: true,
+        },
+        () => {
+          if (setCarouselRef) {
+            setCarouselRef(this.flickity)
+          }
+          this.flickity.on("select", this.handleSlideChange)
+          this.flickity.on("dragEnd", this.handleDragEnd)
+          this.allowPreventDefault()
         }
-        this.flickity.on("select", this.handleSlideChange)
-        this.flickity.on("dragEnd", this.handleDragEnd)
-        this.allowPreventDefault()
-      }
-    )
+      )
+    }
+
+    // FIXME: this is super hacky :/
+    // Check to see if we're in a test context, as code runs syncronously there.
+    if (typeof jest === "undefined") {
+      // Need timeout because sometimes the carousel initializes too fast and
+      // breaks layout. Its a flickity thing, not too sure why
+      setTimeout(init, 100)
+    } else {
+      init()
+    }
   }
 
   componentWillUnmount() {
@@ -438,8 +448,7 @@ const FlickityCarousel = styled.div<{
   display: ${props => (props.isMounted ? "block" : "flex")};
 `
 
-const CarouselContainer = styled.div<{
-  height?: string
+const CarouselContainer = styled(Box)<{
   isMounted: boolean
 }>`
   width: 100%;
@@ -479,15 +488,13 @@ const CarouselContainer = styled.div<{
   ${props => {
     if (props.height) {
       return `
-        height: ${props.height};
+        height: ${props.height}px;
       `
     }
   }};
 `
 
-export const ArrowButton = styled(Flex)<
-  LeftProps & RightProps & { height?: string }
->`
+export const ArrowButton = styled(Flex)<LeftProps & RightProps & HeightProps>`
   position: relative;
   cursor: pointer;
   display: flex;
@@ -496,7 +503,7 @@ export const ArrowButton = styled(Flex)<
   opacity: 0.3;
 
   transition: opacity 0.25s;
-  height: ${p => p.height || "200px"};
+  height: ${p => p.height || 200}px;
 
   &:hover {
     opacity: 1;

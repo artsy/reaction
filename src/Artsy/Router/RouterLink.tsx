@@ -1,5 +1,5 @@
 import { Link, LinkProps, LinkPropsSimple, RouterContext } from "found"
-import { pick } from "lodash"
+import { omit, pick } from "lodash"
 import React, { useContext } from "react"
 import { get } from "Utils/get"
 
@@ -55,7 +55,7 @@ export const RouterLink: React.FC<LinkProps> = ({ to, children, ...props }) => {
         href={to as string}
         className={(props as LinkPropsSimple).className}
         style={(props as LinkPropsSimple).style}
-        {...props}
+        {...omit(props, ["activeClassName"])}
       >
         {children}
       </a>
