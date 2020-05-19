@@ -1,3 +1,17 @@
+# v26.40.16 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- [ViewingRoom] Make sure width is auto on carousel [#3563](https://github.com/artsy/reaction/pull/3563) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3562](https://github.com/artsy/reaction/pull/3562) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.40.12 (Tue May 19 2020)
 
 #### 🐛  Bug Fix
