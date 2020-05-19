@@ -3,11 +3,10 @@ import { ArtistConsignFAQ_artist } from "__generated__/ArtistConsignFAQ_artist.g
 import { AnalyticsSchema, useTracking } from "Artsy"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
-import styled from "styled-components"
-import { gridColumnGap, GridColumnGapProps, style } from "styled-system"
 import { SectionContainer } from "./SectionContainer"
 import { Subheader } from "./Subheader"
 import { getConsignSubmissionUrl } from "./Utils/getConsignSubmissionUrl"
+import { Masonry } from "Components/Masonry"
 
 interface ArtistConsignFAQProps {
   artist: ArtistConsignFAQ_artist
@@ -25,7 +24,7 @@ const ArtistConsignFAQ: React.FC<ArtistConsignFAQProps> = props => {
 
         <Spacer my={2} />
 
-        <MasonryContainer columnCount={[1, 2]} gridColumnGap={20} mb={6}>
+        <Masonry columnCount={[1, 2]} gridColumnGap={20} mb={6}>
           <Question
             question="How do Consignments on Artsy work?"
             answer={
@@ -137,7 +136,7 @@ const ArtistConsignFAQ: React.FC<ArtistConsignFAQProps> = props => {
               </>
             }
           />
-        </MasonryContainer>
+        </Masonry>
       </Box>
     </SectionContainer>
   )
@@ -176,17 +175,3 @@ const Question: React.FC<{ question: string; answer: JSX.Element }> = ({
     </Box>
   )
 }
-
-// Create custom styled-system prop
-// https://github.com/styled-system/styled-system/blob/740a76eb67f8de12c5991489b00bf7c72630a160/docs/custom-props.md
-const columnCount = style({
-  prop: "columnCount",
-  cssProperty: "columnCount",
-})
-
-const MasonryContainer = styled(Box)<
-  { columnCount: number[] | number } & GridColumnGapProps
->`
-  ${columnCount};
-  ${gridColumnGap};
-`

@@ -102,7 +102,7 @@ const RightImagePhoto: React.FC<ImageProps> = ({ image }) => {
 }
 
 const LeftImage = styled(Box)`
-  left: -10%;
+  left: -8%;
   position: absolute;
   transform-origin: center;
   transform: translateY(-50%);
