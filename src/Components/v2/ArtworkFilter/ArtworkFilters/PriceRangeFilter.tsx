@@ -5,7 +5,6 @@ import { useArtworkFilterContext } from "../ArtworkFilterContext"
 export const PriceRangeFilter: React.FC = () => {
   const filterContext = useArtworkFilterContext()
   const initialRange = filterContext.filters.priceRange
-  // what if the range doesnt exist? like 0-3000
 
   return (
     <Toggle label="Price" expanded>
@@ -36,10 +35,8 @@ export const PriceRangeFilter: React.FC = () => {
 const priceRanges = [
   {
     name: "$50,000+",
-    value: "50000-*", // is that right?
+    value: "50000-*",
   },
-  // how do i get 40k - 50k?!
-  /// dollars is ok?
   {
     name: "$20,000 - $40,000",
     value: "20000-40000",
