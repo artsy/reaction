@@ -39,7 +39,7 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
 
           {set.description && (
             <Sans size="3" color="black60">
-              {set.description}
+              <Box dangerouslySetInnerHTML={{ __html: set.description }} />
             </Sans>
           )}
         </Box>
@@ -117,7 +117,7 @@ export const FeatureSetFragmentContainer = createFragmentContainer(FeatureSet, {
     fragment FeatureSet_set on OrderedSet {
       id
       name
-      description
+      description(format: HTML)
       itemType
       # TODO: Handle pagination
       orderedItems: orderedItemsConnection(first: 20) {

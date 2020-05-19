@@ -13,7 +13,7 @@ export type FeatureApp_feature = {
             } | null;
         } | null> | null;
     } | null;
-    readonly " $fragmentRefs": FragmentRefs<"FeatureHeader_feature">;
+    readonly " $fragmentRefs": FragmentRefs<"FeatureMeta_feature" | "FeatureHeader_feature">;
     readonly " $refType": "FeatureApp_feature";
 };
 export type FeatureApp_feature$data = FeatureApp_feature;
@@ -106,11 +106,16 @@ return {
     },
     {
       "kind": "FragmentSpread",
+      "name": "FeatureMeta_feature",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "FeatureHeader_feature",
       "args": null
     }
   ]
 };
 })();
-(node as any).hash = '3eb1189f8322b6862d68f5b370f0890e';
+(node as any).hash = 'a03892745f198465e63df7420b7e1d3d';
 export default node;

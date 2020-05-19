@@ -141,6 +141,12 @@ export enum ActionType {
    * Identity Verification
    */
   ClickedContinueToIdVerification = "ClickedContinueToIdVerification",
+
+  /**
+   * Viewing Room
+   */
+  ClickedArtworkGroup = "clickedArtworkGroup",
+  ClickedBuyViewingGroup = "clickedBuyViewingRoom",
 }
 
 /**
@@ -290,6 +296,14 @@ export enum Subject {
   RequestPriceEstimate = "Request a price estimate",
   SubmitForReview = "Submit for review",
   SubmitWorksInterestedInSelling = "submit works you’re interested in selling here",
+
+  /**
+   * Viewing Room
+   */
+  Rail = "Rail",
+  ViewWorks = "View works",
+  ArtworkThumbnail = "ArtworkThumbnail",
+  ViewingRoomArtworkDetail = "ViewingRoomArtworkDetail",
 }
 
 /**
@@ -411,6 +425,11 @@ export enum ContextModule {
   BrowseCollections = "BrowseCollections",
   BrowseAuctions = "BrowseAuctions",
   BrowseFairs = "BrowseFairs",
+
+  /**
+   * Viewing Room
+   */
+  ViewingRoomArtworkRail = "viewingRoomArtworkRail",
 }
 
 export enum Flow {

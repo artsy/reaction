@@ -12,7 +12,7 @@ export type ViewingRoomStatementRoute_Test_QueryResponse = {
 };
 export type ViewingRoomStatementRoute_Test_QueryRawResponse = {
     readonly viewingRoom: ({
-        readonly introStatement: string;
+        readonly introStatement: string | null;
         readonly artworksConnection: ({
             readonly edges: ReadonlyArray<({
                 readonly node: ({

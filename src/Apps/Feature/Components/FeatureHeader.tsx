@@ -1,6 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import { Box, Flex, Image, Join, Sans, Spacer, color } from "@artsy/palette"
+import {
+  Box,
+  Flex,
+  Join,
+  ResponsiveImage,
+  Sans,
+  Spacer,
+  color,
+} from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureHeader_feature } from "__generated__/FeatureHeader_feature.graphql"
 
@@ -15,12 +23,6 @@ const Figure = styled(Flex)`
   flex-shrink: 0;
   flex-grow: 0;
   background-color: ${color("black10")};
-`
-
-const Cover = styled(Image)`
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
 `
 
 const Meta = styled(Flex)`
@@ -42,8 +44,11 @@ export const FeatureHeader: React.FC<FeatureHeaderProps> = ({
     <Container flexDirection={["column", "row"]}>
       {image && (
         <Figure>
-          {/* TODO: Optimize image, support higher DPR */}
-          <Cover src={image.url} alt={name} />
+          <ResponsiveImage
+            src={image.cropped.url}
+            width="100%"
+            style={{ backgroundSize: "cover", height: "100%" }}
+          />
         </Figure>
       )}
 
@@ -72,7 +77,9 @@ export const FeatureHeaderFragmentContainer = createFragmentContainer(
         name
         subheadline(format: HTML)
         image {
-          url
+          cropped(width: 2000, height: 2000, version: "source") {
+            url
+          }
         }
       }
     `,

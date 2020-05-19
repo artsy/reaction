@@ -35,14 +35,21 @@ export type FeatureFeaturedLink_featuredLink$key = {
 
 
 const node: ReaderFragment = (function(){
-var v0 = {
+var v0 = [
+  {
+    "kind": "Literal",
+    "name": "format",
+    "value": "HTML"
+  }
+],
+v1 = {
   "kind": "Literal",
   "name": "version",
   "value": [
     "wide"
   ]
 },
-v1 = [
+v2 = [
   {
     "kind": "ScalarField",
     "alias": "src",
@@ -90,20 +97,14 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "subtitle",
-      "args": null,
-      "storageKey": null
+      "args": (v0/*: any*/),
+      "storageKey": "subtitle(format:\"HTML\")"
     },
     {
       "kind": "ScalarField",
       "alias": null,
       "name": "description",
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "format",
-          "value": "HTML"
-        }
-      ],
+      "args": (v0/*: any*/),
       "storageKey": "description(format:\"HTML\")"
     },
     {
@@ -126,7 +127,7 @@ return {
               "name": "height",
               "value": 1000
             },
-            (v0/*: any*/),
+            (v1/*: any*/),
             {
               "kind": "Literal",
               "name": "width",
@@ -135,7 +136,7 @@ return {
           ],
           "concreteType": "CroppedImageUrl",
           "plural": false,
-          "selections": (v1/*: any*/)
+          "selections": (v2/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -148,7 +149,7 @@ return {
               "name": "height",
               "value": 1365
             },
-            (v0/*: any*/),
+            (v1/*: any*/),
             {
               "kind": "Literal",
               "name": "width",
@@ -157,7 +158,7 @@ return {
           ],
           "concreteType": "CroppedImageUrl",
           "plural": false,
-          "selections": (v1/*: any*/)
+          "selections": (v2/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -170,7 +171,7 @@ return {
               "name": "height",
               "value": 1252
             },
-            (v0/*: any*/),
+            (v1/*: any*/),
             {
               "kind": "Literal",
               "name": "width",
@@ -179,12 +180,12 @@ return {
           ],
           "concreteType": "CroppedImageUrl",
           "plural": false,
-          "selections": (v1/*: any*/)
+          "selections": (v2/*: any*/)
         }
       ]
     }
   ]
 };
 })();
-(node as any).hash = '566f91418b2d1e4346ae6aa1c459ffa4';
+(node as any).hash = 'fa4bc7ff6104ce8d3d7efc5d766a3a74';
 export default node;

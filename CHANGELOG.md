@@ -1,3 +1,50 @@
+# v26.40.9 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Swap masonry component [#3557](https://github.com/artsy/reaction/pull/3557) ([@damassi](https://github.com/damassi))
+- [Viewing Room] Add tracking [#3555](https://github.com/artsy/reaction/pull/3555) ([@damassi](https://github.com/damassi))
+- Remaining Feature page Q/A items [#3554](https://github.com/artsy/reaction/pull/3554) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
+# v26.40.8 (Mon May 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update a conversation to be read once it's opened [#3539](https://github.com/artsy/reaction/pull/3539) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.40.7 (Mon May 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3552](https://github.com/artsy/reaction/pull/3552) ([@artsyit](https://github.com/artsyit))
+- Ensure test checks don't validate actual dates [#3550](https://github.com/artsy/reaction/pull/3550) ([@zephraph](https://github.com/zephraph))
+- [Viewing Room] Ensure fixed widths present [#3551](https://github.com/artsy/reaction/pull/3551) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3548](https://github.com/artsy/reaction/pull/3548) ([@artsyit](https://github.com/artsyit))
+- Minor Feature page Q/A [#3549](https://github.com/artsy/reaction/pull/3549) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.40.6 (Fri May 15 2020)
 
 #### 🐛  Bug Fix
