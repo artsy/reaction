@@ -2,7 +2,7 @@ import { Col, Row } from "@artsy/palette"
 import { ArtistAuctionResults_artist } from "__generated__/ArtistAuctionResults_artist.graphql"
 import { PaginationFragmentContainer as Pagination } from "Components/Pagination"
 import React, { useState } from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { RelayRefetchProp, createRefetchContainer, graphql } from "react-relay"
 import useDeepCompareEffect from "use-deep-compare-effect"
 import { AuctionResultItemFragmentContainer as AuctionResultItem } from "./ArtistAuctionResultItem"
 import { TableSidebar } from "./Components/TableSidebar"
@@ -154,6 +154,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
               index={index}
               auctionResult={node}
               lastChild={index === auctionResultsLength - 1}
+              filtersHaveUpdated={false}
             />
           </React.Fragment>
         )
