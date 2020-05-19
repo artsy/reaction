@@ -36,6 +36,7 @@ export interface Props extends SystemContextProps {
   index: number
   mediator?: Mediator
   lastChild: boolean
+  filtersHaveUpdated: boolean
 }
 
 const FullWidthBorderBox = styled(BorderBox)`
@@ -87,6 +88,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
               expanded={expanded}
               mediator={mediator}
               user={user}
+              filtersHaveUpdated={filtersHaveUpdated}
             />
           </Row>
           <Box>
@@ -104,6 +106,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
                 expanded={expanded}
                 mediator={mediator}
                 user={user}
+                filtersHaveUpdated={filtersHaveUpdated}
               />
             </Row>
           </Box>
@@ -190,7 +193,8 @@ const LargeAuctionItem: SFC<Props> = props => {
               saleDate,
               props.user,
               props.mediator,
-              "lg"
+              "lg",
+              props.filtersHaveUpdated
             )}
           </Flex>
           <Flex width="10%" justifyContent="flex-end">
@@ -228,7 +232,14 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
         )}
       </Flex>
       <Flex ml={2} flexDirection="column" justifyContent="center" width="100%">
-        {renderPricing(salePrice, saleDate, props.user, props.mediator, "xs")}
+        {renderPricing(
+          salePrice,
+          saleDate,
+          props.user,
+          props.mediator,
+          "xs",
+          props.filtersHaveUpdated
+        )}
         <Sans size="2" weight="medium" color="black60">
           {title}
           {title && date_text && ", "}
@@ -305,10 +316,17 @@ const getProps = (props: Props) => {
   }
 }
 
-const renderPricing = (salePrice, saleDate, user, mediator, size) => {
+const renderPricing = (
+  salePrice,
+  saleDate,
+  user,
+  mediator,
+  size,
+  filtersHaveUpdated
+) => {
   const textSize = size === "xs" ? "2" : "3t"
 
-  if (user) {
+  if (user || !filtersHaveUpdated) {
     const textAlign = size === "xs" ? "left" : "right"
     const dateOfSale = DateTime.fromISO(saleDate)
     const now = DateTime.local()
