@@ -4,14 +4,15 @@ import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
 export const PriceRangeFilter: React.FC = () => {
   const filterContext = useArtworkFilterContext()
-  const [initialMin, initialMax] = filterContext.rangeToTuple("priceRange")
-  // where can we get this from? what if the range doesnt exist?
+  const initialRange = filterContext.filters.priceRange
+  // what if the range doesnt exist? like 0-3000
 
   return (
     <Toggle label="Price" expanded>
       <Flex flexDirection="column" alignItems="left" my={1}>
         <RadioGroup
           deselectable
+          defaultValue={initialRange}
           onSelect={selectedOption => {
             filterContext.setFilter("priceRange", selectedOption)
           }}
