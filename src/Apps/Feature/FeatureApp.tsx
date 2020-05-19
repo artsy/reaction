@@ -4,9 +4,10 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureMetaFragmentContainer as FeatureMeta } from "./Components/FeatureMeta"
 import { FeatureHeaderFragmentContainer as FeatureHeader } from "./Components/FeatureHeader"
 import { FeatureApp_feature } from "__generated__/FeatureApp_feature.graphql"
-import { Box, Join, Sans, Spacer } from "@artsy/palette"
+import { Box, Join, Sans, Separator, Spacer } from "@artsy/palette"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { FeatureSetFragmentContainer as FeatureSet } from "./Components/FeatureSet"
+import { Footer } from "Components/Footer"
 
 interface FeatureAppProps {
   feature: FeatureApp_feature
@@ -48,6 +49,10 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
             feature.sets.edges.map(
               ({ node: set }) => set && <FeatureSet key={set.id} set={set} />
             )}
+
+          <Separator my={3} />
+
+          <Footer />
         </HorizontalPadding>
       </AppContainer>
     </>

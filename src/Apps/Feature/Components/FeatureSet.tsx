@@ -9,14 +9,9 @@ import { FeatureSet_set } from "__generated__/FeatureSet_set.graphql"
 
 const Container = styled(Box)`
   border-top: 1px solid ${color("black100")};
-  border-bottom: 1px solid ${color("black100")};
 
   & + & {
     margin-top: -1px;
-  }
-
-  &:last-of-type {
-    border-bottom: 0;
   }
 `
 
