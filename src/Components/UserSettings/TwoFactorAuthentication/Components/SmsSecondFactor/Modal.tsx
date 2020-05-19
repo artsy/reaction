@@ -130,7 +130,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
       })}
     >
       {({ form, wizard }) => (
-        <Box>
+        <>
           <Sans mt={1} color="black60" size="3t">
             Enter your mobile phone number.
           </Sans>
@@ -138,12 +138,12 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
             We’ll send you a security code to this number whenever you log into
             Artsy.
           </Sans>
+          <Spacer mt={3} />
           <CountrySelect
-            mt={3}
-            mb={1}
             selected={form.values.countryCode}
             onSelect={value => form.setFieldValue("countryCode", value)}
           />
+          <Spacer mt={1} />
           <StyledInput
             autoComplete="off"
             name="phoneNumber"
@@ -169,7 +169,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
           >
             Next
           </Button>
-        </Box>
+        </>
       )}
     </Step>,
     <Step
@@ -179,7 +179,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
       })}
     >
       {({ form, wizard }) => (
-        <Box>
+        <>
           <Sans mt={1} color="black60" size="3t">
             We’ve sent the authentication code to{" "}
             {form.values.formattedPhoneNumber}. Please enter the code to verify
@@ -221,7 +221,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
               Turn on
             </Button>
           </Flex>
-        </Box>
+        </>
       )}
     </Step>,
   ]
