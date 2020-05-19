@@ -1,8 +1,8 @@
+import React from "react"
 import { Flex, Radio, RadioGroup, Toggle } from "@artsy/palette"
-import React, { FC } from "react"
 import { useArtworkFilterContext } from "../ArtworkFilterContext"
 
-export const PriceRangeFilter: FC = () => {
+export const PriceRangeFilter: React.FC = () => {
   const filterContext = useArtworkFilterContext()
   const [initialMin, initialMax] = filterContext.rangeToTuple("priceRange")
   // where can we get this from? what if the range doesnt exist?
