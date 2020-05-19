@@ -4,9 +4,9 @@ import { Mediator } from "Artsy"
 import ArtworkGrid from "Components/ArtworkGrid"
 import * as React from "react"
 import {
+  RelayPaginationProp,
   createPaginationContainer,
   graphql,
-  RelayPaginationProp,
 } from "react-relay"
 import styled from "styled-components"
 import { Filters } from "."
@@ -125,6 +125,7 @@ export class TagArtworks extends React.Component<Props, State> {
     const selectedSort = pulldownOptions.find(
       sort => sort.val === this.props.sort
     )
+
     return (
       <div>
         <SubFilterBar>
@@ -153,7 +154,7 @@ export class TagArtworks extends React.Component<Props, State> {
             itemMargin={40}
             onLoadMore={() => this.loadMoreArtworks()}
             mediator={this.props.mediator}
-            contextModule={ContextModule.featuredArtistsRail}
+            contextModule={ContextModule.artworkGrid}
           />
           <SpinnerContainer>
             {this.state.loading ? <Spinner /> : ""}
