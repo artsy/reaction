@@ -1,3 +1,24 @@
+# v26.40.12 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3561](https://github.com/artsy/reaction/pull/3561) ([@artsyit](https://github.com/artsyit))
+- Fix contextModule on /Tag page, Forgot link includes existing query params [#3553](https://github.com/artsy/reaction/pull/3553) ([@eessex](https://github.com/eessex))
+- [Feature] Add meta tags [#3556](https://github.com/artsy/reaction/pull/3556) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Add Conversations storybook [#3560](https://github.com/artsy/reaction/pull/3560) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.40.9 (Tue May 19 2020)
 
 #### 🐛  Bug Fix
