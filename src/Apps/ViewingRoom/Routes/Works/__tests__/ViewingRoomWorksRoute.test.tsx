@@ -1,4 +1,5 @@
 import React from "react"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 import { ViewingRoomWorksRoute_Test_QueryRawResponse } from "__generated__/ViewingRoomWorksRoute_Test_Query.graphql"
@@ -7,6 +8,7 @@ import { ViewingRoomWorksRouteFragmentContainer } from "../../Works/ViewingRoomW
 import { ViewingRoomWorksRouteFixture } from "Apps/ViewingRoom/__tests__/Fixtures/ViewingRoomWorksRouteFixture"
 
 jest.unmock("react-relay")
+jest.mock("Artsy/Analytics/useTracking")
 jest.mock("Artsy/Router/useRouter", () => ({
   useRouter: () => ({
     match: {
@@ -68,10 +70,17 @@ describe("ViewingRoomWorksRoute", () => {
   })
 
   describe("ViewingRoomArtworkDetails", () => {
+    const trackEvent = jest.fn()
     let wrapper
 
     beforeEach(async () => {
       wrapper = (await getWrapper()).find("ViewingRoomArtworkDetails").first()
+      const mockTracking = useTracking as jest.Mock
+      mockTracking.mockImplementation(() => {
+        return {
+          trackEvent,
+        }
+      })
     })
 
     it("displays correct text", () => {
@@ -86,6 +95,16 @@ describe("ViewingRoomWorksRoute", () => {
     it("displays a buy button", () => {
       expect(wrapper.find("Button").length).toBe(1)
       expect(wrapper.html()).toContain('href="/artwork/bill-miles-beep-beep')
+    })
+
+    it("tracks clicks", () => {
+      wrapper.find("RouterLink").simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "clickedBuyViewingRoom",
+        context_module: "viewingRoomArtworkRail",
+        destination_path: "/artwork/bill-miles-beep-beep",
+        subject: "Rail",
+      })
     })
   })
 })

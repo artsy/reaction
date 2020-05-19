@@ -1,6 +1,7 @@
 import React from "react"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { createFragmentContainer, graphql } from "react-relay"
+import { FeatureMetaFragmentContainer as FeatureMeta } from "./Components/FeatureMeta"
 import { FeatureHeaderFragmentContainer as FeatureHeader } from "./Components/FeatureHeader"
 import { FeatureApp_feature } from "__generated__/FeatureApp_feature.graphql"
 import { Box, Join, Sans, Spacer } from "@artsy/palette"
@@ -14,6 +15,7 @@ interface FeatureAppProps {
 const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
   return (
     <>
+      <FeatureMeta feature={feature} />
       <Box height="100vh">
         <FeatureHeader feature={feature} />
       </Box>
@@ -56,6 +58,7 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
 export default createFragmentContainer(FeatureApp, {
   feature: graphql`
     fragment FeatureApp_feature on Feature {
+      ...FeatureMeta_feature
       ...FeatureHeader_feature
       description(format: HTML)
       callout(format: HTML)

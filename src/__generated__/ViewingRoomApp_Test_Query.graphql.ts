@@ -13,7 +13,7 @@ export type ViewingRoomApp_Test_QueryResponse = {
 export type ViewingRoomApp_Test_QueryRawResponse = {
     readonly viewingRoom: ({
         readonly title: string;
-        readonly heroImageURL: string;
+        readonly heroImageURL: string | null;
         readonly partner: ({
             readonly name: string | null;
             readonly id: string | null;
