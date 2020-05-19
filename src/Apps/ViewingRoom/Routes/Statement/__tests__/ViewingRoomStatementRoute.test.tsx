@@ -1,4 +1,5 @@
 import React from "react"
+import { useTracking } from "Artsy/Analytics/useTracking"
 import { MockBoot, renderRelayTree } from "DevTools"
 import { graphql } from "react-relay"
 import { ViewingRoomStatementRoute_Test_QueryRawResponse } from "__generated__/ViewingRoomStatementRoute_Test_Query.graphql"
@@ -7,6 +8,7 @@ import { ViewingRoomStatementRouteFragmentContainer } from "../ViewingRoomStatem
 import { ViewingRoomStatmentRouteFixture } from "Apps/ViewingRoom/__tests__/Fixtures/ViewingRoomStatementRouteFixture"
 
 jest.unmock("react-relay")
+jest.mock("Artsy/Analytics/useTracking")
 jest.mock("Artsy/Router/useRouter", () => ({
   useRouter: () => ({
     match: {
@@ -67,10 +69,21 @@ describe("ViewingRoomStatementRoute", () => {
   })
 
   describe("ViewingRoomWorks", () => {
+    const trackEvent = jest.fn()
     let wrapper
 
     beforeEach(async () => {
       wrapper = (await getWrapper()).find("ViewingRoomWorks")
+      const mockTracking = useTracking as jest.Mock
+      mockTracking.mockImplementation(() => {
+        return {
+          trackEvent,
+        }
+      })
+    })
+
+    afterEach(() => {
+      jest.clearAllMocks()
     })
 
     it("renders artworks", () => {
@@ -106,6 +119,33 @@ describe("ViewingRoomStatementRoute", () => {
         window.scrollTo = spy
         link.simulate("click")
         expect(spy).toHaveBeenCalled()
+      })
+    })
+
+    it("tracks artwork image clicks", () => {
+      wrapper
+        .find("ArtworkItem")
+        .first()
+        .find("RouterLink")
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "clickedArtworkGroup",
+        context_module: "viewingRoomArtworkRail",
+        destination_path: "/viewing-room/subscription-demo-gg-guy-yanai/works",
+        subject: "ArtworkThumbnail",
+      })
+    })
+
+    it("tracks view works button clicks", () => {
+      wrapper
+        .find("[data-test='viewingRoomWorksButton']")
+        .first()
+        .simulate("click")
+      expect(trackEvent).toHaveBeenCalledWith({
+        action_type: "clickedArtworkGroup",
+        context_module: "viewingRoomArtworkRail",
+        destination_path: "/viewing-room/subscription-demo-gg-guy-yanai/works",
+        subject: "View works",
       })
     })
   })
