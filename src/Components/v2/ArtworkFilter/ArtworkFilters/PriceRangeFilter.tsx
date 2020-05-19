@@ -15,6 +15,8 @@ export const PriceRangeFilter: FC = () => {
           onSelect={selectedOption => {
             filterContext.setFilter("priceRange", selectedOption)
           }}
+          disabled={filterContext.filters.atAuction ?? false}
+          //   disabledText="Disabled for biddable works"
         >
           {priceRanges.map((range, index) => (
             <Radio
@@ -58,5 +60,3 @@ const priceRanges = [
     value: "0-1000",
   },
 ]
-//   disabledText="Disabled for biddable works"
-//   disabled={Boolean(filterContext.filters.atAuction)}
