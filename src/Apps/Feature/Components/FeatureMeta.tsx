@@ -9,13 +9,8 @@ interface FeatureMetaProps {
 }
 
 const FeatureMeta: React.FC<FeatureMetaProps> = ({
-  feature: { image, metaDescription, name, slug },
+  feature: { image, metaDescription: description, name, slug },
 }) => {
-  const description =
-    getENV("CURRENT_PATH") === "/feature/collect-with-artsy"
-      ? `Find everything you ever wanted to know about collecting art but were too afraid to ask, including tips on collecting and stories from art collectors.`
-      : metaDescription
-
   const href = `${getENV("APP_URL")}/feature/${slug}`
   const imageURL = image?.url
 
