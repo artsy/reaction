@@ -35,10 +35,10 @@ export const PriceRangeFilter: React.FC = () => {
 const priceRanges = [
   {
     name: "$50,000+",
-    value: "50000-*",
+    value: "50000-*", // is that right?
   },
   // how do i get 40k - 50k?!
-  /// dollars or pounds?
+  /// dollars is ok?
   {
     name: "$20,000 - $40,000",
     value: "20000-40000",
