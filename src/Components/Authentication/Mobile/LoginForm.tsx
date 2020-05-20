@@ -49,6 +49,7 @@ const OtpInput: React.FC<ConditionalOtpInputProps> = props => {
       onBlur={handleBlur}
       setTouched={setTouched}
       touchedOnChange={false}
+      autoFocus
     />
   )
 }
@@ -160,6 +161,7 @@ class MobileLoginFormWithSystemContext extends Component<
             onBlur={handleBlur}
             setTouched={setTouched}
             touchedOnChange={false}
+            autoFocus
           />
           <Flex alignItems="center" justifyContent="flex-end">
             <ForgotPassword onClick={() => this.getForgotUrl()} />
