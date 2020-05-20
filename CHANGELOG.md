@@ -1,3 +1,22 @@
+# v26.41.0 (Wed May 20 2020)
+
+#### 🚀  Enhancement
+
+- Autofocus 2FA authentication code fields [#3565](https://github.com/artsy/reaction/pull/3565) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update snapshots [#3547](https://github.com/artsy/reaction/pull/3547) ([@dblandin](https://github.com/dblandin))
+- Update dep @artsy/palette from 9.0.1 to v9.4.0 [#3547](https://github.com/artsy/reaction/pull/3547) ([@renovate-bot](https://github.com/renovate-bot) [@dblandin](https://github.com/dblandin) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.40.18 (Wed May 20 2020)
 
 #### 🐛  Bug Fix
