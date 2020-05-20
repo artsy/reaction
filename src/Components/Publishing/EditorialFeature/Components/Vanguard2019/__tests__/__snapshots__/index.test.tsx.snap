@@ -37,6 +37,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
           }
           fontSize="22px"
+          style={Object {}}
         >
           The Artsy Vanguard 2019
         </div>
@@ -61,6 +62,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bxivhb FrameText__MobileFrameText-sc-8olftt-4 kiVmuH sc-htpNat hrIkAG"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         The Artsy
       </div>
@@ -68,6 +70,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bxivhb FrameText__MobileFrameText-sc-8olftt-4 fRDfOO sc-htpNat hrIkAG"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         Vanguard
       </div>
@@ -75,6 +78,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         className="sc-bxivhb FrameText__MobileFrameText-sc-8olftt-4 fRDfOO sc-htpNat hrIkAG"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         2019
       </div>
@@ -95,6 +99,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           "100px",
         ]
       }
+      style={Object {}}
     >
       Vanguard
     </div>
@@ -109,6 +114,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           "100px",
         ]
       }
+      style={Object {}}
     >
       2019
     </div>
@@ -166,6 +172,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "100px",
             ]
           }
+          style={Object {}}
         >
           The Artsy
         </div>
@@ -188,6 +195,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               className="sc-ifAKCX Introduction__Title-acx5fk-2 Introduction__LargeTitle-acx5fk-3 dwpeyH sc-htpNat dSCwbf"
               fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
               fontSize="60px"
+              style={Object {}}
             >
               The Artists To Know Right Now
             </h1>
@@ -207,6 +215,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                   "60px",
                 ]
               }
+              style={Object {}}
             >
               The Artists To Know Right Now
             </h1>
@@ -224,6 +233,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               <div
                 className="Author__StyledAuthor-sbiape-0 jUzYTE"
@@ -244,6 +254,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                   }
                 }
                 fontSize="14px"
+                style={Object {}}
               >
                 Sep 16, 2019 2:42pm
               </div>
@@ -343,6 +354,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Videos by Alex John Beck
             </div>
@@ -355,6 +367,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Video Editing by Nate DeYoung
             </div>
@@ -367,6 +380,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Interaction Design by Wax Studios
             </div>
@@ -405,6 +419,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           "100px",
         ]
       }
+      style={Object {}}
     >
       Table of Contents
     </div>
@@ -439,6 +454,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "60px",
             ]
           }
+          style={Object {}}
         >
           I
         </div>
@@ -453,6 +469,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "80px",
             ]
           }
+          style={Object {}}
         >
           Emerging
         </div>
@@ -489,6 +506,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "60px",
             ]
           }
+          style={Object {}}
         >
           I
           I
@@ -504,6 +522,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "80px",
             ]
           }
+          style={Object {}}
         >
           Newly Established
         </div>
@@ -540,6 +559,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "60px",
             ]
           }
+          style={Object {}}
         >
           I
           I
@@ -556,6 +576,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "80px",
             ]
           }
+          style={Object {}}
         >
           Getting Their Due
         </div>
@@ -586,6 +607,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "100px",
             ]
           }
+          style={Object {}}
         >
           Emerging
         </h2>
@@ -644,6 +666,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 "60px",
               ]
             }
+            style={Object {}}
           >
             The Breakout Artists
           </h3>
@@ -764,6 +787,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Victoria Sin
               </h3>
@@ -783,6 +807,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Victoria Sin
               </h3>
@@ -807,6 +832,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1991, Toronto. Lives and works in London.
               </div>
@@ -1083,6 +1109,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -1146,6 +1173,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -1189,6 +1217,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Monira Al Qadiri
               </h3>
@@ -1208,6 +1237,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Monira Al Qadiri
               </h3>
@@ -1232,6 +1262,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1983, Dakar, Senegal. Lives and works in Beirut and Berlin.
               </div>
@@ -1508,6 +1539,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -1571,6 +1603,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -1614,6 +1647,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Diedrick Brackens 
               </h3>
@@ -1633,6 +1667,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Diedrick Brackens 
               </h3>
@@ -1657,6 +1692,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1989, Mexia, Texas. Lives and works in Los Angeles.
               </div>
@@ -1933,6 +1969,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -1996,6 +2033,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -2039,6 +2077,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Dineo Seshee Bopape
               </h3>
@@ -2058,6 +2097,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Dineo Seshee Bopape
               </h3>
@@ -2082,6 +2122,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1981, Polokwane, South Africa. Lives and works in Johannesburg.
               </div>
@@ -2393,6 +2434,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -2436,6 +2478,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Martine Gutierrez
               </h3>
@@ -2455,6 +2498,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Martine Gutierrez
               </h3>
@@ -2479,6 +2523,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1989, Berkeley, California. Lives and works in New York.
               </div>
@@ -2755,6 +2800,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -2818,6 +2864,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -2861,6 +2908,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Genesis Belanger
               </h3>
@@ -2880,6 +2928,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Genesis Belanger
               </h3>
@@ -2904,6 +2953,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1978, United States. Lives and works in New York.
               </div>
@@ -3215,6 +3265,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -3258,6 +3309,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Tao Hui
               </h3>
@@ -3277,6 +3329,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Tao Hui
               </h3>
@@ -3301,6 +3354,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1987, Chongqing, China. Lives and works in Beijing.
               </div>
@@ -3577,6 +3631,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -3640,6 +3695,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -3683,6 +3739,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Jordan Nassar
               </h3>
@@ -3702,6 +3759,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Jordan Nassar
               </h3>
@@ -3726,6 +3784,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1985, New York. Lives and works in New York.
               </div>
@@ -4002,6 +4061,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -4065,6 +4125,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -4108,6 +4169,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Geng Xue
               </h3>
@@ -4127,6 +4189,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Geng Xue
               </h3>
@@ -4151,6 +4214,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1983, Baishan, China. Lives and works in Beijing.
               </div>
@@ -4427,6 +4491,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -4490,6 +4555,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -4533,6 +4599,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Meriem Bennani
               </h3>
@@ -4552,6 +4619,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Meriem Bennani
               </h3>
@@ -4576,6 +4644,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1988, Rabat, Morocco. Lives and works in New York.
               </div>
@@ -4887,6 +4956,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -4930,6 +5000,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Manuel Solano 
               </h3>
@@ -4949,6 +5020,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Manuel Solano 
               </h3>
@@ -4973,6 +5045,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1987, Mexico City. Lives and works in Berlin.
               </div>
@@ -5284,6 +5357,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -5327,6 +5401,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Lauren Halsey
               </h3>
@@ -5346,6 +5421,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Lauren Halsey
               </h3>
@@ -5370,6 +5446,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1987, Los Angeles. Lives and works in Los Angeles.
               </div>
@@ -5646,6 +5723,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -5709,6 +5787,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -5752,6 +5831,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Derek Fordjour
               </h3>
@@ -5771,6 +5851,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Derek Fordjour
               </h3>
@@ -5795,6 +5876,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1974, Memphis, Tennessee. Lives and works in New York.
               </div>
@@ -6071,6 +6153,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -6134,6 +6217,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -6177,6 +6261,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Alia Farid
               </h3>
@@ -6196,6 +6281,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Alia Farid
               </h3>
@@ -6220,6 +6306,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1985, Kuwait City, Kuwait. Lives and works in Kuwait City and San Juan.
               </div>
@@ -6531,6 +6618,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -6574,6 +6662,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Gala Porras-Kim
               </h3>
@@ -6593,6 +6682,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Gala Porras-Kim
               </h3>
@@ -6617,6 +6707,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1984, Bogotá, Colombia. Lives and works in Los Angeles.
               </div>
@@ -6928,6 +7019,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -6971,6 +7063,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Jonathan Lyndon Chase
               </h3>
@@ -6990,6 +7083,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Jonathan Lyndon Chase
               </h3>
@@ -7014,6 +7108,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1989, Philadelphia. Lives and works in Philadelphia.
               </div>
@@ -7290,6 +7385,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -7353,6 +7449,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -7396,6 +7493,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Elle Pérez 
               </h3>
@@ -7415,6 +7513,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Elle Pérez 
               </h3>
@@ -7439,6 +7538,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1989, New York. Lives and works in New York.
               </div>
@@ -7750,6 +7850,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -7793,6 +7894,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Suki Seokyeong Kang 
               </h3>
@@ -7812,6 +7914,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Suki Seokyeong Kang 
               </h3>
@@ -7836,6 +7939,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1977, Seoul. Lives and works in Seoul.
               </div>
@@ -8112,6 +8216,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -8175,6 +8280,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -8218,6 +8324,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Evelyn Taocheng Wang
               </h3>
@@ -8237,6 +8344,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Evelyn Taocheng Wang
               </h3>
@@ -8261,6 +8369,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1981, Chengdu, China. Lives and works in Amsterdam.
               </div>
@@ -8572,6 +8681,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -8615,6 +8725,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Jill Mulleady
               </h3>
@@ -8634,6 +8745,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Jill Mulleady
               </h3>
@@ -8658,6 +8770,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1980, Montevideo, Uruguay. Lives and works in Los Angeles.
               </div>
@@ -8969,6 +9082,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -9005,6 +9119,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "100px",
             ]
           }
+          style={Object {}}
         >
           Newly Established
         </h2>
@@ -9063,6 +9178,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 "60px",
               ]
             }
+            style={Object {}}
           >
             The New Leaders of Contemporary Art
           </h3>
@@ -9183,6 +9299,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Michael Armitage
               </h3>
@@ -9202,6 +9319,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Michael Armitage
               </h3>
@@ -9226,6 +9344,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1984, Nairobi, Kenya. Lives and works in Nairobi and London.
               </div>
@@ -9502,6 +9621,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -9565,6 +9685,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -9608,6 +9729,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Ebony G. Patterson
               </h3>
@@ -9627,6 +9749,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Ebony G. Patterson
               </h3>
@@ -9651,6 +9774,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1981, Kingston, Jamaica. Lives and works in Kingston and Chicago.
               </div>
@@ -9927,6 +10051,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -9990,6 +10115,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -10033,6 +10159,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Lawrence Abu Hamdan
               </h3>
@@ -10052,6 +10179,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Lawrence Abu Hamdan
               </h3>
@@ -10076,6 +10204,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1985, Amman, Jordan. Lives and works in Beirut.
               </div>
@@ -10387,6 +10516,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -10430,6 +10560,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Korakrit Arunanondchai 
               </h3>
@@ -10449,6 +10580,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Korakrit Arunanondchai 
               </h3>
@@ -10473,6 +10605,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1986, Bangkok. Lives and works in Bangkok and New York.
               </div>
@@ -10784,6 +10917,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -10827,6 +10961,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Bárbara Wagner & Benjamin de Burca 
               </h3>
@@ -10846,6 +10981,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Bárbara Wagner & Benjamin de Burca 
               </h3>
@@ -10870,6 +11006,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1980, Brasília, Brazil / B. 1975, Munich, Germany. Based in Recife, Brazil.
               </div>
@@ -11146,6 +11283,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -11209,6 +11347,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -11252,6 +11391,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Charlotte Prodger 
               </h3>
@@ -11271,6 +11411,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Charlotte Prodger 
               </h3>
@@ -11295,6 +11436,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1974, Bournemouth, England. Lives and works in Glasgow.
               </div>
@@ -11606,6 +11748,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -11649,6 +11792,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Jeffrey Gibson
               </h3>
@@ -11668,6 +11812,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Jeffrey Gibson
               </h3>
@@ -11692,6 +11837,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1972, Colorado Springs, Colorado. Lives and works in New York.
               </div>
@@ -11968,6 +12114,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -12031,6 +12178,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -12074,6 +12222,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Hao Liang
               </h3>
@@ -12093,6 +12242,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Hao Liang
               </h3>
@@ -12117,6 +12267,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1983, Chengdu, China. Lives and works in Beijing.
               </div>
@@ -12428,6 +12579,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -12471,6 +12623,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Jacolby Satterwhite
               </h3>
@@ -12490,6 +12643,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Jacolby Satterwhite
               </h3>
@@ -12514,6 +12668,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1986, Columbia, South Carolina. Lives and works in New York.
               </div>
@@ -12790,6 +12945,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -12853,6 +13009,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -12896,6 +13053,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Melike Kara
               </h3>
@@ -12915,6 +13073,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Melike Kara
               </h3>
@@ -12939,6 +13098,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1985, Bensberg, Germany. Lives and works in Cologne.
               </div>
@@ -13250,6 +13410,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -13293,6 +13454,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Cui Jie
               </h3>
@@ -13312,6 +13474,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Cui Jie
               </h3>
@@ -13336,6 +13499,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1983, Shanghai. Lives and works in Beijing.
               </div>
@@ -13612,6 +13776,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -13675,6 +13840,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -13718,6 +13884,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Firelei Báez 
               </h3>
@@ -13737,6 +13904,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Firelei Báez 
               </h3>
@@ -13761,6 +13929,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1981, Santiago de los Caballeros, Dominican Republic. Lives and works in New York.
               </div>
@@ -14037,6 +14206,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -14100,6 +14270,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -14143,6 +14314,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Forensic Architecture 
               </h3>
@@ -14162,6 +14334,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Forensic Architecture 
               </h3>
@@ -14186,6 +14359,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 Founded 2010, London. Based in London.
               </div>
@@ -14462,6 +14636,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -14525,6 +14700,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -14568,6 +14744,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Tschabalala Self 
               </h3>
@@ -14587,6 +14764,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Tschabalala Self 
               </h3>
@@ -14611,6 +14789,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1990, New York. Lives and works in New York and New Haven, Connecticut.
               </div>
@@ -14922,6 +15101,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -14965,6 +15145,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Harold Ancart
               </h3>
@@ -14984,6 +15165,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Harold Ancart
               </h3>
@@ -15008,6 +15190,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1980, Brussels. Lives and works in New York.
               </div>
@@ -15319,6 +15502,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -15355,6 +15539,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               "100px",
             ]
           }
+          style={Object {}}
         >
           Getting Their Due
         </h2>
@@ -15413,6 +15598,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 "60px",
               ]
             }
+            style={Object {}}
           >
             The Artists Finally Receiving the Acclaim They Deserve
           </h3>
@@ -15533,6 +15719,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Frank Bowling
               </h3>
@@ -15552,6 +15739,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Frank Bowling
               </h3>
@@ -15576,6 +15764,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1934, Bartica, Guyana. Lives and works in London.
               </div>
@@ -15887,6 +16076,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -15930,6 +16120,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Zilia Sánchez
               </h3>
@@ -15949,6 +16140,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Zilia Sánchez
               </h3>
@@ -15973,6 +16165,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1926, Havana, Cuba. Lives and works in Puerto Rico.
               </div>
@@ -16249,6 +16442,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -16312,6 +16506,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -16355,6 +16550,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Fred Eversley 
               </h3>
@@ -16374,6 +16570,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Fred Eversley 
               </h3>
@@ -16398,6 +16595,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1941, New York. Lives and works in New York.
               </div>
@@ -16674,6 +16872,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -16737,6 +16936,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -16780,6 +16980,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Tishan Hsu
               </h3>
@@ -16799,6 +17000,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Tishan Hsu
               </h3>
@@ -16823,6 +17025,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1951, Boston. Lives and works in New York.
               </div>
@@ -17134,6 +17337,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -17177,6 +17381,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Howardena Pindell
               </h3>
@@ -17196,6 +17401,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Howardena Pindell
               </h3>
@@ -17220,6 +17426,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1943, Philadelphia. Lives and works in New York.
               </div>
@@ -17531,6 +17738,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -17574,6 +17782,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Diane Simpson
               </h3>
@@ -17593,6 +17802,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Diane Simpson
               </h3>
@@ -17617,6 +17827,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1935, Joliet, Illinois. Lives and works in Chicago.
               </div>
@@ -17928,6 +18139,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -17971,6 +18183,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Lorraine O’Grady
               </h3>
@@ -17990,6 +18203,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Lorraine O’Grady
               </h3>
@@ -18014,6 +18228,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1934, Boston. Lives and works in New York.
               </div>
@@ -18325,6 +18540,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -18368,6 +18584,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Teresa Burga
               </h3>
@@ -18387,6 +18604,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Teresa Burga
               </h3>
@@ -18411,6 +18629,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1935, Iquitos, Peru. Lives and works in Lima.
               </div>
@@ -18687,6 +18906,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -18750,6 +18970,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -18793,6 +19014,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Siah Armajani
               </h3>
@@ -18812,6 +19034,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Siah Armajani
               </h3>
@@ -18836,6 +19059,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1939, Tehran, Iran. Lives and works in Minneapolis.
               </div>
@@ -19112,6 +19336,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -19175,6 +19400,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -19218,6 +19444,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 McArthur Binion
               </h3>
@@ -19237,6 +19464,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 McArthur Binion
               </h3>
@@ -19261,6 +19489,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1946, Macon, Mississippi. Lives and works in Chicago.
               </div>
@@ -19572,6 +19801,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -19615,6 +19845,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Beatriz González
               </h3>
@@ -19634,6 +19865,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Beatriz González
               </h3>
@@ -19658,6 +19890,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1938, Bucaramanga, Colombia. Lives and works in Bogotá.
               </div>
@@ -19934,6 +20167,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -19997,6 +20231,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -20040,6 +20275,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Simone Fattal
               </h3>
@@ -20059,6 +20295,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Simone Fattal
               </h3>
@@ -20083,6 +20320,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1942, Damascus, Syria. Lives and works in Paris.
               </div>
@@ -20359,6 +20597,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -20422,6 +20661,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -20465,6 +20705,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Vivian Suter
               </h3>
@@ -20484,6 +20725,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Vivian Suter
               </h3>
@@ -20508,6 +20750,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1949, Buenos Aires. Lives and works in Panajachel, Guatemala.
               </div>
@@ -20784,6 +21027,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -20847,6 +21091,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -20890,6 +21135,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Henry Taylor 
               </h3>
@@ -20909,6 +21155,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Henry Taylor 
               </h3>
@@ -20933,6 +21180,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1958, Ventura, California. Lives and works in Los Angeles.
               </div>
@@ -21244,6 +21492,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -21287,6 +21536,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="sc-ifAKCX ArtistWrapper__InvertedSerif-sc-1bsuwlh-0 ArtistWrapper__ArtistTitle-sc-1bsuwlh-2 czHZFM sc-htpNat bMBRul"
                 fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
                 fontSize="60px"
+                style={Object {}}
               >
                 Anna Maria Maiolino
               </h3>
@@ -21306,6 +21556,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "60px",
                   ]
                 }
+                style={Object {}}
               >
                 Anna Maria Maiolino
               </h3>
@@ -21330,6 +21581,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                     "16px",
                   ]
                 }
+                style={Object {}}
               >
                 B. 1942, Scalea, Italy. Lives and works in São Paulo.
               </div>
@@ -21606,6 +21858,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         color="#C2C2C2"
                         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <span
                           className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
@@ -21669,6 +21922,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             }
             fontSize="18px"
             onClick={[Function]}
+            style={Object {}}
           >
             <div
               className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
@@ -21712,6 +21966,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               }
             }
             fontSize="14px"
+            style={Object {}}
           >
             Corrections
           </div>
@@ -21719,6 +21974,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="sc-ifAKCX cFlEyZ sc-htpNat JypbP"
             fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
             fontSize="16px"
+            style={Object {}}
           >
             A previous version of this article referred to Aike gallery as
 Aike-Dellarco; McArthur Binion’s show at the Mississippi Museum of
@@ -21745,6 +22001,7 @@ been updated to reflect these changes.
               }
             }
             fontSize="14px"
+            style={Object {}}
           >
             Clarifications
           </div>
@@ -21752,6 +22009,7 @@ been updated to reflect these changes.
             className="sc-ifAKCX cFlEyZ sc-htpNat JypbP"
             fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
             fontSize="16px"
+            style={Object {}}
           >
             While only Beyoncé was named as the buyer of a Derek Fordjour work at
 Frieze New York, Jay-Z was actually the buyer; in order to fully
@@ -21774,6 +22032,7 @@ has been added to clarify their involvement with the exhibition.
         className="sc-ifAKCX cFlEyZ sc-htpNat JypbP"
         fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
         fontSize="16px"
+        style={Object {}}
       >
         Back to 
         <a

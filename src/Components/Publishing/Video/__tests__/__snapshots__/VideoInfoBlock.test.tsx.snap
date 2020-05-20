@@ -41,6 +41,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
       className="c1 c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
+      style={Object {}}
     >
       The Future of Art
     </div>
@@ -48,6 +49,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
       className="c3"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
+      style={Object {}}
     >
       02:28
     </div>
@@ -56,6 +58,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
     className="c4"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="42px"
+    style={Object {}}
   >
     Trevor Paglan
   </h1>
@@ -103,6 +106,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
       className="c1 c2"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
+      style={Object {}}
     >
       The Future of Art
     </div>
@@ -110,6 +114,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
       className="c3"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="14px"
+      style={Object {}}
     >
       02:28
     </div>
@@ -118,6 +123,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
     className="c4"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="42px"
+    style={Object {}}
   >
     <div>
       Child 

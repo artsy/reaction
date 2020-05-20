@@ -251,6 +251,7 @@ exports[`renders properly 1`] = `
                   "16px",
                 ]
               }
+              style={Object {}}
             >
               <div
                 className="c9"

@@ -317,6 +317,7 @@ exports[`ArticleCard renders an article properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           The Future of Art
         </div>
@@ -331,6 +332,7 @@ exports[`ArticleCard renders an article properly 1`] = `
               "42px",
             ]
           }
+          style={Object {}}
         >
           New York's Next Art District
         </div>
@@ -345,6 +347,7 @@ exports[`ArticleCard renders an article properly 1`] = `
               "22px",
             ]
           }
+          style={Object {}}
         >
           Land exhibitions, make influential contacts, and gain valuable feedback about your work.
         </div>
@@ -362,6 +365,7 @@ exports[`ArticleCard renders an article properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           <div
             className="c8"
@@ -382,6 +386,7 @@ exports[`ArticleCard renders an article properly 1`] = `
               }
             }
             fontSize="14px"
+            style={Object {}}
           >
             May 19, 2017
           </div>
@@ -722,6 +727,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           The Future of Art
         </div>
@@ -736,6 +742,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
               "42px",
             ]
           }
+          style={Object {}}
         >
           <div>
             Child 
@@ -753,6 +760,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
               "22px",
             ]
           }
+          style={Object {}}
         >
           <div>
             Child 
@@ -769,6 +777,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
           }
         }
         fontSize="14px"
+        style={Object {}}
       >
         <div>
           Child 
@@ -823,6 +832,7 @@ exports[`ArticleCard renders an article with children properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           02:28
         </div>
@@ -1161,6 +1171,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           The Future of Art
         </div>
@@ -1175,6 +1186,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
               "42px",
             ]
           }
+          style={Object {}}
         >
           New Study Shows the Gender Pay Gap for Artists Is Not So Simple
         </div>
@@ -1189,6 +1201,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
               "22px",
             ]
           }
+          style={Object {}}
         >
           The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
         </div>
@@ -1205,6 +1218,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           Aug 28, 2017
         </div>
@@ -1257,6 +1271,7 @@ exports[`ArticleCard renders an article with unpublished media properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           02:28
         </div>
