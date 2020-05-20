@@ -49,6 +49,7 @@ const ConditionalOtpInput: React.FC<ConditionalOtpInputProps> = props => {
         onBlur={handleBlur}
         setTouched={setTouched}
         touchedOnChange={false}
+        autoFocus
       />
     )
   )
