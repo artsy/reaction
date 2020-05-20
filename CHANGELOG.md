@@ -1,3 +1,15 @@
+# v26.43.4 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- reset password form can switch to signup form [#3573](https://github.com/artsy/reaction/pull/3573) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.43.3 (Wed May 20 2020)
 
 #### 🐛  Bug Fix
