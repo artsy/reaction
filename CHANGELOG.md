@@ -1,3 +1,20 @@
+# v26.43.5 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3571](https://github.com/artsy/reaction/pull/3571) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.3 to v1.0.4 [#3574](https://github.com/artsy/reaction/pull/3574) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.43.4 (Wed May 20 2020)
 
 #### 🐛  Bug Fix
