@@ -1077,6 +1077,7 @@ exports[`series layout renders a series 1`] = `
             }
           }
           fontSize="22px"
+          style={Object {}}
         >
           <a
             href="/articles"
@@ -1121,6 +1122,7 @@ exports[`series layout renders a series 1`] = `
             "100px",
           ]
         }
+        style={Object {}}
       >
         The Future of Art
       </h1>
@@ -1162,6 +1164,7 @@ exports[`series layout renders a series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   The Future of Art
                 </div>
@@ -1176,6 +1179,7 @@ exports[`series layout renders a series 1`] = `
                       "42px",
                     ]
                   }
+                  style={Object {}}
                 >
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
@@ -1190,6 +1194,7 @@ exports[`series layout renders a series 1`] = `
                       "22px",
                     ]
                   }
+                  style={Object {}}
                 >
                   The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
                 </div>
@@ -1206,6 +1211,7 @@ exports[`series layout renders a series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   Aug 28, 2017
                 </div>
@@ -1258,6 +1264,7 @@ exports[`series layout renders a series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   02:28
                 </div>
@@ -1299,6 +1306,7 @@ exports[`series layout renders a series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   The Future of Art
                 </div>
@@ -1313,6 +1321,7 @@ exports[`series layout renders a series 1`] = `
                       "42px",
                     ]
                   }
+                  style={Object {}}
                 >
                   New York's Next Art District
                 </div>
@@ -1327,6 +1336,7 @@ exports[`series layout renders a series 1`] = `
                       "22px",
                     ]
                   }
+                  style={Object {}}
                 >
                   Land exhibitions, make influential contacts, and gain valuable feedback about your work.
                 </div>
@@ -1344,6 +1354,7 @@ exports[`series layout renders a series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   <div
                     className="c32"
@@ -1364,6 +1375,7 @@ exports[`series layout renders a series 1`] = `
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     May 19, 2017
                   </div>
@@ -1415,6 +1427,7 @@ exports[`series layout renders a series 1`] = `
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
+              style={Object {}}
             >
               About the Series
             </div>
@@ -1422,6 +1435,7 @@ exports[`series layout renders a series 1`] = `
               className="c37"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
+              style={Object {}}
             >
               <div
                 className="c38"
@@ -1568,6 +1582,7 @@ exports[`series layout renders a series 1`] = `
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
+        style={Object {}}
       >
         Advertisement
       </div>
@@ -2749,6 +2764,7 @@ exports[`series layout renders a sponsored series 1`] = `
             }
           }
           fontSize="22px"
+          style={Object {}}
         >
           <a
             href="/articles"
@@ -2793,6 +2809,7 @@ exports[`series layout renders a sponsored series 1`] = `
             "100px",
           ]
         }
+        style={Object {}}
       >
         The Future of Art
       </h1>
@@ -2856,6 +2873,7 @@ exports[`series layout renders a sponsored series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   The Future of Art
                 </div>
@@ -2870,6 +2888,7 @@ exports[`series layout renders a sponsored series 1`] = `
                       "42px",
                     ]
                   }
+                  style={Object {}}
                 >
                   New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                 </div>
@@ -2884,6 +2903,7 @@ exports[`series layout renders a sponsored series 1`] = `
                       "22px",
                     ]
                   }
+                  style={Object {}}
                 >
                   The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
                 </div>
@@ -2900,6 +2920,7 @@ exports[`series layout renders a sponsored series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   Aug 28, 2017
                 </div>
@@ -2952,6 +2973,7 @@ exports[`series layout renders a sponsored series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   02:28
                 </div>
@@ -2993,6 +3015,7 @@ exports[`series layout renders a sponsored series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   The Future of Art
                 </div>
@@ -3007,6 +3030,7 @@ exports[`series layout renders a sponsored series 1`] = `
                       "42px",
                     ]
                   }
+                  style={Object {}}
                 >
                   New York's Next Art District
                 </div>
@@ -3021,6 +3045,7 @@ exports[`series layout renders a sponsored series 1`] = `
                       "22px",
                     ]
                   }
+                  style={Object {}}
                 >
                   Land exhibitions, make influential contacts, and gain valuable feedback about your work.
                 </div>
@@ -3038,6 +3063,7 @@ exports[`series layout renders a sponsored series 1`] = `
                     }
                   }
                   fontSize="14px"
+                  style={Object {}}
                 >
                   <div
                     className="c38"
@@ -3058,6 +3084,7 @@ exports[`series layout renders a sponsored series 1`] = `
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     May 19, 2017
                   </div>
@@ -3109,6 +3136,7 @@ exports[`series layout renders a sponsored series 1`] = `
               color="white"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="28px"
+              style={Object {}}
             >
               About the Series
             </div>
@@ -3116,6 +3144,7 @@ exports[`series layout renders a sponsored series 1`] = `
               className="c43"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="18px"
+              style={Object {}}
             >
               <div
                 className="c44"
@@ -3316,6 +3345,7 @@ exports[`series layout renders a sponsored series 1`] = `
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
+        style={Object {}}
       >
         Advertisement
       </div>

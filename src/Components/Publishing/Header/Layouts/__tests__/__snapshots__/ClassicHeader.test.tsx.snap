@@ -150,6 +150,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
         "44px",
       ]
     }
+    style={Object {}}
   >
     <div>
       Child 
@@ -160,6 +161,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
     className="c2 c3"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="18px"
+    style={Object {}}
   >
     <div>
       Child 
@@ -178,6 +180,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       Joanne Artman Gallery
     </div>
@@ -191,6 +194,7 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       Jun 19, 2015 9:09am
     </div>
@@ -491,6 +495,7 @@ Array [
                 "16px",
               ]
             }
+            style={Object {}}
           >
             <a
               className="c6"
@@ -508,6 +513,7 @@ Array [
                 "22px",
               ]
             }
+            style={Object {}}
           >
             <a
               className="c8"
@@ -539,6 +545,7 @@ Array [
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Explore 
               Auction
@@ -707,6 +714,7 @@ Array [
           "44px",
         ]
       }
+      style={Object {}}
     >
       <h1>
         ICI: Benefit Auction 2019 Curatorial Committee Picks
@@ -725,6 +733,7 @@ Array [
           }
         }
         fontSize="16px"
+        style={Object {}}
       >
         Independent Curators International
       </div>
@@ -738,6 +747,7 @@ Array [
           }
         }
         fontSize="14px"
+        style={Object {}}
       >
         Oct 14, 2019 2:52pm
       </div>
@@ -978,6 +988,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
         "44px",
       ]
     }
+    style={Object {}}
   >
     <h1>
       New Study of Yale Grads Shows the Gender Pay Gap for Artists Is Not So Simple
@@ -987,6 +998,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
     className="c2 c3"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="18px"
+    style={Object {}}
   >
     <div
       dangerouslySetInnerHTML={
@@ -1008,6 +1020,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       Joanne Artman Gallery
     </div>
@@ -1021,6 +1034,7 @@ exports[`Classic Header Snapshots renders properly 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       Jul 28, 2017 4:38pm
     </div>

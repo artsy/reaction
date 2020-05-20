@@ -654,6 +654,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
               "32px",
             ]
           }
+          style={Object {}}
         >
           The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.
         </h1>
@@ -831,6 +832,7 @@ exports[`News Layout renders the news layout on mobile 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               <div
                 className="c17 c18"
@@ -1597,6 +1599,7 @@ exports[`News Layout renders the news layout properly 1`] = `
               "32px",
             ]
           }
+          style={Object {}}
         >
           The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.
         </h1>
@@ -1774,6 +1777,7 @@ exports[`News Layout renders the news layout properly 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               <div
                 className="c17 c18"
@@ -2571,6 +2575,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
               "32px",
             ]
           }
+          style={Object {}}
         >
           The oldest known depiction of a supernova was found in a work of 5,000 year old rock art, scientists believe.
         </h1>
@@ -2748,6 +2753,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               <div
                 className="c17 c18"
@@ -2884,6 +2890,7 @@ exports[`News Layout with display ads renders the news layout properly with disp
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
+        style={Object {}}
       >
         Advertisement
       </div>

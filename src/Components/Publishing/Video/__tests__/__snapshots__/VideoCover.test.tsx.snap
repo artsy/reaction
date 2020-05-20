@@ -221,6 +221,7 @@ exports[`Video Cover matches the snapshot 1`] = `
                 className="c9 c10"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
+                style={Object {}}
               >
                 Future of Art
               </div>
@@ -228,6 +229,7 @@ exports[`Video Cover matches the snapshot 1`] = `
                 className="c11"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
+                style={Object {}}
               >
                 02:28
               </div>
@@ -236,6 +238,7 @@ exports[`Video Cover matches the snapshot 1`] = `
               className="c12"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
+              style={Object {}}
             >
               Trevor Paglan
             </h1>
@@ -256,6 +259,7 @@ exports[`Video Cover matches the snapshot 1`] = `
               "22px",
             ]
           }
+          style={Object {}}
         >
           The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
         </div>
@@ -486,6 +490,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
                 className="c9 c10"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
+                style={Object {}}
               >
                 Future of Art
               </div>
@@ -493,6 +498,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
                 className="c11"
                 fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                 fontSize="14px"
+                style={Object {}}
               >
                 02:28
               </div>
@@ -501,6 +507,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
               className="c12"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="42px"
+              style={Object {}}
             >
               <div>
                 Child 
@@ -524,6 +531,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
               "22px",
             ]
           }
+          style={Object {}}
         >
           <div>
             Child 

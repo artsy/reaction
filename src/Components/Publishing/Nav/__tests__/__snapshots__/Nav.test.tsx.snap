@@ -141,6 +141,7 @@ exports[`Nav renders a Nav 1`] = `
           }
         }
         fontSize="22px"
+        style={Object {}}
       >
         <a
           href="/articles"
@@ -357,6 +358,7 @@ exports[`Nav renders a sponsored nav 1`] = `
           }
         }
         fontSize="22px"
+        style={Object {}}
       >
         <a
           href="/articles"
@@ -519,6 +521,7 @@ exports[`Nav renders a transparent nav 1`] = `
           }
         }
         fontSize="22px"
+        style={Object {}}
       >
         <a
           href="/articles"

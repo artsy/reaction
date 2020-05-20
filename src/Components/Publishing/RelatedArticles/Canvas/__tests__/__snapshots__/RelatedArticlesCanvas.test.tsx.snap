@@ -207,6 +207,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
         "28px",
       ]
     }
+    style={Object {}}
   >
     Further reading in 
     <span
@@ -242,6 +243,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
+          style={Object {}}
         >
           The 15 Top Art Schools in the United States
         </div>
@@ -259,6 +261,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
             }
           }
           fontSize="12px"
+          style={Object {}}
         >
           <div
             className="c11"
@@ -279,6 +282,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               }
             }
             fontSize="12px"
+            style={Object {}}
           >
             May 19, 2017
           </div>
@@ -302,6 +306,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
+          style={Object {}}
         >
           Four Years after Walter De Maria’s Death, His Final Work Is Complete
         </div>
@@ -319,6 +324,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
             }
           }
           fontSize="12px"
+          style={Object {}}
         >
           <div
             className="c11"
@@ -339,6 +345,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               }
             }
             fontSize="12px"
+            style={Object {}}
           >
             May 19, 2017
           </div>
@@ -362,6 +369,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
+          style={Object {}}
         >
           French Art History in a Nutshell
         </div>
@@ -379,6 +387,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
             }
           }
           fontSize="12px"
+          style={Object {}}
         >
           <div
             className="c11"
@@ -399,6 +408,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               }
             }
             fontSize="12px"
+            style={Object {}}
           >
             May 19, 2017
           </div>
@@ -422,6 +432,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
           className="c8"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="16px"
+          style={Object {}}
         >
           Miami Artists and Museums Brace for Hurricane Irma
         </div>
@@ -439,6 +450,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
             }
           }
           fontSize="12px"
+          style={Object {}}
         >
           <div
             className="c11"
@@ -459,6 +471,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
               }
             }
             fontSize="12px"
+            style={Object {}}
           >
             May 19, 2017
           </div>

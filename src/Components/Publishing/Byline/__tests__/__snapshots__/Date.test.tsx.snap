@@ -25,6 +25,7 @@ exports[`Date Snapshots renders a condensed date 1`] = `
       }
     }
     fontSize="12px"
+    style={Object {}}
   >
     May 19, 2017
   </div>
@@ -56,6 +57,7 @@ exports[`Date Snapshots renders a date 1`] = `
       }
     }
     fontSize="14px"
+    style={Object {}}
   >
     May 19, 2017 9:09am
   </div>

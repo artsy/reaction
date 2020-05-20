@@ -116,6 +116,7 @@ exports[`renders properly 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       <span
         className="c4"
@@ -161,6 +162,7 @@ exports[`renders properly 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       <span
         className="c4"
@@ -202,6 +204,7 @@ exports[`renders properly 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       <span
         className="c4"
@@ -243,6 +246,7 @@ exports[`renders properly 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       <span
         className="c4"

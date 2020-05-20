@@ -73,6 +73,7 @@ exports[`renders a series title properly 1`] = `
         "100px",
       ]
     }
+    style={Object {}}
   >
     The Future of Art
   </h1>
@@ -152,6 +153,7 @@ exports[`renders a series with children properly 1`] = `
         "100px",
       ]
     }
+    style={Object {}}
   >
     <div>
       Child 
@@ -262,6 +264,7 @@ exports[`renders a sponsored series title properly 1`] = `
         "100px",
       ]
     }
+    style={Object {}}
   >
     The Future of Art
   </h1>

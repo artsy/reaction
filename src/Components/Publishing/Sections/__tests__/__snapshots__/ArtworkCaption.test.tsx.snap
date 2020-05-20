@@ -38,6 +38,7 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
     color="#666"
     fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
     fontSize="14px"
+    style={Object {}}
   >
     <div
       dangerouslySetInnerHTML={
@@ -121,6 +122,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
         "16px",
       ]
     }
+    style={Object {}}
   >
     <div
       className="c2"
@@ -224,6 +226,7 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
     color="#C2C2C2"
     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     fontSize="14px"
+    style={Object {}}
   >
     <span
       className="c2 c3"

@@ -454,6 +454,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         About the Series
       </div>
@@ -461,6 +462,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
         className="c3"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
+        style={Object {}}
       >
         <div
           className="c4"
@@ -1040,6 +1042,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         About the Series
       </div>
@@ -1047,6 +1050,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
         className="c3"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
+        style={Object {}}
       >
         <div
           className="c4"
@@ -1619,6 +1623,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         <div>
           Child 
@@ -1629,6 +1634,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
         className="c3"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
+        style={Object {}}
       >
         <div
           className="c4"
@@ -2244,6 +2250,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         color="black"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="28px"
+        style={Object {}}
       >
         About the Series
       </div>
@@ -2251,6 +2258,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
         className="c3"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="18px"
+        style={Object {}}
       >
         <div
           className="c4"

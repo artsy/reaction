@@ -188,6 +188,7 @@ exports[`renders an artwork caption properly 1`] = `
               "16px",
             ]
           }
+          style={Object {}}
         >
           <div
             className="c6"

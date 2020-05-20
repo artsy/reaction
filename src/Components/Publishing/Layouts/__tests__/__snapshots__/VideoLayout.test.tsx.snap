@@ -1018,6 +1018,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             }
           }
           fontSize="22px"
+          style={Object {}}
         >
           <a
             href="/articles"
@@ -1244,6 +1245,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                     className="c34 c35"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Art Market
                   </div>
@@ -1251,6 +1253,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                     className="c36"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
+                    style={Object {}}
                   >
                     02:28
                   </div>
@@ -1259,6 +1262,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   className="c37"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
+                  style={Object {}}
                 >
                   Trevor Paglan
                 </h1>
@@ -1279,6 +1283,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                   "22px",
                 ]
               }
+              style={Object {}}
             >
               The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
             </div>
@@ -1312,6 +1317,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
+            style={Object {}}
           >
             Credits
           </div>
@@ -1349,6 +1355,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Jul 28, 2017 4:38pm
                   </div>
@@ -1365,6 +1372,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Share
                   </div>
@@ -1467,6 +1475,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
+            style={Object {}}
           >
             About the Film
           </div>
@@ -1504,6 +1513,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Jul 28, 2017 4:38pm
                   </div>
@@ -1520,6 +1530,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Share
                   </div>
@@ -1630,6 +1641,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
+        style={Object {}}
       >
         Advertisement
       </div>
@@ -3204,6 +3216,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             }
           }
           fontSize="22px"
+          style={Object {}}
         >
           <a
             href="/articles"
@@ -3430,6 +3443,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     className="c34 c35"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
+                    style={Object {}}
                   >
                     <a
                       href="/series/future-of-art"
@@ -3441,6 +3455,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     className="c36"
                     fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                     fontSize="14px"
+                    style={Object {}}
                   >
                     02:28
                   </div>
@@ -3449,6 +3464,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c37"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="42px"
+                  style={Object {}}
                 >
                   Trevor Paglan
                 </h1>
@@ -3469,6 +3485,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   "22px",
                 ]
               }
+              style={Object {}}
             >
               The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
             </div>
@@ -3502,6 +3519,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
+            style={Object {}}
           >
             Credits
           </div>
@@ -3539,6 +3557,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Jul 28, 2017 4:38pm
                   </div>
@@ -3555,6 +3574,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Share
                   </div>
@@ -3657,6 +3677,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             color="white"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="28px"
+            style={Object {}}
           >
             About the Film
           </div>
@@ -3694,6 +3715,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Jul 28, 2017 4:38pm
                   </div>
@@ -3710,6 +3732,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                       }
                     }
                     fontSize="14px"
+                    style={Object {}}
                   >
                     Share
                   </div>
@@ -3818,6 +3841,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               }
             }
             fontSize="14px"
+            style={Object {}}
           >
             More in 
             <a
@@ -3863,6 +3887,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                           }
                         }
                         fontSize="14px"
+                        style={Object {}}
                       >
                         The Future of Art
                       </div>
@@ -3877,6 +3902,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                             "42px",
                           ]
                         }
+                        style={Object {}}
                       >
                         New Study Shows the Gender Pay Gap for Artists Is Not So Simple
                       </div>
@@ -3891,6 +3917,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                             "22px",
                           ]
                         }
+                        style={Object {}}
                       >
                         The elegant spiral of the Nautilus shell, the sinuous pattern of the banks of a river, or the swirling vortex street of clouds - patterns exist.
                       </div>
@@ -3907,6 +3934,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                           }
                         }
                         fontSize="14px"
+                        style={Object {}}
                       >
                         Aug 28, 2017
                       </div>
@@ -3959,6 +3987,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                           }
                         }
                         fontSize="14px"
+                        style={Object {}}
                       >
                         02:28
                       </div>
@@ -4000,6 +4029,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                           }
                         }
                         fontSize="14px"
+                        style={Object {}}
                       >
                         The Future of Art
                       </div>
@@ -4014,6 +4044,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                             "42px",
                           ]
                         }
+                        style={Object {}}
                       >
                         New York's Next Art District
                       </div>
@@ -4028,6 +4059,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                             "22px",
                           ]
                         }
+                        style={Object {}}
                       >
                         Land exhibitions, make influential contacts, and gain valuable feedback about your work.
                       </div>
@@ -4045,6 +4077,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                           }
                         }
                         fontSize="14px"
+                        style={Object {}}
                       >
                         <div
                           className="c76"
@@ -4065,6 +4098,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                             }
                           }
                           fontSize="14px"
+                          style={Object {}}
                         >
                           May 19, 2017
                         </div>
@@ -4117,6 +4151,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   color="white"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="28px"
+                  style={Object {}}
                 >
                   About the Series
                 </div>
@@ -4124,6 +4159,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                   className="c81"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize="18px"
+                  style={Object {}}
                 >
                   <div
                     className="c51 c52"
@@ -4272,6 +4308,7 @@ exports[`Video Layout matches the snapshot 1`] = `
         color="black30"
         fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
         fontSize="10px"
+        style={Object {}}
       >
         Advertisement
       </div>

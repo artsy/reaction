@@ -434,6 +434,7 @@ exports[`Video About matches the snapshot 1`] = `
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
+      style={Object {}}
     >
       Credits
     </div>
@@ -471,6 +472,7 @@ exports[`Video About matches the snapshot 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Jul 28, 2017 4:38pm
             </div>
@@ -487,6 +489,7 @@ exports[`Video About matches the snapshot 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Share
             </div>
@@ -589,6 +592,7 @@ exports[`Video About matches the snapshot 1`] = `
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
+      style={Object {}}
     >
       About the Film
     </div>
@@ -626,6 +630,7 @@ exports[`Video About matches the snapshot 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Jul 28, 2017 4:38pm
             </div>
@@ -642,6 +647,7 @@ exports[`Video About matches the snapshot 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Share
             </div>
@@ -1165,6 +1171,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
+      style={Object {}}
     >
       Credits
     </div>
@@ -1199,6 +1206,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Jul 28, 2017 4:38pm
             </div>
@@ -1215,6 +1223,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Share
             </div>
@@ -1317,6 +1326,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
       color="black"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="28px"
+      style={Object {}}
     >
       About the Film
     </div>
@@ -1351,6 +1361,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Jul 28, 2017 4:38pm
             </div>
@@ -1367,6 +1378,7 @@ exports[`Video About matches the snapshot with editable props 1`] = `
                 }
               }
               fontSize="14px"
+              style={Object {}}
             >
               Share
             </div>
