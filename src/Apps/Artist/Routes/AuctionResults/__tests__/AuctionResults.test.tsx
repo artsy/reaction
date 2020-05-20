@@ -62,6 +62,12 @@ describe("AuctionResults", () => {
       expect(wrapper.html()).toContain("Showing 830 results")
     })
 
+    it("renders either realized price or price not avail", () => {
+      expect(wrapper.html()).toContain(
+        "Price not available" || "Realized price"
+      )
+    })
+
     it("renders proper select options", () => {
       const html = wrapper.find("SelectSmall").html()
       expect(html).toContain("Most recent")
@@ -116,6 +122,17 @@ describe("AuctionResults", () => {
               after: "YXJyYXljb25uZWN0aW9uOjk=",
             })
           )
+        })
+
+        it("re-shows sign up to see price", () => {
+          const pagination = wrapper.find("Pagination")
+          pagination
+            .find("button")
+            .at(2)
+            .simulate("click")
+          wrapper.update()
+          const html = wrapper.html()
+          expect(html).toContain("Sign up to see price")
         })
       })
       describe("filters", () => {
