@@ -1,3 +1,15 @@
+# v26.40.18 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- Fix vertical alignment of CountrySelect ::after element [#3564](https://github.com/artsy/reaction/pull/3564) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.40.16 (Tue May 19 2020)
 
 #### 🐛  Bug Fix
