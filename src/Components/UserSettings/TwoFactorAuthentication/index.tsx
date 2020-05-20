@@ -1,6 +1,6 @@
-import { Box, Flex, Serif, Sans } from "@artsy/palette"
+import { Box, Flex, Sans, Serif } from "@artsy/palette"
 import React from "react"
-import { createRefetchContainer, graphql, RelayRefetchProp } from "react-relay"
+import { RelayRefetchProp, createRefetchContainer, graphql } from "react-relay"
 
 import { SystemContextProps, useSystemContext } from "Artsy"
 import { renderWithLoadProgress } from "Artsy/Relay/renderWithLoadProgress"
@@ -23,12 +23,15 @@ const TwoFactorAuthentication: React.FC<TwoFactorAuthenticationProps> = props =>
 
   return (
     <Box>
-      <Flex flexDirection="row" alignItems="flex-end">
+      <Flex
+        flexDirection={["column", "row"]}
+        alignItems={["flex-start", "flex-end"]}
+      >
         <Serif size="6" color="black100">
           Two-factor Authentication
         </Serif>
         {me.hasSecondFactorEnabled && (
-          <Sans ml={1} size="4" color="green100">
+          <Sans ml={[0, 1]} weight="medium" size="4" color="green100">
             Enabled
           </Sans>
         )}
