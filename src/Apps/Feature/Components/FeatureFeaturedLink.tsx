@@ -1,17 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import {
-  Box,
-  Flex,
-  FlexProps,
-  ResponsiveImage,
-  Sans,
-  Serif,
-  color,
-} from "@artsy/palette"
+import { Flex, FlexProps, ResponsiveImage, Sans, color } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { FeatureFeaturedLink_featuredLink } from "__generated__/FeatureFeaturedLink_featuredLink.graphql"
+import { HTML } from "Components/HTML"
 
 const Figure = styled(RouterLink)`
   display: block;
@@ -43,12 +36,6 @@ const Title = styled(Sans)`
     rgba(255, 255, 255, 0) 0%,
     rgba(0, 0, 0, 0.25) 100%
   );
-`
-
-const Meta = styled(Flex).attrs({ mt: 1 })``
-
-const MetaCell = styled(Flex)`
-  flex-basis: 50%;
 `
 
 export interface FeatureFeaturedLinkProps extends FlexProps {
@@ -83,23 +70,19 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
         </Sans>
       )}
 
-      <Meta flexDirection={size === "large" ? ["column", "row"] : "column"}>
+      <Flex flexDirection={size === "large" ? ["column", "row"] : "column"}>
         {subtitle && (
-          <MetaCell>
-            <Serif size="3">
-              <Box dangerouslySetInnerHTML={{ __html: subtitle }} />
-            </Serif>
-          </MetaCell>
+          <Flex mt={2} flexBasis="50%">
+            <HTML fontFamily="serif" size="3" html={subtitle} />
+          </Flex>
         )}
 
         {description && (
-          <MetaCell>
-            <Serif size="4">
-              <Box dangerouslySetInnerHTML={{ __html: description }} />
-            </Serif>
-          </MetaCell>
+          <Flex mt={1} flexBasis="50%">
+            <HTML fontFamily="serif" size="4" html={description} />
+          </Flex>
         )}
-      </Meta>
+      </Flex>
     </Flex>
   )
 }

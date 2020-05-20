@@ -4,10 +4,11 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureMetaFragmentContainer as FeatureMeta } from "./Components/FeatureMeta"
 import { FeatureHeaderFragmentContainer as FeatureHeader } from "./Components/FeatureHeader"
 import { FeatureApp_feature } from "__generated__/FeatureApp_feature.graphql"
-import { Box, Join, Sans, Separator, Spacer } from "@artsy/palette"
+import { Box, Join, Separator, Spacer } from "@artsy/palette"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { FeatureSetFragmentContainer as FeatureSet } from "./Components/FeatureSet"
 import { Footer } from "Components/Footer"
+import { HTML } from "Components/HTML"
 
 interface FeatureAppProps {
   feature: FeatureApp_feature
@@ -17,9 +18,8 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
   return (
     <>
       <FeatureMeta feature={feature} />
-      <Box height="100vh">
-        <FeatureHeader feature={feature} />
-      </Box>
+
+      <FeatureHeader feature={feature} />
 
       <AppContainer>
         <HorizontalPadding>
@@ -27,19 +27,11 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
             <Box maxWidth={["100%", 460]} mx="auto" my={3} px={3}>
               <Join separator={<Spacer my={3} />}>
                 {feature.description && (
-                  <Sans size="4">
-                    <Box
-                      dangerouslySetInnerHTML={{ __html: feature.description }}
-                    />
-                  </Sans>
+                  <HTML fontFamily="sans" size="4" html={feature.description} />
                 )}
 
                 {feature.callout && (
-                  <Sans size="6">
-                    <Box
-                      dangerouslySetInnerHTML={{ __html: feature.callout }}
-                    />
-                  </Sans>
+                  <HTML fontFamily="sans" size="6" html={feature.callout} />
                 )}
               </Join>
             </Box>
