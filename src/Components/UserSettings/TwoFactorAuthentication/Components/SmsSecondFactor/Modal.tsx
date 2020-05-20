@@ -153,6 +153,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
             placeholder="Add phone"
             pattern="[^a-z]+"
             onChange={form.handleChange}
+            autoFocus
           />
           {form.status && (
             <Sans mt={1} color="red100" size="2">
@@ -193,6 +194,7 @@ export const SmsSecondFactorModal: React.FC<SmsSecondFactorModalProps> = props =
             name="code"
             value={form.values.code}
             onChange={form.handleChange}
+            autoFocus
           />
           {form.status && (
             <Sans mt={1} color="red100" size="2">

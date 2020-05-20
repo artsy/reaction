@@ -128,29 +128,40 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
 
   return (
     <BorderBox p={2} {...props}>
-      <Flex flexDirection="row" justifyContent="space-between" width="100%">
+      <Flex
+        flexDirection={["column", "row"]}
+        justifyContent="space-between"
+        width="100%"
+      >
         <Flex flexDirection="column" width="345px">
           <Sans size="4t" color="black100">
             Use text messages
           </Sans>
-          <Serif size="3t" color="black60">
+          <Serif mt={1} size="3t" color="black60">
             Security codes will be sent to your mobile phone.
           </Serif>
         </Flex>
-        <Flex alignItems="center">
+        <Flex mt={[3, 0]} flexDirection={["column", "row"]} alignItems="center">
           {me.smsSecondFactors.length &&
           me.smsSecondFactors[0].__typename === "SmsSecondFactor" ? (
             <>
               <Sans color="black60" size="3" weight="medium">
                 {me.smsSecondFactors[0].formattedPhoneNumber}
               </Sans>
-              <DisableButton ml={1} />
-              <SetupButton ml={1} variant="secondaryGray">
+              <DisableButton width={["100%", "auto"]} ml={[0, 1]} mt={[1, 0]} />
+              <SetupButton
+                width={["100%", "auto"]}
+                ml={[0, 1]}
+                mt={[1, 0]}
+                variant="secondaryGray"
+              >
                 Edit
               </SetupButton>
             </>
           ) : (
-            <SetupButton ml={1}>Set up</SetupButton>
+            <SetupButton width={["100%", "auto"]} ml={[0, 1]} mt={[1, 0]}>
+              Set up
+            </SetupButton>
           )}
         </Flex>
       </Flex>
