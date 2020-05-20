@@ -8,7 +8,6 @@ import React from "react"
 import { createFragmentContainer } from "react-relay"
 import { graphql } from "relay-runtime"
 import styled from "styled-components"
-import truncate from "trunc-html"
 import { TimeSince } from "./TimeSince"
 import { Truncator } from "Components/Truncator"
 
@@ -20,6 +19,11 @@ const StyledImage = styled(ImageWithFallback)`
 const StyledFlex = styled(Flex)`
   float: left;
 `
+const TimeSinceFlex = styled(Flex)`
+  white-space: nowrap;
+  padding-left: 10px;
+`
+
 const StyledSans = styled(Sans)`
   word-break: break-all;
 `
@@ -28,8 +32,12 @@ const TruncatedTitle = styled(Sans)`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-`
+  max-width: 350px;
 
+  @media (max-width: 570px) {
+    max-width: 270px;
+  }
+`
 const PurpleCircle = styled.div`
   width: 10px;
   height: 10px;
@@ -69,9 +77,6 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
   const conversationText =
     conversation.lastMessage && conversation.lastMessage.replace(/\n/g, " ")
 
-  const truncatedText = truncate(conversationText, 190).html
-  const truncatedName = truncate(partnerName, 10).html
-
   return (
     <Box>
       <Link
@@ -109,19 +114,19 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                       mr="5px"
                       color={conversation.unread ? "black" : "black60"}
                     >
-                      {truncatedName}
+                      {partnerName}
                     </TruncatedTitle>
                     <Sans size="3t" color={"black30"}>
                       {conversation.messagesConnection.totalCount}
                     </Sans>
                   </Flex>
-                  <Flex>
+                  <TimeSinceFlex>
                     <TimeSince
                       time={conversation.lastMessageAt}
-                      size="3"
+                      size="3t"
                       mr="15px"
                     />
-                  </Flex>
+                  </TimeSinceFlex>
                 </Flex>
               </Row>
               <Row>
@@ -130,7 +135,7 @@ const ConversationSnippet: React.FC<ConversationSnippetProps> = props => {
                   color={conversation.unread ? "black" : "black60"}
                   mr="15px"
                 >
-                  <Truncator maxLineCount={3}>{truncatedText}</Truncator>
+                  <Truncator maxLineCount={3}>{conversationText}</Truncator>
                 </StyledSans>
               </Row>
             </Box>
