@@ -133,7 +133,7 @@ export const SmsSecondFactor: React.FC<SmsSecondFactorProps> = props => {
         justifyContent="space-between"
         width="100%"
       >
-        <Flex flexDirection="column" width="345px">
+        <Flex flexDirection="column" maxWidth="345px">
           <Sans size="4t" color="black100">
             Use text messages
           </Sans>
