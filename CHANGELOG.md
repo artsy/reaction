@@ -1,3 +1,19 @@
+# v26.43.1 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- 2FA enrollment responsive fix: switch to maxWidth [#3567](https://github.com/artsy/reaction/pull/3567) ([@dblandin](https://github.com/dblandin))
+
+#### ⚠️  Pushed to `master`
+
+- Bump to trigger npm publish :rocket: ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.42.0 (Wed May 20 2020)
 
 #### 🚀  Enhancement
