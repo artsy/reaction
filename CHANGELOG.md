@@ -1,3 +1,15 @@
+# v26.43.3 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Thread Preview] style tweaks [#3568](https://github.com/artsy/reaction/pull/3568) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.43.1 (Wed May 20 2020)
 
 #### 🐛  Bug Fix
