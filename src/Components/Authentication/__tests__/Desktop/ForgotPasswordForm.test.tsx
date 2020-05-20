@@ -1,6 +1,8 @@
 import { ForgotPasswordForm } from "Components/Authentication/Desktop/ForgotPasswordForm"
 import { mount } from "enzyme"
 import React from "react"
+import { Link } from "@artsy/palette"
+import { Footer } from "Components/Authentication/Footer"
 
 jest.mock("sharify", () => ({ data: { RECAPTCHA_KEY: "recaptcha-api-key" } }))
 
@@ -12,6 +14,7 @@ describe("ForgotPasswordForm", () => {
     props = {
       handleSubmit: jest.fn(),
       values: { email: "foo@bar.com" },
+      handleTypeChange: jest.fn(),
     }
     window.grecaptcha.execute.mockClear()
   })
@@ -77,5 +80,23 @@ describe("ForgotPasswordForm", () => {
       expect((wrapper.state() as any).error).toEqual(null)
       done()
     })
+  })
+
+  it("can switch to login form", () => {
+    getWrapper()
+      .find(Footer)
+      .find(Link)
+      .at(0)
+      .simulate("click")
+    expect(props.handleTypeChange).toBeCalledWith("login")
+  })
+
+  it("can switch to signup form", () => {
+    getWrapper()
+      .find(Footer)
+      .find(Link)
+      .at(1)
+      .simulate("click")
+    expect(props.handleTypeChange).toBeCalledWith("signup")
   })
 })
