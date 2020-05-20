@@ -344,7 +344,7 @@ const renderPricing = (
   const textSize = size === "xs" ? "2" : "3t"
 
   // If user is logged in we show prices. Otherwise we show prices only for the default view - on page 1 and filters not changed.
-  // Ideally we get current page number fomr filter context 'page' property but somehow it is always '1'.
+  // Ideally we get current page number from filter context 'page' property but somehow it is always '1'.
   // So we resort to pagination count. If user has paginated at all, prices will be hidden. even if user comes back to page 1.
   // TODO: Fix filter context so its 'page' property has the current page number, then change this code.
   if (user || (!filtersHaveUpdated && paginationCount == 0)) {
@@ -452,7 +452,7 @@ const renderRealizedPrice = (
   paginationCount
 ) => {
   const justifyContent = size === "xs" ? "flex-start" : "flex-end"
-  // Show prices if user is logged in. Also show prices if user is at the first view - filters and pagination at default.
+  // Show prices if user is logged in. Otherwise, show prices only on default view - filters at default and no pagination has happened.
   if (user || (!filtersHaveUpdated && paginationCount == 0)) {
     return (
       <Flex justifyContent={justifyContent}>
