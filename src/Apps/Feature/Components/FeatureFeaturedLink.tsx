@@ -26,6 +26,7 @@ const Figure = styled(RouterLink)`
     right: 0;
     bottom: 0;
     left: 0;
+    transition: box-shadow 250ms;
   }
 
   &:hover::after {
