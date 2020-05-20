@@ -1,10 +1,16 @@
 import React from "react"
 import styled from "styled-components"
-import { Flex, FlexProps, ResponsiveImage, Sans, color } from "@artsy/palette"
+import {
+  Flex,
+  FlexProps,
+  HTML,
+  ResponsiveImage,
+  Sans,
+  color,
+} from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { RouterLink } from "Artsy/Router/RouterLink"
 import { FeatureFeaturedLink_featuredLink } from "__generated__/FeatureFeaturedLink_featuredLink.graphql"
-import { HTML } from "Components/HTML"
 
 const Figure = styled(RouterLink)`
   display: block;

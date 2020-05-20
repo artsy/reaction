@@ -1,10 +1,17 @@
 import React from "react"
 import styled from "styled-components"
-import { Flex, FlexProps, Join, Sans, Spacer, color } from "@artsy/palette"
+import {
+  Flex,
+  FlexProps,
+  HTML,
+  Join,
+  Sans,
+  Spacer,
+  color,
+} from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureHeader_feature } from "__generated__/FeatureHeader_feature.graphql"
 import { NavBarHeight } from "Components/NavBar"
-import { HTML } from "Components/HTML"
 
 const Container = styled(Flex)`
   width: 100%;

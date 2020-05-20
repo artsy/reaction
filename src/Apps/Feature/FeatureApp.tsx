@@ -4,11 +4,10 @@ import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureMetaFragmentContainer as FeatureMeta } from "./Components/FeatureMeta"
 import { FeatureHeaderFragmentContainer as FeatureHeader } from "./Components/FeatureHeader"
 import { FeatureApp_feature } from "__generated__/FeatureApp_feature.graphql"
-import { Box, Join, Separator, Spacer } from "@artsy/palette"
+import { Box, HTML, Join, Separator, Spacer } from "@artsy/palette"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { FeatureSetFragmentContainer as FeatureSet } from "./Components/FeatureSet"
 import { Footer } from "Components/Footer"
-import { HTML } from "Components/HTML"
 
 interface FeatureAppProps {
   feature: FeatureApp_feature

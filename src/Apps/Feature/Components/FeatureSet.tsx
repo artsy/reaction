@@ -1,11 +1,18 @@
 import React from "react"
 import styled from "styled-components"
-import { Box, BoxProps, CSSGrid, Sans, Spacer, color } from "@artsy/palette"
+import {
+  Box,
+  BoxProps,
+  CSSGrid,
+  HTML,
+  Sans,
+  Spacer,
+  color,
+} from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureFeaturedLinkFragmentContainer as FeatureFeaturedLink } from "./FeatureFeaturedLink"
 import GridItem from "Components/Artwork/GridItem"
 import { Masonry } from "Components/Masonry"
-import { HTML } from "Components/HTML"
 import { FeatureSet_set } from "__generated__/FeatureSet_set.graphql"
 
 const Container = styled(Box)`
