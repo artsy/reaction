@@ -1,3 +1,20 @@
+# v26.42.0 (Wed May 20 2020)
+
+#### 🚀  Enhancement
+
+- Add responsive styles to 2FA Enrollment UI [#3566](https://github.com/artsy/reaction/pull/3566) ([@dblandin](https://github.com/dblandin))
+
+#### ⚠️  Pushed to `master`
+
+- empty commit to trigger build ([@ds300](https://github.com/ds300))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
 # v26.41.0 (Wed May 20 2020)
 
 #### 🚀  Enhancement
