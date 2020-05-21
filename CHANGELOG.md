@@ -1,3 +1,15 @@
+# v26.46.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Minor fixes for legacy feature pages [#3582](https://github.com/artsy/reaction/pull/3582) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
 # v26.45.1 (Thu May 21 2020)
 
 #### 🐛  Bug Fix
