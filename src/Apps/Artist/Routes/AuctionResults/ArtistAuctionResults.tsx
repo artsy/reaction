@@ -51,7 +51,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
     allowEmptyCreatedDates,
   } = filterContext.filters
 
-  // Count number of times user paginated.
+  // Detect whether user has paginated at all.
   const [paginated, togglePaginated] = useState(false)
 
   const loadNext = () => {
