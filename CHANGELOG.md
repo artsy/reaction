@@ -1,3 +1,15 @@
+# v26.45.1 (Thu May 21 2020)
+
+#### 🐛  Bug Fix
+
+- [Viewing Room] QA [#3579](https://github.com/artsy/reaction/pull/3579) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v26.45.0 (Thu May 21 2020)
 
 #### 🚀  Enhancement
