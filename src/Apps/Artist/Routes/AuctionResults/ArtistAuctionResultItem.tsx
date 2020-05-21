@@ -26,9 +26,6 @@ import {
   ImageWithFallback,
   renderFallbackImage,
 } from "./Components/ImageWithFallback"
-import { useAuctionResultsFilterContext } from "./AuctionResultsFilterContext"
-import { isEqual } from "lodash"
-import { auctionResultsFilterResetState } from "./AuctionResultsFilterContext"
 
 export interface Props extends SystemContextProps {
   expanded?: boolean
@@ -36,7 +33,7 @@ export interface Props extends SystemContextProps {
   index: number
   mediator?: Mediator
   lastChild: boolean
-  filtersHaveUpdated: boolean
+  filtersAtDefault: boolean
   paginated: boolean
 }
 
@@ -75,13 +72,6 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
     })
   }
 
-  // Is current filter state different from the default (reset) state?
-  const filterContext = useAuctionResultsFilterContext()
-  const filtersHaveUpdated = !isEqual(
-    filterContext.filters,
-    auctionResultsFilterResetState
-  )
-
   return (
     <>
       <Media at="xs">
@@ -92,7 +82,6 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
               expanded={expanded}
               mediator={mediator}
               user={user}
-              filtersHaveUpdated={filtersHaveUpdated}
             />
           </Row>
           <Box>
@@ -100,7 +89,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
               { ...props, expanded },
               user,
               mediator,
-              filtersHaveUpdated
+              props.filtersAtDefault
             )}
           </Box>
         </FullWidthBorderBox>
@@ -115,7 +104,6 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
                 expanded={expanded}
                 mediator={mediator}
                 user={user}
-                filtersHaveUpdated={filtersHaveUpdated}
               />
             </Row>
           </Box>
@@ -124,7 +112,7 @@ export const ArtistAuctionResultItem: SFC<Props> = props => {
               { ...props, expanded },
               user,
               mediator,
-              filtersHaveUpdated
+              props.filtersAtDefault
             )}
           </Box>
         </FullWidthBorderBox>
@@ -208,7 +196,7 @@ const LargeAuctionItem: SFC<Props> = props => {
               props.user,
               props.mediator,
               "lg",
-              props.filtersHaveUpdated,
+              props.filtersAtDefault,
               props.paginated
             )}
           </Flex>
@@ -253,7 +241,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
           props.user,
           props.mediator,
           "xs",
-          props.filtersHaveUpdated,
+          props.filtersAtDefault,
           props.paginated
         )}
         <Sans size="2" weight="medium" color="black60">
@@ -338,7 +326,7 @@ const renderPricing = (
   user,
   mediator,
   size,
-  filtersHaveUpdated,
+  filtersAtDefault,
   paginated
 ) => {
   const textSize = size === "xs" ? "2" : "3t"
@@ -347,7 +335,7 @@ const renderPricing = (
   // Ideally we get current page number from filter context 'page' property but somehow it is always '1'.
   // So we resort to pagination detection. If user has paginated at all, prices will be hidden. even if user comes back to page 1.
   // TODO: Fix filter context so its 'page' property has the current page number, then change this code.
-  if (user || (!filtersHaveUpdated && !paginated)) {
+  if (user || (filtersAtDefault && !paginated)) {
     const textAlign = size === "xs" ? "left" : "right"
     const dateOfSale = DateTime.fromISO(saleDate)
     const now = DateTime.local()
@@ -448,12 +436,12 @@ const renderRealizedPrice = (
   user,
   mediator,
   size,
-  filtersHaveUpdated,
+  filtersAtDefault,
   paginated
 ) => {
   const justifyContent = size === "xs" ? "flex-start" : "flex-end"
   // Show prices if user is logged in. Otherwise, show prices only on default view - filters at default and no pagination has happened.
-  if (user || (!filtersHaveUpdated && !paginated)) {
+  if (user || (filtersAtDefault && !paginated)) {
     return (
       <Flex justifyContent={justifyContent}>
         {estimatedPrice && (
@@ -487,7 +475,7 @@ const renderRealizedPrice = (
   }
 }
 
-const renderLargeCollapse = (props, user, mediator, filtersHaveUpdated) => {
+const renderLargeCollapse = (props, user, mediator, filtersAtDefault) => {
   const {
     expanded,
     auctionResult: {
@@ -563,7 +551,7 @@ const renderLargeCollapse = (props, user, mediator, filtersHaveUpdated) => {
               user,
               mediator,
               "lg",
-              filtersHaveUpdated,
+              filtersAtDefault,
               props.paginated
             )}
           </Col>
@@ -588,7 +576,7 @@ const renderLargeCollapse = (props, user, mediator, filtersHaveUpdated) => {
   )
 }
 
-const renderSmallCollapse = (props, user, mediator, filtersHaveUpdated) => {
+const renderSmallCollapse = (props, user, mediator, filtersAtDefault) => {
   const {
     expanded,
     auctionResult: {
@@ -650,7 +638,7 @@ const renderSmallCollapse = (props, user, mediator, filtersHaveUpdated) => {
               user,
               mediator,
               "xs",
-              filtersHaveUpdated,
+              filtersAtDefault,
               props.paginated
             )}
           </Col>

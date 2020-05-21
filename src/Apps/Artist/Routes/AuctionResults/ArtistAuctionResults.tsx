@@ -24,6 +24,7 @@ import { AuctionFilterMobileActionSheet } from "./Components/AuctionFilterMobile
 import { AuctionFilters } from "./Components/AuctionFilters"
 import { AuctionResultHeaderFragmentContainer as AuctionResultHeader } from "./Components/AuctionResultHeader"
 import { AuctionResultsControls } from "./Components/AuctionResultsControls"
+import { auctionResultsFilterResetState } from "./AuctionResultsFilterContext"
 
 const logger = createLogger("ArtistAuctionResults.tsx")
 
@@ -95,6 +96,12 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
   const [showMobileActionSheet, toggleMobileActionSheet] = useState(false)
   const tracking = useTracking()
 
+  // Is current filter state different from the default (reset) state?
+  const filtersAtDefault = isEqual(
+    filterContext.filters,
+    auctionResultsFilterResetState
+  )
+
   const previousFilters = usePrevious(filterContext.filters)
 
   // TODO: move this and artwork copy to util?
@@ -158,7 +165,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
               index={index}
               auctionResult={node}
               lastChild={index === auctionResultsLength - 1}
-              filtersHaveUpdated={false}
+              filtersAtDefault={filtersAtDefault}
               paginated={paginated}
             />
           </React.Fragment>
