@@ -1,3 +1,15 @@
+# v26.47.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- add unstable_trackIn to titles in VR, feature and featured Link [#3583](https://github.com/artsy/reaction/pull/3583) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
 # v26.46.0 (Thu May 21 2020)
 
 #### 🚀  Enhancement
