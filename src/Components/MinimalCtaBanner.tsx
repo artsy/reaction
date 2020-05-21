@@ -58,7 +58,12 @@ export class MinimalCtaBanner extends React.Component<
               </Sans>
             </a>
             <IconContainer onClick={this.dismissCta.bind(this) as any}>
-              <Icon name="close" color={this.props.textColor} fontSize="16px" />
+              <Icon
+                name="close"
+                color={this.props.textColor}
+                fontSize="16px"
+                style={{ cursor: "pointer" }}
+              />
             </IconContainer>
           </Banner>
         </BannerContainer>
