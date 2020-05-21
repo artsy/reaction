@@ -1,3 +1,15 @@
+# v26.47.1 (Thu May 21 2020)
+
+#### 🐛  Bug Fix
+
+- Convert price filter to radio [FX-1944] [#3558](https://github.com/artsy/reaction/pull/3558) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v26.47.0 (Thu May 21 2020)
 
 #### 🚀  Enhancement
