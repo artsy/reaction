@@ -61,7 +61,7 @@ export const FeatureHeader: React.FC<FeatureHeaderProps> = ({
 
       <Meta p={4} flexBasis={image ? "50%" : "100%"}>
         <Join separator={<Spacer my={1} />}>
-          <Sans size="10" element="h1" textAlign="center">
+          <Sans size="10" element="h1" textAlign="center" unstable_trackIn>
             {name}
           </Sans>
 

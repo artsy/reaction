@@ -79,7 +79,7 @@ const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
         width="50%"
         style={{ position: "relative" }}
       >
-        <Sans size="10" element="h1">
+        <Sans size="10" element="h1" unstable_trackIn>
           {title}
         </Sans>
 
