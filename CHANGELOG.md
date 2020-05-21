@@ -1,3 +1,25 @@
+# v26.44.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 9.4.0 to v9.5.0 [#3575](https://github.com/artsy/reaction/pull/3575) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### 🐛  Bug Fix
+
+- Feature landing page Q/A [#3570](https://github.com/artsy/reaction/pull/3570) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update BorderBoxProps import [#3577](https://github.com/artsy/reaction/pull/3577) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.43.5 (Wed May 20 2020)
 
 #### 🐛  Bug Fix
