@@ -17,3 +17,22 @@ storiesOf("Apps/Feature", module)
       <MockRouter routes={FeatureRoutes} initialRoute="/feature/features" />
     )
   })
+  .add(
+    "App (what-you-should-know-a-survey-course-on-modern-and-contemporary-art)",
+    () => {
+      return (
+        <MockRouter
+          routes={FeatureRoutes}
+          initialRoute="/feature/what-you-should-know-a-survey-course-on-modern-and-contemporary-art"
+        />
+      )
+    }
+  )
+  .add("App (in-the-studio-1717-troutman-street)", () => {
+    return (
+      <MockRouter
+        routes={FeatureRoutes}
+        initialRoute="/feature/in-the-studio-1717-troutman-street"
+      />
+    )
+  })

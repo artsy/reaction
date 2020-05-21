@@ -24,8 +24,19 @@ export interface FeatureSetProps extends Omit<BoxProps, "color"> {
   set: FeatureSet_set
 }
 
+const SUPPORTED_ITEM_TYPES = ["FeaturedLink", "Artwork"]
+
 export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
   const count = set.orderedItems.edges.length
+
+  if (
+    // Nothing to render: it's possible to have a completely empty yet valid set
+    (!set.name && !set.description && count === 0) ||
+    // Or the set isn't a supported type (Sale, etc.)
+    !SUPPORTED_ITEM_TYPES.includes(set.itemType)
+  ) {
+    return null
+  }
 
   return (
     <Container {...rest}>
@@ -51,6 +62,11 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
       )}
 
       {(() => {
+        // Set is being utilized for layout text instead of rendering items
+        if (count === 0) {
+          return <Spacer my={4} />
+        }
+
         switch (set.itemType) {
           case "FeaturedLink":
             return (
