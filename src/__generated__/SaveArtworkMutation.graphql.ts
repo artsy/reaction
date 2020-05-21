@@ -3,8 +3,8 @@
 import { ConcreteRequest } from "relay-runtime";
 export type SaveArtworkInput = {
     readonly artworkID?: string | null;
-    readonly remove?: boolean | null;
     readonly clientMutationId?: string | null;
+    readonly remove?: boolean | null;
 };
 export type SaveArtworkMutationVariables = {
     input: SaveArtworkInput;

@@ -2,24 +2,24 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type UpdateMyProfileInput = {
-    readonly name?: string | null;
-    readonly email?: string | null;
-    readonly phone?: string | null;
-    readonly location?: EditableLocation | null;
-    readonly collectorLevel?: number | null;
-    readonly priceRangeMin?: number | null;
-    readonly priceRangeMax?: number | null;
     readonly clientMutationId?: string | null;
+    readonly collectorLevel?: number | null;
+    readonly email?: string | null;
+    readonly location?: EditableLocation | null;
+    readonly name?: string | null;
+    readonly phone?: string | null;
+    readonly priceRangeMax?: number | null;
+    readonly priceRangeMin?: number | null;
 };
 export type EditableLocation = {
     readonly address?: string | null;
     readonly address2?: string | null;
     readonly city?: string | null;
     readonly country?: string | null;
-    readonly summary?: string | null;
     readonly postalCode?: string | null;
     readonly state?: string | null;
     readonly stateCode?: string | null;
+    readonly summary?: string | null;
 };
 export type BudgetUpdateMyUserProfileMutationVariables = {
     input: UpdateMyProfileInput;
