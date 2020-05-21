@@ -28,12 +28,12 @@ describe("PriceRangeFilter", () => {
     const wrapper = getWrapper() as any
     act(() => {
       wrapper
-        .find("PriceRange")
-        .instance()
-        .props.onAfterChange([20, 100])
+        .find("Radio")
+        .filterWhere(n => n.text() === "$20k - $40k")
+        .simulate("click")
 
       setTimeout(() => {
-        expect(context.filters.priceRange).toEqual("20-100")
+        expect(context.filters.priceRange).toEqual("20000-40000")
         done()
       }, 0)
     })

@@ -1,12 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import {
-  Box,
   Flex,
   FlexProps,
+  HTML,
   ResponsiveImage,
   Sans,
-  Serif,
   color,
 } from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
@@ -26,6 +25,7 @@ const Figure = styled(RouterLink)`
     right: 0;
     bottom: 0;
     left: 0;
+    transition: box-shadow 250ms;
   }
 
   &:hover::after {
@@ -42,12 +42,6 @@ const Title = styled(Sans)`
     rgba(255, 255, 255, 0) 0%,
     rgba(0, 0, 0, 0.25) 100%
   );
-`
-
-const Meta = styled(Flex).attrs({ mt: 1 })``
-
-const MetaCell = styled(Flex)`
-  flex-basis: 50%;
 `
 
 export interface FeatureFeaturedLinkProps extends FlexProps {
@@ -72,7 +66,7 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
             style={{ backgroundColor: color("black10") }}
           />
 
-          <Title size="6" color="white100" p={2} pt={9}>
+          <Title size="6" color="white100" p={2} pt={9} unstable_trackIn>
             {title}
           </Title>
         </Figure>
@@ -82,23 +76,19 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
         </Sans>
       )}
 
-      <Meta flexDirection={size === "large" ? ["column", "row"] : "column"}>
+      <Flex flexDirection={size === "large" ? ["column", "row"] : "column"}>
         {subtitle && (
-          <MetaCell>
-            <Serif size="3">
-              <Box dangerouslySetInnerHTML={{ __html: subtitle }} />
-            </Serif>
-          </MetaCell>
+          <Flex mt={2} flexBasis="50%">
+            <HTML fontFamily="serif" size="3" html={subtitle} />
+          </Flex>
         )}
 
         {description && (
-          <MetaCell>
-            <Serif size="4">
-              <Box dangerouslySetInnerHTML={{ __html: description }} />
-            </Serif>
-          </MetaCell>
+          <Flex mt={1} flexBasis="50%">
+            <HTML fontFamily="serif" size="4" html={description} />
+          </Flex>
         )}
-      </Meta>
+      </Flex>
     </Flex>
   )
 }

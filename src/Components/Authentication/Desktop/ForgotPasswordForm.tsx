@@ -76,9 +76,7 @@ export class ForgotPasswordForm extends Component<
                 Send me reset instructions
               </SubmitButton>
               <Footer
-                handleTypeChange={() =>
-                  this.props.handleTypeChange(ModalType.login)
-                }
+                handleTypeChange={this.props.handleTypeChange}
                 mode={"forgot" as ModalType}
               />
             </Form>

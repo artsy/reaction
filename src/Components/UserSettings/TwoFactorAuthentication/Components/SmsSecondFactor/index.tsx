@@ -1,5 +1,12 @@
-import { BorderBox, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
-import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
+import {
+  BorderBox,
+  BorderBoxProps,
+  Button,
+  Flex,
+  Modal,
+  Sans,
+  Serif,
+} from "@artsy/palette"
 import React, { useState } from "react"
 import { RelayRefetchProp, createFragmentContainer, graphql } from "react-relay"
 import request from "superagent"

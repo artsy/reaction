@@ -1,3 +1,138 @@
+# v26.49.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Show prices on default view of artist auction results. [#3572](https://github.com/artsy/reaction/pull/3572) ([@artsyjian](https://github.com/artsyjian))
+
+#### Authors: 1
+
+- [@artsyjian](https://github.com/artsyjian)
+
+---
+
+# v26.48.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Update metaphysics schema [#3584](https://github.com/artsy/reaction/pull/3584) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.47.1 (Thu May 21 2020)
+
+#### 🐛  Bug Fix
+
+- Convert price filter to radio [FX-1944] [#3558](https://github.com/artsy/reaction/pull/3558) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
+# v26.47.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- add unstable_trackIn to titles in VR, feature and featured Link [#3583](https://github.com/artsy/reaction/pull/3583) ([@oxaudo](https://github.com/oxaudo))
+
+#### Authors: 1
+
+- Oksana ([@oxaudo](https://github.com/oxaudo))
+
+---
+
+# v26.46.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Minor fixes for legacy feature pages [#3582](https://github.com/artsy/reaction/pull/3582) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 1
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
+# v26.45.1 (Thu May 21 2020)
+
+#### 🐛  Bug Fix
+
+- [Viewing Room] QA [#3579](https://github.com/artsy/reaction/pull/3579) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.45.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Update metaphysics schema [#3578](https://github.com/artsy/reaction/pull/3578) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.44.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 9.4.0 to v9.5.0 [#3575](https://github.com/artsy/reaction/pull/3575) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### 🐛  Bug Fix
+
+- Feature landing page Q/A [#3570](https://github.com/artsy/reaction/pull/3570) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update BorderBoxProps import [#3577](https://github.com/artsy/reaction/pull/3577) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.43.5 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3571](https://github.com/artsy/reaction/pull/3571) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.3 to v1.0.4 [#3574](https://github.com/artsy/reaction/pull/3574) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.43.4 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- reset password form can switch to signup form [#3573](https://github.com/artsy/reaction/pull/3573) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v26.43.3 (Wed May 20 2020)
 
 #### 🐛  Bug Fix

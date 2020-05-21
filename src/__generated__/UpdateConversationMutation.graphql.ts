@@ -2,9 +2,9 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type UpdateConversationMutationInput = {
+    readonly clientMutationId?: string | null;
     readonly conversationId: string;
     readonly fromLastViewedMessageId: string;
-    readonly clientMutationId?: string | null;
 };
 export type UpdateConversationMutationVariables = {
     input: UpdateConversationMutationInput;

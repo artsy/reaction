@@ -56,7 +56,7 @@ const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
   return (
     <Flex
       style={{
-        height: `calc(100vh - ${NavBarHeight}px)`,
+        height: `calc(90vh - ${NavBarHeight}px)`,
         borderBottom: `1px solid ${color("black10")}`,
       }}
     >
@@ -79,7 +79,7 @@ const ViewingRoomHeaderLarge: React.FC<ViewingRoomHeaderProps> = props => {
         width="50%"
         style={{ position: "relative" }}
       >
-        <Sans size="10" element="h1">
+        <Sans size="10" element="h1" unstable_trackIn>
           {title}
         </Sans>
 
