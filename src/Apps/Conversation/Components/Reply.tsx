@@ -1,10 +1,10 @@
-import { Button, color, Flex, media, FlexProps } from "@artsy/palette"
+import { Button, Flex, FlexProps, color, media } from "@artsy/palette"
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import React, { useRef, useState } from "react"
 import { Environment } from "react-relay"
 import styled from "styled-components"
 import { SendConversationMessage } from "../Mutation/SendConversationMessage"
-import { right, RightProps } from "styled-system"
+import { RightProps, right } from "styled-system"
 
 const StyledFlex = styled(Flex)<FlexProps & RightProps>`
   ${right};
@@ -49,7 +49,6 @@ interface ReplyProps {
 
 export const Reply: React.FC<ReplyProps> = props => {
   const { environment, conversation } = props
-  const [bodyText, setBodyText] = useState("")
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const textArea = useRef()
 
@@ -71,27 +70,27 @@ export const Reply: React.FC<ReplyProps> = props => {
           }}
           placeholder="Type your message"
           ref={textArea}
-          onChange={event => {
-            setBodyText(event.target.value)
-          }}
         />
       </FullWidthFlex>
       <Flex alignItems="flex-end">
         <StyledButton
           disabled={buttonDisabled}
-          onClick={_event =>
-            SendConversationMessage(
+          onClick={_event => {
+            return SendConversationMessage(
               environment,
               conversation,
-              bodyText,
+              // @ts-ignore
+              textArea?.current?.value,
               _response => {
-                setBodyText(null)
+                // @ts-ignore
+                textArea.current.value = ""
+                setButtonDisabled(true)
               },
               _error => {
-                setBodyText(null)
+                // TBD
               }
             )
-          }
+          }}
         >
           Send
         </StyledButton>

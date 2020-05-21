@@ -1,12 +1,12 @@
 import { Conversation_conversation } from "__generated__/Conversation_conversation.graphql"
 import { SendConversationMessageMutation } from "__generated__/SendConversationMessageMutation.graphql"
 import {
-  commitMutation,
   ConnectionHandler,
   Environment,
-  graphql,
   MutationConfig,
   RecordSourceSelectorProxy,
+  commitMutation,
+  graphql,
 } from "relay-runtime"
 
 export const SendConversationMessage = (
@@ -24,7 +24,7 @@ export const SendConversationMessage = (
       conversationStore,
       "Messages_messages"
     )
-    ConnectionHandler.insertEdgeAfter(connection, newMessageEdge)
+    ConnectionHandler.insertEdgeBefore(connection, newMessageEdge)
   }
   return commitMutation<SendConversationMessageMutation>(environment, {
     onError,
