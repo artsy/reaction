@@ -80,6 +80,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       Joanne Artman Gallery
     </div>
@@ -92,6 +93,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       By First Author, Second Author and Third Author
     </div>
@@ -106,6 +108,7 @@ exports[`ClassicByline Snapshots renders a custom date 1`] = `
       }
     }
     fontSize="14px"
+    style={Object {}}
   >
     May 19, 2017 9:09am
   </div>
@@ -266,6 +269,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
       }
     }
     fontSize="16px"
+    style={Object {}}
   >
     Joanne Artman Gallery
   </div>
@@ -279,6 +283,7 @@ exports[`ClassicByline Snapshots renders a single author 1`] = `
       }
     }
     fontSize="14px"
+    style={Object {}}
   >
     Jul 28, 2017 4:38pm
   </div>
@@ -439,6 +444,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
       }
     }
     fontSize="16px"
+    style={Object {}}
   >
     Artsy Jobs
   </div>
@@ -452,6 +458,7 @@ exports[`ClassicByline Snapshots renders internal channel bylines 1`] = `
       }
     }
     fontSize="14px"
+    style={Object {}}
   >
     Feb 5, 2020 3:51pm
   </div>
@@ -620,6 +627,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       Joanne Artman Gallery
     </div>
@@ -632,6 +640,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
         }
       }
       fontSize="16px"
+      style={Object {}}
     >
       By First Author, Second Author and Third Author
     </div>
@@ -646,6 +655,7 @@ exports[`ClassicByline Snapshots renders multiple authors 1`] = `
       }
     }
     fontSize="14px"
+    style={Object {}}
   >
     Jul 28, 2017 4:38pm
   </div>

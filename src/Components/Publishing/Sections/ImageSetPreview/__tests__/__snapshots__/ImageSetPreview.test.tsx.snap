@@ -168,6 +168,7 @@ exports[`renders a full image set properly 1`] = `
               "18px",
             ]
           }
+          style={Object {}}
         >
           The Work of Bruce M. Sherman
         </div>
@@ -188,6 +189,7 @@ exports[`renders a full image set properly 1`] = `
                 "14px",
               ]
             }
+            style={Object {}}
           >
             View Slideshow
           </div>
@@ -200,6 +202,7 @@ exports[`renders a full image set properly 1`] = `
                 "14px",
               ]
             }
+            style={Object {}}
           >
             3 Images
           </div>
@@ -417,6 +420,7 @@ exports[`renders a mini image set properly 1`] = `
               "18px",
             ]
           }
+          style={Object {}}
         >
           The Work of Bruce M. Sherman
         </div>
@@ -437,6 +441,7 @@ exports[`renders a mini image set properly 1`] = `
                 "14px",
               ]
             }
+            style={Object {}}
           >
             View Slideshow
           </div>
@@ -449,6 +454,7 @@ exports[`renders a mini image set properly 1`] = `
                 "14px",
               ]
             }
+            style={Object {}}
           >
             3 Images
           </div>

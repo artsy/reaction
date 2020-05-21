@@ -155,6 +155,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           }
         }
         fontSize="14px"
+        style={Object {}}
       >
         <span>
           <div>
@@ -185,6 +186,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
           }
         }
         fontSize="14px"
+        style={Object {}}
       >
         <div
           className="c8"
@@ -205,6 +207,7 @@ exports[`Standard Header Snapshots renders editable props properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           Jun 19, 2015 9:09am
         </div>
@@ -451,6 +454,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
           }
         }
         fontSize="14px"
+        style={Object {}}
       >
         <span>
           Art Market
@@ -477,6 +481,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
           }
         }
         fontSize="14px"
+        style={Object {}}
       >
         <div
           className="c8"
@@ -497,6 +502,7 @@ exports[`Standard Header Snapshots renders properly 1`] = `
             }
           }
           fontSize="14px"
+          style={Object {}}
         >
           May 19, 2017 9:09am
         </div>

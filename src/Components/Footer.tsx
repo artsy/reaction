@@ -1,22 +1,22 @@
-import { Mediator, SystemContext } from "Artsy"
-import React, { useContext } from "react"
+import { Mediator, useSystemContext } from "Artsy"
+import React from "react"
 import styled from "styled-components"
 import { FlexDirectionProps } from "styled-system"
 import { Media } from "Utils/Responsive"
 
 import {
   ArtsyMarkIcon,
-  breakpoints,
   FacebookIcon,
   Flex,
   InstagramIcon,
   Sans,
   Separator,
   Serif,
-  space,
   Spacer,
   TwitterIcon,
   WeChatIcon,
+  breakpoints,
+  space,
 } from "@artsy/palette"
 
 interface Props {
@@ -24,7 +24,7 @@ interface Props {
 }
 
 export const Footer: React.SFC<Props> = props => {
-  const { mediator } = useContext(SystemContext)
+  const { mediator } = useSystemContext()
   return (
     <>
       <Media at="xs">

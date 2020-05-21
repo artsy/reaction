@@ -53,6 +53,7 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
       color="black30"
       fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
       fontSize="10px"
+      style={Object {}}
     >
       Advertisement
     </div>

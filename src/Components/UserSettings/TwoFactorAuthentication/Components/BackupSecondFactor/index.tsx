@@ -1,5 +1,12 @@
-import { BorderBox, Button, Flex, Modal, Sans, Serif } from "@artsy/palette"
-import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
+import {
+  BorderBox,
+  BorderBoxProps,
+  Button,
+  Flex,
+  Modal,
+  Sans,
+  Serif,
+} from "@artsy/palette"
 import React, { useState } from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 
@@ -53,30 +60,41 @@ export const BackupSecondFactor: React.FC<BackupSecondFactorProps> = props => {
   )
 
   return (
-    <BorderBox p={20} {...props}>
-      <Flex flexDirection="row" justifyContent="space-between" width="100%">
-        <Flex flexDirection="column" width="345px">
+    <BorderBox p={2} {...props}>
+      <Flex
+        flexDirection={["column", "row"]}
+        justifyContent="space-between"
+        width="100%"
+      >
+        <Flex flexDirection="column" maxWidth="345px">
           <Sans size="4t" color="black100">
             Backup codes
           </Sans>
-          <Serif size="3t" color="black60">
+          <Serif mt={1} size="3t" color="black60">
             Generate one-time backup codes to access your account. Keep these
             safe.
           </Serif>
         </Flex>
-        <Flex alignItems="center">
+        <Flex mt={[3, 0]} flexDirection={["column", "row"]} alignItems="center">
           {me.backupSecondFactors.length ? (
             <>
               <Sans color="black60" size="3" weight="medium">
                 {me.backupSecondFactors.length} remaining
               </Sans>
-              <ShowButton ml={1} />
-              <SetupButton ml={1} variant="secondaryGray">
+              <ShowButton width={["100%", "auto"]} ml={[0, 1]} mt={[1, 0]} />
+              <SetupButton
+                width={["100%", "auto"]}
+                ml={[0, 1]}
+                mt={[1, 0]}
+                variant="secondaryGray"
+              >
                 Regenerate
               </SetupButton>
             </>
           ) : (
-            <SetupButton ml={1}>Set up</SetupButton>
+            <SetupButton width={["100%", "auto"]} ml={[0, 1]} mt={[1, 0]}>
+              Set up
+            </SetupButton>
           )}
         </Flex>
       </Flex>

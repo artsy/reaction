@@ -4,7 +4,7 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type FeatureApp_feature = {
     readonly description: string | null;
-    readonly callOut: string | null;
+    readonly callout: string | null;
     readonly sets: {
         readonly edges: ReadonlyArray<{
             readonly node: {
@@ -13,7 +13,7 @@ export type FeatureApp_feature = {
             } | null;
         } | null> | null;
     } | null;
-    readonly " $fragmentRefs": FragmentRefs<"FeatureHeader_feature">;
+    readonly " $fragmentRefs": FragmentRefs<"FeatureMeta_feature" | "FeatureHeader_feature">;
     readonly " $refType": "FeatureApp_feature";
 };
 export type FeatureApp_feature$data = FeatureApp_feature;
@@ -48,10 +48,10 @@ return {
     },
     {
       "kind": "ScalarField",
-      "alias": "callOut",
-      "name": "description",
+      "alias": null,
+      "name": "callout",
       "args": (v0/*: any*/),
-      "storageKey": "description(format:\"HTML\")"
+      "storageKey": "callout(format:\"HTML\")"
     },
     {
       "kind": "LinkedField",
@@ -106,11 +106,16 @@ return {
     },
     {
       "kind": "FragmentSpread",
+      "name": "FeatureMeta_feature",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
       "name": "FeatureHeader_feature",
       "args": null
     }
   ]
 };
 })();
-(node as any).hash = '8d8153fd1cb50909c8f85109ca0e4d3e';
+(node as any).hash = 'a03892745f198465e63df7420b7e1d3d';
 export default node;

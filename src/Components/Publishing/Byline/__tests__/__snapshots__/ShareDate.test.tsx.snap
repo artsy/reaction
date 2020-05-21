@@ -71,6 +71,7 @@ exports[`renders ShareDate properly 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       May 19, 2017 9:09am
     </div>
@@ -87,6 +88,7 @@ exports[`renders ShareDate properly 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       Share
     </div>

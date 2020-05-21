@@ -1301,6 +1301,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
               color="#C2C2C2"
               fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
               fontSize="14px"
+              style={Object {}}
             >
               <span
                 className="c19"
@@ -1683,6 +1684,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             color="black30"
             fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
             fontSize="10px"
+            style={Object {}}
           >
             Advertisement
           </div>
@@ -2166,6 +2168,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                   "18px",
                 ]
               }
+              style={Object {}}
             >
               The Work of Bruce M. Sherman
             </div>
@@ -2186,6 +2189,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                     "14px",
                   ]
                 }
+                style={Object {}}
               >
                 View Slideshow
               </div>
@@ -2198,6 +2202,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                     "14px",
                   ]
                 }
+                style={Object {}}
               >
                 3 Images
               </div>
@@ -2391,6 +2396,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             }
           }
           fontSize="16px"
+          style={Object {}}
         >
           <span
             className="c46"

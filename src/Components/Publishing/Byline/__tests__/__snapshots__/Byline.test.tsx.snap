@@ -84,6 +84,7 @@ exports[`Byline renders a byline 1`] = `
       }
     }
     fontSize="14px"
+    style={Object {}}
   >
     <div
       className="c2"
@@ -104,6 +105,7 @@ exports[`Byline renders a byline 1`] = `
         }
       }
       fontSize="14px"
+      style={Object {}}
     >
       May 19, 2017 9:09am
     </div>

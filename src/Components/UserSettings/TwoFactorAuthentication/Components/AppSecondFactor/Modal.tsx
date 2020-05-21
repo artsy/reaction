@@ -137,6 +137,7 @@ const InnerForm: React.FC<InnerFormProps> = ({
           onBlur={handleBlur}
           placeholder="Device Name"
           onChange={handleChange}
+          autoFocus
         />
       </Box>
       <Sans mt={2} color="black60" size="3">

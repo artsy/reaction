@@ -85,14 +85,17 @@ export const ARTWORKS_SET = {
 export const FEATURE = {
   id: "RmVhdHVyZTo1ZTY5MGMzMWQyMmZmMTAwMTIwYzQzMzY=",
   name: "Alserkal Art Week",
+  slug: "alserkal-art-week",
+  metaDescription: "some description",
   subheadline:
     "<p>Alserkal Art Week Online</p>\n<p>Discover new exhibitions by Alserkal Avenue Galleries</p>\n",
   image: {
-    url: null,
+    url: "some-url.jpg",
+    cropped: { url: null },
   },
   description:
     "<p>Alserkal Art Week Online</p>\n<p>Discover new exhibitions by Alserkal Avenue Galleries</p>\n",
-  callOut:
+  callout:
     "<p>Alserkal Art Week Online</p>\n<p>Discover new exhibitions by Alserkal Avenue Galleries</p>\n",
   sets: {
     edges: [{ node: FEATURED_LINKS_SET }, { node: ARTWORKS_SET }],

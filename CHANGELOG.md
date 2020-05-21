@@ -1,3 +1,236 @@
+# v26.45.1 (Thu May 21 2020)
+
+#### 🐛  Bug Fix
+
+- [Viewing Room] QA [#3579](https://github.com/artsy/reaction/pull/3579) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.45.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Update metaphysics schema [#3578](https://github.com/artsy/reaction/pull/3578) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 1
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+
+---
+
+# v26.44.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Update dep @artsy/palette from 9.4.0 to v9.5.0 [#3575](https://github.com/artsy/reaction/pull/3575) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### 🐛  Bug Fix
+
+- Feature landing page Q/A [#3570](https://github.com/artsy/reaction/pull/3570) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update BorderBoxProps import [#3577](https://github.com/artsy/reaction/pull/3577) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 3
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.43.5 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3571](https://github.com/artsy/reaction/pull/3571) ([@artsyit](https://github.com/artsyit))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.3 to v1.0.4 [#3574](https://github.com/artsy/reaction/pull/3574) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.43.4 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- reset password form can switch to signup form [#3573](https://github.com/artsy/reaction/pull/3573) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
+# v26.43.3 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- [Thread Preview] style tweaks [#3568](https://github.com/artsy/reaction/pull/3568) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.43.1 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- 2FA enrollment responsive fix: switch to maxWidth [#3567](https://github.com/artsy/reaction/pull/3567) ([@dblandin](https://github.com/dblandin))
+
+#### ⚠️  Pushed to `master`
+
+- Bump to trigger npm publish :rocket: ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.42.0 (Wed May 20 2020)
+
+#### 🚀  Enhancement
+
+- Add responsive styles to 2FA Enrollment UI [#3566](https://github.com/artsy/reaction/pull/3566) ([@dblandin](https://github.com/dblandin))
+
+#### ⚠️  Pushed to `master`
+
+- empty commit to trigger build ([@ds300](https://github.com/ds300))
+
+#### Authors: 2
+
+- David Sheldrick ([@ds300](https://github.com/ds300))
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.41.0 (Wed May 20 2020)
+
+#### 🚀  Enhancement
+
+- Autofocus 2FA authentication code fields [#3565](https://github.com/artsy/reaction/pull/3565) ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Update snapshots [#3547](https://github.com/artsy/reaction/pull/3547) ([@dblandin](https://github.com/dblandin))
+- Update dep @artsy/palette from 9.0.1 to v9.4.0 [#3547](https://github.com/artsy/reaction/pull/3547) ([@renovate-bot](https://github.com/renovate-bot) [@dblandin](https://github.com/dblandin) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
+# v26.40.18 (Wed May 20 2020)
+
+#### 🐛  Bug Fix
+
+- Fix vertical alignment of CountrySelect ::after element [#3564](https://github.com/artsy/reaction/pull/3564) ([@dblandin](https://github.com/dblandin))
+
+#### Authors: 1
+
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+
+---
+
+# v26.40.16 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- [ViewingRoom] Make sure width is auto on carousel [#3563](https://github.com/artsy/reaction/pull/3563) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3562](https://github.com/artsy/reaction/pull/3562) ([@artsyit](https://github.com/artsyit))
+
+#### Authors: 2
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v26.40.12 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3561](https://github.com/artsy/reaction/pull/3561) ([@artsyit](https://github.com/artsyit))
+- Fix contextModule on /Tag page, Forgot link includes existing query params [#3553](https://github.com/artsy/reaction/pull/3553) ([@eessex](https://github.com/eessex))
+- [Feature] Add meta tags [#3556](https://github.com/artsy/reaction/pull/3556) ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Add Conversations storybook [#3560](https://github.com/artsy/reaction/pull/3560) ([@zephraph](https://github.com/zephraph))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
+# v26.40.9 (Tue May 19 2020)
+
+#### 🐛  Bug Fix
+
+- [Consignments] Swap masonry component [#3557](https://github.com/artsy/reaction/pull/3557) ([@damassi](https://github.com/damassi))
+- [Viewing Room] Add tracking [#3555](https://github.com/artsy/reaction/pull/3555) ([@damassi](https://github.com/damassi))
+- Remaining Feature page Q/A items [#3554](https://github.com/artsy/reaction/pull/3554) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+
+---
+
+# v26.40.8 (Mon May 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update a conversation to be read once it's opened [#3539](https://github.com/artsy/reaction/pull/3539) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+
+#### Authors: 2
+
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
+# v26.40.7 (Mon May 18 2020)
+
+#### 🐛  Bug Fix
+
+- Update metaphysics schema [#3552](https://github.com/artsy/reaction/pull/3552) ([@artsyit](https://github.com/artsyit))
+- Ensure test checks don't validate actual dates [#3550](https://github.com/artsy/reaction/pull/3550) ([@zephraph](https://github.com/zephraph))
+- [Viewing Room] Ensure fixed widths present [#3551](https://github.com/artsy/reaction/pull/3551) ([@damassi](https://github.com/damassi))
+- Update metaphysics schema [#3548](https://github.com/artsy/reaction/pull/3548) ([@artsyit](https://github.com/artsyit))
+- Minor Feature page Q/A [#3549](https://github.com/artsy/reaction/pull/3549) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 4
+
+- Artsy ([@artsyit](https://github.com/artsyit))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+
+---
+
 # v26.40.6 (Fri May 15 2020)
 
 #### 🐛  Bug Fix

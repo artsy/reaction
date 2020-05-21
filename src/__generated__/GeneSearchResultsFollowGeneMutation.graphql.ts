@@ -2,8 +2,8 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowGeneInput = {
-    readonly geneID?: string | null;
     readonly clientMutationId?: string | null;
+    readonly geneID?: string | null;
 };
 export type GeneSearchResultsFollowGeneMutationVariables = {
     input: FollowGeneInput;

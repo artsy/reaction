@@ -235,6 +235,7 @@ exports[`renders a single image properly 1`] = `
           color="#C2C2C2"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="14px"
+          style={Object {}}
         >
           <span
             className="c11"
@@ -637,6 +638,7 @@ exports[`renders properly 1`] = `
           color="#C2C2C2"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize="14px"
+          style={Object {}}
         >
           <span
             className="c11"

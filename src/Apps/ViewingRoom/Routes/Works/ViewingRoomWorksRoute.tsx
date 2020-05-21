@@ -14,7 +14,7 @@ const ViewingRoomWorksRoute: React.FC<WorksRouteProps> = ({ viewingRoom }) => {
     <Join separator={<Spacer my={4} />}>
       {viewingRoom.artworksConnection.edges.map(({ node: artwork }) => {
         return (
-          <Box key={artwork.internalID}>
+          <Box key={artwork.internalID} id={artwork.internalID}>
             <ViewingRoomCarousel artwork={artwork} />
             <Spacer my={2} />
             <Box mb={9} px={[2, 0]}>

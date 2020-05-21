@@ -1,37 +1,37 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type FollowArtistInput = {
-    readonly artistID: string;
+export type UpdateConversationMutationInput = {
     readonly clientMutationId?: string | null;
-    readonly unfollow?: boolean | null;
+    readonly conversationId: string;
+    readonly fromLastViewedMessageId: string;
 };
-export type FollowArtistMutationVariables = {
-    input: FollowArtistInput;
+export type UpdateConversationMutationVariables = {
+    input: UpdateConversationMutationInput;
 };
-export type FollowArtistMutationResponse = {
-    readonly followArtist: {
-        readonly artist: {
+export type UpdateConversationMutationResponse = {
+    readonly updateConversation: {
+        readonly conversation: {
             readonly id: string;
-            readonly is_followed: boolean | null;
+            readonly unread: boolean | null;
         } | null;
     } | null;
 };
-export type FollowArtistMutation = {
-    readonly response: FollowArtistMutationResponse;
-    readonly variables: FollowArtistMutationVariables;
+export type UpdateConversationMutation = {
+    readonly response: UpdateConversationMutationResponse;
+    readonly variables: UpdateConversationMutationVariables;
 };
 
 
 
 /*
-mutation FollowArtistMutation(
-  $input: FollowArtistInput!
+mutation UpdateConversationMutation(
+  $input: UpdateConversationMutationInput!
 ) {
-  followArtist(input: $input) {
-    artist {
+  updateConversation(input: $input) {
+    conversation {
       id
-      is_followed: isFollowed
+      unread
     }
   }
 }
@@ -42,7 +42,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "FollowArtistInput!",
+    "type": "UpdateConversationMutationInput!",
     "defaultValue": null
   }
 ],
@@ -50,7 +50,7 @@ v1 = [
   {
     "kind": "LinkedField",
     "alias": null,
-    "name": "followArtist",
+    "name": "updateConversation",
     "storageKey": null,
     "args": [
       {
@@ -59,16 +59,16 @@ v1 = [
         "variableName": "input"
       }
     ],
-    "concreteType": "FollowArtistPayload",
+    "concreteType": "UpdateConversationMutationPayload",
     "plural": false,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "artist",
+        "name": "conversation",
         "storageKey": null,
         "args": null,
-        "concreteType": "Artist",
+        "concreteType": "Conversation",
         "plural": false,
         "selections": [
           {
@@ -80,8 +80,8 @@ v1 = [
           },
           {
             "kind": "ScalarField",
-            "alias": "is_followed",
-            "name": "isFollowed",
+            "alias": null,
+            "name": "unread",
             "args": null,
             "storageKey": null
           }
@@ -94,7 +94,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "FollowArtistMutation",
+    "name": "UpdateConversationMutation",
     "type": "Mutation",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -102,18 +102,18 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "FollowArtistMutation",
+    "name": "UpdateConversationMutation",
     "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "mutation",
-    "name": "FollowArtistMutation",
+    "name": "UpdateConversationMutation",
     "id": null,
-    "text": "mutation FollowArtistMutation(\n  $input: FollowArtistInput!\n) {\n  followArtist(input: $input) {\n    artist {\n      id\n      is_followed: isFollowed\n    }\n  }\n}\n",
+    "text": "mutation UpdateConversationMutation(\n  $input: UpdateConversationMutationInput!\n) {\n  updateConversation(input: $input) {\n    conversation {\n      id\n      unread\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'f380e216ce8a2a395b2b910ea042695a';
+(node as any).hash = '21516c941f71a6bc582dd682e48f3a5c';
 export default node;

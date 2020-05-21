@@ -23,6 +23,7 @@ declare module "sharify" {
       readonly CLIENT_NAVIGATION_V5: "experiment" | "control" // TODO: Remove after A/B test.
       readonly CMS_URL: string
       readonly CDN_URL: string
+      readonly CURRENT_PATH: string
       CURRENT_USER: object
       readonly ENABLE_SIGN_IN_WITH_APPLE: string // TODO: Remove once sign in with apple is rolled out.
       readonly ENABLE_PRICE_TRANSPARENCY: string

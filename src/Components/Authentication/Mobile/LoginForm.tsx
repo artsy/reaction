@@ -49,6 +49,7 @@ const OtpInput: React.FC<ConditionalOtpInputProps> = props => {
       onBlur={handleBlur}
       setTouched={setTouched}
       touchedOnChange={false}
+      autoFocus
     />
   )
 }
@@ -160,9 +161,10 @@ class MobileLoginFormWithSystemContext extends Component<
             onBlur={handleBlur}
             setTouched={setTouched}
             touchedOnChange={false}
+            autoFocus
           />
           <Flex alignItems="center" justifyContent="flex-end">
-            <ForgotPassword onClick={() => (location.href = "/forgot")} />
+            <ForgotPassword onClick={() => this.getForgotUrl()} />
           </Flex>
         </Fragment>
       )}
@@ -176,6 +178,11 @@ class MobileLoginFormWithSystemContext extends Component<
   )
 
   setShowOtp = (show, cb) => this.setState({ showOtp: show }, cb)
+
+  getForgotUrl = () => {
+    const options = location.search
+    location.assign(`/forgot${options && options}`)
+  }
 
   render() {
     const { showOtp } = this.state

@@ -1,11 +1,13 @@
 import React from "react"
 import { AppContainer } from "Apps/Components/AppContainer"
 import { createFragmentContainer, graphql } from "react-relay"
+import { FeatureMetaFragmentContainer as FeatureMeta } from "./Components/FeatureMeta"
 import { FeatureHeaderFragmentContainer as FeatureHeader } from "./Components/FeatureHeader"
 import { FeatureApp_feature } from "__generated__/FeatureApp_feature.graphql"
-import { Box, Join, Sans, Spacer } from "@artsy/palette"
+import { Box, HTML, Join, Separator, Spacer } from "@artsy/palette"
 import { HorizontalPadding } from "Apps/Components/HorizontalPadding"
 import { FeatureSetFragmentContainer as FeatureSet } from "./Components/FeatureSet"
+import { Footer } from "Components/Footer"
 
 interface FeatureAppProps {
   feature: FeatureApp_feature
@@ -14,29 +16,21 @@ interface FeatureAppProps {
 const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
   return (
     <>
-      <Box height="100vh">
-        <FeatureHeader feature={feature} />
-      </Box>
+      <FeatureMeta feature={feature} />
+
+      <FeatureHeader feature={feature} />
 
       <AppContainer>
         <HorizontalPadding>
-          {(feature.description || feature.callOut) && (
+          {(feature.description || feature.callout) && (
             <Box maxWidth={["100%", 460]} mx="auto" my={3} px={3}>
               <Join separator={<Spacer my={3} />}>
                 {feature.description && (
-                  <Sans size="4">
-                    <Box
-                      dangerouslySetInnerHTML={{ __html: feature.description }}
-                    />
-                  </Sans>
+                  <HTML fontFamily="sans" size="4" html={feature.description} />
                 )}
 
-                {feature.callOut && (
-                  <Sans size="6">
-                    <Box
-                      dangerouslySetInnerHTML={{ __html: feature.callOut }}
-                    />
-                  </Sans>
+                {feature.callout && (
+                  <HTML fontFamily="sans" size="6" html={feature.callout} />
                 )}
               </Join>
             </Box>
@@ -46,6 +40,10 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
             feature.sets.edges.map(
               ({ node: set }) => set && <FeatureSet key={set.id} set={set} />
             )}
+
+          <Separator my={3} />
+
+          <Footer />
         </HorizontalPadding>
       </AppContainer>
     </>
@@ -56,11 +54,10 @@ const FeatureApp: React.FC<FeatureAppProps> = ({ feature }) => {
 export default createFragmentContainer(FeatureApp, {
   feature: graphql`
     fragment FeatureApp_feature on Feature {
+      ...FeatureMeta_feature
       ...FeatureHeader_feature
       description(format: HTML)
-      # TODO: Placeholder value
-      callOut: description(format: HTML)
-      # TODO: Handle pagination
+      callout(format: HTML)
       sets: setsConnection(first: 20) {
         edges {
           node {

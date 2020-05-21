@@ -1,5 +1,4 @@
-import { Box, Flex, Sans } from "@artsy/palette"
-import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
+import { BorderBoxProps, Box, Flex, Sans } from "@artsy/palette"
 import { SystemQueryRenderer as QueryRenderer } from "Artsy/Relay/SystemQueryRenderer"
 import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"

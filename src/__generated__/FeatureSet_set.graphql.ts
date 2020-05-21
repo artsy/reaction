@@ -56,8 +56,14 @@ return {
       "kind": "ScalarField",
       "alias": null,
       "name": "description",
-      "args": null,
-      "storageKey": null
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "format",
+          "value": "HTML"
+        }
+      ],
+      "storageKey": "description(format:\"HTML\")"
     },
     {
       "kind": "ScalarField",
@@ -135,5 +141,5 @@ return {
   ]
 };
 })();
-(node as any).hash = 'f39633f11c2f9a49f8e600fa37caaa20';
+(node as any).hash = '8cd3e0647c2e862cef0c144dd6dc313a';
 export default node;

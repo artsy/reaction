@@ -2,9 +2,9 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type FollowProfileInput = {
+    readonly clientMutationId?: string | null;
     readonly profileID?: string | null;
     readonly unfollow?: boolean | null;
-    readonly clientMutationId?: string | null;
 };
 export type FollowProfileButtonMutationVariables = {
     input: FollowProfileInput;

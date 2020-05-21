@@ -5,7 +5,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 
 import { ViewingRoomWorks_viewingRoom } from "__generated__/ViewingRoomWorks_viewingRoom.graphql"
 import { RouterLink } from "Artsy/Router/RouterLink"
-import { LinkPropsSimple } from "found"
+import { AnalyticsSchema, useTracking } from "Artsy"
+import { scrollToId } from "../Utils/scrollToId"
 
 interface ViewingRoomWorksProps {
   viewingRoom: ViewingRoomWorks_viewingRoom
@@ -16,32 +17,44 @@ const ViewingRoomWorks: React.FC<ViewingRoomWorksProps> = ({
     artworksConnection: { edges },
   },
 }) => {
+  const tracking = useTracking()
+
   const {
     match: {
       params: { slug },
     },
   } = useRouter()
 
-  const linkProps: LinkPropsSimple = {
-    to: `/viewing-room/${slug}/works`,
-    onClick: scrollToTabBar,
-  }
+  const navigateTo = `/viewing-room/${slug}/works`
 
   return (
     <>
       <Flex>
-        {edges.map(({ node: artwork }) => {
+        {edges.map(({ node: artwork }, index) => {
           return (
             <ArtworkItem
               key={artwork.internalID}
-              linkProps={linkProps}
+              navigateTo={navigateTo}
               {...artwork}
             />
           )
         })}
       </Flex>
       <Spacer my={4} />
-      <RouterLink {...linkProps}>
+      <RouterLink
+        to={navigateTo}
+        data-test="viewingRoomWorksButton"
+        onClick={() => {
+          scrollToId("viewingRoomTabBarAnchor")
+          tracking.trackEvent({
+            action_type: AnalyticsSchema.ActionType.ClickedArtworkGroup,
+            context_module:
+              AnalyticsSchema.ContextModule.ViewingRoomArtworkRail,
+            subject: AnalyticsSchema.Subject.ViewWorks,
+            destination_path: navigateTo,
+          })
+        }}
+      >
         <Button size="large" width="100%">
           View works
         </Button>
@@ -72,37 +85,46 @@ export const ViewingRoomWorksFragmentContainer = createFragmentContainer(
 )
 
 type ArtworkNode = ViewingRoomWorksProps["viewingRoom"]["artworksConnection"]["edges"][0]["node"] & {
-  linkProps: LinkPropsSimple
+  navigateTo: string
 }
 
 const ArtworkItem: React.FC<ArtworkNode> = ({
   artistNames,
   date,
   imageUrl,
+  navigateTo,
   title,
-  linkProps,
 }) => {
+  const tracking = useTracking()
+
   return (
-    <RouterLink {...linkProps} style={{ textDecoration: "none", width: "50%" }}>
-      <Box pl={1}>
+    <RouterLink
+      to={navigateTo}
+      style={{ textDecoration: "none", width: "50%" }}
+      onClick={() => {
+        scrollToId("viewingRoomTabBarAnchor")
+
+        tracking.trackEvent({
+          action_type: AnalyticsSchema.ActionType.ClickedArtworkGroup,
+          context_module: AnalyticsSchema.ContextModule.ViewingRoomArtworkRail,
+          subject: AnalyticsSchema.Subject.ArtworkThumbnail,
+          destination_path: navigateTo,
+        })
+      }}
+    >
+      <Box width="95%">
         <Box>
           <Image width="100%" src={imageUrl} />
         </Box>
         <Box>
-          <Sans size="3">{artistNames}</Sans>
+          <Sans size="3t">{artistNames}</Sans>
         </Box>
         <Box style={{ textOverflow: "ellipsis" }}>
-          <Sans size="3" color="black60">
+          <Sans size="3t" color="black60">
             {[title, date].filter(s => s).join(", ")}
           </Sans>
         </Box>
       </Box>
     </RouterLink>
   )
-}
-
-const scrollToTabBar = () => {
-  const element = document.getElementById("viewingRoomTabBarAnchor")
-  const top = element.getBoundingClientRect().top + window.pageYOffset - 80
-  window.scrollTo({ top, behavior: "auto" })
 }

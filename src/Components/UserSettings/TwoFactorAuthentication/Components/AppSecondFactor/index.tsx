@@ -1,5 +1,6 @@
 import {
   BorderBox,
+  BorderBoxProps,
   Button,
   Flex,
   Link,
@@ -7,7 +8,6 @@ import {
   Sans,
   Serif,
 } from "@artsy/palette"
-import { BorderBoxProps } from "@artsy/palette/dist/elements/BorderBox/BorderBoxBase"
 import React, { useState } from "react"
 import { RelayRefetchProp, createFragmentContainer, graphql } from "react-relay"
 import request from "superagent"
@@ -134,12 +134,16 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
 
   return (
     <BorderBox p={2} {...props}>
-      <Flex flexDirection="row" justifyContent="space-between" width="100%">
-        <Flex flexDirection="column" width="345px">
+      <Flex
+        flexDirection={["column", "row"]}
+        justifyContent="space-between"
+        width="100%"
+      >
+        <Flex flexDirection="column" maxWidth="345px">
           <Sans size="4t" color="black100">
             App Authenticator
           </Sans>
-          <Serif size="3t" color="black60">
+          <Serif mt={1} size="3t" color="black60">
             Generate secure authentication codes using an application such as{" "}
             <Link href="https://support.1password.com/one-time-passwords">
               1Password
@@ -147,20 +151,27 @@ export const AppSecondFactor: React.FC<AppSecondFactorProps> = props => {
             or <Link href="https://authy.com/features">Authy</Link>.
           </Serif>
         </Flex>
-        <Flex alignItems="center">
+        <Flex mt={[3, 0]} flexDirection={["column", "row"]} alignItems="center">
           {me.appSecondFactors.length &&
           me.appSecondFactors[0].__typename === "AppSecondFactor" ? (
             <>
               <Sans color="black60" size="3" weight="medium">
                 {me.appSecondFactors[0].name || "Unnamed"}
               </Sans>
-              <DisableButton ml={1} />
-              <SetupButton ml={1} variant="secondaryGray">
+              <DisableButton width={["100%", "auto"]} ml={[0, 1]} mt={[1, 0]} />
+              <SetupButton
+                width={["100%", "auto"]}
+                ml={[0, 1]}
+                mt={[1, 0]}
+                variant="secondaryGray"
+              >
                 Edit
               </SetupButton>
             </>
           ) : (
-            <SetupButton ml={1}>Set up</SetupButton>
+            <SetupButton width={["100%", "auto"]} ml={[0, 1]} mt={[1, 0]}>
+              Set up
+            </SetupButton>
           )}
         </Flex>
       </Flex>

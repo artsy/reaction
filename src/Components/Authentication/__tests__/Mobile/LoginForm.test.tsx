@@ -1,5 +1,6 @@
 import {
   BackButton,
+  ForgotPassword,
   SubmitButton,
 } from "Components/Authentication/commonElements"
 import { MobileLoginForm } from "Components/Authentication/Mobile/LoginForm"
@@ -8,6 +9,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { ChangeEvents } from "../fixtures"
 import { flushPromiseQueue } from "DevTools"
+import { Link } from "@artsy/palette"
 
 jest.mock("sharify", () => ({
   data: { RECAPTCHA_KEY: "recaptcha-api-key" },
@@ -28,6 +30,7 @@ describe("MobileLoginForm", () => {
       handleTypeChange: jest.fn(),
     }
     window.grecaptcha.execute.mockClear()
+    location.assign = jest.fn()
   })
 
   const getWrapper = (passedProps = props) => {
@@ -92,6 +95,47 @@ describe("MobileLoginForm", () => {
     const wrapper = getWrapper()
     wrapper.find(BackButton).simulate("click")
     expect(props.onBackButtonClicked).toBeCalled()
+  })
+
+  it("Forgot link appends existing query params", async () => {
+    window.history.pushState(
+      {},
+      "Log In",
+      "/login?intent=login&contextModule=header&destination=/"
+    )
+
+    const wrapper = getWrapper()
+    // Advance to next form step
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    inputEmail.onChange(ChangeEvents.email)
+    wrapper.find(SubmitButton).simulate("click")
+    await flushPromiseQueue()
+    wrapper.update()
+
+    wrapper
+      .find(ForgotPassword)
+      .find(Link)
+      .simulate("click")
+    expect(location.assign).toBeCalledWith(
+      "/forgot?intent=login&contextModule=header&destination=/"
+    )
+  })
+
+  it("Forgot link does not append params when not present", async () => {
+    window.history.pushState({}, "Log In", "/login")
+    const wrapper = getWrapper()
+    // Advance to next form step
+    const inputEmail = wrapper.find(QuickInput).instance() as QuickInput
+    inputEmail.onChange(ChangeEvents.email)
+    wrapper.find(SubmitButton).simulate("click")
+    await flushPromiseQueue()
+    wrapper.update()
+
+    wrapper
+      .find(ForgotPassword)
+      .find(Link)
+      .simulate("click")
+    expect(location.assign).toBeCalledWith("/forgot")
   })
 
   describe("onSubmit", () => {
