@@ -1,3 +1,15 @@
+# v26.49.1 (Thu May 21 2020)
+
+#### 🐛  Bug Fix
+
+- email confirmation message banner [#3576](https://github.com/artsy/reaction/pull/3576) ([@erikdstock](https://github.com/erikdstock))
+
+#### Authors: 1
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+
+---
+
 # v26.49.0 (Thu May 21 2020)
 
 #### 🚀  Enhancement
