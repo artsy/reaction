@@ -3,8 +3,8 @@
 import { ConcreteRequest } from "relay-runtime";
 export type FollowArtistInput = {
     readonly artistID: string;
-    readonly clientMutationId?: string | null;
     readonly unfollow?: boolean | null;
+    readonly clientMutationId?: string | null;
 };
 export type FollowArtistMutationVariables = {
     input: FollowArtistInput;

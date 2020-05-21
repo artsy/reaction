@@ -3,11 +3,11 @@
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type SendConversationMessageMutationInput = {
-    readonly bodyText: string;
-    readonly clientMutationId?: string | null;
-    readonly from: string;
     readonly id: string;
+    readonly from: string;
+    readonly bodyText: string;
     readonly replyToMessageID: string;
+    readonly clientMutationId?: string | null;
 };
 export type SendConversationMessageMutationVariables = {
     input: SendConversationMessageMutationInput;

@@ -124,6 +124,10 @@ const Conversation: React.FC<ConversationProps> = props => {
     bottomOfPage.current.scrollIntoView({ behavior: "smooth" })
   }
 
+  useEffect(() => {
+    scrollToBottom()
+  })
+
   useEffect(scrollToBottom, [conversation])
 
   useEffect(() => {

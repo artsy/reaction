@@ -2,10 +2,10 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type BidderPositionInput = {
-    readonly artworkID: string;
-    readonly clientMutationId?: string | null;
-    readonly maxBidAmountCents: number;
     readonly saleID: string;
+    readonly artworkID: string;
+    readonly maxBidAmountCents: number;
+    readonly clientMutationId?: string | null;
 };
 export type ConfirmBidCreateBidderPositionMutationVariables = {
     input: BidderPositionInput;

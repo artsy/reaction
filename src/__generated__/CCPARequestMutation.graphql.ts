@@ -2,12 +2,12 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type CreateAccountRequestMutationInput = {
-    readonly action?: string | null;
-    readonly clientMutationId?: string | null;
+    readonly notes: string;
     readonly email?: string | null;
     readonly name?: string | null;
-    readonly notes: string;
     readonly userID?: string | null;
+    readonly action?: string | null;
+    readonly clientMutationId?: string | null;
 };
 export type CCPARequestMutationVariables = {
     input: CreateAccountRequestMutationInput;

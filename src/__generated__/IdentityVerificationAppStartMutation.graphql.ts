@@ -2,8 +2,8 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type startIdentityVerificationMutationInput = {
-    readonly clientMutationId?: string | null;
     readonly identityVerificationId: string;
+    readonly clientMutationId?: string | null;
 };
 export type IdentityVerificationAppStartMutationVariables = {
     input: startIdentityVerificationMutationInput;

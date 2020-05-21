@@ -2,9 +2,9 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type CreditCardInput = {
-    readonly clientMutationId?: string | null;
-    readonly oneTimeUse?: boolean | null;
     readonly token: string;
+    readonly oneTimeUse?: boolean | null;
+    readonly clientMutationId?: string | null;
 };
 export type PaymentFormCreateCreditCardMutationVariables = {
     input: CreditCardInput;
