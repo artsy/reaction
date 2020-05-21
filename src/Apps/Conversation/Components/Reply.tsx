@@ -49,7 +49,6 @@ interface ReplyProps {
 
 export const Reply: React.FC<ReplyProps> = props => {
   const { environment, conversation } = props
-  // const [bodyText, setBodyText] = useState("")
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const textArea = useRef()
 
@@ -83,12 +82,12 @@ export const Reply: React.FC<ReplyProps> = props => {
               // @ts-ignore
               textArea?.current?.value,
               _response => {
-                // setBodyText(null)
                 // @ts-ignore
                 textArea.current.value = ""
+                setButtonDisabled(true)
               },
               _error => {
-                // setBodyText(null)
+                // TBD
               }
             )
           }}
