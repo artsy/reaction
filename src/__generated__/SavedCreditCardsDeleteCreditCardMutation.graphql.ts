@@ -2,8 +2,8 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type DeleteCreditCardInput = {
-    readonly id: string;
     readonly clientMutationId?: string | null;
+    readonly id: string;
 };
 export type SavedCreditCardsDeleteCreditCardMutationVariables = {
     input: DeleteCreditCardInput;
