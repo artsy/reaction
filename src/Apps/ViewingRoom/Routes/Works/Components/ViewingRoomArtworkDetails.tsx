@@ -24,18 +24,18 @@ export const ViewingRoomArtworkDetails: React.FC<ViewingRoomArtworkDetailsProps>
   return (
     <Box maxWidth={["100%", 470]} m="auto">
       <Box>
-        <Sans size="3">{artistNames}</Sans>
+        <Sans size="3t">{artistNames}</Sans>
       </Box>
 
       <Box style={{ textOverflow: "ellipsis" }}>
-        <Sans size="3" color="black60">
+        <Sans size="3t" color="black60">
           {[title, date].filter(s => s).join(", ")}
         </Sans>
       </Box>
 
       {saleMessage && (
         <Box>
-          <Sans size="3" color="black60">
+          <Sans size="3t" color="black60">
             {saleMessage}
           </Sans>
         </Box>
