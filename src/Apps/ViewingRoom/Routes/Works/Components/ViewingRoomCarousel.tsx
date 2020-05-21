@@ -86,7 +86,7 @@ const ViewingRoomCarousel: React.FC<ViewingRoomCarouselProps> = ({
       </Flex>
 
       {showProgressBar && (
-        <Box width="50%" m="auto">
+        <Box maxWidth={["100%", 470]} mx={[2, "auto"]}>
           <ProgressBar
             highlight="black100"
             percentComplete={scrollPercent}
