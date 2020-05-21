@@ -1,3 +1,15 @@
+# v26.49.0 (Thu May 21 2020)
+
+#### 🚀  Enhancement
+
+- Show prices on default view of artist auction results. [#3572](https://github.com/artsy/reaction/pull/3572) ([@artsyjian](https://github.com/artsyjian))
+
+#### Authors: 1
+
+- [@artsyjian](https://github.com/artsyjian)
+
+---
+
 # v26.48.0 (Thu May 21 2020)
 
 #### 🚀  Enhancement
