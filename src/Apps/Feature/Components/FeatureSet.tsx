@@ -1,6 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import { Box, BoxProps, CSSGrid, Sans, color } from "@artsy/palette"
+import {
+  Box,
+  BoxProps,
+  CSSGrid,
+  HTML,
+  Sans,
+  Spacer,
+  color,
+} from "@artsy/palette"
 import { createFragmentContainer, graphql } from "react-relay"
 import { FeatureFeaturedLinkFragmentContainer as FeatureFeaturedLink } from "./FeatureFeaturedLink"
 import GridItem from "Components/Artwork/GridItem"
@@ -9,15 +17,7 @@ import { FeatureSet_set } from "__generated__/FeatureSet_set.graphql"
 
 const Container = styled(Box)`
   border-top: 1px solid ${color("black100")};
-  border-bottom: 1px solid ${color("black100")};
-
-  & + & {
-    margin-top: -1px;
-  }
-
-  &:last-of-type {
-    border-bottom: 0;
-  }
+  margin-top: -1px;
 `
 
 export interface FeatureSetProps extends Omit<BoxProps, "color"> {
@@ -29,7 +29,7 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
 
   return (
     <Container {...rest}>
-      {(set.name || set.description) && (
+      {set.name || set.description ? (
         <Box mt={4} mb={2}>
           {set.name && (
             <Sans size="6" color="black100">
@@ -38,11 +38,16 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
           )}
 
           {set.description && (
-            <Sans size="3" color="black60">
-              <Box dangerouslySetInnerHTML={{ __html: set.description }} />
-            </Sans>
+            <HTML
+              fontFamily="sans"
+              size="3"
+              color="black60"
+              html={set.description}
+            />
           )}
         </Box>
+      ) : (
+        <Spacer my={4} />
       )}
 
       {(() => {
@@ -52,13 +57,14 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
               <CSSGrid
                 key={set.id}
                 mt={2}
-                mb={4}
+                mb={6}
                 gridTemplateColumns={[
                   "repeat(1fr)",
                   `repeat(${Math.min(count, 2)}, 1fr)`,
                   `repeat(${Math.min(count, 3)}, 1fr)`,
                 ]}
-                gridGap={2}
+                gridColumnGap={2}
+                gridRowGap={6}
               >
                 {set.orderedItems.edges.map(({ node }) => {
                   if (!node || node.__typename !== "FeaturedLink") {
@@ -93,7 +99,7 @@ export const FeatureSet: React.FC<FeatureSetProps> = ({ set, ...rest }) => {
                   }
 
                   return (
-                    <Box key={node.id} pb={2} maxWidth={400} mx="auto">
+                    <Box key={node.id} pb={6} maxWidth={400} mx="auto">
                       <GridItem artwork={node} />
                     </Box>
                   )
