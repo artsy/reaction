@@ -66,7 +66,7 @@ export const FeatureFeaturedLink: React.FC<FeatureFeaturedLinkProps> = ({
             style={{ backgroundColor: color("black10") }}
           />
 
-          <Title size="6" color="white100" p={2} pt={9}>
+          <Title size="6" color="white100" p={2} pt={9} unstable_trackIn>
             {title}
           </Title>
         </Figure>
