@@ -37,7 +37,7 @@ export interface Props extends SystemContextProps {
   mediator?: Mediator
   lastChild: boolean
   filtersHaveUpdated: boolean
-  paginationCount: number
+  paginated: boolean
 }
 
 const FullWidthBorderBox = styled(BorderBox)`
@@ -209,7 +209,7 @@ const LargeAuctionItem: SFC<Props> = props => {
               props.mediator,
               "lg",
               props.filtersHaveUpdated,
-              props.paginationCount
+              props.paginated
             )}
           </Flex>
           <Flex width="10%" justifyContent="flex-end">
@@ -254,7 +254,7 @@ const ExtraSmallAuctionItem: SFC<Props> = props => {
           props.mediator,
           "xs",
           props.filtersHaveUpdated,
-          props.paginationCount
+          props.paginated
         )}
         <Sans size="2" weight="medium" color="black60">
           {title}
@@ -339,15 +339,15 @@ const renderPricing = (
   mediator,
   size,
   filtersHaveUpdated,
-  paginationCount
+  paginated
 ) => {
   const textSize = size === "xs" ? "2" : "3t"
 
   // If user is logged in we show prices. Otherwise we show prices only for the default view - on page 1 and filters not changed.
   // Ideally we get current page number from filter context 'page' property but somehow it is always '1'.
-  // So we resort to pagination count. If user has paginated at all, prices will be hidden. even if user comes back to page 1.
+  // So we resort to pagination detection. If user has paginated at all, prices will be hidden. even if user comes back to page 1.
   // TODO: Fix filter context so its 'page' property has the current page number, then change this code.
-  if (user || (!filtersHaveUpdated && paginationCount == 0)) {
+  if (user || (!filtersHaveUpdated && !paginated)) {
     const textAlign = size === "xs" ? "left" : "right"
     const dateOfSale = DateTime.fromISO(saleDate)
     const now = DateTime.local()
@@ -449,11 +449,11 @@ const renderRealizedPrice = (
   mediator,
   size,
   filtersHaveUpdated,
-  paginationCount
+  paginated
 ) => {
   const justifyContent = size === "xs" ? "flex-start" : "flex-end"
   // Show prices if user is logged in. Otherwise, show prices only on default view - filters at default and no pagination has happened.
-  if (user || (!filtersHaveUpdated && paginationCount == 0)) {
+  if (user || (!filtersHaveUpdated && !paginated)) {
     return (
       <Flex justifyContent={justifyContent}>
         {estimatedPrice && (
@@ -564,7 +564,7 @@ const renderLargeCollapse = (props, user, mediator, filtersHaveUpdated) => {
               mediator,
               "lg",
               filtersHaveUpdated,
-              props.paginationCount
+              props.paginated
             )}
           </Col>
         </Row>
@@ -651,7 +651,7 @@ const renderSmallCollapse = (props, user, mediator, filtersHaveUpdated) => {
               mediator,
               "xs",
               filtersHaveUpdated,
-              props.paginationCount
+              props.paginated
             )}
           </Col>
         </Row>

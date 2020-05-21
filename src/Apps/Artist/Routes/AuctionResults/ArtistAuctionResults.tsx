@@ -51,7 +51,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
   } = filterContext.filters
 
   // Count number of times user paginated.
-  const [paginationCount, incrementPaginationCount] = useState(0)
+  const [paginated, togglePaginated] = useState(false)
 
   const loadNext = () => {
     const { hasNextPage, endCursor } = pageInfo
@@ -63,7 +63,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
 
   const loadAfter = cursor => {
     setIsLoading(true)
-    incrementPaginationCount(paginationCount + 1)
+    togglePaginated(true)
 
     relay.refetch(
       {
@@ -159,7 +159,7 @@ const AuctionResultsContainer: React.FC<AuctionResultsProps> = ({
               auctionResult={node}
               lastChild={index === auctionResultsLength - 1}
               filtersHaveUpdated={false}
-              paginationCount={paginationCount}
+              paginated={paginated}
             />
           </React.Fragment>
         )
