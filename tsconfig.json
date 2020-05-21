@@ -14,6 +14,7 @@
     "noUnusedLocals": true,
     "outDir": "dist",
     "paths": {
+      "v2/*": ["./v2/*"],
       "storybook/*": ["./__stories__/*"],
       "Analytics/*": ["./Analytics/*"],
       "Assets/*": ["./Assets/*"],
@@ -39,6 +40,7 @@
     "data",
     "externals",
     "danger",
-    "src/__generated__/**.ts"
+    "src/__generated__/**.ts",
+    "src/v2/__generated__/**.ts"
   ]
 }
