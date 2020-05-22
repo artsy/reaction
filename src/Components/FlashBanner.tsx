@@ -1,8 +1,11 @@
 import React from "react"
 import { Banner, Sans } from "@artsy/palette"
+import { createFragmentContainer, graphql } from "react-relay"
+import { FlashBanner_me } from "__generated__/FlashBanner_me.graphql"
 
 interface Props {
   messageCode: FlashMessageKey
+  me: FlashBanner_me
 }
 
 export type FlashMessageKey =
@@ -27,8 +30,10 @@ const messages: Record<FlashMessageKey, string | React.FC> = {
 
 export const FlashBanner: React.FunctionComponent<Props> = ({
   messageCode,
+  me,
 }) => {
   const Message = messages[messageCode]
+  const shouldDisplayEmailConfirmation = me.canRequestEmailConfirmation
   if (!Message) return null
   return (
     Message && (
@@ -40,3 +45,11 @@ export const FlashBanner: React.FunctionComponent<Props> = ({
     )
   )
 }
+
+const FlashBannerFragmentContainer = createFragmentContainer(FlashBanner, {
+  me: graphql`
+    fragment FlashBanner_me on Me {
+      canRequestEmailConfirmation
+    }
+  `,
+})
