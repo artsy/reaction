@@ -1,4 +1,3 @@
-import { mockTracking } from "Artsy/Analytics"
 import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"

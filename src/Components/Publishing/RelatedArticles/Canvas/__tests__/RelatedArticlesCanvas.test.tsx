@@ -1,10 +1,8 @@
-import { mockTracking } from "Artsy/Analytics"
 import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import Waypoint from "react-waypoint"
 import { RelatedArticleCanvasLink } from "../RelatedArticleCanvasLink"
 import { RelatedArticlesCanvas } from "../RelatedArticlesCanvas"
 
