@@ -2,11 +2,11 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type SendFeedbackMutationInput = {
-    readonly message: string;
+    readonly clientMutationId?: string | null;
     readonly email?: string | null;
+    readonly message: string;
     readonly name?: string | null;
     readonly url?: string | null;
-    readonly clientMutationId?: string | null;
 };
 export type SendFeedbackSearchResultsMutationVariables = {
     input: SendFeedbackMutationInput;
