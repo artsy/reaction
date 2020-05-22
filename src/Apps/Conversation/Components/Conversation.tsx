@@ -121,7 +121,8 @@ const Conversation: React.FC<ConversationProps> = props => {
   const bottomOfPage = useRef()
 
   const scrollToBottom = () => {
-    bottomOfPage.current.scrollIntoView({ behavior: "smooth" })
+    const bottomOfPageCurrent = bottomOfPage.current as any
+    bottomOfPageCurrent.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
@@ -136,6 +137,7 @@ const Conversation: React.FC<ConversationProps> = props => {
 
   return (
     <Flex flexDirection="column" width="100%">
+      x
       <Box>
         <Spacer mt="45px" />
         <Flex flexDirection="column" width="100%" px={1}>
