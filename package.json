@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
-    "@artsy/cohesion": "1.0.4",
+    "@artsy/cohesion": "1.3.0",
     "@artsy/lint-changed": "3.0.4",
     "@artsy/palette": "9.7.0",
     "@babel/cli": "7.0.0",
