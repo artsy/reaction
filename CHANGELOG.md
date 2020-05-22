@@ -1,3 +1,22 @@
+# v26.50.0 (Fri May 22 2020)
+
+#### 🚀  Enhancement
+
+- Email confirmation message copy updates [#3589](https://github.com/artsy/reaction/pull/3589) ([@erikdstock](https://github.com/erikdstock))
+
+#### 🐛  Bug Fix
+
+- Conversation not updated correctly when new messages is entered by collector [#3588](https://github.com/artsy/reaction/pull/3588) ([@lilyfromseattle](https://github.com/lilyfromseattle) [@zephraph](https://github.com/zephraph))
+- Conversation not updated correctly when new messages is entered by collector [#3569](https://github.com/artsy/reaction/pull/3569) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 3
+
+- Erik ([@erikdstock](https://github.com/erikdstock))
+- Justin Bennett ([@zephraph](https://github.com/zephraph))
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v26.49.1 (Thu May 21 2020)
 
 #### 🐛  Bug Fix
