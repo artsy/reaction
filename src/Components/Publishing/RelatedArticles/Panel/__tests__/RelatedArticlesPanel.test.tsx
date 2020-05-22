@@ -42,37 +42,4 @@ describe("RelatedArticlesPanel", () => {
     const component = getWrapper(testProps)
     expect(component.find(RelatedArticlesPanelLink)).toHaveLength(3)
   })
-
-  it("tracks link clicks", () => {
-    const { Component, dispatch } = mockTracking(RelatedArticlesPanel)
-    const component = mount(<Component articles={RelatedPanel} />)
-    component
-      .find(RelatedArticlesPanelLink)
-      .at(0)
-      .simulate("click")
-
-    expect(dispatch).toBeCalledWith({
-      action_type: "Click",
-      context_module: "Related articles",
-      subject: "Related articles",
-      destination_path:
-        "/article/artsy-editorial-15-top-art-schools-united-states",
-      type: "thumbnail",
-    })
-  })
-
-  it("Calls a tracking impression", () => {
-    const { Component, dispatch } = mockTracking(RelatedArticlesPanel)
-    const component = mount(<Component articles={RelatedPanel} />)
-    component
-      .find(Waypoint)
-      .getElement()
-      .props.onEnter()
-
-    expect(dispatch).toBeCalledWith({
-      action_type: "Impression",
-      context_module: "Related articles",
-      subject: "Related articles",
-    })
-  })
 })

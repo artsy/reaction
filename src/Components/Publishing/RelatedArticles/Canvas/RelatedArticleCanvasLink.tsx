@@ -1,6 +1,5 @@
 import { Serif } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
@@ -18,18 +17,6 @@ interface RelatedArticleCanvasLinkProps
 export class RelatedArticleCanvasLink extends React.Component<
   RelatedArticleCanvasLinkProps
 > {
-  @track<RelatedArticleCanvasLinkProps>(props => ({
-    action_type: Schema.ActionType.Click,
-    destination_path: getEditorialHref(
-      props.article.layout,
-      props.article.slug
-    ),
-    type: Schema.Type.Thumbnail,
-  }))
-  onClick() {
-    // noop
-  }
-
   render() {
     const { article } = this.props
     const href = getEditorialHref(article.layout, article.slug)
@@ -37,7 +24,7 @@ export class RelatedArticleCanvasLink extends React.Component<
     const bylineArticle = { ...article, id: article.slug }
 
     return (
-      <ArticleFigure href={href} onClick={this.onClick.bind(this)}>
+      <ArticleFigure href={href}>
         <ImageTitle>
           <BlockImage src={imageSrc} alt={article.thumbnail_title} />
           <Serif size="3t">{article.thumbnail_title}</Serif>

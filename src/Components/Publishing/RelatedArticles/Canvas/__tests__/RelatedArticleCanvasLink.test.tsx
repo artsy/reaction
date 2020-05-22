@@ -27,17 +27,4 @@ describe("RelatedArticleCanvasLink", () => {
     expect(component.text()).toMatch("May 19, 2017")
     expect(component.html()).toMatch("PoetterHall_Exterior%2Bcopy.jpg")
   })
-
-  it("Tracks link clicks", () => {
-    const { Component, dispatch } = mockTracking(RelatedArticleCanvasLink)
-    const component = mount(<Component article={RelatedCanvas[0]} />)
-    component.simulate("click")
-
-    expect(dispatch).toBeCalledWith({
-      action_type: "Click",
-      destination_path:
-        "/article/artsy-editorial-15-top-art-schools-united-states",
-      type: "thumbnail",
-    })
-  })
 })
