@@ -1,10 +1,8 @@
-import { mockTracking } from "Artsy/Analytics"
 import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import renderer from "react-test-renderer"
-import Waypoint from "react-waypoint"
 import { RelatedArticleCanvasLink } from "../RelatedArticleCanvasLink"
 import { RelatedArticlesCanvas } from "../RelatedArticlesCanvas"
 
@@ -41,38 +39,5 @@ describe("RelatedArticlesCanvas", () => {
   it("renders article links", () => {
     const component = getWrapper(testProps)
     expect(component.find(RelatedArticleCanvasLink)).toHaveLength(4)
-  })
-
-  it("Calls a tracking impression", () => {
-    const { Component, dispatch } = mockTracking(RelatedArticlesCanvas)
-    const component = mount(<Component articles={RelatedCanvas} />)
-    component
-      .find(Waypoint)
-      .getElement()
-      .props.onEnter()
-
-    expect(dispatch).toBeCalledWith({
-      action_type: "Impression",
-      context_module: "Further reading",
-      subject: "Further reading",
-    })
-  })
-
-  it("Tracks link clicks", () => {
-    const { Component, dispatch } = mockTracking(RelatedArticlesCanvas)
-    const component = mount(<Component articles={RelatedCanvas} />)
-    component
-      .find(RelatedArticleCanvasLink)
-      .at(0)
-      .simulate("click")
-
-    expect(dispatch).toBeCalledWith({
-      action_type: "Click",
-      context_module: "Further reading",
-      subject: "Further reading",
-      destination_path:
-        "/article/artsy-editorial-15-top-art-schools-united-states",
-      type: "thumbnail",
-    })
   })
 })

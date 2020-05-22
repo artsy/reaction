@@ -1,4 +1,3 @@
-import { mockTracking } from "Artsy/Analytics"
 import { RelatedPanel } from "Components/Publishing/Fixtures/Components"
 import { mount } from "enzyme"
 import "jest-styled-components"
@@ -24,18 +23,5 @@ describe("RelatedArticlesPanelLink", () => {
       "The 15 Top Art Schools in the United States"
     )
     expect(component.html()).toMatch("PoetterHall_Exterior%2Bcopy.jpg")
-  })
-
-  it("Tracks link clicks", () => {
-    const { Component, dispatch } = mockTracking(RelatedArticlesPanelLink)
-    const component = mount(<Component article={RelatedPanel[0]} />)
-    component.simulate("click")
-
-    expect(dispatch).toBeCalledWith({
-      action_type: "Click",
-      destination_path:
-        "/article/artsy-editorial-15-top-art-schools-united-states",
-      type: "thumbnail",
-    })
   })
 })

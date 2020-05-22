@@ -82,7 +82,6 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     <a
       className="c4"
       href="/article/artsy-editorial-15-top-art-schools-united-states"
-      onClick={[Function]}
     >
       <img
         className="c5"
@@ -101,7 +100,6 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     <a
       className="c4"
       href="/article/artsy-editorial-four-years-walter-de-marias-death-final-work-complete"
-      onClick={[Function]}
     >
       <img
         className="c5"
@@ -120,7 +118,6 @@ exports[`RelatedArticlesPanel renders the related articles panel 1`] = `
     <a
       className="c4"
       href="/news/artsy-editorial-french-art-history-in-a-nutshell"
-      onClick={[Function]}
     >
       <img
         className="c5"

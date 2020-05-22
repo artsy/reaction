@@ -1,6 +1,5 @@
-import { color, Serif, space } from "@artsy/palette"
+import { Serif, color, space } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
-import * as Schema from "Artsy/Analytics/Schema"
 import { RelatedArticlePanelData } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
@@ -19,19 +18,6 @@ export class RelatedArticlesPanelLink extends React.Component<
     label: "Related Stories",
   }
 
-  @track<RelatedArticlesPanelProps>(props => ({
-    action_type: Schema.ActionType.Click,
-    destination_path: getEditorialHref(
-      props.article.layout,
-      props.article.slug
-    ),
-    // TODO: add type to schema
-    type: "thumbnail",
-  }))
-  onClick(e) {
-    // noop
-  }
-
   render() {
     const { article } = this.props
     const href = getEditorialHref(article.layout, article.slug)
@@ -41,7 +27,7 @@ export class RelatedArticlesPanelLink extends React.Component<
     })
 
     return (
-      <ArticleLink href={href} onClick={this.onClick.bind(this)}>
+      <ArticleLink href={href}>
         <ArticleImage src={articleImageSrc} />
         <Serif size="4t" color={color("black100")}>
           {article.thumbnail_title}

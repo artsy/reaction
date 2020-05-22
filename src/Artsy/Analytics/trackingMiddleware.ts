@@ -1,4 +1,3 @@
-import { trackExperimentViewed } from "Artsy/Analytics/trackExperimentViewed"
 import ActionTypes from "farce/lib/ActionTypes"
 import { data as sd } from "sharify"
 import { get } from "Utils/get"
@@ -92,9 +91,9 @@ export function trackingMiddleware(options: TrackingMiddlewareOptions = {}) {
             })
 
             // TODO: Remove after EXPERIMENTAL_APP_SHELL AB test ends.
-            if (sd.CLIENT_NAVIGATION_V5) {
-              trackExperimentViewed("client_navigation_v5", trackingData)
-            }
+            // if (sd.CLIENT_NAVIGATION_V5) {
+            //   trackExperimentViewed("client_navigation_v5", trackingData)
+            // }
           }
 
           // Reset timers that track time on page since we're tracking each order

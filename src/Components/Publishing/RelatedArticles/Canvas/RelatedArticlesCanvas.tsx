@@ -2,7 +2,7 @@ import { Flex, Sans } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RelatedArticleCanvasData } from "Components/Publishing/Typings"
-import { map, once } from "lodash"
+import { map } from "lodash"
 import React from "react"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
@@ -31,18 +31,13 @@ interface ScrollingContainerProps {
 export class RelatedArticlesCanvas extends React.Component<
   RelatedArticlesCanvasProps
 > {
-  @track(() => ({ action_type: Schema.ActionType.Impression }))
-  trackRelatedImpression() {
-    // noop
-  }
-
   render() {
     const { articles, isMobile, vertical } = this.props
 
     return (
       <Flex flexDirection="column" maxWidth={1250} mx="auto" mt={4} mb={6}>
         {getTitle(vertical)}
-        <Waypoint onEnter={once(this.trackRelatedImpression.bind(this))} />
+        <Waypoint />
         <ArticlesWrapper isMobile={isMobile}>
           {map(articles, (article, i) => {
             return (

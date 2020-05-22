@@ -2,7 +2,6 @@ import { Sans } from "@artsy/palette"
 import { track } from "Artsy/Analytics"
 import * as Schema from "Artsy/Analytics/Schema"
 import { RelatedArticlePanelData } from "Components/Publishing/Typings"
-import { once } from "lodash"
 import React from "react"
 import Waypoint from "react-waypoint"
 import styled from "styled-components"
@@ -25,11 +24,6 @@ export class RelatedArticlesPanel extends React.Component<
     label: "Related Stories",
   }
 
-  @track(props => ({ action_type: Schema.ActionType.Impression }))
-  trackRelatedImpression() {
-    // noop
-  }
-
   render() {
     const { articles, label } = this.props
 
@@ -38,7 +32,7 @@ export class RelatedArticlesPanel extends React.Component<
         <Label size="3t" weight="medium">
           {label}
         </Label>
-        <Waypoint onEnter={once(this.trackRelatedImpression.bind(this))} />
+        <Waypoint />
         <Collection>
           {articles.map((article, i) => (
             <RelatedArticlesPanelLink
