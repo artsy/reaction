@@ -1,10 +1,4 @@
-### ⚠️ Deprecated repo, most code has been moved to artsy/force.
-
-<<<<<<< HEAD
-However, for working with Artsy's publishing-related code read on...
-=======
-> However, for working with Artsy's publishing-related code read on.
->>>>>>> Update README
+### ⚠️ Deprecated repo; code unrelated to Publishing has been moved to artsy/force.
 
 ```
       :::::::::  ::::::::::     :::      :::::::: ::::::::::: ::::::::::: ::::::::  ::::    :::
