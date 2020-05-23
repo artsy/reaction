@@ -1,3 +1,7 @@
+### ⚠️ Deprecated repo, most code has been moved to artsy/force.
+
+However, for working with Artsy's publishing-related code read on...
+
 ```
       :::::::::  ::::::::::     :::      :::::::: ::::::::::: ::::::::::: ::::::::  ::::    :::
      :+:    :+: :+:          :+: :+:   :+:    :+:    :+:         :+:    :+:    :+: :+:+:   :+:
@@ -15,11 +19,11 @@
 - **CI:** [![CircleCI](https://circleci.com/gh/artsy/reaction.svg?style=shield)](https://circleci.com/gh/artsy/reaction)
 - **NPM:** [![npm version](https://badge.fury.io/js/%40artsy%2Freaction.svg)](https://www.npmjs.com/package/@artsy/reaction)
 - **Coverage:** [![codecov](https://codecov.io/gh/artsy/reaction/branch/master/graph/badge.svg)](https://codecov.io/gh/artsy/reaction)
-- **Point People:** [@damassi](https://github.com/damassi)
+- **Point People:** [@eessex](https://github.com/eessex)
 
 ## Installation
 
-    $ git clone --recursive https://github.com/artsy/reaction.git
+    $ git clone https://github.com/artsy/reaction.git
     $ cd reaction
     $ npm install -g yarn
     $ yarn install
