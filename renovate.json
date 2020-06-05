@@ -1,5 +1,5 @@
 {
   "extends": ["@artsy:lib"],
   "assignees": ["zephraph"],
-  "reviewers": ["damassi"]
+  "reviewers": []
 }
