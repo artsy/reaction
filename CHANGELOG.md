@@ -1,3 +1,27 @@
+# v26.52.0 (Fri Jun 05 2020)
+
+#### 🚀  Enhancement
+
+- Remove tracking calls for now [#3591](https://github.com/artsy/reaction/pull/3591) ([@sweir27](https://github.com/sweir27))
+
+#### ⚠️  Pushed to `master`
+
+- Update renovate.json ([@damassi](https://github.com/damassi))
+- Update README ([@damassi](https://github.com/damassi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.0.4 to v1.3.0 [#3580](https://github.com/artsy/reaction/pull/3580) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Sarah Weir ([@sweir27](https://github.com/sweir27))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.51.0 (Fri May 22 2020)
 
 #### 🚀  Enhancement
