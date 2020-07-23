@@ -1,3 +1,31 @@
+# v26.54.0 (Thu Jul 23 2020)
+
+#### 🚀  Enhancement
+
+- add "schedule:nonOfficeHours" [#3608](https://github.com/artsy/reaction/pull/3608) ([@eessex](https://github.com/eessex))
+- Reenable renovate [#3608](https://github.com/artsy/reaction/pull/3608) ([@eessex](https://github.com/eessex))
+
+#### ⚠️  Pushed to `master`
+
+- Disable renovate ([@dblandin](https://github.com/dblandin))
+
+#### 🏠  Internal
+
+- Clarify deprecation notice [#3609](https://github.com/artsy/reaction/pull/3609) ([@eessex](https://github.com/eessex))
+- Update dep @artsy/lint-changed from 3.0.4 to v3.1.0 [#3604](https://github.com/artsy/reaction/pull/3604) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.3.0 to v1.20.0 [#3602](https://github.com/artsy/reaction/pull/3602) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update codecov orb from 1.0.5 to v1.1.0 [#3600](https://github.com/artsy/reaction/pull/3600) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update aws-s3 orb from 1.0.15 to v1.0.16 [#3603](https://github.com/artsy/reaction/pull/3603) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Devon Blandin ([@dblandin](https://github.com/dblandin))
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.52.0 (Fri Jun 05 2020)
 
 #### 🚀  Enhancement
