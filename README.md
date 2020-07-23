@@ -1,4 +1,4 @@
-### ⚠️ Deprecated repo; all code unrelated to [Publishing](https://github.com/artsy/reaction/tree/master/src/Components/Publishing) has been moved to artsy/force.
+### ⚠️ All non-publishing code in this repo is deprecated and moved to artsy/force. Use this repo only for Article components!
 
 ```
       :::::::::  ::::::::::     :::      :::::::: ::::::::::: ::::::::::: ::::::::  ::::    :::
