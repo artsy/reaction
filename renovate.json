@@ -1,6 +1,6 @@
 {
-  "enabled": false,
+  "enabled": true,
   "extends": ["@artsy:lib"],
-  "assignees": ["zephraph"],
+  "assignees": ["eessex"],
   "reviewers": []
 }
