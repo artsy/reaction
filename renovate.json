@@ -1,6 +1,9 @@
 {
   "enabled": true,
-  "extends": ["@artsy:lib"],
+  "extends": [
+    "@artsy:lib",
+    "schedule:nonOfficeHours"
+  ],
   "assignees": ["eessex"],
   "reviewers": []
 }
