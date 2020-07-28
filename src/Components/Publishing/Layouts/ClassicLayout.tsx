@@ -5,6 +5,7 @@ import { Header } from "Components/Publishing/Header/Header"
 import { Sections } from "Components/Publishing/Sections/Sections"
 import { ArticleData } from "Components/Publishing/Typings"
 import React from "react"
+import { CanvasFooter } from "./Components/CanvasFooter"
 
 export interface ArticleProps {
   article: ArticleData
@@ -25,7 +26,12 @@ export const ClassicLayout: React.SFC<ArticleProps> = props => {
           url={getArticleFullHref(slug)}
           title={social_title || thumbnail_title}
         />
+        hi!
       </Box>
+      <CanvasFooter
+        article={props.article}
+        relatedArticles={props.article.relatedArticles}
+      />
     </Box>
   )
 }

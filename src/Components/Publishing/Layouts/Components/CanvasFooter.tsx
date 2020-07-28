@@ -1,4 +1,4 @@
-import { color, Separator } from "@artsy/palette"
+import { Separator, color } from "@artsy/palette"
 import { CollectionsRailContent } from "Components/CollectionsRail"
 import {
   ArticleData,
