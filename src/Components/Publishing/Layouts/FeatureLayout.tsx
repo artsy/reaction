@@ -21,7 +21,6 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
     isSuper,
     relatedArticlesForCanvas,
     showTooltips,
-    showCollectionsRail,
   } = props
   const { seriesArticle } = article
 
@@ -64,7 +63,6 @@ export const FeatureLayout: React.SFC<ArticleProps> = props => {
         <CanvasFooter
           article={article}
           relatedArticles={relatedArticlesForCanvas}
-          showCollectionsRail={showCollectionsRail}
         />
       )}
     </FeatureLayoutContainer>

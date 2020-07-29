@@ -25,7 +25,6 @@ interface Props {
   isTruncated?: boolean
   onExpand?: () => void
   relatedArticlesForCanvas?: RelatedArticleCanvasData[]
-  showCollectionsRail?: boolean
   tracking?: TrackingProp
   shouldAdRender?: boolean
 }
@@ -107,7 +106,6 @@ export class NewsLayout extends Component<Props, State> {
       isMobile,
       article,
       relatedArticlesForCanvas,
-      showCollectionsRail,
       shouldAdRender,
     } = this.props
     const adUnit = this.getAdUnit()
@@ -129,7 +127,6 @@ export class NewsLayout extends Component<Props, State> {
           <CanvasFooter
             article={article}
             relatedArticles={relatedArticlesForCanvas}
-            showCollectionsRail={showCollectionsRail}
           />
         )}
       </>

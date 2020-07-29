@@ -1,4 +1,3 @@
-import { CollectionsRailContent } from "Components/CollectionsRail"
 import { StandardArticle } from "Components/Publishing/Fixtures/Articles"
 import { RelatedCanvas } from "Components/Publishing/Fixtures/Components"
 import { RelatedArticlesCanvas } from "Components/Publishing/RelatedArticles/Canvas/RelatedArticlesCanvas"
@@ -31,11 +30,5 @@ describe("CanvasFooter", () => {
     const component = getWrapper()
 
     expect(component.find(RelatedArticlesCanvas)).toHaveLength(1)
-  })
-
-  it("renders Collections Rail if props.showCollectionsRail", () => {
-    props.showCollectionsRail = true
-    const component = getWrapper()
-    expect(component.find(CollectionsRailContent)).toHaveLength(1)
   })
 })
