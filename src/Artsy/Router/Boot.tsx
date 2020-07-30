@@ -1,4 +1,4 @@
-import { Grid, injectGlobalStyles, Theme, themeProps } from "@artsy/palette"
+import { Grid, Theme, injectGlobalStyles, themeProps } from "@artsy/palette"
 import * as Sentry from "@sentry/browser"
 import { SystemContextProvider, track } from "Artsy"
 import { RouteConfig } from "found"
@@ -7,7 +7,6 @@ import { HeadProvider } from "react-head"
 import { Environment } from "relay-runtime"
 import { data as sd } from "sharify"
 import { Provider as StateProvider } from "unstated"
-import { BreakpointVisualizer } from "Utils/BreakpointVisualizer"
 import Events from "Utils/Events"
 import { getENV } from "Utils/getENV"
 import { ErrorBoundary } from "./ErrorBoundary"
@@ -72,9 +71,6 @@ export const Boot = track(null, {
                   <Grid fluid maxWidth="100%">
                     <GlobalStyles />
                     {children}
-                    {process.env.NODE_ENV === "development" && (
-                      <BreakpointVisualizer />
-                    )}
                   </Grid>
                 </ResponsiveProvider>
               </MediaContextProvider>

@@ -2,7 +2,7 @@ import { Match, RouteConfig, Router, withRouter } from "found"
 import { flatten } from "lodash"
 import React, { useEffect } from "react"
 
-import { AppShell } from "Apps/Components/AppShell"
+import { AppShell } from "Components/AppShell"
 import { useSystemContext } from "Artsy/SystemContext"
 import { interceptLinks } from "./interceptLinks"
 
