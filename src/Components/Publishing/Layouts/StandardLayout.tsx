@@ -119,7 +119,6 @@ export class StandardLayout extends React.Component<
       relatedArticlesForCanvas,
       relatedArticlesForPanel,
       showTooltips,
-      showCollectionsRail,
       isSuper,
     } = this.props
 
@@ -174,7 +173,6 @@ export class StandardLayout extends React.Component<
                 <CanvasFooter
                   article={article}
                   relatedArticles={relatedArticlesForCanvas}
-                  showCollectionsRail={showCollectionsRail}
                 />
               )}
             </ArticleWrapper>

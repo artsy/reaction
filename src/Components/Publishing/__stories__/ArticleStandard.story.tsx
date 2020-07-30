@@ -112,7 +112,6 @@ story.add(`Multiple articles`, () => {
           article={article}
           relatedArticlesForPanel={RelatedPanel}
           relatedArticlesForCanvas={RelatedCanvas}
-          showCollectionsRail
         />
         <Article
           article={article}

@@ -1,5 +1,4 @@
-import { color, Separator } from "@artsy/palette"
-import { CollectionsRailContent } from "Components/CollectionsRail"
+import { color } from "@artsy/palette"
 import {
   ArticleData,
   RelatedArticleCanvasData,
@@ -11,7 +10,6 @@ import styled from "styled-components"
 export interface CanvasFooterProps {
   relatedArticles?: RelatedArticleCanvasData[]
   article: ArticleData
-  showCollectionsRail?: boolean
 }
 
 export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
@@ -24,13 +22,6 @@ export const CanvasFooter: React.SFC<CanvasFooterProps> = props => {
           articles={relatedArticles}
           vertical={article.layout !== "news" && article.vertical}
         />
-      )}
-
-      {props.showCollectionsRail && (
-        <div>
-          <Separator mb={4} />
-          <CollectionsRailContent {...props} articleId={article.id} />
-        </div>
       )}
     </CanvasFooterContainer>
   )

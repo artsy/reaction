@@ -1,6 +1,6 @@
-import { ConnectedModalDialog } from "Apps/Order/Dialogs"
+import { ConnectedModalDialog } from "Components/Dialogs"
 import { SystemContext, SystemContextProps } from "Artsy"
-import { createMockFetchQuery, MockBoot, renderRelayTree } from "DevTools"
+import { MockBoot, createMockFetchQuery, renderRelayTree } from "DevTools"
 import { merge } from "lodash"
 import React, { ReactElement, useContext } from "react"
 import { GraphQLTaggedNode } from "react-relay"

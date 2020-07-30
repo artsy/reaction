@@ -44,7 +44,6 @@ export interface ArticleProps {
   headerHeight?: string
   marginTop?: string | null
   showTooltips?: boolean
-  showCollectionsRail?: boolean
   slideIndex?: number
   tracking?: TrackingProp
   closeViewer?: () => void

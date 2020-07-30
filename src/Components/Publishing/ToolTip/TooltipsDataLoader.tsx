@@ -8,7 +8,7 @@ import PropTypes from "prop-types"
 import React, { Component } from "react"
 // TODO: Using `SystemQueryRenderer` causes SSR to fail on article pages.
 /* tslint:disable-next-line:no-query-renderer-import */
-import { graphql, QueryRenderer } from "react-relay"
+import { QueryRenderer, graphql } from "react-relay"
 import { ArticleProps } from "../Article"
 
 interface Props extends Artsy.SystemContextProps {
