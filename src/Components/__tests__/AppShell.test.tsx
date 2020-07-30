@@ -4,10 +4,6 @@ import { buildClientApp } from "Artsy/Router/client"
 import { mount } from "enzyme"
 import React from "react"
 
-jest.mock("Components/NavBar/NavBar", () => ({
-  NavBar: () => <div />,
-}))
-
 jest.mock("Artsy/Router/Boot", () => ({
   Boot: ({ children }) => children,
 }))

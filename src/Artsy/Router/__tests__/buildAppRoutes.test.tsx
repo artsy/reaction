@@ -8,10 +8,6 @@ import React from "react"
 import { buildAppRoutes } from "../buildAppRoutes"
 import { buildClientApp } from "../buildClientApp"
 
-jest.mock("Components/NavBar/NavBar", () => ({
-  NavBar: () => <div />,
-}))
-
 jest.mock("Artsy/Router/Boot", () => ({
   Boot: ({ children }) => children,
 }))

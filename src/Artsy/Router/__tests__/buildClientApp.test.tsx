@@ -7,10 +7,6 @@ import React from "react"
 import { graphql } from "react-relay"
 import { Boot } from "../Boot"
 
-jest.mock("Components/NavBar", () => ({
-  NavBar: () => <div />,
-}))
-
 jest.mock("react-relay", () => ({
   ReactRelayContext: {
     Provider: ({ children }) => children,
