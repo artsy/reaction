@@ -1,4 +1,0 @@
-enum Tabs {
-  Overview,
-  CV,
-}
