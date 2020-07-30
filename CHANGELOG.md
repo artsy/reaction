@@ -1,3 +1,21 @@
+# v27.0.0 (Thu Jul 30 2020)
+
+#### 💥  Breaking Change
+
+- Delete unused files [#3613](https://github.com/artsy/reaction/pull/3613) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.20.0 to v1.22.0 [#3610](https://github.com/artsy/reaction/pull/3610) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v26.54.0 (Thu Jul 23 2020)
 
 #### 🚀  Enhancement
