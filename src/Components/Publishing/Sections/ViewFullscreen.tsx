@@ -1,6 +1,5 @@
 import PropTypes from "prop-types"
 import React from "react"
-import track from "react-tracking"
 import styled from "styled-components"
 import { IconExpand } from "../Icon/IconExpand"
 import { withFullScreen } from "../Sections/FullscreenViewer/withFullScreen"
@@ -10,7 +9,6 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   onViewFullscreen?: (index: number) => void
 }
 
-@track()
 @withFullScreen
 export class ViewFullscreen extends React.Component<Props, null> {
   static contextTypes = {
@@ -22,7 +20,6 @@ export class ViewFullscreen extends React.Component<Props, null> {
     this.onClick = this.onClick.bind(this)
   }
 
-  @track({ action: "Clicked article impression" })
   onClick(e) {
     e.preventDefault()
     this.props.onViewFullscreen(this.props.index)
