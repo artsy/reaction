@@ -1,3 +1,23 @@
+# v27.1.0 (Mon Aug 10 2020)
+
+#### 🚀  Enhancement
+
+- Bump yarn orb [#3618](https://github.com/artsy/reaction/pull/3618) ([@eessex](https://github.com/eessex))
+- deprecate Clicked article impression event [#3617](https://github.com/artsy/reaction/pull/3617) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.24.0 to v1.26.0 [#3615](https://github.com/artsy/reaction/pull/3615) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.22.0 to v1.24.0 [#3612](https://github.com/artsy/reaction/pull/3612) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v27.0.0 (Thu Jul 30 2020)
 
 #### 💥  Breaking Change
