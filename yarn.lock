@@ -4435,12 +4435,12 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/styled-system@3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-3.0.9.tgz#a17d78b3500ed5c76570fd4f692546616eed015c"
-  integrity sha512-QUtiOVULbaLCrdQYzZpqDdjx2QUwdfk+F9op2kZy1Xqjh5S6D0vMousLUByBRDf7tqL/ZdtX0E5/gFav1A6DCA==
+"@types/styled-system@5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-5.1.9.tgz#8baac8f6eca9e0bd5768c175ca5ce1f2d6f61ade"
+  integrity sha512-QlWv6tmQV8dqk8s+LSLb9QAtmuQEnfv4f8lKKZkMgDqRFVmxJDBwEw0u4zhpxp56u0hdR+TCIk9dGfOw3TkCoQ==
   dependencies:
-    csstype "^2.2.0"
+    csstype "^2.6.9"
 
 "@types/underscore.string@0.0.32":
   version "0.0.32"
@@ -7545,6 +7545,11 @@ csstype@^2.2.0, csstype@^2.5.7:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.3.tgz#b701e5968245bf9b08d54ac83d00b624e622a9fa"
   integrity sha512-rINUZXOkcBmoHWEyu7JdHu5JMzkGRoMX4ov9830WNgxf5UYxcBUO0QTKAqeJ5EZfSdlrcJYkC8WwfVW7JYi4yg==
+
+csstype@^2.6.9:
+  version "2.6.13"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.13.tgz#a6893015b90e84dd6e85d0e3b442a1e84f2dbe0f"
+  integrity sha512-ul26pfSQTZW8dcOnD2iiJssfXw0gdNVX9IJDH/X3K5DGPfj+fUYe3kB+swUY6BF3oZDxaID3AJt+9/ojSAE05A==
 
 csstype@^3.0.2:
   version "3.0.2"
@@ -17648,14 +17653,6 @@ styled-components@4.3.2:
     stylis "^3.5.0"
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
-
-styled-system@^3.1.11:
-  version "3.1.11"
-  resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-3.1.11.tgz#a91a38cf7a0f0e625b897a04fdd506a359a3629f"
-  integrity sha512-d0p32F7Y55uRWNDb1P0JcIiGVi13ZxiSCvn8zNS68exAKW9Q5jp+IGTXUIavQOD/J8r3tydtE3vRk8Ii2i39HA==
-  dependencies:
-    "@babel/runtime" "^7.1.2"
-    prop-types "^15.6.2"
 
 styled-system@^5.1.5:
   version "5.1.5"
