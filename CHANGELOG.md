@@ -1,3 +1,15 @@
+# v28.0.0 (Fri Aug 14 2020)
+
+#### 💥  Breaking Change
+
+- [HOLD] Upgrade relay [#3621](https://github.com/artsy/reaction/pull/3621) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v27.1.0 (Mon Aug 10 2020)
 
 #### 🚀  Enhancement
