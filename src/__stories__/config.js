@@ -1,6 +1,8 @@
+import React from "react"
 import Events from "../Utils/Events"
-import { configure, addParameters } from "@storybook/react"
+import { configure, addParameters, addDecorator } from "@storybook/react"
 import { createMediaStyle } from "Utils/Responsive"
+import { Theme } from "@artsy/palette"
 
 const req = require.context("../", true, /\.story\.tsx$/)
 
@@ -21,6 +23,8 @@ addParameters({
   showAddonPanel: false,
   sortStoriesByKind: true,
 })
+
+addDecorator(storyFn => <Theme>{storyFn()}</Theme>)
 
 setTimeout(() => {
   configure(loadStories, module)
