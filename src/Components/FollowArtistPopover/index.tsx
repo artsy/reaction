@@ -107,6 +107,7 @@ export const FollowArtistPopoverQueryRenderer = ({
   const { relayEnvironment, user } = useContext(SystemContext)
   return (
     <QueryRenderer<FollowArtistPopoverQuery>
+      // @ts-ignore
       environment={relayEnvironment}
       variables={{ artistID }}
       query={graphql`

@@ -219,6 +219,9 @@ export class MockRelayRenderer<T extends OperationType> extends React.Component<
             {...contextProps}
             relayEnvironment={environment}
           >
+            {/*
+
+            // @ts-ignore */}
             <SystemQueryRenderer
               // tslint:disable-next-line relay-operation-generics
               query={query}

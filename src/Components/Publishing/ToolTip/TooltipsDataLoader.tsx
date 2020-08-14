@@ -41,6 +41,7 @@ export class TooltipsDataLoader extends Component<Props> {
 
     return (
       <QueryRenderer<TooltipsDataLoaderQuery>
+        // @ts-ignore
         environment={relayEnvironment}
         query={graphql`
           query TooltipsDataLoaderQuery(

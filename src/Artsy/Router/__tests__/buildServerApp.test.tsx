@@ -5,9 +5,9 @@
 import { SystemContextConsumer } from "Artsy"
 import { createRelaySSREnvironment } from "Artsy/Relay/createRelaySSREnvironment"
 import {
+  ServerRouterConfig,
   __THOU_SHALT_NOT_FAFF_AROUND_WITH_THIS_HERE_OBJECT_WE_ARE_SERIOUS__,
   buildServerApp,
-  ServerRouterConfig,
 } from "Artsy/Router/buildServerApp"
 import { createMockNetworkLayer } from "DevTools"
 import { render } from "enzyme"
@@ -18,6 +18,7 @@ import { graphql } from "react-relay"
 import { Media } from "Utils/Responsive"
 
 jest.unmock("react-relay")
+jest.mock("found-scroll", () => {})
 
 jest.mock("@loadable/server", () => ({
   ChunkExtractor: class {
