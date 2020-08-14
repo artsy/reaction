@@ -5,12 +5,12 @@ import serialize from "serialize-javascript"
 import { ServerStyleSheet } from "styled-components"
 
 import { Resolver } from "found-relay"
-import createRender from "found/lib/createRender"
+import { createRender } from "found"
 import {
   FarceElementResult,
   FarceRedirectResult,
   getFarceResult,
-} from "found/lib/server"
+} from "found/server"
 import qs from "qs"
 
 import createQueryMiddleware from "farce/lib/createQueryMiddleware"
@@ -30,6 +30,7 @@ import { queryStringParsing } from "./Utils/queryStringParsing"
 
 import { ChunkExtractor } from "@loadable/server"
 import { getENV } from "Utils/getENV"
+import RelayServerSSR from "react-relay-network-modern-ssr/lib/server"
 
 export interface ServerAppResolve {
   bodyHTML?: string
@@ -200,7 +201,7 @@ export function buildServerApp(
         // extractor.getLinkTags()
 
         // Get serializable Relay data for rehydration on the client
-        const _relayData = await relayEnvironment.relaySSRMiddleware.getCache()
+        const _relayData = await (relayEnvironment.relaySSRMiddleware as RelayServerSSR).getCache()
 
         // Extract CSS styleTags to inject for SSR pass
         const styleTags = sheet.getStyleTags()

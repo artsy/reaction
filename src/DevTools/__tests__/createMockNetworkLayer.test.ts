@@ -6,12 +6,12 @@ import { createMockFetchQuery } from "DevTools/createMockNetworkLayer"
 import { commitMutation, graphql } from "react-relay"
 import {
   Environment,
-  fetchQuery,
   GraphQLTaggedNode,
   Network,
   OperationType,
   RecordSource,
   Store,
+  fetchQuery,
 } from "relay-runtime"
 import { createMockNetworkLayer2 } from "../index"
 jest.unmock("react-relay")
@@ -69,6 +69,7 @@ describe("createMockNetworkLayer", () => {
     })
 
     return new Promise((resolve, reject) => {
+      // @ts-ignore
       commitMutation(environment, {
         // tslint:disable-next-line:relay-operation-generics
         mutation: query,

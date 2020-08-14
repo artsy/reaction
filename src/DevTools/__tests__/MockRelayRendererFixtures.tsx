@@ -66,6 +66,7 @@ const ArtistQueryRenderer = (props: { id: string }) => (
     {({ relayEnvironment }) => {
       return (
         <QueryRenderer<MockRelayRendererFixturesArtistQuery>
+          // @ts-ignore
           environment={relayEnvironment}
           variables={props}
           query={graphql`
