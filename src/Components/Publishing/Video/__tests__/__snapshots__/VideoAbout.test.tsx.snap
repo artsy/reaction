@@ -258,15 +258,15 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   padding-top: 80px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 .c3 p {
@@ -274,16 +274,16 @@ exports[`Video About matches the snapshot 1`] = `
 }
 
 .c0 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 @media screen and (min-width:40em) {
@@ -372,22 +372,22 @@ exports[`Video About matches the snapshot 1`] = `
 
 @media screen and (min-width:40em) {
   .c1 {
-    padding-top: 80px;
     width: 100%;
+    padding-top: 80px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c1 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c1 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
@@ -417,9 +417,11 @@ exports[`Video About matches the snapshot 1`] = `
 
 <div
   className="c0"
+  display="flex"
 >
   <div
     className="c1"
+    display="flex"
     width={
       Array [
         1,
@@ -995,15 +997,15 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   padding-top: 80px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 .c3 p {
@@ -1011,16 +1013,16 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 }
 
 .c0 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 @media screen and (min-width:40em) {
@@ -1109,22 +1111,22 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 
 @media screen and (min-width:40em) {
   .c1 {
-    padding-top: 80px;
     width: 100%;
+    padding-top: 80px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c1 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c1 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
@@ -1154,9 +1156,11 @@ exports[`Video About matches the snapshot with editable props 1`] = `
 
 <div
   className="c0"
+  display="flex"
 >
   <div
     className="c1"
+    display="flex"
     width={
       Array [
         1,

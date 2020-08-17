@@ -2,29 +2,29 @@
 
 exports[`SeriesAbout snapshots Renders properly 1`] = `
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c6 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c6 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c2 {
@@ -263,17 +263,18 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: black;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media screen and (min-width:40em) {
@@ -338,13 +339,13 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 
 @media screen and (min-width:52em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -435,10 +436,12 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 <div
   className="c0"
   color="black"
+  display="flex"
   width="100%"
 >
   <div
     className="c1"
+    display="flex"
     width={
       Array [
         1,
@@ -555,6 +558,7 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
   </div>
   <div
     className="c6"
+    display="flex"
     width={
       Array [
         1,
@@ -590,29 +594,29 @@ exports[`SeriesAbout snapshots Renders properly 1`] = `
 
 exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c6 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c6 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c2 {
@@ -851,17 +855,18 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: black;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media screen and (min-width:40em) {
@@ -926,13 +931,13 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 
 @media screen and (min-width:52em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -1023,10 +1028,12 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 <div
   className="c0"
   color="black"
+  display="flex"
   width="100%"
 >
   <div
     className="c1"
+    display="flex"
     width={
       Array [
         1,
@@ -1143,6 +1150,7 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
   </div>
   <div
     className="c6"
+    display="flex"
     width={
       Array [
         1,
@@ -1171,29 +1179,29 @@ exports[`SeriesAbout snapshots Renders with editDescription 1`] = `
 
 exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c6 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c6 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c2 {
@@ -1432,17 +1440,18 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: black;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media screen and (min-width:40em) {
@@ -1507,13 +1516,13 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 
 @media screen and (min-width:52em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -1604,10 +1613,12 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
 <div
   className="c0"
   color="black"
+  display="flex"
   width="100%"
 >
   <div
     className="c1"
+    display="flex"
     width={
       Array [
         1,
@@ -1727,6 +1738,7 @@ exports[`SeriesAbout snapshots Renders with editSubTitle 1`] = `
   </div>
   <div
     className="c6"
+    display="flex"
     width={
       Array [
         1,
@@ -1770,29 +1782,29 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c10 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c10 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c2 {
@@ -2050,17 +2062,18 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: black;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media screen and (min-width:40em) {
@@ -2125,13 +2138,13 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 
 @media screen and (min-width:52em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c3 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -2231,10 +2244,12 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
 <div
   className="c0"
   color="black"
+  display="flex"
   width="100%"
 >
   <div
     className="c1"
+    display="flex"
     width={
       Array [
         1,
@@ -2378,6 +2393,7 @@ exports[`SeriesAbout snapshots Renders with sponsor 1`] = `
   </div>
   <div
     className="c10"
+    display="flex"
     width={
       Array [
         1,

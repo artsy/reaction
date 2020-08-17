@@ -17,21 +17,19 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
   padding: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
+  margin-bottom: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -39,34 +37,36 @@ exports[`series layout renders a series 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c35 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c40 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c40 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c6 {
@@ -145,16 +145,16 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c42 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 4px;
+  height: 1px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
   margin: 0 auto;
   border-top: 1px solid #E5E5E5;
   background: #000;
@@ -206,6 +206,8 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c1 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -328,9 +330,9 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c25 {
-  margin-bottom: 10px;
-  margin-left: 0px;
   width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
   position: relative;
   height: inherit;
   background: white;
@@ -355,18 +357,18 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c28 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   left: 20px;
   right: 20px;
@@ -605,17 +607,18 @@ exports[`series layout renders a series 1`] = `
 }
 
 .c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: white;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c13 {
@@ -692,22 +695,22 @@ exports[`series layout renders a series 1`] = `
 
 @media screen and (min-width:40em) {
   .c19 {
-    margin-bottom: 0px;
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .c19 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c19 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
@@ -875,13 +878,13 @@ exports[`series layout renders a series 1`] = `
 
 @media screen and (min-width:52em) {
   .c37 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c37 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -901,40 +904,25 @@ exports[`series layout renders a series 1`] = `
 
 @media screen and (min-width:40em) {
   .c25 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c25 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c25 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c25 {
     width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c25 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c25 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
@@ -1048,6 +1036,7 @@ exports[`series layout renders a series 1`] = `
     <div
       className="c1"
       color="white"
+      display="flex"
     >
       <div
         className="PartnerInline c2"
@@ -1142,9 +1131,11 @@ exports[`series layout renders a series 1`] = `
         >
           <div
             className="c18"
+            display="flex"
           >
             <div
               className="c19"
+              display="flex"
               width={
                 Array [
                   "100%",
@@ -1234,6 +1225,7 @@ exports[`series layout renders a series 1`] = `
               />
               <div
                 className="c28"
+                display="flex"
               >
                 <svg
                   className="c29"
@@ -1284,9 +1276,11 @@ exports[`series layout renders a series 1`] = `
         >
           <div
             className="c18"
+            display="flex"
           >
             <div
               className="c19"
+              display="flex"
               width={
                 Array [
                   "100%",
@@ -1408,10 +1402,12 @@ exports[`series layout renders a series 1`] = `
       <div
         className="c34"
         color="white"
+        display="flex"
         width="100%"
       >
         <div
           className="c35"
+          display="flex"
           width={
             Array [
               1,
@@ -1528,6 +1524,7 @@ exports[`series layout renders a series 1`] = `
         </div>
         <div
           className="c40"
+          display="flex"
           width={
             Array [
               1,
@@ -1563,6 +1560,7 @@ exports[`series layout renders a series 1`] = `
   </div>
   <div
     className="c42"
+    display="flex"
     height="1px"
     onClick={[Function]}
   >
@@ -1616,21 +1614,19 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c24 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
   padding: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c25 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
+  margin-bottom: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1638,34 +1634,36 @@ exports[`series layout renders a sponsored series 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c47 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c47 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c8 {
@@ -1744,16 +1742,16 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c50 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 4px;
+  height: 1px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
   margin: 0 auto;
   border-top: 1px solid #E5E5E5;
   background: #000;
@@ -1810,6 +1808,8 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c1 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1932,9 +1932,9 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c31 {
-  margin-bottom: 10px;
-  margin-left: 0px;
   width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
   position: relative;
   height: inherit;
   background: white;
@@ -1959,18 +1959,18 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   left: 20px;
   right: 20px;
@@ -2228,17 +2228,18 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 .c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: white;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c15 {
@@ -2319,22 +2320,22 @@ exports[`series layout renders a sponsored series 1`] = `
 
 @media screen and (min-width:40em) {
   .c25 {
-    margin-bottom: 0px;
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .c25 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c25 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
@@ -2502,13 +2503,13 @@ exports[`series layout renders a sponsored series 1`] = `
 
 @media screen and (min-width:52em) {
   .c43 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c43 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -2535,40 +2536,25 @@ exports[`series layout renders a sponsored series 1`] = `
 
 @media screen and (min-width:40em) {
   .c31 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c31 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c31 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c31 {
     width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c31 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c31 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
@@ -2691,6 +2677,7 @@ exports[`series layout renders a sponsored series 1`] = `
     <div
       className="c1"
       color="white"
+      display="flex"
     >
       <div
         className="PartnerInline c2"
@@ -2851,9 +2838,11 @@ exports[`series layout renders a sponsored series 1`] = `
         >
           <div
             className="c24"
+            display="flex"
           >
             <div
               className="c25"
+              display="flex"
               width={
                 Array [
                   "100%",
@@ -2943,6 +2932,7 @@ exports[`series layout renders a sponsored series 1`] = `
               />
               <div
                 className="c34"
+                display="flex"
               >
                 <svg
                   className="c35"
@@ -2993,9 +2983,11 @@ exports[`series layout renders a sponsored series 1`] = `
         >
           <div
             className="c24"
+            display="flex"
           >
             <div
               className="c25"
+              display="flex"
               width={
                 Array [
                   "100%",
@@ -3117,10 +3109,12 @@ exports[`series layout renders a sponsored series 1`] = `
       <div
         className="c40"
         color="white"
+        display="flex"
         width="100%"
       >
         <div
           className="c41"
+          display="flex"
           width={
             Array [
               1,
@@ -3264,6 +3258,7 @@ exports[`series layout renders a sponsored series 1`] = `
         </div>
         <div
           className="c47"
+          display="flex"
           width={
             Array [
               1,
@@ -3326,6 +3321,7 @@ exports[`series layout renders a sponsored series 1`] = `
   </div>
   <div
     className="c50"
+    display="flex"
     height="1px"
     onClick={[Function]}
   >

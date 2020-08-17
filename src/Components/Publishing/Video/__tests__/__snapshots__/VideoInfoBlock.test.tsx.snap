@@ -36,6 +36,7 @@ exports[`Video Info Block matches the snapshot 1`] = `
 <div>
   <div
     className="c0"
+    display="flex"
   >
     <div
       className="c1 c2"
@@ -101,6 +102,7 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
 <div>
   <div
     className="c0"
+    display="flex"
   >
     <div
       className="c1 c2"

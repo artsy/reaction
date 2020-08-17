@@ -6,10 +6,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 .c35 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -17,6 +13,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c18 {
@@ -64,16 +64,16 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 .c24 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 4px;
+  height: 1px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
   margin: 0 auto;
   border-top: none;
   background: #F8F8F8;
@@ -355,15 +355,16 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 .c44 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  color: black;
+  margin-bottom: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: black;
 }
 
@@ -413,10 +414,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
 }
 
 .c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -425,6 +422,10 @@ exports[`Sections snapshots tests renders properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 20px;
   width: 100%;
 }
@@ -1665,6 +1666,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
     >
       <div
         className="c24"
+        display="flex"
         height="1px"
         onClick={[Function]}
       >
@@ -2150,9 +2152,11 @@ exports[`Sections snapshots tests renders properly 1`] = `
       >
         <div
           className="c34"
+          display="flex"
         >
           <div
             className="c35"
+            display="flex"
           >
             <div
               className="c36"
@@ -2174,6 +2178,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             </div>
             <div
               className="c37"
+              display="flex"
             >
               <div
                 className="c38"
@@ -2386,6 +2391,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
       <div
         className="c44"
         color="black"
+        display="flex"
       >
         <div
           className="c45"

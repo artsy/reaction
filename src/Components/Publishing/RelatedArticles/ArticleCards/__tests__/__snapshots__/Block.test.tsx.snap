@@ -12,21 +12,19 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
   padding: 20px;
-}
-
-.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c9 {
+  width: 100%;
+  margin-bottom: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -34,8 +32,10 @@ exports[`ArticleCard renders properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c4 {
@@ -130,9 +130,9 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c16 {
-  margin-bottom: 10px;
-  margin-left: 0px;
   width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
   position: relative;
   height: inherit;
   background: white;
@@ -157,18 +157,18 @@ exports[`ArticleCard renders properly 1`] = `
 }
 
 .c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   left: 20px;
   right: 20px;
@@ -229,22 +229,22 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media screen and (min-width:40em) {
   .c9 {
-    margin-bottom: 0px;
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .c9 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c9 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
@@ -322,40 +322,25 @@ exports[`ArticleCard renders properly 1`] = `
 
 @media screen and (min-width:40em) {
   .c16 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c16 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c16 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c16 {
     width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c16 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c16 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
@@ -410,9 +395,11 @@ exports[`ArticleCard renders properly 1`] = `
         >
           <div
             className="c8"
+            display="flex"
           >
             <div
               className="c9"
+              display="flex"
               width={
                 Array [
                   "100%",
@@ -525,9 +512,11 @@ exports[`ArticleCard renders properly 1`] = `
         >
           <div
             className="c8"
+            display="flex"
           >
             <div
               className="c9"
+              display="flex"
               width={
                 Array [
                   "100%",
@@ -604,6 +593,7 @@ exports[`ArticleCard renders properly 1`] = `
               />
               <div
                 className="c19"
+                display="flex"
               >
                 <svg
                   className="c20"

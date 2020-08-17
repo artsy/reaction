@@ -9,8 +9,8 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c6 {
-  padding-right: 20px;
   width: 60px;
+  padding-right: 20px;
 }
 
 .c13 {
@@ -78,10 +78,7 @@ exports[`Video Cover matches the snapshot 1`] = `
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -89,7 +86,10 @@ exports[`Video Cover matches the snapshot 1`] = `
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   box-sizing: border-box;
   z-index: 1;
   position: absolute;
@@ -176,6 +176,7 @@ exports[`Video Cover matches the snapshot 1`] = `
   />
   <div
     className="c3"
+    display="flex"
     width="100%"
   >
     <div
@@ -183,6 +184,7 @@ exports[`Video Cover matches the snapshot 1`] = `
     >
       <div
         className="c5"
+        display="flex"
       >
         <div
           className="c6"
@@ -216,6 +218,7 @@ exports[`Video Cover matches the snapshot 1`] = `
           <div>
             <div
               className="c5"
+              display="flex"
             >
               <div
                 className="c9 c10"
@@ -278,8 +281,8 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c6 {
-  padding-right: 20px;
   width: 60px;
+  padding-right: 20px;
 }
 
 .c13 {
@@ -347,10 +350,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
 }
 
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -358,7 +358,10 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   box-sizing: border-box;
   z-index: 1;
   position: absolute;
@@ -445,6 +448,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
   />
   <div
     className="c3"
+    display="flex"
     width="100%"
   >
     <div
@@ -452,6 +456,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
     >
       <div
         className="c5"
+        display="flex"
       >
         <div
           className="c6"
@@ -485,6 +490,7 @@ exports[`Video Cover matches the snapshot with edit props 1`] = `
           <div>
             <div
               className="c5"
+              display="flex"
             >
               <div
                 className="c9 c10"

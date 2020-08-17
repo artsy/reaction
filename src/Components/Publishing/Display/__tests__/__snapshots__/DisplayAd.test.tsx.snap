@@ -14,16 +14,16 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
 }
 
 .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 4px;
+  height: 1px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
   margin: 0 auto;
   border-top: none;
   background: #F8F8F8;
@@ -34,6 +34,7 @@ exports[`Display Ad renders the new canvas in standard layout 1`] = `
 
 <div
   className="c0"
+  display="flex"
   height="1px"
   onClick={[Function]}
 >

@@ -2,18 +2,18 @@
 
 exports[`renders a headline with children properly 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 780;
-  margin-bottom: 16px;
-  margin-top: 4px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 {
@@ -40,6 +40,7 @@ exports[`renders a headline with children properly 1`] = `
 >
   <div
     className="c0"
+    display="flex"
   >
     <h1
       className="c1"
@@ -68,18 +69,18 @@ exports[`renders a headline with children properly 1`] = `
 
 exports[`renders a news headline properly 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 780;
-  margin-bottom: 16px;
-  margin-top: 4px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 {
@@ -106,6 +107,7 @@ exports[`renders a news headline properly 1`] = `
 >
   <div
     className="c0"
+    display="flex"
   >
     <h1
       className="c1"
