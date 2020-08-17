@@ -2,18 +2,18 @@
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   max-width: 1250px;
-  margin-bottom: 128px;
-  margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 32px;
+  margin-bottom: 128px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c2 {
@@ -197,6 +197,7 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
 
 <div
   className="c0"
+  display="flex"
 >
   <div
     className="c1 c2"

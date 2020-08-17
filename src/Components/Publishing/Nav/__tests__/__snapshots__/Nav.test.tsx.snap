@@ -53,6 +53,8 @@ exports[`Nav renders a Nav 1`] = `
 }
 
 .c0 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,6 +114,7 @@ exports[`Nav renders a Nav 1`] = `
   <div
     className="c0"
     color="white"
+    display="flex"
   >
     <div
       className="PartnerInline c1"
@@ -219,6 +222,8 @@ exports[`Nav renders a sponsored nav 1`] = `
 }
 
 .c0 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -285,6 +290,7 @@ exports[`Nav renders a sponsored nav 1`] = `
   <div
     className="c0"
     color="white"
+    display="flex"
   >
     <div
       className="PartnerInline c1"
@@ -431,6 +437,8 @@ exports[`Nav renders a transparent nav 1`] = `
 }
 
 .c0 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -492,6 +500,7 @@ exports[`Nav renders a transparent nav 1`] = `
   <div
     className="c0"
     color="white"
+    display="flex"
   >
     <div
       className="PartnerInline c1"

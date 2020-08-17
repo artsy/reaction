@@ -2,10 +2,6 @@
 
 exports[`renders a full image set properly 1`] = `
 .c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -13,6 +9,10 @@ exports[`renders a full image set properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c4 {
@@ -49,10 +49,6 @@ exports[`renders a full image set properly 1`] = `
 }
 
 .c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -61,6 +57,10 @@ exports[`renders a full image set properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 20px;
   width: 100%;
 }
@@ -150,9 +150,11 @@ exports[`renders a full image set properly 1`] = `
   >
     <div
       className="c2"
+      display="flex"
     >
       <div
         className="c3"
+        display="flex"
       >
         <div
           className="c4"
@@ -174,6 +176,7 @@ exports[`renders a full image set properly 1`] = `
         </div>
         <div
           className="c5"
+          display="flex"
         >
           <div
             className="c6"
@@ -252,10 +255,6 @@ exports[`renders a full image set properly 1`] = `
 
 exports[`renders a mini image set properly 1`] = `
 .c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -263,6 +262,10 @@ exports[`renders a mini image set properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c6 {
@@ -299,10 +302,6 @@ exports[`renders a mini image set properly 1`] = `
 }
 
 .c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -311,6 +310,10 @@ exports[`renders a mini image set properly 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 20px;
   width: 100%;
 }
@@ -333,14 +336,14 @@ exports[`renders a mini image set properly 1`] = `
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 100px;
   padding: 10px 0 10px 10px;
   border: 1px solid #E5E5E5;
@@ -393,6 +396,7 @@ exports[`renders a mini image set properly 1`] = `
 >
   <div
     className="c1"
+    display="flex"
     onClick={[Function]}
   >
     <img
@@ -402,9 +406,11 @@ exports[`renders a mini image set properly 1`] = `
     />
     <div
       className="c4"
+      display="flex"
     >
       <div
         className="c5"
+        display="flex"
       >
         <div
           className="c6"
@@ -426,6 +432,7 @@ exports[`renders a mini image set properly 1`] = `
         </div>
         <div
           className="c7"
+          display="flex"
         >
           <div
             className="c8"

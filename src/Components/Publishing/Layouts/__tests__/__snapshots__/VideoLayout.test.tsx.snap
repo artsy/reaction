@@ -9,8 +9,8 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c33 {
-  padding-right: 20px;
   width: 60px;
+  padding-right: 20px;
 }
 
 .c38 {
@@ -18,11 +18,11 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c40 {
+  padding-left: 20px;
+  padding-right: 20px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .c41 {
@@ -107,16 +107,16 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c56 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 4px;
+  height: 1px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
   margin: 0 auto;
   border-top: 1px solid #E5E5E5;
   background: #000;
@@ -168,6 +168,8 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c2 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -668,15 +670,15 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c43 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   padding-top: 80px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c43 .c45 p {
@@ -684,16 +686,16 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c42 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .c34 a {
@@ -719,10 +721,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 .c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -730,7 +729,10 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   box-sizing: border-box;
   z-index: 1;
   position: absolute;
@@ -933,22 +935,22 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 
 @media screen and (min-width:40em) {
   .c43 {
-    padding-top: 80px;
     width: 100%;
+    padding-top: 80px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c43 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c43 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
@@ -989,6 +991,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
     <div
       className="c1 c2"
       color="white"
+      display="flex"
     >
       <div
         className="PartnerInline c3"
@@ -1200,6 +1203,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
       />
       <div
         className="c30"
+        display="flex"
         width="100%"
       >
         <div
@@ -1207,6 +1211,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
         >
           <div
             className="c32"
+            display="flex"
           >
             <div
               className="c33"
@@ -1240,6 +1245,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
               <div>
                 <div
                   className="c32"
+                  display="flex"
                 >
                   <div
                     className="c34 c35"
@@ -1300,9 +1306,11 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
     >
       <div
         className="c42"
+        display="flex"
       >
         <div
           className="c43"
+          display="flex"
           width={
             Array [
               1,
@@ -1622,6 +1630,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   </div>
   <div
     className="c56"
+    display="flex"
     height="1px"
     onClick={[Function]}
   >
@@ -1659,8 +1668,8 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c33 {
-  padding-right: 20px;
   width: 60px;
+  padding-right: 20px;
 }
 
 .c38 {
@@ -1668,11 +1677,11 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c40 {
+  padding-left: 20px;
+  padding-right: 20px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .c41 {
@@ -1705,8 +1714,8 @@ exports[`Video Layout matches the snapshot 1`] = `
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 100px;
   padding-top: 40px;
+  padding-bottom: 100px;
 }
 
 .c84 {
@@ -1721,21 +1730,19 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c65 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
   padding: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c66 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
+  margin-bottom: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1743,34 +1750,36 @@ exports[`Video Layout matches the snapshot 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c79 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.c82 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c82 {
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c7 {
@@ -1884,16 +1893,16 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c83 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-top: 32px;
+  padding-bottom: 4px;
+  height: 1px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 1px;
-  padding-bottom: 4px;
-  padding-top: 32px;
   margin: 0 auto;
   border-top: 1px solid #E5E5E5;
   background: #000;
@@ -1945,6 +1954,8 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c2 {
+  background-color: black;
+  color: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2071,9 +2082,9 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c70 {
-  margin-bottom: 10px;
-  margin-left: 0px;
   width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
   position: relative;
   height: inherit;
   background: white;
@@ -2098,18 +2109,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c73 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   left: 20px;
   right: 20px;
@@ -2312,17 +2323,18 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c78 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  color: white;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c25 {
@@ -2548,15 +2560,15 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c43 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   padding-top: 80px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c43 .c45 p {
@@ -2564,16 +2576,16 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c42 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .c60 a {
@@ -2626,10 +2638,7 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 .c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  width: 100%;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
@@ -2637,7 +2646,10 @@ exports[`Video Layout matches the snapshot 1`] = `
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   box-sizing: border-box;
   z-index: 1;
   position: absolute;
@@ -2775,22 +2787,22 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media screen and (min-width:40em) {
   .c66 {
-    margin-bottom: 0px;
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .c66 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c66 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
@@ -2964,13 +2976,13 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media screen and (min-width:52em) {
   .c81 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c81 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 }
 
@@ -2990,40 +3002,25 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media screen and (min-width:40em) {
   .c70 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c70 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c70 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c70 {
     width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c70 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c70 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
@@ -3125,22 +3122,22 @@ exports[`Video Layout matches the snapshot 1`] = `
 
 @media screen and (min-width:40em) {
   .c43 {
-    padding-top: 80px;
     width: 100%;
+    padding-top: 80px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c43 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c43 {
-    padding-top: 0px;
     width: 33.33333333333333%;
+    padding-top: 0;
   }
 }
 
@@ -3187,6 +3184,7 @@ exports[`Video Layout matches the snapshot 1`] = `
     <div
       className="c1 c2"
       color="white"
+      display="flex"
     >
       <div
         className="PartnerInline c3"
@@ -3398,6 +3396,7 @@ exports[`Video Layout matches the snapshot 1`] = `
       />
       <div
         className="c30"
+        display="flex"
         width="100%"
       >
         <div
@@ -3405,6 +3404,7 @@ exports[`Video Layout matches the snapshot 1`] = `
         >
           <div
             className="c32"
+            display="flex"
           >
             <div
               className="c33"
@@ -3438,6 +3438,7 @@ exports[`Video Layout matches the snapshot 1`] = `
               <div>
                 <div
                   className="c32"
+                  display="flex"
                 >
                   <div
                     className="c34 c35"
@@ -3502,9 +3503,11 @@ exports[`Video Layout matches the snapshot 1`] = `
     >
       <div
         className="c42"
+        display="flex"
       >
         <div
           className="c43"
+          display="flex"
           width={
             Array [
               1,
@@ -3865,9 +3868,11 @@ exports[`Video Layout matches the snapshot 1`] = `
               >
                 <div
                   className="c65"
+                  display="flex"
                 >
                   <div
                     className="c66"
+                    display="flex"
                     width={
                       Array [
                         "100%",
@@ -3957,6 +3962,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                     />
                     <div
                       className="c73"
+                      display="flex"
                     >
                       <svg
                         className="c17 c18"
@@ -4007,9 +4013,11 @@ exports[`Video Layout matches the snapshot 1`] = `
               >
                 <div
                   className="c65"
+                  display="flex"
                 >
                   <div
                     className="c66"
+                    display="flex"
                     width={
                       Array [
                         "100%",
@@ -4132,10 +4140,12 @@ exports[`Video Layout matches the snapshot 1`] = `
           <div
             className="c78"
             color="white"
+            display="flex"
             width="100%"
           >
             <div
               className="c79"
+              display="flex"
               width={
                 Array [
                   1,
@@ -4252,6 +4262,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
             <div
               className="c82"
+              display="flex"
               width={
                 Array [
                   1,
@@ -4289,6 +4300,7 @@ exports[`Video Layout matches the snapshot 1`] = `
   </div>
   <div
     className="c83"
+    display="flex"
     height="1px"
     onClick={[Function]}
   >

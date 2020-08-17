@@ -41,15 +41,16 @@ exports[`renders properly 1`] = `
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  color: black;
+  margin-bottom: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   color: black;
 }
 
@@ -102,6 +103,7 @@ exports[`renders properly 1`] = `
   <div
     className="c1"
     color="black"
+    display="flex"
   >
     <div
       className="c2"
@@ -148,6 +150,7 @@ exports[`renders properly 1`] = `
   <div
     className="c1"
     color="black"
+    display="flex"
   >
     <div
       className="c8"
@@ -194,6 +197,7 @@ exports[`renders properly 1`] = `
   <div
     className="c1"
     color="black"
+    display="flex"
   >
     <div
       className="c3"
@@ -236,6 +240,7 @@ exports[`renders properly 1`] = `
   <div
     className="c1"
     color="black"
+    display="flex"
   >
     <div
       className="c3"

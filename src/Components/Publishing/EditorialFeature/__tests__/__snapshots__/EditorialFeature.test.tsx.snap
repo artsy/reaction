@@ -2,11 +2,11 @@
 
 exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 .c9 {
+  padding-left: 10px;
+  padding-right: 10px;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .c24 {
@@ -17,18 +17,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c73 {
+  padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -36,24 +32,26 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-}
-
-.c79 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c79 {
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
   padding: 20px;
-}
-
-.c80 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c80 {
+  width: 100%;
+  margin-bottom: 0;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -61,8 +59,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 0px;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c7 {
@@ -276,6 +276,8 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c2 {
+  background-color: white;
+  color: #000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -519,9 +521,9 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c85 {
-  margin-bottom: 10px;
-  margin-left: 0px;
   width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px;
   position: relative;
   height: inherit;
   background: white;
@@ -561,10 +563,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -573,6 +571,10 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 20px;
   width: 100%;
 }
@@ -618,13 +620,13 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c11 {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   position: absolute;
   top: 0;
   left: 0;
@@ -716,14 +718,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c29 {
+  margin-bottom: 40px;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 40px;
   height: 60vh;
   min-height: 450px;
   border: 6px solid #6E1EFF;
@@ -781,14 +783,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c31 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -804,14 +806,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c54 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -827,14 +829,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c55 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -850,14 +852,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c56 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -873,14 +875,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c57 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -896,14 +898,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c58 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -919,14 +921,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c59 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -942,14 +944,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c60 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -965,14 +967,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c61 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -988,14 +990,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c62 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1011,14 +1013,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c63 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1034,14 +1036,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c64 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1057,14 +1059,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c65 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1080,14 +1082,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c66 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1103,14 +1105,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c67 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1126,14 +1128,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c68 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1149,14 +1151,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c69 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1172,14 +1174,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c70 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1195,14 +1197,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c71 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1218,14 +1220,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c72 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-end;
   -webkit-box-align: flex-end;
   -ms-flex-align: flex-end;
   align-items: flex-end;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1241,10 +1243,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -1252,7 +1250,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding-left: 0px;
+  padding-left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c16 .c17 {
@@ -1307,8 +1309,8 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 .c34 {
-  max-width: 100%;
   margin-bottom: 60px;
+  max-width: 100%;
   border: 6px solid #6E1EFF;
   border-left: none;
 }
@@ -1404,19 +1406,14 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 @media screen and (min-width:40em) {
   .c24 {
     max-width: 75%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .c24 {
     max-width: 75%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 }
 
@@ -1463,22 +1460,22 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 
 @media screen and (min-width:40em) {
   .c80 {
-    margin-bottom: 0px;
     width: 100%;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:52em) {
   .c80 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
 @media screen and (min-width:64em) {
   .c80 {
-    margin-bottom: 5px;
     width: 50%;
+    margin-bottom: 5px;
   }
 }
 
@@ -1684,40 +1681,25 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 
 @media screen and (min-width:40em) {
   .c85 {
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c85 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c85 {
-    margin-bottom: 0px;
-    margin-left: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c85 {
     width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
   .c85 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (min-width:64em) {
   .c85 {
     width: 50%;
+    margin-left: 30px;
+    margin-bottom: 0;
   }
 }
 
@@ -2036,6 +2018,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     <div
       className="c1 c2"
       color="#000"
+      display="flex"
     >
       <div
         className="PartnerInline c3"
@@ -2098,6 +2081,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       >
         <div
           className="c11"
+          display="flex"
         />
       </div>
       <div
@@ -2106,6 +2090,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       >
         <div
           className="c11"
+          display="flex"
         />
       </div>
       <h1
@@ -2158,6 +2143,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
     >
       <div
         className="c16"
+        display="flex"
       >
         <div
           className="Byline c17 c18"
@@ -2307,6 +2293,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -2318,6 +2305,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c31"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FoT1vtmuowAQU9SG2M-gmnw%252FKerry_crop.jpg&width=700&quality=80"
         >
           <div
@@ -2372,9 +2360,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -2396,6 +2386,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -2516,6 +2507,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -2527,6 +2519,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c54"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FnlMY9VcLmWae2o0fwpvUWw%252FAdrian2.jpg&width=700&quality=80"
         >
           <div
@@ -2581,9 +2574,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -2605,6 +2600,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -2725,6 +2721,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -2736,6 +2733,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c55"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FBBJ7xDcd8JV2HoI_7iC2bw%252Fcattelan_crop.jpg&width=700&quality=80"
         >
           <div
@@ -2790,9 +2788,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -2814,6 +2814,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -2934,6 +2935,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -2945,6 +2947,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c56"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5Ww0vmM4m54-yy8duulLGw%252FJudy_crop2.jpg&width=700&quality=80"
         >
           <div
@@ -2999,9 +3002,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -3023,6 +3028,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -3143,6 +3149,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -3154,6 +3161,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c57"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F-zxcH5MJpHFsGT6YmmVjlA%252FAlex-Da-Corte-1.jpg&width=700&quality=80"
         >
           <div
@@ -3208,9 +3216,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -3232,6 +3242,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -3352,6 +3363,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -3363,6 +3375,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c58"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FejQfY6k6HaEYq77uFwLSDg%252FBruce-crop-2.jpg&width=700&quality=80"
         >
           <div
@@ -3417,9 +3430,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -3441,6 +3456,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -3561,6 +3577,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -3572,6 +3589,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c59"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2vk2gnhoUzhrEQWaCQjKyw%252FCao-fei-2.jpg&width=700&quality=80"
         >
           <div
@@ -3626,9 +3644,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -3650,6 +3670,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -3770,6 +3791,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -3781,6 +3803,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c60"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FhEOTF5m2OkHPxocchkntXg%252FSimone_crop.jpg&width=700&quality=80"
         >
           <div
@@ -3835,9 +3858,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -3859,6 +3884,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -3979,6 +4005,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -3990,6 +4017,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c61"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F1kPiAY_ExpQb0iTnRiYf1A%252Fhockney_crop_pulledback.jpg&width=700&quality=80"
         >
           <div
@@ -4044,9 +4072,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -4068,6 +4098,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -4188,6 +4219,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -4199,6 +4231,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c62"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fc29PdWzeGmZ2FnfpzBExKQ%252Fwu_crop.jpg&width=700&quality=80"
         >
           <div
@@ -4253,9 +4286,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -4277,6 +4312,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -4397,6 +4433,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -4408,6 +4445,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c63"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FWoWfgpwz1R6hYXowTMtQbg%252FTomas_crop.jpg&width=700&quality=80"
         >
           <div
@@ -4462,9 +4500,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -4486,6 +4526,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -4606,6 +4647,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -4617,6 +4659,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c64"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F3oOK_ctPDJV9hBSiUURaBA%252Ftakashi_crop_otheroption.jpg&width=700&quality=80"
         >
           <div
@@ -4671,9 +4714,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -4695,6 +4740,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -4815,6 +4861,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -4826,6 +4873,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c65"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F5IpvVQ9JhQ-YFYSrFF450Q%252FJoan_crop.jpg&width=700&quality=80"
         >
           <div
@@ -4880,9 +4928,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -4904,6 +4954,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -5024,6 +5075,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -5035,6 +5087,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c66"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fl-eI1OtsSoanJ_x3YlnEWg%252FFA.jpg&width=700&quality=80"
         >
           <div
@@ -5089,9 +5142,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -5113,6 +5168,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -5233,6 +5289,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -5244,6 +5301,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c67"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FgaTpzI49OUOFP1Ks1-bTNg%252Fwolfgang_crop.jpg&width=700&quality=80"
         >
           <div
@@ -5298,9 +5356,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -5322,6 +5382,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -5442,6 +5503,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -5453,6 +5515,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c68"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FY96402AXIKWZiX1iACXVLg%252Fcharline2.jpg&width=700&quality=80"
         >
           <div
@@ -5507,9 +5570,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -5531,6 +5596,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -5651,6 +5717,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -5662,6 +5729,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c69"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FRgD2WhDMmriNWjQaiVAtYA%252FCharles_crop2.jpg&width=700&quality=80"
         >
           <div
@@ -5716,9 +5784,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -5740,6 +5810,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -5860,6 +5931,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -5871,6 +5943,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c70"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2We6jcCx0JXM7EmjoJKc3g%252FAndrea_crop.jpg&width=700&quality=80"
         >
           <div
@@ -5925,9 +5998,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -5949,6 +6024,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -6069,6 +6145,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -6080,6 +6157,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c71"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F69-YSOLh8LC9E2BmQQcAqw%252Fjohn-bock.jpg&width=700&quality=80"
         >
           <div
@@ -6134,9 +6212,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -6158,6 +6238,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -6278,6 +6359,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       </div>
       <div
         className="c29"
+        display="flex"
       >
         <div
           className="c30"
@@ -6289,6 +6371,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
         <div
           className="c72"
+          display="flex"
           src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FGDx8y_WfzrowtQpmaMcQRw%252Fkehinde_crop.jpg&width=700&quality=80"
         >
           <div
@@ -6343,9 +6426,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c39 c40"
+              display="flex"
             >
               <div
                 className="c41"
+                display="flex"
               >
                 <div
                   className="c42 c43"
@@ -6367,6 +6452,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
                 <div
                   className="c44 c45"
+                  display="flex"
                 >
                   <div
                     className="c46"
@@ -6530,9 +6616,11 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           >
             <div
               className="c79"
+              display="flex"
             >
               <div
                 className="c80"
+                display="flex"
                 width={
                   Array [
                     "100%",
@@ -6652,17 +6740,20 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 .c24 {
+  width: 100%;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
 }
 
-.c49 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.c39 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+.c50 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -6670,13 +6761,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-}
-
-.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c14 {
+  padding-bottom: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -6684,16 +6776,19 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  padding-bottom: 20px;
-}
-
-.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-width: 1000px;
+}
+
+.c18 {
   width: 100%;
+  max-width: 1000px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c19 {
@@ -6703,7 +6798,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   line-height: 20px;
 }
 
-.c51 {
+.c52 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -6711,14 +6806,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   padding-bottom: 8px;
 }
 
-.c54 {
+.c55 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
 }
 
-.c55 {
+.c56 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 12px;
   line-height: 16px;
@@ -6739,13 +6834,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-weight: 500;
   font-size: 100px;
   line-height: 104px;
-  padding-bottom: 10px;
-  padding-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 20px;
 }
 
-.c39 {
+.c40 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 22px;
   line-height: 32px;
@@ -6873,7 +6968,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   -ms-interpolation-mode: bicubic;
 }
 
-.c3 .c66 {
+.c3 .c67 {
   margin: 0 20px;
 }
 
@@ -6883,6 +6978,8 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 .c2 {
+  background-color: white;
+  color: black;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6924,13 +7021,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   z-index: 10;
 }
 
-.c41 {
+.c42 {
   position: relative;
   width: 100%;
   color: white;
 }
 
-.c41 a {
+.c42 a {
   color: white;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -6940,22 +7037,22 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   background-position: bottom;
 }
 
-.c41 a:hover {
+.c42 a:hover {
   color: white;
   opacity: .65;
 }
 
-.c41 div[class*='ToolTip'] a {
+.c42 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c41 p,
-.c41 ul,
-.c41 ol,
-.c41 .paragraph,
-.c41 div[data-block=true] .public-DraftStyleDefault-block {
+.c42 p,
+.c42 ul,
+.c42 ol,
+.c42 .paragraph,
+.c42 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -6966,32 +7063,32 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-style: inherit;
 }
 
-.c41 p:first-child,
-.c41 .paragraph:first-child,
-.c41 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c42 p:first-child,
+.c42 .paragraph:first-child,
+.c42 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c41 p:last-child,
-.c41 .paragraph:last-child,
-.c41 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c42 p:last-child,
+.c42 .paragraph:last-child,
+.c42 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c41 ul,
-.c41 ol {
+.c42 ul,
+.c42 ol {
   padding-left: 1em;
 }
 
-.c41 ul {
+.c42 ul {
   list-style: disc;
 }
 
-.c41 ol {
+.c42 ol {
   list-style: decimal;
 }
 
-.c41 li {
+.c42 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -7000,7 +7097,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   padding-bottom: .5em;
 }
 
-.c41 h1 {
+.c42 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -7013,7 +7110,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   text-align: center;
 }
 
-.c41 h1::before {
+.c42 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -7024,7 +7121,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   right: calc(50% - 4px);
 }
 
-.c41 h2 {
+.c42 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -7033,15 +7130,15 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   margin: 0;
 }
 
-.c41 h2 a {
+.c42 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c41 h2 .c68 {
+.c42 h2 .c69 {
   background-position: bottom !important;
 }
 
-.c41 h3 {
+.c42 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -7051,7 +7148,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   margin: 0;
 }
 
-.c41 h3 strong {
+.c42 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -7059,11 +7156,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c41 h3 a {
+.c42 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c41 blockquote {
+.c42 blockquote {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -7076,11 +7173,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   word-break: break-word;
 }
 
-.c41 .preventLineBreak {
+.c42 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c41 .content-end {
+.c42 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -7091,14 +7188,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   margin-bottom: 1px;
 }
 
-.c41 .artist-follow {
+.c42 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c41 .artist-follow::before {
+.c42 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -7106,7 +7203,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-size: 32px;
 }
 
-.c41 .artist-follow::after {
+.c42 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -7115,13 +7212,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   text-transform: none;
 }
 
-.c60 {
+.c61 {
   position: relative;
   width: 100%;
   color: #000;
 }
 
-.c60 a {
+.c61 a {
   color: #000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -7131,22 +7228,22 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   background-position: bottom;
 }
 
-.c60 a:hover {
+.c61 a:hover {
   color: #000;
   opacity: .65;
 }
 
-.c60 div[class*='ToolTip'] a {
+.c61 div[class*='ToolTip'] a {
   background-image: none;
   opacity: 1;
   color: inherit;
 }
 
-.c60 p,
-.c60 ul,
-.c60 ol,
-.c60 .paragraph,
-.c60 div[data-block=true] .public-DraftStyleDefault-block {
+.c61 p,
+.c61 ul,
+.c61 ol,
+.c61 .paragraph,
+.c61 div[data-block=true] .public-DraftStyleDefault-block {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -7157,32 +7254,32 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-style: inherit;
 }
 
-.c60 p:first-child,
-.c60 .paragraph:first-child,
-.c60 div[data-block=true]:first-child .public-DraftStyleDefault-block {
+.c61 p:first-child,
+.c61 .paragraph:first-child,
+.c61 div[data-block=true]:first-child .public-DraftStyleDefault-block {
   padding-top: 0;
 }
 
-.c60 p:last-child,
-.c60 .paragraph:last-child,
-.c60 div[data-block=true]:last-child .public-DraftStyleDefault-block {
+.c61 p:last-child,
+.c61 .paragraph:last-child,
+.c61 div[data-block=true]:last-child .public-DraftStyleDefault-block {
   padding-bottom: 0;
 }
 
-.c60 ul,
-.c60 ol {
+.c61 ul,
+.c61 ol {
   padding-left: 1em;
 }
 
-.c60 ul {
+.c61 ul {
   list-style: disc;
 }
 
-.c60 ol {
+.c61 ol {
   list-style: decimal;
 }
 
-.c60 li {
+.c61 li {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 23px;
   line-height: 1.5em;
@@ -7191,7 +7288,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   padding-bottom: .5em;
 }
 
-.c60 h1 {
+.c61 h1 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -7204,7 +7301,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   text-align: center;
 }
 
-.c60 h1::before {
+.c61 h1::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -7215,7 +7312,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   right: calc(50% - 4px);
 }
 
-.c60 h2 {
+.c61 h2 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 32px;
@@ -7224,15 +7321,15 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   margin: 0;
 }
 
-.c60 h2 a {
+.c61 h2 a {
   background-size: 1.25px 1px;
 }
 
-.c60 h2 .c68 {
+.c61 h2 .c69 {
   background-position: bottom !important;
 }
 
-.c60 h3 {
+.c61 h3 {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 19px;
@@ -7242,7 +7339,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   margin: 0;
 }
 
-.c60 h3 strong {
+.c61 h3 strong {
   font-weight: normal;
   font-family: Unica77LLWebMedium,Arial,serif;
   -webkit-font-smoothing: antialiased;
@@ -7250,11 +7347,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   line-height: 1.5em;
 }
 
-.c60 h3 a {
+.c61 h3 a {
   background-size: 1.25px 1px;
 }
 
-.c60 blockquote {
+.c61 blockquote {
   font-family: Unica77LLWebRegular,Arial,serif;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
@@ -7267,11 +7364,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   word-break: break-word;
 }
 
-.c60 .preventLineBreak {
+.c61 .preventLineBreak {
   white-space: nowrap;
 }
 
-.c60 .content-end {
+.c61 .content-end {
   display: inline-block;
   content: "";
   width: 8px;
@@ -7282,14 +7379,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   margin-bottom: 1px;
 }
 
-.c60 .artist-follow {
+.c61 .artist-follow {
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
   background: none transparent;
 }
 
-.c60 .artist-follow::before {
+.c61 .artist-follow::before {
   font-family: "artsy-icons";
   content: "";
   vertical-align: -8.5px;
@@ -7297,7 +7394,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-size: 32px;
 }
 
-.c60 .artist-follow::after {
+.c61 .artist-follow::after {
   content: "Follow";
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 17px;
@@ -7374,22 +7471,18 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   height: auto;
 }
 
-.c56 {
+.c57 {
   height: 45px;
   position: relative;
   margin-left: 40px;
   text-align: right;
 }
 
-.c56 > svg {
+.c57 > svg {
   height: 98%;
 }
 
-.c48 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.c49 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -7398,23 +7491,27 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   padding: 20px;
   width: 100%;
 }
 
-.c53 {
+.c54 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c44 {
+.c45 {
   position: relative;
   width: 100%;
 }
 
-.c46 {
+.c47 {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -7427,53 +7524,53 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   cursor: pointer;
 }
 
-.c46:hover {
+.c47:hover {
   background: rgba(0,0,0,0.6);
   color: white;
 }
 
-.c46:hover path,
-.c46:hover polygon {
+.c47:hover path,
+.c47:hover polygon {
   fill: white;
 }
 
-.c58 {
+.c59 {
   height: auto;
   width: 100%;
 }
 
-.c62 .c1 {
+.c63 .c1 {
   border-bottom: none;
 }
 
-.c63 .c40 blockquote {
+.c64 .c41 blockquote {
   padding: 0;
 }
 
-.c63 .c40 p,
-.c63 .c40 .paragraph {
+.c64 .c41 p,
+.c64 .c41 .paragraph {
   font-size: 24px;
   text-indent: 2em;
   padding: 0;
 }
 
-.c64 .c40 blockquote {
+.c65 .c41 blockquote {
   padding: 0;
 }
 
-.c64 .c40 p,
-.c64 .c40 .paragraph {
+.c65 .c41 p,
+.c65 .c41 .paragraph {
   font-size: 24px;
   text-indent: 2em;
   padding: 0;
 }
 
-.c64 .c40 p:first-child,
-.c64 .c40 .paragraph:first-child {
+.c65 .c41 p:first-child,
+.c65 .c41 .paragraph:first-child {
   text-indent: 0;
 }
 
-.c65 .c43 {
+.c66 .c44 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -7483,7 +7580,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   flex-direction: row-reverse;
 }
 
-.c65 .c45 {
+.c66 .c46 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -7502,32 +7599,32 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   box-shadow: none;
 }
 
-.c65 .c45:hover {
+.c66 .c46:hover {
   background-color: #6E1EFF;
 }
 
-.c65 .c50 {
+.c66 .c51 {
   display: none;
 }
 
-.c65 .c52 {
+.c66 .c53 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.c65 .c52 > div {
+.c66 .c53 > div {
   padding: 0;
 }
 
-.c65 .c57 {
+.c66 .c58 {
   -webkit-flex: 3;
   -ms-flex: 3;
   flex: 3;
   border-right: 6px solid #6E1EFF;
 }
 
-.c65 .c57 img {
+.c66 .c58 img {
   object-fit: cover;
   object-position: center;
   height: 100%;
@@ -7551,11 +7648,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   background-color: #000;
 }
 
-.c25 .c67 {
+.c25 .c68 {
   color: #000;
 }
 
-.c59 .c67 {
+.c60 .c68 {
   color: #000;
 }
 
@@ -7564,7 +7661,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   position: relative;
 }
 
-.c61 {
+.c62 {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 40px;
@@ -7574,12 +7671,12 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 .c12 {
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 30px;
   padding-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
   border-bottom: 6px solid;
   position: relative;
 }
@@ -7595,15 +7692,15 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-weight: inherit;
 }
 
-.c12 .c40 p,
-.c12 .c40 .paragraph {
+.c12 .c41 p,
+.c12 .c41 .paragraph {
   font-size: 24px;
   text-indent: 2em;
   padding: 0;
 }
 
-.c12 .c40 p:first-child,
-.c12 .c40 .paragraph:first-child {
+.c12 .c41 p:first-child,
+.c12 .c41 .paragraph:first-child {
   text-indent: 0;
 }
 
@@ -7615,8 +7712,8 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 .c26 {
-  padding-bottom: 10px;
   padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
   border-bottom: 6px solid;
@@ -7693,35 +7790,35 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   text-shadow: 0 0 5px black;
 }
 
-.c42 {
-  padding-left: 0px;
-  padding-right: 0px;
+.c43 {
+  padding-left: 0;
+  padding-right: 0;
   border-bottom: 6px solid;
   position: relative;
 }
 
-.c42 .c43 {
+.c43 .c44 {
   width: 70%;
   max-width: 1000px;
   margin: 0 auto;
   color: black;
 }
 
-.c42 .c43 img {
+.c43 .c44 img {
   width: 100%;
 }
 
-.c42 .c43 .c50 {
+.c43 .c44 .c51 {
   display: none;
 }
 
-.c42 .c43 .c52 {
+.c43 .c44 .c53 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.c42 .c43 .c52 > div {
+.c43 .c44 .c53 > div {
   padding: 0;
 }
 
@@ -7750,6 +7847,18 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
+  .c39 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c39 {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c14 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -7770,37 +7879,37 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c51 {
+  .c52 {
     font-size: 18px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c51 {
+  .c52 {
     line-height: 30px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c54 {
+  .c55 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c54 {
+  .c55 {
     line-height: 24px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c55 {
+  .c56 {
     font-size: 14px;
   }
 }
 
 @media screen and (min-width:40em) {
-  .c55 {
+  .c56 {
     line-height: 24px;
   }
 }
@@ -7840,44 +7949,44 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     font-size: 24px;
   }
 
-  .c3 .c66 {
+  .c3 .c67 {
     margin: 0 10px;
   }
 }
 
 @media (max-width:600px) {
-  .c41 p,
-  .c41 ul,
-  .c41 ol,
-  .c41 div[data-block=true] .public-DraftStyleDefault-block {
+  .c42 p,
+  .c42 ul,
+  .c42 ol,
+  .c42 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c41 li {
+  .c42 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c41 h1 {
+  .c42 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c41 h2 {
+  .c42 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c41 h3 {
+  .c42 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -7885,14 +7994,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     line-height: 1.5em;
   }
 
-  .c41 h3 strong {
+  .c42 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c41 blockquote {
+  .c42 blockquote {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
@@ -7900,44 +8009,44 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     margin: 0;
   }
 
-  .c41 .content-start {
+  .c42 .content-start {
     font-size: 55px;
   }
 }
 
 @media (max-width:600px) {
-  .c60 p,
-  .c60 ul,
-  .c60 ol,
-  .c60 div[data-block=true] .public-DraftStyleDefault-block {
+  .c61 p,
+  .c61 ul,
+  .c61 ol,
+  .c61 div[data-block=true] .public-DraftStyleDefault-block {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c60 li {
+  .c61 li {
     font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
     font-size: 19px;
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
   }
 
-  .c60 h1 {
+  .c61 h1 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
     line-height: 1.1em;
   }
 
-  .c60 h2 {
+  .c61 h2 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 32px;
     line-height: 1.1em;
   }
 
-  .c60 h3 {
+  .c61 h3 {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -7945,14 +8054,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     line-height: 1.5em;
   }
 
-  .c60 h3 strong {
+  .c61 h3 strong {
     font-family: Unica77LLWebMedium,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.1em;
   }
 
-  .c60 blockquote {
+  .c61 blockquote {
     font-family: Unica77LLWebRegular,Arial,serif;
     -webkit-font-smoothing: antialiased;
     font-size: 34px;
@@ -7960,7 +8069,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     margin: 0;
   }
 
-  .c60 .content-start {
+  .c61 .content-start {
     font-size: 55px;
   }
 }
@@ -7991,7 +8100,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media (max-width:768px) {
-  .c65 .c43 {
+  .c66 .c44 {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
@@ -7999,19 +8108,19 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media (max-width:768px) {
-  .c65 .c45 {
+  .c66 .c46 {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
 
-  .c65 .c45 .c47 {
+  .c66 .c46 .c48 {
     max-width: 50%;
   }
 }
 
 @media (max-width:768px) {
-  .c65 .c57 {
+  .c66 .c58 {
     border-right: none;
     border-bottom: 6px solid #6E1EFF;
   }
@@ -8026,14 +8135,14 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c61 {
+  .c62 {
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c61 {
+  .c62 {
     padding-left: 55px;
     padding-right: 55px;
   }
@@ -8109,21 +8218,21 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c42 {
-    padding-left: 0px;
-    padding-right: 0px;
+  .c43 {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 @media screen and (min-width:52em) {
-  .c42 {
+  .c43 {
     padding-left: 55px;
     padding-right: 55px;
   }
 }
 
 @media (max-width:900px) {
-  .c42 .c43 {
+  .c43 .c44 {
     width: 100%;
   }
 }
@@ -8135,6 +8244,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     <div
       className="c1 c2"
       color="black"
+      display="flex"
     >
       <div
         className="PartnerInline c3"
@@ -8216,6 +8326,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     >
       <div
         className="c14"
+        display="flex"
       >
         <div
           className="c15"
@@ -8312,6 +8423,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         </div>
         <div
           className="c18"
+          display="flex"
           width={
             Array [
               "100%",
@@ -8505,7 +8617,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -8515,13 +8627,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -8536,23 +8648,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8570,10 +8684,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Donald Glover and Hiro Murai
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8591,7 +8706,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -8610,7 +8725,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -8636,11 +8751,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Donald Glover and Hiro Murai"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FKLtrAvpKSBrd3eeop2N_tw%252FATL_EP209_0048.jpg&width=800&quality=80"
           />
         </div>
@@ -8650,7 +8765,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -8660,13 +8775,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -8689,7 +8804,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -8809,7 +8924,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -8819,13 +8934,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -8840,23 +8955,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8874,10 +8991,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Amy Sherald
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8895,7 +9013,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -8914,7 +9032,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -8940,11 +9058,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Amy Sherald"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FhTe5F1xOYgvc49JSF86xHQ%252FAmy-Sherald.jpg&width=800&quality=80"
           />
         </div>
@@ -8954,7 +9072,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -8964,13 +9082,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -9113,7 +9231,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -9123,13 +9241,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -9144,23 +9262,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9178,10 +9298,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 teamLab
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9199,7 +9320,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -9218,7 +9339,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -9244,11 +9365,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="teamLab"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9Uurw-CkPYfKMpbXOFOaVQ%252F01_Universe-of-Water-Particles-on-a-Rock-where-People-Gather_02.jpg&width=800&quality=80"
           />
         </div>
@@ -9258,7 +9379,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -9268,13 +9389,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -9297,7 +9418,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -9417,7 +9538,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -9427,13 +9548,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -9448,23 +9569,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9482,10 +9605,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Nan Goldin
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9503,7 +9627,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -9522,7 +9646,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -9548,11 +9672,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Nan Goldin"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Fg8dtyJ6h_73di_mnbQNDcA%252FPAIN-Met-Thom-Pavia.jpg&width=800&quality=80"
           />
         </div>
@@ -9562,7 +9686,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -9572,13 +9696,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -9721,7 +9845,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -9731,13 +9855,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -9752,23 +9876,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9786,10 +9912,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 D.W. Pine
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9807,7 +9934,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -9826,7 +9953,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -9852,11 +9979,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="D.W. Pine"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FE0kxF5gFOcTHmZ7eJkV6qw%252Fdwnewsroom2bw.jpg&width=800&quality=80"
           />
         </div>
@@ -9866,7 +9993,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -9876,13 +10003,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -9905,7 +10032,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -10025,7 +10152,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10035,13 +10162,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -10056,23 +10183,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10090,10 +10219,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Virgil Abloh
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10111,7 +10241,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -10130,7 +10260,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -10156,11 +10286,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Virgil Abloh"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FLmo6qr-T4qcliTd5Da00cg%252FVA6.jpg&width=800&quality=80"
           />
         </div>
@@ -10170,7 +10300,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10180,13 +10310,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -10329,7 +10459,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10339,13 +10469,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -10360,23 +10490,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10394,10 +10526,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 James Monsees and Adam Bowen 
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10415,7 +10548,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -10434,7 +10567,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -10460,11 +10593,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="James Monsees and Adam Bowen "
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Flsmscwlt8G99eYm_2ClTDg%252Fcustom-Custom_Size___custom-Custom_Size____Q4A0076.jpg&width=800&quality=80"
           />
         </div>
@@ -10474,7 +10607,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10484,13 +10617,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -10513,7 +10646,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -10633,7 +10766,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10643,13 +10776,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -10667,7 +10800,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10677,13 +10810,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -10826,7 +10959,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10836,13 +10969,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -10857,23 +10990,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10891,10 +11026,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Becca McCharen-Tran
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10912,7 +11048,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -10931,7 +11067,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -10957,11 +11093,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Becca McCharen-Tran"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAVsEZBxGBlrimU7CjHLFjA%252Fgiphy%2B%25283%2529.gif&width=800&quality=80"
           />
         </div>
@@ -10971,7 +11107,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -10981,13 +11117,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -11010,7 +11146,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -11130,7 +11266,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11140,13 +11276,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -11164,7 +11300,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11174,13 +11310,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -11323,7 +11459,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11333,13 +11469,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -11354,23 +11490,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11388,10 +11526,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Tyler Mitchell
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11409,7 +11548,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -11428,7 +11567,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -11454,11 +11593,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Tyler Mitchell"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F9T0iJeeEigiyxNReF0QfwA%252FTyler-Mitchell-2.jpg&width=800&quality=80"
           />
         </div>
@@ -11468,7 +11607,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11478,13 +11617,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -11507,7 +11646,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -11627,7 +11766,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11637,13 +11776,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -11658,13 +11797,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c61"
+      className="c62"
     />
     <div
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11674,13 +11813,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -11823,7 +11962,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11833,13 +11972,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -11854,23 +11993,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11888,10 +12029,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Frida Escobedo
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11909,7 +12051,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -11928,7 +12070,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -11954,11 +12096,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Frida Escobedo"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FFjRmnOVSStJA1gKZTGPFhg%252Fserpentine.jpg&width=800&quality=80"
           />
         </div>
@@ -11968,7 +12110,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -11978,13 +12120,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -12007,7 +12149,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -12127,7 +12269,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12137,13 +12279,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -12158,13 +12300,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c61"
+      className="c62"
     />
     <div
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12174,13 +12316,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -12323,7 +12465,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12333,13 +12475,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -12354,26 +12496,28 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c61"
+      className="c62"
     />
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12391,10 +12535,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Banksy
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12412,7 +12557,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -12431,7 +12576,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -12457,11 +12602,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Banksy"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FnKLf0gK4wyZqXVRABztjMg%252FScreen%2BShot%2B2018-12-18%2Bat%2B5.51.43%2BPM%2Bcopy.jpg&width=800&quality=80"
           />
         </div>
@@ -12471,7 +12616,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12481,13 +12626,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -12510,7 +12655,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -12630,7 +12775,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12640,13 +12785,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -12661,23 +12806,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12695,10 +12842,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Robin Hammond
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12716,7 +12864,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -12735,7 +12883,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -12761,11 +12909,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Robin Hammond"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FsrC1j1nSPLkPjq5AnJ_wCw%252FMM8590_170730_005205-2.jpg&width=800&quality=80"
           />
         </div>
@@ -12775,7 +12923,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12785,13 +12933,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -12934,7 +13082,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -12944,13 +13092,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -12965,23 +13113,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12999,10 +13149,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 The Women of Time’s Up
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13020,7 +13171,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -13039,7 +13190,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -13065,11 +13216,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="The Women of Time’s Up"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FBe0Sn_Sw53_E6MQoMLGHiQ%252Fwwwb.jpg&width=800&quality=80"
           />
         </div>
@@ -13079,7 +13230,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13089,13 +13240,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -13118,7 +13269,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -13238,7 +13389,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13248,13 +13399,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -13272,7 +13423,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13282,13 +13433,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -13431,7 +13582,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13441,13 +13592,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -13462,23 +13613,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13496,10 +13649,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Ruth E. Carter
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13517,7 +13671,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -13536,7 +13690,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -13562,11 +13716,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Ruth E. Carter"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FdaecYc_R6lkMny_y75k0gg%252FMBB7040_v044.1008-%25281%2529.jpg&width=800&quality=80"
           />
         </div>
@@ -13576,7 +13730,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13586,13 +13740,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -13615,7 +13769,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -13735,7 +13889,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13745,13 +13899,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -13766,23 +13920,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13800,10 +13956,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 John Moore
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13821,7 +13978,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -13840,7 +13997,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -13866,11 +14023,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="John Moore"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F-abSduBjHqXS9GUQF3d77g%252FGettyImages-1052458070-%25281%2529.jpg&width=800&quality=80"
           />
         </div>
@@ -13880,7 +14037,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -13890,13 +14047,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -14039,7 +14196,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14049,13 +14206,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -14070,23 +14227,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14104,10 +14263,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Jon M. Chu
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14125,7 +14285,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -14144,7 +14304,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -14170,11 +14330,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Jon M. Chu"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FfgsmCOJQ0x-CHwAUG9d-GQ%252FCra30.jpg&width=800&quality=80"
           />
         </div>
@@ -14184,7 +14344,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14194,13 +14354,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -14223,7 +14383,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -14343,7 +14503,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14353,13 +14513,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -14377,7 +14537,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14387,13 +14547,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -14536,7 +14696,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14546,13 +14706,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -14567,23 +14727,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14601,10 +14763,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Sean Combs
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14622,7 +14785,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -14641,7 +14804,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -14667,11 +14830,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Sean Combs"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FAtL5eJG3iSkwG3Kqx3u3wg%252FSean-Combs.jpg&width=800&quality=80"
           />
         </div>
@@ -14681,7 +14844,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14691,13 +14854,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -14720,7 +14883,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
     />
   </div>
   <div
-    className="c59"
+    className="c60"
   >
     <span
       style={
@@ -14840,7 +15003,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14850,13 +15013,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -14871,23 +15034,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14905,10 +15070,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Emily Heyward, JB Osborne, and Simon Endres
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14926,7 +15092,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -14945,7 +15111,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -14971,11 +15137,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Emily Heyward, JB Osborne, and Simon Endres"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FQBYknGwt3MpId7Omep3oSQ%252Fcasper.jpg&width=800&quality=80"
           />
         </div>
@@ -14985,7 +15151,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -14995,13 +15161,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c60"
+            className="article__text-section c41 c61"
             color="#000"
           >
             <div
@@ -15144,7 +15310,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -15154,13 +15320,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -15175,23 +15341,25 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       </div>
     </div>
     <div
-      className="c42"
+      className="c43"
     >
       <div
-        className="c43 c44"
+        className="c44 c45"
       >
         <div
-          className="c45 c46"
+          className="c46 c47"
           onClick={[Function]}
         >
           <div
-            className="c47 c48"
+            className="c48 c49"
+            display="flex"
           >
             <div
-              className="c49"
+              className="c50"
+              display="flex"
             >
               <div
-                className="c50 c51"
+                className="c51 c52"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -15209,10 +15377,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                 Hank Willis Thomas and Eric Gottesman
               </div>
               <div
-                className="c52 c53"
+                className="c53 c54"
+                display="flex"
               >
                 <div
-                  className="c54"
+                  className="c55"
                   fontFamily={
                     Object {
                       "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -15230,7 +15399,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
                   View Slideshow
                 </div>
                 <div
-                  className="c55"
+                  className="c56"
                   fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
                   fontSize={
                     Array [
@@ -15249,7 +15418,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               suppressHydrationWarning={false}
             >
               <div
-                className="c56"
+                className="c57"
               >
                 <svg
                   className="image-set"
@@ -15275,11 +15444,11 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
           </div>
         </div>
         <div
-          className="c57 "
+          className="c58 "
         >
           <img
             alt="Hank Willis Thomas and Eric Gottesman"
-            className="c58"
+            className="c59"
             src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F51DvSBZIfkbuWp8rkvHNtQ%252FUNC_Greensboro_LawnSignActivation.jpg&width=800&quality=80"
           />
         </div>
@@ -15289,7 +15458,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -15299,13 +15468,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div
@@ -15323,7 +15492,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
       className="c12"
     >
       <div
-        className="c24"
+        className="c39"
         width={
           Array [
             "100%",
@@ -15333,13 +15502,13 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         }
       >
         <div
-          className="c39"
+          className="c40"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize="22px"
           style={Object {}}
         >
           <div
-            className="article__text-section c40 c41"
+            className="article__text-section c41 c42"
             color="white"
           >
             <div

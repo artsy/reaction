@@ -2,12 +2,13 @@
 
 exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
 <div
-  className="sc-bdVaJa Vanguard2019__VanguardWrapper-sc-18g2aj7-0 NGJhq"
+  className="sc-bdVaJa Vanguard2019__VanguardWrapper-sc-18g2aj7-0 hYoIal"
 >
   <div>
     <div
-      className="sc-bwzfXH Nav__NavContainer-cd3j7j-0 krSeov"
+      className="sc-bdVaJa sc-bwzfXH Nav__NavContainer-cd3j7j-0 WOhCr"
       color="black"
+      display="flex"
     >
       <div
         className="PartnerInline PartnerInline__PartnerInlineContainer-soorph-0 jWeJhZ"
@@ -56,7 +57,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     suppressHydrationWarning={false}
   >
     <div
-      className="sc-bwzfXH FrameText__MobileFrame-sc-8olftt-3 gSpsaH"
+      className="sc-bdVaJa sc-bwzfXH FrameText__MobileFrame-sc-8olftt-3 iUIepY"
+      display="flex"
     >
       <div
         className="sc-bxivhb FrameText__MobileFrameText-sc-8olftt-4 kiVmuH sc-htpNat hrIkAG"
@@ -120,16 +122,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa Introduction__IntroContainer-acx5fk-1 cwRynz"
+    className="sc-bdVaJa Introduction__IntroContainer-acx5fk-1 bmDiHm"
   >
     <div
-      className="sc-bdVaJa gpmWlJ"
+      className="sc-bdVaJa dScmKx"
     >
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bdVaJa sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gpfUqE"
+        display="flex"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 coUMnZ"
         >
           <svg
             fill="#FFF"
@@ -143,7 +146,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 fXBHXI"
           >
             <video
               autoPlay={true}
@@ -179,13 +182,14 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa ZuRvZ"
+      className="sc-bdVaJa bnmkjz"
     >
       <div
-        className="sc-bdVaJa eFgrYo"
+        className="sc-bdVaJa imCOKP"
       >
         <div
-          className="sc-bwzfXH iHhpdt"
+          className="sc-bdVaJa sc-bwzfXH eHjjOA"
+          display="flex"
         >
           <div
             className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -343,7 +347,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
           <div
-            className="sc-bdVaJa kJpBUu"
+            className="sc-bdVaJa beUlWU"
           >
             <div
               className="sc-bxivhb bUZGRr sc-htpNat dOrNHt"
@@ -387,7 +391,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           </div>
         </div>
         <div
-          className="sc-bdVaJa isuVdk"
+          className="sc-bdVaJa gOLVqQ"
         >
           <div
             className="article__text-section StyledText-sc-1ysl1h-0 bBVXyI"
@@ -406,7 +410,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa jvtNeD"
+    className="sc-bdVaJa dfrdZa"
   >
     <div
       className="sc-bxivhb bUZGRr sc-htpNat kKCefX"
@@ -424,11 +428,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       Table of Contents
     </div>
     <div
-      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 efckVn"
+      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 fWLPJv"
       onClick={[Function]}
     >
       <div
-        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 iliCmL"
+        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 bBEQyX"
       >
         <svg
           data-name="Layer 1"
@@ -441,10 +445,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </svg>
       </div>
       <div
-        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 Bhriv"
+        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 fcjOaZ"
       >
         <div
-          className="sc-ifAKCX cFlEyZ sc-htpNat hpCWrY"
+          className="sc-ifAKCX cFlEyZ sc-htpNat gGvNUu"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -459,7 +463,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           I
         </div>
         <div
-          className="sc-bxivhb TableOfContents__SeriesTitle-sc-1uqls89-2 diRryw sc-htpNat hCHYkR"
+          className="sc-bxivhb TableOfContents__SeriesTitle-sc-1uqls89-2 diRryw sc-htpNat ewPmRo"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize={
             Array [
@@ -476,11 +480,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 efckVn"
+      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 fWLPJv"
       onClick={[Function]}
     >
       <div
-        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 iliCmL"
+        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 bBEQyX"
       >
         <svg
           data-name="Layer 1"
@@ -493,10 +497,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </svg>
       </div>
       <div
-        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 Bhriv"
+        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 fcjOaZ"
       >
         <div
-          className="sc-ifAKCX cFlEyZ sc-htpNat hpCWrY"
+          className="sc-ifAKCX cFlEyZ sc-htpNat gGvNUu"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -512,7 +516,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           I
         </div>
         <div
-          className="sc-bxivhb TableOfContents__SeriesTitle-sc-1uqls89-2 diRryw sc-htpNat hCHYkR"
+          className="sc-bxivhb TableOfContents__SeriesTitle-sc-1uqls89-2 diRryw sc-htpNat ewPmRo"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize={
             Array [
@@ -529,11 +533,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 efckVn"
+      className="sc-bdVaJa TableOfContents__SeriesContainer-sc-1uqls89-3 fWLPJv"
       onClick={[Function]}
     >
       <div
-        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 iliCmL"
+        className="sc-bdVaJa TableOfContents__SvgContainer-sc-1uqls89-1 bBEQyX"
       >
         <svg
           data-name="Layer 1"
@@ -546,10 +550,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </svg>
       </div>
       <div
-        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 Bhriv"
+        className="sc-bdVaJa TableOfContents__Chapter-sc-1uqls89-0 fcjOaZ"
       >
         <div
-          className="sc-ifAKCX cFlEyZ sc-htpNat hpCWrY"
+          className="sc-ifAKCX cFlEyZ sc-htpNat gGvNUu"
           fontFamily="'Adobe Garamond W08', 'adobe-garamond-pro', 'AGaramondPro-Regular', 'Times New Roman', Times, serif"
           fontSize={
             Array [
@@ -566,7 +570,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           I
         </div>
         <div
-          className="sc-bxivhb TableOfContents__SeriesTitle-sc-1uqls89-2 diRryw sc-htpNat hCHYkR"
+          className="sc-bxivhb TableOfContents__SeriesTitle-sc-1uqls89-2 diRryw sc-htpNat ewPmRo"
           fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
           fontSize={
             Array [
@@ -584,17 +588,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa cgFBqI"
+    className="sc-bdVaJa EXKLM"
     id="emerging"
   >
     <div
-      className="sc-bdVaJa jVebKB"
+      className="sc-bdVaJa kngfjX"
     />
     <div
-      className="sc-bdVaJa hcJFwa"
+      className="sc-bdVaJa ibTDPh"
     >
       <div
-        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 eYvwSR"
+        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 dLXlLO"
       >
         <h2
           className="sc-bxivhb SeriesWrapper__Title-sc-1v4ou91-1 kYSKae sc-htpNat ivKDje"
@@ -613,10 +617,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </h2>
       </div>
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bdVaJa sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gpfUqE"
+        display="flex"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 coUMnZ"
         >
           <svg
             fill="#FFF"
@@ -631,7 +636,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 fXBHXI"
           >
             <video
               autoPlay={true}
@@ -647,13 +652,14 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa fBlBum"
+      className="sc-bdVaJa eMVRVa"
     >
       <div
-        className="sc-bdVaJa bRlLEf"
+        className="sc-bdVaJa rCcuZ"
       >
         <div
-          className="sc-bwzfXH SCivq"
+          className="sc-bdVaJa sc-bwzfXH bVulgP"
+          display="flex"
         >
           <h3
             className="sc-ifAKCX SeriesWrapper__SubTitle-sc-1v4ou91-2 bhrDFw sc-htpNat ensgXr"
@@ -756,11 +762,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="victoria-sin"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -774,10 +781,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -813,10 +820,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -837,10 +844,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1991, Toronto. Lives and works in London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -1176,7 +1184,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -1186,11 +1194,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="monira-al-qadiri"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -1204,10 +1213,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -1243,10 +1252,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1267,10 +1276,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Dakar, Senegal. Lives and works in Beirut and Berlin.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -1606,7 +1616,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -1616,11 +1626,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="diedrick-brackens"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -1634,10 +1645,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -1673,10 +1684,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -1697,10 +1708,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, Mexia, Texas. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -2036,7 +2048,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -2046,11 +2058,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="dineo-seshee-bopape"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -2064,10 +2077,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -2103,10 +2116,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2127,10 +2140,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Polokwane, South Africa. Lives and works in Johannesburg.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -2437,7 +2451,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -2447,11 +2461,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="martine-gutierrez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -2465,10 +2480,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -2504,10 +2519,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2528,10 +2543,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, Berkeley, California. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -2867,7 +2883,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -2877,11 +2893,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="genesis-belanger"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -2895,10 +2912,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -2934,10 +2951,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -2958,10 +2975,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1978, United States. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -3268,7 +3286,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -3278,11 +3296,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="tao-hui"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -3296,10 +3315,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -3335,10 +3354,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3359,10 +3378,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1987, Chongqing, China. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -3698,7 +3718,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -3708,11 +3728,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="jordan-nassar"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -3726,10 +3747,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -3765,10 +3786,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -3789,10 +3810,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, New York. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -4128,7 +4150,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -4138,11 +4160,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="geng-xue"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -4156,10 +4179,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -4195,10 +4218,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4219,10 +4242,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Baishan, China. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -4558,7 +4582,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -4568,11 +4592,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="meriem-bennani"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -4586,10 +4611,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -4625,10 +4650,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -4649,10 +4674,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1988, Rabat, Morocco. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -4959,7 +4985,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -4969,11 +4995,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="manuel-solano"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -4987,10 +5014,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -5026,10 +5053,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -5050,10 +5077,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1987, Mexico City. Lives and works in Berlin.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -5360,7 +5388,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -5370,11 +5398,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="lauren-halsey"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -5388,10 +5417,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -5427,10 +5456,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -5451,10 +5480,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1987, Los Angeles. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -5790,7 +5820,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -5800,11 +5830,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="derek-fordjour"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -5818,10 +5849,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -5857,10 +5888,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -5881,10 +5912,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1974, Memphis, Tennessee. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -6220,7 +6252,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -6230,11 +6262,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="alia-farid"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -6248,10 +6281,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -6287,10 +6320,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -6311,10 +6344,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, Kuwait City, Kuwait. Lives and works in Kuwait City and San Juan.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -6621,7 +6655,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -6631,11 +6665,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="gala-porras-kim"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -6649,10 +6684,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -6688,10 +6723,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -6712,10 +6747,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1984, Bogotá, Colombia. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -7022,7 +7058,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -7032,11 +7068,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="jonathan-lyndon-chase"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -7050,10 +7087,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -7089,10 +7126,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -7113,10 +7150,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, Philadelphia. Lives and works in Philadelphia.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -7452,7 +7490,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -7462,11 +7500,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="elle-perez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -7480,10 +7519,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -7519,10 +7558,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -7543,10 +7582,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1989, New York. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -7853,7 +7893,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -7863,11 +7903,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="suki-seokyeong-kang"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -7881,10 +7922,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -7920,10 +7961,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -7944,10 +7985,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1977, Seoul. Lives and works in Seoul.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -8283,7 +8325,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -8293,11 +8335,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="evelyn-taocheng-wang"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -8311,10 +8354,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -8350,10 +8393,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8374,10 +8417,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Chengdu, China. Lives and works in Amsterdam.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -8684,7 +8728,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -8694,11 +8738,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="jill-mulleady"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -8712,10 +8757,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -8751,10 +8796,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -8775,10 +8820,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1980, Montevideo, Uruguay. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -9085,7 +9131,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -9096,17 +9142,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa cgFBqI"
+    className="sc-bdVaJa EXKLM"
     id="newly-established"
   >
     <div
-      className="sc-bdVaJa jVebKB"
+      className="sc-bdVaJa kngfjX"
     />
     <div
-      className="sc-bdVaJa hcJFwa"
+      className="sc-bdVaJa ibTDPh"
     >
       <div
-        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 eYvwSR"
+        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 dLXlLO"
       >
         <h2
           className="sc-bxivhb SeriesWrapper__Title-sc-1v4ou91-1 kYSKae sc-htpNat ivKDje"
@@ -9125,10 +9171,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </h2>
       </div>
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bdVaJa sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gpfUqE"
+        display="flex"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 coUMnZ"
         >
           <svg
             fill="#FFF"
@@ -9143,7 +9190,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 fXBHXI"
           >
             <video
               autoPlay={true}
@@ -9159,13 +9206,14 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa fBlBum"
+      className="sc-bdVaJa eMVRVa"
     >
       <div
-        className="sc-bdVaJa bRlLEf"
+        className="sc-bdVaJa rCcuZ"
       >
         <div
-          className="sc-bwzfXH SCivq"
+          className="sc-bdVaJa sc-bwzfXH bVulgP"
+          display="flex"
         >
           <h3
             className="sc-ifAKCX SeriesWrapper__SubTitle-sc-1v4ou91-2 bhrDFw sc-htpNat ensgXr"
@@ -9268,11 +9316,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="michael-armitage"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -9286,10 +9335,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -9325,10 +9374,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9349,10 +9398,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1984, Nairobi, Kenya. Lives and works in Nairobi and London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -9688,7 +9738,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -9698,11 +9748,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="ebony-g-patterson"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -9716,10 +9767,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -9755,10 +9806,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -9779,10 +9830,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Kingston, Jamaica. Lives and works in Kingston and Chicago.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -10118,7 +10170,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -10128,11 +10180,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="lawrence-abu-hamdan"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -10146,10 +10199,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -10185,10 +10238,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10209,10 +10262,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, Amman, Jordan. Lives and works in Beirut.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -10519,7 +10573,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -10529,11 +10583,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="korakrit-arunanondchai"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -10547,10 +10602,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -10586,10 +10641,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -10610,10 +10665,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1986, Bangkok. Lives and works in Bangkok and New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -10920,7 +10976,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -10930,11 +10986,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="barbara-wagner-benjamin-de-burca"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -10948,10 +11005,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -10987,10 +11044,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11011,10 +11068,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1980, Brasília, Brazil / B. 1975, Munich, Germany. Based in Recife, Brazil.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -11350,7 +11408,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -11360,11 +11418,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="charlotte-prodger"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -11378,10 +11437,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -11417,10 +11476,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11441,10 +11500,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1974, Bournemouth, England. Lives and works in Glasgow.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -11751,7 +11811,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -11761,11 +11821,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="jeffrey-gibson"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -11779,10 +11840,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -11818,10 +11879,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -11842,10 +11903,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1972, Colorado Springs, Colorado. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -12181,7 +12243,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -12191,11 +12253,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="hao-liang"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -12209,10 +12272,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -12248,10 +12311,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12272,10 +12335,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Chengdu, China. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -12582,7 +12646,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -12592,11 +12656,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="jacolby-satterwhite"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -12610,10 +12675,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -12649,10 +12714,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -12673,10 +12738,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1986, Columbia, South Carolina. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -13012,7 +13078,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -13022,11 +13088,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="melike-kara"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -13040,10 +13107,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -13079,10 +13146,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13103,10 +13170,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1985, Bensberg, Germany. Lives and works in Cologne.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -13413,7 +13481,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -13423,11 +13491,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="cui-jie"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -13441,10 +13510,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -13480,10 +13549,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13504,10 +13573,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1983, Shanghai. Lives and works in Beijing.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -13843,7 +13913,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -13853,11 +13923,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="firelei-baez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -13871,10 +13942,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -13910,10 +13981,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -13934,10 +14005,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1981, Santiago de los Caballeros, Dominican Republic. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -14273,7 +14345,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -14283,11 +14355,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="forensic-architecture"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -14301,10 +14374,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -14340,10 +14413,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14364,10 +14437,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 Founded 2010, London. Based in London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -14703,7 +14777,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -14713,11 +14787,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="tschabalala-self"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -14731,10 +14806,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -14770,10 +14845,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -14794,10 +14869,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1990, New York. Lives and works in New York and New Haven, Connecticut.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -15104,7 +15180,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -15114,11 +15190,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="harold-ancart"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -15132,10 +15209,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -15171,10 +15248,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -15195,10 +15272,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1980, Brussels. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -15505,7 +15583,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -15516,17 +15594,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa cgFBqI"
+    className="sc-bdVaJa EXKLM"
     id="getting-their-due"
   >
     <div
-      className="sc-bdVaJa jVebKB"
+      className="sc-bdVaJa kngfjX"
     />
     <div
-      className="sc-bdVaJa hcJFwa"
+      className="sc-bdVaJa ibTDPh"
     >
       <div
-        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 eYvwSR"
+        className="sc-bdVaJa SeriesWrapper__SubSeriesHeaderText-sc-1v4ou91-0 dLXlLO"
       >
         <h2
           className="sc-bxivhb SeriesWrapper__Title-sc-1v4ou91-1 kYSKae sc-htpNat ivKDje"
@@ -15545,10 +15623,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </h2>
       </div>
       <div
-        className="sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gyGuCR"
+        className="sc-bdVaJa sc-bwzfXH VideoHeader__SubseriesWrapper-sc-1cwxsq6-1 gpfUqE"
+        display="flex"
       >
         <div
-          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 cCPLgw"
+          className="sc-bdVaJa VideoHeader__SubseriesSVGWrapper-sc-1cwxsq6-2 coUMnZ"
         >
           <svg
             fill="#FFF"
@@ -15563,7 +15642,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             />
           </svg>
           <div
-            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 bDfZye"
+            className="sc-bdVaJa VideoHeader__VanguardSubseriesVideoWrapper-sc-1cwxsq6-3 fXBHXI"
           >
             <video
               autoPlay={true}
@@ -15579,13 +15658,14 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bdVaJa fBlBum"
+      className="sc-bdVaJa eMVRVa"
     >
       <div
-        className="sc-bdVaJa bRlLEf"
+        className="sc-bdVaJa rCcuZ"
       >
         <div
-          className="sc-bwzfXH SCivq"
+          className="sc-bdVaJa sc-bwzfXH bVulgP"
+          display="flex"
         >
           <h3
             className="sc-ifAKCX SeriesWrapper__SubTitle-sc-1v4ou91-2 bhrDFw sc-htpNat ensgXr"
@@ -15688,11 +15768,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="frank-bowling"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -15706,10 +15787,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -15745,10 +15826,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -15769,10 +15850,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1934, Bartica, Guyana. Lives and works in London.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -16079,7 +16161,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -16089,11 +16171,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="zilia-sanchez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -16107,10 +16190,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -16146,10 +16229,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -16170,10 +16253,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1926, Havana, Cuba. Lives and works in Puerto Rico.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -16509,7 +16593,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -16519,11 +16603,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="fred-eversley"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -16537,10 +16622,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -16576,10 +16661,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -16600,10 +16685,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1941, New York. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -16939,7 +17025,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -16949,11 +17035,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="tishan-hsu"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -16967,10 +17054,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -17006,10 +17093,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -17030,10 +17117,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1951, Boston. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -17340,7 +17428,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -17350,11 +17438,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="howardena-pindell"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -17368,10 +17457,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -17407,10 +17496,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -17431,10 +17520,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1943, Philadelphia. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -17741,7 +17831,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -17751,11 +17841,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="diane-simpson"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -17769,10 +17860,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -17808,10 +17899,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -17832,10 +17923,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1935, Joliet, Illinois. Lives and works in Chicago.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -18142,7 +18234,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -18152,11 +18244,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="lorraine-o-grady"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -18170,10 +18263,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -18209,10 +18302,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -18233,10 +18326,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1934, Boston. Lives and works in New York.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -18543,7 +18637,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -18553,11 +18647,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="teresa-burga"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -18571,10 +18666,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -18610,10 +18705,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -18634,10 +18729,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1935, Iquitos, Peru. Lives and works in Lima.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -18973,7 +19069,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -18983,11 +19079,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="siah-armajani"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -19001,10 +19098,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -19040,10 +19137,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -19064,10 +19161,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1939, Tehran, Iran. Lives and works in Minneapolis.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -19403,7 +19501,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -19413,11 +19511,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="mcarthur-binion"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -19431,10 +19530,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -19470,10 +19569,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -19494,10 +19593,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1946, Macon, Mississippi. Lives and works in Chicago.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -19804,7 +19904,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -19814,11 +19914,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="beatriz-gonzalez"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -19832,10 +19933,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -19871,10 +19972,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -19895,10 +19996,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1938, Bucaramanga, Colombia. Lives and works in Bogotá.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -20234,7 +20336,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -20244,11 +20346,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="simone-fattal"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -20262,10 +20365,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -20301,10 +20404,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -20325,10 +20428,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1942, Damascus, Syria. Lives and works in Paris.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -20664,7 +20768,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -20674,11 +20778,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="vivian-suter"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -20692,10 +20797,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -20731,10 +20836,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -20755,10 +20860,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1949, Buenos Aires. Lives and works in Panajachel, Guatemala.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -21094,7 +21200,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -21104,11 +21210,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="henry-taylor"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -21122,10 +21229,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -21161,10 +21268,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -21185,10 +21292,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1958, Ventura, California. Lives and works in Los Angeles.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -21495,7 +21603,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -21505,11 +21613,12 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 gOygqf"
+      className="sc-bdVaJa sc-bwzfXH ArtistWrapper-sc-1bsuwlh-7 ibqldj"
+      display="flex"
       id="anna-maria-maiolino"
     >
       <div
-        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 jsIGRz"
+        className="sc-bdVaJa ArtistWrapper__BackgroundContainer-sc-1bsuwlh-6 bDpmVG"
       >
         <svg
           data-name="Layer 1"
@@ -21523,10 +21632,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       </div>
       <div>
         <div
-          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 gSadSP"
+          className="sc-bdVaJa ArtistWrapper__ArtistContainer-sc-1bsuwlh-5 dUuVYq"
         >
           <div
-            className="sc-bdVaJa jTeONE"
+            className="sc-bdVaJa gQOstf"
           >
             <div
               className="fresnel-container fresnel-greaterThanOrEqual-xl"
@@ -21562,10 +21671,10 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="sc-bdVaJa cgFBqI"
+              className="sc-bdVaJa EXKLM"
             >
               <div
-                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bRcOQT"
+                className="sc-bxivhb ArtistWrapper__InvertedSans-sc-1bsuwlh-1 ljgdyt sc-htpNat bUmTGv"
                 fontFamily={
                   Object {
                     "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -21586,10 +21695,11 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 B. 1942, Scalea, Italy. Lives and works in São Paulo.
               </div>
               <div
-                className="sc-bwzfXH guSRDo"
+                className="sc-bdVaJa sc-bwzfXH mTlZf"
+                display="flex"
               >
                 <div
-                  className="sc-bdVaJa cuOYlR"
+                  className="sc-bdVaJa cySBYo"
                 >
                   <div
                     className="Share__ShareContainer-sc-1y1t686-0 czsizs"
@@ -21925,7 +22035,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             style={Object {}}
           >
             <div
-              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 gJIaJq"
+              className="sc-bdVaJa ArtistWrapper__ReadMoreText-sc-1bsuwlh-3 cXDZuJ"
             >
               Read More
             </div>
@@ -21936,20 +22046,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="sc-bdVaJa ezNlgj"
+    className="sc-bdVaJa dsScGd"
   >
     <div
-      className="sc-bdVaJa imGIdc"
+      className="sc-bdVaJa bCZciM"
     >
       <div
-        className="sc-VigVT gbmPvL"
+        className="sc-gqjmRU UXxOx"
         width="100%"
       />
       <div
-        className="sc-bwzfXH lcohpo"
+        className="sc-bdVaJa sc-bwzfXH loDbPt"
+        display="flex"
       >
         <div
-          className="sc-bdVaJa ccErhE"
+          className="sc-bdVaJa jzQiEp"
           width={
             Array [
               "100%",
@@ -21984,7 +22095,7 @@ been updated to reflect these changes.
           </p>
         </div>
         <div
-          className="sc-bdVaJa hpCjOP"
+          className="sc-bdVaJa kNAxeh"
           width={
             Array [
               "100%",
@@ -22025,7 +22136,7 @@ has been added to clarify their involvement with the exhibition.
         </div>
       </div>
       <div
-        className="sc-VigVT iaBpSQ"
+        className="sc-gqjmRU jFqWtH"
         width="100%"
       />
       <div
