@@ -1,3 +1,21 @@
+# v28.1.0 (Mon Aug 17 2020)
+
+#### 🚀  Enhancement
+
+- Upgrades various dependencies [#3622](https://github.com/artsy/reaction/pull/3622) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Pin dependencies [#3623](https://github.com/artsy/reaction/pull/3623) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v28.0.0 (Fri Aug 14 2020)
 
 #### 💥  Breaking Change
