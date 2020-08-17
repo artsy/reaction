@@ -4303,7 +4303,7 @@
   resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-6.0.9.tgz#261b1575e5a256fd9474a6cc078981c08597b03c"
   integrity sha512-VyfieDPYEwq86PDgqWwHMluWtD+hUp8qsdcRn0ef39hfVRXE7VK9QHB/2mTyW/OkBqO7ZnUA7hejPDEdhkoSDA==
 
-"@types/relay-runtime@^9":
+"@types/relay-runtime@9.1.6":
   version "9.1.6"
   resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-9.1.6.tgz#5a9afc37552d7e5b7966779d33ab26dce7da6771"
   integrity sha512-rdylQOGAoqjDjtzC2uKdjIqeDRcAvUsjONQB+FZld3cAP9qU4eEwTfMKJ7MdZSw2YbWRcTphczT4OpKKlLxY3Q==
@@ -15998,7 +15998,7 @@ relateurl@0.2.x:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-compiler-language-typescript@^12.0.3:
+relay-compiler-language-typescript@12.0.4:
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-12.0.4.tgz#7bff645ad967ce6bc5d4690b89d7b276bb97e814"
   integrity sha512-dpi5l6CJIOoMgosH+fn+9yoqZssDqNiJcrzSDOKgvq3n3YbkLYsx5myHzV+2aMbvvMJkhy9JM5qeTR6r0uxMtw==
