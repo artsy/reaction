@@ -1,123 +1,83 @@
-import Colors from "Assets/Colors"
-import { unica } from "Assets/Fonts"
-import { pMedia } from "Components/Helpers"
-import PropTypes from "prop-types"
+import { Box, Clickable, HTML, Text } from "@artsy/palette"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
-import { ArtworkCaption } from "../ArtworkCaption"
+import PropTypes from "prop-types"
+import { ArtworkCaption } from "./ArtworkCaption"
+import { Media } from "Utils/Responsive"
 
-interface CaptionProps extends React.HTMLProps<HTMLDivElement> {
-  section?: any
+interface CaptionProps {
+  section?: any // TODO: What am I?
   total: number
   index: number
   open: boolean
 }
 
-interface CaptionOpenProps extends React.HTMLProps<HTMLDivElement> {
-  open: boolean
-}
-
-export const Caption: React.SFC<CaptionProps> = props => {
-  const { index, open, section, total } = props
-
+export const Caption: React.FC<CaptionProps> = (
+  { index, open, section, total },
+  context
+) => {
   const isArtwork = section.type === "artwork"
-  const indexText = `${index} of ${total}`
 
   return (
-    <CaptionContainer>
-      <CaptionTextContainer>
-        <CaptionToggle open={open} />
+    <>
+      <Media lessThan="sm">
+        <Box p={2} bg="black5">
+          <Clickable
+            display="flex"
+            width="100%"
+            onClick={context.onToggleCaption}
+          >
+            <Text
+              flex="1"
+              variant="caption"
+              textAlign="left"
+              style={{ textDecoration: "underline" }}
+            >
+              {open ? "Hide" : "View Caption"}
+            </Text>
 
-        <CaptionText open={open}>
-          {isArtwork ? (
-            <ArtworkCaption artwork={section} isFullscreenCaption linked />
-          ) : (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: section.caption,
-              }}
-            />
+            <Text variant="caption">
+              {index} of {total}
+            </Text>
+          </Clickable>
+
+          {open && (
+            <Box pt={2}>
+              {isArtwork ? (
+                <ArtworkCaption display="flex" flex="1" section={section} />
+              ) : (
+                <HTML variant="caption" html={section.caption} />
+              )}
+            </Box>
           )}
-        </CaptionText>
-      </CaptionTextContainer>
+        </Box>
+      </Media>
 
-      <Index>{indexText}</Index>
-    </CaptionContainer>
+      <Media greaterThanOrEqual="sm">
+        <Box
+          position="relative"
+          zIndex={2}
+          display="flex"
+          px={6}
+          py={3}
+          bg="black5"
+        >
+          <Box flex="1">
+            {isArtwork ? (
+              <ArtworkCaption display="flex" flex="1" section={section} />
+            ) : (
+              <HTML variant="caption" html={section.caption} />
+            )}
+          </Box>
+
+          <Text variant="caption" pl={2}>
+            {index} of {total}
+          </Text>
+        </Box>
+      </Media>
+    </>
   )
 }
 
-const CaptionToggle: React.SFC<CaptionOpenProps> = (props, context) => {
-  const toggleMessage = props.open ? "Hide" : "View Caption"
-
-  return (
-    <StyledCaptionToggle
-      onClick={context.onToggleCaption}
-      className="fullscreen-viewer__caption-toggle"
-    >
-      <span>{toggleMessage}</span>
-    </StyledCaptionToggle>
-  )
-}
-
-CaptionToggle.contextTypes = {
+Caption.contextTypes = {
   onToggleCaption: PropTypes.func,
 }
-
-const StyledCaptionToggle = styled.div`
-  display: none;
-  ${pMedia.sm`
-    ${unica("s14", "medium")}
-    cursor: pointer;
-    display: inline-block;
-    span {
-      border-bottom: 1px solid black;
-    }
-  `};
-`
-
-const CaptionDiv: StyledFunction<CaptionOpenProps> = styled.div
-
-const CaptionText = CaptionDiv`
-  ${unica("s16", "medium")}
-  a {
-    color: black;
-  }
-  ${props => pMedia.sm`
-    ${unica("s14", "medium")}
-    display: ${props.open ? "block" : "none"};
-    margin-top: ${props.open ? "20px" : "0px"};
-  `}
-`
-
-const Index = styled.div`
-  margin-left: 20px;
-  white-space: nowrap;
-  ${unica("s16")};
-  ${pMedia.sm`
-    ${unica("s14")}
-  `};
-`
-
-const CaptionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: ${Colors.gray};
-  padding: 30px 60px;
-
-  p {
-    margin: 0;
-  }
-
-  ${pMedia.sm`
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    max-width: 100vh;
-    padding: 20px;
-  `};
-`
-
-const CaptionTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`

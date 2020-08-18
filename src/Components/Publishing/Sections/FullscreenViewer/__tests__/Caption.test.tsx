@@ -22,13 +22,15 @@ it("renders an image caption properly", () => {
 it("toggles the caption on mobile to hide", () => {
   const context = { onToggleCaption: jest.fn() }
   const caption = mount(
-    <Caption section={Images[0]} total={10} index={2} open />,
+    <div>
+      <Caption section={Images[0]} total={10} index={2} open />
+    </div>,
     {
       childContextTypes: context,
       context,
     }
   )
-  const node = caption.find(".fullscreen-viewer__caption-toggle").at(0)
+  const node = caption.find("Text").at(0)
   expect(node.text()).toBe("Hide")
   node.simulate("click")
   expect(context.onToggleCaption.mock.calls.length).toBeGreaterThan(0)
@@ -37,13 +39,15 @@ it("toggles the caption on mobile to hide", () => {
 it("toggles the caption on mobile to view", () => {
   const context = { onToggleCaption: jest.fn() }
   const caption = mount(
-    <Caption section={Images[0]} total={10} index={2} open={false} />,
+    <div>
+      <Caption section={Images[0]} total={10} index={2} open={false} />
+    </div>,
     {
       childContextTypes: context,
       context,
     }
   )
-  const node = caption.find(".fullscreen-viewer__caption-toggle").at(0)
+  const node = caption.find("Text").at(0)
   expect(node.text()).toBe("View Caption")
   node.simulate("click")
   expect(context.onToggleCaption.mock.calls.length).toBeGreaterThan(0)

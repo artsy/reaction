@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Image snapshots renders a long caption properly 1`] = `
+.c7 {
+  color: black60;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -19,27 +28,14 @@ exports[`Image snapshots renders a long caption properly 1`] = `
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root,
-.c6 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-  display: inline;
-}
-
 .c6 > a,
 .c6 a {
-  color: #999;
+  color: inherit;
 }
 
 .c6 > a:hover,
 .c6 a:hover {
-  color: black;
+  color: #000;
 }
 
 .c4 {
@@ -87,6 +83,16 @@ exports[`Image snapshots renders a long caption properly 1`] = `
   display: block;
 }
 
+@media (min-width:) {
+  .c7 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
   .c5 {
     padding: 0px 10px;
@@ -95,7 +101,7 @@ exports[`Image snapshots renders a long caption properly 1`] = `
 
 @media (max-width:600px) {
   .c6 {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -180,18 +186,33 @@ exports[`Image snapshots renders a long caption properly 1`] = `
       className="c6"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+        className="c7"
+        color="black60"
+        fontFamily="sans"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`Image snapshots renders a react child as caption properly 1`] = `
+.c7 {
+  color: black60;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -210,27 +231,14 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root,
-.c6 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-  display: inline;
-}
-
 .c6 > a,
 .c6 a {
-  color: #999;
+  color: inherit;
 }
 
 .c6 > a:hover,
 .c6 a:hover {
-  color: black;
+  color: #000;
 }
 
 .c4 {
@@ -278,6 +286,16 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
   display: block;
 }
 
+@media (min-width:) {
+  .c7 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
   .c5 {
     padding: 0px 10px;
@@ -286,7 +304,7 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
 
 @media (max-width:600px) {
   .c6 {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -371,12 +389,18 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
       className="c6"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+        className="c7"
+        color="black60"
+        fontFamily="sans"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
   </div>
   <div>
@@ -387,6 +411,15 @@ exports[`Image snapshots renders a react child as caption properly 1`] = `
 `;
 
 exports[`Image snapshots renders properly 1`] = `
+.c7 {
+  color: black60;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -405,27 +438,14 @@ exports[`Image snapshots renders properly 1`] = `
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root,
-.c6 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-  display: inline;
-}
-
 .c6 > a,
 .c6 a {
-  color: #999;
+  color: inherit;
 }
 
 .c6 > a:hover,
 .c6 a:hover {
-  color: black;
+  color: #000;
 }
 
 .c4 {
@@ -473,6 +493,16 @@ exports[`Image snapshots renders properly 1`] = `
   display: block;
 }
 
+@media (min-width:) {
+  .c7 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
   .c5 {
     padding: 0px 10px;
@@ -481,7 +511,7 @@ exports[`Image snapshots renders properly 1`] = `
 
 @media (max-width:600px) {
   .c6 {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -566,12 +596,18 @@ exports[`Image snapshots renders properly 1`] = `
       className="c6"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+        className="c7"
+        color="black60"
+        fontFamily="sans"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
   </div>
 </div>

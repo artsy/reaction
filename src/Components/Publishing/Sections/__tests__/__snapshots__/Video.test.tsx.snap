@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c7 {
+  color: black60;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -19,27 +28,14 @@ exports[`renders properly 1`] = `
   word-break: break-word;
 }
 
-.c6 > p,
-.c6 p,
-.c6 .public-DraftEditorPlaceholder-root,
-.c6 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-  display: inline;
-}
-
 .c6 > a,
 .c6 a {
-  color: #999;
+  color: inherit;
 }
 
 .c6 > a:hover,
 .c6 a:hover {
-  color: black;
+  color: #000;
 }
 
 .c3 {
@@ -102,6 +98,16 @@ exports[`renders properly 1`] = `
   cursor: pointer;
 }
 
+@media (min-width:) {
+  .c7 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
   .c5 {
     padding: 0px 10px;
@@ -110,7 +116,7 @@ exports[`renders properly 1`] = `
 
 @media (max-width:600px) {
   .c6 {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -146,12 +152,18 @@ exports[`renders properly 1`] = `
       className="c6"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>What motivates patrons to fund artists’ wildest dreams?</p>",
+        className="c7"
+        color="black60"
+        fontFamily="sans"
+      >
+        <div
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>What motivates patrons to fund artists’ wildest dreams?</p>",
+            }
           }
-        }
-      />
+        />
+      </div>
     </div>
   </div>
 </div>
