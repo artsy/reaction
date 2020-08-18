@@ -1,3 +1,15 @@
+# v28.2.0 (Tue Aug 18 2020)
+
+#### 🚀  Enhancement
+
+- Bugfixes for classic layouts [#3624](https://github.com/artsy/reaction/pull/3624) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v28.1.0 (Mon Aug 17 2020)
 
 #### 🚀  Enhancement
