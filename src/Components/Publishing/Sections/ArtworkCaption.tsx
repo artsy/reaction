@@ -70,6 +70,12 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
       return joinedNames
 
       // Single artist
+    } else if (artists && artists.length === 1) {
+      const artistName = this.renderArtistName(
+        artists[0],
+        "renderArtists-single"
+      )
+      return artistName
     } else if (artist) {
       const artistName = this.renderArtistName(artist, "renderArtists-single")
       return artistName

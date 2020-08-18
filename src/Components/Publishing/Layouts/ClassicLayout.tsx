@@ -26,7 +26,6 @@ export const ClassicLayout: React.SFC<ArticleProps> = props => {
           url={getArticleFullHref(slug)}
           title={social_title || thumbnail_title}
         />
-        hi!
       </Box>
       <CanvasFooter
         article={props.article}

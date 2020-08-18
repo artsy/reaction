@@ -84,6 +84,15 @@ describe("ArtworkCaption", () => {
       expect(component.html()).toMatch("Fernando Botero")
     })
 
+    it("renders single artist from artist array", () => {
+      const component = getWrapper({
+        artwork: _.extend({}, ArtworkMultipleArtists, {
+          artists: [{ name: "Andy Warhol" }],
+        }),
+      })
+      expect(component.text()).toMatch("Andy Warhol")
+    })
+
     it("renders artists", () => {
       const component = getWrapper({
         artwork: _.extend({}, ArtworkMultipleArtists, {
