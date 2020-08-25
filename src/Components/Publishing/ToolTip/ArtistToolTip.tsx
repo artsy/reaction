@@ -8,8 +8,8 @@ import { createFragmentContainer, graphql } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
-import { FollowTrackingData } from "../../FollowButton/Typings"
 import { ToolTipDescription } from "./Components/Description"
+import { ContextModule, FollowedArtistArgs, OwnerType } from "@artsy/cohesion"
 
 export interface ArtistToolTipProps {
   artist: ArtistToolTip_artist
@@ -18,6 +18,8 @@ export interface ArtistToolTipProps {
 
 export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
   static contextTypes = {
+    contextOwnerId: PropTypes.string,
+    contextOwnerSlug: PropTypes.string,
     tooltipsData: PropTypes.object,
     onOpenAuthModal: PropTypes.func,
   }
@@ -57,16 +59,20 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
     const {
       tooltipsData: { artists },
       onOpenAuthModal,
+      contextOwnerId,
+      contextOwnerSlug,
     } = this.context
     const displayImages = map(carousel.images.slice(0, 2), "resized")
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
     const description = blurb || this.renderArtistGenes()
 
-    const trackingData: FollowTrackingData = {
-      contextModule: "intext tooltip",
-      entity_id: internalID,
-      entity_slug: slug,
-      entity_type: "artist",
+    const trackingData: FollowedArtistArgs = {
+      contextModule: ContextModule.intextTooltip,
+      contextOwnerId,
+      contextOwnerSlug,
+      contextOwnerType: OwnerType.article,
+      ownerId: internalID,
+      ownerSlug: slug,
     }
 
     return (

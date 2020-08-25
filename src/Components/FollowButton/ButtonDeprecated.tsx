@@ -1,10 +1,9 @@
-import Colors from "Assets/Colors"
-import { unica } from "Assets/Fonts"
 import React from "react"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
+import { Clickable, Sans, color } from "@artsy/palette"
 
 interface Props {
-  handleFollow?: any
+  handleFollow?: () => void
   isFollowed?: boolean
   buttonProps?: object
 }
@@ -40,35 +39,36 @@ export class FollowButtonDeprecated extends React.Component<Props, State> {
         onMouseEnter={() => this.setState({ showUnfollow: true })}
         onMouseLeave={() => this.setState({ showUnfollow: false })}
       >
-        {text}
+        <Sans size="2" weight="medium">
+          {text}
+        </Sans>
       </FollowButtonContainer>
     )
   }
 }
 
-interface DivProps {
+const FollowButtonContainer = styled(Clickable)<{
   isFollowed: boolean
-}
-
-const Div: StyledFunction<DivProps & React.HTMLProps<HTMLDivElement>> =
-  styled.div
-
-const FollowButtonContainer = Div`
-  border: 1px solid ${Colors.grayRegular};
-  ${unica("s12", "medium")};
+}>`
+  border: 1px solid ${color("black30")};
   width: 80px;
   height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => (props.isFollowed ? Colors.grayMedium : "black")}
+  color: ${({ isFollowed }) =>
+    isFollowed ? color("black60") : color("black100")};
   cursor: pointer;
+
   &:hover {
-    ${props =>
-      !props.isFollowed &&
+    ${({ isFollowed }) =>
+      !isFollowed &&
       `
-      border-color: black;`}
-    background: ${props => (props.isFollowed ? "white" : "black")}
-    color: ${props => (props.isFollowed ? Colors.redMedium : "white")}
+      border-color: black;
+      `}
+    background: ${({ isFollowed }) =>
+      isFollowed ? color("white100") : color("black100")};
+    color: ${({ isFollowed }) =>
+      isFollowed ? color("red100") : color("white100")};
   }
 `

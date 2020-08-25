@@ -94,10 +94,12 @@ export class TooltipsDataLoader extends Component<Props> {
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
     activeToolTip: PropTypes.any,
-    user: PropTypes.object,
+    contextOwnerId: PropTypes.string,
+    contextOwnerSlug: PropTypes.string,
     onOpenAuthModal: PropTypes.func,
     onTriggerToolTip: PropTypes.func,
     tooltipsData: PropTypes.object,
+    user: PropTypes.object,
     waitForFade: PropTypes.string,
   }
 
@@ -118,7 +120,7 @@ class TooltipsContextProvider extends Component<any> {
   }
 
   getChildContext() {
-    const { artists, user, genes, onOpenAuthModal } = this.props
+    const { article, artists, user, genes, onOpenAuthModal } = this.props
     const { activeToolTip, waitForFade } = this.state
 
     return {
@@ -130,6 +132,8 @@ class TooltipsContextProvider extends Component<any> {
         artists,
         genes,
       },
+      contextOwnerId: article && article.id,
+      contextOwnerSlug: article && article.slug,
       waitForFade,
     }
   }

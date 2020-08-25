@@ -5,6 +5,7 @@ import React from "react"
 import { commitMutation } from "react-relay"
 import { FollowButtonDeprecated } from "../ButtonDeprecated"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "../FollowArtistButton"
+import { ContextModule, OwnerType } from "@artsy/cohesion"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
@@ -36,6 +37,12 @@ describe("FollowArtistButton", () => {
       },
       onOpenAuthModal: jest.fn(),
       tracking: { trackEvent: jest.fn() },
+      trackingData: {
+        contextModule: ContextModule.intextTooltip,
+        contextOwnerType: OwnerType.article,
+        ownerId: "1234",
+        ownerSlug: "damon-zucconi",
+      },
     }
   })
 
@@ -67,7 +74,7 @@ describe("FollowArtistButton", () => {
         afterSignUpAction: {
           action: "follow",
           kind: "artist",
-          objectId: "damon-zucconi",
+          objectId: "1234",
         },
       })
     })
@@ -95,9 +102,16 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(testProps, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
 
-      expect(testProps.tracking.trackEvent.mock.calls[0][0].action).toBe(
-        "Followed Artist"
-      )
+      expect(testProps.tracking.trackEvent).toBeCalledWith({
+        action: "followedArtist",
+        context_module: "intextTooltip",
+        context_owner_id: undefined,
+        context_owner_slug: undefined,
+        context_owner_type: "article",
+        owner_id: "1234",
+        owner_slug: "damon-zucconi",
+        owner_type: "artist",
+      })
     })
 
     it("Tracks unfollow click when unfollowing", () => {
@@ -105,19 +119,16 @@ describe("FollowArtistButton", () => {
       const component = getWrapper(testProps, { id: "1234" })
       component.find(FollowButtonDeprecated).simulate("click")
 
-      expect(testProps.tracking.trackEvent.mock.calls[0][0].action).toBe(
-        "Unfollowed Artist"
-      )
-    })
-
-    it("Tracks with custom trackingData if provided", () => {
-      testProps.trackingData = { contextModule: "tooltip" }
-      const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
-
-      expect(testProps.tracking.trackEvent.mock.calls[0][0].contextModule).toBe(
-        "tooltip"
-      )
+      expect(testProps.tracking.trackEvent).toBeCalledWith({
+        action: "unfollowedArtist",
+        context_module: "intextTooltip",
+        context_owner_id: undefined,
+        context_owner_slug: undefined,
+        context_owner_type: "article",
+        owner_id: "1234",
+        owner_slug: "damon-zucconi",
+        owner_type: "artist",
+      })
     })
   })
 })

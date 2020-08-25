@@ -93,7 +93,7 @@ describe("ArtistToolTip", () => {
         afterSignUpAction: {
           action: "follow",
           kind: "artist",
-          objectId: "nick-mauss",
+          objectId: "5955005ceaaedc0017acdd1f",
         },
         contextModule: "intextTooltip",
         copy: "Sign up to follow artists",
