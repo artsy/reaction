@@ -12,7 +12,7 @@ interface State {
   showUnfollow: boolean
 }
 
-export class FollowButtonDeprecated extends React.Component<Props, State> {
+export class FollowButton extends React.Component<Props, State> {
   static defaultProps = {
     isFollowed: false,
   }

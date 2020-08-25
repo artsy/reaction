@@ -3,7 +3,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { commitMutation } from "react-relay"
-import { FollowButtonDeprecated } from "../ButtonDeprecated"
+import { FollowButton } from "../FollowButton"
 import { FollowArtistButtonFragmentContainer as FollowArtistButton } from "../FollowArtistButton"
 import { ContextModule, OwnerType } from "@artsy/cohesion"
 
@@ -65,7 +65,7 @@ describe("FollowArtistButton", () => {
   describe("unit", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(testProps)
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.onOpenAuthModal).toBeCalledWith("signup", {
         contextModule: "intextTooltip",
@@ -81,7 +81,7 @@ describe("FollowArtistButton", () => {
 
     it("Follows an artist if current user", () => {
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
       const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
       expect(mutation.artistID).toBe("damon-zucconi")
@@ -91,7 +91,7 @@ describe("FollowArtistButton", () => {
     it("Unfollows an artist if current user", () => {
       testProps.artist.is_followed = true
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
       const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
       expect(mutation.artistID).toBe("damon-zucconi")
@@ -100,7 +100,7 @@ describe("FollowArtistButton", () => {
 
     it("Tracks follow click when following", () => {
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.tracking.trackEvent).toBeCalledWith({
         action: "followedArtist",
@@ -117,7 +117,7 @@ describe("FollowArtistButton", () => {
     it("Tracks unfollow click when unfollowing", () => {
       testProps.artist.is_followed = true
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.tracking.trackEvent).toBeCalledWith({
         action: "unfollowedArtist",

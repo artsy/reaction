@@ -9,7 +9,7 @@ import * as Artsy from "Artsy"
 import React from "react"
 import track, { TrackingProp } from "react-tracking"
 import { FollowArtistButton_artist } from "../../__generated__/FollowArtistButton_artist.graphql"
-import { FollowButtonDeprecated } from "./ButtonDeprecated"
+import { FollowButton } from "./FollowButton"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import {
   RelayProp,
@@ -113,7 +113,7 @@ export class FollowArtistButton extends React.Component<Props> {
     const { artist } = this.props
 
     return (
-      <FollowButtonDeprecated
+      <FollowButton
         isFollowed={artist && artist.is_followed}
         handleFollow={this.handleFollow}
       />

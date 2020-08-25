@@ -1,18 +1,18 @@
-import { Intent, ContextModule } from "@artsy/cohesion"
+import { ContextModule, Intent } from "@artsy/cohesion"
 import { FollowGeneButtonMutation } from "__generated__/FollowGeneButtonMutation.graphql"
 import * as Artsy from "Artsy"
 import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import { extend } from "lodash"
 import React from "react"
 import {
+  RelayProp,
   commitMutation,
   createFragmentContainer,
   graphql,
-  RelayProp,
 } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
 import { FollowGeneButton_gene } from "../../__generated__/FollowGeneButton_gene.graphql"
-import { FollowButtonDeprecated } from "./ButtonDeprecated"
+import { FollowButton } from "./FollowButton"
 import { FollowTrackingData } from "./Typings"
 
 interface Props
@@ -87,7 +87,7 @@ export class FollowGeneButton extends React.Component<Props> {
     const { gene } = this.props
 
     return (
-      <FollowButtonDeprecated
+      <FollowButton
         isFollowed={gene && gene.is_followed}
         handleFollow={this.handleFollow}
       />

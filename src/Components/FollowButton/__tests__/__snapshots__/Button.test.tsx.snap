@@ -1,12 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FollowButton snapshots Renders FollowButton properly 1`] = `
-.c0 {
-  border: 1px solid #e5e5e5;
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
+.c1 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
   font-size: 12px;
-  line-height: 1.4em;
+  line-height: 16px;
+}
+
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  border: 1px solid #C2C2C2;
   width: 80px;
   height: 24px;
   display: -webkit-box;
@@ -21,23 +30,35 @@ exports[`FollowButton snapshots Renders FollowButton properly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: black;
+  color: #000;
   cursor: pointer;
 }
 
 .c0:hover {
   border-color: black;
-  background: black;
-  color: white;
+  background: #000;
+  color: #FFF;
 }
 
-<div
+<button
   className="c0"
   data-test="followButton"
   onClick={[MockFunction]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  Follow
-</div>
+  <div
+    className="c1"
+    fontFamily={
+      Object {
+        "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "fontWeight": 500,
+      }
+    }
+    fontSize="12px"
+    style={Object {}}
+  >
+    Follow
+  </div>
+</button>
 `;

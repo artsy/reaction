@@ -3,7 +3,7 @@ import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { commitMutation } from "react-relay"
-import { FollowButtonDeprecated } from "../ButtonDeprecated"
+import { FollowButton } from "../FollowButton"
 import { FollowGeneButtonFragmentContainer as FollowGeneButton } from "../FollowGeneButton"
 
 jest.mock("react-relay", () => ({
@@ -54,7 +54,7 @@ describe("FollowGeneButton", () => {
   describe("unit", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
       const component = getWrapper(testProps)
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.onOpenAuthModal).toBeCalledWith("signup", {
         contextModule: "intextTooltip",
@@ -70,7 +70,7 @@ describe("FollowGeneButton", () => {
 
     it("Follows an gene if current user", () => {
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
       const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
       expect(mutation.geneID).toBe("modernism")
@@ -79,7 +79,7 @@ describe("FollowGeneButton", () => {
     it("Unfollows an gene if current user", () => {
       testProps.gene.is_followed = true
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
       const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
       expect(mutation.geneID).toBe("modernism")
@@ -87,7 +87,7 @@ describe("FollowGeneButton", () => {
 
     it("Tracks follow click when following", () => {
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.tracking.trackEvent.mock.calls[0][0].action).toBe(
         "Followed Gene"
@@ -97,7 +97,7 @@ describe("FollowGeneButton", () => {
     it("Tracks unfollow click when unfollowing", () => {
       testProps.gene.is_followed = true
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.tracking.trackEvent.mock.calls[0][0].action).toBe(
         "Unfollowed Gene"
@@ -107,7 +107,7 @@ describe("FollowGeneButton", () => {
     it("Tracks with custom trackingData if provided", () => {
       testProps.trackingData = { contextModule: "tooltip" }
       const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButtonDeprecated).simulate("click")
+      component.find(FollowButton).simulate("click")
 
       expect(testProps.tracking.trackEvent.mock.calls[0][0].contextModule).toBe(
         "tooltip"
