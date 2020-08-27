@@ -1,3 +1,22 @@
+# v28.3.0 (Thu Aug 27 2020)
+
+#### 🚀  Enhancement
+
+- [FX-2184] Updates captions [#3625](https://github.com/artsy/reaction/pull/3625) ([@dzucconi](https://github.com/dzucconi))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 12.0.2 to v12.3.0 [#3616](https://github.com/artsy/reaction/pull/3616) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.26.0 to v1.33.2 [#3619](https://github.com/artsy/reaction/pull/3619) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v28.2.0 (Tue Aug 18 2020)
 
 #### 🚀  Enhancement
