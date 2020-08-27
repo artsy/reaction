@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.2.tgz#b79f6fd0d0bda0c5e0764ced55e014cf58174d6f"
   integrity sha512-mJyuKNDMYZcgc2oLIkvmpVIr1RexklV71JmU+to5qs3Y9pv5dsj4WHl8+wf9g74EQNOyhWH2SYMGBm1JoPYh/Q==
 
-"@artsy/cohesion@1.32.0":
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-1.32.0.tgz#297073fb4194054fcd49345c87a00c769d765b39"
-  integrity sha512-3vt32d53JEjFTvUwMHFP7VMQ/vZunlcaayK7yWEM+HMZSFSczvtUOKJc3mrTIxRwNRL/mVBFMrbLKtoUVccivA==
+"@artsy/cohesion@1.33.2":
+  version "1.33.2"
+  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-1.33.2.tgz#b1dfc1f6877a10014a3332846d6b3edda3692db7"
+  integrity sha512-X80SWlVeLVfPatAOR1nCC3VjDj89RdA0bReVgQaaoS5JzHR6Qe/efGxmr3VpHE7iqfiqIcujhLfZjkr2X8/kOg==
 
 "@artsy/detect-responsive-traits@^0.0.5":
   version "0.0.5"
@@ -33,10 +33,10 @@
     p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
-"@artsy/palette@12.0.2":
-  version "12.0.2"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-12.0.2.tgz#fd85ef0e9ee95c5ecd511673aaf76cc0a61affda"
-  integrity sha512-CV4e6J/UdHmamcXTNDz1Wc3H0Ot9HRpTJHoXNf5e7JHzF4z3c1EMm1zusYQFiphhmqa5E9rtRSCn8V8ECS3j7g==
+"@artsy/palette@12.3.0":
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-12.3.0.tgz#8072f8f556b961971e0608d97fa5e18067ffce49"
+  integrity sha512-gaEToAHXqfD7bXIReFNs5yz2i0QwzL3D1EArv/w6S8iijrmDBSd+FQe1d5gDy5vSfxb+GY7JH4PFUMAVZmK/Bw==
   dependencies:
     "@styled-system/theme-get" "^5.1.2"
     babel-plugin-styled-components "^1.10.0"
