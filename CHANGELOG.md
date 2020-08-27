@@ -1,3 +1,15 @@
+# v28.4.0 (Thu Aug 27 2020)
+
+#### 🚀  Enhancement
+
+- Deprecate editorial email signup [#3628](https://github.com/artsy/reaction/pull/3628) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v28.3.0 (Thu Aug 27 2020)
 
 #### 🚀  Enhancement
