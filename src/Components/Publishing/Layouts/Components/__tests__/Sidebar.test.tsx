@@ -1,4 +1,3 @@
-import { EmailPanel } from "Components/Publishing/Email/EmailPanel"
 import { RelatedPanel } from "Components/Publishing/Fixtures/Components"
 import { RelatedArticlesPanel } from "Components/Publishing/RelatedArticles/Panel/RelatedArticlesPanel"
 import { mount } from "enzyme"
@@ -16,9 +15,4 @@ jest.mock(
 it("renders related articles", () => {
   const sidebar = mount(<Sidebar relatedArticlesForPanel={RelatedPanel} />)
   expect(sidebar.find(RelatedArticlesPanel).length).toBe(1)
-})
-
-it("renders email signup", () => {
-  const sidebar = mount(<Sidebar emailSignupUrl="artsy.net" />)
-  expect(sidebar.find(EmailPanel).length).toBe(1)
 })
