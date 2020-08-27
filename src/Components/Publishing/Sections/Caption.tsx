@@ -1,8 +1,8 @@
-import { garamond, unica } from "Assets/Fonts"
 import { pMedia } from "Components/Helpers"
 import { ArticleLayout, SectionLayout } from "Components/Publishing/Typings"
 import React from "react"
 import styled from "styled-components"
+import { Text, color } from "@artsy/palette"
 
 interface CaptionProps {
   caption: string
@@ -18,7 +18,7 @@ interface FigcaptionProps {
   sectionLayout?: SectionLayout
 }
 
-export const Caption: React.SFC<CaptionProps> = props => {
+export const Caption: React.FC<CaptionProps> = props => {
   const { caption, children, color, layout, sectionLayout } = props
 
   const child = children || (
@@ -28,7 +28,13 @@ export const Caption: React.SFC<CaptionProps> = props => {
   return (
     <CaptionContainer>
       <Figcaption layout={layout} sectionLayout={sectionLayout} color={color}>
-        {child}
+        <Text
+          color="black60"
+          variant="caption"
+          fontFamily={layout === "classic" ? "serif" : "sans"}
+        >
+          {child}
+        </Text>
       </Figcaption>
     </CaptionContainer>
   )
@@ -46,28 +52,20 @@ export const CaptionContainer = styled.div`
 
 // includes draft placeholder class for editable text in Writer
 const Figcaption = styled.div<FigcaptionProps>`
-  padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")}
+  padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px" : "0")};
   width: 100%;
   word-break: break-word;
 
-  & > p, p,
-  .public-DraftEditorPlaceholder-root,
-  .public-DraftStyleDefault-block {
-    ${props => (props.layout === "classic" ? garamond("s15") : unica("s14"))}
-    color: ${props =>
-      props.color ? props.color : props.layout === "classic" ? "#666" : "#999"};
-    margin: 0;
-    display: inline;    
-  }
+  & > a,
+  a {
+    color: inherit;
 
-  & > a, a {
-    color: #999;
     &:hover {
-      color: black;
+      color: ${color("black100")};
     }
   }
 
   ${pMedia.xs`
-    padding: 0px;
+    padding: 0;
   `}
 `

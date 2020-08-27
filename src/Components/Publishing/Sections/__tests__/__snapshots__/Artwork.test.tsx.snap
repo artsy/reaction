@@ -1,38 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Artwork snapshots renders properly 1`] = `
-.c8 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  color: #C2C2C2;
+.c7 {
+  width: 100%;
+  height: auto;
+  color: black60;
 }
 
 .c9 {
   margin-right: 30px;
+  color: #000;
 }
 
 .c10 {
   white-space: nowrap;
 }
 
-.c7 {
+.c8 {
+  color: black60;
+  font-size: size4;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
   padding: 0;
   margin-top: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.c7 a {
-  color: #C2C2C2;
+.c8 a {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c7 .title,
-.c7 .title a {
+.c8 .title,
+.c8 .title a {
   font-style: italic;
 }
 
@@ -96,8 +98,18 @@ exports[`Artwork snapshots renders properly 1`] = `
   flex-direction: column;
 }
 
+@media (min-width:) {
+  .c8 {
+    font-size: size3;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
-  .c7 {
+  .c8 {
     padding: 0 10px;
   }
 }
@@ -181,15 +193,18 @@ exports[`Artwork snapshots renders properly 1`] = `
       </div>
     </div>
   </a>
-  <div>
+  <div
+    className="c7"
+    color="black60"
+    height="auto"
+    width="100%"
+  >
     <div
-      className="c7 c8"
-      color="#C2C2C2"
-      fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-      fontSize="14px"
-      style={Object {}}
+      className="c8"
+      color="black60"
+      fontFamily="sans"
     >
-      <span
+      <strong
         className="c9"
       >
         <span
@@ -201,7 +216,7 @@ exports[`Artwork snapshots renders properly 1`] = `
             Fernando Botero
           </a>
         </span>
-      </span>
+      </strong>
       <div>
         <div
           dangerouslySetInnerHTML={

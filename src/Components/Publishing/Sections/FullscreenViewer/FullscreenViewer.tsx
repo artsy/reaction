@@ -1,10 +1,16 @@
-import { pMedia } from "Components/Helpers"
-import Icon from "Components/Icon"
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  Clickable,
+  CloseIcon,
+  ModalBase,
+} from "@artsy/palette"
 import { map } from "lodash"
 import PropTypes from "prop-types"
 import React, { Component, HTMLProps } from "react"
+// TODO: This is the only place this dependency is used. It'd be easy to remove!
 import Slider, { Settings } from "react-slick"
-import styled, { StyledFunction } from "styled-components"
+import styled from "styled-components"
 import { Slide } from "./Slide"
 
 interface FullscreenViewerProps extends HTMLProps<HTMLDivElement> {
@@ -40,22 +46,12 @@ export class FullscreenViewer extends Component<
     }
   }
 
-  handleKeydown = e => {
-    if (e.keyCode === 27) {
-      this.close(e)
-    }
-  }
-
   getChildContext() {
     return { onToggleCaption: this.toggleCaption }
   }
 
   toggleCaption = () => {
     this.setState({ isCaptionOpen: !this.state.isCaptionOpen })
-  }
-
-  close = e => {
-    this.props.onClose()
   }
 
   renderImageComponents = () => {
@@ -86,75 +82,66 @@ export class FullscreenViewer extends Component<
       prevArrow: <LeftArrow />,
       initialSlide: this.props.slideIndex,
     }
+
     return (
-      <div>
+      <>
         {this.props.show && (
-          <FullscreenViewerContainer onKeyDown={this.handleKeydown}>
+          <ModalBase
+            onClose={this.props.onClose}
+            dialogProps={{
+              display: "block",
+              width: "100%",
+              height: "100%",
+              bg: "white100",
+            }}
+          >
             <Slider {...sliderSettings} ref={slider => (this.slider = slider)}>
               {this.renderImageComponents()}
             </Slider>
-            <Close onClick={this.close}>
-              <Icon name="close" color="gray" fontSize="24px" />
-            </Close>
-          </FullscreenViewerContainer>
+
+            <Clickable
+              onClick={this.props.onClose}
+              position="absolute"
+              top="0"
+              right="0"
+              p={2}
+              style={{ cursor: "pointer" }}
+            >
+              <CloseIcon width="30" height="30" fill="black60" />
+            </Clickable>
+          </ModalBase>
         )}
-      </div>
+      </>
     )
   }
 }
 
+const NavArrow = styled(Clickable).attrs({
+  display: ["none", "flex"],
+  px: 3,
+  py: 6,
+})`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+`
+
 const LeftArrow = props => {
   return (
-    <NavArrow direction="left" onClick={props.onClick}>
-      <Icon name="chevron-left" color="black" fontSize="24px" />
+    <NavArrow left="0" onClick={props.onClick}>
+      <ArrowLeftIcon fill="black100" width="30" height="30" />
     </NavArrow>
   )
 }
 
 const RightArrow = props => {
   return (
-    <NavArrow direction="right" onClick={props.onClick}>
-      <Icon name="chevron-right" color="black" fontSize="24px" />
+    <NavArrow right="0" onClick={props.onClick}>
+      <ArrowRightIcon fill="black100" width="30" height="30" />
     </NavArrow>
   )
 }
-
-export const FullscreenViewerContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: fixed;
-  z-index: 1070;
-  top: 0;
-  left: 0;
-  background-color: white;
-`
-const Close = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 20px;
-  cursor: pointer;
-`
-interface NavArrowProps extends React.HTMLProps<HTMLDivElement> {
-  direction: string
-}
-const div: StyledFunction<NavArrowProps> = styled.div
-const NavArrow = div`
-  display: flex;
-  align-items: center;
-  position: absolute;
-  height: 100vh;
-  top: 0;
-  box-sizing: border-box;
-  ${props => (props.direction === "left" ? "left: 0px;" : "")};
-  ${props => (props.direction === "right" ? "right: 0px;" : "")};
-  ${Icon} {
-    z-index: 10;
-    cursor: pointer;
-    padding: 60px;
-  };
-  ${pMedia.sm`
-    display: none;
-  `};
-`

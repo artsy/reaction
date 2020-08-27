@@ -1,38 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a single image properly 1`] = `
-.c10 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  color: #C2C2C2;
+.c9 {
+  color: black60;
+  width: 100%;
+  height: auto;
 }
 
 .c11 {
   margin-right: 30px;
+  color: #000;
 }
 
 .c12 {
   white-space: nowrap;
 }
 
-.c9 {
+.c10 {
+  color: black60;
+  font-size: size4;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
   padding: 0;
   margin-top: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.c9 a {
-  color: #C2C2C2;
+.c10 a {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c9 .title,
-.c9 .title a {
+.c10 .title,
+.c10 .title a {
   font-style: italic;
 }
 
@@ -119,8 +121,18 @@ exports[`renders a single image properly 1`] = `
   height: auto;
 }
 
+@media (min-width:) {
+  .c10 {
+    font-size: size3;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
-  .c9 {
+  .c10 {
     padding: 0 10px;
   }
 }
@@ -229,15 +241,18 @@ exports[`renders a single image properly 1`] = `
           </div>
         </div>
       </a>
-      <div>
+      <div
+        className="c9"
+        color="black60"
+        height="auto"
+        width="100%"
+      >
         <div
-          className="c9 c10"
-          color="#C2C2C2"
-          fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-          fontSize="14px"
-          style={Object {}}
+          className="c10"
+          color="black60"
+          fontFamily="sans"
         >
-          <span
+          <strong
             className="c11"
           >
             <span
@@ -249,7 +264,7 @@ exports[`renders a single image properly 1`] = `
                 Fernando Botero
               </a>
             </span>
-          </span>
+          </strong>
           <div>
             <div
               dangerouslySetInnerHTML={
@@ -306,38 +321,49 @@ exports[`renders a single image properly 1`] = `
 `;
 
 exports[`renders properly 1`] = `
-.c10 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  color: #C2C2C2;
+.c9 {
+  color: black60;
+  width: 312px;
+  height: 224px;
+}
+
+.c16 {
+  color: black60;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
 }
 
 .c11 {
   margin-right: 30px;
+  color: #000;
 }
 
 .c12 {
   white-space: nowrap;
 }
 
-.c9 {
+.c10 {
+  color: black60;
+  font-size: size4;
+  line-height: body;
+  font-weight: normal;
+  color: black60;
+  font-family: sans;
   padding: 0;
   margin-top: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.c9 a {
-  color: #C2C2C2;
+.c10 a {
+  color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.c9 .title,
-.c9 .title a {
+.c10 .title,
+.c10 .title a {
   font-style: italic;
 }
 
@@ -419,27 +445,14 @@ exports[`renders properly 1`] = `
   word-break: break-word;
 }
 
-.c15 > p,
-.c15 p,
-.c15 .public-DraftEditorPlaceholder-root,
-.c15 .public-DraftStyleDefault-block {
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 14px;
-  line-height: 1.4em;
-  color: #999;
-  margin: 0;
-  display: inline;
-}
-
 .c15 > a,
 .c15 a {
-  color: #999;
+  color: inherit;
 }
 
 .c15 > a:hover,
 .c15 a:hover {
-  color: black;
+  color: #000;
 }
 
 .c0 {
@@ -476,19 +489,39 @@ exports[`renders properly 1`] = `
   height: auto;
 }
 
-.c16 {
+.c17 {
   margin-right: 0px;
   width: 178px;
   max-width: 100%;
 }
 
-.c16 img {
+.c17 img {
   max-width: 100%;
   height: auto;
 }
 
+@media (min-width:) {
+  .c16 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
+@media (min-width:) {
+  .c10 {
+    font-size: size3;
+    line-height: body;
+    font-weight: normal;
+    color: black60;
+    font-family: sans;
+  }
+}
+
 @media (max-width:600px) {
-  .c9 {
+  .c10 {
     padding: 0 10px;
   }
 }
@@ -507,7 +540,7 @@ exports[`renders properly 1`] = `
 
 @media (max-width:600px) {
   .c15 {
-    padding: 0px;
+    padding: 0;
   }
 }
 
@@ -542,12 +575,12 @@ exports[`renders properly 1`] = `
 }
 
 @media (max-width:600px) {
-  .c16 {
+  .c17 {
     margin-bottom: 10px;
     width: 100%;
   }
 
-  .c16 img {
+  .c17 img {
     width: 100%;
   }
 }
@@ -632,15 +665,18 @@ exports[`renders properly 1`] = `
           </div>
         </div>
       </a>
-      <div>
+      <div
+        className="c9"
+        color="black60"
+        height={224}
+        width={312}
+      >
         <div
-          className="c9 c10"
-          color="#C2C2C2"
-          fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-          fontSize="14px"
-          style={Object {}}
+          className="c10"
+          color="black60"
+          fontFamily="sans"
         >
-          <span
+          <strong
             className="c11"
           >
             <span
@@ -652,7 +688,7 @@ exports[`renders properly 1`] = `
                 Fernando Botero
               </a>
             </span>
-          </span>
+          </strong>
           <div>
             <div
               dangerouslySetInnerHTML={
@@ -784,18 +820,24 @@ exports[`renders properly 1`] = `
           className="c15"
         >
           <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+            className="c16"
+            color="black60"
+            fontFamily="sans"
+          >
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+                }
               }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div
-    className="c16"
+    className="c17"
     width={178}
   >
     <div
@@ -873,12 +915,18 @@ exports[`renders properly 1`] = `
           className="c15"
         >
           <div
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+            className="c16"
+            color="black60"
+            fontFamily="sans"
+          >
+            <div
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>Photo by <a href='artsy.net'>Adam Kuehl</a> for Artsy. Image courtesy of the Guggenheim Museum.</p>",
+                }
               }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>

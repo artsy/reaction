@@ -1,30 +1,415 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders an artwork caption properly 1`] = `
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c7 {
-  margin-right: 30px;
-}
-
-.c8 {
-  white-space: nowrap;
+Array [
+  .c0 {
+  padding: 8px;
+  background-color: black5;
 }
 
 .c4 {
+  padding-top: 8px;
+}
+
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c6 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: black100;
+}
+
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  text-align: left;
+  font-family: sans;
+}
+
+.c3 {
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
+}
+
+.c12 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 1px;
+}
+
+.c11 {
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  border: 2px solid;
+  border-radius: 3px;
+  border-radius: 3px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 41px;
+  -webkit-transition: 0.25s ease;
+  transition: 0.25s ease;
+  background-color: #E5E5E5;
+  border-color: #E5E5E5;
+  color: #000;
+}
+
+.c11.loading {
+  -webkit-transition: none;
+  transition: none;
+  background-color: transparent;
+  color: transparent;
+  border: 0;
+  cursor: auto;
+}
+
+.c11.disabled {
+  background-color: #E5E5E5;
+  border-color: #E5E5E5;
+  color: #FFF;
+  pointer-events: none;
+}
+
+.c1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.c9 {
+  margin-right: 30px;
+  color: #000;
+}
+
+.c10 {
+  white-space: nowrap;
+}
+
+.c7 {
+  font-size: size4;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
+}
+
+.c7 a {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7 .title,
+.c7 .title a {
+  font-style: italic;
+}
+
+@media (min-width:) {
+  .c2 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    text-align: left;
+    font-family: sans;
+  }
+}
+
+@media (min-width:) {
+  .c3 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
+  }
+}
+
+@media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
+  .c11:hover {
+    background-color: #C2C2C2;
+    border-color: #C2C2C2;
+    color: #000;
+  }
+}
+
+@media (min-width:) {
+  .c7 {
+    font-size: size3;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
+  }
+}
+
+@media (max-width:720px) {
+  .c7 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:720px) {
+  .c8.artist-name {
+    margin-bottom: 5px;
+  }
+}
+
+<div
+    className="fresnel-container fresnel-lessThan-sm"
+    suppressHydrationWarning={false}
+  >
+    <div
+      className="c0"
+    >
+      <button
+        className="c1"
+        display="flex"
+        width="100%"
+      >
+        <div
+          className="c2"
+          fontFamily="sans"
+          style={
+            Object {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          Hide
+        </div>
+        <div
+          className="c3"
+          fontFamily="sans"
+        >
+          2
+           of 
+          10
+        </div>
+      </button>
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+          display="flex"
+        >
+          <div
+            className="c6"
+            color="black100"
+          >
+            <div
+              className="c7"
+              fontFamily="sans"
+            >
+              <div
+                className="c8"
+              >
+                <strong
+                  className="c9"
+                >
+                  <span
+                    className="c10"
+                  >
+                    <a
+                      href="/artist/fernando-botero"
+                    >
+                      Fernando Botero
+                    </a>
+                  </span>
+                </strong>
+              </div>
+              <div>
+                <div
+                  className="c8"
+                >
+                  <span
+                    className="title"
+                  >
+                    <a
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                    >
+                      Nude on the Beach
+                    </a>
+                  </span>
+                  <span>
+                    , 
+                  </span>
+                  <span
+                    className="date"
+                  >
+                    2000
+                  </span>
+                </div>
+                <div
+                  className="c8"
+                >
+                  <a
+                    href="/gary-nader"
+                  >
+                    Gary Nader
+                  </a>
+                  <span>
+                    . 
+                  </span>
+                  <span
+                    className="credit"
+                  >
+                    Courtesy of Gary Nader
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="c11"
+            height="41px"
+            onClick={[Function]}
+          >
+            <div
+              className="c12"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
+              fontSize="14px"
+              style={Object {}}
+            >
+              View
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: black100;
+}
+
+.c0 {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: black5;
+}
+
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c10 {
+  padding-left: 8px;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
+}
+
+.c9 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 1px;
+}
+
+.c8 {
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  border: 2px solid;
+  border-radius: 3px;
+  border-radius: 3px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 41px;
+  -webkit-transition: 0.25s ease;
+  transition: 0.25s ease;
+  background-color: #E5E5E5;
+  border-color: #E5E5E5;
+  color: #000;
+}
+
+.c8.loading {
+  -webkit-transition: none;
+  transition: none;
+  background-color: transparent;
+  color: transparent;
+  border: 0;
+  cursor: auto;
+}
+
+.c8.disabled {
+  background-color: #E5E5E5;
+  border-color: #E5E5E5;
+  color: #FFF;
+  pointer-events: none;
+}
+
+.c6 {
+  margin-right: 30px;
+  color: #000;
+}
+
+.c7 {
+  white-space: nowrap;
+}
+
+.c4 {
+  font-size: size4;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
 }
 
 .c4 a {
-  color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -34,66 +419,29 @@ exports[`renders an artwork caption properly 1`] = `
   font-style: italic;
 }
 
-.c2 {
-  display: none;
-}
-
-.c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c3 a {
-  color: black;
-}
-
-.c9 {
-  margin-left: 20px;
-  white-space: nowrap;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  background-color: #f8f8f8;
-  padding: 30px 60px;
-}
-
-.c0 p {
-  margin: 0;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-@media screen and (min-width:40em) {
-  .c5 {
-    font-size: 16px;
+@media (min-width:) {
+  .c10 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
   }
 }
 
-@media screen and (min-width:40em) {
-  .c5 {
-    line-height: 26px;
+@media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
+  .c8:hover {
+    background-color: #C2C2C2;
+    border-color: #C2C2C2;
+    color: #000;
+  }
+}
+
+@media (min-width:) {
+  .c4 {
+    font-size: size3;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
   }
 }
 
@@ -106,286 +454,432 @@ exports[`renders an artwork caption properly 1`] = `
 }
 
 @media (max-width:720px) {
-  .c6.artist-name {
+  .c5.artist-name {
     margin-bottom: 5px;
   }
 }
 
-@media (max-width:720px) {
-  .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .c2 span {
-    border-bottom: 1px solid black;
-  }
-}
-
-@media (max-width:720px) {
-  .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    display: block;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width:720px) {
-  .c9 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    max-width: 100vh;
-    padding: 20px;
-  }
-}
-
 <div
-  className="c0"
->
-  <div
-    className="c1"
+    className="fresnel-container fresnel-greaterThanOrEqual-sm"
+    suppressHydrationWarning={false}
   >
     <div
-      className="fullscreen-viewer__caption-toggle c2"
+      className="c0"
+      display="flex"
     >
-      <span>
-        Hide
-      </span>
-    </div>
-    <div
-      className="c3"
-      open={true}
-    >
-      <div>
+      <div
+        className="c1"
+      >
         <div
-          className="c4 c5"
-          fontFamily={
-            Object {
-              "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
-              "fontWeight": 500,
-            }
-          }
-          fontSize={
-            Array [
-              "14px",
-              "16px",
-            ]
-          }
-          style={Object {}}
+          className="c2"
+          display="flex"
         >
           <div
-            className="c6"
+            className="c3"
+            color="black100"
           >
-            <span
-              className="c7"
-            >
-              <span
-                className="c8"
-              >
-                <a
-                  href="/artist/fernando-botero"
-                >
-                  Fernando Botero
-                </a>
-              </span>
-            </span>
-          </div>
-          <div>
             <div
-              className="c6"
+              className="c4"
+              fontFamily="sans"
             >
-              <span
-                className="title"
+              <div
+                className="c5"
               >
-                <a
-                  href="/artwork/fernando-botero-nude-on-the-beach"
+                <strong
+                  className="c6"
                 >
-                  Nude on the Beach
-                </a>
-              </span>
-              <span>
-                , 
-              </span>
-              <span
-                className="date"
-              >
-                2000
-              </span>
-            </div>
-            <div
-              className="c6"
-            >
-              <a
-                href="/gary-nader"
-              >
-                Gary Nader
-              </a>
-              <span>
-                . 
-              </span>
-              <span
-                className="credit"
-              >
-                Courtesy of Gary Nader
-              </span>
+                  <span
+                    className="c7"
+                  >
+                    <a
+                      href="/artist/fernando-botero"
+                    >
+                      Fernando Botero
+                    </a>
+                  </span>
+                </strong>
+              </div>
+              <div>
+                <div
+                  className="c5"
+                >
+                  <span
+                    className="title"
+                  >
+                    <a
+                      href="/artwork/fernando-botero-nude-on-the-beach"
+                    >
+                      Nude on the Beach
+                    </a>
+                  </span>
+                  <span>
+                    , 
+                  </span>
+                  <span
+                    className="date"
+                  >
+                    2000
+                  </span>
+                </div>
+                <div
+                  className="c5"
+                >
+                  <a
+                    href="/gary-nader"
+                  >
+                    Gary Nader
+                  </a>
+                  <span>
+                    . 
+                  </span>
+                  <span
+                    className="credit"
+                  >
+                    Courtesy of Gary Nader
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
+          <button
+            className="c8"
+            height="41px"
+            onClick={[Function]}
+          >
+            <div
+              className="c9"
+              fontFamily={
+                Object {
+                  "fontFamily": "Unica77LLWebMedium, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                  "fontWeight": 500,
+                }
+              }
+              fontSize="14px"
+              style={Object {}}
+            >
+              View
+            </div>
+          </button>
         </div>
       </div>
+      <div
+        className="c10"
+        fontFamily="sans"
+      >
+        2
+         of 
+        10
+      </div>
     </div>
-  </div>
-  <div
-    className="c9"
-  >
-    2 of 10
-  </div>
-</div>
+  </div>,
+]
 `;
 
 exports[`renders an image caption properly 1`] = `
-.c2 {
-  display: none;
-}
-
-.c3 {
-  font-family: Unica77LLWebMedium,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
-}
-
-.c3 a {
-  color: black;
+Array [
+  .c0 {
+  padding: 8px;
+  background-color: black5;
 }
 
 .c4 {
-  margin-left: 20px;
-  white-space: nowrap;
-  font-family: Unica77LLWebRegular,Arial,serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
-  line-height: 1.1em;
+  padding-top: 8px;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  background-color: #f8f8f8;
-  padding: 30px 60px;
+.c2 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  text-align: left;
+  font-family: sans;
 }
 
-.c0 p {
-  margin: 0;
+.c3 {
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
 }
 
 .c1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  width: 100%;
 }
 
-@media (max-width:720px) {
+.c5 {
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
+}
+
+.c5 > h1,
+.c5 > h2,
+.c5 > h3,
+.c5 > h4,
+.c5 > h5,
+.c5 > ul,
+.c5 > ol,
+.c5 > p,
+.c5 > blockquote,
+.c5 > pre,
+.c5 > hr {
+  margin: 10px auto;
+}
+
+.c5 > h1:first-child,
+.c5 > h2:first-child,
+.c5 > h3:first-child,
+.c5 > h4:first-child,
+.c5 > h5:first-child,
+.c5 > ul:first-child,
+.c5 > ol:first-child,
+.c5 > p:first-child,
+.c5 > blockquote:first-child,
+.c5 > pre:first-child,
+.c5 > hr:first-child {
+  margin-top: 0;
+}
+
+.c5 > h1:last-child,
+.c5 > h2:last-child,
+.c5 > h3:last-child,
+.c5 > h4:last-child,
+.c5 > h5:last-child,
+.c5 > ul:last-child,
+.c5 > ol:last-child,
+.c5 > p:last-child,
+.c5 > blockquote:last-child,
+.c5 > pre:last-child,
+.c5 > hr:last-child {
+  margin-bottom: 0;
+}
+
+.c5 > hr {
+  height: 1px;
+  border: 0;
+  background-color: #E5E5E5;
+}
+
+@media (min-width:) {
   .c2 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    cursor: pointer;
-    display: inline-block;
-  }
-
-  .c2 span {
-    border-bottom: 1px solid black;
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    text-align: left;
+    font-family: sans;
   }
 }
 
-@media (max-width:720px) {
+@media (min-width:) {
   .c3 {
-    font-family: Unica77LLWebMedium,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-    display: block;
-    margin-top: 20px;
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
   }
 }
 
-@media (max-width:720px) {
-  .c4 {
-    font-family: Unica77LLWebRegular,Arial,serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 14px;
-    line-height: 1.4em;
-  }
-}
-
-@media (max-width:720px) {
-  .c0 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    max-width: 100vh;
-    padding: 20px;
+@media (min-width:) {
+  .c5 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
   }
 }
 
 <div
-  className="c0"
->
-  <div
-    className="c1"
+    className="fresnel-container fresnel-lessThan-sm"
+    suppressHydrationWarning={false}
   >
     <div
-      className="fullscreen-viewer__caption-toggle c2"
+      className="c0"
     >
-      <span>
-        Hide
-      </span>
+      <button
+        className="c1"
+        display="flex"
+        width="100%"
+      >
+        <div
+          className="c2"
+          fontFamily="sans"
+          style={
+            Object {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          Hide
+        </div>
+        <div
+          className="c3"
+          fontFamily="sans"
+        >
+          3
+           of 
+          10
+        </div>
+      </button>
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+            }
+          }
+          fontFamily="sans"
+        />
+      </div>
     </div>
+  </div>,
+  .c0 {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: black5;
+}
+
+.c1 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c3 {
+  padding-left: 8px;
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
+}
+
+.c2 {
+  font-size: size3;
+  line-height: body;
+  font-weight: normal;
+  font-family: sans;
+}
+
+.c2 > h1,
+.c2 > h2,
+.c2 > h3,
+.c2 > h4,
+.c2 > h5,
+.c2 > ul,
+.c2 > ol,
+.c2 > p,
+.c2 > blockquote,
+.c2 > pre,
+.c2 > hr {
+  margin: 10px auto;
+}
+
+.c2 > h1:first-child,
+.c2 > h2:first-child,
+.c2 > h3:first-child,
+.c2 > h4:first-child,
+.c2 > h5:first-child,
+.c2 > ul:first-child,
+.c2 > ol:first-child,
+.c2 > p:first-child,
+.c2 > blockquote:first-child,
+.c2 > pre:first-child,
+.c2 > hr:first-child {
+  margin-top: 0;
+}
+
+.c2 > h1:last-child,
+.c2 > h2:last-child,
+.c2 > h3:last-child,
+.c2 > h4:last-child,
+.c2 > h5:last-child,
+.c2 > ul:last-child,
+.c2 > ol:last-child,
+.c2 > p:last-child,
+.c2 > blockquote:last-child,
+.c2 > pre:last-child,
+.c2 > hr:last-child {
+  margin-bottom: 0;
+}
+
+.c2 > hr {
+  height: 1px;
+  border: 0;
+  background-color: #E5E5E5;
+}
+
+@media (min-width:) {
+  .c3 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
+  }
+}
+
+@media (min-width:) {
+  .c2 {
+    font-size: size2;
+    line-height: body;
+    font-weight: normal;
+    font-family: sans;
+  }
+}
+
+<div
+    className="fresnel-container fresnel-greaterThanOrEqual-sm"
+    suppressHydrationWarning={false}
+  >
     <div
-      className="c3"
-      open={true}
+      className="c0"
+      display="flex"
     >
       <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+        className="c1"
+      >
+        <div
+          className="c2"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<p>Photo by Adam Kuehl for Artsy.</p>",
+            }
           }
-        }
-      />
+          fontFamily="sans"
+        />
+      </div>
+      <div
+        className="c3"
+        fontFamily="sans"
+      >
+        3
+         of 
+        10
+      </div>
     </div>
-  </div>
-  <div
-    className="c4"
-  >
-    3 of 10
-  </div>
-</div>
+  </div>,
+]
 `;
