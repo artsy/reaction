@@ -3,8 +3,6 @@
 exports[`Sections snapshots tests renders properly 1`] = `
 .c18 {
   color: black60;
-  width: 264px;
-  height: 352px;
 }
 
 .c26 {
@@ -1329,8 +1327,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
           <div
             className="c18"
             color="black60"
-            height={352}
-            width={264}
           >
             <div
               className="c19"

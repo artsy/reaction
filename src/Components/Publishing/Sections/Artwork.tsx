@@ -36,10 +36,13 @@ export class Artwork extends React.PureComponent<ArtworkProps> {
       layout,
       slideshowIndex,
     } = this.props
+
     const src = resize(artwork.image, {
       width: 1200,
       quality: GLOBAL_IMAGE_QUALITY,
     })
+
+    const { width: _width, height: _height, ...captionProps } = this.props
 
     const Image = () => (
       <ImageWrapper
@@ -64,7 +67,7 @@ export class Artwork extends React.PureComponent<ArtworkProps> {
           <Image />
         )}
 
-        <ArtworkCaption {...this.props} />
+        <ArtworkCaption {...captionProps} />
         {children}
       </ArtworkContainer>
     )

@@ -3,8 +3,6 @@
 exports[`renders a single image properly 1`] = `
 .c9 {
   color: black60;
-  width: 100%;
-  height: auto;
 }
 
 .c11 {
@@ -244,8 +242,6 @@ exports[`renders a single image properly 1`] = `
       <div
         className="c9"
         color="black60"
-        height="auto"
-        width="100%"
       >
         <div
           className="c10"
@@ -323,8 +319,6 @@ exports[`renders a single image properly 1`] = `
 exports[`renders properly 1`] = `
 .c9 {
   color: black60;
-  width: 312px;
-  height: 224px;
 }
 
 .c16 {
@@ -668,8 +662,6 @@ exports[`renders properly 1`] = `
       <div
         className="c9"
         color="black60"
-        height={224}
-        width={312}
       >
         <div
           className="c10"

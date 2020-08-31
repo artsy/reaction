@@ -2,8 +2,6 @@
 
 exports[`Artwork snapshots renders properly 1`] = `
 .c7 {
-  width: 100%;
-  height: auto;
   color: black60;
 }
 
@@ -196,8 +194,6 @@ exports[`Artwork snapshots renders properly 1`] = `
   <div
     className="c7"
     color="black60"
-    height="auto"
-    width="100%"
   >
     <div
       className="c8"
