@@ -1,4 +1,4 @@
-import { color as Color, Sans, Serif } from "@artsy/palette"
+import { Box, BoxProps, Text, color } from "@artsy/palette"
 import { ErrorBoundary } from "Artsy/Router/ErrorBoundary"
 import { pMedia } from "Components/Helpers"
 import { ArticleLayout, SectionLayout } from "Components/Publishing/Typings"
@@ -7,7 +7,7 @@ import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
 
-interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
+interface ArtworkCaptionProps extends BoxProps {
   artwork: any
   color?: string
   layout?: ArticleLayout
@@ -18,7 +18,7 @@ interface ArtworkCaptionProps extends React.HTMLProps<HTMLDivElement> {
 
 export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
   static defaultProps = {
-    color: Color("black30"),
+    color: "black60",
   }
 
   joinParts(children, key, delimiter = ", ") {
@@ -195,7 +195,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
 
   renderFullscreenCaption = () => {
     return (
-      <StyledFullscreenCaption size={["3", "4"]} weight="medium">
+      <StyledFullscreenCaption variant="mediumText">
         <Line>
           <ArtistNames>{this.renderArtists()}</ArtistNames>
         </Line>
@@ -209,11 +209,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
 
   renderClassicCaption = () => {
     return (
-      <StyledClassicCaption
-        color={Color("black60")}
-        size="2"
-        className="display-artwork__caption"
-      >
+      <StyledClassicCaption className="display-artwork__caption">
         <Truncator>
           <ArtistNames>{this.renderArtists()}</ArtistNames>
           {this.renderTitleDate()}
@@ -229,7 +225,6 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
 
     return (
       <StyledArtworkCaption
-        size="3"
         color={color}
         layout={layout}
         sectionLayout={sectionLayout}
@@ -244,41 +239,42 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
   }
 
   render() {
-    const { layout, isFullscreenCaption } = this.props
+    const { layout, isFullscreenCaption, ...rest } = this.props
 
     return (
       <ErrorBoundary>
-        <div>
+        <Box {...rest}>
           {isFullscreenCaption
             ? this.renderFullscreenCaption()
             : layout === "classic"
             ? this.renderClassicCaption()
             : this.renderEditorialCaption()}
-        </div>
+        </Box>
       </ErrorBoundary>
     )
   }
 }
 
-const ArtistNames = styled.span`
+const ArtistNames = styled.strong`
   margin-right: 30px;
+  color: ${color("black100")};
 `
 
 const ArtistName = styled.span`
   white-space: nowrap;
 `
 
-export const StyledArtworkCaption = styled(Sans)<{
-  color?: string
+export const StyledArtworkCaption = styled(Text).attrs({
+  variant: "text",
+})<{
   layout?: ArticleLayout
   sectionLayout?: SectionLayout
 }>`
   padding: ${props => (props.sectionLayout === "fillwidth" ? "0 10px;" : "0;")};
   margin-top: 10px;
-  display: flex;
 
   a {
-    color: ${props => props.color};
+    color: inherit;
     text-decoration: none;
   }
 
@@ -292,21 +288,22 @@ export const StyledArtworkCaption = styled(Sans)<{
   `};
 `
 
-const StyledClassicCaption = styled(Serif)<{
-  className?: string
-  color?: string
-}>`
+const StyledClassicCaption = styled(Text).attrs({
+  fontFamily: "serif",
+  variant: "text",
+  color: "black60",
+})`
   margin-top: 10px;
   display: block;
 
   a {
-    color: ${props => props.color};
+    color: inherit;
     text-decoration: none;
   }
 
   ${ArtistNames} {
     margin-right: 0;
-    font-weight: bold;
+    color: inherit;
 
     &::after {
       content: ", ";
@@ -318,11 +315,10 @@ const StyledClassicCaption = styled(Serif)<{
   }
 `
 
-const StyledFullscreenCaption = styled(Sans)`
-  display: flex;
-
+const StyledFullscreenCaption = styled(Text).attrs({
+  variant: "text",
+})`
   a {
-    color: black;
     text-decoration: none;
   }
 

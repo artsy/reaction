@@ -113,7 +113,6 @@ export class StandardLayout extends React.Component<
   render() {
     const {
       article,
-      emailSignupUrl,
       infiniteScrollEntrySlug,
       isMobile,
       relatedArticlesForCanvas,
@@ -154,7 +153,6 @@ export class StandardLayout extends React.Component<
                       {...this.props}
                     />
                     <Sidebar
-                      emailSignupUrl={emailSignupUrl}
                       DisplayPanel={sideRailDisplayAd}
                       relatedArticlesForPanel={relatedArticlesForPanel}
                     />
@@ -190,7 +188,7 @@ export const StandardLayoutParent = styled.div`
   `};
 `
 
-const ArticleWrapper = styled.div.attrs<{ isInfiniteScroll?: boolean }>({})`
+const ArticleWrapper = styled.div<{ isInfiniteScroll?: boolean }>`
   ${props =>
     props.isInfiniteScroll &&
     `

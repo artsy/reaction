@@ -1,29 +1,14 @@
-import { Images } from "Components/Publishing/Fixtures/Components"
-import { mount } from "enzyme"
-import "jest-styled-components"
 import React from "react"
-import renderer from "react-test-renderer"
-import {
-  FullscreenViewer,
-  FullscreenViewerContainer,
-} from "../FullscreenViewer"
+import { mount } from "enzyme"
+import { FullscreenViewer } from "../FullscreenViewer"
+import { Images } from "Components/Publishing/Fixtures/Components"
 
 it("renders properly", () => {
-  const onClose = jest.fn()
-  const viewer = renderer
-    .create(<FullscreenViewer images={Images} show onClose={onClose} />)
-    .toJSON()
-  expect(viewer).toMatchSnapshot()
-})
-
-it("closes the viewer on ESC keydown", () => {
-  const onClose = jest.fn()
-  const viewer = mount(
-    <FullscreenViewer images={Images} show onClose={onClose} />
+  const wrapper = mount(
+    <FullscreenViewer images={Images} show onClose={() => {}} />
   )
-  viewer
-    .find(FullscreenViewerContainer)
-    .at(0)
-    .simulate("keyDown", { keyCode: 27 })
-  expect(onClose).toBeCalled()
+  const html = wrapper.html()
+  expect(html).toContain("Close")
+  expect(html).toContain("View Caption")
+  expect(html).toContain("Guggenheim Museum")
 })

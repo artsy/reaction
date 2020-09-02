@@ -1021,15 +1021,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Victoria Sin by Bernice Mulenga. Courtesy of the artist.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Victoria Sin by Bernice Mulenga. Courtesy of the artist.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1111,16 +1117,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -1131,7 +1138,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Victoria Sin
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -1190,7 +1197,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -1453,15 +1459,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Monira Al Qadiri by Raisa Hagiu. Courtesy of the artist.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Monira Al Qadiri by Raisa Hagiu. Courtesy of the artist.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1543,16 +1555,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -1563,7 +1576,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Monira Al Qadiri
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -1622,7 +1635,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -1885,15 +1897,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Diedrick Brackens by Alex Hodor-Lee. Courtesy of VARIOUS SMALL FIRES, Los Angeles.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Diedrick Brackens by Alex Hodor-Lee. Courtesy of VARIOUS SMALL FIRES, Los Angeles.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1975,16 +1993,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -1995,7 +2014,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Diedrick Brackens
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -2054,7 +2073,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -2317,15 +2335,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Dineo Seshee Bopape by Maksym Bilousov. Courtesy of PinchukArtCentre.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Dineo Seshee Bopape by Maksym Bilousov. Courtesy of PinchukArtCentre.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2406,15 +2430,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Installation view of Solo Exhibition: Main Prize winner of the Future Generation Art Prize 2017, PinchukArtCentre Kiev, Ukraine. Photo by Maksym Bilousov. Courtesy of PinchukArtCentre.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Installation view of Solo Exhibition: Main Prize winner of the Future Generation Art Prize 2017, PinchukArtCentre Kiev, Ukraine. Photo by Maksym Bilousov. Courtesy of PinchukArtCentre.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2457,7 +2487,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -2720,15 +2749,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Martine Gutierrez, <i>Self Portrait</i>. Courtesy of the artist.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Martine Gutierrez, <i>Self Portrait</i>. Courtesy of the artist.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2810,16 +2845,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -2830,7 +2866,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Martine Gutierrez
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -2889,7 +2925,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -3152,15 +3187,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Genesis Belanger in her New York studio by Alex John Beck for Artsy.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Genesis Belanger in her New York studio by Alex John Beck for Artsy.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3241,15 +3282,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Genesis Belanger, <i>Full Embrace</i>, 2018. Photo by Pauline Shapiro. Courtesy of the artist and Perrotin.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Genesis Belanger, <i>Full Embrace</i>, 2018. Photo by Pauline Shapiro. Courtesy of the artist and Perrotin.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3292,7 +3339,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -3555,15 +3601,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Tao Hui by Mark Poucher. Courtesy of Esther Schipper, Berlin.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Tao Hui by Mark Poucher. Courtesy of Esther Schipper, Berlin.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -3645,16 +3697,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -3665,7 +3718,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Tao Hui 陶輝
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -3724,7 +3777,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -3987,15 +4039,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Jordan Nassar by Alexander J. Rotondo. Courtesy of the artist and Anat Egbi, Los Angeles.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Jordan Nassar by Alexander J. Rotondo. Courtesy of the artist and Anat Egbi, Los Angeles.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -4077,16 +4135,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -4097,7 +4156,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Jordan Nassar
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -4156,7 +4215,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -4419,15 +4477,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Geng Xue by Shen Siyuan. Courtesy of Eli Klein Gallery. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Geng Xue by Shen Siyuan. Courtesy of Eli Klein Gallery. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -4509,16 +4573,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -4529,7 +4594,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Geng Xue
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -4588,7 +4653,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -4851,15 +4915,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Meriem Bennani by Sunny Shokrae. Courtesy of Clearing.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Meriem Bennani by Sunny Shokrae. Courtesy of Clearing.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -4940,15 +5010,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Installation view of Meriem Bennani, “Party on the CAPS,” at the Centre d’Art Contemporain, 2018. Courtesy of the artist and Clearing.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Installation view of Meriem Bennani, “Party on the CAPS,” at the Centre d’Art Contemporain, 2018. Courtesy of the artist and Clearing.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -4991,7 +5067,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -5254,15 +5329,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Manuel Solano by Claudia Lozano. Courtesy of the artist and Peres Projects, Berlin.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Manuel Solano by Claudia Lozano. Courtesy of the artist and Peres Projects, Berlin.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -5343,15 +5424,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Manuel Solano, <i>The hottie from Starbucks</i>, 2019. Photo by Matthias Kolb. Courtesy of Peres Projects, Berlin. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Manuel Solano, <i>The hottie from Starbucks</i>, 2019. Photo by Matthias Kolb. Courtesy of Peres Projects, Berlin. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -5394,7 +5481,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -5657,15 +5743,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Lauren Halsey by Rafael Hernandez. Courtesy of David Kordansky Gallery, Los Angeles. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Lauren Halsey by Rafael Hernandez. Courtesy of David Kordansky Gallery, Los Angeles. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -5747,16 +5839,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -5767,7 +5860,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Lauren Halsey
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -5826,7 +5919,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -6089,15 +6181,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Derek Fordjour in his New York studio by Alex John Beck for Artsy.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Derek Fordjour in his New York studio by Alex John Beck for Artsy.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -6179,16 +6277,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -6199,7 +6298,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Derek Fordjour
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -6258,7 +6357,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -6521,15 +6619,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Alia Farid by Djinane AlSuwayeh. Courtesy of the artist.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Alia Farid by Djinane AlSuwayeh. Courtesy of the artist.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -6610,15 +6714,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Alia Farid, <i>Vault</i>, 2019, at the PinchukArtCentre in Kiev, Ukraine. Photo by Maksym Bilousov. Courtesy of the PinchukArtCentre.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Alia Farid, <i>Vault</i>, 2019, at the PinchukArtCentre in Kiev, Ukraine. Photo by Maksym Bilousov. Courtesy of the PinchukArtCentre.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -6661,7 +6771,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -6924,15 +7033,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Gala Porras-Kim by Weston Wells. Courtesy of the artist and Weston Wells.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Gala Porras-Kim by Weston Wells. Courtesy of the artist and Weston Wells.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -7013,15 +7128,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Gala Porras-Kim, <i>11 Mesoamerican Multiple Perspectives</i>, 2019. Photo by Ruben Diaz. Courtesy of the artist; Commonwealth and Council, Los Angeles; and LABOR, Mexico City.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Gala Porras-Kim, <i>11 Mesoamerican Multiple Perspectives</i>, 2019. Photo by Ruben Diaz. Courtesy of the artist; Commonwealth and Council, Los Angeles; and LABOR, Mexico City.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -7064,7 +7185,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -7327,15 +7447,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Jonathan Lyndon Chase by Coke O’Neal. Courtesy of Kohn Gallery, Los Angeles. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Jonathan Lyndon Chase by Coke O’Neal. Courtesy of Kohn Gallery, Los Angeles. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -7417,16 +7543,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -7437,7 +7564,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Jonathan Lyndon Chase
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -7496,7 +7623,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -7759,15 +7885,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Elle Pérez by Bryson Rand. Courtesy of the artist and 47 Canal, New York. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Elle Pérez by Bryson Rand. Courtesy of the artist and 47 Canal, New York. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -7848,15 +7980,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Elle Pérez, <i>Jóse Gabriel</i>, 2019. Courtesy of the artist and 47 Canal, New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Elle Pérez, <i>Jóse Gabriel</i>, 2019. Courtesy of the artist and 47 Canal, New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -7899,7 +8037,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -8162,15 +8299,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Suki Seokyeong Kang by Kim Young Hoon. Courtesy of Kukje Gallery.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Suki Seokyeong Kang by Kim Young Hoon. Courtesy of Kukje Gallery.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -8252,16 +8395,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -8272,7 +8416,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Suki Seokyeong Kang
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -8331,7 +8475,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -8594,15 +8737,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Evelyn Taocheng Wang. © Evelyn Taocheng Wang. Courtesy of the artist; Carlos/Ishikawa, London; and Galerie Fons Welters, Amsterdam.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Evelyn Taocheng Wang. © Evelyn Taocheng Wang. Courtesy of the artist; Carlos/Ishikawa, London; and Galerie Fons Welters, Amsterdam.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -8683,15 +8832,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Evelyn Taocheng Wang, <i>Winter, </i> 2017. © Evelyn Taocheng Wang. Courtesy of the artist;  Carlos/Ishikawa, London; and Galerie Fons Welters, Amsterdam.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Evelyn Taocheng Wang, <i>Winter, </i> 2017. © Evelyn Taocheng Wang. Courtesy of the artist;  Carlos/Ishikawa, London; and Galerie Fons Welters, Amsterdam.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -8734,7 +8889,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -8997,15 +9151,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Jill Mulleady. Courtesy of the artist.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Jill Mulleady. Courtesy of the artist.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -9086,15 +9246,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Jill Mulleady, <i>Riot on the Holodeck</i>, 2018. Courtesy of the artist and Freedman Fitzpatrick Los Angeles/Paris.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Jill Mulleady, <i>Riot on the Holodeck</i>, 2018. Courtesy of the artist and Freedman Fitzpatrick Los Angeles/Paris.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -9137,7 +9303,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
   </div>
@@ -9575,15 +9740,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Michael Armitage by George Darrell. Courtesy of White Cube.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Michael Armitage by George Darrell. Courtesy of White Cube.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -9665,16 +9836,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -9685,7 +9857,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Michael Armitage
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -9744,7 +9916,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -10007,15 +10178,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Ebony G. Patterson by Monique “Mogi” Gilpin. Courtesy of the artist and Monique Meloche Gallery, Chicago.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Ebony G. Patterson by Monique “Mogi” Gilpin. Courtesy of the artist and Monique Meloche Gallery, Chicago.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -10097,16 +10274,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -10117,7 +10295,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Ebony G. Patterson
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -10176,7 +10354,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -10439,15 +10616,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Lawrence Abu Hamdan by Miro Kuzmanovic. Courtesy of Maureen Paley, London.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Lawrence Abu Hamdan by Miro Kuzmanovic. Courtesy of Maureen Paley, London.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -10528,15 +10711,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Lawrence Abu Hamdan,  <i>Walled Unwalled, </i>  2018. © Lawrence Abu Hamdan. Courtesy of Maureen Paley, London.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Lawrence Abu Hamdan,  <i>Walled Unwalled, </i>  2018. © Lawrence Abu Hamdan. Courtesy of Maureen Paley, London.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -10579,7 +10768,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -10842,15 +11030,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Korakrit Arunanondchai in his New York studio by Lelanie Foster for Artsy.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Korakrit Arunanondchai in his New York studio by Lelanie Foster for Artsy.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -10931,15 +11125,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Korakrit Arunanondchai, <i>history painting (if they cannot see the happiness, at least they&#x27;ll see the light), </i> 2017. Image © Korakrit Arunanondchai 2019. Courtesy of the artist; Carlos / Ishikawa, London; Clearing, New York; and Bangkok City City, Bangkok.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Korakrit Arunanondchai, <i>history painting (if they cannot see the happiness, at least they&#x27;ll see the light), </i> 2017. Image © Korakrit Arunanondchai 2019. Courtesy of the artist; Carlos / Ishikawa, London; Clearing, New York; and Bangkok City City, Bangkok.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -10982,7 +11182,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -11245,15 +11444,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Bárbara Wagner &amp; Benjamin de Burca by Chico Barros. Courtesy of Fortes D’Aloia &amp; Gabriel.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Bárbara Wagner &amp; Benjamin de Burca by Chico Barros. Courtesy of Fortes D’Aloia &amp; Gabriel.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -11335,16 +11540,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -11355,7 +11561,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Bárbara Wagner & Benjamin de Burca
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -11414,7 +11620,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -11677,15 +11882,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Charlotte Prodger by Emile Holba. Courtesy of Hollybush Gardens, London.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Charlotte Prodger by Emile Holba. Courtesy of Hollybush Gardens, London.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -11766,15 +11977,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Installation view of Charlotte Prodger, <i>SaF05, </i> at the Venice Biennale, 2019. Photo by Cristiano Corte. Courtesy of the artist; Koppe Astner, Glasgow; and Hollybush Gardens, London.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Installation view of Charlotte Prodger, <i>SaF05, </i> at the Venice Biennale, 2019. Photo by Cristiano Corte. Courtesy of the artist; Koppe Astner, Glasgow; and Hollybush Gardens, London.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -11817,7 +12034,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -12080,15 +12296,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Jeffrey Gibson in his Hudson, New York studio by Alex John Beck for Artsy.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Jeffrey Gibson in his Hudson, New York studio by Alex John Beck for Artsy.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -12170,16 +12392,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -12190,7 +12413,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Jeffrey Gibson
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -12249,7 +12472,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -12512,15 +12734,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Hao Liang. Courtesy of Gagosian.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Hao Liang. Courtesy of Gagosian.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -12601,15 +12829,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Detail of Hao Liang,  <i>Day and Night (panel II)</i>  , 2017-2018. Courtesy of Gagosian.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Detail of Hao Liang,  <i>Day and Night (panel II)</i>  , 2017-2018. Courtesy of Gagosian.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -12652,7 +12886,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -12915,15 +13148,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Jacolby Satterwhite by Benjamin Erik Ackermann for PIN-UP, 2017. Courtesy of Mitchell-Innes &amp; Nash.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Jacolby Satterwhite by Benjamin Erik Ackermann for PIN-UP, 2017. Courtesy of Mitchell-Innes &amp; Nash.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -13005,16 +13244,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -13025,7 +13265,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Jacolby Satterwhite
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -13084,7 +13324,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -13347,15 +13586,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Melike Kara by Diana Pfammatter. Courtesy of Peres Projects, Berlin.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Melike Kara by Diana Pfammatter. Courtesy of Peres Projects, Berlin.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -13436,15 +13681,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Melike Kara, <i>secret whispers</i>, 2018. Photo by Alessandro Wang. Courtesy of the artist and Peres Projects, Berlin.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Melike Kara, <i>secret whispers</i>, 2018. Photo by Alessandro Wang. Courtesy of the artist and Peres Projects, Berlin.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -13487,7 +13738,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -13750,15 +14000,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Cui Jie. Courtesy of Pilar Corrias Gallery.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Cui Jie. Courtesy of Pilar Corrias Gallery.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -13840,16 +14096,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -13860,7 +14117,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Cui Jie
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -13919,7 +14176,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -14182,15 +14438,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Firelei Báez by Lia Clay. Courtesy of the artist and James Cohan, New York. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Firelei Báez by Lia Clay. Courtesy of the artist and James Cohan, New York. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -14272,16 +14534,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -14292,7 +14555,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Firelei Báez
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -14351,7 +14614,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -14614,15 +14876,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Forensic Architecture team. Courtesy of Forensic Architecture.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Forensic Architecture team. Courtesy of Forensic Architecture.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -14704,16 +14972,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -14724,7 +14993,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               FORENSIC ARCHITECTURE
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -14783,7 +15052,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -15046,15 +15314,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Tschabalala Self in her studio in New Haven, Connecticut. Photo by Julie Bidwell. Courtesy of Pilar Corrias.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Tschabalala Self in her studio in New Haven, Connecticut. Photo by Julie Bidwell. Courtesy of Pilar Corrias.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -15135,15 +15409,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Tschabalala Self, <i>Loosie in the Park</i> , 2019. Courtesy of Pilar Corrias Gallery.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Tschabalala Self, <i>Loosie in the Park</i> , 2019. Courtesy of Pilar Corrias Gallery.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -15186,7 +15466,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -15449,15 +15728,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Harold Ancart. © Harold Ancart. Courtesy of the artist and David Zwirner.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Harold Ancart. © Harold Ancart. Courtesy of the artist and David Zwirner.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -15538,15 +15823,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Harold Ancart, <i>Untitled</i>, 2017. © Harold Ancart / SABAM, Brussels. Photo by JSP Art Photography. Courtesy of the artist and David Zwirner.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Harold Ancart, <i>Untitled</i>, 2017. © Harold Ancart / SABAM, Brussels. Photo by JSP Art Photography. Courtesy of the artist and David Zwirner.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -15589,7 +15880,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
   </div>
@@ -16027,15 +16317,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Frank Bowling by Alastair Levy, 2017. © Alastair Levy.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Frank Bowling by Alastair Levy, 2017. © Alastair Levy.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -16116,15 +16412,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Frank Bowling, <i>Two Blues</i>, 2018. © Frank Bowling/Artists Rights Society (ARS), New York; DACS, London. Courtesy of Alexander Gray Associates, New York; Hales Gallery, London; and Marc Selwyn Fine Art, Los Angeles.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Frank Bowling, <i>Two Blues</i>, 2018. © Frank Bowling/Artists Rights Society (ARS), New York; DACS, London. Courtesy of Alexander Gray Associates, New York; Hales Gallery, London; and Marc Selwyn Fine Art, Los Angeles.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -16167,7 +16469,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -16430,15 +16731,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Zilia Sánchez with <i>Lunar blanco</i>, 1964, at Galerie Lelong &amp; Co., New York, 2014. © Zilia Sánchez. Courtesy of Galerie Lelong &amp; Co., New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Zilia Sánchez with <i>Lunar blanco</i>, 1964, at Galerie Lelong &amp; Co., New York, 2014. © Zilia Sánchez. Courtesy of Galerie Lelong &amp; Co., New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -16520,16 +16827,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -16540,7 +16848,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Zilia Sánchez
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -16599,7 +16907,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -16862,15 +17169,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Fred Eversley by Elon Schoenholz. Courtesy of David Kordansky Gallery, Los Angeles.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Fred Eversley by Elon Schoenholz. Courtesy of David Kordansky Gallery, Los Angeles.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -16952,16 +17265,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -16972,7 +17286,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Fred Eversley
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -17031,7 +17345,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -17294,15 +17607,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Tishan Hsu. Courtesy of the artist and Empty Gallery, Hong Kong.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Tishan Hsu. Courtesy of the artist and Empty Gallery, Hong Kong.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -17383,15 +17702,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Tishan Hsu<i>, Boating Scene 1.1.3</i>, 2019. Courtesy of the artist and Empty Gallery, Hong Kong.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Tishan Hsu<i>, Boating Scene 1.1.3</i>, 2019. Courtesy of the artist and Empty Gallery, Hong Kong.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -17434,7 +17759,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -17697,15 +18021,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Howardena Pindell with her work at Garth Greenan Gallery by Alex John Beck for Artsy.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Howardena Pindell with her work at Garth Greenan Gallery by Alex John Beck for Artsy.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -17786,15 +18116,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Howardena Pindell, <i>Carnival: Bahia, Brazil</i>, 2017. Courtesy of the artist and Garth Greenan Gallery, New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Howardena Pindell, <i>Carnival: Bahia, Brazil</i>, 2017. Courtesy of the artist and Garth Greenan Gallery, New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -17837,7 +18173,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -18100,15 +18435,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Diane Simpson by Isabel Asha Penzlien. Courtesy of the artist and JTT, New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Diane Simpson by Isabel Asha Penzlien. Courtesy of the artist and JTT, New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -18189,15 +18530,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Diane Simpson, <i>Window 4, Window Dressing: Apron VI</i>, 2003/2007. Courtesy of the artist; Corbett vs. Dempsey, Chicago; and JTT, New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Diane Simpson, <i>Window 4, Window Dressing: Apron VI</i>, 2003/2007. Courtesy of the artist; Corbett vs. Dempsey, Chicago; and JTT, New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -18240,7 +18587,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -18503,15 +18849,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Lorraine O’Grady by Ross Collab. Courtesy of Alexander Gray Associates, New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Lorraine O’Grady by Ross Collab. Courtesy of Alexander Gray Associates, New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -18592,15 +18944,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Lorraine O’Grady, <i>Rivers, First Draft: The Debauchees ignore the Woman in Red, </i> 1982/2015. Courtesy of Alexander Gray Associates, New York. © Lorraine O’Grady/Artists Rights Society (ARS), New York.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Lorraine O’Grady, <i>Rivers, First Draft: The Debauchees ignore the Woman in Red, </i> 1982/2015. Courtesy of Alexander Gray Associates, New York. © Lorraine O’Grady/Artists Rights Society (ARS), New York.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -18643,7 +19001,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -18906,15 +19263,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Teresa Burga by Sebastian Montalvo Gray. Courtesy of 80m2 Livia Benavides, Lima.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Teresa Burga by Sebastian Montalvo Gray. Courtesy of 80m2 Livia Benavides, Lima.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -18996,16 +19359,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -19016,7 +19380,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Teresa Burga
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -19075,7 +19439,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -19338,15 +19701,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Siah Armajani by Paula Lobo. Courtesy of Public Art Fund, New York. </p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Siah Armajani by Paula Lobo. Courtesy of Public Art Fund, New York. </p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -19428,16 +19797,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -19448,7 +19818,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Siah Armajani
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -19507,7 +19877,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -19770,15 +20139,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>McArthur Binion by Pasquate Abbattista. Courtesy of the artist and Lehmann Maupin, New York, Hong Kong, and Seoul.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>McArthur Binion by Pasquate Abbattista. Courtesy of the artist and Lehmann Maupin, New York, Hong Kong, and Seoul.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -19859,15 +20234,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>McArthur Binion, <i>Rutabaga: In the Sky</i>, 1978-1979. Courtesy of the artist and Lehmann Maupin, New York, Hong Kong, and Seoul.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>McArthur Binion, <i>Rutabaga: In the Sky</i>, 1978-1979. Courtesy of the artist and Lehmann Maupin, New York, Hong Kong, and Seoul.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -19910,7 +20291,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -20173,15 +20553,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Beatriz González. Courtesy of the artist.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Beatriz González. Courtesy of the artist.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -20263,16 +20649,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -20283,7 +20670,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Beatriz González
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -20342,7 +20729,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -20605,15 +20991,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Simone Fattal by Kathleen Weaver. Courtesy of Gallery Tanit, Beirut.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Simone Fattal by Kathleen Weaver. Courtesy of Gallery Tanit, Beirut.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -20695,16 +21087,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -20715,7 +21108,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Simone Fattal
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -20774,7 +21167,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -21037,15 +21429,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Vivian Suter by Flavio Karrer. Courtesy of Gladstone Gallery, New York and Brussels, and Karma International.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Vivian Suter by Flavio Karrer. Courtesy of Gladstone Gallery, New York and Brussels, and Karma International.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -21127,16 +21525,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -21147,7 +21546,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Vivian Suter
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -21206,7 +21605,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -21469,15 +21867,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Henry Taylor by Paul Forney, 2019. © Henry Taylor. Courtesy of the artist and Blum &amp; Poe, Los Angeles/New York/Tokyo.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Henry Taylor by Paul Forney, 2019. © Henry Taylor. Courtesy of the artist and Blum &amp; Poe, Los Angeles/New York/Tokyo.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -21558,15 +21962,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Henry Taylor, <i>Untitled</i>, 2017. © Henry Taylor. Courtesy of the artist and Blum &amp; Poe, Los Angeles/New York/Tokyo.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Henry Taylor, <i>Untitled</i>, 2017. © Henry Taylor. Courtesy of the artist and Blum &amp; Poe, Los Angeles/New York/Tokyo.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -21609,7 +22019,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
     <div
@@ -21872,15 +22281,21 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       className="Caption__CaptionContainer-sc-1c6ztax-0 hViexZ"
                     >
                       <div
-                        className="Caption__Figcaption-sc-1c6ztax-1 kouZSK"
+                        className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<p>Anna Maria Maiolino by Lívia Gonzaga Bertuzzi. © Anna Maria Maiolino. Courtesy of Hauser &amp; Wirth.</p>",
+                          className="sc-bdVaJa Text-sc-18gcpao-0 iFcHqg"
+                          color="black60"
+                          fontFamily="sans"
+                        >
+                          <div
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<p>Anna Maria Maiolino by Lívia Gonzaga Bertuzzi. © Anna Maria Maiolino. Courtesy of Hauser &amp; Wirth.</p>",
+                              }
                             }
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -21962,16 +22377,17 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         </div>
                       </div>
                     </a>
-                    <div>
+                    <div
+                      className="sc-bdVaJa bSzTiD"
+                      color="black60"
+                    >
                       <div
-                        className="sc-bxivhb ArtworkCaption__StyledArtworkCaption-t0bcvj-2 dRHNMB sc-htpNat hoYAXX"
-                        color="#C2C2C2"
-                        fontFamily="Unica77LLWebRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif"
-                        fontSize="14px"
-                        style={Object {}}
+                        className="sc-bdVaJa Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 ipedJe"
+                        color="black60"
+                        fontFamily="sans"
                       >
-                        <span
-                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ciyMlo"
+                        <strong
+                          className="ArtworkCaption__ArtistNames-t0bcvj-0 ccbsAj"
                         >
                           <span
                             className="ArtworkCaption__ArtistName-t0bcvj-1 dKUknO"
@@ -21982,7 +22398,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                               Anna Maria Maiolino
                             </a>
                           </span>
-                        </span>
+                        </strong>
                         <div>
                           <div
                             dangerouslySetInnerHTML={
@@ -22041,7 +22457,6 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </div>
           </div>
         </div>
-        <div />
       </div>
     </div>
   </div>

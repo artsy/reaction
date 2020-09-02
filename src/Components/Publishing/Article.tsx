@@ -40,7 +40,6 @@ export interface ArticleProps {
   infiniteScrollEntrySlug?: string
   isSuper?: boolean
   isTruncated?: boolean
-  emailSignupUrl?: string
   headerHeight?: string
   marginTop?: string | null
   showTooltips?: boolean
