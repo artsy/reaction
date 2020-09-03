@@ -1,3 +1,20 @@
+# v28.5.0 (Thu Sep 03 2020)
+
+#### 🚀  Enhancement
+
+- Strip /works-for-sale from urls when attempting to fetch tooltop content [#3632](https://github.com/artsy/reaction/pull/3632) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Avoids passing width/height to captions [#3631](https://github.com/artsy/reaction/pull/3631) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v28.4.0 (Thu Aug 27 2020)
 
 #### 🚀  Enhancement
