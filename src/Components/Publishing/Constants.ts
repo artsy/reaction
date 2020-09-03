@@ -190,7 +190,8 @@ export const getArtsySlugsFromHTML = (
   doc.querySelectorAll("a").forEach(anchor => {
     const href = anchor.getAttribute("href")
     if (href && href.match(`artsy.net/${model}`)) {
-      slugs.push(last(url.parse(href).pathname.split("/")))
+      const path = url.parse(href).pathname.replace("/works-for-sale", "")
+      slugs.push(last(path.split("/")))
     }
   })
 
