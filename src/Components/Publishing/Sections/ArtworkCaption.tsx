@@ -6,6 +6,7 @@ import { Truncator } from "Components/Truncator"
 import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { ArtworkSaleMessageContainer as ArtworkSaleMessage } from "./ArtworkSaleMessage"
 
 interface ArtworkCaptionProps extends BoxProps {
   artwork: any
@@ -221,7 +222,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
   }
 
   renderEditorialCaption = () => {
-    const { color, layout, sectionLayout } = this.props
+    const { artwork, color, layout, sectionLayout } = this.props
 
     return (
       <StyledArtworkCaption
@@ -234,6 +235,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
           <Truncator>{this.renderTitleDate()}</Truncator>
           <Truncator>{this.renderPartnerCredit()}</Truncator>
         </div>
+        <ArtworkSaleMessage artworkSlug={artwork.slug} />
       </StyledArtworkCaption>
     )
   }
