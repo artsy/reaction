@@ -6,7 +6,7 @@ import { Truncator } from "Components/Truncator"
 import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
-import { ArtworkSaleMessageContainer as ArtworkSaleMessage } from "./ArtworkSaleMessage"
+import { ArtworkSaleMessageContainer as ArtworkSaleMessage } from "Components/Publishing/Sections/ArtworkSaleMessage"
 
 interface ArtworkCaptionProps extends BoxProps {
   artwork: any
@@ -195,6 +195,7 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
   }
 
   renderFullscreenCaption = () => {
+    const { artwork } = this.props
     return (
       <StyledFullscreenCaption variant="mediumText">
         <Line>
@@ -203,6 +204,9 @@ export class ArtworkCaption extends React.Component<ArtworkCaptionProps> {
         <div>
           <Line>{this.renderTitleDate()}</Line>
           <Line>{this.renderPartnerCredit()}</Line>
+          <Line>
+            <ArtworkSaleMessage artworkSlug={artwork.slug} />
+          </Line>
         </div>
       </StyledFullscreenCaption>
     )

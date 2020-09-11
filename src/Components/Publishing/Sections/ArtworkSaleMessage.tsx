@@ -48,7 +48,7 @@ const ArtworkSaleMessage: React.FC<ArtworkSaleMessageProps> = props => {
               isAuction
               isClosed
             }
-            saleArtwork: saleArtwork {
+            saleArtwork {
               counts {
                 bidderPositions
               }
