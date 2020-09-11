@@ -385,6 +385,11 @@ exports[`renders properly 1`] = `
                       Courtesy of Gary Nader
                     </span>
                   </div>
+                  <div
+                    className="c12"
+                  >
+                    <div />
+                  </div>
                 </div>
               </div>
             </div>
