@@ -7,7 +7,7 @@ import {
 } from "Components/Publishing/Sections/ArtworkSaleMessage"
 import { ArtworkSaleMessageQueryResponse } from "__generated__/ArtworkSaleMessageQuery.graphql"
 import { mount } from "enzyme"
-import { QueryRenderer, graphql } from "react-relay"
+import { QueryRenderer } from "react-relay"
 
 jest.unmock("react-relay")
 
@@ -41,30 +41,7 @@ describe("ArtworkSaleMessageContainer", () => {
     const wrapper = mount(
       <ArtworkSaleMessageContainer artworkSlug="some-slug" />
     )
-    expect(wrapper.find(QueryRenderer).prop("query")).toBe(
-      graphql`
-        query ArtworkSaleMessageQuery($artworkSlug: String!) {
-          artwork(id: $artworkSlug) {
-            saleMessage
-            sale {
-              isAuction
-              isClosed
-            }
-            saleArtwork {
-              counts {
-                bidderPositions
-              }
-              highestBid {
-                display
-              }
-              openingBid {
-                display
-              }
-            }
-          }
-        }
-      `
-    )
+    expect(wrapper.find(QueryRenderer).exists()).toBe(true)
   })
 })
 
