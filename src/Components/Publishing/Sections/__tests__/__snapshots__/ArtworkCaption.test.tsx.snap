@@ -167,6 +167,11 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
           Courtesy of Gary Nader
         </span>
       </div>
+      <div
+        className="c2"
+      >
+        <div />
+      </div>
     </div>
   </div>
 </div>
@@ -263,6 +268,7 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
         }
       />
     </div>
+    <div />
   </div>
 </div>
 `;

@@ -1394,6 +1394,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
                   }
                 />
               </div>
+              <div />
             </div>
           </div>
         </div>
