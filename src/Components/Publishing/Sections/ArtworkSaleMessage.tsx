@@ -36,8 +36,12 @@ export const ArtworkSaleMessage: React.FC<ArtworkSaleMessageQueryResponse> = pro
   }
 
   const saleMessageDisplay = artwork => {
-    const { sale } = artwork
+    const { sale, saleMessage } = artwork
     const isAuction = sale && sale.isAuction
+
+    if (saleMessage === null) {
+      return ""
+    }
 
     if (isAuction) {
       const showBiddingClosed = sale.isClosed
@@ -57,9 +61,9 @@ export const ArtworkSaleMessage: React.FC<ArtworkSaleMessageQueryResponse> = pro
       }
     }
 
-    return artwork.saleMessage === "Contact For Price"
+    return saleMessage === "Contact For Price"
       ? "Contact for price"
-      : artwork.saleMessage
+      : saleMessage
   }
 
   const { artwork } = props

@@ -34,6 +34,11 @@ describe("ArtworkSaleMessage", () => {
     const wrapper = await getWrapper(ArtworkSaleMessageAtAuctionFixture)
     expect(wrapper.text()).toBe("$6,000 (2 bids)")
   })
+
+  it("displays nothing if the work is not for sale", async () => {
+    const wrapper = await getWrapper(ArtworkSaleMessageNotForSale)
+    expect(wrapper.text().length).toBe(0)
+  })
 })
 
 describe("ArtworkSaleMessageContainer", () => {
@@ -71,5 +76,13 @@ const ArtworkSaleMessageAtAuctionFixture: ArtworkSaleMessageQueryResponse = {
         display: "$4,000",
       },
     },
+  },
+}
+
+const ArtworkSaleMessageNotForSale: ArtworkSaleMessageQueryResponse = {
+  artwork: {
+    saleMessage: null,
+    sale: null,
+    saleArtwork: null,
   },
 }
