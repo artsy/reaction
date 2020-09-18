@@ -1,3 +1,15 @@
+# v28.7.0 (Fri Sep 18 2020)
+
+#### 🚀  Enhancement
+
+- Do not display sale message when sale message is null [#3641](https://github.com/artsy/reaction/pull/3641) ([@williardx](https://github.com/williardx))
+
+#### Authors: 1
+
+- Will Doenlen ([@williardx](https://github.com/williardx))
+
+---
+
 # v28.6.0 (Tue Sep 15 2020)
 
 #### 🚀  Enhancement
