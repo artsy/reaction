@@ -4,7 +4,7 @@ orbs:
   yarn: artsy/yarn@5.1.3
   codecov: codecov/codecov@1.1.0
   auto: artsy/auto@1.3.2
-  aws-s3: circleci/aws-s3@1.0.16
+  aws-s3: circleci/aws-s3@1.1.1
 
 jobs:
   upload-storybook:
