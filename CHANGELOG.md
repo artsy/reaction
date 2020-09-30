@@ -1,3 +1,21 @@
+# v28.8.0 (Wed Sep 30 2020)
+
+#### 🚀  Enhancement
+
+- Refactor: Simplify Article Follow buttons [#3627](https://github.com/artsy/reaction/pull/3627) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.34.0 to v1.37.0 [#3639](https://github.com/artsy/reaction/pull/3639) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v28.7.0 (Fri Sep 18 2020)
 
 #### 🚀  Enhancement
