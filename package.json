@@ -1,6 +1,6 @@
 {
   "name": "@artsy/reaction",
-  "version": "28.4.0",
+  "version": "28.7.0",
   "description": "Force’s React Components",
   "main": "dist/index.js",
   "repository": "https://github.com/artsy/reaction.git",
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
-    "@artsy/cohesion": "1.33.2",
+    "@artsy/cohesion": "1.37.0",
     "@artsy/lint-changed": "3.1.0",
     "@artsy/palette": "12.3.0",
     "@babel/cli": "7.0.0",

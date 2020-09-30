@@ -167,4 +167,13 @@ describe("getArtsySlugs", () => {
     expect(genes.length).toBe(1)
     expect(genes[0]).toBe("capitalist-realism")
   })
+
+  it("#getArtsySlugsFromHTML can strip '/works-for-sale' from artist links", () => {
+    const html =
+      "<p><a href='artsy.net/artist/andy-warhol/works-for-sale'>Andy Warhol</a></p>"
+    const artists = getArtsySlugsFromHTML(html, "artist")
+
+    expect(artists.length).toBe(1)
+    expect(artists[0]).toBe("andy-warhol")
+  })
 })

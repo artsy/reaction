@@ -1,3 +1,52 @@
+# v28.7.0 (Fri Sep 18 2020)
+
+#### 🚀  Enhancement
+
+- Do not display sale message when sale message is null [#3641](https://github.com/artsy/reaction/pull/3641) ([@williardx](https://github.com/williardx))
+
+#### Authors: 1
+
+- Will Doenlen ([@williardx](https://github.com/williardx))
+
+---
+
+# v28.6.0 (Tue Sep 15 2020)
+
+#### 🚀  Enhancement
+
+- Show artwork sale message on editorial articles [#3637](https://github.com/artsy/reaction/pull/3637) ([@williardx](https://github.com/williardx))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.33.2 to v1.34.0 [#3629](https://github.com/artsy/reaction/pull/3629) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Fix broken links in README [#3636](https://github.com/artsy/reaction/pull/3636) ([@starsirius](https://github.com/starsirius))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Chung-Yi Chi ([@starsirius](https://github.com/starsirius))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Will Doenlen ([@williardx](https://github.com/williardx))
+
+---
+
+# v28.5.0 (Thu Sep 03 2020)
+
+#### 🚀  Enhancement
+
+- Strip /works-for-sale from urls when attempting to fetch tooltop content [#3632](https://github.com/artsy/reaction/pull/3632) ([@eessex](https://github.com/eessex))
+
+#### 🐛  Bug Fix
+
+- Avoids passing width/height to captions [#3631](https://github.com/artsy/reaction/pull/3631) ([@dzucconi](https://github.com/dzucconi))
+
+#### Authors: 2
+
+- Damon ([@dzucconi](https://github.com/dzucconi))
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v28.4.0 (Thu Aug 27 2020)
 
 #### 🚀  Enhancement

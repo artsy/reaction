@@ -9,6 +9,7 @@ import _ from "lodash"
 import React from "react"
 import renderer from "react-test-renderer"
 import { ArtworkCaption } from "../ArtworkCaption"
+import { ArtworkSaleMessageContainer } from "../ArtworkSaleMessage"
 
 describe("ArtworkCaption", () => {
   const getWrapper = (props: any = {}) => {
@@ -112,6 +113,11 @@ describe("ArtworkCaption", () => {
     it("renders partner + credit", () => {
       const component = getWrapper()
       expect(component.text()).toMatch("Gary Nader. Courtesy of Gary Nader")
+    })
+
+    it("renders a sale message", () => {
+      const component = getWrapper()
+      expect(component.find(ArtworkSaleMessageContainer).length).toBe(1)
     })
   })
 })
