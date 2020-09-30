@@ -44,7 +44,7 @@ describe("FollowButton", () => {
       it("Reads 'Unfollow' if props.isFollowed and state.showUnfollow", () => {
         props.isFollowed = true
         const component = getWrapper(props)
-        component.setState({ showUnfollow: true })
+        component.simulate("mouseEnter")
         expect(component.text()).toMatch("Unfollow")
       })
     })
@@ -53,19 +53,6 @@ describe("FollowButton", () => {
       const component = getWrapper(props)
       component.simulate("click")
       expect(props.handleFollow).toBeCalled()
-    })
-
-    it("Sets state.showUnfollow on onMouseEnter", () => {
-      const component = getWrapper(props)
-      component.simulate("mouseEnter")
-      expect((component.state() as any).showUnfollow).toBe(true)
-    })
-
-    it("Sets state.showUnfollow on onMouseLeave", () => {
-      const component = getWrapper(props)
-      component.setState({ showUnfollow: true })
-      component.simulate("mouseLeave")
-      expect((component.state() as any).showUnfollow).toBeFalsy()
     })
   })
 })
