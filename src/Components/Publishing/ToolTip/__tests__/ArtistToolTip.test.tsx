@@ -9,41 +9,47 @@ import React from "react"
 import { ArtistToolTip, TitleDate } from "../ArtistToolTip"
 
 describe("ArtistToolTip", () => {
-  const getWrapper = (props, context = {}) => {
+  const mediator = {
+    trigger: jest.fn(),
+  }
+  let props
+
+  const getWrapper = (passedProps = props, context = {}) => {
     return mount(
       wrapperWithContext(
         {
           ...context,
           tooltipsData: {
-            artists: [props.artist],
+            artists: {
+              "nick-mauss": passedProps.artist,
+            },
           },
         },
         {
           tooltipsData: PropTypes.object,
-          onOpenAuthModal: PropTypes.func,
           user: PropTypes.object,
+          mediator: PropTypes.object,
         },
-        <SystemContextProvider user={(context as any).user}>
-          <ArtistToolTip {...props} />
+        <SystemContextProvider user={(context as any).user} mediator={mediator}>
+          <ArtistToolTip {...passedProps} />
         </SystemContextProvider>
       )
     )
   }
 
-  let testProps
   beforeEach(() => {
-    testProps = {
+    mediator.trigger.mockClear()
+    props = {
       tracking: { trackEvent: jest.fn() },
       artist: Artists[0].artist,
     }
   })
 
   it("Renders artist data", () => {
-    const component = getWrapper(testProps)
-
-    expect(component.text()).toMatch(testProps.artist.name)
+    const component = getWrapper()
+    expect(component.text()).toMatch(props.artist.name)
     expect(component.text()).toMatch(
-      testProps.artist.formatted_nationality_and_birthday
+      props.artist.formatted_nationality_and_birthday
     )
     expect(component.text()).toMatch(
       "Nick Mauss makes drawings, prints, and paintings that often"
@@ -55,24 +61,23 @@ describe("ArtistToolTip", () => {
   })
 
   it("Renders genes if no bio present", () => {
-    delete testProps.artist.blurb
-    const component = getWrapper(testProps)
-
+    delete props.artist.blurb
+    const component = getWrapper()
     expect(component.text()).toMatch(
       "United States, Abstract Art, 21st Century"
     )
   })
 
   it("Tracks clicks to artist page", () => {
-    const component = getWrapper(testProps)
+    const component = getWrapper()
     component
       .find(TitleDate)
       .at(0)
       .simulate("click")
 
-    expect(testProps.tracking.trackEvent).toBeCalledWith({
+    expect(props.tracking.trackEvent).toBeCalledWith({
       action: "Click",
-      contextModule: "intext tooltip",
+      context_module: "intext tooltip",
       destination_path: "/artist/nick-mauss",
       flow: "tooltip",
       type: "artist stub",
@@ -81,23 +86,22 @@ describe("ArtistToolTip", () => {
 
   describe("Open Auth Modal", () => {
     it("callback gets called when followButton is clicked", () => {
-      const artist = Artists[0].artist
       const context = {
-        onOpenAuthModal: jest.fn(),
         user: null,
       }
-      const component = getWrapper({ artist }, context)
+      const component = getWrapper(props, context)
       component.find(FollowArtistButton).simulate("click")
 
-      expect(context.onOpenAuthModal).toBeCalledWith("signup", {
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
         afterSignUpAction: {
           action: "follow",
           kind: "artist",
           objectId: "nick-mauss",
         },
         contextModule: "intextTooltip",
-        copy: "Sign up to follow artists",
+        copy: "Sign up to follow Nick Mauss",
         intent: "followArtist",
+        mode: "signup",
       })
     })
   })

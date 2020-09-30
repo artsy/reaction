@@ -9,12 +9,10 @@ import React, { Component } from "react"
 // TODO: Using `SystemQueryRenderer` causes SSR to fail on article pages.
 /* tslint:disable-next-line:no-query-renderer-import */
 import { QueryRenderer, graphql } from "react-relay"
-import { ArticleProps } from "../Article"
 
 interface Props extends Artsy.SystemContextProps {
   article: ArticleData
   shouldFetchData?: boolean
-  onOpenAuthModal?: ArticleProps["onOpenAuthModal"]
 }
 
 export class TooltipsDataLoader extends Component<Props> {
@@ -29,7 +27,6 @@ export class TooltipsDataLoader extends Component<Props> {
       user,
       relayEnvironment,
       shouldFetchData,
-      onOpenAuthModal,
     } = this.props
 
     const { artists: artistSlugs, genes: geneSlugs } = getArtsySlugsFromArticle(
@@ -77,11 +74,7 @@ export class TooltipsDataLoader extends Component<Props> {
             data[key] = keyBy(col, "slug")
           })
           return (
-            <TooltipsContextProvider
-              {...data}
-              user={user}
-              onOpenAuthModal={onOpenAuthModal}
-            >
+            <TooltipsContextProvider {...data} user={user}>
               {children}
             </TooltipsContextProvider>
           )
@@ -94,10 +87,9 @@ export class TooltipsDataLoader extends Component<Props> {
 class TooltipsContextProvider extends Component<any> {
   static childContextTypes = {
     activeToolTip: PropTypes.any,
-    user: PropTypes.object,
-    onOpenAuthModal: PropTypes.func,
     onTriggerToolTip: PropTypes.func,
     tooltipsData: PropTypes.object,
+    user: PropTypes.object,
     waitForFade: PropTypes.string,
   }
 
@@ -118,13 +110,12 @@ class TooltipsContextProvider extends Component<any> {
   }
 
   getChildContext() {
-    const { artists, user, genes, onOpenAuthModal } = this.props
+    const { artists, user, genes } = this.props
     const { activeToolTip, waitForFade } = this.state
 
     return {
       activeToolTip,
       user,
-      onOpenAuthModal,
       onTriggerToolTip: this.onTriggerToolTip,
       tooltipsData: {
         artists,

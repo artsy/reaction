@@ -1,7 +1,6 @@
 import { Theme } from "@artsy/palette"
 import React from "react"
 
-import { ModalOptions, ModalType } from "Components/Authentication/Types"
 import { BannerWrapper } from "Components/Publishing/Banner/Banner"
 import { PixelTracker } from "Components/Publishing/Display/ExternalTrackers"
 import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
@@ -19,6 +18,8 @@ import { Bling as GPT } from "react-gpt"
 import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
 import Events from "../../Utils/Events"
+import { AnalyticsContext } from "Artsy/Analytics/AnalyticsContext"
+import { OwnerType } from "@artsy/cohesion"
 
 GPT.enableSingleRequest()
 
@@ -47,7 +48,6 @@ export interface ArticleProps {
   tracking?: TrackingProp
   closeViewer?: () => void
   viewerIsOpen?: boolean
-  onOpenAuthModal?: (type: ModalType, config: ModalOptions) => void
   onExpand?: () => void
   shouldAdRender?: boolean
 }
@@ -141,19 +141,30 @@ export class Article extends React.Component<ArticleProps> {
     const trackingCode = this.sponsorPixelTrackingCode(article)
 
     return (
-      <MediaContextProvider>
-        <Theme>
-          <TooltipsDataProvider {...this.props}>
-            {this.getArticleLayout()}
-            {trackingCode && (
-              <PixelTracker unit={trackingCode} date={this.props.renderTime} />
-            )}
-            {this.shouldRenderSignUpCta() && (
-              <BannerWrapper article={article} />
-            )}
-          </TooltipsDataProvider>
-        </Theme>
-      </MediaContextProvider>
+      <AnalyticsContext.Provider
+        value={{
+          contextPageOwnerId: article.id,
+          contextPageOwnerSlug: article.slug,
+          contextPageOwnerType: OwnerType.article,
+        }}
+      >
+        <MediaContextProvider>
+          <Theme>
+            <TooltipsDataProvider {...this.props}>
+              {this.getArticleLayout()}
+              {trackingCode && (
+                <PixelTracker
+                  unit={trackingCode}
+                  date={this.props.renderTime}
+                />
+              )}
+              {this.shouldRenderSignUpCta() && (
+                <BannerWrapper article={article} />
+              )}
+            </TooltipsDataProvider>
+          </Theme>
+        </MediaContextProvider>
+      </AnalyticsContext.Provider>
     )
   }
 }

@@ -6,9 +6,9 @@ import React from "react"
 import { createFragmentContainer, graphql } from "react-relay"
 import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
-import { FollowTrackingData } from "../../FollowButton/Typings"
 import { getFullArtsyHref } from "../Constants"
 import { ToolTipDescription } from "./Components/Description"
+import { ContextModule } from "@artsy/cohesion"
 
 export interface GeneProps {
   gene: GeneToolTip_gene
@@ -18,7 +18,6 @@ export interface GeneProps {
 export class GeneToolTip extends React.Component<GeneProps> {
   static contextTypes = {
     tooltipsData: PropTypes.object,
-    onOpenAuthModal: PropTypes.func,
   }
 
   trackClick = () => {
@@ -35,19 +34,11 @@ export class GeneToolTip extends React.Component<GeneProps> {
   }
 
   render() {
-    const { description, href, slug, internalID, image, name } = this.props.gene
+    const { description, href, slug, image, name } = this.props.gene
     const { url } = image
     const {
       tooltipsData: { genes },
-      onOpenAuthModal,
     } = this.context
-
-    const trackingData: FollowTrackingData = {
-      contextModule: "tooltip",
-      entity_id: internalID,
-      entity_slug: slug,
-      entity_type: "gene",
-    }
 
     return (
       <Wrapper data-test="geneTooltip">
@@ -65,8 +56,7 @@ export class GeneToolTip extends React.Component<GeneProps> {
         <ToolTipFooter>
           <FollowGeneButton
             gene={genes[slug]}
-            trackingData={trackingData}
-            onOpenAuthModal={onOpenAuthModal}
+            contextModule={ContextModule.intextTooltip}
           />
         </ToolTipFooter>
       </Wrapper>

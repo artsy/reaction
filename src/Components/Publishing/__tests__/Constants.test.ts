@@ -150,6 +150,15 @@ describe("getArtsySlugs", () => {
     expect(artists[0]).toBe("jennie-jieun-lee")
   })
 
+  it("#getArtsySlugsFromHTML can strip '/works-for-sale' from artist links", () => {
+    const html =
+      "<p><a href='artsy.net/artist/andy-warhol/works-for-sale'>Andy Warhol</a></p>"
+    const artists = getArtsySlugsFromHTML(html, "artist")
+
+    expect(artists.length).toBe(1)
+    expect(artists[0]).toBe("andy-warhol")
+  })
+
   it("#getArtsySlugsFromHTML can return linked genes from html", () => {
     const html =
       "<p><a href='artsy.net/gene/capitalist-realism'>Capitalist Realism</a></p>"

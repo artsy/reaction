@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FollowButton snapshots Renders FollowButton properly 1`] = `
+exports[`FollowGeneButton snapshots Renders properly 1`] = `
 .c1 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
