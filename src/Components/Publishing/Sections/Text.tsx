@@ -29,7 +29,6 @@ export class Text extends Component<Props, State> {
 
   static contextTypes = {
     tooltipsData: PropTypes.object,
-    onOpenAuthModal: PropTypes.func,
   }
 
   state = {
@@ -136,10 +135,9 @@ export class Text extends Component<Props, State> {
     const FollowButton = require("../../FollowButton/FollowArtistButton")
       .FollowArtistButtonFragmentContainer
 
-    const { onOpenAuthModal } = this.context
     const artistId = node.getAttribute("data-id")
     const artist = this.artistIdToArtistFollow(artistId)
-    const props = { artist, onOpenAuthModal }
+    const props = { artist }
 
     return (
       <FollowContainer key={artistId}>

@@ -6,10 +6,10 @@ import { FragmentRefs } from "relay-runtime";
 export type ArtistToolTip_artist = {
     readonly name: string | null;
     readonly slug: string;
-    readonly internalID: string;
     readonly formatted_nationality_and_birthday: string | null;
     readonly href: string | null;
     readonly blurb: string | null;
+    readonly internalID: string;
     readonly carousel: {
         readonly images: ReadonlyArray<{
             readonly resized: {
@@ -55,13 +55,6 @@ return {
       "storageKey": null
     },
     {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "internalID",
-      "storageKey": null
-    },
-    {
       "alias": "formatted_nationality_and_birthday",
       "args": null,
       "kind": "ScalarField",
@@ -80,6 +73,13 @@ return {
       "args": null,
       "kind": "ScalarField",
       "name": "blurb",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "internalID",
       "storageKey": null
     },
     {
@@ -158,5 +158,5 @@ return {
   "type": "Artist"
 };
 })();
-(node as any).hash = 'e08987aab34bb773538c361d5a6de342';
+(node as any).hash = '9f94e02d04bc29a5b45226a719183668';
 export default node;

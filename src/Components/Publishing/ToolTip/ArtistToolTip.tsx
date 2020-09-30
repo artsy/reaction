@@ -9,7 +9,7 @@ import track, { TrackingProp } from "react-tracking"
 import styled from "styled-components"
 import fillwidthDimensions from "../../../Utils/fillwidth"
 import { ToolTipDescription } from "./Components/Description"
-import { ContextModule, FollowedArtistArgs, OwnerType } from "@artsy/cohesion"
+import { ContextModule } from "@artsy/cohesion"
 
 export interface ArtistToolTipProps {
   artist: ArtistToolTip_artist
@@ -18,10 +18,7 @@ export interface ArtistToolTipProps {
 
 export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
   static contextTypes = {
-    contextOwnerId: PropTypes.string,
-    contextOwnerSlug: PropTypes.string,
     tooltipsData: PropTypes.object,
-    onOpenAuthModal: PropTypes.func,
   }
 
   trackClick = () => {
@@ -32,7 +29,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       action: "Click",
       flow: "tooltip",
       type: "artist stub",
-      contextModule: "intext tooltip",
+      context_module: "intext tooltip",
       destination_path: href,
     })
   }
@@ -53,27 +50,14 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
       formatted_nationality_and_birthday,
       href,
       slug,
-      internalID,
       name,
     } = artist
     const {
       tooltipsData: { artists },
-      onOpenAuthModal,
-      contextOwnerId,
-      contextOwnerSlug,
     } = this.context
     const displayImages = map(carousel.images.slice(0, 2), "resized")
     const images = fillwidthDimensions(displayImages, 320, 15, 150)
     const description = blurb || this.renderArtistGenes()
-
-    const trackingData: FollowedArtistArgs = {
-      contextModule: ContextModule.intextTooltip,
-      contextOwnerId,
-      contextOwnerSlug,
-      contextOwnerType: OwnerType.article,
-      ownerId: internalID,
-      ownerSlug: slug,
-    }
 
     return (
       <Wrapper data-test="artistTooltip">
@@ -97,8 +81,7 @@ export class ArtistToolTip extends React.Component<ArtistToolTipProps> {
             </TitleDate>
             <FollowArtistButton
               artist={artists[slug]}
-              trackingData={trackingData}
-              onOpenAuthModal={onOpenAuthModal}
+              contextModule={ContextModule.intextTooltip}
             />
           </Header>
 
@@ -171,10 +154,10 @@ export const ArtistTooltipContainer = track({})(
       fragment ArtistToolTip_artist on Artist {
         name
         slug
-        internalID
         formatted_nationality_and_birthday: formattedNationalityAndBirthday
         href
         blurb
+        internalID
         carousel {
           images {
             resized(height: 200) {

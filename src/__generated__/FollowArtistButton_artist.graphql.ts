@@ -7,6 +7,7 @@ export type FollowArtistButton_artist = {
     readonly id: string;
     readonly internalID: string;
     readonly name: string | null;
+    readonly slug: string;
     readonly is_followed: boolean | null;
     readonly counts: {
         readonly follows: number | null;
@@ -49,6 +50,13 @@ const node: ReaderFragment = {
       "storageKey": null
     },
     {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "slug",
+      "storageKey": null
+    },
+    {
       "alias": "is_followed",
       "args": null,
       "kind": "ScalarField",
@@ -76,5 +84,5 @@ const node: ReaderFragment = {
   ],
   "type": "Artist"
 };
-(node as any).hash = '2275e5f10dab9e570ef03c709d78f2dc';
+(node as any).hash = '37ce17e390ffcba91d38b16acc1b87d5';
 export default node;

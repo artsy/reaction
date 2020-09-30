@@ -3,13 +3,13 @@ import { createTestEnvCreditCardMutation } from "__generated__/createTestEnvCred
 import { createTestEnvOrderMutation } from "__generated__/createTestEnvOrderMutation.graphql"
 import { createTestEnvQueryRawResponse } from "__generated__/createTestEnvQuery.graphql"
 import { createTestEnv } from "DevTools/createTestEnv"
-import { expectOne, RootTestPage } from "DevTools/RootTestPage"
+import { RootTestPage, expectOne } from "DevTools/RootTestPage"
 import React from "react"
 import {
+  RelayProp,
   commitMutation,
   createFragmentContainer,
   graphql,
-  RelayProp,
 } from "react-relay"
 
 jest.unmock("react-relay")
@@ -117,7 +117,7 @@ const Component = createFragmentContainer(
     <div>
       <h1>This is the main heading</h1>
       <p>
-        The artwork is {artwork.title} by {artwork.artist.name}
+        The artwork is {artwork.title} by {artwork?.artist?.name}
       </p>
       <button
         onClick={() =>

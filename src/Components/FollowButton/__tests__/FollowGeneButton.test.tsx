@@ -1,10 +1,14 @@
+import { ContextModule, OwnerType } from "@artsy/cohesion"
 import { SystemContextProvider } from "Artsy"
+import { AnalyticsContext } from "Artsy/Analytics/AnalyticsContext"
 import { mount } from "enzyme"
 import "jest-styled-components"
 import React from "react"
 import { commitMutation } from "react-relay"
 import { FollowButton } from "../FollowButton"
 import { FollowGeneButtonFragmentContainer as FollowGeneButton } from "../FollowGeneButton"
+import { Genes } from "Components/Publishing/Fixtures/Components"
+import renderer from "react-test-renderer"
 
 jest.mock("react-relay", () => ({
   commitMutation: jest.fn(),
@@ -12,106 +16,115 @@ jest.mock("react-relay", () => ({
 }))
 
 describe("FollowGeneButton", () => {
-  const getWrapper = (props = {}, user = {}) => {
+  const mediator = { trigger: jest.fn() }
+  const getWrapper = (passedProps = props, user = { id: "4321" }) => {
     return mount(
-      <SystemContextProvider user={user}>
-        <FollowGeneButton relay={{ environment: "" }} {...props} />
-      </SystemContextProvider>
+      <AnalyticsContext.Provider
+        value={{
+          contextPageOwnerType: OwnerType.article,
+          contextPageOwnerId: "1234",
+          contextPageOwnerSlug: "context-article",
+        }}
+      >
+        <SystemContextProvider user={user} mediator={mediator}>
+          <FollowGeneButton relay={{ environment: "" }} {...passedProps} />
+        </SystemContextProvider>
+      </AnalyticsContext.Provider>
     )
   }
 
-  Object.defineProperty(window, "location", {
-    writable: true,
-    value: { assign: jest.fn() },
-  })
-
-  let testProps
+  let props
   beforeEach(() => {
-    testProps = {
-      gene: { internalID: "modernism", id: "1234", is_followed: false },
-      onOpenAuthModal: jest.fn(),
+    mediator.trigger.mockClear()
+    props = {
+      gene: {
+        is_followed: false,
+        ...Genes[0].gene,
+      },
+      contextModule: ContextModule.intextTooltip,
       tracking: { trackEvent: jest.fn() },
     }
   })
 
-  // FIXME: Reenable when React 16.4.5 is release
-  // https://github.com/facebook/react/issues/13150#issuecomment-411134477
-
-  //
-  // describe("snapshots", () => {
-  //   it("Renders properly", () => {
-  //     const component = renderer
-  //       .create(
-  //         <SystemContextProvider>
-  //           <FollowGeneButton {...testProps} />
-  //         </SystemContextProvider>
-  //       )
-  //       .toJSON()
-  //     expect(component).toMatchSnapshot()
-  //   })
-  // })
+  describe("snapshots", () => {
+    it("Renders properly", () => {
+      const component = renderer
+        .create(
+          <SystemContextProvider>
+            <FollowGeneButton {...props} />
+          </SystemContextProvider>
+        )
+        .toJSON()
+      expect(component).toMatchSnapshot()
+    })
+  })
 
   describe("unit", () => {
     it("Calls #onOpenAuthModal if no current user", () => {
-      const component = getWrapper(testProps)
+      const component = getWrapper(props, {} as any)
       component.find(FollowButton).simulate("click")
 
-      expect(testProps.onOpenAuthModal).toBeCalledWith("signup", {
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
         contextModule: "intextTooltip",
-        copy: "Sign up to follow categories",
+        copy: "Sign up to follow Capitalist Realism",
         intent: "followGene",
         afterSignUpAction: {
           action: "follow",
           kind: "gene",
-          objectId: "modernism",
+          objectId: "capitalist-realism",
         },
+        mode: "signup",
       })
     })
 
     it("Follows an gene if current user", () => {
-      const component = getWrapper(testProps, { id: "1234" })
+      const component = getWrapper()
       component.find(FollowButton).simulate("click")
       const mutation = (commitMutation as any).mock.calls[0][1].variables.input
 
-      expect(mutation.geneID).toBe("modernism")
+      expect(mutation.geneID).toBe("5955005ceaaedc0017acdd1f")
     })
 
     it("Unfollows an gene if current user", () => {
-      testProps.gene.is_followed = true
-      const component = getWrapper(testProps, { id: "1234" })
+      props.gene.is_followed = true
+      const component = getWrapper()
       component.find(FollowButton).simulate("click")
       const mutation = (commitMutation as any).mock.calls[1][1].variables.input
 
-      expect(mutation.geneID).toBe("modernism")
+      expect(mutation.geneID).toBe("5955005ceaaedc0017acdd1f")
     })
 
     it("Tracks follow click when following", () => {
-      const component = getWrapper(testProps, { id: "1234" })
+      const component = getWrapper()
       component.find(FollowButton).simulate("click")
 
-      expect(testProps.tracking.trackEvent.mock.calls[0][0].action).toBe(
-        "Followed Gene"
-      )
+      expect(props.tracking.trackEvent).toBeCalledWith({
+        action: "followedGene",
+        context_module: "intextTooltip",
+        context_owner_id: "1234",
+        context_owner_slug: "context-article",
+        context_owner_type: "article",
+        owner_id: "5955005ceaaedc0017acdd1f",
+        owner_slug: "capitalist-realism",
+        owner_type: "gene",
+      })
     })
 
     it("Tracks unfollow click when unfollowing", () => {
-      testProps.gene.is_followed = true
-      const component = getWrapper(testProps, { id: "1234" })
+      props.gene.is_followed = true
+      const component = getWrapper()
       component.find(FollowButton).simulate("click")
 
-      expect(testProps.tracking.trackEvent.mock.calls[0][0].action).toBe(
-        "Unfollowed Gene"
-      )
-    })
-
-    it("Tracks with custom trackingData if provided", () => {
-      testProps.trackingData = { contextModule: "tooltip" }
-      const component = getWrapper(testProps, { id: "1234" })
-      component.find(FollowButton).simulate("click")
-
-      expect(testProps.tracking.trackEvent.mock.calls[0][0].contextModule).toBe(
-        "tooltip"
-      )
+      expect(props.tracking.trackEvent).toBeCalledWith({
+        action: "unfollowedGene",
+        context_module: "intextTooltip",
+        context_owner_id: "1234",
+        context_owner_slug: "context-article",
+        context_owner_type: "article",
+        owner_id: "5955005ceaaedc0017acdd1f",
+        owner_slug: "capitalist-realism",
+        owner_type: "gene",
+      })
     })
   })
 })

@@ -13,11 +13,11 @@ export interface AuthModalOptions extends ModalOptions {
   intent: AuthIntent
 }
 
-export const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
+const openAuthModal = (mediator: Mediator, options: ModalOptions) => {
   mediator.trigger("open:auth", options)
 }
 
-export const openAuthToFollowSave = (
+export const openAuthToFollow = (
   mediator: Mediator,
   options: AuthModalOptions
 ) => {
@@ -62,10 +62,8 @@ function openMobileAuth(intent) {
 function getMobileIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
     case Intent.followArtist:
-    case Intent.followPartner:
+    case Intent.followGene:
       return getMobileIntentToFollow(options)
-    case Intent.saveArtwork:
-      return getMobileIntentToSaveArtwork(options)
     default:
       return undefined
   }
@@ -76,7 +74,7 @@ function getMobileIntentToFollow({
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === Intent.followArtist ? "artist" : "profile"
+  const kind = intent === Intent.followArtist ? "artist" : "gene"
   return {
     action: "follow",
     contextModule,
@@ -87,27 +85,12 @@ function getMobileIntentToFollow({
   }
 }
 
-function getMobileIntentToSaveArtwork({
-  contextModule,
-  entity,
-  intent,
-}: AuthModalOptions): ModalOptions {
-  return {
-    action: "save",
-    contextModule,
-    copy: `Sign up to save artworks`,
-    intent,
-    kind: "artworks",
-    objectId: entity.slug,
-  }
-}
-
 function getDesktopIntentToFollow({
   contextModule,
   entity,
   intent,
 }: AuthModalOptions): ModalOptions {
-  const kind = intent === Intent.followArtist ? "artist" : "profile"
+  const kind = intent === Intent.followArtist ? "artist" : "gene"
   return {
     mode: ModalType.signup,
     contextModule,
@@ -121,31 +104,11 @@ function getDesktopIntentToFollow({
   }
 }
 
-function getDesktopIntentToSaveArtwork({
-  contextModule,
-  entity,
-  intent,
-}: AuthModalOptions): ModalOptions {
-  return {
-    mode: ModalType.signup,
-    contextModule,
-    copy: `Sign up to save artworks`,
-    intent,
-    afterSignUpAction: {
-      action: "save",
-      kind: "artworks",
-      objectId: entity.slug,
-    },
-  }
-}
-
 function getDesktopIntent(options: AuthModalOptions): ModalOptions {
   switch (options.intent) {
     case Intent.followArtist:
-    case Intent.followPartner:
+    case Intent.followGene:
       return getDesktopIntentToFollow(options)
-    case Intent.saveArtwork:
-      return getDesktopIntentToSaveArtwork(options)
     default:
       return undefined
   }

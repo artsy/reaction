@@ -9,53 +9,55 @@ import React from "react"
 import { GeneToolTip } from "../GeneToolTip"
 
 describe("GeneTooltip", () => {
-  const getWrapper = (props, context = {}) => {
+  const mediator = {
+    trigger: jest.fn(),
+  }
+  const props = { gene: Genes[0].gene }
+  const getWrapper = (passedProps = props, context = {}) => {
     return mount(
       wrapperWithContext(
         {
           ...context,
           tooltipsData: {
-            genes: [props.gene],
+            genes: {
+              "capitalist-realism": passedProps.gene,
+            },
           },
         },
         {
           tooltipsData: PropTypes.object,
-          onOpenAuthModal: PropTypes.func,
           user: PropTypes.object,
         },
-        <SystemContextProvider user={(context as any).user}>
-          <GeneToolTip gene={props.gene} />
+        <SystemContextProvider user={(context as any).user} mediator={mediator}>
+          <GeneToolTip gene={passedProps.gene} />
         </SystemContextProvider>
       )
     )
   }
 
   it("Renders gene data", () => {
-    const gene = Genes[0].gene
-    const component = getWrapper({ gene })
-
-    expect(component.text()).toMatch(gene.name)
+    const component = getWrapper()
+    expect(component.text()).toMatch(props.gene.name)
   })
 
   describe("Open Auth Modal", () => {
     it("callback gets called when followButton is clicked", () => {
-      const gene = Genes[0].gene
       const context = {
-        onOpenAuthModal: jest.fn(),
         user: null,
       }
-      const component = getWrapper({ gene }, context)
+      const component = getWrapper(props, context)
       component.find(FollowGeneButton).simulate("click")
 
-      expect(context.onOpenAuthModal).toBeCalledWith("signup", {
+      expect(mediator.trigger).toBeCalledWith("open:auth", {
         afterSignUpAction: {
           action: "follow",
           kind: "gene",
           objectId: "capitalist-realism",
         },
         contextModule: "intextTooltip",
-        copy: "Sign up to follow categories",
+        copy: "Sign up to follow Capitalist Realism",
         intent: "followGene",
+        mode: "signup",
       })
     })
   })
