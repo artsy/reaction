@@ -5,7 +5,6 @@ import { Clickable, Sans, color } from "@artsy/palette"
 interface Props {
   handleFollow?: () => void
   isFollowed?: boolean
-  buttonProps?: object
 }
 
 interface State {
