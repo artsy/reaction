@@ -15,6 +15,7 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   layout: ArticleLayout
   postscript?: boolean
   showTooltips?: boolean
+  isMobile?: boolean
 }
 
 interface State {
@@ -25,6 +26,7 @@ export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
     showTooltips: false,
+    isMobile: false,
   }
 
   static contextTypes = {
@@ -132,6 +134,8 @@ export class Text extends Component<Props, State> {
   renderArtistFollowButton = (node: Element) => {
     // Dont include relay components unless necessary
     // To avoid 'regeneratorRuntime' error
+    const MobileFollowButton = require("../../FollowButton/MobileFollowArtistButton")
+      .MobileFollowArtistButtonQueryRenderer
     const FollowButton = require("../../FollowButton/FollowArtistButton")
       .FollowArtistButtonFragmentContainer
 
@@ -141,7 +145,11 @@ export class Text extends Component<Props, State> {
 
     return (
       <FollowContainer key={artistId}>
-        <FollowButton {...props} />
+        {this.props.isMobile ? (
+          <MobileFollowButton artistId={artistId} />
+        ) : (
+          <FollowButton {...props} />
+        )}
       </FollowContainer>
     )
   }
@@ -158,7 +166,7 @@ export class Text extends Component<Props, State> {
       if (this.isArtistFollow(node)) {
         return this.renderArtistFollowButton(node)
       }
-      if (this.shouldShowTooltipForURL(node)) {
+      if (this.props.showTooltips && this.shouldShowTooltipForURL(node)) {
         return this.renderLinkWithToolTip(node, index)
       }
     }
@@ -185,13 +193,7 @@ export class Text extends Component<Props, State> {
         showTooltips={showTooltips}
       >
         {html.length ? (
-          showTooltips ? (
-            <div>
-              {ReactHtmlParser(html, { transform: this.transformNode })}
-            </div>
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-          )
+          <div>{ReactHtmlParser(html, { transform: this.transformNode })}</div>
         ) : (
           children
         )}

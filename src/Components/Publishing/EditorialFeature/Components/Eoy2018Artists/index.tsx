@@ -1,4 +1,4 @@
-import { Box, color, Flex, media, Sans, Serif, space } from "@artsy/palette"
+import { Box, Flex, Sans, Serif, color, media, space } from "@artsy/palette"
 import { compact, find, map } from "lodash"
 import React from "react"
 import styled from "styled-components"
@@ -90,6 +90,7 @@ export class Eoy2018Artists extends React.Component<EditorialFeaturesProps> {
     const {
       article: { sections, layout },
       showTooltips,
+      isMobile,
     } = this.props
     const isChapterStart =
       sections[i - 1] && sections[i - 1].type === "image_collection"
@@ -100,6 +101,7 @@ export class Eoy2018Artists extends React.Component<EditorialFeaturesProps> {
           <Text
             html={section.body}
             layout={layout}
+            isMobile={isMobile}
             showTooltips={showTooltips}
           />
         </TextSection>

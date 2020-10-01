@@ -1,4 +1,4 @@
-import { Box, color, Flex, media, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, Sans, Serif, color, media } from "@artsy/palette"
 import { Byline, BylineContainer } from "Components/Publishing/Byline/Byline"
 import { VanguardCredits } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Components/VanguardCredits"
 import { Text } from "Components/Publishing/Sections/Text"
@@ -60,7 +60,12 @@ export const VanguardIntroduction: React.SFC<{
           </Flex>
 
           <Box pb={12}>
-            <Text layout="standard" html={description} width="800px" />
+            <Text
+              layout="standard"
+              html={description}
+              width="800px"
+              isMobile={isMobile}
+            />
           </Box>
         </Box>
       </Box>
