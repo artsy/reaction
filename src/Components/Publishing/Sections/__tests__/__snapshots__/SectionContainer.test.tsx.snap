@@ -279,13 +279,13 @@ exports[`SectionContainer Snapshots renders column_width properly 1`] = `
     className="article__text-section c1"
     color="black"
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<p>Hello, world!</p>",
-        }
-      }
-    />
+    <div>
+      <div
+        className="paragraph"
+      >
+        Hello, world!
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -569,13 +569,13 @@ exports[`SectionContainer Snapshots renders fillwidth properly 1`] = `
     className="article__text-section c1"
     color="black"
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<p>Hello, world!</p>",
-        }
-      }
-    />
+    <div>
+      <div
+        className="paragraph"
+      >
+        Hello, world!
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -859,13 +859,13 @@ exports[`SectionContainer Snapshots renders overflow_fillwidth properly 1`] = `
     className="article__text-section c1"
     color="black"
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "<p>Hello, world!</p>",
-        }
-      }
-    />
+    <div>
+      <div
+        className="paragraph"
+      >
+        Hello, world!
+      </div>
+    </div>
   </div>
 </div>
 `;
