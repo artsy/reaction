@@ -123,6 +123,7 @@ exports[`renders properly 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  cursor: pointer;
 }
 
 .c13 {
@@ -283,6 +284,7 @@ exports[`renders properly 1`] = `
       >
         <button
           className="c4"
+          cursor="pointer"
           display="flex"
           width="100%"
         >

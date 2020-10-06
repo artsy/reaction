@@ -100,6 +100,7 @@ Array [
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  cursor: pointer;
 }
 
 .c9 {
@@ -187,6 +188,7 @@ Array [
     >
       <button
         className="c1"
+        cursor="pointer"
         display="flex"
         width="100%"
       >
@@ -627,6 +629,7 @@ Array [
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  cursor: pointer;
 }
 
 .c5 {
@@ -636,49 +639,49 @@ Array [
   font-family: sans;
 }
 
-.c5 > h1,
-.c5 > h2,
-.c5 > h3,
-.c5 > h4,
-.c5 > h5,
-.c5 > ul,
-.c5 > ol,
-.c5 > p,
-.c5 > blockquote,
-.c5 > pre,
-.c5 > hr {
+.c5 h1,
+.c5 h2,
+.c5 h3,
+.c5 h4,
+.c5 h5,
+.c5 ul,
+.c5 ol,
+.c5 p,
+.c5 blockquote,
+.c5 pre,
+.c5 hr {
   margin: 10px auto;
 }
 
-.c5 > h1:first-child,
-.c5 > h2:first-child,
-.c5 > h3:first-child,
-.c5 > h4:first-child,
-.c5 > h5:first-child,
-.c5 > ul:first-child,
-.c5 > ol:first-child,
-.c5 > p:first-child,
-.c5 > blockquote:first-child,
-.c5 > pre:first-child,
-.c5 > hr:first-child {
+.c5 h1:first-child,
+.c5 h2:first-child,
+.c5 h3:first-child,
+.c5 h4:first-child,
+.c5 h5:first-child,
+.c5 ul:first-child,
+.c5 ol:first-child,
+.c5 p:first-child,
+.c5 blockquote:first-child,
+.c5 pre:first-child,
+.c5 hr:first-child {
   margin-top: 0;
 }
 
-.c5 > h1:last-child,
-.c5 > h2:last-child,
-.c5 > h3:last-child,
-.c5 > h4:last-child,
-.c5 > h5:last-child,
-.c5 > ul:last-child,
-.c5 > ol:last-child,
-.c5 > p:last-child,
-.c5 > blockquote:last-child,
-.c5 > pre:last-child,
-.c5 > hr:last-child {
+.c5 h1:last-child,
+.c5 h2:last-child,
+.c5 h3:last-child,
+.c5 h4:last-child,
+.c5 h5:last-child,
+.c5 ul:last-child,
+.c5 ol:last-child,
+.c5 p:last-child,
+.c5 blockquote:last-child,
+.c5 pre:last-child,
+.c5 hr:last-child {
   margin-bottom: 0;
 }
 
-.c5 > hr {
+.c5 hr {
   height: 1px;
   border: 0;
   background-color: #E5E5E5;
@@ -721,6 +724,7 @@ Array [
     >
       <button
         className="c1"
+        cursor="pointer"
         display="flex"
         width="100%"
       >
@@ -794,49 +798,49 @@ Array [
   font-family: sans;
 }
 
-.c2 > h1,
-.c2 > h2,
-.c2 > h3,
-.c2 > h4,
-.c2 > h5,
-.c2 > ul,
-.c2 > ol,
-.c2 > p,
-.c2 > blockquote,
-.c2 > pre,
-.c2 > hr {
+.c2 h1,
+.c2 h2,
+.c2 h3,
+.c2 h4,
+.c2 h5,
+.c2 ul,
+.c2 ol,
+.c2 p,
+.c2 blockquote,
+.c2 pre,
+.c2 hr {
   margin: 10px auto;
 }
 
-.c2 > h1:first-child,
-.c2 > h2:first-child,
-.c2 > h3:first-child,
-.c2 > h4:first-child,
-.c2 > h5:first-child,
-.c2 > ul:first-child,
-.c2 > ol:first-child,
-.c2 > p:first-child,
-.c2 > blockquote:first-child,
-.c2 > pre:first-child,
-.c2 > hr:first-child {
+.c2 h1:first-child,
+.c2 h2:first-child,
+.c2 h3:first-child,
+.c2 h4:first-child,
+.c2 h5:first-child,
+.c2 ul:first-child,
+.c2 ol:first-child,
+.c2 p:first-child,
+.c2 blockquote:first-child,
+.c2 pre:first-child,
+.c2 hr:first-child {
   margin-top: 0;
 }
 
-.c2 > h1:last-child,
-.c2 > h2:last-child,
-.c2 > h3:last-child,
-.c2 > h4:last-child,
-.c2 > h5:last-child,
-.c2 > ul:last-child,
-.c2 > ol:last-child,
-.c2 > p:last-child,
-.c2 > blockquote:last-child,
-.c2 > pre:last-child,
-.c2 > hr:last-child {
+.c2 h1:last-child,
+.c2 h2:last-child,
+.c2 h3:last-child,
+.c2 h4:last-child,
+.c2 h5:last-child,
+.c2 ul:last-child,
+.c2 ol:last-child,
+.c2 p:last-child,
+.c2 blockquote:last-child,
+.c2 pre:last-child,
+.c2 hr:last-child {
   margin-bottom: 0;
 }
 
-.c2 > hr {
+.c2 hr {
   height: 1px;
   border: 0;
   background-color: #E5E5E5;
