@@ -60,12 +60,7 @@ export const VanguardIntroduction: React.SFC<{
           </Flex>
 
           <Box pb={12}>
-            <Text
-              layout="standard"
-              html={description}
-              width="800px"
-              isMobile={isMobile}
-            />
+            <Text layout="standard" html={description} width="800px" />
           </Box>
         </Box>
       </Box>

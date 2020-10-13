@@ -90,7 +90,6 @@ export class Eoy2018Artists extends React.Component<EditorialFeaturesProps> {
     const {
       article: { sections, layout },
       showTooltips,
-      isMobile,
     } = this.props
     const isChapterStart =
       sections[i - 1] && sections[i - 1].type === "image_collection"
@@ -101,7 +100,6 @@ export class Eoy2018Artists extends React.Component<EditorialFeaturesProps> {
           <Text
             html={section.body}
             layout={layout}
-            isMobile={isMobile}
             showTooltips={showTooltips}
           />
         </TextSection>

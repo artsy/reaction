@@ -15,7 +15,6 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
   layout: ArticleLayout
   postscript?: boolean
   showTooltips?: boolean
-  isMobile?: boolean
 }
 
 interface State {
@@ -145,7 +144,7 @@ export class Text extends Component<Props, State> {
 
     return (
       <FollowContainer key={artistId}>
-        {this.props.isMobile ? (
+        {!this.props.showTooltips ? (
           <MobileFollowButton artistId={artistId} />
         ) : (
           <FollowButton {...props} />
