@@ -13,7 +13,7 @@ export interface State {
 
 export enum CtaCopy {
   news = "Sign up for the best in art world news",
-  default = "Sign up to get our best stories everyday",
+  default = "Sign up to get our best stories every day",
 }
 
 export class BannerWrapper extends Component<{ article: ArticleData }, State> {
