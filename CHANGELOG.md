@@ -1,3 +1,27 @@
+# v28.9.0 (Thu Oct 15 2020)
+
+#### 🚀  Enhancement
+
+- GRO-2: Update copy [#3649](https://github.com/artsy/reaction/pull/3649) ([@jonallured](https://github.com/jonallured))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 13.7.3 to v13.10.1 [#3648](https://github.com/artsy/reaction/pull/3648) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/palette to v13.7.5 [#3634](https://github.com/artsy/reaction/pull/3634) ([@renovate-bot](https://github.com/renovate-bot) [@eessex](https://github.com/eessex) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.38.0 to v1.41.0 [#3645](https://github.com/artsy/reaction/pull/3645) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update aws-s3 orb from 1.0.16 to v2 [#3646](https://github.com/artsy/reaction/pull/3646) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep vscode-apollo-relay from 1.5.0 to v1.5.1 [#3642](https://github.com/artsy/reaction/pull/3642) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.37.0 to v1.38.0 [#3643](https://github.com/artsy/reaction/pull/3643) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v28.8.0 (Wed Sep 30 2020)
 
 #### 🚀  Enhancement
