@@ -73,42 +73,7 @@ class IconImageSet extends Component<Props, State> {
 ```
 
 If you don't have state at all, write `null` instead in the second argument: `Component<Props, null>`. That's your
-compiler errors sorted, so your component is working. Next, you want to preview it in Storybooks.
-
-#### Storybooks
-
-Reaction Force uses [React Storybook](https://storybook.js.org) to let you work in a sandboxed environment for your component.
-You're going to need to create a new file for your storybook section. We keep stories inside folders which are named `__stories__`. This folder exists in the same folder as the code they test. So make `/src/components/icon/__stories__`
-and add a file called `icon_image_set.story.tsx`. Your story should be picked up automatically assuming it
-ends with `story.tsx`.
-
-A story section generally looks like this:
-
-```tsx
-import { storiesOf } from "@storybook/react"
-import React from "react"
-
-import IconImageSet from "../icon_image_set"
-
-storiesOf("Icons", module).add("Imageset Preview", () => <IconImageSet />)
-```
-
-Where you can provide an outer name for the section (`"Icons"`), then a state for that component (`"Imageset Preview"`).
-As this component has no props, there's no need to test different props. However, you could easily see a more complex
-example looking like:
-
-```tsx
-storiesOf("Icon", module)
-  .add("Imageset Defaults", () => <IconImageSet />)
-  .add("Imageset Wide", () => <IconImageSet width={200} />)
-  .add("Imageset Red", () => <IconImageSet color="#bb1111" />)
-// And so on
-```
-
-You can start up the storybooks server by following the README, and any time you press save in your editor you should
-get hot reloading of your changes.
-
-So that's your dev environment. Let's look at testing.
+compiler errors sorted, so your component is working. Next, you want to preview it in Force by using `yarn link`.
 
 #### Testing with Jest
 
@@ -123,7 +88,7 @@ There are two main ways to write tests for your code in Reaction Force:
   react tree) into the file-system. These snapshots are included in the git repo, and CI will compare that the same process
   makes the same JSON object.
 
-  Any individual story state is probably worth converting into a jest snapshot.
+  Any individual component is probably worth converting into a jest snapshot.
 
   ```js
   import React from "react"

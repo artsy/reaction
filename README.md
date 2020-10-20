@@ -30,11 +30,6 @@
 
 ## Instructions
 
-- Development of components happen in [storybooks](https://storybook.js.org/):
-
-        $ yarn start
-        $ open http://localhost:9001/
-
 - Run the tests:
 
         $ yarn test
@@ -45,10 +40,6 @@
 
 - In vscode, run the `TypeScript: Run type-checker` task and open the `PROBLEMS` view to see continuous type-checker
   results.
-
-- After updating components, be sure to deploy a new demo (sharing is caring!):
-
-        $ yarn deploy-storybook
 
 - When using new changes in metaphysics’ schema, be sure to update the local schema copy:
 

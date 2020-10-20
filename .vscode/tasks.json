@@ -16,10 +16,6 @@
       "args": ["compile:server"]
     },
     {
-      "taskName": "storybook",
-      "args": ["storybook"]
-    },
-    {
       "taskName": "TypeScript: Run type-checker",
       "command": "${workspaceRoot}/node_modules/.bin/tsc",
       "isShellCommand": true,

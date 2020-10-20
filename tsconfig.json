@@ -14,7 +14,6 @@
     "noUnusedLocals": true,
     "outDir": "dist",
     "paths": {
-      "storybook/*": ["./__stories__/*"],
       "Analytics/*": ["./Analytics/*"],
       "Assets/*": ["./Assets/*"],
       "Components/*": ["./Components/*"],

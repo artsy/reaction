@@ -4,8 +4,6 @@
 .cache-loader
 .env
 .eslintcache
-.storybook/.DS_Store
-.storybook/manager.js
 .tsbuildinfo
 .vscode/cSpell.json
 *.tgz
@@ -21,7 +19,6 @@ tsconfig.tsbuildinfo
 reaction-force.js
 reaction-force.js.map
 yarn-error.log
-storybook_build
 .yalc
 yalc.lock
 coverage*
