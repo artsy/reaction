@@ -1,3 +1,21 @@
+# v28.10.0 (Tue Oct 20 2020)
+
+#### 🚀  Enhancement
+
+- Retire storybooks [#3651](https://github.com/artsy/reaction/pull/3651) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.41.0 to v1.42.0 [#3650](https://github.com/artsy/reaction/pull/3650) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v28.9.0 (Thu Oct 15 2020)
 
 #### 🚀  Enhancement
