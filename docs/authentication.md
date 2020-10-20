@@ -82,16 +82,9 @@ We use [Formik](https://github.com/jaredpalmer/formik) to handle form entries an
 - [`LoginForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/LoginForm.tsx)/[`SignUpForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/SignUpForm.tsx)/[`ForgotPasswordForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Desktop/ForgotPasswordForm.tsx) (Reaction): The Formik forms for handling inputs.
 
 - `AuthStatic` (Force): Wrapper for authentication via url route (desktop).
-
-[Desktop Storybooks](https://artsy.github.io/reaction/?selectedKind=Components%2FAuthentication%2FDesktop&selectedStory=Login&full=0&addons=1&stories=1&panelRight=0&addonPanel=PeterPanen%2Fstorybook-addon-scissors%2Fpanel)
-
-[**Mobile**](https://artsy.github.io/reaction/?selectedKind=Components%2FAuthentication%2FMobile&selectedStory=Login&full=0&addons=1&stories=1&panelRight=0&addonPanel=PeterPanen%2Fstorybook-addon-scissors%2Fpanel)
-
 - `MobileAuthStatic` (Force): Wrapper for authentication via url route (mobile).
 - [`FormSwitcher`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/FormSwitcher.tsx) (Reaction): See above.
 - [`LoginForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/LoginForm.tsx)/[`SignUpForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/SignUpForm.tsx)/[`ForgotPasswordForm`](https://github.com/artsy/reaction/blob/master/src/Components/Authentication/Mobile/ForgotPasswordForm.tsx)
-
-[Mobile Storybooks](https://artsy.github.io/reaction/?selectedKind=Components%2FAuthentication%2FMobile&selectedStory=Login&full=0&addons=1&stories=1&panelRight=0&addonPanel=PeterPanen%2Fstorybook-addon-scissors%2Fpanel)
 
 ### Configuration
 

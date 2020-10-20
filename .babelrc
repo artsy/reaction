@@ -46,7 +46,6 @@
           "./src"
         ],
         "alias": {
-          "storybook": "./src/__stories__",
           "Analytics": "./src/Analytics",
           "Assets": "./src/Assets",
           "Components": "./src/Components",

@@ -45,8 +45,7 @@
     "**/.git/**",
     ".vscode",
     "typings",
-    "**/*.snap",
-    "**/*.story.tsx"
+    "**/*.snap"
   ],
   "debug.node.autoAttach": "on"
 }

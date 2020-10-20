@@ -18,6 +18,7 @@ import {
   createMockNetworkLayer,
   createMockNetworkLayer2,
 } from "./createMockNetworkLayer"
+import { __webpack_require__ } from "webpack"
 
 export interface MockRelayRendererProps<T extends OperationType> {
   Component: React.ComponentType<any>
