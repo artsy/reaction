@@ -144,10 +144,10 @@ export class Text extends Component<Props, State> {
 
     return (
       <FollowContainer key={artistId}>
-        {!this.props.showTooltips ? (
-          <MobileFollowButton artistId={artistId} />
-        ) : (
+        {this.props.showTooltips ? (
           <FollowButton {...props} />
+        ) : (
+          <MobileFollowButton artistId={artistId} />
         )}
       </FollowContainer>
     )
