@@ -25,12 +25,13 @@ export class RelatedArticlesPanelLink extends React.Component<
       width: 160,
       height: 110,
     })
+    const articleTitle = article.thumbnail_title
 
     return (
       <ArticleLink href={href}>
-        <ArticleImage src={articleImageSrc} />
+        <ArticleImage alt={articleTitle} src={articleImageSrc} />
         <Serif size="4t" color={color("black100")}>
-          {article.thumbnail_title}
+          {articleTitle}
         </Serif>
       </ArticleLink>
     )
