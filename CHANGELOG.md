@@ -1,3 +1,15 @@
+# v28.11.0 (Thu Oct 22 2020)
+
+#### 🚀  Enhancement
+
+- Add missing alt text [#3653](https://github.com/artsy/reaction/pull/3653) ([@jonallured](https://github.com/jonallured))
+
+#### Authors: 1
+
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v28.10.0 (Tue Oct 20 2020)
 
 #### 🚀  Enhancement
