@@ -25,7 +25,6 @@ export class Text extends Component<Props, State> {
   static defaultProps = {
     color: "black",
     showTooltips: false,
-    isMobile: false,
   }
 
   static contextTypes = {
