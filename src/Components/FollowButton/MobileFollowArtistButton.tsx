@@ -13,7 +13,7 @@ import { ContextModule } from "@artsy/cohesion"
 export const MobileFollowArtistButton: React.FC<MobileFollowArtistButtonQueryResponse> = props => {
   return (
     <FollowArtistButton
-      contextModule={ContextModule.intextTooltip}
+      contextModule={ContextModule.articleArtist}
       artist={props.artist}
     />
   )
