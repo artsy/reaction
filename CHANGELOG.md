@@ -1,3 +1,25 @@
+# v28.12.0 (Tue Nov 03 2020)
+
+#### 🚀  Enhancement
+
+- chore: move cohesion out of dev deps [#3658](https://github.com/artsy/reaction/pull/3658) ([@eessex](https://github.com/eessex))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 13.15.0 to v13.16.0 [#3657](https://github.com/artsy/reaction/pull/3657) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.44.0 to v1.45.0 [#3655](https://github.com/artsy/reaction/pull/3655) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/palette from 13.13.0 to v13.15.0 [#3656](https://github.com/artsy/reaction/pull/3656) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/cohesion from 1.42.0 to v1.44.0 [#3654](https://github.com/artsy/reaction/pull/3654) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/palette from 13.10.1 to v13.13.0 [#3652](https://github.com/artsy/reaction/pull/3652) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Eve Essex ([@eessex](https://github.com/eessex))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v28.11.0 (Thu Oct 22 2020)
 
 #### 🚀  Enhancement
