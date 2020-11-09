@@ -444,13 +444,32 @@ exports[`Video About matches the snapshot 1`] = `
       className="article__text-section c3 c4"
       color="black"
     >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p><b>Director</b></p><p>Marina Cashdan</p><p><b>Featuring</b></p><p>Trevor Paglan</p>",
-          }
-        }
-      />
+      <div>
+        <div
+          className="paragraph"
+        >
+          <b>
+            Director
+          </b>
+        </div>
+        <div
+          className="paragraph"
+        >
+          Marina Cashdan
+        </div>
+        <div
+          className="paragraph"
+        >
+          <b>
+            Featuring
+          </b>
+        </div>
+        <div
+          className="paragraph"
+        >
+          Trevor Paglan
+        </div>
+      </div>
     </div>
     <div
       className="fresnel-container fresnel-greaterThanOrEqual-md"
@@ -602,13 +621,29 @@ exports[`Video About matches the snapshot 1`] = `
       className="article__text-section c3 c4"
       color="black"
     >
-      <div
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "<p>Integer posuere erat a ante venenatis <a href='artsy.net'>dapibus posuere velit</a> aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.</p><p>Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>",
-          }
-        }
-      />
+      <div>
+        <div
+          className="paragraph"
+        >
+          Integer posuere erat a ante venenatis 
+          <a
+            href="artsy.net"
+          >
+            dapibus posuere velit
+          </a>
+           aliquet. Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+        <div
+          className="paragraph"
+        >
+          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Curabitur blandit tempus porttitor. Sed posuere consectetur est at lobortis. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam quis risus eget urna mollis ornare vel eu leo.
+        </div>
+        <div
+          className="paragraph"
+        >
+          Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
+        </div>
+      </div>
     </div>
     <div
       className="fresnel-container fresnel-lessThan-md"

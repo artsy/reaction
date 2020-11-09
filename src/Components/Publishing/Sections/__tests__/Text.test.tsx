@@ -83,8 +83,8 @@ describe("Text", () => {
         testProps.isContentEnd = true
         const wrapper = mount(getWrapper(testProps))
 
-        expect(wrapper.html()).toMatch(
-          `<p>The end of the article<span class=\"content-end\"> </span></p><h3>An h3 after</h3>`
+        expect(wrapper.html()).toContain(
+          '<div class="paragraph">The end of the article<span class="content-end"> </span></div><h3>An h3 after</h3></div>'
         )
       })
 

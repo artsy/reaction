@@ -132,6 +132,8 @@ export class Text extends Component<Props, State> {
   renderArtistFollowButton = (node: Element) => {
     // Dont include relay components unless necessary
     // To avoid 'regeneratorRuntime' error
+    const MobileFollowButton = require("../../FollowButton/MobileFollowArtistButton")
+      .MobileFollowArtistButtonQueryRenderer
     const FollowButton = require("../../FollowButton/FollowArtistButton")
       .FollowArtistButtonFragmentContainer
 
@@ -141,7 +143,11 @@ export class Text extends Component<Props, State> {
 
     return (
       <FollowContainer key={artistId}>
-        <FollowButton {...props} />
+        {this.props.showTooltips ? (
+          <FollowButton {...props} />
+        ) : (
+          <MobileFollowButton artistId={artistId} />
+        )}
       </FollowContainer>
     )
   }
@@ -158,7 +164,7 @@ export class Text extends Component<Props, State> {
       if (this.isArtistFollow(node)) {
         return this.renderArtistFollowButton(node)
       }
-      if (this.shouldShowTooltipForURL(node)) {
+      if (this.props.showTooltips && this.shouldShowTooltipForURL(node)) {
         return this.renderLinkWithToolTip(node, index)
       }
     }
@@ -185,13 +191,7 @@ export class Text extends Component<Props, State> {
         showTooltips={showTooltips}
       >
         {html.length ? (
-          showTooltips ? (
-            <div>
-              {ReactHtmlParser(html, { transform: this.transformNode })}
-            </div>
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-          )
+          <div>{ReactHtmlParser(html, { transform: this.transformNode })}</div>
         ) : (
           children
         )}

@@ -1,4 +1,4 @@
-import { Box, color, Flex, media, Sans, Serif, space } from "@artsy/palette"
+import { Box, Flex, Sans, Serif, color, media, space } from "@artsy/palette"
 import { compact, find, map } from "lodash"
 import React from "react"
 import styled from "styled-components"

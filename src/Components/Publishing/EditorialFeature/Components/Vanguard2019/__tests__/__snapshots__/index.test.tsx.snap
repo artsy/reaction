@@ -397,13 +397,30 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="article__text-section StyledText-sc-1ysl1h-0 bBVXyI"
             color="black"
           >
-            <div
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "<p>The landscape of contemporary art is ever-changing. It shifts according to countless factors, from artists’ principles and the political climate to auction records and collectors’ tastes. Nevertheless, each year, a new crop of ambitious artists stands out. They catapult from obscurity to ubiquity, earn representation from top galleries, garner interest from prominent collectors, and pack their schedules with exhibitions. Most importantly, they make work that expands our understanding of what art can be. </p><p>The Artsy Vanguard 2019 features 50 artists, hailing from 27 countries and working in 27 cities around the world. Ranging in age from 28 to 93, they pursue painting, sculpture, photography, filmmaking, and performance, as well as investigative research and virtual reality. They delve into topics from human rights violations to youth culture, and capture the attention of powerhouse collectors and celebrity royalty, like Beyoncé. </p><p><i>Artsy </i>editors developed this list from a pool of 600 artists who were nominated by more than 100 curators, collectors, and art-world professionals. These artists represent three distinct career stages, which we’ve arranged into the following categories: Emerging, which introduces artists who recently started showing at leading institutions and galleries; Newly Established, which presents the artists making noise at major art events and gaining representation with influential galleries; and Getting Their Due, which recognizes artists who have worked persistently for decades, yet have only recently received the spotlight they deserve. The Artsy Vanguard highlights the artists paving the future of art <i>right now</i>.</p>",
-                }
-              }
-            />
+            <div>
+              <div
+                className="paragraph"
+              >
+                The landscape of contemporary art is ever-changing. It shifts according to countless factors, from artists’ principles and the political climate to auction records and collectors’ tastes. Nevertheless, each year, a new crop of ambitious artists stands out. They catapult from obscurity to ubiquity, earn representation from top galleries, garner interest from prominent collectors, and pack their schedules with exhibitions. Most importantly, they make work that expands our understanding of what art can be. 
+              </div>
+              <div
+                className="paragraph"
+              >
+                The Artsy Vanguard 2019 features 50 artists, hailing from 27 countries and working in 27 cities around the world. Ranging in age from 28 to 93, they pursue painting, sculpture, photography, filmmaking, and performance, as well as investigative research and virtual reality. They delve into topics from human rights violations to youth culture, and capture the attention of powerhouse collectors and celebrity royalty, like Beyoncé. 
+              </div>
+              <div
+                className="paragraph"
+              >
+                <i>
+                  Artsy 
+                </i>
+                editors developed this list from a pool of 600 artists who were nominated by more than 100 curators, collectors, and art-world professionals. These artists represent three distinct career stages, which we’ve arranged into the following categories: Emerging, which introduces artists who recently started showing at leading institutions and galleries; Newly Established, which presents the artists making noise at major art events and gaining representation with influential galleries; and Getting Their Due, which recognizes artists who have worked persistently for decades, yet have only recently received the spotlight they deserve. The Artsy Vanguard highlights the artists paving the future of art 
+                <i>
+                  right now
+                </i>
+                .
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1169,13 +1186,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/victoria-sin\\">Victoria Sin</a> develops performances, films, texts, and installations that delve into gender, harnessing science-fiction themes to imagine alternate societal norms. Sin began performing at the London nightclub Vogue Fabrics in Dalston in 2013. Since then, they’ve captured the attention of the art world. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/victoria-sin"
+                    >
+                      Victoria Sin
+                    </a>
+                     develops performances, films, texts, and installations that delve into gender, harnessing science-fiction themes to imagine alternate societal norms. Sin began performing at the London nightclub Vogue Fabrics in Dalston in 2013. Since then, they’ve captured the attention of the art world. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1608,13 +1630,29 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Through videos and installations, artist <a href=\\"https://www.artsy.net/artist/monira-al-qadiri\\">Monira Al Qadiri</a> creates unsettling, supernatural, or kitschy atmospheres. Drawing on history, ritual, culture, and power, she shifts viewers into a new headspace. For her 2017 video installation <em>The Craft</em>—commissioned by Gasworks in London and <a href=\\"https://www.artsy.net/sursock\\">The Sursock Museum</a> in Beirut—Al Qadiri turned her childhood memories in Kuwait into a paranoid narrative in which aliens invade from the brightly lit interior of an American diner. Her distrust increasingly blossoms, addressing first her familial relationships, and then society itself.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Through videos and installations, artist 
+                    <a
+                      href="https://www.artsy.net/artist/monira-al-qadiri"
+                    >
+                      Monira Al Qadiri
+                    </a>
+                     creates unsettling, supernatural, or kitschy atmospheres. Drawing on history, ritual, culture, and power, she shifts viewers into a new headspace. For her 2017 video installation 
+                    <em>
+                      The Craft
+                    </em>
+                    —commissioned by Gasworks in London and 
+                    <a
+                      href="https://www.artsy.net/sursock"
+                    >
+                      The Sursock Museum
+                    </a>
+                     in Beirut—Al Qadiri turned her childhood memories in Kuwait into a paranoid narrative in which aliens invade from the brightly lit interior of an American diner. Her distrust increasingly blossoms, addressing first her familial relationships, and then society itself.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2047,13 +2085,66 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/diedrick-brackens\\">Diedrick Brackens</a>’s woven textiles feature depictions of people and animals, embedded with expressions of black and queer identity. Last summer, he was featured in the <a href=\\"https://www.artsy.net/hammer-museum\\">Hammer Museum</a>’s “<a href=\\"https://www.artsy.net/show/hammer-museum-made-in-la-2018\\">Made in L.A.</a>” biennial, and then won the <a href=\\"https://www.artsy.net/studio-museum\\">Studio Museum in Harlem</a>’s $50,000 Joyce Alexander Wein Artist Prize in the fall. This past spring, his work filled both a gallery show and a Frieze New York booth with L.A.’s <a href=\\"https://www.artsy.net/various-small-fires\\">Various Small Fires</a>; his work entered the collection of the <a href=\\"https://www.artsy.net/brooklyn-museum\\">Brooklyn Museum</a>; he joined the roster of New York’s <a href=\\"https://www.artsy.net/jack-shainman-gallery\\">Jack Shainman Gallery</a>; and he opened a <a href=\\"https://www.artsy.net/show/new-museum-1-diedrick-brackens-darling-divined\\">solo show</a> at the <a href=\\"https://www.artsy.net/newmuseum\\">New Museum</a>. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/diedrick-brackens"
+                    >
+                      Diedrick Brackens
+                    </a>
+                    ’s woven textiles feature depictions of people and animals, embedded with expressions of black and queer identity. Last summer, he was featured in the 
+                    <a
+                      href="https://www.artsy.net/hammer-museum"
+                    >
+                      Hammer Museum
+                    </a>
+                    ’s “
+                    <a
+                      href="https://www.artsy.net/show/hammer-museum-made-in-la-2018"
+                    >
+                      Made in L.A.
+                    </a>
+                    ” biennial, and then won the 
+                    <a
+                      href="https://www.artsy.net/studio-museum"
+                    >
+                      Studio Museum in Harlem
+                    </a>
+                    ’s $50,000 Joyce Alexander Wein Artist Prize in the fall. This past spring, his work filled both a gallery show and a Frieze New York booth with L.A.’s 
+                    <a
+                      href="https://www.artsy.net/various-small-fires"
+                    >
+                      Various Small Fires
+                    </a>
+                    ; his work entered the collection of the 
+                    <a
+                      href="https://www.artsy.net/brooklyn-museum"
+                    >
+                      Brooklyn Museum
+                    </a>
+                    ; he joined the roster of New York’s 
+                    <a
+                      href="https://www.artsy.net/jack-shainman-gallery"
+                    >
+                      Jack Shainman Gallery
+                    </a>
+                    ; and he opened a 
+                    <a
+                      href="https://www.artsy.net/show/new-museum-1-diedrick-brackens-darling-divined"
+                    >
+                      solo show
+                    </a>
+                     at the 
+                    <a
+                      href="https://www.artsy.net/newmuseum"
+                    >
+                      New Museum
+                    </a>
+                    . 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2461,13 +2552,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>As South African installation artist <a href=\\"https://www.artsy.net/artist/dineo-seshee-bopape\\">Dineo Seshee Bopape</a>’s career has taken off, her work has remained truly grounded. Her most distinctive work of the last four years has involved large-scale interventions consisting of dirt, clay, and earthen bricks. Bopape, who is represented by Sfeir-Semler Gallery, punctuates such works with videos, sculptures, and enigmatic materials and artifacts. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    As South African installation artist 
+                    <a
+                      href="https://www.artsy.net/artist/dineo-seshee-bopape"
+                    >
+                      Dineo Seshee Bopape
+                    </a>
+                    ’s career has taken off, her work has remained truly grounded. Her most distinctive work of the last four years has involved large-scale interventions consisting of dirt, clay, and earthen bricks. Bopape, who is represented by Sfeir-Semler Gallery, punctuates such works with videos, sculptures, and enigmatic materials and artifacts. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2900,13 +2997,25 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>At the <a href=\\"https://www.artsy.net/show/58th-venice-biennale-may-you-live-in-interesting-times\\">58th Venice Biennale</a>, one can’t help but stop in their tracks before the work of <a href=\\"https://www.artsy.net/artist/martine-gutierrez\\">Martine Gutierrez</a>. The transgender Latinx photographer’s self-portraits challenge gender stereotypes, offer up new visions of pop-cultural icons, and commingle tropes of high fashion and indigenous cultures. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    At the 
+                    <a
+                      href="https://www.artsy.net/show/58th-venice-biennale-may-you-live-in-interesting-times"
+                    >
+                      58th Venice Biennale
+                    </a>
+                    , one can’t help but stop in their tracks before the work of 
+                    <a
+                      href="https://www.artsy.net/artist/martine-gutierrez"
+                    >
+                      Martine Gutierrez
+                    </a>
+                    . The transgender Latinx photographer’s self-portraits challenge gender stereotypes, offer up new visions of pop-cultural icons, and commingle tropes of high fashion and indigenous cultures. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -3314,13 +3423,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/genesis-belanger\\">Genesis Belanger</a> charmed the New York art world in the fall of 2017 with her small-but-mighty show of otherworldly ceramic foodstuffs, cigarettes, and fingers at Mrs. Gallery. Her ceramics—with lush pastel hues, matte surfaces, trompe l’oeil aesthetics, and finely hewn details—transcend the typical clay-and-glaze constructions we expect from the medium.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/genesis-belanger"
+                    >
+                      Genesis Belanger
+                    </a>
+                     charmed the New York art world in the fall of 2017 with her small-but-mighty show of otherworldly ceramic foodstuffs, cigarettes, and fingers at Mrs. Gallery. Her ceramics—with lush pastel hues, matte surfaces, trompe l’oeil aesthetics, and finely hewn details—transcend the typical clay-and-glaze constructions we expect from the medium.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -3753,13 +3867,26 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/tao-hui-tao-hui\\">Tao Hui</a> remembers a childhood when he experienced much of the world through a television set. It’s a perspective that underlies his video work, where realities and fictions commingle, and identities and interactions are performed. In stilted, melodramatic scenes brought to life by actors, Tao creates fragments of narratives that hold a flame to our media-saturated world. In <em>Joint Images</em> (2016), a man and woman engage in hammy dialogue while a soap opera on the television behind them mirrors their scripted conversation. In <em>Double Talk </em>(2018), the ghost of a K-pop star reflects upon his life and legacy while a classroom of children watch through a screen.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/tao-hui-tao-hui"
+                    >
+                      Tao Hui
+                    </a>
+                     remembers a childhood when he experienced much of the world through a television set. It’s a perspective that underlies his video work, where realities and fictions commingle, and identities and interactions are performed. In stilted, melodramatic scenes brought to life by actors, Tao creates fragments of narratives that hold a flame to our media-saturated world. In 
+                    <em>
+                      Joint Images
+                    </em>
+                     (2016), a man and woman engage in hammy dialogue while a soap opera on the television behind them mirrors their scripted conversation. In 
+                    <em>
+                      Double Talk 
+                    </em>
+                    (2018), the ghost of a K-pop star reflects upon his life and legacy while a classroom of children watch through a screen.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -4192,13 +4319,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/jordan-nassar\\">Jordan Nassar</a> harnesses the disarming charm of embroidery to devastating effect. His handmade works meld dramatic mountainscapes of cascading slopes saturated with color, which are overlaid with abstract patterns sourced from traditional Palestinian embroidery. Initially, Nassar generated the patterns for his work via computer and hand-stitched them himself, but he has since collaborated with female artisans in the West Bank who stitch the patterns; he then overlays the colorful landscapes.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/jordan-nassar"
+                    >
+                      Jordan Nassar
+                    </a>
+                     harnesses the disarming charm of embroidery to devastating effect. His handmade works meld dramatic mountainscapes of cascading slopes saturated with color, which are overlaid with abstract patterns sourced from traditional Palestinian embroidery. Initially, Nassar generated the patterns for his work via computer and hand-stitched them himself, but he has since collaborated with female artisans in the West Bank who stitch the patterns; he then overlays the colorful landscapes.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -4631,13 +4763,22 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/geng-xue\\">Geng Xue</a>’s best-known work is a stop-motion film featuring porcelain marionette figures, titled <em>Mr. Sea </em>(2014). The piece conjures a sensual, mystical world in which a man falls in love with a woman who turns into a monster. Though static, Geng’s sculptural figures appear to exist in states of perpetual transformation: heads that are seemingly submerged in water grow branches and bones emerge from severed legs.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/geng-xue"
+                    >
+                      Geng Xue
+                    </a>
+                    ’s best-known work is a stop-motion film featuring porcelain marionette figures, titled 
+                    <em>
+                      Mr. Sea 
+                    </em>
+                    (2014). The piece conjures a sensual, mystical world in which a man falls in love with a woman who turns into a monster. Though static, Geng’s sculptural figures appear to exist in states of perpetual transformation: heads that are seemingly submerged in water grow branches and bones emerge from severed legs.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -5045,13 +5186,23 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>In 2015, the world was introduced to <em>Fardaous Funjab </em>(2015–17), a documentary about an avant-garde hijab designer who makes outlandish versions of the Muslim headgear: a Metallica hijab; a birthday hijab with a cake on the top. Alas, no such designer exists—she is a character concocted by <a href=\\"https://www.artsy.net/artist/meriem-bennani\\">Meriem Bennani</a>. The artist was drawing upon her upbringing in Rabat, Morocco, and playing on the contemporary obsession with reality television and Instagram. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    In 2015, the world was introduced to 
+                    <em>
+                      Fardaous Funjab 
+                    </em>
+                    (2015–17), a documentary about an avant-garde hijab designer who makes outlandish versions of the Muslim headgear: a Metallica hijab; a birthday hijab with a cake on the top. Alas, no such designer exists—she is a character concocted by 
+                    <a
+                      href="https://www.artsy.net/artist/meriem-bennani"
+                    >
+                      Meriem Bennani
+                    </a>
+                    . The artist was drawing upon her upbringing in Rabat, Morocco, and playing on the contemporary obsession with reality television and Instagram. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -5459,13 +5610,53 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/manuel-solano\\">Manuel Solano</a>’s paintings are pulsating figurative scenes that picture slices of pop culture, vivid portraits, and homey environments where the artist grew up. Looking at them, you wouldn’t know that Solano went blind at age 26. Losing their sight didn’t stop the artist from continuing to paint. Now, some five years later, their work has earned them institutional shows and gallery representation: in 2018 Solano was included in the <a href=\\"https://www.artsy.net/newmuseum\\">New Museum </a><a href=\\"https://www.artsy.net/show/new-museum-1-2018-triennial-songs-for-sabotage\\">Triennial</a> and had a <a href=\\"https://www.artsy.net/show/ica-miami-manuel-solano-i-dont-wanna-wait-for-our-lives-to-be-over-1\\">solo show</a> at the <a href=\\"https://www.artsy.net/icamiami\\">Institute of Contemporary Art, Miami</a>; they are represented by tastemaking Berlin gallery <a href=\\"https://www.artsy.net/peres-projects\\">Peres Projects</a>. The artist is currently included in a show at the <a href=\\"https://www.artsy.net/palaisdetokyo\\">Palais de Tokyo</a>, and will soon open a solo exhibition at the esteemed São Paulo nonprofit, Pivô.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/manuel-solano"
+                    >
+                      Manuel Solano
+                    </a>
+                    ’s paintings are pulsating figurative scenes that picture slices of pop culture, vivid portraits, and homey environments where the artist grew up. Looking at them, you wouldn’t know that Solano went blind at age 26. Losing their sight didn’t stop the artist from continuing to paint. Now, some five years later, their work has earned them institutional shows and gallery representation: in 2018 Solano was included in the 
+                    <a
+                      href="https://www.artsy.net/newmuseum"
+                    >
+                      New Museum 
+                    </a>
+                    <a
+                      href="https://www.artsy.net/show/new-museum-1-2018-triennial-songs-for-sabotage"
+                    >
+                      Triennial
+                    </a>
+                     and had a 
+                    <a
+                      href="https://www.artsy.net/show/ica-miami-manuel-solano-i-dont-wanna-wait-for-our-lives-to-be-over-1"
+                    >
+                      solo show
+                    </a>
+                     at the 
+                    <a
+                      href="https://www.artsy.net/icamiami"
+                    >
+                      Institute of Contemporary Art, Miami
+                    </a>
+                    ; they are represented by tastemaking Berlin gallery 
+                    <a
+                      href="https://www.artsy.net/peres-projects"
+                    >
+                      Peres Projects
+                    </a>
+                    . The artist is currently included in a show at the 
+                    <a
+                      href="https://www.artsy.net/palaisdetokyo"
+                    >
+                      Palais de Tokyo
+                    </a>
+                    , and will soon open a solo exhibition at the esteemed São Paulo nonprofit, Pivô.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -5898,13 +6089,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/lauren-halsey\\">Lauren Halsey</a>, winner of the 2019 Frieze Artist Award, created arguably the most timely artwork at the fair’s recent New York edition. At the entrance to the white tent on Randall’s Island, she erected two giant white columns to commemorate the recent death of rapper Nipsey Hussle. In such sculptures, and in the immersive installations for which she’s become known, the native Angeleno considers the black experience in her hometown. Halsey’s site-specific works are always in dialogue with their structures—she adorns columns, walls, and entire rooms with images and artifacts that infuse staid, institutional structures with new, youthful energy.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/lauren-halsey"
+                    >
+                      Lauren Halsey
+                    </a>
+                    , winner of the 2019 Frieze Artist Award, created arguably the most timely artwork at the fair’s recent New York edition. At the entrance to the white tent on Randall’s Island, she erected two giant white columns to commemorate the recent death of rapper Nipsey Hussle. In such sculptures, and in the immersive installations for which she’s become known, the native Angeleno considers the black experience in her hometown. Halsey’s site-specific works are always in dialogue with their structures—she adorns columns, walls, and entire rooms with images and artifacts that infuse staid, institutional structures with new, youthful energy.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -6337,13 +6533,24 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/derek-fordjour\\">Derek Fordjour</a>’s vibrant paintings entice the viewer with colorful surfaces, frequently built up with skillfully applied cardboard and newspaper. They often feature athletes, cheerleaders, and marching bands. Fittingly, last December, the artist’s sold-out presentation (with <a href=\\"https://www.artsy.net/josh-lilley\\">Josh Lilley</a>) at Art Basel in Miami Beach was a gravel-covered arena with enamored fairgoers becoming his cheering crowd. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/derek-fordjour"
+                    >
+                      Derek Fordjour
+                    </a>
+                    ’s vibrant paintings entice the viewer with colorful surfaces, frequently built up with skillfully applied cardboard and newspaper. They often feature athletes, cheerleaders, and marching bands. Fittingly, last December, the artist’s sold-out presentation (with 
+                    <a
+                      href="https://www.artsy.net/josh-lilley"
+                    >
+                      Josh Lilley
+                    </a>
+                    ) at Art Basel in Miami Beach was a gravel-covered arena with enamored fairgoers becoming his cheering crowd. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -6751,13 +6958,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/alia-farid\\">Alia Farid</a>’s art concerns many-faceted themes firmly enmeshed in the fabric of contemporary life. Her projects have a way of taking on lives of their own. She was tapped to curate the pavilion of her native Kuwait at the 2014 Venice Biennale of Architecture, where she presented a century of Kuwaiti modernity as it came to be shaped by the discovery of oil. But the presentation also spawned an informal school that outlived the pavilion, becoming a venue for discussing the social dimensions of architectural spaces and environments.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/alia-farid"
+                    >
+                      Alia Farid
+                    </a>
+                    ’s art concerns many-faceted themes firmly enmeshed in the fabric of contemporary life. Her projects have a way of taking on lives of their own. She was tapped to curate the pavilion of her native Kuwait at the 2014 Venice Biennale of Architecture, where she presented a century of Kuwaiti modernity as it came to be shaped by the discovery of oil. But the presentation also spawned an informal school that outlived the pavilion, becoming a venue for discussing the social dimensions of architectural spaces and environments.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -7165,13 +7377,24 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/gala-porras-kim\\">Gala Porras-Kim</a> delves into the conceptual underpinnings of art, often investigating how artifacts and cultural heritage come to be considered artworks. Her work has taken her deep into the <a href=\\"https://www.artsy.net/lacma\\">Los Angeles County Museum of Art</a>’s collection of ancient Mexican ceramics, analyzing how the meaning of such objects changed upon entering the context of an art museum. She’s also researched Zapotec, an ancient Mexican language, to consider the boundaries between visual language and drawing. These inquiries, informed by a master’s degree in Latin American studies, culminate in paintings and sculpture. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/gala-porras-kim"
+                    >
+                      Gala Porras-Kim
+                    </a>
+                     delves into the conceptual underpinnings of art, often investigating how artifacts and cultural heritage come to be considered artworks. Her work has taken her deep into the 
+                    <a
+                      href="https://www.artsy.net/lacma"
+                    >
+                      Los Angeles County Museum of Art
+                    </a>
+                    ’s collection of ancient Mexican ceramics, analyzing how the meaning of such objects changed upon entering the context of an art museum. She’s also researched Zapotec, an ancient Mexican language, to consider the boundaries between visual language and drawing. These inquiries, informed by a master’s degree in Latin American studies, culminate in paintings and sculpture. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -7604,13 +7827,23 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Often more than 10 feet tall and featuring glitter, bright hues, and larger-than-life subjects, <a href=\\"https://www.artsy.net/artist/jonathan-lyndon-chase\\">Jonathan Lyndon Chase</a>’s canvases are understandably difficult to ignore. Beyond their materiality and formal qualities, they demand attention—and visibility—for the queer black bodies they depict. For instance, the painting <em>Butt naked dressed in nothing but pearls</em> (2018) relishes gender nonconformity: The subject wears a beard, close-cropped hair, bright red lips, and the titular gems. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Often more than 10 feet tall and featuring glitter, bright hues, and larger-than-life subjects, 
+                    <a
+                      href="https://www.artsy.net/artist/jonathan-lyndon-chase"
+                    >
+                      Jonathan Lyndon Chase
+                    </a>
+                    ’s canvases are understandably difficult to ignore. Beyond their materiality and formal qualities, they demand attention—and visibility—for the queer black bodies they depict. For instance, the painting 
+                    <em>
+                      Butt naked dressed in nothing but pearls
+                    </em>
+                     (2018) relishes gender nonconformity: The subject wears a beard, close-cropped hair, bright red lips, and the titular gems. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -8018,13 +8251,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>In March 2018, <a href=\\"https://www.artsy.net/artist/elle-perez/shows\\">Elle Pérez</a>’s first show at 47 Canal, titled “In Bloom,” immediately announced the artist as a new voice in photography, one that could explore the contemporary body with raw intimacy. One of the photos showed a bloody scab- and scar-lined hand resting with popping veins between two legs.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    In March 2018, 
+                    <a
+                      href="https://www.artsy.net/artist/elle-perez/shows"
+                    >
+                      Elle Pérez
+                    </a>
+                    ’s first show at 47 Canal, titled “In Bloom,” immediately announced the artist as a new voice in photography, one that could explore the contemporary body with raw intimacy. One of the photos showed a bloody scab- and scar-lined hand resting with popping veins between two legs.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -8457,13 +8696,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>There’s a reason why many of <a href=\\"https://www.artsy.net/artist/suki-seokyeong-kang\\">Suki Seokyeong Kang</a>’s abstract, found-object structures feel strangely familial, even human. Her subtly anthropomorphized “Grandmother Towers” are sculptural portraits of her late grandmother. One of the Korean artist’s sculptures—an arched construction resembling coffee tables or musical drums stacked into a craning formation—is a tender representation of her relative’s hunched-over spinal column. Imbued in these personal forms is the artist’s exploration of the relationship between individual and society; she sees her grandmother as an embodiment of Korea’s tumultuous recent history.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    There’s a reason why many of 
+                    <a
+                      href="https://www.artsy.net/artist/suki-seokyeong-kang"
+                    >
+                      Suki Seokyeong Kang
+                    </a>
+                    ’s abstract, found-object structures feel strangely familial, even human. Her subtly anthropomorphized “Grandmother Towers” are sculptural portraits of her late grandmother. One of the Korean artist’s sculptures—an arched construction resembling coffee tables or musical drums stacked into a craning formation—is a tender representation of her relative’s hunched-over spinal column. Imbued in these personal forms is the artist’s exploration of the relationship between individual and society; she sees her grandmother as an embodiment of Korea’s tumultuous recent history.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -8871,13 +9116,23 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>In 2017, multidisciplinary artist <a href=\\"https://www.artsy.net/artist/evelyn-taocheng-wang\\">Evelyn Taocheng Wang</a> released a catalog of diary entries and watercolors to coincide with her first institutional solo show, held at De Hallen Haarlem in the Netherlands. Titled <em>Unintended Experience (A job in Amsterdam)</em>, the volume recounted the five months she spent working as a trans woman in a red-light district massage parlor. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    In 2017, multidisciplinary artist 
+                    <a
+                      href="https://www.artsy.net/artist/evelyn-taocheng-wang"
+                    >
+                      Evelyn Taocheng Wang
+                    </a>
+                     released a catalog of diary entries and watercolors to coincide with her first institutional solo show, held at De Hallen Haarlem in the Netherlands. Titled 
+                    <em>
+                      Unintended Experience (A job in Amsterdam)
+                    </em>
+                    , the volume recounted the five months she spent working as a trans woman in a red-light district massage parlor. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -9285,13 +9540,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>There is something particularly current about <a href=\\"https://www.artsy.net/artist/jill-mulleady\\">Jill Mulleady’</a>s paintings. Her vaguely surrealistic scenes entail figures who get lost in private moments on cell phones, or in substance-induced oblivion while objects take on a sinister quality. An atmospheric tension pervades the scenes, curdling the air. Valérie Knoll, who curated Mulleady’s 2017 show at Kunsthalle Bern, noted that the artist’s paintings lure us “into worlds infiltrated by an air of violence and uncanniness.” She added, “They are intense, sexual, cold, and often nightmarish.”</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    There is something particularly current about 
+                    <a
+                      href="https://www.artsy.net/artist/jill-mulleady"
+                    >
+                      Jill Mulleady’
+                    </a>
+                    s paintings. Her vaguely surrealistic scenes entail figures who get lost in private moments on cell phones, or in substance-induced oblivion while objects take on a sinister quality. An atmospheric tension pervades the scenes, curdling the air. Valérie Knoll, who curated Mulleady’s 2017 show at Kunsthalle Bern, noted that the artist’s paintings lure us “into worlds infiltrated by an air of violence and uncanniness.” She added, “They are intense, sexual, cold, and often nightmarish.”
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -9899,13 +10160,47 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Thin seams rise up from beneath <a href=\\"https://www.artsy.net/artist/michael-armitage\\">Michael Armitage</a>’s lush, oil-painted scenes, like memories that lie just beneath consciousness. The artist paints on a traditional Ugandan bark cloth, called <em>lugobo</em>, which gives his surfaces intriguing inconsistencies. He draws his imagery from popular culture and his own past in Kenya, which makes for dreamlike, psychologically rich presentations. Though the artist has shown with mega-gallery <a href=\\"https://www.artsy.net/white-cube\\">White Cube</a> since 2015, he’s currently in the spotlight as his paintings earn much-deserved acclaim at the <a href=\\"https://www.artsy.net/show/58th-venice-biennale-may-you-live-in-interesting-times\\">Venice Biennale</a>. Additionally, his first solo museum show in New York will open this October at the freshly expanded <a href=\\"https://www.artsy.net/museum-of-modern-art\\">Museum of Modern Art</a>, in partnership with the <a href=\\"https://www.artsy.net/studio-museum\\">Studio Museum in Harlem</a>. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Thin seams rise up from beneath 
+                    <a
+                      href="https://www.artsy.net/artist/michael-armitage"
+                    >
+                      Michael Armitage
+                    </a>
+                    ’s lush, oil-painted scenes, like memories that lie just beneath consciousness. The artist paints on a traditional Ugandan bark cloth, called 
+                    <em>
+                      lugobo
+                    </em>
+                    , which gives his surfaces intriguing inconsistencies. He draws his imagery from popular culture and his own past in Kenya, which makes for dreamlike, psychologically rich presentations. Though the artist has shown with mega-gallery 
+                    <a
+                      href="https://www.artsy.net/white-cube"
+                    >
+                      White Cube
+                    </a>
+                     since 2015, he’s currently in the spotlight as his paintings earn much-deserved acclaim at the 
+                    <a
+                      href="https://www.artsy.net/show/58th-venice-biennale-may-you-live-in-interesting-times"
+                    >
+                      Venice Biennale
+                    </a>
+                    . Additionally, his first solo museum show in New York will open this October at the freshly expanded 
+                    <a
+                      href="https://www.artsy.net/museum-of-modern-art"
+                    >
+                      Museum of Modern Art
+                    </a>
+                    , in partnership with the 
+                    <a
+                      href="https://www.artsy.net/studio-museum"
+                    >
+                      Studio Museum in Harlem
+                    </a>
+                    . 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -10338,13 +10633,31 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>For the first iteration of her touring solo exhibition “<a href=\\"https://www.artsy.net/show/perez-art-museum-miami-pamm-ebony-g-patterson-while-the-dew-is-still-on-the-roses\\">. . . while the dew is still on the roses . . .</a>” in 2018, <a href=\\"https://www.artsy.net/artist/ebony-g-patterson\\">Ebony G. Patterson</a> transformed the <a href=\\"https://www.artsy.net/pamm\\">Pérez Art Museum Miami</a> (PAMM) into what she called a “night garden.” Purple-and-blue floral wallpaper underpinned tapestries layered with glitter, lace, beads, drawings, and found objects like brooches and shoes. Blossoming faux-flowers and vines of ivy hung from the ceiling and clung to the walls.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    For the first iteration of her touring solo exhibition “
+                    <a
+                      href="https://www.artsy.net/show/perez-art-museum-miami-pamm-ebony-g-patterson-while-the-dew-is-still-on-the-roses"
+                    >
+                      . . . while the dew is still on the roses . . .
+                    </a>
+                    ” in 2018, 
+                    <a
+                      href="https://www.artsy.net/artist/ebony-g-patterson"
+                    >
+                      Ebony G. Patterson
+                    </a>
+                     transformed the 
+                    <a
+                      href="https://www.artsy.net/pamm"
+                    >
+                      Pérez Art Museum Miami
+                    </a>
+                     (PAMM) into what she called a “night garden.” Purple-and-blue floral wallpaper underpinned tapestries layered with glitter, lace, beads, drawings, and found objects like brooches and shoes. Blossoming faux-flowers and vines of ivy hung from the ceiling and clung to the walls.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -10752,13 +11065,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>For <a href=\\"https://www.artsy.net/artist/lawrence-abu-hamdan\\">Lawrence Abu Hamdan</a>, sound is more than an art form, or even a fact of life. The self-described “private ear” uses various kinds of audio in installations, performances, and graphic works that interrogate the effects of sound on human rights—how voices are silenced, and how they can be heard and answered. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    For 
+                    <a
+                      href="https://www.artsy.net/artist/lawrence-abu-hamdan"
+                    >
+                      Lawrence Abu Hamdan
+                    </a>
+                    , sound is more than an art form, or even a fact of life. The self-described “private ear” uses various kinds of audio in installations, performances, and graphic works that interrogate the effects of sound on human rights—how voices are silenced, and how they can be heard and answered. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -11166,13 +11485,30 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/korakrit-arunanondchai\\">Korakrit Arunanondchai</a>’s work has always been pretty unmissable in person. He makes brashly ambitious sculptures, where twisty coils rise up from matte-black bases and loom above the heads of gallery-goers; canvases licked with images of flames; and video works that evoke the calming presence of a Thai jungle or the feverish world of a rave. In 2019, he became globally visible: His work is currently on view at the <a href=\\"https://www.artsy.net/show/whitney-museum-of-american-art-1-whitney-biennial-2019-1\\">Whitney Biennial</a> and is featured in the <a href=\\"https://www.artsy.net/show/58th-venice-biennale-may-you-live-in-interesting-times\\">Venice Biennale</a>, making Arunanondchai one of the few artists included in both shows at the same time. The artist shows with London gallery Carlos/Ishikawa, as well as Bangkok CityCity Gallery and the Brussels- and Brooklyn-based Clearing.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/korakrit-arunanondchai"
+                    >
+                      Korakrit Arunanondchai
+                    </a>
+                    ’s work has always been pretty unmissable in person. He makes brashly ambitious sculptures, where twisty coils rise up from matte-black bases and loom above the heads of gallery-goers; canvases licked with images of flames; and video works that evoke the calming presence of a Thai jungle or the feverish world of a rave. In 2019, he became globally visible: His work is currently on view at the 
+                    <a
+                      href="https://www.artsy.net/show/whitney-museum-of-american-art-1-whitney-biennial-2019-1"
+                    >
+                      Whitney Biennial
+                    </a>
+                     and is featured in the 
+                    <a
+                      href="https://www.artsy.net/show/58th-venice-biennale-may-you-live-in-interesting-times"
+                    >
+                      Venice Biennale
+                    </a>
+                    , making Arunanondchai one of the few artists included in both shows at the same time. The artist shows with London gallery Carlos/Ishikawa, as well as Bangkok CityCity Gallery and the Brussels- and Brooklyn-based Clearing.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -11605,13 +11941,23 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>The creative duo that is <a href=\\"https://www.artsy.net/artist/barbara-wagner-and-benjamin-de-burca/shows\\">Bárbara Wagner &amp; Benjamin de Burca</a> got their start only six years ago, when the two collaborated on a photographic series exploring the new middle class in Brazil. They have since developed some 10 comprehensive projects for biennials, exhibitions, and festivals around the world. Their signature works investigate youth culture and marginalized communities through a multidisciplinary practice that integrates filmmaking, anthropology, performance, music, and dance. The artists meld documentary and fiction by working in collaboration with their protagonists: rappers in Toronto; Swingueira dancers in Brazil; <em>schlager</em> singers in Germany.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    The creative duo that is 
+                    <a
+                      href="https://www.artsy.net/artist/barbara-wagner-and-benjamin-de-burca/shows"
+                    >
+                      Bárbara Wagner & Benjamin de Burca
+                    </a>
+                     got their start only six years ago, when the two collaborated on a photographic series exploring the new middle class in Brazil. They have since developed some 10 comprehensive projects for biennials, exhibitions, and festivals around the world. Their signature works investigate youth culture and marginalized communities through a multidisciplinary practice that integrates filmmaking, anthropology, performance, music, and dance. The artists meld documentary and fiction by working in collaboration with their protagonists: rappers in Toronto; Swingueira dancers in Brazil; 
+                    <em>
+                      schlager
+                    </em>
+                     singers in Germany.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -12019,13 +12365,37 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Winner of the <a href=\\"https://www.artsy.net/show/tate-britain-turner-prize-2018\\">2018 Turner Prize</a>, <a href=\\"https://www.artsy.net/artist/charlotte-prodger\\">Charlotte Prodger</a> debuted an intimate film at this year’s Venice Biennale representing Scotland at its satellite pavillion. In this newest work, the British artist juxtaposes breathtaking shots of nature with spoken anecdotes that sound like diary entries about queer relationships and sexual encounters. The viewer must work out the connections between the disembodied voice, personal stories, and the landscape on screen. Brief pauses in the dialogue offer time for additional contemplation and looking. Titled <em>SaF05</em> (2019), the work completes a trilogy that began with <em>Stoneymollan Trail</em> (2015) and <em>BRIDGIT</em> (2016).</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Winner of the 
+                    <a
+                      href="https://www.artsy.net/show/tate-britain-turner-prize-2018"
+                    >
+                      2018 Turner Prize
+                    </a>
+                    , 
+                    <a
+                      href="https://www.artsy.net/artist/charlotte-prodger"
+                    >
+                      Charlotte Prodger
+                    </a>
+                     debuted an intimate film at this year’s Venice Biennale representing Scotland at its satellite pavillion. In this newest work, the British artist juxtaposes breathtaking shots of nature with spoken anecdotes that sound like diary entries about queer relationships and sexual encounters. The viewer must work out the connections between the disembodied voice, personal stories, and the landscape on screen. Brief pauses in the dialogue offer time for additional contemplation and looking. Titled 
+                    <em>
+                      SaF05
+                    </em>
+                     (2019), the work completes a trilogy that began with 
+                    <em>
+                      Stoneymollan Trail
+                    </em>
+                     (2015) and 
+                    <em>
+                      BRIDGIT
+                    </em>
+                     (2016).
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -12458,13 +12828,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/jeffrey-gibson\\">Jeffrey Gibson</a>’s punching-bag sculptures, kaleidoscopic paintings, and mixed-media works incorporate elements of traditional Native American dress and modern Western fashion. The Choctaw and Cherokee artist has become a contemporary art heavyweight over the last three years. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/jeffrey-gibson"
+                    >
+                      Jeffrey Gibson
+                    </a>
+                    ’s punching-bag sculptures, kaleidoscopic paintings, and mixed-media works incorporate elements of traditional Native American dress and modern Western fashion. The Choctaw and Cherokee artist has become a contemporary art heavyweight over the last three years. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -12872,13 +13247,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/hao-liang\\">Hao Liang</a>’s epic contemporary take on ancient Chinese ink-wash painting has made him an art-world fixture in his home country. Hao’s work pays homage to the history of Chinese literati tradition—the scholar-painters of old who expressed their philosophies through handscrolls, portraits, and majestic landscape paintings where subtle qualities of light and shadow play out over mountain peaks and carefully cultivated gardens. In the young artist’s work, the twist is the way in which the silk paintings’ ancient origins morph into the contemporary. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/hao-liang"
+                    >
+                      Hao Liang
+                    </a>
+                    ’s epic contemporary take on ancient Chinese ink-wash painting has made him an art-world fixture in his home country. Hao’s work pays homage to the history of Chinese literati tradition—the scholar-painters of old who expressed their philosophies through handscrolls, portraits, and majestic landscape paintings where subtle qualities of light and shadow play out over mountain peaks and carefully cultivated gardens. In the young artist’s work, the twist is the way in which the silk paintings’ ancient origins morph into the contemporary. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -13311,13 +13691,35 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Strap on a headset and enter a VR realm of voguing ball dancers, figures in gimp masks, and leather daddies on spaceships. This is the world dreamt up by the artist <a href=\\"https://www.artsy.net/artist/jacolby-satterwhite\\">Jacolby Satterwhite</a>, who has been on a roll since emerging as one of the stars of the 2014 Whitney Biennial. In 2018, he brought an extension of <em>Blessed Avenue </em>(2018)—an installation with a VR component first shown at <a href=\\"https://www.artsy.net/gavin-browns-enterprise\\">Gavin Brown’s Enterprise</a> in New York—to Art Basel in Basel, Switzerland, for a booth with <a href=\\"https://www.artsy.net/ohwow/overview\\">Morán Morán</a>. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Strap on a headset and enter a VR realm of voguing ball dancers, figures in gimp masks, and leather daddies on spaceships. This is the world dreamt up by the artist 
+                    <a
+                      href="https://www.artsy.net/artist/jacolby-satterwhite"
+                    >
+                      Jacolby Satterwhite
+                    </a>
+                    , who has been on a roll since emerging as one of the stars of the 2014 Whitney Biennial. In 2018, he brought an extension of 
+                    <em>
+                      Blessed Avenue 
+                    </em>
+                    (2018)—an installation with a VR component first shown at 
+                    <a
+                      href="https://www.artsy.net/gavin-browns-enterprise"
+                    >
+                      Gavin Brown’s Enterprise
+                    </a>
+                     in New York—to Art Basel in Basel, Switzerland, for a booth with 
+                    <a
+                      href="https://www.artsy.net/ohwow/overview"
+                    >
+                      Morán Morán
+                    </a>
+                    . 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -13725,13 +14127,42 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/melike-kara\\">Melike Kara</a>’s graphic, stylized painted figures—part–futuristic frontiers-people, part–tribal civilization—have earned her a steady progression of interest from curators, dealers, and collectors alike over the past few years. In 2018, the Kurdish-German artist received her first <a href=\\"https://www.artsy.net/show/yuz-museum-melike-kara-a-taste-of-parsley\\">solo show</a> at an institution, the <a href=\\"https://www.artsy.net/yuz-museum\\">Yuz Museum</a> in Shanghai. This year, she’s had solo shows at Rotterdam’s <a href=\\"https://www.artsy.net/witte-de-with-center-for-contemporary-art\\">Witte de With Center for Contemporary Art</a> and London gallery Arcadia Missa. This September she made her solo debut in New York, at <a href=\\"https://www.artsy.net/salon-94\\">Salon 94</a>, firmly establishing her presence across the international art world. The artist also shows with Berlin’s Peres Projects.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/melike-kara"
+                    >
+                      Melike Kara
+                    </a>
+                    ’s graphic, stylized painted figures—part–futuristic frontiers-people, part–tribal civilization—have earned her a steady progression of interest from curators, dealers, and collectors alike over the past few years. In 2018, the Kurdish-German artist received her first 
+                    <a
+                      href="https://www.artsy.net/show/yuz-museum-melike-kara-a-taste-of-parsley"
+                    >
+                      solo show
+                    </a>
+                     at an institution, the 
+                    <a
+                      href="https://www.artsy.net/yuz-museum"
+                    >
+                      Yuz Museum
+                    </a>
+                     in Shanghai. This year, she’s had solo shows at Rotterdam’s 
+                    <a
+                      href="https://www.artsy.net/witte-de-with-center-for-contemporary-art"
+                    >
+                      Witte de With Center for Contemporary Art
+                    </a>
+                     and London gallery Arcadia Missa. This September she made her solo debut in New York, at 
+                    <a
+                      href="https://www.artsy.net/salon-94"
+                    >
+                      Salon 94
+                    </a>
+                    , firmly establishing her presence across the international art world. The artist also shows with Berlin’s Peres Projects.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -14164,13 +14595,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>To walk into a <a href=\\"https://www.artsy.net/artist/cui-jie\\">Cui Jie</a> exhibition is to enter a fantastical, futuristic city. Her paintings are imaginative, science fiction–tinged depictions of metropolises that merge Eastern and Western aesthetics. Taking architecture and furniture as source material, the artist abstracts the structures to develop novel compositions. Paintings feature chair spindles broken apart into spirals, and tubes that float against a brushy background. Aidan Li, head of the K11 Art Foundation, noted that Cui “is one of the most talented painters of her generation.” </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    To walk into a 
+                    <a
+                      href="https://www.artsy.net/artist/cui-jie"
+                    >
+                      Cui Jie
+                    </a>
+                     exhibition is to enter a fantastical, futuristic city. Her paintings are imaginative, science fiction–tinged depictions of metropolises that merge Eastern and Western aesthetics. Taking architecture and furniture as source material, the artist abstracts the structures to develop novel compositions. Paintings feature chair spindles broken apart into spirals, and tubes that float against a brushy background. Aidan Li, head of the K11 Art Foundation, noted that Cui “is one of the most talented painters of her generation.” 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -14603,13 +15040,25 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>The <a href=\\"https://www.artsy.net/article/artsy-editorial-firelei-baezs-intoxicating-installation-feminist-ode-african-diaspora\\">narrative complexities</a> of history, folklore, and personal experience collide in Dominican-American artist <a href=\\"https://www.artsy.net/artist/firelei-baez-1\\">Firelei Báez</a>’s energetically saturated paintings, sculptures, and installations. Afro-Caribbean women of the diaspora are the heroes of her intoxicating, symbol-laden works. The artist draws upon fiction and historical record in equal measure to reimagine the migration of these women across the globe, as well as the resilient and distinct communities that they helped build.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    The 
+                    <a
+                      href="https://www.artsy.net/article/artsy-editorial-firelei-baezs-intoxicating-installation-feminist-ode-african-diaspora"
+                    >
+                      narrative complexities
+                    </a>
+                     of history, folklore, and personal experience collide in Dominican-American artist 
+                    <a
+                      href="https://www.artsy.net/artist/firelei-baez-1"
+                    >
+                      Firelei Báez
+                    </a>
+                    ’s energetically saturated paintings, sculptures, and installations. Afro-Caribbean women of the diaspora are the heroes of her intoxicating, symbol-laden works. The artist draws upon fiction and historical record in equal measure to reimagine the migration of these women across the globe, as well as the resilient and distinct communities that they helped build.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -15042,13 +15491,25 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>The individuals who make up <a href=\\"https://www.artsy.net/artist/forensic-architecture\\">Forensic Architecture</a> have exposed the lies of the Israeli Defense Forces, Russia’s foreign ministry, and Syrian president Bashar al-Assad, along with many other powerful people and organizations. The collective, founded by Israeli-British architect <a href=\\"https://www.artsy.net/artist/eyal-weizman\\">Eyal Weizman</a>, is a multidisciplinary team of architects, designers, developers, archaeologists, filmmakers, and more. Nominated for the Turner Prize in 2018, the group has been known to investigate human rights violations, launch legal battles, and reveal truths through exhibitions, journalism, and the internet.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    The individuals who make up 
+                    <a
+                      href="https://www.artsy.net/artist/forensic-architecture"
+                    >
+                      Forensic Architecture
+                    </a>
+                     have exposed the lies of the Israeli Defense Forces, Russia’s foreign ministry, and Syrian president Bashar al-Assad, along with many other powerful people and organizations. The collective, founded by Israeli-British architect 
+                    <a
+                      href="https://www.artsy.net/artist/eyal-weizman"
+                    >
+                      Eyal Weizman
+                    </a>
+                    , is a multidisciplinary team of architects, designers, developers, archaeologists, filmmakers, and more. Nominated for the Turner Prize in 2018, the group has been known to investigate human rights violations, launch legal battles, and reveal truths through exhibitions, journalism, and the internet.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -15456,13 +15917,25 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>What makes <a href=\\"https://www.artsy.net/artist/tschabalala-self\\">Tschabalala Self</a> such a rising star is her visionary approach to textile-based canvases, where the fabrics act as backgrounds to the painted figures. “Tschabalala brings the cutting edge of visual culture today into dialogue with a Western art-historical canon that has held as a tradition the exclusion and marginalization of the black figure,” said Legacy Russell, associate curator at the <a href=\\"https://www.artsy.net/studio-museum\\">Studio Museum in Harlem</a>, where Self has been an artist-in-residence from 2018–19. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    What makes 
+                    <a
+                      href="https://www.artsy.net/artist/tschabalala-self"
+                    >
+                      Tschabalala Self
+                    </a>
+                     such a rising star is her visionary approach to textile-based canvases, where the fabrics act as backgrounds to the painted figures. “Tschabalala brings the cutting edge of visual culture today into dialogue with a Western art-historical canon that has held as a tradition the exclusion and marginalization of the black figure,” said Legacy Russell, associate curator at the 
+                    <a
+                      href="https://www.artsy.net/studio-museum"
+                    >
+                      Studio Museum in Harlem
+                    </a>
+                    , where Self has been an artist-in-residence from 2018–19. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -15870,13 +16343,30 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/harold-ancart\\">Harold Ancart</a> has a feverish approach to putting out work. He’s produced enough of his large-scale paintings—of matches, icebergs, and other abstracted forms—to be in 14 shows in 8 years with his New York gallery, the influential Bushwick- and Brussels-based hub <a href=\\"https://www.artsy.net/c-l-e-a-r-i-n-g\\">Clearing</a>. He got so restless to paint on a road trip across the United States that he built a makeshift studio in his trunk. And since signing on with mega-gallery <a href=\\"https://www.artsy.net/david-zwirner\\">David Zwirner</a> in 2018, Ancart has made enough work to fill walls at fairs such as Frieze New York and Los Angeles, Art Basel in Hong Kong, ART021 in Shanghai, and FIAC in Paris. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/harold-ancart"
+                    >
+                      Harold Ancart
+                    </a>
+                     has a feverish approach to putting out work. He’s produced enough of his large-scale paintings—of matches, icebergs, and other abstracted forms—to be in 14 shows in 8 years with his New York gallery, the influential Bushwick- and Brussels-based hub 
+                    <a
+                      href="https://www.artsy.net/c-l-e-a-r-i-n-g"
+                    >
+                      Clearing
+                    </a>
+                    . He got so restless to paint on a road trip across the United States that he built a makeshift studio in his trunk. And since signing on with mega-gallery 
+                    <a
+                      href="https://www.artsy.net/david-zwirner"
+                    >
+                      David Zwirner
+                    </a>
+                     in 2018, Ancart has made enough work to fill walls at fairs such as Frieze New York and Los Angeles, Art Basel in Hong Kong, ART021 in Shanghai, and FIAC in Paris. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -16459,13 +16949,36 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/frank-bowling\\">Frank Bowling</a> is a master colorist known for his large-scale abstract compositions with evocative details layered between oozing, glowing hues. The artist, now in his mid-eighties, has been long overdue for the type of recognition he’s finally getting. After solo shows at Haus der Kunst (curated by the late Okwui Enwezor) and the <a href=\\"https://www.artsy.net/dallasmuseumart\\">Dallas Museum of Art</a>, Bowling’s <a href=\\"https://www.artsy.net/show/tate-britain-frank-bowling-1\\">first major retrospective</a> opened at <a href=\\"https://www.artsy.net/tate-britain\\">Tate Britain</a> in May.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/frank-bowling"
+                    >
+                      Frank Bowling
+                    </a>
+                     is a master colorist known for his large-scale abstract compositions with evocative details layered between oozing, glowing hues. The artist, now in his mid-eighties, has been long overdue for the type of recognition he’s finally getting. After solo shows at Haus der Kunst (curated by the late Okwui Enwezor) and the 
+                    <a
+                      href="https://www.artsy.net/dallasmuseumart"
+                    >
+                      Dallas Museum of Art
+                    </a>
+                    , Bowling’s 
+                    <a
+                      href="https://www.artsy.net/show/tate-britain-frank-bowling-1"
+                    >
+                      first major retrospective
+                    </a>
+                     opened at 
+                    <a
+                      href="https://www.artsy.net/tate-britain"
+                    >
+                      Tate Britain
+                    </a>
+                     in May.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -16898,13 +17411,27 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>With titles like <em>Amazon </em>(1993) and <em>Antigone </em>(1970), <a href=\\"https://www.artsy.net/artist/zilia-sanchez\\">Zilia Sánchez</a>’s three-dimensional paintings evoke woman warriors and ancient mythologies. Her works are minimal and metaphoric, but leave lasting impressions. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    With titles like 
+                    <em>
+                      Amazon 
+                    </em>
+                    (1993) and 
+                    <em>
+                      Antigone 
+                    </em>
+                    (1970), 
+                    <a
+                      href="https://www.artsy.net/artist/zilia-sanchez"
+                    >
+                      Zilia Sánchez
+                    </a>
+                    ’s three-dimensional paintings evoke woman warriors and ancient mythologies. Her works are minimal and metaphoric, but leave lasting impressions. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -17337,13 +17864,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/fred-eversley\\">Fred Eversley</a>’s parabolic lens sculptures remind us of the wonder of being human in the vastness of the universe. His optically enticing works encourage self-reflection and shifts in perception. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/fred-eversley"
+                    >
+                      Fred Eversley
+                    </a>
+                    ’s parabolic lens sculptures remind us of the wonder of being human in the vastness of the universe. His optically enticing works encourage self-reflection and shifts in perception. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -17751,13 +18283,24 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/tishan-hsu\\">Tishan Hsu</a>’s multimedia work from the 1980s and ’90s radiates a dingy, lo-fi buzz. His muted paintings feature bumps, orifices, and ridges that suggest bodies in fragments or seen through an X-ray. Some paintings protrude from the wall, given dynamic heft with layered styrofoam; a number of sculptures integrate similar corporeal motifs with bathroom tiles, carts, and cages. Looking at Hsu’s work, one might think of hospitals, basements, and old-timey computer parts. The artist has “anticipated so many concerns that younger artists are dealing with in their work today,” said <a href=\\"https://www.artsy.net/whitneymuseum\\">Whitney Museum of American Art</a> curator Christopher Y. Lew, “especially in relation to technology and the body.” Lew added that he believes Hsu is a role model for Asian-Americans in the art world.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/tishan-hsu"
+                    >
+                      Tishan Hsu
+                    </a>
+                    ’s multimedia work from the 1980s and ’90s radiates a dingy, lo-fi buzz. His muted paintings feature bumps, orifices, and ridges that suggest bodies in fragments or seen through an X-ray. Some paintings protrude from the wall, given dynamic heft with layered styrofoam; a number of sculptures integrate similar corporeal motifs with bathroom tiles, carts, and cages. Looking at Hsu’s work, one might think of hospitals, basements, and old-timey computer parts. The artist has “anticipated so many concerns that younger artists are dealing with in their work today,” said 
+                    <a
+                      href="https://www.artsy.net/whitneymuseum"
+                    >
+                      Whitney Museum of American Art
+                    </a>
+                     curator Christopher Y. Lew, “especially in relation to technology and the body.” Lew added that he believes Hsu is a role model for Asian-Americans in the art world.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -18165,13 +18708,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Since the 1960s, <a href=\\"https://www.artsy.net/artist/howardena-pindell\\">Howardena Pindell</a> has forced a “seat at the table” by exploding the traditions of painting. Working with unconventional materials like glitter, talcum powder, and perfume, the African-American artist affixes her unstretched canvases to the wall with nails in a relaxed and sumptuous pose. These tactile paintings underlie the labor-intensive practices that the artist employs to make them: Whole canvases are composed of obsessively hole-punched paper dots, or violently cut and sewn back together. However abstract or conceptual, Pindell’s work addresses personal, political, and social issues. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Since the 1960s, 
+                    <a
+                      href="https://www.artsy.net/artist/howardena-pindell"
+                    >
+                      Howardena Pindell
+                    </a>
+                     has forced a “seat at the table” by exploding the traditions of painting. Working with unconventional materials like glitter, talcum powder, and perfume, the African-American artist affixes her unstretched canvases to the wall with nails in a relaxed and sumptuous pose. These tactile paintings underlie the labor-intensive practices that the artist employs to make them: Whole canvases are composed of obsessively hole-punched paper dots, or violently cut and sewn back together. However abstract or conceptual, Pindell’s work addresses personal, political, and social issues. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -18579,13 +19128,24 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/diane-simpson\\">Diane Simpson</a>’s abstract constructions—made with industrial materials like fiberboard, steel, linoleum, and rivets—allude to the labor of women and to traditional forms of femininity. At the same time, Simpson challenges functionality and our ideas of domestic and industrial work. As an artist, she reveres axonometric projection, depicting three-dimensional objects on flat surfaces. In these handmade structures, Simpson has also drawn upon references including <a href=\\"https://www.artsy.net/gene/art-deco\\">Art Deco</a> architecture and Japanese samurai armor.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/diane-simpson"
+                    >
+                      Diane Simpson
+                    </a>
+                    ’s abstract constructions—made with industrial materials like fiberboard, steel, linoleum, and rivets—allude to the labor of women and to traditional forms of femininity. At the same time, Simpson challenges functionality and our ideas of domestic and industrial work. As an artist, she reveres axonometric projection, depicting three-dimensional objects on flat surfaces. In these handmade structures, Simpson has also drawn upon references including 
+                    <a
+                      href="https://www.artsy.net/gene/art-deco"
+                    >
+                      Art Deco
+                    </a>
+                     architecture and Japanese samurai armor.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -18993,13 +19553,26 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/lorraine-ogrady\\">Lorraine O’Grady</a>’s fearless determination to make the mainstream art world more accessible to black individuals can be witnessed in two particular works: <em>Mlle Bourgeoise Noire </em>(1980–83/2009), a guerilla performance of the artist dressed as “Miss Black Middle Class” while shouting protest poems at art happenings; and <em>Art Is…</em>(1983), a participatory performance during the African-American Day Parade in Harlem. In the latter piece, volunteers held up empty picture frames for the people of color watching the parade to consider themselves as art. O’Grady is best known for her performance, film, and photography exploring diaspora, hybridity, and black female subjectivity. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/lorraine-ogrady"
+                    >
+                      Lorraine O’Grady
+                    </a>
+                    ’s fearless determination to make the mainstream art world more accessible to black individuals can be witnessed in two particular works: 
+                    <em>
+                      Mlle Bourgeoise Noire 
+                    </em>
+                    (1980–83/2009), a guerilla performance of the artist dressed as “Miss Black Middle Class” while shouting protest poems at art happenings; and 
+                    <em>
+                      Art Is…
+                    </em>
+                    (1983), a participatory performance during the African-American Day Parade in Harlem. In the latter piece, volunteers held up empty picture frames for the people of color watching the parade to consider themselves as art. O’Grady is best known for her performance, film, and photography exploring diaspora, hybridity, and black female subjectivity. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -19432,13 +20005,44 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/teresa-burga\\">Teresa Burga</a>’s most iconic project, <em>Profile of the Peruvian Woman</em> (1980–81), was an investigation into the lives of middle-class Peruvian women through meticulous surveys. The artist went on to display the results through a series of objects, including a colorful indigenous yarn grid (or <em>quipu</em>). Her brightly painted, two-dimensional female bodies from 1967 appear playful, but are meant to parody ideals of femininity. Most impressive of Burga’s practice is that she has been questioning technology and information in her art since the 1970s. A pioneer of installation, media, and technology-driven art, Burga was also a founding member of the 1960s avant-garde group Arte Nuevo, known for producing <a href=\\"https://www.artsy.net/gene/happenings\\">Happenings</a>, <a href=\\"https://www.artsy.net/gene/op-art\\">Op art</a>, and <a href=\\"https://www.artsy.net/gene/pop-art\\">Pop art</a>. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/teresa-burga"
+                    >
+                      Teresa Burga
+                    </a>
+                    ’s most iconic project, 
+                    <em>
+                      Profile of the Peruvian Woman
+                    </em>
+                     (1980–81), was an investigation into the lives of middle-class Peruvian women through meticulous surveys. The artist went on to display the results through a series of objects, including a colorful indigenous yarn grid (or 
+                    <em>
+                      quipu
+                    </em>
+                    ). Her brightly painted, two-dimensional female bodies from 1967 appear playful, but are meant to parody ideals of femininity. Most impressive of Burga’s practice is that she has been questioning technology and information in her art since the 1970s. A pioneer of installation, media, and technology-driven art, Burga was also a founding member of the 1960s avant-garde group Arte Nuevo, known for producing 
+                    <a
+                      href="https://www.artsy.net/gene/happenings"
+                    >
+                      Happenings
+                    </a>
+                    , 
+                    <a
+                      href="https://www.artsy.net/gene/op-art"
+                    >
+                      Op art
+                    </a>
+                    , and 
+                    <a
+                      href="https://www.artsy.net/gene/pop-art"
+                    >
+                      Pop art
+                    </a>
+                    . 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -19871,13 +20475,47 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Inspired by vernacular American architecture, <a href=\\"https://www.artsy.net/artist/siah-armajani\\">Siah Armajani</a> designs large-scale, interactive sculptures with political resonances. After creating art for six decades, Armajani received <a href=\\"https://www.artsy.net/show/walker-art-center-siah-armajani-follow-this-line\\">his first American retrospective</a> at the <a href=\\"https://www.artsy.net/walker-art-center\\">Walker Art Center</a> in Minneapolis last year, which then traveled to the <a href=\\"https://www.artsy.net/metmuseum\\">Met Breuer</a> this past February. That same month, his seminal installation <em>Bridge Over Tree</em> (1970) was re-staged in Brooklyn by the <a href=\\"https://www.artsy.net/publicartfund\\">Public Art Fund</a> (PAF). Using basic construction and materials, Armajani’s bridge challenges our notions of nature and will. PAF director and chief curator Nicholas Baume noted that the artist “transfigures everyday, utilitarian architectural forms into a poetic language, imbuing them with meaning beyond their conventional function.” </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Inspired by vernacular American architecture, 
+                    <a
+                      href="https://www.artsy.net/artist/siah-armajani"
+                    >
+                      Siah Armajani
+                    </a>
+                     designs large-scale, interactive sculptures with political resonances. After creating art for six decades, Armajani received 
+                    <a
+                      href="https://www.artsy.net/show/walker-art-center-siah-armajani-follow-this-line"
+                    >
+                      his first American retrospective
+                    </a>
+                     at the 
+                    <a
+                      href="https://www.artsy.net/walker-art-center"
+                    >
+                      Walker Art Center
+                    </a>
+                     in Minneapolis last year, which then traveled to the 
+                    <a
+                      href="https://www.artsy.net/metmuseum"
+                    >
+                      Met Breuer
+                    </a>
+                     this past February. That same month, his seminal installation 
+                    <em>
+                      Bridge Over Tree
+                    </em>
+                     (1970) was re-staged in Brooklyn by the 
+                    <a
+                      href="https://www.artsy.net/publicartfund"
+                    >
+                      Public Art Fund
+                    </a>
+                     (PAF). Using basic construction and materials, Armajani’s bridge challenges our notions of nature and will. PAF director and chief curator Nicholas Baume noted that the artist “transfigures everyday, utilitarian architectural forms into a poetic language, imbuing them with meaning beyond their conventional function.” 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -20285,13 +20923,18 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p><a href=\\"https://www.artsy.net/artist/mcarthur-binion\\">McArthur Binion</a>’s work beckons you to get closer. From afar, his canvases look like painted, gridded abstractions, while suggesting hanging, knitted tapestries. Walk towards one, though, and each individual cell takes on a distinct texture, with subtle color variations throughout the composition. Binion’s works are made of paper, crayon, laser-printed images, and oil paint sticks; he builds them from personal documents, including copies of his birth certificate and pages from his address book. His oeuvre might be seen as a body of abstracted self-portraits, rendered with data. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    <a
+                      href="https://www.artsy.net/artist/mcarthur-binion"
+                    >
+                      McArthur Binion
+                    </a>
+                    ’s work beckons you to get closer. From afar, his canvases look like painted, gridded abstractions, while suggesting hanging, knitted tapestries. Walk towards one, though, and each individual cell takes on a distinct texture, with subtle color variations throughout the composition. Binion’s works are made of paper, crayon, laser-printed images, and oil paint sticks; he builds them from personal documents, including copies of his birth certificate and pages from his address book. His oeuvre might be seen as a body of abstracted self-portraits, rendered with data. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -20724,13 +21367,27 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>At 80 years old, painter and sculptor <a href=\\"https://www.artsy.net/artist/beatriz-gonzalez\\">Beatriz González</a> has been called one of the founders of modern Colombian art, but her international profile has grown in the past few years. Originally a figurative painter, González changed styles in the 1960s, creating vivid, colorblocked compositions based on mass media. In 1965, her painting <em>The Suicides of the Sisga I, II and III </em>was refused by the jury of the Salon of Colombian Artists. The artist has often dealt with violent unrest in her work, having come of age during a bloody era of Colombian history known as <em>La Violencia</em>.</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    At 80 years old, painter and sculptor 
+                    <a
+                      href="https://www.artsy.net/artist/beatriz-gonzalez"
+                    >
+                      Beatriz González
+                    </a>
+                     has been called one of the founders of modern Colombian art, but her international profile has grown in the past few years. Originally a figurative painter, González changed styles in the 1960s, creating vivid, colorblocked compositions based on mass media. In 1965, her painting 
+                    <em>
+                      The Suicides of the Sisga I, II and III 
+                    </em>
+                    was refused by the jury of the Salon of Colombian Artists. The artist has often dealt with violent unrest in her work, having come of age during a bloody era of Colombian history known as 
+                    <em>
+                      La Violencia
+                    </em>
+                    .
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -21163,13 +21820,31 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>In exile from her home in war-torn Lebanon, <a href=\\"https://www.artsy.net/artist/simone-fattal\\">Simone Fattal</a> found grace in literature and visual art. She settled in California in 1980, started The Post-Apollo Press, and wrote and distributed experimental poetry and fiction. When not writing or publishing, Fattal has pursued an expansive art practice that includes painting, collage, and sculpture. She may be best known for her ceramics, which suggest truncated human figures and archeological ruins—forms that seem to echo the destruction and violence of her past. A love for narrative is evident in Fattal’s visual work. Ruba Katrib, curator of “<a href=\\"https://www.artsy.net/show/moma-ps1-simone-fattal-works-and-days\\">Works and Days</a>,” the recently closed retrospective of Fattal’s work at <a href=\\"https://www.artsy.net/moma-ps1\\">MoMA PS1</a>, remarked that the artist “reconsiders how stories are told.”</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    In exile from her home in war-torn Lebanon, 
+                    <a
+                      href="https://www.artsy.net/artist/simone-fattal"
+                    >
+                      Simone Fattal
+                    </a>
+                     found grace in literature and visual art. She settled in California in 1980, started The Post-Apollo Press, and wrote and distributed experimental poetry and fiction. When not writing or publishing, Fattal has pursued an expansive art practice that includes painting, collage, and sculpture. She may be best known for her ceramics, which suggest truncated human figures and archeological ruins—forms that seem to echo the destruction and violence of her past. A love for narrative is evident in Fattal’s visual work. Ruba Katrib, curator of “
+                    <a
+                      href="https://www.artsy.net/show/moma-ps1-simone-fattal-works-and-days"
+                    >
+                      Works and Days
+                    </a>
+                    ,” the recently closed retrospective of Fattal’s work at 
+                    <a
+                      href="https://www.artsy.net/moma-ps1"
+                    >
+                      MoMA PS1
+                    </a>
+                    , remarked that the artist “reconsiders how stories are told.”
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -21602,13 +22277,19 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>In the early 1980s, painter <a href=\\"https://www.artsy.net/artist/vivian-suter\\">Vivian Suter</a> renounced the art world. Instead of hustling in major metropolises and fraternizing with dealers, she opted for a peaceful existence on the edge of a Guatemalan lake and focused on her practice. Suter arrived at a signature style: free-hanging canvases tacked to the wall or dangling from the ceiling, featuring brushy, bright, abstract designs. They suggest islands, trees, leaves, and large topographies. Her indoor and outdoor presentations envelop the viewer in soothing forms. And she’s made something of a triumphant return to the art world in recent years. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    In the early 1980s, painter 
+                    <a
+                      href="https://www.artsy.net/artist/vivian-suter"
+                    >
+                      Vivian Suter
+                    </a>
+                     renounced the art world. Instead of hustling in major metropolises and fraternizing with dealers, she opted for a peaceful existence on the edge of a Guatemalan lake and focused on her practice. Suter arrived at a signature style: free-hanging canvases tacked to the wall or dangling from the ceiling, featuring brushy, bright, abstract designs. They suggest islands, trees, leaves, and large topographies. Her indoor and outdoor presentations envelop the viewer in soothing forms. And she’s made something of a triumphant return to the art world in recent years. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -22016,13 +22697,25 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Nearly 20 years after he emerged on the Los Angeles art scene by making paintings on empty cigarette boxes and selling them for $80, <a href=\\"https://www.artsy.net/artist/henry-taylor\\">Henry Taylor</a> is making the best work of his life. In 2017, his large, ravishing portraits—of a black man grilling meat on his lawn; of the 32-year-old Philando Castile being shot by a Minnesota police officer—were a highlight of the Whitney Biennial in New York. Months later, his dealer <a href=\\"https://www.artsy.net/galerie-eva-presenhuber\\">Eva Presenhuber</a> unveiled a raucous show of his portraits at her Zurich gallery, with paintings of the artist’s friends and neighbors, and of Andrea Motley Crabtree, the first female deep sea diver in the U.S. Army. (Blum &amp; Poe has been Taylor’s primary dealer for the past decade.)</p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Nearly 20 years after he emerged on the Los Angeles art scene by making paintings on empty cigarette boxes and selling them for $80, 
+                    <a
+                      href="https://www.artsy.net/artist/henry-taylor"
+                    >
+                      Henry Taylor
+                    </a>
+                     is making the best work of his life. In 2017, his large, ravishing portraits—of a black man grilling meat on his lawn; of the 32-year-old Philando Castile being shot by a Minnesota police officer—were a highlight of the Whitney Biennial in New York. Months later, his dealer 
+                    <a
+                      href="https://www.artsy.net/galerie-eva-presenhuber"
+                    >
+                      Eva Presenhuber
+                    </a>
+                     unveiled a raucous show of his portraits at her Zurich gallery, with paintings of the artist’s friends and neighbors, and of Andrea Motley Crabtree, the first female deep sea diver in the U.S. Army. (Blum & Poe has been Taylor’s primary dealer for the past decade.)
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -22455,13 +23148,55 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                 className="article__text-section StyledText-sc-1ysl1h-0 higeIF"
                 color="black"
               >
-                <div
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<p>Migrant, mother, global citizen—the Italian-born, Brazil-based artist <a href=\\"https://www.artsy.net/artist/anna-maria-maiolino\\">Anna Maria Maiolino</a> has explored these identities in intimate, autobiographical works that reflect her own displacement at the hand of authoritarian regimes. Maiolino’s first retrospective, at the <a href=\\"https://www.artsy.net/pinacoteca\\">Pinacoteca do Estado de São Paulo</a>, premiered in 2005. In 2017, she had a <a href=\\"https://www.artsy.net/show/moca-los-angeles-anna-maria-maiolino\\">major retrospective</a> at the <a href=\\"https://www.artsy.net/moca\\">Museum of Contemporary Art, Los Angeles</a>. This year, the artist—who shows with <a href=\\"https://www.artsy.net/hauser-and-wirth\\">Hauser &amp; Wirth</a>, Galeria Luisa Strina, and Galleria Raffaella Cortese—had a solo show at <a href=\\"https://www.artsy.net/pac-milano\\">Padiglione d’Arte Contemporanea</a> in Milan; a new survey of her work will debut at London’s <a href=\\"https://www.artsy.net/whitechapel-gallery\\">Whitechapel Gallery</a> in late September. </p>",
-                    }
-                  }
-                />
+                <div>
+                  <div
+                    className="paragraph"
+                  >
+                    Migrant, mother, global citizen—the Italian-born, Brazil-based artist 
+                    <a
+                      href="https://www.artsy.net/artist/anna-maria-maiolino"
+                    >
+                      Anna Maria Maiolino
+                    </a>
+                     has explored these identities in intimate, autobiographical works that reflect her own displacement at the hand of authoritarian regimes. Maiolino’s first retrospective, at the 
+                    <a
+                      href="https://www.artsy.net/pinacoteca"
+                    >
+                      Pinacoteca do Estado de São Paulo
+                    </a>
+                    , premiered in 2005. In 2017, she had a 
+                    <a
+                      href="https://www.artsy.net/show/moca-los-angeles-anna-maria-maiolino"
+                    >
+                      major retrospective
+                    </a>
+                     at the 
+                    <a
+                      href="https://www.artsy.net/moca"
+                    >
+                      Museum of Contemporary Art, Los Angeles
+                    </a>
+                    . This year, the artist—who shows with 
+                    <a
+                      href="https://www.artsy.net/hauser-and-wirth"
+                    >
+                      Hauser & Wirth
+                    </a>
+                    , Galeria Luisa Strina, and Galleria Raffaella Cortese—had a solo show at 
+                    <a
+                      href="https://www.artsy.net/pac-milano"
+                    >
+                      Padiglione d’Arte Contemporanea
+                    </a>
+                     in Milan; a new survey of her work will debut at London’s 
+                    <a
+                      href="https://www.artsy.net/whitechapel-gallery"
+                    >
+                      Whitechapel Gallery
+                    </a>
+                     in late September. 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
