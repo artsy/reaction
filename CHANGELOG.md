@@ -1,3 +1,16 @@
+# v28.13.0 (Mon Nov 09 2020)
+
+#### 🚀  Enhancement
+
+- GRO-1: Render react artist follow buttons in mobile contexts [#3644](https://github.com/artsy/reaction/pull/3644) ([@brainbicycle](https://github.com/brainbicycle) [@jonallured](https://github.com/jonallured))
+
+#### Authors: 2
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+- Jon Allured ([@jonallured](https://github.com/jonallured))
+
+---
+
 # v28.12.0 (Tue Nov 03 2020)
 
 #### 🚀  Enhancement
