@@ -33,10 +33,10 @@
     p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
-"@artsy/palette@13.16.0":
-  version "13.16.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-13.16.0.tgz#17dc75a087002b360bfd696c5ba3bd204b5c165f"
-  integrity sha512-2q7lacfHVwNBO6Ybnl+jQfhAHD3/LQrHqZNaD3VlVOaDVxDJsV5Cn3JjMxrDcuuDYz/cWqQCQyDUwxhDYuLmmA==
+"@artsy/palette@13.22.0":
+  version "13.22.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-13.22.0.tgz#a0ae6235005715fc3fc2e8e80e86b87528749d11"
+  integrity sha512-pEFnMU11Bw2/OFjevTvavns+V21RYDrkN+VDhM+D4ErSxnIpDM0+ARHsngoLKPq5X5z1p2hGohM6d8ICOcMpVg==
   dependencies:
     "@styled-system/theme-get" "^5.1.2"
     babel-plugin-styled-components "^1.10.0"
