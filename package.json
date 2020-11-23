@@ -166,7 +166,7 @@
     "yalc": "1.0.0-pre.34"
   },
   "dependencies": {
-    "@artsy/cohesion": "1.45.0",
+    "@artsy/cohesion": "1.60.0",
     "@artsy/detect-responsive-traits": "^0.0.5",
     "@artsy/fresnel": "^1.0.13",
     "@artsy/react-html-parser": "^3.0.2",
