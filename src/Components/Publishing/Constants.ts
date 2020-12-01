@@ -1,6 +1,5 @@
-import { compact, last, uniq } from "lodash"
+import { compact, uniq } from "lodash"
 import { DateTime } from "luxon"
-import url from "url"
 import { ArticleData, DateFormat } from "../Publishing/Typings"
 
 const APP_URL = process.env.APP_URL || "https://www.artsy.net"
@@ -189,9 +188,9 @@ export const getArtsySlugsFromHTML = (
   const slugs: string[] = []
   doc.querySelectorAll("a").forEach(anchor => {
     const href = anchor.getAttribute("href")
-    if (href && href.match(`artsy.net/${model}`)) {
-      const path = url.parse(href).pathname.replace("/works-for-sale", "")
-      slugs.push(last(path.split("/")))
+    if (href) {
+      const match = href.match(`\/${model}\/(?<slug>.*?)(\/|$|\\?)`)
+      slugs.push(match?.groups?.slug)
     }
   })
 

@@ -150,15 +150,6 @@ describe("getArtsySlugs", () => {
     expect(artists[0]).toBe("jennie-jieun-lee")
   })
 
-  it("#getArtsySlugsFromHTML can strip '/works-for-sale' from artist links", () => {
-    const html =
-      "<p><a href='artsy.net/artist/andy-warhol/works-for-sale'>Andy Warhol</a></p>"
-    const artists = getArtsySlugsFromHTML(html, "artist")
-
-    expect(artists.length).toBe(1)
-    expect(artists[0]).toBe("andy-warhol")
-  })
-
   it("#getArtsySlugsFromHTML can return linked genes from html", () => {
     const html =
       "<p><a href='artsy.net/gene/capitalist-realism'>Capitalist Realism</a></p>"
@@ -168,9 +159,35 @@ describe("getArtsySlugs", () => {
     expect(genes[0]).toBe("capitalist-realism")
   })
 
-  it("#getArtsySlugsFromHTML can strip '/works-for-sale' from artist links", () => {
+  it("#getArtsySlugsFromHTML can strip other routes that occur after the slug", () => {
     const html =
       "<p><a href='artsy.net/artist/andy-warhol/works-for-sale'>Andy Warhol</a></p>"
+    const artists = getArtsySlugsFromHTML(html, "artist")
+
+    expect(artists.length).toBe(1)
+    expect(artists[0]).toBe("andy-warhol")
+  })
+
+  it("#getArtsySlugsFromHTML can strip any query params that occur after the slug", () => {
+    const html =
+      "<p><a href='artsy.net/artist/andy-warhol?foo=bar'>Andy Warhol</a></p>"
+    const artists = getArtsySlugsFromHTML(html, "artist")
+
+    expect(artists.length).toBe(1)
+    expect(artists[0]).toBe("andy-warhol")
+  })
+
+  it("#getArtsySlugsFromHTML only matches the given model and not similarly named models", () => {
+    const html =
+      "<p><a href='artsy.net/artist-series/banksy-rats'>Banksy rats</a></p>"
+    const artists = getArtsySlugsFromHTML(html, "artist")
+
+    expect(artists.length).toBe(0)
+  })
+
+  it("#getArtsySlugsFromHTML correctly parses links ending in /", () => {
+    const html =
+      "<p><a href='artsy.net/artist/andy-warhol/'>Andy Warhol</a></p>"
     const artists = getArtsySlugsFromHTML(html, "artist")
 
     expect(artists.length).toBe(1)
