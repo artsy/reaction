@@ -1,3 +1,22 @@
+# v28.14.0 (Wed Dec 02 2020)
+
+#### 🚀  Enhancement
+
+- fix: Update URL parsing to more precisely extract slug [#3664](https://github.com/artsy/reaction/pull/3664) ([@williardx](https://github.com/williardx))
+
+#### 🏠  Internal
+
+- Update dep @artsy/cohesion from 1.45.0 to v1.60.0 [#3659](https://github.com/artsy/reaction/pull/3659) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/palette from 13.16.0 to v13.22.0 [#3660](https://github.com/artsy/reaction/pull/3660) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Will Doenlen ([@williardx](https://github.com/williardx))
+
+---
+
 # v28.13.0 (Mon Nov 09 2020)
 
 #### 🚀  Enhancement
