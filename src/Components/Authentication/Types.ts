@@ -1,42 +1,9 @@
 import { AuthContextModule, AuthIntent } from "@artsy/cohesion"
-import { FormikProps } from "formik"
 
 export enum ModalType {
   login = "login",
   signup = "signup",
   forgot = "forgot",
-}
-
-export interface InputValues {
-  name?: string
-  email?: string
-  password?: string
-  otp_attempt?: string
-  accepted_terms_of_service?: boolean
-}
-
-export type SubmitHandler = (
-  values: InputValues,
-  formikBag: FormikProps<InputValues>
-) => void
-
-export interface FormProps {
-  contextModule: AuthContextModule
-  /**
-   * any global error that comes from an external data source
-   * (e.g. server)
-   */
-  error?: string
-  values?: InputValues
-  handleSubmit?: SubmitHandler
-  handleTypeChange?: (modalType: ModalType) => void
-  intent: AuthIntent
-  onAppleLogin?: (e: Event) => void
-  onFacebookLogin?: (e: Event) => void
-  onBackButtonClicked?: (e: Event) => void
-  title?: string
-  entityName?: string
-  showRecaptchaDisclaimer?: boolean
 }
 
 export interface AfterSignUpAction {
@@ -114,7 +81,3 @@ export interface ModalOptions {
    */
   objectId?: AfterSignUpAction["objectId"]
 }
-
-export type FormComponentType =
-  | React.SFC<FormProps>
-  | React.ComponentClass<FormProps>
