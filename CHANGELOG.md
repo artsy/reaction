@@ -1,3 +1,15 @@
+# v28.15.0 (Wed Dec 09 2020)
+
+#### 🚀  Enhancement
+
+- Remove unused formik dependency and legacy auth code [#3665](https://github.com/artsy/reaction/pull/3665) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v28.14.0 (Wed Dec 02 2020)
 
 #### 🚀  Enhancement
