@@ -2920,13 +2920,6 @@ autoprefixer@^9.0.0:
     postcss "^7.0.14"
     postcss-value-parser "^3.3.1"
 
-autosuggest-highlight@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/autosuggest-highlight/-/autosuggest-highlight-3.1.1.tgz#70bb4f9125fe8a849e85f825f7bb2a1a4806743d"
-  integrity sha512-MQ6GNIGMMZbeA5FlBLXXgkZEthysCdYNkMV4MahB2/qB/9cwBnVsePUPnIqkMuzjzclTtDa67xln7cgLDu2f/g==
-  dependencies:
-    diacritic "0.0.2"
-
 await-to-js@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/await-to-js/-/await-to-js-2.1.1.tgz#c2093cd5a386f2bb945d79b292817bbc3f41b31b"
@@ -3634,11 +3627,6 @@ capture-stack-trace@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
   integrity sha1-Sm+gc5nCa7pH8LJJa00PtAjFVQ0=
-
-case@^1.2.1:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/case/-/case-1.5.5.tgz#8e832ef0329609a4f3198dee37c029645dc27c72"
-  integrity sha512-tQm8bxc8L9Dk/6FGhtBtV89rrRzqytUbdLqGZxmGwYKqeAD0VmLc8kYSqm0GXOTsf9r1tc0bzq+CDLqtrjiuHw==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -4432,11 +4420,6 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.2.tgz#ee5ff8f208c8cd613b389f7b222c9801ca62b3f7"
   integrity sha512-ofovWglpqoqbfLNOTBNZLSbMuGrblAf1efvvArGKOZMBrIoJeu5UsAipQolkijtyQx5MtAzT/J9IHj/CEY1mJw==
 
-currency.js@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/currency.js/-/currency.js-1.2.1.tgz#18d42ac74d833795051f4a310c83f041013a882f"
-  integrity sha512-7t0jYDZeQYCcaxpgwNOiBz8GaG/qdqTdo+kcTYgCuCNx1p2jLMpJt8h34TJ5INtN9jhryAiLK/atmjwUf13t4A==
-
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -4711,11 +4694,6 @@ detect-node@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.0.4.tgz#014ee8f8f669c5c58023da64b8179c083a28c46c"
   integrity sha512-ZIzRpLJrOj7jjP2miAtgqIfmzbxa4ZOr5jJc601zklsfEx9oTzmmj2nVpIPRpNlRTIh8lc1kyViIY7BWSGNmKw==
-
-diacritic@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/diacritic/-/diacritic-0.0.2.tgz#fc2a887b5a5bc0a0a854fb614c7c2f209061ee04"
-  integrity sha1-/CqIe1pbwKCoVPthTHwvIJBh7gQ=
 
 diff-sequences@^24.9.0:
   version "24.9.0"
@@ -5867,11 +5845,6 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
-
-fn-name@~1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-1.0.1.tgz#de8d8a15388b33cbf2145782171f73770c6030f0"
-  integrity sha1-3o2KFTiLM8vyFFeCFx9zdwxgMPA=
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -8423,7 +8396,7 @@ lodash@^4.11.1, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.1:
+lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.5.1:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
@@ -10116,11 +10089,6 @@ prop-types@^15.7.2:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.8.1"
-
-property-expr@^1.2.0:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-1.3.2.tgz#2df60082c243e79118924ecb8f7ae7183b4fc43e"
-  integrity sha512-TxJYxSeBpNtt/GiEt8UopBce9RsYaoeZHp3suR/RCgRJDREKIuKbfdOyH/eBQu5WwLHDKwjbiIgv9rn9rKPDLg==
 
 proportional-scale@^4.0.0:
   version "4.0.0"
@@ -12382,11 +12350,6 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
   integrity sha1-rifbOPZgp64uHDt9G8KQgZuFGeY=
 
-synchronous-promise@^1.0.18:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/synchronous-promise/-/synchronous-promise-1.0.18.tgz#936e8763e6554088cdcf78dc64f7473b972fcefc"
-  integrity sha512-UqMAK6BBBXu8qaDI5omlyV9iDpM9nQfgthaBOK0nlfXnMgiuOBv+meWG73CGeCCFRhOOOa2e4rvqYzfynzy5zg==
-
 table@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/table/-/table-5.1.0.tgz#69a54644f6f01ad1628f8178715b408dc6bf11f7"
@@ -12599,11 +12562,6 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-toposort@^0.2.10:
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/toposort/-/toposort-0.2.12.tgz#c7d2984f3d48c217315cc32d770888b779491e81"
-  integrity sha1-x9KYTz1IwhcxXMMtdwiIt3lJHoE=
-
 tough-cookie@>=2.3.3, tough-cookie@^2.3.3:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.4.2.tgz#aa9133154518b494efab98a58247bfc38818c00c"
@@ -12756,11 +12714,6 @@ type-is@~1.6.15, type-is@~1.6.16:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.18"
-
-type-name@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/type-name/-/type-name-2.0.2.tgz#efe7d4123d8ac52afff7f40c7e4dec5266008fb4"
-  integrity sha1-7+fUEj2KxSr/9/QMfk3sUmYAj7Q=
 
 typedarray@^0.0.6:
   version "0.0.6"
@@ -13769,19 +13722,6 @@ yn@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.0.tgz#fcbe2db63610361afcc5eb9e0ac91e976d046114"
   integrity sha512-kKfnnYkbTfrAdd0xICNFw7Atm8nKpLcLv9AZGEt+kczL/WQVai4e2V6ZN8U/O+iI6WrNuJjNNOyu4zfhl9D3Hg==
-
-yup@^0.24.1:
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.24.1.tgz#2c8a81b5f929ef29aaf77a8b7c9acfa52ab6a7d1"
-  integrity sha512-nTs4l4cPd4BcYueB/CKnWjbT6tuMv5nG3Ujes8jOugMYUb+UliZ3jC+LE26yQi6qV/XzbXyJCyRiMtIzsgw42Q==
-  dependencies:
-    case "^1.2.1"
-    fn-name "~1.0.1"
-    lodash "^4.17.0"
-    property-expr "^1.2.0"
-    synchronous-promise "^1.0.18"
-    toposort "^0.2.10"
-    type-name "^2.0.1"
 
 zen-observable-ts@^0.8.10:
   version "0.8.10"

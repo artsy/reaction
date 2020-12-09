@@ -173,9 +173,7 @@
     "@loadable/component": "^5.12.0",
     "@loadable/server": "^5.12.0",
     "@types/luxon": "^1.15.1",
-    "autosuggest-highlight": "^3.1.1",
     "cheerio": "^1.0.0-rc.2",
-    "currency.js": "^1.2.1",
     "farce": "^0.2.6",
     "found": "0.5.5",
     "found-relay": "0.8.2",
@@ -226,8 +224,7 @@
     "unstated": "^2.1.1",
     "unstated-debug": "^0.2.0",
     "url": "^0.11.0",
-    "use-deep-compare-effect": "^1.2.0",
-    "yup": "^0.24.1"
+    "use-deep-compare-effect": "^1.2.0"
   },
   "prettier": {
     "semi": false,
