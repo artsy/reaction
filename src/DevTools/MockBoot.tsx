@@ -1,4 +1,4 @@
-import { Boot } from "Artsy/Router"
+import { Boot } from "Artsy/Router/Boot"
 import React from "react"
 import { Breakpoint } from "Utils/Responsive"
 

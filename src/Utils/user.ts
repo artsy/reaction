@@ -1,5 +1,3 @@
-import { get } from "./get"
-
 export function getUser(user: User | null | undefined): User | null {
   let _user = user
 
@@ -23,15 +21,4 @@ export function getUser(user: User | null | undefined): User | null {
   }
 
   return _user
-}
-
-export function userHasLabFeature(user: User, featureName: string): boolean {
-  const lab_features = get(user, u => u.lab_features, [])
-  const hasLabFeature = lab_features.includes(featureName)
-  return hasLabFeature
-}
-
-export function userIsAdmin(user?: User): boolean {
-  const isAdmin = Boolean(user && user.type === "Admin" ? true : false)
-  return isAdmin
 }
