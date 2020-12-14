@@ -1,3 +1,15 @@
+# v29.0.1 (Mon Dec 14 2020)
+
+#### 🐛  Bug Fix
+
+- Update palette to v13.24.2 [#3669](https://github.com/artsy/reaction/pull/3669) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v29.0.0 (Mon Dec 14 2020)
 
 #### 💥  Breaking Change
