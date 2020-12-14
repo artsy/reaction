@@ -1,3 +1,15 @@
+# v29.0.0 (Mon Dec 14 2020)
+
+#### 💥  Breaking Change
+
+- chore: Remove unused files and dependencies [#3666](https://github.com/artsy/reaction/pull/3666) ([@eessex](https://github.com/eessex))
+
+#### Authors: 1
+
+- Eve Essex ([@eessex](https://github.com/eessex))
+
+---
+
 # v28.15.0 (Wed Dec 09 2020)
 
 #### 🚀  Enhancement
