@@ -48,7 +48,7 @@
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
     "@artsy/lint-changed": "3.1.0",
-    "@artsy/palette": "13.24.2",
+    "@artsy/palette": "13.27.2",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
