@@ -34,4 +34,5 @@ const Description = styled.div`
     ${garamond("s15")};
   }
   padding-bottom: 10px;
+  white-space: initial;
 `
