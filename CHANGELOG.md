@@ -1,3 +1,22 @@
+# v29.0.2 (Thu Jan 14 2021)
+
+#### 🐛  Bug Fix
+
+- fix: Add white-space CSS property to fix overflowing descriptions [#3672](https://github.com/artsy/reaction/pull/3672) ([@williardx](https://github.com/williardx))
+
+#### 🏠  Internal
+
+- Update dep @artsy/palette from 13.27.2 to v13.28.0 [#3671](https://github.com/artsy/reaction/pull/3671) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Update dep @artsy/palette from 13.24.2 to v13.27.2 [#3670](https://github.com/artsy/reaction/pull/3670) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Will Doenlen ([@williardx](https://github.com/williardx))
+
+---
+
 # v29.0.1 (Mon Dec 14 2020)
 
 #### 🐛  Bug Fix
