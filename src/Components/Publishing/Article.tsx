@@ -1,6 +1,6 @@
+import { OwnerType } from "@artsy/cohesion"
 import { Theme } from "@artsy/palette"
-import React from "react"
-
+import { AnalyticsContext } from "Artsy/Analytics/AnalyticsContext"
 import { BannerWrapper } from "Components/Publishing/Banner/Banner"
 import { PixelTracker } from "Components/Publishing/Display/ExternalTrackers"
 import { EditorialFeature } from "Components/Publishing/EditorialFeature/EditorialFeature"
@@ -14,12 +14,11 @@ import { VideoLayout } from "Components/Publishing/Layouts/VideoLayout"
 import { FullScreenProvider } from "Components/Publishing/Sections/FullscreenViewer/FullScreenProvider"
 import { TooltipsDataProvider } from "Components/Publishing/ToolTip/TooltipsDataProvider"
 import { ArticleData } from "Components/Publishing/Typings"
+import React from "react"
 import { Bling as GPT } from "react-gpt"
 import track, { TrackingProp } from "react-tracking"
 import { MediaContextProvider } from "Utils/Responsive"
 import Events from "../../Utils/Events"
-import { AnalyticsContext } from "Artsy/Analytics/AnalyticsContext"
-import { OwnerType } from "@artsy/cohesion"
 
 GPT.enableSingleRequest()
 
@@ -44,6 +43,7 @@ export interface ArticleProps {
   headerHeight?: string
   marginTop?: string | null
   showTooltips?: boolean
+  hideAuthModal?: boolean
   slideIndex?: number
   tracking?: TrackingProp
   closeViewer?: () => void
@@ -117,10 +117,20 @@ export class Article extends React.Component<ArticleProps> {
   }
 
   shouldRenderSignUpCta = () => {
-    const { article, isLoggedIn, isTruncated, isMobile } = this.props
+    const {
+      article,
+      isLoggedIn,
+      isTruncated,
+      isMobile,
+      hideAuthModal,
+    } = this.props
 
     return (
-      isMobile && article.layout !== "series" && !isLoggedIn && !isTruncated
+      !hideAuthModal &&
+      isMobile &&
+      article.layout !== "series" &&
+      !isLoggedIn &&
+      !isTruncated
     )
   }
 
