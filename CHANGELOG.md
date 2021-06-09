@@ -1,3 +1,15 @@
+# v29.1.0 (Wed Jun 09 2021)
+
+#### 🚀  Enhancement
+
+- feat: Add flag to hide auth modal in article component [#3687](https://github.com/artsy/reaction/pull/3687) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v29.0.2 (Thu Jan 14 2021)
 
 #### 🐛  Bug Fix
