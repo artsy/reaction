@@ -1,3 +1,15 @@
+# v29.2.0 (Fri Jun 11 2021)
+
+#### 🚀  Enhancement
+
+- feat: Render article ads conditionally [#3688](https://github.com/artsy/reaction/pull/3688) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v29.1.0 (Wed Jun 09 2021)
 
 #### 🚀  Enhancement
