@@ -22,6 +22,7 @@ interface Props {
   seriesArticle?: ArticleData
   relatedArticles?: any
   isMobile?: boolean
+  shouldAdRender?: boolean
 }
 
 interface State {
@@ -42,6 +43,10 @@ interface State {
   }
 )
 export class VideoLayout extends Component<Props, State> {
+  static defaultProps = {
+    shouldAdRender: true,
+  }
+
   state = {
     isPlaying: false,
     hideCover: false,
@@ -77,7 +82,7 @@ export class VideoLayout extends Component<Props, State> {
   }
 
   render() {
-    const { article, isMobile, relatedArticles } = this.props
+    const { article, isMobile, relatedArticles, shouldAdRender } = this.props
     const { media, seriesArticle } = article
     const sponsor = seriesArticle ? seriesArticle.sponsor : article.sponsor
     const isSponsored = isEditorialSponsored(sponsor)
@@ -120,20 +125,22 @@ export class VideoLayout extends Component<Props, State> {
             </Box>
           )}
         </Box>
-        <DisplayAd
-          adUnit={
-            isMobile
-              ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-              : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-          }
-          adDimension={adDimension}
-          targetingData={targetingData(
-            article,
-            isSponsored ? "sponsorfeature" : "video"
-          )}
-          isSeries
-          articleSlug={article.slug}
-        />
+        {shouldAdRender && (
+          <DisplayAd
+            adUnit={
+              isMobile
+                ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+                : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+            }
+            adDimension={adDimension}
+            targetingData={targetingData(
+              article,
+              isSponsored ? "sponsorfeature" : "video"
+            )}
+            isSeries
+            articleSlug={article.slug}
+          />
+        )}
       </VideoLayoutContainer>
     )
   }

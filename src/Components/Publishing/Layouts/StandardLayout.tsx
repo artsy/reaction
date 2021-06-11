@@ -31,6 +31,7 @@ export class StandardLayout extends React.Component<
     isSuper: false,
     article: {},
     isTruncated: false,
+    shouldAdRender: true,
   }
 
   constructor(props) {
@@ -64,9 +65,9 @@ export class StandardLayout extends React.Component<
   }
 
   renderSideRailDisplayAd(isMobileAd: boolean) {
-    const { article, isSuper } = this.props
+    const { article, isSuper, shouldAdRender } = this.props
 
-    if (isSuper) {
+    if (isSuper || !shouldAdRender) {
       return
     }
 
@@ -87,12 +88,12 @@ export class StandardLayout extends React.Component<
   }
 
   renderTopRailDisplayAd(isMobileAd: boolean) {
-    const { article, isSuper } = this.props
+    const { article, isSuper, shouldAdRender } = this.props
     const adDimension = isMobileAd
       ? AdDimension.Mobile_InContentMR1
       : AdDimension.Desktop_TopLeaderboard
 
-    if (isSuper) {
+    if (isSuper || !shouldAdRender) {
       return
     }
 

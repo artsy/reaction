@@ -20,13 +20,20 @@ interface Props {
   color?: string
   relatedArticles?: any
   isMobile?: boolean
+  shouldAdRender?: boolean
 }
 
 export class SeriesLayout extends Component<Props, null> {
   public static defaultProps: Partial<Props>
 
   render() {
-    const { article, backgroundColor, relatedArticles, isMobile } = this.props
+    const {
+      article,
+      backgroundColor,
+      relatedArticles,
+      isMobile,
+      shouldAdRender,
+    } = this.props
 
     const { hero_section, sponsor } = article
     const isSponsored = isEditorialSponsored(sponsor)
@@ -62,20 +69,22 @@ export class SeriesLayout extends Component<Props, null> {
             <SeriesAbout article={article} color={this.props.color} />
           </Box>
         </SeriesContent>
-        <DisplayAd
-          adUnit={
-            isMobile
-              ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
-              : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
-          }
-          adDimension={adDimension}
-          targetingData={targetingData(
-            article,
-            isSponsored ? "sponsorlanding" : "standardseries"
-          )}
-          isSeries
-          articleSlug={article.slug}
-        />
+        {shouldAdRender && (
+          <DisplayAd
+            adUnit={
+              isMobile
+                ? AdUnit.Mobile_SponsoredSeriesLandingPageAndVideoPage_Bottom
+                : AdUnit.Desktop_SponsoredSeriesLandingPageAndVideoPage_LeaderboardBottom
+            }
+            adDimension={adDimension}
+            targetingData={targetingData(
+              article,
+              isSponsored ? "sponsorlanding" : "standardseries"
+            )}
+            isSeries
+            articleSlug={article.slug}
+          />
+        )}
       </SeriesContainer>
     )
   }
@@ -84,6 +93,7 @@ export class SeriesLayout extends Component<Props, null> {
 SeriesLayout.defaultProps = {
   backgroundColor: color("black100"),
   color: "white",
+  shouldAdRender: true,
 }
 
 interface ContainerProps {
