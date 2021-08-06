@@ -33,11 +33,18 @@
     p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
-"@artsy/palette@13.28.0":
-  version "13.28.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-13.28.0.tgz#2c6e107411d225e25f951ddaf5d4be6d0b3de98d"
-  integrity sha512-feUh2+cflc9JyQ16PL9M9mZs8OdWodFUAZED/L4Ng9rR7CkNQ0rmXq+A3KiYaZJTJoK26ZgT5x4zoX1FC8c9DQ==
+"@artsy/palette-tokens@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette-tokens/-/palette-tokens-2.5.0.tgz#55cdbba4714ac004c03401826faab66d2f978547"
+  integrity sha512-77RKXo4WOQ076OI2uYgF7uF1cNOlnQy54T4RS75GjtDuB/+rrEyARv6fLLLCeiRI5L1rrEZOdJN4eL3LRWeCeA==
+
+"@artsy/palette@14.54.1":
+  version "14.54.1"
+  resolved "https://registry.yarnpkg.com/@artsy/palette/-/palette-14.54.1.tgz#3cc7d92dcce5cb183852ea914179f0c5b3494f5d"
+  integrity sha512-XAO+eADYo6e1Mnio2zGwUVRh0gFJdUNAD3nU97k+kwcXvd9gJUAJsMVt3C6aS9tnytQqrgY4rDLLvrUNwnS7UA==
   dependencies:
+    "@artsy/palette-tokens" "^2.5.0"
+    "@seznam/compose-react-refs" "^1.0.6"
     "@styled-system/theme-get" "^5.1.2"
     d3-interpolate "^1.3.2"
     d3-shape "^1.3.5"
@@ -47,11 +54,10 @@
     rc-slider "^8.6.2"
     react-lazy-load-image-component "1.5.0"
     react-remove-scroll "^2.3.0"
-    react-spring "^8.0.27"
     styled-bootstrap-grid "3.1.0"
     styled-system "^5.1.5"
     trunc-html "^1.1.2"
-    use-cursor "^1.2.2"
+    use-cursor "^1.2.3"
 
 "@artsy/react-html-parser@^3.0.2":
   version "3.0.2"
@@ -1228,13 +1234,6 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.3.1":
-  version "7.4.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
-  integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
 "@babel/runtime@^7.5.5":
   version "7.7.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.1.tgz#b223497bbfbcbbb38116673904debc71470ca528"
@@ -1841,6 +1840,11 @@
   integrity sha512-D6+M1081wCwGp8adWV3KFOxrxFmVyjMJ45x6/TnYvXdgDyc+t28oil21FHeKhwjld9eMqgQ5Tf1OOvos1MNBQg==
   dependencies:
     "@sentry/types" "4.2.3"
+
+"@seznam/compose-react-refs@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@seznam/compose-react-refs/-/compose-react-refs-1.0.6.tgz#6ec4e70bdd6e32f8e70b4100f27267cf306bd8df"
+  integrity sha512-izzOXQfeQLonzrIQb8u6LQ8dk+ymz3WXTIXjvOlTXHq6sbzROg3NWU+9TTAOpEoK9Bth24/6F/XrfHJ5yR5n6Q==
 
 "@styled-system/background@^5.1.2":
   version "5.1.2"
@@ -10321,14 +10325,6 @@ react-slick@^0.23.2:
     prettier "^1.14.3"
     resize-observer-polyfill "^1.5.0"
 
-react-spring@^8.0.27:
-  version "8.0.27"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.27.tgz#97d4dee677f41e0b2adcb696f3839680a3aa356a"
-  integrity sha512-nDpWBe3ZVezukNRandTeLSPcwwTMjNVu1IDq9qA/AMiUqHuRN4BeSWvKr3eIxxg1vtiYiOLy4FqdfCP5IoP77g==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    prop-types "^15.5.8"
-
 react-static-container@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-static-container/-/react-static-container-1.0.2.tgz#30a4f7548860be1d55d5eb4c20645b835c2bdf34"
@@ -12624,10 +12620,10 @@ use-callback-ref@^1.2.3:
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.4.tgz#d86d1577bfd0b955b6e04aaf5971025f406bea3c"
   integrity sha512-rXpsyvOnqdScyied4Uglsp14qzag1JIemLeTWGKbwpotWht57hbP78aNT+Q4wdFKQfQibbUX4fb6Qb4y11aVOQ==
 
-use-cursor@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/use-cursor/-/use-cursor-1.2.2.tgz#9f9fe356cff043fc7b3b59835245782c40526ed3"
-  integrity sha512-x6UBGPjqsjs3zIrCQFRP93hD60uzY8njRUnsBIKXB53uwZwCbHZHMQnAw8Gw9VeD0jhWxqyPicdpKSFyK21Q5w==
+use-cursor@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/use-cursor/-/use-cursor-1.2.3.tgz#df169f6d160fc4f6a00ff787aafa1d4ace0eccdc"
+  integrity sha512-xSm2bDLnRpdupZTfWPmUHU1ZipxVh/p0fPsrF9wkH59MslWdYUK4xq4gAxL3nmVSEyfly3q65FcHYdyqTK0iIg==
   dependencies:
     map-cursor-to-max "^1.0.0"
 
