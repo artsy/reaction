@@ -150,6 +150,7 @@ export const FeatureSplitHeaderContainer = styled(Flex)<{
   hasNav?: boolean
 }>`
   height: ${props => (props.hasNav ? "100vh" : "calc(100vh - 61px)")};
+  overflow: hidden;
   min-height: fit-content;
 
   ${props =>
