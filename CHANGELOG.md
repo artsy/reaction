@@ -1,3 +1,15 @@
+# v29.2.1 (Thu Aug 12 2021)
+
+#### 🐛  Bug Fix
+
+- bugfix: Fix overflow text [#3697](https://github.com/artsy/reaction/pull/3697) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v29.2.0 (Fri Jun 11 2021)
 
 #### 🚀  Enhancement
