@@ -7,10 +7,12 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.0.2.tgz#b79f6fd0d0bda0c5e0764ced55e014cf58174d6f"
   integrity sha512-mJyuKNDMYZcgc2oLIkvmpVIr1RexklV71JmU+to5qs3Y9pv5dsj4WHl8+wf9g74EQNOyhWH2SYMGBm1JoPYh/Q==
 
-"@artsy/cohesion@1.60.0":
-  version "1.60.0"
-  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-1.60.0.tgz#854db37b9f8643ed650f3cc9d14234a1b762fcc8"
-  integrity sha512-GBfa0/AoiLtG/Mw0VBR0vCiEj1s8+eBMTtKSLQS82iFo41Z84Li8M0YrlHAmXUrK3oBOO/YvhVNFE40avgK8xQ==
+"@artsy/cohesion@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-3.1.0.tgz#cbcb05dc07e11cf17cd6902bd64e07861e554fdb"
+  integrity sha512-5UpBS7E2yoLa4kh0/DIlWV+emrdvquR/JjKGYybmQrSd6fa7IuszFEJ7S2q67tAYnZw4ENlivozmoOFSbNsFuQ==
+  dependencies:
+    core-js "3"
 
 "@artsy/detect-responsive-traits@^0.0.5":
   version "0.0.5"
@@ -4125,6 +4127,11 @@ core-js@2.6.5, core-js@^2.4.0, core-js@^2.4.1:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha512-klh/kDpwX8hryYL14M9w/xei6vrv6sE8gTHDG7/T/+SEovB/G4ejwcfE/CBzO6Edsu+OETZMZ3wcX/EjUkrl5A==
+
+core-js@3:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.0.tgz#9af3f4a6df9ba3428a3fb1b171f1503b3f40cc49"
+  integrity sha512-WJeQqq6jOYgVgg4NrXKL0KLQhi0CT4ZOCvFL+3CQ5o7I6J8HkT5wd53EadMfqTDp1so/MT1J+w2ujhWcCJtN7w==
 
 core-js@^1.0.0:
   version "1.2.7"
