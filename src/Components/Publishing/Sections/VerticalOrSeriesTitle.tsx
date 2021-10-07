@@ -1,4 +1,4 @@
-import { color, Sans } from "@artsy/palette"
+import { Sans, color } from "@artsy/palette"
 import React from "react"
 import styled from "styled-components"
 
@@ -34,6 +34,7 @@ export const VerticalOrSeriesTitle: React.SFC<Props> = props => {
   )
 }
 
+// @ts-ignore
 export const Vertical = styled(Sans)<{ color: string }>`
   a {
     color: ${props => props.color};

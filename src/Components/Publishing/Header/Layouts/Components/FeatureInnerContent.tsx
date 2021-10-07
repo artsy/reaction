@@ -1,4 +1,4 @@
-import { color, Sans, space } from "@artsy/palette"
+import { Sans, color, space } from "@artsy/palette"
 import { unica } from "Assets/Fonts"
 import { pMedia } from "Components/Helpers"
 import { Byline } from "Components/Publishing/Byline/Byline"
@@ -94,6 +94,7 @@ export const SubContentContainer = styled.div`
   `};
 `
 
+// @ts-ignore
 export const Deck = styled(Sans)`
   max-width: 460px;
   margin-right: ${space(3)}px;

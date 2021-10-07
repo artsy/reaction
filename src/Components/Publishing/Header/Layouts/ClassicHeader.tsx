@@ -48,8 +48,10 @@ export const ClassicHeader: React.SFC<ClassicHeaderProps> = props => {
   )
 }
 
+// @ts-ignore
 export const Title = styled(Serif)``
 
+// @ts-ignore
 export const LeadParagraph = styled(Serif)`
   max-width: 580px;
   width: 100%;

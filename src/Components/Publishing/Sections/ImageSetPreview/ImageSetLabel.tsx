@@ -66,5 +66,7 @@ export const LabelWrapper = styled(Flex)`
 `
 
 // exported for targeting from outside components
+// @ts-ignore
 export const SlideshowTitle = styled(Sans)``
+// @ts-ignore
 export const SlideshowCta = styled(Flex)``

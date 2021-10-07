@@ -1,4 +1,4 @@
-import { Box, color, Flex, FlexProps, Sans, Serif } from "@artsy/palette"
+import { Box, Flex, FlexProps, Sans, Serif, color } from "@artsy/palette"
 import { Share, ShareContainer } from "Components/Publishing/Byline/Share"
 import { Emerging } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/Emerging"
 import { GettingTheirDue } from "Components/Publishing/EditorialFeature/Components/Vanguard2019/Blobs/GettingTheirDue"
@@ -206,12 +206,14 @@ export class VanguardArtistWrapper extends React.Component<
   }
 }
 
+// @ts-ignore
 export const InvertedSerif = styled(Serif)<TextProps>`
   mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
   color: ${color("white100")};
   will-change: color;
 `
 
+// @ts-ignore
 export const InvertedSans = styled(Sans)<TextProps>`
   mix-blend-mode: ${p => (p.isMobile ? "normal" : "difference")};
   color: ${color("white100")};
@@ -228,6 +230,8 @@ const ReadMoreText = styled(Box)`
   border-bottom: solid;
   line-height: normal;
 `
+
+// @ts-ignore
 export const ReadMoreButton = styled(InvertedSans)<{ onClick: () => void }>`
   text-transform: uppercase;
   cursor: pointer;
