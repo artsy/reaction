@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Info Block matches the snapshot 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -25,6 +18,13 @@ exports[`Video Info Block matches the snapshot 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 42px;
   line-height: 50px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 a {
@@ -67,13 +67,6 @@ exports[`Video Info Block matches the snapshot 1`] = `
 `;
 
 exports[`Video Info Block matches the snapshot with edit props 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -91,6 +84,13 @@ exports[`Video Info Block matches the snapshot with edit props 1`] = `
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 42px;
   line-height: 50px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 a {

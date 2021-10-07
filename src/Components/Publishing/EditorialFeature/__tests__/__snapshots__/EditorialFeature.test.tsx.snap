@@ -1,70 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
-.c9 {
-  padding-left: 10px;
-  padding-right: 10px;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c24 {
-  max-width: 100%;
-  margin-left: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.c73 {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c41 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c79 {
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c80 {
-  width: 100%;
-  margin-bottom: 0;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c7 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -139,6 +75,70 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
   font-size: 18px;
   line-height: 26px;
   margin-bottom: 20px;
+}
+
+.c9 {
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c24 {
+  max-width: 100%;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.c73 {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c41 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c79 {
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c80 {
+  width: 100%;
+  margin-bottom: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c22 {
@@ -1390,96 +1390,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c9 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c9 {
-    padding-left: 55px;
-    padding-right: 55px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    max-width: 75%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c24 {
-    max-width: 75%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c73 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c73 {
-    padding-left: 55px;
-    padding-right: 55px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c79 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c79 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c79 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c80 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c80 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c80 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c26 {
     padding-bottom: 60px;
   }
@@ -1602,6 +1512,96 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 @media screen and (min-width:64em) {
   .c82 {
     line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c9 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c9 {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    max-width: 75%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    max-width: 75%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c73 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c73 {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c79 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c79 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c79 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c80 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c80 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c80 {
+    width: 50%;
+    margin-bottom: 5px;
   }
 }
 
@@ -2035,7 +2035,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -2076,7 +2076,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
       className="c10"
     >
       <div
-        className="fresnel-container fresnel-at-xs"
+        className="fresnel-container fresnel-at-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -2085,7 +2085,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
         />
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -2107,7 +2107,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           Influential 
         </span>
         <div
-          className="fresnel-container fresnel-lessThan-md"
+          className="fresnel-container fresnel-lessThan-md "
           suppressHydrationWarning={false}
         >
           <span
@@ -2117,7 +2117,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           </span>
         </div>
         <div
-          className="fresnel-container fresnel-lessThan-md"
+          className="fresnel-container fresnel-lessThan-md "
           suppressHydrationWarning={false}
         >
           <span
@@ -2127,7 +2127,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
           </span>
         </div>
         <div
-          className="fresnel-container fresnel-greaterThan-sm"
+          className="fresnel-container fresnel-greaterThan-sm "
           suppressHydrationWarning={false}
         >
           <span
@@ -2454,7 +2454,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -2705,7 +2705,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -2953,7 +2953,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -3257,7 +3257,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -3546,7 +3546,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -3800,7 +3800,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -4060,7 +4060,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -4317,7 +4317,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -4590,7 +4590,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -4864,7 +4864,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -5115,7 +5115,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -5368,7 +5368,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -5630,7 +5630,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -5881,7 +5881,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -6150,7 +6150,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -6401,7 +6401,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -6691,7 +6691,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -6928,7 +6928,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -7212,7 +7212,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -7474,7 +7474,7 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-sm"
+                className="fresnel-container fresnel-greaterThanOrEqual-sm "
                 suppressHydrationWarning={false}
               >
                 <div
@@ -7728,77 +7728,6 @@ exports[`EditorialFeature EOY_2018_ARTISTS Matches snapshot 1`] = `
 `;
 
 exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
-.c13 {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c15 {
-  width: 100%;
-}
-
-.c24 {
-  width: 100%;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c40 {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
-}
-
-.c39 {
-  color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
-}
-
-.c51 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c14 {
-  padding-bottom: 20px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c18 {
-  width: 100%;
-  max-width: 1000px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c19 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -7852,6 +7781,77 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 22px;
   line-height: 32px;
+}
+
+.c13 {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c15 {
+  width: 100%;
+}
+
+.c24 {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c40 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+
+.c39 {
+  color: black60;
+}
+
+.c39.c39 {
+  color: black60;
+  font-family: sans;
+}
+
+.c51 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c14 {
+  padding-bottom: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c18 {
+  width: 100%;
+  max-width: 1000px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c16 {
@@ -8818,72 +8818,6 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c15 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c15 {
-    width: 15%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c24 {
-    width: 70%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c40 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c40 {
-    width: 70%;
-  }
-}
-
-@media (min-width:) {
-  .c39 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c14 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c18 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c18 {
-    width: 70%;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c53 {
     font-size: 18px;
   }
@@ -8930,6 +8864,62 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
   .c10 {
     padding-left: 55px;
     padding-right: 55px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c15 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c15 {
+    width: 15%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c40 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c40 {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c14 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    width: 70%;
   }
 }
 
@@ -9266,7 +9256,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
         
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -9730,7 +9720,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -10105,7 +10095,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -10508,7 +10498,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -10846,7 +10836,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -11208,7 +11198,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -11566,7 +11556,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -11939,7 +11929,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -12503,7 +12493,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -13118,7 +13108,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -13722,7 +13712,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -14286,7 +14276,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -14679,7 +14669,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -15032,7 +15022,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -15588,7 +15578,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -15960,7 +15950,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -16298,7 +16288,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -16888,7 +16878,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -17302,7 +17292,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div
@@ -17650,7 +17640,7 @@ exports[`EditorialFeature EOY_2018_CULTURE Matches snapshot 1`] = `
               </div>
             </div>
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-sm"
+              className="fresnel-container fresnel-greaterThanOrEqual-sm "
               suppressHydrationWarning={false}
             >
               <div

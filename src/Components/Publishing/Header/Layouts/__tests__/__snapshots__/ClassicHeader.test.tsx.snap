@@ -1,27 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Classic Header Snapshots renders editable props properly 1`] = `
-.c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  max-width: 580px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c1 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 32px;
@@ -49,6 +28,27 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
   font-size: 14px;
   line-height: 24px;
   color: #666;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  max-width: 580px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c8 {
@@ -103,18 +103,6 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c0 {
-    padding-left: 0;
-    padding-right: 0;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c1 {
     font-size: 44px;
   }
@@ -129,6 +117,18 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
 @media screen and (min-width:40em) {
   .c1 {
     text-align: center;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c0 {
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 900px;
   }
 }
 
@@ -287,7 +287,33 @@ exports[`Classic Header Snapshots renders editable props properly 1`] = `
 
 exports[`Classic Header Snapshots renders promoted content properly 1`] = `
 Array [
-  .c0 {
+  .c5 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c7 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.c10 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  opacity: 1;
+  padding-top: 1px;
+}
+
+.c11 {
+  position: relative;
+}
+
+.c0 {
   padding-left: 20px;
   padding-right: 20px;
   max-width: 1250px;
@@ -329,66 +355,58 @@ Array [
 }
 
 .c3 {
-  margin-right: 20px;
   width: 100px;
-}
-
-.c5 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-}
-
-.c10 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  padding-top: 1px;
-}
-
-.c11 {
-  position: relative;
+  margin-right: 20px;
 }
 
 .c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
+  font-weight: normal;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
   border: 2px solid;
   border-radius: 3px;
-  border-radius: 3px;
-  padding-left: 20px;
-  padding-right: 20px;
+  -webkit-transition: color 0.25s ease,border-color 0.25s ease,background-color 0.25s ease;
+  transition: color 0.25s ease,border-color 0.25s ease,background-color 0.25s ease;
+  width: medium;
+  height: medium;
   height: 41px;
-  -webkit-transition: 0.25s ease;
-  transition: 0.25s ease;
-  background-color: #FFF;
-  border-color: #E5E5E5;
-  color: #000;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: white100;
+  border-color: black10;
+  color: black100;
 }
 
-.c9.loading {
-  -webkit-transition: none;
-  transition: none;
-  background-color: transparent;
-  color: transparent;
-  border: 0;
-  cursor: auto;
+.c9:focus {
+  outline: 0;
+  background-color: white100;
+  border-color: black10;
+  color: black100;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
 }
 
-.c9.disabled {
-  background-color: #E5E5E5;
-  border-color: #E5E5E5;
-  color: #FFF;
+.c9:disabled {
   pointer-events: none;
+  background-color: black10;
+  border-color: black10;
+  color: white100;
 }
 
 .c6 {
@@ -420,8 +438,13 @@ Array [
 }
 
 .c12 {
-  border: 1px solid #E5E5E5;
+  border-width: 1px;
+  border-style: solid;
   border-bottom-width: 0;
+  background-color: transparent;
+  border-color: currentColor;
+  margin: 0;
+  color: black60;
   width: 100%;
 }
 
@@ -451,9 +474,9 @@ Array [
 
 @media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
   .c9:hover {
-    background-color: #FFF;
-    border-color: #000;
-    color: #000;
+    background-color: white100;
+    border-color: black100;
+    color: black100;
   }
 }
 
@@ -469,7 +492,7 @@ Array [
         display="flex"
       >
         <div
-          className="fresnel-container fresnel-greaterThan-xs"
+          className="fresnel-container fresnel-greaterThan-xs "
           suppressHydrationWarning={false}
         >
           <a
@@ -530,7 +553,7 @@ Array [
         </div>
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <a
@@ -538,8 +561,9 @@ Array [
         >
           <button
             className="c9"
-            height="41px"
             onClick={[Function]}
+            size="medium"
+            tabIndex={0}
           >
             <div
               className="c10"
@@ -550,6 +574,7 @@ Array [
                 }
               }
               fontSize="14px"
+              opacity={1}
               style={Object {}}
             >
               Explore 
@@ -559,7 +584,7 @@ Array [
         </a>
       </div>
       <div
-        className="fresnel-container fresnel-at-xs"
+        className="fresnel-container fresnel-at-xs "
         suppressHydrationWarning={false}
       >
         <a
@@ -589,28 +614,7 @@ Array [
       width="100%"
     />
   </div>,
-  .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  max-width: 580px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c1 {
+  .c1 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 32px;
   line-height: 38px;
@@ -631,6 +635,27 @@ Array [
   font-size: 14px;
   line-height: 24px;
   color: #666;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  max-width: 580px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c6 {
@@ -672,18 +697,6 @@ Array [
 }
 
 @media screen and (min-width:40em) {
-  .c0 {
-    padding-left: 0;
-    padding-right: 0;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c1 {
     font-size: 44px;
   }
@@ -698,6 +711,18 @@ Array [
 @media screen and (min-width:40em) {
   .c1 {
     text-align: center;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c0 {
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 900px;
   }
 }
 
@@ -845,27 +870,6 @@ Array [
 `;
 
 exports[`Classic Header Snapshots renders properly 1`] = `
-.c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  max-width: 580px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c1 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-size: 32px;
@@ -893,6 +897,27 @@ exports[`Classic Header Snapshots renders properly 1`] = `
   font-size: 14px;
   line-height: 24px;
   color: #666;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  max-width: 580px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c8 {
@@ -947,18 +972,6 @@ exports[`Classic Header Snapshots renders properly 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c0 {
-    padding-left: 0;
-    padding-right: 0;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    max-width: 900px;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c1 {
     font-size: 44px;
   }
@@ -973,6 +986,18 @@ exports[`Classic Header Snapshots renders properly 1`] = `
 @media screen and (min-width:40em) {
   .c1 {
     text-align: center;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c0 {
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 900px;
   }
 }
 

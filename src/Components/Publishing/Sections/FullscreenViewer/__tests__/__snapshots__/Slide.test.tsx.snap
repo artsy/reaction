@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders properly 1`] = `
+.c16 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  opacity: 1;
+  padding-top: 1px;
+}
+
 .c3 {
   padding: 8px;
   background-color: black5;
@@ -43,74 +52,6 @@ exports[`renders properly 1`] = `
   color: black100;
 }
 
-.c5 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  text-align: left;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
-  text-align: left;
-  font-family: sans;
-}
-
-.c6 {
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
-  font-family: sans;
-}
-
-.c17 {
-  padding-left: 8px;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
-  font-family: sans;
-}
-
-.c16 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  padding-top: 1px;
-}
-
-.c15 {
-  cursor: pointer;
-  position: relative;
-  white-space: nowrap;
-  border: 2px solid;
-  border-radius: 3px;
-  border-radius: 3px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 41px;
-  -webkit-transition: 0.25s ease;
-  transition: 0.25s ease;
-  background-color: #E5E5E5;
-  border-color: #E5E5E5;
-  color: #000;
-}
-
-.c15.loading {
-  -webkit-transition: none;
-  transition: none;
-  background-color: transparent;
-  color: transparent;
-  border: 0;
-  cursor: auto;
-}
-
-.c15.disabled {
-  background-color: #E5E5E5;
-  border-color: #E5E5E5;
-  color: #FFF;
-  pointer-events: none;
-}
-
 .c4 {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -118,12 +59,93 @@ exports[`renders properly 1`] = `
   padding: 0;
   border: 0;
   background-color: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
   cursor: pointer;
+}
+
+.c4:disabled {
+  cursor: default;
+}
+
+.c5 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+}
+
+.c5.c5 {
+  text-align: left;
+  font-family: sans;
+}
+
+.c6.c6 {
+  font-family: sans;
+}
+
+.c17 {
+  padding-left: 8px;
+}
+
+.c17.c17 {
+  font-family: sans;
+}
+
+.c15 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  font-weight: normal;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid;
+  border-radius: 3px;
+  -webkit-transition: color 0.25s ease,border-color 0.25s ease,background-color 0.25s ease;
+  transition: color 0.25s ease,border-color 0.25s ease,background-color 0.25s ease;
+  width: medium;
+  height: medium;
+  height: 41px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: black10;
+  border-color: black10;
+  color: black100;
+}
+
+.c15:focus {
+  outline: 0;
+  background-color: black10;
+  border-color: black10;
+  color: black100;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c15:disabled {
+  pointer-events: none;
+  background-color: black10;
+  border-color: black10;
+  color: white100;
 }
 
 .c13 {
@@ -135,10 +157,7 @@ exports[`renders properly 1`] = `
   white-space: nowrap;
 }
 
-.c11 {
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
+.c11.c11 {
   font-family: sans;
 }
 
@@ -184,48 +203,11 @@ exports[`renders properly 1`] = `
   line-height: 1.1em;
 }
 
-@media (min-width:) {
-  .c5 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    text-align: left;
-    font-family: sans;
-  }
-}
-
-@media (min-width:) {
-  .c6 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    font-family: sans;
-  }
-}
-
-@media (min-width:) {
-  .c17 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    font-family: sans;
-  }
-}
-
 @media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
   .c15:hover {
-    background-color: #C2C2C2;
-    border-color: #C2C2C2;
-    color: #000;
-  }
-}
-
-@media (min-width:) {
-  .c11 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    font-family: sans;
+    background-color: black30;
+    border-color: black30;
+    color: black100;
   }
 }
 
@@ -276,7 +258,7 @@ exports[`renders properly 1`] = `
       src="https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F0aRUvnVgQKbQk5dj8xcCAg%2Flarger.jpg&width=1200&quality=80"
     />
     <div
-      className="fresnel-container fresnel-lessThan-sm"
+      className="fresnel-container fresnel-lessThan-sm "
       suppressHydrationWarning={false}
     >
       <div
@@ -286,6 +268,7 @@ exports[`renders properly 1`] = `
           className="c4"
           cursor="pointer"
           display="flex"
+          type="button"
           width="100%"
         >
           <div
@@ -309,7 +292,7 @@ exports[`renders properly 1`] = `
       </div>
     </div>
     <div
-      className="fresnel-container fresnel-greaterThanOrEqual-sm"
+      className="fresnel-container fresnel-greaterThanOrEqual-sm "
       suppressHydrationWarning={false}
     >
       <div
@@ -397,8 +380,9 @@ exports[`renders properly 1`] = `
             </div>
             <button
               className="c15"
-              height="41px"
               onClick={[Function]}
+              size="medium"
+              tabIndex={0}
             >
               <div
                 className="c16"
@@ -409,6 +393,7 @@ exports[`renders properly 1`] = `
                   }
                 }
                 fontSize="14px"
+                opacity={1}
                 style={Object {}}
               >
                 View

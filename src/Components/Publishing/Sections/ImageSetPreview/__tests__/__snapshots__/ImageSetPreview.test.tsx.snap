@@ -1,20 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a full image set properly 1`] = `
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c4 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -35,6 +21,20 @@ exports[`renders a full image set properly 1`] = `
   font-size: 12px;
   line-height: 16px;
   padding-left: 20px;
+}
+
+.c3 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c8 {
@@ -212,7 +212,7 @@ exports[`renders a full image set properly 1`] = `
         </div>
       </div>
       <div
-        className="fresnel-container fresnel-greaterThanOrEqual-sm"
+        className="fresnel-container fresnel-greaterThanOrEqual-sm "
         suppressHydrationWarning={false}
       >
         <div
@@ -254,20 +254,6 @@ exports[`renders a full image set properly 1`] = `
 `;
 
 exports[`renders a mini image set properly 1`] = `
-.c5 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c6 {
   font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight: 500;
@@ -288,6 +274,20 @@ exports[`renders a mini image set properly 1`] = `
   font-size: 12px;
   line-height: 16px;
   padding-left: 20px;
+}
+
+.c5 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c10 {
@@ -468,7 +468,7 @@ exports[`renders a mini image set properly 1`] = `
         </div>
       </div>
       <div
-        className="fresnel-container fresnel-greaterThanOrEqual-sm"
+        className="fresnel-container fresnel-greaterThanOrEqual-sm "
         suppressHydrationWarning={false}
       >
         <div

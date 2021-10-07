@@ -1,6 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders a headline with children properly 1`] = `
+.c1 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -14,13 +21,6 @@ exports[`renders a headline with children properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
 }
 
 @media screen and (min-width:40em) {
@@ -68,6 +68,13 @@ exports[`renders a headline with children properly 1`] = `
 `;
 
 exports[`renders a news headline properly 1`] = `
+.c1 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -81,13 +88,6 @@ exports[`renders a news headline properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c1 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
 }
 
 @media screen and (min-width:40em) {

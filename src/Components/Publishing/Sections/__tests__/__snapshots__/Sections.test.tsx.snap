@@ -1,37 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Sections snapshots tests renders properly 1`] = `
-.c18 {
-  color: black60;
-}
-
-.c26 {
-  margin: auto;
-}
-
-.c14 {
-  color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
-}
-
-.c36 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c27 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 10px;
@@ -69,6 +38,37 @@ exports[`Sections snapshots tests renders properly 1`] = `
   line-height: 26px;
 }
 
+.c18 {
+  color: black60;
+}
+
+.c26 {
+  margin: auto;
+}
+
+.c14 {
+  color: black60;
+}
+
+.c14.c14 {
+  color: black60;
+  font-family: sans;
+}
+
+.c36 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c25 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -99,13 +99,13 @@ exports[`Sections snapshots tests renders properly 1`] = `
 
 .c19 {
   color: black60;
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
   padding: 0;
   margin-top: 10px;
+}
+
+.c19.c19 {
+  color: black60;
+  font-family: sans;
 }
 
 .c19 a {
@@ -680,16 +680,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
   margin-left: 0;
 }
 
-@media (min-width:) {
-  .c14 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
-}
-
 @media screen and (min-width:40em) {
   .c37 {
     font-size: 18px;
@@ -723,16 +713,6 @@ exports[`Sections snapshots tests renders properly 1`] = `
 @media screen and (min-width:40em) {
   .c40 {
     line-height: 24px;
-  }
-}
-
-@media (min-width:) {
-  .c19 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
   }
 }
 
@@ -2477,7 +2457,7 @@ exports[`Sections snapshots tests renders properly 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-greaterThanOrEqual-sm"
+            className="fresnel-container fresnel-greaterThanOrEqual-sm "
             suppressHydrationWarning={false}
           >
             <div

@@ -1,74 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`series layout renders a series 1`] = `
-.c15 {
-  color: white;
-}
-
-.c33 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 40px;
-}
-
-.c43 {
-  margin: auto;
-}
-
-.c18 {
-  -webkit-flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
-  flex-direction: column-reverse;
-  padding: 20px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c19 {
-  width: 100%;
-  margin-bottom: 0;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c35 {
-  width: 100%;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c40 {
-  width: 100%;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c6 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -142,6 +74,74 @@ exports[`series layout renders a series 1`] = `
   line-height: 14px;
   color: black30;
   margin: 4px;
+}
+
+.c15 {
+  color: white;
+}
+
+.c33 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+
+.c43 {
+  margin: auto;
+}
+
+.c18 {
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  padding: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c19 {
+  width: 100%;
+  margin-bottom: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c35 {
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c40 {
+  width: 100%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c42 {
@@ -655,102 +655,6 @@ exports[`series layout renders a series 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c33 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c33 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c18 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c18 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c18 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c19 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c19 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c19 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c35 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c35 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c35 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c40 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c40 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c40 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c14 {
     font-size: 60px;
   }
@@ -885,6 +789,102 @@ exports[`series layout renders a series 1`] = `
 @media screen and (min-width:64em) {
   .c37 {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c33 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c33 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c18 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c18 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c18 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c19 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c19 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c19 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c35 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c35 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c35 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c40 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c40 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c40 {
+    width: 66.66666666666666%;
   }
 }
 
@@ -1053,7 +1053,7 @@ exports[`series layout renders a series 1`] = `
         
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -1518,7 +1518,7 @@ exports[`series layout renders a series 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md "
             suppressHydrationWarning={false}
           />
         </div>
@@ -1567,7 +1567,7 @@ exports[`series layout renders a series 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md "
             suppressHydrationWarning={false}
           />
         </div>
@@ -1606,6 +1606,81 @@ exports[`series layout renders a series 1`] = `
 `;
 
 exports[`series layout renders a sponsored series 1`] = `
+.c8 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
+.c16 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+  margin-bottom: 8px;
+}
+
+.c26 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.c27 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c28 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c30 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c36 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c42 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.c43 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.c52 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
 .c21 {
   color: white;
 }
@@ -1680,81 +1755,6 @@ exports[`series layout renders a sponsored series 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c8 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 32px;
-  color: white;
-  text-align: center;
-}
-
-.c16 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 42px;
-  line-height: 50px;
-  margin-bottom: 8px;
-}
-
-.c26 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c27 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c28 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c30 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c36 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c42 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.c43 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.c52 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  color: black30;
-  margin: 4px;
 }
 
 .c50 {
@@ -2296,102 +2296,6 @@ exports[`series layout renders a sponsored series 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c39 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c39 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c24 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c24 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c24 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c25 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c25 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c25 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c41 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c41 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c41 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c47 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c47 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c47 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c16 {
     font-size: 60px;
   }
@@ -2526,6 +2430,102 @@ exports[`series layout renders a sponsored series 1`] = `
 @media screen and (min-width:64em) {
   .c43 {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c39 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c39 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c24 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c24 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c24 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c25 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c25 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c25 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c41 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c41 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c41 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c47 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c47 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c47 {
+    width: 66.66666666666666%;
   }
 }
 
@@ -2754,7 +2754,7 @@ exports[`series layout renders a sponsored series 1`] = `
         </a>
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -3241,7 +3241,7 @@ exports[`series layout renders a sponsored series 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md "
             suppressHydrationWarning={false}
           >
             <div
@@ -3317,7 +3317,7 @@ exports[`series layout renders a sponsored series 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md "
             suppressHydrationWarning={false}
           >
             <div

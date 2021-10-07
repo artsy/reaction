@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Display Ad renders the new canvas in standard layout 1`] = `
-.c1 {
-  margin: auto;
-}
-
 .c2 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 10px;
   line-height: 14px;
   color: black30;
   margin: 4px;
+}
+
+.c1 {
+  margin: auto;
 }
 
 .c0 {

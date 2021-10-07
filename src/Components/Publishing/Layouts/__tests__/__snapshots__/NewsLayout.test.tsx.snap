@@ -1,11 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`News Layout renders the news layout on mobile 1`] = `
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.c17 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c11 {
   color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
+}
+
+.c11.c11 {
   color: black60;
   font-family: sans;
 }
@@ -23,20 +37,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
-}
-
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 .c19 {
@@ -460,16 +460,6 @@ exports[`News Layout renders the news layout on mobile 1`] = `
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   border: 1px solid transparent;
-}
-
-@media (min-width:) {
-  .c11 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media screen and (min-width:40em) {
@@ -995,11 +985,25 @@ exports[`News Layout renders the news layout on mobile 1`] = `
 `;
 
 exports[`News Layout renders the news layout properly 1`] = `
+.c3 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.c17 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c11 {
   color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
+}
+
+.c11.c11 {
   color: black60;
   font-family: sans;
 }
@@ -1017,20 +1021,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c3 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 1.1;
-}
-
-.c17 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 .c19 {
@@ -1454,16 +1444,6 @@ exports[`News Layout renders the news layout properly 1`] = `
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   border: 1px solid transparent;
-}
-
-@media (min-width:) {
-  .c11 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media screen and (min-width:40em) {
@@ -1983,34 +1963,6 @@ exports[`News Layout renders the news layout properly 1`] = `
 `;
 
 exports[`News Layout with display ads renders the news layout properly with display ads 1`] = `
-.c25 {
-  margin: auto;
-}
-
-.c11 {
-  color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 780;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 4px;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c3 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -2031,6 +1983,34 @@ exports[`News Layout with display ads renders the news layout properly with disp
   line-height: 14px;
   color: black30;
   margin: 4px;
+}
+
+.c25 {
+  margin: auto;
+}
+
+.c11 {
+  color: black60;
+}
+
+.c11.c11 {
+  color: black60;
+  font-family: sans;
+}
+
+.c2 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 780;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c24 {
@@ -2473,16 +2453,6 @@ exports[`News Layout with display ads renders the news layout properly with disp
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   border: 1px solid transparent;
-}
-
-@media (min-width:) {
-  .c11 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media screen and (min-width:40em) {

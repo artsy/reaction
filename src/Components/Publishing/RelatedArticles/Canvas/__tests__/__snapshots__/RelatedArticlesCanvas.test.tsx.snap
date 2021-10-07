@@ -1,21 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
-.c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  max-width: 1250px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 32px;
-  margin-bottom: 128px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c2 {
   font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
   font-size: 22px;
@@ -33,6 +18,21 @@ exports[`RelatedArticlesCanvas renders the related articles canvas 1`] = `
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+}
+
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+  margin-bottom: 128px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c11 {

@@ -1,53 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Video Layout Video Layout ads renders the video layout properly with ads 1`] = `
-.c31 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 12px;
-}
-
-.c33 {
-  width: 60px;
-  padding-right: 20px;
-}
-
-.c38 {
-  max-width: 100%;
-}
-
-.c40 {
-  padding-left: 20px;
-  padding-right: 20px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.c41 {
-  padding-top: 40px;
-}
-
-.c47 {
-  margin-top: 40px;
-}
-
-.c55 {
-  width: 100%;
-}
-
-.c57 {
-  margin: auto;
-}
-
-.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c7 {
   font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
   font-weight: 600;
@@ -104,6 +57,53 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
   line-height: 14px;
   color: black30;
   margin: 4px;
+}
+
+.c31 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 12px;
+}
+
+.c33 {
+  width: 60px;
+  padding-right: 20px;
+}
+
+.c38 {
+  max-width: 100%;
+}
+
+.c40 {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c41 {
+  padding-top: 40px;
+}
+
+.c47 {
+  margin-top: 40px;
+}
+
+.c55 {
+  width: 100%;
+}
+
+.c57 {
+  margin: auto;
+}
+
+.c32 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c56 {
@@ -782,6 +782,42 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 }
 
 @media screen and (min-width:40em) {
+  .c39 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c39 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c39 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c39 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c39 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c39 {
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width:40em) {
   .c38 {
     max-width: 60%;
   }
@@ -814,42 +850,6 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 @media screen and (min-width:64em) {
   .c55 {
     width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c39 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c39 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c39 {
-    font-size: 22px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c39 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c39 {
-    line-height: 32px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c39 {
-    line-height: 32px;
   }
 }
 
@@ -1008,7 +1008,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
         
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -1361,7 +1361,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md "
             suppressHydrationWarning={false}
           >
             <div
@@ -1535,7 +1535,7 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md "
             suppressHydrationWarning={false}
           >
             <div
@@ -1695,6 +1695,116 @@ exports[`Video Layout Video Layout ads renders the video layout properly with ad
 `;
 
 exports[`Video Layout matches the snapshot 1`] = `
+.c7 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: white;
+  text-align: center;
+}
+
+.c35 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  margin-right: 20px;
+}
+
+.c36 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.c37 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 42px;
+  line-height: 50px;
+}
+
+.c39 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  padding-top: 30px;
+}
+
+.c44 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: white;
+  padding-bottom: 10px;
+}
+
+.c50 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.c61 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: white;
+}
+
+.c67 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.c68 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 20px;
+}
+
+.c69 {
+  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+.c74 {
+  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+}
+
+.c80 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.c81 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.c85 {
+  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size: 10px;
+  line-height: 14px;
+  color: black30;
+  margin: 4px;
+}
+
 .c31 {
   max-width: 1200px;
   margin-left: auto;
@@ -1815,116 +1925,6 @@ exports[`Video Layout matches the snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c7 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 32px;
-  color: white;
-  text-align: center;
-}
-
-.c35 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  margin-right: 20px;
-}
-
-.c36 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.c37 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 42px;
-  line-height: 50px;
-}
-
-.c39 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  padding-top: 30px;
-}
-
-.c44 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: white;
-  padding-bottom: 10px;
-}
-
-.c50 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.c61 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  color: white;
-}
-
-.c67 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 4px;
-}
-
-.c68 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 20px;
-}
-
-.c69 {
-  font-family: 'Adobe Garamond W08','adobe-garamond-pro','AGaramondPro-Regular','Times New Roman',Times,serif;
-  font-size: 18px;
-  line-height: 26px;
-  margin-bottom: 20px;
-}
-
-.c74 {
-  font-family: Unica77LLWebMedium,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1em;
-}
-
-.c80 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 28px;
-  line-height: 36px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.c81 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 20px;
-}
-
-.c85 {
-  font-family: Unica77LLWebRegular,'Helvetica Neue',Helvetica,Arial,sans-serif;
-  font-size: 10px;
-  line-height: 14px;
-  color: black30;
-  margin: 4px;
 }
 
 .c83 {
@@ -2734,150 +2734,6 @@ exports[`Video Layout matches the snapshot 1`] = `
 }
 
 @media screen and (min-width:40em) {
-  .c38 {
-    max-width: 60%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c41 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c41 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c55 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c55 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c55 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c56 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c56 {
-    padding-top: 100px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c77 {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c77 {
-    padding-top: 60px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c65 {
-    -webkit-flex-direction: column-reverse;
-    -ms-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-    padding: 20px;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c65 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c65 {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    padding: 30px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c66 {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c66 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c66 {
-    width: 50%;
-    margin-bottom: 5px;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c79 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c79 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c79 {
-    width: 33.33333333333333%;
-  }
-}
-
-@media screen and (min-width:40em) {
-  .c82 {
-    width: 100%;
-  }
-}
-
-@media screen and (min-width:52em) {
-  .c82 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:64em) {
-  .c82 {
-    width: 66.66666666666666%;
-  }
-}
-
-@media screen and (min-width:40em) {
   .c39 {
     font-size: 22px;
   }
@@ -3018,6 +2874,150 @@ exports[`Video Layout matches the snapshot 1`] = `
 @media screen and (min-width:64em) {
   .c81 {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c38 {
+    max-width: 60%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c41 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c41 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c55 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c55 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c55 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c56 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c56 {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c77 {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c77 {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c65 {
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c65 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c65 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c66 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c66 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c66 {
+    width: 50%;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c79 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c79 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c79 {
+    width: 33.33333333333333%;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c82 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:52em) {
+  .c82 {
+    width: 66.66666666666666%;
+  }
+}
+
+@media screen and (min-width:64em) {
+  .c82 {
+    width: 66.66666666666666%;
   }
 }
 
@@ -3236,7 +3236,7 @@ exports[`Video Layout matches the snapshot 1`] = `
         
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -3593,7 +3593,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-greaterThanOrEqual-md"
+            className="fresnel-container fresnel-greaterThanOrEqual-md "
             suppressHydrationWarning={false}
           >
             <div
@@ -3767,7 +3767,7 @@ exports[`Video Layout matches the snapshot 1`] = `
             </div>
           </div>
           <div
-            className="fresnel-container fresnel-lessThan-md"
+            className="fresnel-container fresnel-lessThan-md "
             suppressHydrationWarning={false}
           >
             <div
@@ -4326,7 +4326,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-greaterThanOrEqual-md"
+                className="fresnel-container fresnel-greaterThanOrEqual-md "
                 suppressHydrationWarning={false}
               />
             </div>
@@ -4375,7 +4375,7 @@ exports[`Video Layout matches the snapshot 1`] = `
                 </div>
               </div>
               <div
-                className="fresnel-container fresnel-lessThan-md"
+                className="fresnel-container fresnel-lessThan-md "
                 suppressHydrationWarning={false}
               />
             </div>

@@ -16,13 +16,13 @@ exports[`Artwork snapshots renders properly 1`] = `
 
 .c8 {
   color: black60;
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
   padding: 0;
   margin-top: 10px;
+}
+
+.c8.c8 {
+  color: black60;
+  font-family: sans;
 }
 
 .c8 a {
@@ -94,16 +94,6 @@ exports[`Artwork snapshots renders properly 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-@media (min-width:) {
-  .c8 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media (max-width:600px) {

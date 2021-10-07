@@ -3,9 +3,9 @@
 exports[`renders properly 1`] = `
 .c7 {
   color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
+}
+
+.c7.c7 {
   color: black60;
   font-family: sans;
 }
@@ -96,16 +96,6 @@ exports[`renders properly 1`] = `
   background: url(https://d7hftxdivxxvm.cloudfront.net?resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FIB6epb5L_l0rm9btaDsY7Q%252F14183_MDP_Evening_240.jpg&width=1200&quality=80) no-repeat center center;
   background-size: cover;
   cursor: pointer;
-}
-
-@media (min-width:) {
-  .c7 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media (max-width:600px) {

@@ -25,7 +25,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -53,7 +53,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     />
   </div>
   <div
-    className="fresnel-container fresnel-at-xs"
+    className="fresnel-container fresnel-at-xs "
     suppressHydrationWarning={false}
   >
     <div
@@ -87,7 +87,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
     </div>
   </div>
   <div
-    className="fresnel-container fresnel-greaterThan-xs"
+    className="fresnel-container fresnel-greaterThan-xs "
     suppressHydrationWarning={false}
   >
     <div
@@ -161,7 +161,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
         </div>
       </div>
       <div
-        className="fresnel-container fresnel-greaterThan-xs"
+        className="fresnel-container fresnel-greaterThan-xs "
         suppressHydrationWarning={false}
       >
         <div
@@ -192,7 +192,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
           display="flex"
         >
           <div
-            className="fresnel-container fresnel-greaterThanOrEqual-xl"
+            className="fresnel-container fresnel-greaterThanOrEqual-xl "
             suppressHydrationWarning={false}
           >
             <h1
@@ -205,7 +205,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             </h1>
           </div>
           <div
-            className="fresnel-container fresnel-lessThan-xl"
+            className="fresnel-container fresnel-lessThan-xl "
             suppressHydrationWarning={false}
           >
             <h1
@@ -804,7 +804,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -817,7 +817,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -1041,7 +1041,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -1139,7 +1139,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -1248,7 +1248,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -1261,7 +1261,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -1485,7 +1485,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -1583,7 +1583,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -1703,7 +1703,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -1716,7 +1716,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -1940,7 +1940,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -2038,7 +2038,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -2195,7 +2195,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -2208,7 +2208,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -2432,7 +2432,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -2527,7 +2527,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -2615,7 +2615,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -2628,7 +2628,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -2852,7 +2852,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -2950,7 +2950,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -3066,7 +3066,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -3079,7 +3079,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -3303,7 +3303,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -3398,7 +3398,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -3485,7 +3485,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -3498,7 +3498,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -3722,7 +3722,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -3820,7 +3820,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -3937,7 +3937,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -3950,7 +3950,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -4174,7 +4174,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -4272,7 +4272,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -4381,7 +4381,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -4394,7 +4394,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -4618,7 +4618,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -4716,7 +4716,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -4829,7 +4829,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -4842,7 +4842,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -5066,7 +5066,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -5161,7 +5161,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -5253,7 +5253,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -5266,7 +5266,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -5490,7 +5490,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -5585,7 +5585,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -5707,7 +5707,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -5720,7 +5720,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -5944,7 +5944,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -6042,7 +6042,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -6151,7 +6151,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -6164,7 +6164,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -6388,7 +6388,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -6486,7 +6486,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -6601,7 +6601,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -6614,7 +6614,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -6838,7 +6838,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -6933,7 +6933,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -7020,7 +7020,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -7033,7 +7033,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -7257,7 +7257,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -7352,7 +7352,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -7445,7 +7445,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -7458,7 +7458,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -7682,7 +7682,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -7780,7 +7780,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -7894,7 +7894,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -7907,7 +7907,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -8131,7 +8131,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -8226,7 +8226,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -8314,7 +8314,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -8327,7 +8327,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -8551,7 +8551,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -8649,7 +8649,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -8759,7 +8759,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -8772,7 +8772,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -8996,7 +8996,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -9091,7 +9091,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -9183,7 +9183,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -9196,7 +9196,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -9420,7 +9420,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -9515,7 +9515,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -9778,7 +9778,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -9791,7 +9791,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -10015,7 +10015,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -10113,7 +10113,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -10251,7 +10251,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -10264,7 +10264,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -10488,7 +10488,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -10586,7 +10586,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -10708,7 +10708,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -10721,7 +10721,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -10945,7 +10945,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -11040,7 +11040,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -11128,7 +11128,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -11141,7 +11141,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -11365,7 +11365,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -11460,7 +11460,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -11559,7 +11559,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -11572,7 +11572,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -11796,7 +11796,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -11894,7 +11894,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -12008,7 +12008,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -12021,7 +12021,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -12245,7 +12245,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -12340,7 +12340,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -12446,7 +12446,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -12459,7 +12459,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -12683,7 +12683,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -12781,7 +12781,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -12890,7 +12890,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -12903,7 +12903,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -13127,7 +13127,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -13222,7 +13222,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -13309,7 +13309,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -13322,7 +13322,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -13546,7 +13546,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -13644,7 +13644,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -13770,7 +13770,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -13783,7 +13783,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -14007,7 +14007,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -14102,7 +14102,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -14213,7 +14213,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -14226,7 +14226,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -14450,7 +14450,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -14548,7 +14548,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -14658,7 +14658,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -14671,7 +14671,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -14895,7 +14895,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -14993,7 +14993,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -15109,7 +15109,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -15122,7 +15122,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -15346,7 +15346,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -15444,7 +15444,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -15560,7 +15560,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -15573,7 +15573,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -15797,7 +15797,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -15892,7 +15892,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -15986,7 +15986,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -15999,7 +15999,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -16223,7 +16223,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -16318,7 +16318,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -16592,7 +16592,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -16605,7 +16605,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -16829,7 +16829,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -16924,7 +16924,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -17029,7 +17029,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -17042,7 +17042,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -17266,7 +17266,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -17364,7 +17364,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -17482,7 +17482,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -17495,7 +17495,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -17719,7 +17719,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -17817,7 +17817,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -17926,7 +17926,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -17939,7 +17939,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -18163,7 +18163,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -18258,7 +18258,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -18351,7 +18351,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -18364,7 +18364,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -18588,7 +18588,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -18683,7 +18683,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -18771,7 +18771,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -18784,7 +18784,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -19008,7 +19008,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -19103,7 +19103,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -19196,7 +19196,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -19209,7 +19209,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -19433,7 +19433,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -19528,7 +19528,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -19623,7 +19623,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -19636,7 +19636,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -19860,7 +19860,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -19958,7 +19958,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -20093,7 +20093,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -20106,7 +20106,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -20330,7 +20330,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -20428,7 +20428,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -20566,7 +20566,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -20579,7 +20579,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -20803,7 +20803,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -20898,7 +20898,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -20985,7 +20985,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -20998,7 +20998,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -21222,7 +21222,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -21320,7 +21320,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -21438,7 +21438,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -21451,7 +21451,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -21675,7 +21675,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -21773,7 +21773,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -21895,7 +21895,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -21908,7 +21908,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -22132,7 +22132,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -22230,7 +22230,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -22340,7 +22340,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -22353,7 +22353,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -22577,7 +22577,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -22672,7 +22672,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -22766,7 +22766,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
             className="Box-sc-15se88d-0 dcTDLo"
           >
             <div
-              className="fresnel-container fresnel-greaterThanOrEqual-xl"
+              className="fresnel-container fresnel-greaterThanOrEqual-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -22779,7 +22779,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
               </h3>
             </div>
             <div
-              className="fresnel-container fresnel-lessThan-xl"
+              className="fresnel-container fresnel-lessThan-xl "
               suppressHydrationWarning={false}
             >
               <h3
@@ -23003,7 +23003,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                         className="Caption__Figcaption-sc-1c6ztax-1 kdAOuK"
                       >
                         <div
-                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 eKQgLU"
+                          className="Box-sc-15se88d-0 Text-sc-18gcpao-0 kQeRwz"
                           color="black60"
                           fontFamily="sans"
                         >
@@ -23101,7 +23101,7 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
                       color="black60"
                     >
                       <div
-                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 feJnny"
+                        className="Box-sc-15se88d-0 Text-sc-18gcpao-0 ArtworkCaption__StyledArtworkCaption-t0bcvj-2 DJkQH"
                         color="black60"
                         fontFamily="sans"
                       >
@@ -23229,7 +23229,8 @@ exports[`Vanguard2019 Snapshots renders article series snapshot properly 1`] = `
       className="Box-sc-15se88d-0 gNlerI"
     >
       <div
-        className="Separator-sc-49gck8-0 eAlNio"
+        className="Separator-sc-49gck8-0 hIwGLY"
+        color="black10"
         width="100%"
       />
       <div
@@ -23313,7 +23314,8 @@ has been added to clarify their involvement with the exhibition.
         </div>
       </div>
       <div
-        className="Separator-sc-49gck8-0 dlpQPs"
+        className="Separator-sc-49gck8-0 ewVBwJ"
+        color="black10"
         width="100%"
       />
       <div

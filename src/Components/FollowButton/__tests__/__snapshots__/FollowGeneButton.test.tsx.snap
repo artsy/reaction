@@ -6,57 +6,76 @@ exports[`FollowGeneButton snapshots Renders properly 1`] = `
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  opacity: 1;
   padding-top: 1px;
 }
 
 .c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
+  font-weight: normal;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
   border: 2px solid;
   border-radius: 3px;
-  border-radius: 3px;
-  padding-left: 15px;
-  padding-right: 15px;
+  -webkit-transition: color 0.25s ease,border-color 0.25s ease,background-color 0.25s ease;
+  transition: color 0.25s ease,border-color 0.25s ease,background-color 0.25s ease;
+  width: small;
+  height: small;
   height: 26px;
-  -webkit-transition: 0.25s ease;
-  transition: 0.25s ease;
-  background-color: #FFF;
-  border-color: #E5E5E5;
-  color: #000;
+  padding-left: 1.5px;
+  padding-right: 1.5px;
+  background-color: white100;
+  border-color: black10;
+  color: black100;
 }
 
-.c0.loading {
-  -webkit-transition: none;
-  transition: none;
-  background-color: transparent;
-  color: transparent;
-  border: 0;
-  cursor: auto;
+.c0:focus {
+  outline: 0;
+  background-color: white100;
+  border-color: black10;
+  color: black100;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
 }
 
-.c0.disabled {
-  background-color: #E5E5E5;
-  border-color: #E5E5E5;
-  color: #FFF;
+.c0:disabled {
   pointer-events: none;
+  background-color: black10;
+  border-color: black10;
+  color: white100;
 }
 
 @media not all and (pointer:coarse),not all and (-moz-touch-enabled:1) {
   .c0:hover {
-    background-color: #FFF;
-    border-color: #000;
-    color: #000;
+    background-color: white100;
+    border-color: black100;
+    color: black100;
   }
 }
 
 <button
   className="c0"
   data-test="followButton"
-  height="26px"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  size="small"
+  tabIndex={0}
 >
   <div
     className="c1"
@@ -67,6 +86,7 @@ exports[`FollowGeneButton snapshots Renders properly 1`] = `
       }
     }
     fontSize="12px"
+    opacity={1}
     style={Object {}}
   >
     Follow

@@ -16,13 +16,13 @@ exports[`renders a single image properly 1`] = `
 
 .c10 {
   color: black60;
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
   padding: 0;
   margin-top: 10px;
+}
+
+.c10.c10 {
+  color: black60;
+  font-family: sans;
 }
 
 .c10 a {
@@ -117,16 +117,6 @@ exports[`renders a single image properly 1`] = `
 .c1 img {
   max-width: 100%;
   height: auto;
-}
-
-@media (min-width:) {
-  .c10 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media (max-width:600px) {
@@ -324,9 +314,9 @@ exports[`renders properly 1`] = `
 
 .c16 {
   color: black60;
-  font-size: size3;
-  line-height: body;
-  font-weight: normal;
+}
+
+.c16.c16 {
   color: black60;
   font-family: sans;
 }
@@ -342,13 +332,13 @@ exports[`renders properly 1`] = `
 
 .c10 {
   color: black60;
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
   padding: 0;
   margin-top: 10px;
+}
+
+.c10.c10 {
+  color: black60;
+  font-family: sans;
 }
 
 .c10 a {
@@ -493,26 +483,6 @@ exports[`renders properly 1`] = `
 .c17 img {
   max-width: 100%;
   height: auto;
-}
-
-@media (min-width:) {
-  .c16 {
-    font-size: size2;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
-}
-
-@media (min-width:) {
-  .c10 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media (max-width:600px) {

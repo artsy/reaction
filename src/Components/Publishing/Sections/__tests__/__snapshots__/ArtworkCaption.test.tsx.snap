@@ -7,13 +7,13 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 
 .c1 {
   color: black60;
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
-  font-family: serif;
-  color: black60;
   margin-top: 10px;
   display: block;
+}
+
+.c1.c1 {
+  font-family: serif;
+  color: black60;
 }
 
 .c1 a {
@@ -33,16 +33,6 @@ exports[`ArtworkCaption snapshot renders a classic caption properly 1`] = `
 
 .c1 .title {
   font-style: italic;
-}
-
-@media (min-width:) {
-  .c1 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    font-family: serif;
-    color: black60;
-  }
 }
 
 <div
@@ -75,10 +65,7 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
   color: #000;
 }
 
-.c1 {
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
+.c1.c1 {
   font-family: sans;
 }
 
@@ -90,15 +77,6 @@ exports[`ArtworkCaption snapshot renders a fullscreen caption properly 1`] = `
 .c1 .title,
 .c1 .title a {
   font-style: italic;
-}
-
-@media (min-width:) {
-  .c1 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    font-family: sans;
-  }
 }
 
 @media (max-width:720px) {
@@ -189,13 +167,13 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
 
 .c1 {
   color: black60;
-  font-size: size4;
-  line-height: body;
-  font-weight: normal;
-  color: black60;
-  font-family: sans;
   padding: 0;
   margin-top: 10px;
+}
+
+.c1.c1 {
+  color: black60;
+  font-family: sans;
 }
 
 .c1 a {
@@ -216,16 +194,6 @@ exports[`ArtworkCaption snapshot renders a standard caption properly 1`] = `
 
 .c4 .c2::after {
   content: ", ";
-}
-
-@media (min-width:) {
-  .c1 {
-    font-size: size3;
-    line-height: body;
-    font-weight: normal;
-    color: black60;
-    font-family: sans;
-  }
 }
 
 @media (max-width:600px) {

@@ -7,7 +7,7 @@
   "author": "Art.sy Inc <it@artsymail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@artsy/palette": "^12.0.0 || ^13.0.0",
+    "@artsy/palette": "^18.0.0",
     "@sentry/browser": "^4.2.3",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@artsy/auto-config": "1.0.2",
     "@artsy/lint-changed": "3.1.0",
-    "@artsy/palette": "13.28.0",
+    "@artsy/palette": "^18.1.0",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -157,9 +157,9 @@
     "yalc": "1.0.0-pre.34"
   },
   "dependencies": {
-    "@artsy/cohesion": "1.60.0",
-    "@artsy/detect-responsive-traits": "^0.0.5",
-    "@artsy/fresnel": "^1.0.13",
+    "@artsy/cohesion": "^4.10.0",
+    "@artsy/detect-responsive-traits": "^0.1.0",
+    "@artsy/fresnel": "^3.0.2",
     "@artsy/react-html-parser": "^3.0.2",
     "@loadable/component": "^5.12.0",
     "@loadable/server": "^5.12.0",
