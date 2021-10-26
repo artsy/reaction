@@ -22,15 +22,14 @@
   resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
   integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
 
-"@artsy/lint-changed@3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-3.1.0.tgz#1b2e7c46847ba7d3d4863a556ce1c17c0951c89e"
-  integrity sha512-gNWYJ9nxc0JxZ5Y2hvxAsAj2E96TdrVY5Ht69oXtwYwW/EYubcl6aNlK80uFjCg0SM1zE1/5ysF5b40TyC6cVg==
+"@artsy/lint-changed@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@artsy/lint-changed/-/lint-changed-3.4.0.tgz#26c1ea8362257d5c87ede72037b78f61143b59e1"
+  integrity sha512-3z5c1ZR0GiHJKm1WhUIJv89IsaU69gbwlvKGlYXa7LrQ6gEMJ/ZfNo7g3Q9EM+Eb1Eu1AzMevWnfUpblPXxXwQ==
   dependencies:
     await-to-js "^2.1.1"
     kleur "^3.0.3"
     micromatch "^4.0.2"
-    p-each-series "^2.1.0"
     p-limit "^2.2.2"
 
 "@artsy/palette@13.28.0":
@@ -9253,11 +9252,6 @@ p-each-series@^1.0.0:
   integrity sha1-kw89Et0fUOdDRFeiLNbwSsatf3E=
   dependencies:
     p-reduce "^1.0.0"
-
-p-each-series@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/p-each-series/-/p-each-series-2.1.0.tgz#961c8dd3f195ea96c747e636b262b800a6b1af48"
-  integrity sha512-ZuRs1miPT4HrjFa+9fRfOFXxGJfORgelKV9f9nNOWw2gl6gVsRaVDOQP0+MI0G0wGKns1Yacsu0GjOFbTK0JFQ==
 
 p-finally@^1.0.0:
   version "1.0.0"
