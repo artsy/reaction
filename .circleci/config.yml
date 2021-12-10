@@ -38,7 +38,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
+                - main
           requires:
             - yarn/jest
             - yarn/relay
@@ -50,7 +50,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
           requires:
             - yarn/jest
             - yarn/relay
