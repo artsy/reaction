@@ -1,44 +1,56 @@
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
-  "version": "0.1.0",
-  "command": "yarn",
-  "isShellCommand": true,
-  "showOutput": "never",
-  "suppressTaskName": true,
+  "version": "2.0.0",
+	"command": "yarn",
   "isBackground": true,
   "tasks": [
-    {
-      "taskName": "compile:server",
-      "isBuildCommand": true,
-      "isTestCommand": false,
-      "showOutput": "always",
-      "args": ["compile:server"]
-    },
-    {
-      "taskName": "TypeScript: Run type-checker",
-      "command": "${workspaceRoot}/node_modules/.bin/tsc",
-      "isShellCommand": true,
-      "args": ["-w", "-p", ".", "--noEmit"],
-      "showOutput": "silent",
-      "isBackground": true,
-      "problemMatcher": "$tsc-watch"
-    },
-    {
-      "taskName": "TSLint: Lint all files",
-      "args": ["lint"],
-      "problemMatcher": {
-        "owner": "tslint",
-        "fileLocation": ["relative", "${workspaceRoot}"],
-        "severity": "warning",
-        "pattern": {
-          "regexp": "^(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
-          "file": 1,
-          "line": 2,
-          "column": 3,
-          "message": 4
-        }
-      }
-    }
-  ]
+		{
+			"label": "compile:server",
+			"type": "shell",
+			"args": [
+				"compile:server"
+			],
+			"problemMatcher": [],
+			"group": {
+				"_id": "build",
+				"isDefault": false
+			}
+		},
+		{
+			"label": "TypeScript: Run type-checker",
+			"type": "shell",
+			"command": "${workspaceRoot}/node_modules/.bin/tsc",
+			"args": [
+				"-w",
+				"-p",
+				".",
+				"--noEmit"
+			],
+			"isBackground": true,
+			"problemMatcher": "$tsc-watch"
+		},
+		{
+			"label": "TSLint: Lint all files",
+			"type": "shell",
+			"args": [
+				"lint"
+			],
+			"problemMatcher": {
+				"owner": "tslint",
+				"fileLocation": [
+					"relative",
+					"${workspaceRoot}"
+				],
+				"severity": "warning",
+				"pattern": {
+					"regexp": "^(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"message": 4
+				}
+			}
+		}
+	]
 }

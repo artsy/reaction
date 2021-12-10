@@ -15,7 +15,7 @@
 - **State:** production
 - **CI:** [![CircleCI](https://circleci.com/gh/artsy/reaction.svg?style=shield)](https://circleci.com/gh/artsy/reaction)
 - **NPM:** [![npm version](https://badge.fury.io/js/%40artsy%2Freaction.svg)](https://www.npmjs.com/package/@artsy/reaction)
-- **Coverage:** [![codecov](https://codecov.io/gh/artsy/reaction/branch/master/graph/badge.svg)](https://codecov.io/gh/artsy/reaction)
+- **Coverage:** [![codecov](https://codecov.io/gh/artsy/reaction/branch/main/graph/badge.svg)](https://codecov.io/gh/artsy/reaction)
 
 ## Installation
 
@@ -131,8 +131,8 @@ You can learn more about this work from [our blog][footer_blog] and by following
 our [job postings][footer_jobs]!
 
 [footer_website]: https://www.artsy.net/
-[footer_principles]: https://github.com/artsy/README/blob/master/culture/engineering-principles.md
-[footer_open]: https://github.com/artsy/README/blob/master/culture/engineering-principles.md#open-source-by-default
+[footer_principles]: https://github.com/artsy/README/blob/main/culture/engineering-principles.md
+[footer_open]: https://github.com/artsy/README/blob/main/culture/engineering-principles.md#open-source-by-default
 [footer_blog]: https://artsy.github.io/
 [footer_twitter]: https://twitter.com/ArtsyOpenSource
 [footer_api]: https://developers.artsy.net/

@@ -13,7 +13,7 @@ export function metaphysicsExtensionsLoggerMiddleware() {
         console.groupCollapsed &&
         res.json.extensions.requests
       ) {
-        // See: https://github.com/artsy/metaphysics/blob/master/src/lib/loaders/api/extensionsLogger.ts
+        // See: https://github.com/artsy/metaphysics/blob/main/src/lib/loaders/api/extensionsLogger.ts
         const requests = res.json.extensions.requests
 
         // Pull out the stitching logs, e.g. what graphql requests

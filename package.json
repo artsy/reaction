@@ -32,7 +32,7 @@
     "prettier-write": "yarn run prettier --write",
     "relay": "relay-compiler",
     "release": "auto shipit",
-    "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/master/_schemaV2.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
+    "sync-schema": "curl https://raw.githubusercontent.com/artsy/metaphysics/main/_schemaV2.graphql -o data/schema.graphql; yarn prettier --write --parser graphql data/schema.graphql",
     "sync-schema:localhost": "cd ../metaphysics && yarn dump-schema v2 ../reaction/data/",
     "test": "ALLOW_CONSOLE_LOGS=true jest",
     "test:watch": "jest --watch --runInBand",

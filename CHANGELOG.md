@@ -382,7 +382,7 @@
 - add "schedule:nonOfficeHours" [#3608](https://github.com/artsy/reaction/pull/3608) ([@eessex](https://github.com/eessex))
 - Reenable renovate [#3608](https://github.com/artsy/reaction/pull/3608) ([@eessex](https://github.com/eessex))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - Disable renovate ([@dblandin](https://github.com/dblandin))
 
@@ -409,7 +409,7 @@
 
 - Remove tracking calls for now [#3591](https://github.com/artsy/reaction/pull/3591) ([@sweir27](https://github.com/sweir27))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - Update renovate.json ([@damassi](https://github.com/damassi))
 - Update README ([@damassi](https://github.com/damassi))
@@ -623,7 +623,7 @@
 
 - 2FA enrollment responsive fix: switch to maxWidth [#3567](https://github.com/artsy/reaction/pull/3567) ([@dblandin](https://github.com/dblandin))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - Bump to trigger npm publish :rocket: ([@dblandin](https://github.com/dblandin))
 
@@ -639,7 +639,7 @@
 
 - Add responsive styles to 2FA Enrollment UI [#3566](https://github.com/artsy/reaction/pull/3566) ([@dblandin](https://github.com/dblandin))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - empty commit to trigger build ([@ds300](https://github.com/ds300))
 
@@ -1027,7 +1027,7 @@
 - Update metaphysics schema [#3500](https://github.com/artsy/reaction/pull/3500) ([@artsyit](https://github.com/artsyit))
 - Fallback to base route if no route found through index [#3504](https://github.com/artsy/reaction/pull/3504) ([@zephraph](https://github.com/zephraph))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - Force deploy ([@zephraph](https://github.com/zephraph))
 
@@ -1173,7 +1173,7 @@
 - Update metaphysics schema [#3483](https://github.com/artsy/reaction/pull/3483) ([@artsyit](https://github.com/artsyit))
 - Fix Formik boolean handling [#3481](https://github.com/artsy/reaction/pull/3481) ([@dblandin](https://github.com/dblandin))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - empty commit to trigger build ([@ds300](https://github.com/ds300))
 
@@ -1262,7 +1262,7 @@
 - [mWeb] Show OTP prompt during login when 2FA-enabled [#3472](https://github.com/artsy/reaction/pull/3472) ([@dblandin](https://github.com/dblandin))
 - [Chore] Turns on exhaustive-deps [#3473](https://github.com/artsy/reaction/pull/3473) ([@dzucconi](https://github.com/dzucconi))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - Fix @artsy/cohesion Intent.login reference ([@dblandin](https://github.com/dblandin))
 
@@ -1452,7 +1452,7 @@
 - Update metaphysics schema [#3452](https://github.com/artsy/reaction/pull/3452) ([@artsyit](https://github.com/artsyit))
 - [NavBar Drop Down QA] add a new prop to control background color [#3447](https://github.com/artsy/reaction/pull/3447) ([@xtina-starr](https://github.com/xtina-starr))
 
-#### ⚠️  Pushed to `master`
+#### ⚠️  Pushed to `main`
 
 - Bump for force reaction release ([@zephraph](https://github.com/zephraph))
 
@@ -2479,7 +2479,7 @@ Cypress integration testing. [#3384](https://github.com/artsy/reaction/pull/3384
 - Organize MobileNav into folder [#3335](https://github.com/artsy/reaction/pull/3335) ([@damassi](https://github.com/damassi))
 - Display information about identity verification on credit card form [#3334](https://github.com/artsy/reaction/pull/3334) ([@bhoggard](https://github.com/bhoggard))
 
-#### ⚠️  Pushed to master
+#### ⚠️  Pushed to main
 
 - Forcing a reaction release  ([@zephraph](https://github.com/zephraph))
 
@@ -3856,7 +3856,7 @@ Cypress integration testing. [#3384](https://github.com/artsy/reaction/pull/3384
 
 - Fix conversation detail link [#3187](https://github.com/artsy/reaction/pull/3187) ([@ashkan18](https://github.com/ashkan18))
 
-#### ⚠️  Pushed to master
+#### ⚠️  Pushed to main
 
 - [BundleSplitting] Comment out for now  ([@damassi](https://github.com/damassi))
 
@@ -5071,7 +5071,7 @@ Paired with @abhitip @mikehrom on updates to these event payloads. [#3099](https
 - Bump down threshold for lazy-loading on artist artwork grid [#3053](https://github.com/artsy/reaction/pull/3053) ([@zephraph](https://github.com/zephraph))
 - Restore Artworks link to mobile nav [#3046](https://github.com/artsy/reaction/pull/3046) ([@xtina-starr](https://github.com/xtina-starr))
 
-#### ⚠️  Pushed to master
+#### ⚠️  Pushed to main
 
 - Bump to 23.0.1 to get around issues with auto-release  (steven.j.hicks@gmail.com)
 
@@ -5389,7 +5389,7 @@ addresses https://artsyproduct.atlassian.net/browse/AUCT-773 [#3034](https://git
 
 #### 🚀  Enhancement
 
-- Meta: Merge recent auctions team product work into master [#3022](https://github.com/artsy/reaction/pull/3022) ([@yuki24](https://github.com/yuki24) [@dleve123](https://github.com/dleve123))
+- Meta: Merge recent auctions team product work into main [#3022](https://github.com/artsy/reaction/pull/3022) ([@yuki24](https://github.com/yuki24) [@dleve123](https://github.com/dleve123))
 
 #### Authors: 2
 
@@ -6713,7 +6713,7 @@ Details
 
 # v20.0.9 (Mon Sep 30 2019)
 
-#### ⚠️  Pushed to master
+#### ⚠️  Pushed to main
 
 - Remove Luc from point people  (eve.essex@gmail.com)
 
@@ -8335,7 +8335,7 @@ Co-authored-by: Erik Stockmeier <erik.d.stock@gmail.com> [#2703](https://github.
 
 - update test [#2644](https://github.com/artsy/reaction/pull/2644) (jiahaodavid4040@gmail.com)
 
-#### ⚠️  Pushed to master
+#### ⚠️  Pushed to main
 
 - resolve conflicting files  (jiahaodavid4040@gmail.com)
 
@@ -9195,7 +9195,7 @@ Co-authored-by: Daniel Levenson <dleve123@gmail.com> [#2672](https://github.com/
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.14.23`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41423-Thu-Jun-27-2019)
+### [`v4.14.23`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v41423-Thu-Jun-27-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.22...v4.14.23)
 
@@ -9302,7 +9302,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.14.22`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41422-Mon-Jun-24-2019)
+### [`v4.14.22`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v41422-Mon-Jun-24-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.21...v4.14.22)
 
@@ -9370,7 +9370,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.14.21`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41421-Fri-Jun-21-2019)
+### [`v4.14.21`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v41421-Fri-Jun-21-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.20...v4.14.21)
 
@@ -9583,7 +9583,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.14.16`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v41416-Thu-Jun-13-2019)
+### [`v4.14.16`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v41416-Thu-Jun-13-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.15...v4.14.16)
 
@@ -9915,7 +9915,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.14.9`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4149-Fri-Jun-07-2019)
+### [`v4.14.9`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4149-Fri-Jun-07-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.8...v4.14.9)
 
@@ -10085,19 +10085,19 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.14.2`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4142-Mon-Jun-03-2019)
+### [`v4.14.2`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4142-Mon-Jun-03-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.1...v4.14.2)
 
 * * *
 
-### [`v4.14.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4141-Mon-Jun-03-2019)
+### [`v4.14.1`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4141-Mon-Jun-03-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.14.0...v4.14.1)
 
 * * *
 
-### [`v4.14.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4140-Sun-Jun-02-2019)
+### [`v4.14.0`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4140-Sun-Jun-02-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.13.5...v4.14.0)
 
@@ -10150,7 +10150,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.13.5`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4135-Sat-Jun-01-2019)
+### [`v4.13.5`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4135-Sat-Jun-01-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.13.4...v4.13.5)
 
@@ -10165,7 +10165,7 @@ _From #2577_
 
 * * *
 
-### [`v4.13.4`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4134-Sat-Jun-01-2019)
+### [`v4.13.4`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4134-Sat-Jun-01-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.13.3...v4.13.4)
 
@@ -10276,7 +10276,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.13.2`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4132-Thu-May-30-2019)
+### [`v4.13.2`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4132-Thu-May-30-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.13.1...v4.13.2)
 
@@ -10291,7 +10291,7 @@ _From #2577_
 
 * * *
 
-### [`v4.13.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4131-Thu-May-30-2019)
+### [`v4.13.1`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4131-Thu-May-30-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.13.0...v4.13.1)
 
@@ -10306,7 +10306,7 @@ _From #2577_
 
 * * *
 
-### [`v4.13.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4130-Wed-May-29-2019)
+### [`v4.13.0`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4130-Wed-May-29-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.9...v4.13.0)
 
@@ -10321,7 +10321,7 @@ _From #2577_
 
 * * *
 
-### [`v4.12.9`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4129-Wed-May-29-2019)
+### [`v4.12.9`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4129-Wed-May-29-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.8...v4.12.9)
 
@@ -10382,7 +10382,7 @@ _From #2577_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.12.8`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4128-Tue-May-28-2019)
+### [`v4.12.8`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4128-Tue-May-28-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.7...v4.12.8)
 
@@ -10406,7 +10406,7 @@ _From #2471_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.12.7`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4127-Tue-May-28-2019)
+### [`v4.12.7`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4127-Tue-May-28-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.6...v4.12.7)
 
@@ -10430,7 +10430,7 @@ _From #2455_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.12.6`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4126-Tue-May-28-2019)
+### [`v4.12.6`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4126-Tue-May-28-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.5...v4.12.6)
 
@@ -10451,7 +10451,7 @@ _From #2455_
 
 * * *
 
-### [`v4.12.5`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4125-Thu-May-23-2019)
+### [`v4.12.5`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4125-Thu-May-23-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.4...v4.12.5)
 
@@ -10465,7 +10465,7 @@ _From #2455_
 
 * * *
 
-### [`v4.12.4`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4124-Thu-May-23-2019)
+### [`v4.12.4`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4124-Thu-May-23-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.3...v4.12.4)
 
@@ -10480,7 +10480,7 @@ _From #2455_
 
 * * *
 
-### [`v4.12.3`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4123-Thu-May-23-2019)
+### [`v4.12.3`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4123-Thu-May-23-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.2...v4.12.3)
 
@@ -10646,7 +10646,7 @@ _From #2455_
 <details>
 <summary>webpack-contrib/webpack-bundle-analyzer</summary>
 
-### [`v3.3.2`](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/blob/master/CHANGELOG.md#&#8203;332)
+### [`v3.3.2`](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/blob/main/CHANGELOG.md#&#8203;332)
 
 [Compare Source](https://togithub.com/webpack-contrib/webpack-bundle-analyzer/compare/v2.13.1...v3.3.2)
 
@@ -10777,7 +10777,7 @@ _From #2455_
 <details>
 <summary>omakase-js/omakase</summary>
 
-### [`v0.0.9`](https://togithub.com/omakase-js/omakase/blob/master/CHANGELOG.md#&#8203;009-Tue-May-21-2019)
+### [`v0.0.9`](https://togithub.com/omakase-js/omakase/blob/main/CHANGELOG.md#&#8203;009-Tue-May-21-2019)
 
 [Compare Source](https://togithub.com/omakase-js/omakase/compare/v0.0.8...v0.0.9)
 
@@ -10792,7 +10792,7 @@ _From #2455_
 
 * * *
 
-### [`v0.0.8`](https://togithub.com/omakase-js/omakase/blob/master/CHANGELOG.md#&#8203;008-Tue-May-21-2019)
+### [`v0.0.8`](https://togithub.com/omakase-js/omakase/blob/main/CHANGELOG.md#&#8203;008-Tue-May-21-2019)
 
 [Compare Source](https://togithub.com/omakase-js/omakase/compare/v0.0.7...v0.0.8)
 
@@ -10816,7 +10816,7 @@ _From #2443_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.12.1`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4121-Tue-May-21-2019)
+### [`v4.12.1`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4121-Tue-May-21-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.12.0...v4.12.1)
 
@@ -10894,7 +10894,7 @@ _From #2443_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.12.0`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4120-Fri-May-17-2019)
+### [`v4.12.0`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4120-Fri-May-17-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.11.9...v4.12.0)
 
@@ -11235,7 +11235,7 @@ _From #2443_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.11.9`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4119-Fri-May-10-2019)
+### [`v4.11.9`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4119-Fri-May-10-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.11.8...v4.11.9)
 
@@ -11259,7 +11259,7 @@ _From #2399_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.11.8`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4118-Fri-May-10-2019)
+### [`v4.11.8`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4118-Fri-May-10-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.11.7...v4.11.8)
 
@@ -11333,7 +11333,7 @@ _From #2399_
 <details>
 <summary>artsy/palette</summary>
 
-### [`v4.11.7`](https://togithub.com/artsy/palette/blob/master/CHANGELOG.md#v4117-Fri-May-10-2019)
+### [`v4.11.7`](https://togithub.com/artsy/palette/blob/main/CHANGELOG.md#v4117-Fri-May-10-2019)
 
 [Compare Source](https://togithub.com/artsy/palette/compare/v4.11.6...v4.11.7)
 
@@ -14829,11 +14829,11 @@ Co-authored-by: Renovate Bot <bot@renovateapp.com> [#2297](https://github.com/ar
 - Revert "Refactor tests" [#1963](https://github.com/artsy/reaction/pull/1963) ([@ds300](https://github.com/ds300))
 - Refactor tests [#1899](https://github.com/artsy/reaction/pull/1899) ([@ds300](https://github.com/ds300) sweir27@gmail.com)
 
-#### ⚠️  Pushed to master
+#### ⚠️  Pushed to main
 
 - remove --detectOpenHandles  ([@ds300](https://github.com/ds300))
 - add --forceExit to jest invocation  ([@ds300](https://github.com/ds300))
-- Merge remote-tracking branch 'upstream/master' into refactor-tests  ([@ds300](https://github.com/ds300))
+- Merge remote-tracking branch 'upstream/main' into refactor-tests  ([@ds300](https://github.com/ds300))
 - don't re-calculate path array  ([@ds300](https://github.com/ds300))
 - add todo comment context  ([@ds300](https://github.com/ds300))
 - More sanity checks  ([@ds300](https://github.com/ds300))
@@ -14842,8 +14842,8 @@ Co-authored-by: Renovate Bot <bot@renovateapp.com> [#2297](https://github.com/ar
 - abmiguous -> ambiguous  ([@ds300](https://github.com/ds300))
 - Update src/DevTools/createMockNetworkLayer/index.ts  ([@alloy](https://github.com/alloy))
 - Update src/DevTools/createMockNetworkLayer/index.ts  ([@alloy](https://github.com/alloy))
-- Merge remote-tracking branch 'upstream/master' into refactor-tests  ([@ds300](https://github.com/ds300))
-- Merge branch 'master' into refactor-tests  ([@d.j.sheldrick@gmail.com](https://github.com/d.j.sheldrick@gmail.com))
+- Merge remote-tracking branch 'upstream/main' into refactor-tests  ([@ds300](https://github.com/ds300))
+- Merge branch 'main' into refactor-tests  ([@d.j.sheldrick@gmail.com](https://github.com/d.j.sheldrick@gmail.com))
 - bring countdown timer test fixtures closer to the tests  ([@ds300](https://github.com/ds300))
 
 ---
