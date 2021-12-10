@@ -11,7 +11,7 @@ import { ArticleLayout } from "../Typings"
 import { Caption } from "./Caption"
 import { VideoControls } from "./VideoControls"
 
-const BLACKLIST = ["gif", "jpg", "jpeg", "png"]
+const DENYLIST = ["gif", "jpg", "jpeg", "png"]
 const QUERYSTRING =
   "?title=0&portrait=0&badge=0&byline=0&showinfo=0&rel=0&controls=2&modestbranding=1&iv_load_policy=3&color=E5E5E5"
 export const VIDEO_RATIO = 0.5625
@@ -137,7 +137,7 @@ class VideoComponent extends React.Component<VideoProps, VideoState> {
 // Utils
 export function isValidVideoUrl(url: string) {
   const urlExtension = url && url.split(".").pop()
-  const isValid = BLACKLIST.every(bad => urlExtension !== bad)
+  const isValid = DENYLIST.every(bad => urlExtension !== bad)
   return isValid
 }
 
