@@ -1,26 +1,31 @@
+/**
+ * @generated SignedSource<<8736e217932b550f468595c1f29960a2>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ReaderFragment } from "relay-runtime";
+import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type GeneToolTip_gene = {
-    readonly description: string | null;
-    readonly href: string | null;
-    readonly slug: string;
-    readonly internalID: string;
-    readonly image: {
-        readonly url: string | null;
-    } | null;
-    readonly name: string | null;
-    readonly " $refType": "GeneToolTip_gene";
+export type GeneToolTip_gene$data = {
+  readonly description: string | null;
+  readonly href: string | null;
+  readonly slug: string;
+  readonly internalID: string;
+  readonly image: {
+    readonly url: string | null;
+  } | null;
+  readonly name: string | null;
+  readonly " $fragmentType": "GeneToolTip_gene";
 };
-export type GeneToolTip_gene$data = GeneToolTip_gene;
+export type GeneToolTip_gene = GeneToolTip_gene$data;
 export type GeneToolTip_gene$key = {
-    readonly " $data"?: GeneToolTip_gene$data;
-    readonly " $fragmentRefs": FragmentRefs<"GeneToolTip_gene">;
+  readonly " $data"?: GeneToolTip_gene$data;
+  readonly " $fragmentSpreads": FragmentRefs<"GeneToolTip_gene">;
 };
-
-
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
@@ -88,7 +93,10 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Gene"
+  "type": "Gene",
+  "abstractKey": null
 };
-(node as any).hash = 'ab5f28661f9c5437186bbdaa00ac1414';
+
+(node as any).hash = "ab5f28661f9c5437186bbdaa00ac1414";
+
 export default node;

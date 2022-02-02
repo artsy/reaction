@@ -1,54 +1,39 @@
+/**
+ * @generated SignedSource<<02478797325eea64ec97cd49e02d2734>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
-export type createMockNetworkLayerTestAliasQueryVariables = {};
-export type createMockNetworkLayerTestAliasQueryResponse = {
-    readonly artist: {
-        readonly forSaleArtworks: {
-            readonly edges: ReadonlyArray<{
-                readonly node: {
-                    readonly id: string;
-                } | null;
-            } | null> | null;
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type createMockNetworkLayerTestAliasQuery$variables = {};
+export type createMockNetworkLayerTestAliasQueryVariables = createMockNetworkLayerTestAliasQuery$variables;
+export type createMockNetworkLayerTestAliasQuery$data = {
+  readonly artist: {
+    readonly forSaleArtworks: {
+      readonly edges: ReadonlyArray<{
+        readonly node: {
+          readonly id: string;
         } | null;
-        readonly notForSaleArtworks: {
-            readonly edges: ReadonlyArray<{
-                readonly node: {
-                    readonly id: string;
-                } | null;
-            } | null> | null;
-        } | null;
+      } | null> | null;
     } | null;
+    readonly notForSaleArtworks: {
+      readonly edges: ReadonlyArray<{
+        readonly node: {
+          readonly id: string;
+        } | null;
+      } | null> | null;
+    } | null;
+  } | null;
 };
+export type createMockNetworkLayerTestAliasQueryResponse = createMockNetworkLayerTestAliasQuery$data;
 export type createMockNetworkLayerTestAliasQuery = {
-    readonly response: createMockNetworkLayerTestAliasQueryResponse;
-    readonly variables: createMockNetworkLayerTestAliasQueryVariables;
+  variables: createMockNetworkLayerTestAliasQueryVariables;
+  response: createMockNetworkLayerTestAliasQuery$data;
 };
-
-
-
-/*
-query createMockNetworkLayerTestAliasQuery {
-  artist(id: "banksy") {
-    forSaleArtworks: artworksConnection(filter: IS_FOR_SALE) {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-    notForSaleArtworks: artworksConnection(filter: IS_NOT_FOR_SALE) {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-    id
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
@@ -143,7 +128,8 @@ return {
         "storageKey": "artist(id:\"banksy\")"
       }
     ],
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -168,6 +154,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "824ef82c5dedd0c7866708b18326189c",
     "id": null,
     "metadata": {},
     "name": "createMockNetworkLayerTestAliasQuery",
@@ -176,5 +163,7 @@ return {
   }
 };
 })();
-(node as any).hash = 'fefd7ea56bd774b256cf177b43731c07';
+
+(node as any).hash = "fefd7ea56bd774b256cf177b43731c07";
+
 export default node;

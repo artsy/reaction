@@ -1,40 +1,45 @@
+/**
+ * @generated SignedSource<<062ebaccd08bf65080329548aeb923e9>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ReaderFragment } from "relay-runtime";
+import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type MarketDataSummary_artist = {
-    readonly internalID: string;
-    readonly collections: ReadonlyArray<string | null> | null;
-    readonly highlights: {
-        readonly partnersConnection: {
-            readonly edges: ReadonlyArray<{
-                readonly node: {
-                    readonly categories: ReadonlyArray<{
-                        readonly slug: string;
-                    } | null> | null;
-                } | null;
-            } | null> | null;
+export type MarketDataSummary_artist$data = {
+  readonly internalID: string;
+  readonly collections: ReadonlyArray<string | null> | null;
+  readonly highlights: {
+    readonly partnersConnection: {
+      readonly edges: ReadonlyArray<{
+        readonly node: {
+          readonly categories: ReadonlyArray<{
+            readonly slug: string;
+          } | null> | null;
         } | null;
+      } | null> | null;
     } | null;
-    readonly auctionResultsConnection: {
-        readonly edges: ReadonlyArray<{
-            readonly node: {
-                readonly price_realized: {
-                    readonly display: string | null;
-                } | null;
-            } | null;
-        } | null> | null;
-    } | null;
-    readonly " $refType": "MarketDataSummary_artist";
+  } | null;
+  readonly auctionResultsConnection: {
+    readonly edges: ReadonlyArray<{
+      readonly node: {
+        readonly price_realized: {
+          readonly display: string | null;
+        } | null;
+      } | null;
+    } | null> | null;
+  } | null;
+  readonly " $fragmentType": "MarketDataSummary_artist";
 };
-export type MarketDataSummary_artist$data = MarketDataSummary_artist;
+export type MarketDataSummary_artist = MarketDataSummary_artist$data;
 export type MarketDataSummary_artist$key = {
-    readonly " $data"?: MarketDataSummary_artist$data;
-    readonly " $fragmentRefs": FragmentRefs<"MarketDataSummary_artist">;
+  readonly " $data"?: MarketDataSummary_artist$data;
+  readonly " $fragmentSpreads": FragmentRefs<"MarketDataSummary_artist">;
 };
-
-
 
 const node: ReaderFragment = {
   "argumentDefinitions": [
@@ -45,8 +50,7 @@ const node: ReaderFragment = {
         "top-emerging"
       ],
       "kind": "LocalArgument",
-      "name": "partnerCategory",
-      "type": "[String]"
+      "name": "partnerCategory"
     }
   ],
   "kind": "Fragment",
@@ -224,7 +228,10 @@ const node: ReaderFragment = {
       "storageKey": "auctionResultsConnection(first:1,recordsTrusted:true,sort:\"PRICE_AND_DATE_DESC\")"
     }
   ],
-  "type": "Artist"
+  "type": "Artist",
+  "abstractKey": null
 };
-(node as any).hash = 'b9c806f06c0905a0d712722f37e573f8';
+
+(node as any).hash = "b9c806f06c0905a0d712722f37e573f8";
+
 export default node;

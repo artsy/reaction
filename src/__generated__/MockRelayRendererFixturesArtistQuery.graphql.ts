@@ -1,52 +1,44 @@
+/**
+ * @generated SignedSource<<2cdd74ccbfffd211684b616dca436716>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type MockRelayRendererFixturesArtistQueryVariables = {
-    id: string;
+export type MockRelayRendererFixturesArtistQuery$variables = {
+  id: string;
 };
-export type MockRelayRendererFixturesArtistQueryResponse = {
-    readonly artist: {
-        readonly " $fragmentRefs": FragmentRefs<"MockRelayRendererFixtures_artist">;
-    } | null;
+export type MockRelayRendererFixturesArtistQueryVariables = MockRelayRendererFixturesArtistQuery$variables;
+export type MockRelayRendererFixturesArtistQuery$data = {
+  readonly artist: {
+    readonly " $fragmentSpreads": FragmentRefs<"MockRelayRendererFixtures_artist">;
+  } | null;
 };
-export type MockRelayRendererFixturesArtistQueryRawResponse = {
-    readonly artist: ({
-        readonly name: string | null;
-        readonly id: string | null;
-    }) | null;
+export type MockRelayRendererFixturesArtistQueryResponse = MockRelayRendererFixturesArtistQuery$data;
+export type MockRelayRendererFixturesArtistQuery$rawResponse = {
+  readonly artist: {
+    readonly name: string | null;
+    readonly id: string;
+  } | null;
 };
+export type MockRelayRendererFixturesArtistQueryRawResponse = MockRelayRendererFixturesArtistQuery$rawResponse;
 export type MockRelayRendererFixturesArtistQuery = {
-    readonly response: MockRelayRendererFixturesArtistQueryResponse;
-    readonly variables: MockRelayRendererFixturesArtistQueryVariables;
-    readonly rawResponse: MockRelayRendererFixturesArtistQueryRawResponse;
+  variables: MockRelayRendererFixturesArtistQueryVariables;
+  response: MockRelayRendererFixturesArtistQuery$data;
+  rawResponse: MockRelayRendererFixturesArtistQuery$rawResponse;
 };
-
-
-
-/*
-query MockRelayRendererFixturesArtistQuery(
-  $id: String!
-) {
-  artist(id: $id) {
-    ...MockRelayRendererFixtures_artist
-    id
-  }
-}
-
-fragment MockRelayRendererFixtures_artist on Artist {
-  name
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "id",
-    "type": "String!"
+    "name": "id"
   }
 ],
 v1 = [
@@ -80,7 +72,8 @@ return {
         "storageKey": null
       }
     ],
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -116,6 +109,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "cbf4686647f004d150e5f1a608cbe861",
     "id": null,
     "metadata": {},
     "name": "MockRelayRendererFixturesArtistQuery",
@@ -124,5 +118,7 @@ return {
   }
 };
 })();
-(node as any).hash = '8c4a637a093bfbe6fe9591999d35c879';
+
+(node as any).hash = "8c4a637a093bfbe6fe9591999d35c879";
+
 export default node;

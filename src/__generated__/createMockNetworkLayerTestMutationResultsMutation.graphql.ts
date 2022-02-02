@@ -1,71 +1,50 @@
+/**
+ * @generated SignedSource<<a49441e57c13bb705785e824d6ae3779>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type CommerceOrderStateEnum = "ABANDONED" | "APPROVED" | "CANCELED" | "FULFILLED" | "PENDING" | "REFUNDED" | "SUBMITTED" | "%future added value";
 export type CommerceBuyerAcceptOfferInput = {
-    clientMutationId?: string | null;
-    offerId: string;
+  clientMutationId?: string | null;
+  offerId: string;
 };
-export type createMockNetworkLayerTestMutationResultsMutationVariables = {
-    input: CommerceBuyerAcceptOfferInput;
+export type createMockNetworkLayerTestMutationResultsMutation$variables = {
+  input: CommerceBuyerAcceptOfferInput;
 };
-export type createMockNetworkLayerTestMutationResultsMutationResponse = {
-    readonly commerceBuyerAcceptOffer: {
-        readonly orderOrError: {
-            readonly error?: {
-                readonly type: string;
-                readonly code: string;
-                readonly data: string | null;
-            };
-            readonly order?: {
-                readonly internalID: string;
-                readonly state: CommerceOrderStateEnum;
-            };
-        };
-    } | null;
+export type createMockNetworkLayerTestMutationResultsMutationVariables = createMockNetworkLayerTestMutationResultsMutation$variables;
+export type createMockNetworkLayerTestMutationResultsMutation$data = {
+  readonly commerceBuyerAcceptOffer: {
+    readonly orderOrError: {
+      readonly error?: {
+        readonly type: string;
+        readonly code: string;
+        readonly data: string | null;
+      };
+      readonly order?: {
+        readonly internalID: string;
+        readonly state: CommerceOrderStateEnum;
+      };
+    };
+  } | null;
 };
+export type createMockNetworkLayerTestMutationResultsMutationResponse = createMockNetworkLayerTestMutationResultsMutation$data;
 export type createMockNetworkLayerTestMutationResultsMutation = {
-    readonly response: createMockNetworkLayerTestMutationResultsMutationResponse;
-    readonly variables: createMockNetworkLayerTestMutationResultsMutationVariables;
+  variables: createMockNetworkLayerTestMutationResultsMutationVariables;
+  response: createMockNetworkLayerTestMutationResultsMutation$data;
 };
-
-
-
-/*
-mutation createMockNetworkLayerTestMutationResultsMutation(
-  $input: CommerceBuyerAcceptOfferInput!
-) {
-  commerceBuyerAcceptOffer(input: $input) {
-    orderOrError {
-      __typename
-      ... on CommerceOrderWithMutationFailure {
-        error {
-          type
-          code
-          data
-        }
-      }
-      ... on CommerceOrderWithMutationSuccess {
-        order {
-          __typename
-          internalID
-          state
-          id
-        }
-      }
-    }
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "CommerceBuyerAcceptOfferInput!"
+    "name": "input"
   }
 ],
 v1 = [
@@ -111,7 +90,8 @@ v2 = {
       "storageKey": null
     }
   ],
-  "type": "CommerceOrderWithMutationFailure"
+  "type": "CommerceOrderWithMutationFailure",
+  "abstractKey": null
 },
 v3 = {
   "alias": null,
@@ -175,7 +155,8 @@ return {
                     "storageKey": null
                   }
                 ],
-                "type": "CommerceOrderWithMutationSuccess"
+                "type": "CommerceOrderWithMutationSuccess",
+                "abstractKey": null
               }
             ],
             "storageKey": null
@@ -184,7 +165,8 @@ return {
         "storageKey": null
       }
     ],
-    "type": "Mutation"
+    "type": "Mutation",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -235,7 +217,8 @@ return {
                     "storageKey": null
                   }
                 ],
-                "type": "CommerceOrderWithMutationSuccess"
+                "type": "CommerceOrderWithMutationSuccess",
+                "abstractKey": null
               }
             ],
             "storageKey": null
@@ -246,6 +229,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "fd20ddec8c53dbc3c5f87987be488538",
     "id": null,
     "metadata": {},
     "name": "createMockNetworkLayerTestMutationResultsMutation",
@@ -254,5 +238,7 @@ return {
   }
 };
 })();
-(node as any).hash = 'dcfa0d5642e51295d881dcd55a1c3515';
+
+(node as any).hash = "dcfa0d5642e51295d881dcd55a1c3515";
+
 export default node;

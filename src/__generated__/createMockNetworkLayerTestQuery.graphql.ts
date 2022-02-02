@@ -1,29 +1,27 @@
+/**
+ * @generated SignedSource<<736284239ce6809a36a9601e8b0e9dd9>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
-export type createMockNetworkLayerTestQueryVariables = {};
-export type createMockNetworkLayerTestQueryResponse = {
-    readonly artwork: {
-        readonly id: string;
-        readonly title: string | null;
-    } | null;
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type createMockNetworkLayerTestQuery$variables = {};
+export type createMockNetworkLayerTestQueryVariables = createMockNetworkLayerTestQuery$variables;
+export type createMockNetworkLayerTestQuery$data = {
+  readonly artwork: {
+    readonly id: string;
+    readonly title: string | null;
+  } | null;
 };
+export type createMockNetworkLayerTestQueryResponse = createMockNetworkLayerTestQuery$data;
 export type createMockNetworkLayerTestQuery = {
-    readonly response: createMockNetworkLayerTestQueryResponse;
-    readonly variables: createMockNetworkLayerTestQueryVariables;
+  variables: createMockNetworkLayerTestQueryVariables;
+  response: createMockNetworkLayerTestQuery$data;
 };
-
-
-
-/*
-query createMockNetworkLayerTestQuery {
-  artwork(id: "untitled") {
-    id
-    title
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
@@ -66,7 +64,8 @@ return {
     "metadata": null,
     "name": "createMockNetworkLayerTestQuery",
     "selections": (v0/*: any*/),
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -76,6 +75,7 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
+    "cacheID": "b53c8e2c03e8297b889d5cb83bf29ab0",
     "id": null,
     "metadata": {},
     "name": "createMockNetworkLayerTestQuery",
@@ -84,5 +84,7 @@ return {
   }
 };
 })();
-(node as any).hash = 'e735fd4b2d3daed26a8c2e227bc1cc5f';
+
+(node as any).hash = "e735fd4b2d3daed26a8c2e227bc1cc5f";
+
 export default node;

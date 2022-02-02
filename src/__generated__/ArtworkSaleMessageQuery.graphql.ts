@@ -1,72 +1,50 @@
+/**
+ * @generated SignedSource<<349d057f6f76ca854ad74467dbf1711c>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
-export type ArtworkSaleMessageQueryVariables = {
-    artworkSlug: string;
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type ArtworkSaleMessageQuery$variables = {
+  artworkSlug: string;
 };
-export type ArtworkSaleMessageQueryResponse = {
-    readonly artwork: {
-        readonly saleMessage: string | null;
-        readonly sale: {
-            readonly isAuction: boolean | null;
-            readonly isClosed: boolean | null;
-        } | null;
-        readonly saleArtwork: {
-            readonly counts: {
-                readonly bidderPositions: number | null;
-            } | null;
-            readonly highestBid: {
-                readonly display: string | null;
-            } | null;
-            readonly openingBid: {
-                readonly display: string | null;
-            } | null;
-        } | null;
+export type ArtworkSaleMessageQueryVariables = ArtworkSaleMessageQuery$variables;
+export type ArtworkSaleMessageQuery$data = {
+  readonly artwork: {
+    readonly saleMessage: string | null;
+    readonly sale: {
+      readonly isAuction: boolean | null;
+      readonly isClosed: boolean | null;
     } | null;
+    readonly saleArtwork: {
+      readonly counts: {
+        readonly bidderPositions: Int | null;
+      } | null;
+      readonly highestBid: {
+        readonly display: string | null;
+      } | null;
+      readonly openingBid: {
+        readonly display: string | null;
+      } | null;
+    } | null;
+  } | null;
 };
+export type ArtworkSaleMessageQueryResponse = ArtworkSaleMessageQuery$data;
 export type ArtworkSaleMessageQuery = {
-    readonly response: ArtworkSaleMessageQueryResponse;
-    readonly variables: ArtworkSaleMessageQueryVariables;
+  variables: ArtworkSaleMessageQueryVariables;
+  response: ArtworkSaleMessageQuery$data;
 };
-
-
-
-/*
-query ArtworkSaleMessageQuery(
-  $artworkSlug: String!
-) {
-  artwork(id: $artworkSlug) {
-    saleMessage
-    sale {
-      isAuction
-      isClosed
-      id
-    }
-    saleArtwork {
-      counts {
-        bidderPositions
-      }
-      highestBid {
-        display
-      }
-      openingBid {
-        display
-      }
-      id
-    }
-    id
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "artworkSlug",
-    "type": "String!"
+    "name": "artworkSlug"
   }
 ],
 v1 = [
@@ -198,7 +176,8 @@ return {
         "storageKey": null
       }
     ],
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -251,6 +230,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "110491d8f0cc9a72ce023b7649228da6",
     "id": null,
     "metadata": {},
     "name": "ArtworkSaleMessageQuery",
@@ -259,5 +239,7 @@ return {
   }
 };
 })();
-(node as any).hash = '02a606b1af7ad3c72aa9e7fa4064577b';
+
+(node as any).hash = "02a606b1af7ad3c72aa9e7fa4064577b";
+
 export default node;

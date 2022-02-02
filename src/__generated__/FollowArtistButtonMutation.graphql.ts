@@ -1,56 +1,46 @@
+/**
+ * @generated SignedSource<<01a0fd50f808c7896b2c00246917b415>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type FollowArtistInput = {
-    artistID: string;
-    clientMutationId?: string | null;
-    unfollow?: boolean | null;
+  artistID: string;
+  clientMutationId?: string | null;
+  unfollow?: boolean | null;
 };
-export type FollowArtistButtonMutationVariables = {
-    input: FollowArtistInput;
+export type FollowArtistButtonMutation$variables = {
+  input: FollowArtistInput;
 };
-export type FollowArtistButtonMutationResponse = {
-    readonly followArtist: {
-        readonly artist: {
-            readonly id: string;
-            readonly is_followed: boolean | null;
-            readonly counts: {
-                readonly follows: number | null;
-            } | null;
-        } | null;
+export type FollowArtistButtonMutationVariables = FollowArtistButtonMutation$variables;
+export type FollowArtistButtonMutation$data = {
+  readonly followArtist: {
+    readonly artist: {
+      readonly id: string;
+      readonly is_followed: boolean | null;
+      readonly counts: {
+        readonly follows: Int | null;
+      } | null;
     } | null;
+  } | null;
 };
+export type FollowArtistButtonMutationResponse = FollowArtistButtonMutation$data;
 export type FollowArtistButtonMutation = {
-    readonly response: FollowArtistButtonMutationResponse;
-    readonly variables: FollowArtistButtonMutationVariables;
+  variables: FollowArtistButtonMutationVariables;
+  response: FollowArtistButtonMutation$data;
 };
-
-
-
-/*
-mutation FollowArtistButtonMutation(
-  $input: FollowArtistInput!
-) {
-  followArtist(input: $input) {
-    artist {
-      id
-      is_followed: isFollowed
-      counts {
-        follows
-      }
-    }
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "FollowArtistInput!"
+    "name": "input"
   }
 ],
 v1 = [
@@ -122,7 +112,8 @@ return {
     "metadata": null,
     "name": "FollowArtistButtonMutation",
     "selections": (v1/*: any*/),
-    "type": "Mutation"
+    "type": "Mutation",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -132,6 +123,7 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
+    "cacheID": "9c6b23b16d33c1031de5e2dc040f35bc",
     "id": null,
     "metadata": {},
     "name": "FollowArtistButtonMutation",
@@ -140,5 +132,7 @@ return {
   }
 };
 })();
-(node as any).hash = '1ccb6092697db4f9bc8c0d044b7360a9';
+
+(node as any).hash = "1ccb6092697db4f9bc8c0d044b7360a9";
+
 export default node;

@@ -1,148 +1,49 @@
+/**
+ * @generated SignedSource<<fb82d5640eafcab5d4b323842e1c685e>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TooltipsDataLoaderQueryVariables = {
-    artistSlugs?: Array<string> | null;
-    geneSlugs?: Array<string> | null;
+export type TooltipsDataLoaderQuery$variables = {
+  artistSlugs?: ReadonlyArray<string> | null;
+  geneSlugs?: ReadonlyArray<string> | null;
 };
-export type TooltipsDataLoaderQueryResponse = {
-    readonly artists: ReadonlyArray<{
-        readonly slug: string;
-        readonly internalID: string;
-        readonly " $fragmentRefs": FragmentRefs<"ArtistToolTip_artist" | "MarketDataSummary_artist" | "FollowArtistButton_artist">;
-    } | null> | null;
-    readonly genes: ReadonlyArray<{
-        readonly slug: string;
-        readonly internalID: string;
-        readonly " $fragmentRefs": FragmentRefs<"GeneToolTip_gene" | "FollowGeneButton_gene">;
-    } | null> | null;
+export type TooltipsDataLoaderQueryVariables = TooltipsDataLoaderQuery$variables;
+export type TooltipsDataLoaderQuery$data = {
+  readonly artists: ReadonlyArray<{
+    readonly slug: string;
+    readonly internalID: string;
+    readonly " $fragmentSpreads": FragmentRefs<"ArtistToolTip_artist" | "MarketDataSummary_artist" | "FollowArtistButton_artist">;
+  } | null> | null;
+  readonly genes: ReadonlyArray<{
+    readonly slug: string;
+    readonly internalID: string;
+    readonly " $fragmentSpreads": FragmentRefs<"GeneToolTip_gene" | "FollowGeneButton_gene">;
+  } | null> | null;
 };
+export type TooltipsDataLoaderQueryResponse = TooltipsDataLoaderQuery$data;
 export type TooltipsDataLoaderQuery = {
-    readonly response: TooltipsDataLoaderQueryResponse;
-    readonly variables: TooltipsDataLoaderQueryVariables;
+  variables: TooltipsDataLoaderQueryVariables;
+  response: TooltipsDataLoaderQuery$data;
 };
-
-
-
-/*
-query TooltipsDataLoaderQuery(
-  $artistSlugs: [String!]
-  $geneSlugs: [String!]
-) {
-  artists(slugs: $artistSlugs) {
-    slug
-    internalID
-    ...ArtistToolTip_artist
-    ...MarketDataSummary_artist
-    ...FollowArtistButton_artist
-    id
-  }
-  genes(slugs: $geneSlugs) {
-    slug
-    internalID
-    ...GeneToolTip_gene
-    ...FollowGeneButton_gene
-    id
-  }
-}
-
-fragment ArtistToolTip_artist on Artist {
-  name
-  slug
-  formatted_nationality_and_birthday: formattedNationalityAndBirthday
-  href
-  blurb
-  internalID
-  carousel {
-    images {
-      resized(height: 200) {
-        url
-        width
-        height
-      }
-    }
-  }
-  genes {
-    name
-    id
-  }
-}
-
-fragment FollowArtistButton_artist on Artist {
-  id
-  internalID
-  name
-  slug
-  is_followed: isFollowed
-  counts {
-    follows
-  }
-}
-
-fragment FollowGeneButton_gene on Gene {
-  id
-  internalID
-  slug
-  name
-  is_followed: isFollowed
-}
-
-fragment GeneToolTip_gene on Gene {
-  description
-  href
-  slug
-  internalID
-  image {
-    url(version: "tall")
-  }
-  name
-}
-
-fragment MarketDataSummary_artist on Artist {
-  internalID
-  collections
-  highlights {
-    partnersConnection(first: 10, displayOnPartnerProfile: true, representedBy: true, partnerCategory: ["blue-chip", "top-established", "top-emerging"]) {
-      edges {
-        node {
-          categories {
-            slug
-            id
-          }
-          id
-        }
-        id
-      }
-    }
-  }
-  auctionResultsConnection(recordsTrusted: true, first: 1, sort: PRICE_AND_DATE_DESC) {
-    edges {
-      node {
-        price_realized: priceRealized {
-          display(format: "0a")
-        }
-        id
-      }
-    }
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "artistSlugs",
-    "type": "[String!]"
+    "name": "artistSlugs"
   },
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "geneSlugs",
-    "type": "[String!]"
+    "name": "geneSlugs"
   }
 ],
 v1 = [
@@ -260,7 +161,8 @@ return {
         "storageKey": null
       }
     ],
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -606,6 +508,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "0b726d6454717a35b66dfe7cc35e3777",
     "id": null,
     "metadata": {},
     "name": "TooltipsDataLoaderQuery",
@@ -614,5 +517,7 @@ return {
   }
 };
 })();
-(node as any).hash = '76f8dc1dd83c0eba38b7b6dc5579ec75';
+
+(node as any).hash = "76f8dc1dd83c0eba38b7b6dc5579ec75";
+
 export default node;

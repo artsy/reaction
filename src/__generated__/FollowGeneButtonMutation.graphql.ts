@@ -1,49 +1,43 @@
+/**
+ * @generated SignedSource<<393e9b74528585bc5ba883f42145df0e>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type FollowGeneInput = {
-    clientMutationId?: string | null;
-    geneID?: string | null;
+  clientMutationId?: string | null;
+  geneID?: string | null;
+  unfollow?: boolean | null;
 };
-export type FollowGeneButtonMutationVariables = {
-    input: FollowGeneInput;
+export type FollowGeneButtonMutation$variables = {
+  input: FollowGeneInput;
 };
-export type FollowGeneButtonMutationResponse = {
-    readonly followGene: {
-        readonly gene: {
-            readonly id: string;
-            readonly is_followed: boolean | null;
-        } | null;
+export type FollowGeneButtonMutationVariables = FollowGeneButtonMutation$variables;
+export type FollowGeneButtonMutation$data = {
+  readonly followGene: {
+    readonly gene: {
+      readonly id: string;
+      readonly is_followed: boolean | null;
     } | null;
+  } | null;
 };
+export type FollowGeneButtonMutationResponse = FollowGeneButtonMutation$data;
 export type FollowGeneButtonMutation = {
-    readonly response: FollowGeneButtonMutationResponse;
-    readonly variables: FollowGeneButtonMutationVariables;
+  variables: FollowGeneButtonMutationVariables;
+  response: FollowGeneButtonMutation$data;
 };
-
-
-
-/*
-mutation FollowGeneButtonMutation(
-  $input: FollowGeneInput!
-) {
-  followGene(input: $input) {
-    gene {
-      id
-      is_followed: isFollowed
-    }
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "input",
-    "type": "FollowGeneInput!"
+    "name": "input"
   }
 ],
 v1 = [
@@ -97,7 +91,8 @@ return {
     "metadata": null,
     "name": "FollowGeneButtonMutation",
     "selections": (v1/*: any*/),
-    "type": "Mutation"
+    "type": "Mutation",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -107,6 +102,7 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
+    "cacheID": "e28c0e11c7159f232e6872d6703c736e",
     "id": null,
     "metadata": {},
     "name": "FollowGeneButtonMutation",
@@ -115,5 +111,7 @@ return {
   }
 };
 })();
-(node as any).hash = '6e730f396b1bfca255e1e35cb6913dda';
+
+(node as any).hash = "6e730f396b1bfca255e1e35cb6913dda";
+
 export default node;

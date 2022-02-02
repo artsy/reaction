@@ -1,52 +1,36 @@
+/**
+ * @generated SignedSource<<b8bc7b8223fdbc9282163c353ec0e081>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
+import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type MobileFollowArtistButtonQueryVariables = {
-    artistId: string;
+export type MobileFollowArtistButtonQuery$variables = {
+  artistId: string;
 };
-export type MobileFollowArtistButtonQueryResponse = {
-    readonly artist: {
-        readonly " $fragmentRefs": FragmentRefs<"FollowArtistButton_artist">;
-    } | null;
+export type MobileFollowArtistButtonQueryVariables = MobileFollowArtistButtonQuery$variables;
+export type MobileFollowArtistButtonQuery$data = {
+  readonly artist: {
+    readonly " $fragmentSpreads": FragmentRefs<"FollowArtistButton_artist">;
+  } | null;
 };
+export type MobileFollowArtistButtonQueryResponse = MobileFollowArtistButtonQuery$data;
 export type MobileFollowArtistButtonQuery = {
-    readonly response: MobileFollowArtistButtonQueryResponse;
-    readonly variables: MobileFollowArtistButtonQueryVariables;
+  variables: MobileFollowArtistButtonQueryVariables;
+  response: MobileFollowArtistButtonQuery$data;
 };
-
-
-
-/*
-query MobileFollowArtistButtonQuery(
-  $artistId: String!
-) {
-  artist(id: $artistId) {
-    ...FollowArtistButton_artist
-    id
-  }
-}
-
-fragment FollowArtistButton_artist on Artist {
-  id
-  internalID
-  name
-  slug
-  is_followed: isFollowed
-  counts {
-    follows
-  }
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "artistId",
-    "type": "String!"
+    "name": "artistId"
   }
 ],
 v1 = [
@@ -80,7 +64,8 @@ return {
         "storageKey": null
       }
     ],
-    "type": "Query"
+    "type": "Query",
+    "abstractKey": null
   },
   "kind": "Request",
   "operation": {
@@ -155,6 +140,7 @@ return {
     ]
   },
   "params": {
+    "cacheID": "1690b18c401dc0aef9ed99d2865300b1",
     "id": null,
     "metadata": {},
     "name": "MobileFollowArtistButtonQuery",
@@ -163,5 +149,7 @@ return {
   }
 };
 })();
-(node as any).hash = 'e249ef453f7f1400e7405137c158d6c1';
+
+(node as any).hash = "e249ef453f7f1400e7405137c158d6c1";
+
 export default node;
