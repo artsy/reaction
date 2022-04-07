@@ -1,3 +1,46 @@
+# v29.3.0 (Thu Apr 07 2022)
+
+#### 🚀  Enhancement
+
+- fix: formating [#3723](https://github.com/artsy/reaction/pull/3723) ([@mc-jones](https://github.com/mc-jones))
+
+#### 🐛  Bug Fix
+
+- chore(inclusive-language): Rename master to main [#3716](https://github.com/artsy/reaction/pull/3716) ([@damassi](https://github.com/damassi))
+- chore: Adopt inclusive language [#3715](https://github.com/artsy/reaction/pull/3715) ([@sonecabr](https://github.com/sonecabr))
+
+#### 🏠  Internal
+
+- chore(deps): update dep @artsy/lint-changed from 3.4.0 to v5 [#3693](https://github.com/artsy/reaction/pull/3693) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dep vscode-apollo-relay from 1.5.1 to v1.5.2 [#3713](https://github.com/artsy/reaction/pull/3713) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Bump lodash from 4.17.11 to 4.17.21 [#3684](https://github.com/artsy/reaction/pull/3684) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump path-parse from 1.0.6 to 1.0.7 [#3696](https://github.com/artsy/reaction/pull/3696) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update dep @artsy/lint-changed from 3.1.0 to v3.4.0 [#3689](https://github.com/artsy/reaction/pull/3689) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Bump ssri from 6.0.1 to 6.0.2 [#3680](https://github.com/artsy/reaction/pull/3680) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump y18n from 3.2.1 to 3.2.2 [#3679](https://github.com/artsy/reaction/pull/3679) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump tmpl from 1.0.4 to 1.0.5 [#3706](https://github.com/artsy/reaction/pull/3706) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update dep @artsy/auto-config from 1.0.2 to v1.1.0 [#3708](https://github.com/artsy/reaction/pull/3708) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update auto orb from 1.3.2 to v2 [#3711](https://github.com/artsy/reaction/pull/3711) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- chore: Update Rennovate [#3712](https://github.com/artsy/reaction/pull/3712) ([@icirellik](https://github.com/icirellik))
+- chore: (PLATFORM-3528) update node version to 14LTS, update README [#3705](https://github.com/artsy/reaction/pull/3705) ([@ovasdi](https://github.com/ovasdi))
+
+#### 🔩 Dependency Updates
+
+- Bump ini from 1.3.5 to 1.3.8 [#3668](https://github.com/artsy/reaction/pull/3668) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 8
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Andre Rocha ([@sonecabr](https://github.com/sonecabr))
+- Cameron Rollheiser ([@icirellik](https://github.com/icirellik))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v29.2.1 (Thu Aug 12 2021)
 
 #### 🐛  Bug Fix
