@@ -1,3 +1,20 @@
+# v29.4.0 (Fri Apr 08 2022)
+
+#### 🚀  Enhancement
+
+- chore: update renovate assignee [#3722](https://github.com/artsy/reaction/pull/3722) ([@ovasdi](https://github.com/ovasdi))
+
+#### 🏠  Internal
+
+- Bump handlebars from 4.5.3 to 4.7.7 [#3682](https://github.com/artsy/reaction/pull/3682) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+
+---
+
 # v29.3.0 (Thu Apr 07 2022)
 
 #### 🚀  Enhancement
