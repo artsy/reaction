@@ -1,3 +1,15 @@
+# v29.5.0 (Tue Apr 12 2022)
+
+#### 🚀  Enhancement
+
+- chore: bump immer and minimist [#3724](https://github.com/artsy/reaction/pull/3724) ([@mc-jones](https://github.com/mc-jones))
+
+#### Authors: 1
+
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+
+---
+
 # v29.4.0 (Fri Apr 08 2022)
 
 #### 🚀  Enhancement
