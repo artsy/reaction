@@ -1,3 +1,15 @@
+# v29.7.0 (Mon Apr 18 2022)
+
+#### 🚀  Enhancement
+
+- security: upgrade union-value transitive dependecy to resolve CVE-2019-10747 [#3726](https://github.com/artsy/reaction/pull/3726) ([@ovasdi](https://github.com/ovasdi))
+
+#### Authors: 1
+
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+
+---
+
 # v29.6.0 (Tue Apr 12 2022)
 
 #### 🚀  Enhancement
