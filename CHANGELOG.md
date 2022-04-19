@@ -1,3 +1,25 @@
+# v29.8.0 (Tue Apr 19 2022)
+
+#### 🚀  Enhancement
+
+- chore(deps): update dep @artsy/detect-responsive-traits from 0.0.5 to ^0.1.0 [#3690](https://github.com/artsy/reaction/pull/3690) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🏠  Internal
+
+- chore(deps): update dep @artsy/auto-config from 1.1.0 to v1.2.0 [#3720](https://github.com/artsy/reaction/pull/3720) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Bump ua-parser-js from 0.7.18 to 0.7.31 [#3718](https://github.com/artsy/reaction/pull/3718) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump tree-kill from 1.2.0 to 1.2.2 [#3635](https://github.com/artsy/reaction/pull/3635) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update codecov orb from 1.1.0 to v1.2.5 [#3675](https://github.com/artsy/reaction/pull/3675) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Bump serialize-javascript from 2.1.1 to 3.1.0 [#3620](https://github.com/artsy/reaction/pull/3620) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v29.7.0 (Mon Apr 18 2022)
 
 #### 🚀  Enhancement
