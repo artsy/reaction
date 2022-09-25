@@ -19,10 +19,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/detect-responsive-traits/-/detect-responsive-traits-0.1.0.tgz#f7ae5041893b859ff9f6bc305fd318d2f5132745"
   integrity sha512-cdHMDcGpYuItSBvelAWEWxWipVGw/8Yzk7YoMvO+qWjZsHJtIF2hACtL5QFQxcf9K3j/eTXNSFlPmfZAe9Byew==
 
-"@artsy/fresnel@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-1.0.13.tgz#4bbbda274e74e0d63b471a36d72360d33d571598"
-  integrity sha512-Gg/43i30aIqkryVE6eLhNe4j9G1fk41qIJqYfj/b+mv3bYCl8H9HSaedcM7exuh0RlexZGLMD2aYnugiobrpxQ==
+"@artsy/fresnel@^6.0.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-6.1.0.tgz#fac8aeb6a01cbd7791351dce523f5ab5e2fc8679"
+  integrity sha512-PexfFmf3Un3C752SFpryYROgahfdSsHhNETSZlJcO0W3MJ14hyw/MbLQl3DnNdQGIJZE6y1MbnH7ntEt8PWB0Q==
 
 "@artsy/lint-changed@5.0.2":
   version "5.0.2"
