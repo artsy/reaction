@@ -147,7 +147,7 @@
     "stylelint-processor-styled-components": "1.5.1",
     "ts-loader": "^3.5.yarn 0",
     "ts-node": "8.2.0",
-    "typescript": "3.9.10",
+    "typescript": "5.0.3",
     "typescript-styled-plugin": "0.13.0",
     "vscode-apollo-relay": "1.5.2",
     "webpack": "4.29.6",
