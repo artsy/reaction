@@ -20,7 +20,6 @@ export const IconImageFullscreen: React.SFC<{ fill?: string }> = ({
           width="38"
           height="22"
         />
-        >
       </g>
     </svg>
   )
