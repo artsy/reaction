@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
-    "@artsy/lint-changed": "5.0.2",
+    "@artsy/lint-changed": "5.3.0",
     "@artsy/palette": "13.28.0",
     "@babel/cli": "7.0.0",
     "@babel/core": "7.7.2",
