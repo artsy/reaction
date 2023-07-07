@@ -141,7 +141,7 @@
     "simple-progress-webpack-plugin": "1.1.2",
     "static-extend": "0.1.2",
     "styled-components": "4.3.2",
-    "stylelint": "9.8.0",
+    "stylelint": "15.10.1",
     "stylelint-config-standard": "18.2.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "1.5.1",
