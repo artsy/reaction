@@ -1,3 +1,39 @@
+# v29.9.0 (Thu Aug 31 2023)
+
+#### 🚀  Enhancement
+
+- Bump cookiejar from 2.1.2 to 2.1.4 [#3747](https://github.com/artsy/reaction/pull/3747) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### 🏠  Internal
+
+- Bump luxon from 1.16.0 to 1.28.1 [#3746](https://github.com/artsy/reaction/pull/3746) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump json5 from 2.1.0 to 2.2.2 [#3744](https://github.com/artsy/reaction/pull/3744) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump express from 4.16.3 to 4.18.2 [#3743](https://github.com/artsy/reaction/pull/3743) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump qs from 6.5.2 to 6.5.3 [#3742](https://github.com/artsy/reaction/pull/3742) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump decode-uri-component from 0.2.0 to 0.2.2 [#3741](https://github.com/artsy/reaction/pull/3741) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update codecov orb from 1.2.5 to v3 [#3699](https://github.com/artsy/reaction/pull/3699) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dep typescript from 3.8.3 to v3.9.10 [#3676](https://github.com/artsy/reaction/pull/3676) ([@renovate[bot]](https://github.com/renovate[bot]) [@ovasdi](https://github.com/ovasdi))
+- chore(deps): update dep @artsy/lint-changed from 5.0.2 to v5.3.0 [#3736](https://github.com/artsy/reaction/pull/3736) ([@renovate[bot]](https://github.com/renovate[bot]))
+- Bump minimatch from 3.0.4 to 3.1.2 [#3749](https://github.com/artsy/reaction/pull/3749) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump ua-parser-js from 0.7.31 to 0.7.33 [#3748](https://github.com/artsy/reaction/pull/3748) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update yarn orb from 6.1.0 to v6.2.0 [#3729](https://github.com/artsy/reaction/pull/3729) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update auto orb from 2.0.0 to v2.1.0 [#3728](https://github.com/artsy/reaction/pull/3728) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+- Bump async from 2.6.1 to 2.6.4 [#3727](https://github.com/artsy/reaction/pull/3727) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump shelljs from 0.8.3 to 0.8.5 [#3717](https://github.com/artsy/reaction/pull/3717) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump tar from 4.4.4 to 4.4.19 [#3701](https://github.com/artsy/reaction/pull/3701) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump hosted-git-info from 2.6.0 to 2.8.9 [#3685](https://github.com/artsy/reaction/pull/3685) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump elliptic from 6.4.0 to 6.5.4 [#3678](https://github.com/artsy/reaction/pull/3678) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- chore(deps): update dep @artsy/cohesion from 1.60.0 to v1.85.0 [#3662](https://github.com/artsy/reaction/pull/3662) ([@renovate-bot](https://github.com/renovate-bot) [@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Mend Renovate ([@renovate-bot](https://github.com/renovate-bot))
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+
+---
+
 # v29.8.0 (Tue Apr 19 2022)
 
 #### 🚀  Enhancement
