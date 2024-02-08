@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.2.0.tgz#62a237ca3a058f1b91e5b8a12abebae0ddc5bd2f"
   integrity sha512-6zGlvqELl4XhqMajJxfgHaY3m5YhZK5FwkxlouJKSb0Su301bzXaPUxKjzj9X147YHJUyrRLSAruzVtj1Gr42Q==
 
-"@artsy/cohesion@1.85.0":
-  version "1.85.0"
-  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-1.85.0.tgz#1108af9044af298c0b471b37f88b9705ac722a28"
-  integrity sha512-8FupGvgissHOIhXgv7HviiRYX1BVuQeCvbDS/1QXS6/K8ODLR0+Toh0p6VU6+xYNsbL9Ki1TEbpBa1+vIOgDYw==
+"@artsy/cohesion@4.167.0":
+  version "4.167.0"
+  resolved "https://registry.yarnpkg.com/@artsy/cohesion/-/cohesion-4.167.0.tgz#8a25d56f1b21ce31f627b3f8024616d70e4a2a84"
+  integrity sha512-bNPR469yw6J17X6mE4GliRxfDlpNMnegyldOePUQI6sToa4Zy6NE0dLLASaMqfM3IIbcjgGd29czQkqmyFEwUg==
   dependencies:
     core-js "3"
 
