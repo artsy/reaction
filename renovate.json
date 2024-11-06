@@ -1,6 +1,6 @@
 {
   "enabled": true,
   "extends": ["@artsy:lib", "schedule:nonOfficeHours"],
-  "assignees": ["ovasdi"],
+  "assignees": [],
   "reviewers": []
 }
