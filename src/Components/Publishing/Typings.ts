@@ -116,6 +116,7 @@ export interface ArticleData {
 }
 
 export type SectionType =
+  | "collection"
   | "image_collection"
   | "image" // TODO: to be deprecated
   | "image_set"
@@ -137,6 +138,8 @@ export interface SectionData {
   title?: string
   mobile_height?: number
   height?: number
+  name?: string // for collection
+  image_url?: string // for collection
 }
 
 export type ImagesData = ImageData[]
