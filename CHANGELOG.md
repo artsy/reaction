@@ -1,3 +1,24 @@
+# v29.9.1 (Tue Jan 28 2025)
+
+#### 🐛  Bug Fix
+
+- feat: add marketing collection types [#3792](https://github.com/artsy/reaction/pull/3792) ([@mc-jones](https://github.com/mc-jones))
+
+#### 🏠  Internal
+
+- chore: Update renovate.json [#3789](https://github.com/artsy/reaction/pull/3789) ([@ovasdi](https://github.com/ovasdi))
+- chore(deps): update dep auto from 2.1.0 to v2.2.0 [#3780](https://github.com/artsy/reaction/pull/3780) ([@renovate[bot]](https://github.com/renovate[bot]))
+- Bump semver from 5.6.0 to 5.7.2 [#3763](https://github.com/artsy/reaction/pull/3763) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+
+---
+
 # v29.9.0 (Thu Aug 31 2023)
 
 #### 🚀  Enhancement
