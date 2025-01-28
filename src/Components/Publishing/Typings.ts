@@ -116,27 +116,30 @@ export interface ArticleData {
 }
 
 export type SectionType =
-  | "image_collection"
-  | "image" // TODO: to be deprecated
-  | "image_set"
+  | "default"
   | "embed"
-  | "social_embed"
+  | "image_collection"
+  | "image_set"
+  | "image" // TODO: to be deprecated
+  | "marketing_collection"
   | "slideshow" // TODO: to be deprecated
+  | "social_embed"
   | "text"
   | "video"
-  | "default"
 
 export interface SectionData {
-  type: SectionType
-  layout?: SectionLayout
-  images?: ImagesData
   body?: string
-  url?: string
   caption?: string
   cover_image_url?: string
-  title?: string
-  mobile_height?: number
   height?: number
+  image_url?: string // for marketing_collection
+  images?: ImagesData
+  layout?: SectionLayout
+  mobile_height?: number
+  name?: string // for marketing_collection
+  title?: string
+  type: SectionType
+  url?: string
 }
 
 export type ImagesData = ImageData[]
