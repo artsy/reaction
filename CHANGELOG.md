@@ -1,3 +1,15 @@
+# v29.9.2 (Fri Oct 31 2025)
+
+#### 🐛  Bug Fix
+
+- feat: add conventional commit github action [#3799](https://github.com/artsy/reaction/pull/3799) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v29.9.1 (Tue Jan 28 2025)
 
 #### 🐛  Bug Fix
