@@ -1,3 +1,15 @@
+# v29.11.0 (Tue Nov 11 2025)
+
+#### 🚀  Enhancement
+
+- feat: add yarn check github action [#3801](https://github.com/artsy/reaction/pull/3801) ([@mc-jones](https://github.com/mc-jones))
+
+#### Authors: 1
+
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+
+---
+
 # v29.10.0 (Mon Nov 10 2025)
 
 #### 🚀  Enhancement
