@@ -35,6 +35,6 @@ describe("FeatureBasicHeader", () => {
     expect(component.text()).toMatch("Promoted Content")
     expect(component.text()).toMatch("ICI: Benefit Auction 2019")
     expect(component.find(Button).text()).toMatch("Explore Auction")
-    expect(component.html()).toMatch("large_rectangle.jpg")
+    expect(component.html()).toMatch("large.jpg")
   })
 })

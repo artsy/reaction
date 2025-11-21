@@ -236,7 +236,7 @@ export const ClassicArticleSale: ArticleSale = {
   cover_image: {
     cropped: {
       url:
-        "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FLp8BFIM7yd8AspTZJz-MGg%2Flarge_rectangle.jpg",
+        "https://d196wkiy8qx2u5.cloudfront.net?resize_to=fill&width=250&height=165&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FLp8BFIM7yd8AspTZJz-MGg%2Flarge.jpg",
     },
   },
 }
