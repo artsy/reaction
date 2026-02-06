@@ -1,3 +1,15 @@
+# v29.12.0 (Fri Feb 06 2026)
+
+#### 🚀  Enhancement
+
+- feat: add triggers to conventional commits check [#3804](https://github.com/artsy/reaction/pull/3804) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v29.11.0 (Tue Nov 11 2025)
 
 #### 🚀  Enhancement
