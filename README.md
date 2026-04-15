@@ -95,7 +95,7 @@ Reaction uses [auto-release](https://github.com/intuit/auto-release#readme) to a
 - Version: Minor
 - Version: Major
 
-Peril will automatically add "Version: Patch", if you don't set one on creating your PR. No release will happen on a `Trivial` update.
+A Github Action will automatically add "Version: Minor", if you don't set one on creating your PR. No release will happen on a `Trivial` update.
 
 If you're making a change but you don't want to immediate trigger a release (i.e. when 2 PRs need to go out together), specify the correct
 version and add the `Skip Release` label. That'll ensure when the next release happens the version is still bumped appropriately.
