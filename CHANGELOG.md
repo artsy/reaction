@@ -1,3 +1,15 @@
+# v29.13.0 (Wed Apr 15 2026)
+
+#### 🚀  Enhancement
+
+- chore: remove Peril mention, correct label added [#3811](https://github.com/artsy/reaction/pull/3811) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v29.12.0 (Fri Feb 06 2026)
 
 #### 🚀  Enhancement
